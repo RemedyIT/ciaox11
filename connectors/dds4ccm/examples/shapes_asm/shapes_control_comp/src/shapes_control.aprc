@@ -1,0 +1,12 @@
+
+component 'shapes_control_comp' do |comp|
+
+  comp.idl %w{ shapes_control_comp.idl }
+  comp.includes %w{ ../../shapes_utils }
+  # prefix sharednames, default recipe id (in this case: shapes_control_comp)
+  # prefix export headers, default recipe id in uppercase
+
+  # gen_dir is default 'generated_code'
+  comp.gen_dir  'build'
+
+end

@@ -1,0 +1,64 @@
+include::_{backend}_settings.adoc[]
+
+include::{ciaox11_src_root}/README.adoc[]
+
+=== Supported features
+
+CIAOX11 has the following major features:
+
+.  Compliant with the IDL to {cxx11} v1.3 language mapping
+.  Support for request/reply based interaction support
+.  Support for event and state based interaction support
+.  All local interfaces for its core infrastructure
+.  Flexible and easy deployment using
+<<{xref_docs_root}/dancex11/dancex11.adoc#,DnCX11>>
+.  Migration support for existing CIAO components and DAnCE deployment
+plans
+.  Small footprint
+
+== Why CIAOX11?
+
+CIAOX11 is based on the IDL to {cxx11} language mapping which brings you a
+lot of benefits as described in the
+<<{xref_docs_root}/taox11/getting_started.adoc#_the_idl_to_c_11_language_mapping,TAOX11 documentation>>.
+CIAOX11 brings you the following benefits:
+
+.  Faster development +
+ The many improvements in the IDL to {cxx11} language mapping will speed
+up you development significantly because of:
+* Reduced learning curves as a result of reduced complexity and
+increased standardization
+* Reduced error correction as a result of simplified memory managements
+as well as the reduced complexity
+* Improved software reuse as a result of increased standards integration
+.  Costs reduction +
+ Your increased development speed and better maintainable software built
+with CIAOX11 will save you time and (thus) money.
+.  Full interoperability +
+ CIAOX11 applications are interoperable with plain CORBA and DDS
+applications, even if they are programmed in another programming
+language and/or are running on another operating system.
+.  Scaffolding toolset BRIX11 +
+<<{xref_docs_root}/brix11/brix11.adoc#,BRIX11>> is a
+http://en.wikipedia.org/wiki/Scaffold_%28programming%29[scaffolding]
+toolset provided by Remedy IT to help you start up your development with
+CIAOX11. See <<getting_started.adoc#_brix11,here>> for
+more information on this.
+.  Reusable logging framework +
+ X11 provides you a <<{xref_docs_root}/taox11/x11_logging.adoc#,logging
+framework>> based on C++ streaming operators allowing you to easily add
+clear and concise logging statements to your source code. This framework
+is used to implement the CIAOX11 logging support and can be reused to
+implement your application logging while keeping the control settings
+separate. The logging framework is highly configurable allowing you to fully
+control your logging output and format.
+
+== LwCCM compliance
+
+Where https://www.dre.vanderbilt.edu/~schmidt/CIAO.html[CIAO] has been
+developed with (Lw)CCM standards compliance as major selling point
+CIAOX11 is only standards compliant in the area of the user component
+executors. CIAOX11 has reduced dependencies on CORBA which has resulted
+in a much smaller and optimized implementation. For more details about
+our LwCCM compliance see <<lwccm_compliance.adoc#,here>>. +
+

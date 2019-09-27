@@ -1,0 +1,45 @@
+project(*idl_gen) : ciaox11_comp_all_idl, ciaox11_gen_exec {
+  custom_only = 1
+  after += base_local_and_remote_idl_gen base_remote_lem_gen
+
+  idlflags += -Scc -Scp \
+              -o generated_code \
+              -I../../base -I../../base/generated_code \
+              -Wb,base_export_macro=BAR_PROVIDER \
+              -Wb,base_export_include=bar_provider
+
+  IDL_Files {
+    gendir=generated_code
+    bar_provider.idl
+  }
+}
+
+project(*exec) : ciaox11_executor, ciaox11_ccm_session_stub, ciaox11_logger {
+  after += base_local_stub *idl_gen
+  libs  += base_local_stub
+
+  libpaths += ../../lib
+  libout = ../../lib
+  includes += . ../.. ../../base ../../base/generated_code generated_code
+
+  dynamicflags += BAR_PROVIDER_LEM_STUB_BUILD_DLL \
+                  BAR_PROVIDER_EXEC_BUILD_DLL \
+                  BAR_PROVIDER_SVNT_BUILD_DLL
+
+  Source_Files {
+    bar_provider_exec.cpp
+    generated_code/bar_providerEC.cpp
+    generated_code/bar_provider_svnt.cpp
+  }
+
+  Header_Files {
+    foo_provider_exec.h
+    generated_code/bar_provider_exec_export.h
+
+    generated_code/bar_providerEC.h
+    generated_code/bar_provider_lem_stub_export.h
+
+    generated_code/bar_provider_svnt.h
+    generated_code/bar_provider_svnt_export.h
+  }
+}

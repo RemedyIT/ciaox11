@@ -1,0 +1,22 @@
+/**
+ * @file    ccm_sessioncontext.idl
+ * @author  Johnny Willemsen
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#if !defined (CCM_SESSIONCONTEXT_IDL)
+#define CCM_SESSIONCONTEXT_IDL
+
+#include "ccm/ccm_context.idl"
+
+module Components
+{
+  typeprefix Components "omg.org";
+
+  local interface SessionContext : CCMContext
+  {
+  };
+};
+#endif /* CCM_SESSIONCONTEXT_IDL */

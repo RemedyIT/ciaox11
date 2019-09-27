@@ -1,0 +1,17 @@
+
+  // generated from <%= ridl_template_path %>
+% all_ports.each do |_p|
+%   if _p.port_type == :facet
+  <%= _p.interface_type.scoped_ccm_name_return_type %>
+  <%= lem_name %>_conn_i::get_<%= _p.lem_name %> ()
+  {
+    if (!this-><%= _p.cxxname %>_)
+    {
+      this-><%= _p.cxxname %>_ =
+        CORBA::make_reference <<%= _p.lem_name %>_exec_i> (
+          this->context_);
+    }
+    return this-><%= _p.cxxname %>_;
+  }
+%   end
+% end

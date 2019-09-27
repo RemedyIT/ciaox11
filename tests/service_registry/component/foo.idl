@@ -1,0 +1,20 @@
+/**
+ * @file    foo.idl
+ * @author  Johnny Willemsen
+ *
+ * @brief   CIAOX11 service registry test
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef FOO_IDL_
+#define FOO_IDL_
+
+#include <Components.idl>
+
+component Foo
+{
+};
+
+#endif /* FOO_IDL_ */

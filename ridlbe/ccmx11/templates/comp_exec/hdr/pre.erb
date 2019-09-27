@@ -1,0 +1,11 @@
+% visit_component_pre
+
+#pragma once
+
+#include "<%= comp_exec_lem_stub_include %>"
+
+% if exec_export_include?
+#include /**/ "<%= exec_export_include %>"
+% end
+
+% visit_component_post_pre

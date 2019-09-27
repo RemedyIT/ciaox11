@@ -1,0 +1,23 @@
+/**
+ * @file    hello5.idl
+ * @author  Marijke Hengstmengel
+ *
+ * @brief   Data interfaces for minimal sync manual example
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef HELLO5_IDL_
+#define HELLO5_IDL_
+
+
+module Hello
+{
+
+ struct S3 {
+   long s_long;
+ };
+};
+
+#endif /* HELLO5_IDL_ */

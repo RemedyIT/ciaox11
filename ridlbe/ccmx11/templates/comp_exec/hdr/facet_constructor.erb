@@ -1,0 +1,7 @@
+% _regen_marker = "#{component.executor_cxx_namespace}::#{lem_name}_exec_i"
+% write_regen_section(_regen_marker+'[ctor]', indent: 1) do
+  /// Constructor
+  /// @param[in] context Component context
+  <%= lem_name %>_exec_i (
+      IDL::traits< <%= component.scoped_ccm_name %>_Context>::ref_type context);
+% end

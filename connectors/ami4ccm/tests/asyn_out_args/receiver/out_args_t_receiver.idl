@@ -1,0 +1,26 @@
+/**
+ * @file    out_args_t_receiver.idl
+ * @author  Marijke Hengstmengel
+ *
+ * @brief   receiver of ami4ccm test with out arguments
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef INTEROUTARGS_T_RECEIVER_IDL
+#define INTEROUTARGS_T_RECEIVER_IDL
+
+#include <Components.idl>
+
+#include "out_args_t.idl"
+
+module InterOutArgsT
+{
+  component Receiver
+  {
+    /// Provides
+    provides MyFoo do_my_foo;
+  };
+};
+#endif

@@ -1,0 +1,6 @@
+#Tested here is also a duplicate recipe name, component 'hello_sender' is also
+#in a recipe in duplicate_sender directory
+component 'hello_sender' do |comp|
+  comp.idl %w{ hello_sender.idl }
+
+end

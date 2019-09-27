@@ -1,0 +1,23 @@
+/**
+ * @file    bar.idl
+ * @author  Martin Corino
+ *
+ * @brief   Bar interface declaration
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef BAR_IDL_
+#define BAR_IDL_
+
+module Example
+{
+  // Bar interface
+  local interface Bar
+  {
+    void do_something_else (inout string an_argument);
+  };
+};
+
+#endif /* BAR_IDL_ */

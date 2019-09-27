@@ -1,0 +1,28 @@
+/**
+ * @file    nontopic_base.idl
+ * @author  Marijke Hengstmengel
+ *
+ * @brief   CIAOX11 templated connector test base
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef NONTOPIC_IDL
+#define NONTOPIC_IDL
+
+// Variable length structure
+struct X {
+  string color;
+  long a;
+  long b;
+};
+typedef sequence<X> XSeq;
+
+// Fixed length structure
+struct Z {
+  double c;
+  long d;
+};
+typedef sequence<Z> ZSeq;
+
+#endif

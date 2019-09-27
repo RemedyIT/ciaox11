@@ -1,0 +1,36 @@
+/**
+ * @file    foo.idl
+ * @author  Martin Corino
+ *
+ * @brief   Data and interfaces for gen comp example
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef FOO_IDL_
+#define FOO_IDL_
+
+#include "bar.idl"
+#include "nested_foo.idl"
+
+module Foo
+{
+  // Interface
+  interface MyFoo
+  {
+    void hello (out long answer);
+  };
+
+  struct Bar
+  {
+    short bar_short;
+  };
+
+  struct Bar_with_nested_bar
+  {
+     Nested_Bar nested_struct;
+  };
+};
+
+#endif /* FOO_IDL_ */

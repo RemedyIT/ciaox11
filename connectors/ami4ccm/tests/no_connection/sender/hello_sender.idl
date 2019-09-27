@@ -1,0 +1,29 @@
+/**
+ * @file    hello_sender.idl
+ * @author  Marijke Hengstmengel
+ *
+ * @brief   sender for test with missing connection
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef HELLO_T_SENDER_IDL
+#define HELLO_T_SENDER_IDL
+
+#include <Components.idl>
+
+#include "hello.idl"
+
+#pragma ami4ccm receptacle "HelloT::Sender::run_my_foo"
+
+module HelloT
+{
+  component Sender
+  {
+    /// For synchronous invocation
+    uses MyFoo run_my_foo;
+  };
+};
+
+#endif

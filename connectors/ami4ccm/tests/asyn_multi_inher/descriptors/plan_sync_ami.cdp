@@ -1,0 +1,598 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!-- this plan is made for using the synchronous and asynchronous connections between Sender and AMI-connectors -->
+
+<Deployment:DeploymentPlan xmlns:Deployment="http://www.omg.org/Deployment"
+   xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.omg.org/Deployment Deployment.xsd">
+
+  <UUID>6D382DAE-9024-4C4D-B91B-A0F9176AFACF</UUID>
+
+  <implementation xmi:id="InterMulti_ReceiverImplementation">
+    <name>InterMulti_ReceiverImplementation</name>
+    <source/>
+    <artifact xmi:idref="InterMulti_Receiver_ExecArtifact"/>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_InterMulti_Receiver_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>InterMulti.ImplementationArtifacts.ReceiverArtifacts.Receiver_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_InterMulti_Receiver_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="InterMulti_SenderImplementation">
+    <name>InterMulti_SenderImplementation</name>
+    <source/>
+    <artifact xmi:idref="InterMulti_Sender_ExecArtifact"/>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_InterMulti_Sender_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>InterMulti.ImplementationArtifacts.SenderArtifacts.Sender_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_InterMulti_Sender_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="InterMulti_AMIOneConnectorImplementation">
+    <name>InterMulti_AMIOneConnectorImplementation</name>
+    <source/>
+    <artifact xmi:idref="InterMulti_AMI_ExecArtifact"/>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_InterMulti_AMI4CCM_One_Connector_AMI4CCM_Connector_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>InterMulti.ImplementationArtifacts.AMIArtifacts.AMI_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_InterMulti_AMI4CCM_One_Connector_AMI4CCM_Connector_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="InterMulti_AMITwoConnectorImplementation">
+    <name>InterMulti_AMIConnectorImplementation</name>
+    <source/>
+    <artifact xmi:idref="InterMulti_AMI_ExecArtifact"/>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_InterMulti_AMI4CCM_Two_Connector_AMI4CCM_Connector_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>InterMulti.ImplementationArtifacts.AMIArtifacts.AMI_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_InterMulti_AMI4CCM_Two_Connector_AMI4CCM_Connector_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="InterMulti_AMIThreeConnectorImplementation">
+    <name>InterMulti_AMIThreeConnectorImplementation</name>
+    <source/>
+    <artifact xmi:idref="InterMulti_AMI_ExecArtifact"/>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_InterMulti_AMI4CCM_Three_Connector_AMI4CCM_Connector_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>InterMulti.ImplementationArtifacts.AMIArtifacts.AMI_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_InterMulti_AMI4CCM_Three_Connector_AMI4CCM_Connector_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="InterMulti_CORBAOneConnectorImplementation">
+    <name>InterMulti_CORBAOneConnectorImplementation</name>
+    <source/>
+    <artifact xmi:idref="InterMulti_CORBA_ExecArtifact"/>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_InterMulti_One_SRR_CORBA_Connector_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>InterMulti.ImplementationArtifacts.CORBAArtifacts.CORBA_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_InterMulti_One_SRR_CORBA_Connector_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="InterMulti_CORBATwoConnectorImplementation">
+    <name>InterMulti_CORBAConnectorImplementation</name>
+    <source/>
+    <artifact xmi:idref="InterMulti_CORBA_ExecArtifact"/>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_InterMulti_Two_SRR_CORBA_Connector_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>InterMulti.ImplementationArtifacts.CORBAArtifacts.CORBA_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_InterMulti_Two_SRR_CORBA_Connector_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="InterMulti_CORBAThreeConnectorImplementation">
+    <name>InterMulti_CORBAThreeConnectorImplementation</name>
+    <source/>
+    <artifact xmi:idref="InterMulti_CORBA_ExecArtifact"/>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_InterMulti_Three_SRR_CORBA_Connector_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>InterMulti.ImplementationArtifacts.CORBAArtifacts.CORBA_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_InterMulti_Three_SRR_CORBA_Connector_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <instance xmi:id="InterMulti.ComponentImplementations.InterMultiImplementation.InterMulti.Receiver">
+    <name>InterMulti.ComponentImplementations.InterMultiImplementation.InterMulti.Receiver</name>
+    <node>ReceiverNode</node>
+    <source/>
+    <implementation xmi:idref="InterMulti_ReceiverImplementation"/>
+  </instance>
+
+  <instance xmi:id="InterMulti.ComponentImplementations.InterMultiImplementation.InterMulti.Receiver.CORBAOne">
+    <name>InterMulti.ComponentImplementations.InterMultiImplementation.InterMulti.Receiver.CORBAOne</name>
+    <node>ReceiverNode</node>
+    <source/>
+    <implementation xmi:idref="InterMulti_CORBAOneConnectorImplementation"/>
+  </instance>
+
+  <instance xmi:id="InterMulti.ComponentImplementations.InterMultiImplementation.InterMulti.Receiver.CORBATwo">
+    <name>InterMulti.ComponentImplementations.InterMultiImplementation.InterMulti.Receiver.CORBATwo</name>
+    <node>ReceiverNode</node>
+    <source/>
+    <implementation xmi:idref="InterMulti_CORBATwoConnectorImplementation"/>
+  </instance>
+
+  <instance xmi:id="InterMulti.ComponentImplementations.InterMultiImplementation.InterMulti.Receiver.CORBAThree">
+    <name>InterMulti.ComponentImplementations.InterMultiImplementation.InterMulti.Receiver.CORBAThree</name>
+    <node>ReceiverNode</node>
+    <source/>
+    <implementation xmi:idref="InterMulti_CORBAThreeConnectorImplementation"/>
+  </instance>
+
+  <instance xmi:id="InterMulti.ComponentImplementations.InterMultiImplementation.InterMulti.Sender">
+    <name>InterMulti.ComponentImplementations.InterMultiImplementation.InterMulti.Sender</name>
+    <node>SenderNode</node>
+    <source/>
+    <implementation xmi:idref="InterMulti_SenderImplementation"/>
+  </instance>
+
+  <instance xmi:id="InterMulti.ComponentImplementations.InterMultiImplementation.InterMulti.AMIOne">
+    <name>InterMulti.ComponentImplementations.InterMultiImplementation.InterMulti.AMIOne</name>
+    <node>SenderNode</node>
+    <source/>
+    <implementation xmi:idref="InterMulti_AMIOneConnectorImplementation"/>
+  </instance>
+
+  <instance xmi:id="InterMulti.ComponentImplementations.InterMultiImplementation.InterMulti.AMITwo">
+    <name>InterMulti.ComponentImplementations.InterMultiImplementation.InterMulti.AMITwo</name>
+    <node>SenderNode</node>
+    <source/>
+    <implementation xmi:idref="InterMulti_AMITwoConnectorImplementation"/>
+  </instance>
+
+  <instance xmi:id="InterMulti.ComponentImplementations.InterMultiImplementation.InterMulti.AMIThree">
+    <name>InterMulti.ComponentImplementations.InterMultiImplementation.InterMulti.AMIThree</name>
+    <node>SenderNode</node>
+    <source/>
+    <implementation xmi:idref="InterMulti_AMIThreeConnectorImplementation"/>
+  </instance>
+
+  <!-- Local asynchronous connections between the sender and the AMI connectors
+       of the Sender -->
+  <connection>
+    <name>run_asynch_one_connection</name>
+    <internalEndpoint>
+      <portName>sendc_run_my_one</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="InterMulti.ComponentImplementations.InterMultiImplementation.InterMulti.Sender" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>ami4ccm_port_ami4ccm_provides</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="InterMulti.ComponentImplementations.InterMultiImplementation.InterMulti.AMIOne" />
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>run_asynch_two_connection</name>
+    <internalEndpoint>
+      <portName>sendc_run_my_two</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="InterMulti.ComponentImplementations.InterMultiImplementation.InterMulti.Sender" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>ami4ccm_port_ami4ccm_provides</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="InterMulti.ComponentImplementations.InterMultiImplementation.InterMulti.AMITwo" />
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>run_asynch_three_connection</name>
+    <internalEndpoint>
+      <portName>sendc_run_my_three</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="InterMulti.ComponentImplementations.InterMultiImplementation.InterMulti.Sender" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>ami4ccm_port_ami4ccm_provides</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="InterMulti.ComponentImplementations.InterMultiImplementation.InterMulti.AMIThree" />
+    </internalEndpoint>
+  </connection>
+
+  <!-- Local synchronous connections between the sender and the AMI connectors
+       of the Sender -->
+  <connection>
+    <name>run_synch_one_connection</name>
+    <internalEndpoint>
+      <portName>run_my_one</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="InterMulti.ComponentImplementations.InterMultiImplementation.InterMulti.Sender" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>ami4ccm_port_ami4ccm_sync_provides</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="InterMulti.ComponentImplementations.InterMultiImplementation.InterMulti.AMIOne" />
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>run_synch_two_connection</name>
+    <internalEndpoint>
+      <portName>run_my_two</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="InterMulti.ComponentImplementations.InterMultiImplementation.InterMulti.Sender" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>ami4ccm_port_ami4ccm_sync_provides</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="InterMulti.ComponentImplementations.InterMultiImplementation.InterMulti.AMITwo" />
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>run_synch_three_connection</name>
+    <internalEndpoint>
+      <portName>run_my_three</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="InterMulti.ComponentImplementations.InterMultiImplementation.InterMulti.Sender" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>ami4ccm_port_ami4ccm_sync_provides</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="InterMulti.ComponentImplementations.InterMultiImplementation.InterMulti.AMIThree" />
+    </internalEndpoint>
+  </connection>
+
+  <!-- Remote synchronous connections between AMI connectors of the Sender
+       and the CORBA connectors of the Receiver -->
+  <connection>
+    <name>connection_one_from_ami_sender_one_to_cc_receiver_one</name>
+    <internalEndpoint>
+      <portName>ami4ccm_port_ami4ccm_uses</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="InterMulti.ComponentImplementations.InterMultiImplementation.InterMulti.AMIOne" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>srr_facet</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="InterMulti.ComponentImplementations.InterMultiImplementation.InterMulti.Receiver.CORBAOne" />
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>connection_two_from_ami_sender_two_to_cc_receiver_two</name>
+    <internalEndpoint>
+      <portName>ami4ccm_port_ami4ccm_uses</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="InterMulti.ComponentImplementations.InterMultiImplementation.InterMulti.AMITwo" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>srr_facet</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="InterMulti.ComponentImplementations.InterMultiImplementation.InterMulti.Receiver.CORBATwo" />
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>connection_three_from_ami_sender_three_to_cc_receiver_three</name>
+    <internalEndpoint>
+      <portName>ami4ccm_port_ami4ccm_uses</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="InterMulti.ComponentImplementations.InterMultiImplementation.InterMulti.AMIThree" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>srr_facet</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="InterMulti.ComponentImplementations.InterMultiImplementation.InterMulti.Receiver.CORBAThree" />
+    </internalEndpoint>
+  </connection>
+
+  <!-- Local synchronous connections between the CORBA connectors of the
+       Receiver and Receiver component itself -->
+  <connection>
+    <name>connection_one_from_cc_receiver_one_to_receiver</name>
+    <internalEndpoint>
+      <portName>srr_receptacle</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="InterMulti.ComponentImplementations.InterMultiImplementation.InterMulti.Receiver.CORBAOne" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>do_my_one</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="InterMulti.ComponentImplementations.InterMultiImplementation.InterMulti.Receiver" />
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>connection_two_from_cc_receiver_two_to_receiver</name>
+    <internalEndpoint>
+      <portName>srr_receptacle</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="InterMulti.ComponentImplementations.InterMultiImplementation.InterMulti.Receiver.CORBATwo" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>do_my_two</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="InterMulti.ComponentImplementations.InterMultiImplementation.InterMulti.Receiver" />
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>connection_three_from_cc_receiver_three_to_receiver</name>
+    <internalEndpoint>
+      <portName>srr_receptacle</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="InterMulti.ComponentImplementations.InterMultiImplementation.InterMulti.Receiver.CORBAThree" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>do_my_three</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="InterMulti.ComponentImplementations.InterMultiImplementation.InterMulti.Receiver" />
+    </internalEndpoint>
+  </connection>
+
+  <artifact xmi:id="InterMulti_AMI_ExecArtifact">
+    <name>InterMulti.ImplementationArtifacts.AMIArtifacts.AMI_exec</name>
+    <source/>
+    <node/>
+    <location>multi_inherit_ami4ccm_conn</location>
+  </artifact>
+
+  <artifact xmi:id="InterMulti_CORBA_ExecArtifact">
+    <name>InterMulti.ImplementationArtifacts.CORBAArtifacts.CORBA_exec</name>
+    <source/>
+    <node/>
+    <location>multi_inherit_corba_conn</location>
+  </artifact>
+
+  <artifact xmi:id="InterMulti_Receiver_ExecArtifact">
+    <name>InterMulti.ImplementationArtifacts.ReceiverArtifacts.Receiver_exec</name>
+    <source/>
+    <node/>
+    <location>multi_inherit_receiver_exec</location>
+  </artifact>
+
+  <artifact xmi:id="InterMulti_Sender_ExecArtifact">
+    <name>InterMulti.ImplementationArtifacts.SenderArtifacts.Sender_exec</name>
+    <source/>
+    <node/>
+    <location>multi_inherit_sender_exec</location>
+  </artifact>
+
+</Deployment:DeploymentPlan>

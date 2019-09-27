@@ -1,0 +1,20 @@
+/**
+ * @file    dds4ccm_state_listener_control.idl
+ * @author  Marcel Smit
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef DDS4CCM_STATE_LISTENER_CONTROL_IDL_
+#define DDS4CCM_STATE_LISTENER_CONTROL_IDL_
+
+#include "connectors/dds4ccm/idl/dds4ccm_data_listener_control.idl"
+
+module CCM_DDS
+{
+  local interface StateListenerControl : DataListenerControl {
+    attribute boolean is_filter_interpreted;
+  };
+};
+
+#endif /* DDS4CCM_STATE_LISTENER_CONTROL_IDL_ */

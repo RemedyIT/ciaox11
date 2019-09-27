@@ -1,0 +1,6 @@
+% if has_impl_includes?
+// generated from <%= ridl_template_path %>
+%   impl_includes.each do |_inc|
+#include "<%= _inc %>"
+%   end
+% end

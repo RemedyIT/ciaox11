@@ -1,0 +1,9 @@
+
+component 'async_event_sender' do |comp|
+
+  comp.idl %w{ async_event_sender.idl }
+
+  # gen_dir is default 'generated_code'
+  comp.gen_dir  'build'
+
+end

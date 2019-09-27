@@ -1,0 +1,26 @@
+/**
+ * @file    exception_t_receiver.idl
+ * @author  Marijke Hengstmengel
+ *
+ * @brief   Receiver component idl
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef EXCEPTION_T_RECEIVER_IDL
+#define EXCEPTION_T_RECEIVER_IDL
+
+#include <Components.idl>
+
+#include "exception_t.idl"
+
+module ExceptionT
+{
+  component Receiver
+  {
+    /// Provides
+    provides MyFoo do_my_foo;
+  };
+};
+#endif

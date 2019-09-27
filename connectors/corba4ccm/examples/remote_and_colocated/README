@@ -1,0 +1,14 @@
+This example demonstrated and verifies the "remote" connector vs "colocated" connector
+connection options for synchronous request/reply interaction.
+
+The test defines one interface:
+1. interface Foo
+
+For 1. a CORBA4CCM connector is generated.
+
+The test demonstrates that:
+- for 1. a using component instance can be connected to a remote deployed providing instance
+  using two appropriately located CORBA4CCM connector instances
+  AND
+  another using component instance can be connected to a colocated providing instance using
+  two colocated (wrt connector and component instances) CORBA4CCM connector instances

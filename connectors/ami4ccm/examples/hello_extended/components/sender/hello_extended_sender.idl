@@ -1,0 +1,28 @@
+/**
+ * @file    hello_extended_sender.idl
+ * @author  Marcel Smit
+ *
+ * @brief   base of sender ami4ccm test
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef HELLO_EXTENDED_SENDER_IDL_
+#define HELLO_EXTENDED_SENDER_IDL_
+
+#include <Components.idl>
+
+#include "hello_extended.idl"
+
+#pragma ami4ccm receptacle "Hello::Sender::run_my_foo"
+
+module Hello
+{
+  component Sender
+  {
+    uses MyFoo run_my_foo;
+  };
+};
+
+#endif /* HELLO_EXTENDED_SENDER_IDL_ */

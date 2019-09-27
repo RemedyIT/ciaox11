@@ -1,0 +1,57 @@
+// generated from <%= ridl_template_path %>
+/**
+ * CORBA AMI reply handler implementation class
+ */
+class <%= interface_type.ami4ccm_reply_handler %> final
+  : public CORBA::amic_traits<<%= interface_type.scoped_cxxname %>>::replyhandler_base_type
+{
+public:
+  /// Public constructor, we always get a callback passed, if the
+  /// user didn't provide a AMI4CCM callback we don't instantiate
+  /// a CORBA AMI reply handler
+  <%= interface_type.ami4ccm_reply_handler %> (
+    IDL::traits< <%= interface_type.scoped_enclosure_cxxname %>::<%= interface_type.ami4ccm_ReplyHandler %>>::ref_type callback,
+    IDL::traits< ::PortableServer::POA>::ref_type poa);
+
+  /// Destructor
+  virtual ~<%= interface_type.ami4ccm_reply_handler %> () = default;
+% if interface_type.all_operations.size > 0
+
+  /// @name Operations from <%= interface_type.ami4ccm_ReplyHandler %>
+  //@{
+% interface_type.all_operations.each do |_op|
+%   nest { _op.visit_operation_reply_h }
+% end
+  //@}
+% end
+% if interface_type.all_attributes.size > 0
+
+  /// @name Attributes from <%= interface_type.ami4ccm_ReplyHandler %>
+  //@{
+% interface_type.all_attributes.each do |_att|
+%   nest { _att.visit_attribute_reply_h }
+% end
+  //@}
+% end
+
+private:
+  /// User provided callback reference which we invoke when the
+  /// CORBA AMI reply has been received
+  IDL::traits< <%= interface_type.scoped_enclosure_cxxname %>::<%= interface_type.ami4ccm_ReplyHandler %>>::ref_type callback_;
+
+  /// POA which we have to use to deactivate ourself when the
+  /// reply has been received
+  IDL::traits< ::PortableServer::POA>::ref_type poa_;
+
+  /// Helper method to active ourselves from the AMI POA
+  void deactivate ();
+
+  /** @name Illegal to be called. Deleted explicitly to let the compiler detect any violation */
+  //@{
+  <%= interface_type.ami4ccm_reply_handler %> () = delete;
+  <%= interface_type.ami4ccm_reply_handler %>(const <%= interface_type.ami4ccm_reply_handler %>&) = delete;
+  <%= interface_type.ami4ccm_reply_handler %>(<%= interface_type.ami4ccm_reply_handler %>&&) = delete;
+  <%= interface_type.ami4ccm_reply_handler %>& operator=(const <%= interface_type.ami4ccm_reply_handler %>&) = delete;
+  <%= interface_type.ami4ccm_reply_handler %>& operator=(<%= interface_type.ami4ccm_reply_handler %>&&) = delete;
+  //@}
+};

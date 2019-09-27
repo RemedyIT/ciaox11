@@ -1,0 +1,140 @@
+% _regen_marker = "#{executor_cxx_namespace}::#{cxxname}_exec_i"
+
+/// Namespace for implementation of <%= scoped_name %> component
+namespace <%= executor_cxx_namespace %>
+{
+  /// Forward declarations
+  class <%= lem_name %>_exec_i;
+
+% nest { write_regen_section(executor_cxx_namespace+'[user_namespace_decl]', default_content: '') }
+
+% all_ports.each do |_p|
+%   nest { _p.gen_facet_exec } if _p.port_type == :facet
+% end
+
+  /// Component Executor Implementation Class : <%= lem_name %>_exec_i
+  class <%= lem_name %>_exec_i final
+    : public virtual IDL::traits< <%= scoped_ccm_name %>>::base_type
+  {
+  public:
+% visit_component_constructor
+    /// Destructor
+    virtual ~<%= lem_name %>_exec_i ();
+% if all_ports.size > 0
+
+    /** @name Component port operations. */
+    //@{
+
+% all_ports.each do |_p|
+%   if _p.port_type == :facet
+    /// Factory method and getter for the <%= _p.lem_name %> facet
+    /// @return existing instance of facet if one exists, else creates one
+    virtual <%= _p.interface_type.scoped_ccm_name_return_type %> get_<%= _p.lem_name %> () override;
+%   end
+% end
+    //@}
+%end
+%if all_attributes_incl_mirror_port.size > 0
+
+    /** @name Supported attributes. */
+    //@{
+% all_attributes_incl_mirror_port.each do |_att|
+
+    /// Attribute <%= _att.cxxname %>
+%   nest (2) { _att.visit_attribute }
+% end
+    //@}
+%end
+% if supported_interfaces.size > 0
+
+    /** @name Supported interfaces. */
+    //@{
+% if supported_interfaces?
+%   supported_interfaces.each do |_intf|
+%     _intf.all_operations.each do |_op|
+%       _op.visit_operation
+%     end
+%   end
+% end
+    //@}
+%end
+
+    /** @name Session component operations */
+    //@{
+
+    /// Setter for container context for this component
+    /// @param[in] ctx Component context
+    virtual void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
+
+    /// Component state change method to configuration_complete state
+    virtual void configuration_complete () override;
+
+    /// Component state change method to activated state
+    virtual void ccm_activate () override;
+
+    /// Component state change method to passivated state
+    virtual void ccm_passivate () override;
+
+    /// Component state change method to removed state
+    virtual void ccm_remove () override;
+    //@}
+
+    /** @name User defined public operations. */
+    //@{
+% nest(2) { write_regen_section(_regen_marker+'[user_public_ops]', default_content: '// Your code here') }
+    //@}
+
+  private:
+    /// Context for component instance.
+    IDL::traits< <%= scoped_ccm_name %>_Context >::ref_type context_;
+% if all_attributes.size > 0
+
+    /** @name Component attributes. */
+    //@{
+% all_attributes_incl_mirror_port.each do |_att|
+%   nest (2) { _att.visit_attribute_m }
+% end
+    //@}
+% end
+% if all_ports.size > 0
+
+    /** @name Component facets. */
+    //@{
+% all_ports.each do |_p|
+%   if _p.port_type == :facet
+    <%= _p.interface_type.scoped_ccm_name_member_type %> <%= _p.cxxname %>_;
+%   end
+% end
+    //@}
+%end
+
+    /** @name User defined members. */
+    //@{
+% nest(2) { write_regen_section(_regen_marker+'[user_members]', default_content: '// Your code here') }
+    //@}
+
+    /** @name User defined private operations. */
+    //@{
+% nest(2) { write_regen_section(_regen_marker+'[user_private_ops]', default_content: '// Your code here') }
+    //@}
+
+  private:
+    /** @name Illegal to be called. Deleted explicitly to let the compiler detect any violation */
+    //@{
+    <%= lem_name %>_exec_i(const <%= lem_name %>_exec_i&) = delete;
+    <%= lem_name %>_exec_i(<%= lem_name %>_exec_i&&) = delete;
+    <%= lem_name %>_exec_i& operator=(const <%= lem_name %>_exec_i&) = delete;
+    <%= lem_name %>_exec_i& operator=(<%= lem_name %>_exec_i&&) = delete;
+    //@}
+  };
+% visit_component_end_extra
+
+% nest { write_regen_section(executor_cxx_namespace+'[user_namespace_end_decl]', default_content: '') }
+
+} // namespace <%= executor_cxx_namespace %>
+
+% write_regen_section(executor_cxx_namespace+'[factory]') do
+extern "C" <%= exec_export_macro %> void
+create_<%= scoped_unescaped_type.scope_to_cxxname %>_Impl (
+  IDL::traits<Components::EnterpriseComponent>::ref_type& component);
+% end

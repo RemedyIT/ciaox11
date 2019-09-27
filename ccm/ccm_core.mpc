@@ -1,0 +1,132 @@
+// --------------------------------------------------------------------
+// ccm_core.mpc
+//
+// Author: Johnny Willemsen
+//
+// The CCMObject is only needed by the CORBA connector support as
+// part of AXCIOMA so we link the stub and skel into separate libraries
+// from the normal ciaox11_ccm_stub
+//
+// Copyright (c) Remedy IT Expertise BV
+// Chamber of commerce Rotterdam nr.276339, The Netherlands
+// --------------------------------------------------------------------
+
+project(ciaox11_ccm_core_idl) : install, ciaox11_idl {
+  custom_only = 1
+  idlflags  += -Wb,stub_export_include=ciaox11_ccm_stub_export.h \
+               -Wb,stub_export_macro=CIAOX11_STUB_Export \
+               -SS -Scp
+
+  IDL_Files {
+    idlflags += -Scdr -Gxhst
+    ccm_cookie.idl
+  }
+
+  IDL_Files {
+    idlflags += -Scdr
+    ccm_ccmexception.idl
+    ccm_config.idl
+    ccm_executorlocator.idl
+    Components.idl
+    ccm_exceptions.idl
+    ccm_context.idl
+    ccm_enterprisecomponent.idl
+    ccm_serviceregistry.idl
+  }
+
+  IDL_Files {
+    idlflags -= -St
+    ccm_featurename.idl
+  }
+}
+
+project(ciaox11_ccm_object_idl) : install, ciaox11_idl {
+  custom_only = 1
+  idlflags  += -Wb,stub_export_include=ciaox11_ccmobject_stub_export.h \
+               -Wb,stub_export_macro=CIAOX11_CCMOBJECT_STUB_Export \
+               -Wb,skel_export_include=ciaox11_ccmobject_skel_export.h \
+               -Wb,skel_export_macro=CIAOX11_CCMOBJECT_SKEL_Export
+
+  IDL_Files {
+    idlflags -= -Sa -St
+    idlflags += -Gxhst -Gxhsk
+    ccm_object.idl
+  }
+}
+
+// We need always taox11_anytypecode because the ccm_config contains a struct
+// declaration which use a CORBA any
+project(ciaox11_ccm_stub) : install, ciaox11_lib, ciaox11_output, taox11_anytypecode {
+  after += ciaox11_ccm_core_idl
+  dynamicflags += CIAOX11_STUB_BUILD_DLL
+
+  Header_Files {
+    ciaox11_ccm_stub_export.h
+    ccm_cookieC.h
+    ccm_exceptionsC.h
+    ccm_ccmexceptionC.h
+    ccm_navigationC.h
+    ccm_configC.h
+    ccm_executorlocatorC.h
+    ComponentsC.h
+    ccm_baseS.h
+    ccm_cookieS.h
+    ccm_exceptionsS.h
+    ccm_navigationS.h
+    ccm_objectS.h
+    ccm_configS.h
+    ComponentsS.h
+    ccm_contextC.h
+    ccm_enterprisecomponentC.h
+    ccm_contextS.h
+    ccm_enterprisecomponentS.h
+    ccm_serviceregistryC.h
+    ccm_featurenameC.h
+  }
+
+  Source_Files {
+    ccm_contextC.cpp
+    ccm_enterprisecomponentC.cpp
+    ccm_ccmexceptionC.cpp
+    ccm_configC.cpp
+    ccm_executorlocatorC.cpp
+    ccm_cookieC.cpp
+    ccm_exceptionsC.cpp
+    ComponentsC.cpp
+    ccm_serviceregistryC.cpp
+    ccm_featurenameC.cpp
+  }
+}
+
+project(ciaox11_ccmobject_stub) : install \
+                           , ciaox11_ccm_stub \
+                           , ciaox11_output {
+  dynamicflags += CIAOX11_CCMOBJECT_STUB_BUILD_DLL
+  after += ciaox11_ccm_core_idl ciaox11_ccm_object_idl
+
+  Header_Files {
+    ciaox11_ccmobject_stub_export.h
+    ccm_objectC.h
+  }
+
+  Source_Files {
+    ccm_objectC.cpp
+  }
+}
+
+project(ciaox11_ccmobject_skel) : install \
+                           , taox11_portableserver \
+                           , ciaox11_ccmobject_stub \
+                           , ciaox11_output {
+  dynamicflags += CIAOX11_CCMOBJECT_SKEL_BUILD_DLL
+  after += ciaox11_ccm_core_idl ciaox11_ccm_object_idl
+
+  Header_Files {
+    ciaox11_ccmobject_skel_export.h
+    ccm_objectS.h
+  }
+
+  Source_Files {
+    ccm_objectS.cpp
+  }
+}

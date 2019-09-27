@@ -1,0 +1,126 @@
+include::_{backend}_settings.adoc[]
+
+= The AXCIOMA RIDL Compiler
+
+The AXCIOMA package contains a custom developed IDL compiler. This IDL
+compiler is written in the http://wwws.ruby-lang.org[Ruby] programming
+language and uses the Open Source
+https://www.remedy.nl/products/ridl.html[RIDL] compiler
+framework developed by Remedy IT.
+RIDL supports the implementation of different pluggable code generator
+backends for various IDL language mappings using a single frontend. The
+AXCIOMA IDL compiler implements such a pluggable code generator backend
+for the IDL to {cxx11} language mapping.
+
+== Scope
+
+This document describes the options and features of the RIDL compiler.
+It is not a reference manual or tutorial on OMG IDL. For more
+information on OMG IDL see the
+https://www.omg.org/spec/IDL/3.5[IDL 3.5 specification],
+the https://www.omg.org/spec/CORBA[CORBA specification], and the
+http://www.amazon.com/gp/product/0201379279/ref=as_li_tf_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=0201379279&linkCode=as2&tag=theaceorb-20[Advanced
+CORBA Programming with C++] book.
+
+== Usage
+
+The basic command line for the RIDL compiler is:
+
+-------------------------------------------
+ridlc [options] [<idlfile> [<idlfile> ...]]
+-------------------------------------------
+
+Use the following command to get information on the various command line
+options also shown below:
+
+--------
+ridlc -h
+--------
+
+The common options are described in the
+<<{xref_docs_root}/taox11/ridlc.adoc#,TAOX11 RIDLC documentation>>
+
+== Core AXCIOMA Options
+
+////
+When the table content is changed also make a similar update to the RIDLC facet
+that implements these flags
+////
+
+AXCIOMA provides the following additional flags
+
+[width="100%",cols="<2m,<3m,<4a",options="header",]
+|=======================================================================
+|Short command line option|
+Long command line or sub-option|
+Description
+
+|-Gcomp | |
+Generate all files needed for an user component
+
+|-Gsvnt | |
+Generate the component servant source code
+
+|-Gex | |
+Generate the component executor starter code
+
+|-Gcn | |
+Generate all files for a (templated) connector
+
+|-Glem | |
+Generate all CCM local executor IDL
+
+|-Glem,gen | |
+Generate all files for the CCM local executor
+
+3+|-W<extended option>=OPT
+
+||-Wb,exec_export_macro=MACRO|
+sets export macro for component executor files
+
+||-Wb,exec_export_include=FILE|
+sets export include file for component executor files
+
+||-Wb,exec_export_file=FILE|
+sets export file to generate for -Gxhex
+
+||-Wb,conn_export_macro=MACRO|
+sets export macro for connector files
+
+||-Wb,conn_export_include=FILE|
+sets export include file for connector files
+
+||-Wb,conn_export_file=FILE|
+sets export file to generate for -Gxhcn
+
+||-Wb,svnt_export_macro=MACRO|
+sets export macro for component servant files
+
+||-Wb,svnt_export_include=FILE|
+sets export include file for component servant files
+
+||-Wb,svnt_export_file=FILE|
+sets export file to generate for -Gxhsv
+
+||-Wb,lem_stub_export_macro=MACRO|
+sets export macro for lem stub files
+
+||-Wb,lem_stub_export_include=FILE|
+sets export include file for lem stub files
+
+||-Wb,lem_stub_export_file=FILE|
+sets export file to generate for -Gxhlst
+
+|=======================================================================
+
+include::{ciaox11_src_root}/connectors/corba4ccm/docs/src/ridlc.asc[]
+
+include::{ciaox11_src_root}/connectors/ami4ccm/docs/src/ridlc.asc[]
+
+include::{ciaox11_src_root}/ddsx11/docs/src/ridlc.asc[]
+
+include::{ciaox11_src_root}/connectors/dds4ccm/docs/src/ridlc.asc[]
+
+include::{ciaox11_src_root}/connectors/psdd4ccm/docs/src/ridlc.asc[opts=optional]
+
+include::{ciaox11_src_root}/exf/docs/src/ridlc.asc[opts=optional]

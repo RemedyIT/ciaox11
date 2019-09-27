@@ -1,0 +1,8 @@
+project(*client) : taox11_cosnaming_stub, taox11_client {
+  Source_Files {
+      client.cpp
+  }
+
+  IDL_Files {
+  }
+}

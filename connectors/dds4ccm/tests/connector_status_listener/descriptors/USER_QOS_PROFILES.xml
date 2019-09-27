@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  @file      USER_QOS_PROFILES.xml
+  @author    Marcel Smit
+
+  @copyright Copyright (c) Remedy IT Expertise BV
+  Chamber of commerce Rotterdam nr.276339, The Netherlands
+-->
+
+<dds xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="rti_dds_qos_profiles.xsd" version="5.2.3">
+  <qos_library name="csllibrary">
+    <qos_profile name="CSLUnexpectedStatusProfile" is_default_qos="false">
+      <participant_factory_qos>
+          <logging>
+              <verbosity>ALL</verbosity>
+              <category>ALL</category>
+              <print_format>TIMESTAMPED</print_format>
+          </logging>
+      </participant_factory_qos>
+      <participant_qos>
+        <transport_builtin>
+            <mask>UDPv4</mask>
+        </transport_builtin>
+      </participant_qos>
+      <datawriter_qos>
+        <reliability>
+          <kind>RELIABLE_RELIABILITY_QOS</kind>
+        </reliability>
+        <durability>
+          <kind>TRANSIENT_DURABILITY_QOS</kind>
+        </durability>
+        <history>
+          <kind>KEEP_LAST_HISTORY_QOS</kind>
+          <depth>200</depth>
+        </history>
+        <liveliness>
+          <kind>DDS_MANUAL_BY_TOPIC_LIVELINESS_QOS</kind>
+          <lease_duration>
+            <sec>1</sec>
+            <nanosec>0</nanosec>
+          </lease_duration>
+        </liveliness>
+      </datawriter_qos>
+      <datareader_qos>
+        <reliability>
+          <kind>RELIABLE_RELIABILITY_QOS</kind>
+        </reliability>
+        <history>
+          <kind>KEEP_LAST_HISTORY_QOS</kind>
+          <depth>20</depth>
+        </history>
+        <durability>
+          <kind>TRANSIENT_LOCAL_DURABILITY_QOS</kind>
+        </durability>
+      </datareader_qos>
+    </qos_profile> <!-- CSLUnexpectedStatusProfile -->
+
+    <qos_profile name="CSLDeadlineMissedProfile" is_default_qos="false">
+       <participant_qos>
+        <transport_builtin>
+            <mask>UDPv4</mask>
+        </transport_builtin>
+      </participant_qos>
+      <datawriter_qos>
+        <reliability>
+          <kind>BEST_EFFORT_RELIABILITY_QOS</kind>
+          <max_blocking_time>
+            <sec>2</sec>
+            <nanosec>0</nanosec>
+          </max_blocking_time>
+        </reliability>
+        <durability>
+          <kind>TRANSIENT_DURABILITY_QOS</kind>
+        </durability>
+        <history>
+          <kind>KEEP_LAST_HISTORY_QOS</kind>
+          <depth>20</depth>
+        </history>
+        <deadline>
+          <period>
+            <sec>1</sec>
+            <nanosec>0</nanosec>
+          </period>
+        </deadline>
+      </datawriter_qos>
+    </qos_profile> <!-- CSLDeadlineMissedProfile -->
+
+    <qos_profile name="CSLSampleRejectedProfile" is_default_qos="false">
+        <participant_qos>
+        <transport_builtin>
+            <mask>UDPv4</mask>
+        </transport_builtin>
+      </participant_qos>
+      <datawriter_qos>
+        <reliability>
+          <kind>BEST_EFFORT_RELIABILITY_QOS</kind>
+          <max_blocking_time>
+            <sec>0</sec>
+            <nanosec>100000000</nanosec>
+          </max_blocking_time>
+        </reliability>
+        <durability>
+          <kind>TRANSIENT_DURABILITY_QOS</kind>
+        </durability>
+        <durability_service>
+          <history_kind>KEEP_LAST_HISTORY_QOS</history_kind>
+          <history_depth>100</history_depth>
+          <max_samples>100</max_samples>
+          <max_samples_per_instance>100</max_samples_per_instance>
+          <max_instances>2</max_instances>
+        </durability_service>
+       </datawriter_qos>
+      <datareader_qos>
+        <durability>
+          <kind>VOLATILE_DURABILITY_QOS</kind>
+        </durability>
+        <deadline>
+          <period>
+            <sec>DURATION_INFINITE_SEC</sec>
+            <nanosec>DURATION_INFINITE_NSEC</nanosec>
+          </period>
+        </deadline>
+        <latency_budget>
+          <duration>
+            <sec>0</sec>
+            <nanosec>0</nanosec>
+          </duration>
+        </latency_budget>
+        <liveliness>
+          <kind>AUTOMATIC_LIVELINESS_QOS</kind>
+          <lease_duration>
+            <sec>DURATION_INFINITE_SEC</sec>
+            <nanosec>DURATION_INFINITE_NSEC</nanosec>
+          </lease_duration>
+        </liveliness>
+        <reliability>
+          <kind>BEST_EFFORT_RELIABILITY_QOS</kind>
+          <max_blocking_time>
+            <sec>0</sec>
+            <nanosec>100000000</nanosec>
+          </max_blocking_time>
+        </reliability>
+        <destination_order>
+          <kind>BY_RECEPTION_TIMESTAMP_DESTINATIONORDER_QOS</kind>
+        </destination_order>
+        <history>
+          <kind>KEEP_LAST_HISTORY_QOS</kind>
+          <depth>100</depth>
+        </history>
+        <resource_limits>
+          <initial_samples>1</initial_samples>
+          <initial_instances>1</initial_instances>
+          <max_samples>1000</max_samples>
+          <max_instances>1</max_instances>
+          <max_samples_per_instance>100</max_samples_per_instance>
+        </resource_limits>
+        <user_data>
+          <value></value>
+        </user_data>
+        <ownership>
+          <kind>SHARED_OWNERSHIP_QOS</kind>
+        </ownership>
+        <time_based_filter>
+          <minimum_separation>
+            <sec>0</sec>
+            <nanosec>0</nanosec>
+          </minimum_separation>
+        </time_based_filter>
+        <reader_data_lifecycle>
+          <autopurge_nowriter_samples_delay>
+            <sec>DURATION_INFINITE_SEC</sec>
+            <nanosec>DURATION_INFINITE_NSEC</nanosec>
+          </autopurge_nowriter_samples_delay>
+          <autopurge_disposed_samples_delay>
+            <sec>DURATION_INFINITE_SEC</sec>
+            <nanosec>DURATION_INFINITE_NSEC</nanosec>
+          </autopurge_disposed_samples_delay>
+        </reader_data_lifecycle>
+        </datareader_qos>
+      </qos_profile> <!-- CSLSampleRejectedProfile -->
+
+      <qos_profile name="CSLInconsistentTopicProfile" is_default_qos="false">
+       <participant_qos>
+        <transport_builtin>
+            <mask>UDPv4</mask>
+        </transport_builtin>
+      </participant_qos>
+    </qos_profile> <!-- CSLInconsistentTopicProfile -->
+  </qos_library> <!-- csllibrary -->
+
+
+  <qos_library name="incompatibleqoslibrary">
+    <qos_profile name="SenderProfile" is_default_qos="false">
+      <participant_qos>
+        <transport_builtin>
+            <mask>UDPv4</mask>
+        </transport_builtin>
+      </participant_qos>
+      <datawriter_qos>
+        <reliability>
+          <kind>BEST_EFFORT_RELIABILITY_QOS</kind>
+          <max_blocking_time>
+            <sec>2</sec>
+            <nanosec>0</nanosec>
+          </max_blocking_time>
+        </reliability>
+        <durability>
+          <kind>TRANSIENT_DURABILITY_QOS</kind>
+        </durability>
+        <liveliness>
+          <kind>DDS_MANUAL_BY_PARTICIPANT_LIVELINESS_QOS</kind>
+        </liveliness>
+        <history>
+          <kind>KEEP_LAST_HISTORY_QOS</kind>
+          <depth>20</depth>
+        </history>
+      </datawriter_qos>
+    </qos_profile>
+
+    <qos_profile name="ReceiverProfile" is_default_qos="false">
+       <participant_qos>
+        <transport_builtin>
+            <mask>UDPv4</mask>
+        </transport_builtin>
+      </participant_qos>
+      <datareader_qos>
+        <reliability>
+          <kind>RELIABLE_RELIABILITY_QOS</kind>
+        </reliability>
+        <liveliness>
+          <kind>DDS_MANUAL_BY_TOPIC_LIVELINESS_QOS</kind>
+        </liveliness>
+        <history>
+          <kind>KEEP_LAST_HISTORY_QOS</kind>
+          <depth>20</depth>
+        </history>
+        <durability>
+          <kind>TRANSIENT_LOCAL_DURABILITY_QOS</kind>
+        </durability>
+      </datareader_qos>
+    </qos_profile>
+  </qos_library> <!-- incompatibleqoslibrary -->
+
+</dds>

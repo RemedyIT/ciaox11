@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  @file      USER_QOS_PROFILES.xml
+  @author    Marcel Smit
+
+  @copyright Copyright (c) Remedy IT Expertise BV
+  Chamber of commerce Rotterdam nr.276339, The Netherlands
+-->
+<dds xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="rti_dds_qos_profiles.xsd" version="5.2.3">
+  <qos_library name="samplelostlibrary">
+    <qos_profile name="SampleLostProfile" is_default_qos="false">
+      <!-- QoS used to configure the data writer created in the example code -->
+      <participant_qos>
+        <transport_builtin>
+            <mask>UDPv4</mask>
+        </transport_builtin>
+      </participant_qos>
+      <datawriter_qos>
+        <reliability>
+          <kind>RELIABLE_RELIABILITY_QOS</kind>
+          <max_blocking_time>
+            <sec>2</sec>
+            <nanosec>0</nanosec>
+          </max_blocking_time>
+        </reliability>
+        <durability>
+          <kind>TRANSIENT_DURABILITY_QOS</kind>
+        </durability>
+        <durability_service>
+          <history_kind>KEEP_LAST_HISTORY_QOS</history_kind>
+          <history_depth>10</history_depth>
+          <max_samples>10</max_samples>
+          <max_samples_per_instance>10</max_samples_per_instance>
+          <max_instances>2</max_instances>
+        </durability_service>
+        <deadline>
+          <period>
+            <sec>3</sec>
+            <nanosec>0</nanosec>
+          </period>
+        </deadline>
+      </datawriter_qos>
+      <!-- QoS used to configure the data reader created in the example code -->
+      <datareader_qos>
+        <reliability>
+          <kind>RELIABLE_RELIABILITY_QOS</kind>
+        </reliability>
+        <history>
+          <kind>KEEP_LAST_HISTORY_QOS</kind>
+          <depth>10</depth>
+        </history>
+        <resource_limits>
+          <initial_samples>1</initial_samples>
+          <initial_instances>1</initial_instances>
+          <max_samples>10</max_samples>
+          <max_instances>1</max_instances>
+          <max_samples_per_instance>10</max_samples_per_instance>
+        </resource_limits>
+        <durability>
+          <kind>TRANSIENT_DURABILITY_QOS</kind>
+        </durability>
+        <deadline>
+          <period>
+            <sec>3</sec>
+            <nanosec>0</nanosec>
+          </period>
+        </deadline>
+        </datareader_qos>
+    </qos_profile>
+  </qos_library>
+</dds>

@@ -1,0 +1,86 @@
+// ----------- COMMON ---------------
+project(*idl_gen) : ciaox11_test_base_idl {
+  custom_only = 1
+
+  idlflags += -Wb,base_export_macro=HELLO \
+              -Wb,base_export_include=hello
+
+  IDL_Files {
+    gendir=generated_code
+    hello.idl
+  }
+}
+
+project(*stub) : ciaox11_test_base {
+  after += *idl_gen
+
+  dynamicflags += HELLO_STUB_BUILD_DLL
+
+  Source_Files {
+    generated_code/helloC.cpp
+  }
+
+  Header_Files {
+    generated_code/helloC.h
+    generated_code/hello_stub_export.h
+  }
+}
+
+// ----------- Pattern specific ---------------
+// ---- Synchronous request/reply pattern -----
+project(*lem_gen) : ciaox11_test_base_lem_idl {
+  custom_only = 1
+  idlflags += -Wb,base_export_macro=HELLO \
+              -Wb,base_export_include=hello
+
+  IDL_Files {
+    gendir=generated_code
+    hello.idl
+  }
+}
+
+project(*lem_stub) : ciaox11_test_base {
+  after += *stub *lem_gen
+  libs  += *stub
+
+  dynamicflags += HELLO_LEM_STUB_BUILD_DLL
+
+  Source_Files {
+    generated_code/helloEC.cpp
+  }
+
+  Header_Files {
+    generated_code/helloEC.h
+    generated_code/hello_lem_stub_export.h
+  }
+}
+
+// ---- Asynchronous request/reply pattern ----
+project(*ami4ccm_aidl_gen) : ciaox11_test_ami4ccm_a_idl  {
+  custom_only = 1
+
+  idlflags += -Wb,base_export_macro=HELLO \
+              -Wb,base_export_include=hello
+
+  IDL_Files {
+    gendir=generated_code
+    hello.idl
+  }
+}
+
+project(*ami4ccm_stub) : ciaox11_test_base, ciaox11_ami4ccm_stub {
+  after += hello_simple_stub *ami4ccm_aidl_gen
+  libs  += hello_simple_stub
+
+  dynamicflags += HELLO_AMI4CCM_STUB_BUILD_DLL
+
+  Source_Files {
+    generated_code/helloAC.cpp
+  }
+
+  Header_Files {
+    generated_code/helloAC.h
+    generated_code/hello_ami4ccm_stub_export.h
+  }
+}
+

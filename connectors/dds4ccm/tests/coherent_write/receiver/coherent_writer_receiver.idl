@@ -1,0 +1,31 @@
+/**
+ * @file    coherent_writer_receiver.idl
+ * @author  Marcel Smit
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef COHERENT_WRITER_RECEIVER_IDL_
+#define COHERENT_WRITER_RECEIVER_IDL_
+
+#include "commonSE.idl"
+#include "reader_starter.idl"
+#include "writer_starter.idl"
+#include <ccm_timed_trigger.idl>
+
+module CoherentWriter
+{
+  component Receiver
+  {
+    port CommonTestConnector::DDS_Get info_get;
+
+    provides ReaderStarter start_reading;
+    uses WriterStarter writer_start;
+
+    uses CCM_TT::TT_Scheduler tt_scheduler;
+
+    attribute unsigned short nr_runs;
+  };
+};
+
+#endif

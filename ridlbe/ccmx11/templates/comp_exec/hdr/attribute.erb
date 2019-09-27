@@ -1,0 +1,11 @@
+
+virtual
+<%= implementation_return_type %>
+<%= cxxname %> () override;
+% unless is_readonly?
+
+virtual
+void
+<%= cxxname %> (
+    <%= implementation_in_type %> <%= cxxname %>) override;
+% end

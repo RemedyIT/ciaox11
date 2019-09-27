@@ -1,0 +1,53 @@
+
+// generated from <%= ridl_template_path %>
+local interface <%= ccm_name %>
+% if is_derived?
+  : <%= base.scoped_unescaped_ccm_name %>
+% else
+  : Components::SessionComponent
+% end
+{
+% ports.each do |_p|
+%   if _p.port_type == :facet
+  /// Factory method and getter for the <%= _p.lem_name %> facet
+  /// @return existing instance of facet if one exists, else creates one
+  <%= _p.interface_type.scoped_unescaped_ccm_name %> get_<%= _p.lem_name %> ();
+%   end
+%   if _p.port_type == :receptacle && _p.is_multiple?
+  struct <%= _p.lem_name %>Connection {
+    <%= _p.interface_type.scoped_unescaped_type %> objref;
+    Components::Cookie ck;
+  };
+  typedef sequence<<%= _p.lem_name %>Connection> <%= _p.lem_name %>Connections;
+%  props={}
+%  props[:port]=_p
+%  visit_lem_extra_multiple_receptacles(props)
+%  end
+% end
+
+% props = {}
+% attributes_incl_mirror_port.each do |_att|
+%   props[:attribute] = _att
+%   nest { visit_attribute(props) }
+% end
+};
+
+local interface <%= ccm_name %>_Context
+% if is_derived?
+    : <%= base.scoped_unescaped_ccm_name %>_Context
+% else
+  : Components::SessionContext
+% end
+{
+% ports.each do |_p|
+%   if _p.port_type == :receptacle
+  /// Get the <%= _p.lem_name %> receptacle
+%     if _p.is_multiple?
+  <%= ccm_name %>::<%= _p.lem_name %>Connections get_connections_<%= _p.lem_name %> ();
+%     else
+  <%= _p.interface_type.scoped_unescaped_type %> get_connection_<%= _p.lem_name %> ();
+%     end
+%   end
+% end
+% visit_lem_extra_receptacles
+};

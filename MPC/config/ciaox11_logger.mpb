@@ -1,0 +1,11 @@
+// --------------------------------------------------------------------
+// ciaox11_logger.mpb
+//
+// Author: Marijke Hengstmengel
+//
+// Copyright (c) Remedy IT Expertise BV
+// Chamber of commerce Rotterdam nr.276339, The Netherlands
+// --------------------------------------------------------------------
+
+project : x11_logger, ciaox11_logging {
+}

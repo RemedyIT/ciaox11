@@ -1,0 +1,14 @@
+component 'hello_receiver' do |comp|
+  #data/type idl
+  comp.idl %w{ usesmulti.idl }
+  comp.define 'UsesMulti::Receiver' do |intf|
+
+    # facet port with interface UsesMulti::One defined in usesmulti.idl
+    intf.port 'do_my_one' do |p|
+      p.provides 'UsesMulti::One'
+    end
+
+  end
+
+  comp.combined_lib true
+end

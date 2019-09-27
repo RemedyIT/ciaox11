@@ -1,0 +1,149 @@
+/**
+ * @file    idl_example_ca_defn.idl
+ * @author  Marcel Smit
+ *
+ * @brief   Stress test for DDS4CCM
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef CX_PORTS__TYPES__EXAMPLE_CA_DEFN_IDL
+#define CX_PORTS__TYPES__EXAMPLE_CA_DEFN_IDL
+
+#include "idl_example_na_defn.idl"
+#include "idl_example_b_defn.idl"
+
+/// @namespace Example
+module Example {
+
+    /// @enum CA05
+    ///
+    enum CA05 {
+        CA05_1,
+        CA05_2
+    };
+
+    /// @enum CA06
+    ///
+    enum CA06 {
+        CA06_2,
+        CA06_1
+    };
+
+    /// @enum CA04
+    ///
+    enum CA04 {
+        CA04_1,
+        CA04_2
+    };
+
+    /// @enum CA03
+    ///
+    enum CA03 {
+        CA03_3,
+        CA03_2,
+        CA03_1
+    };
+
+    /// @enum CA02
+    ///
+    enum CA02 {
+
+        CA02_1,
+        CA02_2
+    };
+
+    /// @struct CA07
+    ///
+    struct CA07 {
+        double CA07_1;
+        double CA07_2;
+    }; //@TopLevel(false)
+
+    /// @typedef CA08
+    ///
+    typedef sequence <CA07, 16> CA08;
+
+    /// @enum CA01
+    ///
+    enum CA01 {
+
+        CA01_2,
+
+        CA01_1
+    };
+
+    /// @struct CA09
+    ///
+    struct CA09 {
+
+        double CA09_2;
+
+        Example::NA5 CA09_1;
+    }; //@TopLevel(false)
+
+    /// @struct CA10
+    ///
+    struct CA10 {
+
+        Example::B47 C10_15;
+
+        Example::B42 C10_16;
+
+        Example::CA05 C10_20;
+
+        Example::B42 C10_02;
+
+        Example::B42 C10_03;
+
+        Example::CA06 C10_09;
+
+        Example::CA04 C10_08;
+
+        double C10_28;
+
+        unsigned long C10_24;
+
+        double C10_01;
+
+        unsigned long C10_23;
+
+        Example::CA03 C10_12;
+
+        double C10_13;
+
+        Example::CA02 C10_06;
+
+        Example::B21 C10_14;
+
+        Example::B45 C10_10;
+
+        Example::B45 C10_11;
+
+        Example::B45 C10_17;
+
+        Example::B40 C10_18;
+
+        Example::B40 C10_05;
+
+        Example::CA01 C10_04;
+
+        Example::B45 C10_21;
+
+        Example::B45 C10_22;
+
+        double C10_25;
+
+        double C10_26;
+
+        Example::CA08 C10_19;
+
+        Example::CA08 C10_27;
+
+        Example::NA6 C10_07;
+    }; //@TopLevel(false)
+};
+
+#endif // CX_PORTS__TYPES__EXAMPLE_CA_DEFN_IDL
+
+/// @}

@@ -1,0 +1,55 @@
+// Simple version of the MPC file. Please see the gen_test for an
+// granulated version of the MPC files.
+
+// See ../connector_r/gen_test_connr.mpc for more details about this MPC project.
+// The ciaox11_test_comp_all_idl MPC base project makes sure that when the IDL
+// changes, the component executor starter code gets re-generated.
+project(*idl_gen) : ciaox11_test_comp_all_idl {
+  custom_only = 1
+  after += gen_test_simple_base_idl_gen gen_test_simple_base_lem_gen
+  idlflags += -Wb,base_export_macro=GEN_TEST_CONNS \
+              -Wb,base_export_include=gen_test_conns
+
+  IDL_Files {
+    gendir=generated_code
+    gen_test_conns.idl
+  }
+}
+
+// Since no other projects need to link against the stub, the lem_stub and the
+// servant of this specific component (IDL), these can be merged into one libary.
+
+// The executor need to implement the facet of 'foo_uses'. It is therefor more
+// or less a 'server' component, which used to need the 'server' library of
+// the inter-component communication library. Before UCM, this was always CORBA
+// thus this executor library needed to link against the (CORBA) skeleton library.
+// Since UCM does not dictate that CORBA should be used as an inter-component
+// communication middleware, this library need to independent of this. It is
+// therefor that the servant part of this library does not need CORBA any more;
+// this has been moved to the CORBA connector library (see ../corba_connector).
+// In the end, no component or connector does need to link against the skeleton
+// library anymore.
+project(*exec) : ciaox11_test_exec_all {
+  after += gen_test_simple_base_stub gen_test_simple_base_lem_stub *idl_gen
+  libs  += gen_test_simple_base_stub gen_test_simple_base_lem_stub
+
+  dynamicflags += GEN_TEST_CONNS_LEM_STUB_BUILD_DLL \
+                  GEN_TEST_CONNS_EXEC_BUILD_DLL \
+                  GEN_TEST_CONNS_SVNT_BUILD_DLL
+  Source_Files {
+    gen_test_conns_exec.cpp
+    generated_code/gen_test_connsEC.cpp
+    generated_code/gen_test_conns_svnt.cpp
+  }
+
+  Header_Files {
+    gen_test_conns_exec.h
+    generated_code/gen_test_conns_exec_export.h
+
+    generated_code/gen_test_connsEC.h
+    generated_code/gen_test_conns_lem_stub_export.h
+
+    generated_code/gen_test_conns_svnt.h
+    generated_code/gen_test_conns_svnt_export.h
+  }
+}

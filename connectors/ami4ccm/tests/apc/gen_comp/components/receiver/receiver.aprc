@@ -1,0 +1,12 @@
+component 'hello_receiver' do |comp|
+  #data/type idl
+  comp.idl %w{ hello.idl }
+  comp.define 'Hello::Receiver' do |intf|
+
+   #facet  port with interface Hello::MyFoo defined in hello.idl
+    intf.port 'do_my_foo' do |p|
+      p.provides 'Hello::MyFoo'
+    end
+
+  end
+end

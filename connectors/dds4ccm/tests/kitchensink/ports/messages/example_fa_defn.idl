@@ -1,0 +1,119 @@
+/**
+ * @file    example_fa_defn.idl
+ * @author  Marcel Smit
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef CX_PORTS__TYPES__EXAMPLE_FA_DEFN_IDL
+#define CX_PORTS__TYPES__EXAMPLE_FA_DEFN_IDL
+
+#include "example_na_defn.idl"
+#include "example_b_defn.idl"
+
+/// @namespace Example
+module Example {
+
+    /// @enum FA1
+    ///
+    enum FA1 {
+        FA1_1,
+        FA1_2
+    };
+
+    /// @enum FA4
+    ///
+    enum FA4 {
+        FA4_1,
+        FA4_2
+    };
+
+    /// @enum FA3
+    ///
+    enum FA3 {
+        FA3_1,
+        FA3_2
+    };
+
+    /// @enum FA2
+    ///
+    enum FA2 {
+        FA2_2,
+        FA2_1
+    };
+
+    /// @struct FA5
+    ///
+    struct FA5 {
+        Example::FA2 FA5_2;
+        double FA5_1;
+    }; //@TopLevel(false)
+
+    /// @typedef FA6
+    ///
+    typedef sequence <FA5, 2> FA6;
+
+    /// @struct FA7
+    ///
+    struct FA7 {
+
+        Example::NA5 FA7_1;
+
+        double FA7_4;
+
+        double FA7_3;
+
+        double FA7_2;
+    }; //@TopLevel(false)
+
+    /// @struct FA8
+    ///
+    struct FA8 {
+
+        Example::B47 FA8_12;
+
+        Example::NA6 FA8_08;
+
+        Example::B42 FA8_13;
+
+        Example::FA3 FA8_17;
+
+        Example::B42 FA8_06;
+
+        Example::B42 FA8_07;
+
+        Example::FA4 FA8_10;
+
+        Example::FA1 FA8_09;
+
+        double FA8_21;
+
+        double FA8_11;
+
+        Example::FA6 FA8_14;
+
+        Example::B40 FA8_16;
+
+        Example::B45 FA8_01;
+
+        Example::B45 FA8_18;
+
+        Example::B45 FA8_04;
+
+        Example::B45 FA8_02;
+
+        Example::B45 FA8_03;
+
+        Example::B45 FA8_05;
+
+        Example::B45 FA8_19;
+
+        Example::B45 FA8_20;
+
+        Example::B45 FA8_15;
+    }; //@TopLevel(false)
+};
+
+#endif // CX_PORTS__TYPES__EXAMPLE_FA_DEFN_IDL
+
+/// @}

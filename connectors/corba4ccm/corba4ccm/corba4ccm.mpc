@@ -1,0 +1,43 @@
+
+project(ciaox11_corba4ccm_idl_gen) : install, ciaox11_idldefaults {
+  custom_only = 1
+  idlflags -= -Gsvnt -Ssh
+  idlflags += -Wb,stub_export_macro=CORBA4CCM_STUB_Export \
+              -Wb,stub_export_include=corba4ccm_stub_export.h \
+              -Gxhst -Scp
+
+  IDL_Files {
+    corba4ccm.idl
+  }
+
+  specific {
+    install_dir = connectors/corba4ccm/corba4ccm
+  }
+}
+
+project(ciaox11_corba4ccm_impl) : install, taox11_portableserver, \
+                                  ciaox11_ccm_session_stub, \
+                                  ciaox11_logger, ciaox11_output, ciaox11_ccmobject_skel {
+  after += ciaox11_corba4ccm_idl_gen
+  sharedname = ciaox11_corba4ccm_impl
+  dynamicflags += CORBA4CCM_STUB_BUILD_DLL
+  includes += $(CIAOX11_ROOT)/connectors/corba4ccm
+
+  Source_Files {
+    corba4ccmC.cpp
+    corba4ccm.cpp
+    corba4ccm_ccmobject_impl.cpp
+  }
+
+  Header_Files {
+    corba4ccm.h
+    corba4ccmC.h
+    corba4ccm_stub_export.h
+    corba4ccm_ccmobject_impl.h
+  }
+
+  specific {
+    install_dir = connectors/corba4ccm/corba4ccm
+  }
+}
+

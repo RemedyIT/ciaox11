@@ -1,0 +1,13 @@
+// --------------------------------------------------------------------
+// ciaox11_gen_exec.mpb
+//
+// Copyright (c) Remedy IT Expertise BV
+// Chamber of commerce Rotterdam nr.276339, The Netherlands
+// --------------------------------------------------------------------
+
+feature(!ciaox11_noregen_exec) {
+  idlflags += -Gex -Gxhex -oI .
+  specific {
+    precious_files += _exec.h\Z _exec.cpp\Z
+  }
+}

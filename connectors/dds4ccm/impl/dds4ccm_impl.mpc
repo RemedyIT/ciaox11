@@ -1,0 +1,34 @@
+project(ciaox11_dds4ccm_impl) : install, \
+                                ciaox11_dds4ccm_lem_stub, \
+                                taox11_lib, \
+                                ciaox11_output, \
+                                ciaox11_ccm_stub, \
+                                ciaox11_dds4ccm_logger, \
+                                ciaox11_dds4ccm_base, \
+                                ddsx11_impl {
+
+  dynamicflags += DDS4CCM_IMPL_BUILD_DLL
+  includes += $(CIAOX11_ROOT)/connectors
+
+  Header_Files {
+    *.h
+  }
+
+  Template_Files {
+    *_t.cpp
+  }
+
+  Source_Files {
+    dds4ccm_condition_manager.cpp
+    dds4ccm_coherent_changes_guard.cpp
+    dds4ccm_content_filter.cpp
+    dds4ccm_ccm_data_reader.cpp
+    dds4ccm_ccm_data_writer.cpp
+    dds4ccm_dds_context_switch_handlers.cpp
+    dds4ccm_dp_manager.cpp
+  }
+
+  specific {
+    install_dir = connectors/dds4ccm/impl
+  }
+}

@@ -1,0 +1,24 @@
+/**
+ * @file    event_record.idl
+ * @author  Marijke Hengstmengel
+ *
+ * @brief   Base IDL for the apc events default test.
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef EVENT_RECORD_IDL_
+#define EVENT_RECORD_IDL_
+
+typedef sequence<octet> OctetSeq;
+
+module Data
+{
+  struct Event {
+    string key;
+    long iteration;
+    ::OctetSeq data;
+  }; //@TopLevel()
+};
+
+#endif /* EVENT_RECORD_IDL_ */

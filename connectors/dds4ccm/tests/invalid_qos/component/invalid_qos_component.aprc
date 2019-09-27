@@ -1,0 +1,4 @@
+
+component 'InvalidQosComponent' do |comp|
+  comp.idl %w{ invalid_qos_component.idl }
+end

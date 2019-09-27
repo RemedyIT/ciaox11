@@ -1,0 +1,6 @@
+component 'hello_receiver' do |comp|
+  # component idl
+  comp.idl %w{ hello_receiver.idl }
+
+  comp.combined_lib true
+end

@@ -1,0 +1,598 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!--
+ * @file   deploymentplan.cdp
+ * @author Marijke Hengstmengel
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+-->
+<Deployment:DeploymentPlan xmlns:Deployment="http://www.omg.org/Deployment" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.omg.org/Deployment Deployment.xsd">
+
+  <UUID>6D382DAE-9024-4C4D-B91B-A0F9176AFACF</UUID>
+  <!--this plan is made for using the synchronous connection between Sender and Receiver-->
+
+  <implementation xmi:id="Hello_ReceiverHomeImplementation">
+    <name>Hello_ReceiverHomeImplementation</name>
+    <source/>
+    <artifact xmi:idref="Hello_Receiver_ExecArtifact"/>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_Hello_Receiver_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Hello.ImplementationArtifacts.ReceiverArtifacts.Receiver_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_Hello_Receiver_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Hello.ImplementationArtifacts.ReceiverArtifacts.Receiver_exec</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+ <implementation xmi:id="Hello_ReceiverKeyImplementation">
+    <name>Hello_ReceiverKeyImplementation</name>
+    <source/>
+    <artifact xmi:idref="Hello_Receiver_Key_ExecArtifact"/>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_Hello_interface_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Hello.ImplementationArtifacts.ReceiverArtifacts.ReceiverKey_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_Hello_interface_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Hello.ImplementationArtifacts.ReceiverArtifacts.ReceiverKey_exec</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+
+  <implementation xmi:id="Hello_SenderHomeImplementation">
+    <name>Hello_SenderHomeImplementation</name>
+    <source/>
+    <artifact xmi:idref="Hello_Sender_ExecArtifact"/>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_Hello_Sender_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Hello.ImplementationArtifacts.SenderArtifacts.Sender_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_Hello_Sender_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Hello.ImplementationArtifacts.SenderArtifacts.Sender_exec</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+
+ <implementation xmi:id="Hello_SenderKeyImplementation">
+    <name>Hello_SenderKeyImplementation</name>
+    <source/>
+    <artifact xmi:idref="Hello_Sender_Key_ExecArtifact"/>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_Hello_else_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Hello.ImplementationArtifacts.SenderArtifacts.SenderKey_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_Hello_else_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Hello.ImplementationArtifacts.SenderArtifacts.SenderKey_exec</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="Conn_Test_ConnSImplementation">
+    <name>Conn_Test_ConnSImplementation</name>
+    <source/>
+    <artifact xmi:idref="Conn_Test_ConnS_ExecArtifact"/>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_Hello_MyBaseEvent_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Hello.ImplementationArtifacts.ConnectorArtifacts.Conn_Test_ConnS_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_Hello_MyBaseEvent_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Hello.ImplementationArtifacts.ConnectorArtifacts.Conn_Test_ConnS_exec</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="Conn_Test_ConnRImplementation">
+    <name>Conn_Test_ConnRImplementation</name>
+    <source/>
+    <artifact xmi:idref="Conn_Test_ConnR_ExecArtifact"/>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_Hello_MyBaseEvent_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Hello.ImplementationArtifacts.ConnectorArtifacts.Conn_Test_ConnR_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_Hello_MyBaseEvent_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Hello.ImplementationArtifacts.ConnectorArtifacts.Conn_Test_ConnR_exec</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="Conn_Test_CORBA_ConnImplementation">
+    <name>Conn_Test_ConnSImplementation</name>
+    <source/>
+    <artifact xmi:idref="Conn_Test_CORBA_Conn_ExecArtifact"/>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_Hello_MyFoo_SRR_CORBA_Connector_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Hello.ImplementationArtifacts.ConnectorArtifacts.Conn_Test_CORBA_Conn_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_Hello_MyFoo_SRR_CORBA_Connector_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Hello.ImplementationArtifacts.ConnectorArtifacts.Conn_Test_CORBA_Conn_exec</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <instance xmi:id="Hello.ComponentImplementations.HelloImplementation.Hello.ReceiverKey">
+    <name>Hello.ComponentImplementations.HelloImplementation.Hello.ReceiverKey</name>
+    <node>ReceiverNode</node>
+    <source/>
+    <implementation xmi:idref="Hello_ReceiverKeyImplementation"/>
+  </instance>
+
+  <instance xmi:id="Hello.ComponentImplementations.HelloImplementation.Hello.Receiver">
+    <name>Hello.ComponentImplementations.HelloImplementation.Hello.Receiver</name>
+    <node>ReceiverNode</node>
+    <source/>
+    <implementation xmi:idref="Hello_ReceiverHomeImplementation"/>
+  </instance>
+
+  <instance xmi:id="Hello.ComponentImplementations.HelloImplementation.Hello.Sender">
+    <name>Hello.ComponentImplementations.HelloImplementation.Hello.Sender</name>
+    <node>SenderNode</node>
+    <source/>
+    <implementation xmi:idref="Hello_SenderHomeImplementation"/>
+    <configProperty>
+      <name>ojee</name>
+      <value>
+        <type>
+          <kind>tk_short</kind>
+        </type>
+        <value>
+          <short>1234</short>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+ <instance xmi:id="Hello.ComponentImplementations.HelloImplementation.Hello.SenderKey">
+    <name>Hello.ComponentImplementations.HelloImplementation.Hello.SenderKey</name>
+    <node>SenderNode</node>
+    <source/>
+    <implementation xmi:idref="Hello_SenderKeyImplementation"/>
+    <configProperty>
+      <name>ojee</name>
+      <value>
+        <type>
+          <kind>tk_short</kind>
+        </type>
+        <value>
+          <short>1234</short>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <instance xmi:id="Hello.ComponentImplementations.HelloImplementation.Conn_Test_ConnS">
+    <name>Hello.ComponentImplementations.HelloImplementation.Conn_Test_ConnS</name>
+    <node>SenderNode</node>
+    <source/>
+    <implementation xmi:idref="Conn_Test_ConnSImplementation"/>
+  </instance>
+
+  <instance xmi:id="Hello.ComponentImplementations.HelloImplementation.Conn_Test_ConnR">
+    <name>Hello.ComponentImplementations.HelloImplementation.Conn_Test_ConnR</name>
+    <node>ReceiverNode</node>
+    <source/>
+    <implementation xmi:idref="Conn_Test_ConnRImplementation"/>
+    <configProperty>
+      <name>conn_attrib</name>
+      <value>
+        <type>
+          <kind>tk_short</kind>
+        </type>
+        <value>
+          <short>4321</short>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>consumer_port_attrib</name>
+      <value>
+        <type>
+          <kind>tk_short</kind>
+        </type>
+        <value>
+          <short>4321</short>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <instance xmi:id="Hello.ComponentImplementations.HelloImplementation.Conn_Test_CORBA_ConnS">
+    <name>Hello.ComponentImplementations.HelloImplementation.Conn_Test_CORBA_ConnS</name>
+    <node>SenderNode</node>
+    <source/>
+    <implementation xmi:idref="Conn_Test_CORBA_ConnImplementation"/>
+  </instance>
+  <instance xmi:id="Hello.ComponentImplementations.HelloImplementation.Conn_Test_CORBA_ConnR">
+    <name>Hello.ComponentImplementations.HelloImplementation.Conn_Test_CORBA_ConnR</name>
+    <node>ReceiverNode</node>
+    <source/>
+    <implementation xmi:idref="Conn_Test_CORBA_ConnImplementation"/>
+  </instance>
+
+
+  <!--connection between Receiver and ConnectorR-->
+  <connection>
+    <name>receiver_conn_connection</name>
+    <internalEndpoint>
+      <portName>consumer_foo_prov</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="Hello.ComponentImplementations.HelloImplementation.Conn_Test_ConnR" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>rec_listen_port_foo_prov</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="Hello.ComponentImplementations.HelloImplementation.Hello.Receiver" />
+    </internalEndpoint>
+  </connection>
+
+  <!--connection between Sender and Connectors-->
+  <connection>
+    <name>sender_conn_connection</name>
+    <internalEndpoint>
+      <portName>supplier_foo_uses</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="Hello.ComponentImplementations.HelloImplementation.Conn_Test_ConnS" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>sender_write_port_foo_uses</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="Hello.ComponentImplementations.HelloImplementation.Hello.Sender" />
+    </internalEndpoint>
+  </connection>
+
+   <!--connection between SenderKey and ReceiverKey-->
+  <connection>
+    <name>sender_to_cc_sender_connection</name>
+    <internalEndpoint>
+      <portName>srr_facet</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="Hello.ComponentImplementations.HelloImplementation.Conn_Test_CORBA_ConnS" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>if_foo_uses</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="Hello.ComponentImplementations.HelloImplementation.Hello.SenderKey" />
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>cc_sender_to_cc_receiver_connection</name>
+    <internalEndpoint>
+      <portName>srr_facet</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="Hello.ComponentImplementations.HelloImplementation.Conn_Test_CORBA_ConnR" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>srr_receptacle</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="Hello.ComponentImplementations.HelloImplementation.Conn_Test_CORBA_ConnS" />
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>cc_receiver_to_receiver_connection</name>
+    <internalEndpoint>
+      <portName>srr_receptacle</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="Hello.ComponentImplementations.HelloImplementation.Conn_Test_CORBA_ConnR" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>module_foo_uses</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="Hello.ComponentImplementations.HelloImplementation.Hello.ReceiverKey" />
+    </internalEndpoint>
+  </connection>
+
+  <artifact xmi:id="Hello_Receiver_ExecArtifact">
+    <name>Hello.ImplementationArtifacts.ReceiverArtifacts.Receiver_exec</name>
+    <source/>
+    <node/>
+    <location>starter_code_receiver_exec</location>
+  </artifact>
+
+  <artifact xmi:id="Hello_Receiver_Key_ExecArtifact">
+    <name>Hello.ImplementationArtifacts.ReceiverArtifacts.ReceiverKey_exec</name>
+    <source/>
+    <node/>
+    <location>keyword_receiver_exec</location>
+  </artifact>
+
+  <artifact xmi:id="Hello_Sender_ExecArtifact">
+    <name>Hello.ImplementationArtifacts.SenderArtifacts.Sender_exec</name>
+    <source/>
+    <node/>
+    <location>starter_code_sender_exec</location>
+  </artifact>
+
+  <artifact xmi:id="Hello_Sender_Key_ExecArtifact">
+    <name>Hello.ImplementationArtifacts.SenderArtifacts.SenderKey_exec</name>
+    <source/>
+    <node/>
+    <location>keyword_sender_exec</location>
+  </artifact>
+
+  <artifact xmi:id="Conn_Test_ConnS_ExecArtifact">
+    <name>Hello.ImplementationArtifacts.ConnectorArtifacts.Conn_Test_ConnS_exec</name>
+    <source/>
+    <node/>
+    <location>starter_code_conns_exec</location>
+  </artifact>
+
+  <artifact xmi:id="Conn_Test_ConnR_ExecArtifact">
+    <name>Hello.ImplementationArtifacts.ConnectorArtifacts.Conn_Test_ConnR_exec</name>
+    <source/>
+    <node/>
+    <location>starter_code_connr_exec</location>
+  </artifact>
+
+  <artifact xmi:id="Conn_Test_CORBA_Conn_ExecArtifact">
+    <name>Hello.ImplementationArtifacts.ConnectorArtifacts.Conn_Test_CORBA_Conn_exec</name>
+    <source/>
+    <node/>
+    <location>starter_code_test_corba_conn</location>
+  </artifact>
+
+</Deployment:DeploymentPlan>

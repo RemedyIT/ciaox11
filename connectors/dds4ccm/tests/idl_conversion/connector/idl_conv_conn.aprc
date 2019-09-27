@@ -1,0 +1,11 @@
+connector 'idl_conversion' do |conn|
+  conn.idl %w{ idl_conversion.idl }
+
+  conn.port_type :dds4ccm do |tp|
+    tp.topic 'Example::IDLConversionMessage'
+    # use default DDS vendor
+    # tp.middleware :ndds
+    tp.topic_interface 'IDLConversionTestConnector'
+  end
+end
+

@@ -1,0 +1,59 @@
+% _regen_marker = "#{component.executor_cxx_namespace}::#{lem_name}_exec_i"
+
+/// Executor implementation class for <%= lem_name %> facet
+class <%= lem_name %>_exec_i final
+  : public IDL::traits< <%= interface_type.scoped_ccm_name %>>::base_type
+{
+public:
+
+% visit_facet_constructor
+
+  /// Destructor
+  virtual ~<%= lem_name %>_exec_i ();
+
+%if interface_type.all_operations.size > 0
+  /** @name Operations from <%= interface_type.scoped_ccm_name %> */
+  //@{
+% interface_type.all_operations.each do |_op|
+%   nest { _op.visit_operation }
+% end
+  //@}
+%end
+
+%if interface_type.all_attributes.size > 0
+  /** @name Attributes from <%= interface_type.scoped_ccm_name %> */
+  //@{
+% interface_type.all_attributes.each do |_att|
+%   nest { _att.visit_attribute }
+% end
+  //@}
+
+%end
+  /** @name User defined public operations. */
+  //@{
+% nest { write_regen_section(_regen_marker+'[user_public_ops]', default_content: '// Your code here') }
+  //@}
+
+private:
+  /// Context for component instance. Used for all middleware communication.
+  IDL::traits< <%= component.scoped_ccm_name %>_Context >::ref_type context_;
+%if interface_type.all_attributes.size > 0
+
+  /** @name Members to store attribute values from <%= interface_type.scoped_ccm_name %> */
+  //@{
+% interface_type.all_attributes.each do |_att|
+%   nest { _att.visit_attribute_m }
+% end
+  //@}
+%end
+
+  /** @name User defined members. */
+  //@{
+% nest { write_regen_section(_regen_marker+'[user_members]', default_content: '// Your code here') }
+  //@}
+
+  /** @name User defined private operations. */
+  //@{
+% nest { write_regen_section(_regen_marker+'[user_private_ops]', default_content: '// Your code here') }
+  //@}
+};

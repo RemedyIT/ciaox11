@@ -1,0 +1,48 @@
+project(*idl_gen) : ciaox11_test_cc_base_idl {
+  custom_only = 1
+
+  after += hello_extended_srr_idl_gen hello_extended_srr_lem_gen
+
+  // Suppress the skeleton since this is generated
+  // in a separate project (see ./hello_extended_skel.mpc).
+  idlflags += -Wb,base_export_macro=HELLO_EXTENDED \
+              -Wb,base_export_include=hello_extended \
+              -I./generated_code -I../patterns/generated_code \
+              -SS -Ssh
+  idlflags -= -Gxhsk
+
+  IDL_Files {
+    gendir=generated_code
+    ../base/hello_extended.idl
+  }
+}
+
+// Compiles the corba connector itself.
+project(*conn) : ciaox11_test_base, ciaox11_executor, ciaox11_corba4ccm_impl {
+  after += hello_extended_skel hello_extended_stub hello_extended_srr_lem_stub *idl_gen
+  libs  += hello_extended_skel hello_extended_stub hello_extended_srr_lem_stub
+
+  dynamicflags += HELLO_EXTENDED_CC_LEM_STUB_BUILD_DLL \
+                  HELLO_EXTENDED_CC_EXEC_BUILD_DLL \
+                  HELLO_EXTENDED_CC_SVNT_BUILD_DLL
+
+  includes += ../patterns/generated_code
+
+  Source_Files {
+    generated_code/hello_extended_ccEC.cpp
+
+    generated_code/hello_extended_cc_exec.cpp
+    generated_code/hello_extended_cc_svnt.cpp
+  }
+  Header_Files {
+    generated_code/hello_extended_ccC.h
+    generated_code/hello_extended_ccEC.h
+    generated_code/hello_extended_cc_lem_stub_export.h
+
+    generated_code/hello_extended_cc_exec.h
+    generated_code/hello_extended_cc_exec_export.h
+
+    generated_code/hello_extended_cc_svnt.h
+    generated_code/hello_extended_cc_svnt_export.h
+  }
+}

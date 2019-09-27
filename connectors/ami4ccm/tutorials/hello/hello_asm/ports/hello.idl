@@ -1,0 +1,43 @@
+/**
+ * @file    hello.idl
+ * @author  Marijke Hengstmengel
+ *
+ * @brief   base of AMI4CCM Hello tutorial
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef AMI4CCM_TUT_HELLO_IDL
+#define AMI4CCM_TUT_HELLO_IDL
+
+#pragma ami4ccm interface "Hello::MyFoo_obj"
+
+#pragma ami4ccm idl "helloA.idl"
+
+module Hello
+{
+  exception InternalError
+  {
+    long id;
+    string error_string;
+  };
+
+  // Sender/Receiver interface
+  interface MyFoo_obj
+  {
+    long foo (in string in_str, out string answer)
+        raises (InternalError);
+    void hello (out long answer)
+        raises (InternalError);
+
+    attribute short rw_attrib
+        getraises (InternalError)
+        setraises (InternalError);
+
+    readonly attribute short ro_attrib
+        raises (InternalError);
+  };
+};
+
+#endif

@@ -1,0 +1,50 @@
+// --------------------------------------------------------------------
+// ciaox11_ami4ccm_idldefaults.mpb
+//
+// Copyright (c) Remedy IT Expertise BV
+// Chamber of commerce Rotterdam nr.276339, The Netherlands
+// --------------------------------------------------------------------
+
+project : ciaox11_idldefaults {
+
+  Modify_Custom (IDL) {
+
+    optional(source_outputext) {
+      commandflags(-Gami4ccm,Aidl || -Gami4ccm,impl || -Gami4ccm,svnt || -Gami4ccm,conn || -Gami4ccm,conn_only || -Gami4ccm,comp) = .cpp
+    }
+
+    optional(header_outputext) {
+      commandflags(-Gami4ccm,Aidl || -Gami4ccm,impl || -Gami4ccm,svnt || -Gami4ccm,conn || -Gami4ccm,conn_only || -Gami4ccm,comp) = .h
+    }
+
+    optional(generic_pre_extension) {
+      commandflags(-Gami4ccm,Aidl || -Gami4ccm,Aidl-only) += A
+      commandflags(-Gami4ccm,idl ) += A_conn
+      commandflags(-Gami4ccm,lem  || -Gami4ccm,comp) += E
+      commandflags(-Gami4ccm,conn || -Gami4ccm,conn_only) += A_conn, A_connE
+    }
+
+    optional(generic_outputext) {
+      commandflags(-Gami4ccm,lem  || -Gami4ccm,comp || -Gami4ccm,conn_only) = .idl
+      commandflags(-Gami4ccm,Aidl || -Gami4ccm,Aidl-only || -Gami4ccm,idl  || -Gami4ccm,conn) = .idl
+    }
+
+    optional(source_pre_extension) {
+      commandflags(-Gami4ccm,conn) += A_connEC, A_conn_exec, A_conn_svnt, AmiC
+      commandflags(-Gami4ccm,conn_only) += A_connEC, A_conn_exec, A_conn_svnt
+      commandflags(-Gami4ccm,Aidl) += AC
+      commandflags(-Gami4ccm,comp) += EC
+      commandflags(-Gami4ccm,impl) += _exec
+      commandflags(-Gami4ccm,svnt || -Gami4ccm,comp) += _svnt
+    }
+
+    optional(header_pre_extension) {
+      commandflags(-Gami4ccm,conn) +=  A_connC, A_connEC, A_conn_exec, A_conn_svnt, AmiC, AmiCP
+      commandflags(-Gami4ccm,conn_only) += A_connEC, A_conn_exec, A_conn_svnt
+      commandflags(-Gami4ccm,Aidl) += AC, ACP
+      commandflags(-Gami4ccm,comp) += EC
+      commandflags(-Gami4ccm,impl) += _exec
+      commandflags(-Gami4ccm,svnt || -Gami4ccm,comp) += _svnt
+    }
+  }
+}

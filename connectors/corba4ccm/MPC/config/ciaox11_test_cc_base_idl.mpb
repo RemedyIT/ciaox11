@@ -1,0 +1,14 @@
+// --------------------------------------------------------------------
+// ciaox11_test_cc_base_idl.mpb
+//
+// Copyright (c) Remedy IT Expertise BV
+// Chamber of commerce Rotterdam nr.276339, The Netherlands
+// --------------------------------------------------------------------
+
+project : ciaox11_test_idldefaults, ciaox11_corba4ccm_idl {
+  idlflags += -I../corba_connector -I../corba_connector/generated_code -Gxhsk
+  // Generation of the skeleton files are suppressed by default since the
+  // introduction of the CORBA connector. Need to enable this for the
+  // CORBA connector.
+  idlflags -= -SS -Ssh
+}

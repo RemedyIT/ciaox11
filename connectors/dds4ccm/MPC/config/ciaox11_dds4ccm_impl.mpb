@@ -1,0 +1,17 @@
+// --------------------------------------------------------------------
+// ciaox11_dds4ccm_impl.mpb
+//
+// Copyright (c) Remedy IT Expertise BV
+// Chamber of commerce Rotterdam nr.276339, The Netherlands
+// --------------------------------------------------------------------
+
+feature(dds4ccm) : ciaox11_dds4ccm_vendor_impl {
+  after += ciaox11_dds4ccm_impl
+  libs  += ciaox11_dds4ccm_impl
+  includes += $(CIAOX11_ROOT)/connectors/dds4ccm/idl
+  includes += $(CIAOX11_ROOT)/connectors
+}
+
+feature(!dds4ccm) {
+  requires += dummy_label
+}

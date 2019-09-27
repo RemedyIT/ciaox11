@@ -1,0 +1,6 @@
+project(*ciaox11): ciaox11_lib, ciaox11_logger {
+  requires += x11_logging
+  Source_Files {
+    log_test.cpp
+  }
+}

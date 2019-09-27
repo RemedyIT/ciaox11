@@ -1,0 +1,27 @@
+/**
+ * @file    updater_receiver.idl
+ * @author  Marcel Smit
+ *
+ * @brief   Receiver component declaration for the Updater test
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef UPDATER_RECEIVER_IDL_
+#define UPDATER_RECEIVER_IDL_
+
+#include "commonSE.idl"
+#include "next_assignment.idl"
+
+module UpdaterModule
+{
+  component Receiver
+  {
+    port CommonTestConnector::DDS_StateListen info_out_one_by_one;
+    port CommonTestConnector::DDS_StateListen info_out_many_by_many;
+
+    uses NextAssignment next_assignment;
+  };
+};
+
+#endif

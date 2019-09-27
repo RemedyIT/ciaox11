@@ -1,0 +1,20 @@
+
+% _regen_marker = "#{component.executor_cxx_namespace}::#{owner.lem_name}_exec_i::#{cxxname}"
+<%= implementation_return_type %>
+<%= owner.lem_name %>_exec_i::<%= cxxname %> ()
+{
+% _implementation = []
+% _implementation << "return this->#{cxxname}_;"
+% nest { write_regen_section(_regen_marker+'[getter]', default_content: _implementation) }
+}
+% unless is_readonly?
+
+void
+<%= owner.lem_name %>_exec_i::<%= cxxname %> (
+    <%= implementation_in_type %> <%= cxxname %>)
+{
+% _implementation = []
+% _implementation << "this->#{cxxname}_ = #{cxxname};"
+% nest { write_regen_section(_regen_marker+'[setter]', default_content: _implementation) }
+}
+% end # unless is_readonly?

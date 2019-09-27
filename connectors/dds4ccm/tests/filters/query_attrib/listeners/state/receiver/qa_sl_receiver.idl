@@ -1,0 +1,25 @@
+/**
+ * @file    qa_sl_receiver.idl
+ * @author  Marcel Smit
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef QA_SL_RECEIVER_IDL_
+#define QA_SL_RECEIVER_IDL_
+
+#include "commonSE.idl"
+#include "writer_starter.idl"
+
+module QA_State_Listen_Test
+{
+  component Receiver
+  {
+    port CommonTestConnector::DDS_StateListen listen_port_1;
+    port CommonTestConnector::DDS_StateListen listen_port_2;
+
+    uses WriterStarter writer_start;
+  };
+};
+
+#endif /* QA_SL_RECEIVER_IDL_ */

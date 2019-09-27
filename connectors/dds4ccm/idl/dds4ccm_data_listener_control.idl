@@ -1,0 +1,21 @@
+/**
+ * @file    dds4ccm_data_listener_control.idl
+ * @author  Marcel Smit
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef DDS4CCM_DATA_LISTENER_CONTROL_IDL_
+#define DDS4CCM_DATA_LISTENER_CONTROL_IDL_
+
+#include "connectors/dds4ccm/idl/dds4ccm_base.idl"
+
+module CCM_DDS
+{
+  local interface DataListenerControl {
+    attribute ListenerMode mode;
+    attribute DataNumber_t max_delivered_data;
+  };
+};
+
+#endif /* DDS4CCM_DATA_LISTENER_CONTROL_IDL_ */

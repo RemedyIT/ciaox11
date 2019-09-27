@@ -1,0 +1,55 @@
+project(*cc_idl_gen) : ciaox11_test_cc_base_idl {
+  custom_only = 1
+  after += ami4ccm_idltest_idl_gen ami4ccm_idltest_lem_gen
+  idlflags += -Wb,base_export_macro=AMI4CCM_IDLTEST \
+              -Wb,base_export_include=ami4ccm_idltest
+
+  IDL_Files {
+    gendir=generated_code
+    ../base/ami4ccm_idltest.idl
+  }
+}
+
+
+project(*skel) : ciaox11_test_base, taox11_portableserver, ciaox11_corba4ccm {
+  after += *stub *cc_idl_gen
+  libs  += *stub
+
+  dynamicflags += AMI4CCM_IDLTEST_SKEL_BUILD_DLL
+
+  Source_Files {
+    generated_code/ami4ccm_idltestS.cpp
+  }
+
+  Header_Files {
+    generated_code/ami4ccm_idltestS.h
+    generated_code/ami4ccm_idltest_skel_export.h
+  }
+}
+
+project(*corba_conn) : ciaox11_test_base, ciaox11_executor, ciaox11_corba4ccm_impl {
+  after += ami4ccm_idltest_skel ami4ccm_idltest_stub ami4ccm_idltest_lem_stub *cc_idl_gen
+  libs  += ami4ccm_idltest_skel ami4ccm_idltest_stub ami4ccm_idltest_lem_stub
+
+  dynamicflags += AMI4CCM_IDLTEST_CC_LEM_STUB_BUILD_DLL \
+                  AMI4CCM_IDLTEST_CC_EXEC_BUILD_DLL \
+                  AMI4CCM_IDLTEST_CC_SVNT_BUILD_DLL
+
+  Source_Files {
+    generated_code/ami4ccm_idltest_ccEC.cpp
+
+    generated_code/ami4ccm_idltest_cc_exec.cpp
+    generated_code/ami4ccm_idltest_cc_svnt.cpp
+  }
+  Header_Files {
+    generated_code/ami4ccm_idltest_ccC.h
+    generated_code/ami4ccm_idltest_ccEC.h
+    generated_code/ami4ccm_idltest_cc_lem_stub_export.h
+
+    generated_code/ami4ccm_idltest_cc_exec.h
+    generated_code/ami4ccm_idltest_cc_exec_export.h
+
+    generated_code/ami4ccm_idltest_cc_svnt.h
+    generated_code/ami4ccm_idltest_cc_svnt_export.h
+  }
+}

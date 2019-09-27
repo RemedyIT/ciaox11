@@ -1,0 +1,298 @@
+
+connector 'example_aa1_conn' do |conn|
+  conn.idl %w{ example_aa1_msg.idl }
+
+  conn.port_type :dds4ccm do |tp|
+    tp.topic 'Example::AA1_msg'
+    # use default DDS vendor
+    # tp.middleware :ndds
+    tp.topic_interface 'AA1_conn'
+  end
+end
+
+connector 'example_aa2_conn' do |conn|
+  conn.idl %w{ example_aa2_msg.idl }
+
+  conn.port_type :dds4ccm do |tp|
+    tp.topic 'Example::AA2_msg'
+    # use default DDS vendor
+    # tp.middleware :ndds
+    tp.topic_interface 'AA2_conn'
+  end
+end
+
+connector 'example_ba1_conn' do |conn|
+  conn.idl %w{ example_ba1_msg.idl }
+
+  conn.port_type :dds4ccm do |tp|
+    tp.topic 'Example::BA1_msg'
+    # use default DDS vendor
+    # tp.middleware :ndds
+    tp.topic_interface 'BA1_conn'
+  end
+end
+
+connector 'example_ba2_conn' do |conn|
+  conn.idl %w{ example_ba2_msg.idl }
+
+  conn.port_type :dds4ccm do |tp|
+    tp.topic 'Example::BA2_msg'
+    # use default DDS vendor
+    # tp.middleware :ndds
+    tp.topic_interface 'BA2_conn'
+  end
+end
+
+connector 'example_ca1_conn' do |conn|
+  conn.idl %w{ example_ca1_msg.idl }
+
+  conn.port_type :dds4ccm do |tp|
+    tp.topic 'Example::CA1_msg'
+    # use default DDS vendor
+    # tp.middleware :ndds
+    tp.topic_interface 'CA1_conn'
+  end
+end
+
+connector 'example_ca2_conn' do |conn|
+  conn.idl %w{ example_ca2_msg.idl }
+
+  conn.port_type :dds4ccm do |tp|
+    tp.topic 'Example::CA2_msg'
+    # use default DDS vendor
+    # tp.middleware :ndds
+    tp.topic_interface 'CA2_conn'
+  end
+end
+
+connector 'example_da1_conn' do |conn|
+  conn.idl %w{ example_da1_msg.idl }
+
+  conn.port_type :dds4ccm do |tp|
+    tp.topic 'Example::DA1_msg'
+    # use default DDS vendor
+    # tp.middleware :ndds
+    tp.topic_interface 'DA1_conn'
+  end
+end
+
+connector 'example_da2_conn' do |conn|
+  conn.idl %w{ example_da2_msg.idl }
+
+  conn.port_type :dds4ccm do |tp|
+    tp.topic 'Example::DA2_msg'
+    # use default DDS vendor
+    # tp.middleware :ndds
+    tp.topic_interface 'DA2_conn'
+  end
+end
+
+connector 'example_da3_conn' do |conn|
+  conn.idl %w{ example_da3_msg.idl }
+
+  conn.port_type :dds4ccm do |tp|
+    tp.topic 'Example::DA3_msg'
+    # use default DDS vendor
+    # tp.middleware :ndds
+    tp.topic_interface 'DA3_conn'
+  end
+end
+
+connector 'example_da4_conn' do |conn|
+  conn.idl %w{ example_da4_msg.idl }
+
+  conn.port_type :dds4ccm do |tp|
+    tp.topic 'Example::DA4_msg'
+    # use default DDS vendor
+    # tp.middleware :ndds
+    tp.topic_interface 'DA4_conn'
+  end
+end
+
+connector 'example_da5_conn' do |conn|
+  conn.idl %w{ example_da5_msg.idl }
+
+  conn.port_type :dds4ccm do |tp|
+    tp.topic 'Example::DA5_msg'
+    # use default DDS vendor
+    # tp.middleware :ndds
+    tp.topic_interface 'DA5_conn'
+  end
+end
+
+connector 'example_ea1_conn' do |conn|
+  conn.idl %w{ example_ea1_msg.idl }
+
+  conn.port_type :dds4ccm do |tp|
+    tp.topic 'Example::EA1_msg'
+    # use default DDS vendor
+    # tp.middleware :ndds
+    tp.topic_interface 'EA1_conn'
+  end
+end
+
+connector 'example_ea2_conn' do |conn|
+  conn.idl %w{ example_ea2_msg.idl }
+
+  conn.port_type :dds4ccm do |tp|
+    tp.topic 'Example::EA2_msg'
+    # use default DDS vendor
+    # tp.middleware :ndds
+    tp.topic_interface 'EA2_conn'
+  end
+end
+
+connector 'example_fa1_conn' do |conn|
+  conn.idl %w{ example_fa1_msg.idl }
+
+  conn.port_type :dds4ccm do |tp|
+    tp.topic 'Example::FA1_msg'
+    # use default DDS vendor
+    # tp.middleware :ndds
+    tp.topic_interface 'FA1_conn'
+  end
+end
+
+connector 'example_fa2_conn' do |conn|
+  conn.idl %w{ example_fa2_msg.idl }
+
+  conn.port_type :dds4ccm do |tp|
+    tp.topic 'Example::FA2_msg'
+    # use default DDS vendor
+    # tp.middleware :ndds
+    tp.topic_interface 'FA2_conn'
+  end
+end
+
+connector 'example_ga1_conn' do |conn|
+  conn.idl %w{ example_ga1_msg.idl }
+
+  conn.port_type :dds4ccm do |tp|
+    tp.topic 'Example::GA1_msg'
+    # use default DDS vendor
+    # tp.middleware :ndds
+    tp.topic_interface 'GA1_conn'
+  end
+end
+
+connector 'example_ga2_conn' do |conn|
+  conn.idl %w{ example_ga2_msg.idl }
+
+  conn.port_type :dds4ccm do |tp|
+    tp.topic 'Example::GA2_msg'
+    # use default DDS vendor
+    # tp.middleware :ndds
+    tp.topic_interface 'GA2_conn'
+  end
+end
+
+connector 'example_ha1_conn' do |conn|
+  conn.idl %w{ example_ha1_msg.idl }
+
+  conn.port_type :dds4ccm do |tp|
+    tp.topic 'Example::HA1_msg'
+    # use default DDS vendor
+    # tp.middleware :ndds
+    tp.topic_interface 'HA1_conn'
+  end
+end
+
+connector 'example_ha2_conn' do |conn|
+  conn.idl %w{ example_ha2_msg.idl }
+
+  conn.port_type :dds4ccm do |tp|
+    tp.topic 'Example::HA2_msg'
+    # use default DDS vendor
+    # tp.middleware :ndds
+    tp.topic_interface 'HA2_conn'
+  end
+end
+
+connector 'example_ia1_conn' do |conn|
+  conn.idl %w{ example_ia1_msg.idl }
+
+  conn.port_type :dds4ccm do |tp|
+    tp.topic 'Example::IA1_msg'
+    # use default DDS vendor
+    # tp.middleware :ndds
+    tp.topic_interface 'IA1_conn'
+  end
+end
+
+connector 'example_ia2_conn' do |conn|
+  conn.idl %w{ example_ia2_msg.idl }
+
+  conn.port_type :dds4ccm do |tp|
+    tp.topic 'Example::IA2_msg'
+    # use default DDS vendor
+    # tp.middleware :ndds
+    tp.topic_interface 'IA2_conn'
+  end
+end
+
+connector 'example_ja1_conn' do |conn|
+  conn.idl %w{ example_ja1_msg.idl }
+
+  conn.port_type :dds4ccm do |tp|
+    tp.topic 'Example::JA1_msg'
+    # use default DDS vendor
+    # tp.middleware :ndds
+    tp.topic_interface 'JA1_conn'
+  end
+end
+
+connector 'example_ja2_conn' do |conn|
+  conn.idl %w{ example_ja2_msg.idl }
+
+  conn.port_type :dds4ccm do |tp|
+    tp.topic 'Example::JA2_msg'
+    # use default DDS vendor
+    # tp.middleware :ndds
+    tp.topic_interface 'JA2_conn'
+  end
+end
+
+connector 'example_ka1_conn' do |conn|
+  conn.idl %w{ example_ka1_msg.idl }
+
+  conn.port_type :dds4ccm do |tp|
+    tp.topic 'Example::KA1_msg'
+    # use default DDS vendor
+    # tp.middleware :ndds
+    tp.topic_interface 'KA1_conn'
+  end
+end
+
+connector 'example_ka2_conn' do |conn|
+  conn.idl %w{ example_ka2_msg.idl }
+
+  conn.port_type :dds4ccm do |tp|
+    tp.topic 'Example::KA2_msg'
+    # use default DDS vendor
+    # tp.middleware :ndds
+    tp.topic_interface 'KA2_conn'
+  end
+end
+
+connector 'example_ma1_conn' do |conn|
+  conn.idl %w{ example_ma1_msg.idl }
+
+  conn.port_type :dds4ccm do |tp|
+    tp.topic 'Example::MA1_msg'
+    # use default DDS vendor
+    # tp.middleware :ndds
+    tp.topic_interface 'MA1_conn'
+  end
+end
+
+connector 'example_ma2_conn' do |conn|
+  conn.idl %w{ example_ma2_msg.idl }
+
+  conn.port_type :dds4ccm do |tp|
+    tp.topic 'Example::MA2_msg'
+    # use default DDS vendor
+    # tp.middleware :ndds
+    tp.topic_interface 'MA2_conn'
+  end
+end
+

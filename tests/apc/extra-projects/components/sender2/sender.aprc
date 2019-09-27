@@ -1,0 +1,11 @@
+component 'hello_sender2' do |comp|
+  comp.idl %w{ hello_sender.idl }
+  comp.export_name :hello_sender
+  #this 'nonsense' base project should not be present in final mpc project
+  # because by using %w{xxx yyy} or comp.base_projects = 'xxx', the existing base projects
+  # (default and added by user) are all overwriten
+  comp.base_projects += 'nonsense'
+  comp.base_projects %w{ciaox11_executor taox11_anytypecode}
+  #for this test,an extra base project is necessary :
+  comp.base_projects += 'ciaox11_logger'
+end

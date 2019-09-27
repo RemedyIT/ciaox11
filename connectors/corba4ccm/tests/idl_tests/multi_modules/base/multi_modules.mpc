@@ -1,0 +1,53 @@
+project(*idl_gen) : ciaox11_test_base_idl {
+  custom_only = 1
+  idlflags += -Wb,base_export_macro=MULTI_MODULES \
+              -Wb,base_export_include=multi_modules
+
+  IDL_Files {
+    gendir=generated_code
+    multi_modules.idl
+  }
+}
+
+project(*lem_gen) : ciaox11_test_base_lem_idl {
+  custom_only = 1
+  idlflags += -Wb,base_export_macro=MULTI_MODULES \
+              -Wb,base_export_include=multi_modules
+
+  IDL_Files {
+    gendir=generated_code
+    multi_modules.idl
+  }
+}
+
+project(*stub) : ciaox11_test_base {
+  after += *idl_gen
+
+  dynamicflags += MULTI_MODULES_STUB_BUILD_DLL
+
+  Source_Files {
+    generated_code/multi_modulesC.cpp
+  }
+
+  Header_Files {
+    generated_code/multi_modulesC.h
+    generated_code/multi_modules_stub_export.h
+  }
+}
+
+project(*lem_stub) : ciaox11_test_base {
+  after += *stub *lem_gen
+  libs  += *stub
+
+  dynamicflags += MULTI_MODULES_LEM_STUB_BUILD_DLL
+
+  Source_Files {
+    generated_code/multi_modulesEC.cpp
+  }
+
+  Header_Files {
+    generated_code/multi_modulesEC.h
+    generated_code/multi_modules_lem_stub_export.h
+  }
+}
+

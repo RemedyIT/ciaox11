@@ -1,0 +1,42 @@
+project(*idl_gen) : ciaox11_test_ami4ccm_comp_all_idl {
+  custom_only = 1
+
+  after += multi_inherit_idl_gen multi_inherit_lem_gen multi_inherit_ami4ccm_aidl_gen
+
+  idlflags += -Wb,base_export_macro=MULTI_INHERIT_SENDER \
+              -Wb,base_export_include=multi_inherit_sender
+
+  IDL_Files {
+    gendir=generated_code
+    multi_inherit_sender.idl
+  }
+}
+
+project(*exec) : ciaox11_test_ami4ccm_exec_all {
+  after += multi_inherit_ami4ccm_stub multi_inherit_stub *idl_gen
+  libs  += multi_inherit_ami4ccm_stub multi_inherit_stub
+
+  dynamicflags += MULTI_INHERIT_SENDER_LEM_STUB_BUILD_DLL \
+                  MULTI_INHERIT_SENDER_EXEC_BUILD_DLL \
+                  MULTI_INHERIT_SENDER_SVNT_BUILD_DLL
+
+  Source_Files {
+    multi_inherit_sender_exec.cpp
+    generated_code/multi_inherit_senderEC.cpp
+    generated_code/multi_inherit_sender_svnt.cpp
+  }
+
+  Header_Files {
+    multi_inherit_sender_exec.h
+    generated_code/multi_inherit_sender_exec_export.h
+
+    generated_code/multi_inherit_sender_svnt.h
+    generated_code/multi_inherit_sender_svnt_export.h
+
+    generated_code/multi_inherit_senderEC.h
+    generated_code/multi_inherit_sender_lem_stub_export.h
+  }
+
+}
+
+

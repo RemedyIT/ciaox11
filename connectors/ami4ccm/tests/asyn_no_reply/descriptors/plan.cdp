@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<Deployment:DeploymentPlan xmlns:Deployment="http://www.omg.org/Deployment"
+   xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.omg.org/Deployment Deployment.xsd">
+
+  <UUID>6D382DAE-9024-4C4D-B91B-A0F9176AFACF</UUID>
+
+  <implementation xmi:id="NoReplyH_ReceiverImplementation">
+    <name>NoReplyH_ReceiverImplementation</name>
+    <source/>
+    <artifact xmi:idref="NoReplyH_Receiver_ExecArtifact"/>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_NoReplyH_Receiver_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>NoReplyH.ImplementationArtifacts.ReceiverArtifacts.Receiver_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_NoReplyH_Receiver_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="NoReplyH_SenderImplementation">
+    <name>NoReplyH_SenderImplementation</name>
+    <source/>
+    <artifact xmi:idref="NoReplyH_Sender_ExecArtifact"/>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_NoReplyH_Sender_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>NoReplyH.ImplementationArtifacts.SenderArtifacts.Sender_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_NoReplyH_Sender_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="NoReplyH_AMIConnectorImplementation">
+    <name>NoReplyH_AMIConnectorImplementation</name>
+    <source/>
+    <artifact xmi:idref="NoReplyH_AMI_ExecArtifact"/>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_NoReplyH_AMI4CCM_MyFoo_Connector_AMI4CCM_Connector_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>NoReplyH.ImplementationArtifacts.AMIArtifacts.AMI_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_NoReplyH_AMI4CCM_MyFoo_Connector_AMI4CCM_Connector_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="NoReplyH_CORBAConnectorImplementation">
+    <name>NoReplyH_CORBAConnectorImplementation</name>
+    <source/>
+    <artifact xmi:idref="NoReplyH_CORBA_ExecArtifact"/>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_NoReplyH_MyFoo_SRR_CORBA_Connector_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>NoReplyH.ImplementationArtifacts.CORBAArtifacts.CORBA_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_NoReplyH_MyFoo_SRR_CORBA_Connector_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <instance xmi:id="NoReplyH.ComponentImplementations.NoReplyHImplementation.NoReplyH.Receiver">
+    <name>NoReplyH.ComponentImplementations.NoReplyHImplementation.NoReplyH.Receiver</name>
+    <node>ReceiverNode</node>
+    <source/>
+    <implementation xmi:idref="NoReplyH_ReceiverImplementation"/>
+  </instance>
+  <instance xmi:id="NoReplyH.ComponentImplementations.NoReplyHImplementation.NoReplyH.CORBA">
+    <name>NoReplyH.ComponentImplementations.NoReplyHImplementation.NoReplyH.CORBA</name>
+    <node>ReceiverNode</node>
+    <source/>
+    <implementation xmi:idref="NoReplyH_CORBAConnectorImplementation"/>
+  </instance>
+
+  <instance xmi:id="NoReplyH.ComponentImplementations.NoReplyHImplementation.NoReplyH.Sender">
+    <name>NoReplyH.ComponentImplementations.NoReplyHImplementation.NoReplyH.Sender</name>
+    <node>SenderNode</node>
+    <source/>
+    <implementation xmi:idref="NoReplyH_SenderImplementation"/>
+  </instance>
+
+  <instance xmi:id="NoReplyH.ComponentImplementations.NoReplyHImplementation.NoReplyH.AMI">
+    <name>NoReplyH.ComponentImplementations.NoReplyHImplementation.NoReplyH.AMI</name>
+    <node>SenderNode</node>
+    <source/>
+    <implementation xmi:idref="NoReplyH_AMIConnectorImplementation"/>
+  </instance>
+
+  <connection>
+    <name>run_asynch_foo_connection</name>
+    <internalEndpoint>
+      <portName>sendc_run_my_foo</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="NoReplyH.ComponentImplementations.NoReplyHImplementation.NoReplyH.Sender" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>ami4ccm_port_ami4ccm_provides</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="NoReplyH.ComponentImplementations.NoReplyHImplementation.NoReplyH.AMI" />
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>synch_foo_connection</name>
+    <internalEndpoint>
+      <portName>ami4ccm_port_ami4ccm_sync_provides</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="NoReplyH.ComponentImplementations.NoReplyHImplementation.NoReplyH.AMI" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>run_my_foo</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="NoReplyH.ComponentImplementations.NoReplyHImplementation.NoReplyH.Sender" />
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>do_foo_connection</name>
+    <internalEndpoint>
+      <portName>srr_facet</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="NoReplyH.ComponentImplementations.NoReplyHImplementation.NoReplyH.CORBA" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>ami4ccm_port_ami4ccm_uses</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="NoReplyH.ComponentImplementations.NoReplyHImplementation.NoReplyH.AMI" />
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>synch_foo_connection_receiver</name>
+    <internalEndpoint>
+      <portName>srr_receptacle</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="NoReplyH.ComponentImplementations.NoReplyHImplementation.NoReplyH.CORBA" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>do_my_foo</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="NoReplyH.ComponentImplementations.NoReplyHImplementation.NoReplyH.Receiver" />
+    </internalEndpoint>
+  </connection>
+
+  <artifact xmi:id="NoReplyH_AMI_ExecArtifact">
+    <name>NoReplyH.ImplementationArtifacts.AMIArtifacts.AMI_exec</name>
+    <source/>
+    <node/>
+    <location>no_reply_h_ami4ccm_conn</location>
+  </artifact>
+
+  <artifact xmi:id="NoReplyH_CORBA_ExecArtifact">
+    <name>NoReplyH.ImplementationArtifacts.CORBAArtifacts.CORBA_exec</name>
+    <source/>
+    <node/>
+    <location>no_reply_h_corba_conn</location>
+  </artifact>
+
+  <artifact xmi:id="NoReplyH_Receiver_ExecArtifact">
+    <name>NoReplyH.ImplementationArtifacts.ReceiverArtifacts.Receiver_exec</name>
+    <source/>
+    <node/>
+    <location>no_reply_h_receiver_exec</location>
+  </artifact>
+
+  <artifact xmi:id="NoReplyH_Sender_ExecArtifact">
+    <name>NoReplyH.ImplementationArtifacts.SenderArtifacts.Sender_exec</name>
+    <source/>
+    <node/>
+    <location>no_reply_h_sender_exec</location>
+  </artifact>
+
+</Deployment:DeploymentPlan>

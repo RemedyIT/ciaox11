@@ -1,0 +1,53 @@
+project(*idl_gen) : ciaox11_test_base_idl {
+  custom_only = 1
+  idlflags += -Wb,base_export_macro=BST_TEST_OBJ \
+              -Wb,base_export_include=bst_test_obj
+
+  IDL_Files {
+    gendir=generated_code
+    bst_test_obj.idl
+  }
+}
+
+project(*lem_gen) : ciaox11_test_base_lem_idl {
+  custom_only = 1
+  idlflags += -Wb,base_export_macro=BST_TEST_OBJ \
+              -Wb,base_export_include=bst_test_obj
+
+  IDL_Files {
+    gendir=generated_code
+    bst_test_obj.idl
+  }
+}
+
+project(*stub) : ciaox11_test_base {
+  after += *idl_gen
+
+  dynamicflags += BST_TEST_OBJ_STUB_BUILD_DLL
+
+  Source_Files {
+    generated_code/bst_test_objC.cpp
+  }
+
+  Header_Files {
+    generated_code/bst_test_objC.h
+    generated_code/bst_test_obj_stub_export.h
+  }
+}
+
+project(*lem_stub) : ciaox11_test_base {
+  after += *stub *lem_gen
+  libs  += *stub
+
+  dynamicflags += BST_TEST_OBJ_LEM_STUB_BUILD_DLL
+
+  Source_Files {
+    generated_code/bst_test_objEC.cpp
+  }
+
+  Header_Files {
+    generated_code/bst_test_objEC.h
+    generated_code/bst_test_obj_lem_stub_export.h
+  }
+}
+

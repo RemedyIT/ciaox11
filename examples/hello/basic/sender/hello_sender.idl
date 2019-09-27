@@ -1,0 +1,24 @@
+/**
+ * @file    hello_sender.idl
+ * @author  Johnny Willemsen
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef HELLO_SENDER_IDL_
+#define HELLO_SENDER_IDL_
+
+#include <Components.idl>
+
+#include "hello.idl"
+
+module Hello
+{
+  component Sender
+  {
+    uses MyFoo run_my_foo;
+  };
+};
+
+#endif /* HELLO_SENDER_IDL_ */

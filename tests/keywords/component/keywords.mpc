@@ -1,0 +1,42 @@
+project(*idl_gen) : ciaox11_test_comp_all_idl {
+  custom_only = 1
+  idlflags += -Wb,base_export_macro=KEYWORDS \
+              -Wb,base_export_include=keywords \
+              -Gex -oI .
+  // IDL contains (a) datatype(s) and (an) interface(s)
+  idlflags -= -Scc -Scp
+
+  IDL_Files {
+    gendir = generated_code
+    keywords.idl
+  }
+}
+
+project(*exec) : ciaox11_test_exec_all {
+
+  after += *idl_gen
+
+  dynamicflags += KEYWORDS_LEM_STUB_BUILD_DLL \
+                  KEYWORDS_EXEC_BUILD_DLL \
+                  KEYWORDS_SVNT_BUILD_DLL
+
+  Source_Files {
+    keywords_exec.cpp
+    generated_code/keywordsC.cpp
+    generated_code/keywordsEC.cpp
+    generated_code/keywords_svnt.cpp
+  }
+
+  Header_Files {
+    generated_code/keywordsC.h
+
+    generated_code/keywordsEC.h
+    generated_code/keywords_lem_stub_export.h
+
+    keywords_exec.h
+    generated_code/keywords_exec_export.h
+
+    generated_code/keywords_svnt.h
+    generated_code/keywords_svnt_export.h
+  }
+}

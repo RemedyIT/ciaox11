@@ -1,0 +1,82 @@
+
+// generated from <%= ridl_template_path %>
+/// Namespace for implementation of <%= scoped_cxxname %> component
+namespace <%= executor_cxx_namespace %>
+{
+%# Use signature of receptacle port to generate replyhandler
+%# In the future could be replaced by using an annotation in ami4ccm.idl
+% ports.each do |_p|
+%   nest { _p.gen_reply_handler_exec } if (_p.port_type == :receptacle && (_p.cxxname.include? 'ami4ccm_uses'))
+% end
+
+% all_ports.each do |_p|
+%   nest { _p.gen_facet_exec } if _p.port_type == :facet
+% end
+
+  /// Component Executor Implementation Class : <%= lem_name %>_conn_i
+  class <%= lem_name %>_conn_i final
+    : public virtual IDL::traits< <%= scoped_ccm_name %>>::base_type
+  {
+  public:
+    /// Constructor
+    <%= lem_name %>_conn_i () = default;
+    /// Destructor
+    virtual ~<%= lem_name %>_conn_i () = default;
+% if all_ports.size > 0
+
+    /** @name Component port operations. */
+    //@{
+
+% all_ports.each do |_p|
+%   if _p.port_type == :facet
+    /// Factory method and getter for the <%= _p.lem_name %> facet
+    /// @return existing instance of facet if one exists, else creates one
+    virtual <%= _p.interface_type.scoped_ccm_name_return_type %> get_<%= _p.lem_name %> () override;
+%   end
+% end
+    //@}
+%end
+
+    /** @name Session component operations */
+    //@{
+
+    /// Setter for container context for this component
+    /// @param[in] ctx Component context
+    virtual void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
+
+    /// Component state change method to configuration_complete state
+    virtual void configuration_complete () override;
+
+    /// Component state change method to activated state
+    virtual void ccm_activate () override;
+
+    /// Component state change method to passivated state
+    virtual void ccm_passivate () override;
+
+    /// Component state change method to removed state
+    virtual void ccm_remove () override;
+    //@}
+
+  private:
+    /// Context for component instance. Used for all middleware communication
+    IDL::traits< <%= scoped_ccm_name %>_Context >::ref_type context_;
+% if all_ports.size > 0
+
+    /** @name Component facets. */
+% nest (2) { visit_comp_facet}
+
+%end
+  private:
+    /** @name Illegal to be called. Deleted explicitly to let the compiler detect any violation */
+    //@{
+    <%= lem_name %>_conn_i(const <%= lem_name %>_conn_i&) = delete;
+    <%= lem_name %>_conn_i(<%= lem_name %>_conn_i&&) = delete;
+    <%= lem_name %>_conn_i& operator=(const <%= lem_name %>_conn_i&) = delete;
+    <%= lem_name %>_conn_i& operator=(<%= lem_name %>_conn_i&&) = delete;
+    //@}
+  };
+} // namespace <%= executor_cxx_namespace %>
+
+extern "C" <%= conn_export_macro %> void
+create_<%= scoped_unescaped_type.scope_to_cxxname %>_Impl (
+  IDL::traits<Components::EnterpriseComponent>::ref_type& component);

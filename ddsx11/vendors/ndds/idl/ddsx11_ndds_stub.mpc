@@ -1,0 +1,107 @@
+project (ddsx11_ndds_types_idl_gen) : install, \
+                                      ddsx11_ndds_idl_defaults, \
+                                      taox11_anytypecode, \
+                                      ddsx11_ndds_conversion_traits {
+  custom_only = 1
+  idlflags += -Wb,stub_export_macro=DDSX11_NDDS_STUB_Export \
+              -Wb,stub_export_include=ddsx11_ndds_stub_export.h \
+  // Do not suppress cdr streaming since anytypecode needs it..
+  // TODO CHECK
+  idlflags -= -Scdr
+
+  IDL_Files {
+    ndds_dcps_types.idl
+  }
+
+  specific {
+    install_dir = ddsx11/vendors/ndds/idl
+  }
+}
+
+project (ddsx11_ndds_dcps_all_idl_gen) : install, \
+                                     ddsx11_ndds_idl_defaults, \
+                                     ddsx11_ndds_conversion_traits {
+  after += ddsx11_ndds_types_idl_gen
+  custom_only = 1
+  idlflags += -Sddsx11,nddslfc \
+              -Wb,stub_export_macro=DDSX11_NDDS_STUB_Export \
+              -Wb,stub_export_include=ddsx11_ndds_stub_export.h -Scp
+
+  IDL_Files {
+    ndds_dcps_all.idl
+  }
+
+  specific {
+    install_dir = ddsx11/vendors/ndds/idl
+  }
+}
+
+project (ddsx11_ndds_instancehandle_idl_gen) : install, \
+                                        ddsx11_ndds_idl_defaults {
+  after += ddsx11_ndds_dcps_all_idl_gen
+  custom_only = 1
+  idlflags += -Wb,stub_export_macro=DDSX11_NDDS_STUB_Export \
+              -Wb,stub_export_include=ddsx11_ndds_stub_export.h \
+              -Wb,post_include=idl/ndds_dcps_instance_handle.h -Scp
+
+  IDL_Files {
+    ndds_dcps_instance_handle.idl
+  }
+
+  specific {
+    install_dir = ddsx11/vendors/ndds/idl
+  }
+}
+
+project (ddsx11_ndds_dcps_idl_gen) : install, \
+                                     ddsx11_ndds_idl_defaults {
+  custom_only = 1
+  idlflags += -Wb,stub_export_macro=DDSX11_NDDS_STUB_Export \
+              -Wb,stub_export_include=ddsx11_ndds_stub_export.h \
+              -Wb,post_include=idl/dds_log_formatters.h \
+              -Glem -Gxhst
+
+  // Make sure we first compile the vendor specific IDL
+  after += ddsx11_ndds_types_idl_gen ddsx11_ndds_instancehandle_idl_gen ddsx11_ndds_dcps_all_idl_gen
+
+  IDL_Files {
+    dds_dcps.idl
+  }
+
+  specific {
+    install_dir = ddsx11/vendors/ndds/idl
+  }
+}
+
+project (ddsx11_ndds_stub) : ddsx11_output, \
+                             ddsx11_ndds_flags, \
+                             taox11_anytypecode {
+
+  after += ddsx11_ndds_dcps_idl_gen
+
+  dynamicflags += DDSX11_NDDS_STUB_BUILD_DLL
+
+  IDL_Files {
+  }
+
+  Source_Files {
+    dds_dcpsC.cpp
+    ndds_dcps_allC.cpp
+    ndds_dcps_typesC.cpp
+    ndds_dcps_instance_handleC.cpp
+    ndds_dcps_instance_handle.cpp
+  }
+
+  Header_Files {
+    dds_dcpsC.h
+    ndds_dcps_allC.h
+    ndds_dcps_typesC.h
+    ndds_dcps_instance_handleC.h
+    ndds_dcps_instance_handle.h
+    ddsx11_ndds_stub_export.h
+  }
+
+  specific {
+    install_dir = ddsx11/vendors/ndds/idl
+  }
+}

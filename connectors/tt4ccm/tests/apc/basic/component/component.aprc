@@ -1,0 +1,6 @@
+# axp  will detect the use of timed trigger connectors in component idl and
+# uses the correct mpc projects .
+
+component 'tt_comp_tester' do |comp|
+  comp.idl %w{ tt_test.idl }
+end

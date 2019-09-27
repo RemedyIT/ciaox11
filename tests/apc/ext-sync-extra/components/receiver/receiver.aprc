@@ -1,0 +1,20 @@
+component 'receiver_comp' do |comp|
+  comp.idl %w{ hello_receiver.idl }
+
+  #facultative extra source -  and header files to include :
+  comp.sources %w{test.cpp}
+  comp.headers %w{test.h}
+
+  #prefix sharednames, default component name (in this case: receiver_comp)
+  comp.shared_name 'my_receiver'
+
+  #prefix export headers, default name component
+  comp.export_name 'my_export_receiver'
+
+  #gen_dir is default 'generated_code'
+  comp.gen_dir  :my_dir
+
+  #Add extra include paths
+  comp.includes %w{../test }
+end
+

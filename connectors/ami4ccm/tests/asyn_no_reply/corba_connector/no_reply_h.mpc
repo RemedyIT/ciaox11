@@ -1,0 +1,54 @@
+project(*cc_idl_gen) : ciaox11_test_cc_base_idl {
+  custom_only = 1
+  after += no_reply_h_idl_gen no_reply_h_lem_gen
+  idlflags += -Wb,base_export_macro=NO_REPLY_H \
+              -Wb,base_export_include=no_reply_h
+
+  IDL_Files {
+    gendir=generated_code
+    ../base/no_reply_h.idl
+  }
+}
+
+project(*skel) : ciaox11_test_base, taox11_portableserver, ciaox11_corba4ccm {
+  after += *stub *cc_idl_gen
+  libs  += *stub
+
+  dynamicflags += NO_REPLY_H_SKEL_BUILD_DLL
+
+  Source_Files {
+    generated_code/no_reply_hS.cpp
+  }
+
+  Header_Files {
+    generated_code/no_reply_hS.h
+    generated_code/no_reply_h_skel_export.h
+  }
+}
+
+project(*corba_conn) : ciaox11_test_base, ciaox11_executor, ciaox11_corba4ccm_impl {
+  after += no_reply_h_skel no_reply_h_stub no_reply_h_lem_stub *cc_idl_gen
+  libs  += no_reply_h_skel no_reply_h_stub no_reply_h_lem_stub
+
+  dynamicflags += NO_REPLY_H_CC_LEM_STUB_BUILD_DLL \
+                  NO_REPLY_H_CC_EXEC_BUILD_DLL \
+                  NO_REPLY_H_CC_SVNT_BUILD_DLL
+
+  Source_Files {
+    generated_code/no_reply_h_ccEC.cpp
+
+    generated_code/no_reply_h_cc_exec.cpp
+    generated_code/no_reply_h_cc_svnt.cpp
+  }
+  Header_Files {
+    generated_code/no_reply_h_ccC.h
+    generated_code/no_reply_h_ccEC.h
+    generated_code/no_reply_h_cc_lem_stub_export.h
+
+    generated_code/no_reply_h_cc_exec.h
+    generated_code/no_reply_h_cc_exec_export.h
+
+    generated_code/no_reply_h_cc_svnt.h
+    generated_code/no_reply_h_cc_svnt_export.h
+  }
+}

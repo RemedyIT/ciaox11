@@ -1,0 +1,11 @@
+
+connector 'asyn_usesmulti' do |conn|
+
+  conn.idl %w{ usesmulti.idl }
+  # prefix of generated export headers:
+  conn.export_name 'usesmulti'
+  # project creator add after shared name _amic_conn
+  conn.shared_name 'asyn_usesmulti'
+  conn.port_type :ami4ccm
+  conn.gen_dir  :build
+end

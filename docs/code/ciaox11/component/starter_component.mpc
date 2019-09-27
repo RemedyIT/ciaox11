@@ -1,0 +1,38 @@
+project(*idl_gen) : ciaox11_test_comp_all_idl_exec_gen {
+  custom_only = 1
+  after += starter_idl_gen starter_lem_gen
+  idlflags += -Wb,base_export_macro=STARTER_COMPONENT \
+              -Wb,base_export_include=starter_component
+
+  IDL_Files {
+    gendir=generated_code
+    starter_component.idl
+  }
+}
+
+// No skeleton library needed here since the receiver is
+// independent of the inter-component middleware.
+project(*exec) : ciaox11_test_exec_all {
+  after += starter_stub starter_lem_stub *idl_gen
+  libs  += starter_stub starter_lem_stub
+
+  dynamicflags += STARTER_COMPONENT_LEM_STUB_BUILD_DLL \
+                  STARTER_COMPONENT_EXEC_BUILD_DLL \
+                  STARTER_COMPONENT_SVNT_BUILD_DLL
+  Source_Files {
+    starter_component_exec.cpp
+    generated_code/starter_componentEC.cpp
+    generated_code/starter_component_svnt.cpp
+  }
+
+  Header_Files {
+    starter_component_exec.h
+    generated_code/starter_component_exec_export.h
+
+    generated_code/starter_componentEC.h
+    generated_code/starter_component_lem_stub_export.h
+
+    generated_code/starter_component_svnt.h
+    generated_code/starter_component_svnt_export.h
+  }
+}

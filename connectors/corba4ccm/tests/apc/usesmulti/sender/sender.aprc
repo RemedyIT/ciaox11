@@ -1,0 +1,15 @@
+component 'hello_sender' do |comp|
+  # data/type idl
+  comp.idl %w{ usesmulti.idl }
+  # Define component 'Sender' in scope 'UsesSM'
+  comp.define 'UsesMulti::Sender' do |intf|
+    # ---------         ports ----------------------------------
+    # synch multiplex port with interface UsesMulti::One defined in usesmulti.idl
+    intf.port 'm_run_my_one' do |p|
+      p.uses 'UsesMulti::One', multiple: true
+    end
+
+  end
+
+  comp.combined_lib true
+end

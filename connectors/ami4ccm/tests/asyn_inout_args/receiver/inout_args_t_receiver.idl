@@ -1,0 +1,26 @@
+/**
+ * @file    inout_args_t_receiver.idl
+ * @author  Marijke Hengstmengel
+ *
+ * @brief   base of receiver inout arguments test
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef INTERINOUT_T_RECEIVER_IDL
+#define INTERINOUT_T_RECEIVER_IDL
+
+#include <Components.idl>
+
+#include "inout_args_t.idl"
+
+module InterInOutT
+{
+  component Receiver
+  {
+    /// Provides
+    provides MyFoo do_my_foo;
+  };
+};
+#endif

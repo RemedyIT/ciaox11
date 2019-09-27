@@ -1,0 +1,20 @@
+/**
+ * @file    ccm_enterprisecomponent.idl
+ * @author  Johnny Willemsen
+ *
+ * @brief   Compliant with OMG 06-04-01 Section 8.3.2
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#if !defined (CCM_ENTERPRISECOMPONENT_IDL)
+#define CCM_ENTERPRISECOMPONENT_IDL
+
+module Components
+{
+  typeprefix Components "omg.org";
+
+  local interface EnterpriseComponent {};
+};
+#endif /* CCM_CONTAINER_IDL */

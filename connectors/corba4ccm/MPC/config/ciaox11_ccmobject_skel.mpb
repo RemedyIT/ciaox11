@@ -1,0 +1,11 @@
+// --------------------------------------------------------------------
+// ciaox11_ccmobject_skel.mpb
+//
+// Copyright (c) Remedy IT Expertise BV
+// Chamber of commerce Rotterdam nr.276339, The Netherlands
+// --------------------------------------------------------------------
+
+project : taox11_defaults, ciaox11_ccmobject_stub, taox11_portableserver {
+  libs += ciaox11_ccmobject_skel
+  after += ciaox11_ccmobject_skel
+}

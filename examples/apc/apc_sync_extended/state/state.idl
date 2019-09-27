@@ -1,0 +1,34 @@
+/**
+ * @file    state.idl
+ * @author  Martin Corino
+ *
+ * @brief   Data interfaces for minimal sync manual example
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef STATE_IDL_
+#define STATE_IDL_
+
+module Data
+{
+  struct State
+  {
+    long count;
+    long last_answer;
+  };
+
+  interface StateKeeper
+  {
+    void increment_receipt_count ();
+
+    long receipt_count ();
+
+    void set_last_answer (in long answer);
+
+    long last_answer ();
+  };
+};
+
+#endif /* STATE_IDL_ */

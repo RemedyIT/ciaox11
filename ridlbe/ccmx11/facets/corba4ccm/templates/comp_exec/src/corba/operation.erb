@@ -1,0 +1,24 @@
+
+// generated from <%= ridl_template_path %>
+% _args = arguments.dup
+% _arglist = []
+<%= scoped_cxx_return_type %>
+<%= owner.lem_name %>_exec_i::<%= cxxname %> (<% if _args.empty? %><%= ')' %><% end %>
+% while !_args.empty?
+%   _arg = _args.shift
+%   _arglist << _arg.cxxname
+  <%= _arg.implementation_arg_type %> <%= _arg.cxxname %><%= _args.empty? ? ')' : ',' %>
+% end
+{
+%  _receptacle_port = component.ports.find {|p| p.port_type == :receptacle }
+% _pfx=''
+% if has_return?
+%   _pfx='  '
+  return
+% end
+  <%= _pfx %>this->context_->get_connection_<%= _receptacle_port.cxxname %> ()-><%= cxxname %> (<%= _arglist.empty? ? ');' : '' %>
+% while !_arglist.empty?
+%   _arg = _arglist.shift
+    <%= _pfx %><%= _arg %><%= _arglist.empty? ? ');' : ',' %>
+% end
+}

@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!--
+ * @file   deploymentplan.cdp
+ * @author Marijke Hengstmengel
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+-->
+<Deployment:DeploymentPlan xmlns:Deployment="http://www.omg.org/Deployment" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.omg.org/Deployment Deployment.xsd">
+
+  <UUID>118D5D70-E131-11DE-8000-00242C889DAA</UUID>
+
+  <implementation xmi:id="_669DBD2E-E130-11DE-B471-00242C889DAA">
+    <name>PICML_default_xme_file.ComponentImplementations.FooImpl.fooImpl</name>
+    <source/>
+    <artifact xmi:idref="_669DBD2E-E130-11DE-B473-00242C889DAA"/>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_Foo_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>PICML_default_xme_file.ImplementationArtifacts.FooArtifacts.foo_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_Foo_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>PICML_default_xme_file.ImplementationArtifacts.FooArtifacts.foo_exec</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <instance xmi:id="_B7A1E75E-E130-11DE-8000-00242C889DAA">
+    <name>PICML_default_xme_file.ComponentImplementations.ComponentImplementationContainer.ComponentAssembly.foo</name>
+    <node>NodeOne</node>
+    <source/>
+    <implementation xmi:idref="_669DBD2E-E130-11DE-B471-00242C889DAA"/>
+
+    <configProperty>
+      <name>nl.remedy.it.DnCX11.InstanceIOR</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>FooImpl.ior</string>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>m_foo_pt_component</name>
+      <value>
+        <type>
+          <kind>tk_short</kind>
+        </type>
+        <value>
+          <short>22</short>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>m_foo_pt_virtual</name>
+      <value>
+        <type>
+          <kind>tk_short</kind>
+        </type>
+        <value>
+          <short>22</short>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>and</name>
+      <value>
+        <type>
+          <kind>tk_short</kind>
+        </type>
+        <value>
+          <short>22</short>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>auto</name>
+      <value>
+        <type>
+          <kind>tk_short</kind>
+        </type>
+        <value>
+          <short>22</short>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>int16_t</name>
+      <value>
+        <type>
+          <kind>tk_short</kind>
+        </type>
+        <value>
+          <short>22</short>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>port</name>
+      <value>
+        <type>
+          <kind>tk_short</kind>
+        </type>
+        <value>
+          <short>22</short>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>mirrorport</name>
+      <value>
+        <type>
+          <kind>tk_short</kind>
+        </type>
+        <value>
+          <short>22</short>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>interface</name>
+      <value>
+        <type>
+          <kind>tk_short</kind>
+        </type>
+        <value>
+          <short>22</short>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>abstract</name>
+      <value>
+        <type>
+          <kind>tk_short</kind>
+        </type>
+        <value>
+          <short>22</short>
+        </value>
+      </value>
+    </configProperty>
+
+    <configProperty>
+      <name>override</name>
+      <value>
+        <type>
+          <kind>tk_struct</kind>
+          <struct>
+            <name>Bar</name>
+            <typeId>IDL:Bar:1.0</typeId>
+            <member>
+              <name>something</name>
+              <type>
+                <kind>tk_short</kind>
+              </type>
+            </member>
+          </struct>
+        </type>
+        <value>
+          <member>
+            <name>something</name>
+            <value>
+              <short>3</short>
+            </value>
+          </member>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <artifact xmi:id="_669DBD2E-E130-11DE-B473-00242C889DAA">
+    <name>PICML_default_xme_file.ImplementationArtifacts.FooArtifacts.foo_exec</name>
+    <source/>
+    <node/>
+    <location>attrib_keyw_exec</location>
+  </artifact>
+
+  <localityConstraint>
+    <constraint>SameProcess</constraint>
+    <constrainedInstance xmi:idref="_B7A1E75E-E130-11DE-8000-00242C889DAA"/>
+  </localityConstraint>
+
+</Deployment:DeploymentPlan>

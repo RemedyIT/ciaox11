@@ -1,0 +1,95 @@
+/**
+ * @file    example_na_defn.idl
+ * @author  Marcel Smit
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef CX_PORTS__TYPES__EXAMPLE_NA_DEFN_IDL
+#define CX_PORTS__TYPES__EXAMPLE_NA_DEFN_IDL
+
+#include "example_b_defn.idl"
+
+/// @namespace Example
+module Example {
+
+    /// @enum NA1
+    ///
+    enum NA1 {
+        NA1_1,
+        NA1_3,
+        NA1_2
+    };
+
+    /// @enum NA2
+    ///
+    enum NA2 {
+        NA2_1,
+        NA2_3,
+        NA2_2
+    };
+
+    /// @enum NA3
+    ///
+    enum NA3 {
+        NA3_2,
+        NA3_1,
+        NA3_3
+    };
+
+    /// @struct NA4
+    ///
+    struct NA4 {
+        unsigned long NA4_6;
+        unsigned short NA4_5;
+        unsigned short NA4_1;
+        unsigned long NA4_4;
+        unsigned long NA4_2;
+        double NA4_3;
+        double NA4_7;
+    }; //@TopLevel(false)
+
+    /// @struct NA6
+    ///
+    struct NA6 {
+
+        string NA6_10;
+
+        string NA6_08;
+
+        string NA6_09;
+
+        string NA6_13;
+
+        long long NA6_05;
+
+        Example::B45 NA6_11;
+
+        Example::NA1 NA6_01;
+
+        double NA6_02;
+
+        Example::NA2 NA6_03;
+
+        Example::B49 NA6_04;
+
+        Example::NA3 NA6_06;
+
+        Example::B49 NA6_07;
+
+        unsigned long NA6_12;
+
+        unsigned long NA6_14;
+    }; //@TopLevel(false)
+
+    /// @struct NA5
+    ///
+    struct NA5 {
+
+        double NA5_1;
+    }; //@TopLevel(false)
+};
+
+#endif // CX_PORTS__TYPES__EXAMPLE_NA_DEFN_IDL
+
+/// @}

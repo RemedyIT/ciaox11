@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!--
+ * @file   plan.cdp
+ * @author Marcel Smit
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+-->
+<Deployment:DeploymentPlan xmlns:Deployment="http://www.omg.org/Deployment"
+  xmlns:xmi="http://www.omg.org/XMI"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.omg.org/Deployment Deployment.xsd">
+
+  <UUID>6D382DAE-9024-4C4D-B91B-A0F9176AFACF</UUID>
+
+  <implementation xmi:id="InterceptorSenderImplementation">
+    <name>InterceptorSenderImplementation</name>
+    <source/>
+    <artifact xmi:idref="Interceptor_Sender_ExecArtifact"/>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_Interceptor_Interceptor_Sender_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Interceptor_Sender_ExecArtifact</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_Interceptor_Interceptor_Sender_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Interceptor_Sender_ExecArtifact</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="InterceptorReceiverImplementation">
+    <name>InterceptorReceiverImplementation</name>
+    <source/>
+    <artifact xmi:idref="Interceptor_Receiver_ExecArtifact"/>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_Interceptor_Interceptor_Receiver_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Interceptor_Receiver_ExecArtifact</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_Interceptor_Interceptor_Receiver_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Interceptor_Receiver_ExecArtifact</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="InterceptorCORBAConnectorImplementation">
+    <name>InterceptorReceiverImplementation</name>
+    <source/>
+    <artifact xmi:idref="Interceptor_CORBA_Connector_ExecArtifact"/>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_Interceptor_Foo_SRR_CORBA_Connector_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Interceptor_CORBA_Connector_ExecArtifact</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_Interceptor_Foo_SRR_CORBA_Connector_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Interceptor_CORBA_Connector_ExecArtifact</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <instance xmi:id="InterceptorSenderInstance1">
+    <name>InterceptorSenderInstance1</name>
+    <node>SenderNode</node>
+    <source/>
+    <implementation xmi:idref="InterceptorSenderImplementation"/>
+  </instance>
+  <instance xmi:id="InterceptorCORBAConnectorSenderInstance1">
+    <name>InterceptorCORBAConnectorSenderInstance1</name>
+    <node>SenderNode</node>
+    <source/>
+    <implementation xmi:idref="InterceptorCORBAConnectorImplementation"/>
+  </instance>
+
+  <instance xmi:id="InterceptorSenderInstance2">
+    <name>InterceptorSenderInstance2</name>
+    <node>SenderNode</node>
+    <source/>
+    <implementation xmi:idref="InterceptorSenderImplementation"/>
+  </instance>
+  <instance xmi:id="InterceptorCORBAConnectorSenderInstance2">
+    <name>InterceptorCORBAConnectorSenderInstance2</name>
+    <node>SenderNode</node>
+    <source/>
+    <implementation xmi:idref="InterceptorCORBAConnectorImplementation"/>
+  </instance>
+
+  <instance xmi:id="InterceptorReceiverInstance1">
+    <name>InterceptorReceiverInstance1</name>
+    <node>ReceiverNode</node>
+    <source/>
+    <implementation xmi:idref="InterceptorReceiverImplementation"/>
+  </instance>
+  <instance xmi:id="InterceptorCORBAConnectorReceiverInstance">
+    <name>InterceptorCORBAConnectorReceiverInstance</name>
+    <node>ReceiverNode</node>
+    <source/>
+    <implementation xmi:idref="InterceptorCORBAConnectorImplementation"/>
+  </instance>
+
+  <connection>
+    <name>Receiver_CORBA_connector.srr_receptacle:InterceptorReceiverInstance1.prov_my_foo</name>
+    <internalEndpoint>
+      <portName>prov_my_foo</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="InterceptorReceiverInstance1" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>srr_receptacle</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="InterceptorCORBAConnectorReceiverInstance" />
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>Sender_CORBA_connector1.srr_facet:InterceptorSenderInstance1.run_my_foo</name>
+    <internalEndpoint>
+      <portName>srr_facet</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="InterceptorCORBAConnectorSenderInstance1" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>run_my_foo</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="InterceptorSenderInstance1" />
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>Sender_CORBA_connector1.srr_receptacle:Receiver_CORBA_connector.srr_facet</name>
+    <internalEndpoint>
+      <portName>srr_facet</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="InterceptorCORBAConnectorReceiverInstance" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>srr_receptacle</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="InterceptorCORBAConnectorSenderInstance1" />
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>Sender_CORBA_connector2.srr_facet:InterceptorSenderInstance2.run_my_foo</name>
+    <internalEndpoint>
+      <portName>srr_facet</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="InterceptorCORBAConnectorSenderInstance2" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>run_my_foo</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="InterceptorSenderInstance2" />
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>Sender_CORBA_connector2.srr_receptacle:Receiver_CORBA_connector.srr_facet</name>
+    <internalEndpoint>
+      <portName>srr_facet</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="InterceptorCORBAConnectorReceiverInstance" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>srr_receptacle</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="InterceptorCORBAConnectorSenderInstance2" />
+    </internalEndpoint>
+  </connection>
+
+
+  <artifact xmi:id="Interceptor_Sender_ExecArtifact">
+    <name>Interceptor_Sender_ExecArtifact</name>
+    <source/>
+    <node/>
+    <location>sender_exec</location>
+  </artifact>
+
+  <artifact xmi:id="Interceptor_Receiver_ExecArtifact">
+    <name>Interceptor_Receiver_ExecArtifact</name>
+    <source/>
+    <node/>
+    <location>receiver_exec</location>
+  </artifact>
+
+  <artifact xmi:id="Interceptor_CORBA_Connector_ExecArtifact">
+    <name>Interceptor_CORBA_Connector_ExecArtifact</name>
+    <source/>
+    <node/>
+    <location>interceptor_corba_conn</location>
+  </artifact>
+
+</Deployment:DeploymentPlan>

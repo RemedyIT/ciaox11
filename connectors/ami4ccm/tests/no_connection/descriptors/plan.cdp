@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<Deployment:DeploymentPlan xmlns:Deployment="http://www.omg.org/Deployment"
+   xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.omg.org/Deployment Deployment.xsd">
+
+  <UUID>6D382DAE-9024-4C4D-B91B-A0F9176AFACF</UUID>
+
+  <implementation xmi:id="HelloT_ReceiverImplementation">
+    <name>HelloT_ReceiverImplementation</name>
+    <source/>
+    <artifact xmi:idref="HelloT_Receiver_ExecArtifact"/>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_HelloT_Receiver_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>HelloT.ImplementationArtifacts.ReceiverArtifacts.Receiver_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_HelloT_Receiver_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="HelloT_SenderImplementation">
+    <name>HelloT_SenderImplementation</name>
+    <source/>
+    <artifact xmi:idref="HelloT_Sender_ExecArtifact"/>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_HelloT_Sender_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>HelloT.ImplementationArtifacts.SenderArtifacts.Sender_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_HelloT_Sender_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="HelloT_AMIConnectorImplementation">
+    <name>HelloT_AMIConnectorImplementation</name>
+    <source/>
+    <artifact xmi:idref="HelloT_AMI_ExecArtifact"/>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_HelloT_AMI4CCM_MyFoo_Connector_AMI4CCM_Connector_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>HelloT.ImplementationArtifacts.AMIArtifacts.AMI_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_HelloT_AMI4CCM_MyFoo_Connector_AMI4CCM_Connector_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="HelloT_CORBAConnectorImplementation">
+    <name>HelloT_CORBAConnectorImplementation</name>
+    <source/>
+    <artifact xmi:idref="HelloT_CORBA_ExecArtifact"/>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_HelloT_MyFoo_SRR_CORBA_Connector_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>HelloT.ImplementationArtifacts.CORBAArtifacts.CORBA_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_HelloT_MyFoo_SRR_CORBA_Connector_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <instance xmi:id="HelloT.ComponentImplementations.HelloTImplementation.HelloT.Receiver">
+    <name>HelloT.ComponentImplementations.HelloTImplementation.HelloT.Receiver</name>
+    <node>ReceiverNode</node>
+    <source/>
+    <implementation xmi:idref="HelloT_ReceiverImplementation"/>
+  </instance>
+  <instance xmi:id="HelloT.ComponentImplementations.HelloTImplementation.HelloT.Receiver.CORBA">
+    <name>HelloT.ComponentImplementations.HelloTImplementation.HelloT.Receiver.CORBA</name>
+    <node>ReceiverNode</node>
+    <source/>
+    <implementation xmi:idref="HelloT_CORBAConnectorImplementation"/>
+  </instance>
+
+  <instance xmi:id="HelloT.ComponentImplementations.HelloTImplementation.HelloT.Sender">
+    <name>HelloT.ComponentImplementations.HelloTImplementation.HelloT.Sender</name>
+    <node>SenderNode</node>
+    <source/>
+    <implementation xmi:idref="HelloT_SenderImplementation"/>
+  </instance>
+
+  <instance xmi:id="HelloT.ComponentImplementations.HelloTImplementation.HelloT.AMI">
+    <name>HelloT.ComponentImplementations.HelloTImplementation.HelloT.AMI</name>
+    <node>SenderNode</node>
+    <source/>
+    <implementation xmi:idref="HelloT_AMIConnectorImplementation"/>
+  </instance>
+
+  <instance xmi:id="HelloT.ComponentImplementations.HelloTImplementation.HelloT.Sender.CORBA">
+    <name>HelloT.ComponentImplementations.HelloTImplementation.HelloT.Sender.CORBA</name>
+    <node>SenderNode</node>
+    <source/>
+    <implementation xmi:idref="HelloT_CORBAConnectorImplementation"/>
+  </instance>
+
+  <connection>
+    <name>run_asynch_foo_connection</name>
+    <internalEndpoint>
+      <portName>sendc_run_my_foo</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="HelloT.ComponentImplementations.HelloTImplementation.HelloT.Sender" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>ami4ccm_port_ami4ccm_provides</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="HelloT.ComponentImplementations.HelloTImplementation.HelloT.AMI" />
+    </internalEndpoint>
+  </connection>
+<!-- THIS CONNECTION IS INTENTIONALLY COMMENTED OUT
+  <connection>
+    <name>do_foo_connection</name>
+    <internalEndpoint>
+      <portName>do_my_foo</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="HelloT.ComponentImplementations.HelloTImplementation.HelloT.Receiver" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>ami4ccm_port_ami4ccm_uses</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="HelloT.ComponentImplementations.HelloTImplementation.HelloT.AMI" />
+    </internalEndpoint>
+  </connection>
+  -->
+
+  <!-- synchronous connection to the receiver -->
+  <connection>
+    <name>foo_connection_from_sender_to_cc_sender</name>
+    <internalEndpoint>
+      <portName>run_my_foo</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="HelloT.ComponentImplementations.HelloTImplementation.HelloT.Sender" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>srr_facet</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="HelloT.ComponentImplementations.HelloTImplementation.HelloT.Sender.CORBA" />
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>foo_connection_from_cc_sender_to_cc_receiver</name>
+    <internalEndpoint>
+      <portName>srr_receptacle</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="HelloT.ComponentImplementations.HelloTImplementation.HelloT.Sender.CORBA" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>srr_facet</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="HelloT.ComponentImplementations.HelloTImplementation.HelloT.Receiver.CORBA" />
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>foo_connection_from_cc_receiver_to_receiver</name>
+    <internalEndpoint>
+      <portName>srr_receptacle</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="HelloT.ComponentImplementations.HelloTImplementation.HelloT.Receiver.CORBA" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>do_my_foo</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="HelloT.ComponentImplementations.HelloTImplementation.HelloT.Receiver" />
+    </internalEndpoint>
+  </connection>
+
+  <artifact xmi:id="HelloT_AMI_ExecArtifact">
+    <name>HelloT.ImplementationArtifacts.AMIArtifacts.AMI_exec</name>
+    <source/>
+    <node/>
+    <location>no_connection_t_ami4ccm_conn</location>
+   </artifact>
+
+  <artifact xmi:id="HelloT_CORBA_ExecArtifact">
+    <name>HelloT.ImplementationArtifacts.CORBAArtifacts.CORBA_exec</name>
+    <source/>
+    <node/>
+    <location>no_connection_t_corba_conn</location>
+   </artifact>
+
+   <artifact xmi:id="HelloT_Receiver_ExecArtifact">
+    <name>HelloT.ImplementationArtifacts.ReceiverArtifacts.Receiver_exec</name>
+    <source/>
+    <node/>
+    <location>no_connection_t_receiver_exec</location>
+  </artifact>
+
+  <artifact xmi:id="HelloT_Sender_ExecArtifact">
+    <name>HelloT.ImplementationArtifacts.SenderArtifacts.Sender_exec</name>
+    <source/>
+    <node/>
+    <location>no_connection_t_sender_exec</location>
+  </artifact>
+
+</Deployment:DeploymentPlan>

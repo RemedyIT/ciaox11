@@ -1,0 +1,36 @@
+/**
+ * @file    port_r.idl
+ * @author  Marijke Hengstmengel
+ *
+ * @brief   Port data for minimal sync attrib example
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef PORT_R_IDL_
+#define PORT_R_IDL_
+
+
+module Hello
+{
+  struct test_struct_r {
+    long test_long_struct;
+  };
+
+  typedef sequence<test_struct_r> long_seq_r;
+
+  interface PortFooR
+  {
+    long hello (in long answer);
+  };
+
+  porttype portFooPortR
+  {
+    provides PortFooR foo_prov;
+    attribute short port_attrib;
+    attribute long_seq_r port_seq_attrib;
+  };
+};
+
+#endif /* PORT_R_IDL_ */

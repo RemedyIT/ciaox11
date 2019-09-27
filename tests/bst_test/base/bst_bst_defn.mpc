@@ -1,0 +1,28 @@
+// Only stub needs to be generated. Therefor no usage of the ciaox11_test
+// MPC base projects.
+project(*idl_gen) : ridl_defaults, taox11_anytypecode {
+  custom_only = 1
+  idlflags += -Wb,base_export_macro=BST_BST_DEFN \
+              -Wb,base_export_include=bst_bst_defn \
+              -Gxhst -SS -o generated_code
+
+  IDL_Files {
+    gendir=generated_code
+    bst_bst_defn.idl
+  }
+}
+
+project(*stub) : ciaox11_test_base, taox11_core_anytypecode {
+  after += *idl_gen
+
+  dynamicflags += BST_BST_DEFN_STUB_BUILD_DLL
+
+  Source_Files {
+    generated_code/bst_bst_defnC.cpp
+  }
+
+  Header_Files {
+    generated_code/bst_bst_defnC.h
+    generated_code/bst_bst_defn_stub_export.h
+  }
+}

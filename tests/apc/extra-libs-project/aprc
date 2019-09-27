@@ -1,0 +1,8 @@
+
+prj.idl_includes %w{ data state }
+prj.libout 'my_lib'
+prj.libpaths %w{testlib/seconlevellib
+                $(ACE_ROOT)/protocols/ace/INet }
+prj.libs %w{ ACE_INet}
+#prj.lit_libs :lit_lib_test
+prj.includes %w{ $(ACE_ROOT)/protocols}

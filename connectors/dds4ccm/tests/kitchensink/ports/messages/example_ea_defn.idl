@@ -1,0 +1,171 @@
+/**
+ * @file    example_ea_defn.idl
+ * @author  Marcel Smit
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef CX_PORTS__TYPES__EXAMPLE_EA_DEFN_IDL
+#define CX_PORTS__TYPES__EXAMPLE_EA_DEFN_IDL
+
+#include "example_na_defn.idl"
+#include "example_b_defn.idl"
+
+/// @namespace Example
+module Example {
+
+    /// @enum EA4
+    ///
+    enum EA4 {
+        EA4_1,
+        EA4_2
+    };
+
+    /// @enum EA5
+    ///
+    enum EA5 {
+        EA5_2,
+        EA5_1
+    };
+
+    /// @enum EA3
+    ///
+    enum EA3 {
+        EA3_1,
+        EA3_2
+    };
+
+    /// @enum EA2
+    ///
+    enum EA2 {
+        EA2_2,
+        EA2_1
+    };
+
+    /// @enum EA1
+    ///
+    enum EA1 {
+        EA1_2,
+        EA1_1
+    };
+
+    /// @struct EA7
+    ///
+    struct EA7 {
+
+        Example::NA6 EA7_15;
+
+        Example::B23 EA7_39;
+
+        Example::EA1 EA7_16;
+
+        Example::EA2 EA7_18;
+
+        Example::EA3 EA7_20;
+
+        Example::EA5 EA7_21;
+
+        Example::EA4 EA7_42;
+
+        Example::B_50 EA7_40;
+
+        unsigned long EA7_41;
+
+        double EA7_17;
+
+        double EA7_43;
+
+        double EA7_19;
+
+        double EA7_22;
+
+        Example::B42 EA7_14;
+
+        Example::B42 EA7_13;
+
+        Example::B42 EA7_38;
+
+        Example::B47 EA7_37;
+
+        double EA7_24;
+
+        double EA7_28;
+
+        Example::B42 EA7_23;
+
+        double EA7_30;
+
+        double EA7_34;
+
+        double EA7_35;
+
+        double EA7_27;
+
+        double EA7_26;
+
+        double EA7_29;
+
+        double EA7_32;
+
+        double EA7_25;
+
+        Example::B45 EA7_31;
+
+        double EA7_11;
+
+        double EA7_10;
+
+        double EA7_08;
+
+        double EA7_12;
+
+        Example::B45 EA7_06;
+
+        double EA7_09;
+
+        double EA7_05;
+
+        double EA7_07;
+
+        double EA7_04;
+
+        double EA7_03;
+
+        Example::B42 EA7_01;
+
+        double EA7_02;
+
+        double EA7_33;
+
+        double EA7_36;
+    }; //@TopLevel(false)
+
+    /// @struct EA6
+    ///
+    struct EA6 {
+
+        Example::NA5 EA6_04;
+
+        double EA6_01;
+
+        double EA6_02;
+
+        double EA6_03;
+
+        double EA6_05;
+
+        double EA6_06;
+
+        double EA6_07;
+
+        double EA6_08;
+
+        double EA6_09;
+
+        double EA6_10;
+    }; //@TopLevel(false)
+};
+
+#endif // CX_PORTS__TYPES__EXAMPLE_EA_DEFN_IDL
+
+/// @}

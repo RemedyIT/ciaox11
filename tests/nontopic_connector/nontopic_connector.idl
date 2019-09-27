@@ -1,0 +1,25 @@
+/**
+ * @file    nontopic_connector.idl
+ * @author  Marijke Hengstmengel
+ *
+ * @brief   CIAOX11 templated connector test connector
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef NT_CONNECTOR_IDL_
+#define NT_CONNECTOR_IDL_
+
+#include <Components.idl>
+
+#include "nontopic_base.idl"
+#include "nontopic_test.idl"
+
+// Use same template arguments as in template nontopic_connector_t.h
+module Typed_NonTopic_Test_a< ::X,::Z,::XSeq,::ZSeq> Xtest_a;
+module Typed_NonTopic_Test_b< ::X,::Z,::XSeq,::ZSeq> Xtest_b;
+
+#endif /* NONTOPIC_CONNECTOR_IDL_ */
+
+

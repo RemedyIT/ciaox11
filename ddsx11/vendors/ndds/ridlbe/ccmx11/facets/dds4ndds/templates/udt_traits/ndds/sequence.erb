@@ -1,0 +1,12 @@
+
+// generated from <%= ridl_template_path %>
+// Unaliased type : <%= resolved_cxxtype %>
+// Aliased DDS type : ::DDS_Native<%= scoped_cxxtype %>
+% ndds_alias_md5 = resolved_cxxtype.to_md5
+// NDDS MD5 : <%= ndds_alias_md5 %>
+#if !defined(_ALIAS_<%= ndds_alias_md5 %>_UDT_TRAITS_DECL_)
+#define _ALIAS_<%= ndds_alias_md5 %>_UDT_TRAITS_DECL_
+
+%visit_template('sequence_impl')
+
+#endif /* _ALIAS_<%= ndds_alias_md5 %>_UDT_TRAITS_DECL_ */

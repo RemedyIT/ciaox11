@@ -1,0 +1,29 @@
+/**
+ * @file    getter_test_receiver.idl
+ * @author  Marcel Smit
+ *
+ * @brief   Receiver component declaration for the getter test.
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef GETTER_TEST_RECEIVER_IDL_
+#define GETTER_TEST_RECEIVER_IDL_
+
+#include "commonSE.idl"
+#include "get_invoker.idl"
+#include <ccm_timed_trigger.idl>
+
+module Getter_Test
+{
+  component Receiver
+  {
+    port CommonTestConnector::DDS_Get info_get;
+
+    provides GetInvoker getter_invoke;
+
+    uses CCM_TT::TT_Scheduler tt_scheduler;
+  };
+};
+
+#endif /* GETTER_TEST_RECEIVER_IDL_ */

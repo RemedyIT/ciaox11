@@ -1,0 +1,37 @@
+// generated from <%= ridl_template_path %>
+
+// Operations and attributes from <%=scoped_idltype_name %>
+local interface <%=ami4ccm_ReplyHandler %>
+% if is_derived?
+% _first = true
+%   bases.each do |_base|
+%     if _first
+    : AMI4CCM_<%= _base.cxxname %>ReplyHandler
+%       _first = false
+%     else
+    , AMI4CCM_<%= _base.cxxname %>ReplyHandler
+%     end
+%   end
+% else
+    : ::CCM_AMI::ReplyHandler
+% end
+{
+% operations.each do |_op|
+%   nest { _op.visit_operation_reply_h }
+% end
+
+% attributes.each do |_att|
+%   nest { _att.visit_attribute_reply_h }
+% end
+};
+
+local interface <%= ami4ccm_cxxname %>
+{
+% all_operations.each do |_op|
+%   nest { _op.gen_operation }
+% end
+
+% all_attributes.each do |_att|
+%   nest { _att.gen_attribute }
+% end
+};

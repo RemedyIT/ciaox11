@@ -1,0 +1,30 @@
+/**
+ * @file    updater_sender.idl
+ * @author  Marcel Smit
+ *
+ * @brief   Sender component declaration for the Updater test
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef UPDATER_SENDER_IDL_
+#define UPDATER_SENDER_IDL_
+
+#include "commonSE.idl"
+#include "next_assignment.idl"
+#include <ccm_timed_trigger.idl>
+
+module UpdaterModule
+{
+  component Sender
+  {
+    port CommonTestConnector::DDS_Update test_topic_update;
+    provides CCM_DDS::ConnectorStatusListener connector_status;
+
+    provides NextAssignment next_assignment;
+
+    uses CCM_TT::TT_Scheduler tt_scheduler;
+  };
+};
+
+#endif /* UPDATER_SENDER_IDL_ */

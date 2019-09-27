@@ -1,0 +1,29 @@
+/**
+ * @file    exception_t_sender.idl
+ * @author  Marijke Hengstmengel
+ *
+ * @brief   Sender component idl
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef EXCEPTION_T_SENDER_IDL
+#define EXCEPTION_T_SENDER_IDL
+
+#include <Components.idl>
+
+#include "exception_t.idl"
+
+#pragma ami4ccm receptacle "ExceptionT::Sender::run_my_foo"
+
+module ExceptionT
+{
+  component Sender
+  {
+    /// For synchronous invocation
+    uses MyFoo run_my_foo;
+  };
+};
+
+#endif

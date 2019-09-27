@@ -1,0 +1,85 @@
+
+# configure setup for CIAOX11
+#
+
+configure :ciaox11 do
+
+  depends_on :taox11
+
+  dependencies do
+
+    require :xerces3 do
+      environment :xercescroot do
+        name 'XERCESCROOT'
+        description 'Xerces-C root folder'
+        default :libroot
+      end
+      file '${XERCESCROOT}/include/xercesc/parsers/SAXParser.hpp'
+      library_path '${XERCESCROOT}/${:DLL_DIR}'
+    end
+
+  end
+
+  features do
+
+    enable :ami4ccm
+
+    enable :corba4ccm
+
+    enable :dds4ccm do
+      depends_on :ddsx11
+    end
+
+    enable :dds4ccm_event do
+      depends_on :dds4ccm
+    end
+
+    enable :dds4ccm_state do
+      depends_on :dds4ccm
+    end
+
+  end
+
+  ridl do
+    backend :ccmx11 do
+      extends :'c++11'
+    end
+    include '..'
+  end
+
+  brix11 do
+    include '..'
+  end
+
+  mpc do
+    include %w{
+      $CIAOX11_ROOT/MPC/config
+      $CIAOX11_ROOT/connectors/ami4ccm/MPC/config
+      $CIAOX11_ROOT/connectors/corba4ccm/MPC/config
+      $CIAOX11_ROOT/connectors/tt4ccm/MPC/config
+      $CIAOX11_ROOT/connectors/dds4ccm/MPC/config
+    }
+
+    mwc_include %w{
+      $(CIAOX11_ROOT)/ccm
+      $(CIAOX11_ROOT)/ciaox11
+      $(CIAOX11_ROOT)/connectors/tt4ccm/idl
+      $(CIAOX11_ROOT)/connectors/tt4ccm/impl
+    }
+
+    mwc_include :corba4ccm => %w{
+      $(CIAOX11_ROOT)/connectors/corba4ccm/corba4ccm
+    }
+
+    mwc_include :ami4ccm => %w{
+      $(CIAOX11_ROOT)/connectors/ami4ccm/ami4ccm
+    }
+
+    mwc_include :dds4ccm => %w{
+      $(CIAOX11_ROOT)/connectors/dds4ccm/impl
+      $(CIAOX11_ROOT)/connectors/dds4ccm/idl
+      $(CIAOX11_ROOT)/connectors/dds4ccm/logger
+    }
+  end
+
+end

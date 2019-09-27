@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!--
+ * @file   deploymentplan.cdp
+ * @author Marijke Hengstmengel
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+-->
+<Deployment:DeploymentPlan xmlns:Deployment="http://www.omg.org/Deployment" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.omg.org/Deployment Deployment.xsd">
+
+  <UUID>6D382DAE-9024-4C4D-B91B-A0F9176AFACF</UUID>
+  <!--this plan is made for using the synchronous connection between Sender and a non-component Hello servant -->
+
+  <implementation xmi:id="Hello_SenderImplementation">
+    <name>Hello_SenderImplementation</name>
+    <source/>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_Test_Sender_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Hello_Sender_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_Test_Sender_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="Hello_CORBAConnectorImplementation">
+    <name>Hello_CORBAConnectorImplementation</name>
+    <source/>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_Test_Hello_SRR_CORBA_Connector_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>external_servant_base_corba_conn</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_Test_Hello_SRR_CORBA_Connector_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <instance xmi:id="Hello.ComponentImplementations.HelloImplementation.Hello.Sender">
+    <name>Hello.ComponentImplementations.HelloImplementation.Hello.Sender</name>
+    <node>SenderNode</node>
+    <source/>
+    <implementation xmi:idref="Hello_SenderImplementation"/>
+  </instance>
+
+  <instance xmi:id="Hello.ConnectorImplementations.HelloImplementation.Hello.Sender">
+    <name>Hello.ConnectorImplementations.HelloImplementation.Hello.Sender</name>
+    <node>SenderNode</node>
+    <source/>
+    <implementation xmi:idref="Hello_CORBAConnectorImplementation"/>
+  </instance>
+
+  <!--connection between Sender and connector -->
+  <connection>
+    <name>sender_connector_connection</name>
+    <internalEndpoint>
+      <portName>sender_port_hello_uses</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="Hello.ComponentImplementations.HelloImplementation.Hello.Sender" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>srr_facet</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="Hello.ConnectorImplementations.HelloImplementation.Hello.Sender" />
+    </internalEndpoint>
+  </connection>
+
+  <!--connection between Connector and Hello server -->
+  <connection>
+    <name>connector_hello_connection</name>
+    <internalEndpoint>
+      <portName>srr_receptacle</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="Hello.ConnectorImplementations.HelloImplementation.Hello.Sender" />
+    </internalEndpoint>
+    <externalReference>
+      <location>corbaname:rir:/NameService#HelloServant</location>
+      <provider>true</provider>
+      <portName/>
+      <!-- kind>Facet</kind -->
+    </externalReference>
+  </connection>
+</Deployment:DeploymentPlan>

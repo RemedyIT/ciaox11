@@ -1,0 +1,6 @@
+
+component 'connector_status_receiver' do |comp|
+  comp.idl %w{ csl_receiver.idl }
+  comp.includes '$(CIAOX11_ROOT)/connectors'
+  comp.libs 'ciaox11_dds4ccm_logger'
+end

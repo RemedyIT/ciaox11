@@ -1,0 +1,33 @@
+/**
+ * @file    ccm_context.idl
+ * @author  Johnny Willemsen
+ *
+ * @brief   CIAOX11 version of the Context
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#if !defined (CCM_CONTEXT_IDL)
+#define CCM_CONTEXT_IDL
+
+#include "ccm/ccm_serviceregistry.idl"
+
+// *************** Basic Container interfaces ***************
+
+module Components
+{
+  typeprefix Components "omg.org";
+
+  local interface CCMContext
+  {
+    /// CIAOX11 extension to just have an attribute for the service registry compared
+    /// to three operations reducing footprint
+    readonly attribute CIAOX11::Service_Registry the_service_registry;
+
+    /// CIAOX11 extension
+    /// Placeholder of the name of a component in the deployment plans.
+    readonly attribute string instance_id;
+  };
+};
+#endif /* CCM_CONTEXT_IDL */

@@ -1,0 +1,26 @@
+include::_{backend}_settings.adoc[]
+
+= DDS4CCM
+
+CIAOX11 implements the https://www.omg.org/spec/DDS4CCM[DDS4CCM
+specification] to provide the event and state interaction patterns using
+DDS.
+
+== DDSX11
+
+CIAOX11 uses a DDSX11 as IDL to {cxx11} DDS wrapper to integrate DDS
+vendors in a generic way. DDSX11 can be used to implement regular DDS
+applications using the IDL to {cxx11} language mapping. The CIAOX11
+DDS4CCM implementation uses several DDSX11 generated files which are
+<<{xref_docs_root}/ddsx11/ddsx11_files.adoc#,described>> separate. See
+link:{docs_root}/../../ciaox11/ddsx11/examples/shapes[DDSX11] for an example DDS Shapes
+sender and receiver using DDSX11.
+
+include::{ciaox11_src_root}/ddsx11/vendors/ndds/dds4ccm/docs/src/dds4ccm.asc[]
+
+include::{ciaox11_src_root}/ddsx11/vendors/opendds/dds4ccm/docs/src/dds4ccm.asc[opts=optional]
+
+== DDS4CCM Shapes Tutorial
+
+See <<dds4ccm_shapes_example.adoc#,here>> for our DDS4CCM Shapes tutorial.
+

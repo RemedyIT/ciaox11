@@ -1,0 +1,58 @@
+include::_{backend}_settings.adoc[]
+
+= CORBA4CCM
+
+== What is CORBA4CCM?
+
+The support for the request/reply interaction pattern using CORBA is
+implemented in *AXCIOMA* by the CORBA4CCM core library together with
+the CORBA4CCM RIDL facet.
+
+CORBA4CCM is a mandatory part of the core LwCCM specification
+but is a pluggable
+feature as part of AXCIOMA. At the moment a remote request/reply
+interaction between two components has to be realized using CORBA,
+collocated to both components a CORBA4CCM connector fragment has to be
+deployed (<<corba4ccm_details.adoc#,details>>). This will lead to a
+slightly larger deployment plan but leads to a reduction in footprint
+when request/reply is realized with a different kind of IPC or the CORBA
+based request/reply interaction pattern is not being used.
+
+For client side asynchronous request support CORBA4CCM is complemented
+by an implementation of the
+<<{xref_docs_root}/ami4ccm/ami4ccm.adoc#,AMI4CCM>> specification.
+
+For users that are migrating from CIAO to *AXCIOMA* we have a
+<<corba4ccm_axcioma_ciao.adoc#,separate description>> describing the
+changes that have to be made to existing deployment plans.
+
+== Component/connector CORBA servant
+
+The DnCX11 toolchain expects a CORBA object reference back when it has
+installed a component or connector which has to be available for a
+remote CORBA client. The CORBA component object
+reference is send back from the CIAOX11 installation handlers contained
+within a CORBA Any. This CORBA component object reference is used to
+call `provide_facet` using a remote CORBA call. Where CIAO did generate
+a CORBA component servant uniquely for each component, with CIAOX11 we
+have one generic CORBA component implementation which is part of our
+CORBA4CCM support. This CORBA servant
+implementation only implements the `provide_facet` operation using the
+POA. It is not possible to narrow the CORBA component object reference to
+a specific component or connector interface, it is only accessible as
+CCMObject. As a result RIDL doesn't generate any CORBA stub or skeleton
+for a specific component or connector. This approach has been possible
+because CIAOX11 doesn't support 'supported interfaces' and
+component/connector attributes which are remotely accessible using
+CORBA.
+
+== POA usage
+
+Instead of having its own internal administration of CORBA component and
+facet servants, CORBA4CCM uses the POA with user defined ids. Each
+component CORBA servant is registered into the POA using the unique
+component name. All facet CORBA servants are registered in the same POA
+using `<component_name>_<facet_name>` as identifier. At the moment the
+`provide_facet` operation is called the generic CCMObject implementation
+constructs an object id and uses the POA to retrieve the needed CORBA
+facet servant.

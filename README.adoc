@@ -1,0 +1,11 @@
+= CIAOX11
+
+== What is CIAOX11?
+
+CIAOX11 is a Lightweight CORBA Component Model (LwCCM) implementation
+supporting the https://www.omg.org/spec/CPP11[IDL to C++11]
+Language Mapping.
+
+CIAOX11 is developed using https://taox11.remedy.nl[TAOX11].
+TAOX11 is a well known and stable CORBA implementation with a rich set
+of features and capabilities.

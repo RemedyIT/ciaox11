@@ -1,0 +1,29 @@
+include::_{backend}_settings.adoc[]
+
+= Deployment plan converter
+
+== CONVERT_PLAN
+
+`convert_plan` is a script to convert a CIAO `cdp` deployment plan to an
+*AXCIOMA* `cdp` plan.
+
+This script only replaces the names of the ExecParameters and removes
+the local deployment requirements which are not needed anymore for
+*AXCIOMA*. It does *not* automatically add CORBA4CCM connectors when
+synchronous request/reply is being used.
+
+== Usage of convert_plan:
+
+`convert_plan [options]`
+
+`convert_plan` can be found in the `ciaox11/scripts/converting`
+directory of the package root (typically `axcioma_<version>`).
+
+Options::
+
+------------------------------------------------------------------------------
+    -i, --input plan                 Filename for input plan (*.cdp)
+    -o, --output plan                Filename for output plan (*.cdp)
+    -l, --log                        Logging the line numbers of changed lines
+    -h, --help                       Displays Help
+------------------------------------------------------------------------------

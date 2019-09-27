@@ -1,0 +1,12 @@
+// --------------------------------------------------------------------
+// ciaox11_test_exec.mpb
+//
+// Base project for test executors that are linked together
+// with their servant into one library.
+//
+// Copyright (c) Remedy IT Expertise BV
+// Chamber of commerce Rotterdam nr.276339, The Netherlands
+// --------------------------------------------------------------------
+
+project : ciaox11_test_base, ciaox11_executor, ciaox11_logger {
+}

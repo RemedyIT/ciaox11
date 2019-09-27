@@ -1,0 +1,15 @@
+# axp create component idl with the declaration of two timed_trigger_connector's,
+# the correct includes and uses the correct extra projects in mpc.
+#recipe id 'tt_test', idl name of component becomes 'tt_test.idl'
+
+component 'tt_test' do |comp|
+  #Define component 'TT_Tester' in scope 'Test'
+  comp.define 'Test::TT_Tester' do |intf|
+# ---------use  two different timed trigger connectors, using 2 different form's ---
+    intf.port 'tt_scheduler_one' do |p|
+      p.timed_trigger
+    end
+    intf.port  'tt_scheduler_two', :timed_trigger
+  end
+end
+

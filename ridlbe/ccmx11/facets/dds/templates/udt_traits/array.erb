@@ -1,0 +1,76 @@
+
+// generated from <%= ridl_template_path %>
+// Unaliased type : <%= resolved_cxxtype %>
+% alias_md5 =  resolved_cxxtype.to_md5
+// MD5            : <%= alias_md5 %>
+#if !defined(_ALIAS_<%= alias_md5 %>_UDT_TRAITS_DECL_)
+#define _ALIAS_<%= alias_md5 %>_UDT_TRAITS_DECL_
+
+namespace DDSX11
+{
+  /// Conversion of <%= scoped_cxxname %> to DDS
+  template<>
+  inline <%= dds_native_element_cxxtype %>&
+  to_dds< <%= dds_native_element_cxxtype %>, <%= scoped_cxxtype %>> (
+    <%= dds_native_element_cxxtype %> &to, const <%= scoped_cxxtype %> &from)
+  {
+% _arr_iter = 0
+% _dimensions = ''
+% cxxdim_sizes.each do |_s|
+%   _iter="iter_#{_arr_iter}"
+%   _dimensions = _dimensions + "[#{_iter}]"
+%   inc_nest
+  for (<%= scoped_cxxtype %>::size_type <%= _iter %> {}; <%= _iter %> < <%= cxxdim_sizes[_arr_iter] %>; ++<%= _iter %>)
+  {
+%   _arr_iter = _arr_iter + 1
+% end
+% inc_nest
+  ::DDSX11::to_dds(to<%= _dimensions %>, from<%= _dimensions %>);
+% cxxdim_sizes.each do |_s|
+% dec_nest
+  }
+% end
+% dec_nest
+    return to;
+  }
+
+  /// Conversion of <%= scoped_cxxname %> from DDS
+  template <>
+  inline <%= scoped_cxxtype %>&
+  from_dds< <%= dds_native_element_cxxtype %>, <%= scoped_cxxtype %>> (
+    <%= scoped_cxxtype %> &to, const <%= dds_native_element_cxxtype %> &from)
+  {
+% _arr_iter = 0
+% _dimensions = ''
+% cxxdim_sizes.each do |_s|
+%   _iter="iter_#{_arr_iter}"
+%   _dimensions = _dimensions + "[#{_iter}]"
+%   inc_nest
+  for (<%= scoped_cxxtype %>::size_type <%= _iter %> {}; <%= _iter %> < <%= cxxdim_sizes[_arr_iter] %>; ++<%= _iter %>)
+  {
+%   _arr_iter = _arr_iter + 1
+% end
+% inc_nest
+  ::DDSX11::from_dds(to<%= _dimensions %>, from<%= _dimensions %>);
+% cxxdim_sizes.each do |_s|
+% dec_nest
+  }
+% end
+% dec_nest
+    return to;
+  }
+
+%visit_life_cycle_traits
+
+  template <>
+  struct traits< <%= scoped_cxxtype %>>
+    : public common_traits< <%= scoped_cxxtype %>, <%= dds_native_element_cxxtype %>>,
+      public convert_in< <%= scoped_cxxtype %>, <%= dds_native_element_cxxtype %>>,
+      public convert_out_by_ref< <%= scoped_cxxtype %>, <%= dds_native_element_cxxtype %>>,
+      public convert_retn< <%= scoped_cxxtype %>, <%= dds_native_element_cxxtype %>>
+  {
+  };
+
+} // DDSX11
+
+#endif /* _ALIAS_<%= alias_md5 %>_UDT_TRAITS_DECL_ */

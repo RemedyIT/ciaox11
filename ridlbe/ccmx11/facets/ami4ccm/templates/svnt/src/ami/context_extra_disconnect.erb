@@ -1,0 +1,23 @@
+
+% if incl_ami4ccm_receptacle?
+    // generated from <%= ridl_template_path %>
+%  all_ports.each do |_p|
+%    if _p.port_type == :receptacle
+% # if port also amiport generate sendc variant of this port
+%     if _p.is_ami4ccm_port?
+    else if (name == "sendc_<%= _p.lem_name %>")
+    {
+%       if _p.is_multiple?
+      {
+        std::lock_guard<std::mutex> lock (this->context_tbl_lock_);
+
+        this->sendc_<%= _p.lem_name %>_context_tbl_.erase(conn_name);
+      }
+%      else
+      this->sendc_<%= _p.cxxname %>_ = nullptr;
+%      end
+    }
+%     end
+%   end
+%  end
+% end

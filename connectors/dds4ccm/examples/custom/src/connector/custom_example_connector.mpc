@@ -1,0 +1,77 @@
+// Not using the DDS4CCM MPC base projects for the tests since the directory structure
+// is completely different. See ../../readme.txt for details.
+project(*idl_gen) : ciaox11_dds4ccm_idldefaults, ciaox11_dds4ccm, ciaox11_dds4ccm_event {
+  after += ciaox11_dds4ccm_idl_gen \
+           custom_example_base_ddsx11_types_gen
+
+  custom_only = 1
+
+  idlflags += -Wb,base_export_macro=CUSTOM_EXAMPLE_CONNECTOR \
+              -Wb,base_export_include=custom_example_connector \
+              -Gdds4ccm,conn -Gxhsv -Gxhcn -Gxhst -Gos -SS -o ../../build/connector \
+              -I ../base
+
+  IDL_Files {
+    gendir=../../build/connector
+    custom_example_connector.idl
+  }
+}
+
+project(*lem_stub) : ciaox11_dds4ccm_lem_stub, ciaox11_dds4ccm_event {
+
+  after += *idl_gen \
+           custom_example_base_stub
+  libs  += custom_example_base_stub
+
+  libpaths += ../../lib
+  libout = ../../lib
+  includes += ../../src/connector ../../build/base
+
+  dynamicflags += CUSTOM_EXAMPLE_CONNECTOR_STUB_BUILD_DLL \
+                  CUSTOM_EXAMPLE_CONNECTOR_LEM_STUB_BUILD_DLL
+
+  Source_Files {
+    ../../build/connector/custom_example_connectorC.cpp
+    ../../build/connector/custom_example_connectorEC.cpp
+  }
+
+  Header_Files {
+    ../../build/connector/custom_example_connectorC.h
+    ../../build/connector/custom_example_connector_stub_export.h
+
+    ../../build/connector/custom_example_connectorEC.h
+    ../../build/connector/custom_example_connector_lem_stub_export.h
+  }
+}
+
+project(*conn) : ciaox11_executor, ciaox11_dds4ccm_impl, \
+                 ciaox11_dds4ccm_event {
+
+  after += *lem_stub \
+           custom_example_base_stub \
+           custom_example_base_ddsx11_types_impl
+
+  libs  += *lem_stub \
+           custom_example_base_stub \
+           custom_example_base_ddsx11_types_impl
+
+  libout = ../../lib
+  libpaths += ../../lib
+
+  includes += . ../../src ../../src/base ../../build/base
+
+  dynamicflags += CUSTOM_EXAMPLE_CONNECTOR_CONN_BUILD_DLL \
+                  CUSTOM_EXAMPLE_CONNECTOR_SVNT_BUILD_DLL
+
+  Source_Files {
+    ../../build/connector/custom_example_connector_conn.cpp
+    ../../build/connector/custom_example_connector_svnt.cpp
+  }
+
+  Header_Files {
+    ../../build/connector/custom_example_connector_conn.h
+    ../../build/connector/custom_example_connector_conn_export.h
+    ../../build/connector/custom_example_connector_svnt.h
+    ../../build/connector/custom_example_connector_svnt_export.h
+  }
+}

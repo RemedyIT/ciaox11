@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<Deployment:DeploymentPlan xmlns:Deployment="http://www.omg.org/Deployment"
+ xmlns:xmi="http://www.omg.org/XMI"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.omg.org/Deployment Deployment.xsd">
+
+  <UUID>6D382DAE-9024-4C4D-B91B-A0F9176AFACF</UUID>
+  <implementation xmi:id="Hello_ReceiverComponent">
+    <name>Hello_ReceiverComponent</name>
+    <source/>
+    <artifact xmi:idref="Hello_Receiver_ExecArtifact"/>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_UsesMulti_Receiver_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Hello.ImplementationArtifacts.ReceiverArtifacts.Receiver_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_UsesMulti_Receiver_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Hello.ImplementationArtifacts.ReceiverArtifacts.Receiver_exec</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="Hello_SenderComponent">
+    <name>Hello_SenderComponent</name>
+    <source/>
+    <artifact xmi:idref="Hello_Sender_ExecArtifact"/>
+     <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_UsesMulti_Sender_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Hello.ImplementationArtifacts.SenderArtifacts.Sender_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_UsesMulti_Sender_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Hello.ImplementationArtifacts.SenderArtifacts.Sender_exec</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="Hello_AMIComponent">
+    <name>Hello_AMIComponent</name>
+    <source/>
+    <artifact xmi:idref="Hello_AMI_ExecArtifact"/>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_UsesMulti_AMI4CCM_One_Connector_AMI4CCM_Connector_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Hello.ImplementationArtifacts.AMIArtifacts.AMI_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_UsesMulti_AMI4CCM_One_Connector_AMI4CCM_Connector_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Hello.ImplementationArtifacts.AMIArtifacts.AMI_exec</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="Hello_CORBAComponent">
+    <name>Hello_CORBAComponent</name>
+    <source/>
+    <artifact xmi:idref="Hello_CORBA_ExecArtifact"/>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_UsesMulti_One_SRR_CORBA_Connector_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Hello.ImplementationArtifacts.CORBAArtifacts.CORBA_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_UsesMulti_One_SRR_CORBA_Connector_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Hello.ImplementationArtifacts.CORBAArtifacts.CORBA_exec</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <instance xmi:id="Hello.ComponentImplementations.HelloImplementation.Hello.ReceiverA">
+    <name>Hello.ComponentImplementations.HelloImplementation.Hello.ReceiverA</name>
+    <node>ReceiverNode</node>
+    <source/>
+    <implementation xmi:idref="Hello_ReceiverComponent"/>
+   </instance>
+  <instance xmi:id="Hello.ComponentImplementations.HelloImplementation.Hello.ReceiverA.CORBA">
+    <name>Hello.ComponentImplementations.HelloImplementation.Hello.ReceiverA.CORBA</name>
+    <node>ReceiverNode</node>
+    <source/>
+    <implementation xmi:idref="Hello_CORBAComponent"/>
+   </instance>
+
+   <instance xmi:id="Hello.ComponentImplementations.HelloImplementation.Hello.ReceiverB">
+    <name>Hello.ComponentImplementations.HelloImplementation.Hello.ReceiverB</name>
+    <node>ReceiverNode</node>
+    <source/>
+    <implementation xmi:idref="Hello_ReceiverComponent"/>
+   </instance>
+  <instance xmi:id="Hello.ComponentImplementations.HelloImplementation.Hello.ReceiverB.CORBA">
+    <name>Hello.ComponentImplementations.HelloImplementation.Hello.ReceiverB.CORBA</name>
+    <node>ReceiverNode</node>
+    <source/>
+    <implementation xmi:idref="Hello_CORBAComponent"/>
+   </instance>
+
+   <instance xmi:id="Hello.ComponentImplementations.HelloImplementation.Hello.ReceiverC">
+    <name>Hello.ComponentImplementations.HelloImplementation.Hello.ReceiverC</name>
+    <node>ReceiverNode</node>
+    <source/>
+    <implementation xmi:idref="Hello_ReceiverComponent"/>
+   </instance>
+  <instance xmi:id="Hello.ComponentImplementations.HelloImplementation.Hello.ReceiverC.CORBA">
+    <name>Hello.ComponentImplementations.HelloImplementation.Hello.ReceiverC.CORBA</name>
+    <node>ReceiverNode</node>
+    <source/>
+    <implementation xmi:idref="Hello_CORBAComponent"/>
+   </instance>
+
+  <instance xmi:id="Hello.ComponentImplementations.HelloImplementation.Hello.Sender">
+    <name>Hello.ComponentImplementations.HelloImplementation.Hello.Sender</name>
+    <node>SenderNode</node>
+    <source/>
+    <implementation xmi:idref="Hello_SenderComponent"/>
+  </instance>
+
+  <instance xmi:id="Hello.ComponentImplementations.HelloImplementation.Hello.AMIA">
+    <name>Hello.ComponentImplementations.HelloImplementation.Hello.AMIA</name>
+    <node>SenderNode</node>
+    <source/>
+    <implementation xmi:idref="Hello_AMIComponent"/>
+   </instance>
+
+  <instance xmi:id="Hello.ComponentImplementations.HelloImplementation.Hello.AMIB">
+    <name>Hello.ComponentImplementations.HelloImplementation.Hello.AMIB</name>
+    <node>SenderNode</node>
+    <source/>
+    <implementation xmi:idref="Hello_AMIComponent"/>
+   </instance>
+
+  <instance xmi:id="Hello.ComponentImplementations.HelloImplementation.Hello.AMIC">
+    <name>Hello.ComponentImplementations.HelloImplementation.Hello.AMIC</name>
+    <node>SenderNode</node>
+    <source/>
+    <implementation xmi:idref="Hello_AMIComponent"/>
+   </instance>
+
+  <connection>
+    <name>run_asynch_foo_connectionA</name>
+    <internalEndpoint>
+      <portName>sendc_run_my_um_one</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="Hello.ComponentImplementations.HelloImplementation.Hello.Sender" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>ami4ccm_port_ami4ccm_provides</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="Hello.ComponentImplementations.HelloImplementation.Hello.AMIA" />
+    </internalEndpoint>
+  </connection>
+   <connection>
+    <name>run_asynch_foo_connectionB</name>
+    <internalEndpoint>
+      <portName>sendc_run_my_um_one</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="Hello.ComponentImplementations.HelloImplementation.Hello.Sender" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>ami4ccm_port_ami4ccm_provides</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="Hello.ComponentImplementations.HelloImplementation.Hello.AMIB" />
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>run_asynch_foo_connectionC</name>
+    <internalEndpoint>
+      <portName>sendc_run_my_um_one</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="Hello.ComponentImplementations.HelloImplementation.Hello.Sender" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>ami4ccm_port_ami4ccm_provides</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="Hello.ComponentImplementations.HelloImplementation.Hello.AMIC" />
+    </internalEndpoint>
+  </connection>
+
+  <!-- Synchronous connection between the AMI connectors and the CORBA connectors of
+       the Receivers. Only A and B since this is explicitly tested in the sender
+  -->
+  <connection>
+    <name>run_synch_foo_connectionA</name>
+    <internalEndpoint>
+      <portName>run_my_um_one</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="Hello.ComponentImplementations.HelloImplementation.Hello.Sender" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>ami4ccm_port_ami4ccm_sync_provides</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="Hello.ComponentImplementations.HelloImplementation.Hello.AMIA" />
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>run_synch_foo_connectionB</name>
+    <internalEndpoint>
+      <portName>run_my_um_one</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="Hello.ComponentImplementations.HelloImplementation.Hello.Sender" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>ami4ccm_port_ami4ccm_sync_provides</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="Hello.ComponentImplementations.HelloImplementation.Hello.AMIB" />
+    </internalEndpoint>
+  </connection>
+
+  <!-- Synchronous connection between the AMI connectors and the CORBA connectors of
+       the Receivers
+  -->
+   <connection>
+    <name>run_synch_foo_connection_s_ccA</name>
+    <internalEndpoint>
+      <portName>ami4ccm_port_ami4ccm_uses</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="Hello.ComponentImplementations.HelloImplementation.Hello.AMIA" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>srr_facet</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="Hello.ComponentImplementations.HelloImplementation.Hello.ReceiverA.CORBA" />
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>run_synch_foo_connection_s_ccB</name>
+    <internalEndpoint>
+      <portName>ami4ccm_port_ami4ccm_uses</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="Hello.ComponentImplementations.HelloImplementation.Hello.AMIB" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>srr_facet</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="Hello.ComponentImplementations.HelloImplementation.Hello.ReceiverB.CORBA" />
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>run_synch_foo_connection_s_ccC</name>
+    <internalEndpoint>
+      <portName>ami4ccm_port_ami4ccm_uses</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="Hello.ComponentImplementations.HelloImplementation.Hello.AMIC" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>srr_facet</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="Hello.ComponentImplementations.HelloImplementation.Hello.ReceiverC.CORBA" />
+    </internalEndpoint>
+  </connection>
+
+  <!-- Connections between the CORBA connectors of the Receivers and the
+       Receivers themselves.
+  -->
+  <connection>
+    <name>run_synch_foo_connection_ccA</name>
+    <internalEndpoint>
+      <portName>srr_receptacle</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="Hello.ComponentImplementations.HelloImplementation.Hello.ReceiverA.CORBA" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>do_my_one</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="Hello.ComponentImplementations.HelloImplementation.Hello.ReceiverA" />
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>run_synch_foo_connection_ccB</name>
+    <internalEndpoint>
+      <portName>srr_receptacle</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="Hello.ComponentImplementations.HelloImplementation.Hello.ReceiverB.CORBA" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>do_my_one</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="Hello.ComponentImplementations.HelloImplementation.Hello.ReceiverB" />
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>run_synch_foo_connection_ccC</name>
+    <internalEndpoint>
+      <portName>srr_receptacle</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="Hello.ComponentImplementations.HelloImplementation.Hello.ReceiverC.CORBA" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>do_my_one</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="Hello.ComponentImplementations.HelloImplementation.Hello.ReceiverC" />
+    </internalEndpoint>
+  </connection>
+
+
+  <artifact xmi:id="Hello_AMI_ExecArtifact">
+    <name>Hello.ImplementationArtifacts.AMIArtifacts.AMI_exec</name>
+    <source/>
+    <node/>
+    <location>asyn_usesmulti_ami4ccm_conn</location>
+   </artifact>
+
+  <artifact xmi:id="Hello_CORBA_ExecArtifact">
+    <name>Hello.ImplementationArtifacts.CORBAArtifacts.CORBA_exec</name>
+    <source/>
+    <node/>
+    <location>asyn_usesmulti_corba_conn</location>
+   </artifact>
+
+  <artifact xmi:id="Hello_Receiver_ExecArtifact">
+    <name>Hello.ImplementationArtifacts.ReceiverArtifacts.Receiver_exec</name>
+    <source/>
+    <node/>
+    <location>u_m_receiver_exec</location>
+   </artifact>
+
+  <artifact xmi:id="Hello_Sender_ExecArtifact">
+    <name>Hello.ImplementationArtifacts.SenderArtifacts.Sender_exec</name>
+    <source/>
+    <node/>
+    <location>u_m_sender_exec</location>
+
+  </artifact>
+
+</Deployment:DeploymentPlan>

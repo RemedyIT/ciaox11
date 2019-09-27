@@ -1,0 +1,22 @@
+/**
+ * @file    get_invoker.idl
+ * @author  Marcel Smit
+ *
+ * @brief   Starting new assignments.
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef GETTER_INVOKER_IDL_
+#define GETTER_INVOKER_IDL_
+
+
+interface GetInvoker
+{
+  void start_timeout_get_one ();
+  void start_timeout_get_many ();
+  void start_get_one (in string key, in long iteration);
+  void start_get_many (in short keys, in long iterations);
+};
+
+#endif /* GETTER_INVOKER_IDL_ */

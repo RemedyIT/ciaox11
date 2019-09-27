@@ -1,0 +1,36 @@
+project(*idl_gen) : ciaox11_test_comp_all_idl_exec_gen {
+  custom_only = 1
+  after += starter_code_test_idl_gen starter_code_test_lem_gen
+  idlflags += -Wb,base_export_macro=STARTER_CODE_TEST_CONNS \
+              -Wb,base_export_include=starter_code_conns
+
+  IDL_Files {
+    gendir=generated_code
+    starter_code_conns.idl
+  }
+}
+
+project(*exec) : ciaox11_test_exec_all {
+  after += starter_code_test_stub starter_code_test_lem_stub *idl_gen
+  libs  += starter_code_test_stub starter_code_test_lem_stub
+
+  dynamicflags += STARTER_CODE_TEST_CONNS_LEM_STUB_BUILD_DLL \
+                  STARTER_CODE_TEST_CONNS_EXEC_BUILD_DLL \
+                  STARTER_CODE_TEST_CONNS_SVNT_BUILD_DLL
+  Source_Files {
+    starter_code_conns_exec.cpp
+    generated_code/starter_code_connsEC.cpp
+    generated_code/starter_code_conns_svnt.cpp
+  }
+
+  Header_Files {
+    starter_code_conns_exec.h
+    generated_code/starter_code_conns_exec_export.h
+
+    generated_code/starter_code_connsEC.h
+    generated_code/starter_code_conns_lem_stub_export.h
+
+    generated_code/starter_code_conns_svnt.h
+    generated_code/starter_code_conns_svnt_export.h
+  }
+}

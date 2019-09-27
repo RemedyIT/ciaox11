@@ -1,0 +1,23 @@
+/**
+ * @file    sender.idl
+ * @author  Marcel Smit
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef SENDER_IDL
+#define SENDER_IDL
+
+#include <Components.idl>
+
+#include "interceptor.idl"
+
+module Interceptor
+{
+  component Interceptor_Sender
+  {
+    uses Foo run_my_foo;
+  };
+};
+
+#endif /* SENDER_IDL */

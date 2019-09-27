@@ -1,0 +1,16 @@
+include::_{backend}_settings.adoc[]
+
+= CIAOX11 Frequently Asked Questions
+
+== General FAQs
+
+[cols="<a,<a",options="header",]
+|=======================================================================
+|Question |Solution
+| Why should I use <<{xref_docs_root}/tt4ccm/tt4ccm.adoc#,TT4CCM>> support instead
+of using the ACE Reactor |
+The TT4CCM support will work together with the AXCIOMA Execution Framework where
+the ACE Reactor will not. It is only safe to use the ACE Reactor in the single threaded
+execution model.
+
+|=======================================================================

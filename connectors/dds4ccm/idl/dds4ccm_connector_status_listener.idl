@@ -1,0 +1,32 @@
+/**
+ * @file    dds4ccm_connector_status_listener.idl
+ * @author  Marcel Smit
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef DDS4CCM_CONNECTOR_STATUS_LISTENER_IDL_
+#define DDS4CCM_CONNECTOR_STATUS_LISTENER_IDL_
+
+#include "connectors/dds4ccm/idl/dds4ccm_base.idl"
+
+module CCM_DDS
+{
+  local interface ConnectorStatusListener {
+    // status that are relevant system-wide
+    void on_inconsistent_topic (in DDS::Topic the_topic,
+                                in DDS::InconsistentTopicStatus status);
+    void on_requested_incompatible_qos (in DDS::DataReader the_reader,
+                                        in DDS::RequestedIncompatibleQosStatus status);
+    void on_sample_rejected (in DDS::DataReader the_reader,
+                             in DDS::SampleRejectedStatus status);
+    void on_offered_deadline_missed (in DDS::DataWriter the_writer,
+                                     in DDS::OfferedDeadlineMissedStatus status);
+    void on_offered_incompatible_qos (in DDS::DataWriter the_writer,
+                                      in DDS::OfferedIncompatibleQosStatus status);
+    void on_unexpected_status (in DDS::Entity the_entity,
+                               in DDS::StatusKind status_kind);
+  };
+};
+
+#endif /* DDS4CCM_CONNECTOR_STATUS_LISTENER_IDL_ */

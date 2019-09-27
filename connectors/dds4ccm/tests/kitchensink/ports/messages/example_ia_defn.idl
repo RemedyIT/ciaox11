@@ -1,0 +1,81 @@
+/**
+ * @file    example_ia_defn.idl
+ * @author  Marcel Smit
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef CX_PORTS__TYPES__EXAMPLE_IA_DEFN_IDL
+#define CX_PORTS__TYPES__EXAMPLE_IA_DEFN_IDL
+
+#include "example_na_defn.idl"
+#include "example_b_defn.idl"
+
+/// @namespace Example
+module Example {
+
+    /// @enum IA1
+    ///
+    enum IA1 {
+        IA1_1,
+        IA1_2
+    };
+
+    /// @enum IA2
+    ///
+    enum IA2 {
+        IA2_1,
+        IA2_2
+    };
+
+    /// @enum IA3
+    ///
+    enum IA3 {
+        IA3_1,
+        IA3_2
+    };
+
+    /// @struct IA4
+    ///
+    struct IA4 {
+
+        double IA4_3;
+
+        unsigned long IA4_2;
+
+        Example::NA5 IA4_1;
+    }; //@TopLevel(false)
+
+    /// @struct IA5
+    ///
+    struct IA5 {
+
+        double IA5_12;
+
+        Example::IA3 IA5_03;
+
+        Example::IA1 IA5_02;
+
+        double IA5_10;
+
+        double IA5_11;
+
+        double IA5_09;
+
+        double IA5_07;
+
+        double IA5_06;
+
+        Example::IA2 IA5_08;
+
+        Example::B47 IA5_04;
+
+        Example::B42 IA5_05;
+
+        Example::NA6 IA5_01;
+    }; //@TopLevel(false)
+};
+
+#endif // CX_PORTS__TYPES__EXAMPLE_IA_DEFN_IDL
+
+/// @}

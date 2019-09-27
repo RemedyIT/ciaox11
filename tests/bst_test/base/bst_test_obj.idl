@@ -1,0 +1,25 @@
+/**
+ * @file    bst_test_obj.idl
+ * @author  Johnny Willemsen
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef CX_PORTS__BST_TEST_OBJ_IDL
+#define CX_PORTS__BST_TEST_OBJ_IDL
+
+
+/// @namespace BST
+module BST {
+
+    ///@interface Test_obj
+    interface Test_obj {
+
+        void foo();
+    };
+
+};
+
+#endif // CX_PORTS__BST_TEST_OBJ_IDL
+

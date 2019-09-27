@@ -1,0 +1,14 @@
+// --------------------------------------------------------------------
+// ddsx11_ndds_flags.mpb
+//
+// Set the needed compiler flags for a specific DDS vendor
+//
+// Copyright (c) Remedy IT Expertise BV
+// Chamber of commerce Rotterdam nr.276339, The Netherlands
+// --------------------------------------------------------------------
+
+project : taox11_lib {
+  requires += ndds
+  macros   += DDSX11_NDDS=1
+  includes += $(CIAOX11_ROOT) $(CIAOX11_ROOT)/ddsx11 $(CIAOX11_ROOT)/ddsx11/vendors/ndds $(CIAOX11_ROOT)/ddsx11/vendors/ndds/idl
+}

@@ -1,0 +1,54 @@
+project(*cc_idl_gen) : ciaox11_test_cc_base_idl {
+  custom_only = 1
+  after += asyn_usesmulti_idl_gen asyn_usesmulti_lem_gen
+  idlflags += -Wb,base_export_macro=USESMULTI \
+              -Wb,base_export_include=usesmulti
+
+  IDL_Files {
+    gendir=generated_code
+    ../base/usesmulti.idl
+  }
+}
+
+project(*skel) : ciaox11_test_base, taox11_portableserver, ciaox11_corba4ccm {
+  after += *stub *cc_idl_gen
+  libs  += *stub
+
+  dynamicflags += USESMULTI_SKEL_BUILD_DLL
+
+  Source_Files {
+    generated_code/usesmultiS.cpp
+  }
+
+  Header_Files {
+    generated_code/usesmultiS.h
+    generated_code/usesmulti_skel_export.h
+  }
+}
+
+project(*corba_conn) : ciaox11_test_base, ciaox11_executor, ciaox11_corba4ccm_impl {
+  after += asyn_usesmulti_skel asyn_usesmulti_stub asyn_usesmulti_lem_stub *cc_idl_gen
+  libs  += asyn_usesmulti_skel asyn_usesmulti_stub asyn_usesmulti_lem_stub
+
+  dynamicflags += USESMULTI_CC_LEM_STUB_BUILD_DLL \
+                  USESMULTI_CC_EXEC_BUILD_DLL \
+                  USESMULTI_CC_SVNT_BUILD_DLL
+
+  Source_Files {
+    generated_code/usesmulti_ccEC.cpp
+
+    generated_code/usesmulti_cc_exec.cpp
+    generated_code/usesmulti_cc_svnt.cpp
+  }
+  Header_Files {
+    generated_code/usesmulti_ccC.h
+    generated_code/usesmulti_ccEC.h
+    generated_code/usesmulti_cc_lem_stub_export.h
+
+    generated_code/usesmulti_cc_exec.h
+    generated_code/usesmulti_cc_exec_export.h
+
+    generated_code/usesmulti_cc_svnt.h
+    generated_code/usesmulti_cc_svnt_export.h
+  }
+}

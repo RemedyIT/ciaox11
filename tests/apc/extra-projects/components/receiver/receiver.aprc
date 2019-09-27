@@ -1,0 +1,8 @@
+component 'hello_receiver' do |comp|
+  comp.idl %w{ hello_receiver.idl }
+
+  #for this component , disable the ciaox11_logger project, which is default enabled
+  comp.base_projects -= 'ciaox11_logger'
+
+end
+

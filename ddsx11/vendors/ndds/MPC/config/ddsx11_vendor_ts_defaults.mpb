@@ -1,0 +1,15 @@
+// --------------------------------------------------------------------
+// ddsx11_vendor_ts_defaults.mpb
+//
+// Vendor specific IDL compiler flags.
+//
+// Copyright (c) Remedy IT Expertise BV
+// Chamber of commerce Rotterdam nr.276339, The Netherlands
+// --------------------------------------------------------------------
+
+feature(ddsx11, ndds) : ndds_ts_defaults {
+}
+
+feature(!ndds) {
+  requires += dummy_label
+}

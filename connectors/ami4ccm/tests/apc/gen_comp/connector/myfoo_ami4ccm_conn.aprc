@@ -1,0 +1,11 @@
+
+connector 'hello_ami' do |conn|
+
+  conn.idl %w{ hello.idl }
+  #prefix of generated export headers:
+  conn.export_name 'hello'
+  #project creator add after shared name _ami4ccma_conn
+  conn.shared_name 'hello'
+  conn.port_type :ami4ccm
+  conn.gen_dir  :conn_dir_build
+end

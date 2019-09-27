@@ -1,0 +1,31 @@
+/**
+ * @file    hello.idl
+ * @author  Marijke Hengstmengel
+ *
+ * @brief   base for test with missing connection
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef HELLO_T_IDL
+#define HELLO_T_IDL
+
+#pragma ami4ccm interface "HelloT::MyFoo"
+#pragma ami4ccm idl "helloA.idl"
+
+module HelloT
+{
+  // Sender/Receiver interface
+  interface MyFoo
+    {
+      void hello (out string answer);
+
+      attribute short rw_attrib;
+
+      readonly attribute short ro_attrib;
+    };
+};
+
+#endif
+

@@ -1,0 +1,24 @@
+/**
+ * @file    nested_foo.idl
+ * @author  Martin Corino
+ *
+ * @brief   Struct for gen comp example
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef NESTED_FOO_IDL_
+#define NESTED_FOO_IDL_
+
+
+module Foo
+{
+
+  struct Nested_Bar
+  {
+    short bar_nested_short;
+  };
+};
+
+#endif /* NESTED_FOO_IDL_ */

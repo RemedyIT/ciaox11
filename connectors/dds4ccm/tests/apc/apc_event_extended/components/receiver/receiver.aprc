@@ -1,0 +1,16 @@
+
+component 'event_receiver' do |comp|
+
+  comp.idl %w{ event_receiver.idl }
+
+  # name of component is recipe name (in this case: event_receiver)
+  # prefix sharednames (default is component name)
+  comp.shared_name 'my_receiver'
+
+  # prefix export headers, default component name (in lowercase)
+  comp.export_name 'my_receiver_comp'
+
+  # gen_dir is default 'generated_code'
+  comp.gen_dir  'build_dir'
+
+end

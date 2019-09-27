@@ -1,0 +1,6 @@
+
+component 'Receiver' do |comp|
+  comp.idl %w{ rg_late_bind_receiver.idl }
+  comp.includes '$(CIAOX11_ROOT)/connectors'
+  comp.libs 'ciaox11_dds4ccm_logger'
+end

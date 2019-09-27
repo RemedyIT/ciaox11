@@ -1,0 +1,10 @@
+// --------------------------------------------------------------------
+// ciaox11_ami4ccm_conn_idl.mpb
+//
+// Copyright (c) Remedy IT Expertise BV
+// Chamber of commerce Rotterdam nr.276339, The Netherlands
+// --------------------------------------------------------------------
+
+project : ciaox11_ami4ccm_idldefaults, ciaox11_ami4ccm {
+  idlflags += -Gxhsta -Gxhcn -Gami4ccm,idl -GC -Gxhst -Gxhsk -Glem
+}

@@ -1,0 +1,21 @@
+/**
+ * @file    shapetype.idl
+ * @author  Johnny Willemsen
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef SHAPES_SHAPETYPE_MSG_IDL_
+#define SHAPES_SHAPETYPE_MSG_IDL_
+
+typedef string<128> color_type;
+
+struct ShapeType {
+  color_type color; //@key
+  long x;
+  long y;
+  long shapesize;
+}; //@TopLevel()
+
+#endif /* SHAPES_SHAPETYPE_MSG_IDL_ */

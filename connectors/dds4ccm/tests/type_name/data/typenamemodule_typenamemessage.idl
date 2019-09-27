@@ -1,0 +1,24 @@
+/**
+ * @file    typenamemodule_typenamemessage.idl
+ * @author  Marcel Smit
+ *
+ * @brief   Base IDL for the typename test.
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef TYPENAMEMODULE_TYPENAMEMESSAGE_IDL_
+#define TYPENAMEMODULE_TYPENAMEMESSAGE_IDL_
+
+#include "typename_base.idl"
+
+// Typename, given to DDS, should be 'TypeNameModule::TypeNameMessage'
+module TypeNameModule
+{
+  struct TypeNameMessage {
+    string key;
+    long iteration;
+  }; //@TopLevel()
+};
+
+#endif /* TYPENAMEMODULE_TYPENAMEMESSAGE_IDL_ */

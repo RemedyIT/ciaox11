@@ -1,0 +1,48 @@
+
+// generated from <%= ridl_template_path %>
+namespace <%= executor_cxx_namespace %>
+{
+% visit_connector_extra
+%# Use signature of receptacle port to generate replyhandler
+%# In the future could be replaced by using an annotation in ami4ccm.idl
+% ports.each do |_p|
+%   nest { _p.gen_reply_handler_exec } if (_p.port_type == :receptacle && (_p.cxxname.include? 'ami4ccm_uses'))
+% end
+% ports.each do |_p|
+%   nest { _p.gen_facet_exec } if _p.port_type == :facet
+% end
+
+% visit_comp_facet
+
+  // Operations from Components::SessionComponent
+  void
+  <%= cxxname %>_conn_i::set_session_context (
+    IDL::traits<Components::SessionContext>::ref_type ctx)
+  {
+    // Setting the context of this component.
+    this->context_ = IDL::traits< <%= scoped_ccm_name %>_Context >::narrow (std::move (ctx));
+  }
+
+  void <%= cxxname %>_conn_i::configuration_complete ()
+  {
+  }
+
+  void <%= cxxname %>_conn_i::ccm_activate ()
+  {
+  }
+
+  void <%= cxxname %>_conn_i::ccm_passivate ()
+  {
+  }
+
+  void <%= cxxname %>_conn_i::ccm_remove ()
+  {
+  }
+} // namespace <%= executor_cxx_namespace %>
+
+extern "C" void
+create_<%= scoped_unescaped_type.scope_to_cxxname %>_Impl (
+  IDL::traits<Components::EnterpriseComponent>::ref_type& component)
+{
+  component = CORBA::make_reference < <%= executor_cxx_namespace %>::<%= lem_name %>_conn_i > ();
+}

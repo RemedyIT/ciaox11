@@ -1,0 +1,16 @@
+// --------------------------------------------------------------------
+// ciaox11_dds4ccm_features.mpb
+//
+// Copyright (c) Remedy IT Expertise BV
+// Chamber of commerce Rotterdam nr.276339, The Netherlands
+// --------------------------------------------------------------------
+
+feature(dds4ccm_state) : ridl_defaults {
+  macros   += CIAOX11_DDS4CCM_STATE
+  idlflags += -DCIAOX11_DDS4CCM_STATE
+}
+
+feature(dds4ccm_event) : ridl_defaults {
+  macros   += CIAOX11_DDS4CCM_EVENT
+  idlflags += -DCIAOX11_DDS4CCM_EVENT
+}

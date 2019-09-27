@@ -1,0 +1,37 @@
+// --------------------------------------------------------------------
+// ciaox11_config.mpc
+//
+// Author: Martin Corino
+//
+// Copyright (c) Remedy IT Expertise BV
+// Chamber of commerce Rotterdam nr.276339, The Netherlands
+// --------------------------------------------------------------------
+
+project(*idl) : install, ciaox11_idl {
+  custom_only = 1
+  idlflags  += -Wb,stub_export_include=ciaox11_config_export.h \
+               -Wb,stub_export_macro=CIAOX11_CONFIG_Export \
+               -SS -Ssh -Scp -Gxhst
+
+  IDL_Files {
+    ciaox11_config_values.idl
+  }
+}
+
+// We need always taox11_anytypecode because the ccm_config contains a struct
+// declaration which use a CORBA any
+project(*stub) : install, ciaox11_ccm_stub, ciaox11_output, taox11_anytypecode {
+  after += *idl
+  dynamicflags += CIAOX11_CONFIG_BUILD_DLL
+
+  Header_Files {
+    ciaox11_config_export.h
+    ciaox11_config_util.h
+    ciaox11_config_valuesC.h
+  }
+
+  Source_Files {
+    ciaox11_config_util.cpp
+    ciaox11_config_valuesC.cpp
+  }
+}

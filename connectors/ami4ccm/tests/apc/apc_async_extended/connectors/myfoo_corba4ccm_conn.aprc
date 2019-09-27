@@ -1,0 +1,21 @@
+
+connector 'hello_corba' do |conn|
+  conn.idl %w{ hello.idl }
+
+  # name of connector is recipe name (in this case: hello_corba)
+
+  # prefix export headers is default connector name (in lowercase)
+  conn.export_name 'my_corba_conn'
+
+  # sharedname connector (default connector name) + '_corba_conn'
+  conn.shared_name 'my'
+
+  # gen_dir is default 'generated_code'
+  conn.gen_dir  :corba_conn_dir_build
+
+  conn.port_type :corba4ccm do |pt|
+    # only generate connector implementation for a single interface
+    pt.interface 'Hello::MyFoo'
+  end
+
+end

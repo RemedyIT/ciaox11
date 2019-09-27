@@ -1,0 +1,19 @@
+component 'uses_s_m_sender' do |comp|
+  #data/type idl
+  comp.idl %w{ uses_s_m.idl }
+  # Define component 'Sender' in scope 'UsesSM'
+  comp.define 'UsesSM::Sender' do |intf|
+    # ---------         ports ----------------------------------
+    # asynch multiplex port with interface UsesSM::One defined in uses_s_m.idl
+    intf.port 'm_run_my_one' do |p|
+      p.sends 'UsesSM::One', multiple: true
+    end
+
+    # condensed form of defining a port
+    # asynch port with interface UsesSM::Two defined in uses_s_m.idl
+    intf.port 's_run_my_two', sends: 'UsesSM::Two'
+
+  end
+
+  comp.combined_lib true
+end

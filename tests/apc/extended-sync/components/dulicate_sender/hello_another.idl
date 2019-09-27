@@ -1,0 +1,26 @@
+/**
+ * @file    hello_another.idl
+ * @author  Marijke Hengstmengel
+ *
+ * @brief   Anoter Sender component to test for duplicate mpc projects
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef HELLO_ANOTHER_IDL_
+#define HELLO_ANOTHER_IDL_
+
+#include <Components.idl>
+
+#include "hello.idl"
+
+module Hello
+{
+  component Sender
+  {
+    uses MyFoo run_my_foo;
+  };
+};
+
+#endif /* HELLO_ANOTHER_IDL_ */

@@ -1,0 +1,40 @@
+
+// generated from <%= ridl_template_path %>
+/// @copydoc <%= doc_scoped_name %>
+% if attribute.has_raises?
+%  end_of_line=''
+% else
+%  end_of_line=';'
+% end
+% if attribute.is_readonly?
+readonly attribute <%= attribute.idltype_name %> <%= attribute.unescaped_name %><%= end_of_line %>
+%  if attribute.has_get_raises?
+%  _attrs =  attribute.get_raises.dup
+% _s = 'raises ('
+%    while !_attrs.empty?
+%  _attr=_attrs.shift
+% _s += _attr.scoped_cxxname + (!_attrs.empty? ? ', ' : ');')
+%    end
+   <%= _s %>
+%  end
+% else
+attribute <%= attribute.scoped_idltype_name %> <%= attribute.unescaped_name %><%= end_of_line %>
+%  if attribute.has_get_raises?
+%  _attrs =  attribute.get_raises.dup
+% _s = 'getraises ('
+% while !_attrs.empty?
+%  _attr=_attrs.shift
+%  _s += _attr.scoped_cxxname + (!_attrs.empty? ? ', ' : ')') +  ((_attrs.empty? && !attribute.has_set_raises?) ? ';' : '')
+%    end
+   <%= _s %>
+%  end
+%  if attribute.has_set_raises?
+%  _attrs =  attribute.set_raises.dup
+% _s = 'setraises ('
+% while !_attrs.empty?
+%  _attr=_attrs.shift
+% _s += _attr.scoped_cxxname + ( !_attrs.empty? ? ', ' : ');')
+%    end
+   <%= _s %>
+%  end
+% end

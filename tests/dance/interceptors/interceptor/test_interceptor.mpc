@@ -1,0 +1,25 @@
+project (ciao_test_interceptor) : install, ciaox11_logger, dancex11_deployment_stub, \
+      dancex11_lib, dancex11_stub, dancex11_output, ciaox11_ccm_stub, ciaox11_ccmobject_stub {
+
+  after += interceptor_stub
+  libs  += interceptor_stub
+  libpaths += ../lib
+
+  includes += ../base/generated_code
+
+  dynamicflags += TEST_INTERCEPTOR_BUILD_DLL
+  includes += ..
+
+  Source_Files {
+    test_interceptor.cpp
+  }
+
+  Header_Files {
+    test_interceptor.h
+    test_interceptor_export.h
+  }
+
+  specific {
+     install_dir = dancex11/localitymanager/interceptors
+  }
+}

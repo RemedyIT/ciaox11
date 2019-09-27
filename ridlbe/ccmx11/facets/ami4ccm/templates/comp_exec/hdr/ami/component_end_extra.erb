@@ -1,0 +1,45 @@
+% if incl_ami4ccm_receptacle?
+% ports.each do |_p|
+%   if _p.is_ami4ccm_port?
+% _regen_marker = "#{executor_cxx_namespace}::#{_p.ami4ccm_rh_executor}"
+  /// AMI4CCM reply handler implementation class
+  class <%= _p.ami4ccm_rh_executor %> final
+    :public IDL::traits< <%= _p.interface_type.scoped_enclosure_cxxname.scope_to_cxxname %>::AMI4CCM_<%= _p.interface_type.cxxname %>ReplyHandler>::base_type
+  {
+  public:
+% write_regen_section(_regen_marker+'[ctor]', indent: 2) do
+    <%= _p.ami4ccm_rh_executor %> ();
+% end
+
+    virtual ~<%= _p.ami4ccm_rh_executor %> ();
+
+% if _p.interface_type.all_operations.size > 0
+%   _p.interface_type.all_operations.each do |_op|
+%     nest(2) { _op.visit_template('ami/operation_reply_h') }
+%   end
+
+% end
+% if _p.interface_type.all_attributes.size > 0
+%   _p.interface_type.all_attributes.each do |_att|
+%   nest(2) { _att.visit_template('ami/attribute_reply_h') }
+%   end
+
+% end
+    /** @name User defined public operations. */
+    //@{
+% nest(2) { write_regen_section(_regen_marker+'[user_public_ops]', default_content: '// Your code here') }
+    //@}
+  private:
+    /** @name User defined members. */
+    //@{
+% nest(2) { write_regen_section(_regen_marker+'[user_members]', default_content: '// Your code here') }
+    //@}
+
+    /** @name User defined private operations. */
+    //@{
+% nest(2) { write_regen_section(_regen_marker+'[user_private_ops]', default_content: '// Your code here') }
+    //@}
+  };
+% end
+% end
+% end

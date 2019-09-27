@@ -1,0 +1,21 @@
+/**
+ * @file    interceptor.idl
+ * @author  Marcel Smit
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef INTERCEPTOR_IDL_
+#define INTERCEPTOR_IDL_
+
+module Interceptor
+{
+
+  interface Foo
+    {
+      unsigned short do_foo (in unsigned short input,
+        out unsigned short output);
+    };
+};
+
+#endif /* INTERCEPTOR_IDL_ */

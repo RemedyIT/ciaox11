@@ -1,0 +1,16 @@
+include::_{backend}_settings.adoc[]
+
+= AMI4CCM
+
+== What is AMI4CCM?
+
+CIAOX11 implements the https://www.omg.org/spec/AMI4CCM[AMI4CCM
+specification] to provide support for client side asynchronous
+request/reply support for remote interfaces. AMI4CCM is complemented by
+our <<{xref_docs_root}/corba4ccm/corba4ccm.adoc#,CORBA4CCM>> support on the
+server side.
+
+== Tutorial
+
+See <<tutorials/hello/ami4ccm_tutorial.adoc#,here>> for our
+AMI4CCM tutorial.

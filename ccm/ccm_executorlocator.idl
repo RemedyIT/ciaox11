@@ -1,0 +1,60 @@
+/**
+ * @file    ccm_executorlocator.idl
+ * @author  Johnny Willemsen
+ *
+ * @brief   Compliant with OMG 06-04-01 Section 8.3.2
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#if !defined (CCM_EXECUTORLOCATOR_IDL)
+#define CCM_EXECUTORLOCATOR_IDL
+
+#include "ccm/ccm_config.idl"
+
+module CIAOX11
+{
+  /// Exception that returns a name list with all the
+  /// names of configuration values that have a problem
+  exception ConfigurationError {
+    Components::NameList name_list;
+  };
+  /// Exception thrown at the moment an invalid executor
+  /// is tried to be retrieved
+  exception InvalidName {
+    string name;
+  };
+
+  local interface ExecutorLocator
+  {
+    /// Configure the component (incl. attributes)
+    void configure (inout Components::ConfigValues config)
+      raises (ConfigurationError);
+
+    /// Obtain the component executor.
+    Object obtain_executor ();
+
+    /// Obtain the facet executor for a connection.
+    Object obtain_facet_executor (in Components::FeatureName name,
+                                  in string conn_name,
+                                  inout Components::ConfigValues config)
+      raises (InvalidName);
+
+    /// Connect a component port using the provided
+    /// local executor reference (can be nil)
+    ////and/or provided configuration.
+    /// Returns false if connecting failed.
+    boolean connect (in Components::FeatureName name,
+                     in Object local_executor,
+                     in string conn_name,
+                     in Components::ConfigValues config);
+
+    /// Disconnect a component port.
+    /// Returns false if disconnecting failed.
+    boolean disconnect (in Components::FeatureName name,
+                        in string conn_name);
+  };
+};
+
+#endif /* CCM_EXECUTORLOCATOR_IDL */

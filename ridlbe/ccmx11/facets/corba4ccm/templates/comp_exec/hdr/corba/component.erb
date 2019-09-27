@@ -1,0 +1,75 @@
+
+// generated from <%= ridl_template_path %>
+/// Namespace for implementation of <%= scoped_name %> component
+namespace <%= executor_cxx_namespace %>
+{
+% interfaces_for_nonlocal_facet_ports.each do |_i|
+
+  /**
+  * CORBA servant implementation for all the CORBA facet servants
+  * using <%= _i.scoped_cxxname %>.
+  * This CORBA servant makes the facet executor remotely
+  * accessible through CORBA. This CORBA servant implementation
+  * is generated for each interface without using any
+  * inheritance, all methods are very small and
+  * the footprint reduction by using inheritance is pretty
+  * low, but causes a lot of dependencies
+  */
+  class <%= _i.scoped_cxxname.identify %>_servant final :
+    public CORBA::servant_traits<<%= _i.scoped_cxxname %>>::base_type
+  {
+  public:
+    /**
+    * Constructor
+    * @param facet_executor The facet executor this facet CORBA servant is handling the remote invocations
+    */
+    explicit <%= _i.scoped_cxxname.identify %>_servant (<%= _i.scoped_cxx_in_type %> facet_executor);
+
+    /// Virtual destructor
+    virtual ~<%= _i.scoped_cxxname.identify %>_servant () = default;
+%if _i.all_operations.size > 0
+
+    /// @name Operations from <%= _i.scoped_cxxname %>
+    //@{
+% _i.all_operations.each do |_op|
+%   nest(2) { _op.visit_svnt_operation }
+% end
+    //@}
+%end
+%if _i.all_attributes.size > 0
+
+    /// @name Attributes from <%= _i.scoped_cxxname %>
+    //@{
+% _i.all_attributes.each do |_att|
+%   nest (2) { _att.visit_svnt_attribute }
+% end
+    //@}
+%end
+
+%   nest (2) { visit_component_extra_public }
+  private:
+    /// The facet executor for which this CORBA facet
+    /// servant is handling the remote CORBA calls
+    <%= _i.scoped_cxx_in_type %> facet_executor_;
+
+%   nest (2) { visit_component_extra_private }
+    /** @name Illegal to be called. Deleted explicitly to let the compiler detect any violation */
+    //@{
+    <%= _i.scoped_cxxname.identify %>_servant () = delete;
+    <%= _i.scoped_cxxname.identify %>_servant (const <%= _i.scoped_cxxname.identify %>_servant&) = delete;
+    <%= _i.scoped_cxxname.identify %>_servant (<%= _i.scoped_cxxname.identify %>_servant&&) = delete;
+    <%= _i.scoped_cxxname.identify %>_servant& operator= (const <%= _i.scoped_cxxname.identify %>_servant& x) = delete;
+    <%= _i.scoped_cxxname.identify %>_servant& operator= (<%= _i.scoped_cxxname.identify %>_servant&& x) = delete;
+    //@}
+  };
+
+% end
+
+% all_ports.each do |_p|
+%   nest { _p.gen_facet_exec } if _p.port_type == :facet
+% end
+} // namespace <%= executor_cxx_namespace %>
+
+extern "C" <%= exec_export_macro %> void
+create_<%= scoped_unescaped_type.scope_to_cxxname %>_Impl (
+  IDL::traits<Components::EnterpriseComponent>::ref_type& component);

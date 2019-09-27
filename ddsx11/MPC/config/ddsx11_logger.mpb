@@ -1,0 +1,12 @@
+// --------------------------------------------------------------------
+// ddsx11_logger.mpb
+//
+// Copyright (c) Remedy IT Expertise BV
+// Chamber of commerce Rotterdam nr.276339, The Netherlands
+// --------------------------------------------------------------------
+
+// feature project for ddsx11_logger
+feature(x11_logging) {
+  after += ddsx11_logger
+  libs  += ddsx11_logger
+}

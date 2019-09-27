@@ -1,0 +1,9 @@
+
+// generated from <%= ridl_template_path %>
+//@{
+% all_ports.each do |_p|
+%   if _p.port_type == :facet
+<%= _p.interface_type.scoped_ccm_name_member_type %> <%= _p.cxxname %>_;
+%   end
+% end
+//@}

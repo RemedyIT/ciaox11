@@ -1,0 +1,29 @@
+// Generates the stub files. No skeleton files are generated
+// since this depends on the inter-component communication middleware.
+// Also no lem's are created here since that belongs to the
+// interaction patterns.
+project(*idl_gen) : ciaox11_test_base_idl {
+  custom_only = 1
+  idlflags += -Wb,base_export_macro=EXTENDED_HELLO \
+              -Wb,base_export_include=extended_hello
+
+  IDL_Files {
+    gendir=generated_code
+    extended_hello.idl
+  }
+}
+
+project(*stub) : ciaox11_test_base {
+  after += *idl_gen
+
+  dynamicflags += EXTENDED_HELLO_STUB_BUILD_DLL
+
+  Source_Files {
+    generated_code/extended_helloC.cpp
+  }
+
+  Header_Files {
+    generated_code/extended_helloC.h
+    generated_code/extended_hello_stub_export.h
+  }
+}

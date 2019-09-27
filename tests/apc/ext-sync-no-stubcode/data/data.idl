@@ -1,0 +1,22 @@
+/**
+ * @file    data.idl
+ * @author  Martin Corino
+ *
+ * @brief   Data struct
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef DATA_IDL_
+#define DATA_IDL_
+
+module Data
+{
+  struct Msg
+  {
+    string text;
+  };
+};
+
+#endif /* DATA_IDL_ */

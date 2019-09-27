@@ -1,0 +1,18 @@
+
+This example demonstrated and verifies the remote, "connector", vs local, "direct"
+connection options for synchronous request/reply interaction.
+
+The test defines two interfaces:
+1. 'local' interface Bar
+2. interface Foo
+
+For 1. no connectors can be generated and the *only* connection option is local.
+For 2. a CORBA4CCM connector is generated.
+
+The test demonstrates that:
+- for 1. a using component instance can be connected to a colocated providing instance
+- for 2. a using component instance can be connected to a remote deployed providing instance
+  using two appropriately colocated (wrt the component instances) CORBA4CCM connector instances
+  AND
+  another using component instance can be connected to a colocated providing instance
+

@@ -1,0 +1,24 @@
+/**
+ * @file    get_component_component.idl
+ * @author  Marcel Smit
+ *
+ * @brief   Component IDL for the get_component test
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef GET_COMPONENT_COMPONENT_IDL_
+#define GET_COMPONENT_COMPONENT_IDL_
+
+#include "commonSE.idl"
+
+component GetComponentComponent
+{
+  port CommonTestConnector::DDS_Listen info_listen;
+  port CommonTestConnector::DDS_Get    info_get;
+  port CommonTestConnector::DDS_Write  info_write;
+
+  attribute boolean act_as_sender;
+};
+
+#endif /* GET_COMPONENT_COMPONENT_IDL_ */

@@ -1,0 +1,438 @@
+/**
+ * @file    example_da_defn.idl
+ * @author  Marcel Smit
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef CX_PORTS__TYPES__EXAMPLE_DA_DEFN_IDL
+#define CX_PORTS__TYPES__EXAMPLE_DA_DEFN_IDL
+
+#include "example_b_defn.idl"
+#include "example_na_defn.idl"
+
+/// @namespace Example
+module Example {
+
+    /// @enum DA13
+    ///
+    enum DA13 {
+        DA13_1,
+        DA13_2
+    };
+
+    /// @enum DA14
+    ///
+    enum DA14 {
+        DA14_2,
+        DA14_1
+    };
+
+    /// @enum DA12
+    ///
+    enum DA12 {
+        DA12_2,
+        DA12_1
+    };
+
+    /// @enum DA16
+    ///
+    enum DA16 {
+        DA16_1,
+        DA16_2,
+        DA16_3
+    };
+
+    /// @enum DA18
+    ///
+    enum DA18 {
+        DA18_4,
+        DA18_3,
+        DA18_2,
+        DA18_1,
+        DA18_5
+    };
+
+    /// @enum DA15
+    ///
+    enum DA15 {
+        DA15_2,
+        DA15_6,
+        DA15_3,
+        DA15_4,
+        DA15_5,
+        DA15_1
+    };
+
+    /// @enum DA17
+    ///
+    enum DA17 {
+        DA17_2,
+        DA17_1
+    };
+
+    /// @enum DA19
+    ///
+    enum DA19 {
+        DA19_4,
+        DA19_1,
+        DA19_2,
+        DA19_3
+    };
+
+    /// @enum DA20
+    ///
+    enum DA20 {
+        DA20_1,
+        DA20_2
+    };
+
+    /// @enum DA21
+    ///
+    enum DA21 {
+        DA21_2,
+        DA21_1
+    };
+
+    /// @enum DA10
+    ///
+    enum DA10 {
+        DA10_1,
+        DA10_2
+    };
+
+    /// @enum DA01
+    ///
+    enum DA01 {
+        DA01_1,
+        DA01_2
+    };
+
+    /// @enum DA07
+    ///
+    enum DA07 {
+        DA07_2,
+        DA07_1
+    };
+
+    /// @enum DA08
+    ///
+    enum DA08 {
+        DA08_2,
+        DA08_1
+    };
+
+    /// @enum DA06
+    ///
+    enum DA06 {
+        DA06_2,
+        DA06_1
+    };
+
+    /// @enum DA02
+    ///
+    enum DA02 {
+        DA02_1,
+        DA02_4,
+        DA02_3,
+        DA02_6,
+        DA02_2,
+        DA02_5
+    };
+
+    /// @enum DA09
+    ///
+    enum DA09 {
+        DA09_1,
+        DA09_2
+    };
+
+    /// @enum DA03
+    ///
+    enum DA03 {
+        DA03_3,
+        DA03_2,
+        DA03_1
+    };
+
+    /// @enum DA05
+    ///
+    enum DA05 {
+        DA05_1,
+        DA05_2
+    };
+
+    /// @enum DA04
+    ///
+    enum DA04 {
+        DA04_2,
+        DA04_1
+    };
+
+    /// @struct DA22
+    ///
+    struct DA22 {
+
+        unsigned long DA22_09;
+
+        double DA22_15;
+
+        Example::B45 DA22_12;
+
+        Example::B41 DA22_14;
+
+        Example::B41 DA22_13;
+
+        Example::DA05 DA22_10;
+
+        Example::DA04 DA22_08;
+
+        Example::DA03 DA22_05;
+
+        double DA22_04;
+
+        double DA22_01;
+
+        double DA22_11;
+
+        double DA22_02;
+
+        double DA22_06;
+
+        double DA22_03;
+
+        double DA22_07;
+    }; //@TopLevel(false)
+
+    /// @typedef DA23
+    ///
+    typedef sequence <DA22> DA23;
+
+    /// @struct DA29
+    ///
+    struct DA29 {
+
+        double DA29_01;
+
+        double DA29_04;
+
+        double DA29_06;
+
+        double DA29_07;
+
+        Example::DA17 DA29_08;
+
+        unsigned long DA29_09;
+
+        Example::DA18 DA29_10;
+
+        double DA29_12;
+
+        Example::B11 DA29_13;
+
+        Example::B11 DA29_14;
+
+        double DA29_15;
+
+        double DA29_02;
+
+        Example::DA16 DA29_05;
+
+        double DA29_11;
+
+        double DA29_03;
+    }; //@TopLevel(false)
+
+    /// @typedef DA30
+    ///
+    typedef sequence <DA29, 60> DA30;
+
+    /// @enum DA11
+    ///
+    enum DA11 {
+        DA11_3,
+        DA11_4,
+        DA11_2,
+        DA11_1
+    };
+
+    /// @struct DA26
+    ///
+    struct DA26 {
+        Example::DA11 DA26_2;
+        double DA26_1;
+    }; //@TopLevel(false)
+
+    /// @typedef DA27
+    ///
+    typedef sequence <DA26, 4> DA27;
+
+    /// @struct DA32
+    ///
+    struct DA32 {
+
+        Example::NA6 DA32_02;
+
+        Example::B47 DA32_06;
+
+        Example::B42 DA32_07;
+
+        Example::DA20 DA32_10;
+
+        Example::B42 DA32_01;
+
+        Example::DA21 DA32_05;
+
+        Example::DA10 DA32_04;
+
+        double DA32_11;
+
+        Example::DA01 DA32_03;
+
+        unsigned long DA32_09;
+
+        Example::DA27 DA32_08;
+    }; //@TopLevel(false)
+
+    /// @struct DA28
+    ///
+    struct DA28 {
+
+        unsigned long DA28_04;
+
+        Example::NA5 DA28_01;
+
+        Example::DA12 DA28_02;
+
+        Example::DA13 DA28_03;
+
+        unsigned long DA28_05;
+
+        Example::B11 DA28_06;
+
+        Example::B42 DA28_07;
+
+        double DA28_08;
+
+        double DA28_09;
+
+        double DA28_10;
+
+        double DA28_11;
+
+        double DA28_12;
+
+        double DA28_13;
+
+        double DA28_14;
+
+        Example::B11 DA28_15;
+
+        Example::B42 DA28_16;
+
+        unsigned long DA28_17;
+
+        unsigned long DA28_18;
+
+        unsigned long DA28_19;
+    }; //@TopLevel(false)
+
+    /// @struct DA31
+    ///
+    struct DA31 {
+
+        Example::DA15 DA31_1;
+
+        Example::DA30 DA31_3;
+
+        Example::NA5 DA31_2;
+
+        unsigned long DA31_4;
+
+        double DA31_5;
+
+        unsigned long DA31_6;
+    }; //@TopLevel(false)
+
+    /// @struct DA24
+    ///
+    struct DA24 {
+
+        unsigned long DA24_4;
+
+        Example::DA02 DA24_1;
+
+        Example::B45 DA24_5;
+
+        unsigned long DA24_6;
+
+        Example::DA23 DA24_3;
+
+        Example::NA5 DA24_2;
+    }; //@TopLevel(false)
+
+    /// @struct DA25
+    ///
+    struct DA25 {
+
+        unsigned long DA25_28;
+
+        Example::DA07 DA25_15;
+
+        double DA25_25;
+
+        Example::DA09 DA25_27;
+
+        unsigned long DA25_12;
+
+        Example::DA08 DA25_16;
+
+        double DA25_07;
+
+        Example::B48 DA25_26;
+
+        long DA25_13;
+
+        double DA25_21;
+
+        double DA25_19;
+
+        double DA25_18;
+
+        double DA25_01;
+
+        double DA25_06;
+
+        double DA25_02;
+
+        double DA25_24;
+
+        double DA25_22;
+
+        Example::DA06 DA25_05;
+
+        double DA25_09;
+
+        double DA25_17;
+
+        double DA25_11;
+
+        double DA25_08;
+
+        double DA25_20;
+
+        double DA25_03;
+
+        double DA25_23;
+
+        long DA25_14;
+
+        double DA25_10;
+
+        Example::NA5 DA25_04;
+    }; //@TopLevel(false)
+};
+
+#endif // CX_PORTS__TYPES__EXAMPLE_DA_DEFN_IDL
+
+/// @}

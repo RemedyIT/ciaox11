@@ -1,0 +1,34 @@
+/**
+ * @file    ccm_serviceregistry.idl
+ * @author  Johnny Willemsen
+ *
+ * @brief   Service registry interface
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#include "ccm/ccm_ccmexception.idl"
+
+module CIAOX11
+{
+  /// Registry with optional services that
+  /// can be installed into the container
+  local interface Service_Registry
+  {
+    /// Install a service
+    void install_service (in string service_id,
+                          in Object obj);
+
+    /// Uninstall a service
+    Object uninstall_service (in string service_id);
+
+    /// Find a service
+    Object resolve_service (in string service_id)
+      raises (Components::CCMException);
+  };
+
+  /// Standard service ids
+  const string SVCID_ORB = "ORB";
+};
+

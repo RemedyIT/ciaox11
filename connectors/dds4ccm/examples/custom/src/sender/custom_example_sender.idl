@@ -1,0 +1,31 @@
+/**
+ * @file    custom_example_sender.idl
+ * @author  Marcel Smit
+ *
+ * @brief   Stress test for DDS4CCM
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef CX_COMPONENTS__BASICPUBLISHER_COMP__SRC__EXAMPLE_BASICPUBLISHER_COMP_IDL
+#define CX_COMPONENTS__BASICPUBLISHER_COMP__SRC__EXAMPLE_BASICPUBLISHER_COMP_IDL
+
+#include <Components.idl>
+#include "custom_example_connector.idl"
+#include <ccm_dds.idl>
+#include <ccm_timed_trigger.idl>
+
+/// @namespace Example
+module Example {
+    component BasicPublisher_comp {
+        port CA1_conn::DDS_Write CA1DataPub;
+        provides CCM_DDS::ConnectorStatusListener CA1DataPub_CSL;
+        uses CCM_TT::TT_Scheduler tt_scheduler;
+        attribute unsigned long count;
+    };
+
+};
+
+#endif // CX_COMPONENTS__BASICPUBLISHER_COMP__SRC__EXAMPLE_BASICPUBLISHER_COMP_IDL
+
+/// @}

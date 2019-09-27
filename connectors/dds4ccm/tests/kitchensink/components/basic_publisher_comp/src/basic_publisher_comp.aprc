@@ -1,0 +1,4 @@
+
+component 'BasicPublisher' do |comp|
+  comp.idl %w{ basic_publisher_comp.idl }
+end

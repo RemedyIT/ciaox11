@@ -1,0 +1,34 @@
+/**
+ * @file    uses_s_m_sender.idl
+ * @author  Marijke Hengstmengel
+ *
+ * @brief   sender of ami4ccm test uses multiple and simple
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+
+#ifndef USESSM_SENDER_IDL
+#define USESSM_SENDER_IDL
+
+#include <Components.idl>
+
+#include "uses_s_m.idl"
+
+#pragma ami4ccm receptacle "UsesSM::Sender::m_run_my_one"
+#pragma ami4ccm receptacle "UsesSM::Sender::s_run_my_two"
+#pragma ami4ccm receptacle "UsesSM::Sender::s_run_my_one"
+#pragma ami4ccm receptacle "UsesSM::Sender::m_run_my_two"
+
+module UsesSM
+{
+  component Sender
+  {
+    /// For synchronous invocation
+    uses multiple One m_run_my_one;
+    uses Two s_run_my_two;
+  };
+};
+
+#endif

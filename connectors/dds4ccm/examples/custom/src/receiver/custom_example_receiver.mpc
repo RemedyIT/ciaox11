@@ -1,0 +1,58 @@
+// Not using the DDS4CCM MPC base projects for the tests since the directory structure
+// is completely different. See ../../readme.txt for details.
+project(*idl_gen) : ciaox11_idldefaults, ciaox11_dds4ccm, ciaox11_dds4ccm_event, \
+                    ciaox11_gen_exec {
+  custom_only = 1
+  after += custom_example_connector_idl_gen
+  idlflags += -Wb,base_export_macro=CUSTOM_EXAMPLE_RECEIVER \
+              -Wb,base_export_include=custom_example_receiver \
+              -I../../src/receiver -I../../src/base -I../../src/connector \
+              -I../../build/connector -o ../../build/receiver \
+              -Gos -Gcomp -Gxhex -Gxhsv -Scc -Scp
+
+  IDL_Files {
+    gendir=../../build/receiver
+    custom_example_receiver.idl
+  }
+}
+
+project(*exec) : ciaox11_executor, ciaox11_dds4ccm_lem_stub, \
+                 ciaox11_dds4ccm_logger, \
+                 ciaox11_dds4ccm_event {
+  after += *idl_gen \
+           custom_example_base_stub \
+           custom_example_connector_lem_stub
+
+  libs  += custom_example_base_stub \
+           custom_example_connector_lem_stub
+
+  libpaths += ../../lib
+  libout = ../../lib
+  includes += . ../../src/receiver \
+              ../../src/base \
+              ../../build/base \
+              ../../build/receiver \
+              ../../build/connector \
+              $(CIAOX11_ROOT)/connectors
+
+  dynamicflags += CUSTOM_EXAMPLE_RECEIVER_LEM_STUB_BUILD_DLL \
+                  CUSTOM_EXAMPLE_RECEIVER_EXEC_BUILD_DLL \
+                  CUSTOM_EXAMPLE_RECEIVER_SVNT_BUILD_DLL
+
+  Source_Files {
+    custom_example_receiver_exec.cpp
+
+    ../../build/receiver/custom_example_receiverEC.cpp
+    ../../build/receiver/custom_example_receiver_svnt.cpp
+  }
+
+  Header_Files {
+    custom_example_receiver_exec.h
+    custom_example_exec_export.h
+
+    ../../build/receiver/custom_example_receiverEC.h
+    ../../build/receiver/custom_example_receiver_lem_stub_export.h
+    ../../build/receiver/custom_example_receiver_svnt.h
+    ../../build/receiver/unkeyed_receiver_svnt_export.h
+  }
+}

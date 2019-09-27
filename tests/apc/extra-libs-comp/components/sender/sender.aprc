@@ -1,0 +1,18 @@
+component 'sender_comp' do |comp|
+  comp.idl %w{ hello_sender.idl }
+
+  #prefix sharednames, default component name (in this case: sender_comp)
+  comp.shared_name 'my_sender'
+
+  #prefix export headers, default name component
+  comp.export_name 'my_export_sender'
+
+  #gen_dir is default generated_code
+  comp.gen_dir  :my_sender_dir
+
+  comp.libpaths %w{../../testlib
+                  $(ACE_ROOT)/protocols/ace/INet }
+  comp.libs %w{ ACE_INet}
+  #comp.lit_libs :lit_lib_test
+  comp.includes %w{$(ACE_ROOT)/protocols}
+end

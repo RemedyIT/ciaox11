@@ -1,0 +1,241 @@
+include::_{backend}_settings.adoc[]
+
+= The CORBA4CCM connector
+
+== Design
+
+Each remote IDL interface that is used in a synchronous request/reply
+interaction pattern between a providing component instance and a
+component instance that is using that interface requires an
+implementation of the synchronous request/reply interaction pattern.
+
+An implementation of a synchronous request/reply interaction pattern
+should on one hand provide the interface which a certain user defined
+component needs (uses) and on the other hand should use the interface
+another user defined component provides (see image below).
+
+image:{images_root}/corba4ccm/cc.png[image]
+
+This way the user defined component never has remote CORBA connections
+to other components, it only has local connections to connector
+fragments. Remote connections are taken care of by the connector
+fragments which realize a specific interaction pattern. As a result at
+development time a user defined component only has to know of the
+existence of the stub and the lem (local executor mapping) stub library.
+
+All this can be summarized in the following IDL:
+
+.CORBA4CCM connector IDL
+[source,idl]
+-----------------------------------------------
+module Connector_T
+{
+  porttype CORBA_Port_Type
+  {
+    provides T facet;
+    uses T receptacle;
+  };
+  connector CORBA_Connector
+  {
+    // srr stands for synchronous request/reply
+    port CORBA_Port_Type srr;
+  };
+};
+-----------------------------------------------
+
+Where T is the interface for which a synchronous request/reply
+interaction pattern is needed.
+
+== Example
+
+The examples in this document follow the
+<<{xref_docs_root}/ciaox11/philosophy.adoc#,*AXCIOMA* philosophy>> and the
+directory structure mentioned in the
+<<{xref_docs_root}/ciaox11/good_practice.adoc#,Good practice>> guide.
+
+=== IDL
+
+.base IDL
+[source,idl]
+-----------------------------------------------------
+module Hello
+{
+  interface MyFoo
+  {
+    string foo (in string in_str, out string answer);
+  };
+
+  interface MyBar
+  {
+    string bar (in string in_str, out string answer);
+  };
+};
+
+-----------------------------------------------------
+
+.Component IDL, using Foo and Bar
+[source,idl]
+--------------------------
+module Hello
+{
+  component Sender
+  {
+    uses MyFoo run_my_foo;
+    uses MyBar run_my_bar;
+  };
+};
+
+--------------------------
+
+.Component IDL, providing Foo and Bar
+[source,idl]
+-----------------------------
+module Hello
+{
+  component Receiver
+  {
+    provides MyFoo do_my_foo;
+    provides MyBar do_my_bar;
+  };
+};
+
+-----------------------------
+
+=== Compilation
+
+Best practice is to split the compilation of the base IDL. A stub
+library is the smallest entity which is needed by all components,
+connectors, and interaction pattern implementations. The files for this
+library need to be generated and compiled as a first step. For the base
+IDL the components and connectors that will provide a port of a specific
+interface also need the local executor mapping (LEM) of that interface.
+
+For each user defined component a component local executor mapping has
+to be generated and compiled into a component lem stub. This library
+contains local interfaces for the framework to communicate with the user
+defined component. The {cxx11} source files needed for this library can be
+generated out of the component IDL.
+
+After this, it is possible to implement and compile the user defined
+components since these do not need more then the stub and the lem stub
+libraries.
+
+Since the user defined components are making use of the synchronous
+request/reply interaction pattern, an implementation for this
+interaction pattern should be available. When compiling the above IDL
+for a CORBA4CCM connector, the *AXCIOMA* RIDL compiler creates the following
+implied IDL:
+
+[source,c++]
+--------------------------------------------------------------
+module CCM_CORBA::Connector_T< Hello::MyFoo > Hello_MyFoo_SRR;
+module CCM_CORBA::Connector_T< Hello::MyBar > Hello_MyBar_SRR;
+--------------------------------------------------------------
+
+This IDL is compiled, generating the {cxx11} source code for the stub, the
+lem stub, the skeleton, and the implementation of the CORBA4CCM connector
+itself. These can all be compiled into one shared library because all
+the generated code for the `CCM_CORBA::Connector_T` is only needed by
+the CORBA4CCM connector and not by any user component.
+
+The resulting library contains the implementation of two CORBA
+connectors; one for MyFoo and one for MyBar, each with its own entry
+point that can be used by the deployment tooling to create an instance
+of the connector.
+
+=== Deployment
+
+Besides the user defined components, the CORBA4CCM connectors should also be
+declared in the deployment plan. Note that there should be a CORBA
+connector instance be declared for the MyFoo interface as well as for
+the MyBar interface (see deployment plan below). More information about
+deployment plans can be found
+<<{xref_docs_root}/dancex11/config-plan.adoc#,here>>.
+
+Note that when the user wants to use a different implementation for the
+synchronous request/reply interaction pattern, all the user has to do is
+to add this to the deployment plan (or replace a synchronous
+request/reply CORBA4CCM connector instances in the plan). The naming of the
+connections between the user component and the connectors remain the
+same.
+
+Also note that implementations of certain interaction patterns cannot
+interact with each other; a CORBA4CCM connector cannot communicate with a
+RPC over DDS connector and vice versa.
+
+==== Deployment plan
+
+.CONFIG type deployment plan
+--------------------------------------------------------------------------------------------------------------------------
+#=====================================================
+# Definitions for Receiver Node
+#-----------------------------------------------------
+nl.remedy.it.DnCX11.LocalityManager ReceiverComponentServerInstance
+    nl.remedy.it.DnCX11.Node "ReceiverNode"
+    nl.remedy.it.DnCX11.Locality "ReceiverLocality"
+
+# ReceiverComponent instance
+nl.remedy.it.CCM.Component Hello_ReceiverImplementation hello_receiver_exec create_Hello_Receiver_Impl
+    nl.remedy.it.DnCX11.ExecParameter nl.remedy.it.DnCX11.Servant.Factory "create_Hello_Receiver_Servant"
+    nl.remedy.it.DnCX11.Node "ReceiverNode"
+    nl.remedy.it.DnCX11.Locality "ReceiverLocality"
+
+# Receiver CORBA4CCM Connector instance for FOO
+nl.remedy.it.CCM.Component Receiver_CORBA_connector_FOO hello_corba_conn create_Hello_MyFoo_SRR_CORBA_Connector_Impl
+    nl.remedy.it.DnCX11.ExecParameter nl.remedy.it.DnCX11.Servant.Factory "create_Hello_MyFoo_SRR_CORBA_Connector_Servant"
+    nl.remedy.it.DnCX11.Node "ReceiverNode"
+    nl.remedy.it.DnCX11.Locality "ReceiverLocality"
+    # local connection between CORBA4CCM connector for the Receiver
+    # and the Receiver itself.
+    nl.remedy.it.DnCX11.Connection Hello_ReceiverImplementation
+      srr_receptacle < do_my_foo
+
+# Receiver CORBA4CCM Connector instance for BAR
+nl.remedy.it.CCM.Component Receiver_CORBA_connector_BAR hello_corba_conn create_Hello_MyBar_SRR_CORBA_Connector_Impl
+    nl.remedy.it.DnCX11.ExecParameter nl.remedy.it.DnCX11.Servant.Factory "create_Hello_MyBar_SRR_CORBA_Connector_Servant"
+    nl.remedy.it.DnCX11.Node "ReceiverNode"
+    nl.remedy.it.DnCX11.Locality "ReceiverLocality"
+    # local connection between CORBA4CCM connector for the Receiver
+    # and the Receiver itself.
+    nl.remedy.it.DnCX11.Connection Hello_ReceiverImplementation
+      srr_receptacle < do_my_bar
+
+
+#=====================================================
+# Definitions for Sender Node
+#-----------------------------------------------------
+nl.remedy.it.DnCX11.LocalityManager SenderComponentServerInstance
+    nl.remedy.it.DnCX11.Node "SenderNode"
+    nl.remedy.it.DnCX11.Locality "SenderLocality"
+
+# SenderComponent instance
+nl.remedy.it.CCM.Component Hello_SenderImplementation hello_sender_exec create_Hello_Sender_Impl
+    nl.remedy.it.DnCX11.ExecParameter nl.remedy.it.DnCX11.Servant.Factory "create_Hello_Sender_Servant"
+    nl.remedy.it.DnCX11.Node "SenderNode"
+
+# Sender CORBA4CCM Connector instance for FOO
+nl.remedy.it.CCM.Component Sender_CORBA_connector_FOO hello_corba_conn create_Hello_MyFoo_SRR_CORBA_Connector_Impl
+    nl.remedy.it.DnCX11.ExecParameter nl.remedy.it.DnCX11.Servant.Factory "create_Hello_MyFoo_SRR_CORBA_Connector_Servant"
+    nl.remedy.it.DnCX11.Node "SenderNode"
+    nl.remedy.it.DnCX11.Locality "SenderLocality"
+    # local connection between Sender and CORBA4CCM connector for the Sender
+    nl.remedy.it.DnCX11.Connection Hello_SenderImplementation
+      srr_facet > run_my_foo
+    # Remote connection between the CORBA4CCM connector for the Sender to the
+    # CORBA4CCM connector for the Receiver
+    nl.remedy.it.DnCX11.Connection Receiver_CORBA_connector_FOO
+      srr_receptacle < srr_facet
+
+# Sender CORBA4CCM Connector instance for BAR
+nl.remedy.it.CCM.Component Sender_CORBA_connector_BAR hello_corba_conn create_Hello_MyBar_SRR_CORBA_Connector_Impl
+    nl.remedy.it.DnCX11.ExecParameter nl.remedy.it.DnCX11.Servant.Factory "create_Hello_MyBar_SRR_CORBA_Connector_Servant"
+    nl.remedy.it.DnCX11.Node "SenderNode"
+    nl.remedy.it.DnCX11.Locality "SenderLocality"
+    # local connection between Sender and CORBA4CCM connector for the Sender
+    nl.remedy.it.DnCX11.Connection Hello_SenderImplementation
+      srr_facet > run_my_bar
+    # Remote connection between the CORBA4CCM connector for the Sender to the
+    # CORBA4CCM connector for the Receiver
+    nl.remedy.it.DnCX11.Connection Receiver_CORBA_connector_BAR
+      srr_receptacle < srr_facet
+--------------------------------------------------------------------------------------------------------------------------

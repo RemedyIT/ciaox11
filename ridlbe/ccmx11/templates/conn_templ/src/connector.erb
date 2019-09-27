@@ -1,0 +1,46 @@
+
+// generated from <%= ridl_template_path %>
+namespace <%= executor_cxx_namespace %>
+{
+  struct CCM_<%= scoped_cxxname.scope_to_cxxname %>_Traits
+  {
+    typedef <%= scoped_ccm_name %> base_type;
+    typedef <%= scoped_ccm_name %>_Context context_type;
+% nest(2) { visit_connector_pre_extra }
+% no_extended_ports.each do |_p|
+    typedef <%= (_p.port_type == :facet)? _p.interface_type.scoped_ccm_type : _p.interface_type.scoped_cxxtype %> <%= _p.lem_name %>_type;
+% end
+% extended_ports.each do |_p|
+
+    struct <%= _p.name %>_traits
+    {
+%   _p.ports.each do |_ps|
+      typedef <%= (_ps.port_type == :facet)? _ps.interface_type.scoped_ccm_type : _ps.interface_type.scoped_cxxtype %> <%= _ps.port_name_without_extended_port(_p.name) %>_type;
+%   end
+%   _p.attributes.each do |_pa|
+      typedef <%= _pa.scoped_cxxtype %> <%= _pa.attribute_name_without_extended_port(_p.name) %>_type;
+%   end
+%   nest(3) { visit_connector_extended_port_extra({:extended_port => _p}) }
+    };
+% end
+% all_attributes_not_from_extended_ports.each do |_pa|
+    typedef <%= _pa.scoped_cxxtype %> <%= _pa.name %>_type;
+% end
+  };
+
+% _args = template_args.dup
+  typedef <%= template_name %> <
+       CCM_<%= scoped_cxxname.scope_to_cxxname %>_Traits<%= !template_args.empty? ? ',' : '>' %>
+% while !_args.empty?
+%   _arg = _args.shift
+       <%= _arg.cxx_type %><%= !_args.empty? ? ',' : '> ' %>
+% end
+    <%= cxxname %>_exec_i;
+} // namespace <%= executor_cxx_namespace %>
+
+extern "C" void
+create_<%= scoped_cxxname.scope_to_cxxname %>_Impl (
+  IDL::traits<Components::EnterpriseComponent>::ref_type& component)
+{
+  component = CORBA::make_reference <<%= executor_cxx_namespace %>::<%= cxxname %>_exec_i> ();
+}

@@ -1,0 +1,26 @@
+/**
+ * @file    mdd_sender.idl
+ * @author  Marcel Smit
+ *
+ * @brief   Common Sender IDL for the max delivered data test
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef MDD_SENDER_IDL_
+#define MDD_SENDER_IDL_
+
+#include "commonSE.idl"
+#include <ccm_timed_trigger.idl>
+
+module MDD_Test
+{
+  component Sender
+  {
+    port CommonTestConnector::DDS_Update info_update;
+    provides CCM_DDS::ConnectorStatusListener connector_status;
+    uses CCM_TT::TT_Scheduler tt_scheduler;
+  };
+};
+
+#endif /* MDD_SENDER_IDL_ */

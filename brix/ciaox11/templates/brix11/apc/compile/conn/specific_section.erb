@@ -1,0 +1,20 @@
+// Compile section: conn
+libs += <%= link_libs.join(" ") %>
+libout    = <%= lib_out %>
+libpaths += <%= lib_paths.join(" ") %>
+includes += <%= includes.join(" ") %>
+
+sharedname    = <%= shared_name %>
+dynamicflags += <%= dynamic_names.join(" \\\n                ") %>
+
+Source_Files {
+% sources.each do |s|
+  <%= s %>
+% end
+}
+
+Header_Files {
+% headers.each do |h|
+  <%= h %>
+% end
+}

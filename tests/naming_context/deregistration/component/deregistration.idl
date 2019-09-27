@@ -1,0 +1,24 @@
+/**
+ * @file    deregistration.idl
+ * @author  Marcel Smit
+ *
+ * @brief   Just an empty component to test the deregistration from the naming server
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef DEREGISTRATION_IDL_
+#define DEREGISTRATION_IDL_
+
+#include <Components.idl>
+
+interface Foo
+{
+};
+
+component Deregistration
+{
+  provides Foo my_port;
+};
+
+#endif /* DEREGISTRATION_IDL_ */

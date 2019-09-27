@@ -1,0 +1,24 @@
+/**
+ * @file    corba4ccm_exceptions_component.idl
+ * @author  Marcel Smit
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef CORBA4CCM_EXCEPTIONS_COMPONENT_IDL_
+#define CORBA4CCM_EXCEPTIONS_COMPONENT_IDL_
+
+#include <Components.idl>
+
+#include "corba4ccm_exceptions.idl"
+
+module Foo
+{
+  component CORBA4CCM_exception_component
+  {
+    uses Hello foo_hello;
+  };
+};
+
+#endif

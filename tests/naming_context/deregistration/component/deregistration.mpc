@@ -1,0 +1,79 @@
+// NOTE: As the component IDL declares the port interface alongside
+//       the component we need to disable the default suppression of
+//       stub source code generation (-Scc).
+//       No stub export declarations are needed as we link the stub
+//       source with the executor to be used only locally.
+project(*idl_gen) : ciaox11_test_comp_all_idl_exec_gen {
+  custom_only = 1
+  idlflags += -Wb,base_export_macro=DEREGISTRATION \
+              -Wb,base_export_include=deregistration
+  idlflags -= -Scc -SS
+
+  IDL_Files {
+    gendir=generated_code
+    deregistration.idl
+  }
+}
+
+project(*cc_idl_gen) : ciaox11_test_cc_base_idl {
+  custom_only = 1
+  after += *idl_gen
+  idlflags += -Wb,base_export_macro=DEREGISTRATION \
+              -Wb,base_export_include=deregistration \
+              -I./generated_code
+
+  IDL_Files {
+    gendir=generated_code
+    deregistration.idl
+  }
+}
+
+project(*exec) : ciaox11_test_exec_all, ciaox11_corba4ccm_impl {
+  after += *idl_gen *cc_idl_gen
+
+  dynamicflags += DEREGISTRATION_LEM_STUB_BUILD_DLL \
+                  DEREGISTRATION_SKEL_BUILD_DLL \
+                  DEREGISTRATION_EXEC_BUILD_DLL \
+                  DEREGISTRATION_SVNT_BUILD_DLL \
+                  DEREGISTRATION_CC_LEM_STUB_BUILD_DLL \
+                  DEREGISTRATION_CC_EXEC_BUILD_DLL \
+                  DEREGISTRATION_CC_SVNT_BUILD_DLL
+  Source_Files {
+    deregistration_exec.cpp
+
+    generated_code/deregistrationC.cpp
+    generated_code/deregistrationEC.cpp
+
+    generated_code/deregistration_svnt.cpp
+    generated_code/deregistrationS.cpp
+
+    generated_code/deregistration_ccEC.cpp
+    generated_code/deregistration_cc_exec.cpp
+    generated_code/deregistration_cc_svnt.cpp
+
+  }
+
+  Header_Files {
+    deregistration_exec.h
+    generated_code/deregistration_exec_export.h
+
+    generated_code/deregistrationC.h
+    generated_code/deregistrationEC.h
+
+    generated_code/deregistration_svnt.h
+    generated_code/deregistration_svnt_export.h
+
+    generated_code/deregistrationS.h
+    generated_code/deregistrationSP.h
+
+    generated_code/deregistration_ccC.h
+    generated_code/deregistration_ccEC.h
+    generated_code/deregistration_cc_exec.h
+    generated_code/deregistration_cc_svnt.h
+
+    generated_code/deregistration_cc_exec_export.h
+    generated_code/deregistration_cc_svnt_export.h
+    generated_code/deregistration_cc_lem_stub_export.h
+
+  }
+}

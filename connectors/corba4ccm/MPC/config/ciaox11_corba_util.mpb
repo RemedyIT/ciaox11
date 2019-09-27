@@ -1,0 +1,11 @@
+// --------------------------------------------------------------------
+// ciaox11_config.mpb
+//
+// Copyright (c) Remedy IT Expertise BV
+// Chamber of commerce Rotterdam nr.276339, The Netherlands
+// --------------------------------------------------------------------
+
+project : taox11_defaults, taox11_anytypecode, ciaox11_config {
+  libs += ciaox11_corba_util
+  after += ciaox11_corba_util_impl
+}

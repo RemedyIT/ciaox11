@@ -1,0 +1,13 @@
+// --------------------------------------------------------------------
+// ciaox11_idl.mpb
+//
+// Author: Johnny Willemsen
+//
+// Copyright (c) Remedy IT Expertise BV
+// Chamber of commerce Rotterdam nr.276339, The Netherlands
+// --------------------------------------------------------------------
+
+project : ridl_defaults {
+  idlflags += -I $(CIAOX11_ROOT)
+  idlflags += -I $(TAO_ROOT)
+}

@@ -1,0 +1,16 @@
+
+% if incl_ami4ccm_receptacle?
+    // generated from <%= ridl_template_path %>
+%  size = all_ports.size()
+%  all_ports.each do |_p|
+%    if  _p.is_ami4ccm_port?
+%      if _p.is_multiple?
+    virtual <%= scoped_ccm_name %>::sendc_<%= _p.lem_name %>Connections get_connections_sendc_<%= _p.lem_name %> () override;
+%      else
+    /// Get the <%= _p.lem_name %> sendc receptacle
+    virtual IDL::traits< ::<%= _p.interface_type.scoped_ami4ccm_cxxname %>>::ref_type
+    get_connection_sendc_<%= _p.cxxname %> () override;
+%      end
+%    end
+%  end
+% end

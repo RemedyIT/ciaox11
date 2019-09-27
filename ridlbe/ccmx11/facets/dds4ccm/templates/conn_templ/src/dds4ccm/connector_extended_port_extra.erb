@@ -1,0 +1,5 @@
+%if needs_dds4ccm_event_strategy?(extended_port)
+// generated from <%= ridl_template_path %>
+typedef <%= dds4ccm_event_strategy_template(extended_port) %><
+    CCM_<%= scoped_cxxname.scope_to_cxxname %>_Traits> event_strategy_type;
+%end

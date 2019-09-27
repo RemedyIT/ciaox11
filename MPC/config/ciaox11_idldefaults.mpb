@@ -1,0 +1,40 @@
+// --------------------------------------------------------------------
+// ciaox11_idldefaults.mpb
+//
+// Copyright (c) Remedy IT Expertise BV
+// Chamber of commerce Rotterdam nr.276339, The Netherlands
+// --------------------------------------------------------------------
+
+project : ridl_defaults {
+  // No generation of any skeleton code. That's specific to the CORBA connector.
+  idlflags += -I$(CIAOX11_ROOT) -I$(CIAOX11_ROOT)/ccm -SS -Ssh
+
+  Modify_Custom (IDL) {
+
+    optional(source_outputext) {
+      commandflags(-Gsvnt || -Gcomp || -Glem,gen) = .cpp
+    }
+
+    optional(header_outputext) {
+      commandflags(-Gsvnt || -Gcomp || -Glem,gen) = .h
+    }
+
+    optional(generic_pre_extension) {
+      commandflags(-Gcomp || -Glem,gen) += E
+    }
+
+    optional(generic_outputext) {
+      commandflags(-Gcomp || -Glem,gen) = .idl
+    }
+
+    optional(source_pre_extension) {
+      commandflags(-Gcomp || -Glem,gen) += EC
+      commandflags(-Gsvnt || -Gcomp) += _svnt
+    }
+
+    optional(header_pre_extension) {
+      commandflags(-Gcomp || -Glem,gen) += EC
+      commandflags(-Gsvnt || -Gcomp) += _svnt
+    }
+  }
+}

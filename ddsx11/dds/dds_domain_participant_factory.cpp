@@ -1,0 +1,244 @@
+// -*- C++ -*-
+/**
+ * @file    dds_domain_participant_factory.cpp
+ * @author  Marcel Smit
+ *
+ * @brief   Wrapper facade for DDS
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#include "dds/dds_common.h"
+#include "dds/dds_domain_participant_factory.h"
+#include "dds/dds_domain_participant.h"
+#include "dds/dds_domain_participant_listener.h"
+#include "dds/dds_vendor_conversion_traits.h"
+#include "dds/dds_vendor_adapter.h"
+
+#include "logger/ddsx11_log.h"
+#include "dds/dds_proxy_entity_manager.h"
+
+namespace DDSX11
+{
+  DDS_DomainParticipantFactory_proxy::DDS_DomainParticipantFactory_proxy (
+      DDS_Native::DDS::DomainParticipantFactory * dpf)
+    : NativeEntityBase_T<DDS_Native::DDS::DomainParticipantFactory>(dpf)
+  {
+    DDSX11_LOG_TRACE ("DDS_DomainParticipantFactory_proxy::DDS_DomainParticipantFactory_proxy");
+  }
+
+  IDL::traits< ::DDS::DomainParticipant >::ref_type
+  DDS_DomainParticipantFactory_proxy::create_participant (
+    ::DDS::DomainId_t domain_id,
+    const ::DDS::DomainParticipantQos & qos,
+    IDL::traits< ::DDS::DomainParticipantListener >::ref_type a_listener,
+    ::DDS::StatusMask mask)
+  {
+    DDSX11_LOG_TRACE ("DDS_DomainParticipantFactory_proxy::create_participant");
+
+    DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipantFactory_proxy::create_participant - "
+      << "Start creating domain participant for domain <" << domain_id << ">");
+
+    ::DDSX11::traits< ::DDS::DomainParticipantQos >::in qos_in;
+#if defined(DDSX11_INITIALIZE_QOS_DEFAULTS)
+    ::DDS::ReturnCode_t const retcode = ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+      this->native_entity ()->get_default_participant_qos (qos_in.value_));
+
+    if (retcode != ::DDS::RETCODE_OK)
+      {
+        DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipantFactory_proxy::create_participant - "
+          << "Error: Unable to retrieve default participant qos.");
+        return {};
+      }
+#endif
+    qos_in = qos;
+
+    DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipantFactory_proxy::create_participant - "
+      << "Using DomainParticipantQos <"
+      << IDL::traits< ::DDS::DomainParticipantQos>::write (::DDSX11::traits< ::DDS::DomainParticipantQos>::retn (qos_in))
+      << ">.");
+
+    // Use a guard which will make sure we destroy it the listener when we fail
+    DomainParticipantListener_Guard listener_guard {};
+    if (a_listener)
+      {
+        listener_guard = new DDS_DomainParticipantListener_proxy(a_listener);
+      }
+
+    DDS_Native::DDS::DomainParticipant * dds_dp =
+      this->native_entity ()->create_participant (
+        domain_id,
+        qos_in,
+        listener_guard.get (),
+        ::DDSX11::traits< ::DDS::StatusMask >::in (mask));
+
+    if (!dds_dp)
+      {
+        DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipantFactory_proxy::create_participant - "
+          << "Error: Unable to create DomainParticipant for domain <"
+          << domain_id << ">.");
+        // Listener will be destroyed here since the guard goes out of scope.
+        return {};
+      }
+
+    IDL::traits< ::DDS::DomainParticipant >::ref_type retval =
+      VendorUtils::create_domain_participant (dds_dp);
+
+    if (retval)
+      {
+        // DDS was able to create a native entity. We can now safely release the
+        // listener otherwise it would be deleted when the unique pointer goes out
+        // of scope.
+        listener_guard.release ();
+
+        DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipantFactory_proxy::create_participant - "
+          << "Successfully created a DomainParticipant for domain <"
+          << domain_id << ">");
+      }
+    else
+      {
+        DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipantFactory_proxy::create_participant - "
+          << "Error: Unable to create a DomainParticipant for domain <"
+          << domain_id << ">");
+      }
+
+    return retval;
+  }
+
+
+  ::DDS::ReturnCode_t
+  DDS_DomainParticipantFactory_proxy::delete_participant (
+    IDL::traits< ::DDS::DomainParticipant >::ref_type a_participant)
+  {
+    DDSX11_LOG_TRACE ("DDS_DomainParticipantFactory_proxy::delete_participant");
+
+    // First set the listener to nil, this will delete any existing listener
+    // when it has been set
+    a_participant->set_listener(nullptr, 0);
+
+    DDS_Native::DDS::DomainParticipant *part =
+      domain_participant_trait::native (a_participant);
+
+    if (!part)
+      {
+        DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipantFactory_proxy::delete_participant - "
+          << "Unable to retrieve the proxy from the provided object reference.");
+        return ::DDS::RETCODE_ERROR;
+      }
+    DDS_ProxyEntityManager::unregister_dp_proxy (a_participant);
+
+    ::DDS::ReturnCode_t const retcode =
+      ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+        this->native_entity ()->delete_participant (part));
+
+    if (retcode != ::DDS::RETCODE_OK)
+      {
+        DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipantFactory_proxy::delete_participant - "
+          << "delete_participant returned non-ok error code <"
+          << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode)
+          << ">.");
+      }
+    else
+      {
+        DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipantFactory_proxy::delete_participant - "
+          "Successfully deleted provided participant.");
+      }
+    return retcode;
+  }
+
+
+  IDL::traits< ::DDS::DomainParticipant >::ref_type
+  DDS_DomainParticipantFactory_proxy::lookup_participant (
+    ::DDS::DomainId_t domain_id)
+  {
+    IDL::traits< ::DDS::DomainParticipant >::ref_type retval;
+    DDS_Native::DDS::DomainParticipant * dp =
+      this->native_entity ()->lookup_participant (domain_id);
+
+    if (dp)
+      {
+        retval = VendorUtils::create_domain_participant (dp);
+      }
+    return retval;
+  }
+
+  ::DDS::ReturnCode_t
+  DDS_DomainParticipantFactory_proxy::set_default_participant_qos (
+    const ::DDS::DomainParticipantQos & qos)
+  {
+    DDSX11_LOG_TRACE ("DDS_DomainParticipantFactory_proxy::set_default_participant_qos");
+
+    ::DDSX11::traits< ::DDS::DomainParticipantQos >::in qos_in;
+#if defined(DDSX11_INITIALIZE_QOS_DEFAULTS)
+    // Get the default QOS from DDS
+    ::DDS::ReturnCode_t const retcode = ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+      this->native_entity ()->get_default_participant_qos (qos_in.value_));
+
+    if (retcode != ::DDS::RETCODE_OK)
+      {
+        DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipantFactory_proxy::set_default_participant_qos - "
+          << "Error: Unable to retrieve default participant qos");
+        return retcode;
+      }
+#endif
+    qos_in = qos;
+
+    DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipantFactory_proxy::set_default_participant_qos - "
+      << "Setting DomainParticipantQos <"
+      << IDL::traits< ::DDS::DomainParticipantQos>::write (::DDSX11::traits< ::DDS::DomainParticipantQos>::retn (qos_in))
+      << ">.");
+
+    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+      this->native_entity ()->set_default_participant_qos (qos_in));
+  }
+
+
+  ::DDS::ReturnCode_t
+  DDS_DomainParticipantFactory_proxy::get_default_participant_qos (
+    ::DDS::DomainParticipantQos & qos)
+  {
+    DDSX11_LOG_TRACE ("DDS_DomainParticipantFactory_proxy::get_default_participant_qos");
+    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+      this->native_entity ()->get_default_participant_qos (
+        ::DDSX11::traits< ::DDS::DomainParticipantQos >::inout (qos)));
+  }
+
+  ::DDS::ReturnCode_t
+  DDS_DomainParticipantFactory_proxy::set_qos (
+    const ::DDS::DomainParticipantFactoryQos & qos)
+  {
+    DDSX11_LOG_TRACE ("DDS_DomainParticipantFactory_proxy::set_qos");
+
+    ::DDSX11::traits< ::DDS::DomainParticipantFactoryQos >::in qos_in;
+#if defined(DDSX11_INITIALIZE_QOS_DEFAULTS)
+    // Get the default QOS from DDS
+    ::DDS::ReturnCode_t const retcode =
+      ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+        this->native_entity ()->get_qos (qos_in.value_));
+    if (retcode != ::DDS::RETCODE_OK)
+      {
+        DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::set_qos - "
+          << "Error: Unable to retrieve participant factory qos.");
+        return retcode;
+      }
+#endif
+    qos_in = qos;
+
+    DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipantFactory_proxy::set_qos - "
+      << "Setting DomainParticipantQos <"
+      << IDL::traits< ::DDS::DomainParticipantFactoryQos>::write (::DDSX11::traits< ::DDS::DomainParticipantFactoryQos>::retn (qos_in))
+      << ">.");
+
+    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+      this->native_entity ()->set_qos (qos_in));
+  }
+
+  ::DDS::ReturnCode_t
+  DDS_DomainParticipantFactory_proxy::get_qos (
+    ::DDS::DomainParticipantFactoryQos & qos)
+  {
+    DDSX11_LOG_TRACE ("DDS_DomainParticipantFactory_proxy::get_qos");
+    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+      this->native_entity ()->get_qos (::DDSX11::traits< ::DDS::DomainParticipantFactoryQos >::inout (qos)));
+  }
+}

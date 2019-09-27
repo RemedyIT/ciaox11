@@ -1,0 +1,27 @@
+/**
+ * @file    filters_common_rg_sender.idl
+ * @author  Marcel Smit
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef FILTERS_COMMON_RG_SENDER_IDL_
+#define FILTERS_COMMON_RG_SENDER_IDL_
+
+#include "commonSE.idl"
+#include "reader_starter.idl"
+#include "writer_starter.idl"
+
+module Filters_Common_Read_Get_Test
+{
+  component Sender
+  {
+    port CommonTestConnector::DDS_Write info_write;
+    provides CCM_DDS::ConnectorStatusListener connector_status;
+
+    uses ReaderStarter reader_start;
+    provides WriterStarter start_writing;
+  };
+};
+
+#endif /* FILTERS_COMMON_RG_SENDER_IDL_ */

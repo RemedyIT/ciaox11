@@ -1,0 +1,29 @@
+/**
+ * @file    shapes.idl
+ * @author  Martin Corino
+ *
+ * @brief   Base IDL for shapes  and data
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef SHAPES_IDL_
+#define SHAPES_IDL_
+
+typedef string<128> color_type;
+
+struct ShapeType {
+  color_type color; //@key
+  long x;
+  long y;
+  long shapesize;
+}; //@TopLevel()
+
+
+struct Bar
+{
+  long barretje;
+};
+
+
+#endif /* SHAPES_IDL_ */

@@ -1,0 +1,33 @@
+% _regen_marker = "#{component.executor_cxx_namespace}::#{lem_name}_exec_i"
+/**
+ * Facet Executor Implementation Class : <%= lem_name %>_exec_i
+ */
+
+% write_regen_section(_regen_marker+'[ctor]') do
+<%= lem_name %>_exec_i::<%= lem_name %>_exec_i (
+  IDL::traits< <%= component.scoped_ccm_name %>_Context >::ref_type context)
+  : context_ (std::move (context))
+{
+}
+% end
+
+<%= lem_name %>_exec_i::~<%= lem_name %>_exec_i ()
+{
+% nest { write_regen_section(_regen_marker+'[dtor]', default_content: '// Your code here') }
+}
+
+/** User defined public operations. */
+% write_regen_section(_regen_marker+'[user_public_ops]', default_content: '// Your code here')
+
+/** User defined private operations. */
+% write_regen_section(_regen_marker+'[user_private_ops]', default_content: '// Your code here')
+
+
+/** Operations and attributes from <%= cxxname %> */
+% props = {}
+% interface_type.all_operations.each do |_op|
+%   _op.visit_operation({owner: self, component: component})
+% end
+% interface_type.all_attributes.each do |_att|
+%   _att.visit_attribute({owner: self, component: component})
+% end

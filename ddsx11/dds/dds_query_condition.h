@@ -1,0 +1,80 @@
+// -*- C++ -*-
+/**
+ * @file    dds_query_condition.h
+ * @author  Marcel Smit
+ *
+ * @brief   Wrapper facade for DDS
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef DDSX11_IMPL_QUERY_CONDITION_H_
+#define DDSX11_IMPL_QUERY_CONDITION_H_
+
+#include "dds/dds_export.h"
+#include "dds/dds_native_entity_t.h"
+#include "idl/dds_dcpsC.h"
+#include "dds/dds_proxy_traits_t.h"
+
+#if !defined (DDSX11_HAS_VENDOR_TYPEDEFS)
+namespace DDS_Native {
+  namespace DDS {
+    class QueryCondition;
+  }
+}
+#endif /* DDSX11_HAS_VENDOR_TYPEDEFS */
+
+namespace DDSX11
+{
+  class DDSX11_IMPL_Export DDS_QueryCondition_proxy final
+    : public virtual IDL::traits< ::DDS::QueryCondition>::base_type
+    , public virtual NativeEntityBase_T<DDS_Native::DDS::QueryCondition>
+  {
+  public:
+    /// Constructor
+    DDS_QueryCondition_proxy (
+      DDS_Native::DDS::QueryCondition * qc);
+
+    /// Destructor
+    virtual ~DDS_QueryCondition_proxy () = default;
+
+    virtual bool
+    get_trigger_value () override;
+
+    virtual ::DDS::SampleStateMask
+    get_sample_state_mask () override;
+
+    virtual ::DDS::ViewStateMask
+    get_view_state_mask () override;
+
+    virtual ::DDS::InstanceStateMask
+    get_instance_state_mask () override;
+
+    virtual IDL::traits< ::DDS::DataReader >::ref_type
+    get_datareader () override;
+
+    virtual std::string
+    get_query_expression () override;
+
+    virtual ::DDS::ReturnCode_t
+    get_query_parameters (
+      ::DDS::StringSeq & query_parameters) override;
+
+    virtual ::DDS::ReturnCode_t
+    set_query_parameters (
+      const ::DDS::StringSeq & query_parameters) override;
+
+  private:
+    DDS_QueryCondition_proxy() = delete;
+    DDS_QueryCondition_proxy(const DDS_QueryCondition_proxy&) = delete;
+    DDS_QueryCondition_proxy(DDS_QueryCondition_proxy&&) = delete;
+    DDS_QueryCondition_proxy& operator=(const DDS_QueryCondition_proxy&) = delete;
+    DDS_QueryCondition_proxy& operator=(DDS_QueryCondition_proxy&&) = delete;
+  };
+
+  typedef entity_traits< ::DDS::QueryCondition, DDS_QueryCondition_proxy, DDS_Native::DDS::QueryCondition >
+    query_condition_trait;
+
+}
+
+#endif /* DDSX11_IMPL_QUERY_CONDITION_H_ */

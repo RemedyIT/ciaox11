@@ -1,0 +1,63 @@
+project(*cc_idl_gen) : ciaox11_test_cc_base_idl {
+  custom_only = 1
+  after += exception_t_idl_gen exception_t_lem_gen
+  idlflags += -Wb,base_export_macro=EXCEPTION_T \
+              -Wb,base_export_include=exception_t
+
+  IDL_Files {
+    gendir=generated_code
+    ../base/exception_t.idl
+  }
+}
+
+project(*skel) : ciaox11_test_base, taox11_portableserver, ciaox11_corba4ccm {
+  after += *stub *cc_idl_gen
+  libs  += Exception_t_stub
+
+  dynamicflags += EXCEPTION_T_SKEL_BUILD_DLL
+
+  sharedname = Exception_t_skel
+
+  Source_Files {
+    generated_code/exception_tS.cpp
+  }
+
+  Header_Files {
+    generated_code/exception_tS.h
+    generated_code/exception_t_skel_export.h
+  }
+}
+
+project(*corba_conn) : ciaox11_test_base, ciaox11_executor, ciaox11_corba4ccm_impl {
+  after += *cc_idl_gen \
+           exception_t_skel \
+           exception_t_stub \
+           exception_t_lem_stub
+  libs  += Exception_t_skel \
+           Exception_t_stub \
+           Exception_t_lem_stub
+
+  sharedname = Exception_t_corba_conn
+
+  dynamicflags += EXCEPTION_T_CC_LEM_STUB_BUILD_DLL \
+                  EXCEPTION_T_CC_EXEC_BUILD_DLL \
+                  EXCEPTION_T_CC_SVNT_BUILD_DLL
+
+  Source_Files {
+    generated_code/exception_t_ccEC.cpp
+
+    generated_code/exception_t_cc_exec.cpp
+    generated_code/exception_t_cc_svnt.cpp
+  }
+  Header_Files {
+    generated_code/exception_t_ccC.h
+    generated_code/exception_t_ccEC.h
+    generated_code/exception_t_cc_lem_stub_export.h
+
+    generated_code/exception_t_cc_exec.h
+    generated_code/exception_t_cc_exec_export.h
+
+    generated_code/exception_t_cc_svnt.h
+    generated_code/exception_t_cc_svnt_export.h
+  }
+}

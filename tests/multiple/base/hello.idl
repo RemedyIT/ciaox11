@@ -1,0 +1,38 @@
+/**
+ * @file    hello.idl
+ * @author  Johnny Willemsen
+ *
+ * @brief   Interfaces
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef HELLO_IDL_
+#define HELLO_IDL_
+
+
+module Hello
+{
+  // Sender/Receiver interface
+  interface MyFoo
+  {
+    void hello (out long answer);
+  };
+
+  interface MyBar
+  {
+    void bye (out long answer);
+  };
+};
+
+module Hello2
+{
+  interface MyFoo
+    {
+      void hello (out long answer);
+    };
+
+};
+#endif
+

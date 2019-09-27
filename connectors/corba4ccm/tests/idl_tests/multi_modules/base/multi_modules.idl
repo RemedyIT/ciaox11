@@ -1,0 +1,54 @@
+/**
+ * @file    multi_modules.idl
+ * @author  Marcel Smit
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef MULTI_MODULES_IDL_
+#define MULTI_MODULES_IDL_
+
+module Foo
+{
+  interface Hello
+  {
+    void say_hello ();
+
+    enum ReturnValue {
+      RETURN_VALUE_OKAY,
+      RETURN_VALUE_ERROR
+    };
+
+    Hello::ReturnValue returnTest();
+    void passTest (in Hello::ReturnValue v1, inout Hello::ReturnValue v2, out Hello::ReturnValue v3);
+
+    attribute Hello::ReturnValue my_return_test;
+  };
+
+  module Bar
+  {
+    interface Bye : Hello
+    {
+      void say_bye ();
+    };
+
+    interface Sky
+    {
+      Hello::ReturnValue returnTest();
+      void passTest (in Hello::ReturnValue v1, inout Hello::ReturnValue v2, out Hello::ReturnValue v3);
+
+      attribute Hello::ReturnValue my_return_test;
+    };
+  };
+};
+
+module Hello
+{
+  interface Bye : Foo::Hello
+  {
+    void say_boo ();
+  };
+};
+
+#endif

@@ -1,0 +1,14 @@
+component 'hello_receiver' do |comp|
+  comp.idl %w{ hello_receiver.idl }
+
+  # name of component is recipe name (in this case: hello_receiver)
+  #prefix sharednames, default component name (in this case: hello_receiver)
+  comp.shared_name 'my_receiver'
+
+  #prefix export headers, default component in lowercase
+  comp.export_name 'receiver'
+
+  #gen_dir is default 'generated_code'
+  comp.gen_dir  'receiver_build_dir'
+
+end

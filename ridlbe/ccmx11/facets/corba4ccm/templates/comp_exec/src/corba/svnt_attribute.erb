@@ -1,0 +1,16 @@
+
+// generated from <%= ridl_template_path %>
+<%= attribute.scoped_cxx_return_type %>
+<%= port_interface.scoped_cxxname.identify %>_servant::<%= attribute.cxxname %> ()
+{
+  return this->facet_executor_-><%= attribute.cxxname %> ();
+}
+%unless attribute.is_readonly?
+
+void
+<%= port_interface.scoped_cxxname.identify %>_servant::<%= attribute.cxxname %> (
+    <%= attribute.scoped_cxx_in_type %> _att_val)
+{
+  this->facet_executor_-><%= attribute.cxxname %> (_att_val);
+}
+%end

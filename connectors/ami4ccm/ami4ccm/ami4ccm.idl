@@ -1,0 +1,52 @@
+/**
+ * @file    ami4ccm.idl
+ * @author  Marijke Hengstmengel
+ *
+ * @brief   ami4ccm base
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#if !defined (AMI4CCM_IDL_H)
+#define AMI4CCM_IDL_H
+
+module CCM_AMI
+{
+  native UserExceptionBase;
+
+  /// Exception holder to rethrow the original exception
+  local interface ExceptionHolder
+  {
+    void raise_exception() raises (UserExceptionBase);
+  };
+
+  /// Base interface for the Callback model
+  local interface ReplyHandler
+  {
+  };
+
+  /**
+   * Templated Connector module for AMI4CCM. Expects
+   * two template arguments, the original interface and
+   * its AMI4CCM counterpart
+   */
+  module Connector_T<interface T, interface AMI4CCM_T>
+  {
+    porttype AMI4CCM_Port_Type
+    {
+      provides AMI4CCM_T ami4ccm_provides;
+      provides T ami4ccm_sync_provides;
+      uses T ami4ccm_uses;
+    };
+
+    connector AMI4CCM_Connector
+    {
+      port AMI4CCM_Port_Type ami4ccm_port;
+    };
+  };
+
+  const string AMIPOA_ID = "AMIPOA";
+};
+
+#endif /* AMI4CCM_IDL_H */

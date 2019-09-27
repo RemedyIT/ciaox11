@@ -1,0 +1,26 @@
+/**
+ * @file    starter_component.idl
+ * @author  Marcel Smit
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef STARTER_COMPONENT_IDL
+#define STARTER_COMPONENT_IDL
+
+#include <Components.idl>
+
+#include "starter.idl"
+
+module Hello
+{
+  component Receiver
+  {
+    provides MyFoo do_my_foo;
+    mirrorport foo_bar do_foo_bar;
+
+    attribute unsigned short just_an_attribute;
+  };
+};
+#endif

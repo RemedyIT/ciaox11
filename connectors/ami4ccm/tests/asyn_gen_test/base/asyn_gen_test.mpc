@@ -1,0 +1,288 @@
+// This test doesn't use ciaox11_test_ami4ccm_comp_all_idl on purpose !
+
+project(*idl_gen) : ciaox11_ami4ccm_conn_idl {
+  custom_only = 1
+  idlflags += -Wb,stub_export_macro=HELLO_STUB_Export \
+              -Wb,stub_export_include=hello_stub_export.h \
+              -Wb,skel_export_macro=HELLO_SKEL_Export \
+              -Wb,skel_export_include=hello_skel_export.h \
+              -Wb,conn_export_macro=HELLO_CONN_Export \
+              -Wb,conn_export_include=hello_conn_export.h \
+              -Wb,exec_export_macro=HELLO_EXEC_Export \
+              -Wb,exec_export_include=hello_exec_export.h \
+              -Wb,amic_export_macro=AMI_TEST_AMIC_Export \
+              -Wb,amic_export_include=ami_test_amic_export.h
+  idlflags -= -SS -Ssh
+
+  IDL_Files {
+    hello.idl
+  }
+}
+
+project(*aidl_gen) : ciaox11_ami4ccm_idldefaults, ciaox11_ami4ccm {
+  custom_only = 1
+  idlflags += -Wb,base_export_macro=HELLO \
+              -Wb,base_export_include=hello \
+              -Gami4ccm,Aidl -Scc -Sch -Scp -Gxhst
+
+  IDL_Files {
+    hello.idl
+  }
+}
+
+project(*lem_gen) : ciaox11_idldefaults, ciaox11_ami4ccm {
+  after += *idl_gen
+  custom_only = 1
+  idlflags += -Wb,stub_export_macro=HELLO_LEM_STUB_Export \
+              -Wb,stub_export_include=hello_lem_stub_export.h \
+              -I.. -Gxhst -Scp
+
+  IDL_Files {
+    helloE.idl
+  }
+}
+
+
+project(*lema_gen) : ciaox11_idldefaults, ciaox11_ami4ccm {
+  after += *aidl_gen
+  custom_only = 1
+  idlflags += -Wb,stub_export_macro=HELLO_AMI4CCM_STUB_Export \
+              -Wb,stub_export_include=hello_ami4ccm_stub_export.h \
+              -Wb,svnt_export_macro=HELLO_SVNT_Export \
+              -Wb,svnt_export_include=hello_conn_svnt_export.h \
+              -I.. -Gxhst -Gxhsv -Glem -Scp
+  idlflags -= -Ssh
+
+  IDL_Files {
+    helloA.idl
+  }
+}
+
+project(*lemae_gen) : ciaox11_idldefaults , ciaox11_ami4ccm {
+  after += *lema_gen
+  custom_only = 1
+  idlflags += -Wb,stub_export_macro=HELLO_AMI_LEM_STUB_Export \
+              -Wb,stub_export_include=hello_ami_lem_stub_export.h \
+              -I.. -SS -Scp -Gxhst
+
+  IDL_Files {
+    helloAE.idl
+  }
+}
+
+project(*conn_lema_gen) : ciaox11_ami4ccm_conn_lem_idl {
+  after += *idl_gen *aidl_gen
+  custom_only = 1
+  idlflags += -Wb,conn_export_macro=HELLO_CONN_Export \
+              -Wb,conn_export_include=hello_conn_export.h \
+              -Wb,svnt_export_macro=HELLO_SVNT_Export \
+              -Wb,svnt_export_include=hello_conn_svnt_export.h \
+               -I..
+
+  IDL_Files {
+    helloA_conn.idl
+  }
+}
+
+project(*conn_lemae_gen) : ciaox11_idldefaults, ciaox11_ami4ccm {
+  after += *conn_lema_gen *lema_gen
+  custom_only = 1
+  idlflags += -Wb,stub_export_macro=HELLO_CONN_LEM_STUB_Export \
+              -Wb,stub_export_include=hello_conn_lem_stub_export.h \
+              -I.. -SS -Scp -Gxhst
+
+  IDL_Files {
+    helloA_connE.idl
+  }
+}
+
+//stub without ami
+project(*stub) : taox11_lib, ciaox11_ami4ccm  {
+  after += *idl_gen
+  libout = ../lib
+  libpaths += ../lib
+  includes += ..
+
+  sharedname = Hello_stub
+  dynamicflags += HELLO_STUB_BUILD_DLL
+
+  Source_Files {
+    helloC.cpp
+  }
+
+  Header_Files {
+    helloC.h
+    hello_stub_export.h
+  }
+}
+
+//stub with ami4ccm
+project(*ami4ccm_stub) :  ciaox11_ami4ccm_stub {
+  after += *idl_gen  *lema_gen *stub
+  libs  += Hello_stub
+  libout = ../lib
+  libpaths += ../lib
+  includes += ..
+
+  sharedname = Hello_ami4ccm_stub
+  dynamicflags += HELLO_AMI4CCM_STUB_BUILD_DLL
+
+  Source_Files {
+    helloAC.cpp
+  }
+
+  Header_Files {
+    helloAC.h
+    hello_ami4ccm_stub_export.h
+  }
+}
+
+// Stub with CORBA AMI. CORBA AMI is based on messing and portable server so
+// we need to add them here
+project(*ami_stub) :  ciaox11_test_base_stub, taox11_messaging, taox11_portableserver, ciaox11_ami4ccm {
+  after += *idl_gen  *lema_gen *stub
+  libs  += Hello_stub
+
+  libout = ../lib
+  libpaths += ../lib
+  includes += ..
+
+  sharedname = Hello_ami_stub
+  dynamicflags += AMI_TEST_AMIC_BUILD_DLL
+
+  Source_Files {
+    helloAmiC.cpp
+  }
+
+  Header_Files {
+    helloAmiC.h
+    ami_test_amic_export.h
+  }
+}
+
+// lem stub without ami
+project(*lem_stub) : ciaox11_ccm_session_stub, ciaox11_ami4ccm {
+  after += *stub *lem_gen
+  libs += Hello_stub
+  libout = ../lib
+  libpaths += ../lib
+  includes += ..
+
+  sharedname = Hello_lem_stub
+  dynamicflags += HELLO_LEM_STUB_BUILD_DLL
+
+  Source_Files {
+    helloEC.cpp
+  }
+
+  Header_Files {
+    helloEC.h
+    hello_lem_stub_export.h
+}
+
+}
+
+// lem stub with ami
+project(*ami4ccm_lem_stub) : ciaox11_ami4ccm_stub {
+  after += *ami4ccm_stub *lem_stub *lemae_gen
+  libs +=  Hello_ami4ccm_stub Hello_lem_stub
+  libout = ../lib
+  libpaths += ../lib
+  includes += ..
+
+  sharedname = Hello_ami4ccm_lem_stub
+  dynamicflags += HELLO_AMI_LEM_STUB_BUILD_DLL
+
+  Source_Files {
+    helloAEC.cpp
+  }
+
+  Header_Files {
+    hello_ami_lem_stub_export.h
+  }
+}
+
+// Lem stub for the AMI4CCM connector
+project(*conn_lem_stub) : ciaox11_ami4ccm_stub, ciaox11_ccm_session_stub {
+  after += *ami4ccm_lem_stub *ami4ccm_stub *conn_lemae_gen
+  libs +=  Hello_ami4ccm_stub Hello_ami4ccm_lem_stub
+  libout = ../lib
+  libpaths += ../lib
+  includes += ..
+
+  sharedname = Hello_ami4ccm_conn_lem_stub
+  dynamicflags += HELLO_CONN_LEM_STUB_BUILD_DLL
+
+  Source_Files {
+    helloA_connEC.cpp
+  }
+
+  Header_Files {
+    helloA_connEC.h
+    hello_conn_lem_stub_export.h
+  }
+}
+
+project(*skel) : taox11_lib, taox11_portableserver, ciaox11_ami4ccm {
+  after      += *stub
+  sharedname  = Hello_skel
+  libs       += Hello_stub
+  libout = ../lib
+  libpaths += ../lib
+  includes += ..
+
+  dynamicflags += HELLO_SKEL_BUILD_DLL
+
+  Source_Files {
+    helloS.cpp
+  }
+
+  Header_Files {
+    helloS.h
+    hello_skel_export.h
+  }
+}
+
+
+project(*conn_exec) : ciaox11_ami4ccm_conn_exec, ciaox11_logger{
+  after   += *conn_lem_stub *ami_stub  *ami4ccm_stub *ami4ccm_lem_stub *lem_stub *lema_gen *conn_lemae_gen
+  sharedname = Hello_ami4ccm_conn
+  libs += Hello_ami4ccm_conn_lem_stub  Hello_ami4ccm_lem_stub  Hello_lem_stub \
+          Hello_ami4ccm_stub Hello_stub Hello_ami_stub \
+
+  libpaths += ../lib
+  libout = ../lib
+  dynamicflags += HELLO_CONN_BUILD_DLL
+  includes += ..
+
+  Source_Files {
+    helloA_conn_exec.cpp
+  }
+
+  Header_Files {
+    helloA_conn_exec.h
+    hello_conn_export.h
+  }
+}
+
+
+
+project(*conn_svnt) : ciaox11_ccm_session_stub, ciaox11_ami4ccm, ciaox11_corba_util {
+  after   += *conn_lem_stub *ami4ccm_stub *stub *lema_gen *conn_lemae_gen
+  sharedname = Hello_svnt
+  libs += Hello_stub\
+          Hello_ami4ccm_stub Hello_ami4ccm_conn_lem_stub
+  libpaths += ../lib
+  libout = ../lib
+  dynamicflags += HELLO_SVNT_BUILD_DLL
+  includes += ..
+
+  Source_Files {
+    helloA_conn_svnt.cpp
+  }
+
+  Header_Files {
+    helloA_conn_svnt.h
+    hello_svnt_export.h
+  }
+}

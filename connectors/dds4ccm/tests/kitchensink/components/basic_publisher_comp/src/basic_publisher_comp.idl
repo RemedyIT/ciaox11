@@ -1,0 +1,105 @@
+/**
+ * @file    basic_publisher_comp.idl
+ * @author  Marcel Smit
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef CX_COMPONENTS__BASICPUBLISHER_COMP__SRC__EXAMPLE_BASICPUBLISHER_COMP_IDL
+#define CX_COMPONENTS__BASICPUBLISHER_COMP__SRC__EXAMPLE_BASICPUBLISHER_COMP_IDL
+
+#include <Components.idl>
+#include "example_aa1_msgSE.idl"
+#include "example_aa2_msgSE.idl"
+#include "example_ba1_msgSE.idl"
+#include "example_ba2_msgSE.idl"
+#include "example_ca1_msgSE.idl"
+#include "example_ca2_msgSE.idl"
+#include "example_da1_msgSE.idl"
+#include "example_da2_msgSE.idl"
+#include "example_da3_msgSE.idl"
+#include "example_da4_msgSE.idl"
+#include "example_da5_msgSE.idl"
+#include "example_ea1_msgSE.idl"
+#include "example_ea2_msgSE.idl"
+#include "example_fa1_msgSE.idl"
+#include "example_fa2_msgSE.idl"
+#include "example_ga1_msgSE.idl"
+#include "example_ga2_msgSE.idl"
+#include "example_ha1_msgSE.idl"
+#include "example_ha2_msgSE.idl"
+#include "example_ia1_msgSE.idl"
+#include "example_ia2_msgSE.idl"
+#include "example_ja1_msgSE.idl"
+#include "example_ja2_msgSE.idl"
+#include "example_ka1_msgSE.idl"
+#include "example_ka2_msgSE.idl"
+#include "example_ma1_msgSE.idl"
+#include "example_ma2_msgSE.idl"
+#include <ccm_dds.idl>
+
+/// @namespace Example
+module Example {
+    component BasicPublisher_comp {
+        port AA1_conn::DDS_Write AA1DataPub;
+        port AA2_conn::DDS_Write AA2DataPub;
+        port BA1_conn::DDS_Write BA1DataPub;
+        port BA2_conn::DDS_Write BA2DataPub;
+        port CA1_conn::DDS_Write CA1DataPub;
+        port CA2_conn::DDS_Write CA2DataPub;
+        port DA1_conn::DDS_Write DA1DataPub;
+        port DA2_conn::DDS_Write DA2DataPub;
+        port DA3_conn::DDS_Write DA3DataPub;
+        port DA4_conn::DDS_Write DA4DataPub;
+        port DA5_conn::DDS_Write DA5DataPub;
+        port EA1_conn::DDS_Write EA1DataPub;
+        port EA2_conn::DDS_Write EA2DataPub;
+        port FA1_conn::DDS_Write FA1DataPub;
+        port FA2_conn::DDS_Write FA2DataPub;
+        port GA1_conn::DDS_Write GA1DataPub;
+        port GA2_conn::DDS_Write GA2DataPub;
+        port HA1_conn::DDS_Write HA1DataPub;
+        port HA2_conn::DDS_Write HA2DataPub;
+        port IA1_conn::DDS_Write IA1DataPub;
+        port IA2_conn::DDS_Write IA2DataPub;
+        port JA1_conn::DDS_Write JA1DataPub;
+        port JA2_conn::DDS_Write JA2DataPub;
+        port KA1_conn::DDS_Write KA1DataPub;
+        port KA2_conn::DDS_Write KA2DataPub;
+        port MA1_conn::DDS_Write MA1DataPub;
+        port MA2_conn::DDS_Write MA2DataPub;
+
+        provides CCM_DDS::ConnectorStatusListener AA1DataPub_CSL;
+        provides CCM_DDS::ConnectorStatusListener AA2DataPub_CSL;
+        provides CCM_DDS::ConnectorStatusListener BA1DataPub_CSL;
+        provides CCM_DDS::ConnectorStatusListener BA2DataPub_CSL;
+        provides CCM_DDS::ConnectorStatusListener CA1DataPub_CSL;
+        provides CCM_DDS::ConnectorStatusListener CA2DataPub_CSL;
+        provides CCM_DDS::ConnectorStatusListener DA1DataPub_CSL;
+        provides CCM_DDS::ConnectorStatusListener DA2DataPub_CSL;
+        provides CCM_DDS::ConnectorStatusListener DA3DataPub_CSL;
+        provides CCM_DDS::ConnectorStatusListener DA4DataPub_CSL;
+        provides CCM_DDS::ConnectorStatusListener DA5DataPub_CSL;
+        provides CCM_DDS::ConnectorStatusListener EA1DataPub_CSL;
+        provides CCM_DDS::ConnectorStatusListener EA2DataPub_CSL;
+        provides CCM_DDS::ConnectorStatusListener FA1DataPub_CSL;
+        provides CCM_DDS::ConnectorStatusListener FA2DataPub_CSL;
+        provides CCM_DDS::ConnectorStatusListener GA1DataPub_CSL;
+        provides CCM_DDS::ConnectorStatusListener GA2DataPub_CSL;
+        provides CCM_DDS::ConnectorStatusListener HA1DataPub_CSL;
+        provides CCM_DDS::ConnectorStatusListener HA2DataPub_CSL;
+        provides CCM_DDS::ConnectorStatusListener IA1DataPub_CSL;
+        provides CCM_DDS::ConnectorStatusListener IA2DataPub_CSL;
+        provides CCM_DDS::ConnectorStatusListener JA1DataPub_CSL;
+        provides CCM_DDS::ConnectorStatusListener JA2DataPub_CSL;
+        provides CCM_DDS::ConnectorStatusListener KA1DataPub_CSL;
+        provides CCM_DDS::ConnectorStatusListener KA2DataPub_CSL;
+        provides CCM_DDS::ConnectorStatusListener MA1DataPub_CSL;
+        provides CCM_DDS::ConnectorStatusListener MA2DataPub_CSL;
+    };
+
+};
+
+#endif // CX_COMPONENTS__BASICPUBLISHER_COMP__SRC__EXAMPLE_BASICPUBLISHER_COMP_IDL
+
+/// @}

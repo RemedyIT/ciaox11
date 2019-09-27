@@ -1,0 +1,649 @@
+<!--
+  @file      plan.cdp
+  @author    Marcel Smit
+
+  @copyright Copyright (c) Remedy IT Expertise BV
+  Chamber of commerce Rotterdam nr.276339, The Netherlands
+-->
+
+<Deployment:DeploymentPlan
+   xmlns:Deployment="http://www.omg.org/Deployment"
+   xmlns:xmi="http://www.omg.org/XMI"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.omg.org/Deployment Deployment.xsd">
+  <label>LateBinding_Depl_1</label>
+  <UUID>LateBinding_Depl_1</UUID>
+
+  <implementation xmi:id="ReceiverComponentImplementation">
+    <name>ReceiverComponentImplementation</name>
+    <source/>
+    <artifact xmi:idref="Receiver_ExecArtifact" />
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_RG_LateBinding_Receiver_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_RG_LateBinding_Receiver_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Receiver_svnt</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Receiver_exec</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="Common_Connector_Implementation">
+    <name>Common_Connector_Implementation</name>
+    <source/>
+    <artifact xmi:idref="Common_Connector_ExecArtifact" />
+    <execParameter>
+      <!-- entrypoint as exec parameter (see 10.6.1) -->
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_CommonTestConnector_DDS_Event_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_CommonTestConnector_DDS_Event_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>common_connector_conn</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>common_connector_conn</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="SenderComponentImplementation">
+    <name>SenderComponentImplementation</name>
+    <source/>
+    <artifact xmi:idref="Sender_ExecArtifact" />
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_RG_LateBinding_Sender_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_RG_LateBinding_Sender_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Sender_svnt</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Sender_exec</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="WriterStarterCORBAConnectorComponentImplementation">
+    <name>WriterStarterCORBAConnectorComponentImplementation</name>
+    <source/>
+    <artifact xmi:idref="WriterStarterCORBAConnector_ExecArtifact" />
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_WriterStarter_SRR_CORBA_Connector_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_WriterStarter_SRR_CORBA_Connector_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>writer_starter_corba_conn</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>writer_starter_corba_conn</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="ReaderStarterCORBAConnectorComponentImplementation">
+    <name>ReaderStarterCORBAConnectorComponentImplementation</name>
+    <source/>
+    <artifact xmi:idref="ReaderStarterCORBAConnector_ExecArtifact" />
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_ReaderStarter_SRR_CORBA_Connector_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_ReaderStarter_SRR_CORBA_Connector_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>reader_starter_corba_conn</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>reader_starter_corba_conn</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="TimeTriggerConnectorImplementation">
+    <name>TimeTriggerConnectorImplementation</name>
+    <source/>
+    <execParameter>
+      <!-- entrypoint as exec parameter (see 10.6.1) -->
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_CIAOX11_TT_TimedTrigger_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_CIAOX11_TT_TimedTrigger_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>ciaox11_tt4ccm_conn</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <instance xmi:id="ReceiverTimeTriggerConnectorInstance">
+    <name>TimeTriggerConnector</name>
+    <node>ReceiverNode</node>
+    <!-- hostname -->
+    <source/>
+    <implementation xmi:idref="TimeTriggerConnectorImplementation" />
+  </instance>
+
+  <instance xmi:id="SenderTimeTriggerConnectorInstance">
+    <name>TimeTriggerConnector</name>
+    <node>SenderNode</node>
+    <!-- hostname -->
+    <source/>
+    <implementation xmi:idref="TimeTriggerConnectorImplementation" />
+  </instance>
+
+  <instance xmi:id="ReceiverComponentInstance">
+    <name>ReceiverComponent</name>
+    <node>ReceiverNode</node>
+    <source/>
+    <implementation xmi:idref="ReceiverComponentImplementation" />
+  </instance>
+
+  <instance xmi:id="LateBinding_SenderConnectorInstance_LateBindingTopic">
+    <name>LateBinding_SenderConnectorInstance_LateBindingTopic</name>
+    <node>SenderNode</node>
+    <source/>
+    <implementation xmi:idref="Common_Connector_Implementation" />
+    <configProperty>
+      <name>topic_name</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>FirstLateBindingTopic</string>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>qos_profile</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>latebindinglibrary#LateBindingProfile</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <instance xmi:id="LateBinding_ReceiverConnectorInstance">
+    <name>LateBinding_ReceiverConnectorInstance</name>
+    <node>ReceiverNode</node>
+    <source/>
+    <implementation xmi:idref="Common_Connector_Implementation" />
+    <configProperty>
+      <name>topic_name</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string></string>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>qos_profile</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>latebindinglibrary#LateBindingProfile</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <instance xmi:id="SenderComponentInstance">
+    <name>SenderComponent</name>
+    <node>SenderNode</node>
+    <source/>
+    <implementation xmi:idref="SenderComponentImplementation" />
+    <configProperty>
+      <name>keys</name>
+      <value>
+        <type>
+          <kind>tk_ushort</kind>
+        </type>
+        <value>
+          <ushort>5</ushort>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>iterations</name>
+      <value>
+        <type>
+          <kind>tk_ushort</kind>
+        </type>
+        <value>
+          <ushort>10</ushort>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <instance xmi:id="WriterStarterSRRConnector_ReceiverConnectorInstance">
+    <name>WriterStarterSRRConnector_ReceiverConnectorInstance</name>
+    <node>ReceiverNode</node>
+    <source/>
+    <implementation xmi:idref="WriterStarterCORBAConnectorComponentImplementation" />
+  </instance>
+  <instance xmi:id="WriterStarterSRRConnector_SenderConnectorInstance">
+    <name>WriterStarterSRRConnector_SenderConnectorInstance</name>
+    <node>SenderNode</node>
+    <source/>
+    <implementation xmi:idref="WriterStarterCORBAConnectorComponentImplementation" />
+  </instance>
+
+  <instance xmi:id="ReaderStarterSRRConnector_ReceiverConnectorInstance">
+    <name>ReaderStarterSRRConnector_ReceiverConnectorInstance</name>
+    <node>ReceiverNode</node>
+    <source/>
+    <implementation xmi:idref="ReaderStarterCORBAConnectorComponentImplementation" />
+  </instance>
+  <instance xmi:id="ReaderStarterSRRConnector_SenderConnectorInstance">
+    <name>ReaderStarterSRRConnector_SenderConnectorInstance</name>
+    <node>SenderNode</node>
+    <source/>
+    <implementation xmi:idref="ReaderStarterCORBAConnectorComponentImplementation" />
+  </instance>
+
+  <connection>
+    <name>reader_starter_from_sender_to_srr_sender</name>
+    <internalEndpoint>
+      <portName>reader_start</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="SenderComponentInstance" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>srr_facet</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="ReaderStarterSRRConnector_SenderConnectorInstance" />
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>reader_starter_from_srr_sender_to_srr_receiver</name>
+    <internalEndpoint>
+      <portName>srr_receptacle</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="ReaderStarterSRRConnector_SenderConnectorInstance" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>srr_facet</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="ReaderStarterSRRConnector_ReceiverConnectorInstance" />
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>reader_starter_from_srr_receiver_to_receiver</name>
+    <internalEndpoint>
+      <portName>srr_receptacle</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="ReaderStarterSRRConnector_ReceiverConnectorInstance" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>start_reading</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="ReceiverComponentInstance" />
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>writer_starter_from_receiver_to_srr_receiver</name>
+    <internalEndpoint>
+      <portName>srr_facet</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="WriterStarterSRRConnector_ReceiverConnectorInstance" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>writer_start</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="ReceiverComponentInstance" />
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>writer_starter_from_srr_receiver_to_srr_sender</name>
+    <internalEndpoint>
+      <portName>srr_facet</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="WriterStarterSRRConnector_SenderConnectorInstance" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>srr_receptacle</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="WriterStarterSRRConnector_ReceiverConnectorInstance" />
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>writer_starter_from_srr_sender_to_sender</name>
+    <internalEndpoint>
+      <portName>start_writing</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="SenderComponentInstance" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>srr_receptacle</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="WriterStarterSRRConnector_SenderConnectorInstance" />
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>getter_connection</name>
+    <internalEndpoint>
+      <portName>info_get_fresh_data</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="ReceiverComponentInstance" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>pull_consumer_fresh_data</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="LateBinding_ReceiverConnectorInstance" />
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>reader_connection</name>
+    <internalEndpoint>
+      <portName>info_get_data</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="ReceiverComponentInstance" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>pull_consumer_data</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="LateBinding_ReceiverConnectorInstance" />
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>writer_connection</name>
+    <internalEndpoint>
+      <portName>info_write_data</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="SenderComponentInstance" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>supplier_data</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="LateBinding_SenderConnectorInstance_LateBindingTopic" />
+    </internalEndpoint>
+  </connection>
+
+ <connection>
+    <name>timed_trigger_connection</name>
+    <internalEndpoint>
+      <portName>tt_scheduler</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="ReceiverComponentInstance" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>tt_scheduler</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="ReceiverTimeTriggerConnectorInstance" />
+    </internalEndpoint>
+  </connection>
+
+ <connection>
+    <name>timed_trigger_connection</name>
+    <internalEndpoint>
+      <portName>tt_scheduler</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="SenderComponentInstance" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>tt_scheduler</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="SenderTimeTriggerConnectorInstance" />
+    </internalEndpoint>
+  </connection>
+
+  <artifact xmi:id="Sender_ExecArtifact">
+    <name>rg_late_bind_sender_exec</name>
+    <source/>
+    <node/>
+    <location>Sender_exec</location>
+  </artifact>
+  <artifact xmi:id="Common_Connector_ExecArtifact">
+    <name>common_connector_conn</name>
+    <source/>
+    <node/>
+    <location>common_dds_ndds_conn</location>
+  </artifact>
+  <artifact xmi:id="Receiver_ExecArtifact">
+    <name>rg_late_bind_receiver_exec</name>
+    <source/>
+    <node/>
+    <location>Receiver_exec</location>
+  </artifact>
+  <artifact xmi:id="WriterStarterCORBAConnector_ExecArtifact">
+    <name>writer_starter_corba_conn</name>
+    <source/>
+    <node/>
+    <location>writer_starter_corba_conn</location>
+  </artifact>
+  <artifact xmi:id="ReaderStarterCORBAConnector_ExecArtifact">
+    <name>reader_starter_corba_conn</name>
+    <source/>
+    <node/>
+    <location>reader_starter_corba_conn</location>
+  </artifact>
+</Deployment:DeploymentPlan>

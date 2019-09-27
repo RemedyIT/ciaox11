@@ -1,0 +1,38 @@
+include::_{backend}_settings.adoc[]
+
+= Overview of the AXCIOMA libraries
+
+*AXCIOMA* delivers the MPC base projects for several
+component features. When you use MPC and want to use a certain
+feature, all you have to do is to derive your project from the specific
+MPC base project.
+
+The base projects are located in the
+`<package_root>/ciaox11/bin/MPC/config` directory and its subdirectories.
+
+This overview shows the available *AXCIOMA* libraries and the MPC base
+project(s) related to that library which pull in all needed dependencies.
+
+== Core libraries
+
+.Core libraries and MPC base projects
+[cols="<1,<2,<1",options="header",]
+|=======================================================================
+|Library |Description |MPC base project
+|ciaox11_ccm_stub | All stubs for the CCM core | ciaox11_ccm_stub
+|ciaox11_ccm_session_stub | Stubs for a Session Component | ciaox11_ccm_session_stub
+|ciaox11_core | CCM core implementation | ciaox11_core
+|ciaox11_config_stub | Helper library for config values | ciaox11_config
+|=======================================================================
+
+include::{ciaox11_src_root}/connectors/corba4ccm/docs/src/lib_mpc.asc[]
+
+include::{ciaox11_src_root}/connectors/ami4ccm/docs/src/lib_mpc.asc[]
+
+include::{ciaox11_src_root}/ddsx11/docs/src/lib_mpc.asc[]
+
+include::{ciaox11_src_root}/connectors/dds4ccm/docs/src/lib_mpc.asc[]
+
+include::{ciaox11_src_root}/connectors/tt4ccm/docs/src/lib_mpc.asc[]
+
+include::{ciaox11_src_root}/connectors/psdd4ccm/docs/src/lib_mpc.asc[opts=optional]

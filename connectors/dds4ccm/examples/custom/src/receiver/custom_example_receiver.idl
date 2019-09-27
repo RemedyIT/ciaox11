@@ -1,0 +1,28 @@
+/**
+ * @file    custom_example_receiver.idl
+ * @author  Marcel Smit
+ *
+ * @brief   Receiver component declaration for the IDL stress test.
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef CX_COMPONENTS__BASICSUBSCRIBER_COMP__SRC__EXAMPLE_BASICSUBSCRIBER_COMP_IDL
+#define CX_COMPONENTS__BASICSUBSCRIBER_COMP__SRC__EXAMPLE_BASICSUBSCRIBER_COMP_IDL
+
+#include <Components.idl>
+#include "custom_example_connector.idl"
+#include <ccm_dds.idl>
+
+/// @namespace Example
+module Example {
+    component BasicSubscriber_comp {
+        port CA1_conn::DDS_Listen CA1DataSub;
+
+        attribute unsigned long count;
+    };
+};
+
+#endif // CX_COMPONENTS__BASICSUBSCRIBER_COMP__SRC__EXAMPLE_BASICSUBSCRIBER_COMP_IDL
+
+/// @}

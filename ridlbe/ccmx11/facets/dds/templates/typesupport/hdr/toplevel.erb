@@ -1,0 +1,68 @@
+%if has_toplevel_annotation?
+// generated from <%= ridl_template_path %>
+// Unaliased type : <%= resolved_cxxtype %>
+% alias_md5 =  resolved_cxxtype.to_md5
+// MD5            : <%= alias_md5 %>
+#if !defined(_ALIAS_<%= alias_md5 %>_DDS_TRAITS_DECL_)
+#define _ALIAS_<%= alias_md5 %>_DDS_TRAITS_DECL_
+
+namespace DDS
+{
+  template <>
+  struct traits< <%= scoped_cxxtype %>>
+    : public DDSX11::dds_entities_types
+  {
+    /**
+      * @name Typedefs for X11 types.
+      *
+      * Type specific X11 DataReader and DataWriter typedefs
+      */
+    //@{
+    typedef <%= scoped_cxxtype %>DataWriter datawriter_type;
+    typedef <%= scoped_cxxtype %>DataReader datareader_type;
+
+    typedef IDL::traits< <%= scoped_cxxtype %>DataWriter >::ref_type typed_datawriter_ref_type;
+    typedef IDL::traits< <%= scoped_cxxtype %>DataReader >::ref_type typed_datareader_ref_type;
+    typedef IDL::traits< <%= scoped_cxxtype %>DataWriter >::weak_ref_type typed_datawriter_weak_ref_type;
+    typedef IDL::traits< <%= scoped_cxxtype %>DataReader >::weak_ref_type typed_datareader_weak_ref_type;
+    //@}
+
+    static typed_datawriter_ref_type
+    narrow (IDL::traits< ::DDS::DataWriter>::ref_type dw)
+    {
+      return IDL::traits<datawriter_type>::narrow (std::move(dw));
+    }
+
+    static typed_datareader_ref_type
+    narrow (IDL::traits< ::DDS::DataReader>::ref_type dr)
+    {
+      return IDL::traits<datareader_type>::narrow (std::move(dr));
+    }
+
+    /// Return the default name for the data-type represented by the TypeSupport
+    static std::string get_type_name ()
+    {
+      return "<%= type_name %>";
+    }
+
+    /// Register the type as @a type_name to @a participant
+    static ::DDS::ReturnCode_t
+    register_type (
+      IDL::traits< ::DDS::DomainParticipant >::ref_type participant,
+      const std::string &type_name)
+    {
+      return <%= cxxtype %>Factory::register_type (std::move(participant), type_name);
+    }
+
+    /// Unregister the type as @a type_name from @a participant
+    static ::DDS::ReturnCode_t
+    unregister_type (
+      IDL::traits< ::DDS::DomainParticipant >::ref_type participant,
+      const std::string &type_name)
+    {
+      return <%= cxxtype %>Factory::unregister_type (std::move(participant), type_name);
+    }
+  };
+} // namespace DDS
+#endif /* _ALIAS_<%= alias_md5 %>_DDS_TRAITS_DECL_ */
+%end

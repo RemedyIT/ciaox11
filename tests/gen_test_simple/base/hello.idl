@@ -1,0 +1,43 @@
+/**
+ * @file    hello.idl
+ * @author  Marijke Hengstmengel
+ *
+ * @brief   CIAOX11 connector test
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef HELLO_IDL
+#define HELLO_IDL
+
+
+module Hello
+{
+  interface MyFoo
+  {
+    long hello (in long answer);
+    attribute short interface_attrib;
+  };
+
+  local interface MyBar
+  {
+    void bye (in long answer);
+    attribute short bar_attrib;
+  };
+
+  porttype Write
+  {
+    uses MyFoo foo_uses;
+  };
+
+  porttype Listen
+  {
+    provides MyFoo foo_prov;
+    provides MyBar bar_prov;
+    attribute short port_attrib;
+  };
+};
+
+#endif
+

@@ -1,0 +1,29 @@
+// Generates the lem stub files.
+project(*lem_gen) : ciaox11_test_base_lem_idl {
+  custom_only = 1
+
+  idlflags += -Wb,base_export_macro=EXTENDED_HELLO \
+              -Wb,base_export_include=extended_hello
+
+  IDL_Files {
+    gendir=generated_code
+    ../base/extended_hello.idl
+  }
+}
+
+// lem stub library which is all the component needs.
+project(*lem_stub) : ciaox11_test_base {
+  after += extended_hello_stub *lem_gen
+  libs  += extended_hello_stub
+
+  dynamicflags += EXTENDED_HELLO_LEM_STUB_BUILD_DLL
+
+  Source_Files {
+    generated_code/extended_helloEC.cpp
+  }
+
+  Header_Files {
+    generated_code/extended_helloEC.h
+    generated_code/extended_hello_lem_stub_export.h
+  }
+}

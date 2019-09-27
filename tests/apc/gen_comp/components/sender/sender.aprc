@@ -1,0 +1,50 @@
+#recipe id 'hello_sender', idl name with component becomes 'hello_sender.idl'
+
+component 'hello_sender' do |comp|
+  #data/type idl
+  comp.idl %w{ hello.idl shapes.idl foo.idl}
+  #Define component 'Sender' in scope 'Hello'
+  comp.define 'Hello::Sender' do |intf|
+# ---------         ports ----------------------------------
+
+    #facet  port with interface Hello::MyFoo defined in hello.idl
+    intf.port 'run_my_foo_uses' do |p|
+      p.uses 'Hello::MyFoo'
+    end
+
+    #receptacle  port with interface Hello::MyFoo defined in hello.idl
+    intf.port 'run_my_foo_prov' do |p|
+      p.provides 'Hello::MyFoo'
+    end
+
+    #facet port with interface Foo::MyFoo defined in foo.idl
+    intf.port 'run_my_bar_foo_prov' do |p|
+      p.provides 'Foo::MyFoo'
+    end
+
+# --------  attributes ----------------------------------------
+    # readable attribute of base type
+    intf.attribute 'my_sen_attrib' do |att|
+      att.type 'long'
+      # readonly is false ( = default)
+    end
+
+    # readonly attribute of base type
+    intf.attribute 'my_sen_attrib2' do |att|
+      att.type 'short'
+      # default is false
+      att.readonly true
+    end
+
+    # readable attribute with type Bar, defined in shapes.idl
+    intf.attribute 'Test' do |att|
+      att.type 'Bar'
+    end
+
+   # readable attribute with type Foo::Bar, defined in foo.idl
+    intf.attribute 'TestBar' do |att|
+      att.type 'Foo::Bar'
+    end
+  end
+
+end

@@ -1,0 +1,24 @@
+/**
+ * @file    typename_component.idl
+ * @author  Marcel Smit
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef TYPENAME_COMPONENT_IDL_
+#define TYPENAME_COMPONENT_IDL_
+
+#include "typename_baseSE.idl"
+#include "typenamemodule_typenamemessageSE.idl"
+#include "typenamemodulemodule_typenamemessageSE.idl"
+#include "typenamemodulemodule2_typenamemessageSE.idl"
+
+component TypeNameComponent
+{
+  port TypeNameConnector::DDS_Write type_name_writer;
+  port TypeNameModule::TypeNameModuleConnector::DDS_Write type_name_module_writer;
+  port TypeNameModule::TypeNameModuleModule::TypeNameModuleModuleConnector::DDS_Write type_name_module_module_writer;
+  port TypeNameModule::TypeNameModuleModule2::TypeNameModuleModule2Connector::DDS_Write type_name_module_module_2_writer;
+};
+
+#endif /* TYPENAME_COMPONENT_IDL_ */

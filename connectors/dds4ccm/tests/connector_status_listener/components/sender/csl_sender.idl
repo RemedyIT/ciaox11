@@ -1,0 +1,34 @@
+/**
+ * @file    csl_sender.idl
+ * @author  Marcel Smit
+ *
+ * @brief   Sender IDL, testing the connector status listener
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef CSL_SENDER_IDL_
+#define CSL_SENDER_IDL_
+
+#include "commonSE.idl"
+#include "cslSE.idl"
+#include <ccm_timed_trigger.idl>
+
+module CSL_Test
+{
+  component Sender
+  {
+    port CommonTestConnector::DDS_Write info_write;
+
+    port OnInconsistentTopicConnector::DDS_Write oit_write;
+
+    provides CCM_DDS::ConnectorStatusListener connector_status_sender;
+
+    uses CCM_TT::TT_Scheduler tt_scheduler;
+
+    attribute string csl_assignment;
+    attribute unsigned long  samples_to_write;
+  };
+};
+
+#endif /* CSL_SENDER_IDL_ */

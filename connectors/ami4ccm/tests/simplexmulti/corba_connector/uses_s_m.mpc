@@ -1,0 +1,54 @@
+project(*cc_idl_gen) : ciaox11_test_cc_base_idl {
+  custom_only = 1
+  after += uses_s_m_idl_gen uses_s_m_lem_gen
+  idlflags += -Wb,base_export_macro=USES_S_M \
+              -Wb,base_export_include=uses_s_m \
+
+  IDL_Files {
+    gendir=generated_code
+    ../base/uses_s_m.idl
+  }
+}
+
+project(*skel) : ciaox11_test_base, taox11_portableserver, ciaox11_corba4ccm {
+  after += *stub *cc_idl_gen
+  libs  += *stub
+
+  dynamicflags += USES_S_M_SKEL_BUILD_DLL
+
+  Source_Files {
+    generated_code/uses_s_mS.cpp
+  }
+
+  Header_Files {
+    generated_code/uses_s_mS.h
+    generated_code/uses_s_m_skel_export.h
+  }
+}
+
+project(*corba_conn) : ciaox11_test_base, ciaox11_executor, ciaox11_corba4ccm_impl {
+  after += uses_s_m_skel uses_s_m_stub uses_s_m_lem_stub *cc_idl_gen
+  libs  += uses_s_m_skel uses_s_m_stub uses_s_m_lem_stub
+
+  dynamicflags += USES_S_M_CC_LEM_STUB_BUILD_DLL \
+                  USES_S_M_CC_EXEC_BUILD_DLL \
+                  USES_S_M_CC_SVNT_BUILD_DLL
+
+  Source_Files {
+    generated_code/uses_s_m_ccEC.cpp
+
+    generated_code/uses_s_m_cc_exec.cpp
+    generated_code/uses_s_m_cc_svnt.cpp
+  }
+  Header_Files {
+    generated_code/uses_s_m_ccC.h
+    generated_code/uses_s_m_ccEC.h
+    generated_code/uses_s_m_cc_lem_stub_export.h
+
+    generated_code/uses_s_m_cc_exec.h
+    generated_code/uses_s_m_cc_exec_export.h
+
+    generated_code/uses_s_m_cc_svnt.h
+    generated_code/uses_s_m_cc_svnt_export.h
+  }
+}

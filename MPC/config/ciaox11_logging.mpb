@@ -1,0 +1,5 @@
+// feature project for ciaox11_logging
+feature(x11_logging) {
+  libs += ciaox11_logger
+  after += ciaox11_logger
+}

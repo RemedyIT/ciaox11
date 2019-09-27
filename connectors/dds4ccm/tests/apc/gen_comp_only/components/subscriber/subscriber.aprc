@@ -1,0 +1,34 @@
+
+component 'subscriber' do |comp|
+  comp.idl %w{ shapes.idl}
+  comp.define 'subscriber_comp' do |intf|
+    #DDS_Listen port:
+    intf.port 'info_out' do |p|
+      p.monitors 'ShapeType'
+    end
+
+    intf.port 'info_read' do |p|
+      p.reads 'ShapeType'
+    end
+
+    intf.port 'info_get' do |p|
+      p.gets 'ShapeType'
+    end
+
+    intf.port 'info_state' do |p|
+      p.observes 'ShapeType'
+    end
+
+    intf.port 'info_out_2', monitors: 'ShapeType'
+
+
+    intf.port 'info_read_2' ,reads: 'ShapeType'
+
+
+    intf.port 'info_get_2' , gets: 'ShapeType'
+
+    intf.port 'info_state_2', observes: 'ShapeType'
+
+  end
+end
+

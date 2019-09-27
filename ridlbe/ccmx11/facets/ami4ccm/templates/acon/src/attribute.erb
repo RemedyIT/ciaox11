@@ -1,0 +1,23 @@
+
+// generated from <%= ridl_template_path %>
+<%= attribute.scoped_cxx_return_type %>
+<%= lem_name %>_exec_i::<%= attribute.cxxname %> ()
+{
+  // Pass through to the provider component
+  IDL::traits< <%= interface_type.scoped_cxxname %>>::ref_type receptacle_objref =
+    this->context_->get_connection_<%= receptacle_port.cxxname %> ();
+
+  return receptacle_objref-><%= attribute.cxxname %> ();
+}
+% unless attribute.is_readonly?
+void
+<%= lem_name %>_exec_i::<%= attribute.cxxname %> (
+  <%= attribute.scoped_cxx_in_type %> _att_val)
+{
+  // Pass through to the provider component
+  IDL::traits< <%= interface_type.scoped_cxxname %>>::ref_type receptacle_objref =
+    this->context_->get_connection_<%= receptacle_port.cxxname %> ();
+
+  receptacle_objref-><%= attribute.cxxname %> (_att_val);
+}
+%   end

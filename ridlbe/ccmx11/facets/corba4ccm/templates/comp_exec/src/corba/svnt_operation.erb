@@ -1,0 +1,32 @@
+
+// generated from <%= ridl_template_path %>
+% _args = operation.arguments.dup
+% _arg = _args.shift
+% _s = _arg ? ("\n  "+_arg.scoped_stub_arg_type+' '+ _arg.cxxname) : ''
+% _s += (_args.empty? ? ')' : ',')
+% if operation.is_oneway?
+%     _op_start = "void\n"
+% else
+%     _op_start = "#{operation.scoped_cxx_return_type}\n"
+% end
+<%= _op_start %><%= port_interface.scoped_cxxname.identify %>_servant::<%= operation.cxxname %> (<%= _s %>
+% while !_args.empty?
+%   _arg = _args.shift
+  <%= _arg.scoped_stub_arg_type %> <%= _arg.cxxname %><%= _args.empty? ? ')' : ',' %>
+% end
+{
+% _pfx = ''
+% unless operation.is_oneway? || operation.is_void?
+  return
+% _pfx = '  '
+% end
+%   _args = operation.arguments.dup
+%   _arg = _args.shift
+%   _s = _arg ? _arg.cxxname : ''
+%   _s += (_args.empty? ? ');' : ',')
+  <%= _pfx %>this->facet_executor_-><%= operation.cxxname %> (<%= _s %>
+% while !_args.empty?
+%   _arg = _args.shift
+      <%= _pfx %><%= _arg.cxxname %><%= _args.empty? ? ');' : ',' %>
+% end
+}

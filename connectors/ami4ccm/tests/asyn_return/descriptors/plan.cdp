@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<Deployment:DeploymentPlan xmlns:Deployment="http://www.omg.org/Deployment"
+   xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.omg.org/Deployment Deployment.xsd">
+
+  <UUID>6D382DAE-9024-4C4D-B91B-A0F9176AFACF</UUID>
+
+  <implementation xmi:id="InterReturnT_ReceiverImplementation">
+    <name>InterReturnT_ReceiverImplementation</name>
+    <source/>
+    <artifact xmi:idref="InterReturnT_Receiver_ExecArtifact"/>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_InterReturnT_Receiver_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>InterReturnT.ImplementationArtifacts.ReceiverArtifacts.Receiver_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_InterReturnT_Receiver_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="InterReturnT_SenderImplementation">
+    <name>InterReturnT_SenderImplementation</name>
+    <source/>
+    <artifact xmi:idref="InterReturnT_Sender_ExecArtifact"/>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_InterReturnT_Sender_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>InterReturnT.ImplementationArtifacts.SenderArtifacts.Sender_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_InterReturnT_Sender_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="InterReturnT_AMIConnectorImplementation">
+    <name>InterReturnT_AMIConnectorImplementation</name>
+    <source/>
+    <artifact xmi:idref="InterReturnT_AMI_ExecArtifact"/>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_InterReturnT_AMI4CCM_MyFoo_Connector_AMI4CCM_Connector_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>InterReturnT.ImplementationArtifacts.AMIArtifacts.AMI_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_InterReturnT_AMI4CCM_MyFoo_Connector_AMI4CCM_Connector_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="InterReturnT_CORBAConnectorImplementation">
+    <name>InterReturnT_CORBAConnectorImplementation</name>
+    <source/>
+    <artifact xmi:idref="InterReturnT_CORBA_ExecArtifact"/>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_InterReturnT_MyFoo_SRR_CORBA_Connector_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>InterReturnT.ImplementationArtifacts.CORBAArtifacts.CORBA_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_InterReturnT_MyFoo_SRR_CORBA_Connector_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <instance xmi:id="InterReturnT.ComponentImplementations.InterReturnTImplementation.InterReturnT.Receiver">
+    <name>InterReturnT.ComponentImplementations.InterReturnTImplementation.InterReturnT.Receiver</name>
+    <node>ReceiverNode</node>
+    <source/>
+    <implementation xmi:idref="InterReturnT_ReceiverImplementation"/>
+  </instance>
+  <instance xmi:id="InterReturnT.ComponentImplementations.InterReturnTImplementation.InterReturnT.CORBA">
+    <name>InterReturnT.ComponentImplementations.InterReturnTImplementation.InterReturnT.CORBA</name>
+    <node>ReceiverNode</node>
+    <source/>
+    <implementation xmi:idref="InterReturnT_CORBAConnectorImplementation"/>
+  </instance>
+
+  <instance xmi:id="InterReturnT.ComponentImplementations.InterReturnTImplementation.InterReturnT.Sender">
+    <name>InterReturnT.ComponentImplementations.InterReturnTImplementation.InterReturnT.Sender</name>
+    <node>SenderNode</node>
+    <source/>
+    <implementation xmi:idref="InterReturnT_SenderImplementation"/>
+  </instance>
+
+  <instance xmi:id="InterReturnT.ComponentImplementations.InterReturnTImplementation.InterReturnT.AMI">
+    <name>InterReturnT.ComponentImplementations.InterReturnTImplementation.InterReturnT.AMI</name>
+    <node>SenderNode</node>
+    <source/>
+    <implementation xmi:idref="InterReturnT_AMIConnectorImplementation"/>
+  </instance>
+
+  <connection>
+    <name>run_asynch_foo_connection</name>
+    <internalEndpoint>
+      <portName>sendc_run_my_foo</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="InterReturnT.ComponentImplementations.InterReturnTImplementation.InterReturnT.Sender" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>ami4ccm_port_ami4ccm_provides</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="InterReturnT.ComponentImplementations.InterReturnTImplementation.InterReturnT.AMI" />
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>synch_foo_connection_from_sender_to_ami_connector</name>
+    <internalEndpoint>
+      <portName>ami4ccm_port_ami4ccm_sync_provides</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="InterReturnT.ComponentImplementations.InterReturnTImplementation.InterReturnT.AMI" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>run_my_foo</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="InterReturnT.ComponentImplementations.InterReturnTImplementation.InterReturnT.Sender" />
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>synch_foo_connection_from_ami_connector_to_cc_receiver</name>
+    <internalEndpoint>
+      <portName>srr_facet</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="InterReturnT.ComponentImplementations.InterReturnTImplementation.InterReturnT.CORBA" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>ami4ccm_port_ami4ccm_uses</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="InterReturnT.ComponentImplementations.InterReturnTImplementation.InterReturnT.AMI" />
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>synch_foo_connection_from_cc_receiver_to_receiver</name>
+    <internalEndpoint>
+      <portName>do_my_foo</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="InterReturnT.ComponentImplementations.InterReturnTImplementation.InterReturnT.Receiver" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>srr_receptacle</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="InterReturnT.ComponentImplementations.InterReturnTImplementation.InterReturnT.CORBA" />
+    </internalEndpoint>
+  </connection>
+
+  <artifact xmi:id="InterReturnT_AMI_ExecArtifact">
+    <name>InterReturnT.ImplementationArtifacts.AMIArtifacts.AMI_exec</name>
+    <source/>
+    <node/>
+    <location>return_args_t_ami4ccm_conn</location>
+   </artifact>
+
+  <artifact xmi:id="InterReturnT_CORBA_ExecArtifact">
+    <name>InterReturnT.ImplementationArtifacts.CORBAArtifacts.CORBA_exec</name>
+    <source/>
+    <node/>
+    <location>return_args_t_corba_conn</location>
+   </artifact>
+
+   <artifact xmi:id="InterReturnT_Receiver_ExecArtifact">
+    <name>InterReturnT.ImplementationArtifacts.ReceiverArtifacts.Receiver_exec</name>
+    <source/>
+    <node/>
+    <location>return_args_t_receiver_exec</location>
+  </artifact>
+
+  <artifact xmi:id="InterReturnT_Sender_ExecArtifact">
+    <name>InterReturnT.ImplementationArtifacts.SenderArtifacts.Sender_exec</name>
+    <source/>
+    <node/>
+    <location>return_args_t_sender_exec</location>
+  </artifact>
+
+</Deployment:DeploymentPlan>

@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Deployment:DeploymentPlan
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Deployment="http://www.omg.org/Deployment"
+    xmlns:xmi="http://www.omg.org/XMI" xsi:schemaLocation="http://www.omg.org/Deployment Deployment.xsd">
+  <label>BST</label>
+  <UUID>_c85752a4-24dc-4f2d-8e36-f48b5c92490c</UUID>
+  <implementation xmi:id="CompSvrImpl">
+    <name>CompSvr</name>
+    <source/>
+    <artifact xmi:idref="CompSvrArt"/>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.ImplementationType</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>nl.remedy.it.DnCX11.LocalityManager</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="_d2e7a5dd-effe-47f3-9284-593311a9268a">
+    <name>BST_compImpl</name>
+    <source/>
+    <artifact xmi:idref="_eb612a69-2651-4fdc-8555-271f62a8d80c"/>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_BST_BST_comp_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>BST_BST_comp_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_BST_BST_comp_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>BST_BST_comp_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.ImplementationType</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>nl.remedy.it.CCM.Component</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <instance xmi:id="_688c3e7d-0b49-4df5-9405-3707e9c7a8d6">
+    <name>BST_asm.BST_comp</name>
+    <node>MyComputer</node>
+    <source/>
+    <implementation xmi:idref="_d2e7a5dd-effe-47f3-9284-593311a9268a"/>
+    <configProperty>
+      <name>MyBoundedString</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+          <boundedString>
+            <bound>24</bound>
+          </boundedString>
+        </type>
+        <value>
+          <string>bounded string value</string>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>MyUnboundedString</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>unbounded string value</string>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>MyStruct</name>
+      <value>
+        <type>
+          <kind>tk_struct</kind>
+          <struct>
+            <name>MyStructType</name>
+            <typeId>IDL:BST/MyStructType:1.0</typeId>
+            <member>
+              <name>boundedString</name>
+              <type>
+                <kind>tk_string</kind>
+                <boundedString>
+                  <bound>24</bound>
+                </boundedString>
+              </type>
+            </member>
+            <member>
+              <name>unboundedString</name>
+              <type>
+                <kind>tk_string</kind>
+              </type>
+            </member>
+          </struct>
+        </type>
+        <value>
+          <member>
+            <name>boundedString</name>
+            <value>
+              <string>struct bstring</string>
+            </value>
+          </member>
+          <member>
+            <name>unboundedString</name>
+            <value>
+              <string>struct unbstring</string>
+            </value>
+          </member>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <instance xmi:id="_7f86d95e-8aec-420e-aabe-bc73b041e634">
+    <name>BST_proc_ComponentServerInstance</name>
+    <node>MyComputer</node>
+    <source/>
+    <implementation xmi:idref="CompSvrImpl"/>
+    <configProperty>
+      <name>nl.remedy.it.DnCX11.LocalityManager.ProcessName</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>BST_proc</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <artifact xmi:id="CompSvrArt">
+    <name>CompoSvrArtifactName</name>
+    <source/>
+    <node/>
+    <location>dance_locality_manager</location>
+  </artifact>
+
+  <artifact xmi:id="_eb612a69-2651-4fdc-8555-271f62a8d80c">
+    <name>BST_BST_comp_exec</name>
+    <source/>
+    <node/>
+    <location>bst_bst_comp_exec</location>
+  </artifact>
+
+  <localityConstraint>
+    <constraint>SameProcess</constraint>
+    <!-- This is referencing [BST_proc_ComponentServerInstance] -->
+    <constrainedInstance xmi:idref="_7f86d95e-8aec-420e-aabe-bc73b041e634"/>
+    <!-- This is referencing [BST_asm.BST_comp] -->
+    <constrainedInstance xmi:idref="_688c3e7d-0b49-4df5-9405-3707e9c7a8d6"/>
+  </localityConstraint>
+
+</Deployment:DeploymentPlan>

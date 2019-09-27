@@ -1,0 +1,34 @@
+/**
+ * @file    ccm_object.idl
+ * @author  Johnny Willemsen
+ *
+ * @brief   Complient to OMG 06-04-01 Section 6.11.1
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#if !defined (CCM_OBJECT_IDL)
+#define CCM_OBJECT_IDL
+
+#include "ccm/ccm_featurename.idl"
+
+module Components
+{
+  typeprefix Components "omg.org";
+
+  /// Exception raised when we have an InvalidName. To simplify logging
+  /// and tracing CIAOX11 extends this exception with the member name.
+  /// This exception is declared together with CCMObject because the types
+  /// in this file are the only ones that need to have any support enabled
+  exception InvalidName {
+    string name;
+  };
+
+  interface CCMObject
+  {
+    void provide_facet (in FeatureName name, out any provided_reference)
+      raises (Components::InvalidName);
+  };
+};
+#endif /* CCM_OBJECT_IDL */

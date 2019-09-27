@@ -1,0 +1,27 @@
+/**
+ * @file    hello_sender.idl
+ * @author  Marijke Hengstmengel
+ *
+ * @brief   Sender component
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef HELLO_SENDER_IDL
+#define HELLO_SENDER_IDL
+
+#include <Components.idl>
+
+#include "hello.idl"
+
+module Hello
+{
+  component Sender
+  {
+    port Write sender_write_port;
+    attribute short ojee;
+  };
+};
+
+#endif

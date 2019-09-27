@@ -1,0 +1,218 @@
+
+// generated from <%= ridl_template_path %>
+namespace <%= executor_cxx_namespace %>
+{
+%  nest { visit_component_pre }
+
+  /**
+   * Context implementation class for the <%= scoped_ccm_name %>
+   * component.
+   */
+  class <%= lem_name %>_Context final
+    : public IDL::traits< <%= scoped_ccm_name %>_Context >::base_type
+  {
+  public:
+    /**
+     * Constructor for the context.
+     * @param svcreg The ServiceRegistry for this component
+     * @param ins_name The name of the component instance as mentioned in the deployment plan.
+     */
+    <%= lem_name %>_Context (IDL::traits<CIAOX11::Service_Registry>::ref_type svcreg, std::string ins_name);
+
+    /// Destructor
+    virtual ~<%= lem_name %>_Context () = default;
+
+    /// Retrieve the service registry
+    virtual IDL::traits<CIAOX11::Service_Registry>::ref_type the_service_registry () override;
+% if all_incl_receptacle_port?
+
+    /// @name Accessors for all receptacles
+    //@{
+%  all_ports.each do |_p|
+%    if _p.port_type == :receptacle
+%      if _p.is_multiple?
+    /// Get the <%= _p.lem_name %> multiplex receptacle
+    virtual <%= scoped_ccm_name %>::<%= _p.lem_name %>Connections get_connections_<%= _p.lem_name %> () override;
+%      else
+    /// Get the <%= _p.lem_name %> receptacle
+    virtual <%= _p.interface_type.scoped_cxx_return_type %> get_connection_<%= _p.lem_name %> () override;
+%      end
+%    end
+%  end
+    //@}
+%  visit_context_extra_receptacles
+
+    friend class <%= lem_name %>_ExecutorLocator;
+% end
+
+    /// readonly attribute which holds the instance name of the
+    /// component. This instance name is supplied to the servant factory
+    /// method by the deployment tools and represents the name of the
+    /// component in the deployment plan.
+    virtual std::string instance_id () override;
+
+  private:
+% if all_incl_receptacle_port?
+% nest (2) { visit_context_set_connection }
+
+% nest (2) { visit_context_reset_connection }
+
+% end
+    /// The ServiceRegistry for this component
+    IDL::traits<CIAOX11::Service_Registry>::ref_type service_registry_ {};
+    /// The instance name of the component
+    std::string const instance_id_ {};
+% if all_incl_receptacle_port?
+%  if  all_incl_multiple_port?
+
+    /// @name Multiplex connection map types
+    //@{
+%  interfaces_with_multiple_receptacle_ports.each do |_mp|
+    /// Map type of connection name and <%= _mp.interface_type.scoped_cxxname %> references
+    typedef std::map<std::string, IDL::traits< <%= _mp.interface_type.scoped_cxxname %>>::ref_type>
+    <%= _mp.interface_type.scoped_cxxname.upcase.identify %>_CONTEXT_TABLE;
+%  end
+    //@}
+%  end
+
+    /// @name Member variables for storing all receptacles
+    //@{
+%  all_ports.each do |_mps|
+%    if _mps.port_type == :receptacle && _mps.is_multiple?
+    /// Member variable for storing a map for the multiplex <%= _mps.interface_type.scoped_cxxname %> <%= _mps.lem_name %> connection
+    <%= _mps.interface_type.scoped_cxxname.upcase.identify %>_CONTEXT_TABLE <%= _mps.lem_name %>_context_tbl_;
+%    end
+%  end
+%  all_ports.each do |_p|
+%    if _p.port_type == :receptacle
+%      if !_p.is_multiple?
+    /// Member variable for storing a reference for the <%= _p.cxxname %> receptacle
+    <%= _p.interface_type.scoped_cxx_member_type %> <%= _p.cxxname %>_;
+%      end
+%    end
+%  end
+    //@}
+% visit_context_extra_members
+%  if  all_incl_multiple_port?
+
+    /// Mutex for this context which is required because this context
+    /// contains multiplex connections
+    std::mutex context_tbl_lock_;
+%  end
+% end
+
+    //@{
+    /** Illegal to be called. Deleted explicitly to let the compiler detect any violation */
+    <%= lem_name %>_Context () = delete;
+    <%= lem_name %>_Context (const <%= lem_name %>_Context&) = delete;
+    <%= lem_name %>_Context (<%= lem_name %>_Context&&) = delete;
+    <%= lem_name %>_Context& operator= (const <%= lem_name %>_Context&) = delete;
+    <%= lem_name %>_Context& operator= (<%= lem_name %>_Context&&) = delete;
+    //@}
+  };
+
+  /**
+   * ExecutorLocator for the <%= lem_name %> component. This
+   * gives access to all middleware generated pieces that are used
+   * by the CCM infrastructure
+   */
+  class <%= lem_name %>_ExecutorLocator final
+    : public IDL::traits<CIAOX11::ExecutorLocator>::base_type
+  {
+  public:
+    /**
+    * Constructor
+    * @param component_executor The user implemented executor
+    * @param component_context The context that is passed to the executor
+    */
+    <%= lem_name %>_ExecutorLocator (
+      IDL::traits< <%= scoped_ccm_name %>>::ref_type component_executor,
+      IDL::traits< <%= lem_name %>_Context>::ref_type component_context);
+
+    /// Destructor
+    virtual ~<%= lem_name %>_ExecutorLocator () = default;
+
+    /**
+     * Configure the component
+     */
+    virtual void configure (::Components::ConfigValues& config) override;
+
+    /**
+     * Connect a component port.
+     * @retval true Connecting the port has succeeded
+     * @retval false Connecting the port has failed
+     */
+    virtual bool connect (const ::Components::FeatureName& name,
+                          IDL::traits<CORBA::Object>::ref_type connection,
+                          const std::string& conn_name,
+                          const ::Components::ConfigValues& config) override;
+
+    /**
+     * Disconnect a component port.
+     * @retval true Disconnecting the port has succeeded
+     * @retval false Disconnecting the port has failed
+     */
+    virtual bool disconnect (const ::Components::FeatureName& name,
+                             const std::string& conn_name) override;
+
+    /**
+     * Obtain the component executor.
+     */
+    virtual IDL::traits<CORBA::Object>::ref_type obtain_executor () override;
+
+    /**
+     * Obtain a facet executor for the given @a name and the given @a connection using the
+     * the given @a config. If there is no facet executor returned by the component
+     * executor we just return nullptr. If we have to get an executor for an invalid
+     * facet name we throw an InvalidName() exception
+     */
+    virtual IDL::traits<CORBA::Object>::ref_type obtain_facet_executor (
+                          const ::Components::FeatureName& name,
+                          const std::string& connection,
+                          ::Components::ConfigValues& config) override;
+
+  private:
+% if any_mutable_attributes_incl_mirror_port?
+    /**
+    * At the moment a component has attributes, we loop
+    * through the passed set and based on the name of the
+    * attribute call a setter of the executor we have as member.
+    * Throws a CIAOX11::ConfigurationError at the moment one or more
+    * of the matching config values can't be set on the executor
+    * (extraction errors or readonly attributes).
+    */
+    void set_configuration (const Components::ConfigValues& descr);
+
+% end
+    /// Reference to the user implemented executor
+    IDL::traits< <%= scoped_ccm_name %>>::ref_type component_executor_;
+
+    /// The context for this component
+    IDL::traits< <%= lem_name %>_Context>::ref_type component_context_;
+
+    /** @name Illegal to be called. Deleted explicitly to let the compiler detect any violation */
+    //@{
+    <%= lem_name %>_ExecutorLocator () = delete;
+    <%= lem_name %>_ExecutorLocator (const <%= lem_name %>_ExecutorLocator&) = delete;
+    <%= lem_name %>_ExecutorLocator (<%= lem_name %>_ExecutorLocator&&) = delete;
+    <%= lem_name %>_ExecutorLocator& operator= (const <%= lem_name %>_ExecutorLocator&) = delete;
+    <%= lem_name %>_ExecutorLocator& operator= (<%= lem_name %>_ExecutorLocator&&) = delete;
+    //@}
+  };
+} // namespace <%= executor_cxx_namespace %>
+
+/**
+ * Factory method to create an executor locator for a
+ * <%= executor_cxx_namespace %> component
+ * @param component_executor The user component executor for which we need
+ * to create the executor locator
+ * @param svcreg The ServiceRegistry for this component
+ * @param ins_name The unique name of this component
+ * @param executor_locator The created executor locator
+ */
+extern "C" <%= svnt_export_macro %> void
+create_<%= scoped_unescaped_type.scope_to_cxxname %>_Servant (
+  IDL::traits<Components::EnterpriseComponent>::ref_type component_executor,
+  IDL::traits<CIAOX11::Service_Registry>::ref_type svcreg,
+  const std::string& ins_name,
+  IDL::traits<CIAOX11::ExecutorLocator>::ref_type& executor_locator);

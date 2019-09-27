@@ -1,0 +1,31 @@
+/**
+ * @file    ccm_config.idl
+ * @author  Johnny Willemsen
+ *
+ * @brief   Compliant with OMG 06-04-01 Section 6.10.1.2
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#if !defined (CCM_CONFIG_IDL)
+#define CCM_CONFIG_IDL
+
+#include "ccm/ccm_featurename.idl"
+
+module Components
+{
+  typeprefix Components "omg.org";
+
+  /// Changed for CIAOX11 from a valuetype to a struct.
+  /// We only need to store the string/any pair
+  struct ConfigValue
+  {
+    FeatureName name;
+    any value;
+  };
+
+  typedef sequence<ConfigValue> ConfigValues;
+};
+
+#endif /* CCM_CONFIG_IDL */

@@ -1,0 +1,10 @@
+The purpose of this test is to show how the make-process step by step can be carried out,
+when no use is made of the 'all-in' mpc projects which are used in the other tests of the ami4ccm suite,
+but instead of using separate mpc projects.
+
+Details of this test:
+- This test is an example of step by step generating and processing the idl files needed for an
+   ami4ccm connector and a component, using ami4ccm.
+- This test is using seperate DLL's for all kind of stubs, skel and lem_stub's, which are needed for a complete test.
+   In most other tests of the ami4ccm suite, this DLL's aren't separated, but joined as much as possible to one DLL.
+- This test doesn't use a generated_code dir, as do the most test of the ami4ccm suite.

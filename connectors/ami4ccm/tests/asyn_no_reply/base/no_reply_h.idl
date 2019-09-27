@@ -1,0 +1,43 @@
+/**
+ * @file    no_reply_h.idl
+ * @author  Marijke Hengstmengel
+ *
+ * @brief   ami4ccm test with no replyhandler
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef NOREPLYH_IDL
+#define NOREPLYH_IDL
+
+#pragma ami4ccm interface "NoReplyH::MyFoo"
+#pragma ami4ccm idl "no_reply_hA.idl"
+
+module NoReplyH
+{
+  exception InternalError
+    {
+      long id;
+      string error_string;
+    };
+
+  // Sender/Receiver interface
+  interface MyFoo
+    {
+      long foo (in string in_str, out string answer)
+        raises (InternalError);
+      void hello (out long answer)
+        raises (InternalError);
+
+      attribute short rw_attrib
+        getraises (InternalError)
+        setraises (InternalError);
+
+      readonly attribute short ro_attrib
+        raises (InternalError);
+    };
+};
+
+#endif
+

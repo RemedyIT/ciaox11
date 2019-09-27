@@ -1,0 +1,19 @@
+
+% _args = arguments.dup
+% _implementation = []
+% _regen_value = _args.empty? ? 'void' : ''
+<%= scoped_cxx_return_type %>
+<%= owner.lem_name %>_exec_i::<%= cxxname %> (<% if _args.empty? %><%= ')' %><% end %>
+% while !_args.empty?
+%   _arg = _args.shift
+%   _regen_value << '_' << _arg.cxxname
+%   _implementation << "X11_UNUSED_ARG(#{_arg.cxxname});"
+    <%= _arg.implementation_arg_type %> <%= _arg.cxxname %><%= _args.empty? ? ')' : ',' %>
+% end
+{
+% if has_return?
+%   _implementation << 'return {};'
+% end
+% _regen_marker = "#{component.executor_cxx_namespace}::#{owner.lem_name}_exec_i::#{cxxname}"
+% nest { write_regen_section(_regen_marker+'['+_regen_value+']',  default_content: _implementation) }
+}

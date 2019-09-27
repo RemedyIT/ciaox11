@@ -1,0 +1,11 @@
+component 'hello_receiver2' do |comp|
+  comp.idl %w{ hello_receiver.idl }
+  comp.export_name 'hello_receiver'
+  #for this component , by using base_projects = , after base_projects +=
+  #'something' shouldn't be present in the final mpc project
+  comp.base_projects += 'something'
+  comp.base_projects = 'ciaox11_executor'
+  comp.base_projects += 'ciaox11_logger'
+  comp.base_projects += 'nosense_pr'
+  comp.base_projects -= 'nosense_pr'
+end

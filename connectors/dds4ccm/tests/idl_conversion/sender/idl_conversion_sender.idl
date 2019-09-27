@@ -1,0 +1,29 @@
+/**
+ * @file    idl_conversion_sender.idl
+ * @author  Marcel Smit
+ *
+ * @brief   Sender component declaration for the IDL stress test.
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef IDL_CONVERSION_SENDER_IDL_
+#define IDL_CONVERSION_SENDER_IDL_
+
+#include "idl_conversionSE.idl"
+#include <ccm_timed_trigger.idl>
+
+module IDL_Conversion_Test
+{
+  component Sender
+  {
+    port Example::IDLConversionTestConnector::DDS_Write info_write;
+    provides CCM_DDS::ConnectorStatusListener connector_status;
+    uses CCM_TT::TT_Scheduler tt_scheduler;
+
+    attribute unsigned short rate;
+    attribute unsigned short iterations;
+  };
+};
+
+#endif /* IDL_CONVERSION_SENDER_IDL_ */

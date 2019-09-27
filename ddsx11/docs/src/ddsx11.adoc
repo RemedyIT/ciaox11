@@ -1,0 +1,247 @@
+include::_{backend}_settings.adoc[]
+
+= DDSX11
+
+== Introduction
+
+DDSX11 provides the IDL to {cxx11} DDS language mapping for the
+https://www.omg.org/spec/DDS[OMG DDS standard]. DDSX11
+integrates a DDS vendor provided API in a generic C++11 wrapper and in addition provides
+access to DDS vendor specific extensions.
+
+DDSX11 can be used to
+implement DDS applications using the IDL to {cxx11} language
+mapping. See the link:{docs_root}/../../ciaox11/ddsx11/examples/shapes[DDSX11 Shapes example]
+for an example DDSX11 Shapes sender and receiver console application.
+
+== Code generation
+
+DDSX11 generates {cxx11} code based on your IDL topic
+definition. When you have an IDL file called `foo.idl` which only
+contains IDL types for DDS you can generate all needed files with one
+RIDL invocation: +
+`ridlc -Gddsx11,adds foo.idl` +
+The RIDL generated files are <<ddsx11_files.adoc#,described>>
+separately.
+
+== Footprint reduction
+
+Because DDSX11 is build on top of TAOX11 the RIDL code generator will
+also generate CORBA marshal and demarshal code for your user
+defined types. This marshal and demarshal code is needed to transfer your user
+defined types through a remote CORBA interface. At the moment you do not
+need this support you can disable the generation of this code using the
+`-Scdr` suppression flag. This will reduce the size of the generated
+code (lines and object size) but removes the ability to transfer your
+types through a remote CORBA interface (they can be used in local CORBA
+interfaces). At the moment you need CORBA Any support you can not use
+this switch because the CORBA Any implementation internally requires
+the CORBA marshal & demarshal support.
+
+== IDL traits
+
+The IDL to {cxx11} language mapping provides a set of IDL traits which are
+available for each IDL defined type. These traits enable template meta
+programming but also remove the need to remember all naming
+rules for all implied types.
+DDSX11 provides an additional set of DDS traits which are available for
+each IDL defined topic type. These traits give access to all implied and
+standard DDS generated interfaces. The following table gives an overview
+of the available DDSX11 traits and to which DDS interface they map. For
+the meaning of DDS interface please see the
+https://www.omg.org/spec/DDS[DDS specification]. +
+
+The DDSX11 Shapes example is a good starting point to see how these can
+be used to implement a DDS application using DDSX11.
+
+[cols="<,<",options="header",]
+|==================================================================
+|Trait|Purpose
+
+2+^|_Type specific traits_
+
+|
+typed_datareader_ref_type +
+typed_datareader_weak_ref_type
+|
+Reference types for the type specific DataReader interface. This
+interface provides the ability to read type specific data from DDS.
+
+|typed_datawriter_ref_type +
+typed_datawriter_weak_ref_type
+|
+Reference types for the type specific DataWriter interface. This
+interface provides the ability to write type specific data to DDS.
+
+2+^|_DDS generic traits_
+
+|
+datareader_ref_type +
+datareader_weak_ref_type
+|
+Reference types for the `DDS::DataReader` interface.
+
+|
+datawriter_ref_type +
+datawriter_weak_ref_type
+|
+Reference types for the `DDS::DataWriter` interface.
+
+|
+subscriber_ref_type +
+subscriber_weak_ref_type
+|
+Reference types for the `DDS::Subscriber` interface.
+
+|
+publisher_ref_type +
+publisher_weak_ref_type
+|
+Reference types for the `DDS::Publisher` interface.
+
+|
+topic_ref_type +
+topic_weak_ref_type
+|
+Reference types for the `DDS::Topic` interface.
+
+|
+domainparticipant_ref_type +
+domainparticipant_weak_ref_type
+|
+Reference types for the `DDS::DomainParticipant` interface.
+
+|
+domainparticipantfactory_ref_type +
+domainparticipantfactory_weak_ref_type
+|
+Reference types for the `DDS::DomainParticipantFactory` interface.
+
+|
+entity_ref_type +
+entity_weak_ref_type
+|
+Reference types for the `DDS::Entity` interface.
+
+|
+multitopic_ref_type +
+multitopic_weak_ref_type
+|
+Reference types for the `DDS::MultiTopic` interface.
+
+|
+contentfilteredtopic_ref_type +
+contentfilteredtopic_weak_ref_type
+|
+Reference types for the `DDS::ContentFilteredTopic` interface.
+
+|
+topicdescription_ref_type +
+topicdescription_weak_ref_type
+|
+Reference types for the `DDS::TopicDescription` interface.
+
+|
+waitset_ref_type +
+waitset_weak_ref_type
+|
+Reference types for the `DDS::WaitSet` interface.
+
+|
+condition_ref_type +
+condition_weak_ref_type
+|
+Reference types for the `DDS::Condition` interface.
+
+|
+guardcondition_ref_type +
+guardcondition_weak_ref_type
+|
+Reference types for the `DDS::GuardCondition` interface.
+
+|
+statuscondition_ref_type +
+statuscondition_weak_ref_type
+|
+Reference types for the `DDS::StatusCondition` interface.
+
+|
+readcondition_ref_type +
+readcondition_weak_ref_type
+|
+Reference types for the `DDS::ReadCondition` interface.
+
+|
+querycondition_ref_type +
+querycondition_weak_ref_type
+|
+Reference types for the `DDS::QueryCondition` interface.
+
+|
+typesupport_ref_type +
+typesupport_weak_ref_type
+|
+Reference types for the `DDS::TypeSupport` interface.
+
+2+^|_DDS listener related traits_
+
+|
+listener_ref_type +
+listener_weak_ref_typelistener_type
+|
+Strong and weak reference types for the `DDS::Listener` interface and a
+trait to use a base for implementing a listener
+
+|
+datawriterlistener_ref_type +
+datawriterlistener_weak_ref_typedatawriterlistener_type
+|
+Strong and weak reference types for the `DDS::DataWriterListener`
+interface and a trait to use a base for implementing a listener
+
+|
+datareaderlistener_ref_type +
+datareaderlistener_weak_ref_typedatareaderlistener_type
+|
+Strong and weak reference types for the `DDS::DataReaderListener`
+interface and a trait to use a base for implementing a listener
+
+|
+topiclistener_ref_type +
+topiclistener_weak_ref_typetopiclistener_type
+|
+Strong and weak reference types for the `DDS::TopicListener` interface
+and a trait to use a base for implementing a listener
+
+|
+publisherlistener_ref_type +
+publisherlistener_weak_ref_typepublisherlistener_type
+|
+Strong and weak reference types for the `DDS::PublisherListener`
+interface and a trait to use a base for implementing a listener
+
+|
+subscriberlistener_ref_type +
+subscriberlistener_weak_ref_typesubscriberlistener_type
+|
+Strong and weak reference types for the `DDS::SubscriberListener`
+interface and a trait to use a base for implementing a listener
+
+|
+domainparticipant_ref_type +
+domainparticipant_weak_ref_typedomainparticipantlistener_type
+|
+Strong and weak reference types for the `DDS::DomainParticipantListener`
+interface and a trait to use a base for implementing a listener
+|==================================================================
+
+
+Before a topic can be created a type has to be registered with DDSX11.
+Given an IDL type `foo` this can be done using the
+`DDS::traits<foo>::register_type` operation.
+
+== DDS vendor support
+
+include::{ciaox11_src_root}/ddsx11/vendors/ndds/docs/src/ddsx11.asc[]
+
+include::{ciaox11_src_root}/ddsx11/vendors/opendds/docs/src/ddsx11.asc[opts=optional]

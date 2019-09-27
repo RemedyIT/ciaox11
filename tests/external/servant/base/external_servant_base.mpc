@@ -1,0 +1,72 @@
+// Granulated version of the MPC file.
+
+// Generates:
+//   the stub (*C.*)
+//   the needed export files for the stub (-Gxhst)
+//   the lem IDL file (-Glem)
+project(*idl_gen) : ciaox11_test_idldefaults {
+  custom_only = 1
+  idlflags += -Wb,stub_export_macro=HELLO_STUB_Export \
+              -Wb,stub_export_include=hello_stub_export.h \
+              -Gxhst -Glem
+
+  IDL_Files {
+    gendir=generated_code
+    hello.idl
+  }
+}
+
+// Generates:
+//   the stub (*C.*)
+//   the needed export files for the lem stub (-Gxhst)
+project(*lem_gen) : ciaox11_test_idldefaults {
+  after += *idl_gen
+  custom_only = 1
+  idlflags += -Wb,stub_export_macro=HELLO_LEM_STUB_Export \
+              -Wb,stub_export_include=hello_lem_stub_export.h \
+              -SS -Scp -Gxhst
+
+  IDL_Files {
+    gendir=generated_code
+    generated_code/helloE.idl
+  }
+}
+
+project(*stub) : ciaox11_test_base {
+  after += *idl_gen
+
+  libout = ../lib
+
+  sharedname    = Hello_stub
+  dynamicflags += HELLO_STUB_BUILD_DLL
+
+  Source_Files {
+    generated_code/helloC.cpp
+  }
+
+  Header_Files {
+    generated_code/helloC.h
+    generated_code/hello_stub_export.h
+  }
+}
+
+
+project(*lem_stub) : ciaox11_test_base {
+  after += *lem_gen *stub
+  libs  += Hello_stub
+
+  libout    = ../lib
+  libpaths += ../lib
+
+  sharedname    = Hello_lem_stub
+  dynamicflags += HELLO_LEM_STUB_BUILD_DLL
+
+  Source_Files {
+    generated_code/helloEC.cpp
+  }
+
+  Header_Files {
+    generated_code/helloEC.h
+    generated_code/hello_lem_stub_export.h
+  }
+}

@@ -1,0 +1,13 @@
+
+component 'shapes_sender_comp' do |comp|
+
+  comp.idl %w{ shapes_sender_comp.idl }
+
+  # prefix sharednames, default recipe name (in this case: shapes_sender_comp)
+
+  # prefix export headers, default recipe name in uppercase
+
+  # gen_dir is default 'generated_code'
+  comp.gen_dir  'build'
+
+end

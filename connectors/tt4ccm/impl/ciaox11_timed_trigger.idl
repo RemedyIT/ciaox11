@@ -1,0 +1,24 @@
+/**
+* @file    ciaox11_timed_trigger.idl
+* @author  Martin Corino
+*
+* @brief   Idl file for Timed Trigger connector
+*
+* @copyright Copyright (c) Remedy IT Expertise BV
+* Chamber of commerce Rotterdam nr.276339, The Netherlands
+*/
+
+#ifndef CIAOX11_TIMED_TRIGGER_IDL
+#define CIAOX11_TIMED_TRIGGER_IDL
+
+#include <ccm_timed_trigger.idl>
+
+module CIAOX11_TT
+{
+  connector TimedTrigger
+  {
+    provides CCM_TT::TT_Scheduler tt_scheduler;
+  };
+};
+
+#endif /* CIAOX11_TIMED_TRIGGER_IDL */

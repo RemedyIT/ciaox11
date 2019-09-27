@@ -1,0 +1,75 @@
+// Simple version of the MPC file. Please see the gen_test for an
+// granulated version of the MPC files.
+
+// Compiling the base IDL
+// All files are generated in the generated_code directory. This way the
+// user code is separated from the framework code.
+// Generates
+//   the stub files of the original IDL file (hello.idl)
+// Important RIDL Commandline options:
+//   -Wb,base_export_macro   : base name for all export macros
+//   -Wb,base_export_include : base name for all export include files
+//   -Gxhst                  : Generates the stub export file. The macro
+//                             name and the file name are constructed out
+//                             of the base_name options.
+//                             IDL file
+//   -o generated_code       : Generate files in this subdirectory
+project(*idl_gen) : ciaox11_test_base_idl {
+  custom_only = 1
+  idlflags += -Wb,base_export_macro=HELLO \
+              -Wb,base_export_include=hello
+
+  IDL_Files {
+    gendir=generated_code
+    hello.idl
+  }
+}
+
+// Generates
+//   the lem IDL (*E.idl)
+//   the stub files of the lem IDL files (helloE.idl)
+// Important RIDL Commandline options:
+//   -Glem,gen               : generates the lem IDL and generates the
+//                             needed stub and export files out of this
+//   -o generated_code       : Generate files in this subdirectory
+project(*lem_gen) : ciaox11_test_base_lem_idl {
+  custom_only = 1
+  idlflags += -Wb,base_export_macro=HELLO \
+              -Wb,base_export_include=hello
+
+  IDL_Files {
+    gendir=generated_code
+    hello.idl
+  }
+}
+
+project(*stub) : ciaox11_test_base {
+  after += *idl_gen
+
+  dynamicflags += HELLO_STUB_BUILD_DLL
+
+  Source_Files {
+    generated_code/helloC.cpp
+  }
+
+  Header_Files {
+    generated_code/helloC.h
+    generated_code/hello_stub_export.h
+  }
+}
+
+project(*lem_stub) : ciaox11_test_base {
+  after += *stub *lem_gen
+  libs  += *stub
+
+  dynamicflags += HELLO_LEM_STUB_BUILD_DLL
+
+  Source_Files {
+    generated_code/helloEC.cpp
+  }
+
+  Header_Files {
+    generated_code/helloEC.h
+    generated_code/hello_lem_stub_export.h
+  }
+}

@@ -1,0 +1,52 @@
+/**
+ * @file    foo.idl
+ * @author  Marijke Hengstmengel
+ *
+ * @brief   CIAOX11 attribute test
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef FOO_IDL_
+#define FOO_IDL_
+
+#include <Components.idl>
+
+//TODO change __char into _char
+struct Bar
+{
+  short __char;
+};
+
+interface MyFoo
+{
+    attribute short __short;
+    attribute short while;
+};
+
+
+porttype FooPT
+{
+  attribute short _component;
+  attribute short virtual;
+};
+
+component Foo
+{
+  mirrorport FooPT m_foo_pt;
+  uses MyFoo my_foo;
+  provides MyFoo my_foo_prov;
+
+  attribute short and;
+  attribute short auto;
+  attribute short int16_t;
+  attribute short _port;
+  attribute short _mirrorport;
+  attribute short _interface;
+  attribute short _abstract;
+  attribute Bar   override;
+
+};
+
+#endif /* FOO_IDL_ */

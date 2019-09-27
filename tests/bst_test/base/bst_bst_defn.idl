@@ -1,0 +1,30 @@
+/**
+ * @file    bst_bst_defn.idl
+ * @author  Johnny Willemsen
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef CX_PORTS__BST_BST_DEFN_IDL
+#define CX_PORTS__BST_BST_DEFN_IDL
+
+/// @namespace BST
+module BST {
+    const long StringBound = 24;
+
+    /// @typedef MyBoundedStringType
+    typedef string<StringBound> MyBoundedStringType;
+
+    /// @typedef MyStringTypedef
+    typedef string MyStringTypedef;
+
+    /// @struct MyStructType
+    struct MyStructType {
+        BST::MyBoundedStringType boundedString;
+        BST::MyStringTypedef unboundedString;
+    }; //@TopLevel(false)
+};
+
+#endif // CX_PORTS__BST_BST_DEFN_IDL
+

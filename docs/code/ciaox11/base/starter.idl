@@ -1,0 +1,48 @@
+/**
+ * @file    starter.idl
+ * @author  Marcel Smit
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef STARTER_IDL_
+#define STARTER_IDL_
+
+module Hello
+{
+  exception Ball
+  {
+    string error;
+  };
+
+  interface MyFoo
+  {
+    string foo (in string in_str, out string answer)
+      raises (Ball);
+
+    attribute short foo_attrib;
+
+    attribute short foo_excep
+      getraises (Ball)
+      setraises (Ball);
+  };
+
+  interface MyBar
+  {
+    string bar (in string in_str, out string answer);
+
+    attribute short bar_attrib;
+
+    readonly attribute short ro_bar_attrib;
+  };
+
+  porttype foo_bar
+  {
+    provides MyFoo foo;
+    uses MyBar bar;
+  };
+};
+
+#endif /* STARTER_IDL_ */
+

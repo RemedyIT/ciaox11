@@ -1,0 +1,117 @@
+include::_{backend}_settings.adoc[]
+
+= AXCIOMA Development for Android
+
+== Setting up the *AXCIOMA* Development Environment
+
+=== Requirements
+
+The *AXCIOMA* development environment requires the installation of a GCC
+toolchain >= 4.7
+extracted from an official Android NDK installation. Downloadable
+installation packages can be found
+https://developer.android.com/tools/sdk/ndk/index.html[here]
+
+The standard *AXCIOMA* development environment expects a standalone
+toolchain installed according to the documentation in the
+_./docs/STANDALONE-TOOLCHAIN.html_ file from the Android NDK
+installation. Using the unextracted toolchain from the NDK installation
+may work, but this has not been tested and is not supported.
+
+To be able to use the toolchain to compile and link *AXCIOMA* applications
+for Android the `<standalone_toolchain_path>/bin` directory needs to be
+added to the `PATH`.
+
+Additionally a functioning Perl interpreter is required for MPC based
+build file generation and running test scripts as also described for
+native Linux installations.
+
+=== Setup
+
+For the Android cross compilation two *AXCIOMA* trees have to be created
+onto your system. First you need to create the host tree which
+provides the <<{xref_docs_root}/taox11/ridlc.adoc#,RIDL>> compiler and
+<<{xref_docs_root}/brix11/brix11.adoc#,BRIX11>> scaffolding tool that runs on
+your development system. Create the host version under a directory which
+we call from now `<host_dir>`
+
+Secondly you need to create the target Android version
+under a directory which we call from now `<target_dir>`. This target tree
+provides the *AXCIOMA* headers that you need to compile against and the
+*AXCIOMA* libraries that you need for linking and runtime execution.
+
+=== Configuration
+
+In order to enable the Android target development tools to find the RIDL
+and BRIX11 modules in the host tree you need to define the
+`X11_HOST_ROOT` environment variable to point to the host tree
+root as follows:
+`export X11_HOST_ROOT=<host_dir>/<axcioma>`.
+To complement this you also need to define the `X11_TARGET_ROOT` environment
+variable to point to the target tree root as follows:
+`export X11_TARGET_ROOT=<target_dir>/<axcioma>`.
+
+Additionally you can add `<target_dir>/<axcioma>/bin>` to your
+`PATH` environment variable to make the RIDL and BRIX11 starter scripts
+available in your path. If you do not do that you will always be able to
+start the tools using invocations like
+`<target_dir>/<axcioma>/bin>/brix11 <args>`.
+
+=== Building and running
+
+When you have created the required development support software (host
+and target) as described above you can go on to developing with *AXCIOMA*
+as described in that section of the
+<<getting_started.adoc#_developing_with_strong_axcioma_strong,Getting Started with
+*AXCIOMA*>> document.
+
+Please be aware when configuring your build environment manually that
+the following environment variables should point to the target tree as
+follows:
+
+* `ACE_ROOT=<target_dir>/<axcioma>/ACE/ACE`
+* `TAO_ROOT=<target_dir>/<axcioma>/ACE/TAO`
+* `MPC_ROOT=<target_dir>/<axcioma>/ACE/MPC`
+* `MPC_BASE=<target_dir>/<axcioma>/ciaox11/MPC`
+* `TAOX11_BASE_ROOT=<target_dir>/<axcioma>`
+* `TAOX11_ROOT=<target_dir>/<axcioma>/taox11`
+* `CIAOX11_ROOT=<target_dir>/<axcioma>/ciaox11`
+* `DANCEX11_ROOT=<target_dir>/<axcioma>/dancex11`
+
+When using BRIX11 this is handled automatically (for more information
+see the <<getting_started.adoc#_brix11,Getting started
+with *AXCIOMA* document>>)
+
+Running the (cross compiled) applications on an Android target (the
+binaries are not executable on the host system) requires a number of
+additional steps and/or facilities as described below.
+
+==== Dependencies
+
+As *AXCIOMA* implements a {cxx11} language mapping for IDL all *AXCIOMA*
+shared libraries and applications use and link the shared STD {cpp}
+library provided with the standalone toolchain (see the
+_./docs/CPLUSPLUS-SUPPORT.html_ file from the Android NDK installation).
+As this library is *NOT* installed on Android systems by default you
+will have to deploy it along with your application binaries.
+
+==== Running *AXCIOMA* Android applications
+
+Executing *AXCIOMA* Android applications on an Android target system
+requires at least the following:
+
+* Availability of all required *AXCIOMA* binaries on the Android system
+including all required *AXCIOMA* libraries and/or executables from
+** `$ACE_ROOT/lib` and
+** `$TAOX11_BASE_ROOT/lib` and
+** `$CIAOX11_ROOT/lib` and
+** `$DANCEX11_ROOT/lib` and
+** `$DANCEX11_ROOT/bin`
++
+required by the application(s) as well as the application binaries
+themselves (component and connector libraries)
+* Availability of the shared `gnustl_shared` STD {cpp} library from the
+Android standalone toolchain on the Android system
+* Library search paths (through _LD_LIBRARY_PATH_ or installation in
+system directories) to include the locations of the above mentioned
+shared library binaries

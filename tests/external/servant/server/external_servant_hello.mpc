@@ -1,0 +1,20 @@
+// Specific CORBA server. Skeletons will only be generated when CORBA4ccm is enabled.
+project(*x11_server): taox11_server, taox11_cosnaming_stub, ciaox11_corba4ccm {
+  after += external_servant_base_idl_gen \
+           external_servant_base_cc_idl_gen \
+           external_servant_base_skel \
+           external_servant_base_stub
+  // For the skeleton
+  includes += ../corba_connector/generated_code
+  // For the stub
+  includes += ../base/generated_code
+  libpaths += ../lib
+  libs += Hello_stub Hello_skel
+
+  exename = server
+
+  Source_Files {
+    hello.cpp
+    server.cpp
+  }
+}

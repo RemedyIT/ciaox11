@@ -1,0 +1,11 @@
+component 'hello_sender' do |comp|
+  comp.idl %w{ hello.idl }
+
+  comp.define 'Test::Sender' do |intf|
+    intf.port 'run_myfoo' do |port|
+      port.uses 'Hello::MyFoo'
+    end
+  end
+
+  comp.combined_lib true
+end

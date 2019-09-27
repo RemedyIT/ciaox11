@@ -1,0 +1,6 @@
+The purpose of this test is to check if ami4ccm code still well generated is and working if
+no ridl for corba4ccm is available.
+
+Therfore this test only exists of a ami4ccm connector and ami4ccm sender component. 
+A receiver should use corba4ccm and therfore can't be added to this test.
+

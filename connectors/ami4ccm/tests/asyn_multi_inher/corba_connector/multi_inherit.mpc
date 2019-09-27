@@ -1,0 +1,54 @@
+project(*cc_idl_gen) : ciaox11_test_cc_base_idl {
+  custom_only = 1
+  after += multi_inherit_idl_gen multi_inherit_lem_gen
+  idlflags += -Wb,base_export_macro=MULTI_INHERIT \
+              -Wb,base_export_include=multi_inherit
+
+  IDL_Files {
+    gendir=generated_code
+    ../base/multi_inherit.idl
+  }
+}
+
+project(*skel) : ciaox11_test_base, taox11_portableserver, ciaox11_corba4ccm {
+  after += *stub *cc_idl_gen
+  libs  += *stub
+
+  dynamicflags += MULTI_INHERIT_SKEL_BUILD_DLL
+
+  Source_Files {
+    generated_code/multi_inheritS.cpp
+  }
+
+  Header_Files {
+    generated_code/multi_inheritS.h
+    generated_code/multi_inherit_skel_export.h
+  }
+}
+
+project(*corba_conn) : ciaox11_test_base, ciaox11_executor, ciaox11_corba4ccm_impl {
+  after += multi_inherit_skel multi_inherit_stub multi_inherit_lem_stub *cc_idl_gen
+  libs  += multi_inherit_skel multi_inherit_stub multi_inherit_lem_stub
+
+  dynamicflags += MULTI_INHERIT_CC_LEM_STUB_BUILD_DLL \
+                  MULTI_INHERIT_CC_EXEC_BUILD_DLL \
+                  MULTI_INHERIT_CC_SVNT_BUILD_DLL
+
+  Source_Files {
+    generated_code/multi_inherit_ccEC.cpp
+
+    generated_code/multi_inherit_cc_exec.cpp
+    generated_code/multi_inherit_cc_svnt.cpp
+  }
+  Header_Files {
+    generated_code/multi_inherit_ccC.h
+    generated_code/multi_inherit_ccEC.h
+    generated_code/multi_inherit_cc_lem_stub_export.h
+
+    generated_code/multi_inherit_cc_exec.h
+    generated_code/multi_inherit_cc_exec_export.h
+
+    generated_code/multi_inherit_cc_svnt.h
+    generated_code/multi_inherit_cc_svnt_export.h
+  }
+}

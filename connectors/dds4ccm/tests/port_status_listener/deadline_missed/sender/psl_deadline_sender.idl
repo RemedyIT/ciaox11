@@ -1,0 +1,24 @@
+/**
+ * @file    psl_deadline_sender.idl
+ * @author  Marcel Smit
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef PSL_DEADLINE_SENDER_IDL_
+#define PSL_DEADLINE_SENDER_IDL_
+
+#include "commonSE.idl"
+#include <ccm_timed_trigger.idl>
+
+module PSL_DeadlineTest
+{
+  component Sender
+  {
+     port CommonTestConnector::DDS_Write writer;
+
+     uses CCM_TT::TT_Scheduler tt_scheduler;
+  };
+};
+
+#endif /* PSL_DEADLINE_SENDER_IDL_ */

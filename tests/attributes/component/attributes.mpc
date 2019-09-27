@@ -1,0 +1,51 @@
+// ciaox11_test_comp_all_idl suppresses the generation of the skeleton
+// source files (-SS). The IDL contains an interface definition and thefefor
+// the -SS *should* be removed from the commandline. Since this test
+// does *not* provide this interface to the outside world, there's no need to
+// generate or compile it, so leaving it in the commandline..
+// However, the IDL contains datatypes so a stub file (*C.h/cpp) is needed here.
+// Therefor -Scc is removed from the commandline
+
+project(*idl_gen) : ciaox11_test_comp_all_idl, taox11_anytypecode, \
+                    ciaox11_ostream_idldefaults {
+  custom_only = 1
+  idlflags += -Wb,base_export_macro=FOO \
+              -Wb,base_export_include=foo
+  // Stub is needed since the IDL contains datatypes
+  idlflags -= -Scc -Scp
+
+  IDL_Files {
+    gendir=generated_code
+    foo.idl
+  }
+}
+
+project(*exec) : ciaox11_test_exec_all {
+  after += *idl_gen
+
+  dynamicflags += FOO_LEM_STUB_BUILD_DLL \
+                  FOO_EXEC_BUILD_DLL \
+                  FOO_SVNT_BUILD_DLL
+
+  Source_Files {
+    foo_exec.cpp
+    generated_code/fooC.cpp
+    generated_code/fooEC.cpp
+    generated_code/foo_svnt.cpp
+  }
+
+  Header_Files {
+    foo_exec.h
+    generated_code/foo_exec_export.h
+
+    generated_code/fooC.h
+    generated_code/foo_stub_export.h
+
+    generated_code/fooEC.h
+    generated_code/foo_lem_stub_export.h
+
+    generated_code/fooS.h
+    generated_code/foo_svnt.h
+    generated_code/foo_svnt_export.h
+  }
+}

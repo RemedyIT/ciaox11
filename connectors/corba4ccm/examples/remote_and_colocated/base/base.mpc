@@ -1,0 +1,69 @@
+// ----------- COMMON ---------------
+project(*idl_gen) : ciaox11_idldefaults {
+  custom_only = 1
+
+  idlflags += -Gxhst -o generated_code \
+              -I../base -I../base/generated_code
+
+  IDL_Files {
+    idlflags += -Wb,base_export_macro=BASE \
+                -Wb,base_export_include=base
+    gendir=generated_code
+    foo.idl
+  }
+}
+
+project(*stub) : taox11_lib {
+  after += *idl_gen
+
+  libpaths += ../lib
+  libout = ../lib
+  includes += . .. ../base ../base/generated_code generated_code
+
+  dynamicflags += BASE_STUB_BUILD_DLL
+
+  Source_Files {
+    generated_code/fooC.cpp
+  }
+
+  Header_Files {
+    generated_code/fooC.h
+    generated_code/base_stub_export.h
+  }
+}
+
+// ----------- Pattern specific ---------------
+// ---- Synchronous request/reply pattern -----
+project(*lem_gen) : ciaox11_idldefaults {
+  custom_only = 1
+  idlflags += -Glem,gen -Gxhlst -Sch -Scc -Scp \
+              -o generated_code \
+              -I../base -I../base/generated_code \
+              -Wb,base_export_macro=BASE \
+              -Wb,base_export_include=base
+
+  IDL_Files {
+    gendir=generated_code
+    foo.idl
+  }
+}
+
+project(*lem_stub) : taox11_lib {
+  after += *stub *lem_gen
+  libs  += *stub
+
+  libpaths += ../lib
+  libout = ../lib
+  includes += . .. ../base ../base/generated_code generated_code
+
+  dynamicflags += BASE_LEM_STUB_BUILD_DLL
+
+  Source_Files {
+    generated_code/fooEC.cpp
+  }
+
+  Header_Files {
+    generated_code/fooEC.h
+    generated_code/base_lem_stub_export.h
+  }
+}

@@ -1,0 +1,21 @@
+
+// generated from <%= ridl_template_path %>
+IDL::traits<CORBA::Object>::ref_type
+<%= lem_name %>_ExecutorLocator::obtain_facet_executor (
+  const ::Components::FeatureName& name,
+  const std::string& /*connection*/,
+  ::Components::ConfigValues& /*config*/)
+{
+% if all_incl_facet_port?
+%   all_ports.each do |_p|
+%     if _p.port_type == :facet
+  if (name == "<%= _p.lem_name %>")
+  {
+    return this->component_executor_->get_<%= _p.lem_name %> ();
+  }
+%     end
+%   end
+% end
+  // no match
+  throw CIAOX11::InvalidName (name);
+}

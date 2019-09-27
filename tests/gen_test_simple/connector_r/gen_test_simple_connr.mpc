@@ -1,0 +1,62 @@
+// Simple version of the MPC file. Please see the gen_test for an
+// granulated version of the MPC files.
+
+// Compiling component IDL
+// All files are generated in the generated_code directory. This way the
+// user code is separated from the framework code.
+
+// The idl_gen project is derived from the ciaox11_test_comp_all_idl MPC base
+// project. This project makes sure that all needed code is generated.
+// This base project also makes sure that, when the ciaox11_noregen_exec-feature
+// is set to 0 (nil, not default) in default.features, the component executor starter
+// code is re-generated when the IDL is changed. This saves the user a lot
+// of time programming boiler plate code.
+
+// Important RIDL Commandline options:
+//   -Gcomp : Generates all needed code (including export files).
+//   -Scc   : Suppresses the generatation of stub code.
+//            If the IDL contains datatypes, this options need to be suppressed
+//            by adding "idlflags -= -Scc" in the MPC project.
+//   -SS    : Supresses the generation of skeleton code.
+//            If the IDL contains interfaces, this options need to be suppressed
+//            by adding "idlflags -= -SS" in the MPC project.
+project(*idl_gen) : ciaox11_test_comp_all_idl, ciaox11_gen_exec, ciaox11_tt4ccm {
+  custom_only = 1
+  after += gen_test_simple_base_idl_gen gen_test_simple_base_lem_gen
+  idlflags += -Wb,base_export_macro=GEN_TEST_CONNR \
+              -Wb,base_export_include=gen_test_connr
+
+  IDL_Files {
+    gendir=generated_code
+    gen_test_connr.idl
+  }
+}
+
+// Since no other projects need to link against the stub, the lem_stub and the
+// servant of this specific component (IDL), these can be merged into one libary.
+// No skeleton library is needed because the Listen porttype is declared as 'mirrorport' and
+// thus only *uses* MyBar and MyFoo.
+project(*exec) : ciaox11_test_exec_all, ciaox11_tt4ccm_stub {
+  after += gen_test_simple_base_stub gen_test_simple_base_lem_stub *idl_gen
+  libs  += gen_test_simple_base_stub gen_test_simple_base_lem_stub
+
+  dynamicflags += GEN_TEST_CONNR_LEM_STUB_BUILD_DLL \
+                  GEN_TEST_CONNR_EXEC_BUILD_DLL \
+                  GEN_TEST_CONNR_SVNT_BUILD_DLL
+  Source_Files {
+    gen_test_connr_exec.cpp
+    generated_code/gen_test_connrEC.cpp
+    generated_code/gen_test_connr_svnt.cpp
+  }
+
+  Header_Files {
+    gen_test_connr_exec.h
+    generated_code/gen_test_connr_exec_export.h
+
+    generated_code/gen_test_connrEC.h
+    generated_code/gen_test_connr_lem_stub_export.h
+
+    generated_code/gen_test_connr_svnt.h
+    generated_code/gen_test_connr_svnt_export.h
+  }
+}

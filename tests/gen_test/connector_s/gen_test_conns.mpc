@@ -1,0 +1,121 @@
+// Granulated version of the MPC file. This file shows the various possibilities
+// of how to define projects and libraries.
+
+// Please see gen_test_simple for a simpler version of the MPC files used in this
+// test.
+
+// There's no need for a stub library since there are no datatypes defined in the
+// IDL file.
+
+// Supresses the generation of the stub files (-Scc) since no datatypes are
+//    defined in the IDL.
+// Makes sure that the component executor user code is re-generated when changes
+//    in IDL are made (-Gex) and that the executor files are not removed when
+//    a realclean is performed (precious_files).
+// Generates :
+//   the stub (*C.*) files
+//   the lem IDL file (-Glem)
+//   the needed export files for the servant (-Gxhsv) and executor (-Gxhex).
+//   the servant code for the component (-Gsvnt)
+project(*idl_gen) : ciaox11_idldefaults {
+  custom_only = 1
+  after += gen_test_base_idl_gen
+  idlflags += -Wb,exec_export_macro=GEN_TEST_CONNS_EXEC_Export \
+              -Wb,exec_export_include=gen_test_conns_exec_export.h \
+              -Wb,svnt_export_macro=GEN_TEST_CONNS_SVNT_Export \
+              -Wb,svnt_export_include=gen_test_conns_svnt_export.h \
+              -Scc -Glem -Gxhex -Gxhsv -Gsvnt \
+              -Gex -I../base
+  specific {
+    precious_files += _exec.h\Z _exec.cpp\Z
+  }
+
+  IDL_Files {
+    gen_test_conns.idl
+  }
+}
+
+// Generates:
+//   the stub (*C.*) files
+//   the needed export files for the lem stub (-Gxhst)
+project(*lem_gen) : ciaox11_idldefaults {
+  after += *idl_gen
+  custom_only = 1
+  idlflags += -Wb,stub_export_macro=GEN_TEST_CONNS_LEM_STUB_Export \
+              -Wb,stub_export_include=gen_test_conns_lem_stub_export.h \
+              -Gxhst -Scp -I../base
+
+  IDL_Files {
+    gen_test_connsE.idl
+  }
+}
+
+project(*lem_stub) : ciaox11_ccm_session_stub {
+  after += *idl_gen *lem_gen gen_test_base_stub
+  libs  += Hello_stub
+
+  libout    = ../lib
+  libpaths += ../lib
+  includes += ../base
+
+  sharedname    = Gen_Test_ConnS_lem_stub
+  dynamicflags += GEN_TEST_CONNS_LEM_STUB_BUILD_DLL
+
+  Source_Files {
+    gen_test_connsEC.cpp
+  }
+
+  Header_Files {
+    gen_test_connsEC.h
+    gen_test_conns_lem_stub_export.h
+  }
+}
+
+
+project(*exec) : ciaox11_executor, ciaox11_logger {
+  after += *lem_stub gen_test_base_stub gen_test_base_lem_stub
+  libs  += Gen_Test_ConnS_lem_stub Hello_stub Hello_lem_stub
+
+  libout    = ../lib
+  libpaths += ../lib
+  includes += ../base
+
+  sharedname    = Gen_Test_ConnS_exec
+  dynamicflags += GEN_TEST_CONNS_EXEC_BUILD_DLL
+
+
+  Source_Files {
+    gen_test_conns_exec.cpp
+  }
+
+  Header_Files {
+    gen_test_conns_exec.h
+    gen_test_conns_exec_export.h
+  }
+}
+
+project(*svnt) : ciaox11_ccm_session_stub {
+  after += *lem_stub \
+           gen_test_base_stub \
+           gen_test_base_lem_stub
+  libs  += Gen_Test_ConnS_lem_stub \
+           Hello_stub \
+           Hello_lem_stub
+
+  libout    = ../lib
+  libpaths += ../lib
+  includes += ../base
+
+  sharedname    = Gen_Test_ConnS_svnt
+  dynamicflags += GEN_TEST_CONNS_SVNT_BUILD_DLL
+
+  Source_Files {
+    gen_test_conns_svnt.cpp
+  }
+
+  Header_Files {
+    gen_test_connsS.h
+    gen_test_conns_svnt.h
+    gen_test_conns_svnt_export.h
+  }
+}

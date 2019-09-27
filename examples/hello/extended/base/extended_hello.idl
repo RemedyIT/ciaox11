@@ -1,0 +1,42 @@
+/**
+ * @file    extended_hello.idl
+ * @author  Marcel Smit
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef EXTENDED_HELLO_IDL_
+#define EXTENDED_HELLO_IDL_
+
+module Hello
+{
+  exception Ball
+  {
+    string error;
+  };
+
+  interface MyFoo
+  {
+    string foo (in string in_str, out string answer)
+      raises (Ball);
+
+    attribute short foo_attrib;
+
+    attribute short foo_excep
+      getraises (Ball)
+      setraises (Ball);
+  };
+
+  interface MyBar
+  {
+    string bar (in string in_str, out string answer);
+
+    attribute short bar_attrib;
+
+    readonly attribute short ro_bar_attrib;
+  };
+};
+
+#endif /* HELLO_IDL_ */
+

@@ -1,0 +1,28 @@
+/**
+ * @file    filters_common_sl_sender.idl
+ * @author  Marcel Smit
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef FILTERS_COMMON_SL_SENDER_IDL_
+#define FILTERS_COMMON_SL_SENDER_IDL_
+
+#include "commonSE.idl"
+#include "writer_starter.idl"
+#include <ccm_timed_trigger.idl>
+
+module Filters_Common_State_Listen_Test
+{
+  component Sender
+  {
+    port CommonTestConnector::DDS_Update info_update;
+    provides CCM_DDS::ConnectorStatusListener connector_status;
+
+    provides WriterStarter start_writing;
+
+    uses CCM_TT::TT_Scheduler tt_scheduler;
+  };
+};
+
+#endif /* FILTERS_COMMON_SL_SENDER_IDL_ */

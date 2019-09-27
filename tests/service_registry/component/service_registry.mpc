@@ -1,0 +1,41 @@
+project(*idl_gen) : ciaox11_test_comp_all_idl, taox11_anytypecode {
+  custom_only = 1
+  idlflags += -Wb,base_export_macro=FOO \
+              -Wb,base_export_include=foo
+  idlflags -= -Scc -Scp
+
+  IDL_Files {
+    gendir = generated_code
+    foo.idl
+  }
+}
+
+project(*exec) : ciaox11_test_exec_all {
+  after += *idl_gen
+
+  dynamicflags += FOO_LEM_STUB_BUILD_DLL \
+                  FOO_EXEC_BUILD_DLL \
+                  FOO_SVNT_BUILD_DLL
+
+  Source_Files {
+    foo_exec.cpp
+
+    generated_code/fooC.cpp
+    generated_code/fooEC.cpp
+
+    generated_code/foo_svnt.cpp
+  }
+
+  Header_Files {
+    foo_exec.h
+    generated_code/foo_exec_export.h
+
+    generated_code/fooC.h
+
+    generated_code/fooEC.h
+    generated_code/foo_lem_stub_export.h
+
+    generated_code/foo_svnt.h
+    generated_code/foo_svnt_export.h
+  }
+}

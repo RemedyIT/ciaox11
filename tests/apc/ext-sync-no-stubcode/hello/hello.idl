@@ -1,0 +1,25 @@
+/**
+ * @file    hello.idl
+ * @author  Martin Corino
+ *
+ * @brief   Message interface
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef HELLO_IDL_
+#define HELLO_IDL_
+
+#include "alias.idl"
+
+module Hello
+{
+  // Sender/Receiver interface
+  interface MyFoo
+  {
+    long foo (in Work::Message in_msg, out Work::Message answer);
+  };
+};
+
+#endif /* HELLO_IDL_ */

@@ -1,0 +1,64 @@
+//The skeleton is also needed by the (corba) server
+//therefore generate the skeleton export header too
+project(*cc_idl_gen) : ciaox11_test_cc_base_idl {
+  custom_only = 1
+  after += external_servant_base_idl_gen
+  idlflags += -Wb,base_export_macro=HELLO \
+              -Wb,base_export_include=hello \
+              -Gxhsk
+
+  IDL_Files {
+    gendir=generated_code
+    ../base/hello.idl
+  }
+}
+
+// The skeleton is also needed by the (corba) server so leave
+// it here as a separate library.
+// Do not build when there's no corba4ccm facet available in RIDL.
+project(*skel) : ciaox11_test_base, taox11_portableserver, ciaox11_corba4ccm {
+  after += *cc_idl_gen external_servant_base_stub
+  libs  += Hello_stub
+
+  sharedname    = Hello_skel
+  dynamicflags += HELLO_SKEL_BUILD_DLL
+
+  Source_Files {
+    generated_code/helloS.cpp
+  }
+
+  Header_Files {
+    generated_code/helloS.h
+    generated_code/helloSP.h
+    generated_code/hello_skel_export.h
+  }
+}
+
+// Compiles the corba connector itself.
+project(*corba_conn) : ciaox11_test_base, ciaox11_executor, ciaox11_corba4ccm_impl {
+  after += *cc_idl_gen *skel external_servant_base_stub external_servant_base_lem_stub
+  libs += Hello_skel Hello_stub Hello_lem_stub
+  includes += ./generated_code
+
+  dynamicflags += HELLO_CC_LEM_STUB_BUILD_DLL \
+                  HELLO_CC_EXEC_BUILD_DLL \
+                  HELLO_CC_SVNT_BUILD_DLL
+
+  Source_Files {
+    generated_code/hello_ccEC.cpp
+
+    generated_code/hello_cc_exec.cpp
+    generated_code/hello_cc_svnt.cpp
+  }
+  Header_Files {
+    generated_code/hello_ccC.h
+    generated_code/hello_ccEC.h
+    generated_code/hello_cc_lem_stub_export.h
+
+    generated_code/hello_cc_exec.h
+    generated_code/hello_cc_exec_export.h
+
+    generated_code/hello_cc_svnt.h
+    generated_code/hello_cc_svnt_export.h
+  }
+}

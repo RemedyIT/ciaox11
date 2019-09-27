@@ -1,0 +1,40 @@
+/**
+ * @file    hello2.idl
+ * @author  Martin Corino
+ *
+ * @brief   Data interfaces for minimal sync manual example
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef HELLO2_IDL_
+#define HELLO2_IDL_
+
+module Hello
+{
+  exception InternalError2
+    {
+      long id;
+      string error_string;
+    };
+
+  // Sender/Receiver interface
+  interface MyFoo2
+    {
+      long foo (in string in_str, out string answer)
+        raises (InternalError2);
+
+      void hello (out long answer)
+        raises (InternalError2);
+
+      attribute short rw_attrib
+        getraises (InternalError2)
+        setraises (InternalError2);
+
+      readonly attribute short ro_attrib
+        raises (InternalError2);
+    };
+};
+
+#endif /* HELLO_IDL_ */

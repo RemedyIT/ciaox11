@@ -1,0 +1,24 @@
+/**
+ * @file    ciaox11_config_values.idl
+ * @author  Martin Corino
+ *
+ * @brief   Standard CIAOX11 ConfigValue Ids
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#if !defined (CIAOX11_CONFIG_VALUES_IDL)
+#define CIAOX11_CONFIG_VALUES_IDL
+
+module CIAOX11
+{
+  const string PEER_ENDPOINT_REFERENCE = "nl.remedy.it.CIAOX11.Config.PeerEndpointReference";
+  const string PEER_ENDPOINT_TYPE = "nl.remedy.it.CIAOX11.Config.PeerEndpointType";
+  const unsigned long INTERNAL_ENDPOINT = 0;
+  const unsigned long EXTERNAL_REFERENCE = 1;
+  const unsigned long EXTERNAL_ENDPOINT = 2;
+  const string PEER_ENDPOINT_PORT = "nl.remedy.it.CIAOX11.Config.PeerEndpointPort";
+};
+
+#endif /* CIAOX11_CONFIG_VALUES_IDL */

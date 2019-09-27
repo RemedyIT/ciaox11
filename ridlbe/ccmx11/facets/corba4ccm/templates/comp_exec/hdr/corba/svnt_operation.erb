@@ -1,0 +1,17 @@
+
+// generated from <%= ridl_template_path %>
+% _args = arguments.dup
+% _arg = _args.shift
+% _s = _arg ? ("\n  "+_arg.scoped_stub_arg_type+' '+_arg.cxxname) : ''
+% _s += (_args.empty? ? ') override;' : ",\n")
+% if is_oneway?
+% _op_start = "void #{cxxname} ("
+% else
+% _op_start = "#{scoped_cxx_return_type} #{cxxname} ("
+% end
+/// @copydoc <%= doc_scoped_name %>
+virtual <%= _op_start %><%= _s %>
+% while !_args.empty?
+%   _arg = _args.shift
+  <%= _arg.stub_arg_type %> <%= _arg.cxxname %><%= _args.empty? ? ') override;' : ',' %>
+% end

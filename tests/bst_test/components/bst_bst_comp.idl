@@ -1,0 +1,28 @@
+/**
+ * @file    bst_bst_comp.idl
+ * @author  Johnny Willemsen
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef CX_COMPONENTS__BST_COMP__SRC__BST_BST_COMP_IDL
+#define CX_COMPONENTS__BST_COMP__SRC__BST_BST_COMP_IDL
+
+#include <Components.idl>
+#include "bst_bst_defn.idl"
+#include "bst_test_obj.idl"
+
+/// @namespace BST
+module BST {
+    component BST_comp {
+        uses BST::Test_obj TestClient;
+        attribute BST::MyBoundedStringType MyBoundedString;
+        attribute BST::MyStringTypedef MyUnboundedString;
+        attribute BST::MyStructType MyStruct;
+    };
+
+};
+
+#endif // CX_COMPONENTS__BST_COMP__SRC__BST_BST_COMP_IDL
+

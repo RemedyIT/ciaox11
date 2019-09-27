@@ -1,0 +1,38 @@
+/**
+ * @file    ccm_ccmexception.idl
+ * @author  Johnny Willemsen
+ *
+ * @brief   Compliant to OMG 06-04-01, section 9.3.3.2
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#if !defined (CCM_CCMEXCEPTION_IDL)
+#define CCM_CCMEXCEPTION_IDL
+
+module Components
+{
+  typeprefix Components "omg.org";
+
+  enum CCMExceptionReason
+  {
+    SYSTEM_ERROR,
+    CREATE_ERROR,
+    REMOVE_ERROR,
+    DUPLICATE_KEY,
+    FIND_ERROR,
+    OBJECT_NOT_FOUND,
+    NO_SUCH_ENTITY,
+    // Coming from QoS4CCM
+    QOS_ERROR,
+    REGISTRATION_ERROR,
+    SERVICE_INSTALLATION_ERROR
+  };
+
+  exception CCMException
+  {
+    CCMExceptionReason reason;
+  };
+};
+#endif /* CCM_CCMEXCEPTION_IDL */

@@ -1,0 +1,70 @@
+project(*cc_idl_gen) : ciaox11_idldefaults, ciaox11_corba4ccm_idl {
+  custom_only = 1
+
+  after += base_remote_lem_gen
+
+  // Disable skeleton suppression and generate skeleton export header
+  idlflags -= -SS -Ssh
+  idlflags += -Gxhsk
+
+  idlflags += -Wb,base_export_macro=CONN_REMOTE \
+              -Wb,base_export_include=conn_remote \
+              -o generated_code \
+              -I../connector -I../connector/generated_code \
+              -I../base -I../base/generated_code
+
+  IDL_Files {
+    gendir=generated_code
+    ../base/foo.idl
+  }
+}
+
+project(*remote_skel) : taox11_lib, taox11_portableserver, ciaox11_corba4ccm {
+  after += base_remote_stub *cc_idl_gen
+  libs  += base_remote_stub
+
+  libpaths += ../lib
+  libout = ../lib
+  includes += . .. ../base ../base/generated_code generated_code
+
+  dynamicflags += CONN_REMOTE_SKEL_BUILD_DLL
+
+  Source_Files {
+    generated_code/fooS.cpp
+  }
+
+  Header_Files {
+    generated_code/fooS.h
+    generated_code/conn_remote_skel_export.h
+  }
+}
+project(*corba) : ciaox11_executor, ciaox11_corba4ccm_impl {
+  after += conn_remote_skel base_remote_lem_stub
+  libs  += conn_remote_skel base_remote_stub base_remote_lem_stub
+
+  libpaths += ../lib
+  libout = ../lib
+  includes += . .. ../base ../base/generated_code generated_code
+
+  dynamicflags += CONN_REMOTE_CC_LEM_STUB_BUILD_DLL \
+                  CONN_REMOTE_CC_EXEC_BUILD_DLL \
+                  CONN_REMOTE_CC_SVNT_BUILD_DLL
+
+  Source_Files {
+    generated_code/foo_ccEC.cpp
+
+    generated_code/foo_cc_exec.cpp
+    generated_code/foo_cc_svnt.cpp
+  }
+  Header_Files {
+    generated_code/foo_ccC.h
+    generated_code/foo_ccEC.h
+    generated_code/foo_cc_lem_stub_export.h
+
+    generated_code/foo_cc_exec.h
+    generated_code/foo_cc_exec_export.h
+
+    generated_code/foo_cc_svnt.h
+    generated_code/foo_cc_svnt_export.h
+  }
+}

@@ -1,0 +1,84 @@
+/**
+ * @file    union.idl
+ * @author  Marcel Smit
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef UNION_BASE_IDL_
+#define UNION_BASE_IDL_
+
+struct Global
+{
+  long x;
+};
+
+module Uni {
+
+  enum DataType
+  {
+    dtLong,
+    dtShort,
+    dtString,
+    dtPoint,
+    dtTrack,
+    dtGlobal
+  };
+
+  struct Point
+  {
+    long x;
+    long y;
+  }; //@TopLevel(false)
+
+  struct Track
+  {
+    long id;
+    Point p;
+  }; //@TopLevel(false)
+
+  union Data switch (DataType)
+  {
+    case dtLong: long longData;
+    case dtShort: short shortData;
+    case dtString: string stringData;
+    case dtPoint: Point pointData;
+    case dtTrack: Track trackData;
+    case dtGlobal: Global globalData;
+  };
+
+  struct B01 {
+    long b01_1;
+  }; //@TopLevel(false)
+
+  struct B02 {
+    string b02_1;
+  }; //@TopLevel(false)
+
+  union B03 switch (long)
+  {
+    case 0: B01 b_03_1;
+    case 1: B02 b_03_2;
+    case 2: short b_03_3;
+    case 3: long b_03_4;
+    case 4: string b_03_5;
+    default: short b_03_d;
+  };
+
+  enum Assignment
+  {
+    NONE,
+    A,
+    B,
+    C,
+    D
+  };
+
+  struct UnionMessage {
+    Assignment a; //@key
+    B03 b_03;
+    Data d;
+  }; //@TopLevel()
+};
+
+#endif /* UNION_BASE_IDL_ */

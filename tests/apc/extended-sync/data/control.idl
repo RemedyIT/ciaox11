@@ -1,0 +1,24 @@
+/**
+ * @file    control.idl
+ * @author  Martin Corino
+ *
+ * @brief   Data interfaces for minimal sync manual example
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef CONTROL_IDL_
+#define CONTROL_IDL_
+
+#include "state.idl"
+
+module Hello
+{
+  local interface StateController : Data::StateKeeper
+  {
+    void report ();
+  };
+};
+
+#endif /* CONTROL_IDL_ */

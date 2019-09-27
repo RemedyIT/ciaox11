@@ -1,0 +1,54 @@
+project(*idl_gen) : ciaox11_test_base_idl {
+  custom_only = 1
+  idlflags += -Wb,base_export_macro=DERIVED \
+              -Wb,base_export_include=derived
+
+  IDL_Files {
+    gendir=generated_code
+    derived.idl
+  }
+}
+
+project(*lem_gen) : ciaox11_test_base_lem_idl {
+  custom_only = 1
+
+  idlflags += -Wb,base_export_macro=DERIVED \
+              -Wb,base_export_include=derived
+
+  IDL_Files {
+    gendir=generated_code
+    derived.idl
+  }
+}
+
+project(*stub) : ciaox11_test_base {
+  after += *idl_gen
+
+  dynamicflags += DERIVED_STUB_BUILD_DLL
+
+  Source_Files {
+    generated_code/derivedC.cpp
+  }
+
+  Header_Files {
+    generated_code/derivedC.h
+    generated_code/derived_stub_export.h
+  }
+}
+
+project(*lem_stub) : ciaox11_test_base {
+  after += *stub *lem_gen
+  libs  += *stub
+
+  dynamicflags += DERIVED_LEM_STUB_BUILD_DLL
+
+  Source_Files {
+    generated_code/derivedEC.cpp
+  }
+
+  Header_Files {
+    generated_code/derivedEC.h
+    generated_code/derived_lem_stub_export.h
+  }
+}
+

@@ -1,0 +1,11 @@
+connector 'union' do |conn|
+  conn.idl %w{ union.idl }
+
+  conn.port_type :dds4ccm do |tp|
+    tp.topic 'Uni::UnionMessage'
+    # use default DDS vendor
+    # tp.middleware :ndds
+    tp.topic_interface 'UnionConnector'
+  end
+end
+

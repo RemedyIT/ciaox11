@@ -1,0 +1,23 @@
+/**
+ * @file    receiver.idl
+ * @author  Marcel Smit
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef RECEIVER_IDL_
+#define RECEIVER_IDL_
+
+#include <Components.idl>
+
+#include "interceptor.idl"
+
+module Interceptor
+{
+  component Interceptor_Receiver
+  {
+    provides Foo prov_my_foo;
+  };
+};
+
+#endif /* RECEIVER_IDL_ */

@@ -1,0 +1,433 @@
+include::_{backend}_settings.adoc[]
+
+= CORBA support in AXCIOMA vs CIAO
+
+== Overview
+
+This document describes the changes in deployment plans between CIAO and
+AXCIOMA regarding the Synchronous Request/Reply (SRR) support using
+CORBA. In CIAO the support for synchronous request/reply is part of the
+core CCM framework and is always available for each component. In
+AXCIOMA the support for synchronous request/reply is provided by
+optional CORBA4CCM connectors.
+
+The DDS4CCM Shapes tutorial is used as a running example in order to
+explain the differences between CIAO and AXCIOMA. At the bottom of this
+page the graphical representations of the deployments are shown.
+
+In AXCIOMA the user components are middleware agnostic. The concrete
+communication middleware is a deployment decision in AXCIOMA. See for
+more details the <<{xref_docs_root}/ciaox11/philosophy.adoc#,AXCIOMA philosophy
+document>>.
+
+The DDS4CCM Shapes tutorial currently uses CORBA to realize the
+Synchronous Request/Reply pattern.
+
+== User component
+
+In contrast to CIAO, the AXCIOMA examples and unit tests do not use a
+separate servant library anymore, the generated servant entry point is
+linked together with the user provided component executor into one
+shared library. It is a user decision whether the generated servant and
+the user provided component executor are combined into one shared
+library or separate into two. At the moment you as user want to provide
+multiple implementations of the same component IDL definition it is the
+best to separate the servant and the executor in two separate shared
+libraries because the servant is purely generated based on your IDL
+component definition, that way you have just one servant library that
+can be deployed together with different component implementations for
+the same component definition.
+
+Below is the deployment XML for deploying the user components (for CIAO
+and AXCIOMA), do note that the names of the execParameters have changed
+for AXCIOMA but *not* the values. See our
+<<{xref_docs_root}/ciaox11/convert_plan.adoc#,deployment plan
+conversion script>> for an automated way to convert all execParameters
+from CIAO to AXCIOMA.
+
+.CIAO deployment descriptors
+--------------------------------------------------------------
+  <implementation xmi:id="ReceiverComponentImplementation">
+    <name>ReceiverComponentImplementation</name>
+    <source/>
+    <artifact xmi:idref="Receiver_ExecArtifact" />
+    <artifact xmi:idref="Receiver_SvntArtifact" />
+    <execParameter>
+      <name>component factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_Shapes_Receiver_comp_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantEntrypoint</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_Shapes_Receiver_comp_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ServantArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Shapes_Receiver_comp_svnt</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>edu.vanderbilt.dre.CIAO.ExecutorArtifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Shapes_Receiver_comp_exec</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+--------------------------------------------------------------
+
+.AXCIOMA deployment descriptors
+--------------------------------------------------------------
+  <implementation xmi:id="ReceiverComponentImplementation">
+    <name>ReceiverComponentImplementation</name>
+    <source/>
+    <artifact xmi:idref="Receiver_ExecArtifact" />
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_Shapes_Receiver_comp_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_Shapes_Receiver_comp_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>shapes_receiver_comp_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>shapes_receiver_comp_exec</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+--------------------------------------------------------------
+
+== CORBA4CCM connector
+
+The shapes tutorial only has one interface defined for synchronous
+request/reply interaction: Control_obj. This interface is used between
+the controller component (which uses it) and the publisher component
+(which provides it). The Control_obj is declared in
+`shapes_control_obj.idl`. Based on this `shapes_control_obj.idl` the RIDL
+compiler will generate all artifacts for the CORBA4CCM connector. In this
+example all CORBA4CCM connector artifacts for `shapes_control_obj.idl` are
+compiled into one shared library.
+
+In case of a CORBA4CCM connector, every interface in IDL results in a
+template module declaration in an implied IDL file
+(`<idl_file_name>_cc.idl`). The name of this module is a concatenation of
+the following items:
+
+- The module in which the interface is available
+(Shapes)
+- The name of the interface itself (Control_obj)
+- The postfix '_SRR', which stands for Synchronous Request Reply.
+
+The name of the entry point is a concatenation of the following:
+
+- A 'create_' prefix
+- The name of the CORBA4CCM connector module
+(Shapes_Control_Obj_SRR)
+- A '_CORBA_Connector' decorator
+- The 'target' of the entry point ('_Impl' or '_Servant').
+
+The paragraphs describe the deployment descriptors needed with AXCIOMA to
+deploy the CORBA4CCM connector instances.
+
+=== Implementation section
+
+First the definition of the Implementation-section of the Control_obj
+CORBA4CCM connector in the deployment plan:
+
+.Implementation descriptors
+--------------------------------------------------------------------------------
+  <implementation xmi:id="CORBA_ConnectorControlInterfaceImplementation">
+    <name>CORBA_ConnectorControlInterfaceImplementation</name>
+    <source/>
+    <artifact xmi:idref="CORBA_Connector_ExecArtifact" />
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_Shapes_Control_obj_SRR_CORBA_Connector_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_Shapes_Control_obj_SRR_CORBA_Connector_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>shapes_control_obj_cc</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>shapes_control_obj_cc</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+--------------------------------------------------------------------------------
+
+.NOTE
+****
+Compiling an IDL source file with two interfaces A and B defined,
+results in one CORBA4CCM connector library with two entry points (one for A
+and one for B).
+****
+
+=== Instance section
+
+Two instances of the CORBA4CCM connector implementation should be deployed.
+One collocated with the Sender component and one with the Controller
+component. Within the deployment plan instances are deployed onto a node
+so you will see once instance on the ControllerNode and one instance on
+the SenderNode (see pictures below). This way the Controller and the
+Sender are able to use the collocated CORBA4CCM connector. Again, the usage
+of CORBA4CCM connectors for this communication is AXCIOMA specific.
+
+.Instance descriptors
+--------------------------------------------------------------------------------
+  <instance xmi:id="SRR_ConnectorSenderComponentInstance">
+    <name>SRR_ConnectorSenderComponentInstance</name>
+    <node>SenderNode</node>
+    <source/>
+    <implementation xmi:idref="CORBA_ConnectorControlInterfaceImplementation" />
+  </instance>
+
+  <instance xmi:id="SRR_ConnectorControlComponentInstance">
+    <name>SRR_ConnectorControlComponentInstance</name>
+    <node>ControlNode</node>
+    <source/>
+    <implementation xmi:idref="CORBA_ConnectorControlInterfaceImplementation" />
+  </instance>
+--------------------------------------------------------------------------------
+
+=== Connection section
+
+In CIAO there's a direct connection between the Controller and Sender
+user components. This is reflected by the following connection
+declaration in the deployment plan:
+
+.CIAO connection descriptor
+-------------------------------------------------------
+  <connection>
+    <name>control_connection</name>
+    <internalEndpoint>
+      <portName>control</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="ControlComponentInstance" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>control</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="SenderComponentInstance" />
+    </internalEndpoint>
+  </connection>
+-------------------------------------------------------
+
+In order to be middleware agnostic in *AXCIOMA*, there's no direct remote
+communication between two user components; as mentioned before *AXCIOMA*
+always uses connectors for this. A Synchronous Request/Reply connector
+always uses and provides a given interface. Therefor the connections to
+and from a Synchronous Request/Reply connector always have the same
+portName:
+
+- The providing portName is always called srr_facet.
+- The using portName is always called srr_receptacle.
+
+The following connections should be configured:
+
+.  A(n) (internal) connection between the user component which uses the
+interface and the SRR connector (which provides that same interface) on
+that same node.
+.  A(n) (internal) connection between the user component which provide the
+interface and the SRR connector on that same node which uses the
+interface.
+.  A(n) (external) connection between the SRR connectors
+
+The following snippets contain the above mentioned connection that are
+used in AXCIOMA:
+
+.AXCIOMA connection descriptors
+--------------------------------------------------------------------------------------
+  <connection>
+    <name>control_connection_from_control_component_to_srr_control_component</name>
+    <internalEndpoint>
+      <portName>control</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="ControlComponentInstance" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>srr_facet</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="SRR_ConnectorControlComponentInstance" />
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>control_connection_from_srr_control_component_to_srr_sender_component</name>
+    <internalEndpoint>
+      <portName>srr_receptacle</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="SRR_ConnectorControlComponentInstance" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>srr_facet</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="SRR_ConnectorSenderComponentInstance" />
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>control_connection_from_srr_sender_component_to_sender_component</name>
+    <internalEndpoint>
+      <portName>control</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="SenderComponentInstance" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>srr_receptacle</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="SRR_ConnectorSenderComponentInstance" />
+    </internalEndpoint>
+  </connection>
+--------------------------------------------------------------------------------------
+
+Mind that when another implementation of the Synchronous Request/Reply
+connector is used (like for instance RPC4DDS), the connection
+declarations between the user components and the connectors in the
+deployment plans don't need to be changed.
+
+All the `Local_Interface` _deployRequirements_ (required with CIAO) are not
+needed anymore for *AXCIOMA*.
+The AXCIOMA connection handler will consider a local connection for any
+connection that is set up for two internal endpoints in the context of the
+locality for which the connection is established. In case the endpoints
+belong to component instances installed in the same container for that
+locality the connection is considered a local connection and it will be
+attempted to set up as such. The `Local_Interface` _deployRequirements_
+can be removed automatically from the deployment
+plan by our
+<<{xref_docs_root}/ciaox11/convert_plan.adoc#,deployment plan
+conversion script>>.
+
+.Obsolete _deployRequirement_
+----------------------------------------------------------
+    <deployRequirement>
+      <name>edu.dre.vanderbilt.DAnCE.ConnectionType</name>
+      <resourceType>Local_Interface</resourceType>
+    </deployRequirement>
+----------------------------------------------------------
+
+== Relationship with AMI4CCM
+
+When a client component wants to make asynchronous invocations
+on the client side an AMI4CCM connector has to be deployed while on the
+server side a CORBA4CCM connector has to be deployed.
+
+== Conversion approach
+
+When you have existing CIAO deployment plans the following steps could
+be performed to convert to AXCIOMA plans.
+
+- Find all connections that don't have a Local_Interface deployRequirement
+and for all do
+** For all found connections make sure you add a CORBA4CCM connector instance
+on both side of the connection
+** Convert the original found connection to a connection between the two
+CORBA4CCM connector instances
+** Connect the user components now with their collocated CORBA4CCM connector
+using a new connection
+- Run the conversion script to convert all ExecParameters
+
+== Appendix A: Schemes
+
+=== CIAO deployment
+
+image:{images_root}/corba4ccm/ciao.png[image]
+
+=== *AXCIOMA* deployment
+
+image:{images_root}/corba4ccm/axcioma.png[image]

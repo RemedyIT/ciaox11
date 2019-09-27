@@ -1,0 +1,112 @@
+% _regen_marker = "#{executor_cxx_namespace}::#{lem_name}_exec_i"
+
+% write_regen_section(executor_cxx_namespace+'[user_includes]', default_content: '// Your includes here')
+
+% write_regen_section(executor_cxx_namespace+'[user_global_impl]', default_content: '// Your declarations here')
+
+namespace <%= executor_cxx_namespace %>
+{
+% nest { write_regen_section(executor_cxx_namespace+'[user_namespace_impl]', default_content: '') }
+
+% all_ports.each do |_p|
+%   nest { _p.gen_facet_exec } if _p.port_type == :facet
+% end
+
+  /**
+   * Component Executor Implementation Class : <%= lem_name %>_exec_i
+   */
+% write_regen_section(_regen_marker+'[ctor]', indent: 1) do
+  <%= lem_name %>_exec_i::<%= lem_name %>_exec_i ()
+  {
+  }
+% end
+
+  <%= lem_name %>_exec_i::~<%= lem_name %>_exec_i ()
+  {
+% nest(2) { write_regen_section(_regen_marker+'[dtor]', default_content: '// Your code here') }
+  }
+
+  /** User defined public operations. */
+% nest { write_regen_section(_regen_marker+'[user_public_ops]', default_content: '// Your code here') }
+
+  /** User defined private operations. */
+% nest { write_regen_section(_regen_marker+'[user_private_ops]', default_content: '// Your code here') }
+
+% if supported_interfaces?
+  /** Supported operations */
+%   supported_interfaces.each do |_intf|
+%     _intf.all_operations.each do |_op|
+%       nest { _op.visit_operation({owner: self, component: self}) }
+%     end
+%   end
+
+% end
+  /** Session component operations */
+  void <%= lem_name %>_exec_i::configuration_complete ()
+  {
+% nest(2) { write_regen_section(_regen_marker+'[configuration_complete]', default_content: '// Your code here') }
+  }
+
+  void <%= lem_name %>_exec_i::ccm_activate ()
+  {
+% nest(2) { write_regen_section(_regen_marker+'[ccm_activate]', default_content: '// Your code here') }
+  }
+
+  void <%= lem_name %>_exec_i::ccm_passivate ()
+  {
+% nest(2) { write_regen_section(_regen_marker+'[ccm_passivate]', default_content: '// Your code here') }
+  }
+
+  void <%= lem_name %>_exec_i::ccm_remove ()
+  {
+% nest(2) { write_regen_section(_regen_marker+'[ccm_remove]', default_content: '// Your code here') }
+  }
+% all_ports.each do |_p|
+%   if _p.port_type == :facet
+
+  <%= _p.interface_type.scoped_ccm_name_return_type %>
+  <%= lem_name %>_exec_i::get_<%= _p.lem_name %> ()
+  {
+% write_regen_section(_regen_marker+"[get_#{_p.lem_name}]", indent: 1) do
+    if (!this-><%= _p.cxxname %>_)
+    {
+      this-><%= _p.cxxname %>_ = CORBA::make_reference <<%= _p.lem_name %>_exec_i> (this->context_);
+    }
+    return this-><%= _p.cxxname %>_;
+% end
+  }
+%   end
+% end
+
+% if all_attributes_incl_mirror_port.size > 0
+% all_attributes_incl_mirror_port.each do |_att|
+%   nest { _att.visit_attribute({owner: self, component: self}) }
+% end
+
+% end
+  /// Operations from Components::SessionComponent
+  void
+  <%= lem_name %>_exec_i::set_session_context (
+    IDL::traits<Components::SessionContext>::ref_type ctx)
+  {
+    // Setting the context of this component.
+% _implementation = []
+% _nest = "\n    "
+% _implementation.push("this->context_ = IDL::traits< #{scoped_ccm_name}_Context >::narrow (std::move(ctx));")
+% nest(2) { write_regen_section(_regen_marker+'[set_session_context]', default_content: _implementation) }
+  }
+
+% visit_component_end_extra
+
+% nest { write_regen_section(executor_cxx_namespace+'[user_namespace_end_impl]', default_content: '') }
+
+} // namespace <%= executor_cxx_namespace %>
+
+% write_regen_section(executor_cxx_namespace+'[factory]') do
+extern "C" void
+create_<%= scoped_unescaped_type.scope_to_cxxname %>_Impl (
+  IDL::traits<Components::EnterpriseComponent>::ref_type& component)
+{
+  component = CORBA::make_reference < <%= executor_cxx_namespace %>::<%= lem_name %>_exec_i > ();
+}
+% end

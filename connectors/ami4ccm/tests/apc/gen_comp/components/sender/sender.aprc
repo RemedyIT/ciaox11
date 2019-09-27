@@ -1,0 +1,26 @@
+#recipe id 'hello_sender', idl name becomes 'hello_sender.idl'
+
+component 'hello_sender' do |comp|
+  #data/type idl
+  comp.idl %w{ hello.idl }
+  #Define component 'Sender' in scope 'Hello'
+  comp.define 'Hello::Sender' do |intf|
+# ---------         ports ----------------------------------
+    #asynch port with interface Hello::MyFoo defined in hello.idl
+    intf.port 'run_my_foo_arr' do |p|
+      p.sends 'Hello::MyFoo'
+    end
+
+    # condensed form of defining a port
+    #asynch port with interface Hello::MyFoo defined in hello.idl
+    intf.port 'run_my_foo_arr_2' ,sends: 'Hello::MyFoo'
+
+
+    #facet  port with interface Hello::MyFoo defined in hello.idl
+    intf.port 'run_my_foo_uses' do |p|
+      p.uses 'Hello::MyFoo'
+    end
+
+  end
+
+end

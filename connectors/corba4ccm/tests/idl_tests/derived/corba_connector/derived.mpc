@@ -1,0 +1,47 @@
+project(*cc_idl_gen) : ciaox11_test_cc_base_idl {
+  custom_only = 1
+
+  after += derived_idl_gen derived_lem_gen
+
+  idlflags += -Wb,base_export_macro=DERIVED \
+              -Wb,base_export_include=derived
+
+  IDL_Files {
+    gendir=generated_code
+    ../base/derived.idl
+  }
+}
+
+project(*corba_conn) : ciaox11_test_base, ciaox11_executor, ciaox11_corba4ccm_impl {
+  after += derived_stub derived_lem_stub *cc_idl_gen
+  libs  += derived_stub derived_lem_stub
+
+  dynamicflags += DERIVED_SKEL_BUILD_DLL \
+                  DERIVED_CC_LEM_STUB_BUILD_DLL \
+                  DERIVED_CC_EXEC_BUILD_DLL \
+                  DERIVED_CC_SVNT_BUILD_DLL
+
+  Source_Files {
+    generated_code/derivedS.cpp
+
+    generated_code/derived_ccEC.cpp
+
+    generated_code/derived_cc_exec.cpp
+    generated_code/derived_cc_svnt.cpp
+  }
+  Header_Files {
+    generated_code/derivedS.h
+    generated_code/derivedSP.h
+    generated_code/derived_skel_export.h
+
+    generated_code/derived_ccC.h
+    generated_code/derived_ccEC.h
+    generated_code/derived_cc_lem_stub_export.h
+
+    generated_code/derived_cc_exec.h
+    generated_code/derived_cc_exec_export.h
+
+    generated_code/derived_cc_svnt.h
+    generated_code/derived_cc_svnt_export.h
+  }
+}

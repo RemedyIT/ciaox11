@@ -1,0 +1,12 @@
+
+// generated from <%= ridl_template_path %>
+/// Disconnect method to reset the connection for receptacle with name @a name
+%   if all_incl_multiple_port?
+/// and connection name @a conn_name
+%   end
+%   if all_incl_multiple_port?
+bool reset_connection (const std::string& name,
+                       const std::string& conn_name);
+%   else
+bool reset_connection (const std::string& name);
+%   end

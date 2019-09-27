@@ -1,0 +1,24 @@
+/**
+* @file    ccm_tt_time.idl
+* @author  Martin Corino
+*
+* @brief   Idl file for CCM Time struct
+*
+* @copyright Copyright (c) Remedy IT Expertise BV
+* Chamber of commerce Rotterdam nr.276339, The Netherlands
+*/
+
+#ifndef CCM_TT_TIME_IDL
+#define CCM_TT_TIME_IDL
+
+module CCM_TT
+{
+  /// Time duration value
+  struct TT_Duration
+  {
+    unsigned long sec;
+    unsigned long nanosec;
+  };
+};
+
+#endif /* CCM_TT_TIME_IDL */

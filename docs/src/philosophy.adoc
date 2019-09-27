@@ -1,0 +1,90 @@
+include::_{backend}_settings.adoc[]
+
+= The AXCIOMA philosophy
+
+== Overview
+
+The following picture provides an overview of the roles and activities in a
+typical *AXCIOMA* application development lifecycle.
+
+.*AXCIOMA* development lifecycle
+image:{images_root}/philosophy.png[image]
+
+According to the above picture, the following roles and activities apply
+in *AXCIOMA* application development:
+
+Architect::
+
+* Design the data types and interfaces in IDL
+* Design the business component in IDL
+
+Programmer/Tester::
+
+* Compile all IDL
+* Implement the business code
+* Compile the business code
+* Test the business components
+
+Deployment planner::
+
+* Model the deployment
+* Design the desired QoS settings (if applicable)
+* Deploy the application
+
+== Roles
+
+=== Architect
+
+First of all the IDL need to be modeled. Which data types are going to
+be used, which contracts (interfaces) between components are necessary
+and which component provides or use which interface? +
+Once this all is determined, the Architect should determine which IDL
+should result in which interaction pattern. Once that is determined, the
+<<{xref_docs_root}/taox11/ridlc.adoc#,RIDL compiler>> is able to generate all
+implied IDL and {cxx11} source code for the stubs of that certain
+interaction pattern. Mind that the stubs are not implementing the
+interaction pattern itself. In *AXCIOMA* it is possible to use various
+implementations for each interaction pattern. Which implementation to
+use for an interaction pattern is therefor a deployment decision! +
+Once the Architect knows which implementation for a certain interaction
+pattern is going to be used, the RIDL compiler is than able to generate
+the full implementation of the interaction pattern. In the meantime the
+Programmer does not depend on this effort; the programmer can start
+working on the business code. This is because of the fact that the user
+defined business components do not have any knowledge about which
+implementation is used for which interaction pattern. In other words:
+there's no need for the component to link against the interaction
+pattern implementation libraries and thus business component libraries
+can be build independent of the interaction pattern implementation
+libraries.
+
+=== Programmer/tester
+
+As mentioned before, the Programmer can start working on the business
+code once the business components are modeled in IDL, the data stub
+libraries, and the interaction pattern stub libraries are available. To
+prevent the Programmer from writing a lot of boiler plate code, the RIDL
+compiler is able to generate starter code for the business code (see
+<<executor_starter_code.adoc#,this page>>). The Programmer is now
+able to implement the business code without having to bother about
+boiler plate code.
+
+=== Deployment planner
+
+The Deployment Planner starts the construction of a deployment plan
+(check <<{xref_docs_root}/dancex11/deployment-planning.adoc#,this page>>
+about how this is done). Besides this, the deployment planner need to
+define the (DDS) QoS settings (if applicable). In *AXCIOMA* QoS settings
+are a deployment decision and these are never coded. +
+With the deployment plan, the QoS settings, and the collected
+libraries, the planner is able to run the application by making use of
+the <<{xref_docs_root}/dancex11/dancex11.adoc#,*AXCIOMA* deployment
+framework>>.
+
+.Structuring
+****
+When developing an *AXCIOMA* application, good practice is to divide
+the IDL and MPC files, libraries, and directory structure in the same
+way *AXCIOMA* tests and examples are divided. More information about
+this can be found on <<good_practice.adoc#,this page>>.
+****

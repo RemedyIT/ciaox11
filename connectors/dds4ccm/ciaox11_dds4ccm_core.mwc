@@ -1,0 +1,9 @@
+workspace {
+  $(CIAOX11_ROOT)/ddsx11
+  idl
+  logger
+  impl
+  exclude {
+    $(CIAOX11_ROOT)/ddsx11/examples
+  }
+}

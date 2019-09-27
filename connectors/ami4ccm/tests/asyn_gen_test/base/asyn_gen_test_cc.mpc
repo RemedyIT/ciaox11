@@ -1,0 +1,54 @@
+project(*idl_gen) : ciaox11_corba4ccm_idl, ciaox11_ami4ccm {
+  custom_only = 1
+
+  after += asyn_gen_test_lem_gen ciaox11_corba4ccm_idl_gen
+  idlflags += -Wb,base_export_macro=HELLO \
+              -Wb,base_export_include=hello \
+              -Sch -Scc -Scp
+
+  IDL_Files {
+    hello.idl
+  }
+}
+
+project(*lem_stub) : ciaox11_corba4ccm, ciaox11_ccm_session_stub, ciaox11_ami4ccm {
+  after += *idl_gen
+
+  dynamicflags += HELLO_CC_LEM_STUB_BUILD_DLL
+
+  libout = ../lib
+
+  sharedname = Hello_cc_lem_stub
+
+  Source_Files {
+    hello_ccEC.cpp
+  }
+
+  Header_Files {
+    hello_ccC.h
+    hello_ccEC.h
+    hello_cc_lem_stub_export.h
+  }
+}
+
+project(*corba_conn) : ciaox11_test_base, ciaox11_executor, ciaox11_corba4ccm_impl, ciaox11_ami4ccm {
+  after += *lem_stub asyn_gen_test_skel asyn_gen_test_stub asyn_gen_test_lem_stub *idl_gen
+  libs  += Hello_cc_lem_stub Hello_skel Hello_stub Hello_lem_stub
+
+  dynamicflags += HELLO_CC_EXEC_BUILD_DLL \
+                  HELLO_CC_SVNT_BUILD_DLL
+
+  sharedname = Hello_corba_conn
+
+  Source_Files {
+    hello_cc_exec.cpp
+    hello_cc_svnt.cpp
+  }
+  Header_Files {
+    hello_cc_exec.h
+    hello_cc_exec_export.h
+
+    hello_cc_svnt.h
+    hello_cc_svnt_export.h
+  }
+}

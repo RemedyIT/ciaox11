@@ -1,0 +1,27 @@
+/**
+ * @file    foo_provider.idl
+ * @author  Martin Corino
+ *
+ * @brief   Foo provider component
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef FOO_PROVIDER_IDL_
+#define FOO_PROVIDER_IDL_
+
+#include <Components.idl>
+
+#include "foo.idl"
+
+module Example
+{
+  component FooProvider
+  {
+    /// Provides
+    provides Foo do_my_foo;
+  };
+};
+
+#endif /* FOO_PROVIDER_IDL_ */

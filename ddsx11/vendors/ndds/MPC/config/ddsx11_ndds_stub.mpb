@@ -1,0 +1,14 @@
+// --------------------------------------------------------------------
+// ddsx11_ndds_stub.mpb
+//
+// Copyright (c) Remedy IT Expertise BV
+// Chamber of commerce Rotterdam nr.276339, The Netherlands
+// --------------------------------------------------------------------
+
+// Use taox11_core_anytypecode because we only want to link with anytypecode
+// and not enable anytypecode on the IDL compiler by default
+project : taox11_defaults, taox11_core_anytypecode, ddsx11_ndds_flags {
+  after += ddsx11_ndds_stub
+  libs += ddsx11_ndds_stub
+  libpaths += $(CIAOX11_ROOT)/lib
+}

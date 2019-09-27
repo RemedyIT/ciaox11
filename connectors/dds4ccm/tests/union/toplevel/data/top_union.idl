@@ -1,0 +1,19 @@
+/**
+ * @file    top_union.idl
+ * @author  Marcel Smit
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef TOP_UNION_BASE_IDL_
+#define TOP_UNION_BASE_IDL_
+
+module Uni {
+  union TopUnionMessage switch (long) {
+    case 4: short x;
+    case 5:
+    case 6: long y;
+  }; //@TopLevel()
+};
+
+#endif /* TOP_UNION_BASE_IDL_ */

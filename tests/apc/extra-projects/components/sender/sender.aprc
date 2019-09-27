@@ -1,0 +1,6 @@
+component 'hello_sender' do |comp|
+  comp.idl %w{ hello_sender.idl }
+  #for this test,an extra base project is necessary :
+  comp.base_projects += 'taox11_anytypecode'
+end
+

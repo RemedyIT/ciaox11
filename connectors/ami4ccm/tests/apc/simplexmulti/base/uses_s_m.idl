@@ -1,0 +1,40 @@
+/**
+ * @file    uses_s_m.idl
+ * @author  Marijke Hengstmengel
+ *
+ * @brief   base of ami4ccm test with combination of uses multiple and simplex
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+
+#ifndef USESSM_IDL
+#define USESSM_IDL
+
+#pragma ami4ccm interface "UsesSM::One"
+#pragma ami4ccm interface "UsesSM::Two"
+#pragma ami4ccm idl "uses_s_mA.idl"
+
+module UsesSM
+{
+  exception InternalError
+  {
+    long id;
+    string error_string;
+  };
+
+  // Sender/Receiver interfaces
+  interface One
+  {
+    long foo (in string in_str, in long cmd, out string answer)
+    raises (InternalError);
+  };
+  interface Two
+  {
+    void bar (in long cmd, out string answer)
+    raises (InternalError);
+  };
+};
+
+#endif

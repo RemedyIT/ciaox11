@@ -1,0 +1,26 @@
+/**
+ * @file    return_args_t_receiver.idl
+ * @author  Marijke Hengstmengel
+ *
+ * @brief   receiver idl of ami4ccm test with several return types
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef INTERRETURN_T_RECEIVER_IDL
+#define INTERRETURN_T_RECEIVER_IDL
+
+#include <Components.idl>
+
+#include "return_args_t.idl"
+
+module InterReturnT
+{
+  component Receiver
+  {
+    /// Provides
+    provides MyFoo do_my_foo;
+  };
+};
+#endif

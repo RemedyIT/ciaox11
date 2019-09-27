@@ -1,0 +1,20 @@
+/**
+ * @file    tt_test.idl
+ * @author  Martin Corino
+ *
+ * @brief   Timed Trigger test component IDL
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#include <ccm_timed_trigger.idl>
+
+module Test
+{
+  component TT_Tester
+  {
+    uses CCM_TT::TT_Scheduler tt_scheduler_one;
+    uses CCM_TT::TT_Scheduler tt_scheduler_two;
+  };
+};

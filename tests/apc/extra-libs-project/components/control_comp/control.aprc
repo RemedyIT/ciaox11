@@ -1,0 +1,13 @@
+component 'control_comp' do |comp|
+  comp.idl %w{ hello_sender.idl }
+
+  #prefix sharednames
+  comp.shared_name 'my_comp'
+
+  #prefix export headers, default name component
+  comp.export_name 'my_export_comp'
+
+  #gen_dir is default generated_code
+  comp.gen_dir  :my_comp_dir
+
+end

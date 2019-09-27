@@ -1,0 +1,25 @@
+/**
+ * @file    shapes_sender_comp.idl
+ * @author  Johnny Willemsen
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef SHAPES_SENDER_COMP_IDL_
+#define SHAPES_SENDER_COMP_IDL_
+
+#include "shapes_shapetype_msgSE.idl"
+#include "shapes_control_obj.idl"
+
+module Shapes
+{
+  component Sender_comp
+  {
+    port ShapeTypeInterface::DDS_Write info_write;
+
+    provides Shapes::Control_obj control;
+  };
+};
+
+#endif /* SHAPES_SENDER_COMP_IDL_ */

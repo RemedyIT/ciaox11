@@ -1,0 +1,18 @@
+project (ciaox11_deployment_interceptors) : install, ciaox11_lib, ciaox11_output, \
+        taox11_cosnaming_stub, ciaox11_logger, dancex11_stub, dancex11_state {
+  dynamicflags += CIAOX11_DEPLOYMENT_INTERCEPTORS_BUILD_DLL
+
+  Source_Files {
+    deployment_interceptors.cpp
+    name_utilities.cpp
+  }
+
+  Header_Files {
+    deployment_interceptors.h
+    name_utilities.h
+  }
+
+  specific {
+    install_dir = ciaox11/deployment/interceptors
+  }
+}

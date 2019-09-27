@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  @file      USER_QOS_PROFILES.xml
+  @author    Marcel Smit
+
+  @copyright Copyright (c) Remedy IT Expertise BV
+  Chamber of commerce Rotterdam nr.276339, The Netherlands
+-->
+<dds xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="rti_dds_qos_profiles.xsd" version="5.2.3">
+  <qos_library name="deadlinelibrary">
+    <qos_profile name="DeadlineProfile" is_default_qos="false">
+      <participant_qos>
+        <transport_builtin>
+            <mask>UDPv4</mask>
+        </transport_builtin>
+      </participant_qos>
+      <datawriter_qos>
+         <reliability>
+          <kind>BEST_EFFORT_RELIABILITY_QOS</kind>
+          <max_blocking_time>
+            <sec>1</sec>
+            <nanosec>0</nanosec>
+          </max_blocking_time>
+        </reliability>
+        <durability>
+          <kind>TRANSIENT_DURABILITY_QOS</kind>
+        </durability>
+        <history>
+          <kind>KEEP_ALL_HISTORY_QOS</kind>
+          <depth>2</depth>
+        </history>
+        <deadline>
+          <period>
+            <sec>2</sec>
+            <nanosec>0</nanosec>
+          </period>
+        </deadline>
+      </datawriter_qos>
+      <datareader_qos>
+         <reliability>
+          <kind>BEST_EFFORT_RELIABILITY_QOS</kind>
+        </reliability>
+        <history>
+          <kind>KEEP_ALL_HISTORY_QOS</kind>
+          <depth>1</depth>
+        </history>
+        <durability>
+          <kind>TRANSIENT_DURABILITY_QOS</kind>
+        </durability>
+        <time_based_filter>
+          <minimum_separation>
+            <sec>1</sec>
+            <nanosec>50000000</nanosec>
+          </minimum_separation>
+        </time_based_filter>
+        <deadline>
+          <period>
+            <sec>2</sec>
+            <nanosec>0</nanosec>
+          </period>
+        </deadline>
+      </datareader_qos>
+    </qos_profile>
+  </qos_library>
+</dds>

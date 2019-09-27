@@ -1,0 +1,44 @@
+project(*idl_gen) : ciaox11_test_a4c_comp_all_idl {
+  custom_only = 1
+
+  after += asyn_export_test_idl_gen asyn_export_test_lem_gen
+
+  idlflags += -Wb,base_export_macro=HELLO_RECEIVER \
+              -Wb,base_export_include=hello_receiver \
+              -Wb,lem_stub_export_macro=HELLO_RECEIVER_OWN_LEM_STUB_Export \
+              -Wb,lem_stub_export_include=hello_receiver_own_lem_stub_export.h
+
+  IDL_Files {
+    gendir=generated_code
+    hello_receiver.idl
+  }
+}
+
+
+project(*exec) : ciaox11_test_a4c_exec_all {
+  after += asyn_export_test_stub asyn_export_test_lem_stub *idl_gen
+  libs  += Hello_stub Hello_lem_stub
+
+  sharedname = Hello_Receiver_exec
+
+  dynamicflags += HELLO_RECEIVER_OWN_LEM_STUB_BUILD_DLL \
+                  HELLO_RECEIVER_EXEC_BUILD_DLL \
+                  HELLO_RECEIVER_SVNT_BUILD_DLL
+
+  Source_Files {
+    hello_receiver_exec.cpp
+    generated_code/hello_receiverEC.cpp
+    generated_code/hello_receiver_svnt.cpp
+  }
+
+  Header_Files {
+    hello_receiver_exec.h
+    generated_code/hello_receiver_exec_export.h
+
+    generated_code/hello_receiverEC.h
+    generated_code/hello_receiver_lem_stub_export.h
+
+    generated_code/hello_receiver_svnt.h
+    generated_code/hello_receiver_svnt_export.h
+  }
+}

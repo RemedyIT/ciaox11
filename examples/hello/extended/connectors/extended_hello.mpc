@@ -1,0 +1,61 @@
+// Generates an implied IDL file (extended_hello_cc.idl in this case). After that, all
+// files needed for the corba connector are generated, including the skeleton files of
+// original IDL (extended_helloS.cpp/h)
+project(*cc_idl_gen) : ciaox11_test_idldefaults, ciaox11_corba4ccm_idl {
+  custom_only = 1
+
+  after += extended_hello_idl_gen extended_hello_lem_gen
+
+  idlflags += -Wb,base_export_macro=EXTENDED_HELLO \
+              -Wb,base_export_include=extended_hello \
+              -I./generated_code -I../patterns/generated_code \
+              -Gxhsk -Sch -Scc -Scp
+  idlflags -= -SS -Ssh
+
+  IDL_Files {
+    gendir=generated_code
+    ../base/extended_hello.idl
+  }
+}
+
+// Compiles the corba connector itself.
+// All in one library since a separate skeleton and lem stub are
+// not needed elsewhere.
+project(*corba_conn) : ciaox11_executor, ciaox11_corba4ccm_impl {
+  after += extended_hello_stub extended_hello_lem_stub *cc_idl_gen
+  libs  += extended_hello_stub extended_hello_lem_stub
+
+  libpaths += ../lib
+  libout    = ../lib
+
+  dynamicflags += EXTENDED_HELLO_SKEL_BUILD_DLL \
+                  EXTENDED_HELLO_CC_LEM_STUB_BUILD_DLL \
+                  EXTENDED_HELLO_CC_EXEC_BUILD_DLL \
+                  EXTENDED_HELLO_CC_SVNT_BUILD_DLL
+
+  includes += ../patterns/generated_code ../base/generated_code
+
+  Source_Files {
+    generated_code/extended_helloS.cpp
+
+    generated_code/extended_hello_ccEC.cpp
+
+    generated_code/extended_hello_cc_exec.cpp
+    generated_code/extended_hello_cc_svnt.cpp
+  }
+  Header_Files {
+    generated_code/extended_helloS.h
+    generated_code/extended_helloSP.h
+    generated_code/extended_hello_skel_export.h
+
+    generated_code/extended_hello_ccC.h
+    generated_code/extended_hello_ccEC.h
+    generated_code/extended_hello_cc_lem_stub_export.h
+
+    generated_code/extended_hello_cc_exec.h
+    generated_code/extended_hello_cc_exec_export.h
+
+    generated_code/extended_hello_cc_svnt.h
+    generated_code/extended_hello_cc_svnt_export.h
+  }
+}

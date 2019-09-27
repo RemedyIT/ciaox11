@@ -1,0 +1,34 @@
+/**
+ * @file    shapes_control_comp.idl
+ * @author  Johnny Willemsen
+ *
+ * @brief   Control component
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef SHAPES_CONTROL_COMP_IDL_
+#define SHAPES_CONTROL_COMP_IDL_
+
+#include "shapes_control_obj.idl"
+
+#include <Components.idl>
+#include <ccm_timed_trigger.idl>
+
+module Shapes
+{
+  component Control_comp
+  {
+    uses Shapes::Control_obj control;
+    uses CCM_TT::TT_Scheduler tt_scheduler;
+
+    attribute unsigned long rate;
+    attribute unsigned short max_x;
+    attribute unsigned short max_y;
+    attribute unsigned short max_size;
+    attribute boolean resize_shape;
+  };
+};
+
+#endif /* SHAPES_CONTROL_COMP_IDL_ */

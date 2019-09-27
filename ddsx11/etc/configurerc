@@ -1,0 +1,18 @@
+
+# configure setup for DDSX11
+#
+
+configure :ddsx11_core do
+
+  # without vendors ddsx11 is disabled
+
+  mpc do
+    include '$CIAOX11_ROOT/ddsx11/MPC/config'
+
+    mwc_include :ddsx11 => %w{
+      $(CIAOX11_ROOT)/ddsx11/logger
+      $(CIAOX11_ROOT)/ddsx11/dds
+    }
+  end
+
+end

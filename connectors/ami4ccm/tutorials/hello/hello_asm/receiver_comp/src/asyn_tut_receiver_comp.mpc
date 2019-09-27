@@ -1,0 +1,49 @@
+project(*idl_gen) : ciaox11_comp_all_idl {
+  custom_only = 1
+  after += asyn_tut_base_idl_gen asyn_tut_base_lem_gen
+  idlflags += -Wb,base_export_macro=HELLO_RECEIVER_COMP \
+              -Wb,base_export_include=hello_receiver_comp \
+              -o ../generated_code \
+              -I../../ports \
+              -I../../ports/generated_code \
+              -I../generated_code \
+              -Gos -Gex -oI .
+
+  specific {
+    precious_files += _exec.h\Z _exec.cpp\Z
+  }
+
+  IDL_Files {
+    gendir= ../generated_code
+    hello_receiver_comp.idl
+  }
+}
+
+project(*exec) : ciaox11_executor, ciaox11_logger {
+  after += *idl_gen asyn_tut_base_lem_stub
+  libs  += Hello_stub Hello_lem_stub
+  sharedname = Hello_Receiver_exec
+  dynamicflags += HELLO_RECEIVER_COMP_LEM_STUB_BUILD_DLL \
+                  HELLO_RECEIVER_COMP_EXEC_BUILD_DLL \
+                  HELLO_RECEIVER_COMP_SVNT_BUILD_DLL
+  libpaths += ../../lib
+  libout = ../../lib
+  includes += . ../../ports ../../ports/generated_code ../generated_code
+
+  Source_Files {
+    hello_receiver_comp_exec.cpp
+    ../generated_code/hello_receiver_compEC.cpp
+    ../generated_code/hello_receiver_comp_svnt.cpp
+  }
+
+  Header_Files {
+    hello_receiver_comp_exec.h
+    ../generated_code/hello_receiver_comp_exec_export.h
+
+    ../generated_code/hello_receiver_compEC.h
+    ../generated_code/hello_receiver_comp_lem_stub_export.h
+
+    ../generated_code/hello_receiver_comp_svnt.h
+    ../generated_code/hello_receiver_comp_svnt_export.h
+  }
+}

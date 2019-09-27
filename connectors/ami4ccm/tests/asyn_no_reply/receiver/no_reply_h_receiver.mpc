@@ -1,0 +1,40 @@
+project(*idl_gen) : ciaox11_test_a4c_comp_all_idl  {
+  custom_only = 1
+
+  after += no_reply_h_idl_gen no_reply_h_lem_gen
+
+  idlflags += -Wb,base_export_macro=NO_REPLY_H_RECEIVER \
+              -Wb,base_export_include=no_reply_h_receiver
+
+  IDL_Files {
+    gendir=generated_code
+    no_reply_h_receiver.idl
+  }
+}
+
+
+project(*exec) : ciaox11_test_a4c_exec_all {
+  after += no_reply_h_stub no_reply_h_lem_stub *idl_gen
+  libs  += no_reply_h_stub no_reply_h_lem_stub
+
+  dynamicflags += NO_REPLY_H_RECEIVER_LEM_STUB_BUILD_DLL \
+                  NO_REPLY_H_RECEIVER_EXEC_BUILD_DLL \
+                  NO_REPLY_H_RECEIVER_SVNT_BUILD_DLL
+
+  Source_Files {
+    no_reply_h_receiver_exec.cpp
+    generated_code/no_reply_h_receiverEC.cpp
+    generated_code/no_reply_h_receiver_svnt.cpp
+  }
+
+  Header_Files {
+    no_reply_h_receiver_exec.h
+    generated_code/no_reply_h_receiver_exec_export.h
+
+    generated_code/no_reply_h_receiverEC.h
+    generated_code/no_reply_h_receiver_lem_stub_export.h
+
+    generated_code/no_reply_h_receiver_svnt.h
+    generated_code/no_reply_h_receiver_svnt_export.h
+  }
+}

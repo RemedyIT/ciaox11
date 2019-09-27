@@ -1,0 +1,40 @@
+/**
+ * @file    corba4ccm.idl
+ * @author  Marcel Smit
+ *
+ * @brief   corba4ccm base
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#if !defined (CORBA4CCM_IDL_H)
+#define CORBA4CCM_IDL_H
+
+module CCM_CORBA
+{
+  const string CORBA4CCM_POA_ID = "CORBA4CCM_POA";
+
+  /**
+   * The CORBA4CCM connector realizes the request/reply connector.
+   * Therefor a predefined name for the port declaration in the
+   * templated connector has been used.
+   */
+  module Connector_T<interface T>
+  {
+    porttype CORBA_Port_Type
+    {
+      provides T facet;
+      uses T receptacle;
+    };
+
+    connector CORBA_Connector
+    {
+      // Predefined name for this port
+      // srr = synchronous request/reply.
+      port CORBA_Port_Type srr;
+    };
+  };
+};
+
+#endif /* CORBA4CCM_IDL_H */

@@ -1,0 +1,56 @@
+/**
+* @file    ccm_timed_trigger.idl
+* @author  Martin Corino
+*
+* @brief   Idl file for CCM Timed Trigger interfaces
+*
+* @copyright Copyright (c) Remedy IT Expertise BV
+* Chamber of commerce Rotterdam nr.276339, The Netherlands
+*/
+
+#ifndef CCM_TIMED_TRIGGER_IDL
+#define CCM_TIMED_TRIGGER_IDL
+
+#include <ccm_tt_time.idl>
+
+module CCM_TT
+{
+  local interface TT_Timer;
+
+  /// Timed Trigger callback handler
+  local interface TT_Handler
+  {
+    void on_trigger (in TT_Timer timer,
+                     in TT_Duration delta_time,
+                     in unsigned long round);
+  };
+
+  /// Timed Trigger scheduled Timer entry
+  local interface TT_Timer
+  {
+    void cancel ();
+
+    /// Is the timer canceled or not?
+    boolean is_canceled ();
+
+    readonly attribute unsigned long rounds;
+
+    readonly attribute string id;
+  };
+
+  /// Timed Trigger scheduler interface
+  local interface TT_Scheduler
+  {
+    TT_Timer schedule_trigger (
+      in TT_Handler trigger_handler,
+      in TT_Duration trigger_delay);
+
+    TT_Timer schedule_repeated_trigger (
+      in TT_Handler trigger_handler,
+      in TT_Duration start_delay,
+      in TT_Duration interval,
+      in unsigned long max_rounds);
+  };
+};
+
+#endif /* CCM_TIMED_TRIGGER_IDL */

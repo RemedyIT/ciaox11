@@ -1,0 +1,72 @@
+// Simple version of the MPC file. Please see the gen_test for an
+// extended version of the MPC files.
+
+// See ../connector_r/gen_test_connr.mpc for more details about this MPC project.
+// NOTE: This project needs to explicitly add stub export usage/generation switches
+//       as the component IDL also declares an additional datatype which we link
+//       into a separate stub library .
+//       (alternatively the stub could have been linked in with the executor if we're
+//        only going to use the datatype locally).
+//       Also we need to disable suppression of stub source generation (-Scc).
+project(*idl_gen) : ciaox11_test_comp_all_idl, taox11_anytypecode {
+  custom_only = 1
+  after += gen_test_simple_base_idl_gen gen_test_simple_base_lem_gen
+  idlflags += -Wb,base_export_macro=HELLO_RECEIVER \
+              -Wb,base_export_include=hello_receiver \
+              -Gxhst
+  idlflags -= -Scc
+
+  IDL_Files {
+    gendir=generated_code
+    hello_receiver.idl
+  }
+}
+
+// Only needed because we have, besides a component, also a datatype in the original idl file
+project(*stub) : ciaox11_test_stub {
+  after += *idl_gen
+
+  dynamicflags += HELLO_RECEIVER_STUB_BUILD_DLL
+
+  Source_Files {
+    generated_code/hello_receiverC.cpp
+  }
+
+  Header_Files {
+    generated_code/hello_receiverC.h
+    generated_code/hello_receiver_stub_export.h
+ }
+}
+
+// Since no other projects need to link against the stub, the lem_stub and the
+// servant of this specific component (IDL), these can be merged into one libary.
+
+// See for more info related to the need of the skeleton library
+// ../connector_s/gen_test_simple_conns.mpc
+// In short: No user component library does not need to link against the
+// (CORBA) skeleton library anymore since the introduction of the CORBA
+// connector (see ../corba_connector)
+project(*exec) : ciaox11_test_exec_all {
+  after += *stub gen_test_simple_base_stub gen_test_simple_base_lem_stub *idl_gen
+  libs  += *stub gen_test_simple_base_stub gen_test_simple_base_lem_stub
+
+  dynamicflags += HELLO_RECEIVER_LEM_STUB_BUILD_DLL \
+                  HELLO_RECEIVER_EXEC_BUILD_DLL \
+                  HELLO_RECEIVER_SVNT_BUILD_DLL
+  Source_Files {
+    hello_receiver_exec.cpp
+    generated_code/hello_receiverEC.cpp
+    generated_code/hello_receiver_svnt.cpp
+  }
+
+  Header_Files {
+    hello_receiver_exec.h
+    generated_code/hello_receiver_exec_export.h
+
+    generated_code/hello_receiverEC.h
+    generated_code/hello_receiver_lem_stub_export.h
+
+    generated_code/hello_receiver_svnt.h
+    generated_code/hello_receiver_svnt_export.h
+  }
+}

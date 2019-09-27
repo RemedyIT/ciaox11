@@ -1,0 +1,93 @@
+/**
+ * @file    example_ha_defn.idl
+ * @author  Marcel Smit
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef CX_PORTS__TYPES__EXAMPLE_HA_DEFN_IDL
+#define CX_PORTS__TYPES__EXAMPLE_HA_DEFN_IDL
+
+#include "example_b_defn.idl"
+#include "example_na_defn.idl"
+
+/// @namespace Example
+module Example {
+
+    /// @enum HA1
+    ///
+    enum HA1 {
+        HA1_2,
+        HA1_1
+    };
+
+    /// @enum HA3
+    ///
+    enum HA3 {
+        HA3_1,
+        HA3_2
+    };
+
+    /// @enum HA2
+    ///
+    enum HA2 {
+        HA2_1,
+        HA2_2
+    };
+
+    /// @struct HA4
+    ///
+    struct HA4 {
+
+        double HA4_4;
+
+        Example::B47 HA4_2;
+
+        double HA4_3;
+
+        Example::NA5 HA4_1;
+    }; //@TopLevel(false)
+
+    /// @struct HA5
+    ///
+    struct HA5 {
+
+        Example::B47 HA5_10;
+
+        Example::B42 HA5_11;
+
+        Example::HA2 HA5_14;
+
+        Example::B42 HA5_01;
+
+        double HA5_12;
+
+        Example::B42 HA5_03;
+
+        Example::B42 HA5_04;
+
+        Example::B45 HA5_09;
+
+        double HA5_02;
+
+        double HA5_16;
+
+        double HA5_15;
+
+        double HA5_13;
+
+        double HA5_06;
+
+        Example::HA3 HA5_08;
+
+        Example::HA1 HA5_07;
+
+        double HA5_17;
+
+        Example::NA6 HA5_05;
+    }; //@TopLevel(false)
+};
+
+#endif // CX_PORTS__TYPES__EXAMPLE_HA_DEFN_IDL
+
+/// @}

@@ -1,0 +1,21 @@
+/**
+ * @file    union_receiver.idl
+ * @author  Marcel Smit
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef UNION_RECEIVER_IDL_
+#define UNION_RECEIVER_IDL_
+
+#include "unionSE.idl"
+
+module Uni
+{
+  component Receiver
+  {
+    port UnionConnector::DDS_Listen info_out;
+  };
+};
+
+#endif /* UNION_RECEIVER_IDL_ */

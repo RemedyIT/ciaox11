@@ -1,0 +1,25 @@
+/**
+ * @file    ndds_dcps_instance_handle.idl
+ * @author  Marcel Smit
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef DDS_DCPS_INSTANCE_HANDLE_IDL_
+#define DDS_DCPS_INSTANCE_HANDLE_IDL_
+
+module DDS {
+  typedef octet octet_value[16];
+
+  struct NativeInstanceHandle_t
+  {
+    octet_value value;
+    unsigned long length;
+    boolean isValid;
+  };
+  typedef NativeInstanceHandle_t InstanceHandle_t;
+};
+
+#endif /* DDS_DCPS_INSTANCE_HANDLE_IDL_ */
+

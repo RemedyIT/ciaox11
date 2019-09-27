@@ -1,0 +1,23 @@
+/**
+ * @file    mdd_state_listener.idl
+ * @author  Marcel Smit
+ *
+ * @brief   Receiver component for the max delivered data test for the state listener
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef MDD_STATE_LISTENER_IDL_
+#define MDD_STATE_LISTENER_IDL_
+
+#include "commonSE.idl"
+
+module MDD_State_Listener_Test
+{
+  component Receiver
+  {
+    port CommonTestConnector::DDS_StateListen info_state_listen;
+  };
+};
+
+#endif /* MDD_STATE_LISTENER_IDL_ */

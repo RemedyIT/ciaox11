@@ -1,0 +1,67 @@
+// The AMI4CCM connector also needs the lem. This was not generated in the
+// patterns directory since user defined components, using the AMI pattern,
+// do not have to link against the lem.
+// When no ami4ccm is configured, this project should not be build.
+project(*lem_gen) : ciaox11_test_base_lem_idl, ciaox11_ami4ccm {
+  custom_only = 1
+
+  after += hello_extended_arr_idl_gen
+
+  idlflags += -Wb,base_export_macro=HELLO_EXTENDED \
+              -Wb,base_export_include=hello_extended
+
+  IDL_Files {
+    gendir=generated_code
+    ../patterns/generated_code/hello_extendedA.idl
+  }
+}
+
+project(*idl_gen) : ciaox11_test_ami4ccm_conn_all_idl {
+  custom_only = 1
+
+  after += hello_extended_arr_idl_gen *lem_gen
+
+  idlflags += -Wb,base_export_macro=HELLO_EXTENDED \
+              -Wb,base_export_include=hello_extended \
+              -I../patterns/generated_code -SS -Ssh
+
+  IDL_Files {
+    gendir=generated_code
+    ../base/hello_extended.idl
+  }
+}
+
+project(*conn) : ciaox11_test_base_stub, ciaox11_executor, ciaox11_ami4ccm_impl {
+  after += hello_extended_skel hello_extended_arr_stub hello_extended_stub hello_extended_srr_lem_stub *idl_gen
+  libs  += hello_extended_skel hello_extended_arr_stub hello_extended_stub hello_extended_srr_lem_stub
+
+  dynamicflags += HELLO_EXTENDED_AMIC_BUILD_DLL \
+                  HELLO_EXTENDED_LEM_STUB_BUILD_DLL \
+                  HELLO_EXTENDED_LEM_STUB_AMI_CONN_BUILD_DLL \
+                  HELLO_EXTENDED_AMI4CCM_CONN_BUILD_DLL \
+                  HELLO_EXTENDED_AMI4CCM_SVNT_BUILD_DLL
+  includes += ../patterns/generated_code
+
+  Source_Files {
+    generated_code/hello_extendedAmiC.cpp
+    generated_code/hello_extendedAEC.cpp
+    generated_code/hello_extendedA_connEC.cpp
+    generated_code/hello_extendedA_conn_exec.cpp
+    generated_code/hello_extendedA_conn_svnt.cpp
+  }
+
+  Header_Files {
+    generated_code/hello_extendedAmiC.h
+    generated_code/hello_extendedAEC.h
+    generated_code/hello_extendedA_connEC.h
+    generated_code/hello_extendedA_conn_exec.h
+    generated_code/hello_extendedA_conn_svnt.h
+
+    generated_code/hello_extended_amic_export.h
+    generated_code/hello_extended_lem_stub_export.h
+    generated_code/hello_extended_lem_stub_ami_conn_export.h
+    generated_code/hello_extended_ami4ccm_conn_export.h
+    generated_code/hello_extended_ami4ccm_svnt_export.h
+  }
+}
+

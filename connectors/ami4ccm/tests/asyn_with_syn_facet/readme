@@ -1,0 +1,2 @@
+The purpose of this test is to check if ami4ccm code can cooperate with corba4ccm code generated within a single component.
+Even if the component uses an AMI4CCM connector for the same interface that it provides a CORBA facet for.

@@ -1,0 +1,20 @@
+
+// generated from <%= ridl_template_path %>
+/// @copydoc <%= doc_scoped_name %>
+union <%= name %> switch (<%= strip_global_scope(switchtype.idltype_name) %>) {
+% members.each do |_m|
+%   if _m.is_default?
+  default:
+%   else
+%     _m.nondefault_idl_labels.each do |_l|
+  case <%= strip_global_scope(_l) %>:
+%     end
+%   end
+    /// @copydoc <%= _m.doc_scoped_name %>
+    <%= _m.idl_type_name %> <%= _m.unescaped_name %>;
+% end
+%if has_toplevel_annotation?
+}; //@top-level true
+%else
+}; //@top-level false
+%end

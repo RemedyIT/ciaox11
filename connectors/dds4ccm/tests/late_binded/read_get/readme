@@ -1,0 +1,16 @@
+A requirement from the field dictates that a topic name should be changeable.
+When the topic name will be set a second time, the connector should shut down
+DDS and start it again, using the new topic name. The connector does not tear
+down the proxies. This means that the connector doesn't change on the outside.
+
+This test has the following sequence:
+1. Sender starts writing samples for TopicI
+2. Sender informs the Receiver that samples have been written for TopicI
+3. Receiver sets this topic name on his connector (late binding), and starts to
+   collect the samples.
+4. Receiver informs the Sender that the Receiver has read everything
+5. Sender changes its topic name to TopicII
+6. Sender writes samples for TopicII
+7. Sender informs the Receiver that samples have been written for TopicII
+8. Receiver resets its topic name to TopicII
+9. Receiver reads the samples for TopicII

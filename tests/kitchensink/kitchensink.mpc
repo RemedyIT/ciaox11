@@ -1,0 +1,60 @@
+// Non-standard ciaox11 test. Therefor more MPC projects and a limited use
+// of the ciaox11 test base projects.
+
+project(*idl_gen) : ciaox11_ostream_idldefaults, taox11_anytypecode {
+  custom_only = 1
+  idlflags += -Wb,skel_export_macro=KITCHENSINK_SVNT_Export \
+              -Wb,skel_export_include=kitchensink_svnt_export.h \
+              -Wb,svnt_export_macro=KITCHENSINK_SVNT_Export \
+              -Wb,svnt_export_include=kitchensink_svnt_export.h \
+              -Wb,exec_export_macro=KITCHENSINK_EXEC_Export \
+              -Wb,exec_export_include=kitchensink_exec_export.h \
+              -I.. -Glem -Gsvnt -Gxhex -Gex -Gxhsk \
+              -o generated_code -oI .
+
+  IDL_Files {
+    gendir=generated_code
+    kitchensink.idl
+  }
+}
+
+project(*lem_gen) : ciaox11_idldefaults {
+  after += *idl_gen
+  custom_only = 1
+  idlflags += -Wb,stub_export_macro=KITCHENSINK_LEM_STUB_Export \
+              -Wb,stub_export_include=kitchensink_lem_stub_export.h \
+              -SS -Gxhst -Scp -Scdr -o generated_code
+
+  IDL_Files {
+    gendir=generated_code
+    generated_code/kitchensinkE.idl
+  }
+}
+
+project(*exec) : ciaox11_executor, ciaox11_logger, taox11_valuetype {
+  after += *lem_gen
+
+  dynamicflags += KITCHENSINK_LEM_STUB_BUILD_DLL \
+                  KITCHENSINK_EXEC_BUILD_DLL \
+                  KITCHENSINK_SVNT_BUILD_DLL
+
+  includes += generated_code
+
+  Source_Files {
+    kitchensink_exec.cpp
+    generated_code/kitchensinkC.cpp
+    generated_code/kitchensinkEC.cpp
+    generated_code/kitchensink_svnt.cpp
+  }
+
+  Header_Files {
+    kitchensink_exec.h
+    generated_code/kitchensink_exec_export.h
+    generated_code/kitchensinkC.h
+    generated_code/kitchensink_stub_export.h
+    generated_code/kitchensinkEC.h
+    generated_code/kitchensink_lem_stub_export.h
+    generated_code/kitchensink_svnt.h
+    generated_code/kitchensink_svnt_export.h
+  }
+}

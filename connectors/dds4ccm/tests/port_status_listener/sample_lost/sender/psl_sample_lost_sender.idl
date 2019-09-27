@@ -1,0 +1,25 @@
+/**
+ * @file    psl_sample_lost_sender.idl
+ * @author  Marcel Smit
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef PSL_SAMPLE_LOST_SENDER_IDL_
+#define PSL_SAMPLE_LOST_SENDER_IDL_
+
+#include "commonSE.idl"
+#include <ccm_timed_trigger.idl>
+
+module PSL_SampleLostTest
+{
+  component Sender
+  {
+    port CommonTestConnector::DDS_Write writer;
+    provides CCM_DDS::ConnectorStatusListener connector_status;
+
+    uses CCM_TT::TT_Scheduler tt_scheduler;
+  };
+};
+
+#endif /* PSL_SAMPLE_LOST_SENDER_IDL_ */

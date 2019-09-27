@@ -1,0 +1,7 @@
+// generated from <%= ridl_template_path %>
+void sendc_get_<%= cxxname %>(in <%= interface.ami4ccm_ReplyHandler %> ami4ccm_reply_handler);
+% unless is_readonly?
+void sendc_set_<%= cxxname %>(in <%= interface.ami4ccm_ReplyHandler %> ami4ccm_reply_handler,
+                              in <%= idltype_name %> <%= cxxname %> );
+% end
+

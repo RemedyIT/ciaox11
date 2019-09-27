@@ -1,0 +1,12 @@
+// --------------------------------------------------------------------
+// ciaox11_test_base.mpb
+//
+// Copyright (c) Remedy IT Expertise BV
+// Chamber of commerce Rotterdam nr.276339, The Netherlands
+// --------------------------------------------------------------------
+
+project : taox11_lib {
+  libpaths += ../lib
+  libout = ../lib
+  includes += . .. ../base ../base/generated_code generated_code
+}

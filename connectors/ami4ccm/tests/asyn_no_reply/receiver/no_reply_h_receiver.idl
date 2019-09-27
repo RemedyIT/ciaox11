@@ -1,0 +1,26 @@
+/**
+ * @file    no_reply_h_receiver.idl
+ * @author  Marijke Hengstmengel
+ *
+ * @brief   receiver ami4ccm test with no replyhandler
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef NOREPLYH_RECEIVER_IDL
+#define NOREPLYH_RECEIVER_IDL
+
+#include <Components.idl>
+
+#include "no_reply_h.idl"
+
+module NoReplyH
+{
+  component Receiver
+  {
+    /// Provides
+    provides MyFoo do_my_foo;
+  };
+};
+#endif

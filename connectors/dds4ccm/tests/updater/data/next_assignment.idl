@@ -1,0 +1,29 @@
+/**
+ * @file    next_assignment.idl
+ * @author  Marcel Smit
+ *
+ * @brief   Starting new assignments.
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef NEXT_ASSIGNMENT_IDL_
+#define NEXT_ASSIGNMENT_IDL_
+
+
+enum STATE_EVENT {
+  MBM_ON_CREATION_RECEIVED,
+  OBO_ON_CREATION_RECEIVED,
+  MBM_ON_UPDATE_RECEIVED,
+  OBO_ON_UPDATE_RECEIVED,
+  MBM_ON_DELETION_RECEIVED,
+  OBO_ON_DELETION_RECEIVED
+};
+
+
+interface NextAssignment
+{
+  void state_event_received (in STATE_EVENT event);
+};
+
+#endif /* NEXT_ASSIGNMENT_IDL_ */

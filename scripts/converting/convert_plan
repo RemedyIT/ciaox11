@@ -1,0 +1,12 @@
+#!/bin/sh
+
+_convert_root=`dirname $0`/
+if [ -x $_convert_root/../../../cruby/bin/cruby ]; then
+  $_convert_root/../../../cruby/bin/cruby $_convert_root/convert_plan.rb $@
+else
+  if [ -x "$RIDL_RUBY" ]; then
+    $RIDL_RUBY $_convert_root/convert_plan.rb $@
+  else
+    /usr/bin/env ruby $_convert_root/convert_plan.rb $@
+  fi
+fi

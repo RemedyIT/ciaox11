@@ -1,0 +1,10 @@
+project(*main) : taox11_exe, \
+                 taox11_core_anytypecode, \
+                 ciaox11_dds4ccm_base, \
+                 ciaox11_dds4ccm_impl {
+  exename = typesupport_test
+
+  Source_Files {
+    main.cpp
+  }
+}

@@ -1,0 +1,10 @@
+// --------------------------------------------------------------------
+// ddsx11_ndds_idl_defaults.mpb
+//
+// Copyright (c) Remedy IT Expertise BV
+// Chamber of commerce Rotterdam nr.276339, The Netherlands
+// --------------------------------------------------------------------
+
+project : ridl_defaults, ddsx11_ndds_flags {
+  idlflags += -Scdr -I$(CIAOX11_ROOT)/ddsx11/vendors/ndds/idl
+}

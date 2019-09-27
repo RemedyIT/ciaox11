@@ -1,0 +1,36 @@
+project(*idl_gen) : ciaox11_test_comp_all_idl_exec_gen {
+  custom_only = 1
+  after += starter_code_test_idl_gen starter_code_test_lem_gen
+  idlflags += -Wb,base_export_macro=KEY_SENDER \
+              -Wb,base_export_include=key_sender
+
+  IDL_Files {
+    gendir=generated_code
+    key_sender.idl
+  }
+}
+
+project(*exec) : ciaox11_test_exec_all {
+  after += starter_code_test_stub starter_code_test_lem_stub *idl_gen
+  libs  += starter_code_test_stub starter_code_test_lem_stub
+
+  dynamicflags += KEY_SENDER_LEM_STUB_BUILD_DLL \
+                  KEY_SENDER_EXEC_BUILD_DLL \
+                  KEY_SENDER_SVNT_BUILD_DLL
+  Source_Files {
+    key_sender_exec.cpp
+    generated_code/key_senderEC.cpp
+    generated_code/key_sender_svnt.cpp
+  }
+
+  Header_Files {
+    key_sender_exec.h
+    generated_code/key_sender_exec_export.h
+
+    generated_code/key_senderEC.h
+    generated_code/key_sender_lem_stub_export.h
+
+    generated_code/key_sender_svnt.h
+    generated_code/key_sender_svnt_export.h
+  }
+}

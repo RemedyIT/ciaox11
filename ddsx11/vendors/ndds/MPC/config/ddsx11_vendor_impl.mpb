@@ -1,0 +1,39 @@
+// --------------------------------------------------------------------
+// ddsx11_vendor_impl.mpb
+//
+// Copyright (c) Remedy IT Expertise BV
+// Chamber of commerce Rotterdam nr.276339, The Netherlands
+// --------------------------------------------------------------------
+
+project : ddsx11_ndds_flags, \
+          ddsx11_ndds_libs, \
+          ddsx11_ndds_stub {
+
+  sharedname = ddsx11_ndds_impl
+
+  Header_Files {
+    ../vendors/ndds/dds/dds_common.h
+    ../vendors/ndds/dds/dds_vendor_conversion_traits.h
+    ../vendors/ndds/dds/ndds_utils.h
+    ../vendors/ndds/dds/ndds_publisher_listener.h
+    ../vendors/ndds/dds/ndds_domain_participant_factory.h
+    ../vendors/ndds/dds/ndds_domain_participant.h
+    ../vendors/ndds/dds/ndds_publisher.h
+    ../vendors/ndds/dds/ndds_subscriber.h
+  }
+
+  Source_Files {
+    ../vendors/ndds/dds/ndds_domain_participant.cpp
+    ../vendors/ndds/dds/ndds_domain_participant_factory.cpp
+    ../vendors/ndds/dds/ndds_publisher.cpp
+    ../vendors/ndds/dds/ndds_publisher_listener.cpp
+    ../vendors/ndds/dds/ndds_specific.cpp
+    ../vendors/ndds/dds/ndds_subscriber.cpp
+    ../vendors/ndds/dds/ndds_utils.cpp
+  }
+
+  Template_Files {
+    ../vendors/ndds/dds/dds_listener_guard_t.h
+    ../vendors/ndds/dds/dds_data_reader_native_entity_t.cpp
+  }
+}

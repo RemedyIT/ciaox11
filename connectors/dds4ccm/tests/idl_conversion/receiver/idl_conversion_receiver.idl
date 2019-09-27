@@ -1,0 +1,23 @@
+/**
+ * @file    idl_conversion_receiver.idl
+ * @author  Marcel Smit
+ *
+ * @brief   Receiver component declaration for the IDL stress test.
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef IDL_CONVERSION_RECEIVER_IDL_
+#define IDL_CONVERSION_RECEIVER_IDL_
+
+#include "idl_conversionSE.idl"
+
+module IDL_Conversion_Test
+{
+  component Receiver
+  {
+    port Example::IDLConversionTestConnector::DDS_Listen info_out;
+  };
+};
+
+#endif /* IDL_CONVERSION_RECEIVER_IDL_ */

@@ -1,0 +1,16 @@
+#recipe name 'publisher', idl name becomes publisher.idl
+component 'publisher' do |comp|
+  comp.idl %w{ shapes.idl }
+  #component name 'publisher_comp':
+  comp.define 'publisher_comp' do |intf|
+     intf.port 'info_write' do |p|
+      p.writes 'ShapeType'
+    end
+
+    intf.port 'info_update' do |p|
+      p.updates 'ShapeType'
+    end
+
+    intf.port  'tt_scheduler', :timed_trigger
+  end
+end

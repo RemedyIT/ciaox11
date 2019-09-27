@@ -1,0 +1,11 @@
+connector 'common' do |conn|
+  conn.idl %w{ common.idl }
+
+  conn.port_type :dds4ccm do |tp|
+    tp.topic 'CommonTestMessage'
+    # use default DDS vendor
+    # tp.middleware :ndds
+    tp.topic_interface 'CommonTestConnector'
+  end
+end
+

@@ -1,0 +1,41 @@
+// --------------------------------------------------------------------
+// ciaox11_corba4ccm_idldefaults.mpb
+//
+// Copyright (c) Remedy IT Expertise BV
+// Chamber of commerce Rotterdam nr.276339, The Netherlands
+// --------------------------------------------------------------------
+
+project : ciaox11_idldefaults {
+
+  Modify_Custom (IDL) {
+
+    optional(source_outputext) {
+      commandflags(-Gcorba4ccm,conn || -Gcorba4ccm,impl) = .cpp
+    }
+
+    optional(header_outputext) {
+      commandflags(-Gcorba4ccm,conn || -Gcorba4ccm,impl) = .h
+    }
+
+    optional(generic_pre_extension) {
+      commandflags(-Gcorba4ccm,conn || -Gcorba4ccm,idl) += _cc
+      commandflags(-Gcorba4ccm,conn) += _ccE
+    }
+
+    optional(generic_outputext) {
+      commandflags(-Gcorba4ccm,conn || -Gcorba4ccm,idl) = .idl
+    }
+
+    optional(source_pre_extension) {
+      commandflags(-Gcorba4ccm,conn) += _ccEC
+      commandflags(-Gcorba4ccm,conn) += _cc_exec, _cc_svnt
+      commandflags(-Gcorba4ccm,impl) += _exec
+    }
+
+    optional(header_pre_extension) {
+      commandflags(-Gcorba4ccm,conn) += _ccC, _ccEC
+      commandflags(-Gcorba4ccm,conn) += _cc_exec, _cc_svnt
+      commandflags(-Gcorba4ccm,impl) += _exec
+    }
+  }
+}

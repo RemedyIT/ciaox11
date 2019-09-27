@@ -1,0 +1,38 @@
+project(*idl_gen) : ciaox11_test_comp_all_idl {
+  custom_only = 1
+
+  after += corba4ccm_exceptions_idl_gen corba4ccm_exceptions_lem_gen
+
+  idlflags += -Wb,base_export_macro=CORBA4CCM_EXCEPTIONS_COMPONENT \
+              -Wb,base_export_include=corba4ccm_exceptions_component
+
+  IDL_Files {
+    gendir=generated_code
+    corba4ccm_exceptions_component.idl
+  }
+}
+
+project(*exec) : ciaox11_test_exec_all {
+  after += corba4ccm_exceptions_stub corba4ccm_exceptions_lem_stub *idl_gen
+  libs  += corba4ccm_exceptions_stub corba4ccm_exceptions_lem_stub
+
+  dynamicflags += CORBA4CCM_EXCEPTIONS_COMPONENT_LEM_STUB_BUILD_DLL \
+                  CORBA4CCM_EXCEPTIONS_COMPONENT_EXEC_BUILD_DLL \
+                  CORBA4CCM_EXCEPTIONS_COMPONENT_SVNT_BUILD_DLL
+  Source_Files {
+    corba4ccm_exceptions_component_exec.cpp
+    generated_code/corba4ccm_exceptions_componentEC.cpp
+    generated_code/corba4ccm_exceptions_component_svnt.cpp
+  }
+
+  Header_Files {
+    corba4ccm_exceptions_component_exec.h
+    generated_code/corba4ccm_exceptions_component_exec_export.h
+
+    generated_code/corba4ccm_exceptions_componentEC.h
+    generated_code/corba4ccm_exceptions_component_lem_stub_export.h
+
+    generated_code/corba4ccm_exceptions_component_svnt.h
+    generated_code/corba4ccm_exceptions_component_svnt_export.h
+  }
+}

@@ -1,0 +1,70 @@
+
+// generated from <%= ridl_template_path %>
+<%= lem_name %>_exec_i::<%= lem_name %>_exec_i (
+  IDL::traits< <%= component.scoped_ccm_name %>_Context >::ref_type context)
+    : context_ (std::move (context))
+{
+%if !cxxname.include? 'sync'
+  // Retrieve the AMIPOA
+  this->ami_poa_ = CCM_AMI::get_ami_POA (context_);
+%end
+}
+
+% if !cxxname.include? 'sync'
+% _derived_scoped_interface = interface_type.scoped_cxxname.sub('AMI4CCM_','')
+% _derived_interface = interface_type.cxxname.sub('AMI4CCM_','')
+% _reply_handler_interface = interface_type.ami4ccm_ReplyHandler.sub('AMI4CCM_','')
+CORBA::amic_traits<<%= _derived_scoped_interface %>>::ref_type
+<%= lem_name %>_exec_i::get_receptacle_and_handler (
+  const IDL::traits< <%= interface_type.scoped_enclosure_cxxname %>::<%= _reply_handler_interface %>>::ref_type& ami4ccm_reply_handler,
+  CORBA::amic_traits<<%= _derived_scoped_interface %>>::replyhandler_ref_type& reply_handler)
+{
+  // Get the receptacle pointing to the provider component
+  IDL::traits< <%= _derived_scoped_interface %>>::ref_type receptacle_obj =
+    this->context_->get_connection_ami4ccm_port_ami4ccm_uses ();
+
+  // Narrow it to the CORBA AMI receptacle
+  CORBA::amic_traits<<%= _derived_scoped_interface %>>::ref_type const receptacle_objref =
+    CORBA::amic_traits<<%= _derived_scoped_interface %>>::narrow(std::move(receptacle_obj));
+
+  // If we don't have a CORBA AMI receptacle it is caused by
+  // no connection in the plan. At that moment bail out by throwing
+  // an error here, that prevents cleanup of the reply handler at
+  // the moment we continue in this error case
+  if (!receptacle_objref)
+  {
+    throw CORBA::INV_OBJREF ();
+  }
+
+  // When the user passed a reply handler create a CORBA AMI reply handler and
+  // activate that in our POA so that we can pass back the reply coming from
+  // CORBA AMI to the AMI4CCM reply handler
+  if (ami4ccm_reply_handler)
+  {
+    CORBA::amic_traits<<%= _derived_scoped_interface %>>::replyhandler_servant_ref_type handler =
+      CORBA::make_reference<<%= interface_type.cxxname %>_reply_handler> (ami4ccm_reply_handler, this->ami_poa_);
+
+    ::PortableServer::ObjectId const oid = this->ami_poa_->activate_object (std::move(handler));
+    IDL::traits<CORBA::Object>::ref_type handler_obj = this->ami_poa_->id_to_reference (oid);
+
+    reply_handler =
+      CORBA::amic_traits<<%= _derived_scoped_interface %>>::replyhandler_traits::narrow (std::move(handler_obj));
+  }
+
+  return receptacle_objref;
+}
+
+% end
+// Operations and attributes from ::<%= interface_type.cxxname %>
+% props = {}
+% props[:receptacle_port] = component.ports.find {|p| p.port_type == :receptacle }
+% interface_type.all_operations.each do |_op|
+%   props[:operation] = _op
+%   visit_template('operation', props)
+% end
+% props.delete(:operation)
+% interface_type.all_attributes.each do |_att|
+%   props[:attribute] = _att
+%   visit_template('attribute', props)
+% end
+

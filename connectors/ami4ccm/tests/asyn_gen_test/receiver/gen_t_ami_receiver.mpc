@@ -1,0 +1,95 @@
+// This test doesn't use ciaox11_test_comp_all_idl on purpose !
+
+project(*idl_gen) : ciaox11_ostream_idldefaults, ciaox11_ami4ccm {
+  custom_only = 1
+  after += asyn_gen_test_idl_gen
+  idlflags += -Wb,skel_export_macro=HELLO_RECEIVER_SVNT_Export \
+              -Wb,skel_export_include=hello_receiver_svnt_export.h \
+              -Wb,svnt_export_macro=HELLO_RECEIVER_SVNT_Export \
+              -Wb,svnt_export_include=hello_receiver_svnt_export.h \
+              -Wb,exec_export_macro=HELLO_RECEIVER_EXEC_Export \
+              -Wb,exec_export_include=hello_receiver_exec_export.h \
+              -Wb,stub_export_macro=HELLO_RECEIVER_STUB_Export \
+              -Wb,stub_export_include=hello_receiver_stub_export.h \
+              -I.. -Glem -Gsvnt -Gxhex -SS  -Scc -Gxhst -Gxhsk  -Gex -oI .
+
+  specific {
+    precious_files += _exec.h\Z _exec.cpp\Z
+  }
+
+  IDL_Files {
+    hello_receiver.idl
+  }
+}
+
+project(*lem_gen) : ciaox11_idldefaults, ciaox11_ami4ccm {
+  after += *idl_gen
+  custom_only = 1
+  idlflags += -Wb,stub_export_macro=HELLO_RECEIVER_LEM_STUB_Export \
+              -Wb,stub_export_include=hello_receiver_lem_stub_export.h \
+              -Scp -Gxhst -I..
+
+  IDL_Files {
+    hello_receiverE.idl
+  }
+}
+
+project(*l_stub) : ciaox11_ccm_session_stub, ciaox11_ami4ccm  {
+  after += *lem_gen asyn_gen_test_stub asyn_gen_test_lem_gen
+  libs  += Hello_stub
+  libpaths += ../lib
+  libout = ../lib
+  sharedname = Hello_Receiver_lem_stub
+  dynamicflags += HELLO_RECEIVER_LEM_STUB_BUILD_DLL
+  includes += ..
+
+  Source_Files {
+    hello_receiverEC.cpp
+  }
+
+  Header_Files {
+    hello_receiverEC.h
+    hello_receiver_lem_stub_export.h
+  }
+}
+
+project(*exec) : ciaox11_executor, ciaox11_logger, ciaox11_ami4ccm {
+  after   += *l_stub  asyn_gen_test_stub asyn_gen_test_lem_stub
+  sharedname = Hello_Receiver_exec
+  libs += Hello_Receiver_lem_stub Hello_stub Hello_lem_stub
+  libpaths += ../lib
+  libout = ../lib
+  dynamicflags += HELLO_RECEIVER_EXEC_BUILD_DLL
+  includes += ..
+
+  Source_Files {
+    hello_receiver_exec.cpp
+  }
+
+  Header_Files {
+    hello_receiver_exec.h
+    hello_receiver_exec_export.h
+  }
+}
+
+project(*svnt) : ciaox11_ccm_session_stub, ciaox11_ami4ccm {
+  after      += *l_stub asyn_gen_test_stub asyn_gen_test_lem_stub
+  libs       += Hello_Receiver_lem_stub Hello_stub Hello_lem_stub
+  sharedname  = Hello_Receiver_svnt
+
+  libpaths += ../lib
+  libout = ../lib
+  dynamicflags += HELLO_RECEIVER_SVNT_BUILD_DLL
+  includes += ..
+
+  Source_Files {
+    hello_receiver_svnt.cpp
+  }
+
+  Header_Files {
+    hello_receiverS.h
+    hello_receiver_svnt.h
+    hello_receiver_svnt_export.h
+  }
+}
+

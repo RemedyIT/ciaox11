@@ -1,0 +1,52 @@
+project(*idl_gen) : ciaox11_test_base_idl {
+  custom_only = 1
+  idlflags += -Wb,base_export_macro=INTERCEPTOR \
+              -Wb,base_export_include=interceptor
+
+  IDL_Files {
+    gendir=generated_code
+    interceptor.idl
+  }
+}
+
+project(*lem_gen) : ciaox11_test_base_lem_idl {
+  custom_only = 1
+  idlflags += -Wb,base_export_macro=INTERCEPTOR \
+              -Wb,base_export_include=interceptor
+
+  IDL_Files {
+    gendir=generated_code
+    interceptor.idl
+  }
+}
+
+project(*stub) : ciaox11_test_base {
+  after += *idl_gen
+
+  dynamicflags += INTERCEPTOR_STUB_BUILD_DLL
+
+  Source_Files {
+    generated_code/interceptorC.cpp
+  }
+
+  Header_Files {
+    generated_code/interceptorC.h
+    generated_code/interceptor_stub_export.h
+  }
+}
+
+project(*lem_stub) : ciaox11_test_base {
+  after += *stub *lem_gen
+  libs  += *stub
+
+  dynamicflags += INTERCEPTOR_LEM_STUB_BUILD_DLL
+
+  Source_Files {
+    generated_code/interceptorEC.cpp
+  }
+
+  Header_Files {
+    generated_code/interceptorEC.h
+    generated_code/interceptor_lem_stub_export.h
+  }
+}

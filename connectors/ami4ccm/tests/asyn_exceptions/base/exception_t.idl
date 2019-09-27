@@ -1,0 +1,55 @@
+/**
+ * @file    exception_t.idl
+ * @author  Marijke Hengstmengel
+ *
+ * @brief  Base idl for testing exceptions
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef EXCEPTION_T_IDL
+#define EXCEPTION_T_IDL
+
+#pragma ami4ccm interface "ExceptionT::MyFoo"
+#pragma ami4ccm idl "exception_tA.idl"
+
+module ExceptionT
+{
+  exception InternalError
+    {
+      long id;
+      string error_string;
+      string test;
+    };
+
+  // Sender/Receiver interface
+  interface MyFoo
+    {
+      long foo (in long foo_in);
+
+      void hello (out long answer)
+        raises (InternalError);
+
+      attribute short rw_attrib_g_s
+        getraises (InternalError)
+        setraises (InternalError);
+
+      attribute short rw_attrib;
+
+      attribute short rw_attrib_g
+        getraises (InternalError);
+
+      attribute short rw_attrib_s
+        setraises (InternalError);
+
+      readonly attribute short ro_attrib_r
+        raises (InternalError);
+      readonly attribute short ro_attrib;
+
+
+    };
+};
+
+#endif
+

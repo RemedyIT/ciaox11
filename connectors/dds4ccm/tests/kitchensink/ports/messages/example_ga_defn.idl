@@ -1,0 +1,127 @@
+/**
+ * @file    example_ga_defn.idl
+ * @author  Marcel Smit
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef CX_PORTS__TYPES__EXAMPLE_GA_DEFN_IDL
+#define CX_PORTS__TYPES__EXAMPLE_GA_DEFN_IDL
+
+#include "example_na_defn.idl"
+#include "example_b_defn.idl"
+
+/// @namespace Example
+module Example {
+
+    const unsigned long GA1_2 = 1024;
+
+    const unsigned long GA1_1 = 3600;
+
+    /// @typedef GA5
+    ///
+    typedef double GA5[GA1_1];
+
+    /// @typedef GA6
+    ///
+    typedef double GA6[GA1_2];
+
+    /// @enum GA4
+    ///
+    enum GA4 {
+        GA4_1,
+        GA4_2
+    };
+
+    /// @enum GA2
+    ///
+    enum GA2 {
+        GA2_1,
+        GA2_2
+    };
+
+    /// @enum GA3
+    ///
+    enum GA3 {
+        GA3_1,
+        GA3_2
+    };
+
+    /// @struct GA7
+    ///
+    struct GA7 {
+
+        double GA7_4;
+
+        Example::GA6 GA7_3;
+
+        Example::GA5 GA7_1;
+
+        Example::NA5 GA7_2;
+    }; //@TopLevel(false)
+
+    /// @struct GA8
+    ///
+    struct GA8 {
+
+        Example::B47 GA8_17;
+
+        Example::B42 GA8_18;
+
+        Example::GA3 GA8_26;
+
+        Example::B42 GA8_06;
+
+        Example::B42 GA8_07;
+
+        Example::GA4 GA8_10;
+
+        Example::GA2 GA8_09;
+
+        double GA8_28;
+
+        Example::B45 GA8_03;
+
+        double GA8_04;
+
+        unsigned long GA8_20;
+
+        Example::B45 GA8_13;
+
+        double GA8_14;
+
+        double GA8_05;
+
+        double GA8_01;
+
+        double GA8_02;
+
+        double GA8_15;
+
+        double GA8_11;
+
+        double GA8_12;
+
+        double GA8_25;
+
+        double GA8_21;
+
+        double GA8_23;
+
+        double GA8_24;
+
+        Example::B45 GA8_22;
+
+        double GA8_16;
+
+        unsigned long GA8_27;
+
+        Example::NA6 GA8_08;
+
+        unsigned long GA8_19;
+    }; //@TopLevel(false)
+};
+
+#endif // CX_PORTS__TYPES__EXAMPLE_GA_DEFN_IDL
+
+/// @}

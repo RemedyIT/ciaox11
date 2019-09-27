@@ -1,0 +1,44 @@
+connector 'TypeNameConnector' do |conn|
+  conn.idl %w{ typename_base.idl }
+
+  conn.port_type :dds4ccm do |tp|
+    tp.topic 'TypeNameMessage'
+    # use default DDS vendor
+    # tp.middleware :ndds
+    tp.topic_interface 'TypeNameConnector'
+  end
+end
+
+connector 'TypeNameModuleConnector' do |conn|
+  conn.idl %w{ typenamemodule_typenamemessage.idl }
+
+  conn.port_type :dds4ccm do |tp|
+    tp.topic 'TypeNameModule::TypeNameMessage'
+    # use default DDS vendor
+    # tp.middleware :ndds
+    tp.topic_interface 'TypeNameModuleConnector'
+  end
+end
+
+connector 'TypeNameModuleModuleConnector' do |conn|
+  conn.idl %w{ typenamemodulemodule_typenamemessage.idl }
+
+  conn.port_type :dds4ccm do |tp|
+    tp.topic 'TypeNameModule::TypeNameModuleModule::TypeNameMessage'
+    # use default DDS vendor
+    # tp.middleware :ndds
+    tp.topic_interface 'TypeNameModuleModuleConnector'
+  end
+end
+
+connector 'TypeNameModuleModule2Connector' do |conn|
+  conn.idl %w{ typenamemodulemodule2_typenamemessage.idl }
+
+  conn.port_type :dds4ccm do |tp|
+    tp.topic 'TypeNameModule::TypeNameModuleModule2::TypeNameMsg'
+    # use default DDS vendor
+    # tp.middleware :ndds
+    tp.topic_interface 'TypeNameModuleModule2Connector'
+  end
+end
+

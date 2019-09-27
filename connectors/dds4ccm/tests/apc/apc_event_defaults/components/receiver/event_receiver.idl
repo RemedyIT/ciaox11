@@ -1,0 +1,25 @@
+/**
+ * @file    event_receiver.idl
+ * @author  Marijke Hengsmengel
+ *
+ * @brief   Receiver component declaration for AXP minimal-event test.
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef EVENT_RECEIVER_IDL_
+#define EVENT_RECEIVER_IDL_
+
+#include "event_recordSE.idl"
+
+module Data
+{
+  component Receiver
+  {
+    port EventInterface::DDS_Listen info_out;
+    attribute unsigned short iterations;
+    attribute unsigned short keys;
+  };
+};
+
+#endif /* EVENT_RECEIVER_IDL_ */

@@ -1,0 +1,14 @@
+// --------------------------------------------------------------------
+// ciaox11_comp_all_idl.mpb
+//
+// Copyright (c) Remedy IT Expertise BV
+// Chamber of commerce Rotterdam nr.276339, The Netherlands
+// --------------------------------------------------------------------
+
+project : ciaox11_idldefaults {
+  // Almost every IDL for a component does *not* contain any datatypes
+  // or interface definitions. Therefor the generation of the stub and
+  // skeleton files can be suppressed which is done by default in
+  // ciaox11_idldefaults
+  idlflags += -Gcomp -Gxhex -Gxhsv
+}

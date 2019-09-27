@@ -1,0 +1,44 @@
+% _regen_marker = "#{executor_cxx_namespace}::#{port.ami4ccm_rh_executor}"
+  void
+  AMI4CCM_<%= port.interface_type.cxxname %>ReplyHandler_<%= port.cxxname %>_i::get_<%= attribute.cxxname %> (
+    <%= attribute.cxxtype %> ami_return_val)
+  {
+% _regen_value = "get_#{attribute.cxxname}"
+% _implementation=[]
+% _implementation[0]="// Your code here"
+% _implementation[1]="X11_UNUSED_ARG (ami_return_val);"
+% nest(2) { write_regen_section(_regen_marker+'['+_regen_value+']',  default_content: _implementation) }
+  }
+
+  void
+  <%= port.ami4ccm_rh_executor %>::get_<%= attribute.cxxname %>_excep (
+    IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder)
+  {
+% _regen_value = "get_#{attribute.cxxname}_excep"
+% _implementation=[]
+% _implementation[0]="// Your code here"
+% _implementation[1]="X11_UNUSED_ARG (excep_holder);"
+% nest(2) { write_regen_section(_regen_marker+'['+_regen_value+']',  default_content: _implementation) }
+  }
+
+% unless attribute.is_readonly?
+  void
+  <%= port.ami4ccm_rh_executor %>::set_<%= attribute.cxxname %> ()
+  {
+% _regen_value = "set_#{attribute.cxxname}"
+% _implementation=[]
+% _implementation[0]="// Your code here"
+% nest(2) { write_regen_section(_regen_marker+'['+_regen_value+']',  default_content: _implementation) }
+  }
+
+  void
+  <%= port.ami4ccm_rh_executor %>::set_<%= attribute.cxxname %>_excep (
+    IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder)
+  {
+% _regen_value = "set_#{attribute.cxxname}_excep"
+% _implementation=[]
+% _implementation[0]="// Your code here"
+% _implementation[1]="X11_UNUSED_ARG (excep_holder);"
+% nest(2) { write_regen_section(_regen_marker+'['+_regen_value+']',  default_content: _implementation) }
+  }
+% end

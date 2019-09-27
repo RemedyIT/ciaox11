@@ -1,0 +1,7 @@
+
+  // generated from <%= ridl_template_path %>
+% ports.each do |_p|
+%   if _p.port_type == :receptacle
+  readonly attribute ::Components::ConfigValues <%= _p.lem_name %>_configuration;
+%   end
+% end

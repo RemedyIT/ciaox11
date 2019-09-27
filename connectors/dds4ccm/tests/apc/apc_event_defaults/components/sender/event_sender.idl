@@ -1,0 +1,28 @@
+/**
+ * @file    event_sender.idl
+ * @author  Marijke Hengsmengel
+ *
+ * @brief   Sender component declaration for the AXP minimal-event test.
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef EVENT_SENDER_IDL_
+#define EVENT_SENDER_IDL_
+
+#include "event_recordSE.idl"
+
+module Data
+{
+  component Sender
+  {
+    port EventInterface::DDS_Write info_write;
+    provides CCM_DDS::ConnectorStatusListener connector_status;
+
+    attribute unsigned short rate;
+    attribute unsigned short iterations;
+    attribute unsigned short keys;
+  };
+};
+
+#endif /* EVENT_SENDER_IDL_ */

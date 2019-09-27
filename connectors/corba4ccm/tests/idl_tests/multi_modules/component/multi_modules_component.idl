@@ -1,0 +1,26 @@
+/**
+ * @file    multi_modules_component.idl
+ * @author  Marcel Smit
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef MULTI_MODULES_COMPONENT_IDL_
+#define MULTI_MODULES_COMPONENT_IDL_
+
+#include <Components.idl>
+
+#include "multi_modules.idl"
+
+module Hello
+{
+  component Multi_Modules_Component
+  {
+    provides Foo::Hello    foo_hello;
+    provides Foo::Bar::Bye foo_bar_bye;
+    provides Hello::Bye    hello_bye;
+  };
+};
+
+#endif

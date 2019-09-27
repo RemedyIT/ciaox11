@@ -1,0 +1,19 @@
+project(*i2c_shapes_receiver) : ddsx11_impl {
+
+  after += shapetype_stub shapetype_ddsx11_impl
+  libs  += shapetype_stub shapetype_ddsx11_impl
+
+  libpaths += ../lib
+
+  exename = receiver
+  exeout  = ../lib
+
+  includes += ../base/GeneratedCode
+
+  Source_Files {
+    receiver.cpp
+  }
+
+  Header_Files {
+  }
+}

@@ -1,0 +1,47 @@
+// --------------------------------------------------------------------
+// ccm_session.mpc
+//
+// Author: Johnny Willemsen
+//
+// Copyright (c) Remedy IT Expertise BV
+// Chamber of commerce Rotterdam nr.276339, The Netherlands
+// --------------------------------------------------------------------
+
+project(ciaox11_ccm_session_idl) : ciaox11_idl {
+  idlflags   += -Wb,stub_export_include=ciaox11_ccmsession_export.h \
+                -Wb,stub_export_macro=CIAOX11_CCMSESSION_STUB_Export \
+                -I $(CIAOX11_ROOT) -SS -Scp
+  custom_only = 1
+
+  IDL_Files {
+    idlflags += -Gxhst
+    ccm_sessioncontext.idl
+  }
+
+  IDL_Files {
+    ccm_sessioncomponent.idl
+  }
+}
+
+project(ciaox11_ccm_session_stub) : install, ciaox11_ccm_stub, ciaox11_output {
+  dynamicflags += CIAOX11_CCMSESSION_STUB_BUILD_DLL
+  after += ciaox11_ccm_session_idl
+
+  Header_Files {
+    ciaox11_ccmsession_export.h
+    ccm_sessioncomponentC.h
+    ccm_sessioncontextC.h
+    ccm_sessioncomponentS.h
+    ccm_sessioncontextS.h
+  }
+
+  Source_Files {
+    ccm_sessioncontextC.cpp
+    ccm_sessioncomponentC.cpp
+  }
+
+  specific {
+    install_dir = ccm/session
+  }
+}
+

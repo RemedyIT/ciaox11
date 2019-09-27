@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<Deployment:DeploymentPlan xmlns:Deployment="http://www.omg.org/Deployment"
+   xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.omg.org/Deployment Deployment.xsd">
+
+  <UUID>6D382DAE-9024-4C4D-B91B-A0F9176AFACF</UUID>
+
+  <implementation xmi:id="InterOutArgsT_ReceiverImplementation">
+    <name>InterOutArgsT_ReceiverImplementation</name>
+    <source/>
+    <artifact xmi:idref="InterOutArgsT_Receiver_ExecArtifact"/>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_InterOutArgsT_Receiver_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>InterOutArgsT.ImplementationArtifacts.ReceiverArtifacts.Receiver_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_InterOutArgsT_Receiver_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="InterOutArgsT_SenderImplementation">
+    <name>InterOutArgsT_SenderImplementation</name>
+    <source/>
+    <artifact xmi:idref="InterOutArgsT_Sender_ExecArtifact"/>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_InterOutArgsT_Sender_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>InterOutArgsT.ImplementationArtifacts.SenderArtifacts.Sender_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_InterOutArgsT_Sender_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="InterOutArgsT_AMIConnectorImplementation">
+    <name>InterOutArgsT_AMIConnectorImplementation</name>
+    <source/>
+    <artifact xmi:idref="InterOutArgsT_AMI_ExecArtifact"/>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_InterOutArgsT_AMI4CCM_MyFoo_Connector_AMI4CCM_Connector_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>InterOutArgsT.ImplementationArtifacts.AMIArtifacts.AMI_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_InterOutArgsT_AMI4CCM_MyFoo_Connector_AMI4CCM_Connector_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="InterOutArgsT_CORBAConnectorImplementation">
+    <name>InterOutArgsT_CORBAConnectorImplementation</name>
+    <source/>
+    <artifact xmi:idref="InterOutArgsT_CORBA_ExecArtifact"/>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_InterOutArgsT_MyFoo_SRR_CORBA_Connector_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>InterOutArgsT.ImplementationArtifacts.CORBAArtifacts.CORBA_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_InterOutArgsT_MyFoo_SRR_CORBA_Connector_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <instance xmi:id="InterOutArgsT.ComponentImplementations.InterOutArgsTImplementation.InterOutArgsT.Receiver">
+    <name>InterOutArgsT.ComponentImplementations.InterOutArgsTImplementation.InterOutArgsT.Receiver</name>
+    <node>ReceiverNode</node>
+    <source/>
+    <implementation xmi:idref="InterOutArgsT_ReceiverImplementation"/>
+  </instance>
+  <instance xmi:id="InterOutArgsT.ComponentImplementations.InterOutArgsTImplementation.InterOutArgsT.CORBA">
+    <name>InterOutArgsT.ComponentImplementations.InterOutArgsTImplementation.InterOutArgsT.CORBA</name>
+    <node>ReceiverNode</node>
+    <source/>
+    <implementation xmi:idref="InterOutArgsT_CORBAConnectorImplementation"/>
+  </instance>
+
+  <instance xmi:id="InterOutArgsT.ComponentImplementations.InterOutArgsTImplementation.InterOutArgsT.Sender">
+    <name>InterOutArgsT.ComponentImplementations.InterOutArgsTImplementation.InterOutArgsT.Sender</name>
+    <node>SenderNode</node>
+    <source/>
+    <implementation xmi:idref="InterOutArgsT_SenderImplementation"/>
+  </instance>
+
+  <instance xmi:id="InterOutArgsT.ComponentImplementations.InterOutArgsTImplementation.InterOutArgsT.AMI">
+    <name>InterOutArgsT.ComponentImplementations.InterOutArgsTImplementation.InterOutArgsT.AMI</name>
+    <node>SenderNode</node>
+    <source/>
+    <implementation xmi:idref="InterOutArgsT_AMIConnectorImplementation"/>
+  </instance>
+
+  <connection>
+    <name>run_asynch_foo_connection</name>
+    <internalEndpoint>
+      <portName>sendc_run_my_foo</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="InterOutArgsT.ComponentImplementations.InterOutArgsTImplementation.InterOutArgsT.Sender" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>ami4ccm_port_ami4ccm_provides</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="InterOutArgsT.ComponentImplementations.InterOutArgsTImplementation.InterOutArgsT.AMI" />
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>synch_foo_connection</name>
+    <internalEndpoint>
+      <portName>ami4ccm_port_ami4ccm_sync_provides</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="InterOutArgsT.ComponentImplementations.InterOutArgsTImplementation.InterOutArgsT.AMI" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>run_my_foo</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="InterOutArgsT.ComponentImplementations.InterOutArgsTImplementation.InterOutArgsT.Sender" />
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>do_foo_connection</name>
+    <internalEndpoint>
+      <portName>srr_facet</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="InterOutArgsT.ComponentImplementations.InterOutArgsTImplementation.InterOutArgsT.CORBA" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>ami4ccm_port_ami4ccm_uses</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="InterOutArgsT.ComponentImplementations.InterOutArgsTImplementation.InterOutArgsT.AMI" />
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>do_foo_connection_receiver</name>
+    <internalEndpoint>
+      <portName>do_my_foo</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="InterOutArgsT.ComponentImplementations.InterOutArgsTImplementation.InterOutArgsT.Receiver" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>srr_receptacle</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="InterOutArgsT.ComponentImplementations.InterOutArgsTImplementation.InterOutArgsT.CORBA" />
+    </internalEndpoint>
+  </connection>
+
+
+  <artifact xmi:id="InterOutArgsT_AMI_ExecArtifact">
+    <name>InterOutArgsT.ImplementationArtifacts.AMIArtifacts.AMI_exec</name>
+    <source/>
+    <node/>
+    <location>out_args_t_ami4ccm_conn</location>
+   </artifact>
+
+  <artifact xmi:id="InterOutArgsT_CORBA_ExecArtifact">
+    <name>InterOutArgsT.ImplementationArtifacts.CORBAArtifacts.CORBA_exec</name>
+    <source/>
+    <node/>
+    <location>out_args_t_corba_conn</location>
+   </artifact>
+
+   <artifact xmi:id="InterOutArgsT_Receiver_ExecArtifact">
+    <name>InterOutArgsT.ImplementationArtifacts.ReceiverArtifacts.Receiver_exec</name>
+    <source/>
+    <node/>
+    <location>out_args_t_receiver_exec</location>
+  </artifact>
+
+  <artifact xmi:id="InterOutArgsT_Sender_ExecArtifact">
+    <name>InterOutArgsT.ImplementationArtifacts.SenderArtifacts.Sender_exec</name>
+    <source/>
+    <node/>
+    <location>out_args_t_sender_exec</location>
+  </artifact>
+
+</Deployment:DeploymentPlan>

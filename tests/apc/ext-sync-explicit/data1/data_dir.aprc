@@ -1,0 +1,9 @@
+#only stub needed for those idl files, so make a separate project
+base 'hello_s' do |dt|
+  dt.idl %w{ hello4.idl}
+end
+
+#stub and lem_stub needed for those idl files , so make a separate project
+base 'hello_ls' do |dt|
+  dt.idl %w{ hello3.idl hello1.idl}
+end

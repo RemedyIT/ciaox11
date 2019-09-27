@@ -1,0 +1,17 @@
+/**
+ * @file    writer_starter.idl
+ * @author  Marcel Smit
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef WRITER_STARTER_IDL_
+#define WRITER_STARTER_IDL_
+
+
+interface WriterStarter
+{
+  void start_write ();
+};
+
+#endif /* WRITER_STARTER_IDL_ */

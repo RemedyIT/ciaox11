@@ -1,0 +1,26 @@
+/**
+ * @file    extended_hello_receiver.idl
+ * @author  Johnny Willemsen
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef EXTENDED_HELLO_RECEIVER_IDL
+#define EXTENDED_HELLO_RECEIVER_IDL
+
+#include <Components.idl>
+
+#include "extended_hello.idl"
+
+module Hello
+{
+  component Receiver
+  {
+    provides MyFoo do_my_foo;
+    provides MyBar do_my_bar;
+
+    attribute unsigned short just_an_attribute;
+  };
+};
+#endif

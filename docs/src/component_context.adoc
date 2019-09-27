@@ -1,0 +1,69 @@
+include::_{backend}_settings.adoc[]
+
+= The component or connector Context
+
+== The Context
+
+The *AXCIOMA* infrastructure provides every business component and
+connector with a reference to its context through the
+`set_session_context` method. This methods will be invoked by the
+*AXCIOMA* infrastructure before any life cycle method gets invoked. The
+<<executor_starter_code.adoc#,business component executor starter
+code>> makes sure that every generated facet will also be provided with
+this context.
+
+Developers can use the context to retrieve references for its
+receptacles. However, if the receptacle is not connected in the
+<<{xref_docs_root}/dancex11/deployment-planning.adoc#,deployment plan>>,
+a nil reference is returned. It is *not* advised to cache the references
+returned from the context. Instead, retrieve it each time from the context. At
+the moment *AXCIOMA* is complemented by deployment tooling which
+supports reconfiguration and redeployment the content of the context can
+change during the lifetime of a business component.
+
+== Example
+
+Please consider the IDL on <<executor_starter_code.adoc#,this page>>.
+The same IDL can be found link:{code_root}/ciaox11/base/starter.idl[here] and
+link:{code_root}/ciaox11/component/starter_component.idl[here].
+
+Since a `mirrorport` is declared as part of the component declaration,
+the component uses the `MyFoo` interface. In order for the developer to
+use the `MyFoo` interface, one should create a connection to providing
+component (i.e. obtain a reference to the `MyFoo` facet). The component
+context provides methods in order to connect to the facets the component
+uses. These methods start with `get_connection_` followed by the name of
+the extended port (if any) and the name of the basic port.
+
+If there's no connection configured in the
+<<{xref_docs_root}/dancex11/deployment-planning.adoc#,deployment plan>>,
+the `get_connection_xxx` method will return a nil reference. Invoking an
+operation on a nil reference will result in a `CORBA::INV_OBJREF`
+exception.
+
+In the following example, the developer should use the following code to
+invoke the `foo` method on the `MyFoo` facet.
+
+[source,c++]
+-----------------------------------------------------------------------------------------
+try
+{
+  std::string in_str { "Hi" };
+  std::string answer {};
+  IDL::traits<MyFoo>::ref_type my_foo = this->context_->get_connection_do_foo_bar_foo ();
+  my_foo->foo (in_str, answer);
+  std::cout << "Answer to " << in_str << " is " << answer << std::endl;
+}
+catch (const CORBA::INV_OBJREF &ex)
+{
+  std::cout << ex << "is caught!" << std::endl;
+}
+catch (const Hello::Ball &ex)
+{
+  std::cout << ex << "is caught!" << std::endl;
+}
+-----------------------------------------------------------------------------------------
+
+In case `get_connection_do_foo_bar_foo ()` returns a nil reference a
+`CORBA::INV_OBJREF` exception will be thrown when an operation is
+invoked on it.

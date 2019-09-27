@@ -1,0 +1,655 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+
+<Deployment:DeploymentPlan xmlns:Deployment="http://www.omg.org/Deployment" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.omg.org/Deployment Deployment.xsd">
+
+  <UUID>6D382DAE-9024-4C4D-B91B-A0F9176AFACF</UUID>
+
+  <implementation xmi:id="UsesSM_ReceiverImplementation">
+    <name>UsesSM_ReceiverImplementation</name>
+    <source/>
+    <artifact xmi:idref="UsesSM_Receiver_ExecArtifact"/>
+     <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_UsesSM_Receiver_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>UsesSM.ImplementationArtifacts.ReceiverArtifacts.Receiver_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_UsesSM_Receiver_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="UsesSM_SenderImplementation">
+    <name>UsesSM_SenderImplementation</name>
+    <source/>
+    <artifact xmi:idref="UsesSM_Sender_ExecArtifact"/>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_UsesSM_Sender_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>UsesSM.ImplementationArtifacts.SenderArtifacts.Sender_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_UsesSM_Sender_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+   </implementation>
+
+  <!-- conn one-->
+  <implementation xmi:id="UsesSM_AMIOneImplementation">
+    <name>UsesSM_AMIHomeImplementation</name>
+    <source/>
+    <artifact xmi:idref="UsesSM_AMI_ExecArtifact"/>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_UsesSM_AMI4CCM_One_Connector_AMI4CCM_Connector_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>UsesSM.ImplementationArtifacts.AMIArtifacts.AMI_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_UsesSM_AMI4CCM_One_Connector_AMI4CCM_Connector_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+  <implementation xmi:id="UsesSM_AMITwoImplementation">
+    <name>UsesSM_AMITwoImplementation</name>
+    <source/>
+    <artifact xmi:idref="UsesSM_AMI_ExecArtifact"/>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_UsesSM_AMI4CCM_Two_Connector_AMI4CCM_Connector_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>UsesSM.ImplementationArtifacts.AMIArtifacts.AMI_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_UsesSM_AMI4CCM_Two_Connector_AMI4CCM_Connector_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="UsesSM_CORBAOneImplementation">
+    <name>UsesSM_CORBAHomeImplementation</name>
+    <source/>
+    <artifact xmi:idref="UsesSM_CORBA_ExecArtifact"/>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_UsesSM_One_SRR_CORBA_Connector_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>UsesSM.ImplementationArtifacts.CORBAArtifacts.CORBA_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_UsesSM_One_SRR_CORBA_Connector_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+  <implementation xmi:id="UsesSM_CORBATwoImplementation">
+    <name>UsesSM_CORBATwoImplementation</name>
+    <source/>
+    <artifact xmi:idref="UsesSM_CORBA_ExecArtifact"/>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_UsesSM_Two_SRR_CORBA_Connector_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>UsesSM.ImplementationArtifacts.CORBAArtifacts.CORBA_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_UsesSM_Two_SRR_CORBA_Connector_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <instance xmi:id="UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.ReceiverA">
+    <name>UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.ReceiverA</name>
+    <node>ReceiverNode</node>
+    <source/>
+    <implementation xmi:idref="UsesSM_ReceiverImplementation"/>
+  </instance>
+  <instance xmi:id="UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.ReceiverA.CORBA">
+    <name>UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.ReceiverA.CORBA</name>
+    <node>ReceiverNode</node>
+    <source/>
+    <implementation xmi:idref="UsesSM_CORBAOneImplementation"/>
+  </instance>
+
+  <instance xmi:id="UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.ReceiverB">
+    <name>UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.ReceiverB</name>
+    <node>ReceiverNode</node>
+    <source/>
+    <implementation xmi:idref="UsesSM_ReceiverImplementation"/>
+   </instance>
+  <instance xmi:id="UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.ReceiverB.CORBA">
+    <name>UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.ReceiverB.CORBA</name>
+    <node>ReceiverNode</node>
+    <source/>
+    <implementation xmi:idref="UsesSM_CORBAOneImplementation"/>
+  </instance>
+
+  <instance xmi:id="UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.ReceiverC">
+    <name>UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.ReceiverC</name>
+    <node>ReceiverNode</node>
+    <source/>
+    <implementation xmi:idref="UsesSM_ReceiverImplementation"/>
+  </instance>
+  <instance xmi:id="UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.ReceiverC.CORBA">
+    <name>UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.ReceiverC.CORBA</name>
+    <node>ReceiverNode</node>
+    <source/>
+    <implementation xmi:idref="UsesSM_CORBAOneImplementation"/>
+  </instance>
+
+  <instance xmi:id="UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.ReceiverD">
+    <name>UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.ReceiverD</name>
+    <node>ReceiverNode</node>
+    <source/>
+    <implementation xmi:idref="UsesSM_ReceiverImplementation"/>
+  </instance>
+  <instance xmi:id="UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.ReceiverD.CORBA">
+    <name>UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.ReceiverD.CORBA</name>
+    <node>ReceiverNode</node>
+    <source/>
+    <implementation xmi:idref="UsesSM_CORBATwoImplementation"/>
+  </instance>
+
+  <instance xmi:id="UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.Sender">
+    <name>UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.Sender</name>
+    <node>SenderNode</node>
+    <source/>
+    <implementation xmi:idref="UsesSM_SenderImplementation"/>
+  </instance>
+
+  <instance xmi:id="UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.Sender.CORBA.A">
+    <name>UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.Sender.CORBA.A</name>
+    <node>SenderNode</node>
+    <source/>
+    <implementation xmi:idref="UsesSM_CORBAOneImplementation"/>
+  </instance>
+  <instance xmi:id="UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.Sender.CORBA.B">
+    <name>UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.Sender.CORBA.B</name>
+    <node>SenderNode</node>
+    <source/>
+    <implementation xmi:idref="UsesSM_CORBAOneImplementation"/>
+  </instance>
+  <instance xmi:id="UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.Sender.CORBA.C">
+    <name>UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.Sender.CORBA.C</name>
+    <node>SenderNode</node>
+    <source/>
+    <implementation xmi:idref="UsesSM_CORBAOneImplementation"/>
+  </instance>
+
+  <instance xmi:id="UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.AMIOneA">
+    <name>UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.AMIOneA</name>
+    <node>SenderNode</node>
+    <source/>
+    <implementation xmi:idref="UsesSM_AMIOneImplementation"/>
+  </instance>
+  <instance xmi:id="UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.AMIOneB">
+    <name>UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.AMIOneB</name>
+    <node>SenderNode</node>
+    <source/>
+    <implementation xmi:idref="UsesSM_AMIOneImplementation"/>
+  </instance>
+  <instance xmi:id="UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.AMIOneC">
+    <name>UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.AMIOneC</name>
+    <node>SenderNode</node>
+    <source/>
+    <implementation xmi:idref="UsesSM_AMIOneImplementation"/>
+  </instance>
+  <instance xmi:id="UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.AMITwoD">
+    <name>UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.AMITwoD</name>
+    <node>SenderNode</node>
+    <source/>
+    <implementation xmi:idref="UsesSM_AMITwoImplementation"/>
+  </instance>
+
+  <!-- Asynchronous connections between the Sender component and its AMI connectors -->
+  <connection>
+    <name>asynch_one_from_sender_to_ami_A</name>
+    <internalEndpoint>
+      <portName>sendc_m_run_my_one</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.Sender" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>ami4ccm_port_ami4ccm_provides</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.AMIOneA" />
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>asynch_one_from_sender_to_ami_B</name>
+    <internalEndpoint>
+      <portName>sendc_m_run_my_one</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.Sender" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>ami4ccm_port_ami4ccm_provides</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.AMIOneB" />
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>asynch_one_from_sender_to_ami_C</name>
+    <internalEndpoint>
+      <portName>sendc_m_run_my_one</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.Sender" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>ami4ccm_port_ami4ccm_provides</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.AMIOneC" />
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>asynch_two_from_sender_to_ami_D</name>
+    <internalEndpoint>
+      <portName>sendc_s_run_my_two</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.Sender" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>ami4ccm_port_ami4ccm_provides</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.AMITwoD" />
+    </internalEndpoint>
+  </connection>
+  <!-- Connections between the AMI components of the Sender to the CORBA connectors
+       of the Receivers
+  -->
+  <connection>
+    <name>synch_one_from_ami_A_to_cc_A_receiver</name>
+    <internalEndpoint>
+      <portName>ami4ccm_port_ami4ccm_uses</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.AMIOneA" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>srr_facet</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.ReceiverA.CORBA" />
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>synch_one_from_ami_B_to_cc_B_receiver</name>
+    <internalEndpoint>
+      <portName>ami4ccm_port_ami4ccm_uses</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.AMIOneB" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>srr_facet</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.ReceiverB.CORBA" />
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>synch_one_from_ami_C_to_cc_C_receiver</name>
+    <internalEndpoint>
+      <portName>ami4ccm_port_ami4ccm_uses</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.AMIOneC" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>srr_facet</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.ReceiverC.CORBA" />
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>synch_two_from_ami_D_to_cc_D_receiver</name>
+    <internalEndpoint>
+      <portName>ami4ccm_port_ami4ccm_uses</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.AMITwoD" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>srr_facet</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.ReceiverD.CORBA" />
+    </internalEndpoint>
+  </connection>
+
+  <!-- Synchronous Connections between the Sender and the CORBA connectors of the Sender
+  -->
+  <connection>
+    <name>synch_one_from_sender_to_cc_A_sender</name>
+    <internalEndpoint>
+      <portName>m_run_my_one</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.Sender" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>srr_facet</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.Sender.CORBA.A" />
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>synch_one_from_sender_to_cc_B_sender</name>
+    <internalEndpoint>
+      <portName>m_run_my_one</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.Sender" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>srr_facet</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.Sender.CORBA.B" />
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>synch_one_from_sender_to_cc_C_sender</name>
+    <internalEndpoint>
+      <portName>m_run_my_one</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.Sender" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>srr_facet</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.Sender.CORBA.C" />
+    </internalEndpoint>
+  </connection>
+  <!-- Synchronous Connections between the CORBA connectors of the Sender and the CORBA
+       connectors of the Receivers
+  -->
+  <connection>
+    <name>synch_one_from_cc_A_sender_to_cc_A_receiver</name>
+    <internalEndpoint>
+      <portName>srr_receptacle</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.Sender.CORBA.A" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>srr_facet</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.ReceiverA.CORBA" />
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>synch_one_from_cc_B_sender_to_cc_B_receiver</name>
+    <internalEndpoint>
+      <portName>srr_receptacle</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.Sender.CORBA.B" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>srr_facet</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.ReceiverB.CORBA" />
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>synch_one_from_cc_C_sender_to_cc_C_receiver</name>
+    <internalEndpoint>
+      <portName>srr_receptacle</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.Sender.CORBA.C" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>srr_facet</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.ReceiverC.CORBA" />
+    </internalEndpoint>
+  </connection>
+  <!-- Synchronous Connections between the CORBA connectors of the Receivers and the
+       Receivers themselfs.
+  -->
+  <connection>
+    <name>synch_one_from_cc_A_receiver_to_receiver_A</name>
+    <internalEndpoint>
+      <portName>srr_receptacle</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.ReceiverA.CORBA" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>do_my_one</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.ReceiverA" />
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>synch_one_from_cc_B_receiver_to_receiver_B</name>
+    <internalEndpoint>
+      <portName>srr_receptacle</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.ReceiverB.CORBA" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>do_my_one</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.ReceiverB" />
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>synch_one_from_cc_C_receiver_to_receiver_C</name>
+    <internalEndpoint>
+      <portName>srr_receptacle</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.ReceiverC.CORBA" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>do_my_one</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.ReceiverC" />
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>synch_two_from_cc_D_receiver_to_receiver_D</name>
+    <internalEndpoint>
+      <portName>srr_receptacle</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.ReceiverD.CORBA" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>do_my_two</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="UsesSM.ComponentImplementations.UsesSMImplementation.UsesSM.ReceiverD" />
+    </internalEndpoint>
+  </connection>
+
+
+  <artifact xmi:id="UsesSM_AMI_ExecArtifact">
+    <name>UsesSM.ImplementationArtifacts.AMIArtifacts.AMI_exec</name>
+    <source/>
+    <node/>
+    <location>uses_s_m_ami4ccm_conn</location>
+   </artifact>
+
+  <artifact xmi:id="UsesSM_CORBA_ExecArtifact">
+    <name>UsesSM.ImplementationArtifacts.CORBAArtifacts.CORBA_exec</name>
+    <source/>
+    <node/>
+    <location>uses_s_m_corba_conn</location>
+   </artifact>
+
+  <artifact xmi:id="UsesSM_Receiver_ExecArtifact">
+    <name>UsesSM.ImplementationArtifacts.ReceiverArtifacts.Receiver_exec</name>
+    <source/>
+    <node/>
+    <location>uses_s_m_receiver_exec</location>
+   </artifact>
+
+  <artifact xmi:id="UsesSM_Sender_ExecArtifact">
+    <name>UsesSM.ImplementationArtifacts.SenderArtifacts.Sender_exec</name>
+    <source/>
+    <node/>
+    <location>uses_s_m_sender_exec</location>
+  </artifact>
+</Deployment:DeploymentPlan>

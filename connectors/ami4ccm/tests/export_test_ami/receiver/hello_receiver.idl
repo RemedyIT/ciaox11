@@ -1,0 +1,26 @@
+/**
+ * @file    hello_receiver.idl
+ * @author  Marijke Hengstmengel
+ *
+ * @brief   idl receiver component
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef HELLO_RECEIVER_IDL
+#define HELLO_RECEIVER_IDL
+
+#include <Components.idl>
+
+#include "hello.idl"
+
+module Hello
+{
+  component Receiver
+  {
+    /// Provides
+    provides MyFoo do_my_foo;
+  };
+};
+#endif

@@ -1,0 +1,28 @@
+/**
+ * @file    conn_test_conns.idl
+ * @author  Marijke Hengstmengel
+ *
+ * @brief   CIAOX11 connector for connector test
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef CONN_TEST_CONNS_IDL_
+#define CONN_TEST_CONNS_IDL_
+
+#include <Components.idl>
+
+#include "hello.idl"
+
+module Hello
+{
+  component MyBaseEvent
+  {
+    mirrorport Write supplier;
+  };
+};
+
+#endif /* CONN_TEST_CONNS_IDL_ */
+
+

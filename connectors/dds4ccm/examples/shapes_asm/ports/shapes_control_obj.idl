@@ -1,0 +1,28 @@
+/**
+ * @file    shapes_control_obj.idl
+ * @author  Johnny Willemsen
+ *
+ * @brief   Shapes control interface file
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef SHAPES_CONTROL_IDL_
+#define SHAPES_CONTROL_IDL_
+
+#include "shapes_defn.idl"
+
+module Shapes
+{
+  interface Control_obj
+  {
+    /// Set the size of the shape we are publishing
+    ReturnStatus setSize (in unsigned short size);
+    /// Set the location of the shape we are publishing
+    ReturnStatus setLocation (in unsigned short x,
+                              in unsigned short y);
+  };
+};
+
+#endif /* SHAPES_CONTROL_IDL_ */

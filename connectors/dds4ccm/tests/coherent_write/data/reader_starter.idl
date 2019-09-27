@@ -1,0 +1,19 @@
+/**
+ * @file    reader_starter.idl
+ * @author  Marcel Smit
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef READER_STARTER_IDL_
+#define READER_STARTER_IDL_
+
+interface ReaderStarter
+{
+  void start_read ();
+  void start_new_run (in unsigned short run);
+  void set_reader_properties (in unsigned short nr_keys,
+                              in unsigned short nr_iterations);
+};
+
+#endif /* READER_STARTER_IDL_ */

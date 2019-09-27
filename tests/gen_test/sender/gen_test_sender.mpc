@@ -1,0 +1,121 @@
+// Granulated version of the MPC file. This file shows the various possibilities
+// of how to define projects and libraries.
+
+// Please see gen_test_simple for a simpler version of the MPC files used in this
+// test.
+
+// There's no need for a stub library since there are no datatypes defined in the
+// IDL file.
+
+// Supresses the generation of the stub source (-Scc) since no datatypes are
+//    defined in the IDL.
+// Supresses the generation of the skeleton files (-SS/-Ssh) since no dependancy on
+//    CORBA should be here. This is done by default in the ciaox11_idldefaults MPC
+//    base project
+// Makes sure that the component executor user code is generated (-Gex). No need
+//    to keep these so no precious_files entry.
+// Generates :
+//   the stub header (*.C.h)
+//   the lem IDL file (-Glem)
+//   the needed export files for the servant (-Gxhsv) and executor (-Gxhex).
+//   the servant code for the component (-Gsvnt)
+project(*idl_gen) : ciaox11_idldefaults {
+  custom_only = 1
+  after += gen_test_base_idl_gen
+  idlflags += -Wb,exec_export_macro=HELLO_SENDER_EXEC_Export \
+              -Wb,exec_export_include=hello_sender_exec_export.h \
+              -Wb,svnt_export_macro=HELLO_SENDER_SVNT_Export \
+              -Wb,svnt_export_include=hello_sender_svnt_export.h \
+              -Scc -Glem -Gxhex -Gxhsv -Gsvnt \
+              -Gex -I..
+
+  IDL_Files {
+    hello_sender.idl
+  }
+}
+
+// Generates:
+//   the stub (*C.*) and the needed export files for the lem stub (-Gxhst)
+project(*lem_gen) : ciaox11_idldefaults {
+  after += *idl_gen
+  custom_only = 1
+  idlflags += -Wb,stub_export_macro=HELLO_SENDER_LEM_STUB_Export \
+              -Wb,stub_export_include=hello_sender_lem_stub_export.h \
+              -SS -Scp -Gxhst -I..
+
+  IDL_Files {
+    hello_senderE.idl
+  }
+}
+
+project(*lem_stub) : ciaox11_ccm_session_stub {
+  after += *idl_gen *lem_gen gen_test_base_stub
+  libs  += Hello_stub
+
+  libout    = ../lib
+  libpaths += ../lib
+  includes += ..
+
+  sharedname    = Hello_Sender_lem_stub
+  dynamicflags += HELLO_SENDER_LEM_STUB_BUILD_DLL
+
+  Source_Files {
+    hello_senderEC.cpp
+  }
+
+  Header_Files {
+    hello_senderEC.h
+    hello_sender_lem_stub_export.h
+  }
+}
+
+
+project(*exec) : ciaox11_executor, ciaox11_logger {
+  after += *lem_gen *lem_stub gen_test_base_stub gen_test_base_lem_stub
+  libs  += Hello_Sender_lem_stub Hello_stub Hello_lem_stub
+
+  libout    = ../lib
+  libpaths += ../lib
+  includes += ..
+
+  sharedname    = Hello_Sender_exec
+  dynamicflags += HELLO_SENDER_EXEC_BUILD_DLL
+
+
+  Source_Files {
+    hello_sender_exec.cpp
+  }
+
+  Header_Files {
+    hello_sender_exec.h
+    hello_sender_exec_export.h
+  }
+}
+
+// The servant does not need the skeleton since user components should
+// not depend on the inter-component middleware
+project(*svnt) : ciaox11_ccm_session_stub {
+  after += *lem_stub \
+           gen_test_base_stub \
+           gen_test_base_lem_stub
+  libs  += Hello_Sender_lem_stub \
+           Hello_stub \
+           Hello_lem_stub
+
+  libout    = ../lib
+  libpaths += ../lib
+  includes += ..
+
+  sharedname    = Hello_Sender_svnt
+  dynamicflags += HELLO_SENDER_SVNT_BUILD_DLL
+
+  Source_Files {
+    hello_sender_svnt.cpp
+  }
+
+  Header_Files {
+    hello_senderS.h
+    hello_sender_svnt.h
+    hello_sender_svnt_export.h
+  }
+}

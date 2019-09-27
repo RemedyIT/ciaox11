@@ -1,0 +1,397 @@
+include::_{backend}_settings.adoc[]
+
+= Getting started with AXCIOMA
+
+== What is *AXCIOMA*?
+
+*AXCIOMA* is a comprehensive software suite combining eleven Object
+Management Group (_OMG_) open standards being _LwCCM_, _DDS_, _DDS4CCM_,
+_AMI4CCM_, _CORBA_, _IDL_, _IDL2C++11_, _RPC4DDS_, _DDS Security_, _DDS
+X-Types_, and _D&C_. *AXCIOMA* supports the design, development, and
+deployment of a distributed component based architecture. It is the
+component technology enabling the _Industrial Internet of Things_.
+
+The *AXCIOMA* release package is made up of a number of distinct
+software products as follows:
+
+* <<ciaox11.adoc#,CIAOX11>> provides the basic
+Lightweight CCM (LwCCM) framework needed to build and execute
+components. The following optional features products are included
+providing support for:
+** <<{xref_docs_root}/corba4ccm/corba4ccm.adoc#,CORBA4CCM>> delivering synchronous _Request/Reply_ interaction
+** <<{xref_docs_root}/ami4ccm/ami4ccm.adoc#,AMI4CCM>> delivering asynchronous _Request/Reply_ interaction
+** <<{xref_docs_root}/dds4ccm/dds4ccm.adoc#,DDS4CCM>> delivering _State and Event_ interaction
+include::{ciaox11_src_root}/connectors/psdd4ccm/docs/src/getting_started.asc[opts=optional]
+** <<{xref_docs_root}/tt4ccm/tt4ccm.adoc#,TT4CCM>> delivering _Timed Trigger_ interaction
+include::{ciaox11_src_root}/exf/docs/src/getting_started.asc[opts=optional]
+* <<{xref_docs_root}/ddsx11/ddsx11.adoc#,DDSX11>> provides the
+IDL to {cxx11} support for DDS
+* <<{xref_docs_root}/dancex11/dancex11.adoc#,DnCX11>> provides the runtime
+deployment tooling required to deploy LwCCM components
+* <<{xref_docs_root}/taox11/getting_started.adoc#,TAOX11>> provides the support for
+the IDL2{cxx11} type system as well as providing the communication
+middleware (CORBA) for the DnCX11 deployment tooling and the CORBA4CCM
+implementation of the _Request/Reply_ interaction support in CIAOX11
+
+=== Features
+
+*AXCIOMA* supports request-reply, state, event, and timed trigger based interaction
+patterns based on the OMG LwCCM specification. The
+concrete communication middleware between the components is a deployment
+decision, not an implementation decision!
+
+*AXCIOMA* supports the implementation of components using the OMG
+https://www.omg.org/spec/CPP11[IDL to C++11] Language Mapping. In
+addition *AXCIOMA* provides out of the box _Request/Reply_
+(both synchronous and asynchronous), _State and Event_, _Publish and Subscribe_
+and _Timed Triggers_ based interaction support.
+
+The _Request/Reply_ interaction support is provided through a
+https://www.omg.org/spec/CORBA[CORBA] based implementation in combination
+with the OMG https://www.omg.org/spec/AMI4CCM[Asynchronous Method
+Invocation for CCM (AMI4CCM)] specification for asynchronous messaging.
+
+The _State and Event_ interaction support is provided through a
+https://www.omg.org/spec/DDS[DDS] based implementation according to the
+OMG https://www.omg.org/spec/DDS4CCM[DDS for Lightweight CCM (DDS4CCM)]
+specification.
+
+The _Publish and Subscribe_ and _Timed Triggers_ interaction support is
+provided through custom *AXCIOMA* specific (IDL based) implementations.
+
+Through a flexible and powerful framework you can add your own domain
+specific interaction support. This includes our framework for implementing
+<<templated_connectors.adoc#,templated connectors>>.
+
+Read more about the *AXCIOMA* philosophy on
+<<philosophy.adoc#,this page>>.
+
+== Why *AXCIOMA*?
+
+*AXCIOMA* brings you the following benefits:
+
+* Modularity by being able to independently update or replace single
+components without impacting the rest of the system.
+* Enhanced reusability by being able to reuse software at the component
+level instead of at the system level.
+* Interoperability through the use of well defined interfaces and
+standards based development.
+* Extensibility since a Component Based Architecture (CBA) is inherently
+loosely coupled, supporting easier extension of component and system
+functionality.
+* Scalability by being able to scale from single component deployment to
+large distributed multiple node deployments.
+* Reduced complexity through encapsulation, modularity, separation of
+concerns and the establishment of hierarchical component dependencies.
+* Faster and cheaper development through:
+** shorter design times, more reuse and less complexity;
+** faster time-to-market, faster software development;
+** focus change to composition of a software-intensive system instead of
+all new design;
+** lower maintenance costs.
+* Improved quality & reliability through reuse, test and maintenance at
+the component level instead of at the system level.
+
+=== The IDL to {cxx11} language mapping
+
+The IDL to {cxx11} language mapping is much easier to learn than the IDL
+to {cpp} language mapping. The IDL to {cxx11} language mapping brings you
+the following major improvements:
+
+Integration of standard {cxx11} types::
+
+The {cxx11} language mapping leverages standard {cxx11} types for all IDL
+standard types like the integer types, floating point types, character
+types, booleans and even strings (`std::string`), sequences
+(`std::vector`) and arrays (`std::array`). This mapping provides a great
+improvement of ease of use and far better opportunities for integration
+with other {cpp}(11) based software (like the
+http://en.wikipedia.org/wiki/C++_standard_library[{cpp}(11) Standard
+Library]).
+
+Simplified memory management::
+
+The {cxx11} mapping leverages standardized concepts from the {cxx11}
+language for the new reference types based on the standard {cxx11}
+`std::shared_ptr`/`std::weak_ptr` semantics for all IDL based reference
+types implementing a memory management concept without any need for
+developer controlled reference counting, `new` or `delete`. Other ('old
+style') pointer types have been replaced by implementations relying on
+the new {cxx11} _move semantics_ completely foregoing reference counting
+requirements.
+
+API slim down::
+
+The implementation of standardized concepts has led to a significant
+clean up and slim down of the API for standard framework classes and
+code generated from IDL definitions. This again improves usability and
+reduces the learning curve.
+Reduced complexity::
+
+All of the above leads to a vastly less complex programming model for
+IDL based applications/components not only increasing ease of use and
+reduced learning curves but also ultimately leading to software with
+significantly fewer _source lines of code_ (SLOCs) or in other words;
+cheaper and better maintainable software.
+
+On the Remedy IT https://www.axcioma.com/documents/presentations.html[AXCIOMA]
+product website you can find the
+Programming with IDL to {cxx11} tutorial and the
+Comparing IDL to {cpp} with IDL to
+{cxx11} tutorial.
+
+== Compilation of *AXCIOMA*
+
+=== Supported compilers
+
+*AXCIOMA* is currently supported using the following compilers
+
+* GCC version 4.8 or newer
+
+At this moment these are the only supported compilers. Remedy IT is
+working with various compiler vendors to get the needed {cxx11} features
+supported in their respective products.
+
+=== Supported platforms
+
+*AXCIOMA* is currently supported on
+
+* CentOS 7.3 x86_64 using GCC 4.8.5
+
+*AXCIOMA* is using at least the following {cxx11} features
+
+* Strongly typed enumerations
+* `std::shared_ptr` and `std::weak_ptr`
+* `constexpr`, generalized constant expressions
+* Range-based for loop
+* Explicit overrides and final
+* `nullptr` constant
+* Explicit conversion operators
+* Unrestricted unions
+* Variadic templates
+* Explicitly defaulted and deleted special member functions
+* Lambdas
+
+==== Linux
+
+Before compiling *AXCIOMA* on Linux check the following
+prerequisites:
+
+[cols="<,<",options="header",]
+|=========================================
+|Prerequisite |Package name
+|ruby 2.0 or newer|ruby
+|perl version 5.10 or newer |perl
+|gcc version 4.7 or newer |gcc
+|g++ version 4.7 or newer |gcc-c++
+|xerces-c++ version 3.0 or newer |xerces-c
+|clang 5 or newer |clang
+|GNU make version 3.81 or newer |make
+|GNU Bash|bash
+|=========================================
+
+==== Windows
+
+See the
+<<{xref_docs_root}/taox11/windows_instructions.adoc#,Development on Windows>>
+information for more details on the *AXCIOMA* prerequisites, compilation, and
+setting up a development environment for *AXCIOMA*.
+
+==== Android
+
+For the prerequisites, compilation, and usage of *AXCIOMA* on Android read our
+<<axcioma_on_android.adoc#,Android>> instructions.
+
+=== Directory structure
+
+The axcioma directory should contain the following folders after
+setup +
+
+[cols="<,<7",options="header",]
+|=========================================
+|Folder|Description
+|ACE | The ACE+TAO+MPC source code which is used by TAOX11
+|bin | Contains the <<ridlc#,ridlc>> and <<BRIX11,brix11>> start scripts
+|brix11 | The <<BRIX11,brix11>> toolset
+|ciaox11 | The headers, templates, libraries, tests and examples for the CIAOX11 LwCCM framework
+|dancex11 | The DnCX11 deployment tooling runtime components
+|docs | Common documentation resources
+|etc | Miscellaneous configuration files
+|lib | Precompiled libraries
+|ridl | The RIDL compiler front end
+|taox11 | The TAOX11 core, RIDL backend for {cxx11}, examples, tests, headers, and templates
+|=========================================
+
+== Developing with *AXCIOMA*
+
+*AXCIOMA* reuses both the (classic) build system provided by
+**A**CE&**T**AO&**C**IAO&**D**AnCE which is based on
+link:{docs_root}/../../ACE/MPC/docs/html/MakeProjectCreator.html[MPC] for makefile (or
+other compiler project file) generation as well as the Perl based test
+framework used for the regression tests.
+
+See link:{docs_root}/../../ACE/MPC/docs/html/MakeProjectCreator.html[this] page for more
+information about MPC. MPC makes sure that all compiler flags are set
+correctly so that every library and application is built with the same
+compiler flags.
+
+It is *strongly* advised that the GNU make files for your *AXCIOMA*
+applications are generated with the aid of MPC.
+
+Creating MPC files for *AXCIOMA* can however be daunting, especially for the novice
+developer. This is why *AXCIOMA* also includes a novel, more integrated and easier
+way of generating your project build files (GNU makefiles, MSVC solutions etc.)
+without having to deal with MPC directly. This option is provided through an *AXCIOMA*
+specific extension of the BRIX11 toolset described in the <<BRIX11,next paragraph>>.
+
+*AXCIOMA* is distributed as a prebuilt, binary package so there is no
+need to compile ACE, TAO (*AXCIOMA* makes no use of CIAO or DAnCE), or
+any other parts required by *AXCIOMA* as well as the *AXCIOMA* libraries
+and executables themselves.
+
+There are basically two ways to develop your application with *AXCIOMA*:
+
+. Using the BRIX11 toolset
+. The classic (CIAO) way
+
+=== BRIX11
+
+<<{xref_docs_root}/brix11/brix11.adoc#,BRIX11>> is a toolset provided by Remedy
+IT to help you start up your *AXCIOMA* development and to simplify
+building and running your *AXCIOMA* applications.
+
+BRIX11 provides a common, integrated interface simplifying the execution
+of various commands from the normal development cycle. +
+Additionally it supports generation of boiler plate, starter code for
+IDL files, component implementations as well as generate a (standard)
+MPC project file and test script (`run_test.pl` file). BRIX11 is also
+able to compile and run the application once all files are generated.
+
+Using BRIX11 there is also no need to set any environment variables
+since BRIX11 will analyze your development environment and configure the
+environment for the development commands fully automatically. In fact
+you can immediately start using BRIX11 after compilation of *AXCIOMA*
+by calling the `brix11` script located in the `bin` directory in the
+root of the axcioma folder (the only thing you might want to do is
+to add the path to the `bin` directory to the `PATH` so you can execute
+`brix11` from anywhere).
+
+More information about the BRIX11 toolset can be found
+<<{xref_docs_root}/brix11/brix11.adoc#,here>>.
+
+Using BRIX11 there are now two ways of controlling buildsteps for your
+project:
+[lowerroman]
+. using the regular (basic) build commands that BRIX11 provides (`gen build`
+  and `make`)
+. using the AXCIOMA Project Control (*APC*) command extensions that were
+  specifically developed for *AXCIOMA* to offer a simpler, more integrated
+  and easier to use project management option
+
+==== AXCIOMA Project Control (APC)
+
+As managing *AXCIOMA* applications can be quite complex, especially for the novice user,
+with regard to keeping track of dependencies between data IDL, component and connector
+interfaces etc. as well as setting up the appropriate MPC files for the project we have
+developed an *AXCIOMA* specific extension command set for the BRIX11 tool to use. +
+These commands are known as the AXCIOMA Project Control (APC) commands. You can find
+more detailed information about this toolset <<axcioma_project_tool#,here>>.
+
+APC offers an alternative project specification format which is highly integrated with
+*AXCIOMA* to make it unobtrusive and easy to use in combination with a small set of commands
+to control project build file generation, building application code and cleanup.
+
+As APC has been specifically developed for *AXCIOMA* projects these commands
+provide even more ease of use than the regular BRIX11 commands would. However,
+the regular BRIX11 commands can also still be used (and in some instances with
+more detailed control) for *AXCIOMA* projects.
+
+=== Classic development
+
+To build and run a *AXCIOMA* unit test or your own *AXCIOMA*
+application, perform the following steps
+
+-  Open a terminal and navigate to the root directory of the package
+(typically `axcioma_<version>`) and than either
+
+** create a 'setenv' (or 'setenv.bat') script using brix11 by invoking
+`bin/brix11 env > setenv` (or `bin\brix11 env > setenv.bat` on Windows)
+and next invoke `source setenv` (or `setenv.bat` on Windows) +
+ *or*
+** (on Linux) use the brix11 _environment_ command directly to update the
+current environment by invoking `$(bin/brix11 env)`
+
+This makes sure all needed environment variables are set correctly.
+
+Navigate to the root of any of the CIAOX11 tests or examples directories
+(at the root of the ciaox11 folder or any of the folders under
+ciaox11/connectors), to a specific test/example, or to the root
+directory of your application. Be aware that MPC files are needed in
+order to generate the GNU makefiles.
+
+Invoke `mwc.pl -type gnuace` (on Windows use
+`perl %TAOX11_ROOT%/bin/mwc.pl -type gnuace`) +
+ This will create the GNU makefiles. MPC will iterate through all sub
+directories and parse the MPC files.
+
+Once the GNU makefiles are generated, invoke `make`
+
+Each test in a CIAOX11 test or example directory contains a
+`descriptors` folder which in turn contains a perl script named
+`run_test.pl`. This script runs the compiled test. The complete test can
+be run by navigating to the descriptors folder and invoking
+`perl run_test.pl`
+
+=== Libraries and MPC
+
+Building *AXCIOMA* components requires you to link against the *AXCIOMA*
+libraries. Making use of MPC and BRIX11 makes it easier for you to link
+against the *AXCIOMA* libraries. This
+<<lib_mpc.adoc#,page>> gives an overview of all the
+*AXCIOMA* libraries and which MPC base project(s) you need to create a
+working *AXCIOMA* component (BRIX11 generated MPC project files will
+automatically use these base projects correctly).
+
+=== Manually build *AXCIOMA* components
+
+<<compilation.adoc#,This page>> shows how to manually
+compile and link your *AXCIOMA* components. It gives an overview of
+which command line options are used and which libraries are needed when
+linking a simple *AXCIOMA* component. It gives some background
+information about the GCC options used but it is still not recommended
+to build your *AXCIOMA* components by hand!
+
+=== Runtime considerations on Windows
+
+Due to the way Microsoft pass:[C++] compilers and linkers on Windows (including the Intel pass:[C++] compiler for Windows)
+handle symbol exports from DLLs debug components can only be executed in a runtime environment where all executables and
+libraries containing pass:[C++] symbols are build for debug.
+
+AXCIOMA for MS or Intel pass:[C++] on Windows ships with a full set of debug libraries and executables for that purpose. Executing
+a deployment using the debug versions of the deployment tools will make sure that both for framework libraries as well as
+for user component libraries the debug versions are preferred above release libraries when (dynamically) loading them.
+With <<{parent_dir}/brix11/brix11.adoc#,BRIX11>> deploying an application/test for debug can be specified by
+adding the `--debug` or `--release` (default) switch to the `run test` command.
+
+These considerations do not apply for the MinGW-w64 compiler toolset as these use an entirely different way of exporting pass:[C++]
+symbols which does not differ for debug or release builds (just like the GNU compilers on other platforms).
+
+== Support
+
+*AXCIOMA* is supported by Remedy IT. Please read the
+<<axcioma_faq.adoc#,FAQ-section>> first before asking a
+question. +
+ If your problem was not listed in the FAQ, you can submit your issue by
+using the PROBLEM-REPORT-FORM. The PRF is
+available in the root directory of the *AXCIOMA* package. Please make
+sure to follow the directions in the PRF.
+
+=== Training material
+
+A basic tutorial about the IDL to {cxx11} language mapping is available at
+the https://www.axcioma.com/documents/presentations.html[AXCIOMA] website. There
+you can also find a comparison between the IDL to {cpp} and IDL to {cxx11}
+language mapping. +
+ +
+ Remedy IT also offers a
+https://www.axcioma.com/services/training.html[Component Based Development using AXCIOMA] course.

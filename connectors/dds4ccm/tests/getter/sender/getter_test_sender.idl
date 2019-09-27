@@ -1,0 +1,34 @@
+/**
+ * @file    getter_test_sender.idl
+ * @author  Marcel Smit
+ *
+ * @brief   Sender IDL for the getter test.
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef GETTER_TEST_SENDER_IDL_
+#define GETTER_TEST_SENDER_IDL_
+
+#include "commonSE.idl"
+#include "get_invoker.idl"
+#include <ccm_timed_trigger.idl>
+
+module Getter_Test
+{
+  component Sender
+  {
+    port CommonTestConnector::DDS_Write info_write;
+
+    provides CCM_DDS::ConnectorStatusListener info_out_connector_status;
+
+    uses GetInvoker invoke_getter;
+
+    uses CCM_TT::TT_Scheduler tt_scheduler;
+
+    attribute unsigned short keys;
+    attribute unsigned short iterations;
+  };
+};
+
+#endif

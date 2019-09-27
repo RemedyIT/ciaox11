@@ -1,0 +1,47 @@
+/**
+ * @file    multi_inherit.idl
+ * @author  Marijke Hengstmengel
+ *
+ * @brief   base of ami4ccm test with multiple inheritance
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef INTERMULTI_IDL
+#define INTERMULTI_IDL
+
+#pragma ami4ccm interface "InterMulti::One"
+#pragma ami4ccm interface "InterMulti::Two"
+#pragma ami4ccm interface "InterMulti::Three"
+#pragma ami4ccm idl "multi_inheritA.idl"
+
+module InterMulti
+{
+  exception InternalError
+    {
+      long id;
+      string error_string;
+    };
+
+  // Sender/Receiver interfaces
+  interface One
+    {
+      long foo (in string in_str, in long cmd, out string answer)
+        raises (InternalError);
+    };
+  interface Two
+    {
+      void bar (in long cmd, out string answer)
+        raises (InternalError);
+    };
+
+  //multiple inheritance
+  interface Three: One, Two
+    {
+       void plus (in long cmd, out string answer)
+         raises (InternalError);
+    };
+};
+
+#endif

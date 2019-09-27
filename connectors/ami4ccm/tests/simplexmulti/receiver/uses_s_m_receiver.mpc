@@ -1,0 +1,40 @@
+project(*idl_gen) : ciaox11_test_a4c_comp_all_idl{
+  custom_only = 1
+
+  after += uses_s_m_idl_gen uses_s_m_lem_gen
+
+  idlflags += -Wb,base_export_macro=USES_S_M_RECEIVER \
+              -Wb,base_export_include=uses_s_m_receiver
+
+  IDL_Files {
+    gendir=generated_code
+    uses_s_m_receiver.idl
+  }
+}
+
+
+project(*exec) : ciaox11_test_a4c_exec_all {
+  after += uses_s_m_stub uses_s_m_lem_stub *idl_gen
+  libs  += uses_s_m_stub uses_s_m_lem_stub
+
+  dynamicflags += USES_S_M_RECEIVER_LEM_STUB_BUILD_DLL \
+                  USES_S_M_RECEIVER_EXEC_BUILD_DLL \
+                  USES_S_M_RECEIVER_SVNT_BUILD_DLL
+
+  Source_Files {
+    uses_s_m_receiver_exec.cpp
+    generated_code/uses_s_m_receiverEC.cpp
+    generated_code/uses_s_m_receiver_svnt.cpp
+  }
+
+  Header_Files {
+    uses_s_m_receiver_exec.h
+    generated_code/uses_s_m_receiver_exec_export.h
+
+    generated_code/uses_s_m_receiverEC.h
+    generated_code/uses_s_m_receiver_lem_stub_export.h
+
+    generated_code/uses_s_m_receiver_svnt.h
+    generated_code/uses_s_m_receiver_svnt_export.h
+  }
+}

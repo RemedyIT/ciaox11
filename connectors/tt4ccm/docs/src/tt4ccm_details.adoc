@@ -1,0 +1,217 @@
+include::_{backend}_settings.adoc[]
+
+= The TT4CCM Timed Trigger connector
+
+== Design
+
+The Timed Trigger connector provides predefined interfaces for scheduling
+timed events using an asynchronous approach with callback objects (trigger
+handlers).
+
+The following (AXCIOMA standard) IDL defines these interfaces:
+
+[source,IDL]
+.TT4CCM Timed Trigger interface IDL
+-----------------------------------------------
+module CCM_TT
+{
+  /// Time duration value
+  struct TT_Duration
+  {
+    unsigned long sec;
+    unsigned long nanosec;
+  };
+
+  local interface TT_Timer;
+
+  /// Timed Trigger callback handler
+  local interface TT_Handler
+  {
+    void on_trigger (in TT_Timer timer,
+                     in TT_Duration delta_time,
+                     in unsigned long round);
+  };
+
+  /// Timed Trigger scheduled Timer entry
+  local interface TT_Timer
+  {
+    void cancel ();
+
+    boolean is_canceled ();
+
+    readonly attribute unsigned long rounds;
+
+    readonly attribute long id;
+  };
+
+  /// Timed Trigger scheduler interface
+  local interface TT_Scheduler
+  {
+    TT_Timer schedule_trigger (
+      in TT_Handler trigger_handler,
+      in TT_Duration trigger_delay);
+
+    TT_Timer schedule_repeated_trigger (
+      in TT_Handler trigger_handler,
+      in TT_Duration start_delay,
+      in TT_Duration interval,
+      in unsigned long max_rounds);
+  };
+};
+-----------------------------------------------
+
+The time values used in these interfaces are intentionally restricted
+to relative times (i.e. durations) to prevent dependency of the interface
+on specific time policies (or clock types).
+
+The `TT_Timer` type represents the scheduled trigger and provides access
+to its unique `id` as well as an iteration counter (`rounds`).
+The iteration number is incremented each time *before* calling the timed
+trigger handler.
+Timers can be automatically cancelled (after a single trigger for singular
+schedules or after a specified number of iterations or rounds) or manually.
+Manual cancelling is possible both from the context of a triggered callback
+as well as from outside such a context.
+All interfaces should be thread safe.
+
+The `TT_Handler` interface provides the base interface for user implemented
+callback classes.
+A timer object triggering will cause the `on_trigger` method of it's associated
+handler object to be called with a reference to the timer causing the event as
+well as a time value representing the elapsed (relative) time since the
+initial scheduling of the timer.
+
+
+== Example
+
+The examples in this document follow the
+<<{xref_docs_root}/ciaox11/philosophy.adoc#,*AXCIOMA* philosophy>> and the
+directory structure mentioned in the
+<<{xref_docs_root}/ciaox11/good_practice.adoc#,Good practice>> guide.
+
+=== IDL
+
+[source,IDL]
+.Component IDL using the Timed Trigger interface
+--------------------------
+#include <ccm_timed_trigger.idl>
+
+module Hello
+{
+  component Sender
+  {
+    uses CCM_TT::TT_scheduler the_scheduler;
+  };
+};
+
+--------------------------
+
+=== Implementation
+
+The *AXCIOMA* RIDL compiler will generate all required {cxx11} source files
+for the compilation of the user component including a template (with
+integrated re-generation support) for the component executor.
+
+The generated template can be used to implement the code for the scheduling
+of timed triggers and their handler objects.
+
+A Timed Trigger handler could look like:
+
+[source,c++]
+.Timed Trigger handler class
+--------------------------
+class TT_Callback final
+  : public IDL::traits<CCM_TT::TT_Handler>::base_type
+{
+public:
+  TT_Callback () {}
+
+  virtual
+  void
+  on_trigger (
+      IDL::traits< ::CCM_TT::TT_Timer>::ref_type timer,
+      const ::CCM_TT::TT_Duration& time,
+      uint32_t round) override;
+};
+
+void
+TT_Callback::on_trigger (
+    IDL::traits< ::CCM_TT::TT_Timer>::ref_type timer,
+    const ::CCM_TT::TT_Duration& time,
+    uint32_t round)
+{
+  // do something usefull
+}
+--------------------------
+
+The normal place to implement scheduling of a trigger event would be inside the
+`ccm_activate` lifecycle call of the user component.
+
+[source,c++]
+.Scheduling a repetitive trigger in `ccm_activate`
+--------------------------
+void TT_Tester_exec_i::ccm_activate ()
+{
+  //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_TT_Tester_Impl::TT_Tester_exec_i[ccm_activate]
+
+  IDL::traits<CCM_TT::TT_Scheduler>::ref_type tt_s = this->context_->get_connection_the_scheduler ();
+
+  tt_s->schedule_repeated_trigger (
+      CORBA::make_reference<TT_Callback> (),
+      CCM_TT::TT_Duration (3, 0),             // initial delay 3 sec
+      CCM_TT::TT_Duration (0, 50000),         // repetition interval 50 usec
+      0);                                     // unlimited repetition
+
+  //@@{__RIDL_REGEN_MARKER__} - END : Test_TT_Tester_Impl::TT_Tester_exec_i[ccm_activate]
+}
+--------------------------
+
+It is not necessary (though possible and fully legal) to manually cancel
+any active timers on shutdown (or before) as these will all be cancelled
+during the deactivation phase of the deployment (when `ccm_passivate`
+is called on all installed components).
+
+=== Compilation
+
+Using the Timed Trigger connector requires no compilation of base IDL and/or
+libraries since these are provided (prebuilt) with the connector which comes
+with two separate libraries; one with the (lem-)stubs of the interfaces and one
+with the connector implementation.
+
+For each user defined component a component local executor mapping has
+to be generated and compiled into a component lem stub. This library
+contains local interfaces for the framework to communicate with the user
+defined component. The {cxx11} source files needed for this library can be
+generated out of the component IDL.
+
+The component implementation needs to be compiled and linked to both the
+component lem stub as well as the timed trigger (lem-)stubs.
+
+=== Deployment
+
+Both the user defined component as well as the Timed Trigger connector
+need to be declared in the deployment plan for a colocated deployment
+(i.e. same node, same locality, same container).
+More information about deployment plans can be found
+<<{xref_docs_root}/dancex11/config-plan.adoc#,here>>.
+
+Note that the Timed Trigger connector can only be used for local (colocated)
+connections.
+
+[source, CONFIG]
+.CONFIG type deployment plan
+--------------------------------------------------------------------------------------------------------------------------
+# TimedTriggerProvider instance
+nl.remedy.it.CCM.Component TimedTriggerProvider ciaox11_tt4ccm_conn create_CIAOX11_TT_TimedTrigger_Impl
+    nl.remedy.it.DnCX11.ExecParameter nl.remedy.it.DnCX11.Servant.Factory "create_CIAOX11_TT_TimedTrigger_Servant"
+    nl.remedy.it.DnCX11.Node "TestNode"
+    nl.remedy.it.DnCX11.Locality "TTLocality"
+
+# Test Component instance
+nl.remedy.it.CCM.Component TT_TestComponent tt_test_exec create_Test_TT_Tester_Impl
+    nl.remedy.it.DnCX11.ExecParameter nl.remedy.it.DnCX11.Servant.Factory "create_Test_TT_Tester_Servant"
+    nl.remedy.it.DnCX11.Node "TestNode"
+    nl.remedy.it.DnCX11.Locality "TTLocality"
+    nl.remedy.it.DnCX11.Connection TimedTriggerProvider
+      the_scheduler < tt_scheduler
+--------------------------------------------------------------------------------------------------------------------------

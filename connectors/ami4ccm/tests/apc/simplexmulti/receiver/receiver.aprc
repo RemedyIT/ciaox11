@@ -1,0 +1,19 @@
+component 'uses_s_m_receiver' do |comp|
+  #data/type idl
+  comp.idl %w{ uses_s_m.idl }
+  comp.define 'UsesSM::Receiver' do |intf|
+
+    #facet  port with interface UsesSM::One defined in uses_s_m.idl
+    intf.port 'do_my_one' do |p|
+      p.provides 'UsesSM::One'
+    end
+
+    #facet  port with interface UsesSM::Two defined in uses_s_m.idl
+    intf.port 'do_my_two' do |p|
+      p.provides 'UsesSM::Two'
+    end
+
+  end
+
+  comp.combined_lib true
+end

@@ -1,0 +1,18 @@
+/**
+ * @file    corba4ccm_exceptions.idl
+ * @author  Marcel Smit
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef CORBA4CCM_EXCEPTIONS_IDL_
+#define CORBA4CCM_EXCEPTIONS_IDL_
+
+
+interface Hello
+{
+  void say_hello ();
+};
+
+#endif

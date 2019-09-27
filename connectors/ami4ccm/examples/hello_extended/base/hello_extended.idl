@@ -1,0 +1,47 @@
+/**
+ * @file    hello_extended.idl
+ * @author  Marcel Smit
+ *
+ * @brief   base of ami4ccm hello example
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef HELLO_EXTENDED_IDL_
+#define HELLO_EXTENDED_IDL_
+
+
+#pragma ami4ccm interface "Hello::MyFoo"
+
+#pragma ami4ccm idl "hello_extendedA.idl"
+
+
+module Hello
+{
+  exception InternalError
+    {
+      long id;
+      string error_string;
+    };
+
+  // Sender/Receiver interface
+  interface MyFoo
+    {
+      long foo (in string in_str, out string answer)
+        raises (InternalError);
+
+      void hello (out long answer)
+        raises (InternalError);
+
+
+      attribute short rw_attrib
+        getraises (InternalError)
+        setraises (InternalError);
+
+      readonly attribute short ro_attrib
+        raises (InternalError);
+    };
+};
+
+#endif /* HELLO_EXTENDED_IDL_ */

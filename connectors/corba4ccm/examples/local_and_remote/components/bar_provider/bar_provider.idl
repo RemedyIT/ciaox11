@@ -1,0 +1,27 @@
+/**
+ * @file    bar_provider.idl
+ * @author  Martin Corino
+ *
+ * @brief   Bar provider component
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef BAR_PROVIDER_IDL_
+#define BAR_PROVIDER_IDL_
+
+#include <Components.idl>
+
+#include "bar.idl"
+
+module Example
+{
+  component BarProvider
+  {
+    /// Provides
+    provides Bar do_my_bar;
+  };
+};
+
+#endif /* BAR_PROVIDER_IDL_ */

@@ -1,0 +1,28 @@
+// Compile section: generic
+% unless link_libs.empty?
+libs += <%= link_libs.join(" ") %>
+% end
+libout    = <%= lib_out %>
+% unless link_libs.empty?
+libpaths += <%= lib_paths.join(" ") %>
+% end
+% unless includes.empty?
+includes += <%= includes.join(" ") %>
+% end
+
+sharedname    = <%= shared_name %>
+% unless dynamic_names.empty?
+dynamicflags += <%= dynamic_names.join(" \\\n                ") %>
+% end
+
+Source_Files {
+% sources.each do |s|
+  <%= s %>
+% end
+}
+
+Header_Files {
+% headers.each do |h|
+  <%= h %>
+% end
+}

@@ -1,0 +1,34 @@
+#This recipe file contains recipe for components without ports and/or attributes
+
+component 'empty_comp' do |comp|
+  #define component 'EmptyComp', with empty block
+  comp.define 'EmptyComp' do |intf|
+  end
+end
+
+
+component 'empty_comp_2' do |comp|
+  #define component 'EmptyComp_2', without block
+  comp.define 'EmptyComp_2'
+end
+
+component 'port_only_comp' do |comp|
+  comp.idl %w{ foo.idl}
+  #define component 'PortComp', with port, without attibute
+  comp.define 'PortComp' do |intf|
+    intf.port 'run_my_bar_foo_prov' do |p|
+      p.provides 'Foo::MyFoo'
+     end
+  end
+end
+
+component 'attr_only_comp' do |comp|
+  comp.idl %w{ foo.idl}
+  #define component 'AttrComp', without port, with attibute
+  # readable attribute with type Foo::Bar, defined in foo.idl
+  comp.define 'AttrComp' do |intf|
+    intf.attribute 'TestBar' do |att|
+      att.type 'Foo::Bar'
+    end
+  end
+end

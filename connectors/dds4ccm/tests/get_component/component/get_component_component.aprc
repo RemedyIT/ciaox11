@@ -1,0 +1,6 @@
+
+component 'GetComponentComponent' do |comp|
+  comp.idl %w{ get_component_component.idl }
+  comp.includes '$(CIAOX11_ROOT)/connectors'
+  comp.libs 'ciaox11_dds4ccm_logger'
+end

@@ -1,0 +1,13 @@
+/**
+ * @file    Components.idl
+ * @author  Johnny Willemsen
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#if !defined (CCM_COMPONENTS_IDL)
+#define CCM_COMPONENTS_IDL
+
+#endif /* CCM_COMPONENTS_IDL */
+

@@ -1,0 +1,31 @@
+
+% if incl_ami4ccm_receptacle?
+%  if  all_incl_multiple_port?
+    /// @name Multiplex ami4ccm connection map types
+    //@{
+%    interfaces_with_multiple_ami4ccm_ports.each do |_mp|
+    /// Map type of connection name and <%= _mp.interface_type.scoped_ami4ccm_cxxname %> references
+    typedef std::map<std::string, IDL::traits< ::<%= _mp.interface_type.scoped_ami4ccm_cxxname %>>::ref_type>
+    SENDC_<%= _mp.interface_type.scoped_cxxname.upcase.identify %>_CONTEXT_TABLE;
+%    end
+    //@}
+
+%  end
+    /// @name Member variables for storing all ami4ccm receptacles
+    //@{
+%  all_ports.each do |_mps|
+%    if _mps.port_type == :receptacle && _mps.is_multiple? && _mps.is_ami4ccm_port?
+    /// Member variable for storing a map for the ami4ccm multiplex<%= _mps.interface_type.scoped_cxxname %> sendc_<%= _mps.lem_name %> connection
+    SENDC_<%= _mps.interface_type.scoped_cxxname.upcase.identify %>_CONTEXT_TABLE sendc_<%= _mps.lem_name %>_context_tbl_;
+%    end
+%  end
+%  all_ports.each do |_p|
+%    if _p.port_type == :receptacle
+%      if !_p.is_multiple? && _p.is_ami4ccm_port?
+    /// Member variable for storing a reference for the sendc <%= _p.cxxname %> receptacle
+    IDL::traits< ::<%= _p.interface_type.scoped_ami4ccm_cxxname %>>::ref_type sendc_<%= _p.cxxname %>_;
+%      end
+%    end
+    //@}
+%  end
+% end

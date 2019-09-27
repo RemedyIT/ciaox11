@@ -1,0 +1,39 @@
+project(*idl_gen) : ciaox11_comp_all_idl, ciaox11_test_idldefaults {
+  custom_only = 1
+
+  after += multi_modules_idl_gen multi_modules_lem_gen
+
+  idlflags += -Wb,base_export_macro=MULTI_MODULES_COMPONENT \
+              -Wb,base_export_include=multi_modules_component \
+              -Gex -oI .
+
+  IDL_Files {
+    gendir=generated_code
+    multi_modules_component.idl
+  }
+}
+
+project(*exec) : ciaox11_test_exec_all {
+  after += multi_modules_stub multi_modules_lem_stub *idl_gen
+  libs  += multi_modules_stub multi_modules_lem_stub
+
+  dynamicflags += MULTI_MODULES_COMPONENT_LEM_STUB_BUILD_DLL \
+                  MULTI_MODULES_COMPONENT_EXEC_BUILD_DLL \
+                  MULTI_MODULES_COMPONENT_SVNT_BUILD_DLL
+  Source_Files {
+    multi_modules_component_exec.cpp
+    generated_code/multi_modules_componentEC.cpp
+    generated_code/multi_modules_component_svnt.cpp
+  }
+
+  Header_Files {
+    multi_modules_component_exec.h
+    generated_code/multi_modules_component_exec_export.h
+
+    generated_code/multi_modules_componentEC.h
+    generated_code/multi_modules_component_lem_stub_export.h
+
+    generated_code/multi_modules_component_svnt.h
+    generated_code/multi_modules_component_svnt_export.h
+  }
+}

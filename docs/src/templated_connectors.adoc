@@ -1,0 +1,135 @@
+include::_{backend}_settings.adoc[]
+
+= IDL Templated connector support
+
+For AXCIOMA we have an advanced feature to implement templated
+connectors using {cxx11}. This saves a lot of code
+generation and complexity. This feature is used by our
+DDS4CCM implementation but can also be used to user defined
+templated connectors.
+
+== Example
+
+As example we have the `factory_connector` as defined as:
+
+[source,idl]
+-----------------------------
+module foo <typename T>
+{
+  local interface control
+  {
+    void create(out T dat);
+  };
+  connector factory_connector
+  {
+     uses control bar;
+  };
+};
+-----------------------------
+
+The `foo` templated module can be instantiated with any IDL type which
+will be used as out argument of the `create` operation. This connector could be
+implemented using a specific {cpp} class that implements it for a specific type
+but we really would like to support any type for `T`.
+
+In order to use the *AXCIOMA* advanced templated connector support some specific
+naming rules have to be followed and special IDL pragma's used so
+the RIDL compiler can generate a {cpp} template instantiation for the
+implementation of this connector.
+
+The first step is to annotate the IDL with the filename of the {cpp}
+header in which the factory_connector template is implemented. This must be done by
+adding a `axcioma impl` pragma as below to the IDL file defining the
+`factory_connector`. In this case that is `foo_connector_t.h`.
+
+[source,idl]
+----------------------------------------
+#pragma axcioma impl "foo_connector_t.h"
+----------------------------------------
+
+In `foo_connector_t.h` the implementation of
+`factory_connector_T` as {cpp} template is provided. This template has the name of
+the connector type in IDL with `_T` as postfix. This {cpp} template has
+the CCM_TYPE traits as first argument (we come back on that soon) and
+then an argument for each argument as the templated module definition of
+the connector has in IDL. In this case that is just one argument named `T`.
+
+[source,c++]
+------------------------------------------------------------------------------------------
+template <typename CCM_TYPE, typename T>
+class factory_connector_T final
+: public virtual CCM_TYPE::base_type
+{
+public:
+   factory_connector_T () = default;
+   virtual ~factory_connector_T () = default;
+
+   virtual void set_session_context (IDL::traits<:sessioncontext>::ref_type ctx) override;
+
+   virtual void configuration_complete () override;
+   virtual void ccm_remove () override;
+   virtual void ccm_activate () override;
+   virtual void ccm_passivate () override;
+
+private:
+   factory_connector_T(const factory_connector_T&) = delete;
+   factory_connector_T(factory_connector_T&&) = delete;
+   factory_connector_T& operator=(const factory_connector_T&) = delete;
+   factory_connector_T& operator=(factory_connector_T&&) = delete;
+};
+------------------------------------------------------------------------------------------
+
+In the example code above you can see that a LwCCM executor is being declared
+that implements all the mandatory LwCCM lifecycle operations
+(`set_session_context, configuration_complete, ccm_remove, ccm_activate, and ccm_passivate`).
+For simplicity a default constructor and destructor are declared.
+
+Each LwCCM executor has to be derived from a base type but that type is now known until
+the moment this templated module is compiled. The same is valid for the Context class
+that caches all receptacle references this connector uses. To enable template meta
+programming the `CCM_TYPE` trait has at least two trait members.
+
+[cols="<m,<5",options="header",]
+|=========================================
+|Trait Member |Functionality
+|base_type | Provides the base type from which the executor has to be derived from
+|context_type | The type of the context this executor has
+|=========================================
+
+Additionally for each facet, receptacle, and attribute of the connector in
+IDL a trait is added to this `CCM_TYPE` struct. When the connector uses
+extended ports the traits are grouped in a nested trait. For the
+factory_connector the `CCM_TYPE` trait contains an additional
+`bar_type` which can be used when implementing the factory_connector_T
+template.
+
+It is well possible that at implementation time it is unknown whether a
+certain template argument of the {cpp} template will be a basic type or a
+complex type. As basic types used as input argument are passed by value and
+complex types are passed by reference this could be a problem. In order to
+generalize the implementation given datatype `T` the argument `in` type in the
+{cpp} template should always be specified as `IDL::traits<T>::in_type` which
+will always translate to the correct `in` type based on the concrete type of `T`.
+Similarly `IDL::traits<T>::out_type`, and `IDL::traits<T>::inout_type` should be
+used. See the https://www.omg.org/spec/CPP11[IDL to {cxx11}] Language
+Mapping specification for a complete overview of all available IDL traits.
+
+Now the templated connector has been implemented any user can create an
+instantiation of the templated module. The following IDL could for example be used
+to instantiate the foo module with a `long` type.
+
+[source,idl]
+----------------------------
+typedef long value;
+module foo<value> foo_value;
+----------------------------
+
+This will instantiate the templated module as the `foo_value` IDL
+module in which `control` and `factory_connector` are defined with `value`
+instead of T. The instantiation of your {cpp} template can now be
+generated by RIDL by invoking RIDL on your template instantiation with
+the addition of the `-Gcn` commandline argument. This generates the
+`_conn/h.cpp` files with in the `_conn.cpp` file the declaration of the
+`CCM_TYPE` trait and an instantiation of user defined {cpp} template. When
+the generated _conn.cpp file doesn't compile check the name and signature of
+the user defined {cpp} template.

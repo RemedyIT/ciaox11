@@ -1,0 +1,47 @@
+project(*idl_gen) : ciaox11_test_comp_all_idl {
+  custom_only = 1
+
+  after += extended_hello_idl_gen extended_hello_lem_gen
+
+  idlflags += -Wb,base_export_macro=EXTENDED_HELLO_RECEIVER \
+              -Wb,base_export_include=extended_hello_receiver \
+              -I../../base -I../../patterns/generated_code
+
+  IDL_Files {
+    gendir=generated_code
+    extended_hello_receiver.idl
+  }
+}
+
+// No skeleton library needed here since the receiver is
+// independent of the inter-component middleware.
+project(*exec) : ciaox11_test_exec_all {
+  after += extended_hello_lem_stub extended_hello_stub *idl_gen
+  libs  += extended_hello_lem_stub extended_hello_stub
+
+  libpaths += ../../lib
+  libout = ../../lib
+
+  dynamicflags += EXTENDED_HELLO_RECEIVER_LEM_STUB_BUILD_DLL \
+                  EXTENDED_HELLO_RECEIVER_EXEC_BUILD_DLL \
+                  EXTENDED_HELLO_RECEIVER_SVNT_BUILD_DLL
+
+  includes += ../../base/generated_code ../../patterns/generated_code
+
+  Source_Files {
+    extended_hello_receiver_exec.cpp
+    generated_code/extended_hello_receiverEC.cpp
+    generated_code/extended_hello_receiver_svnt.cpp
+  }
+
+  Header_Files {
+    extended_hello_receiver_exec.h
+    generated_code/extended_hello_receiver_exec_export.h
+
+    generated_code/extended_hello_receiverEC.h
+    generated_code/extended_hello_receiver_lem_stub_export.h
+
+    generated_code/extended_hello_receiver_svnt.h
+    generated_code/extended_hello_receiver_svnt_export.h
+  }
+}

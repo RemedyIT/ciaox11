@@ -1,0 +1,64 @@
+// The local executor mapping of the A.idl is only used in the AMI4CCM connector
+// implementation. Since the AE.idl will not be generated for the pattern specific
+// stub it should be created here.
+project(*ami4ccm_lem_gen) : ciaox11_test_base_lem_idl, ciaox11_ami4ccm {
+  custom_only = 1
+
+  after += uses_s_m_ami4ccm_aidl_gen
+
+  idlflags += -Wb,base_export_macro=USES_S_M \
+              -Wb,base_export_include=uses_s_m
+
+  IDL_Files {
+    gendir=generated_code
+    ../base/generated_code/uses_s_mA.idl
+  }
+}
+
+project(*ami4ccm_idl_gen) : ciaox11_test_ami4ccm_conn_all_idl {
+  custom_only = 1
+
+  after += uses_s_m_lem_gen *ami4ccm_lem_gen
+
+  idlflags += -Wb,base_export_macro=USES_S_M \
+              -Wb,base_export_include=uses_s_m
+
+  IDL_Files {
+    gendir=generated_code
+    ../base/uses_s_m.idl
+  }
+}
+
+project(*ami4ccm_conn) : ciaox11_test_base_stub, ciaox11_executor, ciaox11_ami4ccm_impl {
+  after += uses_s_m_ami4ccm_stub uses_s_m_stub uses_s_m_lem_stub *ami4ccm_idl_gen
+  libs  += uses_s_m_ami4ccm_stub uses_s_m_stub uses_s_m_lem_stub
+
+  dynamicflags += USES_S_M_AMIC_BUILD_DLL \
+                  USES_S_M_LEM_STUB_BUILD_DLL \
+                  USES_S_M_LEM_STUB_AMI_CONN_BUILD_DLL \
+                  USES_S_M_AMI4CCM_CONN_BUILD_DLL \
+                  USES_S_M_AMI4CCM_SVNT_BUILD_DLL
+
+  Source_Files {
+    generated_code/uses_s_mAmiC.cpp
+    generated_code/uses_s_mAEC.cpp
+    generated_code/uses_s_mA_connEC.cpp
+    generated_code/uses_s_mA_conn_exec.cpp
+    generated_code/uses_s_mA_conn_svnt.cpp
+  }
+
+  Header_Files {
+    generated_code/uses_s_mAmiC.h
+    generated_code/uses_s_mAEC.h
+    generated_code/uses_s_mA_connEC.h
+    generated_code/uses_s_mA_conn_exec.h
+    generated_code/uses_s_mA_conn_svnt.h
+
+    generated_code/uses_s_m_amic_export.h
+    generated_code/uses_s_m_lem_stub_export.h
+    generated_code/uses_s_m_lem_stub_ami_conn_export.h
+    generated_code/uses_s_m_ami4ccm_conn_export.h
+    generated_code/uses_s_m_ami4ccm_svnt_export.h
+  }
+}
+

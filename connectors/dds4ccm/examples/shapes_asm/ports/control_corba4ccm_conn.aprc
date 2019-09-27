@@ -1,0 +1,13 @@
+#recipe for the corba4ccm connector
+
+connector 'control_conn' do |conn|
+  conn.idl %w{ shapes_control_obj.idl }
+  conn.port_type :corba4ccm
+  conn.gen_dir  :conn_dir_build
+end
+
+#mpc name is recipe_id + '_cc' for a corba4ccm connector
+#project_name prefix is recipe_id
+#export name is default recipe_id in uppercase + '_CC'
+#shared name prefix libs is default recipe_id + "_corba_conn", shared name only for executor,
+#gen_dir is default 'generated_code'

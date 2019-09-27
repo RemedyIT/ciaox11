@@ -1,0 +1,45 @@
+include::_{backend}_settings.adoc[]
+
+= LwCCM compliance of CIAOX11
+
+== CIAOX11 core
+
+Where https://www.dre.vanderbilt.edu/~schmidt/CIAO.html[CIAO] has been
+developed with (Lw)CCM standards compliance as main feature CIAOX11 is
+standards compliant in the area of the user component executor and the
+input IDL. CIAOX11 has reduced dependencies on CORBA which has resulted
+in a much smaller and optimized implementation. The following list gives
+an overview of the areas where CIAOX11 has reduced the LwCCM features:
+
+.  No built in remote access to component attributes through CORBA
+.  No support for 'supported interfaces' for components IDL because this is
+an inherent CORBA feature
+.  No support for homes because similar functionality can be achieved
+by deploying multiple plans and/or customizing factory methods
+.  No support for LwCCM built-in events because this is an inherent
+CORBA feature
+.  New connect/disconnect methods on the component context to
+connect/disconnect all receptacles (called by the installation handler)
+.  CORBA request/reply support between components is provided through
+CORBA4CCM connectors instead of being inherent part of the framework
+
+In order to simplify code generation and reduce the footprint of a
+CIAOX11 based application, CIAOX11 also implements the following
+optimizations:
+
+-  When using component/connector inheritance the generated LwCCM
+servants are not using implementation inheritance which greatly
+simplifies the generated code
+-  Interaction between the container, installation handlers, and the
+user written component executors is all based on local IDL interfaces
+
+== CORBA4CCM connectors & servants with CIAOX11
+
+At the moment a component wants to provide a remote accessible facet it
+has to be deployed together with a collocated
+<<{xref_docs_root}/corba4ccm/corba4ccm.adoc#,CORBA4CCM connector>>. The
+CORBA4CCM connector provides the CORBA servant which implements the
+provide_facet operation. This operation is used by the deployment tools
+to retrieve the CORBA facet servant. At the moment a component isn't
+deployed together with a CORBA4CCM connector its facets can't be accessed
+implicitly using CORBA.

@@ -1,0 +1,34 @@
+// This MPC file is added especially for the compilation of the skeleton.
+// This is done since more than one connector is making use of the skeleton.
+// To avoid 'strange' dependencies between these connectors, we'd better
+// completely separate the compilation of the skeleton.
+// Do not generate any client code here since the base is responsible for that.
+project(*idl_gen) : ciaox11_test_base_idl {
+  custom_only = 1
+
+  idlflags += -Wb,base_export_macro=HELLO_EXTENDED \
+              -Wb,base_export_include=hello_extended \
+              -Scc -Sch -Scp -Gxhsk
+  idlflags -= -SS -Ssh -Gxhst
+
+  IDL_Files {
+    gendir=generated_code
+    ../base/hello_extended.idl
+  }
+}
+
+project(*) : ciaox11_test_base, taox11_portableserver {
+  after += hello_extended_stub *idl_gen
+  libs  += hello_extended_stub
+
+  dynamicflags += HELLO_EXTENDED_SKEL_BUILD_DLL
+
+  Source_Files {
+    generated_code/hello_extendedS.cpp
+  }
+
+  Header_Files {
+    generated_code/hello_extendedS.h
+    generated_code/hello_extended_skel_export.h
+  }
+}

@@ -1,0 +1,10 @@
+// --------------------------------------------------------------------
+// ciaox11_test_lem_stub.mpb
+//
+// Copyright (c) Remedy IT Expertise BV
+// Chamber of commerce Rotterdam nr.276339, The Netherlands
+// --------------------------------------------------------------------
+
+project : ciaox11_test_base, ciaox11_ccm_session_stub {
+
+}

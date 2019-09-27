@@ -1,0 +1,42 @@
+% if incl_ami4ccm_receptacle?
+% ports.each do |_p|
+%   if _p.port_type == :receptacle && _p.is_ami4ccm_port?
+% _regen_marker = "#{executor_cxx_namespace}::#{_p.ami4ccm_rh_executor}"
+  /**
+   * AMI4CCM ReplyHandler Implementation Class : <%= _p.ami4ccm_rh_executor %>
+   */
+% write_regen_section(_regen_marker+'[ctor]', indent: 1) do
+  <%= _p.ami4ccm_rh_executor %>::<%= _p.ami4ccm_rh_executor %> ()
+  {
+  }
+% end
+
+  <%= _p.ami4ccm_rh_executor %>::~<%= _p.ami4ccm_rh_executor %> ()
+  {
+% nest(2) { write_regen_section(_regen_marker+'[dtor]', default_content: '// Your code here') }
+  }
+
+  /** User defined public operations. */
+% nest {write_regen_section(_regen_marker+'[user_public_ops]', default_content: '// Your code here') }
+
+  /** User defined private operations. */
+% nest {write_regen_section(_regen_marker+'[user_private_ops]', default_content: '// Your code here')}
+
+% props = {}
+% props[:receptacle_port] = ports.find {|p| (p.port_type == :receptacle && (p.cxxname.include? 'ami4ccm_uses'))}
+% _p.interface_type.all_operations.each do |_op|
+%   props[:operation] = _op
+%   props[:port] = _p
+%   visit_template('ami/operation_reply_h', props)
+
+% end
+% props.delete(:operation)
+% _p.interface_type.all_attributes.each do |_att|
+%   props[:attribute] = _att
+%   props[:port] = _p
+%   visit_template('ami/attribute_reply_h', props)
+
+% end
+% end
+% end
+% end

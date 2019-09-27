@@ -1,0 +1,24 @@
+// --------------------------------------------------------------------
+// ciaox11_corba_util.mpc
+//
+// Author: Martin Corino
+//
+// Copyright (c) Remedy IT Expertise BV
+// Chamber of commerce Rotterdam nr.276339, The Netherlands
+// --------------------------------------------------------------------
+
+project(*impl) : install, ciaox11_config, ciaox11_ccmobject_stub, \
+                 ciaox11_output, ciaox11_logger, taox11_anytypecode \
+{
+  sharedname = ciaox11_corba_util
+  dynamicflags += CIAOX11_CORBA_UTIL_BUILD_DLL
+
+  Header_Files {
+    ciaox11_corba_util_export.h
+    ciaox11_corba_util.h
+  }
+
+  Source_Files {
+    ciaox11_corba_util.cpp
+  }
+}

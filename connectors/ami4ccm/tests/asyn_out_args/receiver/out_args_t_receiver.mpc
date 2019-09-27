@@ -1,0 +1,39 @@
+project(*idl_gen) : ciaox11_test_a4c_comp_all_idl {
+  custom_only = 1
+
+  after += out_args_t_idl_gen out_args_t_lem_gen
+
+  idlflags += -Wb,base_export_macro=OUT_ARGS_T_RECEIVER \
+              -Wb,base_export_include=out_args_t_receiver
+
+  IDL_Files {
+    gendir=generated_code
+    out_args_t_receiver.idl
+  }
+}
+
+project(*exec) : ciaox11_test_a4c_exec_all {
+  after += out_args_t_stub out_args_t_lem_stub *idl_gen
+  libs  += out_args_t_stub out_args_t_lem_stub
+
+  dynamicflags += OUT_ARGS_T_RECEIVER_LEM_STUB_BUILD_DLL \
+                  OUT_ARGS_T_RECEIVER_EXEC_BUILD_DLL \
+                  OUT_ARGS_T_RECEIVER_SVNT_BUILD_DLL
+
+  Source_Files {
+    out_args_t_receiver_exec.cpp
+    generated_code/out_args_t_receiverEC.cpp
+    generated_code/out_args_t_receiver_svnt.cpp
+  }
+
+  Header_Files {
+    out_args_t_receiver_exec.h
+    generated_code/out_args_t_receiver_exec_export.h
+
+    generated_code/out_args_t_receiverEC.h
+    generated_code/out_args_t_receiver_lem_stub_export.h
+
+    generated_code/out_args_t_receiver_svnt.h
+    generated_code/out_args_t_receiver_svnt_export.h
+  }
+}

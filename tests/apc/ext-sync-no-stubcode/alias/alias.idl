@@ -1,0 +1,21 @@
+/**
+ * @file    alias.idl
+ * @author  Martin Corino
+ *
+ * @brief   Message alias
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef ALIAS_IDL_
+#define ALIAS_IDL_
+
+#include "data.idl"
+
+module Work
+{
+  typedef Data::Msg Message;
+};
+
+#endif /* ALIAS_IDL_ */

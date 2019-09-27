@@ -1,0 +1,74 @@
+/**
+ * @file    example_ba_defn.idl
+ * @author  Marcel Smit
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef CX_PORTS__TYPES__EXAMPLE_BA_DEFN_IDL
+#define CX_PORTS__TYPES__EXAMPLE_BA_DEFN_IDL
+
+#include "example_na_defn.idl"
+#include "example_b_defn.idl"
+
+/// @namespace Example
+module Example {
+
+    /// @enum BA1
+    ///
+    enum BA1 {
+
+        BA1_1,
+
+        BA1_2
+    };
+
+    /// @enum BA2
+    ///
+    enum BA2 {
+
+        BA2_2,
+
+        BA2_1
+    };
+
+    /// @struct BA4
+    ///
+    struct BA4 {
+
+        Example::NA6 BA4_03;
+
+        double BA4_09;
+
+        Example::BA2 BA4_05;
+
+        Example::BA1 BA4_04;
+
+        Example::B45 BA4_06;
+
+        double BA4_10;
+
+        double BA4_08;
+
+        double BA4_01;
+
+        double BA4_02;
+
+        double BA4_07;
+    }; //@TopLevel(false)
+
+    /// @struct BA3
+    ///
+    struct BA3 {
+
+        Example::NA5 BA3_1;
+
+        double BA3_3;
+
+        double BA3_2;
+    }; //@TopLevel(false)
+};
+
+#endif // CX_PORTS__TYPES__EXAMPLE_BA_DEFN_IDL
+
+/// @}

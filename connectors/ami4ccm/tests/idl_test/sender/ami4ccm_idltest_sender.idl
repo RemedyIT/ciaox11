@@ -1,0 +1,60 @@
+/**
+ * @file    ami4ccm_idltest_sender.idl
+ * @author  Marijke Hengstmengel
+ *
+ * @brief   base of sender ami4ccm test
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef AMI4CCM_SENDER_NC_IDL
+#define AMI4CCM_SENDER_NC_IDL
+
+#include <Components.idl>
+
+#include "ami4ccm_idltest.idl"
+#pragma ami4ccm idl "ami4ccm_idltestA.idl"
+
+#pragma ami4ccm receptacle "Hello::Sender::run_my_foo"
+#pragma ami4ccm receptacle "Hello::Sender::run_my_derived"
+#pragma ami4ccm receptacle "Hello::Sender::run_mybar"
+#pragma ami4ccm receptacle "Hello::Sender::run_three"
+
+#pragma ami4ccm receptacle "Hello::Sender::m_run_my_foo"
+#pragma ami4ccm receptacle "Hello::Sender::m_run_my_derived"
+#pragma ami4ccm receptacle "Hello::Sender::m_run_mybar"
+#pragma ami4ccm receptacle "Hello::Sender::m_run_three"
+
+#pragma ami4ccm receptacle "Bar::SecondSender::run_my_foo"
+
+module Hello
+{
+  component Sender
+  {
+    uses MyFoo run_my_foo;
+    uses MyDerived run_my_derived;
+    uses MyBar run_mybar;
+    uses ::Bar::Three run_three;
+
+    uses multiple MyFoo m_run_my_foo;
+    uses multiple MyDerived m_run_my_derived;
+    uses multiple MyBar m_run_mybar;
+    uses multiple Bar::Three m_run_three;
+
+    provides MyFoo my_foo;
+    provides Bar::Three my_three;
+    provides X myx;
+  };
+};
+
+module Bar
+{
+  component SecondSender
+  {
+    uses Hello::MyFoo run_my_foo;
+    uses multiple Hello::MyFoo m_run_my_foo;
+  };
+};
+
+#endif

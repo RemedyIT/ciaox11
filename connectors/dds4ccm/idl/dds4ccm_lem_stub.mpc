@@ -1,0 +1,68 @@
+project (ciaox11_dds4ccm_lem_gen) : install, \
+                                    ciaox11_dds4ccm, \
+                                    ciaox11_idldefaults {
+  custom_only = 1
+
+  after += ciaox11_dds4ccm_idl_gen
+  idlflags += -Wb,stub_export_macro=DDS4CCM_LEM_STUB_Export \
+              -Wb,stub_export_include=dds4ccm_lem_stub_export.h \
+              -Scp -Scdr
+
+  IDL_Files {
+     idlflags += -Gxhst
+     dds_rtf2_dcpsE.idl
+  }
+
+  IDL_Files {
+     dds4ccm_baseE.idl
+     dds4ccm_port_status_listenerE.idl
+     dds4ccm_data_listener_controlE.idl
+     dds4ccm_connector_status_listenerE.idl
+     dds4ccm_state_listener_controlE.idl
+     dds4ccm_connectorE.idl
+  }
+
+  specific {
+     install_dir = connectors/dds4ccm/idl
+  }
+}
+
+project (ciaox11_dds4ccm_lem_stub): install, \
+                                    ciaox11_ccm_session_stub, \
+                                    ciaox11_dds4ccm_stub , \
+                                    ddsx11_lem_stub, \
+                                    ciaox11_output, \
+                                    ridl_defaults {
+  after += ciaox11_dds4ccm_lem_gen
+
+  sharedname = ciaox11_dds4ccm_lem_stub
+  dynamicflags += DDS4CCM_LEM_STUB_BUILD_DLL
+
+  IDL_Files {
+  }
+
+  Source_Files {
+   dds4ccm_baseEC.cpp
+   dds_rtf2_dcpsEC.cpp
+   dds4ccm_port_status_listenerEC.cpp
+   dds4ccm_data_listener_controlEC.cpp
+   dds4ccm_connector_status_listenerEC.cpp
+   dds4ccm_state_listener_controlEC.cpp
+   dds4ccm_connectorEC.cpp
+  }
+
+  Header_Files {
+   dds4ccm_baseEC.h
+   dds_rtf2_dcpsEC.h
+   dds4ccm_port_status_listenerEC.h
+   dds4ccm_data_listener_controlEC.h
+   dds4ccm_connector_status_listenerEC.h
+   dds4ccm_state_listener_controlEC.h
+   dds4ccm_connectorEC.h
+   dds4ccm_lem_stub_export.h
+  }
+
+  specific {
+   install_dir = connectors/dds4ccm/idl
+  }
+}

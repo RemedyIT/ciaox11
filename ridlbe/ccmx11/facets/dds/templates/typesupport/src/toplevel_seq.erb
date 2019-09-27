@@ -1,0 +1,33 @@
+%if has_toplevel_annotation?
+
+namespace DDSX11
+{
+  // generated from <%= ridl_template_path %>
+  /// Conversion of <%= scoped_cxxname %>Seq to DDS
+  template<>
+  inline ::DDS_Native<%= scoped_cxxtype %>Seq&
+  to_dds< ::DDS_Native<%= scoped_cxxtype %>Seq, <%= scoped_cxxtype %>Seq> (
+    ::DDS_Native<%= scoped_cxxtype %>Seq &to, const <%= scoped_cxxtype %>Seq &from)
+  {
+    return DDSX11::sequence_to_dds(to, from);
+  }
+
+  /// Conversion traits for <%= scoped_cxxname %>Seq from DDS
+  template<>
+  inline <%= scoped_cxxtype %>Seq&
+  from_dds< ::DDS_Native<%= scoped_cxxtype %>Seq, <%= scoped_cxxtype %>Seq> (
+    <%= scoped_cxxtype %>Seq &to, const ::DDS_Native<%= scoped_cxxtype %>Seq &from)
+  {
+    return DDSX11::sequence_from_dds(to, from);
+  }
+
+  template<>
+  struct traits< <%= scoped_cxxtype %>Seq>
+    : public common_traits< <%= scoped_cxxtype %>Seq, ::DDS_Native<%= scoped_cxxtype %>Seq>
+    , public convert_in< <%= scoped_cxxtype %>Seq, ::DDS_Native<%= scoped_cxxtype %>Seq>
+    , public convert_out_by_ref< <%= scoped_cxxtype %>Seq, ::DDS_Native<%= scoped_cxxtype %>Seq>
+    , public convert_retn< <%= scoped_cxxtype %>Seq, ::DDS_Native<%= scoped_cxxtype %>Seq>
+  {
+  };
+} /* DDSX11 */
+%end

@@ -1,0 +1,79 @@
+// Granulated version of the MPC file. This file shows the various possibilities
+// of how to define projects and libraries.
+
+// Please see gen_test_simple for a simpler version of the MPC files used in this
+// test.
+
+// Generates:
+//   the stub (*C.*).
+//   the needed export files for the stub (-Gxhst)
+//   the lem IDL file (-Glem)
+//
+// Does not generate the skeleton files since this is
+// specific to a CORBA connector (the inter-component middleware used)
+// See ../corba-connector for more information about this.
+
+project(*idl_gen) : ciaox11_idldefaults {
+  custom_only = 1
+  idlflags += -Wb,stub_export_macro=HELLO_STUB_Export \
+              -Wb,stub_export_include=hello_stub_export.h \
+              -Gxhst -Glem
+
+  IDL_Files {
+    hello.idl
+  }
+}
+
+// Generates:
+//   the stub (*C.*) files
+//   the needed export files for the lem stub (-Gxhst)
+project(*lem_gen) : ciaox11_idldefaults {
+  after += *idl_gen
+  custom_only = 1
+  idlflags += -Wb,stub_export_macro=HELLO_LEM_STUB_Export \
+              -Wb,stub_export_include=hello_lem_stub_export.h \
+              -Gxhst -Scp
+
+  IDL_Files {
+    helloE.idl
+  }
+}
+
+project(*stub) : taox11_lib {
+  after += *idl_gen
+
+  libout = ../lib
+
+  sharedname    = Hello_stub
+  dynamicflags += HELLO_STUB_BUILD_DLL
+
+  Source_Files {
+    helloC.cpp
+  }
+
+  Header_Files {
+    helloC.h
+    hello_stub_export.h
+  }
+}
+
+project(*lem_stub) : taox11_lib {
+  after += *lem_gen *stub
+  libs  += Hello_stub
+
+  libout    = ../lib
+  libpaths += ../lib
+
+  sharedname    = Hello_lem_stub
+  dynamicflags += HELLO_LEM_STUB_BUILD_DLL
+
+  Source_Files {
+    helloEC.cpp
+  }
+
+  Header_Files {
+    helloEC.h
+    hello_lem_stub_export.h
+  }
+}
+

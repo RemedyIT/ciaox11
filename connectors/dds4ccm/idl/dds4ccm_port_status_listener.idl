@@ -1,0 +1,23 @@
+/**
+ * @file    dds4ccm_port_status_listener.idl
+ * @author  Marcel Smit
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef DDS4CCM_PORT_STATUS_LISTENER_IDL_
+#define DDS4CCM_PORT_STATUS_LISTENER_IDL_
+
+#include "connectors/dds4ccm/idl/dds4ccm_base.idl"
+
+module CCM_DDS
+{
+  local interface PortStatusListener {
+    void on_requested_deadline_missed(in DDS::DataReader the_reader,
+                                      in DDS::RequestedDeadlineMissedStatus status);
+    void on_sample_lost(in DDS::DataReader the_reader,
+                        in DDS::SampleLostStatus status);
+  };
+};
+
+#endif /* DDS4CCM_PORT_STATUS_LISTENER_IDL_ */

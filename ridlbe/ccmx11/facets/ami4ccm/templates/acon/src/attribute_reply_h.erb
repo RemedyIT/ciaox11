@@ -1,0 +1,45 @@
+// generated from <%= ridl_template_path %>
+void
+<%= interface_type.ami4ccm_reply_handler %>::get_<%= attribute.cxxname %> (
+  <%= attribute.scoped_cxx_return_type %> ami_return_val)
+{
+  // Deactivate our CORBA AMI servant
+  this->deactivate ();
+
+  this->callback_->get_<%= attribute.cxxname %> (ami_return_val);
+}
+
+void
+<%= interface_type.ami4ccm_reply_handler %>::get_<%= attribute.cxxname %>_excep (
+  IDL::traits< ::Messaging::ExceptionHolder>::ref_type excep_holder)
+{
+  // Deactivate our CORBA AMI servant
+  this->deactivate ();
+
+  IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type holder =
+    CORBA::make_reference< ::CCM_AMI::ExceptionHolder_i> (std::move(excep_holder));
+  this->callback_->get_<%= attribute.cxxname %>_excep (std::move(holder));
+}
+% unless attribute.is_readonly?
+
+void
+<%= interface_type.ami4ccm_reply_handler %>::set_<%= attribute.cxxname %> ()
+{
+  // Deactivate our CORBA AMI servant
+  this->deactivate ();
+
+  this->callback_->set_<%= attribute.cxxname %> ();
+}
+
+void
+<%= interface_type.ami4ccm_reply_handler %>::set_<%= attribute.cxxname %>_excep (
+  IDL::traits< ::Messaging::ExceptionHolder>::ref_type excep_holder)
+{
+  // Deactivate our CORBA AMI servant
+  this->deactivate ();
+
+  IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type holder =
+    CORBA::make_reference< ::CCM_AMI::ExceptionHolder_i> (std::move(excep_holder));
+  this->callback_->set_<%= attribute.cxxname %>_excep (std::move(holder));
+}
+% end

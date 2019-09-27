@@ -1,0 +1,29 @@
+/**
+ * @file    example_ja2_msg.idl
+ * @author  Marcel Smit
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef CX_PORTS__MESSAGES__EXAMPLE_JA2_MSG_IDL
+#define CX_PORTS__MESSAGES__EXAMPLE_JA2_MSG_IDL
+
+#include "example_na_defn.idl"
+#include "example_ja_defn.idl"
+
+/// @namespace Example
+module Example {
+
+    /// @struct JA2_msg
+    ///
+    struct JA2_msg {
+
+        Example::NA4 hdr;
+
+        Example::JA6 data;
+    }; //@TopLevel()
+};
+
+#endif // CX_PORTS__MESSAGES__EXAMPLE_JA2_MSG_IDL
+
+/// @}

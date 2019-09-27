@@ -1,0 +1,38 @@
+project(*idl_gen) : ciaox11_test_comp_all_idl {
+  custom_only = 1
+  after += hello_idl_gen hello_lem_gen
+  idlflags += -Wb,base_export_macro=HELLO_RECEIVER \
+              -Wb,base_export_include=hello_receiver
+
+  IDL_Files {
+    gendir=generated_code
+    hello_receiver.idl
+  }
+}
+
+// No skeleton library needed here since the receiver is
+// independent of the inter-component middleware.
+project(*exec) : ciaox11_test_exec_all {
+  after += hello_stub hello_lem_stub *idl_gen
+  libs  += hello_stub hello_lem_stub
+
+  dynamicflags += HELLO_RECEIVER_LEM_STUB_BUILD_DLL \
+                  HELLO_RECEIVER_EXEC_BUILD_DLL \
+                  HELLO_RECEIVER_SVNT_BUILD_DLL
+  Source_Files {
+    hello_receiver_exec.cpp
+    generated_code/hello_receiverEC.cpp
+    generated_code/hello_receiver_svnt.cpp
+  }
+
+  Header_Files {
+    hello_receiver_exec.h
+    generated_code/hello_receiver_exec_export.h
+
+    generated_code/hello_receiverEC.h
+    generated_code/hello_receiver_lem_stub_export.h
+
+    generated_code/hello_receiver_svnt.h
+    generated_code/hello_receiver_svnt_export.h
+  }
+}

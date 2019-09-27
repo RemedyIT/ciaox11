@@ -1,0 +1,17 @@
+
+connector 'shapes_shapetype' do |conn|
+
+  conn.idl %w{ shapes.idl }
+  # prefix of generated export headers (default: recipe id)
+  conn.export_name 'shapes_shapetype'
+  # project creator adds '_dds_conn' after shared name (default: recipe id)
+  conn.shared_name 'shapes_shapetype'
+  conn.port_type :dds4ccm do |tp|
+    tp.topic 'ShapeType'
+    # use default DDS vendor
+    # tp.middleware :ndds
+  end
+  conn.gen_dir 'build'
+
+end
+

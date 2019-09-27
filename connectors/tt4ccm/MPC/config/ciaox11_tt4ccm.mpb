@@ -1,0 +1,12 @@
+// --------------------------------------------------------------------
+// ciaox11_tt4ccm.mpb
+//
+// Copyright (c) Remedy IT Expertise BV
+// Chamber of commerce Rotterdam nr.276339, The Netherlands
+// --------------------------------------------------------------------
+
+project {
+  after    += tt4ccm_stubs_idl_gen
+  includes += $(CIAOX11_ROOT)/connectors/tt4ccm/idl
+  idlflags += -I $(CIAOX11_ROOT)/connectors/tt4ccm/idl
+}

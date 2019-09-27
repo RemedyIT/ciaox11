@@ -1,0 +1,36 @@
+project(*idl_gen) : ciaox11_test_comp_all_idl {
+  custom_only = 1
+  after += conn_test_base_idl_gen conn_test_base_lem_gen
+  idlflags += -Wb,base_export_macro=HELLO_SENDER \
+              -Wb,base_export_include=hello_sender
+
+  IDL_Files {
+    gendir=generated_code
+    hello_sender.idl
+  }
+}
+
+project(*exec) : ciaox11_test_exec_all {
+  after += conn_test_base_stub conn_test_base_lem_stub *idl_gen
+  libs  += conn_test_base_stub conn_test_base_lem_stub
+
+  dynamicflags += HELLO_SENDER_LEM_STUB_BUILD_DLL \
+                  HELLO_SENDER_EXEC_BUILD_DLL \
+                  HELLO_SENDER_SVNT_BUILD_DLL
+  Source_Files {
+    hello_sender_exec.cpp
+    generated_code/hello_senderEC.cpp
+    generated_code/hello_sender_svnt.cpp
+  }
+
+  Header_Files {
+    hello_sender_exec.h
+    generated_code/hello_sender_exec_export.h
+
+    generated_code/hello_senderEC.h
+    generated_code/hello_sender_lem_stub_export.h
+
+    generated_code/hello_sender_svnt.h
+    generated_code/hello_sender_svnt_export.h
+  }
+}

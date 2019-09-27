@@ -1,0 +1,30 @@
+/**
+ * @file    event_record.idl
+ * @author  Martin Corino
+ *
+ * @brief   Base IDL for the manual minimal event test.
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef EVENT_RECORD_IDL_
+#define EVENT_RECORD_IDL_
+
+typedef sequence<octet> OctetSeq;
+typedef string<128> color_type;
+module Hello
+{
+  struct ShapeType {
+    color_type color; //@key
+    long x;
+    long y;
+    long shapesize;
+  }; //@TopLevel()
+//  struct Event {
+//    string key;
+//    long iteration;
+//    ::OctetSeq data;
+//  };
+};
+
+#endif /* EVENT_RECORD_IDL_ */

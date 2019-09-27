@@ -1,0 +1,52 @@
+project(*idl_gen) : ciaox11_test_base_idl, taox11_anytypecode {
+  custom_only = 1
+  idlflags += -Wb,base_export_macro=HELLO \
+              -Wb,base_export_include=hello
+
+  IDL_Files {
+    gendir=generated_code
+    hello.idl
+  }
+}
+
+project(*lem_gen) : ciaox11_test_base_lem_idl {
+  custom_only = 1
+  idlflags += -Wb,base_export_macro=HELLO \
+              -Wb,base_export_include=hello
+
+  IDL_Files {
+    gendir=generated_code
+    hello.idl
+  }
+}
+
+project(*stub) : ciaox11_test_base, taox11_anytypecode {
+  after += *idl_gen
+
+  dynamicflags += HELLO_STUB_BUILD_DLL
+
+  Source_Files {
+    generated_code/helloC.cpp
+  }
+
+  Header_Files {
+    generated_code/helloC.h
+    generated_code/hello_stub_export.h
+  }
+}
+
+project(*lem_stub) : ciaox11_test_base {
+  after += *stub *lem_gen
+  libs  += *stub
+
+  dynamicflags += HELLO_LEM_STUB_BUILD_DLL
+
+  Source_Files {
+    generated_code/helloEC.cpp
+  }
+
+  Header_Files {
+    generated_code/helloEC.h
+    generated_code/hello_lem_stub_export.h
+  }
+}

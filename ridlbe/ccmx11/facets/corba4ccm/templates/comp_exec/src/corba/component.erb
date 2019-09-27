@@ -1,0 +1,34 @@
+
+// generated from <%= ridl_template_path %>
+namespace <%= executor_cxx_namespace %>
+{
+% all_ports.each do |_p|
+%   nest { _p.gen_facet_exec } if _p.port_type == :facet
+% end
+
+% interfaces_for_nonlocal_facet_ports.each do |_i|
+  <%= _i.scoped_cxxname.identify %>_servant::<%= _i.scoped_cxxname.identify %>_servant (
+    <%= _i.scoped_cxx_in_type %> facet_executor) :
+      facet_executor_ (std::move (facet_executor))
+  {
+  }
+
+%   nest (1) { visit_template('component_extra_impl', {:port_interface => _i}) }
+%   props = {}
+%   _i.all_operations.each do |_op|
+%    props[:operation] = _op
+%    props[:port_interface] = _i
+%    nest { visit_template('svnt_operation', props) }
+%   end
+%   props.delete(:operation)
+
+%   props = {}
+%   _i.all_attributes.each do |_att|
+%    props[:attribute] = _att
+%    props[:port_interface] = _i
+%    nest { visit_template('svnt_attribute', props) }
+%   end
+
+% end
+
+% visit_component_factory

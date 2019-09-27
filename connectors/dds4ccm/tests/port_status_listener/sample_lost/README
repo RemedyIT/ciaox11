@@ -1,0 +1,28 @@
+This test tests the functionality behind sample lost by exceeding
+the per instance resource limits. In this test new DDS samples will
+overwrite the old data that have not yet been received
+by the DataReader. That will be considered as SAMPLE_LOST.
+
+For clarification:
+
+1. Samples are considered REJECTED when a resource limit prevents
+the queue/collator from accepting new data. Ideally, the sample will be resent
+at a later time when it may hopefully be accepted. The structure for this status
+and the reason for the sample to be rejected appears in Table 7.13 and 7.14 of
+the User's Manual.
+
+2. Samples are considered LOST when they should have been delivered to the
+user but could not be due to whatever reason. Examples would include when the
+writer sends a HB moving the first available sequence number forward, yet the
+reader has not received outstanding (not GAP'ed) samples with earlier sequence
+numbers or when a sample has been received and accepted by the queue/collator
+but can not be internally committed due to per instance resources limits.
+
+For a DataReader, when there are insufficient resources to accept incoming DDS
+samples of data, DDS samples may be dropped by the receiving application.
+Those DDS samples are considered to be REJECTED, but DataWriters are limited
+in the number of published DDS data samples that they can store, so that if a
+DataWriter continues to publish DDS data samples, new data may overwrite old
+data that have not yet been received by the DataReader. The DDS samples that
+are overwritten can never be resent to the DataReader and thus are considered
+to be LOST.

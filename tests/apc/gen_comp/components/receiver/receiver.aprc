@@ -1,0 +1,25 @@
+component 'hello_receiver' do |comp|
+  #data/type idl
+  comp.idl %w{ hello.idl bar.idl}
+  comp.define 'Hello::Receiver' do |intf|
+
+    #facet  port with interface Hello::MyFoo defined in hello.idl
+    intf.port 'do_my_foo' do |p|
+      p.provides 'Hello::MyFoo'
+    end
+
+    #condensed form: facet  port with interface Hello::MyFoo defined in hello.idl
+    intf.port 'do_my_foo_2' , provides: 'Hello::MyFoo'
+
+    #facet  port with interface Hello::MyFoo_in_Bar defined in bar.idl
+    intf.port 'do_my_foo_in_bar' do |p|
+      p.provides 'Foo::MyFoo_in_Bar'
+    end
+
+    # readonly attribute with type Foo::Bar, defined in bar.idl
+    intf.attribute 'my_rec_attrib_bar' do |att|
+      att.type 'Foo::Bar_in_Bar'
+      att.readonly true
+    end
+  end
+end

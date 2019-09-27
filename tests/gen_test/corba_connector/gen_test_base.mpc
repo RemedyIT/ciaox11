@@ -1,0 +1,205 @@
+// Granulated version of the MPC file. This file shows the various possibilities
+// of how to define projects and libraries.
+
+// This MPC file contains projects for the generation and build of the
+// CORBA connector
+
+// Generates:
+//   the skeleton (*S.*) for the original IDL file
+//   the needed export files for the skeleton (-Gxhsk) for the original IDL file
+// Does not generate the stub files since these were already generated (and compiled)
+// in ../base.
+project(*skel_idl_gen) : ciaox11_idldefaults {
+  custom_only = 1
+  after += gen_test_base_idl_gen
+
+  idlflags += -Wb,skel_export_macro=HELLO_SKEL_Export \
+              -Wb,skel_export_include=hello_skel_export.h \
+              -Gxhsk -Scc -Sch -Scp -o .
+  idlflags -= -SS -Ssh
+
+  IDL_Files {
+    gendir=.
+    ../base/hello.idl
+  }
+}
+
+// Generates
+//   the implied IDL for the CORBA connector (*_cc.idl). Option '-Gcorba4ccm,idl'
+//   No need to create the stub files again so these are suppressed.
+project(*cc_idl_gen) : ciaox11_corba4ccm_idldefaults, ciaox11_corba4ccm {
+  custom_only = 1
+  after += gen_test_base_idl_gen
+  idlflags += -Gcorba4ccm,idl -Scc -Sch -Scp  -o .
+
+  IDL_Files {
+    gendir=.
+    ../base/hello.idl
+  }
+}
+
+// Generates:
+//   the stub (*_ccC.h)
+//   the lem IDL (*_ccE.idl)
+//   the needed export files for the CORBA connector stub library (*_cc_export.h)
+project(*cc_idl_lem) : ciaox11_idldefaults, ciaox11_corba4ccm {
+  custom_only = 1
+  after += *cc_idl_gen
+
+  idlflags += -Wb,stub_export_macro=HELLO_STUB_Export \
+              -Wb,stub_export_include=hello_stub_export.h \
+              -Gxhst -Glem -I../base -Scc -Scp
+
+  IDL_Files {
+    hello_cc.idl
+  }
+}
+
+// Generates:
+//   the stubs (*_connEC.*)
+//   the needed export files for the CORBA connector
+//     lem stub library (*_cc_export.h)
+project(*cc_idl_lem_gen) : ciaox11_idldefaults, ciaox11_corba4ccm {
+  custom_only = 1
+  after += *cc_idl_lem
+
+  idlflags += -Wb,stub_export_macro=HELLO_LEM_STUB_Export \
+              -Wb,stub_export_include=hello_lem_stub_export.h \
+              -Gxhst -Scp -I../base
+
+  IDL_Files {
+    hello_ccE.idl
+  }
+}
+
+// Generates:
+//   the servant code for the CORBA connector (*_conn_svnt.*)
+//   the needed export files for the servant of the CORBA connector
+//     library.
+// There's no need to explicitly add '-Gxhsv' to let the RIDL compiler
+// generate the servant export file. One can use either
+// svnt_export_include/marcro or base_export_include/macro.
+// When the base_export_include/macro is used, a '_CC' postfix will be
+// applied. Thus base_export_macro=HELLO will be HELLO_CONN_SVNT_Export.
+project(*cc_idl_svnt) : ciaox11_idldefaults, ciaox11_corba4ccm {
+  custom_only = 1
+  after += *cc_idl_gen *skel_idl_gen
+
+  idlflags += -Wb,svnt_export_macro=HELLO_SVNT_Export \
+              -Wb,svnt_export_include=hello_svnt_export \
+              -I../base -Gxhsv -Scc -Sch -Scp -Gsvnt
+
+  IDL_Files {
+    hello_cc.idl
+  }
+}
+
+// Generates:
+//   the executor code for the CORBA connector (*_conn_exec.*)
+//   the needed export files for the servant of the CORBA connector
+//     library.
+// There's no need to explicitly add '-Gxhex' to let the RIDL compiler
+// generate the executor export file. One can use either
+// exec_export_include/marcro or base_export_include/macro.
+// When the base_export_include/macro is used, a '_CC' postfix will be
+// applied. Thus base_export_macro=HELLO will be HELLO_CONN_EXEC_Export.
+project(*cc_idl_exec) : ciaox11_corba4ccm_idldefaults, ciaox11_corba4ccm {
+  custom_only = 1
+  after += *cc_idl_gen
+
+  idlflags += -Wb,exec_export_macro=HELLO_EXEC_Export \
+              -Wb,exec_export_include=hello_exec_export \
+              -I../base -Scc -Sch -Scp -Gcorba4ccm,impl -Gxhex
+
+  IDL_Files {
+    hello_cc.idl
+  }
+}
+
+// Compiles the generated C++ skeleton code.
+project(*skel) : taox11_lib, taox11_portableserver {
+  after += *skel_idl_gen gen_test_base_stub
+  libs  += Hello_stub
+
+
+  libout    = ../lib
+  libpaths += ../lib
+  includes += ../base
+
+  sharedname    = Hello_skel
+  dynamicflags += HELLO_SKEL_BUILD_DLL
+
+  Source_Files {
+    helloS.cpp
+  }
+
+  Header_Files {
+    helloS.h
+    hello_skel_export.h
+  }
+}
+
+// Compiles the lem stub library for the CORBA connector.
+project(*cc_lem_stub) : taox11_lib, ciaox11_ccm_session_stub, ciaox11_corba4ccm {
+  after += *cc_idl_lem_gen gen_test_base_stub gen_test_base_lem_stub
+  libs  += Hello_stub Hello_lem_stub
+
+  sharedname    = Hello_conn_lem_stub
+  dynamicflags += HELLO_LEM_STUB_BUILD_DLL
+
+  libout    = ../lib
+  libpaths += ../lib
+  includes += ../base
+
+  Source_Files {
+    hello_ccEC.cpp
+  }
+
+  Header_Files {
+    hello_ccEC.h
+    hello_lem_stub_export.h
+  }
+}
+
+// Compiles the servant for the CORBA connector
+project(*corba_svnt) : ciaox11_executor, ciaox11_corba4ccm {
+  after += *cc_idl_svnt *skel_idl_gen *cc_lem_stub
+  libs  += Hello_stub Hello_conn_lem_stub
+
+  sharedname += Hello_conn_svnt
+  dynamicflags += HELLO_SVNT_BUILD_DLL
+
+  libout    = ../lib
+  libpaths += ../lib
+  includes += ../base
+
+  Source_Files {
+    hello_cc_svnt.cpp
+  }
+  Header_Files {
+    hello_cc_svnt.h
+    hello_svnt_export.h
+  }
+}
+
+
+// Compiles the corba connector itself.
+project(*corba_conn) : ciaox11_executor, ciaox11_corba4ccm, ciaox11_corba4ccm_impl {
+  after += *cc_idl_exec *skel *cc_lem_stub gen_test_base_stub gen_test_base_lem_stub
+  libs  += Hello_conn_lem_stub Hello_stub Hello_lem_stub Hello_skel
+
+  sharedname += Hello_conn_connector
+  dynamicflags += HELLO_EXEC_BUILD_DLL
+
+  libout    = ../lib
+  libpaths += ../lib
+  includes += ../base
+
+  Source_Files {
+    hello_cc_exec.cpp
+  }
+  Header_Files {
+    hello_cc_exec.h
+    hello_exec_export.h
+  }
+}

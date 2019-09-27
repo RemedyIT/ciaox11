@@ -1,0 +1,33 @@
+/**
+ * @file    hello.idl
+ * @author  Martin Corino
+ *
+ * @brief   CIAOX11 connector test
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef HELLO_IDL
+#define HELLO_IDL
+
+
+module Test
+{
+  interface Hello
+  {
+    string get_string (in long answer);
+    attribute short interface_attrib;
+
+    oneway void shutdown ();
+  };
+
+
+  porttype Send
+  {
+    uses Hello hello_uses;
+  };
+};
+
+#endif
+

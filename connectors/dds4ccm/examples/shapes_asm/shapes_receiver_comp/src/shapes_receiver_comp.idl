@@ -1,0 +1,24 @@
+/**
+ * @file    shapes_receiver_comp.idl
+ * @author  Johnny Willemsen
+ *
+ * @brief   Shapes receiver component
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef SHAPES_RECEIVER_COMP_IDL_
+#define SHAPES_RECEIVER_COMP_IDL_
+
+#include "shapes_shapetype_msgSE.idl"
+
+module Shapes
+{
+  component Receiver_comp
+  {
+    port ShapeTypeInterface::DDS_Listen info_out;
+  };
+};
+
+#endif /* SHAPES_RECEIVER_COMP_IDL_ */

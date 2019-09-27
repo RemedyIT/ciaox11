@@ -1,0 +1,19 @@
+%if has_toplevel_annotation?
+
+// generated from <%= ridl_template_path %>
+::DDS::ReturnCode_t
+<%= cxxname %>Factory::register_type (
+  IDL::traits< ::DDS::DomainParticipant >::ref_type participant,
+  const std::string &type_name)
+{
+%nest(1) { visit_template('factory_register_type') }
+}
+
+::DDS::ReturnCode_t
+<%= cxxname %>Factory::unregister_type (
+  IDL::traits< ::DDS::DomainParticipant >::ref_type participant,
+  const std::string &type_name)
+{
+%nest(1) { visit_template('factory_unregister_type') }
+}
+%end

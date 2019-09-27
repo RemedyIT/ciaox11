@@ -1,0 +1,21 @@
+/**
+ * @file    csl.idl
+ * @author  Marcel Smit
+ *
+ * @brief   Listing the possible assignments for this test.
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef CSL_IDL_
+#define CSL_IDL_
+
+// A topic to test the on_inconsistent_topic callback
+
+struct OnInconsistentTopicMessage {
+  string key; //@key
+  short iteration;
+  short extra;
+}; //@TopLevel()
+
+#endif /* CSL_IDL_ */

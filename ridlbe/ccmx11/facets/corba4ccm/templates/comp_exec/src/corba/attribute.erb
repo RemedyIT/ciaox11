@@ -1,0 +1,18 @@
+
+// generated from <%= ridl_template_path %>
+<%= implementation_return_type %>
+<%= owner.lem_name %>_exec_i::<%= cxxname %> ()
+{
+%  _receptacle_port = component.ports.find {|p| p.port_type == :receptacle }
+  return this->context_->get_connection_<%= _receptacle_port.cxxname %> ()-><%= cxxname %> ();
+}
+% unless is_readonly?
+
+void
+<%= owner.lem_name %>_exec_i::<%= cxxname %> (
+    <%= implementation_in_type %> <%= cxxname %>)
+{
+  return this->context_->get_connection_<%= _receptacle_port.cxxname %> ()-><%= cxxname %> (
+    <%= cxxname %>);
+}
+% end # unless is_readonly?

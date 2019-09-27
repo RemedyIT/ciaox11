@@ -1,0 +1,23 @@
+/**
+ * @file    foo.idl
+ * @author  Martin Corino
+ *
+ * @brief   Foo interface declaration
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef FOO_IDL_
+#define FOO_IDL_
+
+module Example
+{
+  // Foo interface
+  interface Foo
+  {
+    void do_something (in string an_argument);
+  };
+};
+
+#endif /* FOO_IDL_ */

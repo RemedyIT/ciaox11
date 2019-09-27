@@ -1,0 +1,30 @@
+/**
+ * @file    inout_args_t_sender.idl
+ * @author  Marijke Hengstmengel
+ *
+ * @brief   base of sender inout arguments test
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+
+#ifndef INTERINOUT_T_SENDER_IDL
+#define INTERINOUT_T_SENDER_IDL
+
+#include <Components.idl>
+
+#include "inout_args_t.idl"
+
+#pragma ami4ccm receptacle "InterInOutT::Sender::run_my_foo"
+
+module InterInOutT
+{
+  component Sender
+  {
+    /// For synchronous invocation
+    uses MyFoo run_my_foo;
+  };
+};
+
+#endif

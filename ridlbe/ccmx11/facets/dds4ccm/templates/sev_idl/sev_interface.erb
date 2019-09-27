@@ -1,0 +1,13 @@
+
+% topic_namespaces.each do |_topic_ns|
+module <%= _topic_ns %>
+{
+%   inc_nest
+% end
+typedef sequence<<%= scoped_name %>> <%= topic_sequence %>;
+
+module ::CCM_DDS::Typed<<%= scoped_name %>, <%= topic_sequence %>> <%= topic_interface %>;
+% topic_namespaces.reverse_each do |_topic_ns|
+%   dec_nest
+}; /* <%= _topic_ns %> */
+% end

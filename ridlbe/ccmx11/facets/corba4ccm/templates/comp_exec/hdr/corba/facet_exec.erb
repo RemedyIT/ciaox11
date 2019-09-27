@@ -1,0 +1,43 @@
+// generated from <%= ridl_template_path %>
+
+/// Executor implementation class for <%= lem_name %> facet
+class <%= lem_name %>_exec_i final
+  : public IDL::traits< <%= interface_type.scoped_ccm_name %>>::base_type
+{
+public:
+% visit_facet_constructor
+
+  /// Destructor
+  virtual ~<%= lem_name %>_exec_i () = default;
+
+%if interface_type.all_operations.size > 0
+  /// @name Operations from <%= scoped_cxxname %>
+  //@{
+% interface_type.all_operations.each do |_op|
+%   nest { _op.visit_operation }
+% end
+  //@}
+%end
+
+%if interface_type.all_attributes.size > 0
+  /// @name Attributes from <%= scoped_cxxname %>
+  //@{
+% interface_type.all_attributes.each do |_att|
+%   nest { _att.visit_attribute }
+% end
+  //@}
+%end
+
+private:
+  /// Context for component instance. Used for all middleware communication.
+  IDL::traits< <%= component.scoped_ccm_name %>_Context >::ref_type context_;
+
+  /** @name Illegal to be called. Deleted explicitly to let the compiler detect any violation */
+  //@{
+  <%= lem_name %>_exec_i () = delete;
+  <%= lem_name %>_exec_i (const <%= lem_name %>_exec_i&) = delete;
+  <%= lem_name %>_exec_i (<%= lem_name %>_exec_i&&) = delete;
+  <%= lem_name %>_exec_i& operator= (const <%= lem_name %>_exec_i& x) = delete;
+  <%= lem_name %>_exec_i& operator= (<%= lem_name %>_exec_i&& x) = delete;
+  //@}
+};

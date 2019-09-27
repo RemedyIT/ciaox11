@@ -1,0 +1,11 @@
+// --------------------------------------------------------------------
+// ddsx11_ndds_libs.mpb
+//
+// Provides the needed DDS libs for a specific DDS vendor
+//
+// Copyright (c) Remedy IT Expertise BV
+// Chamber of commerce Rotterdam nr.276339, The Netherlands
+// --------------------------------------------------------------------
+
+project : nddslib {
+}

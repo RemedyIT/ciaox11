@@ -1,0 +1,36 @@
+project(*idl_gen) : ciaox11_test_comp_all_idl {
+  custom_only = 1
+  after += bst_bst_defn_idl_gen bst_test_obj_idl_gen bst_test_obj_lem_gen
+  idlflags += -Wb,base_export_macro=BST_BST_COMP \
+              -Wb,base_export_include=bst_bst_comp
+
+  IDL_Files {
+    gendir=generated_code
+    bst_bst_comp.idl
+  }
+}
+
+project(*exec) : ciaox11_test_exec_all {
+  after += bst_bst_defn_stub bst_test_obj_stub *idl_gen
+  libs  += bst_bst_defn_stub bst_test_obj_stub
+
+  dynamicflags += BST_BST_COMP_LEM_STUB_BUILD_DLL \
+                  BST_BST_COMP_EXEC_BUILD_DLL \
+                  BST_BST_COMP_SVNT_BUILD_DLL
+
+  Source_Files {
+    bst_bst_comp_exec.cpp
+    generated_code/bst_bst_compEC.cpp
+    generated_code/bst_bst_comp_svnt.cpp
+  }
+
+  Header_Files {
+    bst_bst_comp_exec.h
+    generated_code/bst_bst_comp_exec_export.h
+    generated_code/bst_bst_compEC.h
+    generated_code/bst_bst_comp_lem_stub_export.h
+    generated_code/bst_bst_compS.h
+    generated_code/bst_bst_comp_svnt.h
+    generated_code/bst_bst_comp_svnt_export.h
+  }
+}

@@ -1,0 +1,16 @@
+// --------------------------------------------------------------------
+// ciaox11_dds4ccm_event.mpb
+//
+// Feature to disable all projects that requires the availability of the
+// dds4ccm event connector
+//
+// Copyright (c) Remedy IT Expertise BV
+// Chamber of commerce Rotterdam nr.276339, The Netherlands
+// --------------------------------------------------------------------
+
+feature(dds4ccm_event) {
+}
+
+feature(!dds4ccm_event) {
+  requires += dummy_label
+}

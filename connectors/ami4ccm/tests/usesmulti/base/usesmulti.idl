@@ -1,0 +1,37 @@
+/**
+ * @file    usesmulti.idl
+ * @author  Marijke Hengstmengel
+ *
+ * @brief   base of uses multiple ami4ccm test
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef USESMULTI_IDL
+#define USESMULTI_IDL
+
+
+#pragma ami4ccm interface "UsesMulti::One"
+
+#pragma ami4ccm idl "usesmultiA.idl"
+
+
+module UsesMulti
+{
+  exception InternalError
+    {
+      long id;
+      string error_string;
+    };
+
+  // Sender/Receiver interface
+  interface One
+    {
+      long foo (in string in_str, in long cmd, out string answer)
+       raises (InternalError);
+    };
+};
+
+#endif
+

@@ -1,0 +1,16 @@
+
+project(*impl) : install, ciaox11_ccm_stub, ciaox11_output, ciaox11_logger {
+  dynamicflags += CIAOX11_CORE_BUILD_DLL
+  sharedname = ciaox11_core
+
+  Source_Files {
+    service_registry.cpp
+  }
+  Header_Files {
+    service_registry.h
+    ciaox11_core_export.h
+  }
+  specific {
+    install_dir = ciaox11/core
+  }
+}

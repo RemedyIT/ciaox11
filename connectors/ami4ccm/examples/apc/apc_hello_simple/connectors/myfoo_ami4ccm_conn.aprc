@@ -1,0 +1,12 @@
+
+connector 'hello_ami' do |conn|
+
+  conn.idl %w{ hello.idl }
+
+  # name of connector is recipe name (in this case: hello_ami)
+  # sharedname connector is default connector name + '_amic_conn'
+  # prefix export headers is default connector name (in lowercase)
+  # gen_dir is default 'generated_code'
+
+  conn.port_type :ami4ccm
+end

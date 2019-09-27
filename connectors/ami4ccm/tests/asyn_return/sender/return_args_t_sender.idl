@@ -1,0 +1,29 @@
+/**
+ * @file    return_args_t_sender.idl
+ * @author  Marijke Hengstmengel
+ *
+ * @brief   sender of ami4ccm test with several return types
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef INTERRETURN_T_SENDER_IDL
+#define INTERRETURN_T_SENDER_IDL
+
+#include <Components.idl>
+
+#include "return_args_t.idl"
+
+#pragma ami4ccm receptacle "InterReturnT::Sender::run_my_foo"
+
+module InterReturnT
+{
+  component Sender
+  {
+    /// For synchronous invocation
+    uses MyFoo run_my_foo;
+  };
+};
+
+#endif

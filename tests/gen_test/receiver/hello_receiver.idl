@@ -1,0 +1,33 @@
+/**
+ * @file    hello_receiver.idl
+ * @author  Marijke Hengstmengel
+ *
+ * @brief   Receiver component
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef HELLO_RECEIVER_IDL
+#define HELLO_RECEIVER_IDL
+
+#include <Components.idl>
+
+#include "base/hello.idl"
+
+module Hello
+{
+
+  struct TestTopic {
+    string key;
+    long x;
+  };
+
+  component Receiver
+  {
+    /// Provides
+    port Listen rec_listen_port;
+    attribute TestTopic test_topic;
+  };
+};
+#endif

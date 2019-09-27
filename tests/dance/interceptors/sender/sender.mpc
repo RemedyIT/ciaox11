@@ -1,0 +1,36 @@
+project(*idl_gen) : ciaox11_test_comp_all_idl_exec_gen {
+  custom_only = 1
+  after += interceptor_idl_gen interceptor_lem_gen
+  idlflags += -Wb,base_export_macro=SENDER \
+              -Wb,base_export_include=sender
+
+  IDL_Files {
+    gendir=generated_code
+    sender.idl
+  }
+}
+
+project(*exec) : ciaox11_test_exec_all {
+  after += interceptor_stub *idl_gen
+  libs  += interceptor_stub
+
+  dynamicflags += SENDER_LEM_STUB_BUILD_DLL \
+                  SENDER_EXEC_BUILD_DLL \
+                  SENDER_SVNT_BUILD_DLL
+  Source_Files {
+    sender_exec.cpp
+    generated_code/senderEC.cpp
+    generated_code/sender_svnt.cpp
+  }
+
+  Header_Files {
+    sender_exec.h
+    generated_code/sender_exec_export.h
+
+    generated_code/senderEC.h
+    generated_code/sender_lem_stub_export.h
+
+    generated_code/sender_svnt.h
+    generated_code/sender_svnt_export.h
+  }
+}

@@ -1,0 +1,21 @@
+/**
+ * @file    dds4ccm_query_filter.idl
+ * @author  Marcel Smit
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef DDS4CCM_QUERY_FILTER_IDL_
+#define DDS4CCM_QUERY_FILTER_IDL_
+
+#include "connectors/dds4ccm/idl/dds_rtf2_dcps.idl"
+
+module CCM_DDS
+{
+  struct QueryFilter {
+    string            expression;
+    ::DDS::StringSeq  parameters;
+  };
+};
+
+#endif /* DDS4CCM_QUERY_FILTER_IDL_ */

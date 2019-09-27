@@ -1,0 +1,20 @@
+/**
+ * @file    common.idl
+ * @author  Marcel Smit
+ *
+ * @brief   Listing the possible assignments for this test.
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef CSL_COMMON_IDL_
+#define CSL_COMMON_IDL_
+
+// A topic to test the on_inconsistent_topic callback
+
+struct CommonTestMessage {
+  string key; //@key
+  long iteration;
+}; //@TopLevel()
+
+#endif /* CSL_COMMON_IDL_ */

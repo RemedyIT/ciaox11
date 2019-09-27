@@ -1,0 +1,70 @@
+/**
+ * @file    nontopic_test.idl
+ * @author  Marijke Hengstmengel
+ *
+ * @brief   CIAOX11 templated connector test test
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef NONTOPIC_TEST_IDL
+#define NONTOPIC_TEST_IDL
+
+#include <Components.idl>
+
+#pragma axcioma impl "nontopic_connector_t.h"
+
+// Use same template arguments as in template nontopic_connector_t.h
+module Typed_NonTopic_Test_a<typename T,typename U,
+                           sequence<T> TSeq, sequence<U> USeq >
+{
+  local interface TestControl
+  {
+    void create(out T dat_T, out U dat_u);
+  };
+  connector NT
+  {
+     uses TestControl foo;
+  };
+};
+
+module Typed_NonTopic_Test_b<typename T,typename U,
+                           sequence<T> TSeq, sequence<U> USeq >
+{
+  struct QueryFilter {
+    string expression;
+  };
+
+  local interface TestControl
+  {
+    void create(out T dat_T, out U dat_u);
+    attribute short interface_attrib;
+  };
+
+  porttype DDS_Write
+  {
+    uses TestControl foo2;
+    provides TestControl foo3;
+    attribute QueryFilter port_attrib;
+  };
+
+  connector NT2
+  {
+    uses TestControl foo;
+    mirrorport DDS_Write write_port;
+    attribute short conn_attrib;
+    attribute T NT2_attrib;
+  };
+
+  connector NT3 : NT2
+  {
+    provides TestControl foo3;
+    uses TestControl foo4;
+    mirrorport DDS_Write foo5;
+    attribute T NT3_attrib;
+  };
+};
+
+
+#endif

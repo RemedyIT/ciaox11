@@ -1,0 +1,26 @@
+  <instance xmi:id="Hello.ComponentImplementations.HelloImplementation.Hello.Receiver">
+    <name>Hello.ComponentImplementations.HelloImplementation.Hello.Receiver</name>
+    <node>ReceiverNode</node>
+    <source/>
+    <implementation xmi:idref="Hello_ReceiverComponent"/>
+   </instance>
+  <instance xmi:id="Hello.ComponentImplementations.HelloImplementation.Hello.Receiver.CORBA">
+    <name>Hello.ComponentImplementations.HelloImplementation.Hello.Receiver.CORBA</name>
+    <node>ReceiverNode</node>
+    <source/>
+    <implementation xmi:idref="Hello_CORBAConnector"/>
+   </instance>
+
+  <instance xmi:id="Hello.ComponentImplementations.HelloImplementation.Hello.Sender">
+    <name>Hello.ComponentImplementations.HelloImplementation.Hello.Sender</name>
+    <node>SenderNode</node>
+    <source/>
+    <implementation xmi:idref="Hello_SenderComponent"/>
+   </instance>
+
+  <instance xmi:id="Hello.ComponentImplementations.HelloImplementation.Hello.AMI">
+    <name>Hello.ComponentImplementations.HelloImplementation.Hello.AMI</name>
+    <node>SenderNode</node>
+    <source/>
+    <implementation xmi:idref="Hello_AMIConnector"/>
+  </instance>

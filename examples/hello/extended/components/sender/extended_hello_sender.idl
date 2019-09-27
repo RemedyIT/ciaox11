@@ -1,0 +1,25 @@
+/**
+ * @file    extended_hello_sender.idl
+ * @author  Johnny Willemsen
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef EXTENDED_HELLO_SENDER_IDL_
+#define EXTENDED_HELLO_SENDER_IDL_
+
+#include <Components.idl>
+
+#include "extended_hello.idl"
+
+module Hello
+{
+  component Sender
+  {
+    uses MyFoo run_my_foo;
+    uses MyBar run_my_bar;
+  };
+};
+
+#endif /* EXTENDED_HELLO_SENDER_IDL_ */

@@ -1,0 +1,28 @@
+/**
+ * @file    uses_s_m_receiver.idl
+ * @author  Marijke Hengstmengel
+ *
+ * @brief   receiver of ami4ccm test
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+
+#ifndef USESSM_RECEIVER_IDL
+#define USESSM_RECEIVER_IDL
+
+#include <Components.idl>
+
+#include "uses_s_m.idl"
+
+module UsesSM
+{
+  component Receiver
+  {
+    /// Provides
+    provides One do_my_one;
+    provides Two do_my_two;
+  };
+};
+#endif

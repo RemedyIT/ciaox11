@@ -1,0 +1,47 @@
+project(*cc_idl_gen) : ciaox11_test_cc_base_idl {
+  custom_only = 1
+
+  after += multi_modules_idl_gen multi_modules_lem_gen
+
+  idlflags += -Wb,base_export_macro=MULTI_MODULES \
+              -Wb,base_export_include=multi_modules
+
+  IDL_Files {
+    gendir=generated_code
+    ../base/multi_modules.idl
+  }
+}
+
+project(*corba_conn) : ciaox11_test_base, ciaox11_executor, ciaox11_corba4ccm_impl {
+  after += multi_modules_stub multi_modules_lem_stub *cc_idl_gen
+  libs  += multi_modules_stub multi_modules_lem_stub
+
+  dynamicflags += MULTI_MODULES_SKEL_BUILD_DLL \
+                  MULTI_MODULES_CC_LEM_STUB_BUILD_DLL \
+                  MULTI_MODULES_CC_EXEC_BUILD_DLL \
+                  MULTI_MODULES_CC_SVNT_BUILD_DLL
+
+  Source_Files {
+    generated_code/multi_modulesS.cpp
+
+    generated_code/multi_modules_ccEC.cpp
+
+    generated_code/multi_modules_cc_exec.cpp
+    generated_code/multi_modules_cc_svnt.cpp
+  }
+  Header_Files {
+    generated_code/multi_modulesS.h
+    generated_code/multi_modulesSP.h
+    generated_code/multi_modules_skel_export.h
+
+    generated_code/multi_modules_ccC.h
+    generated_code/multi_modules_ccEC.h
+    generated_code/multi_modules_cc_lem_stub_export.h
+
+    generated_code/multi_modules_cc_exec.h
+    generated_code/multi_modules_cc_exec_export.h
+
+    generated_code/multi_modules_cc_svnt.h
+    generated_code/multi_modules_cc_svnt_export.h
+  }
+}

@@ -1,0 +1,29 @@
+/**
+ * @file    hello_sender.idl
+ * @author  Marijke Hengstmengel
+ *
+ * @brief   base of sender ami4ccm test
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef HELLO_SENDER_IDL
+#define HELLO_SENDER_IDL
+
+#include <Components.idl>
+
+#include "usesmulti.idl"
+
+#pragma ami4ccm receptacle "UsesMulti::Sender::run_my_um_one"
+
+module UsesMulti
+{
+  component Sender
+  {
+    /// For synchronous invocation
+    uses multiple One run_my_um_one;
+  };
+};
+
+#endif

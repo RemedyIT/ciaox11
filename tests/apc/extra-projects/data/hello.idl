@@ -1,0 +1,24 @@
+/**
+ * @file    hello.idl
+ * @author  Martin Corino
+ *
+ * @brief   Data interfaces for minimal sync manual example
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef HELLO_IDL_
+#define HELLO_IDL_
+
+module Hello
+{
+  // Sender/Receiver interface
+  interface MyFoo
+    {
+
+      void hello (out long answer);
+    };
+};
+
+#endif /* HELLO_IDL_ */

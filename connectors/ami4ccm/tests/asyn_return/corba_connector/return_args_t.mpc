@@ -1,0 +1,54 @@
+project(*cc_idl_gen) : ciaox11_test_cc_base_idl {
+  custom_only = 1
+  after += return_args_t_idl_gen return_args_t_lem_gen
+  idlflags += -Wb,base_export_macro=RETURN_ARGS_T \
+              -Wb,base_export_include=return_args_t
+
+  IDL_Files {
+    gendir=generated_code
+    ../base/return_args_t.idl
+  }
+}
+
+project(*skel) : ciaox11_test_base, taox11_portableserver, ciaox11_corba4ccm {
+  after += *stub *cc_idl_gen
+  libs  += *stub
+
+  dynamicflags += RETURN_ARGS_T_SKEL_BUILD_DLL
+
+  Source_Files {
+    generated_code/return_args_tS.cpp
+  }
+
+  Header_Files {
+    generated_code/return_args_tS.h
+    generated_code/return_args_t_skel_export.h
+  }
+}
+
+project(*corba_conn) : ciaox11_test_base, ciaox11_executor, ciaox11_corba4ccm_impl {
+  after += return_args_t_skel return_args_t_stub return_args_t_lem_stub *cc_idl_gen
+  libs  += return_args_t_skel return_args_t_stub return_args_t_lem_stub
+
+  dynamicflags += RETURN_ARGS_T_CC_LEM_STUB_BUILD_DLL \
+                  RETURN_ARGS_T_CC_EXEC_BUILD_DLL \
+                  RETURN_ARGS_T_CC_SVNT_BUILD_DLL
+
+  Source_Files {
+    generated_code/return_args_t_ccEC.cpp
+
+    generated_code/return_args_t_cc_exec.cpp
+    generated_code/return_args_t_cc_svnt.cpp
+  }
+  Header_Files {
+    generated_code/return_args_t_ccC.h
+    generated_code/return_args_t_ccEC.h
+    generated_code/return_args_t_cc_lem_stub_export.h
+
+    generated_code/return_args_t_cc_exec.h
+    generated_code/return_args_t_cc_exec_export.h
+
+    generated_code/return_args_t_cc_svnt.h
+    generated_code/return_args_t_cc_svnt_export.h
+  }
+}

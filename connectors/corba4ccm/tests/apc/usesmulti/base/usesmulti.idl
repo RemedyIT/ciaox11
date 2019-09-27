@@ -1,0 +1,30 @@
+/**
+ * @file    usesmulti.idl
+ * @author  Martin Corino
+ *
+ * @brief   base of uses multiple corba4ccm test
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef USESMULTI_IDL
+#define USESMULTI_IDL
+
+module UsesMulti
+{
+  exception InternalError
+    {
+      long id;
+      string error_string;
+    };
+
+  // Sender/Receiver interface
+  interface One
+    {
+      long foo (in string in_str, in long cmd, out string answer)
+       raises (InternalError);
+    };
+};
+
+#endif

@@ -1,0 +1,531 @@
+/**
+ * @file    example_b_defn.idl
+ * @author  Marcel Smit
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef CX_PORTS__TYPES__EXAMPLE_B_DEFN_IDL
+#define CX_PORTS__TYPES__EXAMPLE_B_DEFN_IDL
+
+/// @namespace Example
+module Example {
+
+    /// @struct B11
+    ///
+    struct B11 {
+
+        double B11_1;
+
+        double B11_2;
+
+        double B11_3;
+    }; //@TopLevel(false)
+
+    /// @typedef B26
+    ///
+    typedef sequence <octet, 256> B26;
+
+    /// @typedef B36
+    ///
+    typedef sequence <octet, 1024> B36;
+
+    /// @typedef B13
+    ///
+    typedef sequence <octet, 1024> B13;
+
+    /// @typedef B18
+    ///
+    typedef sequence <octet, 256> B18;
+
+    /// @typedef B28
+    ///
+    typedef sequence <octet, 256> B28;
+
+    /// @struct B27
+    ///
+    struct B27 {
+        double B27_3;
+        Example::B11 B27_2;
+        Example::B11 B27_1;
+    }; //@TopLevel(false)
+
+    /// @struct B34
+    ///
+    struct B34 {
+        Example::B11 B34_03;
+        Example::B11 B34_04;
+        Example::B11 B34_10;
+        Example::B11 B34_12;
+        double B34_07;
+        long B34_15;
+        long B34_05;
+        long B34_13;
+        float B34_11;
+        float B34_01;
+        float B34_08;
+        long B34_02;
+        long B34_09;
+        long B34_06;
+        long B34_14;
+    }; //@TopLevel(false)
+
+    /// @struct B38
+    ///
+    struct B38 {
+        long B38_10;
+        long B38_04;
+        double B38_07;
+        double B38_01;
+        double B38_08;
+        double B38_02;
+        long B38_06;
+        double B38_05;
+        double B38_03;
+        double B38_09;
+        long B38_11;
+    }; //@TopLevel(false)
+
+    /// @typedef B37
+    ///
+    typedef sequence <B38, 26> B37;
+
+    /// @typedef B12
+    ///
+    typedef sequence <octet, 92> B12;
+
+    /// @struct B35
+    ///
+    struct B35 {
+        long B35_5;
+        double B35_3;
+        Example::B12 B35_1;
+        double B35_2;
+        double B35_4;
+    }; //@TopLevel(false)
+
+    /// @struct B15
+    ///
+    struct B15 {
+
+        long B15_07;
+
+        long B15_11;
+
+        long B15_03;
+
+        long B15_09;
+
+        float B15_05;
+
+        long B15_15;
+
+        float B15_02;
+
+        float B15_01;
+
+        long B15_12;
+
+        double B15_04;
+
+        float B15_08;
+
+        long B15_10;
+
+        Example::B11 B15_13;
+
+        Example::B11 B15_14;
+
+        float B15_06;
+    }; //@TopLevel(false)
+
+    /// @typedef B14
+    ///
+    typedef sequence <B15, 26> B14;
+
+    /// @struct B17
+    ///
+    struct B17 {
+
+        double B17_1;
+
+        long B17_2;
+    }; //@TopLevel(false)
+
+    /// @typedef B02
+    ///
+    typedef sequence <octet> B02;
+
+    /// @struct B04
+    ///
+    struct B04 {
+
+        double B04_04;
+
+        double B04_05;
+
+        double B04_06;
+
+        double B04_01;
+
+        double B04_02;
+
+        double B04_03;
+
+        double B04_09;
+
+        double B04_07;
+
+        double B04_08;
+
+        double B04_10;
+
+        double B04_11;
+    }; //@TopLevel(false)
+
+    /// @struct B06
+    ///
+    struct B06 {
+
+        Example::B11 B06_02;
+
+        Example::B11 B06_03;
+
+        Example::B11 B06_13;
+
+        Example::B11 B06_14;
+
+        double B06_06;
+
+        double B06_07;
+
+        long B06_17;
+
+        long B06_18;
+
+        long B06_01;
+
+        long B06_10;
+
+        long B06_04;
+
+        long B06_15;
+
+        long B06_05;
+
+        long B06_16;
+
+        double B06_08;
+
+        double B06_09;
+
+        double B06_11;
+
+        double B06_12;
+    }; //@TopLevel(false)
+
+    /// @struct B05
+    ///
+    struct B05 {
+
+        double B05_09;
+
+        double B05_04;
+
+        double B05_05;
+
+        double B05_01;
+
+        double B05_08;
+
+        double B05_07;
+
+        double B05_10;
+
+        double B05_06;
+
+        double B05_03;
+
+        double B05_02;
+    }; //@TopLevel(false)
+
+    /// @struct B53
+    ///
+    struct B53 {
+
+        Example::B14 B53_1;
+
+        long B53_2;
+
+        double B53_3;
+
+        long B53_4;
+    }; //@TopLevel(false)
+
+    /// @struct B54
+    ///
+    struct B54 {
+
+        long B54_6;
+
+        double B54_3;
+
+        long B54_4;
+
+        long B54_5;
+
+        double B54_2;
+
+        Example::B12 B54_1;
+    }; //@TopLevel(false)
+
+    /// @struct B31
+    ///
+    struct B31 {
+        double B31_2;
+        double B31_1;
+        double B31_3;
+    }; //@TopLevel(false)
+
+    /// @struct B30
+    ///
+    struct B30 {
+        double c11;
+        double c12;
+        double c13;
+        double c21;
+        double c22;
+        double c23;
+        double c31;
+        double c32;
+        double c33;
+    }; //@TopLevel(false)
+
+    /// @struct B32
+    ///
+    struct B32 {
+        double q1;
+        double q2;
+        double q3;
+        double q4;
+    }; //@TopLevel(false)
+
+    /// @struct B01
+    ///
+    /// unused
+    struct B01 {
+        unsigned long B01_6;
+        unsigned short B01_5;
+        unsigned short B01_1;
+        unsigned long B01_4;
+        unsigned long B01_2;
+        double B01_3;
+        double B01_7;
+    }; //@TopLevel(false)
+
+    /// @typedef B45
+    ///
+    typedef double B45[2];
+
+    /// @typedef B47
+    ///
+    typedef double B47[3];
+
+    /// @typedef B48
+    ///
+    typedef double B48[4];
+
+    /// @typedef B49
+    ///
+    typedef double B49[5];
+
+    /// @typedef B_50
+    /// B50 is a macro on Android
+    ///
+    typedef double B_50[6];
+
+    /// @typedef B51
+    ///
+    typedef double B51[8];
+
+    /// @typedef B52
+    ///
+    typedef double B52[9];
+
+    /// @typedef B43
+    ///
+    typedef double B43[13];
+
+    /// @typedef B44
+    ///
+    typedef double B44[16];
+
+    /// @typedef B46
+    ///
+    typedef double B46[24];
+
+    /// @typedef B40
+    ///
+    typedef double B40[2][2];
+
+    /// @typedef B41
+    ///
+    typedef double B41[3][2];
+
+    /// @typedef B42
+    ///
+    typedef double B42[3][3];
+
+    /// @typedef B22
+    ///
+    typedef unsigned long B22[4];
+
+    /// @typedef B23
+    ///
+    typedef unsigned long B23[6];
+
+    /// @typedef B24
+    ///
+    typedef unsigned long B24[8];
+
+    /// @typedef B25
+    ///
+    typedef unsigned long B25[9];
+
+    /// @typedef B20
+    ///
+    typedef unsigned long B20[16];
+
+    /// @struct B03
+    ///
+    struct B03 {
+        string B03_10;
+        string B03_08;
+        string B03_09;
+        string B03_13;
+        long long B03_05;
+        Example::B45 B03_11;
+        unsigned long B03_01;
+        double B03_02;
+        unsigned long B03_03;
+        Example::B49 B03_04;
+        unsigned long B03_06;
+        Example::B49 B03_07;
+        unsigned long B03_12;
+        unsigned long B03_14;
+    }; //@TopLevel(false)
+
+    /// @struct B19
+    ///
+    struct B19 {
+        Example::B03 B19_14;
+        Example::B47 B19_35;
+        Example::B42 B19_36;
+        unsigned long B19_40;
+        Example::B42 B19_22;
+        Example::B42 B19_01;
+        Example::B42 B19_12;
+        Example::B42 B19_13;
+        unsigned long B19_20;
+        unsigned long B19_19;
+        double B19_21;
+        unsigned long B19_17;
+        double B19_18;
+        unsigned long B19_15;
+        double B19_16;
+        double B19_41;
+        unsigned long B19_39;
+        Example::B23 B19_37;
+        Example::B_50 B19_38;
+        Example::B45 B19_30;
+        double B19_23;
+        double B19_31;
+        double B19_28;
+        double B19_29;
+        double B19_27;
+        double B19_25;
+        double B19_26;
+        double B19_24;
+        double B19_33;
+        double B19_34;
+        double B19_32;
+        Example::B45 B19_07;
+        double B19_02;
+        double B19_08;
+        double B19_06;
+        double B19_04;
+        double B19_05;
+        double B19_03;
+        double B19_10;
+        double B19_11;
+        double B19_09;
+    }; //@TopLevel(false)
+
+    /// @struct B16
+    ///
+    struct B16 {
+        Example::B03 B16_02;
+        Example::B47 B16_06;
+        Example::B42 B16_07;
+        unsigned long B16_11;
+        Example::B42 B16_01;
+        unsigned long B16_05;
+        unsigned long B16_04;
+        double B16_12;
+        unsigned long B16_03;
+        unsigned long B16_10;
+        Example::B22 B16_08;
+        Example::B48 B16_09;
+    }; //@TopLevel(false)
+
+    /// @struct B07
+    ///
+    struct B07 {
+        double B07_3;
+        Example::B11 B07_1;
+        Example::B11 B07_2;
+    }; //@TopLevel(false)
+
+    /// @struct B09
+    ///
+    struct B09 {
+        double B09_1;
+        Example::B11 B09_2;
+    }; //@TopLevel(false)
+
+    /// @typedef B08
+    ///
+    typedef B09 B08[12];
+
+    /// @struct B10
+    ///
+    struct B10 {
+        double B10_3;
+        long long B10_2;
+        Example::B08 B10_1;
+    }; //@TopLevel(false)
+
+    /// @struct B33
+    ///
+    struct B33 {
+        double B33_1;
+        double B33_2;
+        double B33_3;
+    }; //@TopLevel(false)
+
+    /// @typedef B29
+    ///
+    typedef sequence <double, 144> B29;
+
+    /// @typedef B21
+    ///
+    typedef unsigned long B21[2];
+
+    /// @typedef B39
+    ///
+    typedef double B39[2][16];
+};
+
+#endif // CX_PORTS__TYPES__EXAMPLE_B_DEFN_IDL
+
+/// @}

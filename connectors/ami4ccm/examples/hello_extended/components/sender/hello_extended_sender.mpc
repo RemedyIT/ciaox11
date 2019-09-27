@@ -1,0 +1,45 @@
+project(*idl_gen) : ciaox11_test_ami4ccm_comp_all_idl {
+  custom_only = 1
+
+  after += hello_extended_srr_idl_gen hello_extended_arr_idl_gen
+
+  idlflags += -Wb,base_export_macro=HELLO_EXTENDED_SENDER \
+              -Wb,base_export_include=hello_extended_sender \
+              -I../../base -I../../patterns/generated_code
+
+  IDL_Files {
+    gendir=generated_code
+    hello_extended_sender.idl
+  }
+}
+project(*exec) : ciaox11_test_ami4ccm_exec_all {
+  after += hello_extended_stub hello_extended_arr_stub *idl_gen
+  libs  += hello_extended_stub hello_extended_arr_stub
+
+  dynamicflags += HELLO_EXTENDED_SENDER_LEM_STUB_BUILD_DLL \
+                  HELLO_EXTENDED_SENDER_EXEC_BUILD_DLL \
+                  HELLO_EXTENDED_SENDER_SVNT_BUILD_DLL
+
+  includes += ../../patterns/generated_code ../../base/generated_code
+  libpaths += ../../lib
+  libout   = ../../lib
+
+  Source_Files {
+    hello_extended_sender_exec.cpp
+    generated_code/hello_extended_senderEC.cpp
+    generated_code/hello_extended_sender_svnt.cpp
+  }
+
+  Header_Files {
+    hello_extended_sender_exec.h
+    generated_code/hello_extended_sender_exec_export.h
+
+    generated_code/hello_extended_sender_svnt.h
+    generated_code/hello_extended_sender_svnt_export.h
+
+    generated_code/hello_extended_senderEC.h
+    generated_code/hello_extended_sender_lem_stub_export.h
+  }
+}
+
+

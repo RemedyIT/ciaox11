@@ -1,0 +1,150 @@
+// Granulated version of the MPC file. This file shows the various possibilities
+// of how to define projects and libraries.
+
+// Please see gen_test_simple for a simpler version of the MPC files used in this
+// test.
+
+// The IDL contains a datatype and a component definition with an attribute of
+// this type. Therefor not only the lem_stub has to be generated via the
+// base_export, but also the stub with anytypecode.
+
+// Supresses the generation of the skeleton files (default) since no component
+//    should not be dependent on the inter-component middleware.
+// Makes sure that the component executor user code is re-generated when changes
+//    in IDL are made (-Gex) and that the executor files are not removed when
+//    a realclean is performed (precious_files).
+// Generates :
+//   the stub (*C.*) source and header files
+//   the lem IDL file (-Glem)
+//   the needed export files for the stub (-Gxhst), servant (-Gxhsv)
+//      and executor (-Gxhex).
+//   the servant code for the component (-Gsvnt)
+project(*idl_gen) : ciaox11_idldefaults, taox11_anytypecode {
+  custom_only = 1
+  after += gen_test_base_idl_gen
+  idlflags += -Wb,stub_export_macro=HELLO_RECEIVER_STUB_Export \
+              -Wb,stub_export_include=hello_receiver_stub_export.h \
+              -Wb,exec_export_macro=HELLO_RECEIVER_EXEC_Export \
+              -Wb,exec_export_include=hello_receiver_exec_export.h \
+              -Wb,svnt_export_macro=HELLO_RECEIVER_SVNT_Export \
+              -Wb,svnt_export_include=hello_receiver_svnt_export.h \
+              -Glem -Gxhst -Gxhex -Gxhsv -Gsvnt -Gex -I..
+  specific {
+    precious_files += _exec.h\Z _exec.cpp\Z
+  }
+
+  IDL_Files {
+    hello_receiver.idl
+  }
+}
+
+// Generates:
+//   the stub (*C.*) files
+//   the needed export files for the lem stub (-Gxhst)
+project(*lem_gen) : ciaox11_idldefaults {
+  after += *idl_gen
+  custom_only = 1
+  idlflags += -Wb,stub_export_macro=HELLO_RECEIVER_LEM_STUB_Export \
+              -Wb,stub_export_include=hello_receiver_lem_stub_export.h \
+              -Gxhst -Scp -I..
+
+  IDL_Files {
+    hello_receiverE.idl
+  }
+}
+
+// Stub is needed since datatypes are defined in IDL
+project(*stub) : ciaox11_ccm_stub, taox11_core_anytypecode {
+  after += *idl_gen *lem_gen
+
+  libout = ../lib
+
+  includes += ..
+
+  sharedname    = Hello_Receiver_stub
+  dynamicflags += HELLO_RECEIVER_STUB_BUILD_DLL
+
+  Source_Files {
+    hello_receiverC.cpp
+  }
+
+  Header_Files {
+    hello_receiverC.h
+    hello_receiver_stub_export.h
+  }
+}
+
+project(*lem_stub) : ciaox11_ccm_session_stub, taox11_core_anytypecode {
+  after += *idl_gen *lem_gen *stub gen_test_base_stub
+  libs  += Hello_stub Hello_Receiver_stub
+
+  libout    = ../lib
+  libpaths += ../lib
+  includes += ..
+
+  sharedname    = Hello_Receiver_lem_stub
+  dynamicflags += HELLO_RECEIVER_LEM_STUB_BUILD_DLL
+
+  Source_Files {
+    hello_receiverEC.cpp
+  }
+
+  Header_Files {
+    hello_receiverEC.h
+    hello_receiver_lem_stub_export.h
+  }
+}
+
+
+project(*exec) : ciaox11_executor, ciaox11_logger, taox11_core_anytypecode {
+  after += *lem_gen *lem_stub gen_test_base_stub gen_test_base_lem_stub
+  libs  += Hello_Receiver_stub Hello_Receiver_lem_stub Hello_stub Hello_lem_stub
+
+  libout    = ../lib
+  libpaths += ../lib
+  includes += ..
+
+  sharedname    = Hello_Receiver_exec
+  dynamicflags += HELLO_RECEIVER_EXEC_BUILD_DLL
+
+
+  Source_Files {
+    hello_receiver_exec.cpp
+  }
+
+  Header_Files {
+    hello_receiver_exec.h
+    hello_receiver_exec_export.h
+  }
+}
+
+// No need to link the skeleton since user components should be
+// independent of CORBA or any other middleware; linking the (lem)
+// stubs should be sufficient to link an build the servant.
+project(*svnt) : ciaox11_ccm_session_stub, taox11_core_anytypecode {
+  after += *stub *lem_stub \
+           gen_test_base_stub \
+           gen_test_base_lem_stub
+  libs  += Hello_Receiver_stub \
+           Hello_Receiver_lem_stub \
+           Hello_stub \
+           Hello_lem_stub
+
+  libout    = ../lib
+  libpaths += ../lib
+  includes += ..
+
+  sharedname    = Hello_Receiver_svnt
+  dynamicflags += HELLO_RECEIVER_SVNT_BUILD_DLL
+
+  Source_Files {
+    hello_receiver_svnt.cpp
+  }
+
+  Header_Files {
+    hello_receiverS.h
+    hello_receiver_svnt.h
+    hello_receiver_svnt_export.h
+  }
+}
+

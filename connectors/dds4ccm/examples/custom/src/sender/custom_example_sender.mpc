@@ -1,0 +1,62 @@
+// Not using the DDS4CCM MPC base projects for the tests since the directory structure
+// is completely different. See ../../readme.txt for details.
+project(*idl_gen) : ciaox11_idldefaults, ciaox11_dds4ccm, ciaox11_dds4ccm_event, \
+                    ciaox11_gen_exec, ciaox11_tt4ccm {
+  custom_only = 1
+  after += custom_example_connector_idl_gen
+
+  idlflags += -Wb,base_export_macro=CUSTOM_EXAMPLE_SENDER \
+              -Wb,base_export_include=custom_example_sender \
+              -I../../src/sender -I../../src/base -I../../src/connector \
+              -I../../build/connector -o ../../build/sender \
+              -Gos -Gcomp -Gxhex -Gxhsv -Scc -Scp
+
+  IDL_Files {
+    gendir=../../build/sender
+    custom_example_sender.idl
+  }
+}
+
+project(*exec) : ciaox11_executor, ciaox11_dds4ccm_lem_stub, \
+                 ciaox11_dds4ccm_logger, \
+                 ciaox11_dds4ccm_event, \
+                 ciaox11_tt4ccm_stub {
+  after += *idl_gen \
+           custom_example_base_stub \
+           custom_example_connector_lem_stub
+
+  libs  += custom_example_base_stub \
+           custom_example_connector_lem_stub
+
+  libpaths += ../../lib
+  libout = ../../lib
+  includes += . ../../src/sender \
+              ../../src/base \
+              ../../build/base \
+              ../../build/sender \
+              ../../build/connector \
+              $(CIAOX11_ROOT)/connectors
+
+
+  dynamicflags += CUSTOM_EXAMPLE_SENDER_LEM_STUB_BUILD_DLL \
+                  CUSTOM_EXAMPLE_SENDER_EXEC_BUILD_DLL \
+                  CUSTOM_EXAMPLE_SENDER_SVNT_BUILD_DLL
+
+  Source_Files {
+    custom_example_sender_exec.cpp
+
+    ../../build/sender/custom_example_senderEC.cpp
+    ../../build/sender/custom_example_sender_svnt.cpp
+  }
+
+  Header_Files {
+    custom_example_sender_exec.h
+    custom_example_exec_export.h
+
+    ../../build/sender/custom_example_senderEC.h
+    ../../build/sender/custom_example_sender_lem_stub_export.h
+
+    ../../build/sender/custom_example_sender_svnt.h
+    ../../build/sender/unkeyed_sender_svnt_export.h
+  }
+}

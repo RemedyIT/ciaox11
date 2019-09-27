@@ -1,0 +1,29 @@
+/**
+ * @file    ccm_exceptions.idl
+ * @author  Johnny Willemsen
+ *
+ * @brief   Based on OMG 06-04-01 Section 6.7.6
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#if !defined (CCM_EXCEPTIONS_IDL)
+#define CCM_EXCEPTIONS_IDL
+
+module Components
+{
+  typeprefix Components "omg.org";
+
+  typedef unsigned long FailureReason;
+
+  exception CreateFailure {
+    FailureReason reason;
+  };
+  exception RemoveFailure
+  {
+    FailureReason reason;
+  };
+};
+
+#endif

@@ -1,0 +1,53 @@
+
+# configure setup for DDSX11 NDDS
+#
+
+configure :ddsx11ndds do
+
+  dependencies do
+
+    require :ndds do
+      environment :nddshome do
+        name 'NDDSHOME'
+        description 'NDDS root folder'
+      end
+      environment :nddsarch do
+        name 'NDDSARCHITECTURE'
+        description 'NDDS target architecture'
+      end
+      file '${NDDSHOME}/include/ndds/ndds_cpp.h'
+      exist '${NDDSHOME}/lib/${NDDSARCHITECTURE}'
+      library_path '${NDDSHOME}/lib/${NDDSARCHITECTURE}'
+    end
+
+  end
+
+  features do
+
+    enable :ddsx11 do
+      depends_exclusively_on :ndds
+    end
+
+    enable :dds4ccm_ndds do
+      depends_on :ndds
+    end
+
+  end
+
+  ridl do
+    include '..'
+  end
+
+  brix11 do
+    include '..'
+  end
+
+  mpc do
+    include '$CIAOX11_ROOT/ddsx11/vendors/ndds/MPC/config'
+
+    mwc_include %w{
+      $(CIAOX11_ROOT)/ddsx11/vendors/ndds/idl
+    }
+  end
+
+end

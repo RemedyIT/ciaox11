@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  @file      USER_QOS_PROFILES.xml
+  @author    Marcel Smit
+
+  @copyright Copyright (c) Remedy IT Expertise BV
+  Chamber of commerce Rotterdam nr.276339, The Netherlands
+-->
+<dds xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="rti_dds_qos_profiles.xsd" version="5.2.3">
+  <qos_library name="coherentwriterlibrary">
+    <qos_profile name="CoherentWriterProfile" is_default_qos="false">
+      <participant_qos>
+        <transport_builtin>
+            <mask>UDPv4</mask>
+        </transport_builtin>
+      </participant_qos>
+      <publisher_qos>
+        <presentation>
+          <coherent_access>true</coherent_access>
+        </presentation>
+      </publisher_qos>
+      <subscriber_qos>
+        <presentation>
+          <coherent_access>true</coherent_access>
+        </presentation>
+      </subscriber_qos>
+      <datawriter_qos>
+        <reliability>
+          <kind>RELIABLE_RELIABILITY_QOS</kind>
+        </reliability>
+        <durability>
+          <kind>TRANSIENT_DURABILITY_QOS</kind>
+        </durability>
+        <history>
+          <kind>KEEP_ALL_HISTORY_QOS</kind>
+        </history>
+      </datawriter_qos>
+      <datareader_qos>
+        <reliability>
+          <kind>RELIABLE_RELIABILITY_QOS</kind>
+        </reliability>
+        <history>
+          <kind>KEEP_ALL_HISTORY_QOS</kind>
+        </history>
+        <durability>
+          <kind>TRANSIENT_LOCAL_DURABILITY_QOS</kind>
+        </durability>
+      </datareader_qos>
+    </qos_profile>
+  </qos_library>
+</dds>

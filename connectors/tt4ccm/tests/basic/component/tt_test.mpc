@@ -1,0 +1,46 @@
+project(*idl_gen) : ciaox11_comp_all_idl, ciaox11_gen_exec, ciaox11_tt4ccm {
+  custom_only = 1
+
+  idlflags += -Scc -Scp \
+              -o generated_code \
+              -I../../base -I../../base/generated_code \
+              -Wb,base_export_macro=TT_TEST \
+              -Wb,base_export_include=tt_test
+
+  IDL_Files {
+    gendir=generated_code
+    tt_test.idl
+  }
+}
+
+project(*exec) : ciaox11_executor, ciaox11_ccm_session_stub, \
+  ciaox11_tt4ccm_stub, ciaox11_logger \
+{
+  after += *idl_gen
+  sharedname = tt_test_exec
+
+  libout = ../lib
+  includes += . generated_code
+
+  dynamicflags += TT_TEST_LEM_STUB_BUILD_DLL \
+                  TT_TEST_EXEC_BUILD_DLL \
+                  TT_TEST_SVNT_BUILD_DLL
+
+  Source_Files {
+    tt_test_exec.cpp
+    generated_code/tt_testEC.cpp
+    generated_code/tt_test_svnt.cpp
+  }
+
+  Header_Files {
+    tt_test_exec.h
+    generated_code/tt_test_exec_export.h
+
+    generated_code/tt_test_svnt.h
+    generated_code/tt_test_svnt_export.h
+
+    generated_code/tt_testEC.h
+    generated_code/tt_test_lem_stub_export.h
+  }
+
+}

@@ -1,0 +1,48 @@
+// Generates an implied IDL file (hello_cc.idl in this case). After that, all
+// files needed for the corba connector are generated, including the skeleton files of
+// original IDL (helloS.cpp/h)
+project(*cc_idl_gen) : ciaox11_test_cc_base_idl {
+  custom_only = 1
+  after += multiple_base_idl_gen multiple_base_lem_gen
+  idlflags += -Wb,base_export_macro=HELLO \
+              -Wb,base_export_include=hello
+  IDL_Files {
+    gendir=generated_code
+    ../base/hello.idl
+  }
+}
+
+// Compiles the corba connector itself.
+project(*corba_conn) : ciaox11_test_base, ciaox11_executor, ciaox11_corba4ccm_impl {
+  after += multiple_base_stub multiple_base_lem_stub *cc_idl_gen
+  libs  += multiple_base_stub multiple_base_lem_stub
+
+  dynamicflags += HELLO_SKEL_BUILD_DLL \
+                  HELLO_CC_LEM_STUB_BUILD_DLL \
+                  HELLO_CC_EXEC_BUILD_DLL \
+                  HELLO_CC_SVNT_BUILD_DLL
+
+  Source_Files {
+    generated_code/helloS.cpp
+
+    generated_code/hello_ccEC.cpp
+
+    generated_code/hello_cc_exec.cpp
+    generated_code/hello_cc_svnt.cpp
+  }
+  Header_Files {
+    generated_code/helloS.h
+    generated_code/helloSP.h
+    generated_code/hello_skel_export.h
+
+    generated_code/hello_ccC.h
+    generated_code/hello_ccEC.h
+    generated_code/hello_cc_lem_stub_export.h
+
+    generated_code/hello_cc_exec.h
+    generated_code/hello_cc_exec_export.h
+
+    generated_code/hello_cc_svnt.h
+    generated_code/hello_cc_svnt_export.h
+  }
+}

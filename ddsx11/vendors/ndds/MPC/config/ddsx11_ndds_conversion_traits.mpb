@@ -1,0 +1,17 @@
+// --------------------------------------------------------------------
+// ddsx11_ndds_conversion_traits.mpb
+//
+// Copyright (c) Remedy IT Expertise BV
+// Chamber of commerce Rotterdam nr.276339, The Netherlands
+// --------------------------------------------------------------------
+
+feature(ddsx11, ndds) {
+  // Let the RIDL compiler generate the conversion traits.
+  idlflags += -Gddsx11,traits
+
+  Modify_Custom (IDL) {
+    optional(header_pre_extension) {
+      commandflags(-Gddsx11,traits) += _dds_traits
+    }
+  }
+}

@@ -1,0 +1,12 @@
+connector 'csl' do |conn|
+  conn.idl %w{ csl.idl }
+
+  conn.port_type :dds4ccm do |tp|
+    tp.topic 'OnInconsistentTopicMessage'
+    # use default DDS vendor
+    # tp.middleware :ndds
+    tp.topic_interface 'OnInconsistentTopicConnector'
+  end
+end
+
+

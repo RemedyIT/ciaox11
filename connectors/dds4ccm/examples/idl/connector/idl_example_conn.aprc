@@ -1,0 +1,11 @@
+connector 'CA1_conn' do |conn|
+  conn.idl %w{ idl_example_ca1_msg.idl }
+
+  conn.port_type :dds4ccm do |tp|
+    tp.topic 'Example::CA1_msg'
+    # use default DDS vendor
+    # tp.middleware :ndds
+    tp.topic_interface 'CA1_conn'
+  end
+end
+
