@@ -4,8 +4,15 @@
 
 CIAOX11 is a Lightweight CORBA Component Model (LwCCM) implementation
 supporting the https://www.omg.org/spec/CPP11[IDL to C++11]
-Language Mapping.
+Language Mapping which is part of https://www.axcioma.com[AXCIOMA].
 
 CIAOX11 is developed using https://taox11.remedy.nl[TAOX11].
 TAOX11 is a well known and stable CORBA implementation with a rich set
 of features and capabilities.
+
+== Install CIAOX11
+
+CIAOX11 is an integral part of AXCIOMA and for installing CIAOX11 you 
+*must* use the https://github.com/RemedyIT/axcioma[AXCIOMA] bootstrap
+repository. The brix11 tooling will clone this repository as part 
+of the bootstrap step.
