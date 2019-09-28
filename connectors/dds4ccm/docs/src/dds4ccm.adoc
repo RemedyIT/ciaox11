@@ -12,7 +12,7 @@ CIAOX11 uses a DDSX11 as IDL to {cxx11} DDS wrapper to integrate DDS
 vendors in a generic way. DDSX11 can be used to implement regular DDS
 applications using the IDL to {cxx11} language mapping. The CIAOX11
 DDS4CCM implementation uses several DDSX11 generated files which are
-<<{xref_docs_root}/ddsx11/ddsx11_files.adoc#,described>> separate. See
+<<{xref_docs_root}/ddsx11/ddsx11_files.adoc#,described>> separately. See
 link:{docs_root}/../../ciaox11/ddsx11/examples/shapes[DDSX11] for an example DDS Shapes
 sender and receiver using DDSX11.
 
