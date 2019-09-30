@@ -28,10 +28,6 @@ configure :ddsx11ndds do
       depends_exclusively_on :ndds
     end
 
-    enable :dds4ccm_ndds do
-      depends_on :ndds
-    end
-
   end
 
   ridl do
