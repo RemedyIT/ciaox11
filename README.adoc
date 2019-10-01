@@ -6,7 +6,8 @@ CIAOX11 is a Lightweight CORBA Component Model (LwCCM) implementation
 supporting the https://www.omg.org/spec/CPP11[IDL to C++11]
 Language Mapping which is part of https://www.axcioma.com[AXCIOMA].
 
-CIAOX11 is developed using https://taox11.remedy.nl[TAOX11].
+CIAOX11 is developed using https://taox11.remedy.nl[TAOX11] by 
+https://www.remedy.nl[Remedy IT].
 TAOX11 is a well known and stable CORBA implementation with a rich set
 of features and capabilities.
 
