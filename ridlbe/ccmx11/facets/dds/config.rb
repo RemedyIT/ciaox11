@@ -176,7 +176,7 @@ module IDL
       ## DDSX11 type support generation
       ##
 
-      def self.check_typesuport_export_params(options)
+      def self.check_typesupport_export_params(options)
         options.typesupport_export_macro = options.base_export_macro+"_TYPESUPPORT" + options.export_macro_pfx unless options.typesupport_export_macro || options.base_export_macro.nil?
         options.typesupport_export_include = options.base_export_include+"_typesupport" + options.export_header_pfx unless options.typesupport_export_include || options.base_export_include.nil?
       end
@@ -213,7 +213,7 @@ module IDL
         dds_typesupport_source_file = GenFile.new(options.dds_typesupport_source_file)
 
         # check export directive parameters for derived generations
-        check_typesuport_export_params (options)
+        check_typesupport_export_params (options)
         gen_typesupport_export (options)
 
         # schedule type support header
