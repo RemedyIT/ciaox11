@@ -25,10 +25,10 @@ ciaox11
 
 === Environment variables
 
-In order to control the number of cpu's to use with msvc14 solutions, the environment variable
+In order to control the number of cpu's to use with Visual Studio solutions, the environment variable
 BRIX11_NUMBER_OF_PROCESSORS can be set to overrule the system variable NUMBER_OF_PROCESSORS.
 If BRIX11_NUMBER_OF_PROCESSORS is higher then NUMBER_OF_PROCESSORS, NUMBER_OF_PROCESSORS is used
-to set the /maxcpucount
+to set the /maxcpucount.
 
 == Description
 
