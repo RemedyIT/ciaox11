@@ -192,9 +192,11 @@ module IDL
             else
               GenFile.new(nil, :output_file => $stdout)
             end
-        IDL.push_production(
-            :exec_export_header,
-            ::IDL::Cxx11::ExportHeaderWriter.new(options.typesupport_export_macro, export_file, so, options))
+        if export_file
+          IDL.push_production(
+              :exec_export_header,
+              ::IDL::Cxx11::ExportHeaderWriter.new(options.typesupport_export_macro, export_file, so, options))
+        end
       end
 
       #
