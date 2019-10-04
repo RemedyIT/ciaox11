@@ -27,7 +27,7 @@ module AxciomaPC
          :add_idl_flags => '-Scc -Sch -Scp -Gxhsk',
          :del_idl_flags => '-Ssh',
          :export => true,
-         :base_projects => %w{ciaox11_idldefaults},
+         :base_projects => %w{ridl_defaults},
          :auto_dependencies => %w{}
       },
     })
