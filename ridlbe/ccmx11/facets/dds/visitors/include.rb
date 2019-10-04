@@ -2,7 +2,7 @@
 # @file    include.rb
 # @author  Marcel Smit
 #
-# @brief   Include visitor NDDS
+# @brief   Include visitor DDS
 #
 # @copyright (c) Remedy IT Expertise BV
 # Chamber of commerce Rotterdam nr.276339, The Netherlands
