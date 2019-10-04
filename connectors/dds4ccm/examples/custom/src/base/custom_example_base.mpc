@@ -1,11 +1,11 @@
-// Not using the DDS4CCM MPC base projects for the tests since the directory structure
+// Not using the DDSX11 MPC base projects for the tests since the directory structure
 // is completely different. See ../../readme.txt for details.
-project (*idl_gen) : ciaox11_dds4ccm, ciaox11_idldefaults, ciaox11_dds4ccm_event {
+project (*idl_gen) : ddsx11, ciaox11_idldefaults {
   custom_only=1
 
   idlflags += -Wb,base_export_macro=CUSTOM_EXAMPLE_BASE \
               -Wb,base_export_include=custom_example_base \
-              -I$(CIAOX11_ROOT) -I$(CIAOX11_ROOT)/ccm \
+              -I$(CIAOX11_ROOT) \
               -o ../../build/base -SS -Gddsx11,adds -Gxhst -Gos
 
   IDL_Files {

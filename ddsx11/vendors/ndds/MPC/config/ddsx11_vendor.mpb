@@ -1,0 +1,14 @@
+// --------------------------------------------------------------------
+// ddsx11_vendor.mpb
+//
+// Copyright (c) Remedy IT Expertise BV
+// Chamber of commerce Rotterdam nr.276339, The Netherlands
+// --------------------------------------------------------------------
+
+feature(ddsx11, ndds) : ddsx11_ndds_idl_defaults {
+  after += ddsx11_ndds_dcps_idl_gen
+}
+
+feature(!ndds) {
+  requires += dummy_label
+}
