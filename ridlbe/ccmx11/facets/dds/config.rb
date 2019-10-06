@@ -168,6 +168,11 @@ module IDL
         # generating only the stub files without a stub proxy
         entities_opts.svnt_skeletons = false
         entities_opts.no_client_proxy = true
+        # Disable the generation of typecode and any support, it is not
+        # used by ddsx11
+        entities_opts.gen_typecodes = false
+        entities_opts.gen_any_ops = false
+        entities_opts.gen_localintf_any_ops = false
         entities_opts.idlfile = options.dds_typed_entities_idl_file
         IDL.push_input(options.dds_typed_entities_idl_file, entities_opts)
       end
