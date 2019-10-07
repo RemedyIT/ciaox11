@@ -123,7 +123,7 @@ module IDL
       ##
 
       #
-      # generate the IDL file which will be supplied to the ndds generator
+      # generate the IDL file which will be supplied to the DDS generator
       #
       def self.gen_idl_for_dds(options, idl_ext)
         dds_gen_idl_file = GenFile.new(File.join(options.outputdir,
@@ -231,12 +231,12 @@ module IDL
       # generate the conversion traits for the user defined types
       #
       def self.gen_user_defined_type_traits_for_dds(options, idl_ext)
-        ndds_traits_file = GenFile.new(File.join(options.outputdir,
-                                                 options.dds_udt_header_file_base+options.hdr_ext))
+        dds_traits_file = GenFile.new(File.join(options.outputdir,
+                                                options.dds_udt_header_file_base+options.hdr_ext))
 
-        # schedule ndds type traits generation
+        # schedule dds type traits generation
         IDL.push_production(:dds_type_traits,
-                            ::IDL::CCMX11::DDSX11::UserDefinedTypeTraitsWriter.new(ndds_traits_file, options))
+                            ::IDL::CCMX11::DDSX11::UserDefinedTypeTraitsWriter.new(dds_traits_file, options))
       end
 
       # configuration methods
