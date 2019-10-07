@@ -10,6 +10,7 @@
 #ifndef CX_PORTS__EXAMPLE_CA1_CONN_IDL
 #define CX_PORTS__EXAMPLE_CA1_CONN_IDL
 
+#include <Components.idl>
 #include <ccm_dds.idl>
 #include "custom_example_ca1_msg.idl"
 
@@ -21,5 +22,3 @@ module Example {
 };
 
 #endif // CX_PORTS__EXAMPLE_CA1_CONN_IDL
-
-/// @}
