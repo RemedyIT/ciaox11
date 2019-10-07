@@ -72,7 +72,7 @@ int main (int , char *[])
               std::cout << "PublicationMatchedStatus status has been received" << std::endl;
               break;
             }
-            count ++;
+            ++count;
             std::this_thread::sleep_for (std::chrono::milliseconds (500));
           }
 
