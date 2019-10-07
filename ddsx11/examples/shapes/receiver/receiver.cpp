@@ -238,7 +238,7 @@ ShapeTypeListener::on_data_available (
   DDS::SampleInfo info;
   for(;;)
   {
-    DDS::ReturnCode_t retcode = rd->take_next_sample(shape, info);
+    DDS::ReturnCode_t const retcode = rd->take_next_sample(shape, info);
     if (retcode == DDS::RETCODE_NO_DATA)
     {
       /* No more samples */
