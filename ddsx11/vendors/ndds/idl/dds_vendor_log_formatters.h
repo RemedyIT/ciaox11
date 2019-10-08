@@ -27,7 +27,7 @@ inline void translate_vendor_listenermask (std::string &ret, ::DDS::StatusMask c
 {
 #define DDS_VENDOR_CHECK_MASK(X, Y, Z) \
     if (X & Y) { \
-      if (Z.length () != 0) \
+      if (!Z.empty ()) \
           Z += " | "; \
       Z += translate_vendor_statuskind (Y); \
     }
