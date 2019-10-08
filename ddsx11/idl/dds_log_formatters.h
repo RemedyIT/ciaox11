@@ -100,7 +100,7 @@ inline void translate_listenermask (std::string &ret, ::DDS::StatusMask const &m
 {
 #define DDS_CHECK_MASK(X, Y, Z) \
     if (X & Y) { \
-      if (Z.length () != 0) \
+      if (!Z.empty ()) \
           Z += " | "; \
       Z += translate_statuskind (Y); \
     }
