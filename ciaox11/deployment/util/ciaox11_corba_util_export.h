@@ -5,7 +5,6 @@
  * @brief CIAOX11 CORBA deployment utility export header
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef __CIAOX11_CORBA_UTIL_EXPORT_H_INCLUDED__
 #define __CIAOX11_CORBA_UTIL_EXPORT_H_INCLUDED__

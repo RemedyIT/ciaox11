@@ -8,7 +8,6 @@
  * Testing the _get_component method.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 //@@{__RIDL_REGEN_MARKER__} - HEADER_END : get_component_component_impl.cpp[Header]
 

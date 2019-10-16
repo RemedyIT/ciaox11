@@ -3,7 +3,6 @@
  * @author  Marcel Smit
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef DDS_RFT2_DCPS_IDL_
 #define DDS_RFT2_DCPS_IDL_

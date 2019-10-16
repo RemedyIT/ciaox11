@@ -3,7 +3,6 @@
  * @author  Unknown
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef DDSX11_LOGGER_EXPORT_H
 #define DDSX11_LOGGER_EXPORT_H

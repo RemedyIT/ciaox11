@@ -6,7 +6,6 @@
  * @brief   Wrapper facade for the DataWriter
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #include "dds4ccm_ccm_data_writer.h"
 #include "dds4ccm/logger/dds4ccm_log.h"

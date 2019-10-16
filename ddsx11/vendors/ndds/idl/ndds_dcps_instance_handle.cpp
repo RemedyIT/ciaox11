@@ -10,7 +10,6 @@
  *          to use it.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #include "ndds_dcps_instance_handle.h"
 

@@ -5,7 +5,6 @@
  * @brief   Sender component declaration for the Updater test
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef UPDATER_SENDER_IDL_
 #define UPDATER_SENDER_IDL_

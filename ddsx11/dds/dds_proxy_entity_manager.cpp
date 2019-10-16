@@ -4,7 +4,6 @@
  * @author  Marcel Smit
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #include "dds/dds_common.h"
 #include "dds/dds_proxy_entity_manager.h"

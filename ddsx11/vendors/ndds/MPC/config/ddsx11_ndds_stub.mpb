@@ -2,7 +2,6 @@
 // ddsx11_ndds_stub.mpb
 //
 // Copyright (c) Remedy IT Expertise BV
-// Chamber of commerce Rotterdam nr.276339, The Netherlands
 // --------------------------------------------------------------------
 
 // Use taox11_core_anytypecode because we only want to link with anytypecode

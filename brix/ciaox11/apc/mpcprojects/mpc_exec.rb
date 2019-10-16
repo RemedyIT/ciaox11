@@ -5,7 +5,6 @@
 # @brief   mpc registry for executor projects
 #
 # @copyright Copyright (c) Remedy IT Expertise BV
-# Chamber of commerce Rotterdam nr.276339, The Netherlands
 #--------------------------------------------------------------------
 require 'pathname'
 require 'brix/ciaox11/apc/mpcprojects/mpc_compile.rb'

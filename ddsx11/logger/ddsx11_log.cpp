@@ -5,7 +5,6 @@
  * @brief   DDSX11 for X11 log module.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #include "logger/ddsx11_log.h"

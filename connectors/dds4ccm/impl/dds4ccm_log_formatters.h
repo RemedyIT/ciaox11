@@ -6,7 +6,6 @@
  * @brief   Override default logging format of certain artifacts.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef DDS4CCM_LOG_FORMATTERS_H_
 #define DDS4CCM_LOG_FORMATTERS_H_

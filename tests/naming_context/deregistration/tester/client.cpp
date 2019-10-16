@@ -5,7 +5,6 @@
  * @brief   IDL2 client to test whether the component has been deregistered.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #include "orbsvcs/orbsvcs/naming_server/CosNamingC.h"

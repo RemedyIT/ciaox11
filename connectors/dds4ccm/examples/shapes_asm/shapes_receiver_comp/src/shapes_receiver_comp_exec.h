@@ -6,7 +6,6 @@
  * @brief   Shapes receiver component
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #ifndef __RIDL_SHAPES_RECEIVER_COMP_EXEC_H_HBHIAHHH_INCLUDED__

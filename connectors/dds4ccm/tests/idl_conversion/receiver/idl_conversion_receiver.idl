@@ -5,7 +5,6 @@
  * @brief   Receiver component declaration for the IDL stress test.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef IDL_CONVERSION_RECEIVER_IDL_
 #define IDL_CONVERSION_RECEIVER_IDL_

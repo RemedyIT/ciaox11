@@ -6,7 +6,6 @@
  * @brief   sender ami4ccm test with no replyhandler
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef __RIDL_NO_REPLY_H_SENDER_EXEC_H_GEBEFGED_INCLUDED__
 #define __RIDL_NO_REPLY_H_SENDER_EXEC_H_GEBEFGED_INCLUDED__

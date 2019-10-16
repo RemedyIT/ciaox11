@@ -6,7 +6,6 @@
  * @brief   Provides the context switch between DDS and DDS4CCM
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef DDS4CCM_LISTENER_BASE_T_H_
 #define DDS4CCM_LISTENER_BASE_T_H_

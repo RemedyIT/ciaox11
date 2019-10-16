@@ -6,7 +6,6 @@
  * @brief   DDS4CCM Writer implementation for DDS4CCM4CIAOX11
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #include "dds4ccm/impl/dds4ccm_utils.h"
 #include "dds4ccm/impl/dds4ccm_coherent_changes_guard.h"

@@ -5,7 +5,6 @@
 # @brief   base class for DDS visitors
 #
 # @copyright Copyright (c) Remedy IT Expertise BV
-# Chamber of commerce Rotterdam nr.276339, The Netherlands
 #--------------------------------------------------------------------
 require 'ridlbe/c++11/visitorbase'
 

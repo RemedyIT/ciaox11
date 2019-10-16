@@ -6,7 +6,6 @@
  * @brief   CIAOX11 attribute keywords test
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #ifndef __RIDL_FOO_EXEC_H_BCHJJJGJ_INCLUDED__

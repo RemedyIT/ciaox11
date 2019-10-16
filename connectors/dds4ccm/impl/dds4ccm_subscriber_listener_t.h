@@ -6,7 +6,6 @@
  * @brief   SubscriberListener for DDS4CCM4CIAOX11
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef DDS4CCM_SUBSCRIBERLISTENER_T_H_
 #define DDS4CCM_SUBSCRIBERLISTENER_T_H_

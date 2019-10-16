@@ -5,7 +5,6 @@
  * @brief   Sender component declaration for the AXP minimal-event test.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef EVENT_SENDER_IDL_
 #define EVENT_SENDER_IDL_

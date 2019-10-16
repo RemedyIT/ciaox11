@@ -5,7 +5,6 @@
  * @brief   Testing interceptors
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef TEST_INTERCEPTORS_H
 #define TEST_INTERCEPTORS_H

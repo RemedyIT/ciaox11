@@ -6,7 +6,6 @@
  * @brief   Vendor specific part of wrapper facade for DDS
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 namespace DDSX11

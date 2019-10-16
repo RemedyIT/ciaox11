@@ -6,7 +6,6 @@
  * @brief   Sender component
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #ifndef __RIDL_EXCEPTION_T_SENDER_EXEC_H_CEABEFEC_INCLUDED__

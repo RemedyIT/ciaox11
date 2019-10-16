@@ -5,7 +5,6 @@
  * @brief Installation handler implementation for containers
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #include "ciaox11_container_handler.h"

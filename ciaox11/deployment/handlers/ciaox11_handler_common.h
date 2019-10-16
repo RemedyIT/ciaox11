@@ -5,7 +5,6 @@
  * @brief Operations common to all CIAOX11 handlers
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #ifndef CIAOX11_HANDLER_COMMON_H

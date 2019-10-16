@@ -6,7 +6,6 @@
  * @brief   Checks which are valid for both the sender and receiver
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef CSL_COMMON_H_
 #define CSL_COMMON_H_

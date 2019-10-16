@@ -6,7 +6,6 @@
  * @brief   Domain Participant Manager for DDS4CCM
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef DDS4CCM_DP_MANAGER_H_
 #define DDS4CCM_DP_MANAGER_H_

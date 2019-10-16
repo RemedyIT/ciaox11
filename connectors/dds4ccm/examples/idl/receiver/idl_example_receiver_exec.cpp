@@ -6,7 +6,6 @@
  * @brief   Receiver component implementation of the IDL example.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 //@@{__RIDL_REGEN_MARKER__} - HEADER_END : idl_example_receiver_impl.cpp[Header]
 

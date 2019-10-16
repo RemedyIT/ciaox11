@@ -5,7 +5,6 @@
 # @brief  Create an axcioma project using idl and recipe files
 #
 # @copyright Copyright (c) Remedy IT Expertise BV
-# Chamber of commerce Rotterdam nr.276339, The Netherlands
 #--------------------------------------------------------------------
 require 'brix/ciaox11/apc/apc'
 require 'brix/ciaox11/apc/project'

@@ -3,7 +3,6 @@
  * @author  Marcel Smit
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef RG_LATE_BIND_SENDER_IDL_
 #define RG_LATE_BIND_SENDER_IDL_

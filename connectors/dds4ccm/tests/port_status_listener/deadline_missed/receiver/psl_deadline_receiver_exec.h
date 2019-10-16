@@ -7,7 +7,6 @@
  *          the Port Status Listener.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #ifndef __RIDL_PSL_DEADLINE_RECEIVER_EXEC_H_CHCAJJBA_INCLUDED__

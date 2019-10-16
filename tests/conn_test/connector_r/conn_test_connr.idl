@@ -5,7 +5,6 @@
  * @brief   CIAOX11 connector for connector test
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #ifndef CONN_TEST_CONNR_IDL_

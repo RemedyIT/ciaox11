@@ -5,7 +5,6 @@
  * @brief   Compliant with OMG 06-04-01 Section 8.3.2
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #if !defined (CCM_EXECUTORLOCATOR_IDL)

@@ -6,7 +6,6 @@
  * @brief   NDDS specific overrides for logging formats
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef DDSX11_IMPL_DDS_VENDOR_LOG_FORMATTERS_H_
 #define DDSX11_IMPL_DDS_VENDOR_LOG_FORMATTERS_H_

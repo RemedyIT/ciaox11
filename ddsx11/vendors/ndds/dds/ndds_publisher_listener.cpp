@@ -7,7 +7,6 @@
  *          to the spec compliant IDL
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #include "dds/dds_common.h"
 #include "dds/ndds_publisher_listener.h"

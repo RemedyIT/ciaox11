@@ -6,7 +6,6 @@
  * @brief   Receiver component for the max delivered data test for the getter
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef __RIDL_MDD_GETTER_RECEIVER_EXEC_H_JGIJJJAD_INCLUDED__
 #define __RIDL_MDD_GETTER_RECEIVER_EXEC_H_JGIJJJAD_INCLUDED__

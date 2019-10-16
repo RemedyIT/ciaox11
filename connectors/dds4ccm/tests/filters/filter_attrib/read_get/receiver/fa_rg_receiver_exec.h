@@ -7,7 +7,6 @@
  *          tests two different queries.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef __RIDL_FA_RG_RECEIVER_EXEC_H_IDDICFDA_INCLUDED__
 #define __RIDL_FA_RG_RECEIVER_EXEC_H_IDDICFDA_INCLUDED__

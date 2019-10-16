@@ -4,7 +4,6 @@
  * @author  Marijke Hengstmengel
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef __RIDL_PORT_ONLY_COMP_EXEC_H_FJCAHFDD_INCLUDED__
 #define __RIDL_PORT_ONLY_COMP_EXEC_H_FJCAHFDD_INCLUDED__

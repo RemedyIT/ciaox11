@@ -6,7 +6,6 @@
  *          naming convertions visible to the user.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef DDSX11_IMPL_NDDS_TYPEDEF_H_
 #define DDSX11_IMPL_NDDS_TYPEDEF_H_

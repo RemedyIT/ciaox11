@@ -5,7 +5,6 @@
  * @brief   sender for test with missing connection
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #ifndef HELLO_T_SENDER_IDL

@@ -4,7 +4,6 @@
  * @author  Martin Corino
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef __RIDL_ANOTHER_COMP_EXEC_H_CFFIEICF_INCLUDED__
 #define __RIDL_ANOTHER_COMP_EXEC_H_CFFIEICF_INCLUDED__

@@ -6,7 +6,6 @@
  * @brief   connnector header
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #ifndef __RIDL_GEN_TEST_CONNS_EXEC_H_FABFFBAA_INCLUDED__

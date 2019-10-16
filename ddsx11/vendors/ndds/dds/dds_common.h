@@ -6,7 +6,6 @@
  * @brief   Manages includes per vendor.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef DDSX11_IMPL_COMMON_H_
 #define DDSX11_IMPL_COMMON_H_

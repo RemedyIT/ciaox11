@@ -5,7 +5,6 @@
   * @brief   header file for test extra include
   *
   * @copyright Copyright (c) Remedy IT Expertise BV
-  * Chamber of commerce Rotterdam nr.276339, The Netherlands
 */
 
 #include <cstdint>

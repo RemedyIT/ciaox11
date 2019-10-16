@@ -5,7 +5,6 @@
  * @brief   Sender component idl
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #ifndef EXCEPTION_T_SENDER_IDL

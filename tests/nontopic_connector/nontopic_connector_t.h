@@ -5,7 +5,6 @@
  * @brief   CIAOX11 templated connector templates
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #ifndef NT_CONNECTOR_T

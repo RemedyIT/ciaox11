@@ -6,7 +6,6 @@
  * @brief   Utilities related to the CommonTestConnector
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef COMMON_TEST_UTILS_H_
 #define COMMON_TEST_UTILS_H_

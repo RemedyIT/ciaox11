@@ -9,7 +9,6 @@
  * ndds_dcps_all contains the rest.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #ifndef NDDS_DCPS_IDL_

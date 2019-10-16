@@ -6,7 +6,6 @@
  *          of a event listener
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef CFT_EL_SENDER_IDL_
 #define CFT_EL_SENDER_IDL_

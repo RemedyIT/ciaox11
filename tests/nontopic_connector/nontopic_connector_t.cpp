@@ -5,7 +5,6 @@
  * @brief   CIAOX11 templated connector template
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #include "ciaox11/testlib/ciaox11_testlog.h"
 

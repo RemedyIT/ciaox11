@@ -5,7 +5,6 @@
  * @brief Implementation file for CIAOX11 service registry implementation
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #include "ciaox11/core/service_registry.h"

@@ -5,7 +5,6 @@
  * @brief   DDS4CCM for X11 log module.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #include "dds4ccm/logger/dds4ccm_log.h"

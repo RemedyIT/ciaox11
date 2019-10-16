@@ -7,7 +7,6 @@
  *          to the spec compliant IDL
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef DDSX11_IMPL_NDDS_DOMAIN_PARTICIPANT_FACTORY_H_
 #define DDSX11_IMPL_NDDS_DOMAIN_PARTICIPANT_FACTORY_H_

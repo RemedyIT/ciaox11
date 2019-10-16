@@ -6,7 +6,6 @@
  * @brief   header of sender component implementation
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #ifndef __RIDL_HELLO_SENDER_COMP_EXEC_H_HDFHHEEB_INCLUDED__

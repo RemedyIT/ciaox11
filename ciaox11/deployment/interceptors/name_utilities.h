@@ -5,7 +5,6 @@
  * @brief A set of utility methods to manages references.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #ifndef CIAOX11_NAME_UTILITIES_H

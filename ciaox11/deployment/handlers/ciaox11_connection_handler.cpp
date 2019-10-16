@@ -5,7 +5,6 @@
  * @brief Common connection handling logic for components.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #include "ciaox11_connection_handler.h"

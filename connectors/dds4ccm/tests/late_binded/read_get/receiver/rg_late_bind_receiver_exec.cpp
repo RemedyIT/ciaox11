@@ -6,7 +6,6 @@
  * @brief   Receiver component implementation of the late binded topic test.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 //@@{__RIDL_REGEN_MARKER__} - HEADER_END : rg_late_bind_receiver_impl.cpp[Header]
 

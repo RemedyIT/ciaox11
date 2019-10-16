@@ -6,7 +6,6 @@
  * @brief   base for test with missing connection
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #ifndef __RIDL_HELLO_RECEIVER_EXEC_H_DIBJBEAA_INCLUDED__

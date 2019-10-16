@@ -2,7 +2,6 @@
 // ddsx11_ndds_conversion_traits.mpb
 //
 // Copyright (c) Remedy IT Expertise BV
-// Chamber of commerce Rotterdam nr.276339, The Netherlands
 // --------------------------------------------------------------------
 
 feature(ddsx11, ndds) {

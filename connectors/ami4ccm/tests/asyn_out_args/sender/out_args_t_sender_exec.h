@@ -6,7 +6,6 @@
  * @brief   sender of ami4ccm test with out arguments
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #ifndef __RIDL_OUT_ARGS_T_SENDER_EXEC_H_CBDIACDE_INCLUDED__

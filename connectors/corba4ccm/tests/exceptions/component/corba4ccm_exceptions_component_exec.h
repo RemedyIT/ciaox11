@@ -6,7 +6,6 @@
  * @brief   Testing the INV_OBJREF exception
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef __RIDL_CORBA4CCM_EXCEPTIONS_COMPONENT_EXEC_H_HCBBIAEA_INCLUDED__
 #define __RIDL_CORBA4CCM_EXCEPTIONS_COMPONENT_EXEC_H_HCBBIAEA_INCLUDED__

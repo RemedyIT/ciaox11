@@ -4,7 +4,6 @@
  * @author  Johnny Willemsen
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef CIAO_DEPLOYMENT_HANDLER_EXPORT_H
 #define CIAO_DEPLOYMENT_HANDLER_EXPORT_H

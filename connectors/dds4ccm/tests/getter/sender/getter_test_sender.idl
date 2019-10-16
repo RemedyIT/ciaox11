@@ -5,7 +5,6 @@
  * @brief   Sender IDL for the getter test.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef GETTER_TEST_SENDER_IDL_
 #define GETTER_TEST_SENDER_IDL_

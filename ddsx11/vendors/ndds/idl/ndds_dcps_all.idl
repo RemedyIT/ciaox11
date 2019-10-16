@@ -10,7 +10,6 @@
  * RTI NDDS specific extensions are documented inline.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #ifndef NDDS_DCPS_ALL_IDL_

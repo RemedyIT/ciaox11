@@ -6,7 +6,6 @@
  * @brief   Shapes control component
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #ifndef __RIDL_SHAPES_CONTROL_COMP_EXEC_H_GBECDHBA_INCLUDED__

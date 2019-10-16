@@ -6,7 +6,6 @@
  * @brief   generated header file sender component
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef __RIDL_HELLO_SENDER_COMP_EXEC_H_IFACHHFA_INCLUDED__
 #define __RIDL_HELLO_SENDER_COMP_EXEC_H_IFACHHFA_INCLUDED__

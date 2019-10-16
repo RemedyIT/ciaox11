@@ -5,7 +5,6 @@
 # @brief  DSL component for reading recipes
 #
 # @copyright Copyright (c) Remedy IT Expertise BV
-# Chamber of commerce Rotterdam nr.276339, The Netherlands
 #--------------------------------------------------------------------
 require 'scanidlfile'
 require 'fileutils'

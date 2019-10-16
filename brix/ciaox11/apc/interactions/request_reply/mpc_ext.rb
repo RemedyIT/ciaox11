@@ -5,7 +5,6 @@
 # @brief  request and reply specializations
 #
 # @copyright Copyright (c) Remedy IT Expertise BV
-# Chamber of commerce Rotterdam nr.276339, The Netherlands
 #--------------------------------------------------------------------
 
 # make sure MPC base definitions are loaded

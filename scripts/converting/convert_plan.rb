@@ -9,7 +9,6 @@
 #          connectors when synchronous request/reply is being used
 #
 # @copyright Copyright (c) Remedy IT Expertise BV
-# Chamber of commerce Rotterdam nr.276339, The Netherlands
 #--------------------------------------------------------------------
 $: << File.dirname(__FILE__)
 

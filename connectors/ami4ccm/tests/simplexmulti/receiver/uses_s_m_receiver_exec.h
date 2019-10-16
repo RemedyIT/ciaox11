@@ -6,7 +6,6 @@
  * @brief   receiver of ami4ccm test with combination of uses multiple and simplex
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #ifndef __RIDL_USES_S_M_RECEIVER_EXEC_H_IICCCEEF_INCLUDED__

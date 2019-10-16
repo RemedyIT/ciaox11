@@ -5,7 +5,6 @@
  * @brief   Header file for CIAOX11 container implementation
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #ifndef CIAOX11_CONTAINER_I_H

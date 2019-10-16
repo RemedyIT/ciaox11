@@ -6,7 +6,6 @@
  * @brief   receiver of ami4ccm test with out arguments
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 //@@{__RIDL_REGEN_MARKER__} - HEADER_END : out_args_t_receiver_impl.cpp[Header]
 
