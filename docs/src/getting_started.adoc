@@ -134,8 +134,8 @@ reduced learning curves but also ultimately leading to software with
 significantly fewer _source lines of code_ (SLOCs) or in other words;
 cheaper and better maintainable software.
 
-On the Remedy IT https://www.axcioma.com/documents/presentations.html[AXCIOMA]
-product website you can find the
+On the Remedy IT https://www.axcioma.org/documents/presentations.html[AXCIOMA]
+website you can find the
 Programming with IDL to {cxx11} tutorial and the
 Comparing IDL to {cpp} with IDL to
 {cxx11} tutorial.
@@ -389,9 +389,9 @@ sure to follow the directions in the PRF.
 === Training material
 
 A basic tutorial about the IDL to {cxx11} language mapping is available at
-the https://www.axcioma.com/documents/presentations.html[AXCIOMA] website. There
+the https://www.axcioma.org/documents/presentations.html[AXCIOMA] website. There
 you can also find a comparison between the IDL to {cpp} and IDL to {cxx11}
 language mapping. +
  +
  Remedy IT also offers a
-https://www.axcioma.com/services/training.html[Component Based Development using AXCIOMA] course.
+https://www.axcioma.org/services/training.html[Component Based Development using AXCIOMA] course.
