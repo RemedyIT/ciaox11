@@ -5,7 +5,6 @@
  * @brief   Sender component implementation of the Getter test.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #ifndef __RIDL_GETTER_TEST_SENDER_EXEC_H_JIEGECIC_INCLUDED__

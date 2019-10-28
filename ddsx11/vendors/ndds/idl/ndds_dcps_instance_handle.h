@@ -13,7 +13,6 @@
  * DDS proxy core files directly.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef DDS_NDDS_NDDS_DCPS_INSTANCE_HANDLE_H_
 #define DDS_NDDS_NDDS_DCPS_INSTANCE_HANDLE_H_

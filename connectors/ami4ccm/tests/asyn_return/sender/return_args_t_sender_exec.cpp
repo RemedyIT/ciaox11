@@ -6,7 +6,6 @@
  * @brief   sender of ami4ccm test with several return types
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 //@@{__RIDL_REGEN_MARKER__} - HEADER_END : return_args_t_sender_impl.cpp[Header]

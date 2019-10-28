@@ -6,7 +6,6 @@
  * @brief   Sender component implementation of the IDL conversion test.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #ifndef __RIDL_IDL_CONVERSION_SENDER_EXEC_H_FHJCAGIJ_INCLUDED__

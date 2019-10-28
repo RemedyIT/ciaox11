@@ -5,7 +5,6 @@
  * @brief CIAOX11 CORBA deployment utility methods
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #include "ciaox11_corba_util.h"

@@ -6,7 +6,6 @@
  * @brief   header sender compomnent
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #ifndef __RIDL_IN_ARGS_T_SENDER_EXEC_H_JFEBAHGH_INCLUDED__

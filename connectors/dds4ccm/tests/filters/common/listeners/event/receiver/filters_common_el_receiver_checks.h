@@ -6,7 +6,6 @@
  * @brief   Common checks for the event listeners.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef FILTERS_COMMON_EL_RECEIVER_CHECKS_H_
 #define FILTERS_COMMON_EL_RECEIVER_CHECKS_H_

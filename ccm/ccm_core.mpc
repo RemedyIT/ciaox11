@@ -8,7 +8,6 @@
 // from the normal ciaox11_ccm_stub
 //
 // Copyright (c) Remedy IT Expertise BV
-// Chamber of commerce Rotterdam nr.276339, The Netherlands
 // --------------------------------------------------------------------
 
 project(ciaox11_ccm_core_idl) : install, ciaox11_idl {

@@ -2,7 +2,6 @@
 // ciaox11_test_ami4ccm_conn_all.mpb
 //
 // Copyright (c) Remedy IT Expertise BV
-// Chamber of commerce Rotterdam nr.276339, The Netherlands
 // --------------------------------------------------------------------
 
 project : ciaox11_ami4ccm_stub, ciaox11_ccm_session_stub, ciaox11_test_base_stub, \

@@ -6,7 +6,6 @@
  * @brief   receiver compomnent
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #ifndef __RIDL_INOUT_ARGS_T_RECEIVER_EXEC_H_BDBEBDBA_INCLUDED__

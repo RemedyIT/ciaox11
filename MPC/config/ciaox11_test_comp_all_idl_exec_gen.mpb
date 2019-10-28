@@ -4,7 +4,6 @@
 // Always generate the component executor starter code.
 //
 // Copyright (c) Remedy IT Expertise BV
-// Chamber of commerce Rotterdam nr.276339, The Netherlands
 // --------------------------------------------------------------------
 
 project : ciaox11_comp_all_idl, ciaox11_test_idldefaults {

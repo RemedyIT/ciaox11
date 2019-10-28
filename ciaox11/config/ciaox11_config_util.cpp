@@ -5,7 +5,6 @@
  * @brief Common CIAOX11 ConfigValue utility methods
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #include "ciaox11_config_util.h"

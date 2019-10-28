@@ -5,7 +5,6 @@
  * @brief   base of sender ami4ccm test
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #ifndef AMI4CCM_SENDER_NC_IDL

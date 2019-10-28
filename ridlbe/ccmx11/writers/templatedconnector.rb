@@ -5,7 +5,6 @@
 # @brief   walker class for component executor
 #
 # @copyright Copyright (c) Remedy IT Expertise BV
-# Chamber of commerce Rotterdam nr.276339, The Netherlands
 #--------------------------------------------------------------------
 require 'ridlbe/ccmx11/writers/helpers/version_helper'
 require 'ridlbe/c++11/writerbase'

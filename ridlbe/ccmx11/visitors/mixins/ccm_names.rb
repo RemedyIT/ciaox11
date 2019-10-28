@@ -5,7 +5,6 @@
 # @brief   visitors mixin for CCM names (lem names)
 #
 # @copyright Copyright (c) Remedy IT Expertise BV
-# Chamber of commerce Rotterdam nr.276339, The Netherlands
 #--------------------------------------------------------------------
 module IDL
   module CCMX11

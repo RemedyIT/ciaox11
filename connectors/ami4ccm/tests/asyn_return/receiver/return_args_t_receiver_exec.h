@@ -6,7 +6,6 @@
  * @brief   receiver of ami4ccm test with several return types
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #ifndef __RIDL_RETURN_ARGS_T_RECEIVER_EXEC_H_CGIBHAFD_INCLUDED__

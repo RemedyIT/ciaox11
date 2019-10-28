@@ -6,7 +6,6 @@
  * @brief   Some common definitions for the query tests.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef QC_COMMON_H_
 #define QC_COMMON_H_

@@ -5,7 +5,6 @@
  * @brief Implementation file AMI4CCM ExceptionHolder
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #include "ami4ccm.h"

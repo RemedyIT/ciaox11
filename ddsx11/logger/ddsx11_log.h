@@ -5,7 +5,6 @@
  * @brief   DDSX11 logger stream implementations
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef DDSX11_LOG_H_
 #define DDSX11_LOG_H_

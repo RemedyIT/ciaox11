@@ -5,7 +5,6 @@
  * @brief   Standard CIAOX11 ConfigValue Ids
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #if !defined (CIAOX11_CONFIG_VALUES_IDL)

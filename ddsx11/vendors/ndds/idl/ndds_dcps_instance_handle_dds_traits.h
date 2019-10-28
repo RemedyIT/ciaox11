@@ -5,7 +5,6 @@
  * @brief   Conversion traits for DDS::InstanceHandle_t
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #if !defined (NDDS_DCPS_INSTANCE_HANDLE_DDS_TRAITS_H_)

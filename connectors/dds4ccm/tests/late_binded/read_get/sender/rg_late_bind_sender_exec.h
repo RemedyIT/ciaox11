@@ -9,7 +9,6 @@
  * that the samples were written.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #ifndef __RIDL_RG_LATE_BIND_SENDER_EXEC_H_BGHFFCFJ_INCLUDED__

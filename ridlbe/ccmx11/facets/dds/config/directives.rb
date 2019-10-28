@@ -6,7 +6,6 @@
 # annotation support, see #4729
 #
 # @copyright Copyright (c) Remedy IT Expertise BV
-# Chamber of commerce Rotterdam nr.276339, The Netherlands
 
 #--------------------------------------------------------------------
 

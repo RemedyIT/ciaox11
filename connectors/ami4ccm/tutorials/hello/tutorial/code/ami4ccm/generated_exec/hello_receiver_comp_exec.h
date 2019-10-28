@@ -6,7 +6,6 @@
  * @brief   generated header file receiver component
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef __RIDL_HELLO_RECEIVER_COMP_EXEC_H_GGBDAJEE_INCLUDED__
 #define __RIDL_HELLO_RECEIVER_COMP_EXEC_H_GGBDAJEE_INCLUDED__

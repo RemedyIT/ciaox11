@@ -5,7 +5,6 @@
  * @brief Deployment interceptors for CIAOX11
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef CIAOX11_DEPLOYMENT_INTERCEPTORS_H
 #define CIAOX11_DEPLOYMENT_INTERCEPTORS_H

@@ -6,7 +6,6 @@
  * @brief   Wrapper facade for DDS
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #include "dds_data_reader_listener.h"
 #include "logger/ddsx11_log.h"

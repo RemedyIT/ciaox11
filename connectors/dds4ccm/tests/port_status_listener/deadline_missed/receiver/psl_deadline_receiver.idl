@@ -3,7 +3,6 @@
  * @author  Marcel Smit
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef PSL_DEADLINE_RECEIVER_IDL_
 #define PSL_DEADLINE_RECEIVER_IDL_

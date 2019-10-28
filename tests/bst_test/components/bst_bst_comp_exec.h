@@ -6,7 +6,6 @@
  * @brief   CIAOX11 bounded attribute test
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #ifndef __RIDL_BST_BST_COMP_EXEC_H_ICBBACDF_INCLUDED__

@@ -5,7 +5,6 @@
  * @brief   CORBA C++11 Test Logging module
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef DDS4CCM_TESTLOG_H
 #define DDS4CCM_TESTLOG_H

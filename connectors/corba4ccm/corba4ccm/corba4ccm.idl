@@ -5,7 +5,6 @@
  * @brief   corba4ccm base
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #if !defined (CORBA4CCM_IDL_H)

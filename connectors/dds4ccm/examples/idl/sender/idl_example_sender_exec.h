@@ -6,7 +6,6 @@
  * @brief   Sender component implementation of the IDL example.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #ifndef __RIDL_IDL_EXAMPLE_SENDER_EXEC_H_JAFCCHAE_INCLUDED__

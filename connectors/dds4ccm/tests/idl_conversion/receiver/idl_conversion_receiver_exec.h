@@ -6,7 +6,6 @@
  * @brief   Receiver component implementation of the IDL conversion test.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #ifndef __RIDL_IDL_CONVERSION_RECEIVER_EXEC_H_JFAIJADD_INCLUDED__

@@ -9,7 +9,6 @@
  * the content filtered topic on a listener.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #ifndef __RIDL_CFT_EL_RECEIVER_EXEC_H_BHFGDIGI_INCLUDED__

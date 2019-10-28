@@ -5,7 +5,6 @@
 # @brief   Helper module for CIAOX11 version check generation
 #
 # @copyright Copyright (c) Remedy IT Expertise BV
-# Chamber of commerce Rotterdam nr.276339, The Netherlands
 #--------------------------------------------------------------------
 
 module IDL

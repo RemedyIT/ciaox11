@@ -3,7 +3,6 @@
  * @author  Marcel Smit
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef CX_PORTS__MESSAGES__EXAMPLE_DA1_MSG_IDL
 #define CX_PORTS__MESSAGES__EXAMPLE_DA1_MSG_IDL

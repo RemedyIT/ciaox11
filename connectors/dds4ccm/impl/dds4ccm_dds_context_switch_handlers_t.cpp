@@ -6,7 +6,6 @@
  * @brief   Provides the context switch between DDS and DDS4CCM
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #include "dds4ccm/impl/dds4ccm_utils.h"

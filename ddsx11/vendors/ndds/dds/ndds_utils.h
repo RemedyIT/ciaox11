@@ -6,7 +6,6 @@
  * @brief   Utility class for the NDDS specific profile strings
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef DDSX11_IMPL_NDDS_UTILS_H_
 #define DDSX11_IMPL_NDDS_UTILS_H_

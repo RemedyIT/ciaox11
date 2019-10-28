@@ -9,7 +9,6 @@
  * gets invoked.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #ifndef __RIDL_RG_LATE_BIND_RECEIVER_EXEC_H_GIHFHDAA_INCLUDED__

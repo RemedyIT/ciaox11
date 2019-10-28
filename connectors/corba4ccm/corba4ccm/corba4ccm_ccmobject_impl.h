@@ -3,7 +3,6 @@
  * @author  Johnny Willemsen
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #ifndef CIAOX11_CORBA4CCM_CCMOBJECT_IMPL_H

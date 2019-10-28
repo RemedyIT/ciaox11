@@ -6,7 +6,6 @@
  * @brief   Common checks for the filter and query attributes tests
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #ifndef FILTERS_COMMON_RECEIVER_RG_RUNNER_T_H_

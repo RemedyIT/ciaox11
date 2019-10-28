@@ -6,7 +6,6 @@
  * @brief   receiver of ami4ccm test with multiple inheritance
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 //@@{__RIDL_REGEN_MARKER__} - HEADER_END : multi_inherit_receiver_impl.cpp[Header]
 

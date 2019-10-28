@@ -6,7 +6,6 @@
  * @brief   Implementation of late binded connectors.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #include "dds4ccm/logger/dds4ccm_log.h"
 #include "dds4ccm/impl/dds4ccm_utils.h"

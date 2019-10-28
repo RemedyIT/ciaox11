@@ -6,7 +6,6 @@
  * @brief   Sender component implementation of the IDL example.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 //@@{__RIDL_REGEN_MARKER__} - HEADER_END : custom_example_sender_impl.cpp[Header]
 

@@ -5,7 +5,6 @@
  * @brief   Implementation file of the CORBA4CCM connector implementation
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #include "connectors/corba4ccm/corba4ccm/corba4ccm_conn_t.h"

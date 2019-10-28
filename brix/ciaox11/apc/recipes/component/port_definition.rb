@@ -5,7 +5,6 @@
 # @brief   Holds component port definition from component recipe
 #
 # @copyright Copyright (c) Remedy IT Expertise BV
-# Chamber of commerce Rotterdam nr.276339, The Netherlands
 #--------------------------------------------------------------------
 
 module AxciomaPC

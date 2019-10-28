@@ -5,7 +5,6 @@
  * @brief   Stress test for DDS4CCM
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef CX_PORTS__EXAMPLE_CA1_CONN_IDL
 #define CX_PORTS__EXAMPLE_CA1_CONN_IDL

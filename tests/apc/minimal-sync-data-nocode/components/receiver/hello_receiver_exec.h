@@ -4,7 +4,6 @@
  * @author  Martin Corino
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef __RIDL_HELLO_RECEIVER_EXEC_H_JFJIJCII_INCLUDED__
 #define __RIDL_HELLO_RECEIVER_EXEC_H_JFJIJCII_INCLUDED__

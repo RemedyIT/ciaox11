@@ -6,7 +6,6 @@
  * @brief   Runs one iteration (run) for a receiver component.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #include "dds4ccm/tests/filters/common/read_get/receiver/filters_common_receiver_rg_runner_t.h"

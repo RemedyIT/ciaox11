@@ -6,7 +6,6 @@
  * @brief   Shapes sender executor
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #ifndef __RIDL_SHAPES_SENDER_COMP_EXEC_H_IJHJIJGJ_INCLUDED__

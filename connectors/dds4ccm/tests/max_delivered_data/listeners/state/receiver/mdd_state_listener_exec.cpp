@@ -6,7 +6,6 @@
  * @brief   Receiver component for the max delivered data test for the state listener
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 //@@{__RIDL_REGEN_MARKER__} - HEADER_END : mdd_state_listener_impl.cpp[Header]
 

@@ -4,7 +4,6 @@
  * @author  Marcel Smit
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #ifndef __RIDL_PSL_SAMPLE_LOST_RECEIVER_EXEC_H_DIFAEAJA_INCLUDED__

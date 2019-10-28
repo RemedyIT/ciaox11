@@ -1,19 +1,21 @@
+image:https://img.shields.io/badge/scoreboard-Remedy IT-brightgreen.svg[Scoreboard, link=http://scoreboard.axcioma.org]
+
 = CIAOX11
 
 == What is CIAOX11?
 
 CIAOX11 is a Lightweight CORBA Component Model (LwCCM) implementation
 supporting the https://www.omg.org/spec/CPP11[IDL to C++11]
-Language Mapping which is part of https://www.axcioma.com[AXCIOMA].
+Language Mapping which is part of https://www.axcioma.org[AXCIOMA].
 
-CIAOX11 is developed using https://taox11.remedy.nl[TAOX11] by 
+CIAOX11 is developed using https://www.taox11.org[TAOX11] by
 https://www.remedy.nl[Remedy IT].
 TAOX11 is a well known and stable CORBA implementation with a rich set
 of features and capabilities.
 
 == Install CIAOX11
 
-CIAOX11 is an integral part of AXCIOMA and for installing CIAOX11 you 
+CIAOX11 is an integral part of AXCIOMA and for installing CIAOX11 you
 *must* use the https://github.com/RemedyIT/axcioma[AXCIOMA] bootstrap
-repository. The brix11 tooling will clone this repository as part 
+repository. The brix11 tooling will clone this repository as part
 of the bootstrap step.

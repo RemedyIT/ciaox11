@@ -7,7 +7,6 @@
  *
 
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #include "dds/dds_vendor_adapter.h"
 #include "dds4ccm/impl/dds4ccm_dp_manager.h"

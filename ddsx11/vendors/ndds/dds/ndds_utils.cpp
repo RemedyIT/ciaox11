@@ -6,7 +6,6 @@
  * @brief   Utility class for the NDDS specific profile strings
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #include "dds/ndds_utils.h"
 #include "logger/ddsx11_log.h"

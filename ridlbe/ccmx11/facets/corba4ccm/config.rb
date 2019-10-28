@@ -5,7 +5,6 @@
 # @brief   IDL language mapping configuration for CCMX11 CORBA
 #
 # @copyright Copyright (c) Remedy IT Expertise BV
-# Chamber of commerce Rotterdam nr.276339, The Netherlands
 #--------------------------------------------------------------------
 
 

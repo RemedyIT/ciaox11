@@ -6,7 +6,6 @@
  * @brief   Wrapper facade for DDS
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #include "dds/dds_common.h"
 #include "dds/dds_publisher.h"

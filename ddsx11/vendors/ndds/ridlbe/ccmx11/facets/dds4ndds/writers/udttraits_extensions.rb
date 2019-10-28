@@ -5,7 +5,6 @@
 # @brief   DDS4NDDS extensions for udt traits generation
 #
 # @copyright Copyright (c) Remedy IT Expertise BV
-# Chamber of commerce Rotterdam nr.276339, The Netherlands
 #--------------------------------------------------------------------
 
 module IDL
