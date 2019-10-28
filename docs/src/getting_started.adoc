@@ -378,13 +378,16 @@ symbols which does not differ for debug or release builds (just like the GNU com
 
 == Support
 
-*AXCIOMA* is supported by Remedy IT. Please read the
+AXCIOMA is supported by the user community and Remedy IT. Please read the
 <<axcioma_faq.adoc#,FAQ-section>> first before asking a
-question. +
- If your problem was not listed in the FAQ, you can submit your issue by
-using the PROBLEM-REPORT-FORM. The PRF is
-available in the root directory of the *AXCIOMA* package. Please make
-sure to follow the directions in the PRF.
+question.
+
+Open source best effort support for AXCIOMA is provided through
+https://github.com/RemedyIT/axcioma/issues[github issues].
+
+Commercial support services are provided by Remedy IT. For more
+details about the services Remedy IT provides check
+the https://www.axcioma.org/services/overview.html[AXCIOMA website].
 
 === Training material
 
