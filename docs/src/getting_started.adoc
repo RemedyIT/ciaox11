@@ -144,17 +144,17 @@ Comparing IDL to {cpp} with IDL to
 
 === Supported compilers
 
-*AXCIOMA* is currently supported using the following compilers
+*AXCIOMA* has been tested with the following compilers
 
 * GCC version 4.8 or newer
-
-At this moment these are the only supported compilers. Remedy IT is
-working with various compiler vendors to get the needed {cxx11} features
-supported in their respective products.
+* Microsoft Visual Studio 2015
+* Microsoft Visual Studio 2017
+* Clang C++ version 5 or newer
+* Intel C++ 2016
 
 === Supported platforms
 
-*AXCIOMA* is currently supported on
+*AXCIOMA* is currently actively supported on
 
 * CentOS 7.3 x86_64 using GCC 4.8.5
 
@@ -256,8 +256,8 @@ There are basically two ways to develop your application with *AXCIOMA*:
 
 === BRIX11
 
-<<{xref_docs_root}/brix11/brix11.adoc#,BRIX11>> is a toolset provided by Remedy
-IT to help you start up your *AXCIOMA* development and to simplify
+<<{xref_docs_root}/brix11/brix11.adoc#,BRIX11>> is a toolset provided to
+help you start up your *AXCIOMA* development and to simplify
 building and running your *AXCIOMA* applications.
 
 BRIX11 provides a common, integrated interface simplifying the execution
