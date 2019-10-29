@@ -1,6 +1,15 @@
 include::_{backend}_settings.adoc[]
 
-include::{ciaox11_src_root}/README.adoc[]
+== What is CIAOX11?
+
+CIAOX11 is a Lightweight CORBA Component Model (LwCCM) implementation
+supporting the https://www.omg.org/spec/CPP11[IDL to C++11]
+Language Mapping which is part of https://www.axcioma.org[AXCIOMA].
+
+CIAOX11 is developed using https://www.taox11.org[TAOX11] by
+https://www.remedy.nl[Remedy IT].
+TAOX11 is a well known and stable CORBA implementation with a rich set
+of features and capabilities.
 
 === Supported features
 
