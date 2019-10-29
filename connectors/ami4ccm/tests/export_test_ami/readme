@@ -1,9 +1,9 @@
 The purpose of this test is to check export header generation.
 Standard, with the 'all-in' mpc projects ciaox11_test_ami4ccm_conn_all_idl, ciaox11_test_ami4ccm_comp_all_idl
-and ciaox11_test_comp_all_idl, it is enough to use a base_export_macro and base_export_include, 
+and ciaox11_test_comp_all_idl, it is enough to use a base_export_macro and base_export_include,
 all different, necessary export headers and macros are then generated, with name's derived form the base_export name's.
 
-This test, however test the use of the possiblity to overwrite the generated export headers by using
-user-defined names for different export headers and macros. 
+This test, however test the use of the possibility to overwrite the generated export headers by using
+user-defined names for different export headers and macros.
 
 
