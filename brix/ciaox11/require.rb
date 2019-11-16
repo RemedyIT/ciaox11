@@ -29,7 +29,6 @@ module BRIX11
           search_path_env = 'LD_LIBRARY_PATH'
         end
         # define common environment for spawning BRIX11 subprocesses
-        base_root = Exec.get_run_environment('TAOX11_BASE_ROOT') || ''
         ciaox11_root = Exec.get_run_environment('CIAOX11_ROOT')
         ciaox11_root ||= Exec.update_run_environment('CIAOX11_ROOT', File.dirname(File.dirname(CIAOX11::ROOT)))
         unless dancex11_root = Exec.get_run_environment('DANCEX11_ROOT')
