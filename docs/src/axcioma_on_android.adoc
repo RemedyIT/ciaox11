@@ -78,7 +78,7 @@ follows:
 * `TAO_ROOT=<target_dir>/<axcioma>/ACE/TAO`
 * `MPC_ROOT=<target_dir>/<axcioma>/ACE/MPC`
 * `MPC_BASE=<target_dir>/<axcioma>/ciaox11/MPC`
-* `TAOX11_BASE_ROOT=<target_dir>/<axcioma>`
+* `X11_BASE_ROOT=<target_dir>/<axcioma>`
 * `TAOX11_ROOT=<target_dir>/<axcioma>/taox11`
 * `CIAOX11_ROOT=<target_dir>/<axcioma>/ciaox11`
 * `DANCEX11_ROOT=<target_dir>/<axcioma>/dancex11`
@@ -108,7 +108,7 @@ requires at least the following:
 * Availability of all required *AXCIOMA* binaries on the Android system
 including all required *AXCIOMA* libraries and/or executables from
 ** `$ACE_ROOT/lib` and
-** `$TAOX11_BASE_ROOT/lib` and
+** `$X11_BASE_ROOT/lib` and
 ** `$CIAOX11_ROOT/lib` and
 ** `$DANCEX11_ROOT/lib` and
 ** `$DANCEX11_ROOT/bin`

@@ -14,9 +14,9 @@ taox11
   (any test-options following '--' will be passed on unchecked)
 
   -l, --list=PATH                  Specifies regression test list to feed auto_run_test.
-                                   Default: $TAOX11_ROOT/bin/taox11_tests.lst
+                                   Default: none
   -r, --root=PATH                  Specifies root directory for running the tests.
-                                   Default: $TAOX11_BASE_ROOT
+                                   Default: <listfile location>
       --debug                      Run test using Debug deployment environment (only applicable for msvc/icc builds).
       --release                    Run test using Release deployment environment (only applicable for msvc/icc builds).
 
