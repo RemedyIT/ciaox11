@@ -794,8 +794,6 @@ DDS_Base_Connector_T<CCM_TYPE>::remove_domain (
   DDS4CCM_LOG_INFO("DDS_Base_Connector_T::remove_domain with participant <"
                    << IDL::traits<DDS::Entity>::write<entity_formatter> (participant) << ">");
 
-  ::DDS::ReturnCode_t retcode = DDS::RETCODE_OK;
-
   if (DPMANAGER->unregister_participant (
     this->domain_id_, this->qos_profile_, participant))
   {
@@ -805,7 +803,7 @@ DDS_Base_Connector_T<CCM_TYPE>::remove_domain (
       << "> for domain <" << this->domain_id_
       << "> with qos <" << this->qos_profile_ << ">.");
 
-    retcode = participant->delete_contained_entities ();
+    ::DDS::ReturnCode_t retcode = participant->delete_contained_entities ();
 
     if (retcode != DDS::RETCODE_OK)
     {
