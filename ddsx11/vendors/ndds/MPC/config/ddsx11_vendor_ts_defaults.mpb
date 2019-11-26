@@ -7,6 +7,9 @@
 // --------------------------------------------------------------------
 
 feature(ddsx11, ndds) : ndds_ts_defaults {
+}
+
+feature(ddsx11, ndds_no_optimize) : ndds_ts_defaults {
   // rtiddsgen has multiple optimization modes (see -help)
   // The ddsx11 conversion traits are based on the fact that for each c++11
   // type there is a c++ equivalent, with optimizations enabled it
