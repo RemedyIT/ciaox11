@@ -113,7 +113,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_DomainParticipantFactory_proxy::delete_participant");
 
-    // First set the listener to nil, this will delete any existing listener
+    // First set the listener to null, this will delete any existing listener
     // when it has been set
     a_participant->set_listener(nullptr, 0);
 
@@ -166,25 +166,10 @@ namespace DDSX11
         retval = DDS_ProxyEntityManager::get_dp_proxy (dp);
         if (!retval)
           {
-            // No proxy found yet, so we create a new one
-            retval = VendorUtils::create_domain_participant_proxy (dp);
-            if (retval)
-              {
-                DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipantFactory_proxy::lookup_participant - "
-                  "Registered new domain participant proxy for domain <" << domain_id << ">");
-                // Register the new proxy
-                DDS_ProxyEntityManager::register_dp_proxy (retval);
-              }
-            else
-              {
-                DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipantFactory_proxy::lookup_participant - "
-                  "Failed to create domain participant proxy for domain <" << domain_id << ">");
-              }
-          }
-        else
-          {
-            DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipantFactory_proxy::lookup_participant - "
-              "Found existing domain participant proxy for domain <" << domain_id << ">");
+            // No proxy found, as we get a previously created domain participant we
+            // have an error now
+            DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipantFactory_proxy::lookup_participant - "
+               "Failed to get a domain participant proxy for domain <" << domain_id << ">");
           }
       }
     else
