@@ -24,34 +24,31 @@ namespace DDSX11
   namespace VendorUtils
   {
     IDL::traits< ::DDS::Publisher >::ref_type
-    create_publisher (
+    create_publisher_proxy (
       DDS_Native::DDS::Publisher *p)
     {
       auto proxy = CORBA::make_reference<NDDS_PROXY::NDDS_Publisher_proxy> (p);
-      DDS_ProxyEntityManager::register_publisher_proxy (proxy);
       return proxy;
     }
 
     IDL::traits< ::DDS::Subscriber >::ref_type
-    create_subscriber (
+    create_subscriber_proxy (
       DDS_Native::DDS::Subscriber *s)
     {
       auto proxy = CORBA::make_reference<NDDS_PROXY::NDDS_Subscriber_proxy> (s);
-      DDS_ProxyEntityManager::register_subscriber_proxy (proxy);
       return proxy;
     }
 
     IDL::traits< ::DDS::DomainParticipant >::ref_type
-    create_domain_participant (
+    create_domain_participant_proxy (
       DDS_Native::DDS::DomainParticipant *dp)
     {
       auto proxy = CORBA::make_reference<NDDS_PROXY::NDDS_DomainParticipant_proxy> (dp);
-      DDS_ProxyEntityManager::register_dp_proxy (proxy);
       return proxy;
     }
 
     IDL::traits< ::DDS::WaitSet >::ref_type
-    create_waitset ()
+    create_waitset_proxy ()
     {
       return CORBA::make_reference< DDSX11::DDS_WaitSet_proxy > ();
     }

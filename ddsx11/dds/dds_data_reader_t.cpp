@@ -47,7 +47,7 @@ namespace DDSX11
       DDSX11_IMPL_LOG_ERROR ("DataReader_T::" << method_name << " - "
         << "Error while reading samples from DDS - <"
         << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode)
-        << ">.");
+        << ">");
     }
 
     ::DDS::ReturnCode_t const retcode_return_loan =
@@ -58,7 +58,7 @@ namespace DDSX11
         DDSX11_IMPL_LOG_ERROR (
           "DataReader_T::" << method_name << " - Error returning loan to DDS - <"
           << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode_return_loan)
-          << ">.");
+          << ">");
         // In case a read action from DDS causes errors, the users wants to see
         // this error (and not the return loan error).
         if (retcode  == ::DDS::RETCODE_OK)
@@ -863,7 +863,7 @@ namespace DDSX11
     DDSX11_IMPL_LOG_DEBUG ("DataReader_T::set_qos - "
       << "Setting DataReaderQoS <"
       << IDL::traits< ::DDS::DataReaderQos>::write (::DDSX11::traits< ::DDS::DataReaderQos>::retn(qos_in))
-      << ">.");
+      << ">");
 
     return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
       this->native_entity ()->set_qos (::DDSX11::traits< ::DDS::DataReaderQos>::in (qos_in)));

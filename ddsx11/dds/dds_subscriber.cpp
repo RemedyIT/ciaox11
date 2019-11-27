@@ -89,7 +89,7 @@ namespace DDSX11
     DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipantFactory_proxy::create_datareader - "
       << "Using DataReaderQos <"
       << IDL::traits< ::DDS::DataReaderQos>::write (::DDSX11::traits< ::DDS::DataReaderQos>::retn (qos_in))
-      << ">.");
+      << ">");
 
     return
       this->native_entity ()->create_datareader (
@@ -124,7 +124,7 @@ namespace DDSX11
     DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipantFactory_proxy::create_datareader - "
       << "Using DataReaderQos <"
       << IDL::traits< ::DDS::DataReaderQos>::write (::DDSX11::traits< ::DDS::DataReaderQos>::retn (qos_in))
-      << ">.");
+      << ">");
 
     return
       this->native_entity ()->create_datareader (
@@ -238,7 +238,7 @@ namespace DDSX11
         DDSX11_IMPL_LOG_ERROR ("DDS_Subscriber_i::delete_datareader - "
           << "Error: Native delete_datareader returned non-ok error code <"
           << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode)
-          << ">.");
+          << ">");
       }
     else
       {
@@ -338,7 +338,7 @@ namespace DDSX11
     DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipantFactory_proxy::set_qos - "
       << "Setting SubscriberQos <"
       << IDL::traits< ::DDS::SubscriberQos>::write (::DDSX11::traits < ::DDS::SubscriberQos>::retn (qos_in))
-      << ">.");
+      << ">");
 
     return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
       this->native_entity ()->set_qos (qos_in));
@@ -462,7 +462,7 @@ namespace DDSX11
     DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipantFactory_proxy::set_default_datareader_qos - "
       << "Setting DataReaderQos <"
       << IDL::traits< ::DDS::DataReaderQos>::write (::DDSX11::traits < ::DDS::DataReaderQos>::retn (qos_in))
-      << ">.");
+      << ">");
 
     return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
       this->native_entity ()->set_default_datareader_qos (qos_in));

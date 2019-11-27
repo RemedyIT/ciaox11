@@ -49,7 +49,7 @@ namespace DDSX11
     DDSX11_IMPL_LOG_DEBUG ("DDS_Topic_proxy::set_qos - "
       << "Setting TopicQos <"
       << IDL::traits< ::DDS::TopicQos>::write (::DDSX11::traits< ::DDS::TopicQos>::retn(qos_in))
-      << ">.");
+      << ">");
 
     return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
       this->native_entity ()->set_qos (qos_in));

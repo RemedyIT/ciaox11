@@ -137,7 +137,7 @@ namespace DDSX11
       DDSX11_IMPL_LOG_DEBUG (
           "NDDS_Subscriber_proxy::create_datareader_with_profile - "
           "Successfully created datareader with profile <"
-          << qos_profile << ">.");
+          << qos_profile << ">");
 
       // Create the X11 typed data reader
     return DDS_TypeSupport_i::create_datareader (

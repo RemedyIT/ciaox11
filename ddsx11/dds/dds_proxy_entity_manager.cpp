@@ -42,7 +42,7 @@ namespace DDSX11
       proxy = nullptr;
     }
     DDSX11_IMPL_LOG_DEBUG ("DDS_ProxyEntityManager::register_proxy - "
-      "Registered proxy with handle <" << proxy->get_instance_handle () << ">.");
+      "Registered proxy with handle <" << proxy->get_instance_handle () << ">");
   }
 
   template<typename PROXY_TYPE, typename PROXY_MAP>
@@ -72,7 +72,7 @@ namespace DDSX11
     {
       DDSX11_IMPL_LOG_INFO ("DDS_ProxyEntityManager::get_proxy - "
         << "Could not find a proxy with handle <" << handle
-        << ">.");
+        << ">");
     }
     return proxy;
   }
@@ -91,16 +91,15 @@ namespace DDSX11
       proxy = nullptr;
       DDSX11_IMPL_LOG_DEBUG ("DDS_ProxyEntityManager::unregister_proxy - "
         << "Removed proxy with handle <" << handle
-        << "> from the list.");
+        << "> from the list");
     }
     else
     {
       DDSX11_IMPL_LOG_INFO ("DDS_ProxyEntityManager::unregister_proxy - "
         << "Could not find a proxy with handle <" << handle
-        << ">. Nothing to do.");
+        << ">. Nothing to do");
     }
   }
-
 
   void
   DDS_ProxyEntityManager::register_datareader_proxy (

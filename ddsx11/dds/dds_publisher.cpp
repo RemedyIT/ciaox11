@@ -65,7 +65,7 @@ namespace DDSX11
     DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipantFactory_proxy::create_datawriter - "
       << "Using DataWriterQos <"
       << IDL::traits< ::DDS::DataWriterQos>::write (::DDSX11::traits <::DDS::DataWriterQos>::retn (qos_in))
-      << ">.");
+      << ">");
 
      DDS_Native::DDS::DataWriter *native_dw =
       this->native_entity ()->create_datawriter (
@@ -142,7 +142,7 @@ namespace DDSX11
         DDSX11_IMPL_LOG_ERROR ("DDS_Publisher_i::delete_datawriter - "
           << "Error: Native delete_datawriter returned non-ok error code <"
           << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode)
-          << ">.");
+          << ">");
       }
     else
       {
@@ -201,7 +201,7 @@ namespace DDSX11
     DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipantFactory_proxy::set_qos - "
       << "Setting PublisherQos <"
       << IDL::traits< ::DDS::PublisherQos>::write (::DDSX11::traits< ::DDS::PublisherQos>::retn(qos_in))
-      << ">.");
+      << ">");
 
     return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
       this->native_entity ()->set_qos (qos_in));
@@ -351,7 +351,7 @@ namespace DDSX11
     DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipantFactory_proxy::set_default_datawriter_qos - "
       << "Setting PublisherQos <"
       << IDL::traits< ::DDS::DataWriterQos>::write (::DDSX11::traits< ::DDS::DataWriterQos>::retn (qos_in))
-      << ">.");
+      << ">");
 
     return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
       this->native_entity ()->set_default_datawriter_qos (qos_in));

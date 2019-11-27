@@ -27,7 +27,7 @@ namespace DDSX11
       {
         DDSX11_IMPL_LOG_ERROR ("split_qos_profile <" << qos_profile
           << "> - Error: malformed qos_profile. Expected format: "
-          << "<library_name>#<profile_name>.");
+          << "<library_name>#<profile_name>");
         return false;
       }
       library_name = qos_profile.substr (0, pos);

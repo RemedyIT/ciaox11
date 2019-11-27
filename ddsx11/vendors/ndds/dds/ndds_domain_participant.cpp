@@ -77,11 +77,13 @@ namespace DDSX11
       // of scope.
       dds_proxy_pl.release ();
 
-      IDL::traits< ::DDS::Publisher >::ref_type retval =
-        DDSX11::VendorUtils::create_publisher (native_pub);
+      IDL::traits< ::DDS::Publisher >::ref_type publisher =
+        DDSX11::VendorUtils::create_publisher_proxy (native_pub);
 
-      if (retval)
+      if (publisher)
         {
+          DDS_ProxyEntityManager::register_publisher_proxy (publisher);
+
           DDSX11_IMPL_LOG_DEBUG ("NDDS_DomainParticipant_proxy::create_publisher_with_profile <"
             << qos_profile << "> - Successfully created a Publisher.");
         }
@@ -91,7 +93,7 @@ namespace DDSX11
             << qos_profile << "> - ERROR: Failed to create a Publisher.");
         }
 
-      return retval;
+      return publisher;
     }
 
 
@@ -138,10 +140,14 @@ namespace DDSX11
       // of scope.
       dds_proxy_sl.release ();
 
-      IDL::traits< ::DDS::Subscriber >::ref_type retval =
-        DDSX11::VendorUtils::create_subscriber (native_sub);
-      if (retval)
+      IDL::traits< ::DDS::Subscriber >::ref_type subscriber =
+        DDSX11::VendorUtils::create_subscriber_proxy (native_sub);
+
+      if (subscriber)
         {
+          // Register the fresh created proxy in the proxy entity manager
+          DDS_ProxyEntityManager::register_subscriber_proxy (subscriber);
+
           DDSX11_IMPL_LOG_DEBUG ("NDDS_DomainParticipant_proxy::create_subscriber_with_profile <"
             << qos_profile << "> - Successfully created a Subscriber.");
         }
@@ -151,7 +157,7 @@ namespace DDSX11
             << qos_profile << "> - ERROR: Failed to create a Subscriber.");
         }
 
-      return retval;
+      return subscriber;
     }
 
 
