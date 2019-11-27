@@ -113,7 +113,7 @@ namespace DDSX11
     if (!topic_proxy)
       {
         DDSX11_IMPL_LOG_DEBUG ("DDS_Topic_proxy::get_listener - "
-          << "DDS returned a NIL listener.");
+          << "DDS returned a null listener.");
         return nullptr;
       }
     return topic_proxy->get_topic_listener ();

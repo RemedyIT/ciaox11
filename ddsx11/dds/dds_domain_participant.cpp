@@ -87,17 +87,17 @@ namespace DDSX11
         return {};
       }
 
+    // DDS was able to create a native entity. We can now safely release the
+    // listener otherwise it would be destroyed when the guard goes out
+    // of scope.
+    listener_guard.release ();
+
     IDL::traits< ::DDS::Publisher >::ref_type publisher =
       VendorUtils::create_publisher_proxy (native_pub);
 
     if (publisher)
       {
         DDS_ProxyEntityManager::register_publisher_proxy (publisher);
-
-        // DDS was able to create a native entity. We can now safely release the
-        // listener otherwise it would be destroyed when the guard goes out
-        // of scope.
-        listener_guard.release ();
 
         DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::create_publisher - "
           << "Successfully created a Publisher.");
@@ -117,7 +117,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_DomainParticipant_proxy::delete_publisher");
 
-    // First set the listener to nil, this will delete any existing listener
+    // First set the listener to null, this will delete any existing listener
     // when it has been set
     p->set_listener(nullptr, 0);
 
@@ -200,10 +200,15 @@ namespace DDSX11
     if (!native_sub)
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::create_subscriber - "
-          << "Error: DDS returned a nil subscriber.");
+          << "Error: DDS returned a null subscriber.");
         // Listener will be destroyed here since the guard goes out of scope.
         return {};
       }
+
+    // DDS was able to create a native entity. We can now safely release the
+    // listener otherwise it would be deleted when the unique pointer goes out
+    // of scope.
+    listener_guard.release ();
 
     IDL::traits< ::DDS::Subscriber >::ref_type subscriber =
       VendorUtils::create_subscriber_proxy (native_sub);
@@ -212,11 +217,6 @@ namespace DDSX11
       {
         // Register the fresh created proxy in the proxy entity manager
         DDS_ProxyEntityManager::register_subscriber_proxy (subscriber);
-
-        // DDS was able to create a native entity. We can now safely release the
-        // listener otherwise it would be deleted when the unique pointer goes out
-        // of scope.
-        listener_guard.release ();
 
         DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::create_subscriber - "
           << "Successfully created a Subscriber.");
@@ -237,7 +237,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_DomainParticipant_proxy::delete_subscriber");
 
-    // First set the listener to nil, this will delete any existing listener
+    // First set the listener to null, this will delete any existing listener
     // when it has been set
     s->set_listener(nullptr, 0);
 
@@ -291,7 +291,7 @@ namespace DDSX11
         if (!native_sub)
           {
             DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::get_builtin_subscriber - "
-              << "Error: DDS returned a nil subscriber.");
+              << "Error: DDS returned a null subscriber.");
             return {};
           }
 
@@ -367,23 +367,23 @@ namespace DDSX11
     if (!dds_tp)
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::create_topic - "
-          << "Error: DDS returned a nil topic with name <" << impl_name
+          << "Error: DDS returned a null topic with name <" << impl_name
           << "> and type <" << type_name << ">");
         // Listener will be destroyed here since the unique guard
         // goes out of scope.
         return {};
       }
 
+    // DDS was able to create a native entity. We can now safely release the
+    // listener otherwise it would be destroyed when the listener goes out of
+    // scope
+    listener_guard.release ();
+
     IDL::traits< ::DDS::Topic >::ref_type topic_reference =
       TAOX11_CORBA::make_reference<DDS_Topic_proxy> (dds_tp);
 
     if (topic_reference)
       {
-        // DDS was able to create a native entity. We can now safely release the
-        // listener otherwise it would be destroyed when the listener goes out of
-        // scope
-        listener_guard.release ();
-
         DDS_ProxyEntityManager::register_topic_proxy (topic_reference);
 
         DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::create_topic - "
@@ -405,7 +405,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_DomainParticipant_proxy::delete_topic");
 
-    // First set the listener to nil, this will delete any existing listener
+    // First set the listener to null, this will delete any existing listener
     // when it has been set
     a_topic->set_listener(nullptr, 0);
 
@@ -512,7 +512,7 @@ namespace DDSX11
     if (!native_cftp)
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_i::create_contentfilteredtopic - "
-          "DDS returned a nil ContentFilteredTopic for name <"
+          "DDS returned a null ContentFilteredTopic for name <"
           << name << "> and filter expression <"
           << filter_expression << ">");
         return {};
@@ -665,7 +665,7 @@ namespace DDSX11
     if (!list_proxyroxy)
       {
         DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::get_listener - "
-          << "DDS returned a NIL listener.");
+          << "DDS returned a null listener.");
         return nullptr;
       }
     return list_proxyroxy->get_domainparticipantlistener ();

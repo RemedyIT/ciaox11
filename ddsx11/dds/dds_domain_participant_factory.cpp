@@ -80,17 +80,17 @@ namespace DDSX11
         return {};
       }
 
+    // DDS was able to create a native entity. We can now safely release the
+    // listener otherwise it would be deleted when the unique pointer goes out
+    // of scope.
+    listener_guard.release ();
+
     IDL::traits< ::DDS::DomainParticipant >::ref_type retval =
       VendorUtils::create_domain_participant_proxy (dds_dp);
 
     if (retval)
       {
         DDS_ProxyEntityManager::register_dp_proxy (retval);
-
-        // DDS was able to create a native entity. We can now safely release the
-        // listener otherwise it would be deleted when the unique pointer goes out
-        // of scope.
-        listener_guard.release ();
 
         DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipantFactory_proxy::create_participant - "
           << "Successfully created a DomainParticipant for domain <"

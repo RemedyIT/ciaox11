@@ -26,6 +26,14 @@ my $sender = PerlACE::TestTarget::create_target(3) || die "Create target 3 faile
 $sender->AddLibPath ('../lib');
 $sender->SetEnv ("DDSX11_LOG_MASK", "all");
 
+# Test builtin first
+$SV = $receiver->CreateProcess ("../lib/builtin");
+$builtin_status = $SV->SpawnWaitKill ($receiver->ProcessStartWaitInterval());
+if ($builtin_status != 0) {
+    print STDERR "ERROR: builtin returned $builtin_status\n";
+    exit 1;
+}
+
 my $RV = $receiver->CreateProcess ('../lib/receiver', "$corrected_sleep_time");
 my $SR = $sender->CreateProcess ('../lib/sender');
 my $receiver_status = $RV->Spawn ();

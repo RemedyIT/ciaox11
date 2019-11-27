@@ -34,9 +34,19 @@ int main (int, char *[])
         dpf->create_participant_with_profile (
           domain_id_, qos_profile, nullptr, 0);
 
+      retcode = DDS::traits<ShapeType>::register_type (domain_participant, "ShapeType");
+      if (retcode != DDS::RETCODE_OK)
+      {
+        std::cerr << "Receiver: Failed to register type." << std::endl;
+        return 1;
+      }
+
+      DDS::traits<ShapeType>::topic_ref_type topic = domain_participant->create_topic_with_profile (
+        "Square", DDS::traits<ShapeType>::get_type_name (), qos_profile, nullptr, 0);
+
       // Try to lookup a domain participant for a domain for which
       // we haven't created a domain participant, this should return a
-      // nil object reference
+      // null object reference
       DDS::traits<ShapeType>::domainparticipant_ref_type invalid_domain =
         dpf->lookup_participant (domain_id_ + 1);
       if (!invalid_domain)
@@ -77,13 +87,41 @@ int main (int, char *[])
         retcode = DDS::RETCODE_ERROR;
       }
 
-      DDS::traits<ShapeType>::subscriber_ref_type subscriber2 =
-        domain_participant->get_builtin_subscriber ();
+      // Retrieve the built in subscriber for a second time, should work
+      subscriber = domain_participant->get_builtin_subscriber ();
 
-      if (!subscriber2)
+      if (!subscriber)
       {
         std::cerr << "ERROR: Unable to get the builtin subscriber for the second time!" << std::endl;
         retcode = DDS::RETCODE_ERROR;
+      }
+
+      // Retrieve a builtin datareader for an unknown builtin topic, should return null
+      DDS::traits<ShapeType>::datareader_ref_type foo_builtin_datareader =
+        subscriber->lookup_datareader ("Foo");
+
+      if (foo_builtin_datareader)
+      {
+        std::cerr << "ERROR: Should not have returned a datareader for Foo!" << std::endl;
+        retcode = DDS::RETCODE_ERROR;
+      }
+
+      // Retrieve a builtin datareader for the DCPSParticipant topic, should return a datareader
+//       DDS::traits<ShapeType>::datareader_ref_type participant_builtin_datareader =
+//         subscriber->lookup_datareader ("DCPSParticipant");
+//
+//       if (!participant_builtin_datareader)
+//       {
+//         std::cerr << "ERROR: Should have returned a datareader for DCPSParticipant!" << std::endl;
+//         retcode = DDS::RETCODE_ERROR;
+//       }
+
+      retcode = domain_participant->delete_topic (topic);
+      topic = nullptr;
+      if (retcode != DDS::RETCODE_OK)
+      {
+        std::cerr << "Receiver: Failed to delete topic from domain participant." << std::endl;
+        return 1;
       }
 
       retcode = dpf->delete_participant(domain_participant);

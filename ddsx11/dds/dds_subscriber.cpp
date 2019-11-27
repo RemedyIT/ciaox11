@@ -65,7 +65,7 @@ namespace DDSX11
   }
 
   DDS_Native::DDS::DataReader *
-  DDS_Subscriber_proxy::create_datareader (
+  DDS_Subscriber_proxy::create_native_datareader (
     IDL::traits< ::DDS::ContentFilteredTopic >::ref_type topic,
     DDS_Native::DDS::DataReaderListener * native_drl,
     ::DDS::StatusMask mask,
@@ -79,14 +79,14 @@ namespace DDSX11
         this->native_entity ()->get_default_datareader_qos (qos_in.value_));
     if (retcode != ::DDS::RETCODE_OK)
       {
-        DDSX11_IMPL_LOG_ERROR ("DDS_Subscriber_proxy::create_datareader - "
+        DDSX11_IMPL_LOG_ERROR ("DDS_Subscriber_proxy::create_native_datareader - "
           << "Error: Unable to retrieve default datareader qos.");
         return nullptr;
       }
 #endif
     qos_in = qos;
 
-    DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipantFactory_proxy::create_datareader - "
+    DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipantFactory_proxy::create_native_datareader - "
       << "Using DataReaderQos <"
       << IDL::traits< ::DDS::DataReaderQos>::write (::DDSX11::traits< ::DDS::DataReaderQos>::retn (qos_in))
       << ">");
@@ -100,7 +100,7 @@ namespace DDSX11
   }
 
   DDS_Native::DDS::DataReader *
-  DDS_Subscriber_proxy::create_datareader (
+  DDS_Subscriber_proxy::create_native_datareader (
     IDL::traits< ::DDS::Topic >::ref_type topic,
     DDS_Native::DDS::DataReaderListener * native_drl,
     ::DDS::StatusMask mask,
@@ -114,14 +114,14 @@ namespace DDSX11
         this->native_entity ()->get_default_datareader_qos (qos_in.value_));
     if (retcode != ::DDS::RETCODE_OK)
       {
-        DDSX11_IMPL_LOG_ERROR ("DDS_Subscriber_proxy::create_datareader - "
+        DDSX11_IMPL_LOG_ERROR ("DDS_Subscriber_proxy::create_native_datareader - "
           << "Error: Unable to retrieve default datareader qos.");
         return nullptr;
       }
 #endif
     qos_in = qos;
 
-    DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipantFactory_proxy::create_datareader - "
+    DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipantFactory_proxy::create_native_datareader - "
       << "Using DataReaderQos <"
       << IDL::traits< ::DDS::DataReaderQos>::write (::DDSX11::traits< ::DDS::DataReaderQos>::retn (qos_in))
       << ">");
@@ -170,18 +170,18 @@ namespace DDSX11
           }
         else
           {
-            native_dr = this->create_datareader (cftp, listener_guard.get (), mask, qos);
+            native_dr = this->create_native_datareader (cftp, listener_guard.get (), mask, qos);
           }
       }
     else
       {
-         native_dr = this->create_datareader (dds_tp, listener_guard.get (), mask, qos);
+         native_dr = this->create_native_datareader (dds_tp, listener_guard.get (), mask, qos);
       }
 
     if (!native_dr)
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_Subscriber_proxy::create_datareader - "
-          << "Error: create_datareader returned a nil datareader.");
+          << "Error: create_datareader returned a null datareader");
         return {};
       }
 
@@ -191,13 +191,30 @@ namespace DDSX11
     listener_guard.release ();
 
     DDSX11_IMPL_LOG_DEBUG ("DDS_Subscriber_proxy::create_datareader - "
-      << "Successfully created datareader.");
+      << "Successfully created native datareader");
 
     // Create the X11 typed data reader
-    return DDS_TypeSupport_i::create_datareader (
+    IDL::traits< ::DDS::DataReader >::ref_type datareader =
+      DDS_TypeSupport_i::create_datareader (
             this->get_participant (),
             a_topic->get_type_name (),
             native_dr);
+
+    if (datareader)
+      {
+        // Register the fresh created proxy in the proxy entity manager
+        DDS_ProxyEntityManager::register_datareader_proxy (datareader);
+
+        DDSX11_IMPL_LOG_DEBUG ("DDS_Subscriber_proxy::create_datareader - "
+          << "Successfully created a data reader.");
+      }
+    else
+      {
+        DDSX11_IMPL_LOG_ERROR ("DDS_Subscriber_proxy::create_datareader - "
+          << "ERROR: Failed to create a data reader.");
+      }
+
+    return datareader;
   }
 
 
@@ -207,7 +224,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_Subscriber_proxy::delete_datareader");
 
-    // First set the listener to nil, this will delete any existing listener
+    // First set the listener to null, this will delete any existing listener
     // when it has been set
     a_datareader->set_listener (nullptr, 0);
 
@@ -221,14 +238,14 @@ namespace DDSX11
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_Subscriber_i::delete_datareader - "
           << "Unable to retrieve the native entity from the provided "
-          << "datareader.");
+          << "datareader");
         return ::DDS::RETCODE_BAD_PARAMETER;
       }
     DDS_ProxyEntityManager::unregister_datareader_proxy (dr_proxy);
 
     DDSX11_IMPL_LOG_DEBUG ("DDS_Subscriber_i::delete_datareader - "
       << "Successfully retrieved the native entity from the provided "
-      << "datareader.");
+      << "datareader");
 
     ::DDS::ReturnCode_t const retcode = ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
       this->native_entity ()->delete_datareader (native_dr));
@@ -258,21 +275,35 @@ namespace DDSX11
 
   IDL::traits< ::DDS::DataReader >::ref_type
   DDS_Subscriber_proxy::lookup_datareader (
-    const std::string &impl_name)
+    const std::string &topic_name)
   {
     DDS_Native::DDS::DataReader *native_dr =
       this->native_entity ()->lookup_datareader (
-        ::DDSX11::traits< std::string >::in (impl_name));
+        ::DDSX11::traits< std::string >::in (topic_name));
     if (!native_dr)
-    {
-      DDSX11_IMPL_LOG_DEBUG ("DDS_Subscriber_proxy::lookup_datareader - "
-        << "DDS returned a null DataReader.");
-      return nullptr;
-    }
+      {
+        DDSX11_IMPL_LOG_DEBUG ("DDS_Subscriber_proxy::lookup_datareader - "
+          << "DDS returned a null DataReader");
+        return {};
+      }
 
-    return DDS_ProxyEntityManager::get_datareader_proxy (native_dr);
+    // Now see if we already have a proxy for the datareader
+    IDL::traits< ::DDS::DataReader>::ref_type dr =
+      DDS_ProxyEntityManager::get_datareader_proxy (native_dr);
+
+    if (!dr)
+      {
+        DDSX11_IMPL_LOG_ERROR ("DDS_Subscriber_proxy::lookup_datareader - "
+          << "ProxyEntityManager didn't have a proxy");
+      }
+    else
+      {
+        DDSX11_IMPL_LOG_DEBUG ("DDS_Subscriber_proxy::lookup_datareader - "
+          << "ProxyEntityManager did have a proxy");
+      }
+
+    return dr;
   }
-
 
   ::DDS::ReturnCode_t
   DDS_Subscriber_proxy::get_datareaders (
@@ -305,14 +336,12 @@ namespace DDSX11
     return retcode;
   }
 
-
   ::DDS::ReturnCode_t
   DDS_Subscriber_proxy::notify_datareaders ()
   {
     return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
       this->native_entity ()->notify_datareaders ());
   }
-
 
   ::DDS::ReturnCode_t
   DDS_Subscriber_proxy::set_qos (
@@ -344,7 +373,6 @@ namespace DDSX11
       this->native_entity ()->set_qos (qos_in));
   }
 
-
   ::DDS::ReturnCode_t
   DDS_Subscriber_proxy::get_qos (
     ::DDS::SubscriberQos & qos)
@@ -355,7 +383,6 @@ namespace DDSX11
       this->native_entity ()-> get_qos (
         ::DDSX11::traits< ::DDS::SubscriberQos >::inout (qos)));
   }
-
 
   ::DDS::ReturnCode_t
   DDS_Subscriber_proxy::set_listener (
@@ -394,7 +421,6 @@ namespace DDSX11
     return retcode;
   }
 
-
   IDL::traits< ::DDS::SubscriberListener >::ref_type
   DDS_Subscriber_proxy::get_listener ()
   {
@@ -406,12 +432,11 @@ namespace DDSX11
     if (!list_proxyroxy)
       {
         DDSX11_IMPL_LOG_DEBUG ("DDS_Subscriber_proxy::get_listener - "
-          << "DDS returned a NIL listener.");
+          << "DDS returned a null listener.");
         return {};
       }
     return list_proxyroxy->get_subscriber_listener ();
   }
-
 
   ::DDS::ReturnCode_t
   DDS_Subscriber_proxy::begin_access ()
@@ -420,14 +445,12 @@ namespace DDSX11
       this->native_entity ()->begin_access ());
   }
 
-
   ::DDS::ReturnCode_t
   DDS_Subscriber_proxy::end_access ()
   {
     return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
       this->native_entity ()->end_access ());
   }
-
 
   IDL::traits< ::DDS::DomainParticipant >::ref_type
   DDS_Subscriber_proxy::get_participant ()
@@ -437,7 +460,6 @@ namespace DDSX11
     return DDS_ProxyEntityManager::get_dp_proxy (
       this->native_entity ()->get_participant ());
   }
-
 
   ::DDS::ReturnCode_t
   DDS_Subscriber_proxy::set_default_datareader_qos (
@@ -477,7 +499,6 @@ namespace DDSX11
       this->native_entity ()->get_default_datareader_qos (
         ::DDSX11::traits< ::DDS::DataReaderQos >::inout (qos)));
   }
-
 
   ::DDS::ReturnCode_t
   DDS_Subscriber_proxy::copy_from_topic_qos (

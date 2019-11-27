@@ -933,7 +933,7 @@ namespace DDSX11
       {
         DDSX11_IMPL_LOG_ERROR (
           "DataReader_T<NATIVE_TYPED_READER, TYPED_READER_TYPE, TOPIC_TYPE, SEQ_TYPE, NATIVE_SEQ_TYPE>::get_listener - "
-          "DDS returned a NIL listener.");
+          "DDS returned a null listener.");
         return nullptr;
       }
     return proxy->get_datareaderlistener ();

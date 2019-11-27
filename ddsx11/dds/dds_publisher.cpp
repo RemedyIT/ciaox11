@@ -77,21 +77,23 @@ namespace DDSX11
     if (!native_dw)
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_Publisher_proxy::create_datawriter - "
-          << "Error: create_datawriter returned a nil datawriter.");
+          << "Error: create_datawriter returned a null native datawriter.");
         // Listener will be destroyed here since the guard goes out of scope.
         return {};
       }
 
-    IDL::traits< ::DDS::DataWriter >::ref_type retval =
+    // DDSX11 was able to create a DDS11 proxy. We can now safely release the
+    // listener otherwise it would be destroyed when the guard goes out
+    // of scope.
+    listener_guard.release ();
+
+    IDL::traits< ::DDS::DataWriter >::ref_type datawriter =
       DDS_TypeSupport_i::create_datawriter (this->get_participant (),
                                             a_topic->get_type_name (),
                                             native_dw);
-    if (retval)
+    if (datawriter)
     {
-      // DDS was able to create a native entity. We can now safely release the
-      // listener otherwise it would be destroyed when the guard goes out
-      // of scope.
-      listener_guard.release ();
+      DDS_ProxyEntityManager::register_datawriter_proxy (datawriter);
 
       DDSX11_IMPL_LOG_DEBUG ("DDS_Publisher_proxy::create_datawriter - "
         << "Successfully created a DataWriter");
@@ -101,7 +103,7 @@ namespace DDSX11
       DDSX11_IMPL_LOG_ERROR ("DDS_Publisher_proxy::create_datawriter - "
         << "Error: Unable to create a DataWriter");
     }
-    return retval;
+    return datawriter;
   }
 
   ::DDS::ReturnCode_t
@@ -110,7 +112,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_Publisher_proxy::delete_datawriter");
 
-    // First set the listener to nil, this will delete any existing listener
+    // First set the listener to null, this will delete any existing listener
     // when it has been set
     a_datawriter->set_listener(nullptr, 0);
 
@@ -269,7 +271,7 @@ namespace DDSX11
     if (!publisher_proxy)
       {
         DDSX11_IMPL_LOG_DEBUG ("DDS_Publisher_proxy::get_listener - "
-          << "DDS returned a NIL listener.");
+          << "DDS returned a null listener.");
         return nullptr;
       }
     return publisher_proxy->get_publisher_listener ();

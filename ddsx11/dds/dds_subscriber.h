@@ -66,7 +66,7 @@ namespace DDSX11
     delete_contained_entities () override;
 
     virtual IDL::traits< ::DDS::DataReader >::ref_type
-    lookup_datareader (const std::string &impl_name) override;
+    lookup_datareader (const std::string &topic_name) override;
 
     virtual ::DDS::ReturnCode_t
     get_datareaders (
@@ -118,14 +118,14 @@ namespace DDSX11
 
   private:
     DDS_Native::DDS::DataReader *
-    create_datareader (
+    create_native_datareader (
       IDL::traits< ::DDS::Topic >::ref_type topic,
       DDS_Native::DDS::DataReaderListener * proxy_drl,
       ::DDS::StatusMask mask,
       const ::DDS::DataReaderQos & qos);
 
     DDS_Native::DDS::DataReader *
-    create_datareader (
+    create_native_datareader (
       IDL::traits< ::DDS::ContentFilteredTopic >::ref_type topic,
       DDS_Native::DDS::DataReaderListener * proxy_drl,
       ::DDS::StatusMask mask,

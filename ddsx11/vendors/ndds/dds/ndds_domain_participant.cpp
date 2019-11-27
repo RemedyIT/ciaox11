@@ -130,7 +130,7 @@ namespace DDSX11
       if (!native_sub)
         {
           DDSX11_IMPL_LOG_ERROR ("NDDS_DomainParticipant_proxy::create_subscriber_with_profile <"
-            << qos_profile << "> - Error: DDS returned a nil subscriber.");
+            << qos_profile << "> - Error: DDS returned a null subscriber.");
           // Listener will be deleted here since the guard goes out of scope.
           return {};
         }
@@ -174,14 +174,14 @@ namespace DDSX11
       if (impl_name.empty ())
         {
           DDSX11_IMPL_LOG_ERROR ("NDDS_DomainParticipant_proxy::create_topic_with_profile <"
-            << qos_profile << "> - Error: provided nil topic name.");
+            << qos_profile << "> - Error: provided null topic name.");
           return nullptr;
         }
 
       if (type_name.empty ())
         {
           DDSX11_IMPL_LOG_ERROR ("NDDS_DomainParticipant_proxy::create_topic_with_profile <"
-            << qos_profile << "> - Error: provided nil type name.");
+            << qos_profile << "> - Error: provided null type name.");
           return nullptr;
         }
 
@@ -215,7 +215,7 @@ namespace DDSX11
       if (!dds_tp)
         {
           DDSX11_IMPL_LOG_ERROR ("NDDS_DomainParticipant_proxy::create_topic_with_profile <"
-            << qos_profile << "> - Error: DDS returned a nil topic.");
+            << qos_profile << "> - Error: DDS returned a null topic.");
           // Listener will be deleted here since the guard goes out of scope.
           return {};
         }

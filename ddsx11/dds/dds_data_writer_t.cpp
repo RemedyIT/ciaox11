@@ -121,7 +121,7 @@ namespace DDSX11
       {
         DDSX11_IMPL_LOG_ERROR (
           "DataWriter_T<TOPIC_TYPE, NATIVE_TYPED_WRITER, TYPED_WRITER_TYPE>::get_listener - "
-          << "DDS returned a NIL listener.");
+          << "DDS returned a null listener.");
         return nullptr;
       }
     return proxy->get_datawriterlistener ();
