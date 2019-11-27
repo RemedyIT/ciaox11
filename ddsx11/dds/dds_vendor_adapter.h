@@ -46,7 +46,7 @@ namespace DDSX11
       DDS_Native::DDS::DomainParticipant *dp);
 
     DDSX11_IMPL_Export IDL::traits< ::DDS::WaitSet >::ref_type
-    create_waitset_proxy ();
+    create_waitset ();
 
     DDSX11_IMPL_Export IDL::traits< ::DDS::DomainParticipantFactory >::ref_type
     init_dds ();

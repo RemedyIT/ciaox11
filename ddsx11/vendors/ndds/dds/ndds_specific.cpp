@@ -48,7 +48,7 @@ namespace DDSX11
     }
 
     IDL::traits< ::DDS::WaitSet >::ref_type
-    create_waitset_proxy ()
+    create_waitset ()
     {
       return CORBA::make_reference< DDSX11::DDS_WaitSet_proxy > ();
     }
