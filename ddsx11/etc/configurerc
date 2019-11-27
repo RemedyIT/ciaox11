@@ -4,6 +4,8 @@
 
 configure :ddsx11_core do
 
+  depends_on :ciaox11
+
   # without vendors ddsx11 is disabled
 
   mpc do

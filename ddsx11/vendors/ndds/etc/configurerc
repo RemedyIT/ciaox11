@@ -4,6 +4,8 @@
 
 configure :ddsx11ndds do
 
+  depends_on :ddsx11_core
+
   dependencies do
 
     require :ndds do
