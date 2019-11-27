@@ -8,7 +8,7 @@ configure :ciaox11 do
 
   dependencies do
 
-    require :xerces3 do
+    optional :xerces3 do
       environment :xercescroot do
         name 'XERCESCROOT'
         description 'Xerces-C root folder'
