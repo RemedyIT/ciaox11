@@ -55,7 +55,7 @@ namespace DDSX11
     DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipantFactory_proxy::create_participant - "
       << "Using DomainParticipantQos <"
       << IDL::traits< ::DDS::DomainParticipantQos>::write (::DDSX11::traits< ::DDS::DomainParticipantQos>::retn (qos_in))
-      << ">.");
+      << ">");
 
     // Use a guard which will make sure we destroy it the listener when we fail
     DomainParticipantListener_Guard listener_guard {};
@@ -75,20 +75,22 @@ namespace DDSX11
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipantFactory_proxy::create_participant - "
           << "Error: Unable to create DomainParticipant for domain <"
-          << domain_id << ">.");
+          << domain_id << ">");
         // Listener will be destroyed here since the guard goes out of scope.
         return {};
       }
 
+    // DDS was able to create a native entity. We can now safely release the
+    // listener otherwise it would be deleted when the unique pointer goes out
+    // of scope.
+    listener_guard.release ();
+
     IDL::traits< ::DDS::DomainParticipant >::ref_type retval =
-      VendorUtils::create_domain_participant (dds_dp);
+      VendorUtils::create_domain_participant_proxy (dds_dp);
 
     if (retval)
       {
-        // DDS was able to create a native entity. We can now safely release the
-        // listener otherwise it would be deleted when the unique pointer goes out
-        // of scope.
-        listener_guard.release ();
+        DDS_ProxyEntityManager::register_dp_proxy (retval);
 
         DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipantFactory_proxy::create_participant - "
           << "Successfully created a DomainParticipant for domain <"
@@ -111,7 +113,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_DomainParticipantFactory_proxy::delete_participant");
 
-    // First set the listener to nil, this will delete any existing listener
+    // First set the listener to null, this will delete any existing listener
     // when it has been set
     a_participant->set_listener(nullptr, 0);
 
@@ -135,7 +137,7 @@ namespace DDSX11
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipantFactory_proxy::delete_participant - "
           << "delete_participant returned non-ok error code <"
           << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode)
-          << ">.");
+          << ">");
       }
     else
       {
@@ -156,7 +158,24 @@ namespace DDSX11
 
     if (dp)
       {
-        retval = VendorUtils::create_domain_participant (dp);
+        DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipantFactory_proxy::lookup_participant - "
+          "Found native domain participant for domain <" << domain_id << ">");
+
+        // Check if we already have a dp proxy in the proxy entity
+        // manager, if so, return that one
+        retval = DDS_ProxyEntityManager::get_dp_proxy (dp);
+        if (!retval)
+          {
+            // No proxy found, as we get a previously created domain participant we
+            // have an error now
+            DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipantFactory_proxy::lookup_participant - "
+               "Failed to get a domain participant proxy for domain <" << domain_id << ">");
+          }
+      }
+    else
+      {
+        DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipantFactory_proxy::lookup_participant - "
+          "No native domain participant for domain <" << domain_id << ">");
       }
     return retval;
   }
@@ -185,7 +204,7 @@ namespace DDSX11
     DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipantFactory_proxy::set_default_participant_qos - "
       << "Setting DomainParticipantQos <"
       << IDL::traits< ::DDS::DomainParticipantQos>::write (::DDSX11::traits< ::DDS::DomainParticipantQos>::retn (qos_in))
-      << ">.");
+      << ">");
 
     return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
       this->native_entity ()->set_default_participant_qos (qos_in));
@@ -226,7 +245,7 @@ namespace DDSX11
     DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipantFactory_proxy::set_qos - "
       << "Setting DomainParticipantQos <"
       << IDL::traits< ::DDS::DomainParticipantFactoryQos>::write (::DDSX11::traits< ::DDS::DomainParticipantFactoryQos>::retn (qos_in))
-      << ">.");
+      << ">");
 
     return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
       this->native_entity ()->set_qos (qos_in));

@@ -212,6 +212,12 @@ namespace DDSX11
     DDS_DomainParticipant_proxy(DDS_DomainParticipant_proxy&&) = delete;
     DDS_DomainParticipant_proxy& operator=(const DDS_DomainParticipant_proxy&) = delete;
     DDS_DomainParticipant_proxy& operator=(DDS_DomainParticipant_proxy&&) = delete;
+
+    /// Each DomainParticipant has a single built-in subscriber which
+    /// can be retrieved by the user but this doesn't need to be deleted
+    /// by the user, it is deleted automatically when the domain participant
+    /// is deleted
+    IDL::traits< ::DDS::Subscriber >::ref_type builtin_subscriber_ {};
   };
 
   typedef entity_traits< ::DDS::DomainParticipant, DDS_DomainParticipant_proxy, DDS_Native::DDS::DomainParticipant >

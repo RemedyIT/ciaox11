@@ -77,11 +77,13 @@ namespace DDSX11
       // of scope.
       dds_proxy_pl.release ();
 
-      IDL::traits< ::DDS::Publisher >::ref_type retval =
-        DDSX11::VendorUtils::create_publisher (native_pub);
+      IDL::traits< ::DDS::Publisher >::ref_type publisher =
+        DDSX11::VendorUtils::create_publisher_proxy (native_pub);
 
-      if (retval)
+      if (publisher)
         {
+          DDS_ProxyEntityManager::register_publisher_proxy (publisher);
+
           DDSX11_IMPL_LOG_DEBUG ("NDDS_DomainParticipant_proxy::create_publisher_with_profile <"
             << qos_profile << "> - Successfully created a Publisher.");
         }
@@ -91,7 +93,7 @@ namespace DDSX11
             << qos_profile << "> - ERROR: Failed to create a Publisher.");
         }
 
-      return retval;
+      return publisher;
     }
 
 
@@ -128,7 +130,7 @@ namespace DDSX11
       if (!native_sub)
         {
           DDSX11_IMPL_LOG_ERROR ("NDDS_DomainParticipant_proxy::create_subscriber_with_profile <"
-            << qos_profile << "> - Error: DDS returned a nil subscriber.");
+            << qos_profile << "> - Error: DDS returned a null subscriber.");
           // Listener will be deleted here since the guard goes out of scope.
           return {};
         }
@@ -138,10 +140,14 @@ namespace DDSX11
       // of scope.
       dds_proxy_sl.release ();
 
-      IDL::traits< ::DDS::Subscriber >::ref_type retval =
-        DDSX11::VendorUtils::create_subscriber (native_sub);
-      if (retval)
+      IDL::traits< ::DDS::Subscriber >::ref_type subscriber =
+        DDSX11::VendorUtils::create_subscriber_proxy (native_sub);
+
+      if (subscriber)
         {
+          // Register the fresh created proxy in the proxy entity manager
+          DDS_ProxyEntityManager::register_subscriber_proxy (subscriber);
+
           DDSX11_IMPL_LOG_DEBUG ("NDDS_DomainParticipant_proxy::create_subscriber_with_profile <"
             << qos_profile << "> - Successfully created a Subscriber.");
         }
@@ -151,7 +157,7 @@ namespace DDSX11
             << qos_profile << "> - ERROR: Failed to create a Subscriber.");
         }
 
-      return retval;
+      return subscriber;
     }
 
 
@@ -168,14 +174,14 @@ namespace DDSX11
       if (impl_name.empty ())
         {
           DDSX11_IMPL_LOG_ERROR ("NDDS_DomainParticipant_proxy::create_topic_with_profile <"
-            << qos_profile << "> - Error: provided nil topic name.");
+            << qos_profile << "> - Error: provided null topic name.");
           return nullptr;
         }
 
       if (type_name.empty ())
         {
           DDSX11_IMPL_LOG_ERROR ("NDDS_DomainParticipant_proxy::create_topic_with_profile <"
-            << qos_profile << "> - Error: provided nil type name.");
+            << qos_profile << "> - Error: provided null type name.");
           return nullptr;
         }
 
@@ -209,7 +215,7 @@ namespace DDSX11
       if (!dds_tp)
         {
           DDSX11_IMPL_LOG_ERROR ("NDDS_DomainParticipant_proxy::create_topic_with_profile <"
-            << qos_profile << "> - Error: DDS returned a nil topic.");
+            << qos_profile << "> - Error: DDS returned a null topic.");
           // Listener will be deleted here since the guard goes out of scope.
           return {};
         }

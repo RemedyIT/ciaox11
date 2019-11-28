@@ -76,7 +76,6 @@ namespace DDSX11
           typename ::DDS::traits<TOPIC_TYPE>::datawriter_type>
         DataWriter_type;
       auto proxy = TAOX11_CORBA::make_reference<DataWriter_type>(dw);
-      DDS_ProxyEntityManager::register_datawriter_proxy (proxy);
       return proxy;
     }
 
@@ -91,7 +90,6 @@ namespace DDSX11
           NATIVE_SEQ_TYPE>
         DataReader_type;
       auto proxy = TAOX11_CORBA::make_reference<DataReader_type> (dr);
-      DDS_ProxyEntityManager::register_datareader_proxy (proxy);
       return proxy;
     }
   };
