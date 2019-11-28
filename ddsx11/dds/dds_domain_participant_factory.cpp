@@ -176,7 +176,6 @@ namespace DDSX11
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipantFactory_proxy::lookup_participant - "
           "No native domain participant for domain <" << domain_id << ">");
-
       }
     return retval;
   }
