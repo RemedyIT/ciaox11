@@ -48,15 +48,10 @@ module BRIX11
 
         Exec.update_run_environment('RIDL_BE_SELECT', 'ccmx11') unless ENV['RIDL_BE_SELECT'] && BRIX11.use_environment?
         unless ENV['RIDL_BE_PATH'] && BRIX11.use_environment?
-          # update ridl backend search path taking crossbuild config into account
-          ciaox11_be_path = if BRIX11.options.config.crossbuild
-                              File.join(x11_host_root, 'ciaox11')
-                            else
-                              ciaox11_root
-                            end
+          # update ridl backend search path
           ridl_be_path = Exec.update_run_environment(
                               'RIDL_BE_PATH',
-                              ciaox11_be_path,
+                              ciaox11_root,
                               :append)
           ridl_be_path.split(/:|;/).each { |p| $: << p unless $:.include?(p) }
         end
