@@ -161,7 +161,7 @@ namespace CIAOX11
             break;
 
           default:
-            CIAOX11_LOG_DEBUG ("Connection_Handler::connect_instance - " <<
+            CIAOX11_LOG_ERROR ("Connection_Handler::connect_instance - " <<
                        "Unsupported kind <"
                        << IDL::traits< ::Deployment::CCMComponentPortKind>::write (endpoint.kind ())
                        << "> for connection <" << conn.name () << ">");
@@ -246,7 +246,7 @@ namespace CIAOX11
             break;
 
           default:
-            CIAOX11_LOG_DEBUG ("Connection_Handler::disconnect_instance - " <<
+            CIAOX11_LOG_ERROR ("Connection_Handler::disconnect_instance - " <<
                        "Unsupported kind <"
                        << IDL::traits< ::Deployment::CCMComponentPortKind>::write (endpoint.kind ())
                        << "> for connection <" << conn.name () << ">");
@@ -270,7 +270,7 @@ namespace CIAOX11
     {
       std::ostringstream err;
       err << ex;
-      CIAOX11_LOG_DEBUG ("Connection_Handler::disconnect_instance - " <<
+      CIAOX11_LOG_ERROR ("Connection_Handler::disconnect_instance - " <<
                          "Caught COMM_FAILURE exception while disconnecting "
                          << IDL::traits< ::Deployment::CCMComponentPortKind>::write (endpoint.kind ())
                          << " <" << conn.name () << ">:<" << err.str () << ">");
@@ -281,7 +281,7 @@ namespace CIAOX11
     {
       std::ostringstream err;
       err << ex;
-      CIAOX11_LOG_DEBUG ("Connection_Handler::disconnect_instance - " <<
+      CIAOX11_LOG_ERROR ("Connection_Handler::disconnect_instance - " <<
                          "Caught OBJECT_NOT_EXIST exception while disconnecting "
                          << IDL::traits< ::Deployment::CCMComponentPortKind>::write (endpoint.kind ())
                          << " <" << conn.name () << ">:<" << err.str () << ">");
@@ -292,7 +292,7 @@ namespace CIAOX11
     {
       std::ostringstream err;
       err << ex;
-      CIAOX11_LOG_DEBUG ("Connection_Handler::disconnect_instance - " <<
+      CIAOX11_LOG_ERROR ("Connection_Handler::disconnect_instance - " <<
                          "Caught TRANSIENT exception while disconnecting "
                          << IDL::traits< ::Deployment::CCMComponentPortKind>::write (endpoint.kind ())
                          << " <" << conn.name () << ">:<" << err.str () << ">");
@@ -303,7 +303,7 @@ namespace CIAOX11
     {
       std::ostringstream err;
       err << ex;
-      CIAOX11_LOG_DEBUG ("Connection_Handler::disconnect_instance - " <<
+      CIAOX11_LOG_ERROR ("Connection_Handler::disconnect_instance - " <<
                          "Caught CORBA exception while disconnecting "
                          << IDL::traits< ::Deployment::CCMComponentPortKind>::write (endpoint.kind ())
                          << " <" << conn.name () << ">:<" << err.str () << ">");
@@ -322,7 +322,7 @@ namespace CIAOX11
     }
     catch (...)
     {
-      CIAOX11_LOG_DEBUG ("Connection_Handler::disconnect_instance - " <<
+      CIAOX11_LOG_ERROR ("Connection_Handler::disconnect_instance - " <<
                          "Caught unknown C++ exception while disconnecting "
                          << IDL::traits< ::Deployment::CCMComponentPortKind>::write (endpoint.kind ())
                          << " <" << conn.name () << ">");
@@ -493,7 +493,7 @@ namespace CIAOX11
   }
 
   // plan and endpoint used for getting component name
-  // component name used to get executot locator
+  // component name used to get executor locator
   void
   Connection_Handler::disconnect_non_local (const ::Deployment::DeploymentPlan & plan,
                                             const Deployment::PlanConnectionDescription &conn,
