@@ -84,7 +84,7 @@ namespace CIAOX11
     if (!orb)
     {
       CIAOX11_LOG_ERROR ("Deployment_Common::get_ccm_object - "
-        << "Unable to retieve ORB.");
+        << "Unable to retrieve ORB.");
       throw Deployment::StartError (name,
         "Deployment_Common::get_ccm_object - Unable to retrieve ORB");
     }
@@ -117,7 +117,7 @@ namespace CIAOX11
     if (!obj)
     {
       // CCM Object not found in the CORBA4CCM POA or the CORBA4CCM POA was not
-      // available. It could be registred in the AMI POA. Check this.
+      // available. It could be registered in the AMI POA. Check this.
       IDL::traits<PortableServer::POA>::ref_type ami_poa =
         Deployment_Common::find_poa (root_poa, "AMIPOA");
       if (ami_poa)
