@@ -68,7 +68,7 @@ namespace DDSX11
       if (!native_dw)
       {
         DDSX11_IMPL_LOG_ERROR ("NDDS_Publisher_proxy::create_datawriter_with_profile <"
-          << qos_profile << "> - Error: Native publisher returned a nil datawriter.");
+          << qos_profile << "> - Error: Native publisher returned a null datawriter.");
         // Listener will be destroyed here since the guard goes out of scope.
         return {};
       }
@@ -78,13 +78,15 @@ namespace DDSX11
       // of scope.
       proxy_dwl.release ();
 
-      IDL::traits< ::DDS::DataWriter >::ref_type retval =
+      IDL::traits< ::DDS::DataWriter >::ref_type datawriter =
         DDS_TypeSupport_i::create_datawriter (this->get_participant (),
                                               a_topic->get_type_name (),
                                               native_dw);
 
-      if (retval)
+      if (datawriter)
       {
+        DDS_ProxyEntityManager::register_datawriter_proxy (datawriter);
+
         DDSX11_IMPL_LOG_DEBUG ("NDDS_Publisher_proxy::create_datawriter_with_profile - "
           << "Successfully created a dataWriter with profile <"
           << qos_profile << ">");
@@ -95,7 +97,7 @@ namespace DDSX11
           << "Error: Unable to create a DataWriter with profile <"
           << qos_profile << ">");
       }
-      return retval;
+      return datawriter;
     }
 
     IDL::traits< ::DDS::PublisherListener >::ref_type
@@ -109,7 +111,7 @@ namespace DDSX11
       if (!publisher_proxy)
         {
           DDSX11_IMPL_LOG_DEBUG ("NDDS_Publisher_proxy::get_listener - "
-            << "DDS returned a NIL listener.");
+            << "DDS returned a null listener.");
           return nullptr;
         }
       return publisher_proxy->get_publisher_listener ();

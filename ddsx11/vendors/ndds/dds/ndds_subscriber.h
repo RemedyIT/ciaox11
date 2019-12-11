@@ -45,14 +45,14 @@ namespace DDSX11
        */
       //@{
       DDS_Native::DDS::DataReader *
-      create_datareader_with_profile (
+      create_native_datareader_with_profile (
         IDL::traits< ::DDS::Topic >::ref_type topic,
         const std::string &qos_profile,
         DDS_Native::DDS::DataReaderListener * ccm_dds_drl,
         ::DDS::StatusMask mask);
 
       DDS_Native::DDS::DataReader *
-      create_datareader_with_profile (
+      create_native_datareader_with_profile (
         IDL::traits< ::DDS::ContentFilteredTopic >::ref_type topic,
         const std::string &qos_profile,
         DDS_Native::DDS::DataReaderListener * ccm_dds_drl,

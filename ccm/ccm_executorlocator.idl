@@ -36,7 +36,6 @@ module CIAOX11
 
     /// Obtain the facet executor for a connection.
     Object obtain_facet_executor (in Components::FeatureName name,
-                                  in string conn_name,
                                   inout Components::ConfigValues config)
       raises (InvalidName);
 

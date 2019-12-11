@@ -29,7 +29,7 @@ namespace DDSX11
     }
 
     DDS_Native::DDS::DataReader *
-    NDDS_Subscriber_proxy::create_datareader_with_profile (
+    NDDS_Subscriber_proxy::create_native_datareader_with_profile (
       IDL::traits< ::DDS::ContentFilteredTopic >::ref_type topic,
       const std::string &qos_profile,
       DDS_Native::DDS::DataReaderListener * native_drl,
@@ -52,7 +52,7 @@ namespace DDSX11
     }
 
     DDS_Native::DDS::DataReader *
-    NDDS_Subscriber_proxy::create_datareader_with_profile (
+    NDDS_Subscriber_proxy::create_native_datareader_with_profile (
       IDL::traits< ::DDS::Topic >::ref_type topic,
       const std::string &qos_profile,
       DDS_Native::DDS::DataReaderListener * native_drl,
@@ -73,7 +73,6 @@ namespace DDSX11
         }
       return nullptr;
     }
-
 
     IDL::traits< ::DDS::DataReader >::ref_type
     NDDS_Subscriber_proxy::create_datareader_with_profile (
@@ -110,13 +109,13 @@ namespace DDSX11
             }
           else
             {
-              native_dr = this->create_datareader_with_profile (
+              native_dr = this->create_native_datareader_with_profile (
                 cf_topic, qos_profile, proxy_drl.get (), mask);
             }
         }
       else
         {
-          native_dr = this->create_datareader_with_profile (
+          native_dr = this->create_native_datareader_with_profile (
             topic, qos_profile, proxy_drl.get (), mask);
         }
 
@@ -125,7 +124,7 @@ namespace DDSX11
           DDSX11_IMPL_LOG_ERROR (
             "NDDS_Subscriber_proxy::create_datareader_with_profile <"
             << qos_profile << "> - Error: DDS Subscriber returned a "
-            "nil datareader.");
+            "null datareader");
           return nullptr;
         }
 
@@ -136,14 +135,31 @@ namespace DDSX11
 
       DDSX11_IMPL_LOG_DEBUG (
           "NDDS_Subscriber_proxy::create_datareader_with_profile - "
-          "Successfully created datareader with profile <"
-          << qos_profile << ">.");
+          "Successfully created native datareader with profile <"
+          << qos_profile << ">");
 
       // Create the X11 typed data reader
-    return DDS_TypeSupport_i::create_datareader (
-            this->get_participant (),
-            a_topic->get_type_name (),
-            native_dr);
+      IDL::traits< ::DDS::DataReader >::ref_type datareader =
+        DDS_TypeSupport_i::create_datareader (
+              this->get_participant (),
+              a_topic->get_type_name (),
+              native_dr);
+
+      if (datareader)
+        {
+          // Register the fresh created proxy in the proxy entity manager
+          DDS_ProxyEntityManager::register_datareader_proxy (datareader);
+
+          DDSX11_IMPL_LOG_DEBUG ("NDDS_Subscriber_proxy::create_datareader_with_profile - "
+            << "Successfully created a data reader.");
+        }
+      else
+        {
+          DDSX11_IMPL_LOG_ERROR ("NDDS_Subscriber_proxy::create_datareader_with_profile - "
+            << "ERROR: Failed to create a data reader.");
+        }
+
+      return datareader;
     }
   }
 }

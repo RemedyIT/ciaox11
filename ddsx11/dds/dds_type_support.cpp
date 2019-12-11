@@ -105,7 +105,7 @@ namespace DDSX11
               << "Unable to create DomainParticipant entry: type <"
               << type << "> - DomainParticipant <"
               << IDL::traits< ::DDS::Entity >::write<entity_formatter> (dp)
-              << ">.");
+              << ">");
             return false;
           }
         dp_entry = dp_ret.first;
@@ -130,7 +130,7 @@ namespace DDSX11
               << "Created factory entry for type <" << type << "> for "
               << "participant <"
               << IDL::traits< ::DDS::Entity >::write<entity_formatter> (dp)
-              << ">.");
+              << ">");
             // Returning true in case we first register the type, that way the
             // caller knows we also have to register the type with DDS
             retval = true;
@@ -141,7 +141,7 @@ namespace DDSX11
               << "Unable to create -new- factory entry type <" << type
               << "> for participant <"
               << IDL::traits< ::DDS::Entity >::write<entity_formatter> (dp)
-              << ">.");
+              << ">");
           }
       }
     else
@@ -152,7 +152,7 @@ namespace DDSX11
           << "> for type-factory " << "for participant <"
           << IDL::traits< ::DDS::Entity >::write<entity_formatter> (dp)
           << "> since it already exists for "
-          << "type <" << type << ">.");
+          << "type <" << type << ">");
       }
     return retval;
   }
@@ -173,7 +173,7 @@ namespace DDSX11
         DDSX11_IMPL_LOG_DEBUG ("DDS_TypeSupport_i::unregister_type - "
           << "Found entry for participant <"
           << IDL::traits< ::DDS::Entity >::write<entity_formatter> (dp)
-          << "> and type <" << type << ">.");
+          << "> and type <" << type << ">");
         // Found the domain participant
         typefactories::iterator it = dp_entry->second.find (type);
         if (it != dp_entry->second.end ())
@@ -201,7 +201,7 @@ namespace DDSX11
                     DDSX11_IMPL_LOG_DEBUG ("DDS_TypeSupport_i::unregister_type - "
                       << "Erased participant entry for participant <"
                       << IDL::traits< ::DDS::Entity >::write<entity_formatter> (dp)
-                      << ">, no type factories left anymore.");
+                      << ">, no type factories left anymore");
                   }
               }
             else
@@ -210,7 +210,7 @@ namespace DDSX11
                   << "Decremented refcount to <" << refcount
                   << "> for factory for participant <"
                   << IDL::traits< ::DDS::Entity >::write<entity_formatter> (dp)
-                  << "> and type <" << type << ">.");
+                  << "> and type <" << type << ">");
               }
           }
         else
@@ -246,7 +246,7 @@ namespace DDSX11
           << "Type factory found for type <" << type_name << "> for "
           << "participant <"
           << IDL::traits< ::DDS::Entity >::write<entity_formatter> (dp)
-          << ">.");
+          << ">");
 
         return f->create_datawriter (dw);
       }
@@ -256,7 +256,7 @@ namespace DDSX11
           << "Error creating DDS_Native::DDS::DataWriter for type <" << type_name
           << "> for participant <"
           << IDL::traits< ::DDS::Entity >::write<entity_formatter> (dp)
-          << ">.");
+          << ">");
       }
 
     return nullptr;
@@ -277,7 +277,7 @@ namespace DDSX11
           << "Created DDS_Native::DDS::DataReader for type <" << type_name
           << "> for participant <"
           << IDL::traits< ::DDS::Entity >::write<entity_formatter> (dp)
-          << ">.");
+          << ">");
 
         return f->create_datareader (dr);
       }
@@ -287,7 +287,7 @@ namespace DDSX11
           << "Error creating DDS_Native::DDS::DataReader for type <" << type_name
           << "> for participant <"
           << IDL::traits< ::DDS::Entity >::write<entity_formatter> (dp)
-          << ">.");
+          << ">");
       }
 
     return nullptr;

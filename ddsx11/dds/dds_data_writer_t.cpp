@@ -49,7 +49,7 @@ namespace DDSX11
     DDSX11_IMPL_LOG_DEBUG ("DataWriter_T::set_qos - "
       << "Setting DataWriterQos <"
       << IDL::traits< ::DDS::DataWriterQos>::write (::DDSX11::traits< ::DDS::DataWriterQos>::retn(qos_in))
-      << ">.");
+      << ">");
 
     return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
       this->native_entity ()->set_qos (qos_in));
@@ -121,7 +121,7 @@ namespace DDSX11
       {
         DDSX11_IMPL_LOG_ERROR (
           "DataWriter_T<TOPIC_TYPE, NATIVE_TYPED_WRITER, TYPED_WRITER_TYPE>::get_listener - "
-          << "DDS returned a NIL listener.");
+          << "DDS returned a null listener.");
         return nullptr;
       }
     return proxy->get_datawriterlistener ();
