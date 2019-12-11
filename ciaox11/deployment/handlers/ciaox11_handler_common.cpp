@@ -25,7 +25,7 @@ namespace CIAOX11
       if (artifact.name () == name)
       {
         if (artifact.location ().size () >= 1 &&
-            artifact.location ()[0].size () != 0)
+            !artifact.location ()[0].empty ())
         {
           return artifact.location ()[0];
         }
@@ -107,23 +107,12 @@ namespace CIAOX11
     PortableServer::ObjectId component_servant_id =
       PortableServer::string_to_ObjectId (name);
 
-    // First check whether ccm object is available in the CORBA4CCM POA
+    // Check whether ccm object is available in the CORBA4CCM POA
     IDL::traits<PortableServer::POA>::ref_type corba_poa =
       Deployment_Common::find_poa (root_poa, "CORBA4CCM_POA");
     if (corba_poa)
     {
       obj = Deployment_Common::find_ccm_object (corba_poa, component_servant_id);
-    }
-    if (!obj)
-    {
-      // CCM Object not found in the CORBA4CCM POA or the CORBA4CCM POA was not
-      // available. It could be registered in the AMI POA. Check this.
-      IDL::traits<PortableServer::POA>::ref_type ami_poa =
-        Deployment_Common::find_poa (root_poa, "AMIPOA");
-      if (ami_poa)
-      {
-        obj = Deployment_Common::find_ccm_object (ami_poa, component_servant_id);
-      }
     }
 
     return IDL::traits<Components::CCMObject>::narrow (obj);
