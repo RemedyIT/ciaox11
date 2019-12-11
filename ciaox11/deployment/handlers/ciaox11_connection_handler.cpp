@@ -622,17 +622,16 @@ namespace CIAOX11
     Deployment_Common::collect_config_values (connection_props, conn_config);
 
     CIAOX11_LOG_DEBUG ("Connection_Handler::connect_local_port - " <<
-                       "Retrieving local facet executor reference from executor locator for <" << conn.name () << ">");
+                       "Retrieving local facet executor reference from executor locator for facet <" << facet_endpoint.portName () << ">");
     // Get the local facet executor for this connection from the provider component
     IDL::traits<CORBA::Object>::ref_type facet_ref =
         provider_exec_locator->obtain_facet_executor (facet_endpoint.portName (),
-                                                      conn.name (),
                                                       conn_config);
     if (!facet_ref)
     {
       // either a provided facet reference or the local executor reference should be available
       CIAOX11_LOG_ERROR ("Connection_Handler::connect_local_port - " <<
-                         "Unable to retrieve local facet executor reference from executor locator for <" << conn.name () << ">");
+                         "Unable to retrieve local facet executor reference from executor locator for facet <" << facet_endpoint.portName () << ">");
       throw ::Deployment::InvalidConnection (conn.name (),
                                              "Unable to retrieve local facet executor reference from executor locator.");
     }

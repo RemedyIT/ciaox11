@@ -161,14 +161,13 @@ namespace <%= executor_cxx_namespace %>
     virtual IDL::traits<CORBA::Object>::ref_type obtain_executor () override;
 
     /**
-     * Obtain a facet executor for the given @a name and the given @a connection using the
-     * the given @a config. If there is no facet executor returned by the component
-     * executor we just return nullptr. If we have to get an executor for an invalid
-     * facet name we throw an InvalidName() exception
+     * Obtain a facet executor for the given @a name using the the given @a config.
+     * If there is no facet executor returned by the component executor we just
+     * return nullptr. If we have to get an executor for an invalid facet
+     * name we throw an InvalidName() exception
      */
     virtual IDL::traits<CORBA::Object>::ref_type obtain_facet_executor (
                           const ::Components::FeatureName& name,
-                          const std::string& connection,
                           ::Components::ConfigValues& config) override;
 
   private:

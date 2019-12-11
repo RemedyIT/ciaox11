@@ -3,7 +3,6 @@
 IDL::traits<CORBA::Object>::ref_type
 <%= lem_name %>_ExecutorLocator::obtain_facet_executor (
   const ::Components::FeatureName& name,
-  const std::string& /*connection*/,
   ::Components::ConfigValues& /*config*/)
 {
 % if all_incl_facet_port?
