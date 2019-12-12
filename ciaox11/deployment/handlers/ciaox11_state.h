@@ -15,6 +15,8 @@
 #include "ccm/ccm_objectC.h"
 #include "ciaox11/deployment/handlers/ciaox11_container_i.h"
 
+#include "ciaox11/deployment/handlers/ciaox11_deployment_handler_export.h"
+
 namespace CIAOX11
 {
   /**
@@ -22,7 +24,7 @@ namespace CIAOX11
    * @brief Singleton collecting state for the instance handlers.
    *
    */
-  class Deployment_State final
+  class CIAO_Deployment_Handler_Export Deployment_State final
   {
   public:
     void close ();
