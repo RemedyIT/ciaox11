@@ -5,4 +5,5 @@
 #
 # Example: TAO\examples\foo\run_test.pl:
 #
+ddsx11/tests/builtin/descriptors/run_test.pl: NDDS
 ddsx11/examples/shapes/descriptors/run_test.pl: NDDS

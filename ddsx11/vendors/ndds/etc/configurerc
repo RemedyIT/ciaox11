@@ -9,11 +9,11 @@ configure :ddsx11ndds do
     require :ndds do
       environment :nddshome do
         name 'NDDSHOME'
-        description 'NDDS root folder'
+        description 'RTI Connext DDS root folder'
       end
       environment :nddsarch do
         name 'NDDSARCHITECTURE'
-        description 'NDDS target architecture'
+        description 'RTI Connext DDS target architecture'
       end
       file '${NDDSHOME}/include/ndds/ndds_cpp.h'
       exist '${NDDSHOME}/lib/${NDDSARCHITECTURE}'

@@ -27,7 +27,7 @@ module AxciomaPC
     def self.remove(project)
       project.mpc_files.each_key do |path|
         BRIX11.log(4, '[MPC] removing mpc file %s', path)
-        ::File.delete(path) if ::File.exists?(path)
+        ::File.delete(path) if ::File.exist?(path)
       end
     end
 

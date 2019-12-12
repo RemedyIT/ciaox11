@@ -52,7 +52,7 @@ namespace DDSX11
       DDSX11_IMPL_LOG_DEBUG (
         "NDDS_DomainParticipantFactory_proxy::create_participant_with_profile - "
         << "Creating participant: profile <" << qos_profile << "> - domain <"
-        << domain_id << ">.");
+        << domain_id << ">");
 
       std::string lib_name, prof_name;
       split_qos_profile (qos_profile, lib_name, prof_name);
@@ -86,10 +86,13 @@ namespace DDSX11
       ccm_dds_dpl.release ();
 
       IDL::traits< ::DDS::DomainParticipant >::ref_type retval =
-        DDSX11::VendorUtils::create_domain_participant (dds_dp);
+        DDSX11::VendorUtils::create_domain_participant_proxy (dds_dp);
 
       if (retval)
         {
+          // Register the fresh created proxy in the proxy entity manager
+          DDS_ProxyEntityManager::register_dp_proxy (retval);
+
           DDSX11_IMPL_LOG_DEBUG ("NDDS_DomainParticipantFactory_proxy::create_participant_with_profile <"
             << qos_profile << "> - Successfully created a DomainParticipant "
             << "for domain <" << domain_id << ">");
@@ -113,7 +116,7 @@ namespace DDSX11
       if (retcode != DDS::RETCODE_OK)
       {
         DDSX11_IMPL_LOG_ERROR ("NDDS_DomainParticipantFactory_proxy::finalize_instance - Error finalizing NDDS: retcode <"
-          << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode) << ">.");
+          << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode) << ">");
       }
       else
       {

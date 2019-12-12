@@ -143,7 +143,7 @@ int main (int argc, char *argv[])
       }
       else
       {
-        std::cerr << "Receiver: Either Topic or Subscriber is nil." << std::endl;
+        std::cerr << "Receiver: Either Topic or Subscriber is null." << std::endl;
         retcode = DDS::RETCODE_ERROR;
       }
 

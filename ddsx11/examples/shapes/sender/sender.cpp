@@ -122,13 +122,13 @@ int main (int , char *[])
         }
         else
         {
-          std::cerr << "Sender: Typed datawriter is nil." << std::endl;
+          std::cerr << "Sender: Typed datawriter is null." << std::endl;
           retcode = DDS::RETCODE_ERROR;
         }
       }
       else
       {
-        std::cerr << "Sender: Either Topic or Publisher is nil." << std::endl;
+        std::cerr << "Sender: Either Topic or Publisher is null." << std::endl;
         retcode = DDS::RETCODE_ERROR;
       }
 

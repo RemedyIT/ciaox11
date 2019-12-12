@@ -55,7 +55,7 @@ namespace DDSX11
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::create_publisher - "
           << "Error: Unable to retrieve default publisher qos: <"
           << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode)
-          << ">.");
+          << ">");
         return {};
       }
 #endif
@@ -72,7 +72,7 @@ namespace DDSX11
     DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::create_publisher - "
       << "Using PublisherQos <"
       << IDL::traits< ::DDS::PublisherQos>::write (::DDSX11::traits< ::DDS::PublisherQos>::retn(qos_in))
-      << ">.");
+      << ">");
 
     DDS_Native::DDS::Publisher *native_pub =
       this->native_entity ()->create_publisher (
@@ -87,15 +87,17 @@ namespace DDSX11
         return {};
       }
 
+    // DDS was able to create a native entity. We can now safely release the
+    // listener otherwise it would be destroyed when the guard goes out
+    // of scope.
+    listener_guard.release ();
+
     IDL::traits< ::DDS::Publisher >::ref_type publisher =
-      VendorUtils::create_publisher (native_pub);
+      VendorUtils::create_publisher_proxy (native_pub);
 
     if (publisher)
       {
-        // DDS was able to create a native entity. We can now safely release the
-        // listener otherwise it would be destroyed when the guard goes out
-        // of scope.
-        listener_guard.release ();
+        DDS_ProxyEntityManager::register_publisher_proxy (publisher);
 
         DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::create_publisher - "
           << "Successfully created a Publisher.");
@@ -115,7 +117,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_DomainParticipant_proxy::delete_publisher");
 
-    // First set the listener to nil, this will delete any existing listener
+    // First set the listener to null, this will delete any existing listener
     // when it has been set
     p->set_listener(nullptr, 0);
 
@@ -139,7 +141,7 @@ namespace DDSX11
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::delete_publisher - "
           << "Error: delete_publisher returned non-ok error code <"
           << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode)
-          << ">.");
+          << ">");
       }
     else
       {
@@ -164,14 +166,14 @@ namespace DDSX11
     ::DDSX11::traits< ::DDS::SubscriberQos>::in qos_in;
 #if defined(DDSX11_INITIALIZE_QOS_DEFAULTS)
     // Get the default QOS from DDS
-    ::DDS::ReturnCode_t retcode = ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    ::DDS::ReturnCode_t const retcode = ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
       this->native_entity ()->get_default_subscriber_qos (qos_in.value_));
     if (retcode != ::DDS::RETCODE_OK)
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::create_subscriber - "
           << "Error: Unable to retrieve default subscriber qos."
           << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode)
-          << ">.");
+          << ">");
         return {};
       }
 #endif
@@ -187,7 +189,7 @@ namespace DDSX11
     DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::create_subscriber - "
       << "Using SubscriberQos <"
       << IDL::traits< ::DDS::SubscriberQos>::write (::DDSX11::traits< ::DDS::SubscriberQos>::retn(qos_in))
-      << ">.");
+      << ">");
 
     DDS_Native::DDS::Subscriber * native_sub =
       this->native_entity ()->create_subscriber (
@@ -198,20 +200,23 @@ namespace DDSX11
     if (!native_sub)
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::create_subscriber - "
-          << "Error: DDS returned a nil subscriber.");
+          << "Error: DDS returned a null subscriber.");
         // Listener will be destroyed here since the guard goes out of scope.
         return {};
       }
 
+    // DDS was able to create a native entity. We can now safely release the
+    // listener otherwise it would be deleted when the unique pointer goes out
+    // of scope.
+    listener_guard.release ();
+
     IDL::traits< ::DDS::Subscriber >::ref_type subscriber =
-      VendorUtils::create_subscriber (native_sub);
+      VendorUtils::create_subscriber_proxy (native_sub);
 
     if (subscriber)
       {
-        // DDS was able to create a native entity. We can now safely release the
-        // listener otherwise it would be deleted when the unique pointer goes out
-        // of scope.
-        listener_guard.release ();
+        // Register the fresh created proxy in the proxy entity manager
+        DDS_ProxyEntityManager::register_subscriber_proxy (subscriber);
 
         DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::create_subscriber - "
           << "Successfully created a Subscriber.");
@@ -232,7 +237,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_DomainParticipant_proxy::delete_subscriber");
 
-    // First set the listener to nil, this will delete any existing listener
+    // First set the listener to null, this will delete any existing listener
     // when it has been set
     s->set_listener(nullptr, 0);
 
@@ -257,7 +262,7 @@ namespace DDSX11
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::delete_subscriber - "
           << "Error: delete_subscriber returned non-ok error code <"
           << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode)
-          << ">.");
+          << ">");
       }
     else
       {
@@ -273,8 +278,38 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_DomainParticipant_proxy::get_builtin_subscriber");
 
-    return DDS_ProxyEntityManager::get_subscriber_proxy (
-      this->native_entity ()->get_builtin_subscriber ());
+    if (this->builtin_subscriber_)
+      {
+        DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::get_builtin_subscriber - "
+          << "Returning already created builtin subscriber");
+      }
+    else
+      {
+        DDS_Native::DDS::Subscriber * native_sub =
+          this->native_entity ()->get_builtin_subscriber ();
+
+        if (!native_sub)
+          {
+            DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::get_builtin_subscriber - "
+              << "Error: DDS returned a null subscriber.");
+            return {};
+          }
+
+        // Try to retrieve the subscriber proxy from the proxy entity manager
+        // The first time the builtin subscriber is returned this will return
+        // no proxy, so we have to create one
+        this->builtin_subscriber_ =
+          DDS_ProxyEntityManager::get_subscriber_proxy (native_sub);
+
+        if (!this->builtin_subscriber_)
+          {
+            DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::get_builtin_subscriber - "
+              << "ProxyEntityManager didn't have a proxy, creating a new proxy");
+            this->builtin_subscriber_ = VendorUtils::create_subscriber_proxy (native_sub);
+          }
+      }
+
+    return this->builtin_subscriber_;
   }
 
 
@@ -302,7 +337,7 @@ namespace DDSX11
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::create_topic - "
           << "Error: Unable to retrieve default topic qos: <"
           << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode)
-          << ">.");
+          << ">");
         return {};
       }
 #endif
@@ -319,7 +354,7 @@ namespace DDSX11
     DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::create_topic - "
       << "Using TopicQos <"
       << IDL::traits< ::DDS::TopicQos>::write (::DDSX11::traits< ::DDS::TopicQos>::retn (qos_in))
-      << ">.");
+      << ">");
 
     DDS_Native::DDS::Topic * dds_tp =
       this->native_entity ()->create_topic (
@@ -332,23 +367,23 @@ namespace DDSX11
     if (!dds_tp)
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::create_topic - "
-          << "Error: DDS returned a nil topic with name <" << impl_name
-          << "> and type <" << type_name << ">.");
+          << "Error: DDS returned a null topic with name <" << impl_name
+          << "> and type <" << type_name << ">");
         // Listener will be destroyed here since the unique guard
         // goes out of scope.
         return {};
       }
+
+    // DDS was able to create a native entity. We can now safely release the
+    // listener otherwise it would be destroyed when the listener goes out of
+    // scope
+    listener_guard.release ();
 
     IDL::traits< ::DDS::Topic >::ref_type topic_reference =
       TAOX11_CORBA::make_reference<DDS_Topic_proxy> (dds_tp);
 
     if (topic_reference)
       {
-        // DDS was able to create a native entity. We can now safely release the
-        // listener otherwise it would be destroyed when the listener goes out of
-        // scope
-        listener_guard.release ();
-
         DDS_ProxyEntityManager::register_topic_proxy (topic_reference);
 
         DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::create_topic - "
@@ -370,7 +405,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_DomainParticipant_proxy::delete_topic");
 
-    // First set the listener to nil, this will delete any existing listener
+    // First set the listener to null, this will delete any existing listener
     // when it has been set
     a_topic->set_listener(nullptr, 0);
 
@@ -390,7 +425,7 @@ namespace DDSX11
     DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::delete_topic - "
       << "delete_topic returned error code <"
       << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode)
-      << ">.");
+      << ">");
 
     return retcode;
   }
@@ -477,9 +512,9 @@ namespace DDSX11
     if (!native_cftp)
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_i::create_contentfilteredtopic - "
-          "DDS returned a nil ContentFilteredTopic for name <"
+          "DDS returned a null ContentFilteredTopic for name <"
           << name << "> and filter expression <"
-          << filter_expression << ">.");
+          << filter_expression << ">");
         return {};
       }
     return TAOX11_CORBA::make_reference<DDS_ContentFilteredTopic_proxy>(native_cftp);
@@ -553,7 +588,7 @@ namespace DDSX11
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::set_qos - "
           << "Error: Unable to retrieve participant qos: <"
           << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode)
-          << ">.");
+          << ">");
         return retcode;
       }
 #endif
@@ -562,7 +597,7 @@ namespace DDSX11
     DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::set_qos - "
       << "Setting DomainParticipantQos <"
       << IDL::traits< ::DDS::DomainParticipantQos>::write (::DDSX11::traits< ::DDS::DomainParticipantQos>::retn (qos_in))
-      << ">.");
+      << ">");
 
     return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
       this->native_entity ()->set_qos (qos_in));
@@ -630,7 +665,7 @@ namespace DDSX11
     if (!list_proxyroxy)
       {
         DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::get_listener - "
-          << "DDS returned a NIL listener.");
+          << "DDS returned a null listener.");
         return nullptr;
       }
     return list_proxyroxy->get_domainparticipantlistener ();
@@ -709,7 +744,7 @@ namespace DDSX11
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::set_default_publisher_qos - "
           << "Error: Unable to retrieve default publisher qos: <"
           << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode)
-          << ">.");
+          << ">");
         return retcode;
       }
 #endif
@@ -718,7 +753,7 @@ namespace DDSX11
     DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::set_default_publisher_qos - "
       << "Setting PublisherQos <"
       << IDL::traits< ::DDS::PublisherQos>::write (::DDSX11::traits< ::DDS::PublisherQos>::retn (qos_in))
-      << ">.");
+      << ">");
 
     return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
       this->native_entity ()->set_default_publisher_qos (qos_in));
@@ -753,7 +788,7 @@ namespace DDSX11
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::set_default_subscriber_qos - "
           << "Error: Unable to retrieve default subscriber qos: <"
           << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode)
-          << ">.");
+          << ">");
         return retcode;
       }
 #endif
@@ -762,7 +797,7 @@ namespace DDSX11
     DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::set_default_subscriber_qos - "
       << "Setting SubscriberQos <"
       << IDL::traits< ::DDS::SubscriberQos>::write (::DDSX11::traits <::DDS::SubscriberQos>::retn (qos_in))
-      << ">.");
+      << ">");
 
     return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
       this->native_entity ()->set_default_subscriber_qos (qos_in));
@@ -797,7 +832,7 @@ namespace DDSX11
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::set_default_topic_qos - "
           << "Error: Unable to retrieve default topic qos: <"
           << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode)
-          << ">.");
+          << ">");
         return retcode;
       }
 #endif
@@ -806,7 +841,7 @@ namespace DDSX11
     DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::set_default_topic_qos - "
       << "Setting TopicQos <"
       << IDL::traits< ::DDS::TopicQos>::write (::DDSX11::traits< ::DDS::TopicQos>::retn (qos_in))
-      << ">.");
+      << ">");
 
     return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
       this->native_entity ()->set_default_topic_qos (qos_in));

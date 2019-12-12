@@ -161,7 +161,7 @@ namespace CIAOX11
             break;
 
           default:
-            CIAOX11_LOG_DEBUG ("Connection_Handler::connect_instance - " <<
+            CIAOX11_LOG_ERROR ("Connection_Handler::connect_instance - " <<
                        "Unsupported kind <"
                        << IDL::traits< ::Deployment::CCMComponentPortKind>::write (endpoint.kind ())
                        << "> for connection <" << conn.name () << ">");
@@ -246,7 +246,7 @@ namespace CIAOX11
             break;
 
           default:
-            CIAOX11_LOG_DEBUG ("Connection_Handler::disconnect_instance - " <<
+            CIAOX11_LOG_ERROR ("Connection_Handler::disconnect_instance - " <<
                        "Unsupported kind <"
                        << IDL::traits< ::Deployment::CCMComponentPortKind>::write (endpoint.kind ())
                        << "> for connection <" << conn.name () << ">");
@@ -270,7 +270,7 @@ namespace CIAOX11
     {
       std::ostringstream err;
       err << ex;
-      CIAOX11_LOG_DEBUG ("Connection_Handler::disconnect_instance - " <<
+      CIAOX11_LOG_ERROR ("Connection_Handler::disconnect_instance - " <<
                          "Caught COMM_FAILURE exception while disconnecting "
                          << IDL::traits< ::Deployment::CCMComponentPortKind>::write (endpoint.kind ())
                          << " <" << conn.name () << ">:<" << err.str () << ">");
@@ -281,7 +281,7 @@ namespace CIAOX11
     {
       std::ostringstream err;
       err << ex;
-      CIAOX11_LOG_DEBUG ("Connection_Handler::disconnect_instance - " <<
+      CIAOX11_LOG_ERROR ("Connection_Handler::disconnect_instance - " <<
                          "Caught OBJECT_NOT_EXIST exception while disconnecting "
                          << IDL::traits< ::Deployment::CCMComponentPortKind>::write (endpoint.kind ())
                          << " <" << conn.name () << ">:<" << err.str () << ">");
@@ -292,7 +292,7 @@ namespace CIAOX11
     {
       std::ostringstream err;
       err << ex;
-      CIAOX11_LOG_DEBUG ("Connection_Handler::disconnect_instance - " <<
+      CIAOX11_LOG_ERROR ("Connection_Handler::disconnect_instance - " <<
                          "Caught TRANSIENT exception while disconnecting "
                          << IDL::traits< ::Deployment::CCMComponentPortKind>::write (endpoint.kind ())
                          << " <" << conn.name () << ">:<" << err.str () << ">");
@@ -303,7 +303,7 @@ namespace CIAOX11
     {
       std::ostringstream err;
       err << ex;
-      CIAOX11_LOG_DEBUG ("Connection_Handler::disconnect_instance - " <<
+      CIAOX11_LOG_ERROR ("Connection_Handler::disconnect_instance - " <<
                          "Caught CORBA exception while disconnecting "
                          << IDL::traits< ::Deployment::CCMComponentPortKind>::write (endpoint.kind ())
                          << " <" << conn.name () << ">:<" << err.str () << ">");
@@ -322,7 +322,7 @@ namespace CIAOX11
     }
     catch (...)
     {
-      CIAOX11_LOG_DEBUG ("Connection_Handler::disconnect_instance - " <<
+      CIAOX11_LOG_ERROR ("Connection_Handler::disconnect_instance - " <<
                          "Caught unknown C++ exception while disconnecting "
                          << IDL::traits< ::Deployment::CCMComponentPortKind>::write (endpoint.kind ())
                          << " <" << conn.name () << ">");
@@ -493,7 +493,7 @@ namespace CIAOX11
   }
 
   // plan and endpoint used for getting component name
-  // component name used to get executot locator
+  // component name used to get executor locator
   void
   Connection_Handler::disconnect_non_local (const ::Deployment::DeploymentPlan & plan,
                                             const Deployment::PlanConnectionDescription &conn,
@@ -622,17 +622,16 @@ namespace CIAOX11
     Deployment_Common::collect_config_values (connection_props, conn_config);
 
     CIAOX11_LOG_DEBUG ("Connection_Handler::connect_local_port - " <<
-                       "Retrieving local facet executor reference from executor locator for <" << conn.name () << ">");
+                       "Retrieving local facet executor reference from executor locator for facet <" << facet_endpoint.portName () << ">");
     // Get the local facet executor for this connection from the provider component
     IDL::traits<CORBA::Object>::ref_type facet_ref =
         provider_exec_locator->obtain_facet_executor (facet_endpoint.portName (),
-                                                      conn.name (),
                                                       conn_config);
     if (!facet_ref)
     {
       // either a provided facet reference or the local executor reference should be available
       CIAOX11_LOG_ERROR ("Connection_Handler::connect_local_port - " <<
-                         "Unable to retrieve local facet executor reference from executor locator for <" << conn.name () << ">");
+                         "Unable to retrieve local facet executor reference from executor locator for facet <" << facet_endpoint.portName () << ">");
       throw ::Deployment::InvalidConnection (conn.name (),
                                              "Unable to retrieve local facet executor reference from executor locator.");
     }
