@@ -112,15 +112,13 @@ namespace <%= executor_cxx_namespace %>
   <%= lem_name %>_Context::get_connections_<%= _p.lem_name %> ()
   {
     std::lock_guard<std::mutex> lock (this->context_tbl_lock_);
-    <%= scoped_ccm_name %>::<%= _p.lem_name %>Connections retv(this-><%= _p.lem_name %>_context_tbl_.size());
-
-    <%= _p.interface_type.scoped_cxxname.upcase.identify %>_CONTEXT_TABLE::size_type i {};
-    typedef IDL::traits< <%= scoped_ccm_name %>::<%= _p.lem_name %>Connections>::element_traits::value_type
-      conn_type;
+    <%= scoped_ccm_name %>::<%= _p.lem_name %>Connections retv;
+    retv.reserve (this-><%= _p.lem_name %>_context_tbl_.size());
+    typedef IDL::traits< <%= scoped_ccm_name %>::<%= _p.lem_name %>Connections>::element_traits::value_type conn_type;
 
     for (const auto& elem : this-><%= _p.lem_name %>_context_tbl_)
     {
-      retv[i++] = conn_type(elem.second, elem.first);
+      retv.push_back (conn_type(elem.second, elem.first));
     }
 
     return retv;
