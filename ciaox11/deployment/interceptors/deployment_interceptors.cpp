@@ -250,7 +250,7 @@ namespace CIAOX11
                        << conn.name () << ">");
 
     // attempt to resolve CORBA IOR type external references
-    if (conn.externalReference ().size () > 0)
+    if (!conn.externalReference ().empty ())
     {
       IDL::traits<CORBA::Object>::ref_type obj;
       if (!(providedRef >>= obj))

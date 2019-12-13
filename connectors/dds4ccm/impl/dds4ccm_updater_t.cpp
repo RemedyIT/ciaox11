@@ -163,10 +163,10 @@ namespace CIAOX11
           exception.indexes ().push_back (
               ACE_Utils::truncate_cast< ::CCM_DDS::DataNumber_t> (index));
         }
-        index++;
+        ++index;
       }
 
-      if (exception.indexes ().size () > 0)
+      if (!exception.indexes ().empty ())
       {
         throw exception;
       }
@@ -187,10 +187,10 @@ namespace CIAOX11
           exception.indexes ().push_back (
               ACE_Utils::truncate_cast< ::CCM_DDS::DataNumber_t> (index));
         }
-        index++;
+        ++index;
       }
 
-      if (exception.indexes ().size () > 0)
+      if (!exception.indexes ().empty ())
       {
         throw exception;
       }

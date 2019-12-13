@@ -449,7 +449,7 @@ namespace DAnCEX11
       << "Pre process plan was invoked"
       << std::endl;
     ++this->preprocess_plan_;
-    if (plan.instance ().size () > 0)
+    if (!plan.instance ().empty ())
       {
         this->node_ = plan.instance ()[0].node ();
 

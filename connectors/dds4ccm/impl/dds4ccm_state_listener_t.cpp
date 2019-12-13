@@ -135,7 +135,7 @@ namespace CIAOX11
             if ((si.valid_data () && si.view_state () == ::DDS::NEW_VIEW_STATE) ||
               si.instance_state () == ::DDS::NOT_ALIVE_DISPOSED_INSTANCE_STATE)
             {
-              if (updates.size () > 0)
+              if (!updates.empty ())
               {
                 // Sample_new or sample_delete found -> first send out the
                 // updated samples in one go
@@ -172,7 +172,7 @@ namespace CIAOX11
             ++idx_to_add;
           }
           // Send the latest updates.
-          if (updates.size () > 0)
+          if (!updates.empty ())
           {
             TOPIC_SEQ_TYPE         inst_seq (updates.size ());
             ::CCM_DDS::ReadInfoSeq infoseq  (updates.size ());
