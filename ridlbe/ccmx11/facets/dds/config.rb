@@ -191,12 +191,8 @@ module IDL
         if !options.typesupport_export_file.nil?
           export_file = options.typesupport_export_file
         end
-        so = unless export_file.nil?
-              GenFile.new(options.outputdir+'/'+export_file)
-            else
-              GenFile.new(nil, :output_file => $stdout)
-            end
         if export_file
+          so = GenFile.new(File.join(options.outputdir, export_file))
           IDL.push_production(
               :exec_export_header,
               ::IDL::Cxx11::ExportHeaderWriter.new(options.typesupport_export_macro, export_file, so, options))

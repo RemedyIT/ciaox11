@@ -243,51 +243,45 @@ module IDL
       return if IDL.has_production?(:exec_export_header)
       check_executor_export_params(options, prefix, true)
       export_file = options[:exec_export_include]
-      if !options[:exec_export_file].nil?
+      unless options[:exec_export_file].nil?
         export_file = options[:exec_export_file]
       end
-      so = unless export_file.nil?
-             GenFile.new(options.outputdir+'/'+export_file)
-           else
-             GenFile.new(nil, :output_file => $stdout)
-           end
-      IDL.push_production(
-          :exec_export_header,
-          ::IDL::Cxx11::ExportHeaderWriter.new(options[:exec_export_macro], export_file, so, options))
+      if export_file
+        so = GenFile.new(File.join(options.outputdir, export_file))
+        IDL.push_production(
+            :exec_export_header,
+            ::IDL::Cxx11::ExportHeaderWriter.new(options[:exec_export_macro], export_file, so, options))
+      end
     end
 
     def self.gen_svnt_export(options, prefix = nil)
       return if IDL.has_production?(:svnt_export_header)
       check_servant_export_params(options, prefix, true)
       export_file = options[:svnt_export_include]
-      if !options[:svnt_export_file].nil?
+      unless options[:svnt_export_file].nil?
         export_file = options[:svnt_export_file]
       end
-      so = unless export_file.nil?
-             GenFile.new(options.outputdir+'/'+export_file)
-           else
-             GenFile.new(nil, :output_file => $stdout)
-           end
-      IDL.push_production(
-          :svnt_export_header,
-          ::IDL::Cxx11::ExportHeaderWriter.new(options[:svnt_export_macro], export_file, so, options))
+      if export_file
+        so = GenFile.new(File.join(options.outputdir, export_file))
+        IDL.push_production(
+            :svnt_export_header,
+            ::IDL::Cxx11::ExportHeaderWriter.new(options[:svnt_export_macro], export_file, so, options))
+      end
     end
 
     def self.gen_conn_export(options, prefix = nil)
       return if IDL.has_production?(:conn_export_header)
       check_conn_export_params(options, prefix, true)
       export_file = options[:conn_export_include]
-      if !options[:conn_export_file].nil?
+      unless options[:conn_export_file].nil?
         export_file = options[:conn_export_file]
       end
-      so = unless export_file.nil?
-             GenFile.new(options.outputdir+'/'+export_file)
-           else
-             GenFile.new(nil, :output_file => $stdout)
-           end
-      IDL.push_production(
-          :conn_export_header,
-          ::IDL::Cxx11::ExportHeaderWriter.new(options[:conn_export_macro], export_file, so, options))
+      if export_file
+        so = GenFile.new(File.join(options.outputdir, export_file))
+        IDL.push_production(
+            :conn_export_header,
+            ::IDL::Cxx11::ExportHeaderWriter.new(options[:conn_export_macro], export_file, so, options))
+      end
     end
 
     #################################################################
@@ -430,7 +424,7 @@ module IDL
     # (header and source file)
     def self.gen_component_executor(options, idl_ext)
       return if IDL.has_production?(:comp_exec_header)
-      if !options[:impl_outputdir].nil?
+      unless options[:impl_outputdir].nil?
         options[:comp_exec_outputdir] = options[:impl_outputdir]
       else
         options[:comp_exec_outputdir] = options.outputdir unless options[:comp_exec_outputdir]
