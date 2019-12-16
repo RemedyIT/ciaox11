@@ -22,6 +22,13 @@ configure :ddsx11ndds do
       library_path '${NDDSHOME}/lib/${NDDSARCHITECTURE}'
     end
 
+    optional :ndds_no_optimize do
+      evaluate(:rttiddsgen) do
+        rtiddsgen_ver_ = `#{getenv('NDDSHOME')}/bin/rtiddsgen -version | grep 'rtiddsgen version'`.chomp.split(' ').last
+        rtiddsgen_ver_ >= '3.0.0'
+      end
+    end
+
   end
 
   features do
