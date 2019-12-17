@@ -24,7 +24,7 @@ configure :ddsx11ndds do
 
     optional :ndds_no_optimize do
       evaluate(:rttiddsgen) do
-        rtiddsgen_ver_ = `#{getenv('NDDSHOME')}/bin/rtiddsgen -version | grep 'rtiddsgen version'`.chomp.split(' ').last
+        rtiddsgen_ver_ = `#{getenv('NDDSHOME')}/bin/rtiddsgen -version`.chomp.split("\n").first.split(' ').last
         rtiddsgen_ver_ >= '3.0.0'
       end
     end
