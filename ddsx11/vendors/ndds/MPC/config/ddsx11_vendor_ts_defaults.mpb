@@ -9,6 +9,16 @@
 feature(ddsx11, ndds) : ndds_ts_defaults {
 }
 
+feature(ddsx11, ndds_no_optimize) : ndds_ts_defaults {
+  // rtiddsgen has multiple optimization modes (see -help)
+  // The ddsx11 conversion traits are based on the fact that for each c++11
+  // type there is a c++ equivalent, with optimizations enabled it
+  // can happen that the c++ equivalent is not there which means the
+  // generated code is not following the IDL to C++ language mapping which
+  // leads to compile errors
+  ndds_ts_flags += -optimization 0
+}
+
 feature(!ndds) {
   requires += dummy_label
 }
