@@ -5,7 +5,8 @@
   connection = CIAOX11::Corba::Utility::get_provider_reference (config);
   if (!connection)
   {
-    return false;
+    // return here to prevent an inadvertent disconnect
+    return true;
   }
 
 % else
