@@ -535,7 +535,7 @@ namespace CIAOX11
                        "Connecting connection <" << conn.name () <<
                        ">:<" << plan.instance ()[receptacle_endpoint.instanceRef ()].name () << ">");
 
-    uint32_t facet_endpointRef = (endpointRef + 1) % 2;
+    uint32_t const facet_endpointRef = (endpointRef + 1) % 2;
     if (!(receptacle_endpoint.kind () == Deployment::CCMComponentPortKind::SimplexReceptacle ||
               receptacle_endpoint.kind () == Deployment::CCMComponentPortKind::MultiplexReceptacle) ||
           conn.internalEndpoint ()[facet_endpointRef].kind () != Deployment::CCMComponentPortKind::Facet)
