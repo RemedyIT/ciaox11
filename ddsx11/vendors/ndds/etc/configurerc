@@ -17,13 +17,14 @@ configure :ddsx11ndds do
         name 'NDDSARCHITECTURE'
         description 'RTI Connext DDS target architecture'
       end
+      requires :nddshome, :nddsarch
       file '${NDDSHOME}/include/ndds/ndds_cpp.h'
       exist '${NDDSHOME}/lib/${NDDSARCHITECTURE}'
       library_path '${NDDSHOME}/lib/${NDDSARCHITECTURE}'
     end
 
     optional :ndds_no_optimize do
-      exist '${NDDSHOME}/bin'
+      file '${NDDSHOME}/include/ndds/ndds_cpp.h'
       evaluate(:rttiddsgen) do
         rtiddsgen_ver_ = `#{getenv('NDDSHOME')}/bin/rtiddsgen -version`.chomp.split("\n").first.split(' ').last
         rtiddsgen_ver_ >= '3.0.0'
