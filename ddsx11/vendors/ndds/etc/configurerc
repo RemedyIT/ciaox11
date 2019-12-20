@@ -23,7 +23,7 @@ configure :ddsx11ndds do
     end
 
     optional :ndds_no_optimize do
-      file '${NDDSHOME}/bin/rtiddsgen'
+      exist '${NDDSHOME}/bin'
       evaluate(:rttiddsgen) do
         rtiddsgen_ver_ = `#{getenv('NDDSHOME')}/bin/rtiddsgen -version`.chomp.split("\n").first.split(' ').last
         rtiddsgen_ver_ >= '3.0.0'
