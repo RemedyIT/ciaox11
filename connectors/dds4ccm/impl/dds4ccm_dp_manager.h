@@ -34,7 +34,7 @@ namespace CIAOX11
      * The DomainParticipantManager is a singleton.
      *
      */
-    class DDS4CCM_IMPL_Export DomainParticipantManager final
+    class DDS4CCM_IMPL_Export DomainParticipantManager
     {
       /**
       * @class DDSParticipantTopic
@@ -48,7 +48,7 @@ namespace CIAOX11
       * a topic once the reference count becomes one.
       *
       */
-      class DDSParticipantTopic final
+      class DDSParticipantTopic
       {
         public:
           explicit DDSParticipantTopic (
@@ -58,7 +58,7 @@ namespace CIAOX11
           /**
           * Returns the reference count of this class
           */
-          uint32_t _ref_count ();
+          uint32_t _ref_count () const;
           /**
           * Increments the reference count of this class
           */

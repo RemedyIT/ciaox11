@@ -32,11 +32,11 @@ namespace CIAOX11
       * Manages the read and query conditions for the Getter,
       * Reader and listeners.
       */
-    class DDS4CCM_IMPL_Export ConditionManager final
+    class DDS4CCM_IMPL_Export ConditionManager
     {
     public:
       /// Constructor
-      ConditionManager ();
+      ConditionManager () = default;
 
       /// Destructor
       ~ConditionManager () = default;
@@ -183,8 +183,7 @@ namespace CIAOX11
       /**
         * Will create the waitset if not already created.
         */
-      IDL::traits< ::DDS::WaitSet >::ref_type
-      waitset ();
+      IDL::traits< ::DDS::WaitSet >::ref_type waitset ();
 
       /**
         * Removes the internal (read/query) condition by invoking
@@ -201,8 +200,7 @@ namespace CIAOX11
         * The query condition for the getter will be detached from
         * the waitset first.
         */
-      void
-      remove_conditions ();
+      void remove_conditions ();
 
       /**
         * Getter functionality.
@@ -211,8 +209,7 @@ namespace CIAOX11
         * waitset. It the waitset doesn't exist, it will be
         * created.
         */
-      void
-      attach_querycondition ();
+      void attach_querycondition ();
 
       /**
         * Generic method which sets the parameters of the given

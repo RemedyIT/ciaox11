@@ -17,15 +17,11 @@ namespace CIAOX11
   namespace DDS4CCM
   {
     template <typename EVT_STRATEGY>
-    class SubscriberListener_T final
+    class SubscriberListener_T
       : public IDL::traits< ::DDS::SubscriberListener >::base_type
     {
     public:
-      /// Constructor
-      explicit SubscriberListener_T (
-        const EVT_STRATEGY &evs);
-
-      /// Destructor
+      explicit SubscriberListener_T (const EVT_STRATEGY &evs);
       virtual ~SubscriberListener_T () = default;
 
       virtual void
@@ -70,7 +66,6 @@ namespace CIAOX11
         IDL::traits< CCM_DDS::ConnectorStatusListener >::ref_type csl);
 
     private:
-
       void
       on_unexpected_status (
         IDL::traits< ::DDS::Entity >::ref_type entity,

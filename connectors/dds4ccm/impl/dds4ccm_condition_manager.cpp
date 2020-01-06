@@ -21,11 +21,6 @@ namespace CIAOX11
 {
   namespace DDS4CCM
   {
-    ConditionManager::ConditionManager()
-    {
-
-    }
-
     IDL::traits< ::DDS::ReadCondition >::ref_type
     ConditionManager::read_condition ()
     {

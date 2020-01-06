@@ -33,12 +33,12 @@ namespace CIAOX11
     *               is provided (TRUE) or if the time-out occurred (FALSE).
     */
     template <typename GETTER_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
-    class Getter_T final
+    class Getter_T
       : public virtual FacetBase< GETTER_TYPE >
     {
     public:
       /// Constructor
-      explicit Getter_T (IDL::traits< CORBA::Object >::weak_ref_type component);
+      explicit Getter_T (IDL::traits<CORBA::Object>::weak_ref_type component);
 
       /// Destructor
       virtual ~Getter_T () = default;

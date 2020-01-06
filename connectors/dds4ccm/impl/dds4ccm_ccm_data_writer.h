@@ -19,13 +19,13 @@ namespace CIAOX11
 {
   namespace DDS4CCM
   {
-    class DDS4CCM_IMPL_Export CCM_DataWriter final
+    class DDS4CCM_IMPL_Export CCM_DataWriter
       : public virtual FacetBase< ::DDS::CCM_DataWriter >
     {
     public:
       /// Constructor
       explicit CCM_DataWriter (
-        IDL::traits< CORBA::Object >::weak_ref_type component);
+        IDL::traits<CORBA::Object>::weak_ref_type component);
 
       /// Destructor
       virtual ~CCM_DataWriter () = default;

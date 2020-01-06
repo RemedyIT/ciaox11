@@ -13,15 +13,11 @@
 #include "dds4ccm/impl/dds4ccm_data_listener_control_t.h"
 
 template <typename BASE_TYPE>
-class CCM_DDS_StateListenerControl_T final
+class CCM_DDS_StateListenerControl_T
   : public virtual CCM_DDS_DataListenerControl_T<BASE_TYPE>
 {
 public:
-  /// Constructor
-  CCM_DDS_StateListenerControl_T (
-    IDL::traits< CORBA::Object >::weak_ref_type component);
-
-  /// Destructor
+  CCM_DDS_StateListenerControl_T (IDL::traits<CORBA::Object>::weak_ref_type component);
   virtual ~CCM_DDS_StateListenerControl_T () = default;
 
   /// Get the is_filter_interpreted
@@ -32,6 +28,12 @@ public:
 
 private:
   std::atomic_bool is_filter_interpreted_ { false };
+
+  CCM_DDS_StateListenerControl_T() = delete;
+  CCM_DDS_StateListenerControl_T(const CCM_DDS_StateListenerControl_T&) = delete;
+  CCM_DDS_StateListenerControl_T(CCM_DDS_StateListenerControl_T&&) = delete;
+  CCM_DDS_StateListenerControl_T& operator=(const CCM_DDS_StateListenerControl_T&) = delete;
+  CCM_DDS_StateListenerControl_T& operator=(CCM_DDS_StateListenerControl_T&&) = delete;
 };
 
 #include "dds4ccm/impl/dds4ccm_state_listener_control_t.cpp"

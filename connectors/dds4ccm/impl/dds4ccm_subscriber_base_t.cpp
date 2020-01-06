@@ -11,13 +11,8 @@
 
 
 template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
-DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::~DDS_Subscriber_Base_T ()
-{
-}
-
-template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::DDS_Subscriber_Base_T (
-  IDL::traits< CORBA::Object >::ref_type component)
+  IDL::traits<CORBA::Object>::ref_type component)
   : component_ (component.weak_reference ())
   , condition_manager_ (std::make_shared< CIAOX11::DDS4CCM::ConditionManager > ())
 {

@@ -13,7 +13,7 @@
 #include "dds4ccm/impl/dds4ccm_updater_t.h"
 
 template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
-class DDS_Update_Port_T final
+class DDS_Update_Port_T
 {
 public:
   explicit DDS_Update_Port_T (IDL::traits<CORBA::Object >::ref_type component);
@@ -24,11 +24,8 @@ public:
    * DDS_Update operations
    */
   //@{
-  typename IDL::traits< typename CCM_TYPE::data_type >::ref_type
-  get_data ();
-
-  typename IDL::traits< typename CCM_TYPE::dds_entity_type >::ref_type
-  get_dds_entity ();
+  typename IDL::traits< typename CCM_TYPE::data_type >::ref_type get_data ();
+  typename IDL::traits< typename CCM_TYPE::dds_entity_type >::ref_type get_dds_entity ();
   //@}
 
   void
@@ -37,9 +34,7 @@ public:
     IDL::traits< ::DDS::Publisher >::ref_type publisher,
     const std::string &qos_profile);
 
-  void
-  remove (
-    IDL::traits< ::DDS::Publisher >::ref_type publisher);
+  void remove (IDL::traits< ::DDS::Publisher >::ref_type publisher);
 
 private:
   typedef ::CIAOX11::DDS4CCM::Updater_T<
@@ -50,7 +45,7 @@ private:
 
   typedef ::CIAOX11::DDS4CCM::CCM_DataWriter CCM_DataWriter_type;
 
-  IDL::traits< CORBA::Object >::weak_ref_type component_;
+  IDL::traits<CORBA::Object>::weak_ref_type component_;
 
   /**
    * DDS_Update

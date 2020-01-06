@@ -17,7 +17,7 @@ namespace CIAOX11
   namespace DDS4CCM
   {
     template<typename BASE_TYPE>
-    FacetBase<BASE_TYPE>::FacetBase (IDL::traits< CORBA::Object >::weak_ref_type component)
+    FacetBase<BASE_TYPE>::FacetBase (IDL::traits<CORBA::Object>::weak_ref_type component)
       : component_ (component)
     {
     }
@@ -28,7 +28,7 @@ namespace CIAOX11
     }
 
     template<typename BASE_TYPE>
-    IDL::traits< CORBA::Object >::ref_type
+    IDL::traits<CORBA::Object>::ref_type
     FacetBase<BASE_TYPE>::_get_component ()
     {
       return this->component_.lock ();

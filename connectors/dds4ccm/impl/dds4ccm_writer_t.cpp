@@ -18,7 +18,7 @@ namespace CIAOX11
   {
     template <typename WRITER_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
     Writer_T<WRITER_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::Writer_T (
-      IDL::traits< CORBA::Object >::weak_ref_type component)
+      IDL::traits<CORBA::Object>::weak_ref_type component)
       : FacetBase<WRITER_TYPE> (component)
       , InstanceHandleManager_T<WRITER_TYPE, TOPIC_TYPE> (component)
     {

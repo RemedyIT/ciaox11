@@ -12,7 +12,7 @@
 
 template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 DDS_Update_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::DDS_Update_Port_T (
-  IDL::traits< CORBA::Object >::ref_type component)
+  IDL::traits<CORBA::Object>::ref_type component)
   : component_ (component.weak_reference ())
 {
 }

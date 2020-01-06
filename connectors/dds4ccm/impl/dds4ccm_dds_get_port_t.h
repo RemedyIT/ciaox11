@@ -14,7 +14,7 @@
 #include "dds4ccm/impl/dds4ccm_getter_t.h"
 
 template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
-class DDS_Get_Port_T final
+class DDS_Get_Port_T
   : public virtual DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>
 {
 public:
@@ -37,8 +37,7 @@ public:
     const std::string &qos_profile) override;
 
 private:
-  typedef DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>
-    SubscriberBase_type;
+  typedef DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE> SubscriberBase_type;
 
   typedef ::CIAOX11::DDS4CCM::Getter_T<
       typename CCM_TYPE::fresh_data_type,

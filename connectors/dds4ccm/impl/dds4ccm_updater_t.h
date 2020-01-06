@@ -17,14 +17,11 @@ namespace CIAOX11
   namespace DDS4CCM
   {
     template <typename UPDATER_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
-    class Updater_T final
+    class Updater_T
       : public virtual InstanceHandleManager_T<UPDATER_TYPE, TOPIC_TYPE>
     {
     public:
-      /// Constructor
-      explicit Updater_T (IDL::traits< CORBA::Object >::weak_ref_type component);
-
-      /// Destructor
+      explicit Updater_T (IDL::traits<CORBA::Object>::weak_ref_type component);
       virtual ~Updater_T () = default;
 
       /**
@@ -118,7 +115,6 @@ namespace CIAOX11
       check_existence (
         const TOPIC_SEQ_TYPE& data);
       //@}
-
 
       Updater_T() = delete;
       Updater_T(const Updater_T&) = delete;

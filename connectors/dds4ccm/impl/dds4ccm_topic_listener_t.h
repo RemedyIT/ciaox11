@@ -17,15 +17,11 @@ namespace CIAOX11
   namespace DDS4CCM
   {
     template <typename EVT_STRATEGY>
-    class TopicListener_T final
+    class TopicListener_T
       : public virtual IDL::traits< ::DDS::TopicListener  >::base_type
     {
     public:
-      /// Constructor
-      explicit TopicListener_T (
-        const EVT_STRATEGY &evs);
-
-      /// Destructor
+      explicit TopicListener_T (const EVT_STRATEGY &evs);
       virtual ~TopicListener_T () = default;
 
       virtual void

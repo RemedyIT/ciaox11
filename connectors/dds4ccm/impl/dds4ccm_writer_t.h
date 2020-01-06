@@ -17,14 +17,11 @@ namespace CIAOX11
   namespace DDS4CCM
   {
     template <typename WRITER_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
-    class Writer_T final
+    class Writer_T
       : public virtual InstanceHandleManager_T<WRITER_TYPE, TOPIC_TYPE>
     {
     public:
-      /// Constructor
-      explicit Writer_T (IDL::traits< CORBA::Object >::weak_ref_type component);
-
-      /// Destructor
+      explicit Writer_T (IDL::traits<CORBA::Object>::weak_ref_type component);
       virtual ~Writer_T () = default;
 
       virtual void
@@ -45,8 +42,7 @@ namespace CIAOX11
       is_coherent_write () override;
 
       virtual void
-      is_coherent_write (
-        bool value) override;
+      is_coherent_write (bool value) override;
       //@}
 
     private:

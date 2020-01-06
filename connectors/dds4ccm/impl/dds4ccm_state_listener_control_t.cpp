@@ -12,7 +12,7 @@
 
 template <typename BASE_TYPE>
 CCM_DDS_StateListenerControl_T<BASE_TYPE>::CCM_DDS_StateListenerControl_T (
-    IDL::traits< CORBA::Object >::weak_ref_type component)
+    IDL::traits<CORBA::Object>::weak_ref_type component)
   : CIAOX11::DDS4CCM::FacetBase<BASE_TYPE> (component)
   , CCM_DDS_DataListenerControl_T<BASE_TYPE> (component)
 {

@@ -18,7 +18,7 @@ namespace CIAOX11
   {
     template <typename BASE_TYPE, typename TOPIC_TYPE>
     InstanceHandleManager_T<BASE_TYPE, TOPIC_TYPE>::InstanceHandleManager_T (
-      IDL::traits< CORBA::Object >::weak_ref_type component)
+      IDL::traits<CORBA::Object>::weak_ref_type component)
       : FacetBase<BASE_TYPE> (component)
     {
     }

@@ -24,7 +24,7 @@ namespace CIAOX11
     public:
       /// Constructor
       explicit InstanceHandleManager_T (
-        IDL::traits< CORBA::Object >::weak_ref_type component);
+        IDL::traits<CORBA::Object>::weak_ref_type component);
 
       /// Destructor
       virtual ~InstanceHandleManager_T () = default;
