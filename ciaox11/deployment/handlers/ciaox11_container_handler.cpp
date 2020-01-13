@@ -19,9 +19,10 @@ namespace CIAOX11
   void
   Container_Handler::add_container (
       const std::string& id,
+      Components::ConfigValues&& config,
       std::shared_ptr<CIAOX11::Container> container)
   {
-    DEPLOYMENT_STATE->add_container (id, container);
+    DEPLOYMENT_STATE->add_container (id, std::move (config), container);
   }
 
   void
@@ -104,13 +105,18 @@ namespace CIAOX11
 
     try
     {
+      // collect unique configuration values for container
+      Components::ConfigValues container_config;
+      Deployment_Common::collect_config_values (props,
+                                                container_config);
+
       std::shared_ptr<CIAOX11::Container> container_ref =
         std::make_shared <CIAOX11::Container> (name, this->orb_);
 
       CIAOX11_LOG_DEBUG ("Container_Handler::install_instance - " <<
                         "Successfully created container <" << name << ">");
 
-      this->add_container (name, container_ref);
+      this->add_container (name, std::move (container_config), container_ref);
 
       CIAOX11_LOG_DEBUG ("Container_Handler::install_instance - " <<
                         "Successfully added container to our state <" << name << ">");

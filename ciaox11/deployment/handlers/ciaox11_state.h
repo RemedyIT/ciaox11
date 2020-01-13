@@ -32,6 +32,7 @@ namespace CIAOX11
     void
     add_container (
         const std::string& id,
+        Components::ConfigValues&& config,
         std::shared_ptr<CIAOX11::Container> container);
 
     void
@@ -41,6 +42,11 @@ namespace CIAOX11
     std::shared_ptr<CIAOX11::Container>
     fetch_container (
         const std::string& id);
+
+    void
+    fetch_container_configuration (
+        const std::string& id,
+        Components::ConfigValues& config);
 
     void
     register_component (
@@ -87,12 +93,15 @@ namespace CIAOX11
     /// maps instance ids to containers.
     INSTANCE_CONTAINER instance_container_;
 
-    /// Administers configuration of components
+    /// Administers configuration of instances
     typedef std::pair < std::string, Components::ConfigValues > CONFIG_PAIR;
-    typedef std::map < std::string, Components::ConfigValues > CONFIG_CONTAINER;
+    typedef std::map < std::string, Components::ConfigValues > INSTANCE_CONFIG;
 
-    /// maps instance ids to containers.
-    CONFIG_CONTAINER config_container_;
+    /// maps container ids to configuration.
+    INSTANCE_CONFIG container_config_;
+
+    /// maps instance ids to configuration.
+    INSTANCE_CONFIG instance_config_;
   };
 
 #define DEPLOYMENT_STATE \
