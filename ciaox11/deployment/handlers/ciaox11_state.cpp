@@ -49,20 +49,9 @@ namespace CIAOX11
   {
     std::lock_guard<std::mutex> lock (this->state_mutex_);
 
-    CONTAINERS::iterator pos = this->containers_.find (id);
+    this->containers_.erase (id);
 
-    if (pos != this->containers_.end ())
-    {
-      this->containers_.erase (pos);
-    }
-
-    INSTANCE_CONFIG::iterator cfgit =
-      this->container_config_.find (id);
-
-    if (cfgit != this->container_config_.end ())
-    {
-      this->container_config_.erase (cfgit);
-    }
+    this->container_config_.erase (id);
   }
 
   std::shared_ptr<CIAOX11::Container>
@@ -114,21 +103,9 @@ namespace CIAOX11
   {
     std::lock_guard<std::mutex> lock (this->state_mutex_);
 
-    INSTANCE_CONTAINER::iterator cont =
-      this->instance_container_.find (id);
+    this->instance_container_.erase (id);
 
-    if (cont != this->instance_container_.end ())
-    {
-      this->instance_container_.erase (cont);
-    }
-
-    INSTANCE_CONFIG::iterator cfgit =
-      this->instance_config_.find (id);
-
-    if (cfgit != this->instance_config_.end ())
-    {
-      this->instance_config_.erase (cfgit);
-    }
+    this->instance_config_.erase (id);
   }
 
   void
