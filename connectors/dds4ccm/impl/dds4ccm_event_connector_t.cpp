@@ -36,7 +36,7 @@ DDS_Event_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::supplier ()
 }
 
 template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
-typename IDL::traits< typename CCM_TYPE::supplier_traits::data_type >::ref_type
+typename IDL::traits<typename CCM_TYPE::supplier_traits::data_type >::ref_type
 DDS_Event_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_supplier_data ()
 {
   DDS4CCM_LOG_TRACE (
@@ -46,7 +46,7 @@ DDS_Event_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_supplier_data (
 }
 
 template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
-typename IDL::traits< typename CCM_TYPE::supplier_traits::dds_entity_type >::ref_type
+typename IDL::traits<typename CCM_TYPE::supplier_traits::dds_entity_type >::ref_type
 DDS_Event_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_supplier_dds_entity ()
 {
   DDS4CCM_LOG_TRACE (
@@ -76,7 +76,7 @@ DDS_Event_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::pull_consumer ()
 }
 
 template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
-typename IDL::traits< typename CCM_TYPE::pull_consumer_traits::fresh_data_type >::ref_type
+typename IDL::traits<typename CCM_TYPE::pull_consumer_traits::fresh_data_type >::ref_type
 DDS_Event_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_pull_consumer_fresh_data ()
 {
   DDS4CCM_LOG_TRACE (
@@ -86,7 +86,7 @@ DDS_Event_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_pull_consumer_f
 }
 
 template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
-typename IDL::traits< typename CCM_TYPE::pull_consumer_traits::data_type >::ref_type
+typename IDL::traits<typename CCM_TYPE::pull_consumer_traits::data_type >::ref_type
 DDS_Event_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_pull_consumer_data ()
 {
   DDS4CCM_LOG_TRACE (
@@ -157,7 +157,7 @@ DDS_Event_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::push_consumer ()
 }
 
 template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
-typename IDL::traits< typename CCM_TYPE::push_consumer_traits::data_type >::ref_type
+typename IDL::traits<typename CCM_TYPE::push_consumer_traits::data_type >::ref_type
 DDS_Event_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_push_consumer_data ()
 {
   DDS4CCM_LOG_TRACE (
@@ -225,7 +225,7 @@ DDS_Event_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::do_configuration_co
   DDS4CCM_LOG_TRACE (
     "DDS_Event_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::do_configuration_complete");
 
-  typename IDL::traits< typename CCM_TYPE::push_consumer_traits::data_listener_type >::ref_type
+  typename IDL::traits<typename CCM_TYPE::push_consumer_traits::data_listener_type >::ref_type
     push_consumer_data_listener =
       this->context ()->get_connection_push_consumer_data_listener ();
   IDL::traits< CCM_DDS::PortStatusListener >::ref_type push_consumer_psl =

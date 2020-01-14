@@ -45,7 +45,7 @@ public:
   void
   activate (
     const typename CCM_TYPE::event_strategy_type &evs,
-    typename IDL::traits< typename CCM_TYPE::data_listener_type >::ref_type listener,
+    typename IDL::traits<typename CCM_TYPE::data_listener_type >::ref_type listener,
     IDL::traits< CCM_DDS::PortStatusListener >::ref_type status);
 
 private:

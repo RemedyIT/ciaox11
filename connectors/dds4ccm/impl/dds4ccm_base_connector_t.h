@@ -173,7 +173,7 @@ protected:
   configuration_completed (bool configuration_completed);
 
   /// Get the context of this connector.
-  typename IDL::traits< typename CCM_TYPE::context_type >::ref_type
+  typename IDL::traits<typename CCM_TYPE::context_type >::ref_type
   context ();
 
 private:
@@ -197,7 +197,7 @@ private:
    * Context of the connector. Used to make connections to the user component
    * like the interfaces to the data listeners.
    */
-  typename IDL::traits< typename CCM_TYPE::context_type >::ref_type context_;
+  typename IDL::traits<typename CCM_TYPE::context_type >::ref_type context_;
 
   /**
    * DomainParticipantFactory. Administration of Domain Participants

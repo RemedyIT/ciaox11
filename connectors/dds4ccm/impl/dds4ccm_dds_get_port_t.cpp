@@ -37,7 +37,7 @@ DDS_Get_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::configuration_complete (
 }
 
 template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
-typename IDL::traits< typename CCM_TYPE::fresh_data_type >::ref_type
+typename IDL::traits<typename CCM_TYPE::fresh_data_type >::ref_type
 DDS_Get_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_fresh_data ()
 {
   DDS4CCM_LOG_TRACE ("DDS_Get_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_fresh_data");

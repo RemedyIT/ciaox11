@@ -282,7 +282,7 @@ DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::remove (
  * Context methods.
  */
 template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
-typename IDL::traits< typename CCM_TYPE::data_type >::ref_type
+typename IDL::traits<typename CCM_TYPE::data_type >::ref_type
 DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_data ()
 {
   DDS4CCM_LOG_TRACE ("DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_data");
@@ -291,7 +291,7 @@ DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_data ()
 }
 
 template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
-typename IDL::traits< typename CCM_TYPE::dds_entity_type >::ref_type
+typename IDL::traits<typename CCM_TYPE::dds_entity_type >::ref_type
 DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_dds_entity ()
 {
   DDS4CCM_LOG_TRACE ("DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_dds_entity");
@@ -304,7 +304,7 @@ DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_dds_entity ()
 }
 
 template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
-typename IDL::traits< typename CCM_TYPE::filter_config_type >::ref_type
+typename IDL::traits<typename CCM_TYPE::filter_config_type >::ref_type
 DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_filter_config ()
 {
   DDS4CCM_LOG_TRACE ("DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_filter_config");

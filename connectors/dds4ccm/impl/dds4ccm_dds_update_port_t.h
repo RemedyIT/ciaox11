@@ -24,8 +24,8 @@ public:
    * DDS_Update operations
    */
   //@{
-  typename IDL::traits< typename CCM_TYPE::data_type >::ref_type get_data ();
-  typename IDL::traits< typename CCM_TYPE::dds_entity_type >::ref_type get_dds_entity ();
+  typename IDL::traits<typename CCM_TYPE::data_type >::ref_type get_data ();
+  typename IDL::traits<typename CCM_TYPE::dds_entity_type >::ref_type get_dds_entity ();
   //@}
 
   void

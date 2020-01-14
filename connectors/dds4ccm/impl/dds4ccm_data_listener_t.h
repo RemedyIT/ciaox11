@@ -43,7 +43,7 @@ namespace CIAOX11
       virtual void
       on_data_available_i (
         IDL::traits< ::DDS::DataReader >::ref_type rdr,
-        typename IDL::traits< typename CCM_TYPE::data_listener_type >::ref_type listener) override;
+        typename IDL::traits<typename CCM_TYPE::data_listener_type >::ref_type listener) override;
 
     private:
       /// Pure virtual helper method to get (read/take) data from DDS

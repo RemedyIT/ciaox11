@@ -51,7 +51,7 @@ public:
    virtual ~NT2_Connector_T ();
 
    virtual
-   typename IDL::traits< typename CCM_TYPE::write_port_traits::foo2_type>::ref_type
+   typename IDL::traits<typename CCM_TYPE::write_port_traits::foo2_type>::ref_type
    get_write_port_foo2 ()  override;
 
    virtual typename CCM_TYPE::write_port_traits::port_attrib_type write_port_port_attrib()  override;
@@ -92,11 +92,11 @@ public:
   virtual void NT3_attrib(const typename CCM_TYPE::NT3_attrib_type& _v) override;
 
   virtual
-  typename IDL::traits< typename CCM_TYPE::foo3_type>::ref_type
+  typename IDL::traits<typename CCM_TYPE::foo3_type>::ref_type
   get_foo3 ()  override;
 
   virtual
-  typename IDL::traits< typename CCM_TYPE::write_port_traits::foo2_type>::ref_type
+  typename IDL::traits<typename CCM_TYPE::write_port_traits::foo2_type>::ref_type
   get_foo5_foo2 ()  override;
 
   virtual typename CCM_TYPE::foo5_traits::port_attrib_type foo5_port_attrib() override;
@@ -104,10 +104,10 @@ public:
 
 private:
   // Should be able to store a reference to a base type
-  typename IDL::traits< typename CCM_TYPE::write_port_traits::foo2_type>::ref_type write_foo2_type_ref {};
-  typename IDL::traits< typename CCM_TYPE::write_port_traits::foo3_type>::ref_type write_foo3_type_ref {};
-  typename IDL::traits< typename CCM_TYPE::foo3_type>::ref_type foo3_type_ref {};
-  typename IDL::traits< typename CCM_TYPE::foo_type>::ref_type foo_type_ref {};
+  typename IDL::traits<typename CCM_TYPE::write_port_traits::foo2_type>::ref_type write_foo2_type_ref {};
+  typename IDL::traits<typename CCM_TYPE::write_port_traits::foo3_type>::ref_type write_foo3_type_ref {};
+  typename IDL::traits<typename CCM_TYPE::foo3_type>::ref_type foo3_type_ref {};
+  typename IDL::traits<typename CCM_TYPE::foo_type>::ref_type foo_type_ref {};
   // Should be able to use attributes traits from the base and from our type
   typename CCM_TYPE::NT2_attrib_type NT2_attrib_ {};
   typename CCM_TYPE::NT3_attrib_type NT3_attrib_ {};

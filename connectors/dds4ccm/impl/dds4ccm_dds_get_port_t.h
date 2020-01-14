@@ -26,7 +26,7 @@ public:
    * DDS_Get operations
    */
   //@{
-  typename IDL::traits< typename CCM_TYPE::fresh_data_type >::ref_type
+  typename IDL::traits<typename CCM_TYPE::fresh_data_type >::ref_type
   get_fresh_data ();
   //@}
 

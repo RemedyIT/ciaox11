@@ -41,7 +41,7 @@ namespace CIAOX11
       void
       on_data_available_i (
         IDL::traits < ::DDS::DataReader >::ref_type rdr,
-        typename IDL::traits< typename CCM_TYPE::data_listener_type >::ref_type listener) override;
+        typename IDL::traits<typename CCM_TYPE::data_listener_type >::ref_type listener) override;
 
     private:
       /// Helper method to get data from DDS

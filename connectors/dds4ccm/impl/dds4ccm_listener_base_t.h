@@ -50,10 +50,10 @@ namespace CIAOX11
       /// based on what's the end user configured in the DataListenerControl.
       virtual void on_data_available_i (
           IDL::traits< ::DDS::DataReader >::ref_type rdr,
-          typename IDL::traits< typename CCM_TYPE::data_listener_type >::ref_type listener) = 0;
+          typename IDL::traits<typename CCM_TYPE::data_listener_type >::ref_type listener) = 0;
 
       static ::DDS::StatusMask get_mask (
-        typename IDL::traits< typename CCM_TYPE::data_listener_type >::ref_type listener,
+        typename IDL::traits<typename CCM_TYPE::data_listener_type >::ref_type listener,
         IDL::traits< ::CCM_DDS::PortStatusListener >::ref_type status);
 
       static ::DDS::ReturnCode_t take_data_i (

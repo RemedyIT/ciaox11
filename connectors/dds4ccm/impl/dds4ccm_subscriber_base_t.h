@@ -31,13 +31,13 @@ public:
    * DDS_Subscriber_Base_T operations
    */
   //@{
-  typename IDL::traits< typename CCM_TYPE::data_type >::ref_type
+  typename IDL::traits<typename CCM_TYPE::data_type >::ref_type
   get_data ();
 
-  typename IDL::traits< typename CCM_TYPE::dds_entity_type >::ref_type
+  typename IDL::traits<typename CCM_TYPE::dds_entity_type >::ref_type
   get_dds_entity ();
 
-  typename IDL::traits< typename CCM_TYPE::filter_config_type >::ref_type
+  typename IDL::traits<typename CCM_TYPE::filter_config_type >::ref_type
   get_filter_config ();
 
   CCM_DDS::QueryFilter filter ();
