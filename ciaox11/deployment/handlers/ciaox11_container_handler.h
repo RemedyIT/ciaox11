@@ -83,6 +83,7 @@ namespace CIAOX11
     void
     add_container (
         const std::string& id,
+        Components::ConfigValues&& config,
         std::shared_ptr<CIAOX11::Container> container);
 
     void
