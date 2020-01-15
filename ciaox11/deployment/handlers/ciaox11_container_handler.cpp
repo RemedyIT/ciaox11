@@ -111,7 +111,7 @@ namespace CIAOX11
                                                 container_config);
 
       std::shared_ptr<CIAOX11::Container> container_ref =
-        std::make_shared <CIAOX11::Container> (name, this->orb_);
+        std::make_shared <CIAOX11::Container_i> (name, this->orb_);
 
       CIAOX11_LOG_DEBUG ("Container_Handler::install_instance - " <<
                         "Successfully created container <" << name << ">");
@@ -186,7 +186,7 @@ namespace CIAOX11
                        "Finalizing <" << name << ">");
 
     // Instructing container to cleanup its state
-    cont->fini ();
+    std::dynamic_pointer_cast<CIAOX11::Container_i> (cont)->fini ();
 
     CIAOX11_LOG_DEBUG ("Container_Handler::remove_instance - " <<
                        "Removing container from our state <" << name << ">");
