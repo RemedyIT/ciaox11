@@ -14,37 +14,30 @@
 
 #include <map>
 
-#include "ccm/ccm_serviceregistryC.h"
-#include "ccm/ccm_executorlocatorC.h"
+#include "ciaox11/core/ciaox11_container.h"
 
 #include "ciaox11/deployment/handlers/ciaox11_deployment_handler_export.h"
 
 namespace CIAOX11
 {
-  class CIAO_Deployment_Handler_Export Container
+  class CIAOX11_Deployment_Handler_Export Container_i : public Container
   {
   public:
-    Container (std::string name,
-               IDL::traits<CORBA::ORB>::ref_type orb);
+    Container_i (std::string name,
+                 IDL::traits<CORBA::ORB>::ref_type orb);
 
-    virtual ~Container ();
+    virtual ~Container_i ();
 
     virtual void fini ();
 
-    IDL::traits<CIAOX11::Service_Registry>::ref_type
-    the_service_registry () { return this->service_registry_; }
-
-    std::string
-    the_name() { return this->name_; }
-
     /// @copydoc CIAOX11::Container::install_component
-    bool
+    virtual bool
     install_component (
         const std::string& name,
         IDL::traits<CIAOX11::ExecutorLocator>::ref_type component);
 
     /// @copydoc CIAOX11::Container::get_component
-    IDL::traits<CIAOX11::ExecutorLocator>::ref_type
+    virtual IDL::traits<CIAOX11::ExecutorLocator>::ref_type
     get_component (
         const std::string& name);
 
@@ -61,9 +54,6 @@ namespace CIAOX11
     virtual bool configured_component (const std::string& name);
 
   private:
-    /// Name of this container
-    std::string name_;
-
     /// Reference to the ORB
     IDL::traits<CORBA::ORB>::ref_type orb_;
 
@@ -71,14 +61,11 @@ namespace CIAOX11
     typedef std::map<std::string, IDL::traits<CIAOX11::ExecutorLocator>::ref_type> ExecutorLocatorMap;
     ExecutorLocatorMap executor_locator_map_;
 
-    /// Service registry for this container
-    IDL::traits<CIAOX11::Service_Registry>::ref_type service_registry_;
-
-    Container () = delete;
-    Container (const Container&) = delete;
-    Container (Container&&) = delete;
-    Container& operator= (const Container&) = delete;
-    Container& operator= (Container&&) = delete;
+    Container_i () = delete;
+    Container_i (const Container&) = delete;
+    Container_i (Container_i&&) = delete;
+    Container_i& operator= (const Container_i&) = delete;
+    Container_i& operator= (Container_i&&) = delete;
   };
 }
 

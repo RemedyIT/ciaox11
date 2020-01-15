@@ -36,7 +36,8 @@ namespace CIAOX11
 
     if (this->containers_.find (id) != this->containers_.end ())
     {
-      CIAOX11_LOG_ERROR ("Deployment_State::add_container - Warning:  Attempting to add duplicate container reference");
+      CIAOX11_LOG_ERROR ("Deployment_State::add_container - " <<
+                         "attempting to add duplicate container reference");
     }
 
     this->containers_.insert (CONTAINERS_PAIR (id, container));

@@ -9,22 +9,21 @@
 
 #include "ccm/ccm_objectC.h"
 #include "ccm/session/ccm_sessioncomponentC.h"
-#include "ciaox11/logger/log.h"
 #include "ciaox11/deployment/handlers/ciaox11_container_i.h"
-#include "ciaox11/core/service_registry.h"
+#include "ciaox11/logger/log.h"
 
 namespace CIAOX11
 {
-  Container::Container (
+  Container_i::Container_i (
     std::string name,
     IDL::traits<CORBA::ORB>::ref_type orb)
-    : name_ (std::move (name)),
+    : Container (std::move (name)),
       orb_ (std::move (orb))
   {
     if (!this->orb_)
     {
       // this should never happen
-      CIAOX11_LOG_ERROR ("Container::Container - " <<
+      CIAOX11_LOG_ERROR ("Container_i::Container - " <<
                          "Missing orb for container <" << this->name_ << ">");
     }
 
@@ -36,12 +35,12 @@ namespace CIAOX11
     this->service_registry_->install_service (CIAOX11::SVCID_ORB, this->orb_);
   }
 
-  Container::~Container ()
+  Container_i::~Container_i ()
   {
   }
 
   void
-  Container::fini ()
+  Container_i::fini ()
   {
     if (this->service_registry_)
     {
@@ -54,17 +53,17 @@ namespace CIAOX11
   }
 
   bool
-  Container::install_component (
+  Container_i::install_component (
       const std::string& name,
       IDL::traits<CIAOX11::ExecutorLocator>::ref_type component)
   {
 
-    CIAOX11_LOG_DEBUG ("Container::install_component - " <<
+    CIAOX11_LOG_DEBUG ("Container_i::install_component - " <<
                        "Installing component <" << name << ">");
 
     if (!component)
     {
-      CIAOX11_LOG_ERROR ("Container::install_component - " <<
+      CIAOX11_LOG_ERROR ("Container_i::install_component - " <<
                          "Invalid executor locator for <" << name << ">");
       return false;
     }
@@ -74,32 +73,32 @@ namespace CIAOX11
       this->executor_locator_map_.insert (ExecutorLocatorMap::value_type(name, component));
     if (!ret.second)
     {
-      CIAOX11_LOG_ERROR ("Container::install_component - " <<
+      CIAOX11_LOG_ERROR ("Container_i::install_component - " <<
                          "Registration of executor locator failed");
       return false;
     }
 
-    CIAOX11_LOG_DEBUG ("Container::install_component - " <<
+    CIAOX11_LOG_DEBUG ("Container_i::install_component - " <<
                        "Installed component <" << name << ">");
     return true;
   }
 
   IDL::traits<CIAOX11::ExecutorLocator>::ref_type
-  Container::get_component (
+  Container_i::get_component (
       const std::string& name)
   {
-    CIAOX11_LOG_DEBUG ("Container::get_component - " <<
+    CIAOX11_LOG_DEBUG ("Container_i::get_component - " <<
                        "Get component <" << name << ">");
 
     ExecutorLocatorMap::iterator i = this->executor_locator_map_.find (name);
     if (i != this->executor_locator_map_.end ())
     {
-      CIAOX11_LOG_DEBUG ("Container::get_component - " <<
+      CIAOX11_LOG_DEBUG ("Container_i::get_component - " <<
                          "Found component <" << name << ">");
     }
     else
     {
-      CIAOX11_LOG_ERROR ("Container::get_component - " <<
+      CIAOX11_LOG_ERROR ("Container_i::get_component - " <<
                          "Unable to find component <" << name << ">");
       return {};
     }
@@ -107,10 +106,10 @@ namespace CIAOX11
   }
 
   bool
-  Container::uninstall_component (
+  Container_i::uninstall_component (
     const std::string& name)
   {
-    CIAOX11_LOG_DEBUG ("Container::uninstall_component - " <<
+    CIAOX11_LOG_DEBUG ("Container_i::uninstall_component - " <<
                        "Uninstall component <" << name << ">");
 
     ExecutorLocatorMap::iterator i = this->executor_locator_map_.find (name);
@@ -133,16 +132,16 @@ namespace CIAOX11
       return true;
     }
 
-    CIAOX11_LOG_ERROR ("Container::get_component - " <<
+    CIAOX11_LOG_ERROR ("Container_i::get_component - " <<
                        "Unable to find component <" << name << ">");
     return false;
   }
 
   bool
-  Container::activate_component (
+  Container_i::activate_component (
     const std::string& name)
   {
-    CIAOX11_LOG_DEBUG ("Container::activate_component - " <<
+    CIAOX11_LOG_DEBUG ("Container_i::activate_component - " <<
                        "Activate component <" << name << ">");
 
     IDL::traits<CIAOX11::ExecutorLocator>::ref_type comp = this->get_component (name);
@@ -158,16 +157,16 @@ namespace CIAOX11
         return true;
       }
 
-      CIAOX11_LOG_ERROR ("Container::activate_component - " <<
+      CIAOX11_LOG_ERROR ("Container_i::activate_component - " <<
                          "Unable to retrieve component executor reference for <" + name + ">");
     }
     return false;
   }
 
   bool
-  Container::passivate_component (const std::string& name)
+  Container_i::passivate_component (const std::string& name)
   {
-    CIAOX11_LOG_DEBUG ("Container::passivate_component - " <<
+    CIAOX11_LOG_DEBUG ("Container_i::passivate_component - " <<
                        "Passivate component <" << name << ">");
 
     IDL::traits<CIAOX11::ExecutorLocator>::ref_type comp = this->get_component (name);
@@ -184,7 +183,7 @@ namespace CIAOX11
       }
       else
       {
-        CIAOX11_LOG_ERROR ("Container::passivate_component - " <<
+        CIAOX11_LOG_ERROR ("Container_i::passivate_component - " <<
                            "Unable to retrieve component executor reference for <" + name + ">");
       }
     }
@@ -192,9 +191,9 @@ namespace CIAOX11
   }
 
   bool
-  Container::configured_component (const std::string& name)
+  Container_i::configured_component (const std::string& name)
   {
-    CIAOX11_LOG_DEBUG ("Container::configured_component - " <<
+    CIAOX11_LOG_DEBUG ("Container_i::configured_component - " <<
                        "Configure component <" << name << ">");
 
     IDL::traits<CIAOX11::ExecutorLocator>::ref_type comp = this->get_component (name);
@@ -211,7 +210,7 @@ namespace CIAOX11
       }
       else
       {
-        CIAOX11_LOG_ERROR ("Container::configured_component - " <<
+        CIAOX11_LOG_ERROR ("Container_i::configured_component - " <<
                            "Unable to retrieve component executor reference for <" + name + ">");
       }
     }

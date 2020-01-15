@@ -1,16 +1,35 @@
 
+project (ciaox11_deployment_state) : install, \
+         ciaox11_lib, ciaox11_output, \
+         ciaox11_core, ciaox11_ccm_stub, \
+         ciaox11_logger {
+  dynamicflags += CIAO_DEPLOYMENT_STATE_BUILD_DLL
+  Source_Files {
+    ciaox11_state.cpp
+  }
+
+  Header_Files {
+    ciaox11_state.h
+  }
+
+  specific {
+    install_dir = ciaox11/deployment/handlers
+  }
+}
+
 project (ciaox11_deployment_handlers) : install, \
          dancex11_deployment_stub, ciaox11_lib, ciaox11_config, \
          ciaox11_output, ciaox11_core, ciaox11_ccm_session_stub, \
          dancex11_stub, dancex11_state, \
          ciaox11_logger, taox11_portableserver, \
          ciaox11_ccmobject_stub {
+  after += ciaox11_deployment_state
+  libs += ciaox11_deployment_state
   dynamicflags += CIAO_DEPLOYMENT_HANDLER_BUILD_DLL
   Source_Files {
     ciaox11_component_handler.cpp
     ciaox11_container_handler.cpp
     ciaox11_container_i.cpp
-    ciaox11_state.cpp
     ciaox11_handler_common.cpp
     ciaox11_connection_handler.cpp
   }
@@ -19,7 +38,6 @@ project (ciaox11_deployment_handlers) : install, \
     ciaox11_component_handler.h
     ciaox11_container_handler.h
     ciaox11_container_i.h
-    ciaox11_state.h
     ciaox11_deployment_handler_export.h
   }
 
