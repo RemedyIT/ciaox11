@@ -16,7 +16,7 @@
 
 namespace CIAOX11
 {
-  class CIAO_Deployment_Handler_Export Connection_Handler
+  class CIAOX11_Deployment_Handler_Export Connection_Handler
   {
   public:
     virtual ~Connection_Handler () = default;

@@ -29,16 +29,20 @@ namespace CIAOX11
   void
   Deployment_State::add_container (
       const std::string& id,
+      Components::ConfigValues&& config,
       std::shared_ptr<CIAOX11::Container> container)
   {
     std::lock_guard<std::mutex> lock (this->state_mutex_);
 
     if (this->containers_.find (id) != this->containers_.end ())
     {
-      CIAOX11_LOG_ERROR ("Deployment_State::add_container - Warning:  Attempting to add duplicate container reference");
+      CIAOX11_LOG_ERROR ("Deployment_State::add_container - " <<
+                         "attempting to add duplicate container reference");
     }
 
     this->containers_.insert (CONTAINERS_PAIR (id, container));
+
+    this->container_config_.insert (CONFIG_PAIR (id, std::move (config)));
   }
 
   void
@@ -46,12 +50,9 @@ namespace CIAOX11
   {
     std::lock_guard<std::mutex> lock (this->state_mutex_);
 
-    CONTAINERS::iterator pos = this->containers_.find (id);
+    this->containers_.erase (id);
 
-    if (pos != this->containers_.end ())
-    {
-      this->containers_.erase (pos);
-    }
+    this->container_config_.erase (id);
   }
 
   std::shared_ptr<CIAOX11::Container>
@@ -70,6 +71,22 @@ namespace CIAOX11
   }
 
   void
+  Deployment_State::fetch_container_configuration (
+      const std::string& id,
+      Components::ConfigValues& config)
+  {
+    std::lock_guard<std::mutex> lock (this->state_mutex_);
+
+    INSTANCE_CONFIG::iterator cfgit =
+      this->container_config_.find (id);
+
+    if (cfgit != this->container_config_.end ())
+    {
+      config = cfgit->second;
+    }
+  }
+
+  void
   Deployment_State::register_component (
       const std::string& id,
       Components::ConfigValues&& config,
@@ -79,7 +96,7 @@ namespace CIAOX11
 
     this->instance_container_.insert (INSTANCE_PAIR (id, cont_id));
 
-    this->config_container_.insert (CONFIG_PAIR (id, std::move (config)));
+    this->instance_config_.insert (CONFIG_PAIR (id, std::move (config)));
   }
 
   void
@@ -87,21 +104,9 @@ namespace CIAOX11
   {
     std::lock_guard<std::mutex> lock (this->state_mutex_);
 
-    INSTANCE_CONTAINER::iterator cont =
-      this->instance_container_.find (id);
+    this->instance_container_.erase (id);
 
-    if (cont != this->instance_container_.end ())
-    {
-      this->instance_container_.erase (cont);
-    }
-
-    CONFIG_CONTAINER::iterator cfgit =
-      this->config_container_.find (id);
-
-    if (cfgit != this->config_container_.end ())
-    {
-      this->config_container_.erase (cfgit);
-    }
+    this->instance_config_.erase (id);
   }
 
   void
@@ -111,10 +116,10 @@ namespace CIAOX11
   {
     std::lock_guard<std::mutex> lock (this->state_mutex_);
 
-    CONFIG_CONTAINER::iterator cfgit =
-      this->config_container_.find (id);
+    INSTANCE_CONFIG::iterator cfgit =
+      this->instance_config_.find (id);
 
-    if (cfgit != this->config_container_.end ())
+    if (cfgit != this->instance_config_.end ())
     {
       config = cfgit->second;
     }

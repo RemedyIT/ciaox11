@@ -1,0 +1,10 @@
+// --------------------------------------------------------------------
+// ciaox11_state.mpb
+//
+// Copyright (c) Remedy IT Expertise BV
+// --------------------------------------------------------------------
+
+project : ciaox11_core, ciaox11_logger, ciaox11_ccm_stub {
+  libs += ciaox11_deployment_state
+  after += ciaox11_deployment_state
+}

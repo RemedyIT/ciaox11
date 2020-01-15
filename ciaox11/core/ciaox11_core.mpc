@@ -5,9 +5,11 @@ project(*impl) : install, ciaox11_ccm_stub, ciaox11_output, ciaox11_logger {
 
   Source_Files {
     service_registry.cpp
+    ciaox11_container.cpp
   }
   Header_Files {
     service_registry.h
+    ciaox11_container.h
     ciaox11_core_export.h
   }
   specific {

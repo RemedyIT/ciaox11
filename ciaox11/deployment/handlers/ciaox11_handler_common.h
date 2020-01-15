@@ -14,6 +14,7 @@
 #include <string>
 
 #include "ccm/ccm_configC.h"
+#include "ccm/ccm_objectC.h"
 #include "dancex11/deployment/deployment_deploymentplanC.h"
 #include "dancex11/core/dancex11_utility.h"
 #include "dancex11/core/dancex11_propertiesC.h"
@@ -28,7 +29,7 @@ namespace CIAOX11
   const std::string COMPONENT_HOME = "nl.remedy.it.CIAOX11.ComponentHomeId";
   const std::string CONTAINER_ID = "nl.remedy.it.CIAOX11.ContainerId";
 
-  class CIAO_Deployment_Handler_Export Deployment_Common final
+  class CIAOX11_Deployment_Handler_Export Deployment_Common final
   {
   public:
     // Temporary hack until Martin's artifact installation work can

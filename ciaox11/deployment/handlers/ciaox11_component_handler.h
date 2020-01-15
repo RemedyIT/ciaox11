@@ -21,7 +21,7 @@
 
 namespace CIAOX11
 {
-  class CIAO_Deployment_Handler_Export Component_Handler
+  class CIAOX11_Deployment_Handler_Export Component_Handler
     : public IDL::traits<DAnCEX11::InstanceDeploymentHandler>::base_type
   {
   public:
@@ -123,7 +123,7 @@ namespace CIAOX11
 extern "C"
 {
   void
-  CIAO_Deployment_Handler_Export create_CIAOX11_Component_Handler (
+  CIAOX11_Deployment_Handler_Export create_CIAOX11_Component_Handler (
     IDL::traits<DAnCEX11::InstanceDeploymentHandler>::ref_type& handler);
 }
 

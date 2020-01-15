@@ -12,10 +12,9 @@
 #include <string>
 #include <mutex>
 
-#include "ccm/ccm_objectC.h"
-#include "ciaox11/deployment/handlers/ciaox11_container_i.h"
+#include "ciaox11/core/ciaox11_container.h"
 
-#include "ciaox11/deployment/handlers/ciaox11_deployment_handler_export.h"
+#include "ciaox11/deployment/handlers/ciaox11_deployment_state_export.h"
 
 namespace CIAOX11
 {
@@ -24,7 +23,7 @@ namespace CIAOX11
    * @brief Singleton collecting state for the instance handlers.
    *
    */
-  class CIAO_Deployment_Handler_Export Deployment_State final
+  class CIAOX11_Deployment_State_Export Deployment_State final
   {
   public:
     void close ();
@@ -32,6 +31,7 @@ namespace CIAOX11
     void
     add_container (
         const std::string& id,
+        Components::ConfigValues&& config,
         std::shared_ptr<CIAOX11::Container> container);
 
     void
@@ -41,6 +41,11 @@ namespace CIAOX11
     std::shared_ptr<CIAOX11::Container>
     fetch_container (
         const std::string& id);
+
+    void
+    fetch_container_configuration (
+        const std::string& id,
+        Components::ConfigValues& config);
 
     void
     register_component (
@@ -87,12 +92,15 @@ namespace CIAOX11
     /// maps instance ids to containers.
     INSTANCE_CONTAINER instance_container_;
 
-    /// Administers configuration of components
+    /// Administers configuration of instances
     typedef std::pair < std::string, Components::ConfigValues > CONFIG_PAIR;
-    typedef std::map < std::string, Components::ConfigValues > CONFIG_CONTAINER;
+    typedef std::map < std::string, Components::ConfigValues > INSTANCE_CONFIG;
 
-    /// maps instance ids to containers.
-    CONFIG_CONTAINER config_container_;
+    /// maps container ids to configuration.
+    INSTANCE_CONFIG container_config_;
+
+    /// maps instance ids to configuration.
+    INSTANCE_CONFIG instance_config_;
   };
 
 #define DEPLOYMENT_STATE \
