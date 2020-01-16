@@ -3,7 +3,7 @@ project (ciaox11_deployment_state) : install, \
          ciaox11_lib, ciaox11_output, \
          ciaox11_core, ciaox11_ccm_stub, \
          ciaox11_logger {
-  dynamicflags += CIAO_DEPLOYMENT_STATE_BUILD_DLL
+  dynamicflags += CIAOX11_DEPLOYMENT_STATE_BUILD_DLL
   Source_Files {
     ciaox11_state.cpp
   }
@@ -25,7 +25,7 @@ project (ciaox11_deployment_handlers) : install, \
          ciaox11_ccmobject_stub {
   after += ciaox11_deployment_state
   libs += ciaox11_deployment_state
-  dynamicflags += CIAO_DEPLOYMENT_HANDLER_BUILD_DLL
+  dynamicflags += CIAOX11_DEPLOYMENT_HANDLER_BUILD_DLL
   Source_Files {
     ciaox11_component_handler.cpp
     ciaox11_container_handler.cpp
