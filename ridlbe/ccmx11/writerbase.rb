@@ -11,7 +11,7 @@ require 'ridlbe/c++11/writerbase'
 module IDL
   module Cxx11
 
-    # Reopne Output writer base class to add CCMX11 specifics
+    # Reopen Output writer base class to add CCMX11 specifics
     #
     class CxxCodeWriterBase
       def declare_component(node)
