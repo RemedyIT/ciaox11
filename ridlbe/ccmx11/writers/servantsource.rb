@@ -11,7 +11,6 @@ require 'ridlbe/c++11/writers/servantsource'
 module IDL
   module Cxx11
 
-
     # Reopen ServantSourceIncludeWriter class to add CCMX11 specifics
     #
     class ServantSourceIncludeWriter
