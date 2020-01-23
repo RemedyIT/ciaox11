@@ -23,7 +23,7 @@ module IDL
         def initialize(output = STDOUT, opts = {})
           super
           self.template_root = 'sev_idl'
-          @include_guard = "__RIDL_#{(File.basename(params[:idlfile], File.extname(params[:idlfile])) || '').to_random_include_guard}_IDL__"
+          @include_guard = "__RIDL_#{(File.basename(params[:dds4ccm_lem_idl_file], File.extname(params[:dds4ccm_lem_idl_file])) || '').to_random_include_guard}_IDL__"
         end
 
         attr_accessor :include_guard
