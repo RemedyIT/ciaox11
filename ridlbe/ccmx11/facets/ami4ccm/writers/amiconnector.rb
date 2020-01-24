@@ -186,7 +186,7 @@ module IDL
     end # AmiConnectorSourceWriter
 
     end #AMI4CCM
-    
+
   end # CCMX11
 
 end # IDL
