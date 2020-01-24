@@ -99,6 +99,7 @@ module AxciomaPC
         #defaults
         @type = :sev_interface
         @export_name = nil # defaults to interface_name
+        @topic_idl = nil
         configure(&block)
       end
 
@@ -137,6 +138,9 @@ module AxciomaPC
       private :create_interface_idl
 
       def post_configure
+        BRIX11.log(4, '[%s] post_configure', self)
+        # keep topic idl if any
+        @topic_idl = idl_files.values.first
         # create and register interface IDLFile object with project
         create_interface_idl
         # register as generated IDL in the project
@@ -356,20 +360,22 @@ module AxciomaPC
 
       def setup_projects
         BRIX11.log(3, '[%s] setup projects', self)
-        # always setup the project to generate the <base_idl>SE.idl file
-        mpc_obj = MPC::IDLProject.new(:se_idl_gen, self)
-        mpc_obj.add_project_file(self.idl_files.values.first.full_path)
-        self.mpc_file.add_mpc_project(mpc_obj)
-        # set topic switch
-        mpc_obj.add_idl_flags("-Wb,dds_topic=#{self.topic}")
-        mpc_obj.add_idl_flags("-Wb,dds_topic_namespace=#{self.topic_namespace}") unless self.topic_namespace.nil?
-        mpc_obj.add_idl_flags("-Wb,dds_topic_seq_suffix=#{self.topic_seq_suffix}") unless self.topic_seq_suffix.nil?
-        mpc_obj.add_idl_flags("-Wb,dds_topic_if_suffix=#{self.topic_if_suffix}") unless self.topic_if_suffix.nil?
-        mpc_obj.add_idl_flags("-Wb,dds_topic_seq=#{self.topic_seq}") unless self.topic_seq.nil?
-        mpc_obj.add_idl_flags("-Wb,dds_topic_if=#{self.topic_if}") unless self.topic_if.nil?
+        if @topic_idl  # should always be there
+          # always setup the project to generate the <base_idl>SE.idl file
+          mpc_obj = MPC::IDLProject.new(:se_idl_gen, self)
+          mpc_obj.add_project_file(@topic_idl.full_path)
+          self.mpc_file.add_mpc_project(mpc_obj)
+          # set topic switch
+          mpc_obj.add_idl_flags("-Wb,dds_topic=#{self.topic}")
+          mpc_obj.add_idl_flags("-Wb,dds_topic_namespace=#{self.topic_namespace}") unless self.topic_namespace.nil?
+          mpc_obj.add_idl_flags("-Wb,dds_topic_seq_suffix=#{self.topic_seq_suffix}") unless self.topic_seq_suffix.nil?
+          mpc_obj.add_idl_flags("-Wb,dds_topic_if_suffix=#{self.topic_if_suffix}") unless self.topic_if_suffix.nil?
+          mpc_obj.add_idl_flags("-Wb,dds_topic_seq=#{self.topic_seq}") unless self.topic_seq.nil?
+          mpc_obj.add_idl_flags("-Wb,dds_topic_if=#{self.topic_if}") unless self.topic_if.nil?
 
-        # get idl_includes set in recipe and in project file
-        mpc_obj.includes << self.idl_includes << self.project.idl_includes
+          # get idl_includes set in recipe and in project file
+          mpc_obj.includes << self.idl_includes << self.project.idl_includes
+        end
       end
 
       def process_project_dependencies
