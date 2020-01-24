@@ -134,9 +134,9 @@ module AxciomaPC
         end
       end
 
-      def define(comp_def)
+      def define(comp_def, &_block)
         if block_given?
-          @recipe.define(comp_def, &Proc.new)
+          @recipe.define(comp_def, &_block)
         else
           @recipe.define(comp_def)
         end
@@ -159,10 +159,10 @@ module AxciomaPC
       configure(&block)
     end
 
-    def define(comp_def)
+    def define(comp_def, &_block)
       @comp_name = comp_def
       if block_given?
-        @compdef = ComponentDefinition.new(self, &Proc.new)
+        @compdef = ComponentDefinition.new(self, &_block)
       else
         @compdef = ComponentDefinition.new(self)
       end

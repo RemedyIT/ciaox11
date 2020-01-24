@@ -35,9 +35,9 @@ module AxciomaPC
         super
       end
 
-      def port_type(porttype)
+      def port_type(porttype, &_block)
         if block_given?
-          @recipe.port_type(porttype, &Proc.new)
+          @recipe.port_type(porttype, &_block)
         else
           @recipe.port_type(porttype)
         end
@@ -74,10 +74,10 @@ module AxciomaPC
       end
     end
 
-    def port_type(port_type)
+    def port_type(port_type, &_block)
       @port_type = port_type
       if block_given?
-        port_handler.configure(&Proc.new)
+        port_handler.configure(&_block)
       end
     end
 
