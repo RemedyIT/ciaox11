@@ -57,6 +57,7 @@ module BRIX11
                 options = cmd.options.dup
                 options[:axpmake] = CIAOX11::MakeProject::OPTIONS.dup
                 options[:axpmake][:debug] = cmd.options[:make][:debug]
+                options[:axpmake][:make_opts] = cmd.options[:make][:make_opts].dup
                 options[:axpmake][:noredirect] = cmd.options[:make][:noredirect]
                 Sys.in_dir(path) do
                   BRIX11.log_fatal("Failed to build project for #{path}.") unless CIAOX11::MakeProject.new(cmd.entry, options).run(nil)
