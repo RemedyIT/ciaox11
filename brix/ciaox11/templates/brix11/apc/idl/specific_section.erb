@@ -3,19 +3,24 @@ idlflags += <%= idl_flags_plus.join(" \\\n            ") %>
 % if !idl_flags_minus.empty?
 idlflags -= <%= idl_flags_minus.join(" ") %>
 % end
-
 % if !idl_extras.empty?
+
 specific {
 %   idl_extras.each do |sp|
   <%= sp %>
 %   end
 }
-
 % end
+% idl_sections.each do |idlsect|
+
 IDL_Files {
   gendir=<%= gen_dir %>
-% sources.each do |f|
+%   if !idlsect.idl_flags_plus.empty?
+  idlflags += <%= idlsect.idl_flags_plus.join(" \\\n            ") %>
+%   end
+%   idlsect.sources.each do |f|
   <%= f %>
-% end
+%   end
 }
+% end
 custom_only = 1
