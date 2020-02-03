@@ -62,8 +62,13 @@ module AxciomaPC
     def method_missing(method, *args, &block)
       recipe = Recipe.create_recipe(self, method, *args, &block)
       if recipe
-        add_recipe(recipe)
-        return recipe
+        if recipe.enabled # ignore recipe if not enabled (matching feature requirements)
+          add_recipe(recipe)
+          return recipe
+        else
+          BRIX11.log(2, "[#{self}] recipe disabled")
+          return nil
+        end
       end
       # calling super will cause error if method being called is invalid
       super
@@ -232,6 +237,7 @@ module AxciomaPC
       #defaults
       @recipe_file = rcpfile
       @recipe_id = recipe_id.to_s
+      @enabled = true # recipes are enabled by default; only disabled by (optional) feature checks
       @idl_files = {}
       @shared_name = @recipe_id.dup
       @export_name = @recipe_id.dup.downcase
@@ -245,7 +251,13 @@ module AxciomaPC
       @mpc_id = project.make_mpc_project_name_prefix(self)
     end
 
-    attr_reader :recipe_file, :recipe_id, :mpc_id
+    attr_reader :recipe_file, :recipe_id, :enabled, :mpc_id
+
+    # match feature requirements
+    def check_features(*required_features)
+      @enabled = self.project.check_features(*required_features)
+    end
+    protected :check_features
 
     # (post) configuration hook for derived recipes
     def post_configure

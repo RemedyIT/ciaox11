@@ -1,4 +1,4 @@
-#--------------------------------------------------------------------
+  #--------------------------------------------------------------------
 # @file    project.rb
 # @author  Marijke Hengstmengel
 #
@@ -348,6 +348,31 @@ module AxciomaPC
       frcp = RecipeFile.new(path, self)
       frcp.mark_implicit if implicit
       recipe_files[path] = frcp
+    end
+
+    # retrieve enabled features
+    def features
+      unless @features
+        @features = {}
+        _ace_root = ::BRIX11::Exec.get_run_environment('ACE_ROOT')
+        _cfg_file = File.join(_ace_root, 'bin', 'MakeProjectCreator', 'config', 'default.features')
+        if File.exist?(_cfg_file)
+          File.readlines(_cfg_file).each do |ln|
+            if /\A\s*\w+\s*=\s*1\s*\Z/ =~ ln  # only match enabled features
+              feature = ln.split('=').first.strip
+              @features[feature.to_sym] = true
+            end
+          end
+          BRIX11.log(3, "[#{self}] loaded features : #{@features}")
+        end
+      end
+      @features
+    end
+    private :features
+
+    # match feature requirements
+    def check_features(*required_features)
+      required_features.all? {|rf| features[rf.to_sym] }
     end
 
     def to_s

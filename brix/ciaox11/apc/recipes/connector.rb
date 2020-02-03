@@ -46,12 +46,13 @@ module AxciomaPC
 
     CONFIGURATOR = ConnectorConfigurator
 
-    def initialize(rcpfile, name, &block)
+    def initialize(rcpfile, name, *features, &block)
       super(rcpfile, name)
       #defaults
       @port_type = :corba4ccm
       @type = :connector
-      configure(&block)
+      # only configure if required features match
+      configure(&block) if check_features(*features)
     end
 
     def setup
