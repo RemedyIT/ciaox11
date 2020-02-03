@@ -41,8 +41,8 @@ namespace InterInOutT_Sender_Impl
   void HandleException (
                  int32_t id,
                  int32_t expect_id,
-                 const std::string error_string,
-                 const std::string func);
+                 const std::string& error_string,
+                 const std::string& func);
 
 
   /// Worker thread for asynchronous invocations

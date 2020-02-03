@@ -36,12 +36,12 @@ namespace Hello_Sender_Impl
   /// Common exception handlers
   void HandleException (
       int32_t id,
-      const std::string error_string,
-      const std::string func);
+      const std::string& error_string,
+      const std::string& func);
 
   void HandleException (
       IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder,
-      const std::string func);
+      const std::string& func);
 
   /// Worker thread for asynchronous invocations
   class asynch_foo_generator final : public ACE_Task_Base

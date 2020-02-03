@@ -183,7 +183,6 @@ namespace Hello_Receiver_Impl
 
     IDL::traits< ::Hello::Control>::ref_type run_control = this->context_->get_connection_run_control ();
     run_control->start ();
-
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::Receiver_exec_i[ccm_activate]
   }
 

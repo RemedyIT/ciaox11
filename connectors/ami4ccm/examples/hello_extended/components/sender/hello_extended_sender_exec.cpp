@@ -23,8 +23,8 @@ namespace Hello_Sender_Impl
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl[user_namespace_impl]
   void HandleException (
         int32_t id,
-        const std::string error_string,
-        const std::string func)
+        const std::string& error_string,
+        const std::string& func)
   {
     CIAOX11_TEST_INFO << "Sender:\t->HandleException id:  "
                       << id << " error_string: " << error_string
@@ -47,7 +47,7 @@ namespace Hello_Sender_Impl
 
   void HandleException (
       IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder,
-      std::string func)
+      const std::string& func)
   {
     CIAOX11_TEST_INFO << "Sender:\t->HandleException "
                       << "func: " << func << std::endl;

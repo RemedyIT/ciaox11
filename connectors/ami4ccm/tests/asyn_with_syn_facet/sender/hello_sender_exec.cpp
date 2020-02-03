@@ -26,8 +26,8 @@ namespace Hello_Sender_Impl
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl[user_namespace_impl]
   void HandleException (
       int32_t id,
-      const std::string error_string,
-      const std::string func)
+      const std::string& error_string,
+      const std::string& func)
   {
     CIAOX11_TEST_INFO << "Sender:\t->HandleException id:  "
                       << id << " error_string: " << error_string
@@ -37,20 +37,18 @@ namespace Hello_Sender_Impl
         CIAOX11_TEST_ERROR << "ERROR exception " << func
                            << ":\tReceived unexpected ID <"
                            << id << "> received" << std::endl;
-        return;
       }
-    if (error_string != "Hello world")
+    else if (error_string != "Hello world")
       {
       CIAOX11_TEST_ERROR <<"ERROR exception  " << func
                          << ":\tReceived unexpected error string <"
                          <<  error_string << "> in except handler." << std::endl;
-        return;
       }
   }
 
   void HandleException (
       IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder,
-      std::string func)
+      const std::string& func)
   {
     CIAOX11_TEST_INFO << "Sender:\t->HandleException "
                       << "func: " << func << std::endl;
@@ -119,6 +117,10 @@ namespace Hello_Sender_Impl
 
       CIAOX11_TEST_INFO << "Sender (ASYNCH) :\tInvoked Asynchronous calls" << std::endl;
     }
+    catch (const CORBA::Exception& ex)
+    {
+      CIAOX11_TEST_PANIC << "Sender (ASYNCH) :\tCAUGHT CORBA EXCEPTION [" << ex << "]" << std::endl;
+    }
     catch (const std::exception& ex)
     {
       CIAOX11_TEST_PANIC << "Sender (ASYNCH) :\tCAUGHT EXCEPTION [" << ex.what () << "]" << std::endl;
@@ -157,7 +159,7 @@ namespace Hello_Sender_Impl
         //run synch call
         int32_t answer {};
         my_foo_->hello (answer);
-        CIAOX11_TEST_INFO << "Sender:\tsynch hello " << answer << std::endl;
+        CIAOX11_TEST_INFO << "Sender:\tsynch hello <" << answer << ">" << std::endl;
       }
       catch (const Hello::InternalError&) {
         CIAOX11_TEST_INFO << "Sender:\tsynch hello get expected exception "
@@ -167,7 +169,7 @@ namespace Hello_Sender_Impl
       try {
         my_foo_->rw_attrib(15);
         int16_t const ret  = my_foo_->ro_attrib();
-        CIAOX11_TEST_INFO << "Sender:\tsynchget_ro_attribo " << ret << std::endl;
+        CIAOX11_TEST_INFO << "Sender:\tsynch get ro_attrib <" << ret << ">" << std::endl;
       }
       catch (const Hello::InternalError&) {
         CIAOX11_TEST_INFO << "Sender:\tsynch ro_attrib get expected exception "
@@ -178,12 +180,16 @@ namespace Hello_Sender_Impl
         //run synch call
         int32_t answer {};
         my_foo_->hello (answer);
-        CIAOX11_TEST_INFO << "Sender:\tsynch hello " << answer << std::endl;
+        CIAOX11_TEST_INFO << "Sender:\tsynch hello <" << answer << ">" << std::endl;
       }
       catch (const Hello::InternalError&) {
         CIAOX11_TEST_INFO << "Sender:\tsynch hello get expected exception "
                          << std::endl;
       }
+    }
+    catch (const CORBA::Exception& ex)
+    {
+      CIAOX11_TEST_PANIC << "Sender (SYNCH) :\tCAUGHT EXCEPTION [" << ex << "]" << std::endl;
     }
     catch (const std::exception& ex)
     {
@@ -368,7 +374,6 @@ namespace Hello_Sender_Impl
     this->asynch_foo_gen_.set_context(this->context_);
     this->asynch_foo_gen_.set_comp_exec (IDL::traits<Hello::CCM_Sender>::narrow (this->_lock()));
     this->asynch_foo_gen_.activate (THR_NEW_LWP | THR_JOINABLE, 1);
-
   }
 
   void Sender_exec_i::stop ()
@@ -401,6 +406,12 @@ namespace Hello_Sender_Impl
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl::Sender_exec_i[ccm_passivate]
     CIAOX11_TEST_INFO << "Sender_exec_i::ccm_passivate." << std::endl;
+
+    CIAOX11_TEST_INFO << "Sender_exec_i::ccm_passivate - waiting on worker threads" << std::endl;
+
+    // Wait on the worker threads to have finished
+    this->synch_foo_gen_.wait ();
+    this->asynch_foo_gen_.wait ();
 
     if (this->do_my_foo_)
     {
