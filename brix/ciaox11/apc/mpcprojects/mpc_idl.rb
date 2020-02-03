@@ -7,6 +7,7 @@
 # @copyright Copyright (c) Remedy IT Expertise BV
 #--------------------------------------------------------------------
 require 'pathname'
+require 'ostruct'
 
 module AxciomaPC
 
@@ -149,26 +150,6 @@ module AxciomaPC
         idl_flags.add '-Gxhst'
       end
 
-      # TODO is this true?
-      # At the moment there are always plus flags for export ?
-      def idl_flags_plus
-        idlflags = idl_flags.add_flags.dup
-        if export
-          idlflags << "-Wb,base_export_macro=#{export_name.upcase} -Wb,base_export_include=#{export_name.downcase}"
-        end
-        idlflags << includes_flags
-        idlflags << ["-I#{recipe.gen_dir}"]
-        # todo, added temporarily, see issue #4337
-        idlflags << '-Gos'
-        # use StringList#add to skip string splitting
-        idlflags.add "-o #{recipe.gen_dir}"
-        idlflags
-      end
-
-      def idl_flags_minus
-        idl_flags.del_flags
-      end
-
       def export(export_b=false)
          @export = export_b if export_b
          @export
@@ -186,6 +167,62 @@ module AxciomaPC
       def idl_extras(extras=nil)
         @extras.assign(extras) if extras
         @extras
+      end
+
+      # Methods for MPC project file generation
+
+      def mpc_genobj
+        unless @mpc_genobj
+          idlflags = idl_flags.add_flags.dup
+          if export
+            idlflags << "-Wb,base_export_macro=#{export_name.upcase} -Wb,base_export_include=#{export_name.downcase}"
+          end
+          idlflags << includes_flags
+          idlflags << ["-I#{recipe.gen_dir}"]
+          # todo, added temporarily, see issue #4337
+          idlflags << '-Gos'
+          # use StringList#add to skip string splitting
+          idlflags.add "-o #{recipe.gen_dir}"
+          idl_sections = []
+          idl_sources = sources
+          other_idl_flags = Util::Flags.new
+          # Optimize by making sure export headers are only generated once per project
+          if idl_sources.size>1 && idlflags.include?(/-Gxh/)
+            # create first IDL section with only 1 IDL source and
+            # add all '-GxhXXX' flags for this section only
+            idl_sections << OpenStruct.new(idl_flags_plus: Util::Flags.new,
+                                           sources: [idl_sources.shift])
+            # add all '-GxhXXX' flags
+            idlflags.each {|flag| idl_sections.last.idl_flags_plus.add(flag) if /-Gxh/ =~ flag }
+            # add '-Xxxx' flags for all '-GxhXXX' flags to other idl section (except for '-Gxh')
+            idl_sections.last.idl_flags_plus.each {|flag| other_idl_flags.add(flag.sub(/-Gxh/, '-X')) if flag != '-Gxh' }
+            # Remove all '-GxhXXX' flags from main flags list
+            idl_sections.last.idl_flags_plus.each {|flag| idlflags.delete(flag) }
+          end
+          # add idl section with remaining IDL source files without any flags
+          idl_sections << OpenStruct.new(idl_flags_plus: other_idl_flags,
+                                         sources: idl_sources)
+          # create generator object with main flags lists and section list
+          @mpc_genobj = OpenStruct.new(idl_flags_plus: idlflags,
+                                       idl_flags_minus: idl_flags.del_flags.dup,
+                                       idl_sections: idl_sections)
+        end
+        @mpc_genobj
+      end
+      private :mpc_genobj
+
+      # TODO is this true?
+      # At the moment there are always plus flags for export ?
+      def idl_flags_plus
+        mpc_genobj.idl_flags_plus
+      end
+
+      def idl_flags_minus
+        mpc_genobj.idl_flags_minus
+      end
+
+      def idl_sections
+        mpc_genobj.idl_sections
       end
 
     end # IDLProject

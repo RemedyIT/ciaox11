@@ -95,7 +95,7 @@ module AxciomaPC
 
       def include?(val)
         if Regexp === val
-          (@value.detect { |el| txt =~ el }) != nil
+          (@value.detect { |el| val =~ el }) != nil
         else
           val_sl = (::Enumerable === val ? val : self.dup.assign(val))
           val_sl.all? {|s| @value.include?(s) }
@@ -104,7 +104,7 @@ module AxciomaPC
 
       def delete(val)
         if Regexp === val
-          @value.delete(@value.detect { |el| txt =~ el })
+          @value.delete(@value.detect { |el| val =~ el })
         else
           val_sl = (::Enumerable === val ? val : self.dup.assign(val))
           val_sl.each { |s| @value.delete(s) }

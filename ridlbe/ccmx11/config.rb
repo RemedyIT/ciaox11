@@ -74,6 +74,19 @@ module IDL
               }
         end
       end
+
+      ol.for_switch '-X{export options}', :type => String, :separator => true do |swcfg|
+        swcfg.modify_group :export_flags, :params => {
+              'ex' => { :option_name => :export_ex,
+                       :description => "-Xex\t\t\tExport component executor code (not exported by default)" },
+              'sv' => { :option_name => :export_svnt,
+                       :description => "-Xsv\t\t\tExport component servant code (not exported by default)" },
+              'cn' => { :option_name => :export_conn,
+                       :description => "-Xcn\t\t\tExport connector executor code (not exported by default)" },
+              'lst' => { :option_name => :export_lem_stub,
+                       :description => "-Xlst\t\t\tExport lem stub code (not exported by default)" },
+            }
+      end
     end # add_extended_options
 
     VERSION_REGEXP = /\#\s*define\s+CIAOX11_(\w+)_VERSION\s+(\d+)/
@@ -186,9 +199,9 @@ module IDL
     # Export macros/includes handling
 
     def self.check_executor_export_params(options, prefix = nil, force = false)
-      if options.gen_export_ex || force
+      if options.gen_export_ex || options.export_ex || force
         unless options.exec_export_macro || options.base_export_macro
-          IDL.error("ERROR: it isn't allowed to use -Gxhex without specifying the macro with -Wb,exec_export_macro=MACRO "+
+          IDL.error("ERROR: it isn't allowed to use -Gxhex or -Xex without specifying the macro with -Wb,exec_export_macro=MACRO "+
                         'or with -Wb,base_export_macro=MACRO_PREFIX')
           exit 1
         end
@@ -200,9 +213,9 @@ module IDL
     end
 
     def self.check_servant_export_params(options, prefix = nil, force = false)
-      if options.gen_export_svnt || force
+      if options.gen_export_svnt || options.export_svnt || force
         unless options.svnt_export_macro || options.base_export_macro
-          IDL.error("ERROR: it isn't allowed to use -Gxhex without specifying the macro with -Wb,svnt_export_macro=MACRO "+
+          IDL.error("ERROR: it isn't allowed to use -Gxhsv or -Xsv without specifying the macro with -Wb,svnt_export_macro=MACRO "+
                         'or with -Wb,base_export_macro=MACRO_PREFIX')
           exit 1
         end
@@ -223,9 +236,9 @@ module IDL
     end
 
     def self.check_conn_export_params(options, prefix = nil, force = false)
-      if options.gen_export_conn || force
+      if options.gen_export_conn || options.export_conn || force
         unless options.conn_export_macro || options.base_export_macro
-          IDL.error("ERROR: it isn't allowed to use -Gxhex without specifying the macro with -Wb,conn_export_macro=MACRO "+
+          IDL.error("ERROR: it isn't allowed to use -Gxhcn or -Xcn without specifying the macro with -Wb,conn_export_macro=MACRO "+
                         'or with -Wb,base_export_macro=MACRO_PREFIX')
           exit 1
         end
@@ -346,6 +359,9 @@ module IDL
       if options.gen_export_lem_stub
         impl_opts.gen_export_st = true
       end
+      if options.export_lem_stub
+        impl_opts.export_st = true
+      end
       impl_opts
     end
 
@@ -414,6 +430,8 @@ module IDL
 
       # if not set explicitly but -Gxhst is than assume -Gxhlst is as well
       options.gen_export_lem_stub ||= options.gen_export_st
+      # if not set explicitly but -Xst is than assume -Xlst is as well
+      options.export_lem_stub ||= options.export_st
       self.compile_lem_idl(options, idl_ext)
     end
 

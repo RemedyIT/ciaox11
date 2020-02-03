@@ -33,9 +33,9 @@ namespace ExceptionT_Sender_Impl
 
   void HandleException (
       int32_t id,
-      const std::string error_string,
-      const std::string test,
-      const std::string func)
+      const std::string& error_string,
+      const std::string& test,
+      const std::string& func)
   {
     CIAOX11_TEST_INFO << "Sender:\t->HandleException id:  "
                       << id << " error_string: " << error_string
