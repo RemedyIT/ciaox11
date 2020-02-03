@@ -526,8 +526,7 @@ module IDL
       def self.gen_ami_component_executor(options, idl_ext)
         # explicit -Gex required
         unless options.gen_component_executor
-          IDL.error("ERROR: it isn't allowed to use -Gami4ccm,ex without specifying -Gex")
-          exit 1
+          IDL.fatal("ERROR: it isn't allowed to use -Gami4ccm,ex without specifying -Gex")
         end
 
         AMI4CCM.load_ami4ccm_config

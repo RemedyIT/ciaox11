@@ -201,9 +201,8 @@ module IDL
     def self.check_executor_export_params(options, prefix = nil, force = false)
       if options.gen_export_ex || options.export_ex || force
         unless options.exec_export_macro || options.base_export_macro
-          IDL.error("ERROR: it isn't allowed to use -Gxhex or -Xex without specifying the macro with -Wb,exec_export_macro=MACRO "+
+          IDL.fatal("ERROR: it isn't allowed to use -Gxhex or -Xex without specifying the macro with -Wb,exec_export_macro=MACRO "+
                         'or with -Wb,base_export_macro=MACRO_PREFIX')
-          exit 1
         end
         # only in case export header generation has been explicitly enabled will
         # we derive missing export parameters from base parameters
@@ -215,9 +214,8 @@ module IDL
     def self.check_servant_export_params(options, prefix = nil, force = false)
       if options.gen_export_svnt || options.export_svnt || force
         unless options.svnt_export_macro || options.base_export_macro
-          IDL.error("ERROR: it isn't allowed to use -Gxhsv or -Xsv without specifying the macro with -Wb,svnt_export_macro=MACRO "+
+          IDL.fatal("ERROR: it isn't allowed to use -Gxhsv or -Xsv without specifying the macro with -Wb,svnt_export_macro=MACRO "+
                         'or with -Wb,base_export_macro=MACRO_PREFIX')
-          exit 1
         end
         # only in case export header generation has been explicitly enabled will
         # we derive missing export parameters from base parameters
@@ -238,9 +236,8 @@ module IDL
     def self.check_conn_export_params(options, prefix = nil, force = false)
       if options.gen_export_conn || options.export_conn || force
         unless options.conn_export_macro || options.base_export_macro
-          IDL.error("ERROR: it isn't allowed to use -Gxhcn or -Xcn without specifying the macro with -Wb,conn_export_macro=MACRO "+
+          IDL.fatal("ERROR: it isn't allowed to use -Gxhcn or -Xcn without specifying the macro with -Wb,conn_export_macro=MACRO "+
                         'or with -Wb,base_export_macro=MACRO_PREFIX')
-          exit 1
         end
         # only in case export header generation has been explicitly enabled will
         # we derive missing export parameters from base parameters
