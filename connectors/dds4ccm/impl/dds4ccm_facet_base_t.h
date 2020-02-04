@@ -23,7 +23,7 @@ namespace CIAOX11
       : public virtual ::IDL::traits< BASE_TYPE >::base_type
     {
     public:
-      explicit FacetBase (IDL::traits< CORBA::Object >::weak_ref_type component);
+      explicit FacetBase (IDL::traits<CORBA::Object>::weak_ref_type component);
 
       // using {} since using 'default' will cause an error with message:
       // internal compiler error: in use_thunk, at cp/method.c:338
@@ -46,7 +46,7 @@ namespace CIAOX11
        * need to set this member to nil at the moment the component
        * is going to shutdown
        */
-      IDL::traits< CORBA::Object >::weak_ref_type component_;
+      IDL::traits<CORBA::Object>::weak_ref_type component_;
 
       FacetBase() = delete;
       FacetBase(const FacetBase&) = delete;

@@ -16,7 +16,7 @@
 //@@{__RIDL_REGEN_MARKER__} - END : UpdaterModule_Sender_Impl[user_includes]
 
 //@@{__RIDL_REGEN_MARKER__} - BEGIN : UpdaterModule_Sender_Impl[user_global_impl]
-constexpr uint16_t nr_instances () { return 3; }
+constexpr uint16_t nr_instances { 3 };
 //@@{__RIDL_REGEN_MARKER__} - END : UpdaterModule_Sender_Impl[user_global_impl]
 
 namespace UpdaterModule_Sender_Impl
@@ -198,7 +198,9 @@ namespace UpdaterModule_Sender_Impl
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : UpdaterModule_Sender_Impl::next_assignment_exec_i::state_event_received[_event]
     auto cex = IDL::traits<Sender_exec_i>::narrow (this->component_executor_.lock ());
     if (cex)
+    {
       cex->start_next_assignment (event);
+    }
     else
     {
       DDS4CCM_TEST_ERROR << "next_assignment_exec_i::state_event_received - "
@@ -468,12 +470,12 @@ namespace UpdaterModule_Sender_Impl
   Sender_exec_i::create_instances ()
   {
     //sequence for tests with .._one
-    for (int i = 1; i < (nr_instances () + 1); ++i)
+    for (uint16_t i = 1; i < (nr_instances + 1); ++i)
     {
       this->topic_seq_one_.push_back (
         CommonTestMessage ("ONE_" + std::to_string (i), i));
     }
-    for (int i = 1; i < (nr_instances () + 1); ++i)
+    for (uint16_t i = 1; i < (nr_instances + 1); ++i)
     {
       this->topic_seq_many_.push_back (
         CommonTestMessage ("MANY_" + std::to_string (i), i));
@@ -831,7 +833,6 @@ namespace UpdaterModule_Sender_Impl
       }
       else
       {
-
         if (std::find (ex.indexes ().begin (), ex.indexes ().end (), 0) == ex.indexes ().end () ||
           std::find (ex.indexes ().begin (), ex.indexes ().end (), 2) == ex.indexes ().end ())
         {
@@ -908,7 +909,6 @@ namespace UpdaterModule_Sender_Impl
       }
       else
       {
-
         if (std::find (ex.indexes ().begin (), ex.indexes ().end (), 1) == ex.indexes ().end () ||
           std::find (ex.indexes ().begin (), ex.indexes ().end (), 2) == ex.indexes ().end ())
         {
@@ -958,7 +958,6 @@ namespace UpdaterModule_Sender_Impl
       }
       else
       {
-
         if (std::find (ex.indexes ().begin (), ex.indexes ().end (), 1) == ex.indexes ().end () ||
           std::find (ex.indexes ().begin (), ex.indexes ().end (), 2) == ex.indexes ().end ())
         {

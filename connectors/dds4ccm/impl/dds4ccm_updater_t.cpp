@@ -17,7 +17,7 @@ namespace CIAOX11
   {
     template <typename UPDATER_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
     Updater_T<UPDATER_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::Updater_T (
-      IDL::traits< CORBA::Object >::weak_ref_type component)
+      IDL::traits<CORBA::Object>::weak_ref_type component)
       : FacetBase<UPDATER_TYPE> (component)
       , InstanceHandleManager_T<UPDATER_TYPE, TOPIC_TYPE> (component)
     {

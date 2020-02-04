@@ -19,8 +19,8 @@ namespace CIAOX11
   {
     template <typename READER_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
     Reader_T<READER_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::Reader_T (
-      IDL::traits< CORBA::Object >::weak_ref_type component)
-      : FacetBase< READER_TYPE > (component)
+      IDL::traits<CORBA::Object>::weak_ref_type component)
+      : FacetBase<READER_TYPE> (component)
     {
       DDS4CCM_LOG_TRACE ("Reader_T::Reader_T");
     }

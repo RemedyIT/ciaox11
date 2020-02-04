@@ -19,7 +19,7 @@ namespace CIAOX11
 {
   namespace DDS4CCM
   {
-    class DDS4CCM_IMPL_Export CCM_DataReader final
+    class DDS4CCM_IMPL_Export CCM_DataReader
       : public virtual FacetBase< ::DDS::CCM_DataReader >
     {
     public:

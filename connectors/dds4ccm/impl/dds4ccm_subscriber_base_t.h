@@ -23,21 +23,21 @@ template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 class DDS_Subscriber_Base_T
 {
 public:
-  explicit DDS_Subscriber_Base_T (IDL::traits< CORBA::Object >::ref_type component);
-  virtual ~DDS_Subscriber_Base_T ();
+  explicit DDS_Subscriber_Base_T (IDL::traits<CORBA::Object>::ref_type component);
+  virtual ~DDS_Subscriber_Base_T () = default;
 
   /**
    * @name DDS_Read
    * DDS_Subscriber_Base_T operations
    */
   //@{
-  typename IDL::traits< typename CCM_TYPE::data_type >::ref_type
+  typename IDL::traits<typename CCM_TYPE::data_type >::ref_type
   get_data ();
 
-  typename IDL::traits< typename CCM_TYPE::dds_entity_type >::ref_type
+  typename IDL::traits<typename CCM_TYPE::dds_entity_type >::ref_type
   get_dds_entity ();
 
-  typename IDL::traits< typename CCM_TYPE::filter_config_type >::ref_type
+  typename IDL::traits<typename CCM_TYPE::filter_config_type >::ref_type
   get_filter_config ();
 
   CCM_DDS::QueryFilter filter ();
@@ -100,10 +100,9 @@ protected:
   typename IDL::traits<CCM_DataReader_type >::ref_type ccm_data_reader_ {};
   typename IDL::traits<CIAOX11::DDS4CCM::CCM_DDS_ContentFilterSetting_i>::ref_type cft_setting_ {};
 
-  IDL::traits< CORBA::Object >::weak_ref_type component_ {};
+  IDL::traits<CORBA::Object>::weak_ref_type component_ {};
 
   SharedConditionManager condition_manager_ {};
-
   //@}
 
 private:

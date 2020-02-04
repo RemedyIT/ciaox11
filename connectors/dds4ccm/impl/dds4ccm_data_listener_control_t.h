@@ -26,7 +26,7 @@ class CCM_DDS_DataListenerControl_T
 public:
   /// Constructor
   explicit CCM_DDS_DataListenerControl_T (
-    IDL::traits< CORBA::Object >::weak_ref_type component);
+    IDL::traits<CORBA::Object>::weak_ref_type component);
 
   /// Destructor
   virtual ~CCM_DDS_DataListenerControl_T () = default;

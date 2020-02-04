@@ -96,7 +96,7 @@ template <typename CCM_TYPE,
           typename U,
           typename Tseq,
           typename Useq>
-typename IDL::traits< typename CCM_TYPE::write_port_traits::foo2_type>::ref_type
+typename IDL::traits<typename CCM_TYPE::write_port_traits::foo2_type>::ref_type
 NT2_Connector_T<CCM_TYPE, T, U, Tseq, Useq>::get_write_port_foo2()
 {
   return {};
@@ -248,7 +248,7 @@ template <typename CCM_TYPE,
           typename U,
           typename Tseq,
           typename Useq>
-typename IDL::traits< typename CCM_TYPE::foo3_type>::ref_type
+typename IDL::traits<typename CCM_TYPE::foo3_type>::ref_type
 NT3_Connector_T<CCM_TYPE, T, U, Tseq, Useq>::get_foo3()
 {
   return {};
@@ -259,7 +259,7 @@ template <typename CCM_TYPE,
           typename U,
           typename Tseq,
           typename Useq>
-typename IDL::traits< typename CCM_TYPE::write_port_traits::foo2_type>::ref_type
+typename IDL::traits<typename CCM_TYPE::write_port_traits::foo2_type>::ref_type
 NT3_Connector_T<CCM_TYPE, T, U, Tseq, Useq>::get_foo5_foo2()
 {
   return {};

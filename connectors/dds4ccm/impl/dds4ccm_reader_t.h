@@ -20,14 +20,11 @@ namespace CIAOX11
   namespace DDS4CCM
   {
     template <typename READER_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
-    class Reader_T final
+    class Reader_T
       : public virtual FacetBase< READER_TYPE >
     {
     public:
-      /// Constructor
-      explicit Reader_T (IDL::traits< CORBA::Object >::weak_ref_type component);
-
-      /// Destructor
+      explicit Reader_T (IDL::traits<CORBA::Object>::weak_ref_type component);
       virtual ~Reader_T () = default;
 
       virtual void
@@ -67,7 +64,6 @@ namespace CIAOX11
       get_dds_reader ();
 
     private:
-
       typename ::DDS::traits<TOPIC_TYPE>::typed_datareader_ref_type dds_reader_ {};
 
       SharedConditionManager condition_manager_ {};

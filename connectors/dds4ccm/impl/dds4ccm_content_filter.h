@@ -18,7 +18,7 @@ namespace CIAOX11
 {
   namespace DDS4CCM
   {
-    class DDS4CCM_IMPL_Export CCM_DDS_ContentFilterSetting_i final
+    class DDS4CCM_IMPL_Export CCM_DDS_ContentFilterSetting_i
       : public virtual IDL::traits< CCM_DDS::CCM_ContentFilterSetting >::base_type
     {
     public:
@@ -32,11 +32,9 @@ namespace CIAOX11
       set_filter_parameters (
         const ::DDS::StringSeq &parameters) override;
 
-      CCM_DDS::QueryFilter
-      filter ();
+      CCM_DDS::QueryFilter filter ();
 
-      void filter (
-        const CCM_DDS::QueryFilter &filter);
+      void filter (const CCM_DDS::QueryFilter &filter);
 
       IDL::traits< ::DDS::ContentFilteredTopic >::ref_type
       create_contentfilteredtopic (

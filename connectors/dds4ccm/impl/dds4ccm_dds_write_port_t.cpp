@@ -11,7 +11,7 @@
 
 template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 DDS_Write_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::DDS_Write_Port_T (
-  IDL::traits< CORBA::Object >::ref_type component)
+  IDL::traits<CORBA::Object>::ref_type component)
   : component_ (component.weak_reference ())
 {
 }
@@ -138,7 +138,7 @@ DDS_Write_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::remove (
  * Context methods.
  */
 template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
-typename IDL::traits< typename  CCM_TYPE::data_type >::ref_type
+typename IDL::traits<typename  CCM_TYPE::data_type >::ref_type
 DDS_Write_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_data ()
 {
   DDS4CCM_LOG_TRACE ("DDS_Write_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_data");
@@ -152,7 +152,7 @@ DDS_Write_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_data ()
 }
 
 template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
-typename IDL::traits< typename CCM_TYPE::dds_entity_type >::ref_type
+typename IDL::traits<typename CCM_TYPE::dds_entity_type >::ref_type
 DDS_Write_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_dds_entity ()
 {
   DDS4CCM_LOG_TRACE ("DDS_Write_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_dds_entity");

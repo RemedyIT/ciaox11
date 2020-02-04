@@ -150,7 +150,7 @@ DDS_Base_Connector_T<CCM_TYPE>::configuration_completed (
 }
 
 template <typename CCM_TYPE>
-typename IDL::traits< typename CCM_TYPE::context_type >::ref_type
+typename IDL::traits<typename CCM_TYPE::context_type >::ref_type
 DDS_Base_Connector_T<CCM_TYPE>::context ()
 {
   return this->context_;

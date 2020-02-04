@@ -74,7 +74,7 @@ namespace CIAOX11
     {
     public:
       DefaultErrorEventStrategy_T (
-        typename IDL::traits< typename CCM_TYPE::context_type >::ref_type ctx)
+        typename IDL::traits<typename CCM_TYPE::context_type >::ref_type ctx)
         : DefaultEventStrategyBase (ctx)
       {
         IDL::traits< CCM_DDS::ConnectorStatusListener >::ref_type erl =
@@ -458,7 +458,7 @@ namespace CIAOX11
     {
     public:
       DefaultPushConsumerEventStrategy_T (
-        typename IDL::traits< typename CCM_TYPE::context_type >::ref_type ctx)
+        typename IDL::traits<typename CCM_TYPE::context_type >::ref_type ctx)
         : DefaultDataEventStrategyBase_T<
             typename CCM_TYPE::push_consumer_traits::data_listener_type> (
                 ctx,
@@ -478,7 +478,7 @@ namespace CIAOX11
     {
     public:
       DefaultPullConsumerEventStrategy_T (
-        typename IDL::traits< typename CCM_TYPE::context_type >::ref_type ctx)
+        typename IDL::traits<typename CCM_TYPE::context_type >::ref_type ctx)
         : DefaultPortStatusEventStrategyBase (
                 ctx,
                 ctx->get_connection_pull_consumer_status ())
@@ -495,7 +495,7 @@ namespace CIAOX11
     {
     public:
       DefaultPassiveObserverEventStrategy_T (
-        typename IDL::traits< typename CCM_TYPE::context_type >::ref_type ctx)
+        typename IDL::traits<typename CCM_TYPE::context_type >::ref_type ctx)
         : DefaultPortStatusEventStrategyBase (
                 ctx,
                 ctx->get_connection_passive_observer_status ())
@@ -512,7 +512,7 @@ namespace CIAOX11
     {
     public:
       DefaultPullObserverEventStrategy_T (
-        typename IDL::traits< typename CCM_TYPE::context_type >::ref_type ctx)
+        typename IDL::traits<typename CCM_TYPE::context_type >::ref_type ctx)
         : DefaultPortStatusEventStrategyBase (
                 ctx,
                 ctx->get_connection_pull_observer_status ())
@@ -530,7 +530,7 @@ namespace CIAOX11
     {
     public:
       DefaultPushObserverEventStrategy_T (
-        typename IDL::traits< typename CCM_TYPE::context_type >::ref_type ctx)
+        typename IDL::traits<typename CCM_TYPE::context_type >::ref_type ctx)
         : DefaultDataEventStrategyBase_T<
             typename CCM_TYPE::push_observer_traits::data_listener_type> (
                 ctx,
@@ -551,7 +551,7 @@ namespace CIAOX11
     {
     public:
       DefaultPushStateObserverEventStrategy_T (
-        typename IDL::traits< typename CCM_TYPE::context_type >::ref_type ctx)
+        typename IDL::traits<typename CCM_TYPE::context_type >::ref_type ctx)
         : DefaultDataEventStrategyBase_T<
             typename CCM_TYPE::push_state_observer_traits::data_listener_type> (
                 ctx,

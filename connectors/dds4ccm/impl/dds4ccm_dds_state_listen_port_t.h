@@ -26,11 +26,11 @@ template <typename CCM_TYPE,
           typename TOPIC_TYPE,
           typename TOPIC_SEQ_TYPE,
           CIAOX11::DDS4CCM::DDS4CCM_LISTENER_READ_TAKE LRT>
-class DDS_State_Listen_Port_T final
+class DDS_State_Listen_Port_T
   : public virtual DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>
 {
 public:
-  explicit DDS_State_Listen_Port_T (IDL::traits< CORBA::Object >::ref_type component);
+  explicit DDS_State_Listen_Port_T (IDL::traits<CORBA::Object>::ref_type component);
   virtual ~DDS_State_Listen_Port_T () = default;
 
   /**
@@ -45,7 +45,7 @@ public:
   void
   activate (
     const typename CCM_TYPE::event_strategy_type &evs,
-    typename IDL::traits< typename CCM_TYPE::data_listener_type >::ref_type listener,
+    typename IDL::traits<typename CCM_TYPE::data_listener_type >::ref_type listener,
     IDL::traits< CCM_DDS::PortStatusListener >::ref_type status);
 
 private:

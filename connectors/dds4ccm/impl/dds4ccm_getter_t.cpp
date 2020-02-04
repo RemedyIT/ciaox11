@@ -17,8 +17,8 @@ namespace CIAOX11
   {
     template <typename GETTER_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
     Getter_T<GETTER_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::Getter_T (
-      IDL::traits< CORBA::Object >::weak_ref_type component)
-      : FacetBase< GETTER_TYPE > (std::move(component))
+      IDL::traits<CORBA::Object>::weak_ref_type component)
+      : FacetBase<GETTER_TYPE> (std::move(component))
     {
       DDS4CCM_LOG_TRACE ("Getter_T::Getter_T");
     }

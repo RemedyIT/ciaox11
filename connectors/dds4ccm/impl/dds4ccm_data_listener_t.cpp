@@ -29,7 +29,7 @@ namespace CIAOX11
     void
     DataReaderListenerBase_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::on_data_available_i (
       IDL::traits< ::DDS::DataReader >::ref_type rdr,
-      typename IDL::traits< typename CCM_TYPE::data_listener_type >::ref_type listener)
+      typename IDL::traits<typename CCM_TYPE::data_listener_type >::ref_type listener)
     {
       DDS4CCM_LOG_TRACE ("DataReaderListenerBase_T::on_data_available_i");
 

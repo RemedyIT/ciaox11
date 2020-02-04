@@ -48,7 +48,7 @@ namespace CIAOX11
     }
 
     uint32_t
-    DomainParticipantManager::DDSParticipantTopic::_ref_count ()
+    DomainParticipantManager::DDSParticipantTopic::_ref_count () const
     {
       return this->ref_count_;
     }

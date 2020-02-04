@@ -22,7 +22,7 @@ namespace CIAOX11
      * @brief Guard class which calls begin_coherent_changes() on
      *        construction and end_coherent_changes() at destruction
      */
-    class DDS4CCM_IMPL_Export Coherent_Changes_Guard final
+    class DDS4CCM_IMPL_Export Coherent_Changes_Guard
     {
     public:
       Coherent_Changes_Guard (
