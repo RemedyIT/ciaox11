@@ -316,6 +316,24 @@ An application recipe file can contain zero or more of the following recipe defi
 * `connector` recipe
 * `base` recipe
 
+The general syntax of an application recipe is as follows:
+
+- a keyword specifying the type of recipe being specified +
+`component`, `connector` or `base`
+- a string specifying the, unique, recipe name +
+`'my_recipe'`
+- an optional list of feature names (strings or symbols)
+separated from the recipe name and each other by commas
+- a Ruby block with a single argument (a reference to the recipe object) for
+specifying the recipe properties
+
+Feature names can be speficied for `component` and `connector` recipes and
+define the list of required (active) features for the recipe.
+In case not all features are enabled the recipe is ignored.
+If no features are specified the recipe is always processed.
+
+The following paragraphs describe the various recipes in detail and provide examples.
+
 ==== Component recipe
 
 An APC `component` recipe specifies the property settings from which APC can generate the appropriate project files
@@ -346,9 +364,9 @@ generate.
 A minimum `component` recipe with a component interface definition could look like:
 
 [source, ruby]
-.example of component recipe with component interface definition
+.example of component recipe with component interface definition and required feature specification
 ----
-component 'foo_sender' do |comp|
+component 'foo_sender', :corba4ccm do |comp|
   comp.idl %w{ foo.idl }
   comp.define 'Test::Sender' do |intf|
     intf.port 'run_my_foo' do |port|
