@@ -2,8 +2,8 @@
  * @file    kitchensink.idl
  * @author  Johnny Willemsen
  *
- * Tests TAO_IDL generation of CIAO servant, executor IDL
- * and executor implementation stencil for a variety of
+ * Tests ridl generation of ciaox11 infrastructure, executor IDL
+ * and executor implementation for a variety of
  * IDL3+ constructs.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
