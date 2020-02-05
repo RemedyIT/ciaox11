@@ -70,19 +70,19 @@ namespace Foo_Impl
   /** Operations and attributes from my_foo_prov */
 
   int16_t
-  my_foo_prov_exec_i::_short ()
+  my_foo_prov_exec_i::_cxx_short ()
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Foo_Impl::my_foo_prov_exec_i::_short[getter]
-    return this->_short_;
+    return this->_cxx_short_;
     //@@{__RIDL_REGEN_MARKER__} - END : Foo_Impl::my_foo_prov_exec_i::_short[getter]
   }
 
   void
-  my_foo_prov_exec_i::_short (
-      int16_t _short)
+  my_foo_prov_exec_i::_cxx_short (
+      int16_t _cxx_short)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Foo_Impl::my_foo_prov_exec_i::_short[setter]
-    this->_short_ = _short;
+    this->_cxx_short_ = _cxx_short;
     //@@{__RIDL_REGEN_MARKER__} - END : Foo_Impl::my_foo_prov_exec_i::_short[setter]
   }
 
@@ -393,11 +393,11 @@ namespace Foo_Impl
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Foo_Impl::Foo_exec_i::override[setter]
     this->override_attribute_success_ = true;
 
-    if (override._char() != 3)
+    if (override._cxx_char() != 3)
     {
       this->override_attribute_success_ = false;
       CIAOX11_TEST_ERROR << "ERROR: override char value != 3, it is "
-                           <<  override._char() << std::endl;
+                           <<  override._cxx_char() << std::endl;
     }
     //@@{__RIDL_REGEN_MARKER__} - END : Foo_Impl::Foo_exec_i::override[setter]
   }
