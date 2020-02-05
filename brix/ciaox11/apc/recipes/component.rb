@@ -148,7 +148,7 @@ module AxciomaPC
 
     attr_reader :comp_name
 
-    def initialize(rcpfile, name, &block)
+    def initialize(rcpfile, name, *features, &block)
       super(rcpfile, name)
       @type = :component
       @include_dirs = Util::UniqueStringList.new(:ws)
@@ -156,7 +156,8 @@ module AxciomaPC
       @libs = Util::UniqueStringList.new(:ws)
       @lit_libs = Util::UniqueStringList.new(:ws)
       @compdef = nil
-      configure(&block)
+      # only configure if required features match
+      configure(&block) if check_features(*features)
     end
 
     def define(comp_def, &_block)
