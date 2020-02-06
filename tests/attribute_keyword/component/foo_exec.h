@@ -59,12 +59,12 @@ namespace Foo_Impl
 
     virtual
     int16_t
-    _short () override;
+    _cxx_short () override;
 
     virtual
     void
-    _short (
-        int16_t _short) override;
+    _cxx_short (
+        int16_t _cxx_short) override;
 
     virtual
     int16_t
@@ -90,7 +90,7 @@ namespace Foo_Impl
     /** @name Members to store attribute values from CCM_MyFoo */
     //@{
     /// Class member storing value of _short attribute
-    int16_t _short_ {};
+    int16_t _cxx_short_ {};
     /// Class member storing value of while attribute
     int16_t _cxx_while_ {};
     //@}

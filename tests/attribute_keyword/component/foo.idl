@@ -12,15 +12,14 @@
 
 #include <Components.idl>
 
-//TODO change __char into _char
 struct Bar
 {
-  short __char;
+  short _char;
 };
 
 interface MyFoo
 {
-    attribute short __short;
+    attribute short _short;
     attribute short while;
 };
 
