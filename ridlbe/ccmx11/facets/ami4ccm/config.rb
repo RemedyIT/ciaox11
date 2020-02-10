@@ -48,9 +48,9 @@ module IDL
                             :option_name => :gen_amiconn_complete },
                   'conn_only' => {:description => "-Gami4ccm,conn_only\tGenerate all AMI4CCM dependent files needed for an AMI4CCM connector",
                               :option_name => :gen_amiconn_only_ami4ccm_complete },
-                  'comp' => { :description => "-Gami4ccm,comp\t\tGeneration of all files/support needed for an AMI4CCM component",
+                  'comp' => { :description => "-Gami4ccm,comp\t\tGenerate all files/support needed for an AMI4CCM component",
                              :option_name => :gen_amicomp_complete},
-                  'ex' => { :description => "-Gami4ccm,ex\t\tGeneration of AMI4CCM component executor support",
+                  'ex' => { :description => "-Gami4ccm,ex\t\tGenerate AMI4CCM component executor support",
                             :option_name => :gen_component_executor_with_ami},
                 }
             end # ami4ccm_group

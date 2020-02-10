@@ -76,40 +76,40 @@ Generate all files for the CCM local executor
 3+|-W<extended option>=OPT
 
 ||-Wb,exec_export_macro=MACRO|
-sets export macro for component executor files
+Set export macro for component executor files
 
 ||-Wb,exec_export_include=FILE|
-sets export include file for component executor files
+Set export include file for component executor files
 
 ||-Wb,exec_export_file=FILE|
-sets export file to generate for -Gxhex
+Set export file to generate for -Gxhex
 
 ||-Wb,conn_export_macro=MACRO|
-sets export macro for connector files
+Set export macro for connector files
 
 ||-Wb,conn_export_include=FILE|
-sets export include file for connector files
+Set export include file for connector files
 
 ||-Wb,conn_export_file=FILE|
-sets export file to generate for -Gxhcn
+Set export file to generate for -Gxhcn
 
 ||-Wb,svnt_export_macro=MACRO|
-sets export macro for component servant files
+Set export macro for component servant files
 
 ||-Wb,svnt_export_include=FILE|
-sets export include file for component servant files
+Set export include file for component servant files
 
 ||-Wb,svnt_export_file=FILE|
-sets export file to generate for -Gxhsv
+Set export file to generate for -Gxhsv
 
 ||-Wb,lem_stub_export_macro=MACRO|
-sets export macro for lem stub files
+Set export macro for lem stub files
 
 ||-Wb,lem_stub_export_include=FILE|
-sets export include file for lem stub files
+Set export include file for lem stub files
 
 ||-Wb,lem_stub_export_file=FILE|
-sets export file to generate for -Gxhlst
+Set export file to generate for -Gxhlst
 
 |=======================================================================
 
