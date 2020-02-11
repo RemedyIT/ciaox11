@@ -6,7 +6,7 @@ namespace <%= executor_cxx_namespace %>
 
   <%= lem_name %>_ExecutorLocator::<%= lem_name %>_ExecutorLocator (
       IDL::traits< <%= scoped_ccm_name %>>::ref_type component_executor,
-      IDL::traits< <%= lem_name %>_Context>::ref_type component_context) :
+      IDL::traits<<%= lem_name %>_Context>::ref_type component_context) :
         component_executor_ (std::move (component_executor)),
         component_context_ (std::move (component_context))
   {
@@ -159,8 +159,8 @@ create_<%= scoped_unescaped_type.scope_to_cxxname %>_Servant (
   if (component_executor)
   {
     // Create the context for this component, passing in it's ServiceRegistry
-    IDL::traits< <%= executor_cxx_namespace %>::<%= lem_name %>_Context >::ref_type context =
-      CORBA::make_reference <<%= executor_cxx_namespace %>::<%= lem_name %>_Context> (std::move(svcreg), ins_name);
+    IDL::traits<<%= executor_cxx_namespace %>::<%= lem_name %>_Context>::ref_type context =
+      CORBA::make_reference<<%= executor_cxx_namespace %>::<%= lem_name %>_Context> (std::move(svcreg), ins_name);
 
     // Set the new context onto the user component executor
     component_executor->set_session_context (context);
