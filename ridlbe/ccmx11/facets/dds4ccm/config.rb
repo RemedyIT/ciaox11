@@ -57,7 +57,7 @@ module IDL
                   },
                 'lemgen' => {
                     :option_name => :gen_dds4ccm_lemgen,
-                    :description => "-Gdds4ccm,lemgen\t\tGenerate of lem IDL + derived code needed for DDS4CCM interaction"
+                    :description => "-Gdds4ccm,lemgen\t\tGenerate lem IDL + derived code needed for DDS4CCM interaction"
                 }
               }
             end
