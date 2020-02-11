@@ -6,7 +6,7 @@ namespace <%= executor_cxx_namespace %>
 
   <%= lem_name %>_ExecutorLocator::<%= lem_name %>_ExecutorLocator (
       IDL::traits< <%= scoped_ccm_name %>>::ref_type component_executor,
-      IDL::traits< <%= lem_name %>_Context>::ref_type component_context) :
+      IDL::traits<<%= lem_name %>_Context>::ref_type component_context) :
         component_executor_ (std::move (component_executor)),
         component_context_ (std::move (component_context))
   {
