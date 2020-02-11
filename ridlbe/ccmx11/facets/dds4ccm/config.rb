@@ -45,19 +45,19 @@ module IDL
               :params => {
                 'conn' => {
                     :option_name => :gen_ddsconn_complete,
-                    :description => "-Gdds4ccm,conn\t\tGeneration of all files needed for an DDS4CCM connector"
+                    :description => "-Gdds4ccm,conn\t\tGenerate all files needed for an DDS4CCM connector"
                   },
                 'conn_only' => {
                     :option_name => :gen_ddsconn_only,
-                    :description => "-Gdds4ccm,conn_only\tGeneration of connector files needed for an DDS4CCM connector"
+                    :description => "-Gdds4ccm,conn_only\tGenerate connector files needed for an DDS4CCM connector"
                   },
                 'lem' => {
                     :option_name => :gen_dds4ccm_lem,
-                    :description => "-Gdds4ccm,lem\t\tGeneration of lem IDL needed for DDS4CCM interaction"
+                    :description => "-Gdds4ccm,lem\t\tGenerate lem IDL needed for DDS4CCM interaction"
                   },
                 'lemgen' => {
                     :option_name => :gen_dds4ccm_lemgen,
-                    :description => "-Gdds4ccm,lemgen\t\tGeneration of lem IDL + derived code needed for DDS4CCM interaction"
+                    :description => "-Gdds4ccm,lemgen\t\tGenerate lem IDL + derived code needed for DDS4CCM interaction"
                 }
               }
             end
