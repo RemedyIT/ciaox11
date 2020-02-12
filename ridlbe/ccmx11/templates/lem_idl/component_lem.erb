@@ -14,11 +14,11 @@ local interface <%= ccm_name %>
   <%= _p.interface_type.scoped_ccm_name %> get_<%= _p.lem_name %> ();
 %   end
 %   if _p.port_type == :receptacle && _p.is_multiple?
-  struct <%= _p.lem_name %>Connection {
-    <%= _p.interface_type.scoped_cxxname %> objref;
+  struct <%= _p.lem_name %>_Connection {
+    <%= _p.interface_type.scoped_unescaped_name %> objref;
     Components::Cookie ck;
   };
-  typedef sequence<<%= _p.lem_name %>Connection> <%= _p.lem_name %>Connections;
+  typedef sequence<<%= _p.lem_name %>_Connection> <%= _p.lem_name %>Connections;
 %  props={}
 %  props[:port]=_p
 %  visit_lem_extra_multiple_receptacles(props)
@@ -43,9 +43,9 @@ local interface <%= ccm_name %>_Context
 %   if _p.port_type == :receptacle
   /// Get the <%= _p.lem_name %> receptacle
 %     if _p.is_multiple?
-  <%= ccm_name %>::<%= _p.lem_name %>Connections get_connections_<%= _p.lem_name %> ();
+  <%= ccm_name %>::<%= _p.lem_name %>_Connections get_connections_<%= _p.lem_name %> ();
 %     else
-  <%= _p.interface_type.scoped_cxxname %> get_connection_<%= _p.lem_name %> ();
+  <%= _p.interface_type.scoped_unescaped_name %> get_connection_<%= _p.lem_name %> ();
 %     end
 %   end
 % end
