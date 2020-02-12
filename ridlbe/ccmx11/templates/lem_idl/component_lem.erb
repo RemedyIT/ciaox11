@@ -2,7 +2,7 @@
 // generated from <%= ridl_template_path %>
 local interface <%= ccm_name %>
 % if is_derived?
-  : <%= base.scoped_unescaped_ccm_name %>
+  : <%= base.scoped_ccm_name %>
 % else
   : Components::SessionComponent
 % end
@@ -11,11 +11,11 @@ local interface <%= ccm_name %>
 %   if _p.port_type == :facet
   /// Factory method and getter for the <%= _p.lem_name %> facet
   /// @return existing instance of facet if one exists, else creates one
-  <%= _p.interface_type.scoped_unescaped_ccm_name %> get_<%= _p.lem_name %> ();
+  <%= _p.interface_type.scoped_ccm_name %> get_<%= _p.lem_name %> ();
 %   end
 %   if _p.port_type == :receptacle && _p.is_multiple?
   struct <%= _p.lem_name %>Connection {
-    <%= _p.interface_type.scoped_unescaped_type %> objref;
+    <%= _p.interface_type.scoped_cxxname %> objref;
     Components::Cookie ck;
   };
   typedef sequence<<%= _p.lem_name %>Connection> <%= _p.lem_name %>Connections;
@@ -34,7 +34,7 @@ local interface <%= ccm_name %>
 
 local interface <%= ccm_name %>_Context
 % if is_derived?
-    : <%= base.scoped_unescaped_ccm_name %>_Context
+    : <%= base.scoped_ccm_name %>_Context
 % else
   : Components::SessionContext
 % end
@@ -45,7 +45,7 @@ local interface <%= ccm_name %>_Context
 %     if _p.is_multiple?
   <%= ccm_name %>::<%= _p.lem_name %>Connections get_connections_<%= _p.lem_name %> ();
 %     else
-  <%= _p.interface_type.scoped_unescaped_type %> get_connection_<%= _p.lem_name %> ();
+  <%= _p.interface_type.scoped_cxxname %> get_connection_<%= _p.lem_name %> ();
 %     end
 %   end
 % end

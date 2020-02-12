@@ -135,6 +135,6 @@ namespace <%= executor_cxx_namespace %>
 
 % write_regen_section(executor_cxx_namespace+'[factory]') do
 extern "C" <%= exec_export_macro %> void
-create_<%= scoped_unescaped_type.scope_to_cxxname %>_Impl (
+create_<%= scoped_cxxname.scope_to_cxxname %>_Impl (
   IDL::traits<Components::EnterpriseComponent>::ref_type& component);
 % end

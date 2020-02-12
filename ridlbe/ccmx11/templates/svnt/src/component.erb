@@ -147,7 +147,7 @@ namespace <%= executor_cxx_namespace %>
 } /* <%= executor_cxx_namespace %> */
 
 extern "C" void
-create_<%= scoped_unescaped_type.scope_to_cxxname %>_Servant (
+create_<%= scoped_cxxname.scope_to_cxxname %>_Servant (
   IDL::traits<Components::EnterpriseComponent>::ref_type p,
   IDL::traits<CIAOX11::Service_Registry>::ref_type svcreg,
   const std::string& ins_name,

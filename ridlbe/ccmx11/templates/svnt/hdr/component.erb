@@ -210,7 +210,7 @@ namespace <%= executor_cxx_namespace %>
  * @param executor_locator The created executor locator
  */
 extern "C" <%= svnt_export_macro %> void
-create_<%= scoped_unescaped_type.scope_to_cxxname %>_Servant (
+create_<%= scoped_cxxname.scope_to_cxxname %>_Servant (
   IDL::traits<Components::EnterpriseComponent>::ref_type component_executor,
   IDL::traits<CIAOX11::Service_Registry>::ref_type svcreg,
   const std::string& ins_name,
