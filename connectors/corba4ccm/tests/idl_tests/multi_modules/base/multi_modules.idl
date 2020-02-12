@@ -39,6 +39,10 @@ module Foo
 
       attribute Hello::ReturnValue my_return_test;
     };
+
+    interface _interface
+    {
+    };
   };
 };
 
