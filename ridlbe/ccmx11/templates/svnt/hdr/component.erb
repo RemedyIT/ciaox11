@@ -187,7 +187,7 @@ namespace <%= executor_cxx_namespace %>
     IDL::traits< <%= scoped_ccm_name %>>::ref_type component_executor_;
 
     /// The context for this component
-    IDL::traits< <%= lem_name %>_Context>::ref_type component_context_;
+    IDL::traits<<%= lem_name %>_Context>::ref_type component_context_;
 
     /** @name Illegal to be called. Deleted explicitly to let the compiler detect any violation */
     //@{
