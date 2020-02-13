@@ -152,29 +152,32 @@ module CCM_DDS
             //        the Writer or Updater *_one operations do
             };
 
-    // -- Getter: to get new data (and wait for)
+    /**
+     * To get new data (and wait for)
+     *
+     * All get operations are performed to DDS with the following parameters
+     * - DDS::NOT_READ_SAMPLE_STATE
+     * - DDS::NEW_VIEW_STATE or DDS::NOT_NEW_VIEW_STATE
+     * - DDS::ALIVE_INSTANCE_STATE or DDS::NOT_ALIVE_INSTANCE_STATE
+     * - through the query as specified in the associated Reader
+     * - within the time limit specified in time_out
+     */
     local interface Getter {
-            boolean get_one (out T datum, out ReadInfo info)
-                    raises (InternalError);
-            boolean get_many (inout TSeq data, inout ReadInfoSeq infos)
-                    raises (InternalError);
-            attribute DDS::Duration_t       time_out;
-            attribute DataNumber_t          max_delivered_data;     // default 0 (no limit)
-            // behavior
-            // --------
-            // - get operations are performed with the following parameters
-            //              - NO_READ
-            //              - NEW or NOT_NEW
-            //              - ALIVE or NOT_ALIVE
-            //              - through the query as specified in the associated Reader
-            //              - within the time limit specified in time_out
-            // - all operations returns TRUE if data are provided
-            //       or FALSE if time-out occurred
-            // - data returned:
-            //              - get_one returns each read sample one by one
-            //      - get_many returns all available samples within the
-            //                max_delivered_data limit
-            };
+      /// Returns each read sample one by one
+      ///  @retval true data is provided
+      /// @retval false time-out occurred
+      boolean get_one (out T datum, out ReadInfo info)
+        raises (InternalError);
+      /// Returns all available samples within the max_delivered_data limit
+      ///  @retval true data is provided
+      /// @retval false time-out occurred
+      boolean get_many (inout TSeq data, inout ReadInfoSeq infos)
+        raises (InternalError);
+      /// Time limit specified used for all get operations
+      attribute DDS::Duration_t       time_out;
+      /// Default 0 (no limit)
+      attribute DataNumber_t          max_delivered_data;
+    };
 
     // -- Listener: similar to a Getter but in push mode
     local interface Listener {
