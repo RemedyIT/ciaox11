@@ -45,7 +45,7 @@ module IDL
           super
           println()
           printiln('// generated from DDSTypeSupportHeaderWriter')
-          printiln('namespace ' + node.unescaped_name)
+          printiln('namespace ' + node.cxxname)
           printiln('{')
           inc_nest
         end
@@ -53,7 +53,7 @@ module IDL
         def leave_module(node)
           dec_nest
           println()
-          printiln("} // namespace #{node.unescaped_name}")
+          printiln("} // namespace #{node.cxxname}")
           super
         end
 
@@ -158,7 +158,7 @@ module IDL
           super
           println()
           printiln('// generated from DDSTypeSupportSourceWriter')
-          printiln('namespace ' + node.unescaped_name)
+          printiln('namespace ' + node.cxxname)
           printiln('{')
           inc_nest
         end
@@ -166,7 +166,7 @@ module IDL
         def leave_module(node)
           dec_nest
           println()
-          printiln("} // namespace #{node.unescaped_name}")
+          printiln("} // namespace #{node.cxxname}")
           super
         end
 

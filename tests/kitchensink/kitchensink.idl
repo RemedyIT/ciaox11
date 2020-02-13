@@ -110,15 +110,51 @@ module T
       attribute T T_attr;
     };
 
+    porttype Y_
+    {
+      uses X data;
+      attribute string str_attr;
+      attribute T T_attr;
+    };
+
     component Z
     {
       port Y my_port;
       port Y my_second_port;
     };
 
+    // test name clashing when using no underscore
+    component Z2
+    {
+      port Y my_port;
+      port Y my_second_port;
+    };
+
+    // one underscore
+    component Z_2
+    {
+      port Y my_port;
+      port Y my_second_port;
+    };
+
+    // multiple underscores
+    component Z__2
+    {
+      port Y my_port;
+      port Y my_second_port;
+    };
+
+    // no underscore
     connector C
     {
       port Y my_m_port;
+      mirrorport Y my_second_m_port;
+    };
+
+    // one trailing underscoe
+    connector C_
+    {
+      port Y_ my_m_port;
       mirrorport Y my_second_m_port;
     };
   };
