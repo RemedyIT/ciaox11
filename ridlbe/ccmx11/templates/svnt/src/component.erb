@@ -108,13 +108,13 @@ namespace <%= executor_cxx_namespace %>
 %   all_ports.each do |_p|
 %     if _p.port_type == :receptacle
 %       if _p.is_multiple?
-  <%= scoped_ccm_name %>::<%= _p.lem_name %>_Connections
+  <%= scoped_ccm_name %>::<%= _p.lem_name %>Connections
   <%= lem_name %>_Context::get_connections_<%= _p.lem_name %> ()
   {
     std::lock_guard<std::mutex> lock (this->context_tbl_lock_);
-    <%= scoped_ccm_name %>::<%= _p.lem_name %>_Connections retv;
+    <%= scoped_ccm_name %>::<%= _p.lem_name %>Connections retv;
     retv.reserve (this-><%= _p.lem_name %>_context_tbl_.size());
-    typedef IDL::traits< <%= scoped_ccm_name %>::<%= _p.lem_name %>_Connections>::element_traits::value_type conn_type;
+    typedef IDL::traits< <%= scoped_ccm_name %>::<%= _p.lem_name %>Connections>::element_traits::value_type conn_type;
 
     for (const auto& elem : this-><%= _p.lem_name %>_context_tbl_)
     {

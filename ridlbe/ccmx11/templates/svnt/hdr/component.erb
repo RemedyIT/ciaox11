@@ -32,7 +32,7 @@ namespace <%= executor_cxx_namespace %>
 %    if _p.port_type == :receptacle
 %      if _p.is_multiple?
     /// Get the <%= _p.lem_name %> multiplex receptacle
-    virtual <%= scoped_ccm_name %>::<%= _p.lem_name %>_Connections get_connections_<%= _p.lem_name %> () override;
+    virtual <%= scoped_ccm_name %>::<%= _p.lem_name %>Connections get_connections_<%= _p.lem_name %> () override;
 %      else
     /// Get the <%= _p.lem_name %> receptacle
     virtual <%= _p.interface_type.scoped_cxx_return_type %> get_connection_<%= _p.lem_name %> () override;

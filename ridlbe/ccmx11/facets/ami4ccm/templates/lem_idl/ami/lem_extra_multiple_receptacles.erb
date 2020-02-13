@@ -1,11 +1,11 @@
 %if incl_ami4ccm_receptacle?
 % if port.is_ami4ccm_port?
   // generated from <%= ridl_template_path %>
-  struct sendc_<%= port.lem_name %>_Connection {
+  struct sendc_<%= port.lem_name %>Connection {
     <%= port.interface_type.scoped_ami4ccm_cxxname %> objref;
     Components::Cookie ck;
   };
-  typedef sequence<sendc_<%= port.lem_name %>_Connection> sendc_<%= port.lem_name %>_Connections;
+  typedef sequence<sendc_<%= port.lem_name %>Connection> sendc_<%= port.lem_name %>Connections;
 
 % end
 %end

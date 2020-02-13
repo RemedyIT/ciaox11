@@ -4,7 +4,7 @@
 %   ports.each do |_p|
 %     if _p.is_ami4ccm_port?
 %       if _p.is_multiple?
-  <%= ccm_name %>::sendc_<%= _p.lem_name %>_Connections get_connections_sendc_<%= _p.cxxname %> ();
+  <%= ccm_name %>::sendc_<%= _p.lem_name %>Connections get_connections_sendc_<%= _p.cxxname %> ();
 %       else
   <%= _p.interface_type.scoped_ami4ccm_cxxname %> get_connection_sendc_<%= _p.lem_name %> ();
 %       end
