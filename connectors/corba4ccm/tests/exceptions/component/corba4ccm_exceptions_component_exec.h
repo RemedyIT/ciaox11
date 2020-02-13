@@ -82,7 +82,7 @@ namespace Foo_CORBA4CCM_exception_component_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::Foo::CCM_CORBA4CCM_exception_component_Context >::ref_type context_;
+    IDL::traits< ::Foo::CCM_CORBA4CCM_exception_component_Context>::ref_type context_;
 
     /** @name Component facets. */
     //@{

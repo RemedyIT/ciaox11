@@ -120,7 +120,7 @@ namespace Hello_MyBaseEvent_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::Hello::CCM_MyBaseEvent_Context >::ref_type context_;
+    IDL::traits< ::Hello::CCM_MyBaseEvent_Context>::ref_type context_;
 
     /** @name Component attributes. */
     //@{

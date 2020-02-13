@@ -136,7 +136,7 @@ namespace Hello_MyBaseEvent_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_MyBaseEvent_Impl::MyBaseEvent_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::Hello::CCM_MyFoo >::ref_type
+  IDL::traits< ::Hello::CCM_MyFoo>::ref_type
   MyBaseEvent_exec_i::get_supplier_foo_uses ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_MyBaseEvent_Impl::MyBaseEvent_exec_i[get_supplier_foo_uses]

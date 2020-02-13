@@ -72,7 +72,7 @@ namespace Interceptor_Interceptor_Receiver_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::Interceptor::CCM_Interceptor_Receiver_Context >::ref_type context_;
+    IDL::traits< ::Interceptor::CCM_Interceptor_Receiver_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -105,7 +105,7 @@ namespace Interceptor_Interceptor_Receiver_Impl
 
     /// Factory method and getter for the prov_my_foo facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::Interceptor::CCM_Foo >::ref_type get_prov_my_foo () override;
+    virtual IDL::traits< ::Interceptor::CCM_Foo>::ref_type get_prov_my_foo () override;
     //@}
 
     /** @name Session component operations */
@@ -137,11 +137,11 @@ namespace Interceptor_Interceptor_Receiver_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::Interceptor::CCM_Interceptor_Receiver_Context >::ref_type context_;
+    IDL::traits< ::Interceptor::CCM_Interceptor_Receiver_Context>::ref_type context_;
 
     /** @name Component facets. */
     //@{
-    IDL::traits< ::Interceptor::CCM_Foo >::ref_type prov_my_foo_;
+    IDL::traits< ::Interceptor::CCM_Foo>::ref_type prov_my_foo_;
     //@}
 
     /** @name User defined members. */

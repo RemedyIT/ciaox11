@@ -108,7 +108,7 @@ namespace NoReplyH_Sender_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::NoReplyH::CCM_Sender_Context >::ref_type context_;
+    IDL::traits< ::NoReplyH::CCM_Sender_Context>::ref_type context_;
 
     /** @name Component facets. */
     //@{

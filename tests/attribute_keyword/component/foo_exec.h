@@ -85,11 +85,11 @@ namespace Foo_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< CCM_Foo_Context >::ref_type context_;
+    IDL::traits< CCM_Foo_Context>::ref_type context_;
 
     /** @name Members to store attribute values from CCM_MyFoo */
     //@{
-    /// Class member storing value of _short attribute
+    /// Class member storing value of short attribute
     int16_t _cxx_short_ {};
     /// Class member storing value of while attribute
     int16_t _cxx_while_ {};
@@ -127,7 +127,7 @@ namespace Foo_Impl
 
     /// Factory method and getter for the my_foo_prov facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< CCM_MyFoo >::ref_type get_my_foo_prov () override;
+    virtual IDL::traits< CCM_MyFoo>::ref_type get_my_foo_prov () override;
     //@}
 
     /** @name Supported attributes. */
@@ -273,7 +273,7 @@ namespace Foo_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< CCM_Foo_Context >::ref_type context_;
+    IDL::traits< CCM_Foo_Context>::ref_type context_;
 
     /** @name Component attributes. */
     //@{
@@ -301,7 +301,7 @@ namespace Foo_Impl
 
     /** @name Component facets. */
     //@{
-    IDL::traits< CCM_MyFoo >::ref_type my_foo_prov_;
+    IDL::traits< CCM_MyFoo>::ref_type my_foo_prov_;
     //@}
 
     /** @name User defined members. */

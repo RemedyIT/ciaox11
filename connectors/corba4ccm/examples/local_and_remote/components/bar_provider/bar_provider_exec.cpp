@@ -119,7 +119,7 @@ namespace Example_BarProvider_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Example_BarProvider_Impl::BarProvider_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::Example::CCM_Bar >::ref_type
+  IDL::traits< ::Example::CCM_Bar>::ref_type
   BarProvider_exec_i::get_do_my_bar ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Example_BarProvider_Impl::BarProvider_exec_i[get_do_my_bar]

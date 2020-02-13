@@ -435,7 +435,7 @@ namespace Hello_Sender_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Sender_Impl::Sender_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::Hello::CCM_Control >::ref_type
+  IDL::traits< ::Hello::CCM_Control>::ref_type
   Sender_exec_i::get_do_control ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl::Sender_exec_i[get_do_control]
@@ -450,7 +450,7 @@ namespace Hello_Sender_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : Hello_Sender_Impl::Sender_exec_i[get_do_control]
   }
 
-  IDL::traits< ::Hello::CCM_MyFoo >::ref_type
+  IDL::traits< ::Hello::CCM_MyFoo>::ref_type
   Sender_exec_i::get_do_my_foo ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl::Sender_exec_i[get_do_my_foo]

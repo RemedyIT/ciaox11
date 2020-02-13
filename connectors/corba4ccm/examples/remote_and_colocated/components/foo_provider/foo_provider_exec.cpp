@@ -118,7 +118,7 @@ namespace Example_FooProvider_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Example_FooProvider_Impl::FooProvider_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::Example::CCM_Foo >::ref_type
+  IDL::traits< ::Example::CCM_Foo>::ref_type
   FooProvider_exec_i::get_do_my_foo ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Example_FooProvider_Impl::FooProvider_exec_i[get_do_my_foo]

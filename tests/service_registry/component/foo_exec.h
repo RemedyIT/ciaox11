@@ -78,7 +78,7 @@ namespace Foo_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< CCM_Foo_Context >::ref_type context_;
+    IDL::traits< CCM_Foo_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{

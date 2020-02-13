@@ -135,7 +135,7 @@ namespace UsesMulti_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : UsesMulti_Receiver_Impl::Receiver_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::UsesMulti::CCM_One >::ref_type
+  IDL::traits< ::UsesMulti::CCM_One>::ref_type
   Receiver_exec_i::get_do_my_one ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : UsesMulti_Receiver_Impl::Receiver_exec_i[get_do_my_one]
