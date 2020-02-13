@@ -71,5 +71,5 @@ namespace <%= executor_cxx_namespace %>
 } // namespace <%= executor_cxx_namespace %>
 
 extern "C" <%= exec_export_macro %> void
-create_<%= scoped_cxxname.scope_to_cxxname %>_Impl (
+create_<%= scoped_name.scope_to_cxxname %>_Impl (
   IDL::traits<Components::EnterpriseComponent>::ref_type& component);

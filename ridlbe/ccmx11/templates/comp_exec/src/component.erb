@@ -104,7 +104,7 @@ namespace <%= executor_cxx_namespace %>
 
 % write_regen_section(executor_cxx_namespace+'[factory]') do
 extern "C" void
-create_<%= scoped_cxxname.scope_to_cxxname %>_Impl (
+create_<%= scoped_name.scope_to_cxxname %>_Impl (
   IDL::traits<Components::EnterpriseComponent>::ref_type& component)
 {
   component = CORBA::make_reference < <%= executor_cxx_namespace %>::<%= lem_name %>_exec_i > ();
