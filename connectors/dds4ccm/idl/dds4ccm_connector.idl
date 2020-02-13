@@ -16,7 +16,6 @@
 
 module CCM_DDS
 {
-
    connector DDS_Base {
      uses ConnectorStatusListener error_listener;
      attribute DDS::DomainId_t domain_id
