@@ -50,7 +50,7 @@ namespace DDSX11
 
   std::shared_ptr<DDS_TypeFactory_i>
   DDS_TypeSupport_i::get_factory_i (
-    IDL::traits< ::DDS::DomainParticipant >::ref_type dp,
+    IDL::traits< ::DDS::DomainParticipant>::ref_type dp,
     const std::string &type)
   {
     DDSX11_LOG_TRACE ("DDS_TypeSupport_i::get_factory_i");
@@ -83,7 +83,7 @@ namespace DDSX11
 
   bool
   DDS_TypeSupport_i::register_type (
-    IDL::traits< ::DDS::DomainParticipant >::ref_type dp,
+    IDL::traits< ::DDS::DomainParticipant>::ref_type dp,
     const std::string &type,
     const std::shared_ptr<DDS_TypeFactory_i> &factory)
   {
@@ -159,7 +159,7 @@ namespace DDSX11
 
   bool
   DDS_TypeSupport_i::unregister_type (
-    IDL::traits< ::DDS::DomainParticipant >::ref_type dp,
+    IDL::traits< ::DDS::DomainParticipant>::ref_type dp,
     const std::string &type)
   {
     DDSX11_LOG_TRACE ("DDS_TypeSupport_i::unregister_type");
@@ -231,9 +231,9 @@ namespace DDSX11
     return retval;
   }
 
-  IDL::traits< ::DDS::DataWriter >::ref_type
+  IDL::traits< ::DDS::DataWriter>::ref_type
   DDS_TypeSupport_i::create_datawriter (
-    IDL::traits< ::DDS::DomainParticipant >::ref_type dp,
+    IDL::traits< ::DDS::DomainParticipant>::ref_type dp,
     const std::string& type_name,
     DDS_Native::DDS::DataWriter* dw)
   {
@@ -262,9 +262,9 @@ namespace DDSX11
     return nullptr;
   }
 
-  IDL::traits< ::DDS::DataReader >::ref_type
+  IDL::traits< ::DDS::DataReader>::ref_type
   DDS_TypeSupport_i::create_datareader (
-    IDL::traits< ::DDS::DomainParticipant >::ref_type dp,
+    IDL::traits< ::DDS::DomainParticipant>::ref_type dp,
     const std::string& type_name,
     DDS_Native::DDS::DataReader* dr)
   {

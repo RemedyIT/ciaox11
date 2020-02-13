@@ -23,7 +23,7 @@ namespace DDSX11
   public:
     /// Constructor
     DDS_DataReaderListener_proxy (
-      IDL::traits< ::DDS::DataReaderListener >::ref_type p);
+      IDL::traits< ::DDS::DataReaderListener>::ref_type p);
 
     /// Destructor
     virtual ~DDS_DataReaderListener_proxy () = default;
@@ -61,11 +61,11 @@ namespace DDSX11
     on_subscription_matched (DDS_Native::DDS::DataReader* the_reader,
       const DDS_Native::DDS::SubscriptionMatchedStatus& status) override;
 
-    IDL::traits< ::DDS::DataReaderListener >::ref_type
+    IDL::traits< ::DDS::DataReaderListener>::ref_type
     get_datareaderlistener ();
 
   private:
-    IDL::traits< ::DDS::DataReaderListener >::ref_type impl_;
+    IDL::traits< ::DDS::DataReaderListener>::ref_type impl_;
 
     // In order to gain performance (especially for on_data_available), we keep
     // a weak_ref_pointer to the data reader. This pointer will be set the first

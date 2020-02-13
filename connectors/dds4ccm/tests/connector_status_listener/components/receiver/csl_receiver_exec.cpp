@@ -363,7 +363,7 @@ namespace CSL_Test_Receiver_Impl
         return;
       }
 
-      IDL::traits < CommonTestConnector::Reader >::ref_type reader =
+      IDL::traits < CommonTestConnector::Reader>::ref_type reader =
         this->context_->get_connection_info_get_data ();
 
       CommonTestMessageSeq samples;
@@ -600,8 +600,8 @@ namespace CSL_Test_Receiver_Impl
         // topic name of the connector we are connected to
         IDL::traits< ::DDS::Subscriber>::ref_type sub = reader->get_subscriber ();
         IDL::traits< ::DDS::DomainParticipant>::ref_type dp = sub->get_participant ();
-        IDL::traits< ::CORBA::Object >::ref_type cmp = reader->_get_component ();
-        IDL::traits< ::CommonTestConnector::CCM_DDS_Event >::ref_type conn =
+        IDL::traits< ::CORBA::Object>::ref_type cmp = reader->_get_component ();
+        IDL::traits< ::CommonTestConnector::CCM_DDS_Event>::ref_type conn =
           IDL::traits< ::CommonTestConnector::CCM_DDS_Event >::narrow (cmp);
 
         ::DDS::Duration_t timeout (0, 0);

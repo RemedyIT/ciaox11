@@ -28,7 +28,7 @@ namespace Example_BarProvider_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Example_BarProvider_Impl::do_my_bar_exec_i[ctor]
   do_my_bar_exec_i::do_my_bar_exec_i (
-    IDL::traits< ::Example::CCM_BarProvider_Context >::ref_type context)
+    IDL::traits< ::Example::CCM_BarProvider_Context>::ref_type context)
     : context_ (std::move (context))
   {
   }

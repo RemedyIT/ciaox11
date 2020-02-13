@@ -72,7 +72,7 @@ namespace Hello_Sender_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl::foo_port_s_foo_prov_exec_i[ctor]
   foo_port_s_foo_prov_exec_i::foo_port_s_foo_prov_exec_i (
-    IDL::traits< ::Hello::CCM_Sender_Context >::ref_type context)
+    IDL::traits< ::Hello::CCM_Sender_Context>::ref_type context)
     : context_ (std::move (context))
   {
   }

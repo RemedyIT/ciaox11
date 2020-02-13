@@ -27,7 +27,7 @@ namespace subscriber_comp_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::info_out_data_listener_exec_i[ctor]
   info_out_data_listener_exec_i::info_out_data_listener_exec_i (
-    IDL::traits< CCM_subscriber_comp_Context >::ref_type context)
+    IDL::traits< CCM_subscriber_comp_Context>::ref_type context)
     : context_ (std::move (context))
   {
   }
@@ -80,7 +80,7 @@ namespace subscriber_comp_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::info_out_status_exec_i[ctor]
   info_out_status_exec_i::info_out_status_exec_i (
-    IDL::traits< CCM_subscriber_comp_Context >::ref_type context)
+    IDL::traits< CCM_subscriber_comp_Context>::ref_type context)
     : context_ (std::move (context))
   {
   }
@@ -133,7 +133,7 @@ namespace subscriber_comp_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::info_read_status_exec_i[ctor]
   info_read_status_exec_i::info_read_status_exec_i (
-    IDL::traits< CCM_subscriber_comp_Context >::ref_type context)
+    IDL::traits< CCM_subscriber_comp_Context>::ref_type context)
     : context_ (std::move (context))
   {
   }
@@ -186,7 +186,7 @@ namespace subscriber_comp_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::info_get_status_exec_i[ctor]
   info_get_status_exec_i::info_get_status_exec_i (
-    IDL::traits< CCM_subscriber_comp_Context >::ref_type context)
+    IDL::traits< CCM_subscriber_comp_Context>::ref_type context)
     : context_ (std::move (context))
   {
   }
@@ -239,7 +239,7 @@ namespace subscriber_comp_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::info_state_data_listener_exec_i[ctor]
   info_state_data_listener_exec_i::info_state_data_listener_exec_i (
-    IDL::traits< CCM_subscriber_comp_Context >::ref_type context)
+    IDL::traits< CCM_subscriber_comp_Context>::ref_type context)
     : context_ (std::move (context))
   {
   }
@@ -314,7 +314,7 @@ namespace subscriber_comp_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::info_state_status_exec_i[ctor]
   info_state_status_exec_i::info_state_status_exec_i (
-    IDL::traits< CCM_subscriber_comp_Context >::ref_type context)
+    IDL::traits< CCM_subscriber_comp_Context>::ref_type context)
     : context_ (std::move (context))
   {
   }

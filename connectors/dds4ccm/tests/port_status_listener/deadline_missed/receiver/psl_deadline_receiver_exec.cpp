@@ -265,7 +265,7 @@ namespace PSL_DeadlineTest_Receiver_Impl
   void
   Receiver_exec_i::tick ()
   {
-    IDL::traits< ::CommonTestConnector::Reader >::ref_type reader =
+    IDL::traits< ::CommonTestConnector::Reader>::ref_type reader =
       this->context_->get_connection_info_out_data ();
     if (!reader)
     {

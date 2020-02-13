@@ -202,7 +202,7 @@ namespace IDL_Conversion_Test_Sender_Impl
   void
   Sender_exec_i::check_status ()
   {
-    IDL::traits< ::DDS::DataWriter >::ref_type writer_dds_entity =
+    IDL::traits< ::DDS::DataWriter>::ref_type writer_dds_entity =
       this->context_->get_connection_info_write_dds_entity ();
     if (writer_dds_entity)
     {
@@ -446,7 +446,7 @@ namespace IDL_Conversion_Test_Sender_Impl
           key,
           this->last_iteration_);
 
-      IDL::traits < Example::IDLConversionTestConnector::Writer >::ref_type writer =
+      IDL::traits < Example::IDLConversionTestConnector::Writer>::ref_type writer =
         this->context_->get_connection_info_write_data ();
 
       writer->write_one (msg, ::DDS::HANDLE_NIL);

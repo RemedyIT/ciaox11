@@ -219,7 +219,7 @@ namespace QA_State_Listen_Test_Receiver_Impl
     if (this->created_ == keys ())
     {
       // sender may continue.
-      IDL::traits< WriterStarter >::ref_type starter =
+      IDL::traits< WriterStarter>::ref_type starter =
         this->context_->get_connection_writer_start ();
       starter->start_write ();
     }
@@ -359,9 +359,9 @@ namespace QA_State_Listen_Test_Receiver_Impl
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : QA_State_Listen_Test_Receiver_Impl::Receiver_exec_i[ccm_activate]
     // First set the queries
-    IDL::traits< CommonTestConnector::Reader >::ref_type reader_1 =
+    IDL::traits< CommonTestConnector::Reader>::ref_type reader_1 =
       this->context_->get_connection_listen_port_1_data ();
-    IDL::traits< CommonTestConnector::Reader >::ref_type reader_2 =
+    IDL::traits< CommonTestConnector::Reader>::ref_type reader_2 =
       this->context_->get_connection_listen_port_2_data ();
 
     ::DDS::StringSeq params (2);
@@ -372,7 +372,7 @@ namespace QA_State_Listen_Test_Receiver_Impl
     reader_2->query (CCM_DDS::QueryFilter (QUERY_LISTENER_II, params));
 
     // Start the listeners
-    IDL::traits< ::CCM_DDS::DataListenerControl >::ref_type lc_1 =
+    IDL::traits< ::CCM_DDS::DataListenerControl>::ref_type lc_1 =
       this->context_->get_connection_listen_port_1_data_control ();
 
     if (!lc_1)
@@ -383,7 +383,7 @@ namespace QA_State_Listen_Test_Receiver_Impl
     }
     lc_1->mode (::CCM_DDS::ListenerMode::ONE_BY_ONE);
 
-    IDL::traits< ::CCM_DDS::DataListenerControl >::ref_type lc_2 =
+    IDL::traits< ::CCM_DDS::DataListenerControl>::ref_type lc_2 =
       this->context_->get_connection_listen_port_2_data_control ();
 
     if (!lc_2)

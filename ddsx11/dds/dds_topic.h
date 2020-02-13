@@ -44,10 +44,10 @@ namespace DDSX11
 
     virtual ::DDS::ReturnCode_t
     set_listener (
-      IDL::traits< ::DDS::TopicListener >::ref_type a_listener,
+      IDL::traits< ::DDS::TopicListener>::ref_type a_listener,
       ::DDS::StatusMask mask) override;
 
-    virtual IDL::traits< ::DDS::TopicListener >::ref_type
+    virtual IDL::traits< ::DDS::TopicListener>::ref_type
     get_listener () override;
 
     virtual ::DDS::ReturnCode_t
@@ -57,7 +57,7 @@ namespace DDSX11
     virtual ::DDS::ReturnCode_t
     enable () override;
 
-    virtual IDL::traits< ::DDS::StatusCondition >::ref_type
+    virtual IDL::traits< ::DDS::StatusCondition>::ref_type
     get_statuscondition () override;
 
     virtual ::DDS::StatusMask
@@ -72,7 +72,7 @@ namespace DDSX11
     virtual std::string
     get_name () override;
 
-    virtual IDL::traits< ::DDS::DomainParticipant >::ref_type
+    virtual IDL::traits< ::DDS::DomainParticipant>::ref_type
     get_participant () override;
 
   private:

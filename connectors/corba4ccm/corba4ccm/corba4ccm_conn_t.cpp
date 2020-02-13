@@ -46,12 +46,12 @@ namespace CCM_CORBA
   }
 
   template <typename BASE, typename CONTEXT, typename INTERFACE_TYPE, typename FACET, typename SVNT, typename SVNT_IMPL>
-  typename IDL::traits< INTERFACE_TYPE >::ref_type
+  typename IDL::traits< INTERFACE_TYPE>::ref_type
   CORBA_Connector_T<BASE, CONTEXT, INTERFACE_TYPE, FACET, SVNT, SVNT_IMPL>::get_srr_facet ()
   {
     if (!this->srr_facet_)
     {
-      this->srr_facet_ = CORBA::make_reference < FACET > (this->context_);
+      this->srr_facet_ = CORBA::make_reference <FACET> (this->context_);
     }
     return this->srr_facet_;
   }
@@ -61,13 +61,13 @@ namespace CCM_CORBA
   CORBA_Connector_T<BASE, CONTEXT, INTERFACE_TYPE, FACET, SVNT, SVNT_IMPL>::set_session_context (
     IDL::traits<Components::SessionContext>::ref_type ctx)
   {
-    this->context_ = IDL::traits< CONTEXT >::narrow (std::move(ctx));
+    this->context_ = IDL::traits<CONTEXT>::narrow (std::move(ctx));
 
     IDL::traits<PortableServer::POA>::ref_type poa = CCM_CORBA::get_corba4ccm_POA (this->context_);
 
     // Create the CORBA servant for the SRR facet
-    typename CORBA::servant_traits< SVNT >::ref_type facet_servant_reference =
-      CORBA::make_reference < SVNT_IMPL > (this->get_srr_facet ());
+    typename CORBA::servant_traits<SVNT>::ref_type facet_servant_reference =
+      CORBA::make_reference <SVNT_IMPL> (this->get_srr_facet ());
 
     CCM_CORBA::activate_corba4ccm_facet (poa, std::move(facet_servant_reference), this->context_->instance_id (), sync_request_reply_facet);
 

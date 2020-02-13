@@ -68,7 +68,7 @@ namespace Uni_Sender_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Uni_Sender_Impl::connector_status_exec_i[ctor]
   connector_status_exec_i::connector_status_exec_i (
-    IDL::traits< ::Uni::CCM_Sender_Context >::ref_type context,
+    IDL::traits< ::Uni::CCM_Sender_Context>::ref_type context,
     IDL::traits< Uni::CCM_Sender>::weak_ref_type component_executor)
     : context_ (std::move (context))
     , component_executor_ (std::move(component_executor))
@@ -201,7 +201,7 @@ namespace Uni_Sender_Impl
   void
   Sender_exec_i::check_status ()
   {
-    IDL::traits< ::DDS::DataWriter >::ref_type writer_dds_entity =
+    IDL::traits< ::DDS::DataWriter>::ref_type writer_dds_entity =
       this->context_->get_connection_info_write_dds_entity ();
     if (writer_dds_entity)
     {
@@ -251,7 +251,7 @@ namespace Uni_Sender_Impl
   {
     try
     {
-      IDL::traits < Uni::TopUnionConnector::Writer >::ref_type writer =
+      IDL::traits < Uni::TopUnionConnector::Writer>::ref_type writer =
         this->context_->get_connection_info_write_data ();
 
       switch (this->last_assignment_)

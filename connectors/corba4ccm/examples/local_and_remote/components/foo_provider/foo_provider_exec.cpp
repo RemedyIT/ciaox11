@@ -28,7 +28,7 @@ namespace Example_FooProvider_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Example_FooProvider_Impl::do_my_foo_exec_i[ctor]
   do_my_foo_exec_i::do_my_foo_exec_i (
-    IDL::traits< ::Example::CCM_FooProvider_Context >::ref_type context)
+    IDL::traits< ::Example::CCM_FooProvider_Context>::ref_type context)
     : context_ (std::move (context))
   {
   }

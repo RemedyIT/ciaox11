@@ -93,7 +93,7 @@ namespace Hello_Sender_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl::connector_status_exec_i[ctor]
   connector_status_exec_i::connector_status_exec_i (
-    IDL::traits< ::Hello::CCM_Sender_Context >::ref_type context)
+    IDL::traits< ::Hello::CCM_Sender_Context>::ref_type context)
     : context_ (std::move (context))
   {
   }

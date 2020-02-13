@@ -257,7 +257,7 @@ namespace Filters_Common_State_Listen_Test_Sender_Impl
   void
   Sender_exec_i::check_status ()
   {
-    IDL::traits< ::DDS::DataWriter >::ref_type writer_dds_entity =
+    IDL::traits< ::DDS::DataWriter>::ref_type writer_dds_entity =
       this->context_->get_connection_info_update_dds_entity ();
     if (writer_dds_entity)
     {
@@ -301,7 +301,7 @@ namespace Filters_Common_State_Listen_Test_Sender_Impl
       try
       {
         // First create the samples in DDS.
-        IDL::traits< CommonTestConnector::Updater >::ref_type updater =
+        IDL::traits< CommonTestConnector::Updater>::ref_type updater =
           this->context_->get_connection_info_update_data ();
         updater->create_many (this->samples_);
         DDS4CCM_TEST_DEBUG << "start_writing_exec_i::start_publishing - "
@@ -328,7 +328,7 @@ namespace Filters_Common_State_Listen_Test_Sender_Impl
   void
   Sender_exec_i::tick ()
   {
-    IDL::traits< CommonTestConnector::Updater >::ref_type updater =
+    IDL::traits< CommonTestConnector::Updater>::ref_type updater =
       this->context_->get_connection_info_update_data ();
     try
     {
@@ -392,7 +392,7 @@ namespace Filters_Common_State_Listen_Test_Sender_Impl
       // to remove the samples a second time.
 
       // Now remove the samples from DDS
-      IDL::traits< CommonTestConnector::Updater >::ref_type updater =
+      IDL::traits< CommonTestConnector::Updater>::ref_type updater =
         this->context_->get_connection_info_update_data ();
       try
       {

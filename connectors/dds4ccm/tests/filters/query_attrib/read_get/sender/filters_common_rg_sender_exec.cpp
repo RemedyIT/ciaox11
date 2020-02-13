@@ -217,7 +217,7 @@ namespace Filters_Common_Read_Get_Test_Sender_Impl
   {
     if (!this->publication_matched_)
     {
-      IDL::traits< ::DDS::DataWriter >::ref_type writer_dds_entity =
+      IDL::traits< ::DDS::DataWriter>::ref_type writer_dds_entity =
         this->context_->get_connection_info_write_dds_entity ();
       if (writer_dds_entity)
       {
@@ -264,7 +264,7 @@ namespace Filters_Common_Read_Get_Test_Sender_Impl
   Sender_exec_i::notify ()
   {
     DDS4CCM_TEST_DEBUG << "Sender_exec_i::notify - " << std::endl;
-    IDL::traits< CommonTestConnector::Writer >::ref_type writer =
+    IDL::traits< CommonTestConnector::Writer>::ref_type writer =
       this->context_->get_connection_info_write_data ();
 
     CommonTestMessageSeq msgs;
@@ -287,7 +287,7 @@ namespace Filters_Common_Read_Get_Test_Sender_Impl
     this->written_ += msgs.size ();
 
     // Let the receiver know that the samples were written
-    IDL::traits< ReaderStarter >::ref_type starter =
+    IDL::traits< ReaderStarter>::ref_type starter =
       this->context_->get_connection_reader_start ();
     starter->start_read ();
   }

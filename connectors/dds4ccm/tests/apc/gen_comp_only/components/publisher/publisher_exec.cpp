@@ -28,7 +28,7 @@ namespace publisher_comp_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : publisher_comp_Impl::connector_status_ShapeType_exec_i[ctor]
   connector_status_ShapeType_exec_i::connector_status_ShapeType_exec_i (
-    IDL::traits< CCM_publisher_comp_Context >::ref_type context)
+    IDL::traits< CCM_publisher_comp_Context>::ref_type context)
     : context_ (std::move (context))
   {
   }

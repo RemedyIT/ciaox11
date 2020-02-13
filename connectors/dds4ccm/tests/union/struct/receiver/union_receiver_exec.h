@@ -44,7 +44,7 @@ namespace Uni_Receiver_Impl
     /// Constructor
     /// @param[in] context Component context
     info_out_data_listener_exec_i (
-        IDL::traits< ::Uni::CCM_Receiver_Context >::ref_type context);
+        IDL::traits< ::Uni::CCM_Receiver_Context>::ref_type context);
     //@@{__RIDL_REGEN_MARKER__} - END : Uni_Receiver_Impl::info_out_data_listener_exec_i[ctor]
 
     /// Destructor
@@ -108,7 +108,7 @@ namespace Uni_Receiver_Impl
     /// Constructor
     /// @param[in] context Component context
     info_out_status_exec_i (
-        IDL::traits< ::Uni::CCM_Receiver_Context >::ref_type context);
+        IDL::traits< ::Uni::CCM_Receiver_Context>::ref_type context);
     //@@{__RIDL_REGEN_MARKER__} - END : Uni_Receiver_Impl::info_out_status_exec_i[ctor]
 
     /// Destructor

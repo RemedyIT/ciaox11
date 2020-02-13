@@ -20,7 +20,7 @@ namespace DDSX11
   namespace NDDS_PROXY
   {
     NDDS_PublisherListener_proxy::NDDS_PublisherListener_proxy (
-        IDL::traits< ::DDS::PublisherListener >::ref_type p)
+        IDL::traits< ::DDS::PublisherListener>::ref_type p)
       : DDS_PublisherListener_proxy (std::move(p))
     {
     }

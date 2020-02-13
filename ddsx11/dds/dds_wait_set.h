@@ -53,7 +53,7 @@ namespace DDSX11
       */
     virtual ::DDS::ReturnCode_t
     attach_condition (
-      IDL::traits< ::DDS::Condition >::ref_type cond) override;
+      IDL::traits< ::DDS::Condition>::ref_type cond) override;
 
     /**
       * Detaches a condition from the waitset. 'wait' won't be waiting
@@ -61,7 +61,7 @@ namespace DDSX11
       */
     virtual ::DDS::ReturnCode_t
     detach_condition (
-      IDL::traits< ::DDS::Condition >::ref_type cond) override;
+      IDL::traits< ::DDS::Condition>::ref_type cond) override;
 
     /**
       * Retrieves a list of attached conditions.

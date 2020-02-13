@@ -41,7 +41,7 @@ namespace DDSX11
 
     virtual std::string get_name () override;
 
-    virtual IDL::traits< ::DDS::DomainParticipant >::ref_type
+    virtual IDL::traits< ::DDS::DomainParticipant>::ref_type
     get_participant () override;
 
   private:

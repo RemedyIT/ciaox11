@@ -222,7 +222,7 @@ namespace FA_State_Listen_Test_Receiver_Impl
     if (this->created_ == keys ())
     {
       // sender may continue.
-      IDL::traits< WriterStarter >::ref_type starter =
+      IDL::traits< WriterStarter>::ref_type starter =
         this->context_->get_connection_writer_start ();
       starter->start_write ();
     }
@@ -351,20 +351,20 @@ namespace FA_State_Listen_Test_Receiver_Impl
     uint16_t listener_port,
     std::string const &current_query,
     std::string const &new_query,
-    IDL::traits< CCM_DDS::DataListenerControl >::ref_type ldc)
+    IDL::traits< CCM_DDS::DataListenerControl>::ref_type ldc)
   {
     std::string const test ("Receiver_exec_i::test_non_changeable (" +
       std::to_string (listener_port) + ")");
     try
     {
-      IDL::traits< ::CORBA::Object >::ref_type cmp = ldc->_get_component ();
+      IDL::traits< ::CORBA::Object>::ref_type cmp = ldc->_get_component ();
       if (!cmp)
       {
         DDS4CCM_TEST_ERROR << "ERROR: " << test << " - "
          << "ERROR: Unable to get component interface." << std::endl;
         return;
       }
-      IDL::traits< ::CommonTestConnector::CCM_DDS_State >::ref_type conn =
+      IDL::traits< ::CommonTestConnector::CCM_DDS_State>::ref_type conn =
         IDL::traits< ::CommonTestConnector::CCM_DDS_State >::narrow (cmp);
       if (!conn)
       {
@@ -413,7 +413,7 @@ namespace FA_State_Listen_Test_Receiver_Impl
   void
   Receiver_exec_i::test_internal_error (
     uint16_t listener_port,
-    IDL::traits< CCM_DDS::ContentFilterSetting >::ref_type cft)
+    IDL::traits< CCM_DDS::ContentFilterSetting>::ref_type cft)
   {
     std::string const test ("Receiver_exec_i::test_internal_error (" +
       std::to_string (listener_port) + ")");
@@ -466,7 +466,7 @@ namespace FA_State_Listen_Test_Receiver_Impl
     this->test_internal_errors ();
 
     // Start the listeners
-    IDL::traits< ::CCM_DDS::DataListenerControl >::ref_type lc_1 =
+    IDL::traits< ::CCM_DDS::DataListenerControl>::ref_type lc_1 =
       this->context_->get_connection_listen_port_1_data_control ();
 
     if (!lc_1)
@@ -477,7 +477,7 @@ namespace FA_State_Listen_Test_Receiver_Impl
     }
     lc_1->mode (::CCM_DDS::ListenerMode::ONE_BY_ONE);
 
-    IDL::traits< ::CCM_DDS::DataListenerControl >::ref_type lc_2 =
+    IDL::traits< ::CCM_DDS::DataListenerControl>::ref_type lc_2 =
       this->context_->get_connection_listen_port_2_data_control ();
 
     if (!lc_2)

@@ -170,7 +170,7 @@ namespace Hello_Receiver_comp_Impl
   }
 
 
-  IDL::traits< ::Hello::CCM_MyFoo_obj >::ref_type
+  IDL::traits< ::Hello::CCM_MyFoo_obj>::ref_type
   Receiver_comp_exec_i::get_do_my_foo ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_comp_Impl::Receiver_comp_exec_i[get_do_my_foo]

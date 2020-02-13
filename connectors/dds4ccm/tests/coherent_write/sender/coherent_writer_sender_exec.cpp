@@ -215,7 +215,7 @@ namespace CoherentWriter_Sender_Impl
   {
     if (!this->publication_matched_)
     {
-      IDL::traits< ::DDS::DataWriter >::ref_type writer_dds_entity =
+      IDL::traits< ::DDS::DataWriter>::ref_type writer_dds_entity =
         this->context_->get_connection_info_write_dds_entity ();
       if (writer_dds_entity)
       {
@@ -255,7 +255,7 @@ namespace CoherentWriter_Sender_Impl
     try
     {
       ++this->run_;
-      IDL::traits < ReaderStarter >::ref_type starter =
+      IDL::traits < ReaderStarter>::ref_type starter =
         this->context_->get_connection_reader_start ();
 
       starter->set_reader_properties (1, this->iterations ());
@@ -270,14 +270,14 @@ namespace CoherentWriter_Sender_Impl
 
       if (this->act_as_updater ())
       {
-        IDL::traits < CommonTestConnector::Updater >::ref_type updater =
+        IDL::traits < CommonTestConnector::Updater>::ref_type updater =
           this->context_->get_connection_info_update_data ();
         updater->is_coherent_write (true);
         updater->update_many (messages);
       }
       else
       {
-        IDL::traits < ::CommonTestConnector::Writer >::ref_type writer =
+        IDL::traits < ::CommonTestConnector::Writer>::ref_type writer =
           this->context_->get_connection_info_write_data ();
         writer->is_coherent_write (true);
         writer->write_many (messages);
@@ -307,7 +307,7 @@ namespace CoherentWriter_Sender_Impl
 
     if (this->act_as_updater ())
     {
-      IDL::traits< CommonTestConnector::Updater >::ref_type updater =
+      IDL::traits< CommonTestConnector::Updater>::ref_type updater =
         this->context_->get_connection_info_update_data ();
       updater->is_coherent_write (true);
 

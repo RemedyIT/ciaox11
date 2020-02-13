@@ -47,7 +47,7 @@ namespace DDSX11
     set_enabled_statuses (
       ::DDS::StatusMask mask) override;
 
-    virtual IDL::traits< ::DDS::Entity >::ref_type
+    virtual IDL::traits< ::DDS::Entity>::ref_type
     get_entity () override;
 
   private:

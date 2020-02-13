@@ -31,10 +31,10 @@ namespace DDSX11
     {
     }
 
-    IDL::traits< ::DDS::Publisher >::ref_type
+    IDL::traits< ::DDS::Publisher>::ref_type
     NDDS_DomainParticipant_proxy::create_publisher_with_profile (
       const std::string &qos_profile,
-      IDL::traits< ::DDS::PublisherListener >::ref_type a_listener,
+      IDL::traits< ::DDS::PublisherListener>::ref_type a_listener,
       ::DDS::StatusMask mask)
     {
       DDSX11_LOG_TRACE ("NDDS_DomainParticipant_proxy::create_publisher_with_profile");
@@ -77,7 +77,7 @@ namespace DDSX11
       // of scope.
       dds_proxy_pl.release ();
 
-      IDL::traits< ::DDS::Publisher >::ref_type publisher =
+      IDL::traits< ::DDS::Publisher>::ref_type publisher =
         DDSX11::VendorUtils::create_publisher_proxy (native_pub);
 
       if (publisher)
@@ -97,10 +97,10 @@ namespace DDSX11
     }
 
 
-    IDL::traits< ::DDS::Subscriber >::ref_type
+    IDL::traits< ::DDS::Subscriber>::ref_type
     NDDS_DomainParticipant_proxy::create_subscriber_with_profile (
       const std::string &qos_profile,
-      IDL::traits< ::DDS::SubscriberListener >::ref_type a_listener,
+      IDL::traits< ::DDS::SubscriberListener>::ref_type a_listener,
       ::DDS::StatusMask mask)
     {
       DDSX11_LOG_TRACE ("NDDS_DomainParticipant_proxy::create_subscriber_with_profile");
@@ -140,7 +140,7 @@ namespace DDSX11
       // of scope.
       dds_proxy_sl.release ();
 
-      IDL::traits< ::DDS::Subscriber >::ref_type subscriber =
+      IDL::traits< ::DDS::Subscriber>::ref_type subscriber =
         DDSX11::VendorUtils::create_subscriber_proxy (native_sub);
 
       if (subscriber)
@@ -161,12 +161,12 @@ namespace DDSX11
     }
 
 
-    IDL::traits< ::DDS::Topic >::ref_type
+    IDL::traits< ::DDS::Topic>::ref_type
     NDDS_DomainParticipant_proxy::create_topic_with_profile (
       const std::string &impl_name,
       const std::string &type_name,
       const std::string &qos_profile,
-      IDL::traits< ::DDS::TopicListener >::ref_type a_listener,
+      IDL::traits< ::DDS::TopicListener>::ref_type a_listener,
       ::DDS::StatusMask mask)
     {
       DDSX11_LOG_TRACE ("NDDS_DomainParticipant_proxy::create_topic_with_profile");
@@ -225,7 +225,7 @@ namespace DDSX11
       // of scope.
       ccm_dds_tl.release ();
 
-      IDL::traits< ::DDS::Topic >::ref_type retval =
+      IDL::traits< ::DDS::Topic>::ref_type retval =
         TAOX11_CORBA::make_reference<DDSX11::DDS_Topic_proxy>(dds_tp);
       DDS_ProxyEntityManager::register_topic_proxy (retval);
       if (retval)

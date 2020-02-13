@@ -26,7 +26,7 @@ namespace CCM_CORBA
     //@{
     /// Factory method and getter for the srr_facet facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual typename IDL::traits< INTERFACE_TYPE >::ref_type
+    virtual typename IDL::traits< INTERFACE_TYPE>::ref_type
     get_srr_facet () override;
     //@}
 
@@ -60,11 +60,11 @@ namespace CCM_CORBA
 
   protected:
     /// Context for component instance.
-    typename IDL::traits< CONTEXT >::ref_type context_ {};
+    typename IDL::traits< CONTEXT>::ref_type context_ {};
 
     /** @name Component facets. */
     //@{
-    typename IDL::traits< INTERFACE_TYPE >::ref_type srr_facet_ {};
+    typename IDL::traits< INTERFACE_TYPE>::ref_type srr_facet_ {};
     //@}
 
   private:

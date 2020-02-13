@@ -28,7 +28,7 @@ namespace Data_Sender_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Data_Sender_Impl::connector_status_exec_i[ctor]
   connector_status_exec_i::connector_status_exec_i (
-    IDL::traits< ::Data::CCM_Sender_Context >::ref_type context)
+    IDL::traits< ::Data::CCM_Sender_Context>::ref_type context)
     : context_ (std::move (context))
   {
   }

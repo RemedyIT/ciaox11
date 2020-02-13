@@ -211,7 +211,7 @@ namespace Example_BasicPublisher_comp_Impl
   {
     try
     {
-      IDL::traits< Example::CA1_conn::Writer >::ref_type writer =
+      IDL::traits< Example::CA1_conn::Writer>::ref_type writer =
         this->context_->get_connection_CA1DataPub_data ();
 
       if (this->count () == this->counter_)
@@ -268,7 +268,7 @@ namespace Example_BasicPublisher_comp_Impl
   {
     if (!this->publication_matched_)
     {
-      IDL::traits< ::DDS::DataWriter >::ref_type writer_dds_entity =
+      IDL::traits< ::DDS::DataWriter>::ref_type writer_dds_entity =
         this->context_->get_connection_CA1DataPub_dds_entity ();
       if (writer_dds_entity)
       {

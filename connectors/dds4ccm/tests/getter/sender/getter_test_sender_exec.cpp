@@ -218,7 +218,7 @@ namespace Getter_Test_Sender_Impl
     DDS4CCM_TEST_DEBUG << "Sender_exec_i::check_status " << std::endl;
     try
     {
-      IDL::traits< ::DDS::DataWriter >::ref_type writer_dds_entity =
+      IDL::traits< ::DDS::DataWriter>::ref_type writer_dds_entity =
         this->context_->get_connection_info_write_dds_entity ();
       if (writer_dds_entity)
       {
@@ -278,9 +278,9 @@ namespace Getter_Test_Sender_Impl
   Sender_exec_i::tick ()
   {
 
-    IDL::traits< CommonTestConnector::Writer >::ref_type writer =
+    IDL::traits< CommonTestConnector::Writer>::ref_type writer =
       this->context_->get_connection_info_write_data ();
-    IDL::traits< GetInvoker >::ref_type invoker =
+    IDL::traits< GetInvoker>::ref_type invoker =
       this->context_->get_connection_invoke_getter ();
 
     if (this->last_iter_ <= this->iterations_)
@@ -313,7 +313,7 @@ namespace Getter_Test_Sender_Impl
   Sender_exec_i::start_timeout_tests ()
   {
     DDS4CCM_TEST_DEBUG << "Sender_exec_i::start_time_out_tests" << std::endl;
-    IDL::traits< GetInvoker >::ref_type invoker =
+    IDL::traits< GetInvoker>::ref_type invoker =
       this->context_->get_connection_invoke_getter ();
 
     invoker->start_timeout_get_one ();
@@ -324,9 +324,9 @@ namespace Getter_Test_Sender_Impl
   Sender_exec_i::write_many ()
   {
     DDS4CCM_TEST_DEBUG << "Sender_exec_i::write_many" << std::endl;
-    IDL::traits< CommonTestConnector::Writer >::ref_type writer =
+    IDL::traits< CommonTestConnector::Writer>::ref_type writer =
       this->context_->get_connection_info_write_data ();
-    IDL::traits< GetInvoker >::ref_type invoker =
+    IDL::traits< GetInvoker>::ref_type invoker =
       this->context_->get_connection_invoke_getter ();
 
     // Prepare the samples.

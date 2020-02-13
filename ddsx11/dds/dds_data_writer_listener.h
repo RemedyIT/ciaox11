@@ -23,7 +23,7 @@ namespace DDSX11
   public:
     /// Constructor
     DDS_DataWriterListener_proxy (
-      IDL::traits< ::DDS::DataWriterListener >::ref_type p);
+      IDL::traits< ::DDS::DataWriterListener>::ref_type p);
 
     /// Destructor
     virtual ~DDS_DataWriterListener_proxy () = default;
@@ -44,11 +44,11 @@ namespace DDSX11
       DDS_Native::DDS::DataWriter *the_writer,
       const DDS_Native::DDS::PublicationMatchedStatus & status) override;
 
-    IDL::traits< ::DDS::DataWriterListener >::ref_type
+    IDL::traits< ::DDS::DataWriterListener>::ref_type
     get_datawriterlistener ();
 
   private:
-    IDL::traits< ::DDS::DataWriterListener >::ref_type impl_;
+    IDL::traits< ::DDS::DataWriterListener>::ref_type impl_;
 
     // In order to gain performance, we keep a weak_ref_pointer to the data
     // writer. This pointer will be set the first time a callback from DDS
@@ -57,7 +57,7 @@ namespace DDSX11
     // in the ProxyEntityManager each time a callback is called.
     IDL::traits< ::DDS::DataWriter >::weak_ref_type dw_ {};
 
-    IDL::traits< ::DDS::DataWriter >::ref_type
+    IDL::traits< ::DDS::DataWriter>::ref_type
     get_datawriter (DDS_Native::DDS::DataWriter *the_writer);
 
     DDS_DataWriterListener_proxy() = delete;

@@ -539,7 +539,7 @@ namespace QA_Read_Get_Test_Receiver_Impl
   void Receiver_exec_i::ccm_activate ()
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : QA_Read_Get_Test_Receiver_Impl::Receiver_exec_i[ccm_activate]
-    IDL::traits< ::CommonTestConnector::Getter >::ref_type getter =
+    IDL::traits< ::CommonTestConnector::Getter>::ref_type getter =
       this->context_->get_connection_get_port_fresh_data ();
     getter->time_out (DDS::Duration_t (2, 0));
 

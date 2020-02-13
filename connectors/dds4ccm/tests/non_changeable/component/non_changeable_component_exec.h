@@ -163,10 +163,10 @@ namespace NonChangeableComponent_Impl
     /** @name User defined private operations. */
     //@{
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : NonChangeableComponent_Impl::NonChangeableComponent_exec_i[user_private_ops]
-    bool test_qos_profile (IDL::traits< ::CommonTestConnector::CCM_DDS_Event >::ref_type conn);
-    bool test_filter (IDL::traits< ::CommonTestConnector::CCM_DDS_Event >::ref_type conn);
-    bool test_domain_id (IDL::traits< ::CommonTestConnector::CCM_DDS_Event >::ref_type conn);
-    bool test_topic_name (IDL::traits< ::CommonTestConnector::CCM_DDS_Event >::ref_type conn);
+    bool test_qos_profile (IDL::traits< ::CommonTestConnector::CCM_DDS_Event>::ref_type conn);
+    bool test_filter (IDL::traits< ::CommonTestConnector::CCM_DDS_Event>::ref_type conn);
+    bool test_domain_id (IDL::traits< ::CommonTestConnector::CCM_DDS_Event>::ref_type conn);
+    bool test_topic_name (IDL::traits< ::CommonTestConnector::CCM_DDS_Event>::ref_type conn);
     //@@{__RIDL_REGEN_MARKER__} - END : NonChangeableComponent_Impl::NonChangeableComponent_exec_i[user_private_ops]
     //@}
 

@@ -55,13 +55,13 @@ namespace DDSX11
 
   ::DDS::ReturnCode_t
   DDS_WaitSet_proxy::attach_condition (
-    IDL::traits< ::DDS::Condition >::ref_type cond)
+    IDL::traits< ::DDS::Condition>::ref_type cond)
   {
     DDSX11_LOG_TRACE ("DDS_WaitSet_proxy::attach_condition");
 
-    IDL::traits< ::DDS::ReadCondition >::ref_type rc_cond =
+    IDL::traits< ::DDS::ReadCondition>::ref_type rc_cond =
       IDL::traits< ::DDS::ReadCondition >::narrow (cond);
-    IDL::traits< ::DDS::QueryCondition >::ref_type qc_cond =
+    IDL::traits< ::DDS::QueryCondition>::ref_type qc_cond =
       IDL::traits< ::DDS::QueryCondition>::narrow (cond);
 
     if (qc_cond)
@@ -81,13 +81,13 @@ namespace DDSX11
 
   ::DDS::ReturnCode_t
   DDS_WaitSet_proxy::detach_condition (
-    IDL::traits< ::DDS::Condition >::ref_type cond)
+    IDL::traits< ::DDS::Condition>::ref_type cond)
   {
     DDSX11_LOG_TRACE ("DDS_WaitSet_proxy::detach_condition");
 
-    IDL::traits< ::DDS::ReadCondition >::ref_type rc_cond =
+    IDL::traits< ::DDS::ReadCondition>::ref_type rc_cond =
       IDL::traits< ::DDS::ReadCondition >::narrow (cond);
-    IDL::traits< ::DDS::QueryCondition >::ref_type qc_cond =
+    IDL::traits< ::DDS::QueryCondition>::ref_type qc_cond =
       IDL::traits< ::DDS::QueryCondition>::narrow (cond);
 
     if (qc_cond)

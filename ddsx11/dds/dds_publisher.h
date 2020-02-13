@@ -36,18 +36,18 @@ namespace DDSX11
     /// Destructor
     virtual ~DDS_Publisher_proxy () = default;
 
-    virtual IDL::traits< ::DDS::DataWriter >::ref_type
+    virtual IDL::traits< ::DDS::DataWriter>::ref_type
     create_datawriter (
-      IDL::traits< ::DDS::Topic >::ref_type a_topic,
+      IDL::traits< ::DDS::Topic>::ref_type a_topic,
       const ::DDS::DataWriterQos & qos,
-      IDL::traits< ::DDS::DataWriterListener >::ref_type a_listener,
+      IDL::traits< ::DDS::DataWriterListener>::ref_type a_listener,
       ::DDS::StatusMask mask) override;
 
     virtual ::DDS::ReturnCode_t
     delete_datawriter (
-      IDL::traits< ::DDS::DataWriter >::ref_type a_datawriter) override;
+      IDL::traits< ::DDS::DataWriter>::ref_type a_datawriter) override;
 
-    virtual IDL::traits< ::DDS::DataWriter >::ref_type
+    virtual IDL::traits< ::DDS::DataWriter>::ref_type
     lookup_datawriter (
       const std::string &impl_name) override;
 
@@ -64,10 +64,10 @@ namespace DDSX11
 
     virtual ::DDS::ReturnCode_t
     set_listener (
-      IDL::traits< ::DDS::PublisherListener >::ref_type a_listener,
+      IDL::traits< ::DDS::PublisherListener>::ref_type a_listener,
       ::DDS::StatusMask mask) override;
 
-    virtual IDL::traits< ::DDS::PublisherListener >::ref_type
+    virtual IDL::traits< ::DDS::PublisherListener>::ref_type
     get_listener () override;
 
     virtual ::DDS::ReturnCode_t
@@ -86,7 +86,7 @@ namespace DDSX11
     wait_for_acknowledgments (
       const ::DDS::Duration_t & max_wait) override;
 
-    virtual IDL::traits< ::DDS::DomainParticipant >::ref_type
+    virtual IDL::traits< ::DDS::DomainParticipant>::ref_type
     get_participant () override;
 
     virtual ::DDS::ReturnCode_t
@@ -105,7 +105,7 @@ namespace DDSX11
     virtual ::DDS::ReturnCode_t
     enable () override;
 
-    virtual IDL::traits< ::DDS::StatusCondition >::ref_type
+    virtual IDL::traits< ::DDS::StatusCondition>::ref_type
     get_statuscondition () override;
 
     virtual ::DDS::StatusMask

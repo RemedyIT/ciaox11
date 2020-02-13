@@ -16,7 +16,7 @@
 namespace DDSX11
 {
   DDS_DataReaderListener_proxy::DDS_DataReaderListener_proxy (
-    IDL::traits< ::DDS::DataReaderListener >::ref_type p)
+    IDL::traits< ::DDS::DataReaderListener>::ref_type p)
     : impl_ (std::move (p))
   {
   }
@@ -144,7 +144,7 @@ namespace DDSX11
     }
   }
 
-  IDL::traits< ::DDS::DataReaderListener >::ref_type
+  IDL::traits< ::DDS::DataReaderListener>::ref_type
   DDS_DataReaderListener_proxy::get_datareaderlistener ()
   {
     return this->impl_;

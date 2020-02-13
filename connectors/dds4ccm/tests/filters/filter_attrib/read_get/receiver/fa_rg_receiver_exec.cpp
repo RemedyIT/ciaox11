@@ -550,7 +550,7 @@ namespace FA_Read_Get_Test_Receiver_Impl
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : FA_Read_Get_Test_Receiver_Impl::Receiver_exec_i[ccm_activate]
     DDS4CCM_TEST_DEBUG << "Receiver_exec_i::ccm_activate " << std::endl;
-    IDL::traits< ::CommonTestConnector::Getter >::ref_type getter =
+    IDL::traits< ::CommonTestConnector::Getter>::ref_type getter =
       this->context_->get_connection_get_port_fresh_data ();
     getter->time_out (DDS::Duration_t (2, 0));
 

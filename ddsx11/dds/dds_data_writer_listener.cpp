@@ -17,12 +17,12 @@ namespace DDSX11
 {
 
   DDS_DataWriterListener_proxy::DDS_DataWriterListener_proxy (
-    IDL::traits< ::DDS::DataWriterListener >::ref_type s)
+    IDL::traits< ::DDS::DataWriterListener>::ref_type s)
     : impl_ (std::move (s))
   {
   }
 
-  IDL::traits< ::DDS::DataWriter >::ref_type
+  IDL::traits< ::DDS::DataWriter>::ref_type
   DDS_DataWriterListener_proxy::get_datawriter (
     DDS_Native::DDS::DataWriter *the_writer)
   {
@@ -103,7 +103,7 @@ namespace DDSX11
     }
   }
 
-  IDL::traits< ::DDS::DataWriterListener >::ref_type
+  IDL::traits< ::DDS::DataWriterListener>::ref_type
   DDS_DataWriterListener_proxy::get_datawriterlistener ()
   {
     return this->impl_;

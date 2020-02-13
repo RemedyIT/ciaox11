@@ -36,7 +36,7 @@ namespace CIAOX11_TT_TimedTrigger_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : CIAOX11_TT_TimedTrigger_Impl::tt_scheduler_exec_i[ctor]
   tt_scheduler_exec_i::tt_scheduler_exec_i (
-    IDL::traits< ::CIAOX11_TT::CCM_TimedTrigger_Context >::ref_type context)
+    IDL::traits< ::CIAOX11_TT::CCM_TimedTrigger_Context>::ref_type context)
     : context_ (std::move (context))
   {
     CIAOX11_LOG_DEBUG ("tt_scheduler_exec_i::tt_scheduler_exec_i using orb reactor.");
@@ -258,7 +258,7 @@ namespace CIAOX11_TT_TimedTrigger_Impl
   }
 
 
-  IDL::traits< ::CCM_TT::CCM_TT_Scheduler >::ref_type
+  IDL::traits< ::CCM_TT::CCM_TT_Scheduler>::ref_type
   TimedTrigger_exec_i::get_tt_scheduler ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : CIAOX11_TT_TimedTrigger_Impl::TimedTrigger_exec_i[get_tt_scheduler]

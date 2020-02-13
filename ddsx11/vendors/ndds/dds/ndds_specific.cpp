@@ -23,7 +23,7 @@ namespace DDSX11
 {
   namespace VendorUtils
   {
-    IDL::traits< ::DDS::Publisher >::ref_type
+    IDL::traits< ::DDS::Publisher>::ref_type
     create_publisher_proxy (
       DDS_Native::DDS::Publisher *p)
     {
@@ -31,7 +31,7 @@ namespace DDSX11
       return proxy;
     }
 
-    IDL::traits< ::DDS::Subscriber >::ref_type
+    IDL::traits< ::DDS::Subscriber>::ref_type
     create_subscriber_proxy (
       DDS_Native::DDS::Subscriber *s)
     {
@@ -39,7 +39,7 @@ namespace DDSX11
       return proxy;
     }
 
-    IDL::traits< ::DDS::DomainParticipant >::ref_type
+    IDL::traits< ::DDS::DomainParticipant>::ref_type
     create_domain_participant_proxy (
       DDS_Native::DDS::DomainParticipant *dp)
     {
@@ -47,13 +47,13 @@ namespace DDSX11
       return proxy;
     }
 
-    IDL::traits< ::DDS::WaitSet >::ref_type
+    IDL::traits< ::DDS::WaitSet>::ref_type
     create_waitset ()
     {
       return CORBA::make_reference< DDSX11::DDS_WaitSet_proxy > ();
     }
 
-    IDL::traits< ::DDS::DomainParticipantFactory >::ref_type
+    IDL::traits< ::DDS::DomainParticipantFactory>::ref_type
     init_dds ()
     {
       const char * log_verbosity_env = std::getenv ("DDSX11_NDDS_LOG_VERBOSITY");
@@ -96,17 +96,17 @@ namespace DDSX11
 
     DDS_Native::DDS::PublisherListener*
     create_publisher_listener (
-      IDL::traits< ::DDS::PublisherListener >::ref_type listener)
+      IDL::traits< ::DDS::PublisherListener>::ref_type listener)
     {
       return new NDDS_PROXY::NDDS_PublisherListener_proxy (std::move(listener));
     }
 
-    IDL::traits< ::DDS::DomainParticipant >::ref_type
+    IDL::traits< ::DDS::DomainParticipant>::ref_type
     create_participant_with_profile (
-      IDL::traits< ::DDS::DomainParticipantFactory >::ref_type participant_factory,
+      IDL::traits< ::DDS::DomainParticipantFactory>::ref_type participant_factory,
       ::DDS::DomainId_t domain_id,
       const std::string &qos_profile,
-      IDL::traits< ::DDS::DomainParticipantListener >::ref_type listener,
+      IDL::traits< ::DDS::DomainParticipantListener>::ref_type listener,
       ::DDS::StatusMask mask)
     {
       participant_factory->set_default_participant_qos_with_profile (qos_profile);
@@ -115,59 +115,59 @@ namespace DDSX11
         domain_id, qos_profile, std::move(listener), mask);
     }
 
-    IDL::traits< ::DDS::Topic >::ref_type
+    IDL::traits< ::DDS::Topic>::ref_type
     create_topic_with_profile (
-      IDL::traits< ::DDS::DomainParticipant >::ref_type participant,
+      IDL::traits< ::DDS::DomainParticipant>::ref_type participant,
       const std::string &topic_name,
       const std::string &type_name,
       const std::string &qos_profile,
-      IDL::traits< ::DDS::TopicListener >::ref_type listener,
+      IDL::traits< ::DDS::TopicListener>::ref_type listener,
       ::DDS::StatusMask mask)
     {
       return participant->create_topic_with_profile (
         topic_name, type_name, qos_profile, std::move(listener), mask);
     }
 
-    IDL::traits< ::DDS::Publisher >::ref_type
+    IDL::traits< ::DDS::Publisher>::ref_type
     create_publisher_with_profile (
-      IDL::traits< ::DDS::DomainParticipant >::ref_type participant,
+      IDL::traits< ::DDS::DomainParticipant>::ref_type participant,
       const std::string &profile,
-      IDL::traits< ::DDS::PublisherListener >::ref_type listener,
+      IDL::traits< ::DDS::PublisherListener>::ref_type listener,
       ::DDS::StatusMask mask)
     {
       return participant->create_publisher_with_profile (
         profile, std::move(listener), mask);
     }
 
-    IDL::traits< ::DDS::Subscriber >::ref_type
+    IDL::traits< ::DDS::Subscriber>::ref_type
     create_subscriber_with_profile (
-      IDL::traits< ::DDS::DomainParticipant >::ref_type participant,
+      IDL::traits< ::DDS::DomainParticipant>::ref_type participant,
       const std::string &profile,
-      IDL::traits< ::DDS::SubscriberListener >::ref_type listener,
+      IDL::traits< ::DDS::SubscriberListener>::ref_type listener,
       ::DDS::StatusMask mask)
     {
       return participant->create_subscriber_with_profile (
         profile, std::move(listener), mask);
     }
 
-    IDL::traits< ::DDS::DataWriter >::ref_type
+    IDL::traits< ::DDS::DataWriter>::ref_type
     create_datawriter_with_profile (
-      IDL::traits< ::DDS::Publisher >::ref_type publisher,
-      IDL::traits< ::DDS::Topic >::ref_type topic,
+      IDL::traits< ::DDS::Publisher>::ref_type publisher,
+      IDL::traits< ::DDS::Topic>::ref_type topic,
       const std::string &qos_profile,
-      IDL::traits< ::DDS::DataWriterListener >::ref_type listener,
+      IDL::traits< ::DDS::DataWriterListener>::ref_type listener,
       ::DDS::StatusMask mask)
     {
       return publisher->create_datawriter_with_profile (
         std::move(topic), qos_profile, std::move(listener), mask);
     }
 
-    IDL::traits< ::DDS::DataReader >::ref_type
+    IDL::traits< ::DDS::DataReader>::ref_type
     create_datareader_with_profile (
-      IDL::traits< ::DDS::Subscriber >::ref_type subscriber,
-      IDL::traits< ::DDS::TopicDescription >::ref_type topic,
+      IDL::traits< ::DDS::Subscriber>::ref_type subscriber,
+      IDL::traits< ::DDS::TopicDescription>::ref_type topic,
       const std::string &qos_profile,
-      IDL::traits< ::DDS::DataReaderListener >::ref_type listener,
+      IDL::traits< ::DDS::DataReaderListener>::ref_type listener,
       ::DDS::StatusMask mask)
     {
       return subscriber->create_datareader_with_profile (

@@ -45,7 +45,7 @@ namespace DDSX11
         ::DDSX11::traits< ::DDS::StatusMask >::in (mask)));
   }
 
-  IDL::traits< ::DDS::Entity >::ref_type
+  IDL::traits< ::DDS::Entity>::ref_type
   DDS_StatusCondition_proxy::get_entity ()
   {
     return DDS_ProxyEntityManager::get_entity_proxy (

@@ -198,7 +198,7 @@ namespace MDD_Test_Sender_Impl
   void
   Sender_exec_i::check_status ()
   {
-    IDL::traits< ::DDS::DataWriter >::ref_type writer_dds_entity =
+    IDL::traits< ::DDS::DataWriter>::ref_type writer_dds_entity =
       this->context_->get_connection_info_update_dds_entity ();
     if (writer_dds_entity)
     {
@@ -237,7 +237,7 @@ namespace MDD_Test_Sender_Impl
       this->tm_activate_->cancel();
       this->already_publishing_ = true;
 
-      IDL::traits< CommonTestConnector::Updater >::ref_type updater =
+      IDL::traits< CommonTestConnector::Updater>::ref_type updater =
         this->context_->get_connection_info_update_data ();
       CommonTestMessageSeq messages;
       try

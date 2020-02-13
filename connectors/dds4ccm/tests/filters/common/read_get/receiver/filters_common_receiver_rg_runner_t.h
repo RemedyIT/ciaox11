@@ -123,7 +123,7 @@ private:
 
   void
   check_filter (
-    IDL::traits< CommonTestConnector::Reader >::ref_type reader,
+    IDL::traits< CommonTestConnector::Reader>::ref_type reader,
     bool check_getter);
 
   void check_filters ();
@@ -131,13 +131,13 @@ private:
 
   void
   test_non_changeable_filter (
-    IDL::traits< ::CommonTestConnector::CCM_DDS_Event >::ref_type conn,
+    IDL::traits< ::CommonTestConnector::CCM_DDS_Event>::ref_type conn,
     bool getter);
   void test_non_changeable_filter ();
 
   void
   test_internal_error_filter (
-    IDL::traits< CCM_DDS::ContentFilterSetting >::ref_type cft,
+    IDL::traits< CCM_DDS::ContentFilterSetting>::ref_type cft,
     bool getter);
   void test_internal_error_filter ();
 

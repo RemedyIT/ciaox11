@@ -28,7 +28,7 @@ namespace AnotherComp_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : AnotherComp_Impl::run_my_bar_foo_prov_exec_i[ctor]
   run_my_bar_foo_prov_exec_i::run_my_bar_foo_prov_exec_i (
-    IDL::traits< CCM_AnotherComp_Context >::ref_type context)
+    IDL::traits< CCM_AnotherComp_Context>::ref_type context)
     : context_ (std::move (context))
   {
   }

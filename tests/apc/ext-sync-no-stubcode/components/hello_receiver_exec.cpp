@@ -28,7 +28,7 @@ namespace Test_Receiver_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Receiver_Impl::do_myfoo_exec_i[ctor]
   do_myfoo_exec_i::do_myfoo_exec_i (
-    IDL::traits< ::Test::CCM_Receiver_Context >::ref_type context)
+    IDL::traits< ::Test::CCM_Receiver_Context>::ref_type context)
     : context_ (std::move (context))
   {
   }

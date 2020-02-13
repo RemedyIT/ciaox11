@@ -33,24 +33,24 @@ namespace DDSX11
        *        the QOS profile string
        */
       //@{
-      virtual IDL::traits< ::DDS::Publisher >::ref_type
+      virtual IDL::traits< ::DDS::Publisher>::ref_type
       create_publisher_with_profile (
         const std::string &qos_profile,
-        IDL::traits< ::DDS::PublisherListener >::ref_type a_listener,
+        IDL::traits< ::DDS::PublisherListener>::ref_type a_listener,
         ::DDS::StatusMask mask) override;
 
-      virtual IDL::traits< ::DDS::Subscriber >::ref_type
+      virtual IDL::traits< ::DDS::Subscriber>::ref_type
       create_subscriber_with_profile(
         const std::string &qos_profile,
-        IDL::traits< ::DDS::SubscriberListener >::ref_type a_listener,
+        IDL::traits< ::DDS::SubscriberListener>::ref_type a_listener,
         ::DDS::StatusMask mask) override;
 
-      virtual IDL::traits< ::DDS::Topic >::ref_type
+      virtual IDL::traits< ::DDS::Topic>::ref_type
       create_topic_with_profile (
         const std::string &impl_name,
         const std::string &type_name,
         const std::string &qos_profile,
-        IDL::traits< ::DDS::TopicListener >::ref_type a_listener,
+        IDL::traits< ::DDS::TopicListener>::ref_type a_listener,
         ::DDS::StatusMask mask) override;
       //@}
 

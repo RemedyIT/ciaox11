@@ -252,7 +252,7 @@ namespace Example_BasicSubscriber_comp_Impl
   void BasicSubscriber_comp_exec_i::ccm_activate ()
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Example_BasicSubscriber_comp_Impl::BasicSubscriber_comp_exec_i[ccm_activate]
-    IDL::traits< ::CCM_DDS::DataListenerControl >::ref_type lc =
+    IDL::traits< ::CCM_DDS::DataListenerControl>::ref_type lc =
       this->context_->get_connection_CA1DataSub_data_control ();
 
     if (!lc)

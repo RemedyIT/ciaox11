@@ -185,7 +185,7 @@ namespace UnkeyedWriterTest_Receiver_Impl
   void Receiver_exec_i::ccm_activate ()
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : UnkeyedWriterTest_Receiver_Impl::Receiver_exec_i[ccm_activate]
-    IDL::traits< ::CCM_DDS::DataListenerControl >::ref_type lc =
+    IDL::traits< ::CCM_DDS::DataListenerControl>::ref_type lc =
       this->context_->get_connection_info_out_data_control ();
 
     if (!lc)
@@ -206,9 +206,9 @@ namespace UnkeyedWriterTest_Receiver_Impl
 
     try
     {
-      IDL::traits< UnkeyedWriterTest::UnkeyedWriterMessageConnector::Reader >::ref_type reader =
+      IDL::traits< UnkeyedWriterTest::UnkeyedWriterMessageConnector::Reader>::ref_type reader =
         this->context_->get_connection_info_out_data ();
-      IDL::traits< UnkeyedWriterTest::UnkeyedWriterMessageConnector::CCM_DDS_Event >::ref_type conn =
+      IDL::traits< UnkeyedWriterTest::UnkeyedWriterMessageConnector::CCM_DDS_Event>::ref_type conn =
         IDL::traits< UnkeyedWriterTest::UnkeyedWriterMessageConnector::CCM_DDS_Event >::narrow (
           reader->_get_component ());
       qos_used = !conn->qos_profile ().empty ();

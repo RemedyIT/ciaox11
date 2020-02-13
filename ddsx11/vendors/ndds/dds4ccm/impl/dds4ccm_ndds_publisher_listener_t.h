@@ -30,17 +30,17 @@ namespace CIAOX11
 
       virtual void
       on_reliable_writer_cache_changed (
-        IDL::traits< ::DDS::DataWriter >::ref_type the_writer,
+        IDL::traits< ::DDS::DataWriter>::ref_type the_writer,
         const ::DDS::ReliableWriterCacheChangedStatus & status) override;
 
       virtual void
       on_reliable_reader_activity_changed (
-        IDL::traits< ::DDS::DataWriter >::ref_type the_Writer,
+        IDL::traits< ::DDS::DataWriter>::ref_type the_Writer,
         const ::DDS::ReliableReaderActivityChangedStatus & status) override;
 
       static ::DDS::StatusKind
       get_mask (
-        IDL::traits< CCM_DDS::ConnectorStatusListener >::ref_type error_listener);
+        IDL::traits< CCM_DDS::ConnectorStatusListener>::ref_type error_listener);
     };
   }
 }

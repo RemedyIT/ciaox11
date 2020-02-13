@@ -230,7 +230,7 @@ namespace PSL_SampleLostTest_Receiver_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : PSL_SampleLostTest_Receiver_Impl::connector_status_exec_i[ctor]
   connector_status_exec_i::connector_status_exec_i (
-    IDL::traits< ::PSL_SampleLostTest::CCM_Receiver_Context >::ref_type context)
+    IDL::traits< ::PSL_SampleLostTest::CCM_Receiver_Context>::ref_type context)
     : context_ (std::move (context))
   {
   }
@@ -342,7 +342,7 @@ namespace PSL_SampleLostTest_Receiver_Impl
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : PSL_SampleLostTest_Receiver_Impl::Receiver_exec_i[user_public_ops]
   void Receiver_exec_i::tick ()
   {
-    IDL::traits< CommonTestConnector::Reader >::ref_type reader =
+    IDL::traits< CommonTestConnector::Reader>::ref_type reader =
       this->context_->get_connection_info_out_data ();
     try
     {
@@ -377,7 +377,7 @@ namespace PSL_SampleLostTest_Receiver_Impl
   void Receiver_exec_i::ccm_activate ()
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : PSL_SampleLostTest_Receiver_Impl::Receiver_exec_i[ccm_activate]
-    IDL::traits< CCM_DDS::DataListenerControl >::ref_type lc =
+    IDL::traits< CCM_DDS::DataListenerControl>::ref_type lc =
       this->context_->get_connection_info_out_data_control ();
     try
     {

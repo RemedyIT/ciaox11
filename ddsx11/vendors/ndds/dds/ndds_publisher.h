@@ -32,14 +32,14 @@ namespace DDSX11
        * @brief NDDS extension. Creates a data writer, using
        *        the QOS profile string
        */
-      virtual IDL::traits< ::DDS::DataWriter >::ref_type
+      virtual IDL::traits< ::DDS::DataWriter>::ref_type
       create_datawriter_with_profile (
-        IDL::traits< ::DDS::Topic >::ref_type a_topic,
+        IDL::traits< ::DDS::Topic>::ref_type a_topic,
         const std::string &qos_profile,
-        IDL::traits< ::DDS::DataWriterListener >::ref_type a_listener,
+        IDL::traits< ::DDS::DataWriterListener>::ref_type a_listener,
         ::DDS::StatusMask mask) override;
 
-      virtual IDL::traits< ::DDS::PublisherListener >::ref_type
+      virtual IDL::traits< ::DDS::PublisherListener>::ref_type
       get_listener () override;
 
     private:

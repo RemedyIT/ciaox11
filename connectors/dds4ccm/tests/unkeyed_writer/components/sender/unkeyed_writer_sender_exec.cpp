@@ -217,7 +217,7 @@ namespace UnkeyedWriterTest_Sender_Impl
   void
   Sender_exec_i::check_status ()
   {
-    IDL::traits< ::DDS::DataWriter >::ref_type writer_dds_entity =
+    IDL::traits< ::DDS::DataWriter>::ref_type writer_dds_entity =
       this->context_->get_connection_info_write_dds_entity ();
     if (writer_dds_entity)
     {
@@ -300,7 +300,7 @@ namespace UnkeyedWriterTest_Sender_Impl
     {
       try
       {
-        IDL::traits < UnkeyedWriterTest::UnkeyedWriterMessageConnector::Writer >::ref_type writer =
+        IDL::traits < UnkeyedWriterTest::UnkeyedWriterMessageConnector::Writer>::ref_type writer =
           this->context_->get_connection_info_write_data ();
 
         ++this->last_key_->second.iteration ();
@@ -356,7 +356,7 @@ namespace UnkeyedWriterTest_Sender_Impl
     }
     try
     {
-      IDL::traits < UnkeyedWriterTest::UnkeyedWriterMessageConnector::Writer >::ref_type writer =
+      IDL::traits < UnkeyedWriterTest::UnkeyedWriterMessageConnector::Writer>::ref_type writer =
         this->context_->get_connection_info_write_data ();
 
       writer->write_many (write_many_no_excep);
@@ -383,7 +383,7 @@ namespace UnkeyedWriterTest_Sender_Impl
       // Only NDDS throws an exception when we send a large amount of data
       try
       {
-        IDL::traits < UnkeyedWriterTest::UnkeyedWriterMessageConnector::Writer >::ref_type writer =
+        IDL::traits < UnkeyedWriterTest::UnkeyedWriterMessageConnector::Writer>::ref_type writer =
           this->context_->get_connection_info_write_data ();
 
         OctetSeq reply_mesg (1000);

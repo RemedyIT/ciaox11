@@ -135,7 +135,7 @@ namespace DDSX11
     SEQ_TYPE & data_values,
     ::DDS::SampleInfoSeq & sample_infos,
     int32_t max_samples,
-    IDL::traits< ::DDS::ReadCondition >::ref_type a_condition)
+    IDL::traits< ::DDS::ReadCondition>::ref_type a_condition)
   {
     DDSX11_LOG_TRACE ("DDSX11::DataReader_T::read_w_condition");
 
@@ -193,7 +193,7 @@ namespace DDSX11
     SEQ_TYPE & data_values,
     ::DDS::SampleInfoSeq & sample_infos,
     int32_t max_samples,
-    IDL::traits< ::DDS::ReadCondition >::ref_type a_condition)
+    IDL::traits< ::DDS::ReadCondition>::ref_type a_condition)
   {
     DDSX11_LOG_TRACE ("DDSX11::DataReader_T::take_w_condition");
 
@@ -537,7 +537,7 @@ namespace DDSX11
     ::DDS::SampleInfoSeq & sample_infos,
     int32_t max_samples,
     const ::DDS::InstanceHandle_t& previous_handle,
-    IDL::traits< ::DDS::ReadCondition >::ref_type a_condition)
+    IDL::traits< ::DDS::ReadCondition>::ref_type a_condition)
   {
     DDSX11_LOG_TRACE ("DDSX11::DataReader_T::read_next_instance_w_condition");
 
@@ -599,7 +599,7 @@ namespace DDSX11
     ::DDS::SampleInfoSeq & sample_infos,
     int32_t max_samples,
     const ::DDS::InstanceHandle_t& previous_handle,
-    IDL::traits< ::DDS::ReadCondition >::ref_type a_condition)
+    IDL::traits< ::DDS::ReadCondition>::ref_type a_condition)
   {
     DDSX11_LOG_TRACE ("DDSX11::DataReader_T::take_next_instance_w_condition");
 
@@ -702,12 +702,12 @@ namespace DDSX11
   }
 
   template <typename NATIVE_TYPED_READER, typename TYPED_READER_TYPE, typename TOPIC_TYPE, typename SEQ_TYPE, typename NATIVE_SEQ_TYPE>
-  IDL::traits< ::DDS::StatusCondition >::ref_type
+  IDL::traits< ::DDS::StatusCondition>::ref_type
   DataReader_T <NATIVE_TYPED_READER, TYPED_READER_TYPE, TOPIC_TYPE, SEQ_TYPE, NATIVE_SEQ_TYPE>::get_statuscondition ()
   {
     DDSX11_LOG_TRACE ("DDSX11::DataReader_T::get_statuscondition");
 
-    IDL::traits< ::DDS::StatusCondition >::ref_type retval;
+    IDL::traits< ::DDS::StatusCondition>::ref_type retval;
     DDS_Native::DDS::StatusCondition* sc = this->native_entity ()->get_statuscondition ();
     if (sc)
       {
@@ -737,7 +737,7 @@ namespace DDSX11
   }
 
   template <typename NATIVE_TYPED_READER, typename TYPED_READER_TYPE, typename TOPIC_TYPE, typename SEQ_TYPE, typename NATIVE_SEQ_TYPE>
-  IDL::traits< ::DDS::ReadCondition >::ref_type
+  IDL::traits< ::DDS::ReadCondition>::ref_type
   DataReader_T <NATIVE_TYPED_READER, TYPED_READER_TYPE, TOPIC_TYPE, SEQ_TYPE, NATIVE_SEQ_TYPE>::create_readcondition (
     ::DDS::SampleStateMask sample_states,
     ::DDS::ViewStateMask view_states,
@@ -745,7 +745,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDSX11::DataReader_T::create_readcondition");
 
-    IDL::traits< ::DDS::ReadCondition >::ref_type retval;
+    IDL::traits< ::DDS::ReadCondition>::ref_type retval;
 
     DDS_Native::DDS::ReadCondition* rc =
       this->native_entity ()->create_readcondition (
@@ -760,7 +760,7 @@ namespace DDSX11
   }
 
   template <typename NATIVE_TYPED_READER, typename TYPED_READER_TYPE, typename TOPIC_TYPE, typename SEQ_TYPE, typename NATIVE_SEQ_TYPE>
-  IDL::traits< ::DDS::QueryCondition >::ref_type
+  IDL::traits< ::DDS::QueryCondition>::ref_type
   DataReader_T <NATIVE_TYPED_READER, TYPED_READER_TYPE, TOPIC_TYPE, SEQ_TYPE, NATIVE_SEQ_TYPE>::create_querycondition (
     ::DDS::SampleStateMask sample_states,
     ::DDS::ViewStateMask view_states,
@@ -770,7 +770,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDSX11::DataReader_T::create_querycondition");
 
-    IDL::traits< ::DDS::QueryCondition >::ref_type retval;
+    IDL::traits< ::DDS::QueryCondition>::ref_type retval;
 
     DDS_Native::DDS::QueryCondition* qc =
       this->native_entity ()->create_querycondition (
@@ -789,18 +789,18 @@ namespace DDSX11
   template <typename NATIVE_TYPED_READER, typename TYPED_READER_TYPE, typename TOPIC_TYPE, typename SEQ_TYPE, typename NATIVE_SEQ_TYPE>
   ::DDS::ReturnCode_t
   DataReader_T <NATIVE_TYPED_READER, TYPED_READER_TYPE, TOPIC_TYPE, SEQ_TYPE, NATIVE_SEQ_TYPE>::delete_readcondition (
-    IDL::traits< ::DDS::ReadCondition >::ref_type a_condition)
+    IDL::traits< ::DDS::ReadCondition>::ref_type a_condition)
   {
     DDSX11_LOG_TRACE ("DDSX11::DataReader_T::delete_readcondition");
 
     DDS_Native::DDS::ReadCondition *native_rc {};
 
-    IDL::traits< ::DDS::QueryCondition >::ref_type qc =
+    IDL::traits< ::DDS::QueryCondition>::ref_type qc =
       IDL::traits< ::DDS::QueryCondition >::narrow (a_condition);
 
     if (qc)
       {
-        IDL::traits< ::DDSX11::DDS_QueryCondition_proxy >::ref_type proxy =
+        IDL::traits< ::DDSX11::DDS_QueryCondition_proxy>::ref_type proxy =
           query_condition_trait::proxy (qc);
 
         native_rc = dynamic_cast<DDS_Native::DDS::ReadCondition *> (
@@ -810,7 +810,7 @@ namespace DDSX11
       }
     else
       {
-        IDL::traits< ::DDSX11::DDS_ReadCondition_proxy >::ref_type proxy =
+        IDL::traits< ::DDSX11::DDS_ReadCondition_proxy>::ref_type proxy =
           read_condition_trait::proxy (a_condition);
 
         native_rc = proxy->get_native_entity ();
@@ -884,7 +884,7 @@ namespace DDSX11
   template <typename NATIVE_TYPED_READER, typename TYPED_READER_TYPE, typename TOPIC_TYPE, typename SEQ_TYPE, typename NATIVE_SEQ_TYPE>
   ::DDS::ReturnCode_t
   DataReader_T <NATIVE_TYPED_READER, TYPED_READER_TYPE, TOPIC_TYPE, SEQ_TYPE, NATIVE_SEQ_TYPE>::set_listener (
-    IDL::traits< ::DDS::DataReaderListener >::ref_type a_listener,
+    IDL::traits< ::DDS::DataReaderListener>::ref_type a_listener,
     ::DDS::StatusMask mask)
   {
     DDSX11_LOG_TRACE ("DDSX11::DataReader_T <NATIVE_TYPED_READER, TYPED_READER_TYPE, TOPIC_TYPE, SEQ_TYPE, NATIVE_SEQ_TYPE>::set_listener");
@@ -920,7 +920,7 @@ namespace DDSX11
   }
 
   template <typename NATIVE_TYPED_READER, typename TYPED_READER_TYPE, typename TOPIC_TYPE, typename SEQ_TYPE, typename NATIVE_SEQ_TYPE>
-  IDL::traits< ::DDS::DataReaderListener >::ref_type
+  IDL::traits< ::DDS::DataReaderListener>::ref_type
   DataReader_T <NATIVE_TYPED_READER, TYPED_READER_TYPE, TOPIC_TYPE, SEQ_TYPE, NATIVE_SEQ_TYPE>::get_listener ()
   {
     DDSX11_LOG_TRACE ("DDSX11::DataReader_T <NATIVE_TYPED_READER, TYPED_READER_TYPE, TOPIC_TYPE, SEQ_TYPE, NATIVE_SEQ_TYPE>::get_listener");
@@ -940,12 +940,12 @@ namespace DDSX11
   }
 
   template <typename NATIVE_TYPED_READER, typename TYPED_READER_TYPE, typename TOPIC_TYPE, typename SEQ_TYPE, typename NATIVE_SEQ_TYPE>
-  IDL::traits< ::DDS::TopicDescription >::ref_type
+  IDL::traits< ::DDS::TopicDescription>::ref_type
   DataReader_T <NATIVE_TYPED_READER, TYPED_READER_TYPE, TOPIC_TYPE, SEQ_TYPE, NATIVE_SEQ_TYPE>::get_topicdescription ()
   {
     DDSX11_LOG_TRACE ("DDSX11::DataReader_T::get_topicdescription");
 
-    IDL::traits< ::DDS::TopicDescription >::ref_type td;
+    IDL::traits< ::DDS::TopicDescription>::ref_type td;
     DDS_Native::DDS::TopicDescription *native_td =
       this->native_entity ()->get_topicdescription ();
 
@@ -981,7 +981,7 @@ namespace DDSX11
   }
 
   template <typename NATIVE_TYPED_READER, typename TYPED_READER_TYPE, typename TOPIC_TYPE, typename SEQ_TYPE, typename NATIVE_SEQ_TYPE>
-  IDL::traits< ::DDS::Subscriber >::ref_type
+  IDL::traits< ::DDS::Subscriber>::ref_type
   DataReader_T <NATIVE_TYPED_READER, TYPED_READER_TYPE, TOPIC_TYPE, SEQ_TYPE, NATIVE_SEQ_TYPE>::get_subscriber ()
   {
     DDSX11_LOG_TRACE ("DDSX11::DataReader_T::get_subscriber");

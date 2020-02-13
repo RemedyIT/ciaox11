@@ -60,7 +60,7 @@ namespace DDSX11
       this->native_entity ()->get_instance_state_mask ());
   }
 
-  IDL::traits< ::DDS::DataReader >::ref_type
+  IDL::traits< ::DDS::DataReader>::ref_type
   DDS_QueryCondition_proxy::get_datareader ()
   {
     DDSX11_LOG_TRACE ("DDS_QueryCondition_proxy::get_datareader");

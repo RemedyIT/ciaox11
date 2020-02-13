@@ -25,11 +25,11 @@ namespace DDSX11
     {
     }
 
-    IDL::traits< ::DDS::DataWriter >::ref_type
+    IDL::traits< ::DDS::DataWriter>::ref_type
     NDDS_Publisher_proxy::create_datawriter_with_profile (
-      IDL::traits< ::DDS::Topic >::ref_type a_topic,
+      IDL::traits< ::DDS::Topic>::ref_type a_topic,
       const std::string &qos_profile,
-      IDL::traits< ::DDS::DataWriterListener >::ref_type a_listener,
+      IDL::traits< ::DDS::DataWriterListener>::ref_type a_listener,
       ::DDS::StatusMask mask)
     {
       DDSX11_LOG_TRACE ("NDDS_Publisher_proxy::create_datawriter_with_profile");
@@ -78,7 +78,7 @@ namespace DDSX11
       // of scope.
       proxy_dwl.release ();
 
-      IDL::traits< ::DDS::DataWriter >::ref_type datawriter =
+      IDL::traits< ::DDS::DataWriter>::ref_type datawriter =
         DDS_TypeSupport_i::create_datawriter (this->get_participant (),
                                               a_topic->get_type_name (),
                                               native_dw);
@@ -100,7 +100,7 @@ namespace DDSX11
       return datawriter;
     }
 
-    IDL::traits< ::DDS::PublisherListener >::ref_type
+    IDL::traits< ::DDS::PublisherListener>::ref_type
     NDDS_Publisher_proxy::get_listener ()
     {
       DDSX11_LOG_TRACE ("NDDS_Publisher_proxy::get_listener");

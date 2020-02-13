@@ -301,7 +301,7 @@ namespace Getter_Test_Receiver_Impl
     // samples in DDS, one shouldn't use the wait method.
     // Since the spec is not clear about this, the test will
     // pass when at least one sample is returned.
-    IDL::traits < CommonTestConnector::Getter >::ref_type getter =
+    IDL::traits < CommonTestConnector::Getter>::ref_type getter =
       this->context_->get_connection_info_get_fresh_data ();
 
     DDS::Duration_t to (20, 0);
@@ -353,7 +353,7 @@ namespace Getter_Test_Receiver_Impl
                               const CommonTestMessageSeq& gettertest_seq)
   {
     DDS4CCM_TEST_DEBUG << "Receiver_exec_i::read_many" << std::endl;
-    IDL::traits< CommonTestConnector::Reader >::ref_type reader =
+    IDL::traits< CommonTestConnector::Reader>::ref_type reader =
       this->context_->get_connection_info_get_data ();
 
     CommonTestMessageSeq read_seq;
@@ -446,7 +446,7 @@ namespace Getter_Test_Receiver_Impl
   Receiver_exec_i::get_one (const std::string &key, int32_t iteration)
   {
     DDS4CCM_TEST_DEBUG << "Receiver_exec_i::get_one" << std::endl;
-    IDL::traits< CommonTestConnector::Getter >::ref_type getter =
+    IDL::traits< CommonTestConnector::Getter>::ref_type getter =
       this->context_->get_connection_info_get_fresh_data ();
 
     DDS::Duration_t to (5, 0);
@@ -514,7 +514,7 @@ namespace Getter_Test_Receiver_Impl
     DDS4CCM_TEST_DEBUG << "Receiver_exec_i::timeout_get_one" << std::endl;
     try
     {
-      IDL::traits< CommonTestConnector::Getter >::ref_type getter =
+      IDL::traits< CommonTestConnector::Getter>::ref_type getter =
         this->context_->get_connection_info_get_fresh_data ();
 
       DDS::Duration_t to (1, 0);
@@ -554,7 +554,7 @@ namespace Getter_Test_Receiver_Impl
     DDS4CCM_TEST_DEBUG << "Receiver_exec_i::timeout_get_many" << std::endl;
     try
     {
-      IDL::traits< CommonTestConnector::Getter >::ref_type getter =
+      IDL::traits< CommonTestConnector::Getter>::ref_type getter =
         this->context_->get_connection_info_get_fresh_data ();
 
       DDS::Duration_t to (3, 0);

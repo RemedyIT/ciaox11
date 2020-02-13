@@ -28,7 +28,7 @@ namespace PortComp_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : PortComp_Impl::run_my_bar_foo_prov_exec_i[ctor]
   run_my_bar_foo_prov_exec_i::run_my_bar_foo_prov_exec_i (
-    IDL::traits< CCM_PortComp_Context >::ref_type context)
+    IDL::traits< CCM_PortComp_Context>::ref_type context)
     : context_ (std::move (context))
   {
   }

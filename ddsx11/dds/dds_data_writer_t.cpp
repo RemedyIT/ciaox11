@@ -70,7 +70,7 @@ namespace DDSX11
   template <typename TOPIC_TYPE, typename NATIVE_TYPED_WRITER, typename TYPED_WRITER_TYPE>
   ::DDS::ReturnCode_t
   DataWriter_T<TOPIC_TYPE, NATIVE_TYPED_WRITER, TYPED_WRITER_TYPE>::set_listener (
-    IDL::traits< ::DDS::DataWriterListener >::ref_type a_listener,
+    IDL::traits< ::DDS::DataWriterListener>::ref_type a_listener,
     ::DDS::StatusMask mask)
   {
     DDSX11_LOG_TRACE (
@@ -107,7 +107,7 @@ namespace DDSX11
   }
 
   template <typename TOPIC_TYPE, typename NATIVE_TYPED_WRITER, typename TYPED_WRITER_TYPE>
-  IDL::traits< ::DDS::DataWriterListener >::ref_type
+  IDL::traits< ::DDS::DataWriterListener>::ref_type
   DataWriter_T<TOPIC_TYPE, NATIVE_TYPED_WRITER, TYPED_WRITER_TYPE>::get_listener ()
   {
     DDSX11_LOG_TRACE (
@@ -128,7 +128,7 @@ namespace DDSX11
   }
 
   template <typename TOPIC_TYPE, typename NATIVE_TYPED_WRITER, typename TYPED_WRITER_TYPE>
-  IDL::traits< ::DDS::Topic >::ref_type
+  IDL::traits< ::DDS::Topic>::ref_type
   DataWriter_T<TOPIC_TYPE, NATIVE_TYPED_WRITER, TYPED_WRITER_TYPE>::get_topic ()
   {
     DDSX11_LOG_TRACE (
@@ -139,7 +139,7 @@ namespace DDSX11
   }
 
   template <typename TOPIC_TYPE, typename NATIVE_TYPED_WRITER, typename TYPED_WRITER_TYPE>
-  IDL::traits< ::DDS::Publisher >::ref_type
+  IDL::traits< ::DDS::Publisher>::ref_type
   DataWriter_T<TOPIC_TYPE, NATIVE_TYPED_WRITER, TYPED_WRITER_TYPE>::get_publisher ()
   {
     DDSX11_LOG_TRACE (
@@ -271,13 +271,13 @@ namespace DDSX11
   }
 
   template <typename TOPIC_TYPE, typename NATIVE_TYPED_WRITER, typename TYPED_WRITER_TYPE>
-  IDL::traits< ::DDS::StatusCondition >::ref_type
+  IDL::traits< ::DDS::StatusCondition>::ref_type
   DataWriter_T<TOPIC_TYPE, NATIVE_TYPED_WRITER, TYPED_WRITER_TYPE>::get_statuscondition ()
   {
     DDSX11_LOG_TRACE (
       "DataWriter_T<TOPIC_TYPE, NATIVE_TYPED_WRITER, TYPED_WRITER_TYPE>::get_statuscondition");
 
-    IDL::traits< ::DDS::StatusCondition >::ref_type retval;
+    IDL::traits< ::DDS::StatusCondition>::ref_type retval;
     DDS_Native::DDS::StatusCondition* sc = this->native_entity ()->get_statuscondition ();
     if (sc)
       {

@@ -51,7 +51,7 @@ namespace Uni_Sender_Impl
     /// Constructor
     /// @param[in] context Component context
     connector_status_exec_i (
-        IDL::traits< ::Uni::CCM_Sender_Context >::ref_type context,
+        IDL::traits< ::Uni::CCM_Sender_Context>::ref_type context,
         IDL::traits< Uni::CCM_Sender>::weak_ref_type component_executor);
     //@@{__RIDL_REGEN_MARKER__} - END : Uni_Sender_Impl::connector_status_exec_i[ctor]
 

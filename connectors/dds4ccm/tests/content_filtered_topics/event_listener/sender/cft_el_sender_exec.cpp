@@ -204,7 +204,7 @@ namespace CFT_EL_Test_Sender_Impl
   void
   Sender_exec_i::check_status ()
   {
-    IDL::traits< ::DDS::DataWriter >::ref_type writer_dds_entity =
+    IDL::traits< ::DDS::DataWriter>::ref_type writer_dds_entity =
       this->context_->get_connection_info_write_dds_entity ();
     if (writer_dds_entity)
     {
@@ -265,7 +265,7 @@ namespace CFT_EL_Test_Sender_Impl
     {
       try
       {
-        IDL::traits< ::CommonTestConnector::Writer >::ref_type writer =
+        IDL::traits< ::CommonTestConnector::Writer>::ref_type writer =
           this->context_->get_connection_info_write_data ();
 
         this->last_key_->second.iteration (++this->last_key_->second.iteration ());

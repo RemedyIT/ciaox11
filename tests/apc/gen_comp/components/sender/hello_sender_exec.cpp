@@ -72,7 +72,7 @@ namespace Hello_Sender_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl::run_my_foo_prov_exec_i[ctor]
   run_my_foo_prov_exec_i::run_my_foo_prov_exec_i (
-    IDL::traits< ::Hello::CCM_Sender_Context >::ref_type context)
+    IDL::traits< ::Hello::CCM_Sender_Context>::ref_type context)
     : context_ (std::move (context))
   {
   }
@@ -149,7 +149,7 @@ namespace Hello_Sender_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl::run_my_bar_foo_prov_exec_i[ctor]
   run_my_bar_foo_prov_exec_i::run_my_bar_foo_prov_exec_i (
-    IDL::traits< ::Hello::CCM_Sender_Context >::ref_type context)
+    IDL::traits< ::Hello::CCM_Sender_Context>::ref_type context)
     : context_ (std::move (context))
   {
   }

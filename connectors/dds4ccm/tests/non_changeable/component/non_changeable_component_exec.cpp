@@ -101,7 +101,7 @@ namespace NonChangeableComponent_Impl
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : NonChangeableComponent_Impl::NonChangeableComponent_exec_i[user_private_ops]
   bool
   NonChangeableComponent_exec_i::test_topic_name (
-    IDL::traits< ::CommonTestConnector::CCM_DDS_Event >::ref_type conn)
+    IDL::traits< ::CommonTestConnector::CCM_DDS_Event>::ref_type conn)
   {
     try
     {
@@ -128,7 +128,7 @@ namespace NonChangeableComponent_Impl
 
   bool
   NonChangeableComponent_exec_i::test_domain_id (
-    IDL::traits< ::CommonTestConnector::CCM_DDS_Event >::ref_type conn)
+    IDL::traits< ::CommonTestConnector::CCM_DDS_Event>::ref_type conn)
   {
     try
     {
@@ -170,7 +170,7 @@ namespace NonChangeableComponent_Impl
 
   bool
   NonChangeableComponent_exec_i::test_qos_profile (
-    IDL::traits< ::CommonTestConnector::CCM_DDS_Event >::ref_type conn)
+    IDL::traits< ::CommonTestConnector::CCM_DDS_Event>::ref_type conn)
   {
     try
     {
@@ -198,7 +198,7 @@ namespace NonChangeableComponent_Impl
 
   bool
   NonChangeableComponent_exec_i::test_filter (
-    IDL::traits< ::CommonTestConnector::CCM_DDS_Event >::ref_type conn)
+    IDL::traits< ::CommonTestConnector::CCM_DDS_Event>::ref_type conn)
   {
     try
     {
@@ -231,12 +231,12 @@ namespace NonChangeableComponent_Impl
   void NonChangeableComponent_exec_i::ccm_activate ()
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : NonChangeableComponent_Impl::NonChangeableComponent_exec_i[ccm_activate]
-    IDL::traits< ::CommonTestConnector::CCM_DDS_Event >::ref_type conn;
+    IDL::traits< ::CommonTestConnector::CCM_DDS_Event>::ref_type conn;
     try
     {
-      IDL::traits< ::CommonTestConnector::Reader >::ref_type getter =
+      IDL::traits< ::CommonTestConnector::Reader>::ref_type getter =
         this->context_->get_connection_info_get_data ();
-      IDL::traits< ::CORBA::Object >::ref_type cmp = getter->_get_component ();
+      IDL::traits< ::CORBA::Object>::ref_type cmp = getter->_get_component ();
       conn = IDL::traits< ::CommonTestConnector::CCM_DDS_Event >::narrow (cmp);
       if (!conn)
       {

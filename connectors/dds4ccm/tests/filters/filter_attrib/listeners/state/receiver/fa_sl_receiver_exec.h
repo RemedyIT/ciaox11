@@ -393,7 +393,7 @@ namespace FA_State_Listen_Test_Receiver_Impl
     void
     test_internal_error (
       uint16_t listener_port,
-      IDL::traits< CCM_DDS::ContentFilterSetting >::ref_type cft);
+      IDL::traits< CCM_DDS::ContentFilterSetting>::ref_type cft);
     void test_internal_errors ();
 
     void
@@ -401,7 +401,7 @@ namespace FA_State_Listen_Test_Receiver_Impl
       uint16_t listener_port,
       std::string const &current_query,
       std::string const &new_query,
-      IDL::traits< CCM_DDS::DataListenerControl >::ref_type ldc);
+      IDL::traits< CCM_DDS::DataListenerControl>::ref_type ldc);
     void test_non_changeables ();
     //@@{__RIDL_REGEN_MARKER__} - END : FA_State_Listen_Test_Receiver_Impl::Receiver_exec_i[user_private_ops]
     //@}

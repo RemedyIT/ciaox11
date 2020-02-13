@@ -28,7 +28,7 @@ namespace Data_Receiver_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Data_Receiver_Impl::info_out_data_listener_exec_i[ctor]
   info_out_data_listener_exec_i::info_out_data_listener_exec_i (
-    IDL::traits< ::Data::CCM_Receiver_Context >::ref_type context)
+    IDL::traits< ::Data::CCM_Receiver_Context>::ref_type context)
     : context_ (std::move (context))
   {
   }
@@ -81,7 +81,7 @@ namespace Data_Receiver_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Data_Receiver_Impl::info_out_status_exec_i[ctor]
   info_out_status_exec_i::info_out_status_exec_i (
-    IDL::traits< ::Data::CCM_Receiver_Context >::ref_type context)
+    IDL::traits< ::Data::CCM_Receiver_Context>::ref_type context)
     : context_ (std::move (context))
   {
   }

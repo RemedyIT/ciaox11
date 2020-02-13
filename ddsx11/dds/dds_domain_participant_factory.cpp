@@ -26,11 +26,11 @@ namespace DDSX11
     DDSX11_LOG_TRACE ("DDS_DomainParticipantFactory_proxy::DDS_DomainParticipantFactory_proxy");
   }
 
-  IDL::traits< ::DDS::DomainParticipant >::ref_type
+  IDL::traits< ::DDS::DomainParticipant>::ref_type
   DDS_DomainParticipantFactory_proxy::create_participant (
     ::DDS::DomainId_t domain_id,
     const ::DDS::DomainParticipantQos & qos,
-    IDL::traits< ::DDS::DomainParticipantListener >::ref_type a_listener,
+    IDL::traits< ::DDS::DomainParticipantListener>::ref_type a_listener,
     ::DDS::StatusMask mask)
   {
     DDSX11_LOG_TRACE ("DDS_DomainParticipantFactory_proxy::create_participant");
@@ -85,7 +85,7 @@ namespace DDSX11
     // of scope.
     listener_guard.release ();
 
-    IDL::traits< ::DDS::DomainParticipant >::ref_type retval =
+    IDL::traits< ::DDS::DomainParticipant>::ref_type retval =
       VendorUtils::create_domain_participant_proxy (dds_dp);
 
     if (retval)
@@ -109,7 +109,7 @@ namespace DDSX11
 
   ::DDS::ReturnCode_t
   DDS_DomainParticipantFactory_proxy::delete_participant (
-    IDL::traits< ::DDS::DomainParticipant >::ref_type a_participant)
+    IDL::traits< ::DDS::DomainParticipant>::ref_type a_participant)
   {
     DDSX11_LOG_TRACE ("DDS_DomainParticipantFactory_proxy::delete_participant");
 
@@ -148,11 +148,11 @@ namespace DDSX11
   }
 
 
-  IDL::traits< ::DDS::DomainParticipant >::ref_type
+  IDL::traits< ::DDS::DomainParticipant>::ref_type
   DDS_DomainParticipantFactory_proxy::lookup_participant (
     ::DDS::DomainId_t domain_id)
   {
-    IDL::traits< ::DDS::DomainParticipant >::ref_type retval;
+    IDL::traits< ::DDS::DomainParticipant>::ref_type retval;
     DDS_Native::DDS::DomainParticipant * dp =
       this->native_entity ()->lookup_participant (domain_id);
 

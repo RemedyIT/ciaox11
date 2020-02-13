@@ -24,23 +24,23 @@ public:
   TestTypeFactory () = default;
   virtual ~TestTypeFactory() {}
 
-  virtual IDL::traits< ::DDS::DataWriter >::ref_type
+  virtual IDL::traits< ::DDS::DataWriter>::ref_type
   create_datawriter (
     ::DDS_Native::DDS::DataWriter* dw) override;
 
-  virtual IDL::traits< ::DDS::DataReader >::ref_type
+  virtual IDL::traits< ::DDS::DataReader>::ref_type
   create_datareader (
     ::DDS_Native::DDS::DataReader* dr) override;
 };
 
-IDL::traits< ::DDS::DataWriter >::ref_type
+IDL::traits< ::DDS::DataWriter>::ref_type
 TestTypeFactory::create_datawriter (
     ::DDS_Native::DDS::DataWriter*)
 {
   return nullptr;
 }
 
-IDL::traits< ::DDS::DataReader >::ref_type
+IDL::traits< ::DDS::DataReader>::ref_type
 TestTypeFactory::create_datareader (
   ::DDS_Native::DDS::DataReader*)
 {
@@ -63,14 +63,14 @@ int main (int , char **)
         domain_id = std::atoi (domain);
       }
 
-      IDL::traits< ::DDS::DomainParticipantFactory >::ref_type pf =
+      IDL::traits< ::DDS::DomainParticipantFactory>::ref_type pf =
         ::DDSX11::VendorUtils::init_dds ();
 
       ::DDS::DomainParticipantQos qos;
-      IDL::traits< ::DDS::DomainParticipant >::ref_type dp1 =
+      IDL::traits< ::DDS::DomainParticipant>::ref_type dp1 =
         pf->create_participant (domain_id, qos, nullptr, 0);
 
-      IDL::traits< ::DDS::DomainParticipant >::ref_type dp2 =
+      IDL::traits< ::DDS::DomainParticipant>::ref_type dp2 =
         pf->create_participant (domain_id, qos, nullptr, 0);
 
       const std::string type1 ("DataType1");
