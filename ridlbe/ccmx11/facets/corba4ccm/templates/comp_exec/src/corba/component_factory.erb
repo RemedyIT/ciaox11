@@ -1,7 +1,7 @@
   // generated from <%= ridl_template_path %>
 %# There's always one port
 % _p = all_ports[0] if !all_ports.empty?
-% _cc = _p.interface_type.scoped_unescaped_type.scope_to_cxxname + '_CorbaConnector'
+% _cc = _p.interface_type.scoped_cxxname.scope_to_cxxname + '_CorbaConnector'
   typedef CCM_CORBA::CORBA_Connector_T<
     <%= scoped_ccm_name %>,
     <%= scoped_ccm_name %>_Context,
@@ -14,7 +14,7 @@
 } // namespace <%= executor_cxx_namespace %>
 
 extern "C" void
-create_<%= scoped_unescaped_type.scope_to_cxxname %>_Impl (
+create_<%= scoped_name.scope_to_cxxname %>_Impl (
   IDL::traits<Components::EnterpriseComponent>::ref_type& component)
 {
   component = CORBA::make_reference < <%= executor_cxx_namespace %>::<%= _cc %>> ();

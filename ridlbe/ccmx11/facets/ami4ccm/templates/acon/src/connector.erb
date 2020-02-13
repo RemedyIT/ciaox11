@@ -41,7 +41,7 @@ namespace <%= executor_cxx_namespace %>
 } // namespace <%= executor_cxx_namespace %>
 
 extern "C" void
-create_<%= scoped_unescaped_type.scope_to_cxxname %>_Impl (
+create_<%= scoped_name.scope_to_cxxname %>_Impl (
   IDL::traits<Components::EnterpriseComponent>::ref_type& component)
 {
   component = CORBA::make_reference < <%= executor_cxx_namespace %>::<%= lem_name %>_conn_i > ();

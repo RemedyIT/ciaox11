@@ -7,7 +7,7 @@
 %  end_of_line=';'
 % end
 % if attribute.is_readonly?
-readonly attribute <%= attribute.idltype_name %> <%= attribute.unescaped_name %><%= end_of_line %>
+readonly attribute <%= attribute.idltype_unescaped_name %> <%= attribute.unescaped_name %><%= end_of_line %>
 %  if attribute.has_get_raises?
 %  _attrs =  attribute.get_raises.dup
 % _s = 'raises ('
@@ -18,7 +18,7 @@ readonly attribute <%= attribute.idltype_name %> <%= attribute.unescaped_name %>
    <%= _s %>
 %  end
 % else
-attribute <%= attribute.scoped_idltype_name %> <%= attribute.unescaped_name %><%= end_of_line %>
+attribute <%= attribute.idltype_unescaped_name %> <%= attribute.unescaped_name %><%= end_of_line %>
 %  if attribute.has_get_raises?
 %  _attrs =  attribute.get_raises.dup
 % _s = 'getraises ('

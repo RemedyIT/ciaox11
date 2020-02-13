@@ -103,7 +103,7 @@ enum DataType2
   dtShortType
 };
 
-union Data2 switch (DataType2)
+union _Data2 switch (DataType2)
 {
   case dtString: string stringData;
   case dtShortType: short shortData;
@@ -243,7 +243,7 @@ component Foo : Base
   attribute BarStruct     my_bar_struct_array;
   attribute Baz           my_baz_struct;
   attribute Data          my_data_union;
-  attribute Data2         my_var_data_union;
+  attribute _Data2         my_var_data_union;
   attribute StructModule::StructStruct my_struct_struct;
 
   attribute sequence_bounded_string my_sequence_bounded_string;
