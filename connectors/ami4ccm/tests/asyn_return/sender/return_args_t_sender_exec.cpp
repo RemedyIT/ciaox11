@@ -52,17 +52,26 @@ namespace InterReturnT_Sender_Impl
                         << "returns null" << std::endl;
       return 1;
     }
-    IDL::traits< ::InterReturnT::AMI4CCM_MyFooReplyHandler>::ref_type cb =
-             CORBA::make_reference<AMI4CCM_MyFooReplyHandler_run_my_foo_i> ();
-    //Invoke Asynchronous calls to test
-    my_foo_ami_->sendc_ret_void (cb, "Send me a void." );
-    my_foo_ami_->sendc_ret_long (cb,"Send me a long.");
-    my_foo_ami_->sendc_ret_double (cb,"Send me a double.");
-    my_foo_ami_->sendc_ret_struct (cb, "Send me a struct.");
-    my_foo_ami_->sendc_ret_array (cb,"Send me an array.");
-    my_foo_ami_->sendc_ret_seq (cb,"Send me a sequence.");
-    my_foo_ami_->sendc_ret_union (cb,"Send me a union.");
-    my_foo_ami_->sendc_ret_enum (cb,"Send me a enum value.");
+
+    try
+    {
+      IDL::traits< ::InterReturnT::AMI4CCM_MyFooReplyHandler>::ref_type cb =
+        CORBA::make_reference<AMI4CCM_MyFooReplyHandler_run_my_foo_i> ();
+
+      //Invoke Asynchronous calls to test
+      my_foo_ami_->sendc_ret_void (cb, "Send me a void." );
+      my_foo_ami_->sendc_ret_long (cb,"Send me a long.");
+      my_foo_ami_->sendc_ret_double (cb,"Send me a double.");
+      my_foo_ami_->sendc_ret_struct (cb, "Send me a struct.");
+      my_foo_ami_->sendc_ret_array (cb,"Send me an array.");
+      my_foo_ami_->sendc_ret_seq (cb,"Send me a sequence.");
+      my_foo_ami_->sendc_ret_union (cb,"Send me a union.");
+      my_foo_ami_->sendc_ret_enum (cb,"Send me a enum value.");
+    }
+    catch (const CORBA::Exception& ex)
+    {
+      CIAOX11_TEST_ERROR << "ERROR: Sender asynch_foo_generator(): Unexpected exception." << ex << std::endl;
+    }
     return 0;
   }
 
