@@ -273,7 +273,7 @@ namespace Hello_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::Receiver_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::Hello::CCM_MyFoo >::ref_type
+  IDL::traits< ::Hello::CCM_MyFoo>::ref_type
   Receiver_exec_i::get_do_my_foo ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::Receiver_exec_i[get_do_my_foo]
@@ -285,7 +285,7 @@ namespace Hello_Receiver_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::Receiver_exec_i[get_do_my_foo]
   }
 
-  IDL::traits< ::Hello::CCM_MyFoo >::ref_type
+  IDL::traits< ::Hello::CCM_MyFoo>::ref_type
   Receiver_exec_i::get_do_my_foo_2 ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::Receiver_exec_i[get_do_my_foo_2]
@@ -297,7 +297,7 @@ namespace Hello_Receiver_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::Receiver_exec_i[get_do_my_foo_2]
   }
 
-  IDL::traits< ::Foo::CCM_MyFoo_in_Bar >::ref_type
+  IDL::traits< ::Foo::CCM_MyFoo_in_Bar>::ref_type
   Receiver_exec_i::get_do_my_foo_in_bar ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::Receiver_exec_i[get_do_my_foo_in_bar]

@@ -20,7 +20,7 @@ namespace <%= executor_cxx_namespace %>
     IDL::traits<Components::SessionContext>::ref_type ctx)
   {
     // Setting the context of this component.
-    this->context_ = IDL::traits< <%= scoped_ccm_name %>_Context >::narrow (std::move (ctx));
+    this->context_ = IDL::traits< <%= scoped_ccm_name %>_Context>::narrow (std::move (ctx));
   }
 
   void <%= cxxname %>_conn_i::configuration_complete ()

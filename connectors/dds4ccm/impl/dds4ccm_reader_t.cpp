@@ -107,7 +107,7 @@ namespace CIAOX11
       {
         if (sample_info[i].valid_data ())
           {
-            infos[ix] = ::DDS4CCM::traits< ::DDS::SampleInfo >::to_readinfo(sample_info[i]);
+            infos[ix] = ::DDS4CCM::traits< ::DDS::SampleInfo>::to_readinfo(sample_info[i]);
             data_to_return[ix] = all_data[i];
             ++ix;
           }
@@ -120,13 +120,13 @@ namespace CIAOX11
       TOPIC_SEQ_TYPE &data,
       ::DDS::SampleInfoSeq &sample_info,
       const ::DDS::InstanceHandle_t& lookup_hnd,
-      IDL::traits< ::DDS::QueryCondition >::ref_type qc)
+      IDL::traits< ::DDS::QueryCondition>::ref_type qc)
     {
       DDS4CCM_LOG_TRACE ("Reader_T::read_w_instance");
 
       DDS4CCM_LOG_DEBUG (
         "Reader_T::read_w_instance - Start reading with instance <"
-        << IDL::traits< ::DDS::InstanceHandle_t >::write (lookup_hnd) << ">.");
+        << IDL::traits< ::DDS::InstanceHandle_t>::write (lookup_hnd) << ">.");
       ::DDS::ReturnCode_t retcode = ::DDS::RETCODE_ERROR;
 
       if (qc)
@@ -149,7 +149,7 @@ namespace CIAOX11
           // data from DDS.
           this->return_loan (data, sample_info, false);
           DDS4CCM_LOG_ERROR ("Reader_T::read_w_instance - retval is <"
-            << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode)
+            << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
             << ">.");
           throw ::CCM_DDS::InternalError (retcode, 0);
         }
@@ -160,7 +160,7 @@ namespace CIAOX11
     Reader_T<READER_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::read_wo_instance (
       TOPIC_SEQ_TYPE &data,
       ::DDS::SampleInfoSeq &sample_info,
-      IDL::traits< ::DDS::QueryCondition >::ref_type qc)
+      IDL::traits< ::DDS::QueryCondition>::ref_type qc)
     {
       DDS4CCM_LOG_TRACE ("Reader_T::read_wo_instance");
 
@@ -209,7 +209,7 @@ namespace CIAOX11
       if (retcode != ::DDS::RETCODE_OK)
       {
         DDS4CCM_LOG_ERROR ("Reader_T::return_loan - Error returning loan to DDS - <"
-          << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode)
+          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">.");
         if (throw_exception)
         {
@@ -230,7 +230,7 @@ namespace CIAOX11
       ::DDS::SampleInfoSeq sample_info;
       TOPIC_SEQ_TYPE data;
 
-      IDL::traits< ::DDS::QueryCondition >::ref_type qc =
+      IDL::traits< ::DDS::QueryCondition>::ref_type qc =
         this->condition_manager ()->query_condition_reader ();
       this->read_wo_instance (data, sample_info, qc);
 
@@ -245,7 +245,7 @@ namespace CIAOX11
       {
         if (sample_info[i].valid_data () && sample_info[i].sample_rank () == 0)
         {
-          infos[ix] = ::DDS4CCM::traits< ::DDS::SampleInfo >::to_readinfo(sample_info[i]);
+          infos[ix] = ::DDS4CCM::traits< ::DDS::SampleInfo>::to_readinfo(sample_info[i]);
           instances[ix] = data[i];
           ++ix;
         }
@@ -265,7 +265,7 @@ namespace CIAOX11
       ::DDS::SampleInfoSeq sample_info;
       TOPIC_SEQ_TYPE data;
 
-      IDL::traits< ::DDS::QueryCondition >::ref_type qc =
+      IDL::traits< ::DDS::QueryCondition>::ref_type qc =
         this->condition_manager ()->query_condition_reader ();
       this->read_wo_instance (data, sample_info, qc);
 
@@ -288,7 +288,7 @@ namespace CIAOX11
       ::DDS::SampleInfoSeq sample_info;
       TOPIC_SEQ_TYPE data;
 
-      IDL::traits< ::DDS::QueryCondition >::ref_type qc =
+      IDL::traits< ::DDS::QueryCondition>::ref_type qc =
         this->condition_manager ()->query_condition_reader ();
       this->read_w_instance (data, sample_info, lookup_hnd, qc);
 
@@ -304,7 +304,7 @@ namespace CIAOX11
         if (sample_info[sample-1].valid_data ())
         {
           an_instance = data[sample-1];
-          info = ::DDS4CCM::traits< ::DDS::SampleInfo >::to_readinfo(sample_info[sample-1]);
+          info = ::DDS4CCM::traits< ::DDS::SampleInfo>::to_readinfo(sample_info[sample-1]);
         }
       }
       this->return_loan (data, sample_info);
@@ -326,7 +326,7 @@ namespace CIAOX11
       ::DDS::SampleInfoSeq sample_info;
       TOPIC_SEQ_TYPE data;
 
-      IDL::traits< ::DDS::QueryCondition >::ref_type qc =
+      IDL::traits< ::DDS::QueryCondition>::ref_type qc =
         this->condition_manager ()->query_condition_reader ();
       this->read_w_instance (data, sample_info, lookup_hnd, qc);
       this->convert_data (data, instances, infos, sample_info);
@@ -355,7 +355,7 @@ namespace CIAOX11
     template <typename READER_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
     void
     Reader_T<READER_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::set_dds_reader (
-      IDL::traits< ::DDS::DataReader >::ref_type dr,
+      IDL::traits< ::DDS::DataReader>::ref_type dr,
       SharedConditionManager condition_manager)
     {
       DDS4CCM_LOG_TRACE ("Reader_T::set_dds_reader");
@@ -371,7 +371,7 @@ namespace CIAOX11
     }
 
     template <typename READER_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
-    IDL::traits< ::DDS::DataReader >::ref_type
+    IDL::traits< ::DDS::DataReader>::ref_type
     Reader_T<READER_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_dds_reader ()
     {
       DDS4CCM_LOG_TRACE ("Reader_T::get_dds_reader");

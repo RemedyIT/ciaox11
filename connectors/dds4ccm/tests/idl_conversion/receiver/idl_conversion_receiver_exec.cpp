@@ -706,7 +706,7 @@ namespace IDL_Conversion_Test_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : IDL_Conversion_Test_Receiver_Impl::Receiver_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::Example::IDLConversionTestConnector::CCM_Listener >::ref_type
+  IDL::traits< ::Example::IDLConversionTestConnector::CCM_Listener>::ref_type
   Receiver_exec_i::get_info_out_data_listener ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : IDL_Conversion_Test_Receiver_Impl::Receiver_exec_i[get_info_out_data_listener]
@@ -719,7 +719,7 @@ namespace IDL_Conversion_Test_Receiver_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : IDL_Conversion_Test_Receiver_Impl::Receiver_exec_i[get_info_out_data_listener]
   }
 
-  IDL::traits< ::CCM_DDS::CCM_PortStatusListener >::ref_type
+  IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type
   Receiver_exec_i::get_info_out_status ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : IDL_Conversion_Test_Receiver_Impl::Receiver_exec_i[get_info_out_status]

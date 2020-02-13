@@ -18,7 +18,7 @@ namespace CIAOX11
   {
     template <typename EVT_STRATEGY>
     class PublisherListener_T
-      : public IDL::traits< ::DDS::PublisherListener >::base_type
+      : public IDL::traits< ::DDS::PublisherListener>::base_type
     {
     public:
       /// Constructor
@@ -30,31 +30,31 @@ namespace CIAOX11
 
       virtual void
       on_offered_deadline_missed (
-        IDL::traits< ::DDS::DataWriter >::ref_type the_Writer,
+        IDL::traits< ::DDS::DataWriter>::ref_type the_Writer,
         const ::DDS::OfferedDeadlineMissedStatus & status) override;
 
       virtual void
       on_liveliness_lost (
-        IDL::traits< ::DDS::DataWriter >::ref_type the_Writer,
+        IDL::traits< ::DDS::DataWriter>::ref_type the_Writer,
         const ::DDS::LivelinessLostStatus & status) override;
 
       virtual void
       on_offered_incompatible_qos (
-        IDL::traits< ::DDS::DataWriter >::ref_type the_Writer,
+        IDL::traits< ::DDS::DataWriter>::ref_type the_Writer,
         const ::DDS::OfferedIncompatibleQosStatus & status) override;
 
       virtual void
       on_publication_matched (
-        IDL::traits< ::DDS::DataWriter >::ref_type the_Writer,
+        IDL::traits< ::DDS::DataWriter>::ref_type the_Writer,
         const ::DDS::PublicationMatchedStatus & status) override;
 
       static ::DDS::StatusMask get_mask (
-        IDL::traits< CCM_DDS::ConnectorStatusListener >::ref_type error_listener);
+        IDL::traits< CCM_DDS::ConnectorStatusListener>::ref_type error_listener);
 
     protected:
       virtual void
       on_unexpected_status (
-        IDL::traits< ::DDS::Entity >::ref_type entity,
+        IDL::traits< ::DDS::Entity>::ref_type entity,
         ::DDS::StatusKind status_kind);
 
     private:

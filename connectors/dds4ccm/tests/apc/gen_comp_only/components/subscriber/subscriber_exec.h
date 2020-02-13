@@ -75,7 +75,7 @@ namespace subscriber_comp_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< CCM_subscriber_comp_Context >::ref_type context_;
+    IDL::traits< CCM_subscriber_comp_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -133,7 +133,7 @@ namespace subscriber_comp_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< CCM_subscriber_comp_Context >::ref_type context_;
+    IDL::traits< CCM_subscriber_comp_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -191,7 +191,7 @@ namespace subscriber_comp_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< CCM_subscriber_comp_Context >::ref_type context_;
+    IDL::traits< CCM_subscriber_comp_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -249,7 +249,7 @@ namespace subscriber_comp_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< CCM_subscriber_comp_Context >::ref_type context_;
+    IDL::traits< CCM_subscriber_comp_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -319,7 +319,7 @@ namespace subscriber_comp_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< CCM_subscriber_comp_Context >::ref_type context_;
+    IDL::traits< CCM_subscriber_comp_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -377,7 +377,7 @@ namespace subscriber_comp_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< CCM_subscriber_comp_Context >::ref_type context_;
+    IDL::traits< CCM_subscriber_comp_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -435,7 +435,7 @@ namespace subscriber_comp_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< CCM_subscriber_comp_Context >::ref_type context_;
+    IDL::traits< CCM_subscriber_comp_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -493,7 +493,7 @@ namespace subscriber_comp_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< CCM_subscriber_comp_Context >::ref_type context_;
+    IDL::traits< CCM_subscriber_comp_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -551,7 +551,7 @@ namespace subscriber_comp_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< CCM_subscriber_comp_Context >::ref_type context_;
+    IDL::traits< CCM_subscriber_comp_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -609,7 +609,7 @@ namespace subscriber_comp_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< CCM_subscriber_comp_Context >::ref_type context_;
+    IDL::traits< CCM_subscriber_comp_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -679,7 +679,7 @@ namespace subscriber_comp_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< CCM_subscriber_comp_Context >::ref_type context_;
+    IDL::traits< CCM_subscriber_comp_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -737,7 +737,7 @@ namespace subscriber_comp_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< CCM_subscriber_comp_Context >::ref_type context_;
+    IDL::traits< CCM_subscriber_comp_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -771,40 +771,40 @@ namespace subscriber_comp_Impl
 
     /// Factory method and getter for the info_out_data_listener facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::ShapeTypeInterface::CCM_Listener >::ref_type get_info_out_data_listener () override;
+    virtual IDL::traits< ::ShapeTypeInterface::CCM_Listener>::ref_type get_info_out_data_listener () override;
     /// Factory method and getter for the info_out_status facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::CCM_DDS::CCM_PortStatusListener >::ref_type get_info_out_status () override;
+    virtual IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type get_info_out_status () override;
     /// Factory method and getter for the info_read_status facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::CCM_DDS::CCM_PortStatusListener >::ref_type get_info_read_status () override;
+    virtual IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type get_info_read_status () override;
     /// Factory method and getter for the info_get_status facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::CCM_DDS::CCM_PortStatusListener >::ref_type get_info_get_status () override;
+    virtual IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type get_info_get_status () override;
     /// Factory method and getter for the info_state_data_listener facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::ShapeTypeInterface::CCM_StateListener >::ref_type get_info_state_data_listener () override;
+    virtual IDL::traits< ::ShapeTypeInterface::CCM_StateListener>::ref_type get_info_state_data_listener () override;
     /// Factory method and getter for the info_state_status facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::CCM_DDS::CCM_PortStatusListener >::ref_type get_info_state_status () override;
+    virtual IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type get_info_state_status () override;
     /// Factory method and getter for the info_out_2_data_listener facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::ShapeTypeInterface::CCM_Listener >::ref_type get_info_out_2_data_listener () override;
+    virtual IDL::traits< ::ShapeTypeInterface::CCM_Listener>::ref_type get_info_out_2_data_listener () override;
     /// Factory method and getter for the info_out_2_status facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::CCM_DDS::CCM_PortStatusListener >::ref_type get_info_out_2_status () override;
+    virtual IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type get_info_out_2_status () override;
     /// Factory method and getter for the info_read_2_status facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::CCM_DDS::CCM_PortStatusListener >::ref_type get_info_read_2_status () override;
+    virtual IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type get_info_read_2_status () override;
     /// Factory method and getter for the info_get_2_status facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::CCM_DDS::CCM_PortStatusListener >::ref_type get_info_get_2_status () override;
+    virtual IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type get_info_get_2_status () override;
     /// Factory method and getter for the info_state_2_data_listener facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::ShapeTypeInterface::CCM_StateListener >::ref_type get_info_state_2_data_listener () override;
+    virtual IDL::traits< ::ShapeTypeInterface::CCM_StateListener>::ref_type get_info_state_2_data_listener () override;
     /// Factory method and getter for the info_state_2_status facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::CCM_DDS::CCM_PortStatusListener >::ref_type get_info_state_2_status () override;
+    virtual IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type get_info_state_2_status () override;
     //@}
 
     /** @name Session component operations */
@@ -836,7 +836,7 @@ namespace subscriber_comp_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< CCM_subscriber_comp_Context >::ref_type context_;
+    IDL::traits< CCM_subscriber_comp_Context>::ref_type context_;
 
     /** @name Component attributes. */
     //@{
@@ -844,18 +844,18 @@ namespace subscriber_comp_Impl
 
     /** @name Component facets. */
     //@{
-    IDL::traits< ::ShapeTypeInterface::CCM_Listener >::ref_type info_out_data_listener_;
-    IDL::traits< ::CCM_DDS::CCM_PortStatusListener >::ref_type info_out_status_;
-    IDL::traits< ::CCM_DDS::CCM_PortStatusListener >::ref_type info_read_status_;
-    IDL::traits< ::CCM_DDS::CCM_PortStatusListener >::ref_type info_get_status_;
-    IDL::traits< ::ShapeTypeInterface::CCM_StateListener >::ref_type info_state_data_listener_;
-    IDL::traits< ::CCM_DDS::CCM_PortStatusListener >::ref_type info_state_status_;
-    IDL::traits< ::ShapeTypeInterface::CCM_Listener >::ref_type info_out_2_data_listener_;
-    IDL::traits< ::CCM_DDS::CCM_PortStatusListener >::ref_type info_out_2_status_;
-    IDL::traits< ::CCM_DDS::CCM_PortStatusListener >::ref_type info_read_2_status_;
-    IDL::traits< ::CCM_DDS::CCM_PortStatusListener >::ref_type info_get_2_status_;
-    IDL::traits< ::ShapeTypeInterface::CCM_StateListener >::ref_type info_state_2_data_listener_;
-    IDL::traits< ::CCM_DDS::CCM_PortStatusListener >::ref_type info_state_2_status_;
+    IDL::traits< ::ShapeTypeInterface::CCM_Listener>::ref_type info_out_data_listener_;
+    IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type info_out_status_;
+    IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type info_read_status_;
+    IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type info_get_status_;
+    IDL::traits< ::ShapeTypeInterface::CCM_StateListener>::ref_type info_state_data_listener_;
+    IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type info_state_status_;
+    IDL::traits< ::ShapeTypeInterface::CCM_Listener>::ref_type info_out_2_data_listener_;
+    IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type info_out_2_status_;
+    IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type info_read_2_status_;
+    IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type info_get_2_status_;
+    IDL::traits< ::ShapeTypeInterface::CCM_StateListener>::ref_type info_state_2_data_listener_;
+    IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type info_state_2_status_;
     //@}
 
     /** @name User defined members. */

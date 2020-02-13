@@ -26,12 +26,12 @@ namespace CIAOX11
     {
     public:
       Coherent_Changes_Guard (
-        IDL::traits< ::DDS::Publisher >::ref_type publisher,
+        IDL::traits< ::DDS::Publisher>::ref_type publisher,
         bool coherent_write);
       ~Coherent_Changes_Guard ();
 
     private:
-      IDL::traits< ::DDS::Publisher >::ref_type publisher_;
+      IDL::traits< ::DDS::Publisher>::ref_type publisher_;
       bool const coherent_write_;
 
       Coherent_Changes_Guard() = delete;

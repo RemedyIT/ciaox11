@@ -420,7 +420,7 @@ namespace subscriber_comp_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : subscriber_comp_Impl::subscriber_comp_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::ShapeTypeInterface::CCM_Listener >::ref_type
+  IDL::traits< ::ShapeTypeInterface::CCM_Listener>::ref_type
   subscriber_comp_exec_i::get_info_out_data_listener ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::subscriber_comp_exec_i[get_info_out_data_listener]
@@ -432,7 +432,7 @@ namespace subscriber_comp_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : subscriber_comp_Impl::subscriber_comp_exec_i[get_info_out_data_listener]
   }
 
-  IDL::traits< ::CCM_DDS::CCM_PortStatusListener >::ref_type
+  IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type
   subscriber_comp_exec_i::get_info_out_status ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::subscriber_comp_exec_i[get_info_out_status]
@@ -444,7 +444,7 @@ namespace subscriber_comp_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : subscriber_comp_Impl::subscriber_comp_exec_i[get_info_out_status]
   }
 
-  IDL::traits< ::CCM_DDS::CCM_PortStatusListener >::ref_type
+  IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type
   subscriber_comp_exec_i::get_info_read_status ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::subscriber_comp_exec_i[get_info_read_status]
@@ -456,7 +456,7 @@ namespace subscriber_comp_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : subscriber_comp_Impl::subscriber_comp_exec_i[get_info_read_status]
   }
 
-  IDL::traits< ::CCM_DDS::CCM_PortStatusListener >::ref_type
+  IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type
   subscriber_comp_exec_i::get_info_get_status ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::subscriber_comp_exec_i[get_info_get_status]
@@ -468,7 +468,7 @@ namespace subscriber_comp_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : subscriber_comp_Impl::subscriber_comp_exec_i[get_info_get_status]
   }
 
-  IDL::traits< ::ShapeTypeInterface::CCM_StateListener >::ref_type
+  IDL::traits< ::ShapeTypeInterface::CCM_StateListener>::ref_type
   subscriber_comp_exec_i::get_info_state_data_listener ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::subscriber_comp_exec_i[get_info_state_data_listener]
@@ -480,7 +480,7 @@ namespace subscriber_comp_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : subscriber_comp_Impl::subscriber_comp_exec_i[get_info_state_data_listener]
   }
 
-  IDL::traits< ::CCM_DDS::CCM_PortStatusListener >::ref_type
+  IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type
   subscriber_comp_exec_i::get_info_state_status ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::subscriber_comp_exec_i[get_info_state_status]

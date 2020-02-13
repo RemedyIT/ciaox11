@@ -9,7 +9,7 @@ namespace <%= executor_cxx_namespace %>
    * component.
    */
   class <%= lem_name %>_Context final
-    : public IDL::traits< <%= scoped_ccm_name %>_Context >::base_type
+    : public IDL::traits< <%= scoped_ccm_name %>_Context>::base_type
   {
   public:
     /**
@@ -126,8 +126,8 @@ namespace <%= executor_cxx_namespace %>
     * @param component_context The context that is passed to the executor
     */
     <%= lem_name %>_ExecutorLocator (
-      IDL::traits< <%= scoped_ccm_name %>>::ref_type component_executor,
-      IDL::traits< <%= lem_name %>_Context>::ref_type component_context);
+      IDL::traits<<%= scoped_ccm_name %>>::ref_type component_executor,
+      IDL::traits<<%= lem_name %>_Context>::ref_type component_context);
 
     /// Destructor
     virtual ~<%= lem_name %>_ExecutorLocator () = default;
@@ -184,7 +184,7 @@ namespace <%= executor_cxx_namespace %>
 
 % end
     /// Reference to the user implemented executor
-    IDL::traits< <%= scoped_ccm_name %>>::ref_type component_executor_;
+    IDL::traits<<%= scoped_ccm_name %>>::ref_type component_executor_;
 
     /// The context for this component
     IDL::traits<<%= lem_name %>_Context>::ref_type component_context_;

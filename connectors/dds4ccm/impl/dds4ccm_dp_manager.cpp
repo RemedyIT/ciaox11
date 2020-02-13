@@ -28,7 +28,7 @@ namespace CIAOX11
     // DomainParticipantManager::DDSParticipantTopic::DDSParticipantTopic
     //============================================================
     DomainParticipantManager::DDSParticipantTopic::DDSParticipantTopic (
-      IDL::traits< ::DDS::DomainParticipant >::ref_type dp)
+      IDL::traits< ::DDS::DomainParticipant>::ref_type dp)
       : dp_ (std::move(dp))
     {
       DDS4CCM_LOG_TRACE ("DomainParticipantManager::DDSParticipantTopic::DDSParticipantTopic");
@@ -39,7 +39,7 @@ namespace CIAOX11
       DDS4CCM_LOG_TRACE ("DomainParticipantManager::DDSParticipantTopic::~DDSParticipantTopic");
     }
 
-    IDL::traits< ::DDS::DomainParticipant >::ref_type
+    IDL::traits< ::DDS::DomainParticipant>::ref_type
     DomainParticipantManager::DDSParticipantTopic::get_participant ()
     {
       DDS4CCM_LOG_TRACE ("DomainParticipantManager::DDSParticipantTopic::get_participant");
@@ -69,7 +69,7 @@ namespace CIAOX11
     //============================================================
     // DomainParticipantManager::DomainParticipantManager
     //============================================================
-    IDL::traits< ::DDS::DomainParticipant >::ref_type
+    IDL::traits< ::DDS::DomainParticipant>::ref_type
     DomainParticipantManager::get_participant (const ::DDS::DomainId_t domain_id,
       const std::string &qos_profile)
     {
@@ -85,13 +85,13 @@ namespace CIAOX11
       if (it_found != this->dps_.end () && it_found->second)
       {
         it_found->second->_inc_ref ();
-        IDL::traits< ::DDS::DomainParticipant >::ref_type dp =
+        IDL::traits< ::DDS::DomainParticipant>::ref_type dp =
           it_found->second->get_participant ();
         DDS4CCM_LOG_DEBUG ("DomainParticipantManager::get_participant - "
           << "DomainParticipant found. domain <" << domain_id << "> - "
           << "profile <" << qos_profile << "> - ref_count <"
           << it_found->second->_ref_count () << "> - handle <"
-          << IDL::traits< ::DDS::Entity >::write<entity_formatter> (dp)
+          << IDL::traits< ::DDS::Entity>::write<entity_formatter> (dp)
           << ">.");
         return dp;
       }
@@ -105,7 +105,7 @@ namespace CIAOX11
     DomainParticipantManager::register_participant (
       ::DDS::DomainId_t domain_id,
       const std::string &qos_profile,
-      IDL::traits< ::DDS::DomainParticipant >::ref_type dp)
+      IDL::traits< ::DDS::DomainParticipant>::ref_type dp)
     {
       DDS4CCM_LOG_TRACE ("DomainParticipantManager::register_participant");
 
@@ -144,7 +144,7 @@ namespace CIAOX11
         DDS4CCM_LOG_DEBUG ("DomainParticipantManager::register_participant - "
           << "Added a DomainParticipant for domain <"
           << domain_id << "> with profile <" << qos_profile << "> - handle <"
-          << IDL::traits< ::DDS::Entity >::write<entity_formatter> (dp)
+          << IDL::traits< ::DDS::Entity>::write<entity_formatter> (dp)
           << ">.");
         return true;
 
@@ -153,7 +153,7 @@ namespace CIAOX11
       DDS4CCM_LOG_DEBUG ("DomainParticipantManager::register_participant - "
         << "Don't add participant for domain <" << domain_id << "> with profile <"
         << qos_profile << "> since it already exists as handle <"
-        << IDL::traits< ::DDS::Entity >::write<entity_formatter> (dp)
+        << IDL::traits< ::DDS::Entity>::write<entity_formatter> (dp)
         << ">");
       return false;
     }
@@ -162,7 +162,7 @@ namespace CIAOX11
     DomainParticipantManager::unregister_participant (
       ::DDS::DomainId_t domain_id,
       const std::string &qos_profile,
-      IDL::traits< ::DDS::DomainParticipant >::ref_type dp)
+      IDL::traits< ::DDS::DomainParticipant>::ref_type dp)
     {
       DDS4CCM_LOG_TRACE ("DomainParticipantManager::unregister_participant");
 
@@ -182,7 +182,7 @@ namespace CIAOX11
         {
           DDS4CCM_LOG_DEBUG ("DomainParticipantManager::unregister_participant - "
             << "Delete participant <"
-            << IDL::traits< ::DDS::Entity >::write<entity_formatter> (dp)
+            << IDL::traits< ::DDS::Entity>::write<entity_formatter> (dp)
             << "> for domain <" << domain_id << "> with profile <"
             << qos_profile << "> since ref_count is one.");
 
@@ -194,7 +194,7 @@ namespace CIAOX11
         {
           DDS4CCM_LOG_DEBUG ("DomainParticipantManager::unregister_participant - "
             << "Decrement refcount for participant <"
-            << IDL::traits< ::DDS::Entity >::write<entity_formatter> (dp)
+            << IDL::traits< ::DDS::Entity>::write<entity_formatter> (dp)
             << "> for domain <" << domain_id << "> with profile <"
             << qos_profile << "> since " << "it's still used - ref_count is <"
             << iter->second->_ref_count () << ">");
@@ -223,7 +223,7 @@ namespace CIAOX11
           {
             DDS4CCM_LOG_ERROR ("DomainParticipantManager::close - "
               << "Error finalizing domain participant factory - return code <"
-              << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode)
+              << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
               << ">");
           }
 

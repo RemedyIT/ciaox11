@@ -76,7 +76,7 @@ DDS_TopicBase_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::late_binded (
  * DDS entity getters
  */
 template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
-IDL::traits< ::DDS::DomainParticipant >::ref_type
+IDL::traits< ::DDS::DomainParticipant>::ref_type
 DDS_TopicBase_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::domain_participant ()
 {
   DDS4CCM_LOG_TRACE ("DDS_TopicBase_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::domain_participant");
@@ -89,7 +89,7 @@ DDS_TopicBase_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::domain_particip
 }
 
 template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
-IDL::traits< ::DDS::Topic >::ref_type
+IDL::traits< ::DDS::Topic>::ref_type
 DDS_TopicBase_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::topic ()
 {
   DDS4CCM_LOG_TRACE ("DDS_TopicBase_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::topic");
@@ -106,7 +106,7 @@ DDS_TopicBase_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::topic ()
 }
 
 template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
-IDL::traits< ::DDS::Publisher >::ref_type
+IDL::traits< ::DDS::Publisher>::ref_type
 DDS_TopicBase_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::publisher ()
 {
   DDS4CCM_LOG_TRACE ("DDS_TopicBase_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::publisher");
@@ -119,7 +119,7 @@ DDS_TopicBase_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::publisher ()
 }
 
 template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
-IDL::traits< ::DDS::Subscriber >::ref_type
+IDL::traits< ::DDS::Subscriber>::ref_type
 DDS_TopicBase_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::subscriber ()
 {
   DDS4CCM_LOG_TRACE ("DDS_TopicBase_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::subscriber");
@@ -238,7 +238,7 @@ DDS_TopicBase_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::ccm_remove ()
 template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 void
 DDS_TopicBase_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::register_type (
-  IDL::traits< ::DDS::DomainParticipant >::ref_type participant,
+  IDL::traits< ::DDS::DomainParticipant>::ref_type participant,
   const std::string &typesupport_name)
 {
   DDS4CCM_LOG_TRACE ("DDS_TopicBase_Connector_T::register_type");
@@ -254,7 +254,7 @@ DDS_TopicBase_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::register_type (
       << "Error registering type <" << typesupport_name << "> to participant <"
       << IDL::traits<DDS::Entity>::write<entity_formatter> (participant)
       << "with error code <"
-      << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode)
+      << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
       << "> in DDS.");
     throw CCM_DDS::InternalError (retcode, 0);
   }
@@ -266,7 +266,7 @@ DDS_TopicBase_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::register_type (
 template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 void
 DDS_TopicBase_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::unregister_type (
-  IDL::traits< ::DDS::DomainParticipant >::ref_type participant,
+  IDL::traits< ::DDS::DomainParticipant>::ref_type participant,
   const std::string &typesupport_name)
 {
   DDS4CCM_LOG_TRACE ("DDS_TopicBase_Connector_T::unregister_type");
@@ -279,7 +279,7 @@ DDS_TopicBase_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::unregister_type
       << "Error unregistering type <" << typesupport_name << "> from participant <"
       << IDL::traits<DDS::Entity>::write<entity_formatter> (participant)
       << "with error code <"
-      << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode)
+      << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
       << "> in DDS.");
     throw CCM_DDS::InternalError (DDS::RETCODE_ERROR, 0);
   }

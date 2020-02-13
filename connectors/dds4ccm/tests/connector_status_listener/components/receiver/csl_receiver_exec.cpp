@@ -698,7 +698,7 @@ namespace CSL_Test_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : CSL_Test_Receiver_Impl::Receiver_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::CCM_DDS::CCM_PortStatusListener >::ref_type
+  IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type
   Receiver_exec_i::get_info_get_status ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : CSL_Test_Receiver_Impl::Receiver_exec_i[get_info_get_status]
@@ -710,7 +710,7 @@ namespace CSL_Test_Receiver_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : CSL_Test_Receiver_Impl::Receiver_exec_i[get_info_get_status]
   }
 
-  IDL::traits< ::CCM_DDS::CCM_ConnectorStatusListener >::ref_type
+  IDL::traits< ::CCM_DDS::CCM_ConnectorStatusListener>::ref_type
   Receiver_exec_i::get_connector_status_receiver ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : CSL_Test_Receiver_Impl::Receiver_exec_i[get_connector_status_receiver]

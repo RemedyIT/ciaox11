@@ -32,7 +32,7 @@ namespace CIAOX11
       /// Constructor
       explicit DataReaderListenerBase_T (
         const typename CCM_TYPE::event_strategy_type& evs,
-        IDL::traits < ::CCM_DDS::DataListenerControl >::ref_type control,
+        IDL::traits< ::CCM_DDS::DataListenerControl>::ref_type control,
         SharedConditionManager condition_manager);
 
       /// Destructor
@@ -42,15 +42,15 @@ namespace CIAOX11
       /// based on what's the end user configured in the DataListenerControl.
       virtual void
       on_data_available_i (
-        IDL::traits< ::DDS::DataReader >::ref_type rdr,
-        typename IDL::traits<typename CCM_TYPE::data_listener_type >::ref_type listener) override;
+        IDL::traits< ::DDS::DataReader>::ref_type rdr,
+        typename IDL::traits<typename CCM_TYPE::data_listener_type>::ref_type listener) override;
 
     private:
       /// Pure virtual helper method to get (read/take) data from DDS
       virtual ::DDS::ReturnCode_t
       get_data_i (
-        typename ::DDS::traits< TOPIC_TYPE >::typed_datareader_ref_type reader,
-        IDL::traits< ::DDS::QueryCondition >::ref_type qc,
+        typename ::DDS::traits< TOPIC_TYPE>::typed_datareader_ref_type reader,
+        IDL::traits< ::DDS::QueryCondition>::ref_type qc,
         TOPIC_SEQ_TYPE &data,
         ::DDS::SampleInfoSeq &sample_info,
         int32_t max_samples) override = 0;
@@ -76,7 +76,7 @@ namespace CIAOX11
     public:
       explicit DataReaderListener_T (
         const typename CCM_TYPE::event_strategy_type& evs,
-        IDL::traits< ::CCM_DDS::DataListenerControl >::ref_type control,
+        IDL::traits< ::CCM_DDS::DataListenerControl>::ref_type control,
         SharedConditionManager condition_manager)
       : DataReaderListenerBase_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE> (
           evs, std::move(control), condition_manager)
@@ -87,8 +87,8 @@ namespace CIAOX11
     private:
       /// Helper method to take data from DDS
       ::DDS::ReturnCode_t get_data_i (
-        typename ::DDS::traits< TOPIC_TYPE >::typed_datareader_ref_type reader,
-        IDL::traits< ::DDS::QueryCondition >::ref_type qc,
+        typename ::DDS::traits< TOPIC_TYPE>::typed_datareader_ref_type reader,
+        IDL::traits< ::DDS::QueryCondition>::ref_type qc,
         TOPIC_SEQ_TYPE &data,
         ::DDS::SampleInfoSeq &sample_info,
         int32_t max_samples) override
@@ -118,7 +118,7 @@ namespace CIAOX11
     public:
       explicit DataReaderListener_T (
         const typename CCM_TYPE::event_strategy_type& evs,
-        IDL::traits< ::CCM_DDS::DataListenerControl >::ref_type control,
+        IDL::traits< ::CCM_DDS::DataListenerControl>::ref_type control,
         SharedConditionManager condition_manager)
       : DataReaderListenerBase_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE> (
           evs, std::move(control), condition_manager)
@@ -130,8 +130,8 @@ namespace CIAOX11
     private:
       /// Helper method to read data from DDS
       ::DDS::ReturnCode_t get_data_i (
-        typename ::DDS::traits< TOPIC_TYPE >::typed_datareader_ref_type reader,
-        IDL::traits< ::DDS::QueryCondition >::ref_type qc,
+        typename ::DDS::traits< TOPIC_TYPE>::typed_datareader_ref_type reader,
+        IDL::traits< ::DDS::QueryCondition>::ref_type qc,
         TOPIC_SEQ_TYPE &data,
         ::DDS::SampleInfoSeq &sample_info,
         int32_t max_samples) override

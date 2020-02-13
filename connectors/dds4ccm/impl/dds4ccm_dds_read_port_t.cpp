@@ -10,7 +10,7 @@
 
 template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 DDS_Read_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::DDS_Read_Port_T (
-  IDL::traits<CORBA::Object >::ref_type component)
+  IDL::traits<CORBA::Object>::ref_type component)
   : DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE> (std::move(component))
 {
 }

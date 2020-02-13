@@ -37,18 +37,18 @@ namespace CIAOX11
     {
       public:
         explicit OnUnexpectedStatusHandler (
-            IDL::traits< ::CCM_DDS::ConnectorStatusListener >::weak_ref_type csl,
-            IDL::traits< ::DDS::Entity >::ref_type entity,
+            IDL::traits< ::CCM_DDS::ConnectorStatusListener>::weak_ref_type csl,
+            IDL::traits< ::DDS::Entity>::ref_type entity,
             ::DDS::StatusKind status_kind);
         virtual ~OnUnexpectedStatusHandler () = default;
         virtual int handle_exception (ACE_HANDLE fc = ACE_INVALID_HANDLE);
         static void handle_event (
-            IDL::traits< ::CCM_DDS::ConnectorStatusListener >::ref_type csl,
-            IDL::traits< ::DDS::Entity >::ref_type entity,
+            IDL::traits< ::CCM_DDS::ConnectorStatusListener>::ref_type csl,
+            IDL::traits< ::DDS::Entity>::ref_type entity,
             ::DDS::StatusKind status_kind);
       private:
-        IDL::traits< ::CCM_DDS::ConnectorStatusListener >::weak_ref_type csl_;
-        IDL::traits< ::DDS::Entity >::weak_ref_type entity_;
+        IDL::traits< ::CCM_DDS::ConnectorStatusListener>::weak_ref_type csl_;
+        IDL::traits< ::DDS::Entity>::weak_ref_type entity_;
         ::DDS::StatusKind status_kind_;
 
         OnUnexpectedStatusHandler() = delete;
@@ -63,18 +63,18 @@ namespace CIAOX11
     {
       public:
         explicit OnRequestedIncompatibleQosHandler (
-            IDL::traits< ::CCM_DDS::ConnectorStatusListener >::weak_ref_type csl,
-            IDL::traits< ::DDS::DataReader >::ref_type dr,
+            IDL::traits< ::CCM_DDS::ConnectorStatusListener>::weak_ref_type csl,
+            IDL::traits< ::DDS::DataReader>::ref_type dr,
             const ::DDS::RequestedIncompatibleQosStatus &status);
         virtual ~OnRequestedIncompatibleQosHandler () = default;
         virtual int handle_exception (ACE_HANDLE fc = ACE_INVALID_HANDLE);
         static void handle_event (
-            IDL::traits< ::CCM_DDS::ConnectorStatusListener >::ref_type csl,
-            IDL::traits< ::DDS::DataReader >::ref_type dr,
+            IDL::traits< ::CCM_DDS::ConnectorStatusListener>::ref_type csl,
+            IDL::traits< ::DDS::DataReader>::ref_type dr,
             const ::DDS::RequestedIncompatibleQosStatus &status);
       private:
-        IDL::traits< ::CCM_DDS::ConnectorStatusListener >::weak_ref_type csl_;
-        IDL::traits< ::DDS::DataReader >::weak_ref_type dr_;
+        IDL::traits< ::CCM_DDS::ConnectorStatusListener>::weak_ref_type csl_;
+        IDL::traits< ::DDS::DataReader>::weak_ref_type dr_;
         ::DDS::RequestedIncompatibleQosStatus const status_;
 
         OnRequestedIncompatibleQosHandler() = delete;
@@ -89,18 +89,18 @@ namespace CIAOX11
     {
       public:
         explicit OnSampleRejectedHandler (
-            IDL::traits< ::CCM_DDS::ConnectorStatusListener >::weak_ref_type csl,
-            IDL::traits< ::DDS::DataReader >::ref_type dr,
+            IDL::traits< ::CCM_DDS::ConnectorStatusListener>::weak_ref_type csl,
+            IDL::traits< ::DDS::DataReader>::ref_type dr,
             const ::DDS::SampleRejectedStatus &status);
         virtual ~OnSampleRejectedHandler () = default;
         virtual int handle_exception (ACE_HANDLE fc = ACE_INVALID_HANDLE);
         static void handle_event (
-            IDL::traits< ::CCM_DDS::ConnectorStatusListener >::ref_type csl,
-            IDL::traits< ::DDS::DataReader >::ref_type dr,
+            IDL::traits< ::CCM_DDS::ConnectorStatusListener>::ref_type csl,
+            IDL::traits< ::DDS::DataReader>::ref_type dr,
             const ::DDS::SampleRejectedStatus &status);
       private:
-        IDL::traits< ::CCM_DDS::ConnectorStatusListener >::weak_ref_type csl_;
-        IDL::traits< ::DDS::DataReader >::weak_ref_type dr_;
+        IDL::traits< ::CCM_DDS::ConnectorStatusListener>::weak_ref_type csl_;
+        IDL::traits< ::DDS::DataReader>::weak_ref_type dr_;
         ::DDS::SampleRejectedStatus const status_;
 
         OnSampleRejectedHandler() = delete;
@@ -115,18 +115,18 @@ namespace CIAOX11
     {
       public:
         explicit OnInconsistentTopicHandler (
-            IDL::traits< ::CCM_DDS::ConnectorStatusListener >::weak_ref_type csl,
-            IDL::traits< ::DDS::Topic >::ref_type tp,
+            IDL::traits< ::CCM_DDS::ConnectorStatusListener>::weak_ref_type csl,
+            IDL::traits< ::DDS::Topic>::ref_type tp,
             const ::DDS::InconsistentTopicStatus &status);
         virtual ~OnInconsistentTopicHandler () = default;
         virtual int handle_exception (ACE_HANDLE fc = ACE_INVALID_HANDLE);
         static void handle_event (
-            IDL::traits< ::CCM_DDS::ConnectorStatusListener >::ref_type csl,
-            IDL::traits< ::DDS::Topic >::ref_type tp,
+            IDL::traits< ::CCM_DDS::ConnectorStatusListener>::ref_type csl,
+            IDL::traits< ::DDS::Topic>::ref_type tp,
             const ::DDS::InconsistentTopicStatus &status);
       private:
-        IDL::traits< ::CCM_DDS::ConnectorStatusListener >::weak_ref_type csl_;
-        IDL::traits< ::DDS::Topic >::weak_ref_type tp_;
+        IDL::traits< ::CCM_DDS::ConnectorStatusListener>::weak_ref_type csl_;
+        IDL::traits< ::DDS::Topic>::weak_ref_type tp_;
         ::DDS::InconsistentTopicStatus const status_;
 
         OnInconsistentTopicHandler() = delete;
@@ -141,18 +141,18 @@ namespace CIAOX11
     {
       public:
         explicit OnOfferedDeadlineMissedHandler (
-            IDL::traits< ::CCM_DDS::ConnectorStatusListener >::weak_ref_type csl,
-            IDL::traits< ::DDS::DataWriter >::ref_type dw,
+            IDL::traits< ::CCM_DDS::ConnectorStatusListener>::weak_ref_type csl,
+            IDL::traits< ::DDS::DataWriter>::ref_type dw,
             const ::DDS::OfferedDeadlineMissedStatus &status);
         virtual ~OnOfferedDeadlineMissedHandler () = default;
         virtual int handle_exception (ACE_HANDLE fc = ACE_INVALID_HANDLE);
         static void handle_event (
-            IDL::traits< ::CCM_DDS::ConnectorStatusListener >::ref_type csl,
-            IDL::traits< ::DDS::DataWriter >::ref_type dw,
+            IDL::traits< ::CCM_DDS::ConnectorStatusListener>::ref_type csl,
+            IDL::traits< ::DDS::DataWriter>::ref_type dw,
             const ::DDS::OfferedDeadlineMissedStatus &status);
       private:
-        IDL::traits< ::CCM_DDS::ConnectorStatusListener >::weak_ref_type csl_;
-        IDL::traits< ::DDS::DataWriter >::weak_ref_type dw_;
+        IDL::traits< ::CCM_DDS::ConnectorStatusListener>::weak_ref_type csl_;
+        IDL::traits< ::DDS::DataWriter>::weak_ref_type dw_;
         ::DDS::OfferedDeadlineMissedStatus const status_;
 
         OnOfferedDeadlineMissedHandler() = delete;
@@ -167,18 +167,18 @@ namespace CIAOX11
     {
       public:
         explicit OnOfferedIncompatibleQoSHandler (
-            IDL::traits< ::CCM_DDS::ConnectorStatusListener >::weak_ref_type csl,
-            IDL::traits< ::DDS::DataWriter >::ref_type dw,
+            IDL::traits< ::CCM_DDS::ConnectorStatusListener>::weak_ref_type csl,
+            IDL::traits< ::DDS::DataWriter>::ref_type dw,
             const ::DDS::OfferedIncompatibleQosStatus &status);
         virtual ~OnOfferedIncompatibleQoSHandler () = default;
         virtual int handle_exception (ACE_HANDLE fc = ACE_INVALID_HANDLE);
         static void handle_event (
-            IDL::traits< ::CCM_DDS::ConnectorStatusListener >::ref_type csl,
-            IDL::traits< ::DDS::DataWriter >::ref_type dw,
+            IDL::traits< ::CCM_DDS::ConnectorStatusListener>::ref_type csl,
+            IDL::traits< ::DDS::DataWriter>::ref_type dw,
             const ::DDS::OfferedIncompatibleQosStatus &status);
       private:
-        IDL::traits< ::CCM_DDS::ConnectorStatusListener >::weak_ref_type csl_;
-        IDL::traits< ::DDS::DataWriter >::weak_ref_type dw_;
+        IDL::traits< ::CCM_DDS::ConnectorStatusListener>::weak_ref_type csl_;
+        IDL::traits< ::DDS::DataWriter>::weak_ref_type dw_;
         ::DDS::OfferedIncompatibleQosStatus const status_;
 
         OnOfferedIncompatibleQoSHandler() = delete;
@@ -193,18 +193,18 @@ namespace CIAOX11
     {
       public:
         explicit OnRequestedDeadlineMissedHandler (
-            IDL::traits< ::CCM_DDS::PortStatusListener >::weak_ref_type psl,
-            IDL::traits< ::DDS::DataReader >::ref_type dr,
+            IDL::traits< ::CCM_DDS::PortStatusListener>::weak_ref_type psl,
+            IDL::traits< ::DDS::DataReader>::ref_type dr,
             const ::DDS::RequestedDeadlineMissedStatus &status);
         virtual ~OnRequestedDeadlineMissedHandler () = default;
         virtual int handle_exception (ACE_HANDLE fc = ACE_INVALID_HANDLE);
         static void handle_event (
-            IDL::traits< ::CCM_DDS::PortStatusListener >::ref_type psl,
-            IDL::traits< ::DDS::DataReader >::ref_type dr,
+            IDL::traits< ::CCM_DDS::PortStatusListener>::ref_type psl,
+            IDL::traits< ::DDS::DataReader>::ref_type dr,
             const ::DDS::RequestedDeadlineMissedStatus &status);
       private:
-        IDL::traits< ::CCM_DDS::PortStatusListener >::weak_ref_type psl_;
-        IDL::traits< ::DDS::DataReader >::weak_ref_type dr_;
+        IDL::traits< ::CCM_DDS::PortStatusListener>::weak_ref_type psl_;
+        IDL::traits< ::DDS::DataReader>::weak_ref_type dr_;
         ::DDS::RequestedDeadlineMissedStatus const status_;
 
         OnRequestedDeadlineMissedHandler() = delete;
@@ -219,18 +219,18 @@ namespace CIAOX11
     {
       public:
         explicit OnSampleLostHandler (
-            IDL::traits< ::CCM_DDS::PortStatusListener >::weak_ref_type psl,
-            IDL::traits< ::DDS::DataReader >::ref_type dr,
+            IDL::traits< ::CCM_DDS::PortStatusListener>::weak_ref_type psl,
+            IDL::traits< ::DDS::DataReader>::ref_type dr,
             const ::DDS::SampleLostStatus &status);
         virtual ~OnSampleLostHandler () = default;
         virtual int handle_exception (ACE_HANDLE fc = ACE_INVALID_HANDLE);
         static void handle_event (
-            IDL::traits< ::CCM_DDS::PortStatusListener >::ref_type psl,
-            IDL::traits< ::DDS::DataReader >::ref_type dr,
+            IDL::traits< ::CCM_DDS::PortStatusListener>::ref_type psl,
+            IDL::traits< ::DDS::DataReader>::ref_type dr,
             const ::DDS::SampleLostStatus &status);
       private:
-        IDL::traits< ::CCM_DDS::PortStatusListener >::weak_ref_type psl_;
-        IDL::traits< ::DDS::DataReader >::weak_ref_type dr_;
+        IDL::traits< ::CCM_DDS::PortStatusListener>::weak_ref_type psl_;
+        IDL::traits< ::DDS::DataReader>::weak_ref_type dr_;
         ::DDS::SampleLostStatus const status_;
 
         OnSampleLostHandler() = delete;

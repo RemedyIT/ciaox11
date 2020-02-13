@@ -77,7 +77,7 @@ namespace UsesSM_Receiver_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::UsesSM::CCM_Receiver_Context >::ref_type context_;
+    IDL::traits< ::UsesSM::CCM_Receiver_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -132,7 +132,7 @@ namespace UsesSM_Receiver_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::UsesSM::CCM_Receiver_Context >::ref_type context_;
+    IDL::traits< ::UsesSM::CCM_Receiver_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -166,10 +166,10 @@ namespace UsesSM_Receiver_Impl
 
     /// Factory method and getter for the do_my_one facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::UsesSM::CCM_One >::ref_type get_do_my_one () override;
+    virtual IDL::traits< ::UsesSM::CCM_One>::ref_type get_do_my_one () override;
     /// Factory method and getter for the do_my_two facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::UsesSM::CCM_Two >::ref_type get_do_my_two () override;
+    virtual IDL::traits< ::UsesSM::CCM_Two>::ref_type get_do_my_two () override;
     //@}
 
     /** @name Session component operations */
@@ -201,12 +201,12 @@ namespace UsesSM_Receiver_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::UsesSM::CCM_Receiver_Context >::ref_type context_;
+    IDL::traits< ::UsesSM::CCM_Receiver_Context>::ref_type context_;
 
     /** @name Component facets. */
     //@{
-    IDL::traits< ::UsesSM::CCM_One >::ref_type do_my_one_;
-    IDL::traits< ::UsesSM::CCM_Two >::ref_type do_my_two_;
+    IDL::traits< ::UsesSM::CCM_One>::ref_type do_my_one_;
+    IDL::traits< ::UsesSM::CCM_Two>::ref_type do_my_two_;
     //@}
 
     /** @name User defined members. */

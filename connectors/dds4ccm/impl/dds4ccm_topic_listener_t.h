@@ -18,7 +18,7 @@ namespace CIAOX11
   {
     template <typename EVT_STRATEGY>
     class TopicListener_T
-      : public virtual IDL::traits< ::DDS::TopicListener  >::base_type
+      : public virtual IDL::traits< ::DDS::TopicListener >::base_type
     {
     public:
       explicit TopicListener_T (const EVT_STRATEGY &evs);
@@ -26,11 +26,11 @@ namespace CIAOX11
 
       virtual void
       on_inconsistent_topic (
-        IDL::traits< ::DDS::Topic >::ref_type the_topic,
+        IDL::traits< ::DDS::Topic>::ref_type the_topic,
         const ::DDS::InconsistentTopicStatus & status) override;
 
       static ::DDS::StatusMask get_mask (
-        IDL::traits< CCM_DDS::ConnectorStatusListener >::ref_type error_listener);
+        IDL::traits< CCM_DDS::ConnectorStatusListener>::ref_type error_listener);
 
     private:
       EVT_STRATEGY evs_;

@@ -22,14 +22,14 @@ namespace CIAOX11
       /* Provides for creation of vendor extended listeners.
        */
       template <typename EVT_STRATEGY>
-      IDL::traits< ::DDS::PublisherListener >::ref_type
+      IDL::traits< ::DDS::PublisherListener>::ref_type
       create_publisher_listener (
         const EVT_STRATEGY &evs);
 
       template <typename EVT_STRATEGY>
       ::DDS::StatusKind
       get_publisher_listener_mask (
-        IDL::traits< CCM_DDS::ConnectorStatusListener >::ref_type error_listener);
+        IDL::traits< CCM_DDS::ConnectorStatusListener>::ref_type error_listener);
     }
   }
 }

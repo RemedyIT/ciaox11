@@ -424,7 +424,7 @@ namespace Getter_Test_Sender_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Getter_Test_Sender_Impl::Sender_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::CCM_DDS::CCM_ConnectorStatusListener >::ref_type
+  IDL::traits< ::CCM_DDS::CCM_ConnectorStatusListener>::ref_type
   Sender_exec_i::get_info_out_connector_status ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Getter_Test_Sender_Impl::Sender_exec_i[get_info_out_connector_status]

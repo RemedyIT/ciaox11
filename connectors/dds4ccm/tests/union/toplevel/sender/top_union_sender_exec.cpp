@@ -387,7 +387,7 @@ namespace Uni_Sender_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Uni_Sender_Impl::Sender_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::CCM_DDS::CCM_ConnectorStatusListener >::ref_type
+  IDL::traits< ::CCM_DDS::CCM_ConnectorStatusListener>::ref_type
   Sender_exec_i::get_connector_status ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Uni_Sender_Impl::Sender_exec_i[get_connector_status]

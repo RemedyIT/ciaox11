@@ -68,7 +68,7 @@ namespace PortComp_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< CCM_PortComp_Context >::ref_type context_;
+    IDL::traits< CCM_PortComp_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -102,7 +102,7 @@ namespace PortComp_Impl
 
     /// Factory method and getter for the run_my_bar_foo_prov facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::Foo::CCM_MyFoo >::ref_type get_run_my_bar_foo_prov () override;
+    virtual IDL::traits< ::Foo::CCM_MyFoo>::ref_type get_run_my_bar_foo_prov () override;
     //@}
 
     /** @name Session component operations */
@@ -134,11 +134,11 @@ namespace PortComp_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< CCM_PortComp_Context >::ref_type context_;
+    IDL::traits< CCM_PortComp_Context>::ref_type context_;
 
     /** @name Component facets. */
     //@{
-    IDL::traits< ::Foo::CCM_MyFoo >::ref_type run_my_bar_foo_prov_;
+    IDL::traits< ::Foo::CCM_MyFoo>::ref_type run_my_bar_foo_prov_;
     //@}
 
     /** @name User defined members. */

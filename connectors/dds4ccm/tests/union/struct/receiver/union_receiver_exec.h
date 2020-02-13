@@ -75,7 +75,7 @@ namespace Uni_Receiver_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::Uni::CCM_Receiver_Context >::ref_type context_;
+    IDL::traits< ::Uni::CCM_Receiver_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -139,7 +139,7 @@ namespace Uni_Receiver_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::Uni::CCM_Receiver_Context >::ref_type context_;
+    IDL::traits< ::Uni::CCM_Receiver_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -173,10 +173,10 @@ namespace Uni_Receiver_Impl
 
     /// Factory method and getter for the info_out_data_listener facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::Uni::UnionConnector::CCM_Listener >::ref_type get_info_out_data_listener () override;
+    virtual IDL::traits< ::Uni::UnionConnector::CCM_Listener>::ref_type get_info_out_data_listener () override;
     /// Factory method and getter for the info_out_status facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::CCM_DDS::CCM_PortStatusListener >::ref_type get_info_out_status () override;
+    virtual IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type get_info_out_status () override;
     //@}
 
     /** @name Session component operations */
@@ -208,7 +208,7 @@ namespace Uni_Receiver_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::Uni::CCM_Receiver_Context >::ref_type context_;
+    IDL::traits< ::Uni::CCM_Receiver_Context>::ref_type context_;
 
     /** @name Component attributes. */
     //@{
@@ -216,8 +216,8 @@ namespace Uni_Receiver_Impl
 
     /** @name Component facets. */
     //@{
-    IDL::traits< ::Uni::UnionConnector::CCM_Listener >::ref_type info_out_data_listener_;
-    IDL::traits< ::CCM_DDS::CCM_PortStatusListener >::ref_type info_out_status_;
+    IDL::traits< ::Uni::UnionConnector::CCM_Listener>::ref_type info_out_data_listener_;
+    IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type info_out_status_;
     //@}
 
     /** @name User defined members. */

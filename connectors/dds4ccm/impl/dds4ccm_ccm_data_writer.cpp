@@ -27,7 +27,7 @@ namespace CIAOX11
       return this->dds_entity_->enable ();
     }
 
-    IDL::traits< ::DDS::StatusCondition >::ref_type
+    IDL::traits< ::DDS::StatusCondition>::ref_type
     CCM_DataWriter::get_statuscondition ()
     {
       return this->dds_entity_->get_statuscondition ();
@@ -61,25 +61,25 @@ namespace CIAOX11
 
     ::DDS::ReturnCode_t
     CCM_DataWriter::set_listener (
-      IDL::traits< ::DDS::DataWriterListener >::ref_type listener,
+      IDL::traits< ::DDS::DataWriterListener>::ref_type listener,
       ::DDS::StatusMask mask)
     {
       return this->dds_entity_->set_listener (std::move(listener), mask);
     }
 
-    IDL::traits< ::DDS::DataWriterListener >::ref_type
+    IDL::traits< ::DDS::DataWriterListener>::ref_type
     CCM_DataWriter::get_listener ()
     {
       return this->dds_entity_->get_listener ();
     }
 
-    IDL::traits< ::DDS::Topic >::ref_type
+    IDL::traits< ::DDS::Topic>::ref_type
     CCM_DataWriter::get_topic ()
     {
       return this->dds_entity_->get_topic ();
     }
 
-    IDL::traits< ::DDS::Publisher >::ref_type
+    IDL::traits< ::DDS::Publisher>::ref_type
     CCM_DataWriter::get_publisher ()
     {
       return this->dds_entity_->get_publisher ();
@@ -143,14 +143,14 @@ namespace CIAOX11
 
     void
     CCM_DataWriter::set_dds_entity (
-      IDL::traits< ::DDS::DataWriter >::ref_type dw)
+      IDL::traits< ::DDS::DataWriter>::ref_type dw)
     {
       DDS4CCM_LOG_TRACE ("CCM_DataWriter::set_dds_entity");
 
       this->dds_entity_ = std::move(dw);
     }
 
-    IDL::traits< ::DDS::DataWriter >::ref_type
+    IDL::traits< ::DDS::DataWriter>::ref_type
     CCM_DataWriter::get_dds_entity ()
     {
       DDS4CCM_LOG_TRACE ("CCM_DataWriter::get_dds_entity");

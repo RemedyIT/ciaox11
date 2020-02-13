@@ -74,6 +74,11 @@ module _component
     uses _oneway _struct;
     uses static::_readonly::protected::virtual volatile;
   };
+
+  component namespace
+  {
+    attribute long _abstract;
+  };
 };
 
 #endif /* KEYWORD_CLASH_IDL */

@@ -21,7 +21,7 @@ namespace CIAOX11
 {
   namespace DDS4CCM
   {
-    IDL::traits< ::DDS::ReadCondition >::ref_type
+    IDL::traits< ::DDS::ReadCondition>::ref_type
     ConditionManager::read_condition ()
     {
       DDS4CCM_LOG_TRACE ("CIAOX11::DDS4CCM::ConditionManager::read_condition");
@@ -29,7 +29,7 @@ namespace CIAOX11
       return this->rd_condition_;
     }
 
-    IDL::traits< ::DDS::QueryCondition >::ref_type
+    IDL::traits< ::DDS::QueryCondition>::ref_type
     ConditionManager::query_condition_getter ()
     {
       DDS4CCM_LOG_TRACE ("CIAOX11::DDS4CCM::ConditionManager::query_condition_getter");
@@ -37,7 +37,7 @@ namespace CIAOX11
       return this->qc_getter_;
     }
 
-    IDL::traits< ::DDS::QueryCondition >::ref_type
+    IDL::traits< ::DDS::QueryCondition>::ref_type
     ConditionManager::query_condition_listener ()
     {
       DDS4CCM_LOG_TRACE ("CIAOX11::DDS4CCM::ConditionManager::query_condition_listener");
@@ -45,7 +45,7 @@ namespace CIAOX11
       return this->qc_listener_;
     }
 
-    IDL::traits< ::DDS::QueryCondition >::ref_type
+    IDL::traits< ::DDS::QueryCondition>::ref_type
     ConditionManager::query_condition_reader ()
     {
       DDS4CCM_LOG_TRACE ("CIAOX11::DDS4CCM::ConditionManager::query_condition_reader");
@@ -96,7 +96,7 @@ namespace CIAOX11
       {
         DDS4CCM_LOG_ERROR ("ConditionManager::init_read_condition - "
           << "Unable to attach read condition to waitset. Error <"
-          << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode)
+          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">.");
         throw ::CCM_DDS::InternalError (retcode, 0);
       }
@@ -126,7 +126,7 @@ namespace CIAOX11
         {
           DDS4CCM_LOG_ERROR ("ConditionManager::query - "
             << "Failed to get query parameters : <"
-            << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode)
+            << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
             << ">.");
           throw CCM_DDS::InternalError (retcode, 0);
         }
@@ -160,7 +160,7 @@ namespace CIAOX11
       {
         DDS4CCM_LOG_DEBUG ("ConditionManager::query - "
           << "Creating query condition for the reader: <"
-          << IDL::traits< ::CCM_DDS::QueryFilter >::write (filter) << ">");
+          << IDL::traits< ::CCM_DDS::QueryFilter>::write (filter) << ">");
         this->qc_reader_ =
           this->dr_->create_querycondition (
             ::DDS::READ_SAMPLE_STATE | ::DDS::NOT_READ_SAMPLE_STATE,
@@ -173,7 +173,7 @@ namespace CIAOX11
         {
           DDS4CCM_LOG_ERROR ("ConditionManager::query - "
             << "Error query condition for the reader: filter <"
-            << IDL::traits< ::CCM_DDS::QueryFilter >::write (filter) << ">");
+            << IDL::traits< ::CCM_DDS::QueryFilter>::write (filter) << ">");
             throw ::CCM_DDS::InternalError (::DDS::RETCODE_ERROR, 1);
         }
 
@@ -181,7 +181,7 @@ namespace CIAOX11
         {
           DDS4CCM_LOG_DEBUG ("ConditionManager::query - "
             << "Creating query condition for the getter: filter <"
-            << IDL::traits< ::CCM_DDS::QueryFilter >::write (filter) << ">");
+            << IDL::traits< ::CCM_DDS::QueryFilter>::write (filter) << ">");
 
           this->qc_getter_ =
             this->dr_->create_querycondition (
@@ -195,7 +195,7 @@ namespace CIAOX11
           {
             DDS4CCM_LOG_ERROR ("ConditionManager::query - "
               << "Error query condition for the getter: filter <"
-              << IDL::traits< ::CCM_DDS::QueryFilter >::write (filter) << ">");
+              << IDL::traits< ::CCM_DDS::QueryFilter>::write (filter) << ">");
               throw ::CCM_DDS::InternalError (::DDS::RETCODE_ERROR, 1);
           }
 
@@ -207,7 +207,7 @@ namespace CIAOX11
         if (!this->qc_listener_)
         {
           DDS4CCM_LOG_DEBUG ("Creating query condition for the listener: "
-            << "filter <" << IDL::traits< ::CCM_DDS::QueryFilter >::write (filter) << ">");
+            << "filter <" << IDL::traits< ::CCM_DDS::QueryFilter>::write (filter) << ">");
 
           this->qc_listener_ =
             this->dr_->create_querycondition (
@@ -221,7 +221,7 @@ namespace CIAOX11
           {
             DDS4CCM_LOG_ERROR ("ConditionManager::query - "
               << "Error query condition for the listener: filter <"
-              << IDL::traits< ::CCM_DDS::QueryFilter >::write (filter) << ">");
+              << IDL::traits< ::CCM_DDS::QueryFilter>::write (filter) << ">");
               throw ::CCM_DDS::InternalError (::DDS::RETCODE_ERROR, 1);
           }
         }
@@ -266,7 +266,7 @@ namespace CIAOX11
     void
     ConditionManager::set_parameters (
       const ::CCM_DDS::QueryFilter &filter,
-      IDL::traits< ::DDS::QueryCondition >::ref_type qc)
+      IDL::traits< ::DDS::QueryCondition>::ref_type qc)
     {
       DDS4CCM_LOG_TRACE ("CIAOX11::DDS4CCM::ConditionManager::set_parameters");
 
@@ -277,7 +277,7 @@ namespace CIAOX11
       {
         DDS4CCM_LOG_ERROR ("ConditionManager::set_parameters - "
           << "Error setting expression_parameters. Retval is <"
-          << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode)
+          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">.");
         throw CCM_DDS::InternalError (::DDS::RETCODE_ERROR, retcode);
       }
@@ -295,7 +295,7 @@ namespace CIAOX11
         DDS4CCM_LOG_ERROR ("ConditionManager::attach_querycondition - "
           << "Unable to attach query condition to waitset. "
           << "Error <"
-          << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode)
+          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">.");
         throw ::CCM_DDS::InternalError (retcode, 1);
       }
@@ -325,9 +325,9 @@ namespace CIAOX11
         std::chrono::duration_cast<std::chrono::milliseconds>(
           std::chrono::system_clock::now () - start);
       DDS4CCM_LOG_DEBUG ("ConditionManager::wait - <"
-        << IDL::traits< ::DDS::Duration_t >::write<duration_formatter> (time_out)
+        << IDL::traits< ::DDS::Duration_t>::write<duration_formatter> (time_out)
         << "> - waited <" << elapsed_milliseconds.count () << " ms> - return code<"
-        << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode)
+        << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
         << ">.");
 #endif
 
@@ -352,7 +352,7 @@ namespace CIAOX11
 
     void
     ConditionManager::remove_condition (
-      IDL::traits< ::DDS::QueryCondition >::ref_type dds_qc,
+      IDL::traits< ::DDS::QueryCondition>::ref_type dds_qc,
       const std::string &type)
     {
       DDS4CCM_LOG_TRACE ("CIAOX11::DDS4CCM::ConditionManager::remove_condition");
@@ -371,7 +371,7 @@ namespace CIAOX11
           DDS4CCM_LOG_ERROR ("ConditionManager::remove_condition - "
             << "Unable to remove query condition for <"
             << type << ">: Error <"
-            << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode)
+            << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
             << ">.");
         }
       }
@@ -418,7 +418,7 @@ namespace CIAOX11
         {
           DDS4CCM_LOG_ERROR ("ConditionManager::remove_conditions - "
             << "Unable to detach query condition from waitset: Error: <"
-            << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode)
+            << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
             << ">.");
         }
         this->qc_getter_ = nullptr;
@@ -435,7 +435,7 @@ namespace CIAOX11
           {
             DDS4CCM_LOG_ERROR ("ConditionManager::remove_conditions - "
               << "Unable to detach read condition from waitset. Error <"
-              << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode)
+              << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
               << ">.");
           }
           else
@@ -453,7 +453,7 @@ namespace CIAOX11
         {
           DDS4CCM_LOG_ERROR ("ConditionManager::remove_conditions - "
             << "Unable to remove read condition from DDSDataReader. Error <"
-            << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode)
+            << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
             << ">.");
         }
         else
@@ -473,7 +473,7 @@ namespace CIAOX11
       this->remove_conditions ();
     }
 
-    IDL::traits< ::DDS::WaitSet >::ref_type
+    IDL::traits< ::DDS::WaitSet>::ref_type
     ConditionManager::waitset ()
     {
       DDS4CCM_LOG_TRACE ("CIAOX11::DDS4CCM::ConditionManager::waitset");
@@ -487,14 +487,14 @@ namespace CIAOX11
 
     void
     ConditionManager::set_dds_entity (
-      IDL::traits< ::DDS::DataReader >::ref_type dr)
+      IDL::traits< ::DDS::DataReader>::ref_type dr)
     {
       DDS4CCM_LOG_TRACE ("CIAOX11::DDS4CCM::ConditionManager::set_dds_entity");
 
       this->dr_ = std::move(dr);
     }
 
-    IDL::traits< ::DDS::DataReader >::ref_type
+    IDL::traits< ::DDS::DataReader>::ref_type
     ConditionManager::get_dds_entity ()
     {
       return this->dr_;

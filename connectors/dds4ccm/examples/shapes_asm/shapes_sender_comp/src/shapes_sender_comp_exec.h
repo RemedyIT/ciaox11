@@ -78,7 +78,7 @@ namespace Shapes_Sender_comp_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::Shapes::CCM_Sender_comp_Context >::ref_type context_;
+    IDL::traits< ::Shapes::CCM_Sender_comp_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -112,7 +112,7 @@ namespace Shapes_Sender_comp_Impl
 
     /// Factory method and getter for the control facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::Shapes::CCM_Control_obj >::ref_type get_control () override;
+    virtual IDL::traits< ::Shapes::CCM_Control_obj>::ref_type get_control () override;
     //@}
 
     /** @name Session component operations */
@@ -146,11 +146,11 @@ namespace Shapes_Sender_comp_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::Shapes::CCM_Sender_comp_Context >::ref_type context_;
+    IDL::traits< ::Shapes::CCM_Sender_comp_Context>::ref_type context_;
 
     /** @name Component facets. */
     //@{
-    IDL::traits< ::Shapes::CCM_Control_obj >::ref_type control_;
+    IDL::traits< ::Shapes::CCM_Control_obj>::ref_type control_;
     //@}
 
     /** @name User defined members. */

@@ -92,7 +92,7 @@ namespace <%= executor_cxx_namespace %>
     // Setting the context of this component.
 % _implementation = []
 % _nest = "\n    "
-% _implementation.push("this->context_ = IDL::traits< #{scoped_ccm_name}_Context >::narrow (std::move(ctx));")
+% _implementation.push("this->context_ = IDL::traits< #{scoped_ccm_name}_Context>::narrow (std::move(ctx));")
 % nest(2) { write_regen_section(_regen_marker+'[set_session_context]', default_content: _implementation) }
   }
 

@@ -453,7 +453,7 @@ namespace FA_Event_Listen_Test_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : FA_Event_Listen_Test_Receiver_Impl::Receiver_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::CommonTestConnector::CCM_Listener >::ref_type
+  IDL::traits< ::CommonTestConnector::CCM_Listener>::ref_type
   Receiver_exec_i::get_listen_port_1_data_listener ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : FA_Event_Listen_Test_Receiver_Impl::Receiver_exec_i[get_listen_port_1_data_listener]
@@ -467,7 +467,7 @@ namespace FA_Event_Listen_Test_Receiver_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : FA_Event_Listen_Test_Receiver_Impl::Receiver_exec_i[get_listen_port_1_data_listener]
   }
 
-  IDL::traits< ::CCM_DDS::CCM_PortStatusListener >::ref_type
+  IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type
   Receiver_exec_i::get_listen_port_1_status ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : FA_Event_Listen_Test_Receiver_Impl::Receiver_exec_i[get_listen_port_1_status]
@@ -479,7 +479,7 @@ namespace FA_Event_Listen_Test_Receiver_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : FA_Event_Listen_Test_Receiver_Impl::Receiver_exec_i[get_listen_port_1_status]
   }
 
-  IDL::traits< ::CommonTestConnector::CCM_Listener >::ref_type
+  IDL::traits< ::CommonTestConnector::CCM_Listener>::ref_type
   Receiver_exec_i::get_listen_port_2_data_listener ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : FA_Event_Listen_Test_Receiver_Impl::Receiver_exec_i[get_listen_port_2_data_listener]
@@ -493,7 +493,7 @@ namespace FA_Event_Listen_Test_Receiver_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : FA_Event_Listen_Test_Receiver_Impl::Receiver_exec_i[get_listen_port_2_data_listener]
   }
 
-  IDL::traits< ::CCM_DDS::CCM_PortStatusListener >::ref_type
+  IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type
   Receiver_exec_i::get_listen_port_2_status ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : FA_Event_Listen_Test_Receiver_Impl::Receiver_exec_i[get_listen_port_2_status]

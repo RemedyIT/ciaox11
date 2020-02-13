@@ -30,10 +30,10 @@ public:
    * DDS_Update operations
    */
   //@{
-  virtual typename IDL::traits<typename CCM_TYPE::observable_traits::data_type >::ref_type
+  virtual typename IDL::traits<typename CCM_TYPE::observable_traits::data_type>::ref_type
   get_observable_data () override;
 
-  virtual IDL::traits< ::DDS::CCM_DataWriter >::ref_type
+  virtual IDL::traits< ::DDS::CCM_DataWriter>::ref_type
   get_observable_dds_entity () override;
   //@}
 
@@ -42,13 +42,13 @@ public:
    * DDS_Read operations
    */
   //@{
-  virtual typename IDL::traits<typename CCM_TYPE::passive_observer_traits::data_type >::ref_type
+  virtual typename IDL::traits<typename CCM_TYPE::passive_observer_traits::data_type>::ref_type
   get_passive_observer_data () override;
 
-  virtual IDL::traits< ::DDS::CCM_DataReader >::ref_type
+  virtual IDL::traits< ::DDS::CCM_DataReader>::ref_type
   get_passive_observer_dds_entity () override;
 
-  virtual IDL::traits< CCM_DDS::CCM_ContentFilterSetting >::ref_type
+  virtual IDL::traits< CCM_DDS::CCM_ContentFilterSetting>::ref_type
   get_passive_observer_filter_config () override;
 
   virtual ::CCM_DDS::QueryFilter passive_observer_filter () override;
@@ -62,16 +62,16 @@ public:
    * DDS_Get operations
    */
   //@{
-  virtual typename IDL::traits<typename CCM_TYPE::pull_observer_traits::data_type >::ref_type
+  virtual typename IDL::traits<typename CCM_TYPE::pull_observer_traits::data_type>::ref_type
   get_pull_observer_data () override;
 
-  virtual typename IDL::traits<typename CCM_TYPE::pull_observer_traits::fresh_data_type >::ref_type
+  virtual typename IDL::traits<typename CCM_TYPE::pull_observer_traits::fresh_data_type>::ref_type
   get_pull_observer_fresh_data () override;
 
-  virtual IDL::traits< ::DDS::CCM_DataReader >::ref_type
+  virtual IDL::traits< ::DDS::CCM_DataReader>::ref_type
   get_pull_observer_dds_entity () override;
 
-  virtual IDL::traits< CCM_DDS::CCM_ContentFilterSetting >::ref_type
+  virtual IDL::traits< CCM_DDS::CCM_ContentFilterSetting>::ref_type
   get_pull_observer_filter_config () override;
 
   virtual CCM_DDS::QueryFilter
@@ -87,16 +87,16 @@ public:
    * DDS_Listen operations
    */
   //@{
-  virtual typename IDL::traits<typename CCM_TYPE::push_observer_traits::data_type >::ref_type
+  virtual typename IDL::traits<typename CCM_TYPE::push_observer_traits::data_type>::ref_type
   get_push_observer_data () override;
 
-  virtual IDL::traits< CCM_DDS::CCM_DataListenerControl >::ref_type
+  virtual IDL::traits< CCM_DDS::CCM_DataListenerControl>::ref_type
   get_push_observer_data_control () override;
 
-  virtual IDL::traits< ::DDS::CCM_DataReader >::ref_type
+  virtual IDL::traits< ::DDS::CCM_DataReader>::ref_type
   get_push_observer_dds_entity () override;
 
-  virtual IDL::traits< CCM_DDS::CCM_ContentFilterSetting >::ref_type
+  virtual IDL::traits< CCM_DDS::CCM_ContentFilterSetting>::ref_type
   get_push_observer_filter_config () override;
 
   virtual ::CCM_DDS::QueryFilter
@@ -112,16 +112,16 @@ public:
    * DDS_StateListen operations
    */
   //@{
-  virtual typename IDL::traits<typename CCM_TYPE::push_state_observer_traits::data_type >::ref_type
+  virtual typename IDL::traits<typename CCM_TYPE::push_state_observer_traits::data_type>::ref_type
   get_push_state_observer_data () override;
 
-  virtual IDL::traits< CCM_DDS::CCM_StateListenerControl >::ref_type
+  virtual IDL::traits< CCM_DDS::CCM_StateListenerControl>::ref_type
   get_push_state_observer_data_control () override;
 
-  virtual IDL::traits< ::DDS::CCM_DataReader >::ref_type
+  virtual IDL::traits< ::DDS::CCM_DataReader>::ref_type
   get_push_state_observer_dds_entity () override;
 
-  virtual IDL::traits< CCM_DDS::CCM_ContentFilterSetting >::ref_type
+  virtual IDL::traits< CCM_DDS::CCM_ContentFilterSetting>::ref_type
   get_push_state_observer_filter_config () override;
 
   virtual ::CCM_DDS::QueryFilter
@@ -134,7 +134,6 @@ public:
   virtual void ccm_passivate () override;
 
 private:
-
   /**
    * DDS_Update observable
    */

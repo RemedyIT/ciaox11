@@ -31,9 +31,6 @@ public:
   DDS_LateBinded_Connector_T ();
   virtual ~DDS_LateBinded_Connector_T ();
 
-  //virtual int32_t
-  //get_discovered_participants()=0;
-
   /**
    * @name topic_name attribute
    * Setter for the topic_name attribute
@@ -57,7 +54,6 @@ public:
   virtual void do_ccm_remove () = 0;
 
 private:
-
   typedef DDS_TopicBase_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>
     TopicBaseConnector;
 

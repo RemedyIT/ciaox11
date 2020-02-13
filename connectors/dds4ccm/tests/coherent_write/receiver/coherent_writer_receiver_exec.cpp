@@ -367,7 +367,7 @@ namespace CoherentWriter_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : CoherentWriter_Receiver_Impl::Receiver_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::CCM_DDS::CCM_PortStatusListener >::ref_type
+  IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type
   Receiver_exec_i::get_info_get_status ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : CoherentWriter_Receiver_Impl::Receiver_exec_i[get_info_get_status]
@@ -379,7 +379,7 @@ namespace CoherentWriter_Receiver_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : CoherentWriter_Receiver_Impl::Receiver_exec_i[get_info_get_status]
   }
 
-  IDL::traits< CCM_ReaderStarter >::ref_type
+  IDL::traits< CCM_ReaderStarter>::ref_type
   Receiver_exec_i::get_start_reading ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : CoherentWriter_Receiver_Impl::Receiver_exec_i[get_start_reading]

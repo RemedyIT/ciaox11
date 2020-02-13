@@ -125,7 +125,7 @@ namespace Getter_Test_Receiver_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::Getter_Test::CCM_Receiver_Context >::ref_type context_;
+    IDL::traits< ::Getter_Test::CCM_Receiver_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -193,7 +193,7 @@ namespace Getter_Test_Receiver_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::Getter_Test::CCM_Receiver_Context >::ref_type context_;
+    IDL::traits< ::Getter_Test::CCM_Receiver_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -227,10 +227,10 @@ namespace Getter_Test_Receiver_Impl
 
     /// Factory method and getter for the info_get_status facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::CCM_DDS::CCM_PortStatusListener >::ref_type get_info_get_status () override;
+    virtual IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type get_info_get_status () override;
     /// Factory method and getter for the getter_invoke facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< CCM_GetInvoker >::ref_type get_getter_invoke () override;
+    virtual IDL::traits< CCM_GetInvoker>::ref_type get_getter_invoke () override;
     //@}
 
     /** @name Session component operations */
@@ -284,7 +284,7 @@ namespace Getter_Test_Receiver_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::Getter_Test::CCM_Receiver_Context >::ref_type context_;
+    IDL::traits< ::Getter_Test::CCM_Receiver_Context>::ref_type context_;
 
     /** @name Component attributes. */
     //@{
@@ -292,8 +292,8 @@ namespace Getter_Test_Receiver_Impl
 
     /** @name Component facets. */
     //@{
-    IDL::traits< ::CCM_DDS::CCM_PortStatusListener >::ref_type info_get_status_;
-    IDL::traits< CCM_GetInvoker >::ref_type getter_invoke_;
+    IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type info_get_status_;
+    IDL::traits< CCM_GetInvoker>::ref_type getter_invoke_;
     //@}
 
     /** @name User defined members. */

@@ -231,7 +231,7 @@ namespace publisher_comp_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : publisher_comp_Impl::publisher_comp_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::CCM_DDS::CCM_ConnectorStatusListener >::ref_type
+  IDL::traits< ::CCM_DDS::CCM_ConnectorStatusListener>::ref_type
   publisher_comp_exec_i::get_connector_status_ShapeType ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : publisher_comp_Impl::publisher_comp_exec_i[get_connector_status_ShapeType]

@@ -476,7 +476,7 @@ namespace Filters_Common_State_Listen_Test_Sender_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Filters_Common_State_Listen_Test_Sender_Impl::Sender_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::CCM_DDS::CCM_ConnectorStatusListener >::ref_type
+  IDL::traits< ::CCM_DDS::CCM_ConnectorStatusListener>::ref_type
   Sender_exec_i::get_connector_status ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Filters_Common_State_Listen_Test_Sender_Impl::Sender_exec_i[get_connector_status]
@@ -490,7 +490,7 @@ namespace Filters_Common_State_Listen_Test_Sender_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : Filters_Common_State_Listen_Test_Sender_Impl::Sender_exec_i[get_connector_status]
   }
 
-  IDL::traits< CCM_WriterStarter >::ref_type
+  IDL::traits< CCM_WriterStarter>::ref_type
   Sender_exec_i::get_start_writing ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Filters_Common_State_Listen_Test_Sender_Impl::Sender_exec_i[get_start_writing]

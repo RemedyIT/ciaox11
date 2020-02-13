@@ -76,7 +76,7 @@ namespace FA_Event_Listen_Test_Receiver_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::FA_Event_Listen_Test::CCM_Receiver_Context >::ref_type context_;
+    IDL::traits< ::FA_Event_Listen_Test::CCM_Receiver_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -134,7 +134,7 @@ namespace FA_Event_Listen_Test_Receiver_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::FA_Event_Listen_Test::CCM_Receiver_Context >::ref_type context_;
+    IDL::traits< ::FA_Event_Listen_Test::CCM_Receiver_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -193,7 +193,7 @@ namespace FA_Event_Listen_Test_Receiver_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::FA_Event_Listen_Test::CCM_Receiver_Context >::ref_type context_;
+    IDL::traits< ::FA_Event_Listen_Test::CCM_Receiver_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -251,7 +251,7 @@ namespace FA_Event_Listen_Test_Receiver_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::FA_Event_Listen_Test::CCM_Receiver_Context >::ref_type context_;
+    IDL::traits< ::FA_Event_Listen_Test::CCM_Receiver_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -285,16 +285,16 @@ namespace FA_Event_Listen_Test_Receiver_Impl
 
     /// Factory method and getter for the listen_port_1_data_listener facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::CommonTestConnector::CCM_Listener >::ref_type get_listen_port_1_data_listener () override;
+    virtual IDL::traits< ::CommonTestConnector::CCM_Listener>::ref_type get_listen_port_1_data_listener () override;
     /// Factory method and getter for the listen_port_1_status facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::CCM_DDS::CCM_PortStatusListener >::ref_type get_listen_port_1_status () override;
+    virtual IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type get_listen_port_1_status () override;
     /// Factory method and getter for the listen_port_2_data_listener facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::CommonTestConnector::CCM_Listener >::ref_type get_listen_port_2_data_listener () override;
+    virtual IDL::traits< ::CommonTestConnector::CCM_Listener>::ref_type get_listen_port_2_data_listener () override;
     /// Factory method and getter for the listen_port_2_status facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::CCM_DDS::CCM_PortStatusListener >::ref_type get_listen_port_2_status () override;
+    virtual IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type get_listen_port_2_status () override;
     //@}
 
     /** @name Session component operations */
@@ -326,7 +326,7 @@ namespace FA_Event_Listen_Test_Receiver_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::FA_Event_Listen_Test::CCM_Receiver_Context >::ref_type context_;
+    IDL::traits< ::FA_Event_Listen_Test::CCM_Receiver_Context>::ref_type context_;
 
     /** @name Component attributes. */
     //@{
@@ -334,10 +334,10 @@ namespace FA_Event_Listen_Test_Receiver_Impl
 
     /** @name Component facets. */
     //@{
-    IDL::traits< ::CommonTestConnector::CCM_Listener >::ref_type listen_port_1_data_listener_;
-    IDL::traits< ::CCM_DDS::CCM_PortStatusListener >::ref_type listen_port_1_status_;
-    IDL::traits< ::CommonTestConnector::CCM_Listener >::ref_type listen_port_2_data_listener_;
-    IDL::traits< ::CCM_DDS::CCM_PortStatusListener >::ref_type listen_port_2_status_;
+    IDL::traits< ::CommonTestConnector::CCM_Listener>::ref_type listen_port_1_data_listener_;
+    IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type listen_port_1_status_;
+    IDL::traits< ::CommonTestConnector::CCM_Listener>::ref_type listen_port_2_data_listener_;
+    IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type listen_port_2_status_;
     //@}
 
     /** @name User defined members. */

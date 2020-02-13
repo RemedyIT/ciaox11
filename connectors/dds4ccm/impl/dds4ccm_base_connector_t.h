@@ -19,6 +19,15 @@ class DDS_Base_Connector_T
   : public virtual CCM_TYPE::base_type
 {
 public:
+  /**
+   * The default DDS domain is zero but can be changed by
+   * using the DDS4CCM_DEFAULT_DOMAIN_ID environment variable. When
+   * this environment variable is set all DDS connectors derived from
+   * this base template will use the specified domain id.
+   * This can be used for example for unit testing where each system
+   * has its own unique domain id so that unit tests on different
+   * systems don't interfere with each other.
+   */
   DDS_Base_Connector_T ();
   virtual ~DDS_Base_Connector_T ();
 
@@ -27,12 +36,9 @@ public:
    * Accessors for domain_id
    */
   //@{
-  virtual ::DDS::DomainId_t
-  domain_id () override;
+  ::DDS::DomainId_t domain_id () override;
 
-  virtual void
-  domain_id (
-    ::DDS::DomainId_t domain_id) override;
+  void domain_id (::DDS::DomainId_t domain_id) override;
   //@}
 
   /**
@@ -40,12 +46,9 @@ public:
    * Accessors for qos_profile
    */
   //@{
-  virtual std::string
-  qos_profile () override;
+  std::string qos_profile () override;
 
-  virtual void
-  qos_profile (
-    const std::string &qos_profile) override;
+  void qos_profile (const std::string &qos_profile) override;
   //@}
 
   /**
@@ -53,9 +56,7 @@ public:
    * The context is used to make connections to the user component,
    * like the interfaces to the data listeners.
    */
-  virtual void
-  set_session_context (
-    IDL::traits<Components::SessionContext >::ref_type ctx) override;
+  void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
 
 private:
   DDS_Base_Connector_T(const DDS_Base_Connector_T&) = delete;
@@ -64,7 +65,6 @@ private:
   DDS_Base_Connector_T& operator=(DDS_Base_Connector_T&&) = delete;
 
 protected:
-
   /**
    * Initialization of a connector.
    *
@@ -77,23 +77,23 @@ protected:
    *
    */
   //@{
-  IDL::traits< ::DDS::DomainParticipant >::ref_type
+  IDL::traits< ::DDS::DomainParticipant>::ref_type
   init_domain ();
 
   virtual void
-  register_type (IDL::traits< ::DDS::DomainParticipant >::ref_type participant,
+  register_type (IDL::traits< ::DDS::DomainParticipant>::ref_type participant,
     const std::string &typesupport_name) = 0;
 
-  IDL::traits< ::DDS::Topic >::ref_type
-  init_topic (IDL::traits< ::DDS::DomainParticipant >::ref_type participant,
+  IDL::traits< ::DDS::Topic>::ref_type
+  init_topic (IDL::traits< ::DDS::DomainParticipant>::ref_type participant,
     const std::string &topic_name,
     const std::string &type_name);
 
-  IDL::traits< ::DDS::Publisher >::ref_type
-  init_publisher (IDL::traits< ::DDS::DomainParticipant >::ref_type participant);
+  IDL::traits< ::DDS::Publisher>::ref_type
+  init_publisher (IDL::traits< ::DDS::DomainParticipant>::ref_type participant);
 
-  IDL::traits< ::DDS::Subscriber >::ref_type
-  init_subscriber (IDL::traits< ::DDS::DomainParticipant >::ref_type participant);
+  IDL::traits< ::DDS::Subscriber>::ref_type
+  init_subscriber (IDL::traits< ::DDS::DomainParticipant>::ref_type participant);
   //@}
 
   /**
@@ -101,17 +101,16 @@ protected:
    *
    * Helper methods to create the DDS listeners and attach them to the DDS Entities.
    * This will activate the DDS Entities.
-   *
    */
   //@{
-  IDL::traits< ::DDS::TopicListener >::ref_type
-  activate_topic (IDL::traits< ::DDS::Topic >::ref_type topic);
+  IDL::traits< ::DDS::TopicListener>::ref_type
+  activate_topic (IDL::traits< ::DDS::Topic>::ref_type topic);
 
-  IDL::traits< ::DDS::PublisherListener >::ref_type
-  activate_publisher (IDL::traits< ::DDS::Publisher >::ref_type publisher);
+  IDL::traits< ::DDS::PublisherListener>::ref_type
+  activate_publisher (IDL::traits< ::DDS::Publisher>::ref_type publisher);
 
-  IDL::traits< ::DDS::SubscriberListener >::ref_type
-  activate_subscriber (IDL::traits< ::DDS::Subscriber >::ref_type subscriber);
+  IDL::traits< ::DDS::SubscriberListener>::ref_type
+  activate_subscriber (IDL::traits< ::DDS::Subscriber>::ref_type subscriber);
   //@}
 
   /**
@@ -119,19 +118,18 @@ protected:
    *
    * Helper methods to detach the DDS listeners from the DDS Entities.
    * This will passivate the DDS Entities.
-   *
    */
   //@{
   void
-  passivate_topic (IDL::traits< ::DDS::Topic >::ref_type topic,
-    IDL::traits< ::DDS::TopicListener >::ref_type topic_listener);
+  passivate_topic (IDL::traits< ::DDS::Topic>::ref_type topic,
+    IDL::traits< ::DDS::TopicListener>::ref_type topic_listener);
 
   void
-  passivate_publisher (IDL::traits< ::DDS::Publisher >::ref_type publisher,
-    IDL::traits< ::DDS::PublisherListener >::ref_type publisher_listener);
+  passivate_publisher (IDL::traits< ::DDS::Publisher>::ref_type publisher,
+    IDL::traits< ::DDS::PublisherListener>::ref_type publisher_listener);
   void
-  passivate_subscriber (IDL::traits< ::DDS::Subscriber >::ref_type subscriber,
-    IDL::traits< ::DDS::SubscriberListener >::ref_type subscriber_listener);
+  passivate_subscriber (IDL::traits< ::DDS::Subscriber>::ref_type subscriber,
+    IDL::traits< ::DDS::SubscriberListener>::ref_type subscriber_listener);
   //@}
 
    /**
@@ -141,23 +139,22 @@ protected:
    */
   //@{
   void
-  remove_topic (IDL::traits< ::DDS::DomainParticipant >::ref_type participant,
-    IDL::traits< ::DDS::Topic >::ref_type topic);
+  remove_topic (IDL::traits< ::DDS::DomainParticipant>::ref_type participant,
+    IDL::traits< ::DDS::Topic>::ref_type topic);
 
   void
-  remove_publisher (IDL::traits< ::DDS::DomainParticipant >::ref_type participant,
-    IDL::traits< ::DDS::Publisher >::ref_type publisher);
+  remove_publisher (IDL::traits< ::DDS::DomainParticipant>::ref_type participant,
+    IDL::traits< ::DDS::Publisher>::ref_type publisher);
 
   void
-  remove_subscriber (IDL::traits< ::DDS::DomainParticipant >::ref_type participant,
-    IDL::traits< ::DDS::Subscriber >::ref_type subscriber);
+  remove_subscriber (IDL::traits< ::DDS::DomainParticipant>::ref_type participant,
+    IDL::traits< ::DDS::Subscriber>::ref_type subscriber);
 
   void
-  remove_domain (IDL::traits< ::DDS::DomainParticipant >::ref_type participant);
+  remove_domain (IDL::traits< ::DDS::DomainParticipant>::ref_type participant);
 
-  virtual
-  void
-  unregister_type (IDL::traits< ::DDS::DomainParticipant >::ref_type participant,
+  virtual void
+  unregister_type (IDL::traits< ::DDS::DomainParticipant>::ref_type participant,
     const std::string &typesupport_name) = 0;
   //@}
 
@@ -165,16 +162,13 @@ protected:
    * Protected getters and setters
    */
   /// Get configuration_completed
-  bool
-  configuration_completed ();
+  bool configuration_completed ();
 
   /// Set configuration_completed
-  void
-  configuration_completed (bool configuration_completed);
+  void configuration_completed (bool configuration_completed);
 
   /// Get the context of this connector.
-  typename IDL::traits<typename CCM_TYPE::context_type >::ref_type
-  context ();
+  typename IDL::traits<typename CCM_TYPE::context_type>::ref_type context ();
 
 private:
   /**
@@ -197,12 +191,12 @@ private:
    * Context of the connector. Used to make connections to the user component
    * like the interfaces to the data listeners.
    */
-  typename IDL::traits<typename CCM_TYPE::context_type >::ref_type context_;
+  typename IDL::traits<typename CCM_TYPE::context_type>::ref_type context_;
 
   /**
    * DomainParticipantFactory. Administration of Domain Participants
    */
-  IDL::traits< ::DDS::DomainParticipantFactory >::ref_type participant_factory_;
+  IDL::traits< ::DDS::DomainParticipantFactory>::ref_type participant_factory_;
 };
 
 #include "dds4ccm/impl/dds4ccm_base_connector_t.cpp"

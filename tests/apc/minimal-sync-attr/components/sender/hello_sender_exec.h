@@ -79,7 +79,7 @@ namespace Hello_Sender_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::Hello::CCM_Sender_Context >::ref_type context_;
+    IDL::traits< ::Hello::CCM_Sender_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -113,7 +113,7 @@ namespace Hello_Sender_Impl
 
     /// Factory method and getter for the foo_port_s_foo_prov facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::Hello::CCM_PortFooS >::ref_type get_foo_port_s_foo_prov () override;
+    virtual IDL::traits< ::Hello::CCM_PortFooS>::ref_type get_foo_port_s_foo_prov () override;
     //@}
 
     /** @name Supported attributes. */
@@ -215,7 +215,7 @@ namespace Hello_Sender_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::Hello::CCM_Sender_Context >::ref_type context_;
+    IDL::traits< ::Hello::CCM_Sender_Context>::ref_type context_;
 
     /** @name Component attributes. */
     //@{
@@ -235,7 +235,7 @@ namespace Hello_Sender_Impl
 
     /** @name Component facets. */
     //@{
-    IDL::traits< ::Hello::CCM_PortFooS >::ref_type foo_port_s_foo_prov_;
+    IDL::traits< ::Hello::CCM_PortFooS>::ref_type foo_port_s_foo_prov_;
     //@}
 
     /** @name User defined members. */

@@ -42,19 +42,19 @@ namespace CIAOX11
       ~ConditionManager () = default;
 
       /// Returns the read condition in general
-      IDL::traits< ::DDS::ReadCondition >::ref_type
+      IDL::traits< ::DDS::ReadCondition>::ref_type
       read_condition ();
 
       /// Returns the query condition for the getter
-      IDL::traits< ::DDS::QueryCondition >::ref_type
+      IDL::traits< ::DDS::QueryCondition>::ref_type
       query_condition_getter ();
 
       /// Returns the query condition for the reader
-      IDL::traits< ::DDS::QueryCondition >::ref_type
+      IDL::traits< ::DDS::QueryCondition>::ref_type
       query_condition_reader ();
 
       /// Returns the query condition for the listener
-      IDL::traits< ::DDS::QueryCondition >::ref_type
+      IDL::traits< ::DDS::QueryCondition>::ref_type
       query_condition_listener ();
 
       /**
@@ -140,12 +140,12 @@ namespace CIAOX11
         * Applies to Getter, Reader and Listener
         */
       void set_dds_entity (
-        IDL::traits< ::DDS::DataReader >::ref_type dr);
+        IDL::traits< ::DDS::DataReader>::ref_type dr);
 
       /**
         * Retrieves the internal datareader.
         */
-      IDL::traits< ::DDS::DataReader >::ref_type
+      IDL::traits< ::DDS::DataReader>::ref_type
       get_dds_entity ();
 
       /**
@@ -157,40 +157,40 @@ namespace CIAOX11
       passivate ();
 
     private:
-      IDL::traits< ::DDS::DataReader >::ref_type dr_ {};
+      IDL::traits< ::DDS::DataReader>::ref_type dr_ {};
 
       /**
        * Internal waitset. The getter extended port uses this waitset to control
        * reading from DDS.
        */
-      IDL::traits< ::DDS::WaitSet >::ref_type ws_ {};
+      IDL::traits< ::DDS::WaitSet>::ref_type ws_ {};
 
       /**
         * Different QueryConditions since the sample mask
         * differs per extended port (reader/getter/listener).
         */
-      IDL::traits< ::DDS::QueryCondition >::ref_type qc_reader_ {};
-      IDL::traits< ::DDS::QueryCondition >::ref_type qc_getter_ {};
-      IDL::traits< ::DDS::QueryCondition >::ref_type qc_listener_ {};
+      IDL::traits< ::DDS::QueryCondition>::ref_type qc_reader_ {};
+      IDL::traits< ::DDS::QueryCondition>::ref_type qc_getter_ {};
+      IDL::traits< ::DDS::QueryCondition>::ref_type qc_listener_ {};
 
       /**
        * When no query condition has been used, the read condition
        * 'takes over'. This read condition (for the getter) is then
        * attached to the internal waitset.
        */
-      IDL::traits< ::DDS::ReadCondition >::ref_type rd_condition_ {};
+      IDL::traits< ::DDS::ReadCondition>::ref_type rd_condition_ {};
 
       /**
         * Will create the waitset if not already created.
         */
-      IDL::traits< ::DDS::WaitSet >::ref_type waitset ();
+      IDL::traits< ::DDS::WaitSet>::ref_type waitset ();
 
       /**
         * Removes the internal (read/query) condition by invoking
         * delete_condition on the DataReader.
         */
       void remove_condition (
-        IDL::traits< ::DDS::QueryCondition >::ref_type qc,
+        IDL::traits< ::DDS::QueryCondition>::ref_type qc,
         const std::string &type);
 
       /**
@@ -218,7 +218,7 @@ namespace CIAOX11
       void
       set_parameters (
         const ::CCM_DDS::QueryFilter &filter,
-        IDL::traits< ::DDS::QueryCondition >::ref_type qc);
+        IDL::traits< ::DDS::QueryCondition>::ref_type qc);
 
       ConditionManager(const ConditionManager&) = delete;
       ConditionManager(ConditionManager&&) = delete;

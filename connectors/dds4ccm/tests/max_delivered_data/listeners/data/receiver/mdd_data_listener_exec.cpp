@@ -226,7 +226,7 @@ namespace MDD_Data_Listener_Test_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : MDD_Data_Listener_Test_Receiver_Impl::Receiver_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::CommonTestConnector::CCM_Listener >::ref_type
+  IDL::traits< ::CommonTestConnector::CCM_Listener>::ref_type
   Receiver_exec_i::get_info_data_listen_data_listener ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : MDD_Data_Listener_Test_Receiver_Impl::Receiver_exec_i[get_info_data_listen_data_listener]
@@ -240,7 +240,7 @@ namespace MDD_Data_Listener_Test_Receiver_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : MDD_Data_Listener_Test_Receiver_Impl::Receiver_exec_i[get_info_data_listen_data_listener]
   }
 
-  IDL::traits< ::CCM_DDS::CCM_PortStatusListener >::ref_type
+  IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type
   Receiver_exec_i::get_info_data_listen_status ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : MDD_Data_Listener_Test_Receiver_Impl::Receiver_exec_i[get_info_data_listen_status]
