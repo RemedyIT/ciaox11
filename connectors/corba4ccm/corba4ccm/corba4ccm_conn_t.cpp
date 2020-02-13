@@ -46,7 +46,7 @@ namespace CCM_CORBA
   }
 
   template <typename BASE, typename CONTEXT, typename INTERFACE_TYPE, typename FACET, typename SVNT, typename SVNT_IMPL>
-  typename IDL::traits< INTERFACE_TYPE>::ref_type
+  typename IDL::traits<INTERFACE_TYPE>::ref_type
   CORBA_Connector_T<BASE, CONTEXT, INTERFACE_TYPE, FACET, SVNT, SVNT_IMPL>::get_srr_facet ()
   {
     if (!this->srr_facet_)
