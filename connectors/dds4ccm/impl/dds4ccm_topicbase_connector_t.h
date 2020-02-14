@@ -25,19 +25,13 @@ public:
    * Attributes of DDS4CCM TopicBase
    */
   //@{
-  virtual void
-  topic_name (
-    const std::string &topic_name) override;
+  void topic_name (const std::string &topic_name) override;
 
-  virtual std::string
-  topic_name () override;
+  std::string topic_name () override;
 
-  virtual void
-  type_name (
-    const std::string &type_name) override;
+  void type_name (const std::string &type_name) override;
 
-  virtual std::string
-  type_name () override;
+  std::string type_name () override;
   //@}
 
   /**
@@ -45,10 +39,10 @@ public:
    * Life cycle methods, specific for this class.
    */
   //@{
-  virtual void configuration_complete () override;
-  virtual void ccm_activate () override;
-  virtual void ccm_passivate () override;
-  virtual void ccm_remove () override;
+  void configuration_complete () override;
+  void ccm_activate () override;
+  void ccm_passivate () override;
+  void ccm_remove () override;
   //@}
 
   /**
@@ -57,14 +51,12 @@ public:
    * For users to register/unregister their type.
    */
   //@{
-  virtual void
-  register_type (
-    IDL::traits< ::DDS::DomainParticipant >::ref_type participant,
+  void register_type (
+    IDL::traits< ::DDS::DomainParticipant>::ref_type participant,
     const std::string &typesupport_name) override;
 
-  virtual void
-  unregister_type (
-    IDL::traits< ::DDS::DomainParticipant >::ref_type participant,
+  void unregister_type (
+    IDL::traits< ::DDS::DomainParticipant>::ref_type participant,
     const std::string &typesupport_name) override;
   //@}
 
@@ -75,23 +67,16 @@ protected:
    *
    */
     //@{
-  bool
-  late_binding ();
+  bool late_binding ();
 
-  void
-  late_binding (
-    bool late_binding);
+  void late_binding (bool late_binding);
   //@}
 
   /// Actual determination whether a topic is late binded.
-  bool
-  late_binded (
-    const std::string &topic_name);
+  bool late_binded (const std::string &topic_name);
 
   /// Determines whether to stop DDS in case of a topic reset.
-  bool
-  stop_dds (
-    const std::string &topic_name);
+  bool stop_dds (const std::string &topic_name);
 
   /**
    * @name DDS entity getters
@@ -99,29 +84,28 @@ protected:
    * Getters for the DDS entities. Will init the
    * entities if not already initialized.
    */
-  IDL::traits< ::DDS::DomainParticipant >::ref_type domain_participant ();
-  IDL::traits< ::DDS::Topic >::ref_type topic ();
-  IDL::traits< ::DDS::Publisher >::ref_type publisher ();
-  IDL::traits< ::DDS::Subscriber >::ref_type subscriber ();
+  IDL::traits< ::DDS::DomainParticipant>::ref_type domain_participant ();
+  IDL::traits< ::DDS::Topic>::ref_type topic ();
+  IDL::traits< ::DDS::Publisher>::ref_type publisher ();
+  IDL::traits< ::DDS::Subscriber>::ref_type subscriber ();
 
   typedef DDS_Base_Connector_T<CCM_TYPE> BaseConnector;
 
-  IDL::traits< ::DDS::Publisher >::ref_type publisher_;
-  IDL::traits< ::DDS::Subscriber >::ref_type subscriber_;
+  IDL::traits< ::DDS::Publisher>::ref_type publisher_;
+  IDL::traits< ::DDS::Subscriber>::ref_type subscriber_;
 
 private:
   std::string topic_name_;
   std::string type_name_;
 
-  IDL::traits< ::DDS::DomainParticipant >::ref_type domain_participant_;
+  IDL::traits< ::DDS::DomainParticipant>::ref_type domain_participant_;
 
-  IDL::traits< ::DDS::Topic >::ref_type topic_;
-  IDL::traits< ::DDS::TopicListener >::ref_type topic_listener_;
+  IDL::traits< ::DDS::Topic>::ref_type topic_;
+  IDL::traits< ::DDS::TopicListener>::ref_type topic_listener_;
 
-  IDL::traits< ::DDS::PublisherListener >::ref_type publisher_listener_;
+  IDL::traits< ::DDS::PublisherListener>::ref_type publisher_listener_;
 
-  IDL::traits< ::DDS::SubscriberListener >::ref_type subscriber_listener_;
-
+  IDL::traits< ::DDS::SubscriberListener>::ref_type subscriber_listener_;
 
   /// Indicates whether a topic is late binded.
   bool late_binding_ { false };

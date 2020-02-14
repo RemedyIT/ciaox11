@@ -21,8 +21,8 @@ template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE, CIAOX
 void
 DDS_Listen_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE, LRT>::activate (
   const typename CCM_TYPE::event_strategy_type &evs,
-  typename IDL::traits<typename CCM_TYPE::data_listener_type >::ref_type listener,
-  IDL::traits< CCM_DDS::PortStatusListener >::ref_type status)
+  typename IDL::traits<typename CCM_TYPE::data_listener_type>::ref_type listener,
+  IDL::traits< CCM_DDS::PortStatusListener>::ref_type status)
 {
   DDS4CCM_LOG_TRACE ("DDS_Listen_Port_T::activate");
 
@@ -39,7 +39,7 @@ DDS_Listen_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE, LRT>::activate (
           this->data_control_,
           this->condition_manager_);
     }
-    IDL::traits< ::DDS::DataReader >::ref_type dr =
+    IDL::traits< ::DDS::DataReader>::ref_type dr =
       this->dds4ccm_reader_->get_dds_reader ();
     if (dr)
     {
@@ -50,7 +50,7 @@ DDS_Listen_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE, LRT>::activate (
       {
         DDS4CCM_LOG_ERROR ("DDS_Listen_Port_T::activate - "
           << "Error while setting the listener on the listen - <"
-          << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode)
+          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">.");
         throw ::CORBA::INTERNAL ();
       }
@@ -65,7 +65,7 @@ DDS_Listen_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE, LRT>::activate (
 }
 
 template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE, CIAOX11::DDS4CCM::DDS4CCM_LISTENER_READ_TAKE LRT>
-IDL::traits< CCM_DDS::CCM_DataListenerControl >::ref_type
+IDL::traits< CCM_DDS::CCM_DataListenerControl>::ref_type
 DDS_Listen_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE, LRT>::get_data_control ()
 {
   DDS4CCM_LOG_TRACE ("DDS_Listen_Port_T::get_data_control");

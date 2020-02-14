@@ -25,13 +25,13 @@ namespace CIAOX11
     template <typename EVT_STRATEGY>
     void
     PortStatusListener_T<EVT_STRATEGY>::on_requested_deadline_missed (
-     IDL::traits< ::DDS::DataReader >::ref_type the_reader,
+     IDL::traits< ::DDS::DataReader>::ref_type the_reader,
      const ::DDS::RequestedDeadlineMissedStatus & status)
     {
       DDS4CCM_LOG_TRACE ("CIAOX11::DDS4CCM::PortStatusListener_T<EVT_STRATEGY>::on_requested_deadline_missed");
 
       DDS4CCM_LOG_DEBUG ("PortStatusListener_T<EVT_STRATEGY>::on_requested_deadline_missed - "
-        << IDL::traits< ::DDS::RequestedDeadlineMissedStatus >::write (status));
+        << IDL::traits< ::DDS::RequestedDeadlineMissedStatus>::write (status));
 
       this->evs_.handle_requested_deadline_missed_event (std::move(the_reader), status);
     }
@@ -39,13 +39,13 @@ namespace CIAOX11
     template <typename EVT_STRATEGY>
     void
     PortStatusListener_T<EVT_STRATEGY>::on_sample_lost (
-      IDL::traits< ::DDS::DataReader >::ref_type the_reader,
+      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
       const ::DDS::SampleLostStatus & status)
     {
       DDS4CCM_LOG_TRACE ("CIAOX11::DDS4CCM::PortStatusListener_T<EVT_STRATEGY>::on_sample_lost");
 
       DDS4CCM_LOG_DEBUG ("PortStatusListener_T<EVT_STRATEGY>::on_sample_lost - "
-        << IDL::traits< ::DDS::SampleLostStatus >::write (status));
+        << IDL::traits< ::DDS::SampleLostStatus>::write (status));
 
       this->evs_.handle_sample_lost_event (std::move(the_reader), status);
     }
@@ -53,7 +53,7 @@ namespace CIAOX11
     template <typename EVT_STRATEGY>
     void
     PortStatusListener_T<EVT_STRATEGY>::on_requested_incompatible_qos (
-      IDL::traits< ::DDS::DataReader >::ref_type ,
+      IDL::traits< ::DDS::DataReader>::ref_type ,
       const ::DDS::RequestedIncompatibleQosStatus & )
     {
       DDS4CCM_LOG_DEBUG ("PortStatusListener_T<EVT_STRATEGY>::on_requested_incompatible_qos - "
@@ -63,7 +63,7 @@ namespace CIAOX11
     template <typename EVT_STRATEGY>
     void
     PortStatusListener_T<EVT_STRATEGY>::on_sample_rejected (
-      IDL::traits< ::DDS::DataReader >::ref_type ,
+      IDL::traits< ::DDS::DataReader>::ref_type ,
       const ::DDS::SampleRejectedStatus & )
     {
       DDS4CCM_LOG_DEBUG ("PortStatusListener_T<EVT_STRATEGY>::on_sample_rejected - "
@@ -73,7 +73,7 @@ namespace CIAOX11
     template <typename EVT_STRATEGY>
     void
     PortStatusListener_T<EVT_STRATEGY>::on_liveliness_changed (
-      IDL::traits< ::DDS::DataReader >::ref_type ,
+      IDL::traits< ::DDS::DataReader>::ref_type ,
       const ::DDS::LivelinessChangedStatus & )
     {
       DDS4CCM_LOG_DEBUG ("PortStatusListener_T<EVT_STRATEGY>::on_liveliness_changed - "
@@ -83,7 +83,7 @@ namespace CIAOX11
     template <typename EVT_STRATEGY>
     void
     PortStatusListener_T<EVT_STRATEGY>::on_data_available (
-      IDL::traits< ::DDS::DataReader >::ref_type )
+      IDL::traits< ::DDS::DataReader>::ref_type )
     {
       DDS4CCM_LOG_DEBUG ("PortStatusListener_T<EVT_STRATEGY>::on_data_available - "
         << "Unexpected callback occurred.");
@@ -92,7 +92,7 @@ namespace CIAOX11
     template <typename EVT_STRATEGY>
     void
     PortStatusListener_T<EVT_STRATEGY>::on_subscription_matched (
-      IDL::traits< ::DDS::DataReader >::ref_type ,
+      IDL::traits< ::DDS::DataReader>::ref_type ,
       const ::DDS::SubscriptionMatchedStatus & )
     {
       DDS4CCM_LOG_DEBUG ("PortStatusListener_T<EVT_STRATEGY>::on_subscription_matched - "
@@ -102,7 +102,7 @@ namespace CIAOX11
     template <typename EVT_STRATEGY>
     ::DDS::StatusMask
     PortStatusListener_T<EVT_STRATEGY>::get_mask (
-      IDL::traits< CCM_DDS::PortStatusListener >::ref_type psl)
+      IDL::traits< CCM_DDS::PortStatusListener>::ref_type psl)
     {
       DDS4CCM_LOG_TRACE ("CIAOX11::DDS4CCM::PortStatusListener_T<EVT_STRATEGY>::get_mask");
 
@@ -115,7 +115,7 @@ namespace CIAOX11
 
       DDS4CCM_LOG_DEBUG ("PortStatusListener_T<EVT_STRATEGY>::get_mask - "
         << "Mask becomes <"
-        << IDL::traits< ::DDS::StatusMask >::write<status_mask_formatter> (mask)
+        << IDL::traits< ::DDS::StatusMask>::write<status_mask_formatter> (mask)
         << ">.");
       return mask;
     }

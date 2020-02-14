@@ -41,8 +41,8 @@ DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::create_cft_setting_
 template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 void
 DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::configuration_complete (
-  IDL::traits< ::DDS::Topic >::ref_type topic,
-  IDL::traits< ::DDS::Subscriber >::ref_type subscriber,
+  IDL::traits< ::DDS::Topic>::ref_type topic,
+  IDL::traits< ::DDS::Subscriber>::ref_type subscriber,
   const std::string &qos_profile)
 {
   DDS4CCM_LOG_TRACE ("DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::configuration_complete");
@@ -55,12 +55,12 @@ DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::configuration_compl
     // 'filter_config' (see ccm_dds.idl) connection is created, and
     // a filter is configured in the deployment plan, a contentfiltered
     // topic should be needed. This in addition to the given topic.
-    IDL::traits< ::DDS::TopicDescription >::ref_type td (topic);
+    IDL::traits< ::DDS::TopicDescription>::ref_type td (topic);
     if (this->cft_setting_)
     {
       if (!this->cft_setting_->filter ().expression ().empty ())
       {
-        IDL::traits< ::DDS::ContentFilteredTopic >::ref_type cft =
+        IDL::traits< ::DDS::ContentFilteredTopic>::ref_type cft =
           this->cft_setting_->create_contentfilteredtopic (topic, subscriber);
         if (!cft)
         {
@@ -73,7 +73,7 @@ DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::configuration_compl
       }
     }
 
-    IDL::traits< ::DDS::DataReader >::ref_type dr;
+    IDL::traits< ::DDS::DataReader>::ref_type dr;
     if (!qos_profile.empty ())
     {
       // A QOS profile is set in the deployment plan; need to apply that.
@@ -93,7 +93,7 @@ DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::configuration_compl
         DDS4CCM_LOG_ERROR (
           "DDS_Subscriber_Base_T::configuration_complete - "
           "Error: Unable to retrieve get_default_datareader_qos: <"
-          << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode)
+          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">.");
         throw ::CCM_DDS::InternalError (retcode, 0);
       }
@@ -137,7 +137,7 @@ DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::configuration_compl
       DDS4CCM_LOG_ERROR (
         "DDS_Subscriber_Base_T::configuration_complete - "
         "Error: Unable to enable the datareader: <"
-        << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode)
+        << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
         << ">.");
       throw ::CORBA::INTERNAL ();
     }
@@ -148,7 +148,7 @@ template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 void
 DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::activate (
     const typename CCM_TYPE::event_strategy_type &evs,
-    IDL::traits< CCM_DDS::PortStatusListener >::ref_type status)
+    IDL::traits< CCM_DDS::PortStatusListener>::ref_type status)
 {
   DDS4CCM_LOG_TRACE ("DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::activate");
 
@@ -168,7 +168,7 @@ DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::activate (
           evs);
     }
 
-    IDL::traits< ::DDS::DataReader >::ref_type dr = this->dds4ccm_reader_->get_dds_reader ();
+    IDL::traits< ::DDS::DataReader>::ref_type dr = this->dds4ccm_reader_->get_dds_reader ();
 
     if (dr)
     {
@@ -180,7 +180,7 @@ DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::activate (
         DDS4CCM_LOG_ERROR (
           "DDS_Subscriber_Base_T::activate - "
           "Error while setting the listener on the datareader - <"
-          << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode)
+          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">.");
         throw ::CORBA::INTERNAL ();
       }
@@ -204,7 +204,7 @@ DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::passivate ()
   this->condition_manager_->passivate ();
 
   // Remove the listeners
-  IDL::traits< ::DDS::DataReader >::ref_type dr = this->dds4ccm_reader_->get_dds_reader ();
+  IDL::traits< ::DDS::DataReader>::ref_type dr = this->dds4ccm_reader_->get_dds_reader ();
   if (dr && this->listener_)
   {
     DDS4CCM_LOG_DEBUG (
@@ -218,7 +218,7 @@ DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::passivate ()
       DDS4CCM_LOG_ERROR (
         "DDS_Subscriber_Base_T::passivate - "
         "Error while setting the listener on the reader - <"
-        << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode)
+        << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
         << ">.");
       throw ::CORBA::INTERNAL ();
     }
@@ -228,7 +228,7 @@ DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::passivate ()
 template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 void
 DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::remove (
-  IDL::traits< ::DDS::Subscriber >::ref_type subscriber)
+  IDL::traits< ::DDS::Subscriber>::ref_type subscriber)
 {
   DDS4CCM_LOG_TRACE ("DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::remove");
 
@@ -241,7 +241,7 @@ DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::remove (
   this->condition_manager_->set_dds_entity (nullptr);
 
 
-  IDL::traits< ::DDS::DataReader >::ref_type dr =
+  IDL::traits< ::DDS::DataReader>::ref_type dr =
     this->dds4ccm_reader_->get_dds_reader ();
 
   if (dr)
@@ -261,7 +261,7 @@ DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::remove (
     {
       DDS4CCM_LOG_ERROR ("DDS_Subscriber_Base_T::remove - "
         << "Unable to remove DataReader: <"
-        << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode)
+        << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
         << ">.");
       throw ::CORBA::INTERNAL ();
     }
@@ -282,7 +282,7 @@ DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::remove (
  * Context methods.
  */
 template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
-typename IDL::traits<typename CCM_TYPE::data_type >::ref_type
+typename IDL::traits<typename CCM_TYPE::data_type>::ref_type
 DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_data ()
 {
   DDS4CCM_LOG_TRACE ("DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_data");
@@ -291,7 +291,7 @@ DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_data ()
 }
 
 template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
-typename IDL::traits<typename CCM_TYPE::dds_entity_type >::ref_type
+typename IDL::traits<typename CCM_TYPE::dds_entity_type>::ref_type
 DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_dds_entity ()
 {
   DDS4CCM_LOG_TRACE ("DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_dds_entity");
@@ -304,7 +304,7 @@ DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_dds_entity ()
 }
 
 template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
-typename IDL::traits<typename CCM_TYPE::filter_config_type >::ref_type
+typename IDL::traits<typename CCM_TYPE::filter_config_type>::ref_type
 DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_filter_config ()
 {
   DDS4CCM_LOG_TRACE ("DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_filter_config");

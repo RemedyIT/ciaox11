@@ -18,7 +18,7 @@ template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 class DDS_Write_Port_T
 {
 public:
-  explicit DDS_Write_Port_T (IDL::traits<CORBA::Object >::ref_type component);
+  explicit DDS_Write_Port_T (IDL::traits<CORBA::Object>::ref_type component);
   ~DDS_Write_Port_T () = default;
 
   /**
@@ -26,17 +26,17 @@ public:
    * DDS_Write operations
    */
   //@{
-  typename IDL::traits<typename CCM_TYPE::data_type >::ref_type get_data ();
-  typename IDL::traits<typename CCM_TYPE::dds_entity_type >::ref_type get_dds_entity ();
+  typename IDL::traits<typename CCM_TYPE::data_type>::ref_type get_data ();
+  typename IDL::traits<typename CCM_TYPE::dds_entity_type>::ref_type get_dds_entity ();
   //@}
 
   void
   configuration_complete (
-    IDL::traits< ::DDS::Topic >::ref_type topic,
-    IDL::traits< ::DDS::Publisher >::ref_type publisher,
+    IDL::traits< ::DDS::Topic>::ref_type topic,
+    IDL::traits< ::DDS::Publisher>::ref_type publisher,
     const std::string &qos_profile);
 
-  void remove (IDL::traits< ::DDS::Publisher >::ref_type publisher);
+  void remove (IDL::traits< ::DDS::Publisher>::ref_type publisher);
 
 private:
   typedef ::CIAOX11::DDS4CCM::Writer_T<
@@ -53,9 +53,9 @@ private:
    * DDS_Write
    */
   //@{
-  typename IDL::traits< DDS4CCM_Writer_type >::ref_type dds4ccm_writer_ {};
-  typename IDL::traits< CCM_DataWriter_type >::ref_type ccm_data_writer_ {};
-  IDL::traits< ::DDS::DataWriter >::ref_type data_writer_ {};
+  typename IDL::traits< DDS4CCM_Writer_type>::ref_type dds4ccm_writer_ {};
+  typename IDL::traits< CCM_DataWriter_type>::ref_type ccm_data_writer_ {};
+  IDL::traits< ::DDS::DataWriter>::ref_type data_writer_ {};
   //@}
 
   DDS_Write_Port_T() = delete;

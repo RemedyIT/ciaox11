@@ -81,7 +81,7 @@ namespace Test_TT_Tester_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::Test::CCM_TT_Tester_Context >::ref_type context_;
+    IDL::traits< ::Test::CCM_TT_Tester_Context>::ref_type context_;
 
     /** @name Component facets. */
     //@{

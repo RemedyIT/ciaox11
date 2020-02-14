@@ -92,7 +92,7 @@ namespace UpdaterModule_Receiver_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::UpdaterModule::CCM_Receiver_Context >::ref_type context_;
+    IDL::traits< ::UpdaterModule::CCM_Receiver_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -156,7 +156,7 @@ namespace UpdaterModule_Receiver_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::UpdaterModule::CCM_Receiver_Context >::ref_type context_;
+    IDL::traits< ::UpdaterModule::CCM_Receiver_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -232,7 +232,7 @@ namespace UpdaterModule_Receiver_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::UpdaterModule::CCM_Receiver_Context >::ref_type context_;
+    IDL::traits< ::UpdaterModule::CCM_Receiver_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -296,7 +296,7 @@ namespace UpdaterModule_Receiver_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::UpdaterModule::CCM_Receiver_Context >::ref_type context_;
+    IDL::traits< ::UpdaterModule::CCM_Receiver_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -330,16 +330,16 @@ namespace UpdaterModule_Receiver_Impl
 
     /// Factory method and getter for the info_out_one_by_one_data_listener facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::CommonTestConnector::CCM_StateListener >::ref_type get_info_out_one_by_one_data_listener () override;
+    virtual IDL::traits< ::CommonTestConnector::CCM_StateListener>::ref_type get_info_out_one_by_one_data_listener () override;
     /// Factory method and getter for the info_out_one_by_one_status facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::CCM_DDS::CCM_PortStatusListener >::ref_type get_info_out_one_by_one_status () override;
+    virtual IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type get_info_out_one_by_one_status () override;
     /// Factory method and getter for the info_out_many_by_many_data_listener facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::CommonTestConnector::CCM_StateListener >::ref_type get_info_out_many_by_many_data_listener () override;
+    virtual IDL::traits< ::CommonTestConnector::CCM_StateListener>::ref_type get_info_out_many_by_many_data_listener () override;
     /// Factory method and getter for the info_out_many_by_many_status facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::CCM_DDS::CCM_PortStatusListener >::ref_type get_info_out_many_by_many_status () override;
+    virtual IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type get_info_out_many_by_many_status () override;
     //@}
 
     /** @name Session component operations */
@@ -371,7 +371,7 @@ namespace UpdaterModule_Receiver_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::UpdaterModule::CCM_Receiver_Context >::ref_type context_;
+    IDL::traits< ::UpdaterModule::CCM_Receiver_Context>::ref_type context_;
 
     /** @name Component attributes. */
     //@{
@@ -379,10 +379,10 @@ namespace UpdaterModule_Receiver_Impl
 
     /** @name Component facets. */
     //@{
-    IDL::traits< ::CommonTestConnector::CCM_StateListener >::ref_type info_out_one_by_one_data_listener_;
-    IDL::traits< ::CCM_DDS::CCM_PortStatusListener >::ref_type info_out_one_by_one_status_;
-    IDL::traits< ::CommonTestConnector::CCM_StateListener >::ref_type info_out_many_by_many_data_listener_;
-    IDL::traits< ::CCM_DDS::CCM_PortStatusListener >::ref_type info_out_many_by_many_status_;
+    IDL::traits< ::CommonTestConnector::CCM_StateListener>::ref_type info_out_one_by_one_data_listener_;
+    IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type info_out_one_by_one_status_;
+    IDL::traits< ::CommonTestConnector::CCM_StateListener>::ref_type info_out_many_by_many_data_listener_;
+    IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type info_out_many_by_many_status_;
     //@}
 
     /** @name User defined members. */

@@ -34,7 +34,7 @@ IDL::traits<PortableServer::POA>::ref_type
 CCM_AMI::get_ami_POA (IDL::traits<Components::SessionContext>::ref_type context)
 {
   // Get the orb
-  IDL::traits< CORBA::Object>::ref_type objvar =
+  IDL::traits<CORBA::Object>::ref_type objvar =
     context->the_service_registry ()->resolve_service (CIAOX11::SVCID_ORB);
 
   if (!objvar)

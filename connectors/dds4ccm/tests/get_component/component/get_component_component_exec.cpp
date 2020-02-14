@@ -214,12 +214,12 @@ namespace GetComponentComponent_Impl
   {
     try
     {
-      IDL::traits< ::CommonTestConnector::Writer >::ref_type writer_data =
+      IDL::traits< ::CommonTestConnector::Writer>::ref_type writer_data =
         this->context_->get_connection_info_write_data ();
       if (writer_data)
       {
-        IDL::traits< ::CORBA::Object >::ref_type cmp = writer_data->_get_component ();
-        IDL::traits< ::CommonTestConnector::CCM_DDS_Event >::ref_type conn =
+        IDL::traits< ::CORBA::Object>::ref_type cmp = writer_data->_get_component ();
+        IDL::traits< ::CommonTestConnector::CCM_DDS_Event>::ref_type conn =
           IDL::traits< ::CommonTestConnector::CCM_DDS_Event >::narrow (cmp);
         if (!conn)
         {
@@ -255,12 +255,12 @@ namespace GetComponentComponent_Impl
 
     try
     {
-      IDL::traits< ::DDS::DataWriter >::ref_type writer_dds_entity =
+      IDL::traits< ::DDS::DataWriter>::ref_type writer_dds_entity =
         this->context_->get_connection_info_write_dds_entity ();
       if (writer_dds_entity)
       {
-        IDL::traits< ::CORBA::Object >::ref_type cmp = writer_dds_entity->_get_component ();
-        IDL::traits< ::CommonTestConnector::CCM_DDS_Event >::ref_type conn =
+        IDL::traits< ::CORBA::Object>::ref_type cmp = writer_dds_entity->_get_component ();
+        IDL::traits< ::CommonTestConnector::CCM_DDS_Event>::ref_type conn =
           IDL::traits< ::CommonTestConnector::CCM_DDS_Event >::narrow (cmp);
         if (!conn)
         {
@@ -300,12 +300,12 @@ namespace GetComponentComponent_Impl
     //Reader on DDS_Get
     try
     {
-      IDL::traits< ::CommonTestConnector::Reader >::ref_type getter_data =
+      IDL::traits< ::CommonTestConnector::Reader>::ref_type getter_data =
         this->context_->get_connection_info_get_data ();
       if (getter_data)
         {
-          IDL::traits< ::CORBA::Object >::ref_type cmp = getter_data->_get_component ();
-          IDL::traits< ::CommonTestConnector::CCM_DDS_Event >::ref_type conn =
+          IDL::traits< ::CORBA::Object>::ref_type cmp = getter_data->_get_component ();
+          IDL::traits< ::CommonTestConnector::CCM_DDS_Event>::ref_type conn =
             IDL::traits< ::CommonTestConnector::CCM_DDS_Event >::narrow (cmp);
           if (!conn)
           {
@@ -340,12 +340,12 @@ namespace GetComponentComponent_Impl
     //Getter on DDS_Get
     try
     {
-      IDL::traits< ::CommonTestConnector::Getter >::ref_type getter_fresh_data =
+      IDL::traits< ::CommonTestConnector::Getter>::ref_type getter_fresh_data =
         this->context_->get_connection_info_get_fresh_data ();
       if (getter_fresh_data)
       {
-        IDL::traits< ::CORBA::Object >::ref_type cmp = getter_fresh_data->_get_component ();
-        IDL::traits< ::CommonTestConnector::CCM_DDS_Event >::ref_type conn =
+        IDL::traits< ::CORBA::Object>::ref_type cmp = getter_fresh_data->_get_component ();
+        IDL::traits< ::CommonTestConnector::CCM_DDS_Event>::ref_type conn =
           IDL::traits< ::CommonTestConnector::CCM_DDS_Event >::narrow (cmp);
         if (!conn)
         {
@@ -381,12 +381,12 @@ namespace GetComponentComponent_Impl
     //Getter on DDS_Get
     try
     {
-      IDL::traits< ::DDS::DataReader >::ref_type getter_dds_entity =
+      IDL::traits< ::DDS::DataReader>::ref_type getter_dds_entity =
         this->context_->get_connection_info_get_dds_entity ();
       if (getter_dds_entity)
       {
-        IDL::traits< ::CORBA::Object >::ref_type cmp = getter_dds_entity->_get_component ();
-        IDL::traits< ::CommonTestConnector::CCM_DDS_Event >::ref_type conn =
+        IDL::traits< ::CORBA::Object>::ref_type cmp = getter_dds_entity->_get_component ();
+        IDL::traits< ::CommonTestConnector::CCM_DDS_Event>::ref_type conn =
           IDL::traits< ::CommonTestConnector::CCM_DDS_Event >::narrow (cmp);
         if (!conn)
         {
@@ -425,12 +425,12 @@ namespace GetComponentComponent_Impl
     try
     {
         //DDS_Listen
-      IDL::traits< ::CommonTestConnector::Reader >::ref_type listen_data =
+      IDL::traits< ::CommonTestConnector::Reader>::ref_type listen_data =
         this->context_->get_connection_info_listen_data ();
       if (listen_data)
       {
-        IDL::traits< ::CORBA::Object >::ref_type cmp = listen_data->_get_component ();
-        IDL::traits< ::CommonTestConnector::CCM_DDS_Event >::ref_type conn =
+        IDL::traits< ::CORBA::Object>::ref_type cmp = listen_data->_get_component ();
+        IDL::traits< ::CommonTestConnector::CCM_DDS_Event>::ref_type conn =
           IDL::traits< ::CommonTestConnector::CCM_DDS_Event >::narrow (cmp);
         if (!conn)
         {
@@ -463,12 +463,12 @@ namespace GetComponentComponent_Impl
 
     try
     {
-      IDL::traits< ::CCM_DDS::DataListenerControl >::ref_type  listen_data_control =
+      IDL::traits< ::CCM_DDS::DataListenerControl>::ref_type  listen_data_control =
         this->context_->get_connection_info_listen_data_control ();
       if (listen_data_control)
       {
-        IDL::traits< ::CORBA::Object >::ref_type cmp = listen_data_control->_get_component ();
-        IDL::traits< ::CommonTestConnector::CCM_DDS_Event >::ref_type conn =
+        IDL::traits< ::CORBA::Object>::ref_type cmp = listen_data_control->_get_component ();
+        IDL::traits< ::CommonTestConnector::CCM_DDS_Event>::ref_type conn =
           IDL::traits< ::CommonTestConnector::CCM_DDS_Event >::narrow (cmp);
         if (!conn)
         {
@@ -540,7 +540,7 @@ namespace GetComponentComponent_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : GetComponentComponent_Impl::GetComponentComponent_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::CommonTestConnector::CCM_Listener >::ref_type
+  IDL::traits< ::CommonTestConnector::CCM_Listener>::ref_type
   GetComponentComponent_exec_i::get_info_listen_data_listener ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : GetComponentComponent_Impl::GetComponentComponent_exec_i[get_info_listen_data_listener]
@@ -548,7 +548,7 @@ namespace GetComponentComponent_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : GetComponentComponent_Impl::GetComponentComponent_exec_i[get_info_listen_data_listener]
   }
 
-  IDL::traits< ::CCM_DDS::CCM_PortStatusListener >::ref_type
+  IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type
   GetComponentComponent_exec_i::get_info_listen_status ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : GetComponentComponent_Impl::GetComponentComponent_exec_i[get_info_listen_status]
@@ -556,7 +556,7 @@ namespace GetComponentComponent_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : GetComponentComponent_Impl::GetComponentComponent_exec_i[get_info_listen_status]
   }
 
-  IDL::traits< ::CCM_DDS::CCM_PortStatusListener >::ref_type
+  IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type
   GetComponentComponent_exec_i::get_info_get_status ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : GetComponentComponent_Impl::GetComponentComponent_exec_i[get_info_get_status]

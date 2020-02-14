@@ -273,20 +273,20 @@ namespace FA_Event_Listen_Test_Receiver_Impl
     uint16_t listener_port,
     std::string const &current_query,
     std::string const &new_query,
-    IDL::traits< CCM_DDS::DataListenerControl >::ref_type ldc)
+    IDL::traits< CCM_DDS::DataListenerControl>::ref_type ldc)
   {
     std::string const test ("Receiver_exec_i::test_non_changeable (" +
       std::to_string (listener_port) + ")");
     try
     {
-      IDL::traits< ::CORBA::Object >::ref_type cmp = ldc->_get_component ();
+      IDL::traits< ::CORBA::Object>::ref_type cmp = ldc->_get_component ();
       if (!cmp)
       {
         DDS4CCM_TEST_ERROR << "ERROR: " << test << " - "
          << "ERROR: Unable to get component interface." << std::endl;
         return;
       }
-      IDL::traits< ::CommonTestConnector::CCM_DDS_Event >::ref_type conn =
+      IDL::traits< ::CommonTestConnector::CCM_DDS_Event>::ref_type conn =
         IDL::traits< ::CommonTestConnector::CCM_DDS_Event >::narrow (cmp);
       if (!conn)
       {
@@ -335,7 +335,7 @@ namespace FA_Event_Listen_Test_Receiver_Impl
   void
   Receiver_exec_i::test_internal_error (
     uint16_t listener_port,
-    IDL::traits< CCM_DDS::ContentFilterSetting >::ref_type cft)
+    IDL::traits< CCM_DDS::ContentFilterSetting>::ref_type cft)
   {
     std::string const test ("Receiver_exec_i::test_internal_error (" +
       std::to_string (listener_port) + ")");
@@ -388,7 +388,7 @@ namespace FA_Event_Listen_Test_Receiver_Impl
     this->test_non_changeables ();
 
     // Start the listeners
-    IDL::traits< ::CCM_DDS::DataListenerControl >::ref_type lc_1 =
+    IDL::traits< ::CCM_DDS::DataListenerControl>::ref_type lc_1 =
       this->context_->get_connection_listen_port_1_data_control ();
 
     if (!lc_1)
@@ -399,7 +399,7 @@ namespace FA_Event_Listen_Test_Receiver_Impl
     }
     lc_1->mode (::CCM_DDS::ListenerMode::ONE_BY_ONE);
 
-    IDL::traits< ::CCM_DDS::DataListenerControl >::ref_type lc_2 =
+    IDL::traits< ::CCM_DDS::DataListenerControl>::ref_type lc_2 =
       this->context_->get_connection_listen_port_2_data_control ();
 
     if (!lc_2)
@@ -453,7 +453,7 @@ namespace FA_Event_Listen_Test_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : FA_Event_Listen_Test_Receiver_Impl::Receiver_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::CommonTestConnector::CCM_Listener >::ref_type
+  IDL::traits< ::CommonTestConnector::CCM_Listener>::ref_type
   Receiver_exec_i::get_listen_port_1_data_listener ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : FA_Event_Listen_Test_Receiver_Impl::Receiver_exec_i[get_listen_port_1_data_listener]
@@ -467,7 +467,7 @@ namespace FA_Event_Listen_Test_Receiver_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : FA_Event_Listen_Test_Receiver_Impl::Receiver_exec_i[get_listen_port_1_data_listener]
   }
 
-  IDL::traits< ::CCM_DDS::CCM_PortStatusListener >::ref_type
+  IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type
   Receiver_exec_i::get_listen_port_1_status ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : FA_Event_Listen_Test_Receiver_Impl::Receiver_exec_i[get_listen_port_1_status]
@@ -479,7 +479,7 @@ namespace FA_Event_Listen_Test_Receiver_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : FA_Event_Listen_Test_Receiver_Impl::Receiver_exec_i[get_listen_port_1_status]
   }
 
-  IDL::traits< ::CommonTestConnector::CCM_Listener >::ref_type
+  IDL::traits< ::CommonTestConnector::CCM_Listener>::ref_type
   Receiver_exec_i::get_listen_port_2_data_listener ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : FA_Event_Listen_Test_Receiver_Impl::Receiver_exec_i[get_listen_port_2_data_listener]
@@ -493,7 +493,7 @@ namespace FA_Event_Listen_Test_Receiver_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : FA_Event_Listen_Test_Receiver_Impl::Receiver_exec_i[get_listen_port_2_data_listener]
   }
 
-  IDL::traits< ::CCM_DDS::CCM_PortStatusListener >::ref_type
+  IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type
   Receiver_exec_i::get_listen_port_2_status ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : FA_Event_Listen_Test_Receiver_Impl::Receiver_exec_i[get_listen_port_2_status]

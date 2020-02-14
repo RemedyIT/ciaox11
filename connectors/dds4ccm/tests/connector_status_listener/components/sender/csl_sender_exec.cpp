@@ -213,7 +213,7 @@ namespace CSL_Test_Sender_Impl
         {
           this->on_liveliness_lost_thread_id_ = std::this_thread::get_id ();
 
-          IDL::traits< ::DDS::DataWriter >::ref_type writer =
+          IDL::traits< ::DDS::DataWriter>::ref_type writer =
             IDL::traits< ::DDS::DataWriter >::narrow (the_entity);
           if (writer)
           {
@@ -315,7 +315,7 @@ namespace CSL_Test_Sender_Impl
   {
     try
     {
-      IDL::traits < CommonTestConnector::Writer >::ref_type writer =
+      IDL::traits < CommonTestConnector::Writer>::ref_type writer =
         this->context_->get_connection_info_write_data ();
 
       if (this->assignment_ == ASSIGNMENT::ASSIGNMENT_UNEXPECTED_STATUS ||
@@ -581,8 +581,8 @@ namespace CSL_Test_Sender_Impl
         // topic name of the connector we are connected to
         IDL::traits< ::DDS::Publisher>::ref_type pub = writer->get_publisher ();
         IDL::traits< ::DDS::DomainParticipant>::ref_type dp = pub->get_participant ();
-        IDL::traits< ::CORBA::Object >::ref_type cmp = writer->_get_component ();
-        IDL::traits< ::OnInconsistentTopicConnector::CCM_DDS_Event >::ref_type conn =
+        IDL::traits< ::CORBA::Object>::ref_type cmp = writer->_get_component ();
+        IDL::traits< ::OnInconsistentTopicConnector::CCM_DDS_Event>::ref_type conn =
           IDL::traits< ::OnInconsistentTopicConnector::CCM_DDS_Event >::narrow (cmp);
 
         ::DDS::Duration_t timeout (0, 0);
@@ -675,7 +675,7 @@ namespace CSL_Test_Sender_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : CSL_Test_Sender_Impl::Sender_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::CCM_DDS::CCM_ConnectorStatusListener >::ref_type
+  IDL::traits< ::CCM_DDS::CCM_ConnectorStatusListener>::ref_type
   Sender_exec_i::get_connector_status_sender ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : CSL_Test_Sender_Impl::Sender_exec_i[get_connector_status_sender]

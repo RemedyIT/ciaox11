@@ -37,10 +37,10 @@ namespace DDSX11
       this->native_entity ()->enable ());
   }
 
-  IDL::traits< ::DDS::StatusCondition >::ref_type
+  IDL::traits< ::DDS::StatusCondition>::ref_type
   DDS_Subscriber_proxy::get_statuscondition ()
   {
-    IDL::traits< ::DDS::StatusCondition >::ref_type retval;
+    IDL::traits< ::DDS::StatusCondition>::ref_type retval;
     DDS_Native::DDS::StatusCondition* sc =
       this->native_entity ()->get_statuscondition ();
     if (sc)
@@ -66,7 +66,7 @@ namespace DDSX11
 
   DDS_Native::DDS::DataReader *
   DDS_Subscriber_proxy::create_native_datareader (
-    IDL::traits< ::DDS::ContentFilteredTopic >::ref_type topic,
+    IDL::traits< ::DDS::ContentFilteredTopic>::ref_type topic,
     DDS_Native::DDS::DataReaderListener * native_drl,
     ::DDS::StatusMask mask,
     const ::DDS::DataReaderQos & qos)
@@ -101,7 +101,7 @@ namespace DDSX11
 
   DDS_Native::DDS::DataReader *
   DDS_Subscriber_proxy::create_native_datareader (
-    IDL::traits< ::DDS::Topic >::ref_type topic,
+    IDL::traits< ::DDS::Topic>::ref_type topic,
     DDS_Native::DDS::DataReaderListener * native_drl,
     ::DDS::StatusMask mask,
     const ::DDS::DataReaderQos & qos)
@@ -134,11 +134,11 @@ namespace DDSX11
         ::DDSX11::traits< ::DDS::StatusMask >::in (mask));
   }
 
-  IDL::traits< ::DDS::DataReader >::ref_type
+  IDL::traits< ::DDS::DataReader>::ref_type
   DDS_Subscriber_proxy::create_datareader (
-    IDL::traits< ::DDS::TopicDescription >::ref_type a_topic,
+    IDL::traits< ::DDS::TopicDescription>::ref_type a_topic,
     const ::DDS::DataReaderQos & qos,
-    IDL::traits< ::DDS::DataReaderListener >::ref_type a_listener,
+    IDL::traits< ::DDS::DataReaderListener>::ref_type a_listener,
     ::DDS::StatusMask mask)
   {
     DDSX11_LOG_TRACE ("DDS_Subscriber_proxy::create_datareader");
@@ -152,12 +152,12 @@ namespace DDSX11
 
     DDS_Native::DDS::DataReader * native_dr {};
 
-    IDL::traits< ::DDS::Topic >::ref_type dds_tp =
+    IDL::traits< ::DDS::Topic>::ref_type dds_tp =
       IDL::traits< ::DDS::Topic >::narrow (a_topic);
 
     if (!dds_tp)
       {
-        IDL::traits< ::DDS::ContentFilteredTopic >::ref_type cftp =
+        IDL::traits< ::DDS::ContentFilteredTopic>::ref_type cftp =
           IDL::traits< ::DDS::ContentFilteredTopic >::narrow (a_topic);
         if (!cftp)
           {
@@ -194,7 +194,7 @@ namespace DDSX11
       << "Successfully created native datareader");
 
     // Create the X11 typed data reader
-    IDL::traits< ::DDS::DataReader >::ref_type datareader =
+    IDL::traits< ::DDS::DataReader>::ref_type datareader =
       DDS_TypeSupport_i::create_datareader (
             this->get_participant (),
             a_topic->get_type_name (),
@@ -220,7 +220,7 @@ namespace DDSX11
 
   ::DDS::ReturnCode_t
   DDS_Subscriber_proxy::delete_datareader (
-    IDL::traits< ::DDS::DataReader >::ref_type a_datareader)
+    IDL::traits< ::DDS::DataReader>::ref_type a_datareader)
   {
     DDSX11_LOG_TRACE ("DDS_Subscriber_proxy::delete_datareader");
 
@@ -228,7 +228,7 @@ namespace DDSX11
     // when it has been set
     a_datareader->set_listener (nullptr, 0);
 
-    IDL::traits< ::DDSX11::DDS_DataReader_proxy >::ref_type dr_proxy =
+    IDL::traits< ::DDSX11::DDS_DataReader_proxy>::ref_type dr_proxy =
       data_reader_trait::proxy (a_datareader);
 
     DDS_Native::DDS::DataReader *native_dr =
@@ -273,7 +273,7 @@ namespace DDSX11
       this->native_entity ()->delete_contained_entities ());
   }
 
-  IDL::traits< ::DDS::DataReader >::ref_type
+  IDL::traits< ::DDS::DataReader>::ref_type
   DDS_Subscriber_proxy::lookup_datareader (
     const std::string &topic_name)
   {
@@ -386,7 +386,7 @@ namespace DDSX11
 
   ::DDS::ReturnCode_t
   DDS_Subscriber_proxy::set_listener (
-    IDL::traits< ::DDS::SubscriberListener >::ref_type a_listener,
+    IDL::traits< ::DDS::SubscriberListener>::ref_type a_listener,
     ::DDS::StatusMask mask)
   {
     DDSX11_LOG_TRACE ("DDS_Subscriber_proxy::set_listener");
@@ -421,7 +421,7 @@ namespace DDSX11
     return retcode;
   }
 
-  IDL::traits< ::DDS::SubscriberListener >::ref_type
+  IDL::traits< ::DDS::SubscriberListener>::ref_type
   DDS_Subscriber_proxy::get_listener ()
   {
     DDSX11_LOG_TRACE ("DDS_Subscriber_proxy::get_listener");
@@ -452,7 +452,7 @@ namespace DDSX11
       this->native_entity ()->end_access ());
   }
 
-  IDL::traits< ::DDS::DomainParticipant >::ref_type
+  IDL::traits< ::DDS::DomainParticipant>::ref_type
   DDS_Subscriber_proxy::get_participant ()
   {
     DDSX11_LOG_TRACE ("DDS_Subscriber_proxy::get_participant");

@@ -79,7 +79,7 @@ namespace MDD_Data_Listener_Test_Receiver_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::MDD_Data_Listener_Test::CCM_Receiver_Context >::ref_type context_;
+    IDL::traits< ::MDD_Data_Listener_Test::CCM_Receiver_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -138,7 +138,7 @@ namespace MDD_Data_Listener_Test_Receiver_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::MDD_Data_Listener_Test::CCM_Receiver_Context >::ref_type context_;
+    IDL::traits< ::MDD_Data_Listener_Test::CCM_Receiver_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -172,10 +172,10 @@ namespace MDD_Data_Listener_Test_Receiver_Impl
 
     /// Factory method and getter for the info_data_listen_data_listener facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::CommonTestConnector::CCM_Listener >::ref_type get_info_data_listen_data_listener () override;
+    virtual IDL::traits< ::CommonTestConnector::CCM_Listener>::ref_type get_info_data_listen_data_listener () override;
     /// Factory method and getter for the info_data_listen_status facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::CCM_DDS::CCM_PortStatusListener >::ref_type get_info_data_listen_status () override;
+    virtual IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type get_info_data_listen_status () override;
     //@}
 
     /** @name Session component operations */
@@ -207,7 +207,7 @@ namespace MDD_Data_Listener_Test_Receiver_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::MDD_Data_Listener_Test::CCM_Receiver_Context >::ref_type context_;
+    IDL::traits< ::MDD_Data_Listener_Test::CCM_Receiver_Context>::ref_type context_;
 
     /** @name Component attributes. */
     //@{
@@ -215,8 +215,8 @@ namespace MDD_Data_Listener_Test_Receiver_Impl
 
     /** @name Component facets. */
     //@{
-    IDL::traits< ::CommonTestConnector::CCM_Listener >::ref_type info_data_listen_data_listener_;
-    IDL::traits< ::CCM_DDS::CCM_PortStatusListener >::ref_type info_data_listen_status_;
+    IDL::traits< ::CommonTestConnector::CCM_Listener>::ref_type info_data_listen_data_listener_;
+    IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type info_data_listen_status_;
     //@}
 
     /** @name User defined members. */

@@ -120,7 +120,7 @@ namespace CSL_Test_Sender_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::CSL_Test::CCM_Sender_Context >::ref_type context_;
+    IDL::traits< ::CSL_Test::CCM_Sender_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -169,7 +169,7 @@ namespace CSL_Test_Sender_Impl
 
     /// Factory method and getter for the connector_status_sender facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::CCM_DDS::CCM_ConnectorStatusListener >::ref_type get_connector_status_sender () override;
+    virtual IDL::traits< ::CCM_DDS::CCM_ConnectorStatusListener>::ref_type get_connector_status_sender () override;
     //@}
 
     /** @name Supported attributes. */
@@ -229,7 +229,7 @@ namespace CSL_Test_Sender_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::CSL_Test::CCM_Sender_Context >::ref_type context_;
+    IDL::traits< ::CSL_Test::CCM_Sender_Context>::ref_type context_;
 
     /** @name Component attributes. */
     //@{
@@ -241,7 +241,7 @@ namespace CSL_Test_Sender_Impl
 
     /** @name Component facets. */
     //@{
-    IDL::traits< ::CCM_DDS::CCM_ConnectorStatusListener >::ref_type connector_status_sender_;
+    IDL::traits< ::CCM_DDS::CCM_ConnectorStatusListener>::ref_type connector_status_sender_;
     //@}
 
     /** @name User defined members. */

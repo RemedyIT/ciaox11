@@ -76,7 +76,7 @@ namespace NonChangeableComponent_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< CCM_NonChangeableComponent_Context >::ref_type context_;
+    IDL::traits< CCM_NonChangeableComponent_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -110,7 +110,7 @@ namespace NonChangeableComponent_Impl
 
     /// Factory method and getter for the info_get_status facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::CCM_DDS::CCM_PortStatusListener >::ref_type get_info_get_status () override;
+    virtual IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type get_info_get_status () override;
     //@}
 
     /** @name Session component operations */
@@ -142,7 +142,7 @@ namespace NonChangeableComponent_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< CCM_NonChangeableComponent_Context >::ref_type context_;
+    IDL::traits< CCM_NonChangeableComponent_Context>::ref_type context_;
 
     /** @name Component attributes. */
     //@{
@@ -150,7 +150,7 @@ namespace NonChangeableComponent_Impl
 
     /** @name Component facets. */
     //@{
-    IDL::traits< ::CCM_DDS::CCM_PortStatusListener >::ref_type info_get_status_;
+    IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type info_get_status_;
     //@}
 
     /** @name User defined members. */
@@ -163,10 +163,10 @@ namespace NonChangeableComponent_Impl
     /** @name User defined private operations. */
     //@{
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : NonChangeableComponent_Impl::NonChangeableComponent_exec_i[user_private_ops]
-    bool test_qos_profile (IDL::traits< ::CommonTestConnector::CCM_DDS_Event >::ref_type conn);
-    bool test_filter (IDL::traits< ::CommonTestConnector::CCM_DDS_Event >::ref_type conn);
-    bool test_domain_id (IDL::traits< ::CommonTestConnector::CCM_DDS_Event >::ref_type conn);
-    bool test_topic_name (IDL::traits< ::CommonTestConnector::CCM_DDS_Event >::ref_type conn);
+    bool test_qos_profile (IDL::traits< ::CommonTestConnector::CCM_DDS_Event>::ref_type conn);
+    bool test_filter (IDL::traits< ::CommonTestConnector::CCM_DDS_Event>::ref_type conn);
+    bool test_domain_id (IDL::traits< ::CommonTestConnector::CCM_DDS_Event>::ref_type conn);
+    bool test_topic_name (IDL::traits< ::CommonTestConnector::CCM_DDS_Event>::ref_type conn);
     //@@{__RIDL_REGEN_MARKER__} - END : NonChangeableComponent_Impl::NonChangeableComponent_exec_i[user_private_ops]
     //@}
 

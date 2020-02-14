@@ -18,7 +18,7 @@ namespace CIAOX11
     template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
     ListenerBase_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::ListenerBase_T (
       const typename CCM_TYPE::event_strategy_type& evs,
-      IDL::traits< ::CCM_DDS::DataListenerControl >::ref_type control,
+      IDL::traits< ::CCM_DDS::DataListenerControl>::ref_type control,
       SharedConditionManager condition_manager)
       : PortStatusListener_T<typename CCM_TYPE::event_strategy_type> (evs) ,
         control_ (std::move(control)),
@@ -30,13 +30,13 @@ namespace CIAOX11
     template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
     void
     ListenerBase_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::on_data_available (
-      IDL::traits< ::DDS::DataReader >::ref_type rdr)
+      IDL::traits< ::DDS::DataReader>::ref_type rdr)
     {
       DDS4CCM_LOG_TRACE ("ListenerBase_T::on_data_available");
 
       if (rdr && this->control_ && this->control_->mode () != ::CCM_DDS::ListenerMode::NOT_ENABLED)
       {
-        auto drl = IDL::traits< ListenerBase_type >::narrow (this->_this ());
+        auto drl = IDL::traits< ListenerBase_type>::narrow (this->_this ());
         this->evs_.template handle_data_available_event<ListenerBase_type> (drl, rdr);
       }
     }
@@ -44,8 +44,8 @@ namespace CIAOX11
     template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
     ::DDS::StatusMask
     ListenerBase_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_mask (
-      typename IDL::traits<typename CCM_TYPE::data_listener_type >::ref_type listener,
-      IDL::traits< ::CCM_DDS::PortStatusListener >::ref_type status)
+      typename IDL::traits<typename CCM_TYPE::data_listener_type>::ref_type listener,
+      IDL::traits< ::CCM_DDS::PortStatusListener>::ref_type status)
     {
       DDS4CCM_LOG_TRACE ("ListenerBase_T::get_mask");
 
@@ -59,7 +59,7 @@ namespace CIAOX11
 
       DDS4CCM_LOG_DEBUG ("ListenerBase_T::get_mask - "
         << "Mask becomes <"
-        << IDL::traits< ::DDS::StatusMask >::write<status_mask_formatter> (mask)
+        << IDL::traits< ::DDS::StatusMask>::write<status_mask_formatter> (mask)
         << ">.");
       return mask;
     }
@@ -67,8 +67,8 @@ namespace CIAOX11
     template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
     ::DDS::ReturnCode_t
     ListenerBase_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::take_data_i (
-      typename ::DDS::traits< TOPIC_TYPE >::typed_datareader_ref_type reader,
-      IDL::traits< ::DDS::QueryCondition >::ref_type qc,
+      typename ::DDS::traits< TOPIC_TYPE>::typed_datareader_ref_type reader,
+      IDL::traits< ::DDS::QueryCondition>::ref_type qc,
       TOPIC_SEQ_TYPE &data,
       ::DDS::SampleInfoSeq &sample_info,
       int32_t max_samples)
@@ -98,8 +98,8 @@ namespace CIAOX11
     template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
     ::DDS::ReturnCode_t
     ListenerBase_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::read_data_i (
-      typename ::DDS::traits< TOPIC_TYPE >::typed_datareader_ref_type reader,
-      IDL::traits< ::DDS::QueryCondition >::ref_type qc,
+      typename ::DDS::traits< TOPIC_TYPE>::typed_datareader_ref_type reader,
+      IDL::traits< ::DDS::QueryCondition>::ref_type qc,
       TOPIC_SEQ_TYPE &data,
       ::DDS::SampleInfoSeq &sample_info,
       int32_t max_samples)

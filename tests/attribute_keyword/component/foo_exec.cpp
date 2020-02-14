@@ -72,18 +72,18 @@ namespace Foo_Impl
   int16_t
   my_foo_prov_exec_i::_cxx_short ()
   {
-    //@@{__RIDL_REGEN_MARKER__} - BEGIN : Foo_Impl::my_foo_prov_exec_i::_short[getter]
+    //@@{__RIDL_REGEN_MARKER__} - BEGIN : Foo_Impl::my_foo_prov_exec_i::_cxx_short[getter]
     return this->_cxx_short_;
-    //@@{__RIDL_REGEN_MARKER__} - END : Foo_Impl::my_foo_prov_exec_i::_short[getter]
+    //@@{__RIDL_REGEN_MARKER__} - END : Foo_Impl::my_foo_prov_exec_i::_cxx_short[getter]
   }
 
   void
   my_foo_prov_exec_i::_cxx_short (
       int16_t _cxx_short)
   {
-    //@@{__RIDL_REGEN_MARKER__} - BEGIN : Foo_Impl::my_foo_prov_exec_i::_short[setter]
+    //@@{__RIDL_REGEN_MARKER__} - BEGIN : Foo_Impl::my_foo_prov_exec_i::_cxx_short[setter]
     this->_cxx_short_ = _cxx_short;
-    //@@{__RIDL_REGEN_MARKER__} - END : Foo_Impl::my_foo_prov_exec_i::_short[setter]
+    //@@{__RIDL_REGEN_MARKER__} - END : Foo_Impl::my_foo_prov_exec_i::_cxx_short[setter]
   }
 
   int16_t
@@ -167,7 +167,7 @@ namespace Foo_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Foo_Impl::Foo_exec_i[ccm_remove]
   }
 
-  IDL::traits< CCM_MyFoo >::ref_type
+  IDL::traits< CCM_MyFoo>::ref_type
   Foo_exec_i::get_my_foo_prov ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Foo_Impl::Foo_exec_i[get_my_foo_prov]

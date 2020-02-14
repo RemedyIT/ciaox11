@@ -17,7 +17,7 @@ namespace CIAOX11
     namespace VendorUtils
     {
       template <typename EVT_STRATEGY>
-      IDL::traits< ::DDS::PublisherListener >::ref_type
+      IDL::traits< ::DDS::PublisherListener>::ref_type
       create_publisher_listener (const EVT_STRATEGY &evs)
       {
         return CORBA::make_reference< CIAOX11::NDDS4CCM::NDDSPublisherListener_T<EVT_STRATEGY> > (evs);
@@ -26,7 +26,7 @@ namespace CIAOX11
       template <typename EVT_STRATEGY>
       ::DDS::StatusKind
       get_publisher_listener_mask (
-        IDL::traits< CCM_DDS::ConnectorStatusListener >::ref_type error_listener)
+        IDL::traits< CCM_DDS::ConnectorStatusListener>::ref_type error_listener)
       {
         return CIAOX11::NDDS4CCM::NDDSPublisherListener_T<EVT_STRATEGY>::get_mask (error_listener);
       }

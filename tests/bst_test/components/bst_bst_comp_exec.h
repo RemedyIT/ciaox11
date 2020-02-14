@@ -120,7 +120,7 @@ namespace BST_BST_comp_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::BST::CCM_BST_comp_Context >::ref_type context_;
+    IDL::traits< ::BST::CCM_BST_comp_Context>::ref_type context_;
 
     /** @name Component attributes. */
     //@{

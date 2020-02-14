@@ -78,7 +78,7 @@ namespace RG_LateBinding_Sender_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::RG_LateBinding::CCM_Sender_Context >::ref_type context_;
+    IDL::traits< ::RG_LateBinding::CCM_Sender_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -112,7 +112,7 @@ namespace RG_LateBinding_Sender_Impl
 
     /// Factory method and getter for the start_writing facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< CCM_WriterStarter >::ref_type get_start_writing () override;
+    virtual IDL::traits< CCM_WriterStarter>::ref_type get_start_writing () override;
     //@}
 
     /** @name Supported attributes. */
@@ -171,7 +171,7 @@ namespace RG_LateBinding_Sender_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::RG_LateBinding::CCM_Sender_Context >::ref_type context_;
+    IDL::traits< ::RG_LateBinding::CCM_Sender_Context>::ref_type context_;
 
     /** @name Component attributes. */
     //@{
@@ -183,7 +183,7 @@ namespace RG_LateBinding_Sender_Impl
 
     /** @name Component facets. */
     //@{
-    IDL::traits< CCM_WriterStarter >::ref_type start_writing_;
+    IDL::traits< CCM_WriterStarter>::ref_type start_writing_;
     //@}
 
     /** @name User defined members. */

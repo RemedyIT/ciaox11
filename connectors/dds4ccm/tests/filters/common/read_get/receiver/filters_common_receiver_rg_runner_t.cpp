@@ -39,7 +39,7 @@ ReadGetReceiverRunner_T<CONTEXT_TYPE, QUERY_ATTRIB>::run ()
     this->set_filters ();
     this->check_filters ();
 
-    IDL::traits< WriterStarter >::ref_type starter =
+    IDL::traits< WriterStarter>::ref_type starter =
       this->context_->get_connection_writer_start ();
     starter->start_write ();
   }
@@ -72,10 +72,10 @@ ReadGetReceiverRunner_T<CONTEXT_TYPE, QUERY_ATTRIB>::set_query_attributes ()
   ::DDS::StringSeq params (2);
   get_query_parameters (params, this->run_);
 
-  IDL::traits< ::CommonTestConnector::Reader >::ref_type get_reader =
+  IDL::traits< ::CommonTestConnector::Reader>::ref_type get_reader =
     this->context_->get_connection_get_port_data ();
 
-  IDL::traits< ::CommonTestConnector::Reader >::ref_type read_reader =
+  IDL::traits< ::CommonTestConnector::Reader>::ref_type read_reader =
     this->context_->get_connection_listen_port_data ();
 
   if (this->run_ == 4)
@@ -102,10 +102,10 @@ template<typename CONTEXT_TYPE, bool QUERY_ATTRIB>
 void
 ReadGetReceiverRunner_T<CONTEXT_TYPE, QUERY_ATTRIB>::set_filter_attributes ()
 {
-  IDL::traits< ::CCM_DDS::ContentFilterSetting >::ref_type get_filter_config =
+  IDL::traits< ::CCM_DDS::ContentFilterSetting>::ref_type get_filter_config =
     this->context_->get_connection_get_port_filter_config ();
 
-  IDL::traits< ::CCM_DDS::ContentFilterSetting >::ref_type read_filter_config =
+  IDL::traits< ::CCM_DDS::ContentFilterSetting>::ref_type read_filter_config =
     this->context_->get_connection_listen_port_filter_config ();
 
   ::DDS::StringSeq params (2);
@@ -151,7 +151,7 @@ ReadGetReceiverRunner_T<CONTEXT_TYPE, QUERY_ATTRIB>::set_filters ()
 template<typename CONTEXT_TYPE, bool QUERY_ATTRIB>
 void
 ReadGetReceiverRunner_T<CONTEXT_TYPE, QUERY_ATTRIB>::check_filter (
-  IDL::traits< CommonTestConnector::Reader >::ref_type reader,
+  IDL::traits< CommonTestConnector::Reader>::ref_type reader,
   bool check_getter)
 {
   bool error = false;
@@ -240,12 +240,12 @@ ReadGetReceiverRunner_T<CONTEXT_TYPE, QUERY_ATTRIB>::check_filters ()
 {
   if (QUERY_ATTRIB)
   {
-    IDL::traits< CommonTestConnector::Reader >::ref_type get_reader =
+    IDL::traits< CommonTestConnector::Reader>::ref_type get_reader =
       this->context_->get_connection_get_port_data ();
     this->check_filter (get_reader, true);
 
 
-    IDL::traits< CommonTestConnector::Reader >::ref_type read_reader =
+    IDL::traits< CommonTestConnector::Reader>::ref_type read_reader =
       this->context_->get_connection_listen_port_data ();
     this->check_filter (read_reader, false);
   }
@@ -254,7 +254,7 @@ ReadGetReceiverRunner_T<CONTEXT_TYPE, QUERY_ATTRIB>::check_filters ()
 template<typename CONTEXT_TYPE, bool QUERY_ATTRIB>
 void
 ReadGetReceiverRunner_T<CONTEXT_TYPE, QUERY_ATTRIB>::test_non_changeable_filter (
-  IDL::traits< ::CommonTestConnector::CCM_DDS_Event >::ref_type conn,
+  IDL::traits< ::CommonTestConnector::CCM_DDS_Event>::ref_type conn,
   bool getter)
 {
   std::string test;
@@ -319,16 +319,16 @@ ReadGetReceiverRunner_T<CONTEXT_TYPE, QUERY_ATTRIB>::test_non_changeable_filter 
   std::string const test ("ReadGetReceiverRunner_T<CONTEXT_TYPE, QUERY_ATTRIB>::test_non_changeable_filter");
   // Just need a connection in order to be able to get a reference to the
   // DDS4CCM connector itself.
-  IDL::traits< ::CommonTestConnector::Reader >::ref_type reader =
+  IDL::traits< ::CommonTestConnector::Reader>::ref_type reader =
     this->context_->get_connection_listen_port_data ();
-  IDL::traits< ::CORBA::Object >::ref_type cmp = reader->_get_component ();
+  IDL::traits< ::CORBA::Object>::ref_type cmp = reader->_get_component ();
   if (!cmp)
   {
     DDS4CCM_TEST_ERROR << "ERROR: " << test << " - "
       << "ERROR: Unable to get component interface." << std::endl;
     return;
   }
-  IDL::traits< ::CommonTestConnector::CCM_DDS_Event >::ref_type conn =
+  IDL::traits< ::CommonTestConnector::CCM_DDS_Event>::ref_type conn =
     IDL::traits< ::CommonTestConnector::CCM_DDS_Event >::narrow (cmp);
   if (!conn)
   {
@@ -344,7 +344,7 @@ ReadGetReceiverRunner_T<CONTEXT_TYPE, QUERY_ATTRIB>::test_non_changeable_filter 
 template<typename CONTEXT_TYPE, bool QUERY_ATTRIB>
 void
 ReadGetReceiverRunner_T<CONTEXT_TYPE, QUERY_ATTRIB>::test_internal_error_filter (
-  IDL::traits< CCM_DDS::ContentFilterSetting >::ref_type cft,
+  IDL::traits< CCM_DDS::ContentFilterSetting>::ref_type cft,
   bool getter)
 {
   std::string test;
@@ -391,7 +391,7 @@ ReadGetReceiverRunner_T<CONTEXT_TYPE, QUERY_ATTRIB>::test_exception ()
   {
     try
     {
-      IDL::traits< ::CommonTestConnector::Reader >::ref_type get_reader =
+      IDL::traits< ::CommonTestConnector::Reader>::ref_type get_reader =
         this->context_->get_connection_get_port_data ();
       DDS::StringSeq params (1);
       params[0] = "4";
@@ -497,7 +497,7 @@ template<typename CONTEXT_TYPE, bool QUERY_ATTRIB>
 void
 ReadGetReceiverRunner_T<CONTEXT_TYPE, QUERY_ATTRIB>::read_all ()
 {
-  IDL::traits< ::CommonTestConnector::Reader >::ref_type reader =
+  IDL::traits< ::CommonTestConnector::Reader>::ref_type reader =
     this->context_->get_connection_listen_port_data ();
 
   QueryParameters params (2);
@@ -608,7 +608,7 @@ template<typename CONTEXT_TYPE, bool QUERY_ATTRIB>
 void
 ReadGetReceiverRunner_T<CONTEXT_TYPE, QUERY_ATTRIB>::get_all ()
 {
-  IDL::traits< ::CommonTestConnector::Getter >::ref_type getter =
+  IDL::traits< ::CommonTestConnector::Getter>::ref_type getter =
     this->context_->get_connection_get_port_fresh_data ();
 
   QueryParameters params (2);

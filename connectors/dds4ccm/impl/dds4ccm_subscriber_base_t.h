@@ -31,13 +31,13 @@ public:
    * DDS_Subscriber_Base_T operations
    */
   //@{
-  typename IDL::traits<typename CCM_TYPE::data_type >::ref_type
+  typename IDL::traits<typename CCM_TYPE::data_type>::ref_type
   get_data ();
 
-  typename IDL::traits<typename CCM_TYPE::dds_entity_type >::ref_type
+  typename IDL::traits<typename CCM_TYPE::dds_entity_type>::ref_type
   get_dds_entity ();
 
-  typename IDL::traits<typename CCM_TYPE::filter_config_type >::ref_type
+  typename IDL::traits<typename CCM_TYPE::filter_config_type>::ref_type
   get_filter_config ();
 
   CCM_DDS::QueryFilter filter ();
@@ -50,7 +50,6 @@ public:
   void filter (const CCM_DDS::QueryFilter &filter);
   //@}
 
-
   /**
    * @name  Life cycle methods
    * @brief Life cycle methods for the subscribing side of the dds4ccm connector
@@ -58,19 +57,19 @@ public:
   //@{
   virtual void
   configuration_complete (
-    IDL::traits< ::DDS::Topic >::ref_type topic,
-    IDL::traits< ::DDS::Subscriber >::ref_type subscriber,
+    IDL::traits< ::DDS::Topic>::ref_type topic,
+    IDL::traits< ::DDS::Subscriber>::ref_type subscriber,
     const std::string &qos_profile);
 
   virtual void
   activate (
     const typename CCM_TYPE::event_strategy_type &evs,
-    IDL::traits< CCM_DDS::PortStatusListener >::ref_type status);
+    IDL::traits< CCM_DDS::PortStatusListener>::ref_type status);
 
   virtual void passivate ();
 
   virtual void remove (
-    IDL::traits< ::DDS::Subscriber >::ref_type subscriber);
+    IDL::traits< ::DDS::Subscriber>::ref_type subscriber);
   //@}
 
 
@@ -86,7 +85,7 @@ protected:
    * DDS_Subscriber_Base_T protected members
    */
   //@{
-  IDL::traits< ::DDS::DataReaderListener >::ref_type listener_ {};
+  IDL::traits< ::DDS::DataReaderListener>::ref_type listener_ {};
 
   /**
    * @name configuration_complete_
@@ -96,8 +95,8 @@ protected:
     */
   bool configuration_complete_ { false };
 
-  typename IDL::traits<DDS4CCM_Reader_type >::ref_type dds4ccm_reader_ {};
-  typename IDL::traits<CCM_DataReader_type >::ref_type ccm_data_reader_ {};
+  typename IDL::traits<DDS4CCM_Reader_type>::ref_type dds4ccm_reader_ {};
+  typename IDL::traits<CCM_DataReader_type>::ref_type ccm_data_reader_ {};
   typename IDL::traits<CIAOX11::DDS4CCM::CCM_DDS_ContentFilterSetting_i>::ref_type cft_setting_ {};
 
   IDL::traits<CORBA::Object>::weak_ref_type component_ {};
@@ -106,8 +105,6 @@ protected:
   //@}
 
 private:
-
-
   /**
    * @name Private Helper methods
    * Helper methods for the ContentFilterSetting

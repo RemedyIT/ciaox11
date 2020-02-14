@@ -28,7 +28,7 @@ namespace Data_Receiver_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Data_Receiver_Impl::info_out_data_listener_exec_i[ctor]
   info_out_data_listener_exec_i::info_out_data_listener_exec_i (
-    IDL::traits< ::Data::CCM_Receiver_Context >::ref_type context)
+    IDL::traits< ::Data::CCM_Receiver_Context>::ref_type context)
     : context_ (std::move (context))
   {
   }
@@ -81,7 +81,7 @@ namespace Data_Receiver_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Data_Receiver_Impl::info_out_status_exec_i[ctor]
   info_out_status_exec_i::info_out_status_exec_i (
-    IDL::traits< ::Data::CCM_Receiver_Context >::ref_type context)
+    IDL::traits< ::Data::CCM_Receiver_Context>::ref_type context)
     : context_ (std::move (context))
   {
   }
@@ -184,7 +184,7 @@ namespace Data_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Data_Receiver_Impl::Receiver_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::Data::EventInterface::CCM_Listener >::ref_type
+  IDL::traits< ::Data::EventInterface::CCM_Listener>::ref_type
   Receiver_exec_i::get_info_out_data_listener ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Data_Receiver_Impl::Receiver_exec_i[get_info_out_data_listener]
@@ -196,7 +196,7 @@ namespace Data_Receiver_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : Data_Receiver_Impl::Receiver_exec_i[get_info_out_data_listener]
   }
 
-  IDL::traits< ::CCM_DDS::CCM_PortStatusListener >::ref_type
+  IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type
   Receiver_exec_i::get_info_out_status ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Data_Receiver_Impl::Receiver_exec_i[get_info_out_status]

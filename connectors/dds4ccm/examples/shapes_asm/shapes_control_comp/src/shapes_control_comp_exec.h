@@ -142,7 +142,7 @@ namespace Shapes_Control_comp_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::Shapes::CCM_Control_comp_Context >::ref_type context_;
+    IDL::traits< ::Shapes::CCM_Control_comp_Context>::ref_type context_;
 
     /** @name Component attributes. */
     //@{

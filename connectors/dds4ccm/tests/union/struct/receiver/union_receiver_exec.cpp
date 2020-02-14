@@ -28,7 +28,7 @@ namespace Uni_Receiver_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Uni_Receiver_Impl::info_out_data_listener_exec_i[ctor]
   info_out_data_listener_exec_i::info_out_data_listener_exec_i (
-    IDL::traits< ::Uni::CCM_Receiver_Context >::ref_type context)
+    IDL::traits< ::Uni::CCM_Receiver_Context>::ref_type context)
     : context_ (std::move (context))
   {
   }
@@ -125,7 +125,7 @@ namespace Uni_Receiver_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Uni_Receiver_Impl::info_out_status_exec_i[ctor]
   info_out_status_exec_i::info_out_status_exec_i (
-    IDL::traits< ::Uni::CCM_Receiver_Context >::ref_type context)
+    IDL::traits< ::Uni::CCM_Receiver_Context>::ref_type context)
     : context_ (std::move (context))
   {
   }
@@ -393,7 +393,7 @@ namespace Uni_Receiver_Impl
   void Receiver_exec_i::ccm_activate ()
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Uni_Receiver_Impl::Receiver_exec_i[ccm_activate]
-    IDL::traits< ::CCM_DDS::DataListenerControl >::ref_type lc =
+    IDL::traits< ::CCM_DDS::DataListenerControl>::ref_type lc =
       this->context_->get_connection_info_out_data_control ();
     lc->mode (::CCM_DDS::ListenerMode::ONE_BY_ONE);
     //@@{__RIDL_REGEN_MARKER__} - END : Uni_Receiver_Impl::Receiver_exec_i[ccm_activate]
@@ -413,7 +413,7 @@ namespace Uni_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Uni_Receiver_Impl::Receiver_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::Uni::UnionConnector::CCM_Listener >::ref_type
+  IDL::traits< ::Uni::UnionConnector::CCM_Listener>::ref_type
   Receiver_exec_i::get_info_out_data_listener ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Uni_Receiver_Impl::Receiver_exec_i[get_info_out_data_listener]
@@ -425,7 +425,7 @@ namespace Uni_Receiver_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : Uni_Receiver_Impl::Receiver_exec_i[get_info_out_data_listener]
   }
 
-  IDL::traits< ::CCM_DDS::CCM_PortStatusListener >::ref_type
+  IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type
   Receiver_exec_i::get_info_out_status ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Uni_Receiver_Impl::Receiver_exec_i[get_info_out_status]

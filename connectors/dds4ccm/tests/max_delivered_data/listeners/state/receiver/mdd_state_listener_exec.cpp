@@ -213,7 +213,7 @@ namespace MDD_State_Listener_Test_Receiver_Impl
   void Receiver_exec_i::ccm_activate ()
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : MDD_State_Listener_Test_Receiver_Impl::Receiver_exec_i[ccm_activate]
-    IDL::traits< ::CCM_DDS::DataListenerControl >::ref_type lc =
+    IDL::traits< ::CCM_DDS::DataListenerControl>::ref_type lc =
       this->context_->get_connection_info_state_listen_data_control ();
     if (!lc)
     {
@@ -265,7 +265,7 @@ namespace MDD_State_Listener_Test_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : MDD_State_Listener_Test_Receiver_Impl::Receiver_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::CommonTestConnector::CCM_StateListener >::ref_type
+  IDL::traits< ::CommonTestConnector::CCM_StateListener>::ref_type
   Receiver_exec_i::get_info_state_listen_data_listener ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : MDD_State_Listener_Test_Receiver_Impl::Receiver_exec_i[get_info_state_listen_data_listener]
@@ -283,7 +283,7 @@ namespace MDD_State_Listener_Test_Receiver_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : MDD_State_Listener_Test_Receiver_Impl::Receiver_exec_i[get_info_state_listen_data_listener]
   }
 
-  IDL::traits< ::CCM_DDS::CCM_PortStatusListener >::ref_type
+  IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type
   Receiver_exec_i::get_info_state_listen_status ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : MDD_State_Listener_Test_Receiver_Impl::Receiver_exec_i[get_info_state_listen_status]

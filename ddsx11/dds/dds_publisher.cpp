@@ -30,11 +30,11 @@ namespace DDSX11
     DDSX11_LOG_TRACE ("DDS_Publisher_proxy::DDS_Publisher_proxy");
   }
 
-  IDL::traits< ::DDS::DataWriter >::ref_type
+  IDL::traits< ::DDS::DataWriter>::ref_type
   DDS_Publisher_proxy::create_datawriter (
-    IDL::traits< ::DDS::Topic >::ref_type a_topic,
+    IDL::traits< ::DDS::Topic>::ref_type a_topic,
     const ::DDS::DataWriterQos &qos,
-    IDL::traits< ::DDS::DataWriterListener >::ref_type a_listener,
+    IDL::traits< ::DDS::DataWriterListener>::ref_type a_listener,
     ::DDS::StatusMask mask)
   {
     DDSX11_LOG_TRACE ("DDS_Publisher_proxy::create_datawriter");
@@ -87,7 +87,7 @@ namespace DDSX11
     // of scope.
     listener_guard.release ();
 
-    IDL::traits< ::DDS::DataWriter >::ref_type datawriter =
+    IDL::traits< ::DDS::DataWriter>::ref_type datawriter =
       DDS_TypeSupport_i::create_datawriter (this->get_participant (),
                                             a_topic->get_type_name (),
                                             native_dw);
@@ -108,7 +108,7 @@ namespace DDSX11
 
   ::DDS::ReturnCode_t
   DDS_Publisher_proxy::delete_datawriter (
-    IDL::traits< ::DDS::DataWriter >::ref_type a_datawriter)
+    IDL::traits< ::DDS::DataWriter>::ref_type a_datawriter)
   {
     DDSX11_LOG_TRACE ("DDS_Publisher_proxy::delete_datawriter");
 
@@ -116,7 +116,7 @@ namespace DDSX11
     // when it has been set
     a_datawriter->set_listener(nullptr, 0);
 
-    IDL::traits< ::DDSX11::DDS_DataWriter_proxy >::ref_type dw_proxy =
+    IDL::traits< ::DDSX11::DDS_DataWriter_proxy>::ref_type dw_proxy =
       data_writer_trait::proxy (a_datawriter);
 
     DDS_Native::DDS::DataWriter *native_dw =
@@ -156,7 +156,7 @@ namespace DDSX11
   }
 
 
-  IDL::traits< ::DDS::DataWriter >::ref_type
+  IDL::traits< ::DDS::DataWriter>::ref_type
   DDS_Publisher_proxy::lookup_datawriter (
     const std::string &impl_name)
   {
@@ -224,7 +224,7 @@ namespace DDSX11
 
   ::DDS::ReturnCode_t
   DDS_Publisher_proxy::set_listener (
-    IDL::traits< ::DDS::PublisherListener >::ref_type a_listener,
+    IDL::traits< ::DDS::PublisherListener>::ref_type a_listener,
     ::DDS::StatusMask mask)
   {
     DDSX11_LOG_TRACE ("DDS_Publisher_proxy::set_listener");
@@ -260,7 +260,7 @@ namespace DDSX11
   }
 
 
-  IDL::traits< ::DDS::PublisherListener >::ref_type
+  IDL::traits< ::DDS::PublisherListener>::ref_type
   DDS_Publisher_proxy::get_listener ()
   {
     DDSX11_LOG_TRACE ("DDS_Publisher_proxy::get_listener");
@@ -320,7 +320,7 @@ namespace DDSX11
   }
 
 
-  IDL::traits< ::DDS::DomainParticipant >::ref_type
+  IDL::traits< ::DDS::DomainParticipant>::ref_type
   DDS_Publisher_proxy::get_participant ()
   {
     DDSX11_LOG_TRACE ("DDS_Publisher_proxy::get_participant");
@@ -392,10 +392,10 @@ namespace DDSX11
       this->native_entity ()->enable ());
   }
 
-  IDL::traits< ::DDS::StatusCondition >::ref_type
+  IDL::traits< ::DDS::StatusCondition>::ref_type
   DDS_Publisher_proxy::get_statuscondition ()
   {
-    IDL::traits< ::DDS::StatusCondition >::ref_type retval;
+    IDL::traits< ::DDS::StatusCondition>::ref_type retval;
       DDS_Native::DDS::StatusCondition* sc = this->native_entity ()->get_statuscondition ();
     if (sc)
       {

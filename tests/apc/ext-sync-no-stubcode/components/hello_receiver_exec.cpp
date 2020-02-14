@@ -28,7 +28,7 @@ namespace Test_Receiver_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Receiver_Impl::do_myfoo_exec_i[ctor]
   do_myfoo_exec_i::do_myfoo_exec_i (
-    IDL::traits< ::Test::CCM_Receiver_Context >::ref_type context)
+    IDL::traits< ::Test::CCM_Receiver_Context>::ref_type context)
     : context_ (std::move (context))
   {
   }
@@ -121,7 +121,7 @@ namespace Test_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Test_Receiver_Impl::Receiver_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::Hello::CCM_MyFoo >::ref_type
+  IDL::traits< ::Hello::CCM_MyFoo>::ref_type
   Receiver_exec_i::get_do_myfoo ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Receiver_Impl::Receiver_exec_i[get_do_myfoo]

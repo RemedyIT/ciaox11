@@ -18,7 +18,7 @@ namespace CIAOX11
   {
     template <typename EVT_STRATEGY>
     class SubscriberListener_T
-      : public IDL::traits< ::DDS::SubscriberListener >::base_type
+      : public IDL::traits< ::DDS::SubscriberListener>::base_type
     {
     public:
       explicit SubscriberListener_T (const EVT_STRATEGY &evs);
@@ -26,49 +26,49 @@ namespace CIAOX11
 
       virtual void
       on_requested_incompatible_qos (
-        IDL::traits< ::DDS::DataReader >::ref_type reader,
+        IDL::traits< ::DDS::DataReader>::ref_type reader,
         const ::DDS::RequestedIncompatibleQosStatus & status) override;
 
       virtual void
       on_liveliness_changed (
-        IDL::traits< ::DDS::DataReader >::ref_type reader,
+        IDL::traits< ::DDS::DataReader>::ref_type reader,
         const ::DDS::LivelinessChangedStatus& status) override;
 
       virtual void
       on_sample_rejected (
-        IDL::traits< ::DDS::DataReader >::ref_type reader,
+        IDL::traits< ::DDS::DataReader>::ref_type reader,
         const ::DDS::SampleRejectedStatus& status) override;
 
       virtual void
       on_subscription_matched (
-        IDL::traits< ::DDS::DataReader >::ref_type reader,
+        IDL::traits< ::DDS::DataReader>::ref_type reader,
         const ::DDS::SubscriptionMatchedStatus& status) override;
 
       virtual void
       on_data_on_readers (
-        IDL::traits< ::DDS::Subscriber >::ref_type subscriber) override;
+        IDL::traits< ::DDS::Subscriber>::ref_type subscriber) override;
 
       virtual void
       on_requested_deadline_missed (
-        IDL::traits< ::DDS::DataReader >::ref_type ,
+        IDL::traits< ::DDS::DataReader>::ref_type ,
         const ::DDS::RequestedDeadlineMissedStatus & ) override;
 
       virtual void
       on_data_available (
-        IDL::traits< ::DDS::DataReader >::ref_type ) override;
+        IDL::traits< ::DDS::DataReader>::ref_type ) override;
 
       virtual void
       on_sample_lost (
-        IDL::traits< ::DDS::DataReader >::ref_type ,
+        IDL::traits< ::DDS::DataReader>::ref_type ,
         const ::DDS::SampleLostStatus & ) override;
 
       static ::DDS::StatusMask get_mask (
-        IDL::traits< CCM_DDS::ConnectorStatusListener >::ref_type csl);
+        IDL::traits< CCM_DDS::ConnectorStatusListener>::ref_type csl);
 
     private:
       void
       on_unexpected_status (
-        IDL::traits< ::DDS::Entity >::ref_type entity,
+        IDL::traits< ::DDS::Entity>::ref_type entity,
         ::DDS::StatusKind status_kind);
 
       EVT_STRATEGY evs_;

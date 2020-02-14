@@ -40,9 +40,9 @@ namespace CIAOX11
 
       void
       set_dds_writer (
-        IDL::traits< ::DDS::DataWriter >::ref_type dds_writer);
+        IDL::traits< ::DDS::DataWriter>::ref_type dds_writer);
 
-      IDL::traits< ::DDS::DataWriter >::ref_type
+      IDL::traits< ::DDS::DataWriter>::ref_type
       get_dds_writer ();
 
     protected:

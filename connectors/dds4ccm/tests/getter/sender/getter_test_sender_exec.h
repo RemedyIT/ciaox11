@@ -102,7 +102,7 @@ namespace Getter_Test_Sender_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::Getter_Test::CCM_Sender_Context >::ref_type context_;
+    IDL::traits< ::Getter_Test::CCM_Sender_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -137,7 +137,7 @@ namespace Getter_Test_Sender_Impl
 
     /// Factory method and getter for the info_out_connector_status facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::CCM_DDS::CCM_ConnectorStatusListener >::ref_type get_info_out_connector_status () override;
+    virtual IDL::traits< ::CCM_DDS::CCM_ConnectorStatusListener>::ref_type get_info_out_connector_status () override;
     //@}
 
     /** @name Supported attributes. */
@@ -197,7 +197,7 @@ namespace Getter_Test_Sender_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::Getter_Test::CCM_Sender_Context >::ref_type context_;
+    IDL::traits< ::Getter_Test::CCM_Sender_Context>::ref_type context_;
 
     /** @name Component attributes. */
     //@{
@@ -209,7 +209,7 @@ namespace Getter_Test_Sender_Impl
 
     /** @name Component facets. */
     //@{
-    IDL::traits< ::CCM_DDS::CCM_ConnectorStatusListener >::ref_type info_out_connector_status_;
+    IDL::traits< ::CCM_DDS::CCM_ConnectorStatusListener>::ref_type info_out_connector_status_;
     //@}
 
     /** @name User defined members. */

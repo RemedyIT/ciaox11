@@ -68,7 +68,7 @@ namespace Example_BarProvider_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::Example::CCM_BarProvider_Context >::ref_type context_;
+    IDL::traits< ::Example::CCM_BarProvider_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -102,7 +102,7 @@ namespace Example_BarProvider_Impl
 
     /// Factory method and getter for the do_my_bar facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::Example::CCM_Bar >::ref_type get_do_my_bar () override;
+    virtual IDL::traits< ::Example::CCM_Bar>::ref_type get_do_my_bar () override;
     //@}
 
     /** @name Session component operations */
@@ -134,11 +134,11 @@ namespace Example_BarProvider_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::Example::CCM_BarProvider_Context >::ref_type context_;
+    IDL::traits< ::Example::CCM_BarProvider_Context>::ref_type context_;
 
     /** @name Component facets. */
     //@{
-    IDL::traits< ::Example::CCM_Bar >::ref_type do_my_bar_;
+    IDL::traits< ::Example::CCM_Bar>::ref_type do_my_bar_;
     //@}
 
     /** @name User defined members. */

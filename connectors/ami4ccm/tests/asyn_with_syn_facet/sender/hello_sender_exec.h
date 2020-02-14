@@ -113,7 +113,7 @@ namespace Hello_Sender_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::Hello::CCM_Sender_Context >::ref_type context_;
+    IDL::traits< ::Hello::CCM_Sender_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -188,7 +188,7 @@ namespace Hello_Sender_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::Hello::CCM_Sender_Context >::ref_type context_;
+    IDL::traits< ::Hello::CCM_Sender_Context>::ref_type context_;
 
     /** @name Members to store attribute values from ::Hello::CCM_MyFoo */
     //@{
@@ -231,10 +231,10 @@ namespace Hello_Sender_Impl
 
     /// Factory method and getter for the do_control facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::Hello::CCM_Control >::ref_type get_do_control () override;
+    virtual IDL::traits< ::Hello::CCM_Control>::ref_type get_do_control () override;
     /// Factory method and getter for the do_my_foo facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::Hello::CCM_MyFoo >::ref_type get_do_my_foo () override;
+    virtual IDL::traits< ::Hello::CCM_MyFoo>::ref_type get_do_my_foo () override;
     //@}
 
     /** @name Session component operations */
@@ -269,12 +269,12 @@ namespace Hello_Sender_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::Hello::CCM_Sender_Context >::ref_type context_;
+    IDL::traits< ::Hello::CCM_Sender_Context>::ref_type context_;
 
     /** @name Component facets. */
     //@{
-    IDL::traits< ::Hello::CCM_Control >::ref_type do_control_;
-    IDL::traits< ::Hello::CCM_MyFoo >::ref_type do_my_foo_;
+    IDL::traits< ::Hello::CCM_Control>::ref_type do_control_;
+    IDL::traits< ::Hello::CCM_MyFoo>::ref_type do_my_foo_;
     //@}
 
     /** @name User defined members. */

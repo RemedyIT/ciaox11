@@ -244,7 +244,7 @@ namespace Shapes_Sender_comp_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Shapes_Sender_comp_Impl::Sender_comp_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::Shapes::CCM_Control_obj >::ref_type
+  IDL::traits< ::Shapes::CCM_Control_obj>::ref_type
   Sender_comp_exec_i::get_control ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Shapes_Sender_comp_Impl::Sender_comp_exec_i[get_control]

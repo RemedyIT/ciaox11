@@ -6,12 +6,12 @@ class <%= typesupport_export_macro %><%= cxxname %>Factory final
 public:
   static ::DDS::ReturnCode_t
   register_type (
-    IDL::traits< ::DDS::DomainParticipant >::ref_type participant,
+    IDL::traits< ::DDS::DomainParticipant>::ref_type participant,
     const std::string &type_name);
 
   static ::DDS::ReturnCode_t
   unregister_type (
-    IDL::traits< ::DDS::DomainParticipant >::ref_type participant,
+    IDL::traits< ::DDS::DomainParticipant>::ref_type participant,
     const std::string &type_name);
 private:
   <%= cxxname %>Factory() = delete;

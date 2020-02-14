@@ -18,7 +18,7 @@ namespace CIAOX11
   {
     template <typename EVT_STRATEGY>
     class PortStatusListener_T
-      : public IDL::traits< ::DDS::DataReaderListener >::base_type
+      : public IDL::traits< ::DDS::DataReaderListener>::base_type
     {
     public:
       /// Constructor
@@ -30,39 +30,39 @@ namespace CIAOX11
 
       virtual void
       on_requested_deadline_missed (
-        IDL::traits< ::DDS::DataReader >::ref_type the_reader,
+        IDL::traits< ::DDS::DataReader>::ref_type the_reader,
         const ::DDS::RequestedDeadlineMissedStatus & status) override;
 
       virtual void on_sample_lost (
-        IDL::traits< ::DDS::DataReader >::ref_type the_reader,
+        IDL::traits< ::DDS::DataReader>::ref_type the_reader,
         const ::DDS::SampleLostStatus & status)  override;
 
       virtual void
       on_requested_incompatible_qos (
-        IDL::traits< ::DDS::DataReader >::ref_type ,
+        IDL::traits< ::DDS::DataReader>::ref_type ,
         const ::DDS::RequestedIncompatibleQosStatus & ) override;
 
       virtual void
       on_sample_rejected (
-        IDL::traits< ::DDS::DataReader >::ref_type ,
+        IDL::traits< ::DDS::DataReader>::ref_type ,
         const ::DDS::SampleRejectedStatus & ) override;
 
       virtual void
       on_liveliness_changed (
-        IDL::traits< ::DDS::DataReader >::ref_type ,
+        IDL::traits< ::DDS::DataReader>::ref_type ,
         const ::DDS::LivelinessChangedStatus & ) override;
 
       virtual void
       on_data_available (
-        IDL::traits< ::DDS::DataReader >::ref_type ) override;
+        IDL::traits< ::DDS::DataReader>::ref_type ) override;
 
       virtual void
       on_subscription_matched (
-        IDL::traits< ::DDS::DataReader >::ref_type ,
+        IDL::traits< ::DDS::DataReader>::ref_type ,
         const ::DDS::SubscriptionMatchedStatus & ) override;
 
       static ::DDS::StatusMask get_mask (
-        IDL::traits< CCM_DDS::PortStatusListener >::ref_type psl);
+        IDL::traits< CCM_DDS::PortStatusListener>::ref_type psl);
 
     private:
       PortStatusListener_T() = delete;

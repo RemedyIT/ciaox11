@@ -19,7 +19,7 @@
 namespace DDSX11
 {
   DDS_SubscriberListener_proxy::DDS_SubscriberListener_proxy (
-    IDL::traits< ::DDS::SubscriberListener >::ref_type p)
+    IDL::traits< ::DDS::SubscriberListener>::ref_type p)
     : impl_ (std::move (p))
   {
     DDSX11_LOG_TRACE ("DDS_SubscriberListener_proxy::DDS_SubscriberListener_proxy");
@@ -149,7 +149,7 @@ namespace DDSX11
     }
   }
 
-  IDL::traits< ::DDS::SubscriberListener >::ref_type
+  IDL::traits< ::DDS::SubscriberListener>::ref_type
   DDS_SubscriberListener_proxy::get_subscriber_listener ()
   {
     return this->impl_;

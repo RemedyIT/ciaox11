@@ -432,7 +432,7 @@ namespace UpdaterModule_Sender_Impl
   {
     if (!this->started_)
     {
-      IDL::traits< ::DDS::DataWriter >::ref_type writer_dds_entity =
+      IDL::traits< ::DDS::DataWriter>::ref_type writer_dds_entity =
         this->context_->get_connection_test_topic_update_dds_entity ();
       if (writer_dds_entity)
       {
@@ -486,7 +486,7 @@ namespace UpdaterModule_Sender_Impl
   Sender_exec_i::create_one ()
   {
     uint16_t errors = 0;
-    IDL::traits< ::CommonTestConnector::Updater >::ref_type updater =
+    IDL::traits< ::CommonTestConnector::Updater>::ref_type updater =
       this->context_->get_connection_test_topic_update_data ();
     CommonTestMessage const i = this->topic_seq_one_[0];
 
@@ -515,7 +515,7 @@ namespace UpdaterModule_Sender_Impl
   Sender_exec_i::create_one_already_exist ()
   {
     uint16_t errors = 0;
-    IDL::traits< ::CommonTestConnector::Updater >::ref_type updater =
+    IDL::traits< ::CommonTestConnector::Updater>::ref_type updater =
       this->context_->get_connection_test_topic_update_data ();
     CommonTestMessage const i = this->topic_seq_one_[0];
 
@@ -547,7 +547,7 @@ namespace UpdaterModule_Sender_Impl
   Sender_exec_i::update_one ()
   {
     uint16_t errors = 0;
-    IDL::traits< ::CommonTestConnector::Updater >::ref_type updater =
+    IDL::traits< ::CommonTestConnector::Updater>::ref_type updater =
       this->context_->get_connection_test_topic_update_data ();
     CommonTestMessage i = this->topic_seq_one_[0];
     i.iteration (i.iteration () + 5);
@@ -577,7 +577,7 @@ namespace UpdaterModule_Sender_Impl
   Sender_exec_i::update_one_not_registered ()
   {
     uint16_t errors = 0;
-    IDL::traits< ::CommonTestConnector::Updater >::ref_type updater =
+    IDL::traits< ::CommonTestConnector::Updater>::ref_type updater =
       this->context_->get_connection_test_topic_update_data ();
 
     // update a not yet registered instance, expect a NonExistent exception
@@ -612,7 +612,7 @@ namespace UpdaterModule_Sender_Impl
   Sender_exec_i::delete_one ()
   {
     uint16_t errors = 0;
-    IDL::traits< ::CommonTestConnector::Updater >::ref_type updater =
+    IDL::traits< ::CommonTestConnector::Updater>::ref_type updater =
       this->context_->get_connection_test_topic_update_data ();
 
     // update a not yet registered instance, expect a NonExistent exception
@@ -643,7 +643,7 @@ namespace UpdaterModule_Sender_Impl
   Sender_exec_i::delete_one_not_registered ()
   {
     uint16_t errors = 0;
-    IDL::traits< ::CommonTestConnector::Updater >::ref_type updater =
+    IDL::traits< ::CommonTestConnector::Updater>::ref_type updater =
       this->context_->get_connection_test_topic_update_data ();
 
     // Delete non-existing instance, expect NonExistent exception
@@ -676,7 +676,7 @@ namespace UpdaterModule_Sender_Impl
   Sender_exec_i::update_and_delete_one_after_register ()
   {
     uint16_t errors = 0;
-    IDL::traits< ::CommonTestConnector::Updater >::ref_type updater =
+    IDL::traits< ::CommonTestConnector::Updater>::ref_type updater =
       this->context_->get_connection_test_topic_update_data ();
     // Update an instance after registering first, using a handle
     CommonTestMessage i = this->topic_seq_one_[2];
@@ -745,7 +745,7 @@ namespace UpdaterModule_Sender_Impl
   Sender_exec_i::update_and_delete_one_after_register_2 ()
   {
     uint16_t errors = 0;
-    IDL::traits< ::CommonTestConnector::Updater >::ref_type updater =
+    IDL::traits< ::CommonTestConnector::Updater>::ref_type updater =
       this->context_->get_connection_test_topic_update_data ();
     // Update an instance after registering first, using a handle
     CommonTestMessage i = this->topic_seq_one_[2];
@@ -782,7 +782,7 @@ namespace UpdaterModule_Sender_Impl
   Sender_exec_i::create_many ()
   {
     uint16_t errors = 0;
-    IDL::traits< ::CommonTestConnector::Updater >::ref_type updater =
+    IDL::traits< ::CommonTestConnector::Updater>::ref_type updater =
       this->context_->get_connection_test_topic_update_data ();
 
     //create many with no exception
@@ -856,7 +856,7 @@ namespace UpdaterModule_Sender_Impl
   Sender_exec_i::update_many ()
   {
     uint16_t errors = 0;
-    IDL::traits< ::CommonTestConnector::Updater >::ref_type updater =
+    IDL::traits< ::CommonTestConnector::Updater>::ref_type updater =
       this->context_->get_connection_test_topic_update_data ();
 
     try
@@ -932,7 +932,7 @@ namespace UpdaterModule_Sender_Impl
   Sender_exec_i::delete_many ()
   {
     uint16_t errors = 0;
-    IDL::traits< ::CommonTestConnector::Updater >::ref_type updater =
+    IDL::traits< ::CommonTestConnector::Updater>::ref_type updater =
       this->context_->get_connection_test_topic_update_data ();
 
     // delete_many with exception (the second and third instances are unknown to DDS)
@@ -1053,7 +1053,7 @@ namespace UpdaterModule_Sender_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : UpdaterModule_Sender_Impl::Sender_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::CCM_DDS::CCM_ConnectorStatusListener >::ref_type
+  IDL::traits< ::CCM_DDS::CCM_ConnectorStatusListener>::ref_type
   Sender_exec_i::get_connector_status ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : UpdaterModule_Sender_Impl::Sender_exec_i[get_connector_status]
@@ -1067,7 +1067,7 @@ namespace UpdaterModule_Sender_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : UpdaterModule_Sender_Impl::Sender_exec_i[get_connector_status]
   }
 
-  IDL::traits< CCM_NextAssignment >::ref_type
+  IDL::traits< CCM_NextAssignment>::ref_type
   Sender_exec_i::get_next_assignment ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : UpdaterModule_Sender_Impl::Sender_exec_i[get_next_assignment]

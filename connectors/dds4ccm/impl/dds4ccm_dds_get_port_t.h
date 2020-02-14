@@ -18,7 +18,7 @@ class DDS_Get_Port_T
   : public virtual DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>
 {
 public:
-  explicit DDS_Get_Port_T (IDL::traits<CORBA::Object >::ref_type component);
+  explicit DDS_Get_Port_T (IDL::traits<CORBA::Object>::ref_type component);
   virtual ~DDS_Get_Port_T () = default;
 
   /**
@@ -26,14 +26,14 @@ public:
    * DDS_Get operations
    */
   //@{
-  typename IDL::traits<typename CCM_TYPE::fresh_data_type >::ref_type
+  typename IDL::traits<typename CCM_TYPE::fresh_data_type>::ref_type
   get_fresh_data ();
   //@}
 
   virtual void
   configuration_complete (
-    IDL::traits< ::DDS::Topic >::ref_type topic,
-    IDL::traits< ::DDS::Subscriber >::ref_type subscriber,
+    IDL::traits< ::DDS::Topic>::ref_type topic,
+    IDL::traits< ::DDS::Subscriber>::ref_type subscriber,
     const std::string &qos_profile) override;
 
 private:
@@ -49,7 +49,7 @@ private:
    * DDS_Get
    */
   //@{
-  typename IDL::traits< DDS4CCM_Getter_type >::ref_type dds4ccm_getter_ {};
+  typename IDL::traits< DDS4CCM_Getter_type>::ref_type dds4ccm_getter_ {};
   //@}
 
   DDS_Get_Port_T() = delete;

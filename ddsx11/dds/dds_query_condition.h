@@ -49,7 +49,7 @@ namespace DDSX11
     virtual ::DDS::InstanceStateMask
     get_instance_state_mask () override;
 
-    virtual IDL::traits< ::DDS::DataReader >::ref_type
+    virtual IDL::traits< ::DDS::DataReader>::ref_type
     get_datareader () override;
 
     virtual std::string

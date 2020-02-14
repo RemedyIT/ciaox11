@@ -20,7 +20,7 @@ namespace CIAOX11
   {
     template<typename BASE_TYPE>
     class FacetBase
-      : public virtual ::IDL::traits< BASE_TYPE >::base_type
+      : public virtual ::IDL::traits< BASE_TYPE>::base_type
     {
     public:
       explicit FacetBase (IDL::traits<CORBA::Object>::weak_ref_type component);
@@ -36,7 +36,7 @@ namespace CIAOX11
        * throw an exception.
        * @return The component which manages the facet
        */
-      IDL::traits<CORBA::Object >::ref_type
+      IDL::traits<CORBA::Object>::ref_type
       _get_component () override;
 
     private:

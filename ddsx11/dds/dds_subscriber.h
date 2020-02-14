@@ -42,7 +42,7 @@ namespace DDSX11
     virtual ::DDS::ReturnCode_t
     enable () override;
 
-    virtual IDL::traits< ::DDS::StatusCondition >::ref_type
+    virtual IDL::traits< ::DDS::StatusCondition>::ref_type
     get_statuscondition () override;
 
     virtual ::DDS::StatusMask
@@ -51,21 +51,21 @@ namespace DDSX11
     virtual ::DDS::InstanceHandle_t
     get_instance_handle () override;
 
-    virtual IDL::traits< ::DDS::DataReader >::ref_type
+    virtual IDL::traits< ::DDS::DataReader>::ref_type
     create_datareader (
-      IDL::traits< ::DDS::TopicDescription >::ref_type a_topic,
+      IDL::traits< ::DDS::TopicDescription>::ref_type a_topic,
       const ::DDS::DataReaderQos & qos,
-      IDL::traits< ::DDS::DataReaderListener >::ref_type a_listener,
+      IDL::traits< ::DDS::DataReaderListener>::ref_type a_listener,
       ::DDS::StatusMask mask) override;
 
     virtual ::DDS::ReturnCode_t
     delete_datareader (
-      IDL::traits< ::DDS::DataReader >::ref_type a_datareader) override;
+      IDL::traits< ::DDS::DataReader>::ref_type a_datareader) override;
 
     virtual ::DDS::ReturnCode_t
     delete_contained_entities () override;
 
-    virtual IDL::traits< ::DDS::DataReader >::ref_type
+    virtual IDL::traits< ::DDS::DataReader>::ref_type
     lookup_datareader (const std::string &topic_name) override;
 
     virtual ::DDS::ReturnCode_t
@@ -88,10 +88,10 @@ namespace DDSX11
 
     virtual ::DDS::ReturnCode_t
     set_listener (
-      IDL::traits< ::DDS::SubscriberListener >::ref_type a_listener,
+      IDL::traits< ::DDS::SubscriberListener>::ref_type a_listener,
       ::DDS::StatusMask mask) override;
 
-    virtual IDL::traits< ::DDS::SubscriberListener >::ref_type
+    virtual IDL::traits< ::DDS::SubscriberListener>::ref_type
     get_listener () override;
 
     virtual ::DDS::ReturnCode_t
@@ -100,7 +100,7 @@ namespace DDSX11
     virtual ::DDS::ReturnCode_t
     end_access () override;
 
-    virtual IDL::traits< ::DDS::DomainParticipant >::ref_type
+    virtual IDL::traits< ::DDS::DomainParticipant>::ref_type
     get_participant () override;
 
     virtual ::DDS::ReturnCode_t
@@ -119,14 +119,14 @@ namespace DDSX11
   private:
     DDS_Native::DDS::DataReader *
     create_native_datareader (
-      IDL::traits< ::DDS::Topic >::ref_type topic,
+      IDL::traits< ::DDS::Topic>::ref_type topic,
       DDS_Native::DDS::DataReaderListener * proxy_drl,
       ::DDS::StatusMask mask,
       const ::DDS::DataReaderQos & qos);
 
     DDS_Native::DDS::DataReader *
     create_native_datareader (
-      IDL::traits< ::DDS::ContentFilteredTopic >::ref_type topic,
+      IDL::traits< ::DDS::ContentFilteredTopic>::ref_type topic,
       DDS_Native::DDS::DataReaderListener * proxy_drl,
       ::DDS::StatusMask mask,
       const ::DDS::DataReaderQos & qos);

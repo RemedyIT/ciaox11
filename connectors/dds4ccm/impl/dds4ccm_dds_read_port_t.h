@@ -17,7 +17,7 @@ class DDS_Read_Port_T
   : public DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>
 {
 public:
-  DDS_Read_Port_T (IDL::traits<CORBA::Object >::ref_type component);
+  DDS_Read_Port_T (IDL::traits<CORBA::Object>::ref_type component);
   ~DDS_Read_Port_T () = default;
 
 private:

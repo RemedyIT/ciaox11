@@ -101,7 +101,7 @@ namespace RG_LateBinding_Sender_Impl
 
     try
     {
-      IDL::traits< ::CommonTestConnector::Writer >::ref_type writer =
+      IDL::traits< ::CommonTestConnector::Writer>::ref_type writer =
         this->context_->get_connection_info_write_data ();
       DDS4CCM_TEST_DEBUG << "Sender_exec_i::notify - Samples: " << std::endl;
       for (uint16_t key = 1; key < this->keys_ + 1; ++key)
@@ -116,7 +116,7 @@ namespace RG_LateBinding_Sender_Impl
             DDS4CCM_TEST_DEBUG << '\t' << sample << std::endl;
           }
       }
-      IDL::traits< ReaderStarter >::ref_type starter =
+      IDL::traits< ReaderStarter>::ref_type starter =
         this->context_->get_connection_reader_start ();
       DDS4CCM_TEST_DEBUG << "Sender_exec_i::notify  - "
         << "Inform the receiver that all samples were written."
@@ -165,16 +165,16 @@ namespace RG_LateBinding_Sender_Impl
     {
       DDS4CCM_TEST_DEBUG << "Sender_exec_i::reset_topic_name - "
         << "Setting topic name to '" << topic_name <<"'." << std::endl;
-      IDL::traits< ::CommonTestConnector::Writer >::ref_type writer =
+      IDL::traits< ::CommonTestConnector::Writer>::ref_type writer =
         this->context_->get_connection_info_write_data ();
-      IDL::traits< ::CORBA::Object >::ref_type cmp = writer->_get_component ();
+      IDL::traits< ::CORBA::Object>::ref_type cmp = writer->_get_component ();
       if (!cmp)
       {
         DDS4CCM_TEST_ERROR << "Sender_exec_i::reset_topic_name - "
           "ERROR: Unable to get component interface." << std::endl;
         return;
       }
-      IDL::traits< ::CommonTestConnector::CCM_DDS_Event >::ref_type conn =
+      IDL::traits< ::CommonTestConnector::CCM_DDS_Event>::ref_type conn =
         IDL::traits< ::CommonTestConnector::CCM_DDS_Event >::narrow (cmp);
       if (!conn)
       {
@@ -234,7 +234,7 @@ namespace RG_LateBinding_Sender_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : RG_LateBinding_Sender_Impl::Sender_exec_i[ccm_remove]
   }
 
-  IDL::traits< CCM_WriterStarter >::ref_type
+  IDL::traits< CCM_WriterStarter>::ref_type
   Sender_exec_i::get_start_writing ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : RG_LateBinding_Sender_Impl::Sender_exec_i[get_start_writing]

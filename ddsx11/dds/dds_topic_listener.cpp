@@ -17,7 +17,7 @@
 namespace DDSX11
 {
   DDS_TopicListener_proxy::DDS_TopicListener_proxy (
-    IDL::traits< ::DDS::TopicListener >::ref_type t)
+    IDL::traits< ::DDS::TopicListener>::ref_type t)
     : impl_ (std::move (t))
   {
   }
@@ -38,7 +38,7 @@ namespace DDSX11
     }
   }
 
-  IDL::traits< ::DDS::TopicListener >::ref_type
+  IDL::traits< ::DDS::TopicListener>::ref_type
   DDS_TopicListener_proxy::get_topic_listener ()
   {
     return this->impl_;

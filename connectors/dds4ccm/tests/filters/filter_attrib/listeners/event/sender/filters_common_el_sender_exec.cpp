@@ -206,7 +206,7 @@ namespace Filters_Common_Event_Listen_Test_Sender_Impl
   void
   Sender_exec_i::check_status ()
   {
-    IDL::traits< ::DDS::DataWriter >::ref_type writer_dds_entity =
+    IDL::traits< ::DDS::DataWriter>::ref_type writer_dds_entity =
       this->context_->get_connection_info_write_dds_entity ();
     if (writer_dds_entity)
     {
@@ -256,7 +256,7 @@ namespace Filters_Common_Event_Listen_Test_Sender_Impl
   void
   Sender_exec_i::tick ()
   {
-    IDL::traits< CommonTestConnector::Writer >::ref_type writer =
+    IDL::traits< CommonTestConnector::Writer>::ref_type writer =
       this->context_->get_connection_info_write_data ();
     try
     {
@@ -353,7 +353,7 @@ namespace Filters_Common_Event_Listen_Test_Sender_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Filters_Common_Event_Listen_Test_Sender_Impl::Sender_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::CCM_DDS::CCM_ConnectorStatusListener >::ref_type
+  IDL::traits< ::CCM_DDS::CCM_ConnectorStatusListener>::ref_type
   Sender_exec_i::get_connector_status ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Filters_Common_Event_Listen_Test_Sender_Impl::Sender_exec_i[get_connector_status]

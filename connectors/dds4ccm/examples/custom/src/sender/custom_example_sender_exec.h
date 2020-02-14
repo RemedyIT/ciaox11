@@ -101,7 +101,7 @@ namespace Example_BasicPublisher_comp_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::Example::CCM_BasicPublisher_comp_Context >::ref_type context_;
+    IDL::traits< ::Example::CCM_BasicPublisher_comp_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -136,7 +136,7 @@ namespace Example_BasicPublisher_comp_Impl
 
     /// Factory method and getter for the CA1DataPub_CSL facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::CCM_DDS::CCM_ConnectorStatusListener >::ref_type get_CA1DataPub_CSL () override;
+    virtual IDL::traits< ::CCM_DDS::CCM_ConnectorStatusListener>::ref_type get_CA1DataPub_CSL () override;
     //@}
 
     /** @name Supported attributes. */
@@ -184,7 +184,7 @@ namespace Example_BasicPublisher_comp_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::Example::CCM_BasicPublisher_comp_Context >::ref_type context_;
+    IDL::traits< ::Example::CCM_BasicPublisher_comp_Context>::ref_type context_;
 
     /** @name Component attributes. */
     //@{
@@ -194,7 +194,7 @@ namespace Example_BasicPublisher_comp_Impl
 
     /** @name Component facets. */
     //@{
-    IDL::traits< ::CCM_DDS::CCM_ConnectorStatusListener >::ref_type CA1DataPub_CSL_;
+    IDL::traits< ::CCM_DDS::CCM_ConnectorStatusListener>::ref_type CA1DataPub_CSL_;
     //@}
 
     /** @name User defined members. */

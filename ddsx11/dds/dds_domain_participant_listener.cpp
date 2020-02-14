@@ -16,7 +16,7 @@
 namespace DDSX11
 {
   DDS_DomainParticipantListener_proxy::DDS_DomainParticipantListener_proxy (
-    IDL::traits< ::DDS::DomainParticipantListener >::ref_type p)
+    IDL::traits< ::DDS::DomainParticipantListener>::ref_type p)
     : impl_ (std::move (p))
   {
   }
@@ -28,7 +28,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_DomainParticipantListener_proxy::on_inconsistent_topic");
 
-    IDL::traits< ::DDS::Topic >::ref_type topic =
+    IDL::traits< ::DDS::Topic>::ref_type topic =
       TAOX11_CORBA::make_reference<DDS_Topic_proxy> (tp);
 
     this->impl_->on_inconsistent_topic (std::move(topic),
@@ -223,7 +223,7 @@ namespace DDSX11
     }
   }
 
-  IDL::traits< ::DDS::DomainParticipantListener >::ref_type
+  IDL::traits< ::DDS::DomainParticipantListener>::ref_type
   DDS_DomainParticipantListener_proxy::get_domainparticipantlistener ()
   {
     return this->impl_;

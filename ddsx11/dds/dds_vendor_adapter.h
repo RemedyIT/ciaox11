@@ -33,78 +33,78 @@ namespace DDSX11
 {
   namespace VendorUtils
   {
-    DDSX11_IMPL_Export IDL::traits< ::DDS::Publisher >::ref_type
+    DDSX11_IMPL_Export IDL::traits< ::DDS::Publisher>::ref_type
     create_publisher_proxy (
       DDS_Native::DDS::Publisher *p);
 
-    DDSX11_IMPL_Export IDL::traits< ::DDS::Subscriber >::ref_type
+    DDSX11_IMPL_Export IDL::traits< ::DDS::Subscriber>::ref_type
     create_subscriber_proxy (
       DDS_Native::DDS::Subscriber *s);
 
-    DDSX11_IMPL_Export IDL::traits< ::DDS::DomainParticipant >::ref_type
+    DDSX11_IMPL_Export IDL::traits< ::DDS::DomainParticipant>::ref_type
     create_domain_participant_proxy (
       DDS_Native::DDS::DomainParticipant *dp);
 
-    DDSX11_IMPL_Export IDL::traits< ::DDS::WaitSet >::ref_type
+    DDSX11_IMPL_Export IDL::traits< ::DDS::WaitSet>::ref_type
     create_waitset ();
 
-    DDSX11_IMPL_Export IDL::traits< ::DDS::DomainParticipantFactory >::ref_type
+    DDSX11_IMPL_Export IDL::traits< ::DDS::DomainParticipantFactory>::ref_type
     init_dds ();
 
     /** @name Create DDS Listeners. */
     //@{
     DDS_Native::DDS::PublisherListener*
     create_publisher_listener (
-      IDL::traits< ::DDS::PublisherListener >::ref_type listener);
+      IDL::traits< ::DDS::PublisherListener>::ref_type listener);
     //@}
 
     /** @name Create DDS entities with profile. */
     //@{
-    IDL::traits< ::DDS::DomainParticipant >::ref_type
+    IDL::traits< ::DDS::DomainParticipant>::ref_type
     create_participant_with_profile (
-      IDL::traits< ::DDS::DomainParticipantFactory >::ref_type participant_factory,
+      IDL::traits< ::DDS::DomainParticipantFactory>::ref_type participant_factory,
       ::DDS::DomainId_t domain_id,
       const std::string &qos_profile,
-      IDL::traits< ::DDS::DomainParticipantListener >::ref_type listener,
+      IDL::traits< ::DDS::DomainParticipantListener>::ref_type listener,
       ::DDS::StatusMask mask);
 
-    IDL::traits< ::DDS::Topic >::ref_type
+    IDL::traits< ::DDS::Topic>::ref_type
     create_topic_with_profile (
-      IDL::traits< ::DDS::DomainParticipant >::ref_type participant,
+      IDL::traits< ::DDS::DomainParticipant>::ref_type participant,
       const std::string &topic_name,
       const std::string &type_name,
       const std::string &qos_profile,
-      IDL::traits< ::DDS::TopicListener >::ref_type listener,
+      IDL::traits< ::DDS::TopicListener>::ref_type listener,
       ::DDS::StatusMask mask);
 
-    IDL::traits< ::DDS::Publisher >::ref_type
+    IDL::traits< ::DDS::Publisher>::ref_type
     create_publisher_with_profile (
-      IDL::traits< ::DDS::DomainParticipant >::ref_type participant,
+      IDL::traits< ::DDS::DomainParticipant>::ref_type participant,
       const std::string &profile,
-      IDL::traits< ::DDS::PublisherListener >::ref_type listener,
+      IDL::traits< ::DDS::PublisherListener>::ref_type listener,
       ::DDS::StatusMask mask);
 
-    IDL::traits< ::DDS::Subscriber >::ref_type
+    IDL::traits< ::DDS::Subscriber>::ref_type
     create_subscriber_with_profile (
-      IDL::traits< ::DDS::DomainParticipant >::ref_type participant,
+      IDL::traits< ::DDS::DomainParticipant>::ref_type participant,
       const std::string &profile,
-      IDL::traits< ::DDS::SubscriberListener >::ref_type listener,
+      IDL::traits< ::DDS::SubscriberListener>::ref_type listener,
       ::DDS::StatusMask mask);
 
-    IDL::traits< ::DDS::DataWriter >::ref_type
+    IDL::traits< ::DDS::DataWriter>::ref_type
     create_datawriter_with_profile (
-      IDL::traits< ::DDS::Publisher >::ref_type publisher,
-      IDL::traits< ::DDS::Topic >::ref_type topic,
+      IDL::traits< ::DDS::Publisher>::ref_type publisher,
+      IDL::traits< ::DDS::Topic>::ref_type topic,
       const std::string &qos_profile,
-      IDL::traits< ::DDS::DataWriterListener >::ref_type listener,
+      IDL::traits< ::DDS::DataWriterListener>::ref_type listener,
       ::DDS::StatusMask mask);
 
-    IDL::traits< ::DDS::DataReader >::ref_type
+    IDL::traits< ::DDS::DataReader>::ref_type
     create_datareader_with_profile (
-      IDL::traits< ::DDS::Subscriber >::ref_type subscriber,
-      IDL::traits< ::DDS::TopicDescription >::ref_type topic,
+      IDL::traits< ::DDS::Subscriber>::ref_type subscriber,
+      IDL::traits< ::DDS::TopicDescription>::ref_type topic,
       const std::string &qos_profile,
-      IDL::traits< ::DDS::DataReaderListener >::ref_type listener,
+      IDL::traits< ::DDS::DataReaderListener>::ref_type listener,
       ::DDS::StatusMask mask);
     //@}
 
@@ -134,11 +134,11 @@ namespace DDS
   template<>
   struct traits< ::DDS::DomainParticipantFactory >
   {
-    static IDL::traits< ::DDS::DomainParticipantFactory >::ref_type
+    static IDL::traits< ::DDS::DomainParticipantFactory>::ref_type
     get_instance ()
     {
       // See C++ specification section 6.7 [stmt.dcl] p4
-      static IDL::traits< ::DDS::DomainParticipantFactory >::ref_type dpf =
+      static IDL::traits< ::DDS::DomainParticipantFactory>::ref_type dpf =
         ::DDSX11::VendorUtils::init_dds ();
       return dpf;
     }

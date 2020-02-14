@@ -212,7 +212,7 @@ namespace Example_BasicPublisher_comp_Impl
   {
     try
     {
-      IDL::traits< Example::CA1_conn::Writer >::ref_type writer =
+      IDL::traits< Example::CA1_conn::Writer>::ref_type writer =
         this->context_->get_connection_CA1DataPub_data ();
 
       if (this->count () == this->counter_)
@@ -316,7 +316,7 @@ namespace Example_BasicPublisher_comp_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Example_BasicPublisher_comp_Impl::BasicPublisher_comp_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::CCM_DDS::CCM_ConnectorStatusListener >::ref_type
+  IDL::traits< ::CCM_DDS::CCM_ConnectorStatusListener>::ref_type
   BasicPublisher_comp_exec_i::get_CA1DataPub_CSL ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Example_BasicPublisher_comp_Impl::BasicPublisher_comp_exec_i[get_CA1DataPub_CSL]

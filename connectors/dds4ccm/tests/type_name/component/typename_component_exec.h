@@ -83,7 +83,7 @@ namespace TypeNameComponent_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< CCM_TypeNameComponent_Context >::ref_type context_;
+    IDL::traits< CCM_TypeNameComponent_Context>::ref_type context_;
 
     /** @name Component facets. */
     //@{

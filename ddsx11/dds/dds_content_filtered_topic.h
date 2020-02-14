@@ -48,14 +48,14 @@ namespace DDSX11
     set_expression_parameters (
       const ::DDS::StringSeq & expression_parameters) override;
 
-    virtual IDL::traits< ::DDS::Topic  >::ref_type
+    virtual IDL::traits< ::DDS::Topic >::ref_type
     get_related_topic () override;
 
     virtual std::string get_type_name () override;
 
     virtual std::string get_name () override;
 
-    virtual IDL::traits< ::DDS::DomainParticipant  >::ref_type
+    virtual IDL::traits< ::DDS::DomainParticipant >::ref_type
     get_participant () override;
 
   private:

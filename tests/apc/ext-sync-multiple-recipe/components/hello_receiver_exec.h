@@ -74,7 +74,7 @@ namespace Hello_Receiver_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::Hello::CCM_Receiver_Context >::ref_type context_;
+    IDL::traits< ::Hello::CCM_Receiver_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -108,7 +108,7 @@ namespace Hello_Receiver_Impl
 
     /// Factory method and getter for the do_my_B facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::Hello::CCM_B >::ref_type get_do_my_B () override;
+    virtual IDL::traits< ::Hello::CCM_B>::ref_type get_do_my_B () override;
     //@}
 
     /** @name Session component operations */
@@ -140,11 +140,11 @@ namespace Hello_Receiver_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::Hello::CCM_Receiver_Context >::ref_type context_;
+    IDL::traits< ::Hello::CCM_Receiver_Context>::ref_type context_;
 
     /** @name Component facets. */
     //@{
-    IDL::traits< ::Hello::CCM_B >::ref_type do_my_B_;
+    IDL::traits< ::Hello::CCM_B>::ref_type do_my_B_;
     //@}
 
     /** @name User defined members. */

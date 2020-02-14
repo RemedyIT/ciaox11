@@ -74,7 +74,7 @@ namespace CoherentWriter_Receiver_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::CoherentWriter::CCM_Receiver_Context >::ref_type context_;
+    IDL::traits< ::CoherentWriter::CCM_Receiver_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -136,7 +136,7 @@ namespace CoherentWriter_Receiver_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::CoherentWriter::CCM_Receiver_Context >::ref_type context_;
+    IDL::traits< ::CoherentWriter::CCM_Receiver_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -170,10 +170,10 @@ namespace CoherentWriter_Receiver_Impl
 
     /// Factory method and getter for the info_get_status facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::CCM_DDS::CCM_PortStatusListener >::ref_type get_info_get_status () override;
+    virtual IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type get_info_get_status () override;
     /// Factory method and getter for the start_reading facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< CCM_ReaderStarter >::ref_type get_start_reading () override;
+    virtual IDL::traits< CCM_ReaderStarter>::ref_type get_start_reading () override;
     //@}
 
     /** @name Supported attributes. */
@@ -223,7 +223,7 @@ namespace CoherentWriter_Receiver_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::CoherentWriter::CCM_Receiver_Context >::ref_type context_;
+    IDL::traits< ::CoherentWriter::CCM_Receiver_Context>::ref_type context_;
 
     /** @name Component attributes. */
     //@{
@@ -233,8 +233,8 @@ namespace CoherentWriter_Receiver_Impl
 
     /** @name Component facets. */
     //@{
-    IDL::traits< ::CCM_DDS::CCM_PortStatusListener >::ref_type info_get_status_;
-    IDL::traits< CCM_ReaderStarter >::ref_type start_reading_;
+    IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type info_get_status_;
+    IDL::traits< CCM_ReaderStarter>::ref_type start_reading_;
     //@}
 
     /** @name User defined members. */

@@ -95,7 +95,7 @@ namespace CIAOX11_TT_TimedTrigger_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::CIAOX11_TT::CCM_TimedTrigger_Context >::ref_type context_;
+    IDL::traits< ::CIAOX11_TT::CCM_TimedTrigger_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -130,7 +130,7 @@ namespace CIAOX11_TT_TimedTrigger_Impl
 
     /// Factory method and getter for the tt_scheduler facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::CCM_TT::CCM_TT_Scheduler >::ref_type get_tt_scheduler () override;
+    virtual IDL::traits< ::CCM_TT::CCM_TT_Scheduler>::ref_type get_tt_scheduler () override;
     //@}
 
     /** @name Session component operations */
@@ -162,11 +162,11 @@ namespace CIAOX11_TT_TimedTrigger_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::CIAOX11_TT::CCM_TimedTrigger_Context >::ref_type context_;
+    IDL::traits< ::CIAOX11_TT::CCM_TimedTrigger_Context>::ref_type context_;
 
     /** @name Component facets. */
     //@{
-    IDL::traits< ::CCM_TT::CCM_TT_Scheduler >::ref_type tt_scheduler_;
+    IDL::traits< ::CCM_TT::CCM_TT_Scheduler>::ref_type tt_scheduler_;
     //@}
 
     /** @name User defined members. */

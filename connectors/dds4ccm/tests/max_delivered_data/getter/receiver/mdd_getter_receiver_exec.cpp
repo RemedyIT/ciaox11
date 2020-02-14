@@ -54,7 +54,7 @@ namespace MDD_Getter_Test_Receiver_Impl
          this->ciao_context_->get_connection_info_get_data (), 2, 1))
        {
          timer->cancel ();
-         IDL::traits< CommonTestConnector::Getter >::ref_type getter =
+         IDL::traits< CommonTestConnector::Getter>::ref_type getter =
            this->ciao_context_->get_connection_info_get_fresh_data ();
          getter->max_delivered_data (2);
 
@@ -194,7 +194,7 @@ namespace MDD_Getter_Test_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : MDD_Getter_Test_Receiver_Impl::Receiver_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::CCM_DDS::CCM_PortStatusListener >::ref_type
+  IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type
   Receiver_exec_i::get_info_get_status ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : MDD_Getter_Test_Receiver_Impl::Receiver_exec_i[get_info_get_status]

@@ -18,7 +18,7 @@ namespace CIAOX11
     template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
     DataReaderStateListenerBase_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::DataReaderStateListenerBase_T (
       const typename CCM_TYPE::event_strategy_type &evs,
-      IDL::traits< ::CCM_DDS::StateListenerControl >::ref_type control,
+      IDL::traits< ::CCM_DDS::StateListenerControl>::ref_type control,
       SharedConditionManager condition_manager)
       : ListenerBase_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE> (evs, std::move(control), condition_manager)
     {
@@ -28,8 +28,8 @@ namespace CIAOX11
     template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
     void
     DataReaderStateListenerBase_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::on_data_available_i (
-      IDL::traits< ::DDS::DataReader >::ref_type rdr,
-      typename IDL::traits<typename CCM_TYPE::data_listener_type >::ref_type listener)
+      IDL::traits< ::DDS::DataReader>::ref_type rdr,
+      typename IDL::traits<typename CCM_TYPE::data_listener_type>::ref_type listener)
     {
       DDS4CCM_LOG_TRACE ("DataReaderStateListenerBase_T::on_data_available_i");
 
@@ -47,8 +47,8 @@ namespace CIAOX11
       }
 
       // Narrow to a type specific datareader
-      typename ::DDS::traits< TOPIC_TYPE >::typed_datareader_ref_type reader =
-        ::DDS::traits< TOPIC_TYPE >::narrow (rdr);
+      typename ::DDS::traits< TOPIC_TYPE>::typed_datareader_ref_type reader =
+        ::DDS::traits< TOPIC_TYPE>::narrow (rdr);
 
       if (!reader)
       {
@@ -80,7 +80,7 @@ namespace CIAOX11
 
         DDS4CCM_LOG_DEBUG ("DataReaderStateListenerBase_T::on_data_available_i - "
           << "Get data returned <"
-          << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode)
+          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">.");
 
         if (retcode == ::DDS::RETCODE_NO_DATA)
@@ -91,7 +91,7 @@ namespace CIAOX11
         {
           DDS4CCM_LOG_ERROR ("DataReaderStateListenerBase_T::on_data_available_i - "
             << "Unable to get data from data reader: result <"
-            << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode)
+            << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
             << ">.");
           return;
         }
@@ -106,19 +106,19 @@ namespace CIAOX11
             if (si.instance_state () == ::DDS::NOT_ALIVE_DISPOSED_INSTANCE_STATE)
             {
               listener->on_deletion (data[topic_idx],
-                ::DDS4CCM::traits< ::DDS::SampleInfo >::to_readinfo (si));
+                ::DDS4CCM::traits< ::DDS::SampleInfo>::to_readinfo (si));
             }
             else if (si.valid_data ())
             {
               if (si.view_state () == ::DDS::NEW_VIEW_STATE)
               {
                 listener->on_creation (data[topic_idx],
-                  ::DDS4CCM::traits< ::DDS::SampleInfo >::to_readinfo (si));
+                  ::DDS4CCM::traits< ::DDS::SampleInfo>::to_readinfo (si));
               }
               else
               {
                 listener->on_one_update (data[topic_idx],
-                  ::DDS4CCM::traits< ::DDS::SampleInfo >::to_readinfo (si));
+                  ::DDS4CCM::traits< ::DDS::SampleInfo>::to_readinfo (si));
               }
             }
             ++topic_idx;
@@ -145,7 +145,7 @@ namespace CIAOX11
                 uint32_t ix = 0;
                 for(uint32_t add : updates)
                 {
-                  infoseq[ix]  = ::DDS4CCM::traits< ::DDS::SampleInfo >::to_readinfo (sample_info[add]);
+                  infoseq[ix]  = ::DDS4CCM::traits< ::DDS::SampleInfo>::to_readinfo (sample_info[add]);
                   inst_seq[ix] = data[add];
                   ++ix;
                 }
@@ -157,12 +157,12 @@ namespace CIAOX11
               if (si.valid_data () && si.view_state () == ::DDS::NEW_VIEW_STATE)
               {
                 listener->on_creation (data[idx_to_add],
-                  ::DDS4CCM::traits< ::DDS::SampleInfo >::to_readinfo (si));
+                  ::DDS4CCM::traits< ::DDS::SampleInfo>::to_readinfo (si));
               }
               else if (si.instance_state () == ::DDS::NOT_ALIVE_DISPOSED_INSTANCE_STATE)
               {
                 listener->on_deletion (data[idx_to_add],
-                  ::DDS4CCM::traits< ::DDS::SampleInfo >::to_readinfo (si));
+                  ::DDS4CCM::traits< ::DDS::SampleInfo>::to_readinfo (si));
               }
             }
             else if (si.valid_data ())
@@ -180,7 +180,7 @@ namespace CIAOX11
             uint32_t ix = 0;
             for (uint32_t add : updates)
             {
-              infoseq[ix]  = ::DDS4CCM::traits< ::DDS::SampleInfo >::to_readinfo (sample_info[add]);
+              infoseq[ix]  = ::DDS4CCM::traits< ::DDS::SampleInfo>::to_readinfo (sample_info[add]);
               inst_seq[ix] = data[add];
               ++ix;
             }
@@ -194,7 +194,7 @@ namespace CIAOX11
         {
           DDS4CCM_LOG_ERROR ("DataReaderStateListenerBase_T::on_data_available_i - "
             << "Error returning loan to DDS - <"
-            << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode_returnloan)
+            << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode_returnloan)
             << ">.");
           // No exception here since this the DDS vendor doesn't expect this.
           // It will likely causes a crash in their implementation

@@ -41,7 +41,7 @@ namespace CIAOX11
       {
         DDS4CCM_LOG_ERROR ("Writer_T::write_i - "
           << "Write unsuccessful, received error code <"
-          << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode)
+          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">.");
         throw CCM_DDS::InternalError (
             retcode,
@@ -69,7 +69,7 @@ namespace CIAOX11
     {
       DDS4CCM_LOG_TRACE ("CIAOX11::DDS4CCM::Writer_T::write_many");
 
-      IDL::traits< ::DDS::Publisher >::ref_type pub = this->dds_writer_->get_publisher ();
+      IDL::traits< ::DDS::Publisher>::ref_type pub = this->dds_writer_->get_publisher ();
       if (!pub)
       {
         DDS4CCM_LOG_ERROR ("Writer_T::write_many - "

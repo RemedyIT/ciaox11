@@ -279,7 +279,7 @@ namespace RG_LateBinding_Receiver_Impl
   {
     try
     {
-      IDL::traits< WriterStarter >::ref_type starter =
+      IDL::traits< WriterStarter>::ref_type starter =
         this->context_->get_connection_writer_start ();
       starter->start_write ();
     }
@@ -338,7 +338,7 @@ namespace RG_LateBinding_Receiver_Impl
   {
     try
     {
-      IDL::traits< ::CommonTestConnector::Reader >::ref_type reader =
+      IDL::traits< ::CommonTestConnector::Reader>::ref_type reader =
         this->context_->get_connection_info_get_data ();
       if (!reader)
       {
@@ -368,7 +368,7 @@ namespace RG_LateBinding_Receiver_Impl
   {
     DDS4CCM_TEST_DEBUG << "Receiver_exec_i::start_reading - "
       "Start reading." << std::endl;
-    IDL::traits< ::CommonTestConnector::Reader >::ref_type reader =
+    IDL::traits< ::CommonTestConnector::Reader>::ref_type reader =
       this->context_->get_connection_info_get_data ();
     try
     {
@@ -385,7 +385,7 @@ namespace RG_LateBinding_Receiver_Impl
   {
     try
     {
-      IDL::traits< ::CommonTestConnector::Getter >::ref_type getter =
+      IDL::traits< ::CommonTestConnector::Getter>::ref_type getter =
         this->context_->get_connection_info_get_fresh_data ();
       if (!getter)
       {
@@ -412,16 +412,16 @@ namespace RG_LateBinding_Receiver_Impl
 
       DDS4CCM_TEST_DEBUG << "Receiver_exec_i::set_topic_name - "
         << "Setting topic name to '" << topic_name << "'." << std::endl;
-      IDL::traits< ::CommonTestConnector::Getter >::ref_type getter =
+      IDL::traits< ::CommonTestConnector::Getter>::ref_type getter =
         this->context_->get_connection_info_get_fresh_data ();
-      IDL::traits< ::CORBA::Object >::ref_type cmp = getter->_get_component ();
+      IDL::traits< ::CORBA::Object>::ref_type cmp = getter->_get_component ();
       if (!cmp)
       {
         DDS4CCM_TEST_ERROR << "Receiver_exec_i::set_topic_name - "
           "ERROR: Unable to get component interface." << std::endl;
         return;
       }
-      IDL::traits< ::CommonTestConnector::CCM_DDS_Event >::ref_type conn =
+      IDL::traits< ::CommonTestConnector::CCM_DDS_Event>::ref_type conn =
         IDL::traits< ::CommonTestConnector::CCM_DDS_Event >::narrow (cmp);
       if (!conn)
       {
@@ -500,7 +500,7 @@ namespace RG_LateBinding_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : RG_LateBinding_Receiver_Impl::Receiver_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::CCM_DDS::CCM_PortStatusListener >::ref_type
+  IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type
   Receiver_exec_i::get_info_get_status ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : RG_LateBinding_Receiver_Impl::Receiver_exec_i[get_info_get_status]
@@ -512,7 +512,7 @@ namespace RG_LateBinding_Receiver_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : RG_LateBinding_Receiver_Impl::Receiver_exec_i[get_info_get_status]
   }
 
-  IDL::traits< CCM_ReaderStarter >::ref_type
+  IDL::traits< CCM_ReaderStarter>::ref_type
   Receiver_exec_i::get_start_reading ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : RG_LateBinding_Receiver_Impl::Receiver_exec_i[get_start_reading]

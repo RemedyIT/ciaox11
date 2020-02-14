@@ -122,7 +122,7 @@ namespace InterReturnT_Receiver_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::InterReturnT::CCM_Receiver_Context >::ref_type context_;
+    IDL::traits< ::InterReturnT::CCM_Receiver_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -156,7 +156,7 @@ namespace InterReturnT_Receiver_Impl
 
     /// Factory method and getter for the do_my_foo facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::InterReturnT::CCM_MyFoo >::ref_type get_do_my_foo () override;
+    virtual IDL::traits< ::InterReturnT::CCM_MyFoo>::ref_type get_do_my_foo () override;
     //@}
 
     /** @name Session component operations */
@@ -188,11 +188,11 @@ namespace InterReturnT_Receiver_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::InterReturnT::CCM_Receiver_Context >::ref_type context_;
+    IDL::traits< ::InterReturnT::CCM_Receiver_Context>::ref_type context_;
 
     /** @name Component facets. */
     //@{
-    IDL::traits< ::InterReturnT::CCM_MyFoo >::ref_type do_my_foo_;
+    IDL::traits< ::InterReturnT::CCM_MyFoo>::ref_type do_my_foo_;
     //@}
 
     /** @name User defined members. */

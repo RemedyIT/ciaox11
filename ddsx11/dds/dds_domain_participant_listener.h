@@ -22,7 +22,7 @@ namespace DDSX11
   public:
     /// Constructor
     DDS_DomainParticipantListener_proxy (
-      IDL::traits< ::DDS::DomainParticipantListener >::ref_type p);
+      IDL::traits< ::DDS::DomainParticipantListener>::ref_type p);
 
     /// Destructor
     virtual ~DDS_DomainParticipantListener_proxy () = default;
@@ -90,11 +90,11 @@ namespace DDSX11
     on_data_on_readers (
       DDS_Native::DDS::Subscriber* ) override;
 
-    IDL::traits< ::DDS::DomainParticipantListener >::ref_type
+    IDL::traits< ::DDS::DomainParticipantListener>::ref_type
     get_domainparticipantlistener ();
 
   private:
-    IDL::traits< ::DDS::DomainParticipantListener >::ref_type impl_;
+    IDL::traits< ::DDS::DomainParticipantListener>::ref_type impl_;
 
     DDS_DomainParticipantListener_proxy() = delete;
     DDS_DomainParticipantListener_proxy(const DDS_DomainParticipantListener_proxy&) = delete;

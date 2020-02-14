@@ -28,7 +28,7 @@ namespace CIAOX11
     class DefaultEventStrategyBase
     {
     protected:
-      DefaultEventStrategyBase (IDL::traits<Components::SessionContext >::ref_type ctx)
+      DefaultEventStrategyBase (IDL::traits<Components::SessionContext>::ref_type ctx)
       {
         DDS4CCM_LOG_TRACE ("DefaultEventStrategyBase::" << "ctor");
 
@@ -74,10 +74,10 @@ namespace CIAOX11
     {
     public:
       DefaultErrorEventStrategy_T (
-        typename IDL::traits<typename CCM_TYPE::context_type >::ref_type ctx)
+        typename IDL::traits<typename CCM_TYPE::context_type>::ref_type ctx)
         : DefaultEventStrategyBase (ctx)
       {
-        IDL::traits< CCM_DDS::ConnectorStatusListener >::ref_type erl =
+        IDL::traits< CCM_DDS::ConnectorStatusListener>::ref_type erl =
             ctx->get_connection_error_listener ();
         this->error_listener_ = erl;
         if (erl)
@@ -93,7 +93,7 @@ namespace CIAOX11
       // on_unexpected_status
       void
       handle_unexpected_status_event (
-          IDL::traits< ::DDS::Entity >::ref_type entity,
+          IDL::traits< ::DDS::Entity>::ref_type entity,
           ::DDS::StatusKind status_kind)
       {
         if (!this->error_listener_connected_)
@@ -129,7 +129,7 @@ namespace CIAOX11
       // on_requested_incompatible_qos
       void
       handle_requested_incompatible_qos_event (
-          IDL::traits< ::DDS::DataReader >::ref_type dr,
+          IDL::traits< ::DDS::DataReader>::ref_type dr,
           const ::DDS::RequestedIncompatibleQosStatus &status)
       {
         if (!this->error_listener_connected_)
@@ -165,7 +165,7 @@ namespace CIAOX11
       // on_sample_rejected
       void
       handle_sample_rejected_event (
-          IDL::traits< ::DDS::DataReader >::ref_type dr,
+          IDL::traits< ::DDS::DataReader>::ref_type dr,
           const ::DDS::SampleRejectedStatus &status)
       {
         if (!this->error_listener_connected_)
@@ -201,7 +201,7 @@ namespace CIAOX11
       // on_inconsistent_topic
       void
       handle_inconsistent_topic_event (
-          IDL::traits< ::DDS::Topic >::ref_type tp,
+          IDL::traits< ::DDS::Topic>::ref_type tp,
           const ::DDS::InconsistentTopicStatus &status)
       {
         if (!this->error_listener_connected_)
@@ -237,7 +237,7 @@ namespace CIAOX11
       // on_offered_deadline_missed
       void
       handle_offered_deadline_missed_event (
-          IDL::traits< ::DDS::DataWriter >::ref_type dw,
+          IDL::traits< ::DDS::DataWriter>::ref_type dw,
           const ::DDS::OfferedDeadlineMissedStatus &status)
       {
         if (!this->error_listener_connected_)
@@ -273,7 +273,7 @@ namespace CIAOX11
       // on_offered_incompatible_qos
       void
       handle_offered_incompatible_qos_event (
-          IDL::traits< ::DDS::DataWriter >::ref_type dw,
+          IDL::traits< ::DDS::DataWriter>::ref_type dw,
           const ::DDS::OfferedIncompatibleQosStatus &status)
       {
         if (!this->error_listener_connected_)
@@ -311,7 +311,7 @@ namespace CIAOX11
       DefaultErrorEventStrategy_T& operator=(const DefaultErrorEventStrategy_T&) = delete;
       DefaultErrorEventStrategy_T& operator=(DefaultErrorEventStrategy_T&&) = delete;
 
-      IDL::traits< CCM_DDS::ConnectorStatusListener >::weak_ref_type error_listener_ {};
+      IDL::traits< CCM_DDS::ConnectorStatusListener>::weak_ref_type error_listener_ {};
       bool error_listener_connected_ {};
     };
 
@@ -320,8 +320,8 @@ namespace CIAOX11
     {
     protected:
       DefaultPortStatusEventStrategyBase (
-        IDL::traits<Components::SessionContext >::ref_type ctx,
-        IDL::traits < ::CCM_DDS::PortStatusListener >::ref_type port_status_listener)
+        IDL::traits<Components::SessionContext>::ref_type ctx,
+        IDL::traits< ::CCM_DDS::PortStatusListener>::ref_type port_status_listener)
         : DefaultEventStrategyBase (std::move(ctx))
         , status_listener_ (std::move(port_status_listener))
       {}
@@ -335,7 +335,7 @@ namespace CIAOX11
       // on_requested_deadline_missed
       void
       handle_requested_deadline_missed_event (
-          IDL::traits< ::DDS::DataReader >::ref_type dr,
+          IDL::traits< ::DDS::DataReader>::ref_type dr,
           const ::DDS::RequestedDeadlineMissedStatus &status)
       {
 #if (CIAOX11_DDS4CCM_CONTEXT_SWITCH == 1)
@@ -363,7 +363,7 @@ namespace CIAOX11
       // on_sample_lost
       void
       handle_sample_lost_event (
-          IDL::traits< ::DDS::DataReader >::ref_type dr,
+          IDL::traits< ::DDS::DataReader>::ref_type dr,
           const ::DDS::SampleLostStatus &status)
       {
 #if (CIAOX11_DDS4CCM_CONTEXT_SWITCH == 1)
@@ -393,7 +393,7 @@ namespace CIAOX11
       DefaultPortStatusEventStrategyBase& operator=(const DefaultPortStatusEventStrategyBase&) = delete;
       DefaultPortStatusEventStrategyBase& operator=(DefaultPortStatusEventStrategyBase&&) = delete;
 
-      IDL::traits < ::CCM_DDS::PortStatusListener >::weak_ref_type status_listener_ {};
+      IDL::traits< ::CCM_DDS::PortStatusListener>::weak_ref_type status_listener_ {};
     };
 
     template <typename DATA_LISTENER>
@@ -402,9 +402,9 @@ namespace CIAOX11
     {
     protected:
       DefaultDataEventStrategyBase_T (
-        IDL::traits<Components::SessionContext >::ref_type ctx,
-        IDL::traits < ::CCM_DDS::PortStatusListener >::ref_type port_status_listener,
-        typename IDL::traits < DATA_LISTENER >::ref_type data_listener)
+        IDL::traits<Components::SessionContext>::ref_type ctx,
+        IDL::traits< ::CCM_DDS::PortStatusListener>::ref_type port_status_listener,
+        typename IDL::traits< DATA_LISTENER>::ref_type data_listener)
         : DefaultPortStatusEventStrategyBase (std::move(ctx), std::move(port_status_listener))
         , data_listener_ (data_listener)
       {}
@@ -418,8 +418,8 @@ namespace CIAOX11
       // on_data_available
       template <typename LISTENER>
       void handle_data_available_event (
-          typename IDL::traits< LISTENER >::ref_type drl,
-          IDL::traits< ::DDS::DataReader >::ref_type dr)
+          typename IDL::traits< LISTENER>::ref_type drl,
+          IDL::traits< ::DDS::DataReader>::ref_type dr)
       {
         typedef DataReaderContextSwitch_T<LISTENER, DATA_LISTENER> DataReaderHandler_type;
 
@@ -448,7 +448,7 @@ namespace CIAOX11
       DefaultDataEventStrategyBase_T& operator=(const DefaultDataEventStrategyBase_T&) = delete;
       DefaultDataEventStrategyBase_T& operator=(DefaultDataEventStrategyBase_T&&) = delete;
 
-      typename IDL::traits < DATA_LISTENER >::weak_ref_type data_listener_ {};
+      typename IDL::traits< DATA_LISTENER>::weak_ref_type data_listener_ {};
     };
 
     template <typename CCM_TYPE>
@@ -458,7 +458,7 @@ namespace CIAOX11
     {
     public:
       DefaultPushConsumerEventStrategy_T (
-        typename IDL::traits<typename CCM_TYPE::context_type >::ref_type ctx)
+        typename IDL::traits<typename CCM_TYPE::context_type>::ref_type ctx)
         : DefaultDataEventStrategyBase_T<
             typename CCM_TYPE::push_consumer_traits::data_listener_type> (
                 ctx,
@@ -478,7 +478,7 @@ namespace CIAOX11
     {
     public:
       DefaultPullConsumerEventStrategy_T (
-        typename IDL::traits<typename CCM_TYPE::context_type >::ref_type ctx)
+        typename IDL::traits<typename CCM_TYPE::context_type>::ref_type ctx)
         : DefaultPortStatusEventStrategyBase (
                 ctx,
                 ctx->get_connection_pull_consumer_status ())
@@ -495,7 +495,7 @@ namespace CIAOX11
     {
     public:
       DefaultPassiveObserverEventStrategy_T (
-        typename IDL::traits<typename CCM_TYPE::context_type >::ref_type ctx)
+        typename IDL::traits<typename CCM_TYPE::context_type>::ref_type ctx)
         : DefaultPortStatusEventStrategyBase (
                 ctx,
                 ctx->get_connection_passive_observer_status ())
@@ -512,7 +512,7 @@ namespace CIAOX11
     {
     public:
       DefaultPullObserverEventStrategy_T (
-        typename IDL::traits<typename CCM_TYPE::context_type >::ref_type ctx)
+        typename IDL::traits<typename CCM_TYPE::context_type>::ref_type ctx)
         : DefaultPortStatusEventStrategyBase (
                 ctx,
                 ctx->get_connection_pull_observer_status ())
@@ -530,7 +530,7 @@ namespace CIAOX11
     {
     public:
       DefaultPushObserverEventStrategy_T (
-        typename IDL::traits<typename CCM_TYPE::context_type >::ref_type ctx)
+        typename IDL::traits<typename CCM_TYPE::context_type>::ref_type ctx)
         : DefaultDataEventStrategyBase_T<
             typename CCM_TYPE::push_observer_traits::data_listener_type> (
                 ctx,
@@ -551,7 +551,7 @@ namespace CIAOX11
     {
     public:
       DefaultPushStateObserverEventStrategy_T (
-        typename IDL::traits<typename CCM_TYPE::context_type >::ref_type ctx)
+        typename IDL::traits<typename CCM_TYPE::context_type>::ref_type ctx)
         : DefaultDataEventStrategyBase_T<
             typename CCM_TYPE::push_state_observer_traits::data_listener_type> (
                 ctx,

@@ -111,7 +111,7 @@ namespace DDSX11
       "Registered proxy with handle <" << proxy->get_instance_handle () << ">");
 
     return DDS_ProxyEntityManager::register_proxy<
-      ::IDL::traits< ::DDS::DataReader >::ref_type,
+      ::IDL::traits< ::DDS::DataReader>::ref_type,
       DDS_ProxyEntityManager::DataReaderProxies >
         (proxy, DDS_ProxyEntityManager::dr_proxies);
   }
@@ -126,7 +126,7 @@ namespace DDSX11
       "Registered proxy with handle <" << proxy->get_instance_handle () << ">");
 
     return DDS_ProxyEntityManager::register_proxy<
-      ::IDL::traits< ::DDS::DataWriter >::ref_type,
+      ::IDL::traits< ::DDS::DataWriter>::ref_type,
       DDS_ProxyEntityManager::DataWriterProxies >
         (proxy, DDS_ProxyEntityManager::dw_proxies);
   }
@@ -141,7 +141,7 @@ namespace DDSX11
       "Registered proxy with handle <" << proxy->get_instance_handle () << ">");
 
     return DDS_ProxyEntityManager::register_proxy<
-      ::IDL::traits< ::DDS::Subscriber >::ref_type,
+      ::IDL::traits< ::DDS::Subscriber>::ref_type,
       DDS_ProxyEntityManager::SubscriberProxies >
         (proxy, DDS_ProxyEntityManager::sub_proxies);
   }
@@ -156,7 +156,7 @@ namespace DDSX11
       "Registered proxy with handle <" << proxy->get_instance_handle () << ">");
 
     return DDS_ProxyEntityManager::register_proxy<
-      ::IDL::traits< ::DDS::Publisher >::ref_type,
+      ::IDL::traits< ::DDS::Publisher>::ref_type,
       DDS_ProxyEntityManager::PublisherProxies>
         (proxy, DDS_ProxyEntityManager::pub_proxies);
   }
@@ -171,7 +171,7 @@ namespace DDSX11
       "Registered proxy with handle <" << proxy->get_instance_handle () << ">");
 
     return DDS_ProxyEntityManager::register_proxy<
-      ::IDL::traits< ::DDS::Topic >::ref_type,
+      ::IDL::traits< ::DDS::Topic>::ref_type,
       DDS_ProxyEntityManager::TopicProxies>
         (proxy, DDS_ProxyEntityManager::tp_proxies);
   }
@@ -186,7 +186,7 @@ namespace DDSX11
       "Registered proxy with handle <" << proxy->get_instance_handle () << ">");
 
     return DDS_ProxyEntityManager::register_proxy<
-      ::IDL::traits< ::DDS::DomainParticipant >::ref_type,
+      ::IDL::traits< ::DDS::DomainParticipant>::ref_type,
       DDS_ProxyEntityManager::DomainParticipantProxies>
         (proxy, DDS_ProxyEntityManager::dp_proxies);
   }
@@ -201,7 +201,7 @@ namespace DDSX11
       "Unregistered proxy with handle <" << proxy->get_instance_handle () << ">");
 
     DDS_ProxyEntityManager::unregister_proxy<
-      ::IDL::traits< ::DDS::DataReader >::ref_type,
+      ::IDL::traits< ::DDS::DataReader>::ref_type,
       DDS_ProxyEntityManager::DataReaderProxies>
         (proxy, DDS_ProxyEntityManager::dr_proxies);
   }
@@ -216,7 +216,7 @@ namespace DDSX11
       "Unregistered proxy with handle <" << proxy->get_instance_handle () << ">");
 
     DDS_ProxyEntityManager::unregister_proxy<
-      ::IDL::traits< ::DDS::DataWriter >::ref_type,
+      ::IDL::traits< ::DDS::DataWriter>::ref_type,
       DDS_ProxyEntityManager::DataWriterProxies>
         (proxy, DDS_ProxyEntityManager::dw_proxies);
   }
@@ -231,7 +231,7 @@ namespace DDSX11
       "Unregistered proxy with handle <" << proxy->get_instance_handle () << ">");
 
     DDS_ProxyEntityManager::unregister_proxy<
-      ::IDL::traits< ::DDS::Subscriber >::ref_type,
+      ::IDL::traits< ::DDS::Subscriber>::ref_type,
       DDS_ProxyEntityManager::SubscriberProxies>
         (proxy, DDS_ProxyEntityManager::sub_proxies);
   }
@@ -246,7 +246,7 @@ namespace DDSX11
       "Unregistered proxy with handle <" << proxy->get_instance_handle () << ">");
 
     DDS_ProxyEntityManager::unregister_proxy<
-      ::IDL::traits< ::DDS::Publisher >::ref_type,
+      ::IDL::traits< ::DDS::Publisher>::ref_type,
       DDS_ProxyEntityManager::PublisherProxies>
         (proxy, DDS_ProxyEntityManager::pub_proxies);
   }
@@ -261,7 +261,7 @@ namespace DDSX11
       "Unregistered proxy with handle <" << proxy->get_instance_handle () << ">");
 
     DDS_ProxyEntityManager::unregister_proxy<
-      ::IDL::traits< ::DDS::Topic >::ref_type,
+      ::IDL::traits< ::DDS::Topic>::ref_type,
       DDS_ProxyEntityManager::TopicProxies>
         (proxy, DDS_ProxyEntityManager::tp_proxies);
   }
@@ -276,7 +276,7 @@ namespace DDSX11
       "Unregistered proxy with handle <" << proxy->get_instance_handle () << ">");
 
     DDS_ProxyEntityManager::unregister_proxy<
-      ::IDL::traits< ::DDS::DomainParticipant >::ref_type,
+      ::IDL::traits< ::DDS::DomainParticipant>::ref_type,
       DDS_ProxyEntityManager::DomainParticipantProxies>
         (proxy, DDS_ProxyEntityManager::dp_proxies);
   }
@@ -287,7 +287,7 @@ namespace DDSX11
   {
     std::lock_guard<std::mutex> __guard (DDS_ProxyEntityManager::dr_mutex);
     return DDS_ProxyEntityManager::get_proxy<
-      ::IDL::traits< ::DDS::DataReader >::ref_type,
+      ::IDL::traits< ::DDS::DataReader>::ref_type,
       DDS_ProxyEntityManager::DataReaderProxies >
         (native_entity, DDS_ProxyEntityManager::dr_proxies);
   }
@@ -298,7 +298,7 @@ namespace DDSX11
   {
     std::lock_guard<std::mutex> __guard (DDS_ProxyEntityManager::dw_mutex);
     return DDS_ProxyEntityManager::get_proxy<
-      ::IDL::traits< ::DDS::DataWriter >::ref_type,
+      ::IDL::traits< ::DDS::DataWriter>::ref_type,
       DDS_ProxyEntityManager::DataWriterProxies >
         (native_entity, DDS_ProxyEntityManager::dw_proxies);
   }
@@ -309,7 +309,7 @@ namespace DDSX11
   {
     std::lock_guard<std::mutex> __guard (DDS_ProxyEntityManager::sub_mutex);
     return DDS_ProxyEntityManager::get_proxy<
-      ::IDL::traits< ::DDS::Subscriber >::ref_type,
+      ::IDL::traits< ::DDS::Subscriber>::ref_type,
       DDS_ProxyEntityManager::SubscriberProxies >
         (native_entity, DDS_ProxyEntityManager::sub_proxies);
   }
@@ -320,7 +320,7 @@ namespace DDSX11
   {
     std::lock_guard<std::mutex> __guard (DDS_ProxyEntityManager::pub_mutex);
     return DDS_ProxyEntityManager::get_proxy<
-      ::IDL::traits< ::DDS::Publisher >::ref_type,
+      ::IDL::traits< ::DDS::Publisher>::ref_type,
       DDS_ProxyEntityManager::PublisherProxies >
         (native_entity, DDS_ProxyEntityManager::pub_proxies);
   }
@@ -331,7 +331,7 @@ namespace DDSX11
   {
     std::lock_guard<std::mutex> __guard (DDS_ProxyEntityManager::tp_mutex);
     return DDS_ProxyEntityManager::get_proxy<
-      ::IDL::traits< ::DDS::Topic >::ref_type,
+      ::IDL::traits< ::DDS::Topic>::ref_type,
       DDS_ProxyEntityManager::TopicProxies >
         (native_entity, DDS_ProxyEntityManager::tp_proxies);
   }
@@ -342,7 +342,7 @@ namespace DDSX11
   {
     std::lock_guard<std::mutex> __guard (DDS_ProxyEntityManager::dp_mutex);
     return DDS_ProxyEntityManager::get_proxy<
-      ::IDL::traits< ::DDS::DomainParticipant >::ref_type,
+      ::IDL::traits< ::DDS::DomainParticipant>::ref_type,
       DDS_ProxyEntityManager::DomainParticipantProxies >
         (native_entity, DDS_ProxyEntityManager::dp_proxies);
   }

@@ -27,7 +27,7 @@ namespace CIAOX11
     template <typename EVT_STRATEGY>
     void
     NDDSPublisherListener_T<EVT_STRATEGY>::on_reliable_writer_cache_changed (
-      IDL::traits< ::DDS::DataWriter >::ref_type the_Writer,
+      IDL::traits< ::DDS::DataWriter>::ref_type the_Writer,
       const ::DDS::ReliableWriterCacheChangedStatus & status)
     {
       DDS4CCM_LOG_TRACE("CIAOX11::DDS4CCM::NDDSPublisherListener_T<EVT_STRATEGY>::on_reliable_writer_cache_changed");
@@ -41,7 +41,7 @@ namespace CIAOX11
     template <typename EVT_STRATEGY>
     void
     NDDSPublisherListener_T<EVT_STRATEGY>::on_reliable_reader_activity_changed (
-      IDL::traits< ::DDS::DataWriter >::ref_type the_Writer,
+      IDL::traits< ::DDS::DataWriter>::ref_type the_Writer,
       const ::DDS::ReliableReaderActivityChangedStatus & status)
     {
       DDS4CCM_LOG_TRACE("CIAOX11::DDS4CCM::NDDSPublisherListener_T<EVT_STRATEGY>::on_reliable_reader_activity_changed");
@@ -55,7 +55,7 @@ namespace CIAOX11
     template <typename EVT_STRATEGY>
     ::DDS::StatusKind
     NDDSPublisherListener_T<EVT_STRATEGY>::get_mask (
-      IDL::traits< CCM_DDS::ConnectorStatusListener >::ref_type error_listener)
+      IDL::traits< CCM_DDS::ConnectorStatusListener>::ref_type error_listener)
     {
       ::DDS::StatusMask mask {};
 

@@ -86,7 +86,7 @@ namespace PSL_DeadlineTest_Sender_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::PSL_DeadlineTest::CCM_Sender_Context >::ref_type context_;
+    IDL::traits< ::PSL_DeadlineTest::CCM_Sender_Context>::ref_type context_;
 
     /** @name Component facets. */
     //@{

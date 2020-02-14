@@ -73,7 +73,7 @@ namespace InterMulti_Receiver_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::InterMulti::CCM_Receiver_Context >::ref_type context_;
+    IDL::traits< ::InterMulti::CCM_Receiver_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -125,7 +125,7 @@ namespace InterMulti_Receiver_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::InterMulti::CCM_Receiver_Context >::ref_type context_;
+    IDL::traits< ::InterMulti::CCM_Receiver_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -190,7 +190,7 @@ namespace InterMulti_Receiver_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::InterMulti::CCM_Receiver_Context >::ref_type context_;
+    IDL::traits< ::InterMulti::CCM_Receiver_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -224,13 +224,13 @@ namespace InterMulti_Receiver_Impl
 
     /// Factory method and getter for the do_my_one facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::InterMulti::CCM_One >::ref_type get_do_my_one () override;
+    virtual IDL::traits< ::InterMulti::CCM_One>::ref_type get_do_my_one () override;
     /// Factory method and getter for the do_my_two facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::InterMulti::CCM_Two >::ref_type get_do_my_two () override;
+    virtual IDL::traits< ::InterMulti::CCM_Two>::ref_type get_do_my_two () override;
     /// Factory method and getter for the do_my_three facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::InterMulti::CCM_Three >::ref_type get_do_my_three () override;
+    virtual IDL::traits< ::InterMulti::CCM_Three>::ref_type get_do_my_three () override;
     //@}
 
     /** @name Session component operations */
@@ -262,13 +262,13 @@ namespace InterMulti_Receiver_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::InterMulti::CCM_Receiver_Context >::ref_type context_;
+    IDL::traits< ::InterMulti::CCM_Receiver_Context>::ref_type context_;
 
     /** @name Component facets. */
     //@{
-    IDL::traits< ::InterMulti::CCM_One >::ref_type do_my_one_;
-    IDL::traits< ::InterMulti::CCM_Two >::ref_type do_my_two_;
-    IDL::traits< ::InterMulti::CCM_Three >::ref_type do_my_three_;
+    IDL::traits< ::InterMulti::CCM_One>::ref_type do_my_one_;
+    IDL::traits< ::InterMulti::CCM_Two>::ref_type do_my_two_;
+    IDL::traits< ::InterMulti::CCM_Three>::ref_type do_my_three_;
     //@}
 
     /** @name User defined members. */

@@ -53,7 +53,7 @@ namespace DDSX11
         ::DDSX11::traits< ::DDS::StringSeq, ::DDS_Native::DDS::StringSeq>::in (expression_parameters)));
   }
 
-  IDL::traits< ::DDS::Topic >::ref_type
+  IDL::traits< ::DDS::Topic>::ref_type
   DDS_ContentFilteredTopic_proxy::get_related_topic ()
   {
     DDSX11_LOG_TRACE ("DDS_ContentFilteredTopic_proxy::get_related_topic");
@@ -76,7 +76,7 @@ namespace DDSX11
       this->native_entity ()->get_name ());
   }
 
-  IDL::traits< ::DDS::DomainParticipant >::ref_type
+  IDL::traits< ::DDS::DomainParticipant>::ref_type
   DDS_ContentFilteredTopic_proxy::get_participant ()
   {
     DDSX11_LOG_TRACE ("DDS_ContentFilteredTopic_proxy::get_participant");

@@ -1,7 +1,7 @@
 
 // generated from <%= ridl_template_path %>
 <%= lem_name %>_exec_i::<%= lem_name %>_exec_i (
-  IDL::traits< <%= component.scoped_ccm_name %>_Context >::ref_type context)
+  IDL::traits< <%= component.scoped_ccm_name %>_Context>::ref_type context)
     : context_ (std::move (context))
 {
 %if !cxxname.include? 'sync'

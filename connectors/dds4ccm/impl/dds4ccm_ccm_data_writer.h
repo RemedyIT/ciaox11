@@ -33,7 +33,7 @@ namespace CIAOX11
       virtual ::DDS::ReturnCode_t
       enable () override;
 
-      virtual IDL::traits< ::DDS::StatusCondition >::ref_type
+      virtual IDL::traits< ::DDS::StatusCondition>::ref_type
       get_statuscondition () override;
 
       virtual ::DDS::StatusMask
@@ -52,16 +52,16 @@ namespace CIAOX11
 
       virtual ::DDS::ReturnCode_t
       set_listener (
-        IDL::traits< ::DDS::DataWriterListener >::ref_type ,
+        IDL::traits< ::DDS::DataWriterListener>::ref_type ,
         ::DDS::StatusMask ) override;
 
-      virtual IDL::traits< ::DDS::DataWriterListener >::ref_type
+      virtual IDL::traits< ::DDS::DataWriterListener>::ref_type
       get_listener () override;
 
-      virtual IDL::traits< ::DDS::Topic >::ref_type
+      virtual IDL::traits< ::DDS::Topic>::ref_type
       get_topic () override;
 
-      virtual IDL::traits< ::DDS::Publisher >::ref_type
+      virtual IDL::traits< ::DDS::Publisher>::ref_type
       get_publisher () override;
 
       virtual ::DDS::ReturnCode_t
@@ -97,13 +97,13 @@ namespace CIAOX11
         const ::DDS::InstanceHandle_t&) override;
 
       void set_dds_entity (
-        IDL::traits< ::DDS::DataWriter >::ref_type dw);
+        IDL::traits< ::DDS::DataWriter>::ref_type dw);
 
-      IDL::traits< ::DDS::DataWriter >::ref_type
+      IDL::traits< ::DDS::DataWriter>::ref_type
       get_dds_entity ();
 
     private:
-      IDL::traits< ::DDS::DataWriter >::ref_type dds_entity_;
+      IDL::traits< ::DDS::DataWriter>::ref_type dds_entity_;
 
       CCM_DataWriter() = delete;
       CCM_DataWriter(const CCM_DataWriter&) = delete;

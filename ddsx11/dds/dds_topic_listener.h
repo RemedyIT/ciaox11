@@ -22,7 +22,7 @@ namespace DDSX11
   public:
     /// Constructor
     DDS_TopicListener_proxy (
-      IDL::traits< ::DDS::TopicListener >::ref_type t);
+      IDL::traits< ::DDS::TopicListener>::ref_type t);
 
     /// Destructor
     virtual ~DDS_TopicListener_proxy () = default;
@@ -32,11 +32,11 @@ namespace DDSX11
       DDS_Native::DDS::Topic* the_topic,
       const DDS_Native::DDS::InconsistentTopicStatus& status) override;
 
-    IDL::traits< ::DDS::TopicListener >::ref_type
+    IDL::traits< ::DDS::TopicListener>::ref_type
     get_topic_listener ();
 
   private:
-    IDL::traits< ::DDS::TopicListener >::ref_type impl_;
+    IDL::traits< ::DDS::TopicListener>::ref_type impl_;
 
     DDS_TopicListener_proxy() = delete;
     DDS_TopicListener_proxy(const DDS_TopicListener_proxy&) = delete;

@@ -21,10 +21,10 @@ namespace DDS
     typedef <%= scoped_cxxtype %>DataWriter datawriter_type;
     typedef <%= scoped_cxxtype %>DataReader datareader_type;
 
-    typedef IDL::traits< <%= scoped_cxxtype %>DataWriter >::ref_type typed_datawriter_ref_type;
-    typedef IDL::traits< <%= scoped_cxxtype %>DataReader >::ref_type typed_datareader_ref_type;
-    typedef IDL::traits< <%= scoped_cxxtype %>DataWriter >::weak_ref_type typed_datawriter_weak_ref_type;
-    typedef IDL::traits< <%= scoped_cxxtype %>DataReader >::weak_ref_type typed_datareader_weak_ref_type;
+    typedef IDL::traits< <%= scoped_cxxtype %>DataWriter>::ref_type typed_datawriter_ref_type;
+    typedef IDL::traits< <%= scoped_cxxtype %>DataReader>::ref_type typed_datareader_ref_type;
+    typedef IDL::traits< <%= scoped_cxxtype %>DataWriter>::weak_ref_type typed_datawriter_weak_ref_type;
+    typedef IDL::traits< <%= scoped_cxxtype %>DataReader>::weak_ref_type typed_datareader_weak_ref_type;
     //@}
 
     static typed_datawriter_ref_type
@@ -48,7 +48,7 @@ namespace DDS
     /// Register the type as @a type_name to @a participant
     static ::DDS::ReturnCode_t
     register_type (
-      IDL::traits< ::DDS::DomainParticipant >::ref_type participant,
+      IDL::traits< ::DDS::DomainParticipant>::ref_type participant,
       const std::string &type_name)
     {
       return <%= cxxtype %>Factory::register_type (std::move(participant), type_name);
@@ -57,7 +57,7 @@ namespace DDS
     /// Unregister the type as @a type_name from @a participant
     static ::DDS::ReturnCode_t
     unregister_type (
-      IDL::traits< ::DDS::DomainParticipant >::ref_type participant,
+      IDL::traits< ::DDS::DomainParticipant>::ref_type participant,
       const std::string &type_name)
     {
       return <%= cxxtype %>Factory::unregister_type (std::move(participant), type_name);

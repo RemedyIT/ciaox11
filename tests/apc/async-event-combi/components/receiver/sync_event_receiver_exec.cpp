@@ -28,7 +28,7 @@ namespace Hello_Receiver_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::do_my_foo_exec_i[ctor]
   do_my_foo_exec_i::do_my_foo_exec_i (
-    IDL::traits< ::Hello::CCM_Receiver_Context >::ref_type context)
+    IDL::traits< ::Hello::CCM_Receiver_Context>::ref_type context)
     : context_ (std::move (context))
   {
   }
@@ -104,7 +104,7 @@ namespace Hello_Receiver_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::info_out_data_listener_exec_i[ctor]
   info_out_data_listener_exec_i::info_out_data_listener_exec_i (
-    IDL::traits< ::Hello::CCM_Receiver_Context >::ref_type context)
+    IDL::traits< ::Hello::CCM_Receiver_Context>::ref_type context)
     : context_ (std::move (context))
   {
   }
@@ -157,7 +157,7 @@ namespace Hello_Receiver_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::info_out_status_exec_i[ctor]
   info_out_status_exec_i::info_out_status_exec_i (
-    IDL::traits< ::Hello::CCM_Receiver_Context >::ref_type context)
+    IDL::traits< ::Hello::CCM_Receiver_Context>::ref_type context)
     : context_ (std::move (context))
   {
   }
@@ -263,7 +263,7 @@ namespace Hello_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::Receiver_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::Hello::CCM_MyFoo >::ref_type
+  IDL::traits< ::Hello::CCM_MyFoo>::ref_type
   Receiver_exec_i::get_do_my_foo ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::Receiver_exec_i[get_do_my_foo]
@@ -275,7 +275,7 @@ namespace Hello_Receiver_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::Receiver_exec_i[get_do_my_foo]
   }
 
-  IDL::traits< ::Hello::ShapeTypeInterface::CCM_Listener >::ref_type
+  IDL::traits< ::Hello::ShapeTypeInterface::CCM_Listener>::ref_type
   Receiver_exec_i::get_info_out_data_listener ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::Receiver_exec_i[get_info_out_data_listener]
@@ -287,7 +287,7 @@ namespace Hello_Receiver_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::Receiver_exec_i[get_info_out_data_listener]
   }
 
-  IDL::traits< ::CCM_DDS::CCM_PortStatusListener >::ref_type
+  IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type
   Receiver_exec_i::get_info_out_status ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::Receiver_exec_i[get_info_out_status]

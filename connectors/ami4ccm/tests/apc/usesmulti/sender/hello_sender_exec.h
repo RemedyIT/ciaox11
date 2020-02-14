@@ -110,7 +110,7 @@ namespace UsesMulti_Sender_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::UsesMulti::CCM_Sender_Context >::ref_type context_;
+    IDL::traits< ::UsesMulti::CCM_Sender_Context>::ref_type context_;
 
     /** @name Component facets. */
     //@{

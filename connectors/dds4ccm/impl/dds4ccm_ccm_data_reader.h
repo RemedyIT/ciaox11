@@ -37,7 +37,7 @@ namespace CIAOX11
       virtual ::DDS::ReturnCode_t
       enable () override;
 
-      virtual IDL::traits< ::DDS::StatusCondition >::ref_type
+      virtual IDL::traits< ::DDS::StatusCondition>::ref_type
       get_statuscondition () override;
 
       virtual ::DDS::StatusMask
@@ -46,13 +46,13 @@ namespace CIAOX11
       virtual ::DDS::InstanceHandle_t
       get_instance_handle () override;
 
-      virtual IDL::traits< ::DDS::ReadCondition >::ref_type
+      virtual IDL::traits< ::DDS::ReadCondition>::ref_type
       create_readcondition (
         ::DDS::SampleStateMask,
         ::DDS::ViewStateMask,
         ::DDS::InstanceStateMask) override;
 
-      virtual IDL::traits< ::DDS::QueryCondition >::ref_type
+      virtual IDL::traits< ::DDS::QueryCondition>::ref_type
       create_querycondition (
         ::DDS::SampleStateMask,
         ::DDS::ViewStateMask,
@@ -62,7 +62,7 @@ namespace CIAOX11
 
       virtual ::DDS::ReturnCode_t
       delete_readcondition (
-        IDL::traits< ::DDS::ReadCondition >::ref_type ) override;
+        IDL::traits< ::DDS::ReadCondition>::ref_type ) override;
 
       virtual ::DDS::ReturnCode_t
       delete_contained_entities () override;
@@ -77,16 +77,16 @@ namespace CIAOX11
 
       virtual ::DDS::ReturnCode_t
       set_listener (
-        IDL::traits< ::DDS::DataReaderListener >::ref_type,
+        IDL::traits< ::DDS::DataReaderListener>::ref_type,
         ::DDS::StatusMask) override;
 
-      virtual IDL::traits< ::DDS::DataReaderListener >::ref_type
+      virtual IDL::traits< ::DDS::DataReaderListener>::ref_type
       get_listener () override;
 
-      virtual IDL::traits< ::DDS::TopicDescription >::ref_type
+      virtual IDL::traits< ::DDS::TopicDescription>::ref_type
       get_topicdescription () override;
 
-      virtual IDL::traits< ::DDS::Subscriber >::ref_type
+      virtual IDL::traits< ::DDS::Subscriber>::ref_type
       get_subscriber () override;
 
       virtual ::DDS::ReturnCode_t
@@ -131,14 +131,14 @@ namespace CIAOX11
        */
       //@{
       void
-      set_dds_entity (IDL::traits< ::DDS::DataReader >::ref_type dr);
+      set_dds_entity (IDL::traits< ::DDS::DataReader>::ref_type dr);
 
-      IDL::traits< ::DDS::DataReader >::ref_type
+      IDL::traits< ::DDS::DataReader>::ref_type
       get_dds_entity ();
       //@}
 
     private:
-      IDL::traits< ::DDS::DataReader >::ref_type dds_entity_;
+      IDL::traits< ::DDS::DataReader>::ref_type dds_entity_;
 
       CCM_DataReader() = delete;
       CCM_DataReader(const CCM_DataReader&) = delete;
