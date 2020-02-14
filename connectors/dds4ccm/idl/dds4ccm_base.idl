@@ -22,10 +22,15 @@ module CCM_DDS
   };
 
   enum InstanceStatus {
+    /// This is the first time that the component sees that instance (the instance is then existing for the component)
     INSTANCE_CREATED,
+    /// An existing instance reenters the filter after having been filtered out
     INSTANCE_FILTERED_IN,
+    /// An existing instance is modified and stays within the filter
     INSTANCE_UPDATED,
+    /// An existing instance just stopped passing the filter
     INSTANCE_FILTERED_OUT,
+    /// An instance just stopped existing
     INSTANCE_DELETED
   };
 
