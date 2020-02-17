@@ -14,12 +14,13 @@ module Uni {
     case 6: long y;
   }; //@TopLevel()
 
-  enum _module
+  // For bar we want to use _module but that doesn't work with RTI Connext 6.0, opened case CODEGENII-1263
+  enum bar
   {
     dtLong
   };
 
-  union foo switch (_module)
+  union foo switch (bar)
   {
     case dtLong: long longData;
   }; //@TopLevel()
