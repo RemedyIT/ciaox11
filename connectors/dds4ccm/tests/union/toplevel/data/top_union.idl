@@ -13,6 +13,27 @@ module Uni {
     case 5:
     case 6: long y;
   }; //@TopLevel()
+
+  enum _module
+  {
+    dtLong
+  };
+
+  union foo switch (_module)
+  {
+    case dtLong: long longData;
+  }; //@TopLevel()
+
+  /*
+   * Doesn't work with rtiddsgen from RTI Connext 6.0, opened case 00045199
+  typedef long _interface;
+
+  union foo2 switch (long)
+  {
+    case 0: Uni::_interface longData;
+  };
+  //@TopLevel()
+  */
 };
 
 #endif /* TOP_UNION_BASE_IDL_ */
