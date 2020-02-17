@@ -20,7 +20,7 @@ module IDL
         idl_declaration=''
 
         if self.is_alias?
-          idl_declaration += "#{strip_global_scope(self._idltype.idltype_name)} #{node.name}"
+          idl_declaration += "#{strip_global_scope(self._idltype.idltype_name)} #{node.unescaped_name}"
         elsif self.is_sequence_typedef? || self.is_array_type?
           idl_declaration += 'sequence<' if self.is_sequence_typedef?
           typename = strip_global_scope(self._resolved_idltype.basetype.idltype_name)

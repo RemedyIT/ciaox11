@@ -13,6 +13,28 @@ module Uni {
     case 5:
     case 6: long y;
   }; //@TopLevel()
+
+  // For bar we want to use _module but that doesn't work with RTI Connext 6.0, opened case CODEGENII-1263
+  enum bar
+  {
+    dtLong
+  };
+
+  union foo switch (bar)
+  {
+    case dtLong: long longData;
+  }; //@TopLevel()
+
+  /*
+   * Doesn't work with rtiddsgen from RTI Connext 6.0, opened case 00045199
+  typedef long _interface;
+
+  union foo2 switch (long)
+  {
+    case 0: Uni::_interface longData;
+  };
+  //@TopLevel()
+  */
 };
 
 #endif /* TOP_UNION_BASE_IDL_ */
