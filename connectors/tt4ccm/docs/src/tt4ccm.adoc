@@ -11,14 +11,14 @@ TT4CCM is not part of the LwCCM specification but instead is an *AXCIOMA*
 specific, pluggable, feature.
 
 Applications requiring scheduling events for generating timed, implementation
-specific and possibly repeated, actions can deploy a Timed Trigger connector 
+specific and possibly repeated, actions can deploy a Timed Trigger connector
 instance collocated with specific business components and set up connections
 between the Timed Trigger connector and one or more business components.
 This will enable the components to schedule timed triggers at will specifying
 timing details and callback instances (see <<tt4ccm_details.adoc#,details>>).
 
-Using the Timed Trigger connector leads to a slightly larger deployment plan 
-but standardizes the generation of timer events (simplifying design and 
-implementation) and obviates threaded solutions in business code as well as  
+Using the Timed Trigger connector leads to a slightly larger deployment plan
+but standardizes the generation of timer events (simplifying design and
+implementation) and obviates threaded solutions in business code as well as
 integrating event handling into the common path (making execution context
 more predictable).
