@@ -226,7 +226,7 @@ namespace DDSX11
       ccm_dds_tl.release ();
 
       IDL::traits< ::DDS::Topic>::ref_type retval =
-        TAOX11_CORBA::make_reference<DDSX11::DDS_Topic_proxy>(dds_tp);
+        CORBA::make_reference<DDSX11::DDS_Topic_proxy>(dds_tp);
       DDS_ProxyEntityManager::register_topic_proxy (retval);
       if (retval)
         {
