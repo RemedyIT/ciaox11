@@ -308,7 +308,6 @@ ReadGetReceiverRunner_T<CONTEXT_TYPE, QUERY_ATTRIB>::test_non_changeable_filter 
       << std::endl;
   }
   catch_dds4ccm_test_ex (ex, test)
-
 }
 
 
