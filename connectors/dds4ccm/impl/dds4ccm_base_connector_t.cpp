@@ -134,7 +134,7 @@ DDS_Base_Connector_T<CCM_TYPE>::set_session_context (
 
 template <typename CCM_TYPE>
 bool
-DDS_Base_Connector_T<CCM_TYPE>::configuration_completed ()
+DDS_Base_Connector_T<CCM_TYPE>::configuration_completed () const
 {
   DDS4CCM_LOG_TRACE ("DDS_Base_Connector_T<CCM_TYPE>::configuration_completed");
   return this->configuration_completed_;
