@@ -32,7 +32,7 @@ namespace Hello_MyBaseEvent_Impl
     {
     }
 
-    virtual void
+    void
     on_trigger (
         IDL::traits< ::CCM_TT::TT_Timer>::ref_type timer,
         const ::CCM_TT::TT_Duration& time,

@@ -32,11 +32,6 @@ namespace CIAOX11
     }
   }
 
-  /// Implementation skeleton destructor
-  StoreReferences_i::~StoreReferences_i ()
-  {
-  }
-
   void
   StoreReferences_i::post_install (
     const ::Deployment::DeploymentPlan &plan,

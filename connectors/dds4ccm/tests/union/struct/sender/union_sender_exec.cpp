@@ -30,7 +30,6 @@ namespace Uni_Sender_Impl
     , activate_(activate)
     {}
 
-    virtual
     void
     on_trigger (
            IDL::traits< ::CCM_TT::TT_Timer>::ref_type timer,

@@ -30,7 +30,6 @@ namespace MDD_Getter_Test_Receiver_Impl
           : ciao_context_ (ctx)
      {}
 
-     virtual
      void
      on_trigger (
          IDL::traits< ::CCM_TT::TT_Timer>::ref_type timer,

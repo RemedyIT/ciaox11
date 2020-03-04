@@ -25,16 +25,16 @@ namespace CIAOX11
     StoreReferences_i ();
 
     /// Destructor
-    virtual ~StoreReferences_i ();
+    virtual ~StoreReferences_i () = default;
 
     void post_install (const ::Deployment::DeploymentPlan & plan,
                        uint32_t index,
                        const ::CORBA::Any & reference,
                        const ::CORBA::Any & exception_thrown) override;
 
-    oid post_remove (const Deployment::DeploymentPlan & plan,
-                     uint32_t instanceRef,
-                     const CORBA::Any & exception_thrown) override;
+    void post_remove (const Deployment::DeploymentPlan & plan,
+                      uint32_t instanceRef,
+                      const CORBA::Any & exception_thrown) override;
 
     void configure(const Deployment::Properties&) override;
 
