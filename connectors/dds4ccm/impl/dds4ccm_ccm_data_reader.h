@@ -34,25 +34,22 @@ namespace CIAOX11
        * IDL defined wrapper methods.
        */
       //@{
-      virtual ::DDS::ReturnCode_t
-      enable () override;
+      ::DDS::ReturnCode_t enable () override;
 
-      virtual IDL::traits< ::DDS::StatusCondition>::ref_type
+      IDL::traits< ::DDS::StatusCondition>::ref_type
       get_statuscondition () override;
 
-      virtual ::DDS::StatusMask
-      get_status_changes () override;
+      ::DDS::StatusMask get_status_changes () override;
 
-      virtual ::DDS::InstanceHandle_t
-      get_instance_handle () override;
+      ::DDS::InstanceHandle_t get_instance_handle () override;
 
-      virtual IDL::traits< ::DDS::ReadCondition>::ref_type
+      IDL::traits< ::DDS::ReadCondition>::ref_type
       create_readcondition (
         ::DDS::SampleStateMask,
         ::DDS::ViewStateMask,
         ::DDS::InstanceStateMask) override;
 
-      virtual IDL::traits< ::DDS::QueryCondition>::ref_type
+      IDL::traits< ::DDS::QueryCondition>::ref_type
       create_querycondition (
         ::DDS::SampleStateMask,
         ::DDS::ViewStateMask,
@@ -60,68 +57,65 @@ namespace CIAOX11
         const std::string & ,
         const ::DDS::StringSeq & ) override;
 
-      virtual ::DDS::ReturnCode_t
-      delete_readcondition (
-        IDL::traits< ::DDS::ReadCondition>::ref_type ) override;
+      ::DDS::ReturnCode_t
+      delete_readcondition (IDL::traits< ::DDS::ReadCondition>::ref_type ) override;
 
-      virtual ::DDS::ReturnCode_t
+      ::DDS::ReturnCode_t
       delete_contained_entities () override;
 
-      virtual ::DDS::ReturnCode_t
-      set_qos (
-        const ::DDS::DataReaderQos & ) override;
+      ::DDS::ReturnCode_t
+      set_qos (const ::DDS::DataReaderQos & ) override;
 
-      virtual ::DDS::ReturnCode_t
-      get_qos (
-        ::DDS::DataReaderQos & ) override;
+      ::DDS::ReturnCode_t
+      get_qos (::DDS::DataReaderQos & ) override;
 
-      virtual ::DDS::ReturnCode_t
+      ::DDS::ReturnCode_t
       set_listener (
         IDL::traits< ::DDS::DataReaderListener>::ref_type,
         ::DDS::StatusMask) override;
 
-      virtual IDL::traits< ::DDS::DataReaderListener>::ref_type
+      IDL::traits< ::DDS::DataReaderListener>::ref_type
       get_listener () override;
 
-      virtual IDL::traits< ::DDS::TopicDescription>::ref_type
+      IDL::traits< ::DDS::TopicDescription>::ref_type
       get_topicdescription () override;
 
-      virtual IDL::traits< ::DDS::Subscriber>::ref_type
+      IDL::traits< ::DDS::Subscriber>::ref_type
       get_subscriber () override;
 
-      virtual ::DDS::ReturnCode_t
+      ::DDS::ReturnCode_t
       get_sample_rejected_status (
         ::DDS::SampleRejectedStatus & ) override;
 
-      virtual ::DDS::ReturnCode_t
+      ::DDS::ReturnCode_t
       get_liveliness_changed_status (
         ::DDS::LivelinessChangedStatus & ) override;
 
-      virtual ::DDS::ReturnCode_t
+      ::DDS::ReturnCode_t
       get_requested_deadline_missed_status (
         ::DDS::RequestedDeadlineMissedStatus & ) override;
 
-      virtual ::DDS::ReturnCode_t
+      ::DDS::ReturnCode_t
       get_requested_incompatible_qos_status (
         ::DDS::RequestedIncompatibleQosStatus &  ) override;
 
-      virtual ::DDS::ReturnCode_t
+      ::DDS::ReturnCode_t
       get_subscription_matched_status (
         ::DDS::SubscriptionMatchedStatus & ) override;
 
-      virtual ::DDS::ReturnCode_t
+      ::DDS::ReturnCode_t
       get_sample_lost_status (
         ::DDS::SampleLostStatus & ) override;
 
-      virtual ::DDS::ReturnCode_t
+      ::DDS::ReturnCode_t
       wait_for_historical_data (
         const ::DDS::Duration_t & ) override;
 
-      virtual ::DDS::ReturnCode_t
+      ::DDS::ReturnCode_t
       get_matched_publications (
         ::DDS::InstanceHandleSeq & ) override;
 
-      virtual ::DDS::ReturnCode_t
+      ::DDS::ReturnCode_t
       get_matched_publication_data (::DDS::PublicationBuiltinTopicData & ,
         const ::DDS::InstanceHandle_t&) override;
       //@}

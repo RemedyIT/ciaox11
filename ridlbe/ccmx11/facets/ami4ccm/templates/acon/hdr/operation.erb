@@ -1,7 +1,7 @@
 
 // generated from <%= ridl_template_path %>
 % _args = arguments.dup
-virtual <%= cxx_return_type %>
+<%= cxx_return_type %>
 <%= cxxname %> (<% if _args.empty? %>) override;<% end %>
 % while !_args.empty?
 %   _arg = _args.shift

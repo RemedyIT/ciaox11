@@ -5,7 +5,7 @@
 %   all_ports.each do |_p|
 %     if _p.port_type == :receptacle
     /// Get the <%= _p.lem_name %> receptacle configuration
-    virtual ::Components::ConfigValues <%= _p.lem_name %>_configuration () override;
+    ::Components::ConfigValues <%= _p.lem_name %>_configuration () override;
 %     end
 %   end
     //@}

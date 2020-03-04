@@ -59,58 +59,43 @@ namespace Shapes_Control_comp_Impl
 
     /// Attribute rate
 
-    virtual
     uint32_t
     rate () override;
 
-    virtual
     void
-    rate (
-        uint32_t rate) override;
+    rate (uint32_t rate) override;
 
     /// Attribute max_x
 
-    virtual
     uint16_t
     max_x () override;
 
-    virtual
     void
-    max_x (
-        uint16_t max_x) override;
+    max_x (uint16_t max_x) override;
 
     /// Attribute max_y
 
-    virtual
     uint16_t
     max_y () override;
 
-    virtual
     void
-    max_y (
-        uint16_t max_y) override;
+    max_y (uint16_t max_y) override;
 
     /// Attribute max_size
 
-    virtual
     uint16_t
     max_size () override;
 
-    virtual
     void
-    max_size (
-        uint16_t max_size) override;
+    max_size (uint16_t max_size) override;
 
     /// Attribute resize_shape
 
-    virtual
     bool
     resize_shape () override;
 
-    virtual
     void
-    resize_shape (
-        bool resize_shape) override;
+    resize_shape (bool resize_shape) override;
     //@}
 
     /** @name Session component operations */
@@ -118,19 +103,19 @@ namespace Shapes_Control_comp_Impl
 
     /// Setter for container context for this component
     /// @param[in] ctx Component context
-    virtual void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
+    void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
 
     /// Component state change method to configuration_complete state
-    virtual void configuration_complete () override;
+    void configuration_complete () override;
 
     /// Component state change method to activated state
-    virtual void ccm_activate () override;
+    void ccm_activate () override;
 
     /// Component state change method to passivated state
-    virtual void ccm_passivate () override;
+    void ccm_passivate () override;
 
     /// Component state change method to removed state
-    virtual void ccm_remove () override;
+    void ccm_remove () override;
     //@}
 
     /** @name User defined public operations. */
