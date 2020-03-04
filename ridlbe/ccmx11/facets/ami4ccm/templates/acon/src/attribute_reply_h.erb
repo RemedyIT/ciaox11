@@ -1,6 +1,6 @@
 // generated from <%= ridl_template_path %>
 void
-<%= interface_type.ami4ccm_reply_handler %>::get_<%= attribute.cxxname %> (
+<%= interface_type.ami4ccm_reply_handler %>::get_<%= attribute.name %> (
   <%= attribute.scoped_cxx_return_type %> ami_return_val)
 {
   // Deactivate our CORBA AMI servant
@@ -10,7 +10,7 @@ void
 }
 
 void
-<%= interface_type.ami4ccm_reply_handler %>::get_<%= attribute.cxxname %>_excep (
+<%= interface_type.ami4ccm_reply_handler %>::get_<%= attribute.name %>_excep (
   IDL::traits<Messaging::ExceptionHolder>::ref_type excep_holder)
 {
   // Deactivate our CORBA AMI servant
@@ -23,7 +23,7 @@ void
 % unless attribute.is_readonly?
 
 void
-<%= interface_type.ami4ccm_reply_handler %>::set_<%= attribute.cxxname %> ()
+<%= interface_type.ami4ccm_reply_handler %>::set_<%= attribute.name %> ()
 {
   // Deactivate our CORBA AMI servant
   this->deactivate ();
@@ -32,7 +32,7 @@ void
 }
 
 void
-<%= interface_type.ami4ccm_reply_handler %>::set_<%= attribute.cxxname %>_excep (
+<%= interface_type.ami4ccm_reply_handler %>::set_<%= attribute.name %>_excep (
   IDL::traits<Messaging::ExceptionHolder>::ref_type excep_holder)
 {
   // Deactivate our CORBA AMI servant

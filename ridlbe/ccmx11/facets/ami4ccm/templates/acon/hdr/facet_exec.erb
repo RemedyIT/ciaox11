@@ -35,7 +35,6 @@ private:
   IDL::traits< <%= component.scoped_ccm_name %>_Context>::ref_type context_;
 % if !cxxname.include? 'sync'
 % _derived_scoped_interface = interface_type.scoped_cxxname.sub('AMI4CCM_','')
-% _derived_interface = interface_type.cxxname.sub('AMI4CCM_','')
 % _reply_handler_interface = interface_type.ami4ccm_ReplyHandler.sub('AMI4CCM_','')
 
   /// AMI POA that is used to register any CORBA AMI reply handlers
