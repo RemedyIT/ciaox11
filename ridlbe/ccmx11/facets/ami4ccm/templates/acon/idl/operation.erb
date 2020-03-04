@@ -1,12 +1,12 @@
 // generated from <%= ridl_template_path %>
 % _args = arguments.dup
 % _arg_string = "in #{interface.ami4ccm_ReplyHandler} ami4ccm_reply_handler"
-% _op_start = "void sendc_#{cxxname} ("
+% _op_start = "void sendc_#{name} ("
 % while !_args.empty?
 %   _arg = _args.shift
 %   if (_arg.direction == :in) || (_arg.direction == :inout)
 %     _arg_string << ",\n" << (' ' * _op_start.size)
-%     _arg_string << "#{_arg.idl_arg_type} #{_arg.cxxname}"
+%     _arg_string << "#{_arg.idl_arg_type} #{_arg.unescaped_name}"
 %   end
 % end
 <%= _op_start %><%= _arg_string %>);

@@ -7,7 +7,7 @@
 %   _arg_string = "in #{idltype_name} ami_return_val"
 %   _arg_string_empty = 0
 % end
-% _op_start = "void #{cxxname} ("
+% _op_start = "void #{unescaped_name} ("
 % while !_args.empty?
 %   _arg = _args.shift
 %   if (_arg.direction == :out) || (_arg.direction == :inout)
@@ -18,9 +18,9 @@
 %       end_line << (' ' * _op_start.size)
 %     end
 %     _arg_string << end_line
-%     _arg_string << "#{_arg.idl_arg_type_rph} #{_arg.cxxname}"
+%     _arg_string << "#{_arg.idl_arg_type_rph} #{_arg.unescaped_name}"
 %     _arg_string_empty = 0
 %   end
 % end
 <%= _op_start %><%= _arg_string %>);
-void <%= cxxname %>_excep (in ::CCM_AMI::ExceptionHolder excep_holder);
+void <%= name %>_excep (in ::CCM_AMI::ExceptionHolder excep_holder);

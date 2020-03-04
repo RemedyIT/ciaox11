@@ -8,7 +8,7 @@
 %       if _p.is_multiple?
     else if (name == "sendc_<%= _p.lem_name %>")
     {
-      IDL::traits< ::<%= _p.interface_type.scoped_ami4ccm_cxxname %>>::ref_type c_ = IDL::traits< ::<%= _p.interface_type.scoped_ami4ccm_cxxname %>>::narrow (std::move(connection));
+      IDL::traits< ::<%= _p.interface_type.scoped_ami4ccm_name %>>::ref_type c_ = IDL::traits< ::<%= _p.interface_type.scoped_ami4ccm_name %>>::narrow (std::move(connection));
 
       {
         std::lock_guard<std::mutex> lock (this->context_tbl_lock_);
@@ -20,7 +20,7 @@
 %       else
     else if (name == "sendc_<%= _p.lem_name %>")
     {
-      this->sendc_<%= _p.cxxname %>_ = IDL::traits< ::<%= _p.interface_type.scoped_ami4ccm_cxxname %>>::narrow (std::move(connection));
+      this->sendc_<%= _p.cxxname %>_ = IDL::traits< ::<%= _p.interface_type.scoped_ami4ccm_name %>>::narrow (std::move(connection));
     }
 %       end
 %     end
