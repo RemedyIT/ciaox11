@@ -27,16 +27,16 @@ namespace CIAOX11
     /// Destructor
     virtual ~StoreReferences_i ();
 
-    virtual void post_install (const ::Deployment::DeploymentPlan & plan,
-                          uint32_t index,
-                          const ::CORBA::Any & reference,
-                          const ::CORBA::Any & exception_thrown) override;
+    void post_install (const ::Deployment::DeploymentPlan & plan,
+                       uint32_t index,
+                       const ::CORBA::Any & reference,
+                       const ::CORBA::Any & exception_thrown) override;
 
-    virtual void post_remove (const Deployment::DeploymentPlan & plan,
-                          uint32_t instanceRef,
-                          const CORBA::Any & exception_thrown) override;
+    oid post_remove (const Deployment::DeploymentPlan & plan,
+                     uint32_t instanceRef,
+                     const CORBA::Any & exception_thrown) override;
 
-    virtual void configure(const Deployment::Properties&) override;
+    void configure(const Deployment::Properties&) override;
 
   private:
     IDL::traits<CORBA::ORB>::ref_type orb_;
@@ -53,10 +53,9 @@ namespace CIAOX11
     /// Destructor
     virtual ~ReferenceLookup_i ();
 
-    virtual
-      void pre_connect (::Deployment::DeploymentPlan & plan,
-                        uint32_t connection_index,
-                       CORBA::Any & provided_reference) override;
+    void pre_connect (::Deployment::DeploymentPlan & plan,
+                      uint32_t connection_index,
+                      CORBA::Any & provided_reference) override;
 
   private:
     IDL::traits<CORBA::ORB>::ref_type orb_;

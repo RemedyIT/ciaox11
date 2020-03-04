@@ -84,19 +84,19 @@ namespace InterOutArgsT_Sender_Impl
 
     /// Setter for container context for this component
     /// @param[in] ctx Component context
-    virtual void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
+    void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
 
     /// Component state change method to configuration_complete state
-    virtual void configuration_complete () override;
+    void configuration_complete () override;
 
     /// Component state change method to activated state
-    virtual void ccm_activate () override;
+    void ccm_activate () override;
 
     /// Component state change method to passivated state
-    virtual void ccm_passivate () override;
+    void ccm_passivate () override;
 
     /// Component state change method to removed state
-    virtual void ccm_remove () override;
+    void ccm_remove () override;
     //@}
 
     /** @name User defined public operations. */
@@ -149,47 +149,39 @@ namespace InterOutArgsT_Sender_Impl
 
     virtual ~AMI4CCM_MyFooReplyHandler_run_my_foo_i ();
 
-    virtual
     void
     var_outs (
         const std::string& answer,
         double d_cmd,
         int32_t l_cmd) override;
 
-    virtual
     void
     var_outs_excep (
-        IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
-    virtual
+        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
     void
     var_div_outs (
         const ::InterOutArgsT::TestTopic& test_topic,
         const ::InterOutArgsT::TopicString& topic_str,
         const ::InterOutArgsT::TopicArray& topic_arr) override;
 
-    virtual
     void
     var_div_outs_excep (
-        IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
-    virtual
+        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
     void
     var_div2_outs (
         const ::InterOutArgsT::X_Union& x_uni,
         const ::InterOutArgsT::test_seq& seq) override;
 
-    virtual
     void
     var_div2_outs_excep (
-        IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
-    virtual
+        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
     void
     enum_out (
         ::InterOutArgsT::test_enum out_test) override;
 
-    virtual
     void
     enum_out_excep (
-        IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
 
     /** @name User defined public operations. */
     //@{

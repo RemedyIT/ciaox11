@@ -20,7 +20,7 @@
 
   void
   <%= port.ami4ccm_rh_executor %>::<%= operation.cxxname %>_excep (
-    IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder)
+    IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder)
   {
 % _regen_value = "#{operation.cxxname}_excep"
 % _implementation=[]

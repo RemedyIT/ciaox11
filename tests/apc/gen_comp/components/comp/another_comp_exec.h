@@ -53,7 +53,6 @@ namespace AnotherComp_Impl
     /** @name Operations from ::Foo::CCM_MyFoo */
     //@{
 
-    virtual
     void
     hello (
         int32_t& answer) override;
@@ -102,7 +101,7 @@ namespace AnotherComp_Impl
 
     /// Factory method and getter for the run_my_bar_foo_prov facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::Foo::CCM_MyFoo>::ref_type get_run_my_bar_foo_prov () override;
+    IDL::traits< ::Foo::CCM_MyFoo>::ref_type get_run_my_bar_foo_prov () override;
     //@}
 
     /** @name Supported attributes. */
@@ -110,75 +109,56 @@ namespace AnotherComp_Impl
 
     /// Attribute my_sen_attrib
 
-    virtual
     int32_t
     my_sen_attrib () override;
 
-    virtual
     void
-    my_sen_attrib (
-        int32_t my_sen_attrib) override;
+    my_sen_attrib (int32_t my_sen_attrib) override;
 
     /// Attribute TestBar
 
-    virtual
     ::Foo::Bar
     TestBar () override;
 
-    virtual
     void
-    TestBar (
-        const ::Foo::Bar& TestBar) override;
+    TestBar (const ::Foo::Bar& TestBar) override;
 
     /// Attribute my_sen_attrib_2
 
-    virtual
     int32_t
     my_sen_attrib_2 () override;
 
     /// Attribute my_sen_attrib_3
 
-    virtual
     int32_t
     my_sen_attrib_3 () override;
 
-    virtual
     void
-    my_sen_attrib_3 (
-        int32_t my_sen_attrib_3) override;
+    my_sen_attrib_3 (int32_t my_sen_attrib_3) override;
 
     /// Attribute TestBar_2
 
-    virtual
     ::Foo::Bar
     TestBar_2 () override;
 
-    virtual
     void
-    TestBar_2 (
-        const ::Foo::Bar& TestBar_2) override;
+    TestBar_2 (const ::Foo::Bar& TestBar_2) override;
 
     /// Attribute TestBarBar
 
-    virtual
     ::Foo::Bar_in_Bar
     TestBarBar () override;
 
-    virtual
     void
-    TestBarBar (
-        const ::Foo::Bar_in_Bar& TestBarBar) override;
+    TestBarBar (const ::Foo::Bar_in_Bar& TestBarBar) override;
 
     /// Attribute TestBarNestedBar
 
-    virtual
     ::Foo::Bar_with_nested_bar
     TestBarNestedBar () override;
 
-    virtual
     void
-    TestBarNestedBar (
-        const ::Foo::Bar_with_nested_bar& TestBarNestedBar) override;
+    TestBarNestedBar (const ::Foo::Bar_with_nested_bar& TestBarNestedBar) override;
     //@}
 
     /** @name Session component operations */
@@ -186,19 +166,19 @@ namespace AnotherComp_Impl
 
     /// Setter for container context for this component
     /// @param[in] ctx Component context
-    virtual void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
+    void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
 
     /// Component state change method to configuration_complete state
-    virtual void configuration_complete () override;
+    void configuration_complete () override;
 
     /// Component state change method to activated state
-    virtual void ccm_activate () override;
+    void ccm_activate () override;
 
     /// Component state change method to passivated state
-    virtual void ccm_passivate () override;
+    void ccm_passivate () override;
 
     /// Component state change method to removed state
-    virtual void ccm_remove () override;
+    void ccm_remove () override;
     //@}
 
     /** @name User defined public operations. */

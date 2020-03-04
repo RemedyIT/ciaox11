@@ -299,7 +299,7 @@ namespace UsesSM_Sender_Impl
 
   void
   AMI4CCM_OneReplyHandler_m_run_my_one_i::foo_excep (
-    IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder)
+    IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : UsesSM_Sender_Impl::AMI4CCM_OneReplyHandler_m_run_my_one_i[foo_excep]
     // Your code here
@@ -347,7 +347,7 @@ namespace UsesSM_Sender_Impl
 
   void
   AMI4CCM_TwoReplyHandler_s_run_my_two_i::bar_excep (
-    IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder)
+    IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : UsesSM_Sender_Impl::AMI4CCM_TwoReplyHandler_s_run_my_two_i[bar_excep]
     // Your code here

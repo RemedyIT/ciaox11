@@ -93,19 +93,19 @@ namespace InterInOutT_Sender_Impl
 
     /// Setter for container context for this component
     /// @param[in] ctx Component context
-    virtual void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
+    void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
 
     /// Component state change method to configuration_complete state
-    virtual void configuration_complete () override;
+    void configuration_complete () override;
 
     /// Component state change method to activated state
-    virtual void ccm_activate () override;
+    void ccm_activate () override;
 
     /// Component state change method to passivated state
-    virtual void ccm_passivate () override;
+    void ccm_passivate () override;
 
     /// Component state change method to removed state
-    virtual void ccm_remove () override;
+    void ccm_remove () override;
     //@}
 
     /** @name User defined public operations. */
@@ -158,28 +158,23 @@ namespace InterInOutT_Sender_Impl
 
     virtual ~AMI4CCM_MyFooReplyHandler_run_my_foo_i ();
 
-    virtual
     void
     foo (
         int32_t ami_return_val,
         int32_t cmd,
         const std::string& answer) override;
 
-    virtual
     void
     foo_excep (
-        IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
-    virtual
+        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
     void
     var_ins (
         const std::string& answer,
         double cmd) override;
 
-    virtual
     void
     var_ins_excep (
-        IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
-    virtual
+        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
     void
     var_div_ins (
         const ::InterInOutT::TestTopic& test_topic,
@@ -187,31 +182,26 @@ namespace InterInOutT_Sender_Impl
         const ::InterInOutT::TestArray& topic_arr,
         const std::string& answer) override;
 
-    virtual
     void
     var_div_ins_excep (
-        IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
-    virtual
+        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
     void
     var_div2_ins (
         const ::InterInOutT::X_Union& topic_union,
         const ::InterInOutT::test_seq& seq,
         const std::string& answer) override;
 
-    virtual
     void
     var_div2_ins_excep (
-        IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
-    virtual
+        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
     void
     enum_in (
         const std::string& answer,
         ::InterInOutT::test_enum in_test) override;
 
-    virtual
     void
     enum_in_excep (
-        IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
 
     /** @name User defined public operations. */
     //@{

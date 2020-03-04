@@ -91,19 +91,19 @@ namespace Hello_Sender_Impl
 
     /// Setter for container context for this component
     /// @param[in] ctx Component context
-    virtual void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
+    void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
 
     /// Component state change method to configuration_complete state
-    virtual void configuration_complete () override;
+    void configuration_complete () override;
 
     /// Component state change method to activated state
-    virtual void ccm_activate () override;
+    void ccm_activate () override;
 
     /// Component state change method to passivated state
-    virtual void ccm_passivate () override;
+    void ccm_passivate () override;
 
     /// Component state change method to removed state
-    virtual void ccm_remove () override;
+    void ccm_remove () override;
     //@}
 
     /** @name User defined public operations. */
@@ -156,60 +156,46 @@ namespace Hello_Sender_Impl
 
     virtual ~AMI4CCM_MyFooReplyHandler_run_my_foo_i ();
 
-    virtual
     void
     foo (
         int32_t ami_return_val,
         const std::string& answer) override;
 
-    virtual
     void
     foo_excep (
-        IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
-    virtual
+        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
     void
     hello (
         int32_t answer) override;
 
-    virtual
     void
     hello_excep (
-        IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
-    virtual
+        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
     void
     do_something () override;
 
-    virtual
     void
     do_something_excep (
-        IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
 
 
-    virtual
     void
-    get_rw_attrib(
-        int16_t _rw_attrib) override;
-    virtual
+    get_rw_attrib(int16_t _rw_attrib) override;
     void
     get_rw_attrib_excep (
-        IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
 
-    virtual
     void
     set_rw_attrib() override;
-    virtual
     void
     set_rw_attrib_excep (
-        IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
 
-    virtual
     void
-    get_ro_attrib(
-        int16_t _ro_attrib) override;
-    virtual
+    get_ro_attrib(int16_t _ro_attrib) override;
     void
     get_ro_attrib_excep (
-        IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
 
     /** @name User defined public operations. */
     //@{

@@ -337,7 +337,7 @@ namespace InterReturnT_Sender_Impl
 
   void
   AMI4CCM_MyFooReplyHandler_run_my_foo_i::ret_void_excep (
-    IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder)
+    IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : InterReturnT_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[ret_void_excep]
     // Your code here
@@ -370,7 +370,7 @@ namespace InterReturnT_Sender_Impl
 
   void
   AMI4CCM_MyFooReplyHandler_run_my_foo_i::ret_long_excep (
-    IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder)
+    IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : InterReturnT_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[ret_long_excep]
     // Your code here
@@ -403,7 +403,7 @@ namespace InterReturnT_Sender_Impl
 
   void
   AMI4CCM_MyFooReplyHandler_run_my_foo_i::ret_double_excep (
-    IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder)
+    IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : InterReturnT_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[ret_double_excep]
     // Your code here
@@ -443,7 +443,7 @@ namespace InterReturnT_Sender_Impl
 
   void
   AMI4CCM_MyFooReplyHandler_run_my_foo_i::ret_struct_excep (
-    IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder)
+    IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : InterReturnT_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[ret_struct_excep]
     // Your code here
@@ -476,7 +476,7 @@ namespace InterReturnT_Sender_Impl
 
   void
   AMI4CCM_MyFooReplyHandler_run_my_foo_i::ret_array_excep (
-    IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder)
+    IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : InterReturnT_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[ret_array_excep]
     // Your code here
@@ -516,7 +516,7 @@ namespace InterReturnT_Sender_Impl
 
   void
   AMI4CCM_MyFooReplyHandler_run_my_foo_i::ret_seq_excep (
-    IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder)
+    IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : InterReturnT_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[ret_seq_excep]
     // Your code here
@@ -549,7 +549,7 @@ namespace InterReturnT_Sender_Impl
 
   void
   AMI4CCM_MyFooReplyHandler_run_my_foo_i::ret_union_excep (
-    IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder)
+    IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : InterReturnT_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[ret_union_excep]
     // Your code here
@@ -582,7 +582,7 @@ namespace InterReturnT_Sender_Impl
 
   void
   AMI4CCM_MyFooReplyHandler_run_my_foo_i::ret_enum_excep (
-    IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder)
+    IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : InterReturnT_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[ret_enum_excep]
     // Your code here

@@ -41,7 +41,7 @@ namespace CIAOX11
             IDL::traits< ::DDS::Entity>::ref_type entity,
             ::DDS::StatusKind status_kind);
         virtual ~OnUnexpectedStatusHandler () = default;
-        virtual int handle_exception (ACE_HANDLE fc = ACE_INVALID_HANDLE);
+        int handle_exception (ACE_HANDLE fc = ACE_INVALID_HANDLE) override;
         static void handle_event (
             IDL::traits< ::CCM_DDS::ConnectorStatusListener>::ref_type csl,
             IDL::traits< ::DDS::Entity>::ref_type entity,
@@ -67,7 +67,7 @@ namespace CIAOX11
             IDL::traits< ::DDS::DataReader>::ref_type dr,
             const ::DDS::RequestedIncompatibleQosStatus &status);
         virtual ~OnRequestedIncompatibleQosHandler () = default;
-        virtual int handle_exception (ACE_HANDLE fc = ACE_INVALID_HANDLE);
+        int handle_exception (ACE_HANDLE fc = ACE_INVALID_HANDLE) override;
         static void handle_event (
             IDL::traits< ::CCM_DDS::ConnectorStatusListener>::ref_type csl,
             IDL::traits< ::DDS::DataReader>::ref_type dr,
@@ -93,7 +93,7 @@ namespace CIAOX11
             IDL::traits< ::DDS::DataReader>::ref_type dr,
             const ::DDS::SampleRejectedStatus &status);
         virtual ~OnSampleRejectedHandler () = default;
-        virtual int handle_exception (ACE_HANDLE fc = ACE_INVALID_HANDLE);
+        int handle_exception (ACE_HANDLE fc = ACE_INVALID_HANDLE) override;
         static void handle_event (
             IDL::traits< ::CCM_DDS::ConnectorStatusListener>::ref_type csl,
             IDL::traits< ::DDS::DataReader>::ref_type dr,
@@ -119,7 +119,7 @@ namespace CIAOX11
             IDL::traits< ::DDS::Topic>::ref_type tp,
             const ::DDS::InconsistentTopicStatus &status);
         virtual ~OnInconsistentTopicHandler () = default;
-        virtual int handle_exception (ACE_HANDLE fc = ACE_INVALID_HANDLE);
+        int handle_exception (ACE_HANDLE fc = ACE_INVALID_HANDLE) override;
         static void handle_event (
             IDL::traits< ::CCM_DDS::ConnectorStatusListener>::ref_type csl,
             IDL::traits< ::DDS::Topic>::ref_type tp,
@@ -145,7 +145,7 @@ namespace CIAOX11
             IDL::traits< ::DDS::DataWriter>::ref_type dw,
             const ::DDS::OfferedDeadlineMissedStatus &status);
         virtual ~OnOfferedDeadlineMissedHandler () = default;
-        virtual int handle_exception (ACE_HANDLE fc = ACE_INVALID_HANDLE);
+        int handle_exception (ACE_HANDLE fc = ACE_INVALID_HANDLE) override;
         static void handle_event (
             IDL::traits< ::CCM_DDS::ConnectorStatusListener>::ref_type csl,
             IDL::traits< ::DDS::DataWriter>::ref_type dw,
@@ -171,7 +171,7 @@ namespace CIAOX11
             IDL::traits< ::DDS::DataWriter>::ref_type dw,
             const ::DDS::OfferedIncompatibleQosStatus &status);
         virtual ~OnOfferedIncompatibleQoSHandler () = default;
-        virtual int handle_exception (ACE_HANDLE fc = ACE_INVALID_HANDLE);
+        int handle_exception (ACE_HANDLE fc = ACE_INVALID_HANDLE) override;
         static void handle_event (
             IDL::traits< ::CCM_DDS::ConnectorStatusListener>::ref_type csl,
             IDL::traits< ::DDS::DataWriter>::ref_type dw,
@@ -197,7 +197,7 @@ namespace CIAOX11
             IDL::traits< ::DDS::DataReader>::ref_type dr,
             const ::DDS::RequestedDeadlineMissedStatus &status);
         virtual ~OnRequestedDeadlineMissedHandler () = default;
-        virtual int handle_exception (ACE_HANDLE fc = ACE_INVALID_HANDLE);
+        int handle_exception (ACE_HANDLE fc = ACE_INVALID_HANDLE) override;
         static void handle_event (
             IDL::traits< ::CCM_DDS::PortStatusListener>::ref_type psl,
             IDL::traits< ::DDS::DataReader>::ref_type dr,
@@ -223,7 +223,7 @@ namespace CIAOX11
             IDL::traits< ::DDS::DataReader>::ref_type dr,
             const ::DDS::SampleLostStatus &status);
         virtual ~OnSampleLostHandler () = default;
-        virtual int handle_exception (ACE_HANDLE fc = ACE_INVALID_HANDLE);
+        int handle_exception (ACE_HANDLE fc = ACE_INVALID_HANDLE) override;
         static void handle_event (
             IDL::traits< ::CCM_DDS::PortStatusListener>::ref_type psl,
             IDL::traits< ::DDS::DataReader>::ref_type dr,

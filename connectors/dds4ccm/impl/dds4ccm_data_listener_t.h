@@ -40,8 +40,7 @@ namespace CIAOX11
 
       /// Publishes data to the user defined facet. Invokes on_one_data of on_many_data
       /// based on what's the end user configured in the DataListenerControl.
-      virtual void
-      on_data_available_i (
+      void on_data_available_i (
         IDL::traits< ::DDS::DataReader>::ref_type rdr,
         typename IDL::traits<typename CCM_TYPE::data_listener_type>::ref_type listener) override;
 

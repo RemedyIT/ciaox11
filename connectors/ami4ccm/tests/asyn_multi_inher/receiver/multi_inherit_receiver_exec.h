@@ -56,7 +56,6 @@ namespace InterMulti_Receiver_Impl
     /** @name Operations from ::InterMulti::CCM_One */
     //@{
 
-    virtual
     int32_t
     foo (
         const std::string& in_str,
@@ -109,7 +108,6 @@ namespace InterMulti_Receiver_Impl
     /** @name Operations from ::InterMulti::CCM_Two */
     //@{
 
-    virtual
     void
     bar (
         int32_t cmd,
@@ -161,20 +159,17 @@ namespace InterMulti_Receiver_Impl
     /** @name Operations from ::InterMulti::CCM_Three */
     //@{
 
-    virtual
     void
     plus (
         int32_t cmd,
         std::string& answer) override;
 
-    virtual
     int32_t
     foo (
         const std::string& in_str,
         int32_t cmd,
         std::string& answer) override;
 
-    virtual
     void
     bar (
         int32_t cmd,
@@ -224,13 +219,13 @@ namespace InterMulti_Receiver_Impl
 
     /// Factory method and getter for the do_my_one facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::InterMulti::CCM_One>::ref_type get_do_my_one () override;
+    IDL::traits< ::InterMulti::CCM_One>::ref_type get_do_my_one () override;
     /// Factory method and getter for the do_my_two facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::InterMulti::CCM_Two>::ref_type get_do_my_two () override;
+    IDL::traits< ::InterMulti::CCM_Two>::ref_type get_do_my_two () override;
     /// Factory method and getter for the do_my_three facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::InterMulti::CCM_Three>::ref_type get_do_my_three () override;
+    IDL::traits< ::InterMulti::CCM_Three>::ref_type get_do_my_three () override;
     //@}
 
     /** @name Session component operations */
@@ -238,19 +233,19 @@ namespace InterMulti_Receiver_Impl
 
     /// Setter for container context for this component
     /// @param[in] ctx Component context
-    virtual void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
+    void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
 
     /// Component state change method to configuration_complete state
-    virtual void configuration_complete () override;
+    void configuration_complete () override;
 
     /// Component state change method to activated state
-    virtual void ccm_activate () override;
+    void ccm_activate () override;
 
     /// Component state change method to passivated state
-    virtual void ccm_passivate () override;
+    void ccm_passivate () override;
 
     /// Component state change method to removed state
-    virtual void ccm_remove () override;
+    void ccm_remove () override;
     //@}
 
     /** @name User defined public operations. */

@@ -117,19 +117,19 @@ namespace InterMulti_Sender_Impl
 
     /// Setter for container context for this component
     /// @param[in] ctx Component context
-    virtual void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
+    void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
 
     /// Component state change method to configuration_complete state
-    virtual void configuration_complete () override;
+    void configuration_complete () override;
 
     /// Component state change method to activated state
-    virtual void ccm_activate () override;
+    void ccm_activate () override;
 
     /// Component state change method to passivated state
-    virtual void ccm_passivate () override;
+    void ccm_passivate () override;
 
     /// Component state change method to removed state
-    virtual void ccm_remove () override;
+    void ccm_remove () override;
     //@}
 
     /** @name User defined public operations. */
@@ -185,16 +185,14 @@ namespace InterMulti_Sender_Impl
 
     virtual ~AMI4CCM_OneReplyHandler_run_my_one_i ();
 
-    virtual
     void
     foo (
         int32_t ami_return_val,
         const std::string& answer) override;
 
-    virtual
     void
     foo_excep (
-        IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
 
     /** @name User defined public operations. */
     //@{
@@ -228,15 +226,13 @@ namespace InterMulti_Sender_Impl
 
     virtual ~AMI4CCM_TwoReplyHandler_run_my_two_i ();
 
-    virtual
     void
     bar (
         const std::string& answer) override;
 
-    virtual
     void
     bar_excep (
-        IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
 
     /** @name User defined public operations. */
     //@{
@@ -270,34 +266,28 @@ namespace InterMulti_Sender_Impl
 
     virtual ~AMI4CCM_ThreeReplyHandler_run_my_three_i ();
 
-    virtual
     void
     plus (
         const std::string& answer) override;
 
-    virtual
     void
     plus_excep (
-        IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
-    virtual
+        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
     void
     foo (
         int32_t ami_return_val,
         const std::string& answer) override;
 
-    virtual
     void
     foo_excep (
-        IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
-    virtual
+        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
     void
     bar (
         const std::string& answer) override;
 
-    virtual
     void
     bar_excep (
-        IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
 
     /** @name User defined public operations. */
     //@{

@@ -12,7 +12,7 @@
 
   void
   <%= port.ami4ccm_rh_executor %>::get_<%= attribute.cxxname %>_excep (
-    IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder)
+    IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder)
   {
 % _regen_value = "get_#{attribute.cxxname}_excep"
 % _implementation=[]
@@ -33,7 +33,7 @@
 
   void
   <%= port.ami4ccm_rh_executor %>::set_<%= attribute.cxxname %>_excep (
-    IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder)
+    IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder)
   {
 % _regen_value = "set_#{attribute.cxxname}_excep"
 % _implementation=[]

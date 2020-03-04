@@ -64,13 +64,11 @@ namespace Hello_Sender_Impl
     /** @name Operations from ::Hello::CCM_MyFoo */
     //@{
 
-    virtual
     int32_t
     foo (
         const std::string& in_str,
         std::string& answer) override;
 
-    virtual
     void
     hello (
         int32_t& answer) override;
@@ -79,16 +77,12 @@ namespace Hello_Sender_Impl
     /** @name Attributes from ::Hello::CCM_MyFoo */
     //@{
 
-    virtual
     int16_t
     rw_attrib () override;
 
-    virtual
     void
-    rw_attrib (
-        int16_t rw_attrib) override;
+    rw_attrib (int16_t rw_attrib) override;
 
-    virtual
     int16_t
     ro_attrib () override;
     //@}
@@ -146,7 +140,6 @@ namespace Hello_Sender_Impl
     /** @name Operations from ::Foo::CCM_MyFoo */
     //@{
 
-    virtual
     void
     hello (
         int32_t& answer) override;
@@ -195,10 +188,10 @@ namespace Hello_Sender_Impl
 
     /// Factory method and getter for the run_my_foo_prov facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::Hello::CCM_MyFoo>::ref_type get_run_my_foo_prov () override;
+    IDL::traits< ::Hello::CCM_MyFoo>::ref_type get_run_my_foo_prov () override;
     /// Factory method and getter for the run_my_bar_foo_prov facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::Foo::CCM_MyFoo>::ref_type get_run_my_bar_foo_prov () override;
+    IDL::traits< ::Foo::CCM_MyFoo>::ref_type get_run_my_bar_foo_prov () override;
     //@}
 
     /** @name Supported attributes. */
@@ -206,42 +199,32 @@ namespace Hello_Sender_Impl
 
     /// Attribute my_sen_attrib
 
-    virtual
     int32_t
     my_sen_attrib () override;
 
-    virtual
     void
-    my_sen_attrib (
-        int32_t my_sen_attrib) override;
+    my_sen_attrib (int32_t my_sen_attrib) override;
 
     /// Attribute my_sen_attrib2
 
-    virtual
     int16_t
     my_sen_attrib2 () override;
 
     /// Attribute Test
 
-    virtual
     ::Bar
     Test () override;
 
-    virtual
     void
-    Test (
-        const ::Bar& Test) override;
+    Test (const ::Bar& Test) override;
 
     /// Attribute TestBar
 
-    virtual
     ::Foo::Bar
     TestBar () override;
 
-    virtual
     void
-    TestBar (
-        const ::Foo::Bar& TestBar) override;
+    TestBar (const ::Foo::Bar& TestBar) override;
     //@}
 
     /** @name Session component operations */
@@ -249,19 +232,19 @@ namespace Hello_Sender_Impl
 
     /// Setter for container context for this component
     /// @param[in] ctx Component context
-    virtual void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
+    void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
 
     /// Component state change method to configuration_complete state
-    virtual void configuration_complete () override;
+    void configuration_complete () override;
 
     /// Component state change method to activated state
-    virtual void ccm_activate () override;
+    void ccm_activate () override;
 
     /// Component state change method to passivated state
-    virtual void ccm_passivate () override;
+    void ccm_passivate () override;
 
     /// Component state change method to removed state
-    virtual void ccm_remove () override;
+    void ccm_remove () override;
     //@}
 
     /** @name User defined public operations. */

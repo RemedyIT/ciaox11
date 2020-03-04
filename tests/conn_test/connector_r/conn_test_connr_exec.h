@@ -59,36 +59,27 @@ namespace Hello_MyBaseEvent_Impl
 
     /// Attribute consumer_port_attrib
 
-    virtual
     int16_t
     consumer_port_attrib () override;
 
-    virtual
     void
-    consumer_port_attrib (
-        int16_t consumer_port_attrib) override;
+    consumer_port_attrib (int16_t consumer_port_attrib) override;
 
     /// Attribute consumer_port_seq_attrib
 
-    virtual
     ::Hello::long_seq
     consumer_port_seq_attrib () override;
 
-    virtual
     void
-    consumer_port_seq_attrib (
-        const ::Hello::long_seq& consumer_port_seq_attrib) override;
+    consumer_port_seq_attrib (const ::Hello::long_seq& consumer_port_seq_attrib) override;
 
     /// Attribute conn_attrib
 
-    virtual
     int16_t
     conn_attrib () override;
 
-    virtual
     void
-    conn_attrib (
-        int16_t conn_attrib) override;
+    conn_attrib (int16_t conn_attrib) override;
     //@}
 
     /** @name Session component operations */
@@ -96,19 +87,19 @@ namespace Hello_MyBaseEvent_Impl
 
     /// Setter for container context for this component
     /// @param[in] ctx Component context
-    virtual void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
+    void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
 
     /// Component state change method to configuration_complete state
-    virtual void configuration_complete () override;
+    void configuration_complete () override;
 
     /// Component state change method to activated state
-    virtual void ccm_activate () override;
+    void ccm_activate () override;
 
     /// Component state change method to passivated state
-    virtual void ccm_passivate () override;
+    void ccm_passivate () override;
 
     /// Component state change method to removed state
-    virtual void ccm_remove () override;
+    void ccm_remove () override;
     //@}
 
     /** @name User defined public operations. */

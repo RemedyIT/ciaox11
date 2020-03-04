@@ -59,25 +59,19 @@ namespace Hello_Sender_Impl
 
     /// Attribute ojee
 
-    virtual
     int16_t
     ojee () override;
 
-    virtual
     void
-    ojee (
-        int16_t ojee) override;
+    ojee (int16_t ojee) override;
 
     /// Attribute ojeetje
 
-    virtual
     int16_t
     ojeetje () override;
 
-    virtual
     void
-    ojeetje (
-        int16_t ojeetje) override;
+    ojeetje (int16_t ojeetje) override;
     //@}
 
     /** @name Session component operations */
@@ -85,19 +79,19 @@ namespace Hello_Sender_Impl
 
     /// Setter for container context for this component
     /// @param[in] ctx Component context
-    virtual void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
+    void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
 
     /// Component state change method to configuration_complete state
-    virtual void configuration_complete () override;
+    void configuration_complete () override;
 
     /// Component state change method to activated state
-    virtual void ccm_activate () override;
+    void ccm_activate () override;
 
     /// Component state change method to passivated state
-    virtual void ccm_passivate () override;
+    void ccm_passivate () override;
 
     /// Component state change method to removed state
-    virtual void ccm_remove () override;
+    void ccm_remove () override;
     //@}
 
     /** @name User defined public operations. */

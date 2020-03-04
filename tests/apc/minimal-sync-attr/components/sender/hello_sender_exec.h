@@ -64,7 +64,6 @@ namespace Hello_Sender_Impl
     /** @name Operations from ::Hello::CCM_PortFooS */
     //@{
 
-    virtual
     int32_t
     hello (
         int32_t answer) override;
@@ -113,7 +112,7 @@ namespace Hello_Sender_Impl
 
     /// Factory method and getter for the foo_port_s_foo_prov facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::Hello::CCM_PortFooS>::ref_type get_foo_port_s_foo_prov () override;
+    IDL::traits< ::Hello::CCM_PortFooS>::ref_type get_foo_port_s_foo_prov () override;
     //@}
 
     /** @name Supported attributes. */
@@ -121,69 +120,51 @@ namespace Hello_Sender_Impl
 
     /// Attribute my_attribute
 
-    virtual
     ::Hello::foo_seq
     my_attribute () override;
 
-    virtual
     void
-    my_attribute (
-        const ::Hello::foo_seq& my_attribute) override;
+    my_attribute (const ::Hello::foo_seq& my_attribute) override;
 
     /// Attribute my_attrib2
 
-    virtual
     ::Hello::foo_long
     my_attrib2 () override;
 
-    virtual
     void
-    my_attrib2 (
-        ::Hello::foo_long my_attrib2) override;
+    my_attrib2 (::Hello::foo_long my_attrib2) override;
 
     /// Attribute my_attrib3
 
-    virtual
     ::Hello::bar_seq
     my_attrib3 () override;
 
-    virtual
     void
-    my_attrib3 (
-        const ::Hello::bar_seq& my_attrib3) override;
+    my_attrib3 (const ::Hello::bar_seq& my_attrib3) override;
 
     /// Attribute my_attrib4
 
-    virtual
     ::Hello::foo_struct
     my_attrib4 () override;
 
-    virtual
     void
-    my_attrib4 (
-        const ::Hello::foo_struct& my_attrib4) override;
+    my_attrib4 (const ::Hello::foo_struct& my_attrib4) override;
 
     /// Attribute my_attrib5
 
-    virtual
     int32_t
     my_attrib5 () override;
 
-    virtual
     void
-    my_attrib5 (
-        int32_t my_attrib5) override;
+    my_attrib5 (int32_t my_attrib5) override;
 
     /// Attribute my_attrib6
 
-    virtual
     ::Hello::out_seq
     my_attrib6 () override;
 
-    virtual
     void
-    my_attrib6 (
-        const ::Hello::out_seq& my_attrib6) override;
+    my_attrib6 (const ::Hello::out_seq& my_attrib6) override;
     //@}
 
     /** @name Session component operations */
@@ -191,19 +172,19 @@ namespace Hello_Sender_Impl
 
     /// Setter for container context for this component
     /// @param[in] ctx Component context
-    virtual void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
+    void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
 
     /// Component state change method to configuration_complete state
-    virtual void configuration_complete () override;
+    void configuration_complete () override;
 
     /// Component state change method to activated state
-    virtual void ccm_activate () override;
+    void ccm_activate () override;
 
     /// Component state change method to passivated state
-    virtual void ccm_passivate () override;
+    void ccm_passivate () override;
 
     /// Component state change method to removed state
-    virtual void ccm_remove () override;
+    void ccm_remove () override;
     //@}
 
     /** @name User defined public operations. */

@@ -27,17 +27,17 @@ namespace CIAOX11
     virtual ~Service_Registry_i () = default;
 
     /// @copydoc CIAOX11::Service_Registry::install_service
-    virtual void
+    void
     install_service (
       const std::string& service_id,
       IDL::traits<CORBA::Object>::ref_type objref) override;
 
     /// @copydoc CIAOX11::Service_Registry::uninstall_service
-    virtual IDL::traits<CORBA::Object>::ref_type
+    IDL::traits<CORBA::Object>::ref_type
     uninstall_service (const std::string& service_id) override;
 
     /// @copydoc CIAOX11::Service_Registry::resolve_service
-    virtual IDL::traits<CORBA::Object>::ref_type
+    IDL::traits<CORBA::Object>::ref_type
     resolve_service (const std::string& service_id) override;
 
   private:

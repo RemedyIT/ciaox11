@@ -249,7 +249,7 @@ namespace UsesMulti_Sender_Impl
 
   void
   AMI4CCM_OneReplyHandler_run_my_um_one_i::foo_excep (
-    IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder)
+    IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : UsesMulti_Sender_Impl::AMI4CCM_OneReplyHandler_run_my_um_one_i[foo_excep]
     // Your code here

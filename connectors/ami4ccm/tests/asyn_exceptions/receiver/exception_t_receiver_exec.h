@@ -56,12 +56,10 @@ namespace ExceptionT_Receiver_Impl
     /** @name Operations from ::ExceptionT::CCM_MyFoo */
     //@{
 
-    virtual
     int32_t
     foo (
         int32_t foo_in) override;
 
-    virtual
     void
     hello (
         int32_t& answer) override;
@@ -70,47 +68,33 @@ namespace ExceptionT_Receiver_Impl
     /** @name Attributes from ::ExceptionT::CCM_MyFoo */
     //@{
 
-    virtual
     int16_t
     rw_attrib_g_s () override;
 
-    virtual
     void
-    rw_attrib_g_s (
-        int16_t rw_attrib_g_s) override;
+    rw_attrib_g_s (int16_t rw_attrib_g_s) override;
 
-    virtual
     int16_t
     rw_attrib () override;
 
-    virtual
     void
-    rw_attrib (
-        int16_t rw_attrib) override;
+    rw_attrib (int16_t rw_attrib) override;
 
-    virtual
     int16_t
     rw_attrib_g () override;
 
-    virtual
     void
-    rw_attrib_g (
-        int16_t rw_attrib_g) override;
+    rw_attrib_g (int16_t rw_attrib_g) override;
 
-    virtual
     int16_t
     rw_attrib_s () override;
 
-    virtual
     void
-    rw_attrib_s (
-        int16_t rw_attrib_s) override;
+    rw_attrib_s (int16_t rw_attrib_s) override;
 
-    virtual
     int16_t
     ro_attrib_r () override;
 
-    virtual
     int16_t
     ro_attrib () override;
     //@}
@@ -174,7 +158,7 @@ namespace ExceptionT_Receiver_Impl
 
     /// Factory method and getter for the do_my_foo facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::ExceptionT::CCM_MyFoo>::ref_type get_do_my_foo () override;
+    IDL::traits< ::ExceptionT::CCM_MyFoo>::ref_type get_do_my_foo () override;
     //@}
 
     /** @name Session component operations */
@@ -182,19 +166,19 @@ namespace ExceptionT_Receiver_Impl
 
     /// Setter for container context for this component
     /// @param[in] ctx Component context
-    virtual void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
+    void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
 
     /// Component state change method to configuration_complete state
-    virtual void configuration_complete () override;
+    void configuration_complete () override;
 
     /// Component state change method to activated state
-    virtual void ccm_activate () override;
+    void ccm_activate () override;
 
     /// Component state change method to passivated state
-    virtual void ccm_passivate () override;
+    void ccm_passivate () override;
 
     /// Component state change method to removed state
-    virtual void ccm_remove () override;
+    void ccm_remove () override;
     //@}
 
     /** @name User defined public operations. */

@@ -304,7 +304,7 @@ namespace InterInArgsT_Sender_Impl
 
   void
   AMI4CCM_MyFooReplyHandler_run_my_foo_i::foo_excep (
-    IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder)
+    IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : InterInArgsT_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[foo_excep]
     try
@@ -337,7 +337,7 @@ namespace InterInArgsT_Sender_Impl
 
   void
   AMI4CCM_MyFooReplyHandler_run_my_foo_i::var_ins_excep (
-    IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder)
+    IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : InterInArgsT_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[var_ins_excep]
     excep_holder->raise_exception ();
@@ -357,7 +357,7 @@ namespace InterInArgsT_Sender_Impl
 
   void
   AMI4CCM_MyFooReplyHandler_run_my_foo_i::var_div_ins_excep (
-    IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder)
+    IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : InterInArgsT_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[var_div_ins_excep]
     // Your code here
@@ -378,7 +378,7 @@ namespace InterInArgsT_Sender_Impl
 
   void
   AMI4CCM_MyFooReplyHandler_run_my_foo_i::var_div2_ins_excep (
-    IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder)
+    IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : InterInArgsT_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[var_div2_ins_excep]
     // Your code here
@@ -399,7 +399,7 @@ namespace InterInArgsT_Sender_Impl
 
   void
   AMI4CCM_MyFooReplyHandler_run_my_foo_i::enum_in_excep (
-    IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder)
+    IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : InterInArgsT_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[enum_in_excep]
     // Your code here

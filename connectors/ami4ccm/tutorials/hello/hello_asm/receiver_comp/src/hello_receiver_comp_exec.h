@@ -55,13 +55,11 @@ namespace Hello_Receiver_comp_Impl
     /** @name Operations from ::Hello::CCM_MyFoo_obj */
     //@{
 
-    virtual
     int32_t
     foo (
         const std::string& in_str,
         std::string& answer) override;
 
-    virtual
     void
     hello (
         int32_t& answer) override;
@@ -70,16 +68,12 @@ namespace Hello_Receiver_comp_Impl
     /** @name Attributes from ::Hello::CCM_MyFoo_obj */
     //@{
 
-    virtual
     int16_t
     rw_attrib () override;
 
-    virtual
     void
-    rw_attrib (
-        int16_t rw_attrib) override;
+    rw_attrib (int16_t rw_attrib) override;
 
-    virtual
     int16_t
     ro_attrib () override;
     //@}
@@ -135,7 +129,7 @@ namespace Hello_Receiver_comp_Impl
 
     /// Factory method and getter for the do_my_foo facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::Hello::CCM_MyFoo_obj>::ref_type get_do_my_foo () override;
+    IDL::traits< ::Hello::CCM_MyFoo_obj>::ref_type get_do_my_foo () override;
     //@}
 
     /** @name Session component operations */
@@ -143,19 +137,19 @@ namespace Hello_Receiver_comp_Impl
 
     /// Setter for container context for this component
     /// @param[in] ctx Component context
-    virtual void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
+    void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
 
     /// Component state change method to configuration_complete state
-    virtual void configuration_complete () override;
+    void configuration_complete () override;
 
     /// Component state change method to activated state
-    virtual void ccm_activate () override;
+    void ccm_activate () override;
 
     /// Component state change method to passivated state
-    virtual void ccm_passivate () override;
+    void ccm_passivate () override;
 
     /// Component state change method to removed state
-    virtual void ccm_remove () override;
+    void ccm_remove () override;
     //@}
 
     /** @name User defined public operations. */
