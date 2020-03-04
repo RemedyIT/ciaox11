@@ -26,7 +26,7 @@ namespace CCM_CORBA
     //@{
     /// Factory method and getter for the srr_facet facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual typename IDL::traits<INTERFACE_TYPE>::ref_type
+    typename IDL::traits<INTERFACE_TYPE>::ref_type
     get_srr_facet () override;
     //@}
 
@@ -37,25 +37,20 @@ namespace CCM_CORBA
     /// @param[in] ctx Component context
     /// Registers this CORBA connector with the POA, creates the CORBA servant
     /// for the srr_facet_ and registers this servant with the POA.
-    virtual void
-    set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
+    void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
 
     /// Component state change method to configuration_complete state
-    virtual void
-    configuration_complete () override;
+    void configuration_complete () override;
 
     /// Component state change method to activated state
-    virtual void
-    ccm_activate () override;
+    void ccm_activate () override;
 
     /// Component state change method to passivated state
-    virtual void
-    ccm_passivate () override;
+    void ccm_passivate () override;
 
     /// Component state change method to removed state
     /// Deactivates the srr_facet and this CORBA connector in the POA
-    virtual void
-    ccm_remove () override;
+    void ccm_remove () override;
     //@}
 
   protected:

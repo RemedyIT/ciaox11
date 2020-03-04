@@ -53,13 +53,11 @@ namespace Uni_Receiver_Impl
     /** @name Operations from ::Uni::TopUnionConnector::CCM_Listener */
     //@{
 
-    virtual
     void
     on_one_data (
         const ::Uni::TopUnionMessage& datum,
         const ::CCM_DDS::ReadInfo& info) override;
 
-    virtual
     void
     on_many_data (
         const ::Uni::TopUnionMessageSeq& data,
@@ -111,13 +109,11 @@ namespace Uni_Receiver_Impl
     /** @name Operations from ::CCM_DDS::CCM_PortStatusListener */
     //@{
 
-    virtual
     void
     on_requested_deadline_missed (
         IDL::traits< ::DDS::DataReader>::ref_type the_reader,
         const ::DDS::RequestedDeadlineMissedStatus& status) override;
 
-    virtual
     void
     on_sample_lost (
         IDL::traits< ::DDS::DataReader>::ref_type the_reader,
@@ -167,10 +163,10 @@ namespace Uni_Receiver_Impl
 
     /// Factory method and getter for the info_out_data_listener facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::Uni::TopUnionConnector::CCM_Listener>::ref_type get_info_out_data_listener () override;
+    IDL::traits< ::Uni::TopUnionConnector::CCM_Listener>::ref_type get_info_out_data_listener () override;
     /// Factory method and getter for the info_out_status facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type get_info_out_status () override;
+    IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type get_info_out_status () override;
     //@}
 
     /** @name Session component operations */
@@ -178,19 +174,19 @@ namespace Uni_Receiver_Impl
 
     /// Setter for container context for this component
     /// @param[in] ctx Component context
-    virtual void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
+    void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
 
     /// Component state change method to configuration_complete state
-    virtual void configuration_complete () override;
+    void configuration_complete () override;
 
     /// Component state change method to activated state
-    virtual void ccm_activate () override;
+    void ccm_activate () override;
 
     /// Component state change method to passivated state
-    virtual void ccm_passivate () override;
+    void ccm_passivate () override;
 
     /// Component state change method to removed state
-    virtual void ccm_remove () override;
+    void ccm_remove () override;
     //@}
 
     /** @name User defined public operations. */
