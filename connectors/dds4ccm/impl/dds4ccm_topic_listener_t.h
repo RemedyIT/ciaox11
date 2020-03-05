@@ -24,7 +24,7 @@ namespace CIAOX11
       explicit TopicListener_T (const EVT_STRATEGY &evs);
       virtual ~TopicListener_T () = default;
 
-      virtual void
+      void
       on_inconsistent_topic (
         IDL::traits< ::DDS::Topic>::ref_type the_topic,
         const ::DDS::InconsistentTopicStatus & status) override;

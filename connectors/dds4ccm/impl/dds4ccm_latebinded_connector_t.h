@@ -35,7 +35,7 @@ public:
    * @name topic_name attribute
    * Setter for the topic_name attribute
    */
-  virtual void
+  void
   topic_name (
     const std::string &topic_name) override;
 
@@ -44,9 +44,9 @@ public:
    * Life cycle methods of the DDS4CCM connector
    */
   //@{
-  virtual void configuration_complete () override;
-  virtual void ccm_activate () override;
-  virtual void ccm_remove () override;
+  void configuration_complete () override;
+  void ccm_activate () override;
+  void ccm_remove () override;
   //@}
 
   virtual void do_configuration_complete () = 0;

@@ -28,22 +28,22 @@ namespace CIAOX11
       /// Destructor
       virtual ~PublisherListener_T () = default;
 
-      virtual void
+      void
       on_offered_deadline_missed (
         IDL::traits< ::DDS::DataWriter>::ref_type the_Writer,
         const ::DDS::OfferedDeadlineMissedStatus & status) override;
 
-      virtual void
+      void
       on_liveliness_lost (
         IDL::traits< ::DDS::DataWriter>::ref_type the_Writer,
         const ::DDS::LivelinessLostStatus & status) override;
 
-      virtual void
+      void
       on_offered_incompatible_qos (
         IDL::traits< ::DDS::DataWriter>::ref_type the_Writer,
         const ::DDS::OfferedIncompatibleQosStatus & status) override;
 
-      virtual void
+      void
       on_publication_matched (
         IDL::traits< ::DDS::DataWriter>::ref_type the_Writer,
         const ::DDS::PublicationMatchedStatus & status) override;

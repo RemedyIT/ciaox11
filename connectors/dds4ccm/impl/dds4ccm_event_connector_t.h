@@ -39,10 +39,10 @@ public:
    * DDS_Write operations
    */
   //@{
-  virtual typename IDL::traits<typename CCM_TYPE::supplier_traits::data_type>::ref_type
+  typename IDL::traits<typename CCM_TYPE::supplier_traits::data_type>::ref_type
   get_supplier_data () override;
 
-  virtual typename IDL::traits<typename CCM_TYPE::supplier_traits::dds_entity_type>::ref_type
+  typename IDL::traits<typename CCM_TYPE::supplier_traits::dds_entity_type>::ref_type
   get_supplier_dds_entity () override;
   //@}
 
@@ -51,22 +51,22 @@ public:
    * DDS_Get operations
    */
   //@{
-  virtual typename IDL::traits<typename CCM_TYPE::pull_consumer_traits::data_type>::ref_type
+  typename IDL::traits<typename CCM_TYPE::pull_consumer_traits::data_type>::ref_type
   get_pull_consumer_data () override;
 
-  virtual typename IDL::traits<typename CCM_TYPE::pull_consumer_traits::fresh_data_type>::ref_type
+  typename IDL::traits<typename CCM_TYPE::pull_consumer_traits::fresh_data_type>::ref_type
   get_pull_consumer_fresh_data () override;
 
-  virtual IDL::traits< ::DDS::CCM_DataReader>::ref_type
+  IDL::traits< ::DDS::CCM_DataReader>::ref_type
   get_pull_consumer_dds_entity () override;
 
-  virtual IDL::traits< CCM_DDS::CCM_ContentFilterSetting>::ref_type
+  IDL::traits< CCM_DDS::CCM_ContentFilterSetting>::ref_type
   get_pull_consumer_filter_config () override;
 
-  virtual CCM_DDS::QueryFilter
+  CCM_DDS::QueryFilter
   pull_consumer_filter () override;
 
-  virtual void
+  void
   pull_consumer_filter (
     const CCM_DDS::QueryFilter &filter) override;
   //@}
@@ -76,22 +76,22 @@ public:
    * DDS_Listen operations
    */
   //@{
-  virtual typename IDL::traits<typename CCM_TYPE::push_consumer_traits::data_type>::ref_type
+  typename IDL::traits<typename CCM_TYPE::push_consumer_traits::data_type>::ref_type
   get_push_consumer_data () override;
 
-  virtual IDL::traits< CCM_DDS::CCM_DataListenerControl>::ref_type
+  IDL::traits< CCM_DDS::CCM_DataListenerControl>::ref_type
   get_push_consumer_data_control () override;
 
-  virtual IDL::traits< ::DDS::CCM_DataReader>::ref_type
+  IDL::traits< ::DDS::CCM_DataReader>::ref_type
   get_push_consumer_dds_entity () override;
 
-  virtual IDL::traits< CCM_DDS::CCM_ContentFilterSetting>::ref_type
+  IDL::traits< CCM_DDS::CCM_ContentFilterSetting>::ref_type
   get_push_consumer_filter_config () override;
 
-  virtual ::CCM_DDS::QueryFilter
+  ::CCM_DDS::QueryFilter
   push_consumer_filter () override;
 
-  virtual void
+  void
   push_consumer_filter (
     const ::CCM_DDS::QueryFilter & filter) override;
   //@}
@@ -102,7 +102,7 @@ public:
    * in the DDS_LateBinded_Connector_T class.
    */
   //@{
-  virtual void ccm_passivate () override;
+  void ccm_passivate () override;
   //@}
 
 private:

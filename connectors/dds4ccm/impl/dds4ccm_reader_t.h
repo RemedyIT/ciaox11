@@ -27,33 +27,33 @@ namespace CIAOX11
       explicit Reader_T (IDL::traits<CORBA::Object>::weak_ref_type component);
       virtual ~Reader_T () = default;
 
-      virtual void
+      void
       read_last (
         TOPIC_SEQ_TYPE &instances,
         CCM_DDS::ReadInfoSeq &infos) override;
 
-      virtual void
+      void
       read_all (
         TOPIC_SEQ_TYPE &instances,
         ::CCM_DDS::ReadInfoSeq &infos) override;
 
-      virtual void
+      void
       read_one_last (
         TOPIC_TYPE &an_instance,
         CCM_DDS::ReadInfo &info,
         const ::DDS::InstanceHandle_t& instance_handle) override;
 
-      virtual void
+      void
       read_one_all (
         const TOPIC_TYPE &an_instance,
         TOPIC_SEQ_TYPE &instances,
         CCM_DDS::ReadInfoSeq &infos,
         const ::DDS::InstanceHandle_t& instance_handle) override;
 
-      virtual ::CCM_DDS::QueryFilter
+      ::CCM_DDS::QueryFilter
       query ()  override;
 
-      virtual void
+      void
       query (const CCM_DDS::QueryFilter &filter) override;
 
       void set_dds_reader (

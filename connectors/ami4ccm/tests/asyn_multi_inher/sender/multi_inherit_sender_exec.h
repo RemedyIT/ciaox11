@@ -76,7 +76,7 @@ namespace InterMulti_Sender_Impl
     public:
       synch_one_generator ();
       void set_context(IDL::traits<InterMulti::CCM_Sender_Context>::ref_type context);
-      virtual int svc () override;
+      int svc () override;
 
     private:
       IDL::traits<InterMulti::CCM_Sender_Context>::ref_type ciao_context_;
@@ -87,7 +87,7 @@ namespace InterMulti_Sender_Impl
      public:
        synch_three_generator ();
        void set_context(IDL::traits<InterMulti::CCM_Sender_Context>::ref_type context);
-       virtual int svc () override;
+       int svc () override;
 
      private:
        IDL::traits<InterMulti::CCM_Sender_Context>::ref_type ciao_context_;

@@ -21,10 +21,10 @@ public:
   virtual ~CCM_DDS_StateListenerControl_T () = default;
 
   /// Get the is_filter_interpreted
-  virtual bool is_filter_interpreted () override;
+  bool is_filter_interpreted () override;
 
   /// Set the is_filter_interpreted
-  virtual void is_filter_interpreted (bool is_filter_interpreted) override;
+  void is_filter_interpreted (bool is_filter_interpreted) override;
 
 private:
   std::atomic_bool is_filter_interpreted_ { false };

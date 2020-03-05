@@ -50,7 +50,7 @@ namespace CIAOX11
         *         max_delivered_data are returned. The default value for
         *         that attribute is UNLIMITED (0)
         */
-      virtual bool
+      bool
       get_many (
         TOPIC_SEQ_TYPE& instances,
         ::CCM_DDS::ReadInfoSeq& infos) override;
@@ -65,7 +65,7 @@ namespace CIAOX11
       * from DDS.
       * @retval true When 'wait' is triggered.
       */
-      virtual bool
+      bool
       get_one (
         TOPIC_TYPE &an_instance,
         ::CCM_DDS::ReadInfo &info) override;
@@ -75,8 +75,8 @@ namespace CIAOX11
         * Accessors for time_out
         */
       //@{
-      virtual ::DDS::Duration_t time_out () override;
-      virtual void time_out (const ::DDS::Duration_t & time_out) override;
+      ::DDS::Duration_t time_out () override;
+      void time_out (const ::DDS::Duration_t & time_out) override;
       //@}
 
       /**
@@ -84,10 +84,10 @@ namespace CIAOX11
         * Accessors for max_delivered_data
         */
       //@{
-      virtual ::CCM_DDS::DataNumber_t
+      ::CCM_DDS::DataNumber_t
       max_delivered_data () override;
 
-      virtual void
+      void
       max_delivered_data (
         ::CCM_DDS::DataNumber_t max_delivered_data) override;
       //@}
