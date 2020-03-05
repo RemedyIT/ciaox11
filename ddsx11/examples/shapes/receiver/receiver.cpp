@@ -21,37 +21,37 @@ class ShapeTypeListener final :
   public DDS::traits<ShapeType>::datareaderlistener_type
 {
 public:
-  virtual void
+  void
   on_requested_deadline_missed (
     DDS::traits<ShapeType>::datareader_ref_type the_reader,
     const DDS::RequestedDeadlineMissedStatus& status) override;
 
-  virtual void
+  void
   on_requested_incompatible_qos (
     DDS::traits<ShapeType>::datareader_ref_type the_reader,
     const DDS::RequestedIncompatibleQosStatus& status) override;
 
-  virtual void
+  void
   on_sample_rejected (
     DDS::traits<ShapeType>::datareader_ref_type the_reader,
     const DDS::SampleRejectedStatus& status) override;
 
-  virtual void
+  void
   on_liveliness_changed (
     DDS::traits<ShapeType>::datareader_ref_type the_reader,
     const DDS::LivelinessChangedStatus& status) override;
 
-  virtual void
+  void
   on_subscription_matched (
       DDS::traits<ShapeType>::datareader_ref_type the_reader,
       const DDS::SubscriptionMatchedStatus& status) override;
 
-  virtual void
+  void
   on_sample_lost (
       DDS::traits<ShapeType>::datareader_ref_type the_reader,
       const DDS::SampleLostStatus& status) override;
 
-  virtual void
+  void
   on_data_available (
     DDS::traits<ShapeType>::datareader_ref_type the_reader) override;
 };

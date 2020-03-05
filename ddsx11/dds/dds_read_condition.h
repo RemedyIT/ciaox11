@@ -37,19 +37,19 @@ namespace DDSX11
     /// Destructor
     virtual ~DDS_ReadCondition_proxy () = default;
 
-    virtual bool
+    bool
     get_trigger_value () override;
 
-    virtual ::DDS::SampleStateMask
+    ::DDS::SampleStateMask
     get_sample_state_mask () override;
 
-    virtual ::DDS::ViewStateMask
+    ::DDS::ViewStateMask
     get_view_state_mask () override;
 
-    virtual ::DDS::InstanceStateMask
+    ::DDS::InstanceStateMask
     get_instance_state_mask () override;
 
-    virtual IDL::traits< ::DDS::DataReader>::ref_type
+    IDL::traits< ::DDS::DataReader>::ref_type
     get_datareader () override;
 
   private:

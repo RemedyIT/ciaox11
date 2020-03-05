@@ -31,12 +31,12 @@ namespace DDSX11
        * NDDS specific callback methods.
        */
       //@{
-      virtual void
+      void
       on_reliable_reader_activity_changed (
         DDS_Native::DDS::DataWriter *the_writer,
         const DDS_Native::DDS::ReliableReaderActivityChangedStatus & status) override;
 
-      virtual void
+      void
       on_reliable_writer_cache_changed (
         DDS_Native::DDS::DataWriter *the_writer,
         const DDS_Native::DDS::ReliableWriterCacheChangedStatus & status) override;
