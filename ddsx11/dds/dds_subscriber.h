@@ -39,79 +39,79 @@ namespace DDSX11
     /// Destructor
     virtual ~DDS_Subscriber_proxy () = default;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     enable () override;
 
-    virtual IDL::traits< ::DDS::StatusCondition>::ref_type
+    IDL::traits< ::DDS::StatusCondition>::ref_type
     get_statuscondition () override;
 
-    virtual ::DDS::StatusMask
+    ::DDS::StatusMask
     get_status_changes () override;
 
-    virtual ::DDS::InstanceHandle_t
+    ::DDS::InstanceHandle_t
     get_instance_handle () override;
 
-    virtual IDL::traits< ::DDS::DataReader>::ref_type
+    IDL::traits< ::DDS::DataReader>::ref_type
     create_datareader (
       IDL::traits< ::DDS::TopicDescription>::ref_type a_topic,
       const ::DDS::DataReaderQos & qos,
       IDL::traits< ::DDS::DataReaderListener>::ref_type a_listener,
       ::DDS::StatusMask mask) override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     delete_datareader (
       IDL::traits< ::DDS::DataReader>::ref_type a_datareader) override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     delete_contained_entities () override;
 
-    virtual IDL::traits< ::DDS::DataReader>::ref_type
+    IDL::traits< ::DDS::DataReader>::ref_type
     lookup_datareader (const std::string &topic_name) override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     get_datareaders (
       ::DDS::DataReaderSeq & readers,
       ::DDS::SampleStateMask sample_states,
       ::DDS::ViewStateMask view_states,
       ::DDS::InstanceStateMask instance_states) override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     notify_datareaders () override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     set_qos (
       const ::DDS::SubscriberQos & qos) override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     get_qos (
       ::DDS::SubscriberQos & qos) override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     set_listener (
       IDL::traits< ::DDS::SubscriberListener>::ref_type a_listener,
       ::DDS::StatusMask mask) override;
 
-    virtual IDL::traits< ::DDS::SubscriberListener>::ref_type
+    IDL::traits< ::DDS::SubscriberListener>::ref_type
     get_listener () override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     begin_access () override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     end_access () override;
 
-    virtual IDL::traits< ::DDS::DomainParticipant>::ref_type
+    IDL::traits< ::DDS::DomainParticipant>::ref_type
     get_participant () override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     set_default_datareader_qos (
       const ::DDS::DataReaderQos & qos) override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     get_default_datareader_qos (
       ::DDS::DataReaderQos & qos) override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     copy_from_topic_qos (
       ::DDS::DataReaderQos & a_datareader_qos,
       const ::DDS::TopicQos & a_impl_qos) override;

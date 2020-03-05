@@ -28,12 +28,12 @@ namespace CIAOX11
 
       virtual ~NDDSPublisherListener_T () = default;
 
-      virtual void
+      void
       on_reliable_writer_cache_changed (
         IDL::traits< ::DDS::DataWriter>::ref_type the_writer,
         const ::DDS::ReliableWriterCacheChangedStatus & status) override;
 
-      virtual void
+      void
       on_reliable_reader_activity_changed (
         IDL::traits< ::DDS::DataWriter>::ref_type the_Writer,
         const ::DDS::ReliableReaderActivityChangedStatus & status) override;

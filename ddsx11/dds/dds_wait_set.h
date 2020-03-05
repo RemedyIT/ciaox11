@@ -42,7 +42,7 @@ namespace DDSX11
       *
       * active_conditions will contain conditions DDS has found.
       */
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     wait (
       ::DDS::ConditionSeq & active_conditions,
       const ::DDS::Duration_t & timeout) override;
@@ -51,7 +51,7 @@ namespace DDSX11
       * Attaches a condition to the waitset. 'wait' will be waiting for
       * this condition.
       */
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     attach_condition (
       IDL::traits< ::DDS::Condition>::ref_type cond) override;
 
@@ -59,14 +59,14 @@ namespace DDSX11
       * Detaches a condition from the waitset. 'wait' won't be waiting
       * for this condition anymore.
       */
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     detach_condition (
       IDL::traits< ::DDS::Condition>::ref_type cond) override;
 
     /**
       * Retrieves a list of attached conditions.
       */
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     get_conditions (
       ::DDS::ConditionSeq & attached_conditions) override;
 

@@ -28,36 +28,36 @@ namespace DDSX11
     /// Destructor
     virtual ~DDS_DataReaderListener_proxy () = default;
 
-    virtual void
+    void
     on_requested_deadline_missed (
       DDS_Native::DDS::DataReader* the_reader,
       const DDS_Native::DDS::RequestedDeadlineMissedStatus& status) override;
 
-    virtual void
+    void
     on_liveliness_changed (
       DDS_Native::DDS::DataReader* the_reader,
       const DDS_Native::DDS::LivelinessChangedStatus& status) override;
 
-    virtual void
+    void
     on_requested_incompatible_qos (
       DDS_Native::DDS::DataReader* the_reader,
       const DDS_Native::DDS::RequestedIncompatibleQosStatus& status) override;
 
-    virtual void
+    void
     on_sample_rejected (
       DDS_Native::DDS::DataReader* the_reader,
       const DDS_Native::DDS::SampleRejectedStatus& status) override;
 
-    virtual void
+    void
     on_data_available (
       DDS_Native::DDS::DataReader* the_reader) override;
 
-    virtual void
+    void
     on_sample_lost (
       DDS_Native::DDS::DataReader* the_reader,
       const DDS_Native::DDS::SampleLostStatus& status) override;
 
-    virtual void
+    void
     on_subscription_matched (DDS_Native::DDS::DataReader* the_reader,
       const DDS_Native::DDS::SubscriptionMatchedStatus& status) override;
 

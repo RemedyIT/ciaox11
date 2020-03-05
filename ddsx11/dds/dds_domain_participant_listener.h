@@ -27,66 +27,66 @@ namespace DDSX11
     /// Destructor
     virtual ~DDS_DomainParticipantListener_proxy () = default;
 
-    virtual void
+    void
     on_inconsistent_topic (
       DDS_Native::DDS::Topic*,
       const DDS_Native::DDS::InconsistentTopicStatus & ) override;
 
-    virtual void
+    void
     on_requested_deadline_missed (
       DDS_Native::DDS::DataReader *,
       const DDS_Native::DDS::RequestedDeadlineMissedStatus & ) override;
 
-    virtual void
+    void
     on_requested_incompatible_qos (
       DDS_Native::DDS::DataReader *,
       const DDS_Native::DDS::RequestedIncompatibleQosStatus & ) override;
 
-    virtual void
+    void
     on_sample_rejected (
       DDS_Native::DDS::DataReader*,
       const DDS_Native::DDS::SampleRejectedStatus & ) override;
 
-    virtual void
+    void
     on_liveliness_changed (
       DDS_Native::DDS::DataReader *,
       const DDS_Native::DDS::LivelinessChangedStatus & ) override;
 
-    virtual void
+    void
     on_data_available (
       DDS_Native::DDS::DataReader* ) override;
 
-    virtual void
+    void
     on_subscription_matched (
       DDS_Native::DDS::DataReader *,
       const DDS_Native::DDS::SubscriptionMatchedStatus & ) override;
 
-    virtual void
+    void
     on_sample_lost (
       DDS_Native::DDS::DataReader *,
       const DDS_Native::DDS::SampleLostStatus & ) override;
 
-    virtual void
+    void
     on_offered_deadline_missed (
       DDS_Native::DDS::DataWriter *,
       const DDS_Native::DDS::OfferedDeadlineMissedStatus & ) override;
 
-    virtual void
+    void
     on_offered_incompatible_qos (
       DDS_Native::DDS::DataWriter *,
       const DDS_Native::DDS::OfferedIncompatibleQosStatus & ) override;
 
-    virtual void
+    void
     on_liveliness_lost (
       DDS_Native::DDS::DataWriter *,
       const DDS_Native::DDS::LivelinessLostStatus & ) override;
 
-    virtual void
+    void
     on_publication_matched (
       DDS_Native::DDS::DataWriter *,
       const DDS_Native::DDS::PublicationMatchedStatus & ) override;
 
-    virtual void
+    void
     on_data_on_readers (
       DDS_Native::DDS::Subscriber* ) override;
 

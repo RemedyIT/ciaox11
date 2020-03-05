@@ -37,12 +37,11 @@ namespace DDSX11
     /// Destructor
     virtual ~DDS_TopicDescription_proxy () = default;
 
-    virtual std::string get_type_name () override;
+    std::string get_type_name () override;
 
-    virtual std::string get_name () override;
+    std::string get_name () override;
 
-    virtual IDL::traits< ::DDS::DomainParticipant>::ref_type
-    get_participant () override;
+    IDL::traits< ::DDS::DomainParticipant>::ref_type get_participant () override;
 
   private:
 

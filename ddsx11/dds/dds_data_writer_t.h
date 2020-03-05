@@ -25,125 +25,115 @@ namespace DDSX11
 
     virtual ~DataWriter_T () = default;
 
-    virtual ::DDS::ReturnCode_t
-    set_qos (
-      const ::DDS::DataWriterQos & qos) override;
+    ::DDS::ReturnCode_t
+    set_qos (const ::DDS::DataWriterQos & qos) override;
 
-    virtual ::DDS::ReturnCode_t
-    get_qos (
-      ::DDS::DataWriterQos & qos) override;
+    ::DDS::ReturnCode_t
+    get_qos (::DDS::DataWriterQos & qos) override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     set_listener (
       IDL::traits< ::DDS::DataWriterListener>::ref_type a_listener,
       ::DDS::StatusMask mask) override;
 
-    virtual IDL::traits< ::DDS::DataWriterListener>::ref_type
+    IDL::traits< ::DDS::DataWriterListener>::ref_type
       get_listener () override;
 
-    virtual IDL::traits< ::DDS::Topic>::ref_type
-    get_topic () override;
+    IDL::traits< ::DDS::Topic>::ref_type get_topic () override;
 
-    virtual IDL::traits< ::DDS::Publisher>::ref_type
-    get_publisher () override;
+    IDL::traits< ::DDS::Publisher>::ref_type get_publisher () override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     wait_for_acknowledgments (
       const ::DDS::Duration_t & max_wait) override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     get_liveliness_lost_status (
       ::DDS::LivelinessLostStatus & status) override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     get_offered_deadline_missed_status (
       ::DDS::OfferedDeadlineMissedStatus & status) override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     get_offered_incompatible_qos_status (
       ::DDS::OfferedIncompatibleQosStatus & status) override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     get_publication_matched_status (
       ::DDS::PublicationMatchedStatus & status) override;
 
-    virtual ::DDS::ReturnCode_t
-    assert_liveliness () override;
+    ::DDS::ReturnCode_t assert_liveliness () override;
 
-    virtual ::DDS::ReturnCode_t
-    get_matched_subscriptions (
-      ::DDS::InstanceHandleSeq & subscription_handles) override;
+    ::DDS::ReturnCode_t
+    get_matched_subscriptions (::DDS::InstanceHandleSeq & subscription_handles) override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     get_matched_subscription_data (
       ::DDS::SubscriptionBuiltinTopicData & subscription_data,
       const ::DDS::InstanceHandle_t& subscription_handle) override;
 
-    virtual ::DDS::ReturnCode_t
-    enable () override;
+    ::DDS::ReturnCode_t enable () override;
 
-    virtual IDL::traits< ::DDS::StatusCondition>::ref_type
+    IDL::traits< ::DDS::StatusCondition>::ref_type
     get_statuscondition () override;
 
-    virtual ::DDS::StatusMask
-    get_status_changes () override;
+    ::DDS::StatusMask get_status_changes () override;
 
-    virtual ::DDS::InstanceHandle_t
-    get_instance_handle () override;
+    ::DDS::InstanceHandle_t get_instance_handle () override;
 
-    virtual ::DDS::InstanceHandle_t
+    ::DDS::InstanceHandle_t
     register_instance (
       const TOPIC_TYPE &instance_data) override;
 
-    virtual ::DDS::InstanceHandle_t
+    ::DDS::InstanceHandle_t
     register_instance_w_timestamp (
       const TOPIC_TYPE &instance_data,
       const ::DDS::Time_t & source_timestamp) override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     unregister_instance (
       const TOPIC_TYPE &instance_data,
       const ::DDS::InstanceHandle_t& handle) override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     unregister_instance_w_timestamp (
       const TOPIC_TYPE &instance_data,
       const ::DDS::InstanceHandle_t& handle,
       const ::DDS::Time_t & source_timestamp) override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     write (
       const TOPIC_TYPE &instance_data,
       const ::DDS::InstanceHandle_t& handle) override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     write_w_timestamp (
       const TOPIC_TYPE &instance_data,
       const ::DDS::InstanceHandle_t& handle,
       const ::DDS::Time_t & source_timestamp) override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     dispose (
       const TOPIC_TYPE &instance_data,
       const ::DDS::InstanceHandle_t& instance_handle) override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     dispose_w_timestamp (
       const TOPIC_TYPE &instance_data,
       const ::DDS::InstanceHandle_t& instance_handle,
       const ::DDS::Time_t & source_timestamp) override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     get_key_value (
       TOPIC_TYPE &key_holder,
       const ::DDS::InstanceHandle_t& handle) override;
 
-    virtual ::DDS::InstanceHandle_t
+    ::DDS::InstanceHandle_t
     lookup_instance (
       const TOPIC_TYPE &instance_data) override;
 
-    virtual DDS_Native::DDS::DataWriter *
-    get_native_entity () override;
+    DDS_Native::DDS::DataWriter *get_native_entity () override;
 
   private:
     NATIVE_TYPED_WRITER *native_entity ();

@@ -32,7 +32,7 @@ namespace DDSX11
        * @brief NDDS extension. Creates a data reader, using
        *        the QOS profile string
        */
-      virtual IDL::traits< ::DDS::DataReader>::ref_type
+      IDL::traits< ::DDS::DataReader>::ref_type
       create_datareader_with_profile (
         IDL::traits< ::DDS::TopicDescription>::ref_type a_topic,
         const std::string &qos_profile,

@@ -37,7 +37,7 @@ namespace DDSX11
     /// Destructor
     virtual ~DDS_Condition_proxy () = default;
 
-    virtual bool get_trigger_value () override;
+    bool get_trigger_value () override;
   private:
     DDS_Condition_proxy() = delete;
     DDS_Condition_proxy(const DDS_Condition_proxy&) = delete;
