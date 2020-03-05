@@ -149,13 +149,14 @@ module Bar
     {
     };
 
-  interface _private
-    {
-    };
-
-  interface _public : _private
-    {
-    };
+  // Currently doesn't work yet
+//   interface _private
+//     {
+//     };
+//
+//   interface _public : _private
+//     {
+//     };
 };
 
 #endif /* AMI4CCM_IDL_TEST_IDL */
