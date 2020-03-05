@@ -23,12 +23,12 @@ public:
    NT_Connector_T () = default;
    virtual ~NT_Connector_T ();
 
-   virtual void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
+   void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
 
-   virtual void configuration_complete () override;
-   virtual void ccm_remove () override;
-   virtual void ccm_activate () override;
-   virtual void ccm_passivate () override;
+   void configuration_complete () override;
+   void ccm_remove () override;
+   void ccm_activate () override;
+   void ccm_passivate () override;
 
 private:
    NT_Connector_T(const NT_Connector_T&) = delete;
@@ -87,19 +87,17 @@ class NT3_Connector_T
 public:
   NT3_Connector_T () = default;
   virtual ~NT3_Connector_T () = default;
-  virtual typename CCM_TYPE::NT3_attrib_type NT3_attrib() override;
-  virtual void NT3_attrib(const typename CCM_TYPE::NT3_attrib_type& _v) override;
+  typename CCM_TYPE::NT3_attrib_type NT3_attrib() override;
+  void NT3_attrib(const typename CCM_TYPE::NT3_attrib_type& _v) override;
 
-  virtual
   typename IDL::traits<typename CCM_TYPE::foo3_type>::ref_type
   get_foo3 ()  override;
 
-  virtual
   typename IDL::traits<typename CCM_TYPE::write_port_traits::foo2_type>::ref_type
   get_foo5_foo2 ()  override;
 
-  virtual typename CCM_TYPE::foo5_traits::port_attrib_type foo5_port_attrib() override;
-  virtual void foo5_port_attrib(const typename CCM_TYPE::foo5_traits::port_attrib_type& _v)  override;
+  typename CCM_TYPE::foo5_traits::port_attrib_type foo5_port_attrib() override;
+  void foo5_port_attrib(const typename CCM_TYPE::foo5_traits::port_attrib_type& _v)  override;
 
 private:
   // Should be able to store a reference to a base type
