@@ -58,13 +58,11 @@ namespace CIAOX11_TT_TimedTrigger_Impl
     /** @name Operations from ::CCM_TT::CCM_TT_Scheduler */
     //@{
 
-    virtual
     IDL::traits< ::CCM_TT::TT_Timer>::ref_type
     schedule_trigger (
         IDL::traits< ::CCM_TT::TT_Handler>::ref_type trigger_handler,
         const ::CCM_TT::TT_Duration& trigger_delay) override;
 
-    virtual
     IDL::traits< ::CCM_TT::TT_Timer>::ref_type
     schedule_repeated_trigger (
         IDL::traits< ::CCM_TT::TT_Handler>::ref_type trigger_handler,
@@ -130,7 +128,7 @@ namespace CIAOX11_TT_TimedTrigger_Impl
 
     /// Factory method and getter for the tt_scheduler facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::CCM_TT::CCM_TT_Scheduler>::ref_type get_tt_scheduler () override;
+    IDL::traits< ::CCM_TT::CCM_TT_Scheduler>::ref_type get_tt_scheduler () override;
     //@}
 
     /** @name Session component operations */
@@ -138,19 +136,19 @@ namespace CIAOX11_TT_TimedTrigger_Impl
 
     /// Setter for container context for this component
     /// @param[in] ctx Component context
-    virtual void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
+    void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
 
     /// Component state change method to configuration_complete state
-    virtual void configuration_complete () override;
+    void configuration_complete () override;
 
     /// Component state change method to activated state
-    virtual void ccm_activate () override;
+    void ccm_activate () override;
 
     /// Component state change method to passivated state
-    virtual void ccm_passivate () override;
+    void ccm_passivate () override;
 
     /// Component state change method to removed state
-    virtual void ccm_remove () override;
+    void ccm_remove () override;
     //@}
 
     /** @name User defined public operations. */
@@ -216,16 +214,12 @@ namespace CIAOX11_TT_TimedTrigger_Impl
 
     void on_timer (const CCM_TT::TT_Duration& delta_time) noexcept;
 
-    virtual
     void cancel () override;
 
-    virtual
     bool is_canceled () override;
 
-    virtual
     uint32_t rounds () override;
 
-    virtual
     std::string id () override;
 
   protected:
@@ -269,8 +263,8 @@ namespace CIAOX11_TT_TimedTrigger_Impl
 
     virtual ~tt_event_handler () = default;
 
-    virtual int handle_timeout (const ACE_Time_Value&,
-                                const void*) override;
+    int handle_timeout (const ACE_Time_Value&,
+                        const void*) override;
 
   private:
     tt_event_handler(const tt_event_handler&) = delete;
