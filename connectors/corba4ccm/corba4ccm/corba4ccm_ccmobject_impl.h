@@ -51,7 +51,7 @@ namespace CCM_CORBA
      * When no facet servant can be found a Components::InvalidName() exception
      * will be thrown
      */
-    virtual void provide_facet (const std::string& facet_name, CORBA::Any& facet_ref) override;
+    void provide_facet (const std::string& facet_name, CORBA::Any& facet_ref) override;
 
   private:
     //@{

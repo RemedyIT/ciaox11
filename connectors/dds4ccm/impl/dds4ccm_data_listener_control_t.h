@@ -32,22 +32,16 @@ public:
   virtual ~CCM_DDS_DataListenerControl_T () = default;
 
   /// Get the listener mode
-  virtual ::CCM_DDS::ListenerMode
-  mode () override;
+  ::CCM_DDS::ListenerMode mode () override;
 
   /// Set the listener mode
-  virtual void
-  mode (
-    ::CCM_DDS::ListenerMode mode) override;
+  void mode (::CCM_DDS::ListenerMode mode) override;
 
   /// Get the max_delivered_data
-  virtual ::CCM_DDS::DataNumber_t
-  max_delivered_data () override;
+  ::CCM_DDS::DataNumber_t max_delivered_data () override;
 
   /// Set the max_delivered_data
-  virtual void
-  max_delivered_data (
-    ::CCM_DDS::DataNumber_t max_delivered_data) override;
+  void max_delivered_data (::CCM_DDS::DataNumber_t max_delivered_data) override;
 
 private:
   std::atomic< ::CCM_DDS::ListenerMode > mode_ {::CCM_DDS::ListenerMode::NOT_ENABLED};

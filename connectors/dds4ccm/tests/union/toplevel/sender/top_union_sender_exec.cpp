@@ -26,11 +26,10 @@ namespace Uni_Sender_Impl
   public:
     TT_Callback (IDL::traits< ::Uni::CCM_Sender>::weak_ref_type component_executor,
                  bool activate)
-  : component_executor_(component_executor)
-  , activate_(activate)
+    : component_executor_(component_executor)
+    , activate_(activate)
     {}
 
-    virtual
     void
     on_trigger (
              IDL::traits< ::CCM_TT::TT_Timer>::ref_type timer,

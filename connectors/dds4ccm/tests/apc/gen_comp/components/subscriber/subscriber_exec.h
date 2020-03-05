@@ -53,13 +53,11 @@ namespace subscriber_comp_Impl
     /** @name Operations from ::ShapeTypeInterface::CCM_Listener */
     //@{
 
-    virtual
     void
     on_one_data (
         const ::ShapeType& datum,
         const ::CCM_DDS::ReadInfo& info) override;
 
-    virtual
     void
     on_many_data (
         const ::ShapeTypeSeq& data,
@@ -111,13 +109,11 @@ namespace subscriber_comp_Impl
     /** @name Operations from ::CCM_DDS::CCM_PortStatusListener */
     //@{
 
-    virtual
     void
     on_requested_deadline_missed (
         IDL::traits< ::DDS::DataReader>::ref_type the_reader,
         const ::DDS::RequestedDeadlineMissedStatus& status) override;
 
-    virtual
     void
     on_sample_lost (
         IDL::traits< ::DDS::DataReader>::ref_type the_reader,
@@ -169,13 +165,11 @@ namespace subscriber_comp_Impl
     /** @name Operations from ::CCM_DDS::CCM_PortStatusListener */
     //@{
 
-    virtual
     void
     on_requested_deadline_missed (
         IDL::traits< ::DDS::DataReader>::ref_type the_reader,
         const ::DDS::RequestedDeadlineMissedStatus& status) override;
 
-    virtual
     void
     on_sample_lost (
         IDL::traits< ::DDS::DataReader>::ref_type the_reader,
@@ -227,13 +221,11 @@ namespace subscriber_comp_Impl
     /** @name Operations from ::CCM_DDS::CCM_PortStatusListener */
     //@{
 
-    virtual
     void
     on_requested_deadline_missed (
         IDL::traits< ::DDS::DataReader>::ref_type the_reader,
         const ::DDS::RequestedDeadlineMissedStatus& status) override;
 
-    virtual
     void
     on_sample_lost (
         IDL::traits< ::DDS::DataReader>::ref_type the_reader,
@@ -285,25 +277,21 @@ namespace subscriber_comp_Impl
     /** @name Operations from ::ShapeTypeInterface::CCM_StateListener */
     //@{
 
-    virtual
     void
     on_creation (
         const ::ShapeType& datum,
         const ::CCM_DDS::ReadInfo& info) override;
 
-    virtual
     void
     on_one_update (
         const ::ShapeType& datum,
         const ::CCM_DDS::ReadInfo& info) override;
 
-    virtual
     void
     on_many_updates (
         const ::ShapeTypeSeq& data,
         const ::CCM_DDS::ReadInfoSeq& infos) override;
 
-    virtual
     void
     on_deletion (
         const ::ShapeType& datum,
@@ -355,13 +343,11 @@ namespace subscriber_comp_Impl
     /** @name Operations from ::CCM_DDS::CCM_PortStatusListener */
     //@{
 
-    virtual
     void
     on_requested_deadline_missed (
         IDL::traits< ::DDS::DataReader>::ref_type the_reader,
         const ::DDS::RequestedDeadlineMissedStatus& status) override;
 
-    virtual
     void
     on_sample_lost (
         IDL::traits< ::DDS::DataReader>::ref_type the_reader,
@@ -411,22 +397,22 @@ namespace subscriber_comp_Impl
 
     /// Factory method and getter for the info_out_data_listener facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::ShapeTypeInterface::CCM_Listener>::ref_type get_info_out_data_listener () override;
+    IDL::traits< ::ShapeTypeInterface::CCM_Listener>::ref_type get_info_out_data_listener () override;
     /// Factory method and getter for the info_out_status facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type get_info_out_status () override;
+    IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type get_info_out_status () override;
     /// Factory method and getter for the info_read_status facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type get_info_read_status () override;
+    IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type get_info_read_status () override;
     /// Factory method and getter for the info_get_status facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type get_info_get_status () override;
+    IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type get_info_get_status () override;
     /// Factory method and getter for the info_state_data_listener facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::ShapeTypeInterface::CCM_StateListener>::ref_type get_info_state_data_listener () override;
+    IDL::traits< ::ShapeTypeInterface::CCM_StateListener>::ref_type get_info_state_data_listener () override;
     /// Factory method and getter for the info_state_status facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type get_info_state_status () override;
+    IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type get_info_state_status () override;
     //@}
 
     /** @name Session component operations */
@@ -434,19 +420,19 @@ namespace subscriber_comp_Impl
 
     /// Setter for container context for this component
     /// @param[in] ctx Component context
-    virtual void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
+    void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
 
     /// Component state change method to configuration_complete state
-    virtual void configuration_complete () override;
+    void configuration_complete () override;
 
     /// Component state change method to activated state
-    virtual void ccm_activate () override;
+    void ccm_activate () override;
 
     /// Component state change method to passivated state
-    virtual void ccm_passivate () override;
+    void ccm_passivate () override;
 
     /// Component state change method to removed state
-    virtual void ccm_remove () override;
+    void ccm_remove () override;
     //@}
 
     /** @name User defined public operations. */

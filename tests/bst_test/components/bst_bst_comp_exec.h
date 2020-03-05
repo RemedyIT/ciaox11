@@ -59,36 +59,27 @@ namespace BST_BST_comp_Impl
 
     /// Attribute MyBoundedString
 
-    virtual
     ::BST::MyBoundedStringType
     MyBoundedString () override;
 
-    virtual
     void
-    MyBoundedString (
-        const ::BST::MyBoundedStringType& MyBoundedString) override;
+    MyBoundedString (const ::BST::MyBoundedStringType& MyBoundedString) override;
 
     /// Attribute MyUnboundedString
 
-    virtual
     ::BST::MyStringTypedef
     MyUnboundedString () override;
 
-    virtual
     void
-    MyUnboundedString (
-        const ::BST::MyStringTypedef& MyUnboundedString) override;
+    MyUnboundedString (const ::BST::MyStringTypedef& MyUnboundedString) override;
 
     /// Attribute MyStruct
 
-    virtual
     ::BST::MyStructType
     MyStruct () override;
 
-    virtual
     void
-    MyStruct (
-        const ::BST::MyStructType& MyStruct) override;
+    MyStruct (const ::BST::MyStructType& MyStruct) override;
     //@}
 
     /** @name Session component operations */
@@ -96,19 +87,19 @@ namespace BST_BST_comp_Impl
 
     /// Setter for container context for this component
     /// @param[in] ctx Component context
-    virtual void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
+    void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
 
     /// Component state change method to configuration_complete state
-    virtual void configuration_complete () override;
+    void configuration_complete () override;
 
     /// Component state change method to activated state
-    virtual void ccm_activate () override;
+    void ccm_activate () override;
 
     /// Component state change method to passivated state
-    virtual void ccm_passivate () override;
+    void ccm_passivate () override;
 
     /// Component state change method to removed state
-    virtual void ccm_remove () override;
+    void ccm_remove () override;
     //@}
 
     /** @name User defined public operations. */

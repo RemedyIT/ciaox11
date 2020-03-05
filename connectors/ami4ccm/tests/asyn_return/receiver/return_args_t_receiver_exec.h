@@ -56,56 +56,48 @@ namespace InterReturnT_Receiver_Impl
     /** @name Operations from ::InterReturnT::CCM_MyFoo */
     //@{
 
-    virtual
     void
     ret_void (
         const std::string& in_str,
         std::string& answer,
         int32_t& l_cmd) override;
 
-    virtual
     int32_t
     ret_long (
         const std::string& in_str,
         std::string& answer,
         int32_t& l_cmd) override;
 
-    virtual
     double
     ret_double (
         const std::string& in_str,
         std::string& answer,
         int32_t& l_cmd) override;
 
-    virtual
     ::InterReturnT::TestStruct
     ret_struct (
         const std::string& in_str,
         std::string& answer,
         int32_t& l_cmd) override;
 
-    virtual
     ::InterReturnT::TestArray
     ret_array (
         const std::string& in_str,
         std::string& answer,
         int32_t& l_cmd) override;
 
-    virtual
     ::InterReturnT::TestSeq
     ret_seq (
         const std::string& in_str,
         std::string& answer,
         int32_t& l_cmd) override;
 
-    virtual
     ::InterReturnT::X_Union
     ret_union (
         const std::string& in_str,
         std::string& answer,
         int32_t& l_cmd) override;
 
-    virtual
     ::InterReturnT::test_enum
     ret_enum (
         const std::string& in_str,
@@ -156,7 +148,7 @@ namespace InterReturnT_Receiver_Impl
 
     /// Factory method and getter for the do_my_foo facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::InterReturnT::CCM_MyFoo>::ref_type get_do_my_foo () override;
+    IDL::traits< ::InterReturnT::CCM_MyFoo>::ref_type get_do_my_foo () override;
     //@}
 
     /** @name Session component operations */
@@ -164,19 +156,19 @@ namespace InterReturnT_Receiver_Impl
 
     /// Setter for container context for this component
     /// @param[in] ctx Component context
-    virtual void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
+    void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
 
     /// Component state change method to configuration_complete state
-    virtual void configuration_complete () override;
+    void configuration_complete () override;
 
     /// Component state change method to activated state
-    virtual void ccm_activate () override;
+    void ccm_activate () override;
 
     /// Component state change method to passivated state
-    virtual void ccm_passivate () override;
+    void ccm_passivate () override;
 
     /// Component state change method to removed state
-    virtual void ccm_remove () override;
+    void ccm_remove () override;
     //@}
 
     /** @name User defined public operations. */

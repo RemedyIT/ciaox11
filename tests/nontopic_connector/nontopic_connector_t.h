@@ -50,25 +50,24 @@ public:
    NT2_Connector_T ();
    virtual ~NT2_Connector_T ();
 
-   virtual
    typename IDL::traits<typename CCM_TYPE::write_port_traits::foo2_type>::ref_type
    get_write_port_foo2 ()  override;
 
-   virtual typename CCM_TYPE::write_port_traits::port_attrib_type write_port_port_attrib()  override;
-   virtual void write_port_port_attrib(const typename CCM_TYPE::write_port_traits::port_attrib_type& _v)  override;
+   typename CCM_TYPE::write_port_traits::port_attrib_type write_port_port_attrib()  override;
+   void write_port_port_attrib(const typename CCM_TYPE::write_port_traits::port_attrib_type& _v)  override;
 
-   virtual int16_t conn_attrib() override;
-   virtual void conn_attrib(int16_t _v) override;
+   int16_t conn_attrib() override;
+   void conn_attrib(int16_t _v) override;
 
-   virtual typename CCM_TYPE::NT2_attrib_type NT2_attrib() override;
-   virtual void NT2_attrib(const typename CCM_TYPE::NT2_attrib_type& _v) override;
+   typename CCM_TYPE::NT2_attrib_type NT2_attrib() override;
+   void NT2_attrib(const typename CCM_TYPE::NT2_attrib_type& _v) override;
 
-   virtual void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
+   void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
 
-   virtual void configuration_complete () override;
-   virtual void ccm_remove () override;
-   virtual void ccm_activate () override;
-   virtual void ccm_passivate () override;
+   void configuration_complete () override;
+   void ccm_remove () override;
+   void ccm_activate () override;
+   void ccm_passivate () override;
 
 private:
    NT2_Connector_T(const NT2_Connector_T&) = delete;

@@ -34,7 +34,6 @@ namespace CIAOX11
                               uint32_t c_id);
 
   protected:
-
     virtual
     void connect_local_port (const ::Deployment::DeploymentPlan & plan,
                              const ::Deployment::PlanConnectionDescription &conn,

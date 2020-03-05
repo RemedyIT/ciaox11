@@ -37,7 +37,7 @@ public:
 private:
   /// User provided callback reference which we invoke when the
   /// CORBA AMI reply has been received
-  IDL::traits< <%= interface_type.scoped_enclosure_cxxname %>::<%= interface_type.ami4ccm_ReplyHandler %>>::ref_type callback_;
+  IDL::traits<<%= interface_type.scoped_enclosure_cxxname %>::<%= interface_type.ami4ccm_ReplyHandler %>>::ref_type callback_;
 
   /// POA which we have to use to deactivate ourself when the
   /// reply has been received

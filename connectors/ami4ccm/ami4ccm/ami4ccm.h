@@ -28,7 +28,7 @@ namespace CCM_AMI
     virtual ~ExceptionHolder_i () = default;
 
     /// Rethrow the original exception
-    virtual void raise_exception () override;
+    void raise_exception () override;
 
   private:
     IDL::traits< ::Messaging::ExceptionHolder>::ref_type holder_;

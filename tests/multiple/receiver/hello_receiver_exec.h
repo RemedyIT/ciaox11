@@ -56,7 +56,6 @@ namespace Hello_Receiver_Impl
     /** @name Operations from ::Hello::CCM_MyFoo */
     //@{
 
-    virtual
     void
     hello (
         int32_t& answer) override;
@@ -107,7 +106,6 @@ namespace Hello_Receiver_Impl
     /** @name Operations from ::Hello::CCM_MyFoo */
     //@{
 
-    virtual
     void
     hello (
         int32_t& answer) override;
@@ -158,7 +156,6 @@ namespace Hello_Receiver_Impl
     /** @name Operations from ::Hello2::CCM_MyFoo */
     //@{
 
-    virtual
     void
     hello (
         int32_t& answer) override;
@@ -209,7 +206,6 @@ namespace Hello_Receiver_Impl
     /** @name Operations from ::Hello::CCM_MyBar */
     //@{
 
-    virtual
     void
     bye (
         int32_t& answer) override;
@@ -258,16 +254,16 @@ namespace Hello_Receiver_Impl
 
     /// Factory method and getter for the do_my_foo facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::Hello::CCM_MyFoo>::ref_type get_do_my_foo () override;
+    IDL::traits< ::Hello::CCM_MyFoo>::ref_type get_do_my_foo () override;
     /// Factory method and getter for the do_my_foo2 facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::Hello::CCM_MyFoo>::ref_type get_do_my_foo2 () override;
+    IDL::traits< ::Hello::CCM_MyFoo>::ref_type get_do_my_foo2 () override;
     /// Factory method and getter for the do_my_foo3 facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::Hello2::CCM_MyFoo>::ref_type get_do_my_foo3 () override;
+    IDL::traits< ::Hello2::CCM_MyFoo>::ref_type get_do_my_foo3 () override;
     /// Factory method and getter for the do_my_bar facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::Hello::CCM_MyBar>::ref_type get_do_my_bar () override;
+    IDL::traits< ::Hello::CCM_MyBar>::ref_type get_do_my_bar () override;
     //@}
 
     /** @name Session component operations */
@@ -275,19 +271,19 @@ namespace Hello_Receiver_Impl
 
     /// Setter for container context for this component
     /// @param[in] ctx Component context
-    virtual void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
+    void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
 
     /// Component state change method to configuration_complete state
-    virtual void configuration_complete () override;
+    void configuration_complete () override;
 
     /// Component state change method to activated state
-    virtual void ccm_activate () override;
+    void ccm_activate () override;
 
     /// Component state change method to passivated state
-    virtual void ccm_passivate () override;
+    void ccm_passivate () override;
 
     /// Component state change method to removed state
-    virtual void ccm_remove () override;
+    void ccm_remove () override;
     //@}
 
     /** @name User defined public operations. */

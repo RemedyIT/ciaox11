@@ -31,27 +31,26 @@ namespace CIAOX11
     virtual void fini ();
 
     /// @copydoc CIAOX11::Container::install_component
-    virtual bool
+    bool
     install_component (
         const std::string& name,
-        IDL::traits<CIAOX11::ExecutorLocator>::ref_type component);
+        IDL::traits<CIAOX11::ExecutorLocator>::ref_type component) override;
 
     /// @copydoc CIAOX11::Container::get_component
-    virtual IDL::traits<CIAOX11::ExecutorLocator>::ref_type
-    get_component (
-        const std::string& name);
+    IDL::traits<CIAOX11::ExecutorLocator>::ref_type
+    get_component (const std::string& name) override;
 
     /// @copydoc CIAOX11::Container::uninstall_component
-    virtual bool uninstall_component (const std::string& name);
+    bool uninstall_component (const std::string& name) override;
 
     /// @copydoc CIAOX11::Container::activate_component
-    virtual bool activate_component (const std::string& name);
+    bool activate_component (const std::string& name) override;
 
     /// @copydoc CIAOX11::Container::passivate_component
-    virtual bool passivate_component (const std::string& name);
+    bool passivate_component (const std::string& name) override;
 
     /// @copydoc CIAOX11::Container::configured_component
-    virtual bool configured_component (const std::string& name);
+    bool configured_component (const std::string& name) override;
 
   private:
     /// Reference to the ORB

@@ -28,7 +28,7 @@ namespace DDS4CCM_TEST_UTILS
     {
     }
 
-    virtual void
+    void
     on_trigger (
         IDL::traits< ::CCM_TT::TT_Timer>::ref_type,
         const ::CCM_TT::TT_Duration&,

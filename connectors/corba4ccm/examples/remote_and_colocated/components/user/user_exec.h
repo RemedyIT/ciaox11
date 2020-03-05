@@ -55,14 +55,11 @@ namespace Example_User_Impl
 
     /// Attribute connection
 
-    virtual
     std::string
     connection () override;
 
-    virtual
     void
-    connection (
-        const std::string& connection) override;
+    connection (const std::string& connection) override;
     //@}
 
     /** @name Session component operations */
@@ -70,19 +67,19 @@ namespace Example_User_Impl
 
     /// Setter for container context for this component
     /// @param[in] ctx Component context
-    virtual void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
+    void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
 
     /// Component state change method to configuration_complete state
-    virtual void configuration_complete () override;
+    void configuration_complete () override;
 
     /// Component state change method to activated state
-    virtual void ccm_activate () override;
+    void ccm_activate () override;
 
     /// Component state change method to passivated state
-    virtual void ccm_passivate () override;
+    void ccm_passivate () override;
 
     /// Component state change method to removed state
-    virtual void ccm_remove () override;
+    void ccm_remove () override;
     //@}
 
     /** @name User defined public operations. */

@@ -53,13 +53,11 @@ namespace Hello_Receiver_Impl
     /** @name Operations from ::Hello::CCM_B */
     //@{
 
-    virtual
     int32_t
     op_B (
         int32_t in_l,
         const ::Hello::S1& s_in_l) override;
 
-    virtual
     int32_t
     op_A (
         int32_t in_l) override;
@@ -108,7 +106,7 @@ namespace Hello_Receiver_Impl
 
     /// Factory method and getter for the do_my_B facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::Hello::CCM_B>::ref_type get_do_my_B () override;
+    IDL::traits< ::Hello::CCM_B>::ref_type get_do_my_B () override;
     //@}
 
     /** @name Session component operations */
@@ -116,19 +114,19 @@ namespace Hello_Receiver_Impl
 
     /// Setter for container context for this component
     /// @param[in] ctx Component context
-    virtual void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
+    void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
 
     /// Component state change method to configuration_complete state
-    virtual void configuration_complete () override;
+    void configuration_complete () override;
 
     /// Component state change method to activated state
-    virtual void ccm_activate () override;
+    void ccm_activate () override;
 
     /// Component state change method to passivated state
-    virtual void ccm_passivate () override;
+    void ccm_passivate () override;
 
     /// Component state change method to removed state
-    virtual void ccm_remove () override;
+    void ccm_remove () override;
     //@}
 
     /** @name User defined public operations. */

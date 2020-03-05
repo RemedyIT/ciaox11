@@ -29,7 +29,6 @@ namespace CSL_Test_Receiver_Impl
     :  component_executor_(component_executor)
     {}
 
-    virtual
     void
     on_trigger (
          IDL::traits< ::CCM_TT::TT_Timer>::ref_type timer,

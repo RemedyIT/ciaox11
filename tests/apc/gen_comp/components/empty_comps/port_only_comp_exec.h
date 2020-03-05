@@ -53,7 +53,6 @@ namespace PortComp_Impl
     /** @name Operations from ::Foo::CCM_MyFoo */
     //@{
 
-    virtual
     void
     hello (
         int32_t& answer) override;
@@ -102,7 +101,7 @@ namespace PortComp_Impl
 
     /// Factory method and getter for the run_my_bar_foo_prov facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::Foo::CCM_MyFoo>::ref_type get_run_my_bar_foo_prov () override;
+    IDL::traits< ::Foo::CCM_MyFoo>::ref_type get_run_my_bar_foo_prov () override;
     //@}
 
     /** @name Session component operations */
@@ -110,19 +109,19 @@ namespace PortComp_Impl
 
     /// Setter for container context for this component
     /// @param[in] ctx Component context
-    virtual void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
+    void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
 
     /// Component state change method to configuration_complete state
-    virtual void configuration_complete () override;
+    void configuration_complete () override;
 
     /// Component state change method to activated state
-    virtual void ccm_activate () override;
+    void ccm_activate () override;
 
     /// Component state change method to passivated state
-    virtual void ccm_passivate () override;
+    void ccm_passivate () override;
 
     /// Component state change method to removed state
-    virtual void ccm_remove () override;
+    void ccm_remove () override;
     //@}
 
     /** @name User defined public operations. */

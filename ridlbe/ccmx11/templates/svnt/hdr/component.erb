@@ -23,7 +23,7 @@ namespace <%= executor_cxx_namespace %>
     virtual ~<%= lem_name %>_Context () = default;
 
     /// Retrieve the service registry
-    virtual IDL::traits<CIAOX11::Service_Registry>::ref_type the_service_registry () override;
+    IDL::traits<CIAOX11::Service_Registry>::ref_type the_service_registry () override;
 % if all_incl_receptacle_port?
 
     /// @name Accessors for all receptacles
@@ -32,10 +32,10 @@ namespace <%= executor_cxx_namespace %>
 %    if _p.port_type == :receptacle
 %      if _p.is_multiple?
     /// Get the <%= _p.lem_name %> multiplex receptacle
-    virtual <%= scoped_ccm_name %>::<%= _p.lem_name %>Connections get_connections_<%= _p.lem_name %> () override;
+    <%= scoped_ccm_name %>::<%= _p.lem_name %>Connections get_connections_<%= _p.lem_name %> () override;
 %      else
     /// Get the <%= _p.lem_name %> receptacle
-    virtual <%= _p.interface_type.scoped_cxx_return_type %> get_connection_<%= _p.lem_name %> () override;
+    <%= _p.interface_type.scoped_cxx_return_type %> get_connection_<%= _p.lem_name %> () override;
 %      end
 %    end
 %  end
@@ -49,7 +49,7 @@ namespace <%= executor_cxx_namespace %>
     /// component. This instance name is supplied to the servant factory
     /// method by the deployment tools and represents the name of the
     /// component in the deployment plan.
-    virtual std::string instance_id () override;
+    std::string instance_id () override;
 
   private:
 % if all_incl_receptacle_port?
@@ -135,30 +135,30 @@ namespace <%= executor_cxx_namespace %>
     /**
      * Configure the component
      */
-    virtual void configure (::Components::ConfigValues& config) override;
+    void configure (::Components::ConfigValues& config) override;
 
     /**
      * Connect a component port.
      * @retval true Connecting the port has succeeded
      * @retval false Connecting the port has failed
      */
-    virtual bool connect (const ::Components::FeatureName& name,
-                          IDL::traits<CORBA::Object>::ref_type connection,
-                          const std::string& conn_name,
-                          const ::Components::ConfigValues& config) override;
+    bool connect (const ::Components::FeatureName& name,
+                  IDL::traits<CORBA::Object>::ref_type connection,
+                  const std::string& conn_name,
+                  const ::Components::ConfigValues& config) override;
 
     /**
      * Disconnect a component port.
      * @retval true Disconnecting the port has succeeded
      * @retval false Disconnecting the port has failed
      */
-    virtual bool disconnect (const ::Components::FeatureName& name,
-                             const std::string& conn_name) override;
+    bool disconnect (const ::Components::FeatureName& name,
+                     const std::string& conn_name) override;
 
     /**
      * Obtain the component executor.
      */
-    virtual IDL::traits<CORBA::Object>::ref_type obtain_executor () override;
+    IDL::traits<CORBA::Object>::ref_type obtain_executor () override;
 
     /**
      * Obtain a facet executor for the given @a name using the the given @a config.
@@ -166,7 +166,7 @@ namespace <%= executor_cxx_namespace %>
      * return nullptr. If we have to get an executor for an invalid facet
      * name we throw an InvalidName() exception
      */
-    virtual IDL::traits<CORBA::Object>::ref_type obtain_facet_executor (
+    IDL::traits<CORBA::Object>::ref_type obtain_facet_executor (
                           const ::Components::FeatureName& name,
                           ::Components::ConfigValues& config) override;
 

@@ -85,19 +85,19 @@ namespace InterReturnT_Sender_Impl
 
     /// Setter for container context for this component
     /// @param[in] ctx Component context
-    virtual void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
+    void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
 
     /// Component state change method to configuration_complete state
-    virtual void configuration_complete () override;
+    void configuration_complete () override;
 
     /// Component state change method to activated state
-    virtual void ccm_activate () override;
+    void ccm_activate () override;
 
     /// Component state change method to passivated state
-    virtual void ccm_passivate () override;
+    void ccm_passivate () override;
 
     /// Component state change method to removed state
-    virtual void ccm_remove () override;
+    void ccm_remove () override;
     //@}
 
     /** @name User defined public operations. */
@@ -150,93 +150,77 @@ namespace InterReturnT_Sender_Impl
 
     virtual ~AMI4CCM_MyFooReplyHandler_run_my_foo_i ();
 
-    virtual
     void
     ret_void (
         const std::string& answer,
         int32_t l_cmd) override;
 
-    virtual
     void
     ret_void_excep (
-        IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
-    virtual
+        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
     void
     ret_long (
         int32_t ami_return_val,
         const std::string& answer,
         int32_t l_cmd) override;
 
-    virtual
     void
     ret_long_excep (
-        IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
-    virtual
+        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
     void
     ret_double (
         double ami_return_val,
         const std::string& answer,
         int32_t l_cmd) override;
 
-    virtual
     void
     ret_double_excep (
-        IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
-    virtual
+        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
     void
     ret_struct (
         const ::InterReturnT::TestStruct& ami_return_val,
         const std::string& answer,
         int32_t l_cmd) override;
 
-    virtual
     void
     ret_struct_excep (
-        IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
-    virtual
+        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
     void
     ret_array (
         const ::InterReturnT::TestArray& ami_return_val,
         const std::string& answer,
         int32_t l_cmd) override;
 
-    virtual
     void
     ret_array_excep (
-        IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
-    virtual
+        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
     void
     ret_seq (
         const ::InterReturnT::TestSeq& ami_return_val,
         const std::string& answer,
         int32_t l_cmd) override;
 
-    virtual
     void
     ret_seq_excep (
-        IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
-    virtual
+        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
     void
     ret_union (
         const ::InterReturnT::X_Union& ami_return_val,
         const std::string& answer,
         int32_t l_cmd) override;
 
-    virtual
     void
     ret_union_excep (
-        IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
-    virtual
+        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
     void
     ret_enum (
         ::InterReturnT::test_enum ami_return_val,
         const std::string& answer,
         int32_t l_cmd) override;
 
-    virtual
     void
     ret_enum_excep (
-        IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
 
     /** @name User defined public operations. */
     //@{

@@ -288,7 +288,7 @@ namespace Hello_Sender_Impl
 
   void
   AMI4CCM_MyFooReplyHandler_run_my_foo_i::foo_excep (
-    IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder)
+    IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[foo_excep]
     // Your code here
@@ -308,7 +308,7 @@ namespace Hello_Sender_Impl
 
   void
   AMI4CCM_MyFooReplyHandler_run_my_foo_i::hello_excep (
-    IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder)
+    IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[hello_excep]
     // Your code here
@@ -326,7 +326,7 @@ namespace Hello_Sender_Impl
 
   void
   AMI4CCM_MyFooReplyHandler_run_my_foo_i::do_something_excep (
-    IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder)
+    IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[do_something_excep]
     // Your code here
@@ -346,7 +346,7 @@ namespace Hello_Sender_Impl
 
   void
   AMI4CCM_MyFooReplyHandler_run_my_foo_i::get_rw_attrib_excep (
-    IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder)
+    IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[get_rw_attrib_excep]
     HandleException (excep_holder, "get_rw_attrib");
@@ -364,7 +364,7 @@ namespace Hello_Sender_Impl
 
   void
   AMI4CCM_MyFooReplyHandler_run_my_foo_i::set_rw_attrib_excep (
-    IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder)
+    IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[set_rw_attrib_excep]
     HandleException (excep_holder, "set_rw_attribo");
@@ -383,7 +383,7 @@ namespace Hello_Sender_Impl
 
   void
   AMI4CCM_MyFooReplyHandler_run_my_foo_i::get_ro_attrib_excep (
-    IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder)
+    IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[get_ro_attrib_excep]
     HandleException (excep_holder, "get_ro_attrib");

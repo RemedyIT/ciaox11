@@ -29,7 +29,6 @@ namespace Test_TT_Tester_Impl
     TT_Callback (std::string desc, uint32_t max_calls = 0)
       : desc_ (desc), max_calls_ (max_calls) {}
 
-    virtual
     void
     on_trigger (
         IDL::traits< ::CCM_TT::TT_Timer>::ref_type timer,

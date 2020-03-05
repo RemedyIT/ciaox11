@@ -1,6 +1,6 @@
 
 // generated from <%= ridl_template_path %>
-virtual <%= cxx_return_type %> <%= cxxname %>() override;
+<%= cxx_return_type %> <%= cxxname %>() override;
 % unless is_readonly?
-virtual void <%= cxxname %>(<%= cxx_in_type %> _v) override;
+void <%= cxxname %>(<%= cxx_in_type %> _v) override;
 % end

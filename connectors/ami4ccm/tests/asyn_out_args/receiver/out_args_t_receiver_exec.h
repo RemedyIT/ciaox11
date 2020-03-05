@@ -56,7 +56,6 @@ namespace InterOutArgsT_Receiver_Impl
     /** @name Operations from ::InterOutArgsT::CCM_MyFoo */
     //@{
 
-    virtual
     void
     var_outs (
         const std::string& in_str,
@@ -64,20 +63,17 @@ namespace InterOutArgsT_Receiver_Impl
         double& d_cmd,
         int32_t& l_cmd) override;
 
-    virtual
     void
     var_div_outs (
         ::InterOutArgsT::TestTopic& test_topic,
         ::InterOutArgsT::TopicString& topic_str,
         ::InterOutArgsT::TopicArray& topic_arr) override;
 
-    virtual
     void
     var_div2_outs (
         ::InterOutArgsT::X_Union& x_uni,
         ::InterOutArgsT::test_seq& seq) override;
 
-    virtual
     void
     enum_out (
         ::InterOutArgsT::test_enum& out_test) override;
@@ -126,7 +122,7 @@ namespace InterOutArgsT_Receiver_Impl
 
     /// Factory method and getter for the do_my_foo facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::InterOutArgsT::CCM_MyFoo>::ref_type get_do_my_foo () override;
+    IDL::traits< ::InterOutArgsT::CCM_MyFoo>::ref_type get_do_my_foo () override;
     //@}
 
     /** @name Session component operations */
@@ -134,19 +130,19 @@ namespace InterOutArgsT_Receiver_Impl
 
     /// Setter for container context for this component
     /// @param[in] ctx Component context
-    virtual void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
+    void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
 
     /// Component state change method to configuration_complete state
-    virtual void configuration_complete () override;
+    void configuration_complete () override;
 
     /// Component state change method to activated state
-    virtual void ccm_activate () override;
+    void ccm_activate () override;
 
     /// Component state change method to passivated state
-    virtual void ccm_passivate () override;
+    void ccm_passivate () override;
 
     /// Component state change method to removed state
-    virtual void ccm_remove () override;
+    void ccm_remove () override;
     //@}
 
     /** @name User defined public operations. */

@@ -28,7 +28,7 @@ namespace CIAOX11
       /// Destructor
       virtual ~CCM_DDS_ContentFilterSetting_i () = default;
 
-      virtual void
+      void
       set_filter_parameters (
         const ::DDS::StringSeq &parameters) override;
 

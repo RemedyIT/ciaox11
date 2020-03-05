@@ -57,23 +57,17 @@ namespace Foo_Impl
     /** @name Attributes from CCM_MyFoo */
     //@{
 
-    virtual
     int16_t
     _cxx_short () override;
 
-    virtual
     void
-    _cxx_short (
-        int16_t _cxx_short) override;
+    _cxx_short (int16_t _cxx_short) override;
 
-    virtual
     int16_t
     _cxx_while () override;
 
-    virtual
     void
-    _cxx_while (
-        int16_t _cxx_while) override;
+    _cxx_while (int16_t _cxx_while) override;
     //@}
 
     /** @name User defined public operations. */
@@ -127,7 +121,7 @@ namespace Foo_Impl
 
     /// Factory method and getter for the my_foo_prov facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< CCM_MyFoo>::ref_type get_my_foo_prov () override;
+    IDL::traits< CCM_MyFoo>::ref_type get_my_foo_prov () override;
     //@}
 
     /** @name Supported attributes. */
@@ -135,113 +129,83 @@ namespace Foo_Impl
 
     /// Attribute m_foo_pt_component
 
-    virtual
     int16_t
     m_foo_pt_component () override;
 
-    virtual
     void
-    m_foo_pt_component (
-        int16_t m_foo_pt_component) override;
+    m_foo_pt_component (int16_t m_foo_pt_component) override;
 
     /// Attribute m_foo_pt_virtual
 
-    virtual
     int16_t
     m_foo_pt_virtual () override;
 
-    virtual
     void
-    m_foo_pt_virtual (
-        int16_t m_foo_pt_virtual) override;
+    m_foo_pt_virtual (int16_t m_foo_pt_virtual) override;
 
     /// Attribute _cxx_and
 
-    virtual
     int16_t
     _cxx_and () override;
 
-    virtual
     void
-    _cxx_and (
-        int16_t _cxx_and) override;
+    _cxx_and (int16_t _cxx_and) override;
 
     /// Attribute _cxx_auto
 
-    virtual
     int16_t
     _cxx_auto () override;
 
-    virtual
     void
-    _cxx_auto (
-        int16_t _cxx_auto) override;
+    _cxx_auto (int16_t _cxx_auto) override;
 
     /// Attribute _cxx_int16_t
 
-    virtual
     int16_t
     _cxx_int16_t () override;
 
-    virtual
     void
-    _cxx_int16_t (
-        int16_t _cxx_int16_t) override;
+    _cxx_int16_t (int16_t _cxx_int16_t) override;
 
     /// Attribute port
 
-    virtual
     int16_t
     port () override;
 
-    virtual
     void
-    port (
-        int16_t port) override;
+    port (int16_t port) override;
 
     /// Attribute mirrorport
 
-    virtual
     int16_t
     mirrorport () override;
 
-    virtual
     void
-    mirrorport (
-        int16_t mirrorport) override;
+    mirrorport (int16_t mirrorport) override;
 
     /// Attribute interface
 
-    virtual
     int16_t
     interface () override;
 
-    virtual
     void
-    interface (
-        int16_t interface) override;
+    interface (int16_t interface) override;
 
     /// Attribute abstract
 
-    virtual
     int16_t
     abstract () override;
 
-    virtual
     void
-    abstract (
-        int16_t abstract) override;
+    abstract (int16_t abstract) override;
 
     /// Attribute override
 
-    virtual
     ::Bar
     override () override;
 
-    virtual
     void
-    override (
-        const ::Bar& override) override;
+    override (const ::Bar& override) override;
     //@}
 
     /** @name Session component operations */
@@ -249,19 +213,19 @@ namespace Foo_Impl
 
     /// Setter for container context for this component
     /// @param[in] ctx Component context
-    virtual void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
+    void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
 
     /// Component state change method to configuration_complete state
-    virtual void configuration_complete () override;
+    void configuration_complete () override;
 
     /// Component state change method to activated state
-    virtual void ccm_activate () override;
+    void ccm_activate () override;
 
     /// Component state change method to passivated state
-    virtual void ccm_passivate () override;
+    void ccm_passivate () override;
 
     /// Component state change method to removed state
-    virtual void ccm_remove () override;
+    void ccm_remove () override;
     //@}
 
     /** @name User defined public operations. */

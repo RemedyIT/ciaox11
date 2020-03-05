@@ -28,12 +28,11 @@ namespace publisher_comp_Impl
     : component_executor_(component_executor)
     {}
 
-    virtual
     void
     on_trigger (
        IDL::traits< ::CCM_TT::TT_Timer>::ref_type,
        const ::CCM_TT::TT_Duration&,
-       uint32_t round);
+       uint32_t round) override;
 
    private:
      IDL::traits<CCM_publisher_comp>::weak_ref_type component_executor_;

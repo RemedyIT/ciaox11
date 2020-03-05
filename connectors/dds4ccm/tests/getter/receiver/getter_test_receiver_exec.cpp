@@ -50,7 +50,7 @@ namespace Getter_Test_Receiver_Impl
     }
     else
     {
-      DDS4CCM_TEST_ERROR << "GetOneHandler::handle_exception - "
+      DDS4CCM_TEST_ERROR << "GetOneHandler::on_trigger - "
         "ERROR: failed to lock component executor" << std::endl;
     }
   }
@@ -82,7 +82,7 @@ namespace Getter_Test_Receiver_Impl
     }
     else
     {
-      DDS4CCM_TEST_ERROR << "GetManyHandler::handle_exception - "
+      DDS4CCM_TEST_ERROR << "GetManyHandler::on_trigger - "
         "ERROR: failed to lock component executor" << std::endl;
     }
   }

@@ -27,9 +27,8 @@ namespace Test_TT_Tester_Impl
   {
   public:
     TT_Callback (std::string desc, uint32_t max_calls = 0)
-      : desc_ (desc), max_calls_ (max_calls) {}
+      : desc_ (std::move(desc)), max_calls_ (max_calls) {}
 
-    virtual
     void
     on_trigger (
         IDL::traits< ::CCM_TT::TT_Timer>::ref_type timer,
@@ -37,8 +36,8 @@ namespace Test_TT_Tester_Impl
         uint32_t round) override;
 
   private:
-    std::string desc_;
-    uint32_t max_calls_;
+    std::string const desc_;
+    uint32_t const max_calls_;
   };
 
   void

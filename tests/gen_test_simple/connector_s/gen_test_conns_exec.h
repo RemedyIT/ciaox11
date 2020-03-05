@@ -56,7 +56,6 @@ namespace Hello_MyBaseEvent_Impl
     /** @name Operations from ::Hello::CCM_MyFoo */
     //@{
 
-    virtual
     int32_t
     hello (
         int32_t answer) override;
@@ -65,14 +64,11 @@ namespace Hello_MyBaseEvent_Impl
     /** @name Attributes from ::Hello::CCM_MyFoo */
     //@{
 
-    virtual
     int16_t
     interface_attrib () override;
 
-    virtual
     void
-    interface_attrib (
-        int16_t interface_attrib) override;
+    interface_attrib (int16_t interface_attrib) override;
     //@}
 
     /** @name User defined public operations. */
@@ -126,7 +122,7 @@ namespace Hello_MyBaseEvent_Impl
 
     /// Factory method and getter for the supplier_foo_uses facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::Hello::CCM_MyFoo>::ref_type get_supplier_foo_uses () override;
+    IDL::traits< ::Hello::CCM_MyFoo>::ref_type get_supplier_foo_uses () override;
     //@}
 
     /** @name Session component operations */
@@ -134,19 +130,19 @@ namespace Hello_MyBaseEvent_Impl
 
     /// Setter for container context for this component
     /// @param[in] ctx Component context
-    virtual void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
+    void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
 
     /// Component state change method to configuration_complete state
-    virtual void configuration_complete () override;
+    void configuration_complete () override;
 
     /// Component state change method to activated state
-    virtual void ccm_activate () override;
+    void ccm_activate () override;
 
     /// Component state change method to passivated state
-    virtual void ccm_passivate () override;
+    void ccm_passivate () override;
 
     /// Component state change method to removed state
-    virtual void ccm_remove () override;
+    void ccm_remove () override;
     //@}
 
     /** @name User defined public operations. */

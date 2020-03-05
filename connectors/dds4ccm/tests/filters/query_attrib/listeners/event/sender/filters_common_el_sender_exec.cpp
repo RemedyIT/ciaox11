@@ -33,7 +33,6 @@ namespace Filters_Common_Event_Listen_Test_Sender_Impl
     {
     }
 
-    virtual
     void
     on_trigger (
              IDL::traits< ::CCM_TT::TT_Timer>::ref_type timer,

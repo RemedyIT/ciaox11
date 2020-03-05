@@ -7,7 +7,7 @@
 %     _arg_string = "#{scoped_cxx_in_type} ami_return_val"
 %       _arg_string_empty = 0
 % end
-% _op_start = "virtual void #{cxxname} ("
+% _op_start = "void #{cxxname} ("
 % while !_args.empty?
 %   _arg = _args.shift
 %   if (_arg.direction == :out) || (_arg.direction == :inout)
@@ -24,6 +24,5 @@
 % end
 <%= _op_start %><%= _arg_string %>) override;
 
-virtual void <%= cxxname %>_excep (
-  IDL::traits< ::Messaging::ExceptionHolder>::ref_type excep_holder) override;
+void <%= cxxname %>_excep (IDL::traits<Messaging::ExceptionHolder>::ref_type excep_holder) override;
 

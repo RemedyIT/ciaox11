@@ -30,68 +30,68 @@ namespace CIAOX11
       /// Destructor
       virtual ~CCM_DataWriter () = default;
 
-      virtual ::DDS::ReturnCode_t
+      ::DDS::ReturnCode_t
       enable () override;
 
-      virtual IDL::traits< ::DDS::StatusCondition>::ref_type
+      IDL::traits< ::DDS::StatusCondition>::ref_type
       get_statuscondition () override;
 
-      virtual ::DDS::StatusMask
+      ::DDS::StatusMask
       get_status_changes () override;
 
-      virtual ::DDS::InstanceHandle_t
+      ::DDS::InstanceHandle_t
       get_instance_handle () override;
 
-      virtual ::DDS::ReturnCode_t
+      ::DDS::ReturnCode_t
       set_qos (
         const ::DDS::DataWriterQos & ) override;
 
-      virtual ::DDS::ReturnCode_t
+      ::DDS::ReturnCode_t
       get_qos (
         ::DDS::DataWriterQos & ) override;
 
-      virtual ::DDS::ReturnCode_t
+      ::DDS::ReturnCode_t
       set_listener (
         IDL::traits< ::DDS::DataWriterListener>::ref_type ,
         ::DDS::StatusMask ) override;
 
-      virtual IDL::traits< ::DDS::DataWriterListener>::ref_type
+      IDL::traits< ::DDS::DataWriterListener>::ref_type
       get_listener () override;
 
-      virtual IDL::traits< ::DDS::Topic>::ref_type
+      IDL::traits< ::DDS::Topic>::ref_type
       get_topic () override;
 
-      virtual IDL::traits< ::DDS::Publisher>::ref_type
+      IDL::traits< ::DDS::Publisher>::ref_type
       get_publisher () override;
 
-      virtual ::DDS::ReturnCode_t
+      ::DDS::ReturnCode_t
       wait_for_acknowledgments (
         const ::DDS::Duration_t & ) override;
 
-      virtual ::DDS::ReturnCode_t
+      ::DDS::ReturnCode_t
       get_liveliness_lost_status (
         ::DDS::LivelinessLostStatus & ) override;
 
-      virtual ::DDS::ReturnCode_t
+      ::DDS::ReturnCode_t
       get_offered_deadline_missed_status (
         ::DDS::OfferedDeadlineMissedStatus & ) override;
 
-      virtual ::DDS::ReturnCode_t
+      ::DDS::ReturnCode_t
       get_offered_incompatible_qos_status (
         ::DDS::OfferedIncompatibleQosStatus & ) override;
 
-      virtual ::DDS::ReturnCode_t
+      ::DDS::ReturnCode_t
       get_publication_matched_status (
         ::DDS::PublicationMatchedStatus & ) override;
 
-      virtual ::DDS::ReturnCode_t
+      ::DDS::ReturnCode_t
       assert_liveliness () override;
 
-      virtual ::DDS::ReturnCode_t
+      ::DDS::ReturnCode_t
       get_matched_subscriptions (
         ::DDS::InstanceHandleSeq & ) override;
 
-      virtual ::DDS::ReturnCode_t
+      ::DDS::ReturnCode_t
       get_matched_subscription_data (
         ::DDS::SubscriptionBuiltinTopicData & ,
         const ::DDS::InstanceHandle_t&) override;

@@ -282,7 +282,7 @@ namespace InterOutArgsT_Sender_Impl
 
   void
   AMI4CCM_MyFooReplyHandler_run_my_foo_i::var_outs_excep (
-    IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder)
+    IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : InterOutArgsT_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[var_outs_excep]
     // Your code here
@@ -338,7 +338,7 @@ namespace InterOutArgsT_Sender_Impl
 
   void
   AMI4CCM_MyFooReplyHandler_run_my_foo_i::var_div_outs_excep (
-    IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder)
+    IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : InterOutArgsT_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[var_div_outs_excep]
     // Your code here
@@ -382,7 +382,7 @@ namespace InterOutArgsT_Sender_Impl
 
   void
   AMI4CCM_MyFooReplyHandler_run_my_foo_i::var_div2_outs_excep (
-    IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder)
+    IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : InterOutArgsT_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[var_div2_outs_excep]
     // Your code here
@@ -412,7 +412,7 @@ namespace InterOutArgsT_Sender_Impl
 
   void
   AMI4CCM_MyFooReplyHandler_run_my_foo_i::enum_out_excep (
-    IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder)
+    IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : InterOutArgsT_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[enum_out_excep]
     // Your code here

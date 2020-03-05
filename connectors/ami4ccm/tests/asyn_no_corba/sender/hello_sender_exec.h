@@ -61,19 +61,19 @@ namespace Hello_Sender_Impl
 
     /// Setter for container context for this component
     /// @param[in] ctx Component context
-    virtual void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
+    void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
 
     /// Component state change method to configuration_complete state
-    virtual void configuration_complete () override;
+    void configuration_complete () override;
 
     /// Component state change method to activated state
-    virtual void ccm_activate () override;
+    void ccm_activate () override;
 
     /// Component state change method to passivated state
-    virtual void ccm_passivate () override;
+    void ccm_passivate () override;
 
     /// Component state change method to removed state
-    virtual void ccm_remove () override;
+    void ccm_remove () override;
     //@}
 
     /** @name User defined public operations. */
@@ -125,15 +125,13 @@ namespace Hello_Sender_Impl
 
     virtual ~AMI4CCM_MyFooReplyHandler_run_my_foo_i ();
 
-    virtual
     void
     hello (
         int32_t answer) override;
 
-    virtual
     void
     hello_excep (
-        IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
 
     /** @name User defined public operations. */
     //@{

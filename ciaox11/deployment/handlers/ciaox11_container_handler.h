@@ -31,55 +31,45 @@ namespace CIAOX11
     // Destructor
     virtual ~Container_Handler () = default;
 
-    virtual
-      std::string instance_type () override;
+    std::string instance_type () override;
 
-    virtual
-      ::CORBA::StringSeq dependencies () override;
+    ::CORBA::StringSeq dependencies () override;
 
-    virtual
-      void install_instance (const ::Deployment::DeploymentPlan & plan,
-                             uint32_t instanceRef,
-                             CORBA::Any& instance_reference) override;
+    void install_instance (const ::Deployment::DeploymentPlan & plan,
+                           uint32_t instanceRef,
+                           CORBA::Any& instance_reference) override;
 
-    virtual
-      void activate_instance (const ::Deployment::DeploymentPlan & ,
+    void activate_instance (const ::Deployment::DeploymentPlan & ,
+                            uint32_t ,
+                            const ::CORBA::Any &) override;
+
+    void passivate_instance (const ::Deployment::DeploymentPlan & ,
                               uint32_t ,
                               const ::CORBA::Any &) override;
-    virtual
-      void passivate_instance (const ::Deployment::DeploymentPlan & ,
-                               uint32_t ,
-                               const ::CORBA::Any &) override;
 
-    virtual
-      void remove_instance (const ::Deployment::DeploymentPlan & plan,
-                            uint32_t instanceRef,
-                            const ::CORBA::Any & instance_reference) override;
+    void remove_instance (const ::Deployment::DeploymentPlan & plan,
+                          uint32_t instanceRef,
+                          const ::CORBA::Any & instance_reference) override;
 
-    virtual
-      void provide_endpoint_reference (const ::Deployment::DeploymentPlan & plan,
-                                       uint32_t connectionRef,
-                                       CORBA::Any& endpoint_reference) override;
-    virtual
-      void connect_instance (const ::Deployment::DeploymentPlan & plan,
-                             uint32_t connectionRef,
-                             const ::CORBA::Any & provided_reference) override;
+    void provide_endpoint_reference (const ::Deployment::DeploymentPlan & plan,
+                                      uint32_t connectionRef,
+                                      CORBA::Any& endpoint_reference) override;
 
-    virtual
-      void disconnect_instance (const ::Deployment::DeploymentPlan & plan,
-                                uint32_t connectionRef) override;
+    void connect_instance (const ::Deployment::DeploymentPlan & plan,
+                            uint32_t connectionRef,
+                            const ::CORBA::Any & provided_reference) override;
 
-    virtual
-      void instance_configured (const ::Deployment::DeploymentPlan & plan,
-                                uint32_t instanceRef) override;
+    void disconnect_instance (const ::Deployment::DeploymentPlan & plan,
+                              uint32_t connectionRef) override;
 
-    virtual
-      void configure(const Deployment::Properties&) override;
+    void instance_configured (const ::Deployment::DeploymentPlan & plan,
+                              uint32_t instanceRef) override;
 
-    virtual void close () override;
+    void configure(const Deployment::Properties&) override;
+
+    void close () override;
 
   protected:
-
     void
     add_container (
         const std::string& id,
