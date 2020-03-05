@@ -127,7 +127,6 @@ namespace Hello_Receiver_comp_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_comp_Impl::Receiver_comp_exec_i[dtor]
   }
 
-
   /** User defined public operations. */
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_comp_Impl::Receiver_comp_exec_i[user_public_ops]
   // Your code here
@@ -137,8 +136,6 @@ namespace Hello_Receiver_comp_Impl
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_comp_Impl::Receiver_comp_exec_i[user_private_ops]
   // Your code here
   //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_comp_Impl::Receiver_comp_exec_i[user_private_ops]
-
-
 
   /** Session component operations */
   void Receiver_comp_exec_i::configuration_complete ()
@@ -169,7 +166,6 @@ namespace Hello_Receiver_comp_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_comp_Impl::Receiver_comp_exec_i[ccm_remove]
   }
 
-
   IDL::traits< ::Hello::CCM_MyFoo_obj>::ref_type
   Receiver_comp_exec_i::get_do_my_foo ()
   {
@@ -181,7 +177,6 @@ namespace Hello_Receiver_comp_Impl
   return this->do_my_foo_;
   //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_comp_Impl::Receiver_comp_exec_i[get_do_my_foo]
   }
-
 
   /// Operations from Components::SessionComponent
   void
@@ -198,16 +193,16 @@ namespace Hello_Receiver_comp_Impl
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_comp_Impl[user_namespace_end_impl]
   //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_comp_Impl[user_namespace_end_impl]
 
-  //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_comp_Impl[factory]
-  extern "C" void
-  create_Hello_Receiver_comp_Impl (
-    IDL::traits<Components::EnterpriseComponent>::ref_type& component)
-  {
-    component = CORBA::make_reference <Receiver_comp_exec_i> ();
-  }
-  //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_comp_Impl[factory]
-
 } // namespace Hello_Receiver_comp_Impl
+
+//@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_comp_Impl[factory]
+extern "C" void
+create_Hello_Receiver_comp_Impl (
+  IDL::traits<Components::EnterpriseComponent>::ref_type& component)
+{
+  component = CORBA::make_reference <Hello_Receiver_comp_Impl::Receiver_comp_exec_i> ();
+}
+//@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_comp_Impl[factory]
 //@@{__RIDL_REGEN_MARKER__} - BEGIN : hello_receiver_comp_impl.cpp[Footer]
 // Your footer (code) here
 // -*- END -*-

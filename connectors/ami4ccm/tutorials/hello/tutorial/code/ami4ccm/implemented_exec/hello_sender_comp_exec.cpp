@@ -33,6 +33,7 @@ namespace Hello_Sender_comp_Impl
     this->context_ = IDL::traits<Hello::CCM_Sender_comp_Context>::narrow (std::move(context));
   }
 
+
   int asynch_foo_generator::svc()
   {
     std::this_thread::sleep_for (std::chrono::seconds (3));
@@ -155,7 +156,6 @@ namespace Hello_Sender_comp_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Sender_comp_Impl::Sender_comp_exec_i[dtor]
   }
 
-
   /** User defined public operations. */
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_comp_Impl::Sender_comp_exec_i[user_public_ops]
   // Your code here
@@ -165,8 +165,6 @@ namespace Hello_Sender_comp_Impl
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_comp_Impl::Sender_comp_exec_i[user_private_ops]
   // Your code here
   //@@{__RIDL_REGEN_MARKER__} - END : Hello_Sender_comp_Impl::Sender_comp_exec_i[user_private_ops]
-
-
 
   /** Session component operations */
   void Sender_comp_exec_i::configuration_complete ()
@@ -199,8 +197,6 @@ namespace Hello_Sender_comp_Impl
     // Your code here
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Sender_comp_Impl::Sender_comp_exec_i[ccm_remove]
   }
-
-
 
   /// Operations from Components::SessionComponent
   void
@@ -253,7 +249,7 @@ namespace Hello_Sender_comp_Impl
 
   void
   AMI4CCM_MyFoo_objReplyHandler_run_my_foo_i::foo_excep (
-    IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder)
+    IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_comp_Impl::AMI4CCM_MyFoo_objReplyHandler_run_my_foo_i[foo_excep]
     try
@@ -281,7 +277,7 @@ namespace Hello_Sender_comp_Impl
 
   void
   AMI4CCM_MyFoo_objReplyHandler_run_my_foo_i::hello_excep (
-    IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder)
+    IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_comp_Impl::AMI4CCM_MyFoo_objReplyHandler_run_my_foo_i[hello_excep]
     try
@@ -309,7 +305,7 @@ namespace Hello_Sender_comp_Impl
 
   void
   AMI4CCM_MyFoo_objReplyHandler_run_my_foo_i::get_rw_attrib_excep (
-    IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder)
+    IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_comp_Impl::AMI4CCM_MyFoo_objReplyHandler_run_my_foo_i[get_rw_attrib_excep]
     excep_holder->raise_exception ();
@@ -327,7 +323,7 @@ namespace Hello_Sender_comp_Impl
 
   void
   AMI4CCM_MyFoo_objReplyHandler_run_my_foo_i::set_rw_attrib_excep (
-    IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder)
+    IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_comp_Impl::AMI4CCM_MyFoo_objReplyHandler_run_my_foo_i[set_rw_attrib_excep]
     excep_holder->raise_exception ();
@@ -346,7 +342,7 @@ namespace Hello_Sender_comp_Impl
 
   void
   AMI4CCM_MyFoo_objReplyHandler_run_my_foo_i::get_ro_attrib_excep (
-    IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder)
+    IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_comp_Impl::AMI4CCM_MyFoo_objReplyHandler_run_my_foo_i[get_ro_attrib_excep]
     excep_holder->raise_exception ();
@@ -358,16 +354,16 @@ namespace Hello_Sender_comp_Impl
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_comp_Impl[user_namespace_end_impl]
   //@@{__RIDL_REGEN_MARKER__} - END : Hello_Sender_comp_Impl[user_namespace_end_impl]
 
-  //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_comp_Impl[factory]
-  extern "C" void
-  create_Hello_Sender_comp_Impl (
-    IDL::traits<Components::EnterpriseComponent>::ref_type& component)
-  {
-    component = CORBA::make_reference <Sender_comp_exec_i> ();
-  }
-  //@@{__RIDL_REGEN_MARKER__} - END : Hello_Sender_comp_Impl[factory]
-
 } // namespace Hello_Sender_comp_Impl
+
+//@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_comp_Impl[factory]
+extern "C" void
+create_Hello_Sender_comp_Impl (
+  IDL::traits<Components::EnterpriseComponent>::ref_type& component)
+{
+  component = CORBA::make_reference <Hello_Sender_comp_Impl::Sender_comp_exec_i> ();
+}
+//@@{__RIDL_REGEN_MARKER__} - END : Hello_Sender_comp_Impl[factory]
 //@@{__RIDL_REGEN_MARKER__} - BEGIN : hello_sender_comp_impl.cpp[Footer]
 // Your footer (code) here
 // -*- END -*-
