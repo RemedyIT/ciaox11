@@ -162,7 +162,7 @@ protected:
    * Protected getters and setters
    */
   /// Get configuration_completed
-  bool configuration_completed ();
+  bool configuration_completed () const;
 
   /// Set configuration_completed
   void configuration_completed (bool configuration_completed);

@@ -433,7 +433,6 @@ namespace UnkeyedWriterTest_Sender_Impl
                   100);
     }
     catch_dds4ccm_test_ex(ex, "Sender_exec_i::start")
-
   }
 
   //@@{__RIDL_REGEN_MARKER__} - END : UnkeyedWriterTest_Sender_Impl::Sender_exec_i[user_private_ops]
