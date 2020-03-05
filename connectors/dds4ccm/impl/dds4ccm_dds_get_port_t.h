@@ -30,7 +30,7 @@ public:
   get_fresh_data ();
   //@}
 
-  virtual void
+  void
   configuration_complete (
     IDL::traits< ::DDS::Topic>::ref_type topic,
     IDL::traits< ::DDS::Subscriber>::ref_type subscriber,

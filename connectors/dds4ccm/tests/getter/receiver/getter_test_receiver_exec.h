@@ -46,7 +46,7 @@ namespace Getter_Test_Receiver_Impl
                    int32_t iteration);
     virtual ~GetOneHandler () = default;
 
-    virtual void
+    void
     on_trigger (
         IDL::traits< ::CCM_TT::TT_Timer>::ref_type,
         const ::CCM_TT::TT_Duration&,

@@ -43,7 +43,7 @@ namespace CIAOX11
       virtual ~ListenerBase_T () = default;
 
       /// Implements the thread switch
-      virtual void
+      void
       on_data_available (IDL::traits< ::DDS::DataReader>::ref_type rdr) override;
 
       /// Publishes data to the user defined facet. Invokes on_one_data of on_many_data

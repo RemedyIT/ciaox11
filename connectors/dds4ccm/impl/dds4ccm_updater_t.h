@@ -29,28 +29,28 @@ namespace CIAOX11
        * Spec defined Updater operations.
        */
       //@{
-      virtual void
+      void
       create_one (const TOPIC_TYPE& datum) override;
 
-      virtual void
+      void
       update_one (
         const TOPIC_TYPE& datum,
         const ::DDS::InstanceHandle_t& instance_handle) override;
 
-      virtual void
+      void
       delete_one (
         const TOPIC_TYPE& datum,
         const ::DDS::InstanceHandle_t& instance_handle) override;
 
-      virtual void
+      void
       create_many (
         const TOPIC_SEQ_TYPE& data) override;
 
-      virtual void
+      void
       update_many (
         const TOPIC_SEQ_TYPE& data) override;
 
-      virtual void
+      void
       delete_many (
         const TOPIC_SEQ_TYPE& data) override;
       //@}
@@ -60,7 +60,7 @@ namespace CIAOX11
        * Getter for is_global_scope
        */
       //@{
-      virtual bool
+      bool
       is_global_scope () override;
       //@}
 
@@ -69,10 +69,10 @@ namespace CIAOX11
        * Accessors for is_coherent_write
        */
       //@{
-      virtual bool
+      bool
       is_coherent_write () override;
 
-      virtual void
+      void
       is_coherent_write (
         bool value) override;
       //@}

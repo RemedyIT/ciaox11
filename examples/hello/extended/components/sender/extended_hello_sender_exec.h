@@ -48,7 +48,7 @@ namespace Hello_Sender_Impl
   public:
     bar_generator () = default;
     void set_context(IDL::traits<Hello::CCM_Sender_Context>::ref_type context);
-    virtual int svc () override;
+    int svc () override;
 
   private:
     IDL::traits<Hello::CCM_Sender_Context>::ref_type context_;

@@ -28,35 +28,35 @@ namespace CIAOX11
       /// Destructor
       virtual ~PortStatusListener_T () = default;
 
-      virtual void
+      void
       on_requested_deadline_missed (
         IDL::traits< ::DDS::DataReader>::ref_type the_reader,
         const ::DDS::RequestedDeadlineMissedStatus & status) override;
 
-      virtual void on_sample_lost (
+      void on_sample_lost (
         IDL::traits< ::DDS::DataReader>::ref_type the_reader,
         const ::DDS::SampleLostStatus & status)  override;
 
-      virtual void
+      void
       on_requested_incompatible_qos (
         IDL::traits< ::DDS::DataReader>::ref_type ,
         const ::DDS::RequestedIncompatibleQosStatus & ) override;
 
-      virtual void
+      void
       on_sample_rejected (
         IDL::traits< ::DDS::DataReader>::ref_type ,
         const ::DDS::SampleRejectedStatus & ) override;
 
-      virtual void
+      void
       on_liveliness_changed (
         IDL::traits< ::DDS::DataReader>::ref_type ,
         const ::DDS::LivelinessChangedStatus & ) override;
 
-      virtual void
+      void
       on_data_available (
         IDL::traits< ::DDS::DataReader>::ref_type ) override;
 
-      virtual void
+      void
       on_subscription_matched (
         IDL::traits< ::DDS::DataReader>::ref_type ,
         const ::DDS::SubscriptionMatchedStatus & ) override;
