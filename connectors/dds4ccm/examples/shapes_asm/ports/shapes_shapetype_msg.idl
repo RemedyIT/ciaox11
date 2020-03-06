@@ -23,8 +23,4 @@ struct ShapeType {
   long shapesize;
 }; //@TopLevel()
 
-struct _public {
-  long y;
-}; //@TopLevel()
-
 #endif /* SHAPES_SHAPETYPE_MSG_IDL_ */
