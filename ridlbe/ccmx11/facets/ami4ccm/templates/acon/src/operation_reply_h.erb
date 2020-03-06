@@ -53,5 +53,5 @@ void <%= interface_type.ami4ccm_reply_handler %>::<%= operation.name %>_excep (
 
   IDL::traits<CCM_AMI::ExceptionHolder>::ref_type holder =
     CORBA::make_reference<CCM_AMI::ExceptionHolder_i> (std::move(excep_holder));
-  this->callback_-><%= operation.cxxname %>_excep (std::move(holder));
+  this->callback_-><%= operation.name %>_excep (std::move(holder));
 }

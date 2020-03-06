@@ -136,6 +136,7 @@ module Bar
       attribute Hello::MyFoo::ReturnValue my_return_test;
       attribute short return;
       attribute short _unescaped_return;
+      attribute short _valuetype;
       void class ();
       void _void (inout string virtual, inout string _interface);
     };
@@ -150,13 +151,15 @@ module Bar
     };
 
   // Currently doesn't work yet
-//   interface _private
-//     {
-//     };
-//
-//   interface _public : _private
-//     {
-//     };
+  /*
+  interface _private
+    {
+    };
+
+  interface _public : _private
+    {
+    };
+  */
 };
 
 #endif /* AMI4CCM_IDL_TEST_IDL */
