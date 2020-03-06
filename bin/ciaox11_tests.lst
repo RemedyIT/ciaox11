@@ -10,6 +10,8 @@ examples/hello/basic/descriptors/run_test.pl -fmt cdp: CORBA4CCM
 examples/hello/extended/descriptors/run_test.pl: CORBA4CCM
 examples/apc/apc_sync_default/descriptors/run_test.pl: CORBA4CCM
 examples/apc/apc_sync_extended/descriptors/run_test.pl: CORBA4CCM
+tests/apc/async-event-combi/descriptors/run_test.pl plan_ndds.config: DDS4CCM_EVENT AMI4CCM CORBA4CCM NDDS
+tests/apc/async-event-combi/descriptors/run_test.pl plan_opendds.config: DDS4CCM_EVENT AMI4CCM CORBA4CCM OPENDDS
 tests/apc/ext-sync-complex/descriptors/run_test.pl: CORBA4CCM
 tests/apc/ext-sync-explicit/descriptors/run_test.pl: CORBA4CCM
 tests/apc/ext-sync-extra/descriptors/run_test.pl: CORBA4CCM
@@ -25,18 +27,12 @@ tests/apc/minimal-sync-data/descriptors/run_test.pl: CORBA4CCM
 tests/apc/minimal-sync-data-nocode/descriptors/run_test.pl: CORBA4CCM
 tests/apc/minimal-sync-data-nocode-combined/descriptors/run_test.pl: CORBA4CCM
 tests/apc/minimal-async/descriptors/run_test.pl: AMI4CCM CORBA4CCM
-tests/apc/async-event-combi/descriptors/run_test.pl plan_ndds.config: DDS4CCM_EVENT AMI4CCM CORBA4CCM NDDS
-tests/apc/async-event-combi/descriptors/run_test.pl plan_opendds.config: DDS4CCM_EVENT AMI4CCM CORBA4CCM OPENDDS
 tests/apc/sync-all-in-one/descriptors/run_test.pl: CORBA4CCM
-tests/attributes/descriptors/run_test.pl:
 tests/attribute_keyword/descriptors/run_test.pl:
+tests/attributes/descriptors/run_test.pl:
 tests/bst_test/assemblies/bst_asm/deployment/descriptors/run_test.pl: CORBA4CCM
 tests/conn_test/descriptors/run_test.pl: CORBA4CCM
 tests/conn_test/descriptors/run_test.pl -fmt cdp: CORBA4CCM
-tests/gen_test/descriptors/run_test.pl: CORBA4CCM
-tests/gen_test_simple/descriptors/run_test.pl: CORBA4CCM
-tests/log_test_env/run_test.pl: CORBA4CCM
-tests/log_test/run_test.pl: CORBA4CCM
 tests/dance/execution_manager/descriptors/run_test.pl: CORBA4CCM
 tests/dance/execution_manager/descriptors/run_test.pl -fmt cdp: CORBA4CCM
 tests/dance/execution_manager/descriptors/run_test_pl.pl: CORBA4CCM
@@ -47,6 +43,12 @@ tests/dance/staged/descriptors/run_test.pl: CORBA4CCM
 tests/dance/staged/descriptors/run_test.pl -fmt cdp: CORBA4CCM
 tests/external/servant/descriptors/run_test.pl: CORBA4CCM
 tests/external/servant/descriptors/run_test.pl -fmt cdp: CORBA4CCM
+tests/gen_test/descriptors/run_test.pl: CORBA4CCM
+tests/gen_test_simple/descriptors/run_test.pl: CORBA4CCM
+tests/keywords/run_test.pl: CORBA4CCM
+tests/kitchensink/run_test.pl: CORBA4CCM
+tests/log_test/run_test.pl: CORBA4CCM
+tests/log_test_env/run_test.pl: CORBA4CCM
 tests/multiple/descriptors/run_test.pl: CORBA4CCM
 tests/multiple/descriptors/run_test.pl -fmt cdp: CORBA4CCM
 tests/naming_context/deregistration/descriptors/run_test.pl: CORBA4CCM
@@ -57,46 +59,49 @@ tests/starter_code_test/descriptors/run_test.pl: CORBA4CCM
 tests/starter_code_test/descriptors/run_test.pl -fmt cdp: CORBA4CCM
 connectors/ami4ccm/tutorials/hello/hello_asm/deployment/scripts/run_test.pl: AMI4CCM CORBA4CCM
 connectors/ami4ccm/tutorials/hello/hello_asm/deployment/scripts/run_test.pl -fmt cdp : AMI4CCM CORBA4CCM
+connectors/ami4ccm/examples/apc/apc_hello_simple/descriptors/run_test.pl: AMI4CCM CORBA4CCM
+connectors/ami4ccm/examples/hello_extended/descriptors/run_test.pl: AMI4CCM CORBA4CCM
+connectors/ami4ccm/examples/hello_simple/descriptors/run_test.pl: AMI4CCM CORBA4CCM
 connectors/ami4ccm/tests/apc/apc_async_extended/descriptors/run_test.pl: AMI4CCM CORBA4CCM
 connectors/ami4ccm/tests/apc/gen_comp/descriptors/run_test.pl: AMI4CCM CORBA4CCM
 connectors/ami4ccm/tests/apc/simplexmulti/descriptors/run_test.pl: AMI4CCM CORBA4CCM
 connectors/ami4ccm/tests/apc/usesmulti/descriptors/run_test.pl: AMI4CCM CORBA4CCM
-connectors/ami4ccm/tests/asyn_with_syn_facet/descriptors/run_test.pl: AMI4CCM CORBA4CCM
-connectors/ami4ccm/tests/asyn_with_syn_facet/descriptors/run_test_pl.pl: AMI4CCM CORBA4CCM
-connectors/ami4ccm/tests/asyn_with_syn_facet/descriptors/run_test_pl.pl -fmt cdp : AMI4CCM CORBA4CCM
-connectors/ami4ccm/examples/hello_simple/descriptors/run_test.pl: AMI4CCM CORBA4CCM
-connectors/ami4ccm/examples/hello_extended/descriptors/run_test.pl: AMI4CCM CORBA4CCM
-connectors/ami4ccm/examples/apc/apc_hello_simple/descriptors/run_test.pl: AMI4CCM CORBA4CCM
-connectors/ami4ccm/tests/export_test_ami/descriptors/run_test.pl: AMI4CCM CORBA4CCM
-connectors/ami4ccm/tests/export_test_ami/descriptors/run_test.pl -fmt cdp : AMI4CCM CORBA4CCM
 connectors/ami4ccm/tests/asyn_exceptions/descriptors/run_test.pl: AMI4CCM CORBA4CCM
 connectors/ami4ccm/tests/asyn_exceptions/descriptors/run_test.pl -fmt cdp : AMI4CCM CORBA4CCM
 connectors/ami4ccm/tests/asyn_gen_test/descriptors/run_test.pl: AMI4CCM CORBA4CCM
 connectors/ami4ccm/tests/asyn_gen_test/descriptors/run_test.pl -fmt cdp : AMI4CCM CORBA4CCM
 connectors/ami4ccm/tests/asyn_in_args/descriptors/run_test.pl: AMI4CCM CORBA4CCM
 connectors/ami4ccm/tests/asyn_in_args/descriptors/run_test.pl -fmt cdp : AMI4CCM CORBA4CCM
-connectors/ami4ccm/tests/asyn_out_args/descriptors/run_test.pl: AMI4CCM CORBA4CCM
-connectors/ami4ccm/tests/asyn_out_args/descriptors/run_test.pl -fmt cdp : AMI4CCM CORBA4CCM
 connectors/ami4ccm/tests/asyn_inout_args/descriptors/run_test.pl: AMI4CCM CORBA4CCM
 connectors/ami4ccm/tests/asyn_inout_args/descriptors/run_test.pl -fmt cdp : AMI4CCM CORBA4CCM
 connectors/ami4ccm/tests/asyn_multi_inher/descriptors/run_test.pl: AMI4CCM CORBA4CCM
 connectors/ami4ccm/tests/asyn_multi_inher/descriptors/run_test.pl -fmt cdp : AMI4CCM CORBA4CCM
+connectors/ami4ccm/tests/asyn_no_corba/descriptors/run_test.pl: AMI4CCM
+connectors/ami4ccm/tests/asyn_no_corba/descriptors/run_test.pl -fmt cdp : AMI4CCM
 connectors/ami4ccm/tests/asyn_no_reply/descriptors/run_test.pl: AMI4CCM CORBA4CCM
 connectors/ami4ccm/tests/asyn_no_reply/descriptors/run_test.pl -fmt cdp : AMI4CCM CORBA4CCM
+connectors/ami4ccm/tests/asyn_out_args/descriptors/run_test.pl: AMI4CCM CORBA4CCM
+connectors/ami4ccm/tests/asyn_out_args/descriptors/run_test.pl -fmt cdp : AMI4CCM CORBA4CCM
 connectors/ami4ccm/tests/asyn_return/descriptors/run_test.pl: AMI4CCM CORBA4CCM
 connectors/ami4ccm/tests/asyn_return/descriptors/run_test.pl -fmt cdp : AMI4CCM CORBA4CCM
+connectors/ami4ccm/tests/asyn_with_syn_facet/descriptors/run_test.pl: AMI4CCM CORBA4CCM
+connectors/ami4ccm/tests/asyn_with_syn_facet/descriptors/run_test_pl.pl: AMI4CCM CORBA4CCM
+connectors/ami4ccm/tests/asyn_with_syn_facet/descriptors/run_test_pl.pl -fmt cdp : AMI4CCM CORBA4CCM
+connectors/ami4ccm/tests/export_test_ami/descriptors/run_test.pl: AMI4CCM CORBA4CCM
+connectors/ami4ccm/tests/export_test_ami/descriptors/run_test.pl -fmt cdp : AMI4CCM CORBA4CCM
+connectors/ami4ccm/tests/idl_test/descriptors/run_test.pl: AMI4CCM CORBA4CCM
 connectors/ami4ccm/tests/no_connection/descriptors/run_test.pl: AMI4CCM CORBA4CCM
 connectors/ami4ccm/tests/no_connection/descriptors/run_test.pl -fmt cdp : AMI4CCM CORBA4CCM
 connectors/ami4ccm/tests/simplexmulti/descriptors/run_test.pl: AMI4CCM CORBA4CCM
 connectors/ami4ccm/tests/simplexmulti/descriptors/run_test.pl -fmt cdp : AMI4CCM CORBA4CCM
 connectors/ami4ccm/tests/usesmulti/descriptors/run_test.pl: AMI4CCM CORBA4CCM
 connectors/ami4ccm/tests/usesmulti/descriptors/run_test.pl -fmt cdp : AMI4CCM CORBA4CCM
-connectors/ami4ccm/tests/asyn_no_corba/descriptors/run_test.pl: AMI4CCM
-connectors/ami4ccm/tests/asyn_no_corba/descriptors/run_test.pl -fmt cdp : AMI4CCM
-connectors/corba4ccm/tests/exceptions/descriptors/run_test.pl: CORBA4CCM
 connectors/corba4ccm/examples/local_and_remote/descriptors/run_test.pl: CORBA4CCM
 connectors/corba4ccm/examples/remote_and_colocated/descriptors/run_test.pl: CORBA4CCM
 connectors/corba4ccm/tests/apc/usesmulti/descriptors/run_test.pl: CORBA4CCM
+connectors/corba4ccm/tests/exceptions/descriptors/run_test.pl: CORBA4CCM
+connectors/corba4ccm/tests/idl_tests/derived/descriptors/run_test.pl: CORBA4CCM
+connectors/corba4ccm/tests/idl_tests/multi_modules/descriptors/run_test.pl: CORBA4CCM
 connectors/tt4ccm/tests/apc/basic/descriptors/run_test.pl:
 connectors/tt4ccm/tests/apc/gen_comp/descriptors/run_test.pl:
 connectors/tt4ccm/tests/basic/descriptors/run_test.pl:

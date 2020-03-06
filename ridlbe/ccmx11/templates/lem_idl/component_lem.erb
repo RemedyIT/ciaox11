@@ -11,7 +11,7 @@ local interface <%= ccm_name %>
 %   if _p.port_type == :facet
   /// Factory method and getter for the <%= _p.lem_name %> facet
   /// @return existing instance of facet if one exists, else creates one
-  <%= _p.interface_type.scoped_ccm_name %> get_<%= _p.lem_name %> ();
+  <%= _p.interface_type.scoped_unescaped_ccm_name %> get_<%= _p.lem_name %> ();
 %   end
 %   if _p.port_type == :receptacle && _p.is_multiple?
   struct <%= _p.lem_name %>Connection {
