@@ -27,22 +27,22 @@ namespace DDSX11
     /// Destructor
     virtual ~DDS_PublisherListener_proxy () override = default;
 
-    virtual void
+    void
     on_offered_deadline_missed (
       DDS_Native::DDS::DataWriter *the_writer,
       const DDS_Native::DDS::OfferedDeadlineMissedStatus & status) override;
 
-    virtual void
+    void
     on_offered_incompatible_qos (
       DDS_Native::DDS::DataWriter *the_writer,
       const DDS_Native::DDS::OfferedIncompatibleQosStatus & status) override;
 
-    virtual void
+    void
     on_liveliness_lost (
       DDS_Native::DDS::DataWriter *the_writer,
       const DDS_Native::DDS::LivelinessLostStatus & status) override;
 
-    virtual void
+    void
     on_publication_matched (
       DDS_Native::DDS::DataWriter *the_writer,
       const DDS_Native::DDS::PublicationMatchedStatus & status) override;

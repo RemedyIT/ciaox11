@@ -36,43 +36,43 @@ namespace DDSX11
     /// Destructor
     virtual ~DDS_Topic_proxy () = default;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     set_qos (const ::DDS::TopicQos & qos) override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     get_qos (::DDS::TopicQos & qos) override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     set_listener (
       IDL::traits< ::DDS::TopicListener>::ref_type a_listener,
       ::DDS::StatusMask mask) override;
 
-    virtual IDL::traits< ::DDS::TopicListener>::ref_type
+    IDL::traits< ::DDS::TopicListener>::ref_type
     get_listener () override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     get_inconsistent_topic_status (
       ::DDS::InconsistentTopicStatus & a_status) override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     enable () override;
 
-    virtual IDL::traits< ::DDS::StatusCondition>::ref_type
+    IDL::traits< ::DDS::StatusCondition>::ref_type
     get_statuscondition () override;
 
-    virtual ::DDS::StatusMask
+    ::DDS::StatusMask
     get_status_changes () override;
 
-    virtual ::DDS::InstanceHandle_t
+    ::DDS::InstanceHandle_t
     get_instance_handle () override;
 
-    virtual std::string
+    std::string
     get_type_name () override;
 
-    virtual std::string
+    std::string
     get_name () override;
 
-    virtual IDL::traits< ::DDS::DomainParticipant>::ref_type
+    IDL::traits< ::DDS::DomainParticipant>::ref_type
     get_participant () override;
 
   private:

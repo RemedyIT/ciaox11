@@ -29,11 +29,11 @@ namespace CIAOX11
       /// Destructor
       virtual ~InstanceHandleManager_T () = default;
 
-      virtual ::DDS::InstanceHandle_t
+      ::DDS::InstanceHandle_t
       register_instance (
         const TOPIC_TYPE& datum) override;
 
-      virtual void
+      void
       unregister_instance (
         const TOPIC_TYPE& datum,
         const ::DDS::InstanceHandle_t& instance_handle) override;

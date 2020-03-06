@@ -41,7 +41,7 @@ namespace NoReplyH_Sender_Impl
     public:
       asynch_foo_generator() = default;
       void set_context(IDL::traits<NoReplyH::CCM_Sender_Context>::ref_type context);
-      virtual int svc() override;
+      int svc() override;
 
     private:
       IDL::traits<NoReplyH::CCM_Sender_Context>::ref_type ciao_context_;
@@ -53,7 +53,7 @@ namespace NoReplyH_Sender_Impl
     public:
       synch_foo_generator () = default;
       void set_context(IDL::traits<NoReplyH::CCM_Sender_Context>::ref_type context);
-      virtual int svc () override;
+      int svc () override;
 
     private:
       IDL::traits<NoReplyH::CCM_Sender_Context>::ref_type ciao_context_;

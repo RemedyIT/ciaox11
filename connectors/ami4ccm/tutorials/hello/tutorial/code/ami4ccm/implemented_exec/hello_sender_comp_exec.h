@@ -13,14 +13,11 @@
 
 //@@{__RIDL_REGEN_MARKER__} - HEADER_END : hello_sender_comp_impl.h[Header]
 
+#pragma once
+
 #include "hello_sender_compEC.h"
 
-#if !defined (ACE_LACKS_PRAGMA_ONCE)
-# pragma once
-#endif /* ACE_LACKS_PRAGMA_ONCE */
-
 #include /**/ "hello_sender_comp_exec_export.h"
-
 
 //@@{__RIDL_REGEN_MARKER__} - BEGIN : hello_sender_comp_impl.h[user_includes]
 #include "ace/Task.h"
@@ -45,7 +42,7 @@ namespace Hello_Sender_comp_Impl
   public:
     synch_foo_generator () = default;
     void set_context(IDL::traits<Hello::CCM_Sender_comp_Context>::ref_type context);
-    virtual int svc () override;
+    int svc () override;
 
   private:
     IDL::traits<Hello::CCM_Sender_comp_Context>::ref_type context_;
@@ -57,7 +54,7 @@ namespace Hello_Sender_comp_Impl
   public:
     asynch_foo_generator () = default;
     void set_context(IDL::traits<Hello::CCM_Sender_comp_Context>::ref_type context);
-    virtual int svc () override;
+    int svc () override;
 
   private:
     IDL::traits<Hello::CCM_Sender_comp_Context>::ref_type context_;
@@ -88,19 +85,19 @@ namespace Hello_Sender_comp_Impl
 
     /// Setter for container context for this component
     /// @param[in] ctx Component context
-    virtual void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
+    void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
 
     /// Component state change method to configuration_complete state
-    virtual void configuration_complete () override;
+    void configuration_complete () override;
 
     /// Component state change method to activated state
-    virtual void ccm_activate () override;
+    void ccm_activate () override;
 
     /// Component state change method to passivated state
-    virtual void ccm_passivate () override;
+    void ccm_passivate () override;
 
     /// Component state change method to removed state
-    virtual void ccm_remove () override;
+    void ccm_remove () override;
     //@}
 
     /** @name User defined public operations. */
@@ -153,52 +150,40 @@ namespace Hello_Sender_comp_Impl
 
     virtual ~AMI4CCM_MyFoo_objReplyHandler_run_my_foo_i ();
 
-    virtual
     void
     foo (
         int32_t ami_return_val,
         const std::string& answer) override;
 
-    virtual
     void
     foo_excep (
-        IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
-    virtual
+        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
     void
     hello (
         int32_t answer) override;
 
-    virtual
     void
     hello_excep (
-        IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
 
 
-    virtual
     void
-    get_rw_attrib(
-        int16_t _rw_attrib) override;
-    virtual
+    get_rw_attrib(int16_t _rw_attrib) override;
     void
     get_rw_attrib_excep (
-        IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
 
-    virtual
     void
-    set_rw_attrib();
-    virtual
+    set_rw_attrib() override;
     void
     set_rw_attrib_excep (
-        IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
 
-    virtual
     void
-    get_ro_attrib(
-        int16_t _ro_attrib) override;
-    virtual
+    get_ro_attrib(int16_t _ro_attrib) override;
     void
     get_ro_attrib_excep (
-        IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
 
     /** @name User defined public operations. */
     //@{
@@ -225,13 +210,13 @@ namespace Hello_Sender_comp_Impl
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_comp_Impl[user_namespace_end_decl]
   //@@{__RIDL_REGEN_MARKER__} - END : Hello_Sender_comp_Impl[user_namespace_end_decl]
 
-  //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_comp_Impl[factory]
-  extern "C" HELLO_SENDER_COMP_EXEC_Export  void
-  create_Hello_Sender_comp_Impl (
-    IDL::traits<Components::EnterpriseComponent>::ref_type& component);
-  //@@{__RIDL_REGEN_MARKER__} - END : Hello_Sender_comp_Impl[factory]
-
 } // namespace Hello_Sender_comp_Impl
+
+//@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_comp_Impl[factory]
+extern "C" HELLO_SENDER_COMP_EXEC_Export  void
+create_Hello_Sender_comp_Impl (
+  IDL::traits<Components::EnterpriseComponent>::ref_type& component);
+//@@{__RIDL_REGEN_MARKER__} - END : Hello_Sender_comp_Impl[factory]
 //@@{__RIDL_REGEN_MARKER__} - BEGIN : hello_sender_comp_impl.h[Footer]
 
 #endif /* __RIDL_HELLO_SENDER_COMP_EXEC_H_HDFHHEEB_INCLUDED__ */

@@ -55,13 +55,11 @@ namespace FA_Read_Get_Test_Receiver_Impl
     /** @name Operations from ::CCM_DDS::CCM_PortStatusListener */
     //@{
 
-    virtual
     void
     on_requested_deadline_missed (
         IDL::traits< ::DDS::DataReader>::ref_type the_reader,
         const ::DDS::RequestedDeadlineMissedStatus& status) override;
 
-    virtual
     void
     on_sample_lost (
         IDL::traits< ::DDS::DataReader>::ref_type the_reader,
@@ -113,13 +111,11 @@ namespace FA_Read_Get_Test_Receiver_Impl
     /** @name Operations from ::CommonTestConnector::CCM_Listener */
     //@{
 
-    virtual
     void
     on_one_data (
         const ::CommonTestMessage& datum,
         const ::CCM_DDS::ReadInfo& info) override;
 
-    virtual
     void
     on_many_data (
         const ::CommonTestMessageSeq& data,
@@ -171,13 +167,11 @@ namespace FA_Read_Get_Test_Receiver_Impl
     /** @name Operations from ::CCM_DDS::CCM_PortStatusListener */
     //@{
 
-    virtual
     void
     on_requested_deadline_missed (
         IDL::traits< ::DDS::DataReader>::ref_type the_reader,
         const ::DDS::RequestedDeadlineMissedStatus& status) override;
 
-    virtual
     void
     on_sample_lost (
         IDL::traits< ::DDS::DataReader>::ref_type the_reader,
@@ -230,16 +224,13 @@ namespace FA_Read_Get_Test_Receiver_Impl
     /** @name Operations from CCM_ReaderStarter */
     //@{
 
-    virtual
     void
     start_read () override;
 
-    virtual
     void
     start_new_run (
         uint16_t run) override;
 
-    virtual
     void
     set_reader_properties (
         uint16_t nr_keys,
@@ -289,16 +280,16 @@ namespace FA_Read_Get_Test_Receiver_Impl
 
     /// Factory method and getter for the get_port_status facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type get_get_port_status () override;
+    IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type get_get_port_status () override;
     /// Factory method and getter for the listen_port_data_listener facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::CommonTestConnector::CCM_Listener>::ref_type get_listen_port_data_listener () override;
+    IDL::traits< ::CommonTestConnector::CCM_Listener>::ref_type get_listen_port_data_listener () override;
     /// Factory method and getter for the listen_port_status facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type get_listen_port_status () override;
+    IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type get_listen_port_status () override;
     /// Factory method and getter for the start_reading facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< CCM_ReaderStarter>::ref_type get_start_reading () override;
+    IDL::traits< CCM_ReaderStarter>::ref_type get_start_reading () override;
     //@}
 
     /** @name Session component operations */
@@ -306,19 +297,19 @@ namespace FA_Read_Get_Test_Receiver_Impl
 
     /// Setter for container context for this component
     /// @param[in] ctx Component context
-    virtual void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
+    void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
 
     /// Component state change method to configuration_complete state
-    virtual void configuration_complete () override;
+    void configuration_complete () override;
 
     /// Component state change method to activated state
-    virtual void ccm_activate () override;
+    void ccm_activate () override;
 
     /// Component state change method to passivated state
-    virtual void ccm_passivate () override;
+    void ccm_passivate () override;
 
     /// Component state change method to removed state
-    virtual void ccm_remove () override;
+    void ccm_remove () override;
     //@}
 
     /** @name User defined public operations. */

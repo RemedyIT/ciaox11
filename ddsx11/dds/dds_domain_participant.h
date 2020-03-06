@@ -37,30 +37,30 @@ namespace DDSX11
     /// Destructor
     virtual ~DDS_DomainParticipant_proxy () = default;
 
-    virtual IDL::traits< ::DDS::Publisher>::ref_type
+    IDL::traits< ::DDS::Publisher>::ref_type
     create_publisher (
       const ::DDS::PublisherQos & qos,
       IDL::traits< ::DDS::PublisherListener>::ref_type a_listener,
       ::DDS::StatusMask mask) override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     delete_publisher (
       IDL::traits< ::DDS::Publisher>::ref_type p) override;
 
-    virtual IDL::traits< ::DDS::Subscriber>::ref_type
+    IDL::traits< ::DDS::Subscriber>::ref_type
     create_subscriber (
       const ::DDS::SubscriberQos & qos,
       IDL::traits< ::DDS::SubscriberListener>::ref_type a_listener,
       ::DDS::StatusMask mask) override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     delete_subscriber (
       IDL::traits< ::DDS::Subscriber>::ref_type s) override;
 
-    virtual IDL::traits< ::DDS::Subscriber>::ref_type
+    IDL::traits< ::DDS::Subscriber>::ref_type
     get_builtin_subscriber () override;
 
-    virtual IDL::traits< ::DDS::Topic>::ref_type
+    IDL::traits< ::DDS::Topic>::ref_type
     create_topic (
       const std::string &impl_name,
       const std::string &type_name,
@@ -68,142 +68,142 @@ namespace DDSX11
       IDL::traits< ::DDS::TopicListener>::ref_type a_listener,
       ::DDS::StatusMask mask) override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     delete_topic (
       IDL::traits< ::DDS::Topic>::ref_type a_topic) override;
 
-    virtual IDL::traits< ::DDS::Topic>::ref_type
+    IDL::traits< ::DDS::Topic>::ref_type
     find_topic (
       const std::string &impl_name,
       const ::DDS::Duration_t & timeout) override;
 
-    virtual IDL::traits< ::DDS::TopicDescription>::ref_type
+    IDL::traits< ::DDS::TopicDescription>::ref_type
     lookup_topicdescription (
       const std::string &name) override;
 
-    virtual IDL::traits< ::DDS::ContentFilteredTopic>::ref_type
+    IDL::traits< ::DDS::ContentFilteredTopic>::ref_type
     create_contentfilteredtopic (
       const std::string &name,
       IDL::traits< ::DDS::Topic>::ref_type related_topic,
       const std::string &filter_expression,
       const ::DDS::StringSeq & expression_parameters) override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     delete_contentfilteredtopic (
       IDL::traits< ::DDS::ContentFilteredTopic>::ref_type a_contentfilteredtopic) override;
 
-    virtual IDL::traits< ::DDS::MultiTopic>::ref_type
+    IDL::traits< ::DDS::MultiTopic>::ref_type
     create_multitopic (
       const std::string &name,
       const std::string &type_name,
       const std::string &subscription_expression,
       const ::DDS::StringSeq & expression_parameters) override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     delete_multitopic (
       IDL::traits< ::DDS::MultiTopic>::ref_type a_multitopic) override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     delete_contained_entities () override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     set_qos (
       const ::DDS::DomainParticipantQos & qos) override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     get_qos (
       ::DDS::DomainParticipantQos & qos) override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     set_listener (
       IDL::traits< ::DDS::DomainParticipantListener>::ref_type a_listener,
       ::DDS::StatusMask mask) override;
 
-    virtual IDL::traits< ::DDS::DomainParticipantListener>::ref_type
+    IDL::traits< ::DDS::DomainParticipantListener>::ref_type
     get_listener () override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     ignore_participant (
       const ::DDS::InstanceHandle_t& handle) override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     ignore_topic (
       const ::DDS::InstanceHandle_t& handle) override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     ignore_publication (
       const ::DDS::InstanceHandle_t& handle) override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     ignore_subscription (
       const ::DDS::InstanceHandle_t& handle) override;
 
-    virtual ::DDS::DomainId_t
+    ::DDS::DomainId_t
     get_domain_id () override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     assert_liveliness () override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     set_default_publisher_qos (
       const ::DDS::PublisherQos & qos) override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     get_default_publisher_qos (
       ::DDS::PublisherQos & qos) override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     set_default_subscriber_qos (
       const ::DDS::SubscriberQos & qos) override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     get_default_subscriber_qos (
       ::DDS::SubscriberQos & qos) override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     set_default_topic_qos (
       const ::DDS::TopicQos & qos) override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     get_default_topic_qos (
       ::DDS::TopicQos & qos) override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     get_discovered_participants (
       ::DDS::InstanceHandleSeq & impl_handles) override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     get_discovered_participant_data (
       ::DDS::ParticipantBuiltinTopicData & impl_data,
       const ::DDS::InstanceHandle_t& impl_handle) override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     get_discovered_topics (
       ::DDS::InstanceHandleSeq & impl_handles) override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     get_discovered_topic_data (
       ::DDS::TopicBuiltinTopicData & impl_data,
       const ::DDS::InstanceHandle_t& impl_handle) override;
 
-    virtual bool
+    bool
     contains_entity (
       const ::DDS::InstanceHandle_t& a_handle) override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     get_current_time (
       ::DDS::Time_t & current_time) override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     enable () override;
 
-    virtual IDL::traits< ::DDS::StatusCondition>::ref_type
+    IDL::traits< ::DDS::StatusCondition>::ref_type
     get_statuscondition () override;
 
-    virtual ::DDS::StatusMask
+    ::DDS::StatusMask
     get_status_changes () override;
 
-    virtual ::DDS::InstanceHandle_t
+    ::DDS::InstanceHandle_t
     get_instance_handle () override;
 
   private:

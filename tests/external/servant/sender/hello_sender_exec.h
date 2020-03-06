@@ -37,7 +37,7 @@ namespace Test_Sender_Impl
    public:
      hello_generator ();
      void set_context(IDL::traits<Test::CCM_Sender_Context>::ref_type context);
-     virtual int svc () override;
+     int svc () override;
 
      bool errors () { return this->errors_; }
 

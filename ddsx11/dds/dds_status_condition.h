@@ -37,17 +37,17 @@ namespace DDSX11
     /// Destructor
     virtual ~DDS_StatusCondition_proxy () = default;
 
-    virtual bool
+    bool
     get_trigger_value () override;
 
-    virtual ::DDS::StatusMask
+    ::DDS::StatusMask
     get_enabled_statuses () override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     set_enabled_statuses (
       ::DDS::StatusMask mask) override;
 
-    virtual IDL::traits< ::DDS::Entity>::ref_type
+    IDL::traits< ::DDS::Entity>::ref_type
     get_entity () override;
 
   private:

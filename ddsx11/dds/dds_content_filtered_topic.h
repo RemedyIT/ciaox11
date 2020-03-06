@@ -37,25 +37,24 @@ namespace DDSX11
     /// Destructor
     virtual ~DDS_ContentFilteredTopic_proxy () = default;
 
-    virtual std::string
-    get_filter_expression () override;
+    std::string get_filter_expression () override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     get_expression_parameters (
       ::DDS::StringSeq & expression_parameters) override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     set_expression_parameters (
       const ::DDS::StringSeq & expression_parameters) override;
 
-    virtual IDL::traits< ::DDS::Topic >::ref_type
+    IDL::traits< ::DDS::Topic >::ref_type
     get_related_topic () override;
 
-    virtual std::string get_type_name () override;
+    std::string get_type_name () override;
 
-    virtual std::string get_name () override;
+    std::string get_name () override;
 
-    virtual IDL::traits< ::DDS::DomainParticipant >::ref_type
+    IDL::traits< ::DDS::DomainParticipant >::ref_type
     get_participant () override;
 
   private:

@@ -37,29 +37,29 @@ namespace DDSX11
     /// Destructor
     virtual ~DDS_QueryCondition_proxy () = default;
 
-    virtual bool
+    bool
     get_trigger_value () override;
 
-    virtual ::DDS::SampleStateMask
+    ::DDS::SampleStateMask
     get_sample_state_mask () override;
 
-    virtual ::DDS::ViewStateMask
+    ::DDS::ViewStateMask
     get_view_state_mask () override;
 
-    virtual ::DDS::InstanceStateMask
+    ::DDS::InstanceStateMask
     get_instance_state_mask () override;
 
-    virtual IDL::traits< ::DDS::DataReader>::ref_type
+    IDL::traits< ::DDS::DataReader>::ref_type
     get_datareader () override;
 
-    virtual std::string
+    std::string
     get_query_expression () override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     get_query_parameters (
       ::DDS::StringSeq & query_parameters) override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     set_query_parameters (
       const ::DDS::StringSeq & query_parameters) override;
 

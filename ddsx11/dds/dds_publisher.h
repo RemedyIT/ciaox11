@@ -36,82 +36,82 @@ namespace DDSX11
     /// Destructor
     virtual ~DDS_Publisher_proxy () = default;
 
-    virtual IDL::traits< ::DDS::DataWriter>::ref_type
+    IDL::traits< ::DDS::DataWriter>::ref_type
     create_datawriter (
       IDL::traits< ::DDS::Topic>::ref_type a_topic,
       const ::DDS::DataWriterQos & qos,
       IDL::traits< ::DDS::DataWriterListener>::ref_type a_listener,
       ::DDS::StatusMask mask) override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     delete_datawriter (
       IDL::traits< ::DDS::DataWriter>::ref_type a_datawriter) override;
 
-    virtual IDL::traits< ::DDS::DataWriter>::ref_type
+    IDL::traits< ::DDS::DataWriter>::ref_type
     lookup_datawriter (
       const std::string &impl_name) override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     delete_contained_entities () override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     set_qos (
       const ::DDS::PublisherQos & qos) override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     get_qos (
       ::DDS::PublisherQos & qos) override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     set_listener (
       IDL::traits< ::DDS::PublisherListener>::ref_type a_listener,
       ::DDS::StatusMask mask) override;
 
-    virtual IDL::traits< ::DDS::PublisherListener>::ref_type
+    IDL::traits< ::DDS::PublisherListener>::ref_type
     get_listener () override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     suspend_publications () override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     resume_publications () override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     begin_coherent_changes () override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     end_coherent_changes () override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     wait_for_acknowledgments (
       const ::DDS::Duration_t & max_wait) override;
 
-    virtual IDL::traits< ::DDS::DomainParticipant>::ref_type
+    IDL::traits< ::DDS::DomainParticipant>::ref_type
     get_participant () override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     set_default_datawriter_qos (
       const ::DDS::DataWriterQos & qos) override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     get_default_datawriter_qos (
       ::DDS::DataWriterQos & qos) override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     copy_from_topic_qos (
       ::DDS::DataWriterQos & a_dataimpl_qos,
       const ::DDS::TopicQos & a_impl_qos) override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     enable () override;
 
-    virtual IDL::traits< ::DDS::StatusCondition>::ref_type
+    IDL::traits< ::DDS::StatusCondition>::ref_type
     get_statuscondition () override;
 
-    virtual ::DDS::StatusMask
+    ::DDS::StatusMask
     get_status_changes () override;
 
-    virtual ::DDS::InstanceHandle_t
+    ::DDS::InstanceHandle_t
     get_instance_handle () override;
 
   private:

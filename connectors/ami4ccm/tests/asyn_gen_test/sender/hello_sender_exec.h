@@ -52,7 +52,7 @@ namespace Hello_Sender_Impl
     public:
        asynch_foo_generator() = default;
        void set_context(IDL::traits<Hello::CCM_Sender_Context>::ref_type context);
-       virtual int svc() override;
+       int svc() override;
 
      private:
        IDL::traits<Hello::CCM_Sender_Context>::ref_type context_;
@@ -64,7 +64,7 @@ namespace Hello_Sender_Impl
    public:
      synch_foo_generator () = default;
      void set_context(IDL::traits<Hello::CCM_Sender_Context>::ref_type context);
-     virtual int svc () override;
+     int svc () override;
 
    private:
      IDL::traits<Hello::CCM_Sender_Context>::ref_type context_;

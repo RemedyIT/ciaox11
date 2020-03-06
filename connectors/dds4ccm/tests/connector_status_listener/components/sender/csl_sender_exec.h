@@ -74,37 +74,31 @@ namespace CSL_Test_Sender_Impl
     /** @name Operations from ::CCM_DDS::CCM_ConnectorStatusListener */
     //@{
 
-    virtual
     void
     on_inconsistent_topic (
         IDL::traits< ::DDS::Topic>::ref_type the_topic,
         const ::DDS::InconsistentTopicStatus& status) override;
 
-    virtual
     void
     on_requested_incompatible_qos (
         IDL::traits< ::DDS::DataReader>::ref_type the_reader,
         const ::DDS::RequestedIncompatibleQosStatus& status) override;
 
-    virtual
     void
     on_sample_rejected (
         IDL::traits< ::DDS::DataReader>::ref_type the_reader,
         const ::DDS::SampleRejectedStatus& status) override;
 
-    virtual
     void
     on_offered_deadline_missed (
         IDL::traits< ::DDS::DataWriter>::ref_type the_writer,
         const ::DDS::OfferedDeadlineMissedStatus& status) override;
 
-    virtual
     void
     on_offered_incompatible_qos (
         IDL::traits< ::DDS::DataWriter>::ref_type the_writer,
         const ::DDS::OfferedIncompatibleQosStatus& status) override;
 
-    virtual
     void
     on_unexpected_status (
         IDL::traits< ::DDS::Entity>::ref_type the_entity,
@@ -169,7 +163,7 @@ namespace CSL_Test_Sender_Impl
 
     /// Factory method and getter for the connector_status_sender facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::CCM_DDS::CCM_ConnectorStatusListener>::ref_type get_connector_status_sender () override;
+    IDL::traits< ::CCM_DDS::CCM_ConnectorStatusListener>::ref_type get_connector_status_sender () override;
     //@}
 
     /** @name Supported attributes. */
@@ -177,25 +171,19 @@ namespace CSL_Test_Sender_Impl
 
     /// Attribute csl_assignment
 
-    virtual
     std::string
     csl_assignment () override;
 
-    virtual
     void
-    csl_assignment (
-        const std::string& csl_assignment) override;
+    csl_assignment (const std::string& csl_assignment) override;
 
     /// Attribute samples_to_write
 
-    virtual
     uint32_t
     samples_to_write () override;
 
-    virtual
     void
-    samples_to_write (
-        uint32_t samples_to_write) override;
+    samples_to_write (uint32_t samples_to_write) override;
     //@}
 
     /** @name Session component operations */
@@ -203,19 +191,19 @@ namespace CSL_Test_Sender_Impl
 
     /// Setter for container context for this component
     /// @param[in] ctx Component context
-    virtual void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
+    void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
 
     /// Component state change method to configuration_complete state
-    virtual void configuration_complete () override;
+    void configuration_complete () override;
 
     /// Component state change method to activated state
-    virtual void ccm_activate () override;
+    void ccm_activate () override;
 
     /// Component state change method to passivated state
-    virtual void ccm_passivate () override;
+    void ccm_passivate () override;
 
     /// Component state change method to removed state
-    virtual void ccm_remove () override;
+    void ccm_remove () override;
     //@}
 
     /** @name User defined public operations. */

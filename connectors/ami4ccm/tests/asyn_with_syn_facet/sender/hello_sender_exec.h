@@ -54,7 +54,7 @@ namespace Hello_Sender_Impl
        void set_context(IDL::traits<Hello::CCM_Sender_Context>::ref_type context);
        void set_comp_exec (IDL::traits<Hello::CCM_Sender>::weak_ref_type comp_exec)
        { this->comp_exec_ = comp_exec; }
-       virtual int svc() override;
+       int svc() override;
 
      private:
        IDL::traits<Hello::CCM_Sender_Context>::ref_type context_;
@@ -67,7 +67,7 @@ namespace Hello_Sender_Impl
    public:
      synch_foo_generator () = default;
      void set_context(IDL::traits<Hello::CCM_Sender_Context>::ref_type context);
-     virtual int svc () override;
+     int svc () override;
 
    private:
      IDL::traits<Hello::CCM_Sender_Context>::ref_type context_;

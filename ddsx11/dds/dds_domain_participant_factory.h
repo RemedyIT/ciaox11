@@ -35,34 +35,34 @@ namespace DDSX11
     /// Destructor
     virtual ~DDS_DomainParticipantFactory_proxy () = default;
 
-    virtual IDL::traits< ::DDS::DomainParticipant>::ref_type
+    IDL::traits< ::DDS::DomainParticipant>::ref_type
     create_participant (
       ::DDS::DomainId_t domain_id,
       const ::DDS::DomainParticipantQos & qos,
       IDL::traits< ::DDS::DomainParticipantListener>::ref_type a_listener,
       ::DDS::StatusMask mask) override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     delete_participant (
       IDL::traits< ::DDS::DomainParticipant>::ref_type a_participant) override;
 
-    virtual IDL::traits< ::DDS::DomainParticipant>::ref_type
+    IDL::traits< ::DDS::DomainParticipant>::ref_type
     lookup_participant (
       ::DDS::DomainId_t domain_id) override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     set_default_participant_qos (
       const ::DDS::DomainParticipantQos & qos) override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     get_default_participant_qos (
       ::DDS::DomainParticipantQos & qos) override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     set_qos (
       const ::DDS::DomainParticipantFactoryQos & qos) override;
 
-    virtual ::DDS::ReturnCode_t
+    ::DDS::ReturnCode_t
     get_qos (
       ::DDS::DomainParticipantFactoryQos & qos) override;
 

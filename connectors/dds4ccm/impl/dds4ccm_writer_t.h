@@ -24,12 +24,12 @@ namespace CIAOX11
       explicit Writer_T (IDL::traits<CORBA::Object>::weak_ref_type component);
       virtual ~Writer_T () = default;
 
-      virtual void
+      void
       write_one (
         const TOPIC_TYPE &an_instance,
         const ::DDS::InstanceHandle_t& instance_handle) override;
 
-      virtual void
+      void
       write_many (
         const TOPIC_SEQ_TYPE& instances) override;
 
@@ -38,10 +38,10 @@ namespace CIAOX11
        * Accessors for is_coherent_write
        */
       //@{
-      virtual bool
+      bool
       is_coherent_write () override;
 
-      virtual void
+      void
       is_coherent_write (bool value) override;
       //@}
 
