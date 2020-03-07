@@ -32,6 +32,7 @@ module BRIX11
           end
 
           def self.do_build(cmd, path)
+            rc = true
             # if clean requested do so
             if cmd.options[:make][:clean]
               Sys.in_dir(path) do
@@ -47,7 +48,10 @@ module BRIX11
                 options = cmd.options.dup
                 options[:axpcreate] = CIAOX11::CreateProject::OPTIONS.dup
                 Sys.in_dir(path) do
-                  BRIX11.log_fatal("Failed to generate project for #{path}.") unless CIAOX11::CreateProject.new(cmd.entry, options).run(nil)
+                  unless CIAOX11::CreateProject.new(cmd.entry, options).run(nil)
+                    BRIX11.log_fatal("Failed to generate project for #{path}.")
+                    rc = false
+                  end
                 end
               end
               # get project handler
@@ -60,12 +64,17 @@ module BRIX11
                 options[:axpmake][:make_opts] = cmd.options[:make][:make_opts].dup
                 options[:axpmake][:noredirect] = cmd.options[:make][:noredirect]
                 Sys.in_dir(path) do
-                  BRIX11.log_fatal("Failed to build project for #{path}.") unless CIAOX11::MakeProject.new(cmd.entry, options).run(nil)
+                  unless CIAOX11::MakeProject.new(cmd.entry, options).run(nil)
+                    BRIX11.log_fatal("Failed to build project for #{path}.")
+                    rc = false
+                  end
                 end
               else
                 BRIX11.log_fatal("Cannot find project at #{path}")
+                rc = false
               end
             end
+            rc
           end
         end # APCBuilder
 
