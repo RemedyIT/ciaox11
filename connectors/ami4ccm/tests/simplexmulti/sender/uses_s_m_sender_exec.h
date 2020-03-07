@@ -156,8 +156,7 @@ namespace UsesSM_Sender_Impl
         const std::string& answer) override;
 
     void
-    foo_excep (
-        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+    foo_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
 
     /** @name User defined public operations. */
     //@{
@@ -195,8 +194,7 @@ namespace UsesSM_Sender_Impl
         const std::string& answer) override;
 
     void
-    bar_excep (
-        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+    bar_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
 
     /** @name User defined public operations. */
     //@{

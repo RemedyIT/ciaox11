@@ -156,8 +156,7 @@ namespace InterReturnT_Sender_Impl
         int32_t l_cmd) override;
 
     void
-    ret_void_excep (
-        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+    ret_void_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
     void
     ret_long (
         int32_t ami_return_val,
@@ -165,8 +164,7 @@ namespace InterReturnT_Sender_Impl
         int32_t l_cmd) override;
 
     void
-    ret_long_excep (
-        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+    ret_long_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
     void
     ret_double (
         double ami_return_val,
@@ -174,8 +172,7 @@ namespace InterReturnT_Sender_Impl
         int32_t l_cmd) override;
 
     void
-    ret_double_excep (
-        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+    ret_double_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
     void
     ret_struct (
         const ::InterReturnT::TestStruct& ami_return_val,
@@ -183,8 +180,7 @@ namespace InterReturnT_Sender_Impl
         int32_t l_cmd) override;
 
     void
-    ret_struct_excep (
-        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+    ret_struct_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
     void
     ret_array (
         const ::InterReturnT::TestArray& ami_return_val,
@@ -192,8 +188,7 @@ namespace InterReturnT_Sender_Impl
         int32_t l_cmd) override;
 
     void
-    ret_array_excep (
-        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+    ret_array_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
     void
     ret_seq (
         const ::InterReturnT::TestSeq& ami_return_val,
@@ -201,8 +196,7 @@ namespace InterReturnT_Sender_Impl
         int32_t l_cmd) override;
 
     void
-    ret_seq_excep (
-        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+    ret_seq_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
     void
     ret_union (
         const ::InterReturnT::X_Union& ami_return_val,
@@ -210,8 +204,7 @@ namespace InterReturnT_Sender_Impl
         int32_t l_cmd) override;
 
     void
-    ret_union_excep (
-        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+    ret_union_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
     void
     ret_enum (
         ::InterReturnT::test_enum ami_return_val,
@@ -219,8 +212,7 @@ namespace InterReturnT_Sender_Impl
         int32_t l_cmd) override;
 
     void
-    ret_enum_excep (
-        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+    ret_enum_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
 
     /** @name User defined public operations. */
     //@{

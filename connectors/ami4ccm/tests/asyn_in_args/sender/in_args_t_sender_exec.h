@@ -164,36 +164,31 @@ namespace InterInArgsT_Sender_Impl
         const std::string& answer) override;
 
     void
-    foo_excep (
-        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+    foo_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
     void
     var_ins (
         const std::string& answer) override;
 
     void
-    var_ins_excep (
-        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+    var_ins_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
     void
     var_div_ins (
         const std::string& answer) override;
 
     void
-    var_div_ins_excep (
-        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+    var_div_ins_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
     void
     var_div2_ins (
         const std::string& answer) override;
 
     void
-    var_div2_ins_excep (
-        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+    var_div2_ins_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
     void
     enum_in (
         const std::string& answer) override;
 
     void
-    enum_in_excep (
-        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+    enum_in_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
 
     /** @name User defined public operations. */
     //@{

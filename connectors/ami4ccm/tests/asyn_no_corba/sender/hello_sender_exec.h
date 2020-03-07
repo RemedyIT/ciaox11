@@ -130,8 +130,7 @@ namespace Hello_Sender_Impl
         int32_t answer) override;
 
     void
-    hello_excep (
-        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+    hello_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
 
     /** @name User defined public operations. */
     //@{

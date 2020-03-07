@@ -191,8 +191,7 @@ namespace InterMulti_Sender_Impl
         const std::string& answer) override;
 
     void
-    foo_excep (
-        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+    foo_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
 
     /** @name User defined public operations. */
     //@{
@@ -231,8 +230,7 @@ namespace InterMulti_Sender_Impl
         const std::string& answer) override;
 
     void
-    bar_excep (
-        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+    bar_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
 
     /** @name User defined public operations. */
     //@{
@@ -271,23 +269,20 @@ namespace InterMulti_Sender_Impl
         const std::string& answer) override;
 
     void
-    plus_excep (
-        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+    plus_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
     void
     foo (
         int32_t ami_return_val,
         const std::string& answer) override;
 
     void
-    foo_excep (
-        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+    foo_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
     void
     bar (
         const std::string& answer) override;
 
     void
-    bar_excep (
-        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+    bar_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
 
     /** @name User defined public operations. */
     //@{
