@@ -45,8 +45,8 @@ tests/external/servant/descriptors/run_test.pl: CORBA4CCM
 tests/external/servant/descriptors/run_test.pl -fmt cdp: CORBA4CCM
 tests/gen_test/descriptors/run_test.pl: CORBA4CCM
 tests/gen_test_simple/descriptors/run_test.pl: CORBA4CCM
-tests/keywords/run_test.pl:
-tests/kitchensink/run_test.pl:
+tests/keywords/descriptors/run_test.pl:
+tests/kitchensink/descriptors/run_test.pl:
 tests/log_test/run_test.pl: CORBA4CCM
 tests/log_test_env/run_test.pl: CORBA4CCM
 tests/multiple/descriptors/run_test.pl: CORBA4CCM
