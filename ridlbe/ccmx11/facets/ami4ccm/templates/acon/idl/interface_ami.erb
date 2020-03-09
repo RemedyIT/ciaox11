@@ -6,10 +6,10 @@ local interface <%=ami4ccm_ReplyHandler %>
 % _first = true
 %   bases.each do |_base|
 %     if _first
-    : AMI4CCM_<%= _base.cxxname %>ReplyHandler
+    : AMI4CCM_<%= _base.name %>ReplyHandler
 %       _first = false
 %     else
-    , AMI4CCM_<%= _base.cxxname %>ReplyHandler
+    , AMI4CCM_<%= _base.name %>ReplyHandler
 %     end
 %   end
 % else
@@ -25,7 +25,7 @@ local interface <%=ami4ccm_ReplyHandler %>
 % end
 };
 
-local interface <%= ami4ccm_cxxname %>
+local interface <%= ami4ccm_name %>
 {
 % all_operations.each do |_op|
 %   nest { _op.gen_operation }

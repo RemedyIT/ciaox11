@@ -15,20 +15,20 @@ module IDL
     #
     class InterfaceVisitor
 
-      def ami4ccm_cxxname
-        'AMI4CCM_' + cxxname
+      def ami4ccm_name
+        'AMI4CCM_' + name
       end
 
       def ami4ccm_reply_handler
-        ami4ccm_cxxname + '_reply_handler'
+        ami4ccm_name + '_reply_handler'
       end
 
       def ami4ccm_ReplyHandler
-        ami4ccm_cxxname + 'ReplyHandler'
+        ami4ccm_name + 'ReplyHandler'
       end
 
-      def scoped_ami4ccm_cxxname
-        scoped_enclosure_cxxname.scope_to_cxxname + '::AMI4CCM_' + cxxname
+      def scoped_ami4ccm_name
+        scoped_enclosure_name.scope_to_cxxname + '::AMI4CCM_' + name
       end
 
     end

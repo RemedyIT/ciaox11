@@ -10,7 +10,7 @@ public:
   /// user didn't provide a AMI4CCM callback we don't instantiate
   /// a CORBA AMI reply handler
   <%= interface_type.ami4ccm_reply_handler %> (
-    IDL::traits< <%= interface_type.scoped_enclosure_cxxname %>::<%= interface_type.ami4ccm_ReplyHandler %>>::ref_type callback,
+    IDL::traits<<%= interface_type.scoped_enclosure_cxxname %>::<%= interface_type.ami4ccm_ReplyHandler %>>::ref_type callback,
     IDL::traits< ::PortableServer::POA>::ref_type poa);
 
   /// Destructor

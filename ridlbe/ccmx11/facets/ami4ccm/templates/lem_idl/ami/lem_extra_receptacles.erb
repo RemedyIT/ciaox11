@@ -6,7 +6,7 @@
 %       if _p.is_multiple?
   <%= ccm_name %>::sendc_<%= _p.lem_name %>Connections get_connections_sendc_<%= _p.cxxname %> ();
 %       else
-  <%= _p.interface_type.scoped_ami4ccm_cxxname %> get_connection_sendc_<%= _p.lem_name %> ();
+  <%= _p.interface_type.scoped_ami4ccm_name %> get_connection_sendc_<%= _p.lem_name %> ();
 %       end
 %     end
 %   end

@@ -156,8 +156,7 @@ namespace InterOutArgsT_Sender_Impl
         int32_t l_cmd) override;
 
     void
-    var_outs_excep (
-        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+    var_outs_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
     void
     var_div_outs (
         const ::InterOutArgsT::TestTopic& test_topic,
@@ -165,23 +164,20 @@ namespace InterOutArgsT_Sender_Impl
         const ::InterOutArgsT::TopicArray& topic_arr) override;
 
     void
-    var_div_outs_excep (
-        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+    var_div_outs_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
     void
     var_div2_outs (
         const ::InterOutArgsT::X_Union& x_uni,
         const ::InterOutArgsT::test_seq& seq) override;
 
     void
-    var_div2_outs_excep (
-        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+    var_div2_outs_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
     void
     enum_out (
         ::InterOutArgsT::test_enum out_test) override;
 
     void
-    enum_out_excep (
-        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+    enum_out_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
 
     /** @name User defined public operations. */
     //@{

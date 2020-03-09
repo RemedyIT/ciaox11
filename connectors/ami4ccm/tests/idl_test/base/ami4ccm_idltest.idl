@@ -18,6 +18,8 @@
 #pragma ami4ccm interface "Bar::One"
 #pragma ami4ccm interface "Bar::Two"
 #pragma ami4ccm interface "Bar::Three"
+#pragma ami4ccm interface "Bar::public"
+#pragma ami4ccm interface "Bar::private"
 
 #pragma ami4ccm idl "ami4ccm_idltestA.idl"
 
@@ -132,6 +134,11 @@ module Bar
       Hello::MyFoo::ReturnValue returnTest();
       void passTest (in Hello::MyFoo::ReturnValue v1, inout Hello::MyFoo::ReturnValue v2, out Hello::MyFoo::ReturnValue v3);
       attribute Hello::MyFoo::ReturnValue my_return_test;
+      attribute short return;
+      attribute short _unescaped_return;
+      attribute short _valuetype;
+      void class ();
+      void _void (inout string virtual, inout string _interface);
     };
 
   interface Two
@@ -142,6 +149,17 @@ module Bar
   interface Three : One, Two
     {
     };
+
+  // Currently doesn't work yet
+  /*
+  interface _private
+    {
+    };
+
+  interface _public : _private
+    {
+    };
+  */
 };
 
 #endif /* AMI4CCM_IDL_TEST_IDL */

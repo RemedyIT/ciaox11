@@ -152,27 +152,23 @@ namespace HelloT_Sender_Impl
         const std::string& answer) override;
 
     void
-    hello_excep (
-        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+    hello_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
 
 
     void
     get_rw_attrib(int16_t _rw_attrib) override;
     void
-    get_rw_attrib_excep (
-        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+    get_rw_attrib_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
 
     void
     set_rw_attrib() override;
     void
-    set_rw_attrib_excep (
-        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+    set_rw_attrib_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
 
     void
     get_ro_attrib(int16_t _ro_attrib) override;
     void
-    get_ro_attrib_excep (
-        IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+    get_ro_attrib_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
 
     /** @name User defined public operations. */
     //@{

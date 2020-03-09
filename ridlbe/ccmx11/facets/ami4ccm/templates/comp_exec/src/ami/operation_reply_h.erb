@@ -19,10 +19,10 @@
   }
 
   void
-  <%= port.ami4ccm_rh_executor %>::<%= operation.cxxname %>_excep (
+  <%= port.ami4ccm_rh_executor %>::<%= operation.name %>_excep (
     IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder)
   {
-% _regen_value = "#{operation.cxxname}_excep"
+% _regen_value = "#{operation.name}_excep"
 % _implementation=[]
 % _implementation.push('// Your code here')
 % _implementation.push("X11_UNUSED_ARG (excep_holder);")

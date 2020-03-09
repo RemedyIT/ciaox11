@@ -1,16 +1,16 @@
 // generated from <%= ridl_template_path %>
 void
-<%= interface_type.ami4ccm_reply_handler %>::get_<%= attribute.cxxname %> (
+<%= interface_type.ami4ccm_reply_handler %>::get_<%= attribute.name %> (
   <%= attribute.scoped_cxx_return_type %> ami_return_val)
 {
   // Deactivate our CORBA AMI servant
   this->deactivate ();
 
-  this->callback_->get_<%= attribute.cxxname %> (ami_return_val);
+  this->callback_->get_<%= attribute.name %> (ami_return_val);
 }
 
 void
-<%= interface_type.ami4ccm_reply_handler %>::get_<%= attribute.cxxname %>_excep (
+<%= interface_type.ami4ccm_reply_handler %>::get_<%= attribute.name %>_excep (
   IDL::traits<Messaging::ExceptionHolder>::ref_type excep_holder)
 {
   // Deactivate our CORBA AMI servant
@@ -18,21 +18,21 @@ void
 
   IDL::traits<CCM_AMI::ExceptionHolder>::ref_type holder =
     CORBA::make_reference<CCM_AMI::ExceptionHolder_i> (std::move(excep_holder));
-  this->callback_->get_<%= attribute.cxxname %>_excep (std::move(holder));
+  this->callback_->get_<%= attribute.name %>_excep (std::move(holder));
 }
 % unless attribute.is_readonly?
 
 void
-<%= interface_type.ami4ccm_reply_handler %>::set_<%= attribute.cxxname %> ()
+<%= interface_type.ami4ccm_reply_handler %>::set_<%= attribute.name %> ()
 {
   // Deactivate our CORBA AMI servant
   this->deactivate ();
 
-  this->callback_->set_<%= attribute.cxxname %> ();
+  this->callback_->set_<%= attribute.name %> ();
 }
 
 void
-<%= interface_type.ami4ccm_reply_handler %>::set_<%= attribute.cxxname %>_excep (
+<%= interface_type.ami4ccm_reply_handler %>::set_<%= attribute.name %>_excep (
   IDL::traits<Messaging::ExceptionHolder>::ref_type excep_holder)
 {
   // Deactivate our CORBA AMI servant
@@ -40,6 +40,6 @@ void
 
   IDL::traits<CCM_AMI::ExceptionHolder>::ref_type holder =
     CORBA::make_reference<CCM_AMI::ExceptionHolder_i> (std::move(excep_holder));
-  this->callback_->set_<%= attribute.cxxname %>_excep (std::move(holder));
+  this->callback_->set_<%= attribute.name %>_excep (std::move(holder));
 }
 % end
