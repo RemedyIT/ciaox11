@@ -39,27 +39,26 @@ namespace UsesMulti_Sender_Impl
   /// Worker thread for asynchronous invocations
   class asynch_foo_generator final : public ACE_Task_Base
   {
-    public:
-       asynch_foo_generator() = default;
-       void set_context(IDL::traits<UsesMulti::CCM_Sender_Context>::ref_type context);
-       int svc() override;
+  public:
+      asynch_foo_generator() = default;
+      void set_context(IDL::traits<UsesMulti::CCM_Sender_Context>::ref_type context);
+      int svc() override;
 
-
-     private:
-       IDL::traits<UsesMulti::CCM_Sender_Context>::ref_type ciao_context_;
+    private:
+      IDL::traits<UsesMulti::CCM_Sender_Context>::ref_type ciao_context_;
   };
 
   /// Worker thread for synchronous invocations
   class synch_foo_generator final : public ACE_Task_Base
-   {
-   public:
-     synch_foo_generator () = default;
-     void set_context(IDL::traits<UsesMulti::CCM_Sender_Context>::ref_type context);
-     int svc () override;
+  {
+  public:
+    synch_foo_generator () = default;
+    void set_context(IDL::traits<UsesMulti::CCM_Sender_Context>::ref_type context);
+    int svc () override;
 
-   private:
-     IDL::traits<UsesMulti::CCM_Sender_Context>::ref_type ciao_context_;
-   };
+  private:
+    IDL::traits<UsesMulti::CCM_Sender_Context>::ref_type ciao_context_;
+  };
 
   //@@{__RIDL_REGEN_MARKER__} - END : UsesMulti_Sender_Impl[user_namespace_decl]
 
