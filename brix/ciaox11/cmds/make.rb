@@ -49,7 +49,7 @@ module BRIX11
                 options[:axpcreate] = CIAOX11::CreateProject::OPTIONS.dup
                 Sys.in_dir(path) do
                   unless CIAOX11::CreateProject.new(cmd.entry, options).run(nil)
-                    BRIX11.log_fatal("Failed to generate project for #{path}.")
+                    BRIX11.log_error("Failed to generate project for #{path}.")
                     rc = false
                   end
                 end
@@ -65,12 +65,12 @@ module BRIX11
                 options[:axpmake][:noredirect] = cmd.options[:make][:noredirect]
                 Sys.in_dir(path) do
                   unless CIAOX11::MakeProject.new(cmd.entry, options).run(nil)
-                    BRIX11.log_fatal("Failed to build project for #{path}.")
+                    BRIX11.log_error("Failed to build project for #{path}.")
                     rc = false
                   end
                 end
               else
-                BRIX11.log_fatal("Cannot find project at #{path}")
+                BRIX11.log_error("Cannot find project at #{path}")
                 rc = false
               end
             end
