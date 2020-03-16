@@ -67,7 +67,7 @@ jobs:
     condition: and(succeeded(), ne(variables['Repo'], ''))
   - script: |
       sudo apt-get --yes update
-      sudo apt-get --yes install libxerces-c-dev libssl-dev $(PackageDeps)
+      sudo apt-get --yes install libxerces-c-dev libssl-dev libzmq3-dev $(PackageDeps)
     displayName: install system package dependencies
   - powershell: |
       git clone --depth 1 --branch Latest_Micro  git://github.com/DOCGroup/ACE_TAO.git $(DOC_ROOT)

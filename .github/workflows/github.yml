@@ -81,7 +81,7 @@ jobs:
       if: startsWith(matrix.os,'ubuntu')
       run: |
         sudo apt-get --yes update
-        sudo apt-get --yes install libxerces-c-dev libssl-dev ${{ matrix.PackageDeps }}
+        sudo apt-get --yes install libxerces-c-dev libssl-dev libzmq3-dev ${{ matrix.PackageDeps }}
     - name: git clone dependent repositories
       run: |
         git clone --depth 1 --branch Latest_Micro  git://github.com/DOCGroup/ACE_TAO.git $DOC_ROOT
