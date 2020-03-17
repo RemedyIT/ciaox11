@@ -28,3 +28,4 @@ GNUmakefile*
 *.so*
 commit.txt
 lib
+*.gcno
