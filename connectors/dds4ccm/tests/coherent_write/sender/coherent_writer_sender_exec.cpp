@@ -119,7 +119,7 @@ namespace CoherentWriter_Sender_Impl
       ::DDS::StatusKind status_kind)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : CoherentWriter_Sender_Impl::connector_status_exec_i::on_unexpected_status[_the_entity_status_kind]
-    DDS4CCM_TEST_DEBUG << "connector_status_exec_i::on_unexpected_status status_kind: " << DDS::dds_write(status_kind) << std::endl;
+    DDS4CCM_TEST_DEBUG << "connector_status_exec_i::on_unexpected_status status_kind <" << DDS::dds_write(status_kind) << ">" << std::endl;
     // dds4ccm/tests/updater/sender/updater_sender_exec.cpp for an explanation of the
     // publication_matched_ flag.
     if (!this->publication_matched_)

@@ -164,7 +164,7 @@ namespace RG_LateBinding_Sender_Impl
     try
     {
       DDS4CCM_TEST_DEBUG << "Sender_exec_i::reset_topic_name - "
-        << "Setting topic name to '" << topic_name <<"'." << std::endl;
+        << "Setting topic name to <" << topic_name <<">." << std::endl;
       IDL::traits< ::CommonTestConnector::Writer>::ref_type writer =
         this->context_->get_connection_info_write_data ();
       IDL::traits< ::CORBA::Object>::ref_type cmp = writer->_get_component ();
