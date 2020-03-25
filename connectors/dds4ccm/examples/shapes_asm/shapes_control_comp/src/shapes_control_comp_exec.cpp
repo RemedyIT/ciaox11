@@ -161,12 +161,12 @@ namespace Shapes_Control_comp_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : Shapes_Control_comp_Impl::Control_comp_exec_i[user_private_ops]
 
   /** Session component operations */
-//   void Control_comp_exec_i::configuration_complete ()
-//   {
-//     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Shapes_Control_comp_Impl::Control_comp_exec_i[configuration_complete]
-//     // Your code here
-//     //@@{__RIDL_REGEN_MARKER__} - END : Shapes_Control_comp_Impl::Control_comp_exec_i[configuration_complete]
-//   }
+  void Control_comp_exec_i::configuration_complete ()
+  {
+    //@@{__RIDL_REGEN_MARKER__} - BEGIN : Shapes_Control_comp_Impl::Control_comp_exec_i[configuration_complete]
+    // Your code here
+    //@@{__RIDL_REGEN_MARKER__} - END : Shapes_Control_comp_Impl::Control_comp_exec_i[configuration_complete]
+  }
 
   void Control_comp_exec_i::ccm_activate ()
   {
