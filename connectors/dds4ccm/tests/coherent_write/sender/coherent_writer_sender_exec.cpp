@@ -226,7 +226,7 @@ namespace CoherentWriter_Sender_Impl
         {
           DDS4CCM_TEST_ERROR <<"Sender_exec_i::check_status - "
             << "Error: Unable to get_publication_matched_status: <"
-            << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode)
+            << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
             << ">." << std::endl;
         }
         else
@@ -307,7 +307,7 @@ namespace CoherentWriter_Sender_Impl
 
     if (this->act_as_updater ())
     {
-      IDL::traits< CommonTestConnector::Updater>::ref_type updater =
+      IDL::traits<CommonTestConnector::Updater>::ref_type updater =
         this->context_->get_connection_info_update_data ();
       updater->is_coherent_write (true);
 

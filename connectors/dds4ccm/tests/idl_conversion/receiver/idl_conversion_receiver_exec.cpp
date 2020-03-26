@@ -131,7 +131,7 @@ namespace IDL_Conversion_Test_Receiver_Impl
 
 
     c = 0;
-    /// Check b_15 [Example::B15 (std::vector< int32_t >)]
+    /// Check b_15 [Example::B15 (std::vector< int32_t>)]
     for (int32_t val : datum.b_15 ())
     {
       int32_t expected = c * datum.iteration ();

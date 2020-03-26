@@ -359,9 +359,9 @@ namespace QA_State_Listen_Test_Receiver_Impl
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : QA_State_Listen_Test_Receiver_Impl::Receiver_exec_i[ccm_activate]
     // First set the queries
-    IDL::traits< CommonTestConnector::Reader>::ref_type reader_1 =
+    IDL::traits<CommonTestConnector::Reader>::ref_type reader_1 =
       this->context_->get_connection_listen_port_1_data ();
-    IDL::traits< CommonTestConnector::Reader>::ref_type reader_2 =
+    IDL::traits<CommonTestConnector::Reader>::ref_type reader_2 =
       this->context_->get_connection_listen_port_2_data ();
 
     ::DDS::StringSeq params (2);

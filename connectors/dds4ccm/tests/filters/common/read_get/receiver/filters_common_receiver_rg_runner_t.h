@@ -123,7 +123,7 @@ private:
 
   void
   check_filter (
-    IDL::traits< CommonTestConnector::Reader>::ref_type reader,
+    IDL::traits<CommonTestConnector::Reader>::ref_type reader,
     bool check_getter);
 
   void check_filters ();

@@ -43,10 +43,10 @@ namespace DDSX11
           return
             this->native_entity ()->create_datareader_with_profile (
               DDSX11::cft_trait::native (topic),
-              ::DDSX11::traits< std::string >::in (lib_name),
-              ::DDSX11::traits< std::string >::in (prof_name),
+              ::DDSX11::traits<std::string>::in (lib_name),
+              ::DDSX11::traits<std::string>::in (prof_name),
               native_drl,
-              ::DDSX11::traits< ::DDS::StatusMask >::in (mask));
+              ::DDSX11::traits< ::DDS::StatusMask>::in (mask));
         }
       return nullptr;
     }
@@ -66,10 +66,10 @@ namespace DDSX11
           return
             this->native_entity ()->create_datareader_with_profile (
               DDSX11::topic_trait::native (topic),
-              ::DDSX11::traits< std::string >::in (lib_name),
-              ::DDSX11::traits< std::string >::in (prof_name),
+              ::DDSX11::traits<std::string>::in (lib_name),
+              ::DDSX11::traits<std::string>::in (prof_name),
               native_drl,
-              ::DDSX11::traits< ::DDS::StatusMask >::in (mask));
+              ::DDSX11::traits< ::DDS::StatusMask>::in (mask));
         }
       return nullptr;
     }

@@ -46,7 +46,7 @@ namespace DDSX11
     // See issue #3420
     DDS_Native::DDS::ConditionSeq native_seq;
     ::DDS::ReturnCode_t const retcode =
-      ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+      ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
         this->native_entity ()->wait (
           native_seq, ::DDSX11::traits< ::DDS::Duration_t >::in (timeout)));
 
@@ -66,13 +66,13 @@ namespace DDSX11
 
     if (qc_cond)
       {
-        return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+        return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
           this->native_entity ()->attach_condition (
             query_condition_trait::native (qc_cond)));
       }
     else if (rc_cond)
       {
-        return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+        return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
           this->native_entity ()->attach_condition (
             read_condition_trait::native (rc_cond)));
       }
@@ -92,13 +92,13 @@ namespace DDSX11
 
     if (qc_cond)
       {
-        return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+        return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
           this->native_entity ()->detach_condition (
             query_condition_trait::native (qc_cond)));
       }
     else if (rc_cond)
       {
-        return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+        return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
           this->native_entity ()->detach_condition (
             read_condition_trait::native (rc_cond)));
       }
@@ -119,7 +119,7 @@ namespace DDSX11
     // See issue #3420
     DDS_Native::DDS::ConditionSeq native_seq;
 
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->get_conditions (native_seq));
   }
 }

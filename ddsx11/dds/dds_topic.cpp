@@ -35,7 +35,7 @@ namespace DDSX11
 #if defined(DDSX11_INITIALIZE_QOS_DEFAULTS)
     // Get the default QOS from DDS
     ::DDS::ReturnCode_t const retcode =
-      ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+      ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
         this->native_entity ()->get_qos (qos_in.value_));
     if (retcode != ::DDS::RETCODE_OK)
       {
@@ -51,7 +51,7 @@ namespace DDSX11
       << IDL::traits< ::DDS::TopicQos>::write (::DDSX11::traits< ::DDS::TopicQos>::retn(qos_in))
       << ">");
 
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->set_qos (qos_in));
   }
 
@@ -60,7 +60,7 @@ namespace DDSX11
     ::DDS::TopicQos & qos)
   {
     DDSX11_LOG_TRACE ("DDS_Topic_proxy::get_qos");
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()-> get_qos (
         ::DDSX11::traits< ::DDS::TopicQos >::inout (qos)));
   }
@@ -82,9 +82,9 @@ namespace DDSX11
       }
 
     ::DDS::ReturnCode_t const retcode =
-      ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+      ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
         this->native_entity ()->set_listener (new_guard.get (),
-          ::DDSX11::traits< ::DDS::StatusMask >::in (mask)));
+          ::DDSX11::traits< ::DDS::StatusMask>::in (mask)));
 
     if (retcode == ::DDS::RETCODE_OK)
       {
@@ -125,7 +125,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_Topic_proxy::get_inconsistent_topic_status");
 
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->get_inconsistent_topic_status (
         ::DDSX11::traits< ::DDS::InconsistentTopicStatus >::inout (a_status)));
   }
@@ -135,7 +135,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_Topic_proxy::enable");
 
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->enable ());
   }
 
@@ -159,7 +159,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_Topic_proxy::get_status_changes");
 
-    return ::DDSX11::traits< ::DDS::StatusMask >::retn (
+    return ::DDSX11::traits< ::DDS::StatusMask>::retn (
       this->native_entity ()->get_status_changes ());
   }
 
@@ -168,7 +168,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_Topic_proxy::get_instance_handle");
 
-    return ::DDSX11::traits< ::DDS::InstanceHandle_t >::retn (
+    return ::DDSX11::traits< ::DDS::InstanceHandle_t>::retn (
         this->native_entity ()->get_instance_handle ());
   }
 
@@ -177,7 +177,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_Topic_proxy::get_type_name");
 
-    return ::DDSX11::traits< std::string >::retn (
+    return ::DDSX11::traits<std::string>::retn (
       this->native_entity ()->get_type_name ());
   }
 
@@ -186,7 +186,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_Topic_proxy::get_name");
 
-    return ::DDSX11::traits< std::string >::retn (
+    return ::DDSX11::traits<std::string>::retn (
       this->native_entity ()->get_name ());
   }
 

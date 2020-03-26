@@ -48,13 +48,13 @@ namespace DDSX11
     ::DDSX11::traits< ::DDS::PublisherQos>::in qos_in;
 #if defined(DDSX11_INITIALIZE_QOS_DEFAULTS)
     // Get the default QOS from DDS
-    ::DDS::ReturnCode_t const retcode = ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    ::DDS::ReturnCode_t const retcode = ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->get_default_publisher_qos (qos_in.value_));
     if (retcode != ::DDS::RETCODE_OK)
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::create_publisher - "
           << "Error: Unable to retrieve default publisher qos: <"
-          << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode)
+          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">");
         return {};
       }
@@ -78,7 +78,7 @@ namespace DDSX11
       this->native_entity ()->create_publisher (
         qos_in,
         listener_guard.get (),
-        ::DDSX11::traits< ::DDS::StatusMask >::in (mask));
+        ::DDSX11::traits< ::DDS::StatusMask>::in (mask));
 
     if (!native_pub)
       {
@@ -133,14 +133,14 @@ namespace DDSX11
     }
     DDS_ProxyEntityManager::unregister_publisher_proxy (p);
 
-    ::DDS::ReturnCode_t const retcode = ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    ::DDS::ReturnCode_t const retcode = ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->delete_publisher (native_pub));
 
     if (retcode != ::DDS::RETCODE_OK)
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::delete_publisher - "
           << "Error: delete_publisher returned non-ok error code <"
-          << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode)
+          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">");
       }
     else
@@ -166,13 +166,13 @@ namespace DDSX11
     ::DDSX11::traits< ::DDS::SubscriberQos>::in qos_in;
 #if defined(DDSX11_INITIALIZE_QOS_DEFAULTS)
     // Get the default QOS from DDS
-    ::DDS::ReturnCode_t const retcode = ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    ::DDS::ReturnCode_t const retcode = ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->get_default_subscriber_qos (qos_in.value_));
     if (retcode != ::DDS::RETCODE_OK)
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::create_subscriber - "
           << "Error: Unable to retrieve default subscriber qos."
-          << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode)
+          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">");
         return {};
       }
@@ -195,7 +195,7 @@ namespace DDSX11
       this->native_entity ()->create_subscriber (
         qos_in,
         listener_guard.get (),
-        ::DDSX11::traits< ::DDS::StatusMask >::in (mask));
+        ::DDSX11::traits< ::DDS::StatusMask>::in (mask));
 
     if (!native_sub)
       {
@@ -254,14 +254,14 @@ namespace DDSX11
       }
     DDS_ProxyEntityManager::unregister_subscriber_proxy (proxy);
 
-    ::DDS::ReturnCode_t const retcode = ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    ::DDS::ReturnCode_t const retcode = ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->delete_subscriber (native_sub));
 
     if (retcode != ::DDS::RETCODE_OK)
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::delete_subscriber - "
           << "Error: delete_subscriber returned non-ok error code <"
-          << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode)
+          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">");
       }
     else
@@ -330,13 +330,13 @@ namespace DDSX11
     ::DDSX11::traits< ::DDS::TopicQos >::in qos_in;
 #if defined(DDSX11_INITIALIZE_QOS_DEFAULTS)
     // Get the default QOS from DDS
-    ::DDS::ReturnCode_t const retcode = ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    ::DDS::ReturnCode_t const retcode = ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->get_default_topic_qos (qos_in.value_));
     if (retcode != ::DDS::RETCODE_OK)
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::create_topic - "
           << "Error: Unable to retrieve default topic qos: <"
-          << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode)
+          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">");
         return {};
       }
@@ -358,11 +358,11 @@ namespace DDSX11
 
     DDS_Native::DDS::Topic * dds_tp =
       this->native_entity ()->create_topic (
-        ::DDSX11::traits< std::string >::in (impl_name),
-        ::DDSX11::traits< std::string >::in (type_name),
+        ::DDSX11::traits<std::string>::in (impl_name),
+        ::DDSX11::traits<std::string>::in (type_name),
         qos_in,
         listener_guard.get (),
-        ::DDSX11::traits< ::DDS::StatusMask >::in (mask));
+        ::DDSX11::traits< ::DDS::StatusMask>::in (mask));
 
     if (!dds_tp)
       {
@@ -419,12 +419,12 @@ namespace DDSX11
     DDS_ProxyEntityManager::unregister_topic_proxy (a_topic);
 
     ::DDS::ReturnCode_t const retcode =
-      ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+      ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
         this->native_entity ()->delete_topic (top));
 
     DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::delete_topic - "
       << "delete_topic returned error code <"
-      << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode)
+      << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
       << ">");
 
     return retcode;
@@ -437,7 +437,7 @@ namespace DDSX11
   {
     return DDS_ProxyEntityManager::get_topic_proxy (
       this->native_entity ()->find_topic (
-        ::DDSX11::traits< std::string >::in (impl_name),
+        ::DDSX11::traits<std::string>::in (impl_name),
         ::DDSX11::traits< ::DDS::Duration_t >::in (timeout)));
 
   }
@@ -454,7 +454,7 @@ namespace DDSX11
     IDL::traits< ::DDS::TopicDescription>::ref_type td;
     DDS_Native::DDS::TopicDescription *native_td =
       this->native_entity ()->lookup_topicdescription (
-        ::DDSX11::traits< std::string >::in (name));
+        ::DDSX11::traits<std::string>::in (name));
     if (native_td)
       {
         // Check the entity: is it a Topic or a ContentFilteredTopic
@@ -505,9 +505,9 @@ namespace DDSX11
 
     DDS_Native::DDS::ContentFilteredTopic *native_cftp =
       this->native_entity ()->create_contentfilteredtopic (
-        ::DDSX11::traits< std::string >::in (name),
+        ::DDSX11::traits<std::string>::in (name),
         top,
-        ::DDSX11::traits< std::string >::in (filter_expression),
+        ::DDSX11::traits<std::string>::in (filter_expression),
         ::DDSX11::traits< ::DDS::StringSeq, ::DDS_Native::DDS::StringSeq>::in (expression_parameters));
     if (!native_cftp)
       {
@@ -536,7 +536,7 @@ namespace DDSX11
           "Unable to retrieve a valid ContentFilteredTopic.\n");
         return ::DDS::RETCODE_BAD_PARAMETER;
       }
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->delete_contentfilteredtopic (tp));
   }
 
@@ -567,7 +567,7 @@ namespace DDSX11
   ::DDS::ReturnCode_t
   DDS_DomainParticipant_proxy::delete_contained_entities ()
   {
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->delete_contained_entities ());
   }
 
@@ -581,13 +581,13 @@ namespace DDSX11
 #if defined(DDSX11_INITIALIZE_QOS_DEFAULTS)
     // Get the default QOS from DDS
     ::DDS::ReturnCode_t const retcode =
-      ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+      ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
         this->native_entity ()->get_qos (qos_in.value_));
     if (retcode != ::DDS::RETCODE_OK)
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::set_qos - "
           << "Error: Unable to retrieve participant qos: <"
-          << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode)
+          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">");
         return retcode;
       }
@@ -599,7 +599,7 @@ namespace DDSX11
       << IDL::traits< ::DDS::DomainParticipantQos>::write (::DDSX11::traits< ::DDS::DomainParticipantQos>::retn (qos_in))
       << ">");
 
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->set_qos (qos_in));
   }
 
@@ -609,7 +609,7 @@ namespace DDSX11
     ::DDS::DomainParticipantQos & qos)
   {
     DDSX11_LOG_TRACE ("DDS_DomainParticipant_proxy::get_qos");
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()-> get_qos (
         ::DDSX11::traits< ::DDS::DomainParticipantQos >::inout (qos)));
   }
@@ -632,9 +632,9 @@ namespace DDSX11
       }
 
     ::DDS::ReturnCode_t const retcode =
-      ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+      ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
         this->native_entity ()->set_listener (new_guard.get (),
-          ::DDSX11::traits< ::DDS::StatusMask >::in (mask)));
+          ::DDSX11::traits< ::DDS::StatusMask>::in (mask)));
 
     if (retcode == ::DDS::RETCODE_OK)
       {
@@ -674,11 +674,11 @@ namespace DDSX11
 
   ::DDS::ReturnCode_t
   DDS_DomainParticipant_proxy::ignore_participant (
-    IDL::traits< ::DDS::InstanceHandle_t >::in_type handle)
+    IDL::traits< ::DDS::InstanceHandle_t>::in_type handle)
   {
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->ignore_participant (
-        ::DDSX11::traits< ::DDS::InstanceHandle_t >::in (handle)));
+        ::DDSX11::traits< ::DDS::InstanceHandle_t>::in (handle)));
   }
 
 
@@ -686,9 +686,9 @@ namespace DDSX11
   DDS_DomainParticipant_proxy::ignore_topic (
     const ::DDS::InstanceHandle_t& handle)
   {
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->ignore_topic (
-        ::DDSX11::traits< ::DDS::InstanceHandle_t >::in (handle)));
+        ::DDSX11::traits< ::DDS::InstanceHandle_t>::in (handle)));
   }
 
 
@@ -696,9 +696,9 @@ namespace DDSX11
   DDS_DomainParticipant_proxy::ignore_publication (
     const ::DDS::InstanceHandle_t& handle)
   {
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->ignore_publication (
-        ::DDSX11::traits< ::DDS::InstanceHandle_t >::in (handle)));
+        ::DDSX11::traits< ::DDS::InstanceHandle_t>::in (handle)));
   }
 
 
@@ -706,9 +706,9 @@ namespace DDSX11
   DDS_DomainParticipant_proxy::ignore_subscription (
     const ::DDS::InstanceHandle_t& handle)
   {
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->ignore_subscription (
-        ::DDSX11::traits< ::DDS::InstanceHandle_t >::in (handle)));
+        ::DDSX11::traits< ::DDS::InstanceHandle_t>::in (handle)));
   }
 
 
@@ -723,7 +723,7 @@ namespace DDSX11
   ::DDS::ReturnCode_t
   DDS_DomainParticipant_proxy::assert_liveliness ()
   {
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->assert_liveliness ());
   }
 
@@ -737,13 +737,13 @@ namespace DDSX11
     ::DDSX11::traits< ::DDS::PublisherQos >::in qos_in;
 #if defined(DDSX11_INITIALIZE_QOS_DEFAULTS)
     ::DDS::ReturnCode_t const retcode =
-      ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+      ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
         this->native_entity ()->get_default_publisher_qos (qos_in.value_));
     if (retcode != ::DDS::RETCODE_OK)
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::set_default_publisher_qos - "
           << "Error: Unable to retrieve default publisher qos: <"
-          << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode)
+          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">");
         return retcode;
       }
@@ -755,7 +755,7 @@ namespace DDSX11
       << IDL::traits< ::DDS::PublisherQos>::write (::DDSX11::traits< ::DDS::PublisherQos>::retn (qos_in))
       << ">");
 
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->set_default_publisher_qos (qos_in));
   }
 
@@ -766,7 +766,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_DomainParticipant_proxy::get_default_publisher_qos");
 
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->get_default_publisher_qos (
         ::DDSX11::traits< ::DDS::PublisherQos >::inout (qos)));
   }
@@ -781,13 +781,13 @@ namespace DDSX11
     ::DDSX11::traits< ::DDS::SubscriberQos >::in qos_in;
 #if defined(DDSX11_INITIALIZE_QOS_DEFAULTS)
     ::DDS::ReturnCode_t const retcode =
-      ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+      ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
         this->native_entity ()->get_default_subscriber_qos (qos_in.value_));
     if (retcode != ::DDS::RETCODE_OK)
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::set_default_subscriber_qos - "
           << "Error: Unable to retrieve default subscriber qos: <"
-          << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode)
+          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">");
         return retcode;
       }
@@ -799,7 +799,7 @@ namespace DDSX11
       << IDL::traits< ::DDS::SubscriberQos>::write (::DDSX11::traits <::DDS::SubscriberQos>::retn (qos_in))
       << ">");
 
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->set_default_subscriber_qos (qos_in));
   }
 
@@ -810,7 +810,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_DomainParticipant_proxy::get_default_subscriber_qos");
 
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->get_default_subscriber_qos (
         ::DDSX11::traits< ::DDS::SubscriberQos >::inout (qos)));
   }
@@ -825,13 +825,13 @@ namespace DDSX11
     ::DDSX11::traits< ::DDS::TopicQos>::in qos_in;
 #if defined(DDSX11_INITIALIZE_QOS_DEFAULTS)
     ::DDS::ReturnCode_t const retcode =
-      ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+      ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
         this->native_entity ()->get_default_topic_qos (qos_in.value_));
     if (retcode != ::DDS::RETCODE_OK)
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::set_default_topic_qos - "
           << "Error: Unable to retrieve default topic qos: <"
-          << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode)
+          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">");
         return retcode;
       }
@@ -843,7 +843,7 @@ namespace DDSX11
       << IDL::traits< ::DDS::TopicQos>::write (::DDSX11::traits< ::DDS::TopicQos>::retn (qos_in))
       << ">");
 
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->set_default_topic_qos (qos_in));
   }
 
@@ -853,7 +853,7 @@ namespace DDSX11
     ::DDS::TopicQos & qos)
   {
     DDSX11_LOG_TRACE ("DDS_DomainParticipant_proxy::get_default_topic_qos");
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->get_default_topic_qos (
         ::DDSX11::traits< ::DDS::TopicQos >::inout (qos)));
   }
@@ -867,7 +867,7 @@ namespace DDSX11
     X11_UNUSED_ARG(impl_handles);
     return ::DDS::RETCODE_UNSUPPORTED;
 #else
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->get_discovered_participants (
         ::DDSX11::traits< ::DDS::InstanceHandleSeq, ::DDS_Native::DDS::InstanceHandleSeq>::inout (impl_handles)));
 #endif
@@ -877,7 +877,7 @@ namespace DDSX11
   ::DDS::ReturnCode_t
   DDS_DomainParticipant_proxy::get_discovered_participant_data (
     ::DDS::ParticipantBuiltinTopicData & impl_data,
-    IDL::traits< ::DDS::InstanceHandle_t >::in_type impl_handle)
+    IDL::traits< ::DDS::InstanceHandle_t>::in_type impl_handle)
   {
     DDSX11_LOG_TRACE ("DDS_DomainParticipant_proxy::get_discovered_participant_data");
 
@@ -886,10 +886,10 @@ namespace DDSX11
     X11_UNUSED_ARG(impl_handle);
     return ::DDS::RETCODE_UNSUPPORTED;
 #else
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->get_discovered_participant_data (
         ::DDSX11::traits< ::DDS::ParticipantBuiltinTopicData >::inout (impl_data),
-        ::DDSX11::traits< ::DDS::InstanceHandle_t >::in (impl_handle)));
+        ::DDSX11::traits< ::DDS::InstanceHandle_t>::in (impl_handle)));
 #endif
   }
 
@@ -902,7 +902,7 @@ namespace DDSX11
     X11_UNUSED_ARG(impl_handles);
     return ::DDS::RETCODE_UNSUPPORTED;
 #else
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->get_discovered_topics (
         ::DDSX11::traits< ::DDS::InstanceHandleSeq,  ::DDS_Native::DDS::InstanceHandleSeq>::inout (impl_handles)));
 #endif
@@ -921,23 +921,23 @@ namespace DDSX11
     X11_UNUSED_ARG(impl_handle);
     return ::DDS::RETCODE_UNSUPPORTED;
 #else
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->get_discovered_topic_data (
         ::DDSX11::traits< ::DDS::TopicBuiltinTopicData >::inout (impl_data),
-        ::DDSX11::traits< ::DDS::InstanceHandle_t >::in (impl_handle)));
+        ::DDSX11::traits< ::DDS::InstanceHandle_t>::in (impl_handle)));
 #endif
   }
 
 
   bool
   DDS_DomainParticipant_proxy::contains_entity (
-    IDL::traits< ::DDS::InstanceHandle_t >::in_type a_handle)
+    IDL::traits< ::DDS::InstanceHandle_t>::in_type a_handle)
   {
     DDSX11_LOG_TRACE ("DDS_DomainParticipant_proxy::contains_entity");
 
     return ::DDSX11::traits< bool >::retn (
       this->native_entity ()->contains_entity (
-        ::DDSX11::traits< ::DDS::InstanceHandle_t >::in (a_handle)));
+        ::DDSX11::traits< ::DDS::InstanceHandle_t>::in (a_handle)));
   }
 
 
@@ -947,7 +947,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_DomainParticipant_proxy::get_current_time");
 
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->get_current_time (
         ::DDSX11::traits< ::DDS::Time_t >::inout (current_time)));
   }
@@ -956,7 +956,7 @@ namespace DDSX11
   ::DDS::ReturnCode_t
   DDS_DomainParticipant_proxy::enable ()
   {
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->enable ());
   }
 
@@ -980,7 +980,7 @@ namespace DDSX11
   ::DDS::StatusMask
   DDS_DomainParticipant_proxy::get_status_changes ()
   {
-    return ::DDSX11::traits< ::DDS::StatusMask >::retn (
+    return ::DDSX11::traits< ::DDS::StatusMask>::retn (
       this->native_entity ()->get_status_changes ());
   }
 
@@ -988,7 +988,7 @@ namespace DDSX11
   ::DDS::InstanceHandle_t
   DDS_DomainParticipant_proxy::get_instance_handle ()
   {
-    return ::DDSX11::traits< ::DDS::InstanceHandle_t >::retn (
+    return ::DDSX11::traits< ::DDS::InstanceHandle_t>::retn (
       this->native_entity ()->get_instance_handle ());
   }
 }

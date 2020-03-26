@@ -58,10 +58,10 @@ namespace DDSX11
         {
           native_pub =
             this->native_entity ()->create_publisher_with_profile (
-              ::DDSX11::traits< std::string >::in (lib_name),
-              ::DDSX11::traits< std::string >::in (prof_name),
+              ::DDSX11::traits<std::string>::in (lib_name),
+              ::DDSX11::traits<std::string>::in (prof_name),
               dds_proxy_pl.get (),
-              ::DDSX11::traits< ::DDS::StatusMask >::in (mask));
+              ::DDSX11::traits< ::DDS::StatusMask>::in (mask));
         }
 
       if (!native_pub)
@@ -122,10 +122,10 @@ namespace DDSX11
         {
           native_sub =
             this->native_entity ()->create_subscriber_with_profile (
-              ::DDSX11::traits< std::string >::in (lib_name),
-              ::DDSX11::traits< std::string >::in (prof_name),
+              ::DDSX11::traits<std::string>::in (lib_name),
+              ::DDSX11::traits<std::string>::in (prof_name),
               dds_proxy_sl.get (),
-              ::DDSX11::traits< ::DDS::StatusMask >::in (mask));
+              ::DDSX11::traits< ::DDS::StatusMask>::in (mask));
         }
       if (!native_sub)
         {
@@ -205,12 +205,12 @@ namespace DDSX11
         {
           dds_tp =
             this->native_entity ()->create_topic_with_profile (
-              ::DDSX11::traits< std::string >::in (impl_name),
-              ::DDSX11::traits< std::string >::in (type_name),
-              ::DDSX11::traits< std::string >::in (lib_name),
-              ::DDSX11::traits< std::string >::in (prof_name),
+              ::DDSX11::traits<std::string>::in (impl_name),
+              ::DDSX11::traits<std::string>::in (type_name),
+              ::DDSX11::traits<std::string>::in (lib_name),
+              ::DDSX11::traits<std::string>::in (prof_name),
               ccm_dds_tl.get (),
-              ::DDSX11::traits< ::DDS::StatusMask >::in (mask));
+              ::DDSX11::traits< ::DDS::StatusMask>::in (mask));
         }
       if (!dds_tp)
         {

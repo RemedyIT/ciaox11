@@ -151,7 +151,7 @@ ReadGetReceiverRunner_T<CONTEXT_TYPE, QUERY_ATTRIB>::set_filters ()
 template<typename CONTEXT_TYPE, bool QUERY_ATTRIB>
 void
 ReadGetReceiverRunner_T<CONTEXT_TYPE, QUERY_ATTRIB>::check_filter (
-  IDL::traits< CommonTestConnector::Reader>::ref_type reader,
+  IDL::traits<CommonTestConnector::Reader>::ref_type reader,
   bool check_getter)
 {
   bool error = false;
@@ -240,12 +240,12 @@ ReadGetReceiverRunner_T<CONTEXT_TYPE, QUERY_ATTRIB>::check_filters ()
 {
   if (QUERY_ATTRIB)
   {
-    IDL::traits< CommonTestConnector::Reader>::ref_type get_reader =
+    IDL::traits<CommonTestConnector::Reader>::ref_type get_reader =
       this->context_->get_connection_get_port_data ();
     this->check_filter (get_reader, true);
 
 
-    IDL::traits< CommonTestConnector::Reader>::ref_type read_reader =
+    IDL::traits<CommonTestConnector::Reader>::ref_type read_reader =
       this->context_->get_connection_listen_port_data ();
     this->check_filter (read_reader, false);
   }

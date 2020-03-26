@@ -38,7 +38,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_ReadCondition_proxy::get_sample_state_mask");
 
-    return ::DDSX11::traits< ::DDS::SampleStateMask >::retn (
+    return ::DDSX11::traits< ::DDS::SampleStateMask>::retn (
       this->native_entity ()->get_sample_state_mask ());
   }
 
@@ -47,7 +47,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_ReadCondition_proxy::get_view_state_mask");
 
-    return ::DDSX11::traits< ::DDS::ViewStateMask >::retn (
+    return ::DDSX11::traits< ::DDS::ViewStateMask>::retn (
       this->native_entity ()->get_view_state_mask ());
   }
 
@@ -56,7 +56,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_ReadCondition_proxy::get_instance_state_mask");
 
-    return ::DDSX11::traits< ::DDS::InstanceStateMask >::retn (
+    return ::DDSX11::traits< ::DDS::InstanceStateMask>::retn (
       this->native_entity ()->get_instance_state_mask ());
   }
 

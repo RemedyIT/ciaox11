@@ -60,10 +60,10 @@ namespace DDSX11
         native_dw =
           this->native_entity ()->create_datawriter_with_profile (
             topic,
-            ::DDSX11::traits< std::string >::in (lib_name),
-            ::DDSX11::traits< std::string >::in (prof_name),
+            ::DDSX11::traits<std::string>::in (lib_name),
+            ::DDSX11::traits<std::string>::in (prof_name),
             proxy_dwl.get (),
-            ::DDSX11::traits< ::DDS::StatusMask >::in (mask));
+            ::DDSX11::traits< ::DDS::StatusMask>::in (mask));
       }
       if (!native_dw)
       {

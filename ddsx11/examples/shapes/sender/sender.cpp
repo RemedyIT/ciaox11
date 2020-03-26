@@ -65,7 +65,7 @@ int main (int , char *[])
             DDS::PublicationMatchedStatus status;
             DDS::ReturnCode_t ret_pm = dw->get_publication_matched_status(status);
             std::cout << "PublicationMatchedStatus: status is " << status << ", return_code is "
-                      << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (ret_pm) << std::endl;
+                      << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (ret_pm) << std::endl;
             if (status.total_count() == 1)
             {
               std::cout << "PublicationMatchedStatus status has been received" << std::endl;

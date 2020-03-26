@@ -216,7 +216,7 @@ namespace Filters_Common_Event_Listen_Test_Sender_Impl
       {
         DDS4CCM_TEST_ERROR <<"Sender_exec_i::check_status - "
           << "Error: Unable to get_publication_matched_status: <"
-          << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode)
+          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">." << std::endl;
       }
       else
@@ -255,7 +255,7 @@ namespace Filters_Common_Event_Listen_Test_Sender_Impl
   void
   Sender_exec_i::tick ()
   {
-    IDL::traits< CommonTestConnector::Writer>::ref_type writer =
+    IDL::traits<CommonTestConnector::Writer>::ref_type writer =
       this->context_->get_connection_info_write_data ();
     try
     {

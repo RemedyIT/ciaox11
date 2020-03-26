@@ -295,7 +295,7 @@ namespace CoherentWriter_Receiver_Impl
   {
     try
     {
-      IDL::traits< CommonTestConnector::Getter>::ref_type getter =
+      IDL::traits<CommonTestConnector::Getter>::ref_type getter =
         this->context_->get_connection_info_get_fresh_data ();
 
       CommonTestMessageSeq messages;
@@ -319,7 +319,7 @@ namespace CoherentWriter_Receiver_Impl
   {
     try
     {
-      IDL::traits< CommonTestConnector::Reader>::ref_type reader =
+      IDL::traits<CommonTestConnector::Reader>::ref_type reader =
         this->context_->get_connection_info_get_data ();
 
       CommonTestMessageSeq coherentwrite_info_seq;
@@ -345,7 +345,7 @@ namespace CoherentWriter_Receiver_Impl
   void Receiver_exec_i::ccm_activate ()
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : CoherentWriter_Receiver_Impl::Receiver_exec_i[ccm_activate]
-    IDL::traits< CommonTestConnector::Getter>::ref_type getter =
+    IDL::traits<CommonTestConnector::Getter>::ref_type getter =
       this->context_->get_connection_info_get_fresh_data ();
 
     getter->time_out (DDS::Duration_t (2, 0));

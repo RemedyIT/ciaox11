@@ -34,7 +34,7 @@ namespace DDSX11
 #if defined(DDSX11_INITIALIZE_QOS_DEFAULTS)
     // Get the default QOS from DDS
     ::DDS::ReturnCode_t const retcode =
-      ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+      ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
         this->native_entity ()->get_qos (qos_in.value_));
     if (retcode != ::DDS::RETCODE_OK)
       {
@@ -51,7 +51,7 @@ namespace DDSX11
       << IDL::traits< ::DDS::DataWriterQos>::write (::DDSX11::traits< ::DDS::DataWriterQos>::retn(qos_in))
       << ">");
 
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->set_qos (qos_in));
   }
 
@@ -62,7 +62,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DataWriter_T<TOPIC_TYPE, NATIVE_TYPED_WRITER, TYPED_WRITER_TYPE>::get_qos");
 
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()-> get_qos (
         ::DDSX11::traits< ::DDS::DataWriterQos >::inout (qos)));
   }
@@ -86,9 +86,9 @@ namespace DDSX11
       }
 
     ::DDS::ReturnCode_t const retcode =
-      ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+      ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
         this->native_entity ()->set_listener (new_guard.get (),
-          ::DDSX11::traits< ::DDS::StatusMask >::in (mask)));
+          ::DDSX11::traits< ::DDS::StatusMask>::in (mask)));
 
     if (retcode == ::DDS::RETCODE_OK)
       {
@@ -157,7 +157,7 @@ namespace DDSX11
     DDSX11_LOG_TRACE (
       "DataWriter_T<TOPIC_TYPE, NATIVE_TYPED_WRITER, TYPED_WRITER_TYPE>::wait_for_acknowledgments");
 
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->wait_for_acknowledgments (
         ::DDSX11::traits< ::DDS::Duration_t >::in (max_wait)));
   }
@@ -170,7 +170,7 @@ namespace DDSX11
     DDSX11_LOG_TRACE (
       "DataWriter_T<TOPIC_TYPE, NATIVE_TYPED_WRITER, TYPED_WRITER_TYPE>::get_liveliness_lost_status");
 
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->get_liveliness_lost_status (
         ::DDSX11::traits< ::DDS::LivelinessLostStatus >::inout (status)));
   }
@@ -183,7 +183,7 @@ namespace DDSX11
     DDSX11_LOG_TRACE (
       "DataWriter_T<TOPIC_TYPE, NATIVE_TYPED_WRITER, TYPED_WRITER_TYPE>::get_offered_deadline_missed_status");
 
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->get_offered_deadline_missed_status (
         ::DDSX11::traits< ::DDS::OfferedDeadlineMissedStatus >::inout (status)));
   }
@@ -196,7 +196,7 @@ namespace DDSX11
     DDSX11_LOG_TRACE (
       "DataWriter_T<TOPIC_TYPE, NATIVE_TYPED_WRITER, TYPED_WRITER_TYPE>::get_offered_incompatible_qos_status");
 
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->get_offered_incompatible_qos_status (
         ::DDSX11::traits< ::DDS::OfferedIncompatibleQosStatus >::inout (status)));
   }
@@ -209,7 +209,7 @@ namespace DDSX11
     DDSX11_LOG_TRACE (
       "DataWriter_T<TOPIC_TYPE, NATIVE_TYPED_WRITER, TYPED_WRITER_TYPE>::get_publication_matched_status");
 
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->get_publication_matched_status (
         ::DDSX11::traits< ::DDS::PublicationMatchedStatus >::inout (status)));
   }
@@ -221,7 +221,7 @@ namespace DDSX11
     DDSX11_LOG_TRACE (
       "DataWriter_T<TOPIC_TYPE, NATIVE_TYPED_WRITER, TYPED_WRITER_TYPE>::assert_liveliness");
 
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->assert_liveliness ());
   }
 
@@ -233,7 +233,7 @@ namespace DDSX11
     DDSX11_LOG_TRACE (
       "DataWriter_T<TOPIC_TYPE, NATIVE_TYPED_WRITER, TYPED_WRITER_TYPE>::get_matched_subscription");
 
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->get_matched_subscriptions (
         ::DDSX11::traits< ::DDS::InstanceHandleSeq,  ::DDS_Native::DDS::InstanceHandleSeq>::inout (subscription_handles)));
   }
@@ -252,10 +252,10 @@ namespace DDSX11
     X11_UNUSED_ARG(subscription_handle);
     return ::DDS::RETCODE_UNSUPPORTED;
 #else
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->get_matched_subscription_data (
         ::DDSX11::traits< ::DDS::SubscriptionBuiltinTopicData >::inout (subscription_data),
-        ::DDSX11::traits< ::DDS::InstanceHandle_t >::in (subscription_handle)));
+        ::DDSX11::traits< ::DDS::InstanceHandle_t>::in (subscription_handle)));
 #endif
   }
 
@@ -266,7 +266,7 @@ namespace DDSX11
     DDSX11_LOG_TRACE (
       "DataWriter_T<TOPIC_TYPE, NATIVE_TYPED_WRITER, TYPED_WRITER_TYPE>::enable");
 
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->enable ());
   }
 
@@ -293,7 +293,7 @@ namespace DDSX11
     DDSX11_LOG_TRACE (
       "DataWriter_T<TOPIC_TYPE, NATIVE_TYPED_WRITER, TYPED_WRITER_TYPE>::get_status_changes");
 
-    return ::DDSX11::traits< ::DDS::StatusMask >::retn (
+    return ::DDSX11::traits< ::DDS::StatusMask>::retn (
       this->native_entity ()->get_status_changes ());
   }
 
@@ -304,7 +304,7 @@ namespace DDSX11
     DDSX11_LOG_TRACE (
       "DataWriter_T<TOPIC_TYPE, NATIVE_TYPED_WRITER, TYPED_WRITER_TYPE>::get_instance_handle");
 
-    return ::DDSX11::traits< ::DDS::InstanceHandle_t >::retn (
+    return ::DDSX11::traits< ::DDS::InstanceHandle_t>::retn (
       this->native_entity ()->get_instance_handle ());
   }
 
@@ -316,9 +316,9 @@ namespace DDSX11
     DDSX11_LOG_TRACE (
       "DataWriter_T<TOPIC_TYPE, NATIVE_TYPED_WRITER, TYPED_WRITER_TYPE>::register_instance");
 
-    return ::DDSX11::traits< ::DDS::InstanceHandle_t >::retn (
+    return ::DDSX11::traits< ::DDS::InstanceHandle_t>::retn (
       this->native_entity ()->register_instance (
-        typename ::DDSX11::traits < TOPIC_TYPE >::in (instance_data)));
+        typename ::DDSX11::traits<TOPIC_TYPE>::in (instance_data)));
   }
 
   template <typename TOPIC_TYPE, typename NATIVE_TYPED_WRITER, typename TYPED_WRITER_TYPE>
@@ -330,9 +330,9 @@ namespace DDSX11
     DDSX11_LOG_TRACE (
       "DataWriter_T<TOPIC_TYPE, NATIVE_TYPED_WRITER, TYPED_WRITER_TYPE>::register_instance_w_timestamp");
 
-    return ::DDSX11::traits< ::DDS::InstanceHandle_t >::retn (
+    return ::DDSX11::traits< ::DDS::InstanceHandle_t>::retn (
       this->native_entity ()->register_instance_w_timestamp (
-        typename ::DDSX11::traits < TOPIC_TYPE >::in (instance_data),
+        typename ::DDSX11::traits<TOPIC_TYPE>::in (instance_data),
         ::DDSX11::traits< ::DDS::Time_t >::in (source_timestamp)));
   }
 
@@ -345,10 +345,10 @@ namespace DDSX11
     DDSX11_LOG_TRACE (
       "DataWriter_T<TOPIC_TYPE, NATIVE_TYPED_WRITER, TYPED_WRITER_TYPE>::unregister_instance");
 
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->unregister_instance (
-        typename ::DDSX11::traits < TOPIC_TYPE >::in (instance_data),
-        ::DDSX11::traits< ::DDS::InstanceHandle_t >::in (handle)));
+        typename ::DDSX11::traits<TOPIC_TYPE>::in (instance_data),
+        ::DDSX11::traits< ::DDS::InstanceHandle_t>::in (handle)));
   }
 
   template <typename TOPIC_TYPE, typename NATIVE_TYPED_WRITER, typename TYPED_WRITER_TYPE>
@@ -361,10 +361,10 @@ namespace DDSX11
     DDSX11_LOG_TRACE (
       "DataWriter_T<TOPIC_TYPE, NATIVE_TYPED_WRITER, TYPED_WRITER_TYPE>::unregister_instance_w_timestamp");
 
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->unregister_instance_w_timestamp (
-        typename ::DDSX11::traits < TOPIC_TYPE >::in (instance_data),
-        ::DDSX11::traits< ::DDS::InstanceHandle_t >::in (handle),
+        typename ::DDSX11::traits<TOPIC_TYPE>::in (instance_data),
+        ::DDSX11::traits< ::DDS::InstanceHandle_t>::in (handle),
         ::DDSX11::traits< ::DDS::Time_t >::in (source_timestamp)));
   }
 
@@ -377,10 +377,10 @@ namespace DDSX11
     DDSX11_LOG_TRACE (
       "DataWriter_T<TOPIC_TYPE, NATIVE_TYPED_WRITER, TYPED_WRITER_TYPE>::write");
 
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->write (
-        typename ::DDSX11::traits < TOPIC_TYPE >::in (instance_data),
-        ::DDSX11::traits< ::DDS::InstanceHandle_t >::in (handle)));
+        typename ::DDSX11::traits<TOPIC_TYPE>::in (instance_data),
+        ::DDSX11::traits< ::DDS::InstanceHandle_t>::in (handle)));
   }
 
   template <typename TOPIC_TYPE, typename NATIVE_TYPED_WRITER, typename TYPED_WRITER_TYPE>
@@ -393,10 +393,10 @@ namespace DDSX11
     DDSX11_LOG_TRACE (
       "DataWriter_T<TOPIC_TYPE, NATIVE_TYPED_WRITER, TYPED_WRITER_TYPE>::write_w_timestamp");
 
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->write_w_timestamp (
-        typename ::DDSX11::traits < TOPIC_TYPE >::in (instance_data),
-        ::DDSX11::traits< ::DDS::InstanceHandle_t >::in (handle),
+        typename ::DDSX11::traits<TOPIC_TYPE>::in (instance_data),
+        ::DDSX11::traits< ::DDS::InstanceHandle_t>::in (handle),
         ::DDSX11::traits< ::DDS::Time_t >::in (source_timestamp)));
   }
 
@@ -409,10 +409,10 @@ namespace DDSX11
     DDSX11_LOG_TRACE (
       "DataWriter_T<TOPIC_TYPE, NATIVE_TYPED_WRITER, TYPED_WRITER_TYPE>::dispose");
 
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->dispose (
-        typename ::DDSX11::traits < TOPIC_TYPE >::in (instance_data),
-        ::DDSX11::traits< ::DDS::InstanceHandle_t >::in (handle)));
+        typename ::DDSX11::traits<TOPIC_TYPE>::in (instance_data),
+        ::DDSX11::traits< ::DDS::InstanceHandle_t>::in (handle)));
   }
 
   template <typename TOPIC_TYPE, typename NATIVE_TYPED_WRITER, typename TYPED_WRITER_TYPE>
@@ -425,10 +425,10 @@ namespace DDSX11
     DDSX11_LOG_TRACE (
       "DataWriter_T<TOPIC_TYPE, NATIVE_TYPED_WRITER, TYPED_WRITER_TYPE>::dispose_w_timestamp");
 
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->dispose_w_timestamp (
-        typename ::DDSX11::traits < TOPIC_TYPE >::in (instance_data),
-        ::DDSX11::traits< ::DDS::InstanceHandle_t >::in (handle),
+        typename ::DDSX11::traits<TOPIC_TYPE>::in (instance_data),
+        ::DDSX11::traits< ::DDS::InstanceHandle_t>::in (handle),
         ::DDSX11::traits< ::DDS::Time_t >::in (source_timestamp)));
   }
 
@@ -441,10 +441,10 @@ namespace DDSX11
     DDSX11_LOG_TRACE (
       "DataWriter_T<TOPIC_TYPE, NATIVE_TYPED_WRITER, TYPED_WRITER_TYPE>::get_key_value");
 
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->get_key_value (
-        typename ::DDSX11::traits < TOPIC_TYPE >::inout (key_holder),
-        ::DDSX11::traits< ::DDS::InstanceHandle_t >::in (handle)));
+        typename ::DDSX11::traits<TOPIC_TYPE>::inout (key_holder),
+        ::DDSX11::traits< ::DDS::InstanceHandle_t>::in (handle)));
   }
 
   template <typename TOPIC_TYPE, typename NATIVE_TYPED_WRITER, typename TYPED_WRITER_TYPE>
@@ -455,9 +455,9 @@ namespace DDSX11
     DDSX11_LOG_TRACE (
       "DataWriter_T<TOPIC_TYPE, NATIVE_TYPED_WRITER, TYPED_WRITER_TYPE>::lookup_instance");
 
-    return ::DDSX11::traits< ::DDS::InstanceHandle_t >::retn (
+    return ::DDSX11::traits< ::DDS::InstanceHandle_t>::retn (
       this->native_entity ()->lookup_instance (
-        typename ::DDSX11::traits < TOPIC_TYPE >::in (instance_data)));
+        typename ::DDSX11::traits<TOPIC_TYPE>::in (instance_data)));
   }
 
   template <typename TOPIC_TYPE, typename NATIVE_TYPED_WRITER, typename TYPED_WRITER_TYPE>
