@@ -410,7 +410,7 @@ namespace RG_LateBinding_Receiver_Impl
       std::string const topic_name (this->first_run_ ? "FirstLateBindingTopic" : "SecondLateBindingTopic");
 
       DDS4CCM_TEST_DEBUG << "Receiver_exec_i::set_topic_name - "
-        << "Setting topic name to '" << topic_name << "'." << std::endl;
+        << "Setting topic name to <" << topic_name << ">." << std::endl;
       IDL::traits< ::CommonTestConnector::Getter>::ref_type getter =
         this->context_->get_connection_info_get_fresh_data ();
       IDL::traits< ::CORBA::Object>::ref_type cmp = getter->_get_component ();

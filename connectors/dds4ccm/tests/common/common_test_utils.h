@@ -30,7 +30,7 @@ namespace DDS4CCM_TEST_UTILS
 
       DDS4CCM_TEST_DEBUG << "DDS4CCM_TEST_UTILS::check_last <"
         << key_str << "> - last iteration <" << datum.iteration ()
-        << "> - <" << last_iteration << ">, access status :" << DDS::dds_write(readinfo.access_status ()) << std::endl;
+        << "> - <" << last_iteration << ">, access status <" << DDS::dds_write(readinfo.access_status ()) << ">" << std::endl;
 
       return readinfo.access_status () == CCM_DDS::AccessStatus::FRESH_INFO &&
         datum.iteration () >= last_iteration;

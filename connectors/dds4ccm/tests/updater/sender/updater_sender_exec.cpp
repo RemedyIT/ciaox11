@@ -135,7 +135,7 @@ namespace UpdaterModule_Sender_Impl
     // in DDS. When this method is invoked a second time, the test has already
     // been started and will start again if we don't prevent this.
     // The started flag has been introduced to prevent this.
-    DDS4CCM_TEST_DEBUG << "connector_status_exec_i::on_unexpected_status status_kind: " << DDS::dds_write(status_kind) << std::endl;
+    DDS4CCM_TEST_DEBUG << "connector_status_exec_i::on_unexpected_status status_kind <" << DDS::dds_write(status_kind) << ">" << std::endl;
     // dds4ccm/tests/updater/sender/updater_sender_exec.cpp for an explanation of the
     // started_ flag.
     if (!this->started_)

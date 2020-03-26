@@ -123,7 +123,7 @@ namespace Filters_Common_Read_Get_Test_Sender_Impl
       ::DDS::StatusKind status_kind)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Filters_Common_Read_Get_Test_Sender_Impl::connector_status_exec_i::on_unexpected_status[_the_entity_status_kind]
-    DDS4CCM_TEST_DEBUG << "connector_status_exec_i::on_unexpected_status status_kind: " << DDS::dds_write(status_kind) << std::endl;
+    DDS4CCM_TEST_DEBUG << "connector_status_exec_i::on_unexpected_status status_kind <" << DDS::dds_write(status_kind) << ">" << std::endl;
     if (!this->publication_matched_)
     {
       if (DDS4CCM_TEST_UTILS::check_publication_matched_status (the_entity, status_kind, 2))

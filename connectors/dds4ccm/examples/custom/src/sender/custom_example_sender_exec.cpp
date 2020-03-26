@@ -153,7 +153,7 @@ namespace Example_BasicPublisher_comp_Impl
       ::DDS::StatusKind status_kind)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Example_BasicPublisher_comp_Impl::CA1DataPub_CSL_exec_i::on_unexpected_status[_the_entity_status_kind]
-    DDS4CCM_TEST_DEBUG << "connector_status_exec_i::on_unexpected_status status_kind:" << DDS::dds_write(status_kind) << std::endl;
+    DDS4CCM_TEST_DEBUG << "connector_status_exec_i::on_unexpected_status status_kind <" << DDS::dds_write(status_kind) << ">" << std::endl;
     if (!this->started_)
     {
       // If not started yet and number of connected datareaders is as expected,
