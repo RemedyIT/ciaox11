@@ -56,7 +56,6 @@ constexpr uint16_t number_of_read_sample_getter_during_run_4 ()
   return keys () * iterations ();
 }
 
-
 // During the first run all samples except 6,7,8, and 9 are to be received by the reader
 // During the second run, just 1,2, and 3 and 15 are to be received by the reader + all
 // samples from the first run again. Since all samples are kept in DDS, the reader reads
@@ -85,7 +84,6 @@ constexpr uint16_t expected_number_of_samples_on_reader_during_run_4 ()
 {
   return expected_number_of_samples_on_reader_during_run_2 () + (3 * keys ()) + 4;
 }
-
 
 // Now calculate the total number of samples that is expected on the receiver
 constexpr uint16_t expected_number_of_samples_on_getter ()

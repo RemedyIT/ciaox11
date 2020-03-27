@@ -32,7 +32,7 @@ namespace DDSX11
   ::DDS::StatusMask
   DDS_StatusCondition_proxy::get_enabled_statuses ()
   {
-    return ::DDSX11::traits< ::DDS::StatusMask >::retn (
+    return ::DDSX11::traits< ::DDS::StatusMask>::retn (
       this->native_entity ()->get_enabled_statuses ());
   }
 
@@ -40,9 +40,9 @@ namespace DDSX11
   DDS_StatusCondition_proxy::set_enabled_statuses (
     ::DDS::StatusMask mask)
   {
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->set_enabled_statuses (
-        ::DDSX11::traits< ::DDS::StatusMask >::in (mask)));
+        ::DDSX11::traits< ::DDS::StatusMask>::in (mask)));
   }
 
   IDL::traits< ::DDS::Entity>::ref_type

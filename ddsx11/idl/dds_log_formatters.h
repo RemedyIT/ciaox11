@@ -140,7 +140,7 @@ struct entity_formatter
     IDL::traits< ::DDS::Entity>::ref_type val_)
   {
     os_ <<
-      IDL::traits< ::DDS::InstanceHandle_t >::write<instance_handle_formatter<std::ostream>>(
+      IDL::traits< ::DDS::InstanceHandle_t>::write<instance_handle_formatter<std::ostream>>(
         val_->get_instance_handle ());
     return os_;
   }
@@ -292,7 +292,7 @@ namespace DDS
   inline OS&
   operator << (OS& os, __DDS_Writer< ::DDS::InstanceHandle_t > const &w)
   {
-    IDL::traits< ::DDS::InstanceHandle_t >::write_on<
+    IDL::traits< ::DDS::InstanceHandle_t>::write_on<
       ostream_type, instance_handle_formatter<ostream_type>>
         (os, w.dds_writer_);
     return os;
@@ -417,7 +417,7 @@ namespace DDS
   inline OS&
   operator << (OS& os, __DDS_EntityWriter w)
   {
-    IDL::traits< ::DDS::InstanceHandle_t >::write_on<
+    IDL::traits< ::DDS::InstanceHandle_t>::write_on<
        ostream_type, instance_handle_formatter<ostream_type>>
          (os, w.e_->get_instance_handle ());
     return os;

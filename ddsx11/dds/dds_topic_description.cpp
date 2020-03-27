@@ -24,14 +24,14 @@ namespace DDSX11
   std::string
   DDS_TopicDescription_proxy::get_type_name ()
   {
-    return ::DDSX11::traits< std::string >::retn (
+    return ::DDSX11::traits<std::string>::retn (
       this->native_entity ()->get_type_name ());
   }
 
   std::string
   DDS_TopicDescription_proxy::get_name ()
   {
-    return ::DDSX11::traits< std::string >::retn (
+    return ::DDSX11::traits<std::string>::retn (
       this->native_entity ()->get_name ());
   }
 

@@ -208,7 +208,7 @@ namespace MDD_Test_Sender_Impl
       {
         DDS4CCM_TEST_ERROR <<"Sender_exec_i::check_status - "
           << "Error: Unable to get_publication_matched_status: <"
-          << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode)
+          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">." << std::endl;
       }
       else
@@ -236,7 +236,7 @@ namespace MDD_Test_Sender_Impl
       this->tm_activate_->cancel();
       this->already_publishing_ = true;
 
-      IDL::traits< CommonTestConnector::Updater>::ref_type updater =
+      IDL::traits<CommonTestConnector::Updater>::ref_type updater =
         this->context_->get_connection_info_update_data ();
       CommonTestMessageSeq messages;
       try

@@ -28,7 +28,7 @@ namespace DDSX11
   DDS_ContentFilteredTopic_proxy::get_filter_expression ()
   {
     DDSX11_LOG_TRACE ("DDS_ContentFilteredTopic_proxy::get_filter_expression");
-    return ::DDSX11::traits< std::string >::retn (
+    return ::DDSX11::traits<std::string>::retn (
       this->native_entity ()->get_filter_expression ());
   }
 
@@ -37,7 +37,7 @@ namespace DDSX11
     ::DDS::StringSeq & expression_parameters)
   {
     DDSX11_LOG_TRACE ("DDS_ContentFilteredTopic_proxy::get_expression_parameters");
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->get_expression_parameters (
         ::DDSX11::traits< ::DDS::StringSeq, ::DDS_Native::DDS::StringSeq>::inout (expression_parameters)));
   }
@@ -48,7 +48,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_ContentFilteredTopic_proxy::set_expression_parameters");
 
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->set_expression_parameters (
         ::DDSX11::traits< ::DDS::StringSeq, ::DDS_Native::DDS::StringSeq>::in (expression_parameters)));
   }
@@ -72,7 +72,7 @@ namespace DDSX11
   std::string
   DDS_ContentFilteredTopic_proxy::get_name ()
   {
-    return ::DDSX11::traits< std::string >::retn (
+    return ::DDSX11::traits<std::string>::retn (
       this->native_entity ()->get_name ());
   }
 

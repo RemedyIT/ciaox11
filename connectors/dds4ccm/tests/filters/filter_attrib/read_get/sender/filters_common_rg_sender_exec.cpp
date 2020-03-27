@@ -187,7 +187,7 @@ namespace Filters_Common_Read_Get_Test_Sender_Impl
         {
           DDS4CCM_TEST_ERROR <<"Sender_exec_i::check_status - "
             << "Error: Unable to get_publication_matched_status: <"
-            << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode)
+            << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
             << ">." << std::endl;
         }
         else
@@ -260,7 +260,7 @@ namespace Filters_Common_Read_Get_Test_Sender_Impl
   Sender_exec_i::notify ()
   {
     DDS4CCM_TEST_DEBUG << "Sender_exec_i::notify - " << std::endl;
-    IDL::traits< CommonTestConnector::Writer>::ref_type writer =
+    IDL::traits<CommonTestConnector::Writer>::ref_type writer =
       this->context_->get_connection_info_write_data ();
 
     CommonTestMessageSeq msgs;

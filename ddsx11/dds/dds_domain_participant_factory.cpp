@@ -40,7 +40,7 @@ namespace DDSX11
 
     ::DDSX11::traits< ::DDS::DomainParticipantQos >::in qos_in;
 #if defined(DDSX11_INITIALIZE_QOS_DEFAULTS)
-    ::DDS::ReturnCode_t const retcode = ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    ::DDS::ReturnCode_t const retcode = ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->get_default_participant_qos (qos_in.value_));
 
     if (retcode != ::DDS::RETCODE_OK)
@@ -69,7 +69,7 @@ namespace DDSX11
         domain_id,
         qos_in,
         listener_guard.get (),
-        ::DDSX11::traits< ::DDS::StatusMask >::in (mask));
+        ::DDSX11::traits< ::DDS::StatusMask>::in (mask));
 
     if (!dds_dp)
       {
@@ -129,14 +129,14 @@ namespace DDSX11
     DDS_ProxyEntityManager::unregister_dp_proxy (a_participant);
 
     ::DDS::ReturnCode_t const retcode =
-      ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+      ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
         this->native_entity ()->delete_participant (part));
 
     if (retcode != ::DDS::RETCODE_OK)
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipantFactory_proxy::delete_participant - "
           << "delete_participant returned non-ok error code <"
-          << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode)
+          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">");
       }
     else
@@ -189,7 +189,7 @@ namespace DDSX11
     ::DDSX11::traits< ::DDS::DomainParticipantQos >::in qos_in;
 #if defined(DDSX11_INITIALIZE_QOS_DEFAULTS)
     // Get the default QOS from DDS
-    ::DDS::ReturnCode_t const retcode = ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    ::DDS::ReturnCode_t const retcode = ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->get_default_participant_qos (qos_in.value_));
 
     if (retcode != ::DDS::RETCODE_OK)
@@ -206,7 +206,7 @@ namespace DDSX11
       << IDL::traits< ::DDS::DomainParticipantQos>::write (::DDSX11::traits< ::DDS::DomainParticipantQos>::retn (qos_in))
       << ">");
 
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->set_default_participant_qos (qos_in));
   }
 
@@ -216,7 +216,7 @@ namespace DDSX11
     ::DDS::DomainParticipantQos & qos)
   {
     DDSX11_LOG_TRACE ("DDS_DomainParticipantFactory_proxy::get_default_participant_qos");
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->get_default_participant_qos (
         ::DDSX11::traits< ::DDS::DomainParticipantQos >::inout (qos)));
   }
@@ -231,7 +231,7 @@ namespace DDSX11
 #if defined(DDSX11_INITIALIZE_QOS_DEFAULTS)
     // Get the default QOS from DDS
     ::DDS::ReturnCode_t const retcode =
-      ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+      ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
         this->native_entity ()->get_qos (qos_in.value_));
     if (retcode != ::DDS::RETCODE_OK)
       {
@@ -247,7 +247,7 @@ namespace DDSX11
       << IDL::traits< ::DDS::DomainParticipantFactoryQos>::write (::DDSX11::traits< ::DDS::DomainParticipantFactoryQos>::retn (qos_in))
       << ">");
 
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->set_qos (qos_in));
   }
 
@@ -256,7 +256,7 @@ namespace DDSX11
     ::DDS::DomainParticipantFactoryQos & qos)
   {
     DDSX11_LOG_TRACE ("DDS_DomainParticipantFactory_proxy::get_qos");
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->get_qos (::DDSX11::traits< ::DDS::DomainParticipantFactoryQos >::inout (qos)));
   }
 }

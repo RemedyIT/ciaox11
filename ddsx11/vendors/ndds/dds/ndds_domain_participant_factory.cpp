@@ -64,10 +64,10 @@ namespace DDSX11
             DDS_Native::DDS::DomainParticipantFactory::get_instance ()->
               create_participant_with_profile (
                 ::DDSX11::traits< ::DDS::DomainId_t >::in (domain_id),
-                ::DDSX11::traits< std::string >::in (lib_name),
-                ::DDSX11::traits< std::string >::in (prof_name),
+                ::DDSX11::traits<std::string>::in (lib_name),
+                ::DDSX11::traits<std::string>::in (prof_name),
                 ccm_dds_dpl.get (),
-                ::DDSX11::traits< ::DDS::StatusMask >::in (mask));
+                ::DDSX11::traits< ::DDS::StatusMask>::in (mask));
         }
 
       if (!dds_dp)
@@ -111,12 +111,12 @@ namespace DDSX11
     NDDS_DomainParticipantFactory_proxy::finalize_instance ()
     {
       ::DDS::ReturnCode_t retcode =
-        ::DDSX11::traits< ::DDS::ReturnCode_t >::retn
+        ::DDSX11::traits< ::DDS::ReturnCode_t>::retn
           (DDSDomainParticipantFactory::finalize_instance ());
       if (retcode != DDS::RETCODE_OK)
       {
         DDSX11_IMPL_LOG_ERROR ("NDDS_DomainParticipantFactory_proxy::finalize_instance - Error finalizing NDDS: retcode <"
-          << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode) << ">");
+          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode) << ">");
       }
       else
       {
@@ -137,11 +137,11 @@ namespace DDSX11
       ::DDS::ReturnCode_t retcode = ::DDS::RETCODE_ERROR;
       if (!lib_name.empty () && !prof_name.empty ())
         {
-          retcode = ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+          retcode = ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
             DDS_Native::DDS::DomainParticipantFactory::get_instance ()->
               set_default_participant_qos_with_profile (
-                ::DDSX11::traits< std::string >::in (lib_name),
-                ::DDSX11::traits< std::string >::in (prof_name)));
+                ::DDSX11::traits<std::string>::in (lib_name),
+                ::DDSX11::traits<std::string>::in (prof_name)));
         }
 
       return retcode;

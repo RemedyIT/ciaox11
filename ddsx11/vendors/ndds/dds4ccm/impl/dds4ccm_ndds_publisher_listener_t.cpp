@@ -67,7 +67,7 @@ namespace CIAOX11
         }
       DDS4CCM_LOG_DEBUG ("NDDSPublisherListener_T<EVT_STRATEGY>::get_mask - "
         << "Mask becomes <"
-        << IDL::traits< ::DDS::StatusMask >::write<status_mask_formatter> (mask)
+        << IDL::traits< ::DDS::StatusMask>::write<status_mask_formatter> (mask)
         << ">");
       return mask;
     }

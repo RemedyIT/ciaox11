@@ -46,18 +46,18 @@ namespace DDSX11
     {
       DDSX11_IMPL_LOG_ERROR ("DataReader_T::" << method_name << " - "
         << "Error while reading samples from DDS - <"
-        << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode)
+        << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
         << ">");
     }
 
     ::DDS::ReturnCode_t const retcode_return_loan =
-      ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+      ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
         this->native_entity ()->return_loan (native_data_values, native_sample_infos));
     if (retcode_return_loan != ::DDS::RETCODE_OK)
       {
         DDSX11_IMPL_LOG_ERROR (
           "DataReader_T::" << method_name << " - Error returning loan to DDS - <"
-          << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode_return_loan)
+          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode_return_loan)
           << ">");
         // In case a read action from DDS causes errors, the users wants to see
         // this error (and not the return loan error).
@@ -84,14 +84,14 @@ namespace DDSX11
     NATIVE_SEQ_TYPE native_data_values;
 
     ::DDS::ReturnCode_t const retcode_read =
-      ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+      ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
         this->native_entity ()->read (
           native_data_values,
           native_sample_infos,
-          ::DDSX11::traits < int32_t >::in (max_samples),
-          ::DDSX11::traits < ::DDS::SampleStateMask >:: in (sample_states),
-          ::DDSX11::traits < ::DDS::ViewStateMask >:: in (view_states),
-          ::DDSX11::traits < ::DDS::InstanceStateMask >:: in (instance_states)));
+          ::DDSX11::traits < int32_t>::in (max_samples),
+          ::DDSX11::traits < ::DDS::SampleStateMask>:: in (sample_states),
+          ::DDSX11::traits < ::DDS::ViewStateMask>:: in (view_states),
+          ::DDSX11::traits < ::DDS::InstanceStateMask>:: in (instance_states)));
 
     return this->complete_read (
       native_data_values, data_values, native_sample_infos,
@@ -115,14 +115,14 @@ namespace DDSX11
     NATIVE_SEQ_TYPE native_data_values;
 
     ::DDS::ReturnCode_t const retcode_take =
-      ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+      ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
         this->native_entity ()->take (
           native_data_values,
           native_sample_infos,
-          ::DDSX11::traits < int32_t >::in (max_samples),
-          ::DDSX11::traits < ::DDS::SampleStateMask >:: in (sample_states),
-          ::DDSX11::traits < ::DDS::ViewStateMask >:: in (view_states),
-          ::DDSX11::traits < ::DDS::InstanceStateMask >:: in (instance_states)));
+          ::DDSX11::traits < int32_t>::in (max_samples),
+          ::DDSX11::traits < ::DDS::SampleStateMask>:: in (sample_states),
+          ::DDSX11::traits < ::DDS::ViewStateMask>:: in (view_states),
+          ::DDSX11::traits < ::DDS::InstanceStateMask>:: in (instance_states)));
 
     return this->complete_read (
       native_data_values, data_values, native_sample_infos,
@@ -149,11 +149,11 @@ namespace DDSX11
     if (dds_rc)
       {
         retcode_read_w_condition =
-          ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+          ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
             this->native_entity ()->read_w_condition (
               native_data_values,
               native_sample_infos,
-              ::DDSX11::traits< int32_t >::in (max_samples),
+              ::DDSX11::traits<int32_t>::in (max_samples),
               dds_rc));
       }
     else
@@ -164,21 +164,21 @@ namespace DDSX11
         if (dds_qc)
           {
             retcode_read_w_condition =
-              ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+              ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
                 this->native_entity ()->read_w_condition (
                   native_data_values,
                   native_sample_infos,
-                  ::DDSX11::traits< int32_t >::in (max_samples),
+                  ::DDSX11::traits<int32_t>::in (max_samples),
                   dds_qc));
           }
         else
           {
             retcode_read_w_condition =
-              ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+              ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
                 this->native_entity ()->read_w_condition (
                   native_data_values,
                   native_sample_infos,
-                  ::DDSX11::traits< int32_t >::in (max_samples),
+                  ::DDSX11::traits<int32_t>::in (max_samples),
                   nullptr));
           }
       }
@@ -207,11 +207,11 @@ namespace DDSX11
     if (dds_rc)
       {
         retcode_take_w_condition =
-          ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+          ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
             this->native_entity ()->take_w_condition (
               native_data_values,
               native_sample_infos,
-              ::DDSX11::traits< int32_t >::in (max_samples),
+              ::DDSX11::traits<int32_t>::in (max_samples),
               dds_rc));
       }
     else
@@ -222,21 +222,21 @@ namespace DDSX11
         if (dds_qc)
           {
             retcode_take_w_condition =
-              ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+              ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
                 this->native_entity ()->take_w_condition (
                   native_data_values,
                   native_sample_infos,
-                  ::DDSX11::traits< int32_t >::in (max_samples),
+                  ::DDSX11::traits<int32_t>::in (max_samples),
                   dds_qc));
           }
         else
           {
             retcode_take_w_condition =
-              ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+              ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
                 this->native_entity ()->take_w_condition (
                   native_data_values,
                   native_sample_infos,
-                  ::DDSX11::traits< int32_t >::in (max_samples),
+                  ::DDSX11::traits<int32_t>::in (max_samples),
                   nullptr));
           }
       }
@@ -254,7 +254,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDSX11::DataReader_T::read_next_sample");
 
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->read_next_sample (
         typename ::DDSX11::traits< TOPIC_TYPE >::inout (data_values),
         ::DDSX11::traits< ::DDS::SampleInfo >::inout (sample_info)));
@@ -268,7 +268,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDSX11::DataReader_T::take_next_sample");
 
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->take_next_sample (
         typename ::DDSX11::traits< TOPIC_TYPE >::inout (data_values),
         ::DDSX11::traits< ::DDS::SampleInfo >::inout (sample_info)));
@@ -291,15 +291,15 @@ namespace DDSX11
     NATIVE_SEQ_TYPE native_data_values;
 
     ::DDS::ReturnCode_t const retcode_read_instance =
-      ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+      ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
         this->native_entity ()->read_instance (
           native_data_values,
           native_sample_infos,
-          ::DDSX11::traits < int32_t >::in (max_samples),
+          ::DDSX11::traits < int32_t>::in (max_samples),
           ::DDSX11::traits < ::DDS::InstanceHandle_t >::in (a_handle),
-          ::DDSX11::traits < ::DDS::SampleStateMask >:: in (sample_states),
-          ::DDSX11::traits < ::DDS::ViewStateMask >:: in (view_states),
-          ::DDSX11::traits < ::DDS::InstanceStateMask >:: in (instance_states)));
+          ::DDSX11::traits < ::DDS::SampleStateMask>:: in (sample_states),
+          ::DDSX11::traits < ::DDS::ViewStateMask>:: in (view_states),
+          ::DDSX11::traits < ::DDS::InstanceStateMask>:: in (instance_states)));
 
     return this->complete_read (
       native_data_values, data_values, native_sample_infos,
@@ -323,15 +323,15 @@ namespace DDSX11
     NATIVE_SEQ_TYPE native_data_values;
 
     ::DDS::ReturnCode_t const retcode_take_instance =
-      ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+      ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
         this->native_entity ()->take_instance (
           native_data_values,
           native_sample_infos,
-          ::DDSX11::traits < int32_t >::in (max_samples),
+          ::DDSX11::traits < int32_t>::in (max_samples),
           ::DDSX11::traits < ::DDS::InstanceHandle_t >::in (a_handle),
-          ::DDSX11::traits < ::DDS::SampleStateMask >:: in (sample_states),
-          ::DDSX11::traits < ::DDS::ViewStateMask >:: in (view_states),
-          ::DDSX11::traits < ::DDS::InstanceStateMask >:: in (instance_states)));
+          ::DDSX11::traits < ::DDS::SampleStateMask>:: in (sample_states),
+          ::DDSX11::traits < ::DDS::ViewStateMask>:: in (view_states),
+          ::DDSX11::traits < ::DDS::InstanceStateMask>:: in (instance_states)));
 
     return this->complete_read (
       native_data_values, data_values, native_sample_infos,
@@ -360,12 +360,12 @@ namespace DDSX11
     if (dds_rc)
       {
         retcode_read_instance_w_condition =
-          ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+          ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
             this->native_entity ()->read_instance_w_condition (
               native_data_values,
               native_sample_infos,
-              ::DDSX11::traits< int32_t >::in (max_samples),
-              ::DDSX11::traits< ::DDS::InstanceHandle_t >::in (a_handle),
+              ::DDSX11::traits<int32_t>::in (max_samples),
+              ::DDSX11::traits< ::DDS::InstanceHandle_t>::in (a_handle),
               dds_rc));
       }
     else
@@ -376,23 +376,23 @@ namespace DDSX11
         if (dds_qc)
           {
             retcode_read_instance_w_condition =
-              ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+              ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
                 this->native_entity ()->read_instance_w_condition (
                   native_data_values,
                   native_sample_infos,
-                  ::DDSX11::traits< int32_t >::in (max_samples),
-                  ::DDSX11::traits< ::DDS::InstanceHandle_t >::in (a_handle),
+                  ::DDSX11::traits<int32_t>::in (max_samples),
+                  ::DDSX11::traits< ::DDS::InstanceHandle_t>::in (a_handle),
                   dds_qc));
           }
         else
           {
             retcode_read_instance_w_condition =
-              ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+              ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
                 this->native_entity ()->read_instance_w_condition (
                   native_data_values,
                   native_sample_infos,
-                  ::DDSX11::traits< int32_t >::in (max_samples),
-                  ::DDSX11::traits< ::DDS::InstanceHandle_t >::in (a_handle),
+                  ::DDSX11::traits<int32_t>::in (max_samples),
+                  ::DDSX11::traits< ::DDS::InstanceHandle_t>::in (a_handle),
                   nullptr));
           }
       }
@@ -423,12 +423,12 @@ namespace DDSX11
     if (dds_rc)
       {
         retcode_take_instance_w_condition =
-          ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+          ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
             this->native_entity ()->take_instance_w_condition (
               native_data_values,
               native_sample_infos,
-              ::DDSX11::traits< int32_t >::in (max_samples),
-              ::DDSX11::traits< ::DDS::InstanceHandle_t >::in (a_handle),
+              ::DDSX11::traits<int32_t>::in (max_samples),
+              ::DDSX11::traits< ::DDS::InstanceHandle_t>::in (a_handle),
               dds_rc));
       }
     else
@@ -439,23 +439,23 @@ namespace DDSX11
         if (dds_qc)
           {
             retcode_take_instance_w_condition =
-              ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+              ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
                 this->native_entity ()->take_instance_w_condition (
                   native_data_values,
                   native_sample_infos,
-                  ::DDSX11::traits< int32_t >::in (max_samples),
-                  ::DDSX11::traits< ::DDS::InstanceHandle_t >::in (a_handle),
+                  ::DDSX11::traits<int32_t>::in (max_samples),
+                  ::DDSX11::traits< ::DDS::InstanceHandle_t>::in (a_handle),
                   dds_qc));
           }
         else
           {
             retcode_take_instance_w_condition =
-              ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+              ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
                 this->native_entity ()->take_instance_w_condition (
                   native_data_values,
                   native_sample_infos,
-                  ::DDSX11::traits< int32_t >::in (max_samples),
-                  ::DDSX11::traits< ::DDS::InstanceHandle_t >::in (a_handle),
+                  ::DDSX11::traits<int32_t>::in (max_samples),
+                  ::DDSX11::traits< ::DDS::InstanceHandle_t>::in (a_handle),
                   nullptr));
           }
       }
@@ -482,15 +482,15 @@ namespace DDSX11
     NATIVE_SEQ_TYPE native_data_values;
 
     ::DDS::ReturnCode_t const retcode_read_instance =
-      ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+      ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
         this->native_entity ()->read_next_instance (
           native_data_values,
           native_sample_infos,
-          ::DDSX11::traits < int32_t >::in (max_samples),
+          ::DDSX11::traits < int32_t>::in (max_samples),
           ::DDSX11::traits < ::DDS::InstanceHandle_t >::in (a_handle),
-          ::DDSX11::traits < ::DDS::SampleStateMask >:: in (sample_states),
-          ::DDSX11::traits < ::DDS::ViewStateMask >:: in (view_states),
-          ::DDSX11::traits < ::DDS::InstanceStateMask >:: in (instance_states)));
+          ::DDSX11::traits < ::DDS::SampleStateMask>:: in (sample_states),
+          ::DDSX11::traits < ::DDS::ViewStateMask>:: in (view_states),
+          ::DDSX11::traits < ::DDS::InstanceStateMask>:: in (instance_states)));
 
     return this->complete_read (
       native_data_values, data_values, native_sample_infos,
@@ -515,15 +515,15 @@ namespace DDSX11
     NATIVE_SEQ_TYPE native_data_values;
 
     ::DDS::ReturnCode_t const retcode_take_instance =
-      ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+      ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
         this->native_entity ()->take_next_instance (
           native_data_values,
           native_sample_infos,
-          ::DDSX11::traits < int32_t >::in (max_samples),
+          ::DDSX11::traits < int32_t>::in (max_samples),
           ::DDSX11::traits < ::DDS::InstanceHandle_t >::in (a_handle),
-          ::DDSX11::traits < ::DDS::SampleStateMask >:: in (sample_states),
-          ::DDSX11::traits < ::DDS::ViewStateMask >:: in (view_states),
-          ::DDSX11::traits < ::DDS::InstanceStateMask >:: in (instance_states)));
+          ::DDSX11::traits < ::DDS::SampleStateMask>:: in (sample_states),
+          ::DDSX11::traits < ::DDS::ViewStateMask>:: in (view_states),
+          ::DDSX11::traits < ::DDS::InstanceStateMask>:: in (instance_states)));
 
     return this->complete_read (
       native_data_values, data_values, native_sample_infos,
@@ -542,7 +542,7 @@ namespace DDSX11
     DDSX11_LOG_TRACE ("DDSX11::DataReader_T::read_next_instance_w_condition");
 
     DDS_Native::DDS::SampleInfoSeq native_sample_infos;
-    NATIVE_SEQ_TYPE                 native_data_values;
+    NATIVE_SEQ_TYPE                native_data_values;
     ::DDS::ReturnCode_t retcode_read_next_instance_w_condition { ::DDS::RETCODE_OK };
 
     DDS_Native::DDS::ReadCondition *dds_rc =
@@ -551,12 +551,12 @@ namespace DDSX11
     if (dds_rc)
       {
         retcode_read_next_instance_w_condition =
-          ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+          ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
             this->native_entity ()->read_next_instance_w_condition (
               native_data_values,
               native_sample_infos,
-              ::DDSX11::traits< int32_t >::in (max_samples),
-              ::DDSX11::traits< ::DDS::InstanceHandle_t >::in (previous_handle),
+              ::DDSX11::traits<int32_t>::in (max_samples),
+              ::DDSX11::traits< ::DDS::InstanceHandle_t>::in (previous_handle),
               dds_rc));
       }
     else
@@ -567,23 +567,23 @@ namespace DDSX11
         if (dds_qc)
           {
             retcode_read_next_instance_w_condition =
-              ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+              ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
                 this->native_entity ()->read_next_instance_w_condition (
                   native_data_values,
                   native_sample_infos,
-                  ::DDSX11::traits< int32_t >::in (max_samples),
-                  ::DDSX11::traits< ::DDS::InstanceHandle_t >::in (previous_handle),
+                  ::DDSX11::traits<int32_t>::in (max_samples),
+                  ::DDSX11::traits< ::DDS::InstanceHandle_t>::in (previous_handle),
                   dds_qc));
           }
         else
           {
             retcode_read_next_instance_w_condition =
-              ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+              ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
                 this->native_entity ()->read_next_instance_w_condition (
                   native_data_values,
                   native_sample_infos,
-                  ::DDSX11::traits< int32_t >::in (max_samples),
-                  ::DDSX11::traits< ::DDS::InstanceHandle_t >::in (previous_handle),
+                  ::DDSX11::traits<int32_t>::in (max_samples),
+                  ::DDSX11::traits< ::DDS::InstanceHandle_t>::in (previous_handle),
                   nullptr));
           }
       }
@@ -613,12 +613,12 @@ namespace DDSX11
     if (dds_rc)
       {
         retcode_take_next_instance_w_condition =
-          ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+          ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
             this->native_entity ()->take_next_instance_w_condition (
               native_data_values,
               native_sample_infos,
-              ::DDSX11::traits< int32_t >::in (max_samples),
-              ::DDSX11::traits< ::DDS::InstanceHandle_t >::in (previous_handle),
+              ::DDSX11::traits<int32_t>::in (max_samples),
+              ::DDSX11::traits< ::DDS::InstanceHandle_t>::in (previous_handle),
               dds_rc));
       }
     else
@@ -629,23 +629,23 @@ namespace DDSX11
         if (dds_qc)
           {
             retcode_take_next_instance_w_condition =
-              ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+              ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
                 this->native_entity ()->take_next_instance_w_condition (
                   native_data_values,
                   native_sample_infos,
-                  ::DDSX11::traits< int32_t >::in (max_samples),
-                  ::DDSX11::traits< ::DDS::InstanceHandle_t >::in (previous_handle),
+                  ::DDSX11::traits<int32_t>::in (max_samples),
+                  ::DDSX11::traits< ::DDS::InstanceHandle_t>::in (previous_handle),
                   dds_qc));
           }
         else
           {
             retcode_take_next_instance_w_condition =
-              ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+              ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
                 this->native_entity ()->take_next_instance_w_condition (
                   native_data_values,
                   native_sample_infos,
-                  ::DDSX11::traits< int32_t >::in (max_samples),
-                  ::DDSX11::traits< ::DDS::InstanceHandle_t >::in (previous_handle),
+                  ::DDSX11::traits<int32_t>::in (max_samples),
+                  ::DDSX11::traits< ::DDS::InstanceHandle_t>::in (previous_handle),
                   nullptr));
           }
       }
@@ -673,10 +673,10 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDSX11::DataReader_T::get_key_value");
 
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->get_key_value (
-        typename ::DDSX11::traits < TOPIC_TYPE >::inout (key_holder),
-        ::DDSX11::traits< ::DDS::InstanceHandle_t >::in (handle)));
+        typename ::DDSX11::traits<TOPIC_TYPE>::inout (key_holder),
+        ::DDSX11::traits< ::DDS::InstanceHandle_t>::in (handle)));
   }
 
   template <typename NATIVE_TYPED_READER, typename TYPED_READER_TYPE, typename TOPIC_TYPE, typename SEQ_TYPE, typename NATIVE_SEQ_TYPE>
@@ -686,9 +686,9 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDSX11::DataReader_T::lookup_instance");
 
-    return ::DDSX11::traits< ::DDS::InstanceHandle_t >::retn (
+    return ::DDSX11::traits< ::DDS::InstanceHandle_t>::retn (
       this->native_entity ()->lookup_instance (
-        typename ::DDSX11::traits< TOPIC_TYPE >::in (an_instance)));
+        typename ::DDSX11::traits<TOPIC_TYPE>::in (an_instance)));
   }
 
   template <typename NATIVE_TYPED_READER, typename TYPED_READER_TYPE, typename TOPIC_TYPE, typename SEQ_TYPE, typename NATIVE_SEQ_TYPE>
@@ -697,7 +697,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDSX11::DataReader_T::enable");
 
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->enable ());
   }
 
@@ -722,7 +722,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDSX11::DataReader_T::get_status_changes");
 
-    return ::DDSX11::traits< ::DDS::StatusMask >::retn (
+    return ::DDSX11::traits< ::DDS::StatusMask>::retn (
       this->native_entity ()->get_status_changes ());
   }
 
@@ -732,7 +732,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDSX11::DataReader_T::get_instance_handle");
 
-    return ::DDSX11::traits< ::DDS::InstanceHandle_t >::retn (
+    return ::DDSX11::traits< ::DDS::InstanceHandle_t>::retn (
       this->native_entity ()->get_instance_handle ());
   }
 
@@ -749,9 +749,9 @@ namespace DDSX11
 
     DDS_Native::DDS::ReadCondition* rc =
       this->native_entity ()->create_readcondition (
-        ::DDSX11::traits< ::DDS::SampleStateMask >::in (sample_states),
-        ::DDSX11::traits< ::DDS::ViewStateMask >::in (view_states),
-        ::DDSX11::traits< ::DDS::InstanceStateMask >::in (instance_states));
+        ::DDSX11::traits< ::DDS::SampleStateMask>::in (sample_states),
+        ::DDSX11::traits< ::DDS::ViewStateMask>::in (view_states),
+        ::DDSX11::traits< ::DDS::InstanceStateMask>::in (instance_states));
     if (rc)
       {
         retval = TAOX11_CORBA::make_reference<DDS_ReadCondition_proxy>(rc);
@@ -774,10 +774,10 @@ namespace DDSX11
 
     DDS_Native::DDS::QueryCondition* qc =
       this->native_entity ()->create_querycondition (
-        ::DDSX11::traits< ::DDS::SampleStateMask >::in (sample_states),
-        ::DDSX11::traits< ::DDS::ViewStateMask >::in (view_states),
-        ::DDSX11::traits< ::DDS::InstanceStateMask >::in (instance_states),
-        ::DDSX11::traits< std::string >::in (query_expression),
+        ::DDSX11::traits< ::DDS::SampleStateMask>::in (sample_states),
+        ::DDSX11::traits< ::DDS::ViewStateMask>::in (view_states),
+        ::DDSX11::traits< ::DDS::InstanceStateMask>::in (instance_states),
+        ::DDSX11::traits<std::string>::in (query_expression),
         ::DDSX11::traits< ::DDS::StringSeq, ::DDS_Native::DDS::StringSeq>::in (query_parameters));
     if (qc)
       {
@@ -824,7 +824,7 @@ namespace DDSX11
         "Unable to determine the native read condition");
       return ::DDS::RETCODE_BAD_PARAMETER;
     }
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->delete_readcondition (native_rc));
   }
 
@@ -834,7 +834,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDSX11::DataReader_T::delete_contained_entities");
 
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->delete_contained_entities ());
   }
 
@@ -848,7 +848,7 @@ namespace DDSX11
 #if defined(DDSX11_INITIALIZE_QOS_DEFAULTS)
     // Get the default QOS from DDS
     ::DDS::ReturnCode_t const retcode =
-      ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+      ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
         this->native_entity ()->get_qos (qos_in.value_));
     if (retcode != ::DDS::RETCODE_OK)
       {
@@ -865,7 +865,7 @@ namespace DDSX11
       << IDL::traits< ::DDS::DataReaderQos>::write (::DDSX11::traits< ::DDS::DataReaderQos>::retn(qos_in))
       << ">");
 
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->set_qos (::DDSX11::traits< ::DDS::DataReaderQos>::in (qos_in)));
   }
 
@@ -876,7 +876,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDSX11::DataReader_T::get_qos");
 
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()-> get_qos (
         ::DDSX11::traits< ::DDS::DataReaderQos >::inout (qos)));
   }
@@ -899,9 +899,9 @@ namespace DDSX11
       }
 
     ::DDS::ReturnCode_t const retcode =
-      ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+      ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
         this->native_entity ()->set_listener (new_guard.get (),
-          ::DDSX11::traits< ::DDS::StatusMask >::in (mask)));
+          ::DDSX11::traits< ::DDS::StatusMask>::in (mask)));
 
     if (retcode == ::DDS::RETCODE_OK)
       {
@@ -997,7 +997,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDSX11::DataReader_T::get_sample_rejected_status");
 
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->get_sample_rejected_status (
         ::DDSX11::traits< ::DDS::SampleRejectedStatus >::inout (status)));
   }
@@ -1009,7 +1009,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDSX11::DataReader_T::get_liveliness_changed_status");
 
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->get_liveliness_changed_status (
         ::DDSX11::traits< ::DDS::LivelinessChangedStatus >::inout (status)));
   }
@@ -1021,7 +1021,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDSX11::DataReader_T::get_requested_deadline_missed_status");
 
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->get_requested_deadline_missed_status (
         ::DDSX11::traits< ::DDS::RequestedDeadlineMissedStatus >::inout (status)));
   }
@@ -1033,7 +1033,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDSX11::DataReader_T::get_requested_incompatible_qos_status");
 
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->get_requested_incompatible_qos_status (
         ::DDSX11::traits< ::DDS::RequestedIncompatibleQosStatus >::inout (status)));
   }
@@ -1045,7 +1045,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDSX11::DataReader_T::get_subscription_matched_status");
 
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->get_subscription_matched_status (
         ::DDSX11::traits< ::DDS::SubscriptionMatchedStatus >::inout (status)));
   }
@@ -1057,7 +1057,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDSX11::DataReader_T::get_sample_lost_status");
 
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->get_sample_lost_status (
         ::DDSX11::traits< ::DDS::SampleLostStatus >::inout (status)));
   }
@@ -1069,7 +1069,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDSX11::DataReader_T::wait_for_historical_data");
 
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->wait_for_historical_data (
         ::DDSX11::traits< ::DDS::Duration_t >::in (max_wait)));
   }
@@ -1081,7 +1081,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDSX11::DataReader_T <NATIVE_TYPED_READER, TYPED_READER_TYPE, TOPIC_TYPE, SEQ_TYPE, NATIVE_SEQ_TYPE>::get_matched_publications");
 
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->get_matched_publications (
         ::DDSX11::traits< ::DDS::InstanceHandleSeq, ::DDS_Native::DDS::InstanceHandleSeq>::inout (publication_handles)));
   }
@@ -1099,10 +1099,10 @@ namespace DDSX11
     X11_UNUSED_ARG(publication_handle);
     return ::DDS::RETCODE_UNSUPPORTED;
 #else
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->get_matched_publication_data (
         ::DDSX11::traits< ::DDS::PublicationBuiltinTopicData >::inout (publication_data),
-        ::DDSX11::traits< ::DDS::InstanceHandle_t >::in (publication_handle)));
+        ::DDSX11::traits< ::DDS::InstanceHandle_t>::in (publication_handle)));
 #endif
   }
 

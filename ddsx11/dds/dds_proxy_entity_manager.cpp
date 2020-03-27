@@ -60,7 +60,7 @@ namespace DDSX11
 
     PROXY_TYPE proxy {};
     const ::DDS::InstanceHandle_t handle =
-      ::DDSX11::traits< ::DDS::InstanceHandle_t >::retn (
+      ::DDSX11::traits< ::DDS::InstanceHandle_t>::retn (
         native_entity->get_instance_handle ());
 
     typename PROXY_MAP::iterator it = lst.find (handle);
@@ -360,7 +360,7 @@ namespace DDSX11
 
     ::IDL::traits< ::DDS::Entity>::ref_type proxy {};
     const ::DDS::InstanceHandle_t handle =
-      ::DDSX11::traits< ::DDS::InstanceHandle_t >::retn (
+      ::DDSX11::traits< ::DDS::InstanceHandle_t>::retn (
         native_entity->get_instance_handle ());
 
     {

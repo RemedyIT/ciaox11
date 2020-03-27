@@ -53,7 +53,7 @@ namespace MDD_Getter_Test_Receiver_Impl
          this->ciao_context_->get_connection_info_get_data (), 2, 1))
        {
          timer->cancel ();
-         IDL::traits< CommonTestConnector::Getter>::ref_type getter =
+         IDL::traits<CommonTestConnector::Getter>::ref_type getter =
            this->ciao_context_->get_connection_info_get_fresh_data ();
          getter->max_delivered_data (2);
 

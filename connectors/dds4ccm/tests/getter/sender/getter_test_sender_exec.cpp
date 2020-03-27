@@ -227,7 +227,7 @@ namespace Getter_Test_Sender_Impl
         {
           DDS4CCM_TEST_ERROR <<"Sender_exec_i::check_status - "
             << "Error: Unable to get_publication_matched_status: <"
-            << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode)
+            << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
             << ">." << std::endl;
         }
         else
@@ -276,7 +276,7 @@ namespace Getter_Test_Sender_Impl
   Sender_exec_i::tick ()
   {
 
-    IDL::traits< CommonTestConnector::Writer>::ref_type writer =
+    IDL::traits<CommonTestConnector::Writer>::ref_type writer =
       this->context_->get_connection_info_write_data ();
     IDL::traits< GetInvoker>::ref_type invoker =
       this->context_->get_connection_invoke_getter ();
@@ -322,7 +322,7 @@ namespace Getter_Test_Sender_Impl
   Sender_exec_i::write_many ()
   {
     DDS4CCM_TEST_DEBUG << "Sender_exec_i::write_many" << std::endl;
-    IDL::traits< CommonTestConnector::Writer>::ref_type writer =
+    IDL::traits<CommonTestConnector::Writer>::ref_type writer =
       this->context_->get_connection_info_write_data ();
     IDL::traits< GetInvoker>::ref_type invoker =
       this->context_->get_connection_invoke_getter ();

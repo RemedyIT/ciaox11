@@ -341,7 +341,7 @@ namespace PSL_SampleLostTest_Receiver_Impl
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : PSL_SampleLostTest_Receiver_Impl::Receiver_exec_i[user_public_ops]
   void Receiver_exec_i::tick ()
   {
-    IDL::traits< CommonTestConnector::Reader>::ref_type reader =
+    IDL::traits<CommonTestConnector::Reader>::ref_type reader =
       this->context_->get_connection_info_out_data ();
     try
     {

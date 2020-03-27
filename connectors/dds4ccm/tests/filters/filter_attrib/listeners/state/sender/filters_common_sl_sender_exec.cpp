@@ -267,7 +267,7 @@ namespace Filters_Common_State_Listen_Test_Sender_Impl
       {
         DDS4CCM_TEST_ERROR <<"Sender_exec_i::check_status - "
           << "Error: Unable to get_publication_matched_status: <"
-          << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode)
+          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">." << std::endl;
       }
       else
@@ -300,7 +300,7 @@ namespace Filters_Common_State_Listen_Test_Sender_Impl
       try
       {
         // First create the samples in DDS.
-        IDL::traits< CommonTestConnector::Updater>::ref_type updater =
+        IDL::traits<CommonTestConnector::Updater>::ref_type updater =
           this->context_->get_connection_info_update_data ();
         updater->create_many (this->samples_);
         DDS4CCM_TEST_DEBUG << "start_writing_exec_i::start_publishing - "
@@ -327,7 +327,7 @@ namespace Filters_Common_State_Listen_Test_Sender_Impl
   void
   Sender_exec_i::tick ()
   {
-    IDL::traits< CommonTestConnector::Updater>::ref_type updater =
+    IDL::traits<CommonTestConnector::Updater>::ref_type updater =
       this->context_->get_connection_info_update_data ();
     try
     {
@@ -391,7 +391,7 @@ namespace Filters_Common_State_Listen_Test_Sender_Impl
       // to remove the samples a second time.
 
       // Now remove the samples from DDS
-      IDL::traits< CommonTestConnector::Updater>::ref_type updater =
+      IDL::traits<CommonTestConnector::Updater>::ref_type updater =
         this->context_->get_connection_info_update_data ();
       try
       {

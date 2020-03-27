@@ -43,7 +43,7 @@ namespace DDSX11
 #if defined(DDSX11_INITIALIZE_QOS_DEFAULTS)
     // Get the default QOS from DDS
     ::DDS::ReturnCode_t const retcode =
-      ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+      ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
         this->native_entity ()->get_default_datawriter_qos (qos_in.value_));
     if (retcode != ::DDS::RETCODE_OK)
       {
@@ -72,7 +72,7 @@ namespace DDSX11
         topic_trait::native (a_topic),
         qos_in,
         listener_guard.get (),
-        ::DDSX11::traits< ::DDS::StatusMask >::in (mask));
+        ::DDSX11::traits< ::DDS::StatusMask>::in (mask));
 
     if (!native_dw)
       {
@@ -136,14 +136,14 @@ namespace DDSX11
     DDS_ProxyEntityManager::unregister_datawriter_proxy (dw_proxy);
 
     ::DDS::ReturnCode_t const retcode =
-      ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+      ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
         this->native_entity ()->delete_datawriter (native_dw));
 
     if (retcode != ::DDS::RETCODE_OK)
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_Publisher_i::delete_datawriter - "
           << "Error: Native delete_datawriter returned non-ok error code <"
-          << IDL::traits< ::DDS::ReturnCode_t >::write<retcode_formatter> (retcode)
+          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">");
       }
     else
@@ -162,7 +162,7 @@ namespace DDSX11
   {
     DDS_Native::DDS::DataWriter *native_dw =
       this->native_entity ()->lookup_datawriter (
-        ::DDSX11::traits< std::string >::in (impl_name));
+        ::DDSX11::traits<std::string>::in (impl_name));
     if (!native_dw)
     {
       DDSX11_IMPL_LOG_DEBUG ("DDS_Publisher_proxy::lookup_datawriter - "
@@ -176,7 +176,7 @@ namespace DDSX11
   ::DDS::ReturnCode_t
   DDS_Publisher_proxy::delete_contained_entities ()
   {
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->delete_contained_entities ());
   }
 
@@ -189,7 +189,7 @@ namespace DDSX11
 #if defined(DDSX11_INITIALIZE_QOS_DEFAULTS)
     // Get the default QOS from DDS
     ::DDS::ReturnCode_t const retcode =
-      ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+      ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
         this->native_entity ()->get_qos (qos_in.value_));
     if (retcode != ::DDS::RETCODE_OK)
       {
@@ -205,7 +205,7 @@ namespace DDSX11
       << IDL::traits< ::DDS::PublisherQos>::write (::DDSX11::traits< ::DDS::PublisherQos>::retn(qos_in))
       << ">");
 
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->set_qos (qos_in));
   }
 
@@ -216,7 +216,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_Publisher_proxy::get_qos");
 
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()-> get_qos (
         ::DDSX11::traits< ::DDS::PublisherQos >::inout (qos)));
   }
@@ -239,9 +239,9 @@ namespace DDSX11
       }
 
     ::DDS::ReturnCode_t const retcode =
-      ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+      ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
         this->native_entity ()->set_listener (new_guard.get (),
-          ::DDSX11::traits< ::DDS::StatusMask >::in (mask)));
+          ::DDSX11::traits< ::DDS::StatusMask>::in (mask)));
 
     if (retcode == ::DDS::RETCODE_OK)
       {
@@ -281,7 +281,7 @@ namespace DDSX11
   ::DDS::ReturnCode_t
   DDS_Publisher_proxy::suspend_publications ()
   {
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->suspend_publications ());
   }
 
@@ -289,7 +289,7 @@ namespace DDSX11
   ::DDS::ReturnCode_t
   DDS_Publisher_proxy::resume_publications ()
   {
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->resume_publications ());
   }
 
@@ -297,7 +297,7 @@ namespace DDSX11
   ::DDS::ReturnCode_t
   DDS_Publisher_proxy::begin_coherent_changes ()
   {
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->begin_coherent_changes ());
   }
 
@@ -305,7 +305,7 @@ namespace DDSX11
   ::DDS::ReturnCode_t
   DDS_Publisher_proxy::end_coherent_changes ()
   {
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->end_coherent_changes ());
   }
 
@@ -314,7 +314,7 @@ namespace DDSX11
   DDS_Publisher_proxy::wait_for_acknowledgments (
     const ::DDS::Duration_t & max_wait)
   {
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->wait_for_acknowledgments (
         ::DDSX11::traits< ::DDS::Duration_t >::in (max_wait)));
   }
@@ -339,7 +339,7 @@ namespace DDSX11
     ::DDSX11::traits< ::DDS::DataWriterQos >::in qos_in;
 #if defined(DDSX11_INITIALIZE_QOS_DEFAULTS)
     ::DDS::ReturnCode_t const retcode =
-      ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+      ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
         this->native_entity ()->get_default_datawriter_qos (qos_in.value_));
     if (retcode != ::DDS::RETCODE_OK)
       {
@@ -355,7 +355,7 @@ namespace DDSX11
       << IDL::traits< ::DDS::DataWriterQos>::write (::DDSX11::traits< ::DDS::DataWriterQos>::retn (qos_in))
       << ">");
 
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->set_default_datawriter_qos (qos_in));
   }
 
@@ -366,7 +366,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_Publisher_proxy::get_default_datawriter_qos");
 
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->get_default_datawriter_qos (
         ::DDSX11::traits< ::DDS::DataWriterQos >::inout (qos)));
   }
@@ -379,7 +379,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_Publisher_proxy::copy_from_topic_qos");
 
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->copy_from_topic_qos (
         ::DDSX11::traits< ::DDS::DataWriterQos >::inout (a_datawriter_qos),
         ::DDSX11::traits< ::DDS::TopicQos >::in (a_topic_qos)));
@@ -388,7 +388,7 @@ namespace DDSX11
   ::DDS::ReturnCode_t
   DDS_Publisher_proxy::enable ()
   {
-    return ::DDSX11::traits< ::DDS::ReturnCode_t >::retn (
+    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->enable ());
   }
 
@@ -407,14 +407,14 @@ namespace DDSX11
   ::DDS::StatusMask
   DDS_Publisher_proxy::get_status_changes ()
   {
-    return ::DDSX11::traits< ::DDS::StatusMask >::retn (
+    return ::DDSX11::traits< ::DDS::StatusMask>::retn (
       this->native_entity ()->get_status_changes ());
   }
 
   ::DDS::InstanceHandle_t
   DDS_Publisher_proxy::get_instance_handle ()
   {
-    return ::DDSX11::traits< ::DDS::InstanceHandle_t >::retn (
+    return ::DDSX11::traits< ::DDS::InstanceHandle_t>::retn (
       this->native_entity ()->get_instance_handle ());
   }
 }
