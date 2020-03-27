@@ -27,7 +27,7 @@ namespace DDSX11
 {
   class DDSX11_IMPL_Export DDS_DomainParticipant_proxy
     : public virtual IDL::traits< ::DDS::DomainParticipant>::base_type
-    , public virtual NativeEntityBase_T<DDS_Native::DDS::DomainParticipant >
+    , public virtual NativeEntityBase_T<DDS_Native::DDS::DomainParticipant>
   {
   public:
     /// Constructor
@@ -220,7 +220,7 @@ namespace DDSX11
     IDL::traits< ::DDS::Subscriber>::ref_type builtin_subscriber_ {};
   };
 
-  typedef entity_traits< ::DDS::DomainParticipant, DDS_DomainParticipant_proxy, DDS_Native::DDS::DomainParticipant >
+  typedef entity_traits< ::DDS::DomainParticipant, DDS_DomainParticipant_proxy, DDS_Native::DDS::DomainParticipant>
     domain_participant_trait;
 }
 

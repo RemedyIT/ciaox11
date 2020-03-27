@@ -26,8 +26,8 @@ namespace DDS_Native {
 namespace DDSX11
 {
   class DDSX11_IMPL_Export DDS_Condition_proxy final
-    : public virtual IDL::traits< ::DDS::Condition >::base_type
-    , public virtual NativeEntityBase_T<DDS_Native::DDS::Condition >
+    : public virtual IDL::traits< ::DDS::Condition>::base_type
+    , public virtual NativeEntityBase_T<DDS_Native::DDS::Condition>
   {
 
   public:
@@ -46,7 +46,7 @@ namespace DDSX11
     DDS_Condition_proxy& operator=(DDS_Condition_proxy&&) = delete;
   };
 
-  typedef entity_traits< ::DDS::Condition, DDS_Condition_proxy, DDS_Native::DDS::Condition >
+  typedef entity_traits< ::DDS::Condition, DDS_Condition_proxy, DDS_Native::DDS::Condition>
     condition_trait;
 } /* DDS_X11 */
 

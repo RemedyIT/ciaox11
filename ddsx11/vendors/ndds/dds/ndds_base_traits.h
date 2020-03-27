@@ -208,7 +208,7 @@ namespace DDSX11
   /// long double types.
   template<>
   inline ::DDS_Native::DDS::LongDouble&
-  to_dds< ::DDS_Native::DDS::LongDouble, long double > (
+  to_dds< ::DDS_Native::DDS::LongDouble, long double> (
     ::DDS_Native::DDS::LongDouble &to, const long double& from)
   {
     // Portable way to convert a long double on all 32/64 bits platforms
@@ -224,7 +224,7 @@ namespace DDSX11
   // long double FROM DDS
   template<>
   inline long double&
-  from_dds< DDS_Native::DDS::LongDouble, long double > (
+  from_dds<DDS_Native::DDS::LongDouble, long double> (
     long double &to, const DDS_Native::DDS::LongDouble &from)
   {
     // Portable way to convert a long double on all 32/64 bits platforms
@@ -239,11 +239,11 @@ namespace DDSX11
   }
 
   template <>
-  struct traits< long double >
-    : public common_traits< long double, DDS_Native::DDS::LongDouble >
-    , public convert_in< long double, DDS_Native::DDS::LongDouble >
-    , public convert_out_by_ref< long double, DDS_Native::DDS::LongDouble >
-    , public convert_retn< long double, DDS_Native::DDS::LongDouble >
+  struct traits< long double>
+    : public common_traits< long double, DDS_Native::DDS::LongDouble>
+    , public convert_in< long double, DDS_Native::DDS::LongDouble>
+    , public convert_out_by_ref< long double, DDS_Native::DDS::LongDouble>
+    , public convert_retn< long double, DDS_Native::DDS::LongDouble>
   {
   };
 
@@ -300,7 +300,7 @@ namespace DDSX11
   /// DDS::InstanceHandle_t TO DDS
   template<>
   inline DDS_Native::DDS::InstanceHandle_t&
-  to_dds< DDS_Native::DDS::InstanceHandle_t, DDS::InstanceHandle_t > (
+  to_dds<DDS_Native::DDS::InstanceHandle_t, DDS::InstanceHandle_t> (
     DDS_Native::DDS::InstanceHandle_t &to, const DDS::InstanceHandle_t &from)
   {
     std::memcpy (to.keyHash.value, &from.value (), sizeof (from.value ()));
@@ -312,7 +312,7 @@ namespace DDSX11
   // DDS::InstanceHandle_t FROM DDS
   template<>
   inline DDS::InstanceHandle_t&
-  from_dds< DDS_Native::DDS::InstanceHandle_t, DDS::InstanceHandle_t > (
+  from_dds<DDS_Native::DDS::InstanceHandle_t, DDS::InstanceHandle_t> (
     DDS::InstanceHandle_t &to, const DDS_Native::DDS::InstanceHandle_t &from)
   {
     if (DDS_InstanceHandle_is_nil (std::addressof(from)))
@@ -329,11 +329,11 @@ namespace DDSX11
   }
 
   template <>
-  struct traits< DDS::InstanceHandle_t >
-    : public common_traits< DDS::InstanceHandle_t, DDS_Native::DDS::InstanceHandle_t >
-    , public convert_in< DDS::InstanceHandle_t, DDS_Native::DDS::InstanceHandle_t >
-    , public convert_out_by_ref< DDS::InstanceHandle_t, DDS_Native::DDS::InstanceHandle_t >
-    , public convert_retn< DDS::InstanceHandle_t, DDS_Native::DDS::InstanceHandle_t >
+  struct traits<DDS::InstanceHandle_t>
+    : public common_traits<DDS::InstanceHandle_t, DDS_Native::DDS::InstanceHandle_t>
+    , public convert_in<DDS::InstanceHandle_t, DDS_Native::DDS::InstanceHandle_t>
+    , public convert_out_by_ref<DDS::InstanceHandle_t, DDS_Native::DDS::InstanceHandle_t>
+    , public convert_retn<DDS::InstanceHandle_t, DDS_Native::DDS::InstanceHandle_t>
   {
   };
   //@}

@@ -19,7 +19,7 @@ namespace DDSX11
 {
   DDS_QueryCondition_proxy::DDS_QueryCondition_proxy (
     DDS_Native::DDS::QueryCondition * qc)
-    : NativeEntityBase_T<DDS_Native::DDS::QueryCondition >(qc)
+    : NativeEntityBase_T<DDS_Native::DDS::QueryCondition>(qc)
   {
     DDSX11_LOG_TRACE ("DDS_QueryCondition_proxy::DDS_QueryCondition_proxy");
   }
@@ -29,7 +29,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_QueryCondition_proxy::get_trigger_value");
 
-    return ::DDSX11::traits< bool >::retn (
+    return ::DDSX11::traits<bool>::retn (
       this->native_entity ()->get_trigger_value ());
   }
 

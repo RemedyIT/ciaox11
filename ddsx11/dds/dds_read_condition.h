@@ -60,7 +60,7 @@ namespace DDSX11
     DDS_ReadCondition_proxy& operator=(DDS_ReadCondition_proxy&&) = delete;
   };
 
-  typedef entity_traits< ::DDS::ReadCondition, DDS_ReadCondition_proxy, DDS_Native::DDS::ReadCondition >
+  typedef entity_traits< ::DDS::ReadCondition, DDS_ReadCondition_proxy, DDS_Native::DDS::ReadCondition>
     read_condition_trait;
 }
 

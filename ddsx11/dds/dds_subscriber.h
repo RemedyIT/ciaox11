@@ -138,7 +138,7 @@ namespace DDSX11
     DDS_Subscriber_proxy& operator=(DDS_Subscriber_proxy&&) = delete;
   };
 
-  typedef entity_traits< ::DDS::Subscriber, DDS_Subscriber_proxy, DDS_Native::DDS::Subscriber >
+  typedef entity_traits< ::DDS::Subscriber, DDS_Subscriber_proxy, DDS_Native::DDS::Subscriber>
     subscriber_trait;
 }
 

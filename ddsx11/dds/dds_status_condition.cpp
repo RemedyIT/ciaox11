@@ -18,14 +18,14 @@ namespace DDSX11
 {
   DDS_StatusCondition_proxy::DDS_StatusCondition_proxy (
     DDS_Native::DDS::StatusCondition * sc)
-    : NativeEntityBase_T<DDS_Native::DDS::StatusCondition > (sc)
+    : NativeEntityBase_T<DDS_Native::DDS::StatusCondition> (sc)
   {
   }
 
   bool
   DDS_StatusCondition_proxy::get_trigger_value ()
   {
-    return ::DDSX11::traits< bool >::retn (
+    return ::DDSX11::traits<bool>::retn (
       this->native_entity ()->get_trigger_value ());
   }
 

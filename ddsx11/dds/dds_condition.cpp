@@ -27,7 +27,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_Condition_proxy::get_trigger_value");
 
-    return ::DDSX11::traits< bool >::retn (
+    return ::DDSX11::traits<bool>::retn (
       this->native_entity ()->get_trigger_value ());
   }
 }

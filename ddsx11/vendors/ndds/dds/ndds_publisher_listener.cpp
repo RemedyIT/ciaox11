@@ -37,7 +37,7 @@ namespace DDSX11
       if (dw)
       {
         this->impl_->on_reliable_reader_activity_changed (std::move(dw),
-          ::DDSX11::traits< ::DDS::ReliableReaderActivityChangedStatus >::retn (status));
+          ::DDSX11::traits< ::DDS::ReliableReaderActivityChangedStatus>::retn (status));
       }
     }
 
@@ -53,7 +53,7 @@ namespace DDSX11
       if (dw)
       {
         this->impl_->on_reliable_writer_cache_changed (std::move(dw),
-          ::DDSX11::traits< ::DDS::ReliableWriterCacheChangedStatus >::retn (status));
+          ::DDSX11::traits< ::DDS::ReliableWriterCacheChangedStatus>::retn (status));
       }
     }
   }

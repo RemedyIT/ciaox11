@@ -26,7 +26,7 @@ namespace DDSX11
   {
     NDDS_DomainParticipant_proxy::NDDS_DomainParticipant_proxy (
         DDS_Native::DDS::DomainParticipant *dp)
-      : NativeEntityBase_T<DDS_Native::DDS::DomainParticipant > (dp)
+      : NativeEntityBase_T<DDS_Native::DDS::DomainParticipant> (dp)
       , DDS_DomainParticipant_proxy (dp)
     {
     }

@@ -38,7 +38,7 @@ namespace DDSX11
     DDS_DataReader_proxy& operator=(DDS_DataReader_proxy&&) = delete;
   };
 
-  typedef entity_traits< ::DDS::DataReader, DDS_DataReader_proxy, DDS_Native::DDS::DataReader >
+  typedef entity_traits< ::DDS::DataReader, DDS_DataReader_proxy, DDS_Native::DDS::DataReader>
     data_reader_trait;
 }
 

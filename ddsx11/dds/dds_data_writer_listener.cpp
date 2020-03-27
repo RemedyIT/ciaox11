@@ -53,7 +53,7 @@ namespace DDSX11
     if (dw)
     {
       this->impl_->on_offered_deadline_missed (std::move(dw),
-        ::DDSX11::traits< ::DDS::OfferedDeadlineMissedStatus >::retn (status));
+        ::DDSX11::traits< ::DDS::OfferedDeadlineMissedStatus>::retn (status));
     }
   }
 
@@ -69,7 +69,7 @@ namespace DDSX11
     if (dw)
     {
       this->impl_->on_offered_incompatible_qos (std::move(dw),
-        ::DDSX11::traits< ::DDS::OfferedIncompatibleQosStatus >::retn (status));
+        ::DDSX11::traits< ::DDS::OfferedIncompatibleQosStatus>::retn (status));
     }
   }
 
@@ -84,7 +84,7 @@ namespace DDSX11
     if (dw)
     {
       this->impl_->on_liveliness_lost (std::move(dw),
-        ::DDSX11::traits< ::DDS::LivelinessLostStatus >::retn (status));
+        ::DDSX11::traits< ::DDS::LivelinessLostStatus>::retn (status));
     }
   }
 
@@ -99,7 +99,7 @@ namespace DDSX11
     if (dw)
     {
       this->impl_->on_publication_matched (std::move(dw),
-        ::DDSX11::traits< ::DDS::PublicationMatchedStatus >::retn (status));
+        ::DDSX11::traits< ::DDS::PublicationMatchedStatus>::retn (status));
     }
   }
 

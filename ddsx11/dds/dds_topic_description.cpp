@@ -17,7 +17,7 @@ namespace DDSX11
 {
   DDS_TopicDescription_proxy::DDS_TopicDescription_proxy (
     DDS_Native::DDS::TopicDescription * td)
-    : NativeEntityBase_T<DDS_Native::DDS::TopicDescription >(td)
+    : NativeEntityBase_T<DDS_Native::DDS::TopicDescription>(td)
   {
   }
 

@@ -63,7 +63,7 @@ namespace DDSX11
           dds_dp =
             DDS_Native::DDS::DomainParticipantFactory::get_instance ()->
               create_participant_with_profile (
-                ::DDSX11::traits< ::DDS::DomainId_t >::in (domain_id),
+                ::DDSX11::traits< ::DDS::DomainId_t>::in (domain_id),
                 ::DDSX11::traits<std::string>::in (lib_name),
                 ::DDSX11::traits<std::string>::in (prof_name),
                 ccm_dds_dpl.get (),

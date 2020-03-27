@@ -32,7 +32,7 @@ namespace DDSX11
       TAOX11_CORBA::make_reference<DDS_Topic_proxy> (tp);
 
     this->impl_->on_inconsistent_topic (std::move(topic),
-      ::DDSX11::traits< ::DDS::InconsistentTopicStatus >::retn (status));
+      ::DDSX11::traits< ::DDS::InconsistentTopicStatus>::retn (status));
   }
 
   void
@@ -47,7 +47,7 @@ namespace DDSX11
     if (dr)
     {
       this->impl_->on_requested_deadline_missed (std::move(dr),
-        ::DDSX11::traits< ::DDS::RequestedDeadlineMissedStatus >::retn (status));
+        ::DDSX11::traits< ::DDS::RequestedDeadlineMissedStatus>::retn (status));
     }
   }
 
@@ -63,7 +63,7 @@ namespace DDSX11
     if (dr)
     {
       this->impl_->on_requested_incompatible_qos (std::move(dr),
-        ::DDSX11::traits< ::DDS::RequestedIncompatibleQosStatus >::retn (status));
+        ::DDSX11::traits< ::DDS::RequestedIncompatibleQosStatus>::retn (status));
     }
   }
 
@@ -79,7 +79,7 @@ namespace DDSX11
     if (dr)
     {
       this->impl_->on_sample_rejected (std::move(dr),
-        ::DDSX11::traits< ::DDS::SampleRejectedStatus >::retn (status));
+        ::DDSX11::traits< ::DDS::SampleRejectedStatus>::retn (status));
     }
   }
 
@@ -95,7 +95,7 @@ namespace DDSX11
     if (dr)
     {
       this->impl_->on_liveliness_changed (std::move(dr),
-        ::DDSX11::traits< ::DDS::LivelinessChangedStatus >::retn (status));
+        ::DDSX11::traits< ::DDS::LivelinessChangedStatus>::retn (status));
     }
   }
 
@@ -125,7 +125,7 @@ namespace DDSX11
     if (dr)
     {
       this->impl_->on_subscription_matched (std::move(dr),
-        ::DDSX11::traits< ::DDS::SubscriptionMatchedStatus >::retn (status));
+        ::DDSX11::traits< ::DDS::SubscriptionMatchedStatus>::retn (status));
     }
   }
 
@@ -141,7 +141,7 @@ namespace DDSX11
     if (dr)
     {
       this->impl_->on_sample_lost (std::move(dr),
-        ::DDSX11::traits< ::DDS::SampleLostStatus >::retn (status));
+        ::DDSX11::traits< ::DDS::SampleLostStatus>::retn (status));
     }
   }
 
@@ -157,7 +157,7 @@ namespace DDSX11
     if (dw)
     {
       this->impl_->on_offered_deadline_missed (std::move(dw),
-        ::DDSX11::traits< ::DDS::OfferedDeadlineMissedStatus >::retn (status));
+        ::DDSX11::traits< ::DDS::OfferedDeadlineMissedStatus>::retn (status));
     }
   }
 
@@ -173,7 +173,7 @@ namespace DDSX11
     if (dw)
     {
       this->impl_->on_offered_incompatible_qos (std::move(dw),
-        ::DDSX11::traits< ::DDS::OfferedIncompatibleQosStatus >::retn (status));
+        ::DDSX11::traits< ::DDS::OfferedIncompatibleQosStatus>::retn (status));
     }
   }
 
@@ -189,7 +189,7 @@ namespace DDSX11
     if (dw)
     {
       this->impl_->on_liveliness_lost (std::move(dw),
-        ::DDSX11::traits< ::DDS::LivelinessLostStatus >::retn (status));
+        ::DDSX11::traits< ::DDS::LivelinessLostStatus>::retn (status));
     }
   }
 
@@ -205,7 +205,7 @@ namespace DDSX11
     if (dw)
     {
       this->impl_->on_publication_matched (std::move(dw),
-        ::DDSX11::traits< ::DDS::PublicationMatchedStatus >::retn (status));
+        ::DDSX11::traits< ::DDS::PublicationMatchedStatus>::retn (status));
     }
   }
 

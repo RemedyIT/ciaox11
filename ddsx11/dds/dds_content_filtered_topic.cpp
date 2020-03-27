@@ -20,7 +20,7 @@ namespace DDSX11
 {
   DDS_ContentFilteredTopic_proxy::DDS_ContentFilteredTopic_proxy (
     DDS_Native::DDS::ContentFilteredTopic * cft)
-    : NativeEntityBase_T<DDS_Native::DDS::ContentFilteredTopic >(cft)
+    : NativeEntityBase_T<DDS_Native::DDS::ContentFilteredTopic>(cft)
   {
   }
 

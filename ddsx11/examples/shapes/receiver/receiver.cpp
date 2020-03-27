@@ -70,7 +70,7 @@ int main (int argc, char *argv[])
       }
 
       DDS::traits<ShapeType>::domainparticipantfactory_ref_type dpf =
-        DDS::traits< DDS::DomainParticipantFactory >::get_instance ();
+        DDS::traits<DDS::DomainParticipantFactory >::get_instance ();
       DDS::traits<ShapeType>::domainparticipant_ref_type domain_participant =
         dpf->create_participant_with_profile (
           domain_id_, qos_profile, nullptr, 0);

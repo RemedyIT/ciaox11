@@ -48,7 +48,7 @@ namespace DDSX11
     ::DDS::ReturnCode_t const retcode =
       ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
         this->native_entity ()->wait (
-          native_seq, ::DDSX11::traits< ::DDS::Duration_t >::in (timeout)));
+          native_seq, ::DDSX11::traits< ::DDS::Duration_t>::in (timeout)));
 
     return retcode;
   }
@@ -60,7 +60,7 @@ namespace DDSX11
     DDSX11_LOG_TRACE ("DDS_WaitSet_proxy::attach_condition");
 
     IDL::traits< ::DDS::ReadCondition>::ref_type rc_cond =
-      IDL::traits< ::DDS::ReadCondition >::narrow (cond);
+      IDL::traits< ::DDS::ReadCondition>::narrow (cond);
     IDL::traits< ::DDS::QueryCondition>::ref_type qc_cond =
       IDL::traits< ::DDS::QueryCondition>::narrow (cond);
 
@@ -86,7 +86,7 @@ namespace DDSX11
     DDSX11_LOG_TRACE ("DDS_WaitSet_proxy::detach_condition");
 
     IDL::traits< ::DDS::ReadCondition>::ref_type rc_cond =
-      IDL::traits< ::DDS::ReadCondition >::narrow (cond);
+      IDL::traits< ::DDS::ReadCondition>::narrow (cond);
     IDL::traits< ::DDS::QueryCondition>::ref_type qc_cond =
       IDL::traits< ::DDS::QueryCondition>::narrow (cond);
 

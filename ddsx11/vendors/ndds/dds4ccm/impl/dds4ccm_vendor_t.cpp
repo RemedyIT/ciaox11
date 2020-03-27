@@ -20,7 +20,7 @@ namespace CIAOX11
       IDL::traits< ::DDS::PublisherListener>::ref_type
       create_publisher_listener (const EVT_STRATEGY &evs)
       {
-        return CORBA::make_reference< CIAOX11::NDDS4CCM::NDDSPublisherListener_T<EVT_STRATEGY> > (evs);
+        return CORBA::make_reference< CIAOX11::NDDS4CCM::NDDSPublisherListener_T<EVT_STRATEGY>> (evs);
       }
 
       template <typename EVT_STRATEGY>
