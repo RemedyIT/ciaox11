@@ -132,7 +132,7 @@ namespace DDS
   const DataReaderQos DATAREADER_QOS_DEFAULT { DDSX11::VendorUtils::datareader_qos_default () };
 
   template<>
-  struct traits< ::DDS::DomainParticipantFactory >
+  struct traits< ::DDS::DomainParticipantFactory>
   {
     static IDL::traits< ::DDS::DomainParticipantFactory>::ref_type
     get_instance ()

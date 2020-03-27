@@ -34,7 +34,7 @@ namespace DDSX11
     if (tp)
     {
       this->impl_->on_inconsistent_topic (std::move(tp),
-        ::DDSX11::traits< ::DDS::InconsistentTopicStatus >::retn (status));
+        ::DDSX11::traits< ::DDS::InconsistentTopicStatus>::retn (status));
     }
   }
 

@@ -122,7 +122,7 @@ namespace DDSX11
     DDS_Publisher_proxy& operator=(DDS_Publisher_proxy&&) = delete;
   };
 
-  typedef entity_traits< ::DDS::Publisher, DDS_Publisher_proxy, DDS_Native::DDS::Publisher >
+  typedef entity_traits< ::DDS::Publisher, DDS_Publisher_proxy, DDS_Native::DDS::Publisher>
     publisher_trait;
 }
 

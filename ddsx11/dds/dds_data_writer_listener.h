@@ -55,7 +55,7 @@ namespace DDSX11
     // comes in. The pointer will be converted to a strong reference and
     // checked on each callback. This prevents looking up the internal map
     // in the ProxyEntityManager each time a callback is called.
-    IDL::traits< ::DDS::DataWriter >::weak_ref_type dw_ {};
+    IDL::traits< ::DDS::DataWriter>::weak_ref_type dw_ {};
 
     IDL::traits< ::DDS::DataWriter>::ref_type
     get_datawriter (DDS_Native::DDS::DataWriter *the_writer);

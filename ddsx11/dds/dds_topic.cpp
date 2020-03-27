@@ -20,7 +20,7 @@ namespace DDSX11
 {
   DDS_Topic_proxy::DDS_Topic_proxy (
     DDS_Native::DDS::Topic* topic)
-    : NativeEntityBase_T<DDS_Native::DDS::Topic >(topic)
+    : NativeEntityBase_T<DDS_Native::DDS::Topic>(topic)
   {
     DDSX11_LOG_TRACE ("DDS_Topic_proxy::DDS_Topic_proxy");
   }
@@ -31,7 +31,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_Topic_proxy::set_qos");
 
-    ::DDSX11::traits< ::DDS::TopicQos >::in qos_in;
+    ::DDSX11::traits< ::DDS::TopicQos>::in qos_in;
 #if defined(DDSX11_INITIALIZE_QOS_DEFAULTS)
     // Get the default QOS from DDS
     ::DDS::ReturnCode_t const retcode =
@@ -62,7 +62,7 @@ namespace DDSX11
     DDSX11_LOG_TRACE ("DDS_Topic_proxy::get_qos");
     return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()-> get_qos (
-        ::DDSX11::traits< ::DDS::TopicQos >::inout (qos)));
+        ::DDSX11::traits< ::DDS::TopicQos>::inout (qos)));
   }
 
   ::DDS::ReturnCode_t
@@ -127,7 +127,7 @@ namespace DDSX11
 
     return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->get_inconsistent_topic_status (
-        ::DDSX11::traits< ::DDS::InconsistentTopicStatus >::inout (a_status)));
+        ::DDSX11::traits< ::DDS::InconsistentTopicStatus>::inout (a_status)));
   }
 
   ::DDS::ReturnCode_t

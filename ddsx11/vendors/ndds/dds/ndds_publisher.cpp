@@ -20,7 +20,7 @@ namespace DDSX11
   {
     NDDS_Publisher_proxy::NDDS_Publisher_proxy (
         DDS_Native::DDS::Publisher * p)
-      : NativeEntityBase_T<DDS_Native::DDS::Publisher >(p)
+      : NativeEntityBase_T<DDS_Native::DDS::Publisher>(p)
       , DDS_Publisher_proxy (p)
     {
     }

@@ -50,7 +50,7 @@ namespace DDSX11
     IDL::traits< ::DDS::WaitSet>::ref_type
     create_waitset ()
     {
-      return CORBA::make_reference< DDSX11::DDS_WaitSet_proxy > ();
+      return CORBA::make_reference<DDSX11::DDS_WaitSet_proxy> ();
     }
 
     IDL::traits< ::DDS::DomainParticipantFactory>::ref_type
@@ -91,7 +91,7 @@ namespace DDSX11
           NDDSConfigLogger::get_instance()->set_print_format (NDDS_CONFIG_LOG_PRINT_FORMAT_MAXIMAL);
       }
 
-      return CORBA::make_reference< DDSX11::NDDS_PROXY::NDDS_DomainParticipantFactory_proxy > (DDS_Native::DDS::DomainParticipantFactory::get_instance());
+      return CORBA::make_reference<DDSX11::NDDS_PROXY::NDDS_DomainParticipantFactory_proxy> (DDS_Native::DDS::DomainParticipantFactory::get_instance());
     }
 
     DDS_Native::DDS::PublisherListener*
@@ -177,37 +177,37 @@ namespace DDSX11
     ::DDS::DomainParticipantQos
     participant_qos_default ()
     {
-      return ::DDSX11::traits< ::DDS::DomainParticipantQos >::retn (DDS_PARTICIPANT_QOS_DEFAULT);
+      return ::DDSX11::traits< ::DDS::DomainParticipantQos>::retn (DDS_PARTICIPANT_QOS_DEFAULT);
     }
 
     ::DDS::TopicQos
     topic_qos_default ()
     {
-      return ::DDSX11::traits< ::DDS::TopicQos >::retn (DDS_TOPIC_QOS_DEFAULT);
+      return ::DDSX11::traits< ::DDS::TopicQos>::retn (DDS_TOPIC_QOS_DEFAULT);
     }
 
     ::DDS::PublisherQos
     publisher_qos_default ()
     {
-      return ::DDSX11::traits< ::DDS::PublisherQos >::retn (DDS_PUBLISHER_QOS_DEFAULT);
+      return ::DDSX11::traits< ::DDS::PublisherQos>::retn (DDS_PUBLISHER_QOS_DEFAULT);
     }
 
     ::DDS::SubscriberQos
     subscriber_qos_default ()
     {
-      return ::DDSX11::traits< ::DDS::SubscriberQos >::retn (DDS_SUBSCRIBER_QOS_DEFAULT);
+      return ::DDSX11::traits< ::DDS::SubscriberQos>::retn (DDS_SUBSCRIBER_QOS_DEFAULT);
     }
 
     ::DDS::DataWriterQos
     datawriter_qos_default ()
     {
-      return ::DDSX11::traits< ::DDS::DataWriterQos >::retn (DDS_DATAWRITER_QOS_DEFAULT);
+      return ::DDSX11::traits< ::DDS::DataWriterQos>::retn (DDS_DATAWRITER_QOS_DEFAULT);
     }
 
     ::DDS::DataReaderQos
     datareader_qos_default ()
     {
-      return ::DDSX11::traits< ::DDS::DataReaderQos >::retn (DDS_DATAREADER_QOS_DEFAULT);
+      return ::DDSX11::traits< ::DDS::DataReaderQos>::retn (DDS_DATAREADER_QOS_DEFAULT);
     }
   }
 }

@@ -73,7 +73,7 @@ namespace DDSX11
     // reference and checked on each callback.
     // This prevents looking up the internal map in the ProxyEntityManager each
     // time a callback is called.
-    IDL::traits< ::DDS::DataReader >::weak_ref_type dr_ {};
+    IDL::traits< ::DDS::DataReader>::weak_ref_type dr_ {};
 
     IDL::traits< ::DDS::DataReader>::ref_type
     get_datareader (DDS_Native::DDS::DataReader *the_reader);

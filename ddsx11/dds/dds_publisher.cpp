@@ -25,7 +25,7 @@ namespace DDSX11
 {
   DDS_Publisher_proxy::DDS_Publisher_proxy (
     DDS_Native::DDS::Publisher * p)
-    : NativeEntityBase_T<DDS_Native::DDS::Publisher > (p)
+    : NativeEntityBase_T<DDS_Native::DDS::Publisher> (p)
   {
     DDSX11_LOG_TRACE ("DDS_Publisher_proxy::DDS_Publisher_proxy");
   }
@@ -39,7 +39,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_Publisher_proxy::create_datawriter");
 
-    ::DDSX11::traits< ::DDS::DataWriterQos >::in qos_in;
+    ::DDSX11::traits< ::DDS::DataWriterQos>::in qos_in;
 #if defined(DDSX11_INITIALIZE_QOS_DEFAULTS)
     // Get the default QOS from DDS
     ::DDS::ReturnCode_t const retcode =
@@ -185,7 +185,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_Publisher_proxy::set_qos");
 
-    ::DDSX11::traits< ::DDS::PublisherQos >::in qos_in;
+    ::DDSX11::traits< ::DDS::PublisherQos>::in qos_in;
 #if defined(DDSX11_INITIALIZE_QOS_DEFAULTS)
     // Get the default QOS from DDS
     ::DDS::ReturnCode_t const retcode =
@@ -218,7 +218,7 @@ namespace DDSX11
 
     return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()-> get_qos (
-        ::DDSX11::traits< ::DDS::PublisherQos >::inout (qos)));
+        ::DDSX11::traits< ::DDS::PublisherQos>::inout (qos)));
   }
 
 
@@ -316,7 +316,7 @@ namespace DDSX11
   {
     return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->wait_for_acknowledgments (
-        ::DDSX11::traits< ::DDS::Duration_t >::in (max_wait)));
+        ::DDSX11::traits< ::DDS::Duration_t>::in (max_wait)));
   }
 
 
@@ -336,7 +336,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_Publisher_proxy::set_default_datawriter_qos");
 
-    ::DDSX11::traits< ::DDS::DataWriterQos >::in qos_in;
+    ::DDSX11::traits< ::DDS::DataWriterQos>::in qos_in;
 #if defined(DDSX11_INITIALIZE_QOS_DEFAULTS)
     ::DDS::ReturnCode_t const retcode =
       ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
@@ -368,7 +368,7 @@ namespace DDSX11
 
     return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->get_default_datawriter_qos (
-        ::DDSX11::traits< ::DDS::DataWriterQos >::inout (qos)));
+        ::DDSX11::traits< ::DDS::DataWriterQos>::inout (qos)));
   }
 
 
@@ -381,8 +381,8 @@ namespace DDSX11
 
     return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->copy_from_topic_qos (
-        ::DDSX11::traits< ::DDS::DataWriterQos >::inout (a_datawriter_qos),
-        ::DDSX11::traits< ::DDS::TopicQos >::in (a_topic_qos)));
+        ::DDSX11::traits< ::DDS::DataWriterQos>::inout (a_datawriter_qos),
+        ::DDSX11::traits< ::DDS::TopicQos>::in (a_topic_qos)));
   }
 
   ::DDS::ReturnCode_t

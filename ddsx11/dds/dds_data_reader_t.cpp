@@ -40,7 +40,7 @@ namespace DDSX11
     if (retcode == ::DDS::RETCODE_OK)
     {
       sample_infos = ::DDSX11::traits< ::DDS::SampleInfoSeq, ::DDS_Native::DDS::SampleInfoSeq>::retn (native_sample_infos);
-      data_values = typename ::DDSX11::traits< SEQ_TYPE >::retn (native_data_values);
+      data_values = typename ::DDSX11::traits<SEQ_TYPE>::retn (native_data_values);
     }
     else if (retcode != ::DDS::RETCODE_NO_DATA)
     {
@@ -160,7 +160,7 @@ namespace DDSX11
       {
         DDS_Native::DDS::QueryCondition *dds_qc =
           query_condition_trait::native (
-            IDL::traits< ::DDS::QueryCondition >::narrow (a_condition));
+            IDL::traits< ::DDS::QueryCondition>::narrow (a_condition));
         if (dds_qc)
           {
             retcode_read_w_condition =
@@ -218,7 +218,7 @@ namespace DDSX11
       {
         DDS_Native::DDS::QueryCondition *dds_qc =
           query_condition_trait::native (
-            IDL::traits< ::DDS::QueryCondition >::narrow (a_condition));
+            IDL::traits< ::DDS::QueryCondition>::narrow (a_condition));
         if (dds_qc)
           {
             retcode_take_w_condition =
@@ -256,8 +256,8 @@ namespace DDSX11
 
     return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->read_next_sample (
-        typename ::DDSX11::traits< TOPIC_TYPE >::inout (data_values),
-        ::DDSX11::traits< ::DDS::SampleInfo >::inout (sample_info)));
+        typename ::DDSX11::traits< TOPIC_TYPE>::inout (data_values),
+        ::DDSX11::traits< ::DDS::SampleInfo>::inout (sample_info)));
   }
 
   template <typename NATIVE_TYPED_READER, typename TYPED_READER_TYPE, typename TOPIC_TYPE, typename SEQ_TYPE, typename NATIVE_SEQ_TYPE>
@@ -270,8 +270,8 @@ namespace DDSX11
 
     return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->take_next_sample (
-        typename ::DDSX11::traits< TOPIC_TYPE >::inout (data_values),
-        ::DDSX11::traits< ::DDS::SampleInfo >::inout (sample_info)));
+        typename ::DDSX11::traits< TOPIC_TYPE>::inout (data_values),
+        ::DDSX11::traits< ::DDS::SampleInfo>::inout (sample_info)));
   }
 
   template <typename NATIVE_TYPED_READER, typename TYPED_READER_TYPE, typename TOPIC_TYPE, typename SEQ_TYPE, typename NATIVE_SEQ_TYPE>
@@ -296,7 +296,7 @@ namespace DDSX11
           native_data_values,
           native_sample_infos,
           ::DDSX11::traits < int32_t>::in (max_samples),
-          ::DDSX11::traits < ::DDS::InstanceHandle_t >::in (a_handle),
+          ::DDSX11::traits < ::DDS::InstanceHandle_t>::in (a_handle),
           ::DDSX11::traits < ::DDS::SampleStateMask>:: in (sample_states),
           ::DDSX11::traits < ::DDS::ViewStateMask>:: in (view_states),
           ::DDSX11::traits < ::DDS::InstanceStateMask>:: in (instance_states)));
@@ -328,7 +328,7 @@ namespace DDSX11
           native_data_values,
           native_sample_infos,
           ::DDSX11::traits < int32_t>::in (max_samples),
-          ::DDSX11::traits < ::DDS::InstanceHandle_t >::in (a_handle),
+          ::DDSX11::traits < ::DDS::InstanceHandle_t>::in (a_handle),
           ::DDSX11::traits < ::DDS::SampleStateMask>:: in (sample_states),
           ::DDSX11::traits < ::DDS::ViewStateMask>:: in (view_states),
           ::DDSX11::traits < ::DDS::InstanceStateMask>:: in (instance_states)));
@@ -372,7 +372,7 @@ namespace DDSX11
       {
         DDS_Native::DDS::QueryCondition *dds_qc =
           query_condition_trait::native (
-            IDL::traits< ::DDS::QueryCondition >::narrow (a_condition));
+            IDL::traits< ::DDS::QueryCondition>::narrow (a_condition));
         if (dds_qc)
           {
             retcode_read_instance_w_condition =
@@ -435,7 +435,7 @@ namespace DDSX11
       {
         DDS_Native::DDS::QueryCondition *dds_qc =
           query_condition_trait::native (
-            IDL::traits< ::DDS::QueryCondition >::narrow (a_condition));
+            IDL::traits< ::DDS::QueryCondition>::narrow (a_condition));
         if (dds_qc)
           {
             retcode_take_instance_w_condition =
@@ -487,7 +487,7 @@ namespace DDSX11
           native_data_values,
           native_sample_infos,
           ::DDSX11::traits < int32_t>::in (max_samples),
-          ::DDSX11::traits < ::DDS::InstanceHandle_t >::in (a_handle),
+          ::DDSX11::traits < ::DDS::InstanceHandle_t>::in (a_handle),
           ::DDSX11::traits < ::DDS::SampleStateMask>:: in (sample_states),
           ::DDSX11::traits < ::DDS::ViewStateMask>:: in (view_states),
           ::DDSX11::traits < ::DDS::InstanceStateMask>:: in (instance_states)));
@@ -520,7 +520,7 @@ namespace DDSX11
           native_data_values,
           native_sample_infos,
           ::DDSX11::traits < int32_t>::in (max_samples),
-          ::DDSX11::traits < ::DDS::InstanceHandle_t >::in (a_handle),
+          ::DDSX11::traits < ::DDS::InstanceHandle_t>::in (a_handle),
           ::DDSX11::traits < ::DDS::SampleStateMask>:: in (sample_states),
           ::DDSX11::traits < ::DDS::ViewStateMask>:: in (view_states),
           ::DDSX11::traits < ::DDS::InstanceStateMask>:: in (instance_states)));
@@ -563,7 +563,7 @@ namespace DDSX11
       {
         DDS_Native::DDS::QueryCondition *dds_qc =
           query_condition_trait::native (
-            IDL::traits< ::DDS::QueryCondition >::narrow (a_condition));
+            IDL::traits< ::DDS::QueryCondition>::narrow (a_condition));
         if (dds_qc)
           {
             retcode_read_next_instance_w_condition =
@@ -625,7 +625,7 @@ namespace DDSX11
       {
         DDS_Native::DDS::QueryCondition *dds_qc =
           query_condition_trait::native (
-            IDL::traits< ::DDS::QueryCondition >::narrow (a_condition));
+            IDL::traits< ::DDS::QueryCondition>::narrow (a_condition));
         if (dds_qc)
           {
             retcode_take_next_instance_w_condition =
@@ -728,7 +728,7 @@ namespace DDSX11
 
   template <typename NATIVE_TYPED_READER, typename TYPED_READER_TYPE, typename TOPIC_TYPE, typename SEQ_TYPE, typename RTI_SEQ_TYPE>
   ::DDS::InstanceHandle_t
-  DataReader_T <NATIVE_TYPED_READER, TYPED_READER_TYPE, TOPIC_TYPE, SEQ_TYPE, RTI_SEQ_TYPE >::get_instance_handle ()
+  DataReader_T <NATIVE_TYPED_READER, TYPED_READER_TYPE, TOPIC_TYPE, SEQ_TYPE, RTI_SEQ_TYPE>::get_instance_handle ()
   {
     DDSX11_LOG_TRACE ("DDSX11::DataReader_T::get_instance_handle");
 
@@ -796,7 +796,7 @@ namespace DDSX11
     DDS_Native::DDS::ReadCondition *native_rc {};
 
     IDL::traits< ::DDS::QueryCondition>::ref_type qc =
-      IDL::traits< ::DDS::QueryCondition >::narrow (a_condition);
+      IDL::traits< ::DDS::QueryCondition>::narrow (a_condition);
 
     if (qc)
       {
@@ -878,7 +878,7 @@ namespace DDSX11
 
     return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()-> get_qos (
-        ::DDSX11::traits< ::DDS::DataReaderQos >::inout (qos)));
+        ::DDSX11::traits< ::DDS::DataReaderQos>::inout (qos)));
   }
 
   template <typename NATIVE_TYPED_READER, typename TYPED_READER_TYPE, typename TOPIC_TYPE, typename SEQ_TYPE, typename NATIVE_SEQ_TYPE>
@@ -999,7 +999,7 @@ namespace DDSX11
 
     return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->get_sample_rejected_status (
-        ::DDSX11::traits< ::DDS::SampleRejectedStatus >::inout (status)));
+        ::DDSX11::traits< ::DDS::SampleRejectedStatus>::inout (status)));
   }
 
   template <typename NATIVE_TYPED_READER, typename TYPED_READER_TYPE, typename TOPIC_TYPE, typename SEQ_TYPE, typename NATIVE_SEQ_TYPE>
@@ -1011,7 +1011,7 @@ namespace DDSX11
 
     return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->get_liveliness_changed_status (
-        ::DDSX11::traits< ::DDS::LivelinessChangedStatus >::inout (status)));
+        ::DDSX11::traits< ::DDS::LivelinessChangedStatus>::inout (status)));
   }
 
   template <typename NATIVE_TYPED_READER, typename TYPED_READER_TYPE, typename TOPIC_TYPE, typename SEQ_TYPE, typename NATIVE_SEQ_TYPE>
@@ -1023,7 +1023,7 @@ namespace DDSX11
 
     return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->get_requested_deadline_missed_status (
-        ::DDSX11::traits< ::DDS::RequestedDeadlineMissedStatus >::inout (status)));
+        ::DDSX11::traits< ::DDS::RequestedDeadlineMissedStatus>::inout (status)));
   }
 
   template <typename NATIVE_TYPED_READER, typename TYPED_READER_TYPE, typename TOPIC_TYPE, typename SEQ_TYPE, typename NATIVE_SEQ_TYPE>
@@ -1035,7 +1035,7 @@ namespace DDSX11
 
     return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->get_requested_incompatible_qos_status (
-        ::DDSX11::traits< ::DDS::RequestedIncompatibleQosStatus >::inout (status)));
+        ::DDSX11::traits< ::DDS::RequestedIncompatibleQosStatus>::inout (status)));
   }
 
   template <typename NATIVE_TYPED_READER, typename TYPED_READER_TYPE, typename TOPIC_TYPE, typename SEQ_TYPE, typename NATIVE_SEQ_TYPE>
@@ -1047,7 +1047,7 @@ namespace DDSX11
 
     return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->get_subscription_matched_status (
-        ::DDSX11::traits< ::DDS::SubscriptionMatchedStatus >::inout (status)));
+        ::DDSX11::traits< ::DDS::SubscriptionMatchedStatus>::inout (status)));
   }
 
   template <typename NATIVE_TYPED_READER, typename TYPED_READER_TYPE, typename TOPIC_TYPE, typename SEQ_TYPE, typename NATIVE_SEQ_TYPE>
@@ -1059,7 +1059,7 @@ namespace DDSX11
 
     return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->get_sample_lost_status (
-        ::DDSX11::traits< ::DDS::SampleLostStatus >::inout (status)));
+        ::DDSX11::traits< ::DDS::SampleLostStatus>::inout (status)));
   }
 
   template <typename NATIVE_TYPED_READER, typename TYPED_READER_TYPE, typename TOPIC_TYPE, typename SEQ_TYPE, typename NATIVE_SEQ_TYPE>
@@ -1071,7 +1071,7 @@ namespace DDSX11
 
     return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->wait_for_historical_data (
-        ::DDSX11::traits< ::DDS::Duration_t >::in (max_wait)));
+        ::DDSX11::traits< ::DDS::Duration_t>::in (max_wait)));
   }
 
   template <typename NATIVE_TYPED_READER, typename TYPED_READER_TYPE, typename TOPIC_TYPE, typename SEQ_TYPE, typename NATIVE_SEQ_TYPE>
@@ -1101,7 +1101,7 @@ namespace DDSX11
 #else
     return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->get_matched_publication_data (
-        ::DDSX11::traits< ::DDS::PublicationBuiltinTopicData >::inout (publication_data),
+        ::DDSX11::traits< ::DDS::PublicationBuiltinTopicData>::inout (publication_data),
         ::DDSX11::traits< ::DDS::InstanceHandle_t>::in (publication_handle)));
 #endif
   }
@@ -1112,7 +1112,7 @@ namespace DDSX11
   {
     if (!this->native_entity_)
       {
-        DDSX11_IMPL_LOG_DEBUG ("NativeEntityBase_T< DDS_NATIVE_TYPE >::entity "
+        DDSX11_IMPL_LOG_DEBUG ("NativeEntityBase_T<DDS_NATIVE_TYPE>::entity "
           << "Throwing BAD_INV_ORDER.");
         throw TAOX11_CORBA::BAD_INV_ORDER ();
       }

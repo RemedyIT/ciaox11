@@ -47,7 +47,7 @@ bool
 operator< (const ::DDS::InstanceHandle_t & instancehandle1, const ::DDS::InstanceHandle_t & instancehandle2)
 {
   // Comparing two values of type
-  // typedef std::array< uint8_t, 16 >
+  // typedef std::array< uint8_t, 16>
   // Array comparison on cppreference.com:
   // 1. Checks if the contents of lhs and rhs are equal, that is, whether each element in lhs compares
   //    equal with the element in rhs at the same position.

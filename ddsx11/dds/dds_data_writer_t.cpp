@@ -64,7 +64,7 @@ namespace DDSX11
 
     return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()-> get_qos (
-        ::DDSX11::traits< ::DDS::DataWriterQos >::inout (qos)));
+        ::DDSX11::traits< ::DDS::DataWriterQos>::inout (qos)));
   }
 
   template <typename TOPIC_TYPE, typename NATIVE_TYPED_WRITER, typename TYPED_WRITER_TYPE>
@@ -159,7 +159,7 @@ namespace DDSX11
 
     return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->wait_for_acknowledgments (
-        ::DDSX11::traits< ::DDS::Duration_t >::in (max_wait)));
+        ::DDSX11::traits< ::DDS::Duration_t>::in (max_wait)));
   }
 
   template <typename TOPIC_TYPE, typename NATIVE_TYPED_WRITER, typename TYPED_WRITER_TYPE>
@@ -172,7 +172,7 @@ namespace DDSX11
 
     return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->get_liveliness_lost_status (
-        ::DDSX11::traits< ::DDS::LivelinessLostStatus >::inout (status)));
+        ::DDSX11::traits< ::DDS::LivelinessLostStatus>::inout (status)));
   }
 
   template <typename TOPIC_TYPE, typename NATIVE_TYPED_WRITER, typename TYPED_WRITER_TYPE>
@@ -185,7 +185,7 @@ namespace DDSX11
 
     return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->get_offered_deadline_missed_status (
-        ::DDSX11::traits< ::DDS::OfferedDeadlineMissedStatus >::inout (status)));
+        ::DDSX11::traits< ::DDS::OfferedDeadlineMissedStatus>::inout (status)));
   }
 
   template <typename TOPIC_TYPE, typename NATIVE_TYPED_WRITER, typename TYPED_WRITER_TYPE>
@@ -198,7 +198,7 @@ namespace DDSX11
 
     return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->get_offered_incompatible_qos_status (
-        ::DDSX11::traits< ::DDS::OfferedIncompatibleQosStatus >::inout (status)));
+        ::DDSX11::traits< ::DDS::OfferedIncompatibleQosStatus>::inout (status)));
   }
 
   template <typename TOPIC_TYPE, typename NATIVE_TYPED_WRITER, typename TYPED_WRITER_TYPE>
@@ -211,7 +211,7 @@ namespace DDSX11
 
     return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->get_publication_matched_status (
-        ::DDSX11::traits< ::DDS::PublicationMatchedStatus >::inout (status)));
+        ::DDSX11::traits< ::DDS::PublicationMatchedStatus>::inout (status)));
   }
 
   template <typename TOPIC_TYPE, typename NATIVE_TYPED_WRITER, typename TYPED_WRITER_TYPE>
@@ -254,7 +254,7 @@ namespace DDSX11
 #else
     return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->get_matched_subscription_data (
-        ::DDSX11::traits< ::DDS::SubscriptionBuiltinTopicData >::inout (subscription_data),
+        ::DDSX11::traits< ::DDS::SubscriptionBuiltinTopicData>::inout (subscription_data),
         ::DDSX11::traits< ::DDS::InstanceHandle_t>::in (subscription_handle)));
 #endif
   }
@@ -333,7 +333,7 @@ namespace DDSX11
     return ::DDSX11::traits< ::DDS::InstanceHandle_t>::retn (
       this->native_entity ()->register_instance_w_timestamp (
         typename ::DDSX11::traits<TOPIC_TYPE>::in (instance_data),
-        ::DDSX11::traits< ::DDS::Time_t >::in (source_timestamp)));
+        ::DDSX11::traits< ::DDS::Time_t>::in (source_timestamp)));
   }
 
   template <typename TOPIC_TYPE, typename NATIVE_TYPED_WRITER, typename TYPED_WRITER_TYPE>
@@ -365,7 +365,7 @@ namespace DDSX11
       this->native_entity ()->unregister_instance_w_timestamp (
         typename ::DDSX11::traits<TOPIC_TYPE>::in (instance_data),
         ::DDSX11::traits< ::DDS::InstanceHandle_t>::in (handle),
-        ::DDSX11::traits< ::DDS::Time_t >::in (source_timestamp)));
+        ::DDSX11::traits< ::DDS::Time_t>::in (source_timestamp)));
   }
 
   template <typename TOPIC_TYPE, typename NATIVE_TYPED_WRITER, typename TYPED_WRITER_TYPE>
@@ -397,7 +397,7 @@ namespace DDSX11
       this->native_entity ()->write_w_timestamp (
         typename ::DDSX11::traits<TOPIC_TYPE>::in (instance_data),
         ::DDSX11::traits< ::DDS::InstanceHandle_t>::in (handle),
-        ::DDSX11::traits< ::DDS::Time_t >::in (source_timestamp)));
+        ::DDSX11::traits< ::DDS::Time_t>::in (source_timestamp)));
   }
 
   template <typename TOPIC_TYPE, typename NATIVE_TYPED_WRITER, typename TYPED_WRITER_TYPE>
@@ -429,7 +429,7 @@ namespace DDSX11
       this->native_entity ()->dispose_w_timestamp (
         typename ::DDSX11::traits<TOPIC_TYPE>::in (instance_data),
         ::DDSX11::traits< ::DDS::InstanceHandle_t>::in (handle),
-        ::DDSX11::traits< ::DDS::Time_t >::in (source_timestamp)));
+        ::DDSX11::traits< ::DDS::Time_t>::in (source_timestamp)));
   }
 
   template <typename TOPIC_TYPE, typename NATIVE_TYPED_WRITER, typename TYPED_WRITER_TYPE>

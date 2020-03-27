@@ -23,7 +23,7 @@ namespace DDSX11
   {
     NDDS_Subscriber_proxy::NDDS_Subscriber_proxy (
       DDS_Native::DDS::Subscriber * sub)
-      : NativeEntityBase_T<DDS_Native::DDS::Subscriber >(sub)
+      : NativeEntityBase_T<DDS_Native::DDS::Subscriber>(sub)
       , DDS_Subscriber_proxy (sub)
     {
     }
@@ -92,12 +92,12 @@ namespace DDSX11
       DDS_Native::DDS::DataReader * native_dr {};
 
       IDL::traits< ::DDS::Topic>::ref_type topic =
-        IDL::traits< ::DDS::Topic >::narrow (a_topic);
+        IDL::traits< ::DDS::Topic>::narrow (a_topic);
 
       if (!topic)
         {
           IDL::traits< ::DDS::ContentFilteredTopic>::ref_type cf_topic =
-            IDL::traits< ::DDS::ContentFilteredTopic >::narrow (a_topic);
+            IDL::traits< ::DDS::ContentFilteredTopic>::narrow (a_topic);
           if (!cf_topic)
             {
               DDSX11_IMPL_LOG_ERROR (

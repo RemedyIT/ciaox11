@@ -41,7 +41,7 @@ namespace DDSX11
     DDS_DataWriter_proxy& operator=(DDS_DataWriter_proxy&&) = delete;
   };
 
-  typedef entity_traits< ::DDS::DataWriter, DDS_DataWriter_proxy, DDS_Native::DDS::DataWriter >
+  typedef entity_traits< ::DDS::DataWriter, DDS_DataWriter_proxy, DDS_Native::DDS::DataWriter>
     data_writer_trait;
 }
 

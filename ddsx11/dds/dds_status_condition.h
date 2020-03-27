@@ -27,7 +27,7 @@ namespace DDSX11
 {
   class DDSX11_IMPL_Export DDS_StatusCondition_proxy final
     : public virtual IDL::traits< ::DDS::StatusCondition>::base_type
-    , public virtual NativeEntityBase_T<DDS_Native::DDS::StatusCondition >
+    , public virtual NativeEntityBase_T<DDS_Native::DDS::StatusCondition>
   {
   public:
     /// Constructor

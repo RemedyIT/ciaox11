@@ -47,14 +47,14 @@ namespace DDSX11
     set_expression_parameters (
       const ::DDS::StringSeq & expression_parameters) override;
 
-    IDL::traits< ::DDS::Topic >::ref_type
+    IDL::traits< ::DDS::Topic>::ref_type
     get_related_topic () override;
 
     std::string get_type_name () override;
 
     std::string get_name () override;
 
-    IDL::traits< ::DDS::DomainParticipant >::ref_type
+    IDL::traits< ::DDS::DomainParticipant>::ref_type
     get_participant () override;
 
   private:
@@ -65,7 +65,7 @@ namespace DDSX11
     DDS_ContentFilteredTopic_proxy& operator=(DDS_ContentFilteredTopic_proxy&&) = delete;
   };
 
-  typedef entity_traits< ::DDS::ContentFilteredTopic, DDS_ContentFilteredTopic_proxy, DDS_Native::DDS::ContentFilteredTopic >
+  typedef entity_traits< ::DDS::ContentFilteredTopic, DDS_ContentFilteredTopic_proxy, DDS_Native::DDS::ContentFilteredTopic>
     cft_trait;
 
 } /* DDS_X11 */
