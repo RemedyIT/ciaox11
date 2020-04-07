@@ -1,0 +1,22 @@
+/**
+* @file    zmq_psdd_base.idl
+* @author  Martin Corino
+*
+* @brief   ZMQ base IDL for PSDD
+*
+* @copyright Copyright (c) Remedy IT Expertise BV
+* Chamber of commerce Rotterdam nr.276339, The Netherlands
+*/
+
+#ifndef ZMQ_PSDD_BASE_IDL
+#define ZMQ_PSDD_BASE_IDL
+
+module PSDD
+{
+  module ZMQ
+  {
+    native socket_type;
+  };
+};
+
+#endif

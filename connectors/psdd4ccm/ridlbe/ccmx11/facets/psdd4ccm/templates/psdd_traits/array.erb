@@ -1,0 +1,27 @@
+
+// generated from <%= ridl_template_path %>
+// Unaliased type : <%= resolved_cxxtype %>
+% alias_md5 =  resolved_cxxtype.to_md5
+// MD5            : <%= alias_md5 %>
+#if !defined(_ALIAS_<%= alias_md5 %>_PSDD_TRAITS_DECL_)
+#define _ALIAS_<%= alias_md5 %>_PSDD_TRAITS_DECL_
+
+namespace PSDD
+{
+  template <>
+  struct traits< <%= scoped_cxxtype %>>
+    : public common_traits< <%= scoped_cxxtype %>>
+    , public array_packing< <%= cxxdim_sizes.size-1 %>U,
+                            <%= scoped_cxxtype %>::value_type,
+                            <%= cxxdim_sizes.first %>>
+  {
+    static
+    std::string get_type_name () { return "<%= scoped_cxxname %>"; }
+
+    typedef std::false_type key_only;
+    typedef std::true_type no_key;
+  };
+
+} // PSDD
+
+#endif

@@ -1,0 +1,51 @@
+
+# configure setup for PSDD4CCM ZMQ
+#
+
+configure :psdd4ccm_zmq do
+
+  depends_on :psdd4ccm_connector
+
+  dependencies do
+
+    require :zmq do
+      environment :zmqroot do
+        name 'ZMQ_ROOT'
+        description 'ZeroMQ root folder'
+        default :libroot
+      end
+      environment :zmqver do
+        name 'ZMQ_LIBVERSION'
+        description 'ZeroMQ library version suffix'
+      end
+      file '${ZMQ_ROOT}/include/zmq.h'
+      library_path '${ZMQ_ROOT}/${:DLL_DIR}'
+    end
+
+  end
+
+  features do
+
+    enable :psdd4ccm_zmq do
+      depends_on :zmq
+    end
+
+    enable :psdd4ccm do
+      depends_on :psdd4ccm_zmq
+    end
+
+  end
+
+  brix11 do
+    include '..'
+  end
+
+  mpc do
+    include '$CIAOX11_ROOT/connectors/psdd4ccm/middleware/zmq/MPC/config'
+
+    mwc_include :psdd4ccm_zmq => %w{
+      $(CIAOX11_ROOT)/connectors/psdd4ccm/middleware/zmq/psdd4ccm/impl
+    }
+  end
+
+end

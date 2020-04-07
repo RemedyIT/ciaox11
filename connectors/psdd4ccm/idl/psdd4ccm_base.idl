@@ -1,0 +1,41 @@
+/**
+* @file    psdd4ccm_base.idl
+* @author  Martin Corino
+*
+* @brief   base idl for psdd4ccm
+*
+* @copyright Copyright (c) Remedy IT Expertise BV
+* Chamber of commerce Rotterdam nr.276339, The Netherlands
+*/
+
+#ifndef PSDD4CCM_BASE_IDL
+#define PSDD4CCM_BASE_IDL
+
+module CCM_PSDD
+{
+  /// Count or index of data
+  typedef unsigned long DataCount_t;
+  const DataCount_t UNLIMITED = 0;
+
+  enum ListenerMode {
+    NOT_ENABLED,
+    ONE_BY_ONE,
+    ANY_AVAILABLE
+  };
+
+  exception NonExistent{ };
+
+  exception NonChangeable { };
+
+  exception InternalError{
+    string origin;
+    string error;
+  };
+
+  /// PSData: opaque handle for native event data
+  local interface PSData
+  {
+  };
+}; /* module CCM_PSDD */
+
+#endif

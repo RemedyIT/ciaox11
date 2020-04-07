@@ -1,0 +1,46 @@
+// --------------------------------------------------------------------
+// ciaox11_psdd4ccm_idldefaults.mpb
+//
+// Copyright (c) Remedy IT Expertise BV
+// Chamber of commerce Rotterdam nr.276339, The Netherlands
+// --------------------------------------------------------------------
+
+project : ciaox11_idldefaults, ciaox11_psdd4ccm {
+
+  Modify_Custom (IDL) {
+
+    optional(source_outputext) {
+      commandflags(-Gpsdd4ccm,conn || -Gpsdd4ccm,conn_only || -Gpsdd4ccm,lemgen) = .cpp
+    }
+
+    optional(header_outputext) {
+      commandflags(-Gpsdd4ccm,conn || -Gpsdd4ccm,conn_only || -Gpsdd4ccm,lemgen || -Gpsdd4ccm,traits) = .h
+    }
+
+    optional(generic_pre_extension) {
+      commandflags(-Gpsdd4ccm,conn) += E
+      commandflags(-Gpsdd4ccm,lem) += PS
+      commandflags(-Gpsdd4ccm,lemgen) += PS, PSE
+    }
+
+    optional(generic_outputext) {
+      commandflags(-Gpsdd4ccm,conn) = .idl
+      commandflags(-Gpsdd4ccm,lem || -Gpsdd4ccm,lemgen) = .idl
+    }
+
+    optional(source_pre_extension) {
+      commandflags(-Gpsdd4ccm,conn) += _conn, EC
+      commandflags(-Gpsdd4ccm,conn_only) += _conn
+      commandflags(-Gpsdd4ccm,lemgen) += PSC, PSEC
+      commandflags(-Gpsdd4ccm,conn || -Gpsdd4ccm,conn_only) += _svnt
+    }
+
+    optional(header_pre_extension) {
+      commandflags(-Gpsdd4ccm,conn) += _conn, EC
+      commandflags(-Gpsdd4ccm,conn_only) += _conn
+      commandflags(-Gpsdd4ccm,lemgen) += PSC, PSEC
+      commandflags(-Gpsdd4ccm,conn || -Gpsdd4ccm,conn_only) += _svnt
+      commandflags(-Gpsdd4ccm,traits) += _psdd_traits
+    }
+  }
+}

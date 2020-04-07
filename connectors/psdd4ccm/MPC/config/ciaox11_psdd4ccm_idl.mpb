@@ -1,0 +1,14 @@
+// --------------------------------------------------------------------
+// ciaox11_psdd4ccm_idl.mpb
+//
+// Author: Martin Corino
+//
+// Copyright (c) Remedy IT Expertise BV
+// Chamber of commerce Rotterdam nr.276339, The Netherlands
+// --------------------------------------------------------------------
+
+project : ciaox11_psdd4ccm_idldefaults, ciaox11_psdd4ccm {
+  after += ciaox11_psdd4ccm_idl_gen
+  idlflags += -I $(CIAOX11_ROOT)/connectors/psdd4ccm/idl
+}
+

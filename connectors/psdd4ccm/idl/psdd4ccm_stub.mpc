@@ -1,0 +1,82 @@
+project (ciaox11_psdd4ccm_idl_gen) : install, \
+                                     ciaox11_psdd4ccm, \
+                                     ciaox11_idldefaults {
+  custom_only = 1
+  idlflags += -Wb,stub_export_macro=PSDD4CCM_STUB_Export \
+              -Wb,stub_export_include=psdd4ccm_stub_export.h \
+              -Scdr -Scp
+
+  IDL_Files {
+    idlflags += -Gxhst
+    psdd4ccm_base.idl
+  }
+
+  IDL_Files {
+    idlflags -= -Gxhst -Gxhsk -Gsv -Glem
+    idlflags += -Scc
+    ccm_psdd.idl
+  }
+
+  IDL_Files {
+    idlflags -= -Gxhst
+    idlflags += -Wb,skel_export_macro=PSDD4CCM_SKEL_Export \
+                -Wb,skel_export_include=psdd4ccm_skel_export.h \
+                -Gxhsk -Glem
+    psdd4ccm_connector.idl
+  }
+
+  specific {
+    install_dir = connectors/psdd4ccm/idl
+  }
+}
+
+project (ciaox11_psdd4ccm_lem_gen) : install, \
+                                     ciaox11_psdd4ccm, \
+                                     ciaox11_idldefaults {
+  custom_only = 1
+  after += ciaox11_psdd4ccm_idl_gen
+  idlflags += -Wb,stub_export_macro=PSDD4CCM_LEM_STUB_Export \
+              -Wb,stub_export_include=psdd4ccm_lem_stub_export.h \
+              -Scp -Scdr
+
+  IDL_Files {
+     idlflags += -Gxhst
+     psdd4ccm_connectorE.idl
+  }
+
+  specific {
+     install_dir = connectors/psdd4ccm/idl
+  }
+}
+
+project (ciaox11_psdd4ccm_stub) : install, \
+                                  ciaox11_psdd4ccm, \
+                                  ciaox11_ccm_stub, \
+                                  ciaox11_ccm_session_stub, \
+                                  ciaox11_output, \
+                                  taox11_core_anytypecode {
+  after += ciaox11_psdd4ccm_lem_gen
+
+  dynamicflags += PSDD4CCM_STUB_BUILD_DLL \
+                  PSDD4CCM_LEM_STUB_BUILD_DLL
+
+  Header_Files {
+    psdd4ccm_stub_export.h
+    ccm_psddC.h
+    psdd4ccm_baseC.h
+    psdd4ccm_connectorC.h
+    psdd4ccm_connectorEC.h
+    psdd4ccm_lem_stub_export.h
+  }
+
+  Source_Files {
+    psdd4ccm_baseC.cpp
+    psdd4ccm_connectorC.cpp
+    psdd4ccm_connectorEC.cpp
+  }
+
+  specific {
+    install_dir = connectors/psdd4ccm/idl
+  }
+}
+

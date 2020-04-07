@@ -1,0 +1,141 @@
+
+// generated from <%= ridl_template_path %>
+namespace PSDD
+{
+  template <>
+  struct traits< <%= scoped_cxxtype %>>
+    : public common_traits< <%= scoped_cxxtype %>>
+  {
+    static
+    std::string get_type_name () { return "<%= scoped_cxxname %>"; }
+
+    typedef std::<%= has_key_only? %>_type key_only;
+    typedef std::<%= has_no_key? %>_type no_key;
+
+    static
+    bool append_key (
+        IDL::traits<PSDataOut>::ref_type& d,
+        <%= scoped_cxx_in_type %> datum)
+    {
+% if has_key?
+%   _prefix = 'return'
+%   key_members.each do |_m|
+      <%= _prefix %> ::PSDD::traits< <%= _m.scoped_cxxtype %>>::append_key (d, datum.<%= _m.cxxname %> ())
+%     _prefix = '      &&'
+%   end
+          ;
+% else
+%   _prefix = 'return'
+%   members.each do |_m|
+      <%= _prefix %> ::PSDD::traits< <%= _m.scoped_cxxtype %>>::append_key (d, datum.<%= _m.cxxname %> ())
+%     _prefix = '      &&'
+%   end
+          ;
+% end
+    }
+
+    static
+    bool append_data (
+        IDL::traits<PSDataOut>::ref_type& d,
+        <%= scoped_cxx_in_type %> datum,
+        bool provides_key)
+    {
+% if has_key?
+      if (provides_key)
+      {
+%   _prefix = 'return'
+%   members.each do |_m|
+%     unless _m.is_key_only?
+        <%= _prefix %> ::PSDD::traits< <%= _m.scoped_cxxtype %>>::append_data (d, datum.<%= _m.cxxname %> (), <%= _m.is_key? %>)
+%       _prefix = '      &&'
+%     end
+%   end
+            ;
+      }
+      else
+      {
+%   _prefix = 'return'
+%   members.each do |_m|
+        <%= _prefix %> ::PSDD::traits< <%= _m.scoped_cxxtype %>>::append_data (d, datum.<%= _m.cxxname %> (), false)
+%     _prefix = '      &&'
+%   end
+            ;
+      }
+% else
+      if (!provides_key)
+      {
+%   _prefix = 'return'
+%   members.each do |_m|
+        <%= _prefix %> ::PSDD::traits< <%= _m.scoped_cxxtype %>>::append_data (d, datum.<%= _m.cxxname %> (), false)
+%     _prefix = '      &&'
+%   end
+            ;
+      }
+      return true;
+% end
+    }
+
+    static
+    bool extract_key (
+        IDL::traits<PSDataIn>::ref_type& d,
+        <%= scoped_cxx_out_type %> datum)
+    {
+% if has_key?
+%   _prefix = 'return'
+%   key_members.each do |_m|
+      <%= _prefix %> ::PSDD::traits< <%= _m.scoped_cxxtype %>>::extract_key (d, datum.<%= _m.cxxname %> ())
+%     _prefix = '      &&'
+%   end
+          ;
+% else
+%   _prefix = 'return'
+%   members.each do |_m|
+      <%= _prefix %> ::PSDD::traits< <%= _m.scoped_cxxtype %>>::extract_key (d, datum.<%= _m.cxxname %> ())
+%     _prefix = '      &&'
+%   end
+          ;
+% end
+    }
+
+    static
+    bool extract_data (
+        IDL::traits<PSDataIn>::ref_type& d,
+        <%= scoped_cxx_out_type %> datum,
+        bool provides_key)
+    {
+% if has_key?
+      if (provides_key)
+      {
+%   _prefix = 'return'
+%   members.each do |_m|
+%     unless _m.is_key_only?
+        <%= _prefix %> ::PSDD::traits< <%= _m.scoped_cxxtype %>>::extract_data (d, datum.<%= _m.cxxname %> (), <%= _m.is_key? %>)
+%       _prefix = '      &&'
+%     end
+%   end
+            ;
+      }
+      else
+      {
+%   _prefix = 'return'
+%   members.each do |_m|
+        <%= _prefix %> ::PSDD::traits< <%= _m.scoped_cxxtype %>>::extract_data (d, datum.<%= _m.cxxname %> (), false)
+%     _prefix = '      &&'
+%   end
+            ;
+      }
+% else
+      if (!provides_key)
+      {
+%   _prefix = 'return'
+%   members.each do |_m|
+        <%= _prefix %> ::PSDD::traits< <%= _m.scoped_cxxtype %>>::extract_data (d, datum.<%= _m.cxxname %> (), false)
+%     _prefix = '      &&'
+%   end
+            ;
+      }
+      return true;
+% end
+    }
+  };
+} // PSDD

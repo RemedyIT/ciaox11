@@ -1,0 +1,154 @@
+
+// generated from <%= ridl_template_path %>
+namespace PSDD
+{
+  template <>
+  struct traits< <%= scoped_cxxtype %>>
+    : public common_traits< <%= scoped_cxxtype %>>
+  {
+    static
+    std::string get_type_name () { return "<%= scoped_cxxname %>"; }
+
+    typedef std::false_type key_only;
+    typedef std::false_type no_key;
+
+    static
+    bool append_key (
+        IDL::traits<PSDataOut>::ref_type& d,
+        <%= scoped_cxx_in_type %> datum)
+    {
+      return ::PSDD::traits< <%= scoped_switch_cxxtype %>>::append_key (d, datum._d ());
+    }
+
+    static
+    bool append_data (
+        IDL::traits<PSDataOut>::ref_type& d,
+        <%= scoped_cxx_in_type %> datum,
+        bool provides_key)
+    {
+      if (provides_key || ::PSDD::traits< <%= scoped_switch_cxxtype %>>::append_data (d, datum._d (), false))
+      {
+        switch (datum._d ())
+        {
+% members.each do |_m|
+%   if _m.is_default?
+          default:
+%   else
+%     _m.nondefault_labels.each do |_l|
+          case <%= _l %>:
+%     end
+%   end
+            return ::PSDD::traits< <%= _m.scoped_cxxtype %>>::append_data (d, datum.<%= _m.cxxname %> (), false);
+          break;
+% end
+        }
+      }
+      return false;
+    }
+
+    static
+    bool extract_key (
+        IDL::traits<PSDataIn>::ref_type& d,
+        <%= scoped_cxx_out_type %> datum)
+    {
+      <%= scoped_switch_cxxtype %> tmp_disc {};
+      if (::PSDD::traits< <%= scoped_switch_cxxtype %>>::extract_key (d, tmp_disc))
+      {
+        switch (tmp_disc)
+        {
+% members.each do |_m|
+%   unless _m.is_default?
+%     _m.nondefault_labels.each do |_l|
+          case <%= _l %>:
+%     end
+          {
+            // initialize associated default value
+            <%= _m.scoped_cxxtype %> tmp_val<% if _m.is_pod? %> {}<% end %>;
+            // set union member and associated (default) discriminant
+            datum.<%= _m.cxxname %> (std::move (tmp_val));
+            // set extracted discriminant
+            datum._d (tmp_disc);
+            return true;
+          }
+          break;
+%   end
+% end
+% if needs_switch_default?
+          default:
+%   if has_default?
+%     _m_def = default_member
+          {
+            // initialize associated default value
+            <%= _m_def.cxx_member_type %> tmp_val<% if _m_def.is_pod? %> {}<% end %>;
+            // set union member and associated (default) discriminant
+            datum.<%= _m_def.cxxname %> (std::move (tmp_val));
+            // set extracted discriminant
+            datum._d (tmp_disc);
+            return true;
+          }
+%   end
+          break;
+% end
+        }
+      }
+      return false;
+    }
+
+    static
+    bool extract_data (
+        IDL::traits<PSDataIn>::ref_type& d,
+        <%= scoped_cxx_out_type %> datum,
+        bool provides_key)
+    {
+      <%= scoped_switch_cxxtype %> tmp_disc = datum._d ();
+      if (provides_key || ::PSDD::traits< <%= scoped_switch_cxxtype %>>::extract_data (d, tmp_disc, false))
+      {
+        switch (tmp_disc)
+        {
+% members.each do |_m|
+%   unless _m.is_default?
+%     _m.nondefault_labels.each do |_l|
+          case <%= _l %>:
+%     end
+          {
+            // initialize associated default value
+            <%= _m.scoped_cxxtype %> tmp_val<% if _m.is_pod? %> {}<% end %>;
+            // extract
+            if (::PSDD::traits< <%= _m.scoped_cxxtype %>>::extract_data (d, tmp_val, false))
+            {
+              // set union member and associated (default) discriminant
+              datum.<%= _m.cxxname %> (std::move (tmp_val));
+              // set extracted discriminant
+              datum._d (tmp_disc);
+              return true;
+            }
+          }
+          break;
+%   end
+% end
+% if needs_switch_default?
+          default:
+%   if has_default?
+%     _m_def = default_member
+          {
+            // initialize associated default value
+            <%= _m_def.cxx_member_type %> tmp_val<% if _m_def.is_pod? %> {}<% end %>;
+            // extract
+            if (::PSDD::traits< <%= _m_def.scoped_cxxtype %>>::extract_data (d, tmp_val, false))
+            {
+              // set union member and associated (default) discriminant
+              datum.<%= _m_def.cxxname %> (std::move (tmp_val));
+              // set extracted discriminant
+              datum._d (tmp_disc);
+              return true;
+            }
+          }
+%   end
+          break;
+% end
+        }
+      }
+      return false;
+    }
+  };
+} // PSDD

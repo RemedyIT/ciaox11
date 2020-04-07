@@ -1,0 +1,40 @@
+/**
+* @file    psdd4ccm_connector.idl
+* @author  Martin Corino
+*
+* @brief   IDL file for psdd4ccm connector base
+*
+* @copyright Copyright (c) Remedy IT Expertise BV
+* Chamber of commerce Rotterdam nr.276339, The Netherlands
+*/
+
+#ifndef PSDD4CCM_CONNECTOR_IDL_
+#define PSDD4CCM_CONNECTOR_IDL_
+
+#include <Components.idl>
+#include "psdd4ccm_base.idl"
+
+module CCM_PSDD
+{
+   connector PSDD_Base {
+      /// The topic_name that will used for key identification in publication
+      /// and subscription. If not set by the user (at deployment) the
+      /// type_name will be used.
+      attribute string topic_name;
+
+      /// The type_name for the  PSDD4CCM topic as generated from IDL.
+      readonly attribute string type_name;
+
+      /// Specifies whether publisher port should be activated. 
+      /// Raises NonChangeable if attempted to change after configuration_complete.
+      attribute boolean publish
+        setraises (NonChangeable);
+
+      /// Specifies whether subscriber port should be activated. 
+      /// Raises NonChangeable if attempted to change after configuration_complete.
+      attribute boolean subscribe
+        setraises (NonChangeable);
+   };
+};
+
+#endif /* PSDD4CCM_CONNECTOR_IDL_ */
