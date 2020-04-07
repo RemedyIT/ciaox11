@@ -29,7 +29,7 @@ namespace CIAOX11
         typename IDL::traits<LISTENER>::weak_ref_type dl);
       virtual ~DataListenerContextSwitch_T () = default;
 
-      virtual int handle_exception (ACE_HANDLE fc = ACE_INVALID_HANDLE);
+      int handle_exception (ACE_HANDLE fc = ACE_INVALID_HANDLE) override;
 
       static void handle_event (
           typename IDL::traits< HANDLER>::ref_type dh,

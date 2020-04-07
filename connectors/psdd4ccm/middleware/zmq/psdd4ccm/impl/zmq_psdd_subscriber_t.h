@@ -52,7 +52,6 @@ namespace PSDD
       virtual ~Subscriber_T ();
 
       // override because inherited multiple times
-      virtual
       bool
       _is_a (const std::string& local_type_id) override;
 
@@ -60,29 +59,21 @@ namespace PSDD
       _ref_type
       _this ();
 
-      virtual
       void
       initialize (
           const std::string &topic_name,
           std::shared_ptr<service_helper_type> svhlp) override;
 
-      virtual
       void
-      shutdown (
-          ) override;
+      shutdown () override;
 
-      virtual
       typename IDL::traits<typename Subscriber_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::pull_consumer_data_type>::ref_type
-      get_pull_consumer_data (
-          ) override;
+      get_pull_consumer_data () override;
 
-      virtual
       void
-      activate_push_consumer_data_listener (
-          const event_strategy_type&) override;
+      activate_push_consumer_data_listener (const event_strategy_type&) override;
 
       /// Handler method for data event strategy
-      virtual
       void
       dispatch_data_available (
           typename IDL::traits<push_consumer_data_listener_type>::ref_type dl) override;
@@ -90,43 +81,33 @@ namespace PSDD
       /**
        * ZQM PSDD Listener methods
        */
-      virtual
       void
-      mark_readable (
-          ) override;
+      mark_readable () override;
 
-      virtual
       void
-      on_data_available (
-          ) override;
+      on_data_available () override;
 
-      virtual
       ::PSDD::ZMQ::socket_type
-       listen_socket (
-          ) override;
+       listen_socket () override;
 
       /**
        * CCM_PSDD Subscriber methods
        */
 
       /// @copydoc helloPS.idl::Test::Hello::Subscriber::subscribe_any
-      virtual
       void
       subscribe_any () override;
 
       /// @copydoc helloPS.idl::Test::Hello::Subscriber::subscribe
-      virtual
       void
       subscribe (
           typename IDL::traits<TOPIC_TYPE>::in_type keyvalue) override;
 
       /// @copydoc helloPS.idl::Test::Hello::Subscriber::unsubscribe_any
-      virtual
       void
       unsubscribe_any () override;
 
       /// @copydoc helloPS.idl::Test::Hello::Subscriber::unsubscribe
-      virtual
       void
       unsubscribe (
           typename IDL::traits<TOPIC_TYPE>::in_type keyvalue) override;
@@ -135,21 +116,17 @@ namespace PSDD
        * CCM_PSDD Getter methods
        */
 
-      virtual
       bool
       get_one (
           typename IDL::traits<TOPIC_TYPE>::out_type datum) override;
 
-      virtual
       bool
       get_many (
           typename IDL::traits<TOPIC_SEQ_TYPE>::out_type data) override;
 
-      virtual
       ::CCM_PSDD::DataCount_t
       max_data () override;
 
-      virtual
       void
       max_data (
           ::CCM_PSDD::DataCount_t _v) override;

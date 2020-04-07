@@ -31,13 +31,13 @@ namespace PSDD
    {
    public:
      PSDataOut_Impl (bool msg_envelope);
-     virtual ~PSDataOut_Impl ();
+     virtual ~PSDataOut_Impl () = default;
 
-     virtual void set_byte_order (EByteOrder) override;
+     void set_byte_order (EByteOrder) override;
 
-     virtual ACE_OutputCDR& key_out () override;
+     ACE_OutputCDR& key_out () override;
 
-     virtual ACE_OutputCDR& data_out () override;
+     ACE_OutputCDR& data_out () override;
 
      void start_message ();
 
@@ -63,11 +63,11 @@ namespace PSDD
      PSDataIn_Impl (bool msg_envelope);
      virtual ~PSDataIn_Impl ();
 
-     virtual void set_byte_order (EByteOrder) override;
+     void set_byte_order (EByteOrder) override;
 
-     virtual ACE_InputCDR& key_in () override;
+     ACE_InputCDR& key_in () override;
 
-     virtual ACE_InputCDR& data_in () override;
+     ACE_InputCDR& data_in () override;
 
      void start_message (zmq_msg_t* key, zmq_msg_t* data = nullptr);
 

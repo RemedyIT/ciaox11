@@ -39,23 +39,20 @@ namespace PSDD
       Publisher_T ();
       virtual ~Publisher_T ();
 
-      virtual void
+      void
       initialize (
           const std::string &topic_name,
           std::shared_ptr<service_helper_type> svhlp) override;
 
-      virtual void shutdown () override;
+      void shutdown () override;
 
       /**
        * CCM_PSDD Publisher methods
        */
-
-      virtual
       void
       write_one (
           typename IDL::traits<TOPIC_TYPE>::in_type datum) override;
 
-      virtual
       void
       write_many (
           typename IDL::traits<TOPIC_SEQ_TYPE>::in_type data) override;

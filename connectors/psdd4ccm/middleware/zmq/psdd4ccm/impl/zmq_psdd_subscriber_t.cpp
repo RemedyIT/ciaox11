@@ -249,7 +249,7 @@ namespace PSDD
             }
 
           }
-          if (dataseq.size () > 0)
+          if (!dataseq.empty ())
           {
             try
             {
@@ -561,7 +561,7 @@ namespace PSDD
           // only wait for first datum; after that only get what's available
           nowait = true;
         }
-        return data.size () > 0;
+        return !data.empty ();
       }
       else
       {

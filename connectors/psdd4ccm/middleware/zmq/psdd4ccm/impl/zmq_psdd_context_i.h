@@ -38,9 +38,8 @@ namespace PSDD
       : public ContextBase
     {
     public:
-      Context_Impl ();
-      virtual
-      ~Context_Impl ();
+      Context_Impl () = default;
+      virtual ~Context_Impl ();
 
       void
       initialize (const Config&);

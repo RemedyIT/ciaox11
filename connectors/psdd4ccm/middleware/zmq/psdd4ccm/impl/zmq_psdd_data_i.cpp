@@ -50,9 +50,6 @@ namespace PSDD
     : use_msg_envelope_ (msg_envelope)
    {}
 
-   PSDataOut_Impl::~PSDataOut_Impl ()
-   {}
-
    ACE_OutputCDR&
    PSDataOut_Impl::key_out ()
    {

@@ -36,28 +36,28 @@ namespace CIAOX11
        * Attributes of PSDD4CCM PSDD_Base
        */
       //@{
-      virtual void
+      void
       topic_name (
         const std::string &topic_name) override;
 
-      virtual std::string
+      std::string
       topic_name () override;
 
-      virtual std::string
+      std::string
       type_name () override;
 
-      virtual void
+      void
       publish (
         bool f) override;
 
-      virtual bool
+      bool
       publish () override;
 
-      virtual void
+      void
       subscribe (
         bool f) override;
 
-      virtual bool
+      bool
       subscribe() override;
       //@}
 
@@ -66,13 +66,13 @@ namespace CIAOX11
        * PSDD4CCM PSD_Events ports
        */
       //@{
-      virtual typename IDL::traits< typename CCM_TYPE::supplier_data_type>::ref_type
+      typename IDL::traits< typename CCM_TYPE::supplier_data_type>::ref_type
       get_supplier_data () override;
 
-      virtual typename IDL::traits< typename CCM_TYPE::pull_consumer_data_type>::ref_type
+      typename IDL::traits< typename CCM_TYPE::pull_consumer_data_type>::ref_type
       get_pull_consumer_data () override;
 
-      virtual typename IDL::traits< typename CCM_TYPE::consumer_data_subscriber_type>::ref_type
+      typename IDL::traits< typename CCM_TYPE::consumer_data_subscriber_type>::ref_type
       get_consumer_data_subscriber () override;
       //@}
 
@@ -81,17 +81,13 @@ namespace CIAOX11
        * Life cycle methods, specific for this class.
        */
       //@{
-      virtual void
-      configuration_complete () override;
+      void configuration_complete () override;
 
-      virtual void
-      ccm_activate () override;
+      void ccm_activate () override;
 
-      virtual void
-      ccm_passivate () override;
+      void ccm_passivate () override;
 
-      virtual void
-      ccm_remove () override;
+      void ccm_remove () override;
       //@}
 
       /**
@@ -99,7 +95,7 @@ namespace CIAOX11
        * The context is used to make connections to the user component,
        * like the interfaces to the data listeners.
        */
-      virtual void
+      void
       set_session_context (
         IDL::traits<Components::SessionContext>::ref_type ctx) override;
 

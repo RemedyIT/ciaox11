@@ -25,12 +25,12 @@ module CCM_PSDD
       /// The type_name for the  PSDD4CCM topic as generated from IDL.
       readonly attribute string type_name;
 
-      /// Specifies whether publisher port should be activated. 
+      /// Specifies whether publisher port should be activated.
       /// Raises NonChangeable if attempted to change after configuration_complete.
       attribute boolean publish
         setraises (NonChangeable);
 
-      /// Specifies whether subscriber port should be activated. 
+      /// Specifies whether subscriber port should be activated.
       /// Raises NonChangeable if attempted to change after configuration_complete.
       attribute boolean subscribe
         setraises (NonChangeable);

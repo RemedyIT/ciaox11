@@ -36,10 +36,6 @@ namespace CIAOX11
       {
       }
 
-      PSDD4CCM_Log_Module::~PSDD4CCM_Log_Module ()
-      {
-      }
-
       /**
        * Log_Module, specific for the test framework.
        */
@@ -48,10 +44,6 @@ namespace CIAOX11
                                   x11_logger::X11_LogMask::LP_ALL,
                                   x11_logger::X11_Verbose::V_PRIO|
                                   x11_logger::X11_Verbose::V_TIME)
-      {
-      }
-
-      PSDD4CCM_Test_Log_Module::~PSDD4CCM_Test_Log_Module ()
       {
       }
     }; /* psdd4ccm_logger */

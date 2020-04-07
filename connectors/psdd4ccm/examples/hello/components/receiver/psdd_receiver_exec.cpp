@@ -31,7 +31,6 @@ namespace Test_Receiver_Impl
     : component_executor_(component_executor)
      {}
 
-    virtual
     void
     on_trigger (
         IDL::traits< ::CCM_TT::TT_Timer>::ref_type timer,
@@ -251,7 +250,7 @@ namespace Test_Receiver_Impl
       if (this->hello_subscription ()
           && this->count () > this->hello_counter_)
       {
-        IDL::traits< Test::Hello::Getter>::ref_type reader =
+        IDL::traits<Test::Hello::Getter>::ref_type reader =
           this->context_->get_connection_hello_read ();
         std::string topic;
         if (reader->get_one (topic))
@@ -269,7 +268,7 @@ namespace Test_Receiver_Impl
       if (this->msg_subscription ()
           && this->count () > this->msg_counter_)
       {
-        IDL::traits< Test::Msg::Getter>::ref_type reader =
+        IDL::traits<Test::Msg::Getter>::ref_type reader =
           this->context_->get_connection_msg_read ();
         ::Test::Message topic;
         if (reader->get_one (topic))
@@ -293,7 +292,7 @@ namespace Test_Receiver_Impl
         if (tt_s)
         {
           this->tm_ = tt_s->schedule_trigger (
-                              CORBA::make_reference<TT_Callback> (IDL::traits< Test::CCM_Receiver>::narrow (this->_lock())),
+                              CORBA::make_reference<TT_Callback> (IDL::traits<Test::CCM_Receiver>::narrow (this->_lock())),
                               CCM_TT::TT_Duration (
                                   this->interval () / 1000,
                                   (this->interval () % 1000) * 1000000));
@@ -412,7 +411,7 @@ namespace Test_Receiver_Impl
       else
       {
         this->tm_ = tt_s->schedule_trigger (
-                            CORBA::make_reference<TT_Callback> (IDL::traits< Test::CCM_Receiver>::narrow (this->_lock())),
+                            CORBA::make_reference<TT_Callback> (IDL::traits<Test::CCM_Receiver>::narrow (this->_lock())),
                             CCM_TT::TT_Duration (
                                 this->delay () / 1000,
                                 (this->delay () % 1000) * 1000000));
@@ -453,7 +452,7 @@ namespace Test_Receiver_Impl
     {
       this->hello_listen_ =
           CORBA::make_reference <hello_listen_exec_i> (
-              IDL::traits< Test::CCM_Receiver>::narrow (this->_lock()),
+              IDL::traits<Test::CCM_Receiver>::narrow (this->_lock()),
               this->context_);
     }
     return this->hello_listen_;
@@ -468,7 +467,7 @@ namespace Test_Receiver_Impl
     {
       this->msg_listen_ =
           CORBA::make_reference <msg_listen_exec_i> (
-              IDL::traits< Test::CCM_Receiver>::narrow (this->_lock()),
+              IDL::traits<Test::CCM_Receiver>::narrow (this->_lock()),
               this->context_);
     }
     return this->msg_listen_;

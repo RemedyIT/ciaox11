@@ -33,7 +33,6 @@ namespace Test_Sender_Impl
     : component_executor_(component_executor)
      {}
 
-    virtual
     void
     on_trigger (
         IDL::traits< ::CCM_TT::TT_Timer>::ref_type timer,
@@ -68,7 +67,6 @@ namespace Test_Sender_Impl
     : component_executor_(component_executor)
     {}
 
-    virtual
     void
     on_trigger (
         IDL::traits< ::CCM_TT::TT_Timer>::ref_type timer,
@@ -124,7 +122,7 @@ namespace Test_Sender_Impl
     if (this->mode_.empty () || this->mode_ == "HELLO")
     {
       this->tm_hello_ = tt_s->schedule_repeated_trigger (
-                          CORBA::make_reference<TT_HelloCallback> (IDL::traits< Test::CCM_Sender>::narrow (this->_lock())),
+                          CORBA::make_reference<TT_HelloCallback> (IDL::traits<Test::CCM_Sender>::narrow (this->_lock())),
                           CCM_TT::TT_Duration (
                               this->delay_ / 1000,
                               (this->delay_ % 1000) * 1000000),       // delay before starting
@@ -135,7 +133,7 @@ namespace Test_Sender_Impl
     if (this->mode_.empty () || this->mode_ == "MSG")
     {
       this->tm_msg_ = tt_s->schedule_repeated_trigger (
-                          CORBA::make_reference<TT_MsgCallback> (IDL::traits< Test::CCM_Sender>::narrow (this->_lock())),
+                          CORBA::make_reference<TT_MsgCallback> (IDL::traits<Test::CCM_Sender>::narrow (this->_lock())),
                           CCM_TT::TT_Duration (
                               this->delay_ / 1000,
                               (this->delay_ % 1000) * 1000000),       // delay before starting
@@ -159,7 +157,7 @@ namespace Test_Sender_Impl
         return;
       }
 
-      IDL::traits< Test::Hello::Publisher>::ref_type writer =
+      IDL::traits<Test::Hello::Publisher>::ref_type writer =
         this->context_->get_connection_hello_pub ();
 
       std::ostringstream oss;
@@ -200,7 +198,7 @@ namespace Test_Sender_Impl
   {
     try
     {
-      IDL::traits< Test::Msg::Publisher>::ref_type writer =
+      IDL::traits<Test::Msg::Publisher>::ref_type writer =
         this->context_->get_connection_msg_pub ();
 
       if (this->count () == this->msg_counter_)

@@ -26,10 +26,6 @@ namespace PSDD
 {
   namespace ZMQ
   {
-    Context_Impl::Context_Impl ()
-    {
-    }
-
     Context_Impl::~Context_Impl ()
     {
       if (this->context_)

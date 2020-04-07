@@ -17,11 +17,11 @@ module PSDD
   {
     /// Connection schemes
     /// Bind socket to endpoint
-    const string CONN_BIND = "BIND";  
+    const string CONN_BIND = "BIND";
     /// Bind socket through multiplexer (exclusive for publishers)
     const string CONN_BIND_MULTPLEX = "BIND_MULTIPLEX";
-    /// Connect socket to endpoint  
-    const string CONN_CONNECT = "CONNECT"; 
+    /// Connect socket to endpoint
+    const string CONN_CONNECT = "CONNECT";
 
     enum ConnectionScheme
     {
@@ -106,13 +106,13 @@ module PSDD
 
     /// Specifies whether to set up as Curve server or client (ZMQ_CURVE_SERVER option).
     /// Specifying this property (true or false) implicitly enables CURVE security.
-    /// If not specified no security is active. 
+    /// If not specified no security is active.
     /// Property value is a boolean.
     const string PUBLISHER_CURVE_SERVER = "nl.remedy.it.PSDD.ZMQ.Publisher.CurveServer";
 
     /// Specifies the CURVE key to apply. Ignored if no CURVE server property is specified.
     /// When set up as a CURVE server this specifies the ZMQ_CURVE_SECRETKEY, otherwise this
-    /// specifies the ZMQ_CURVE_SERVERKEY.    
+    /// specifies the ZMQ_CURVE_SERVERKEY.
     /// Property is a string value (Z85 encoding format).
     const string PUBLISHER_CURVE_KEY = "nl.remedy.it.PSDD.ZMQ.Publisher.CurveKey";
 
@@ -196,13 +196,13 @@ module PSDD
 
     /// Specifies whether to set up as Curve server or client (ZMQ_CURVE_SERVER option).
     /// Specifying this property (true or false) implicitly enables CURVE security.
-    /// If not specified no security is active. 
+    /// If not specified no security is active.
     /// Property value is a boolean.
     const string SUBSCRIBER_CURVE_SERVER = "nl.remedy.it.PSDD.ZMQ.Subscriber.CurveServer";
 
     /// Specifies the CURVE key to apply. Ignored if no CURVE server property is specified.
     /// When set up as a CURVE server this specifies the ZMQ_CURVE_SECRETKEY, otherwise this
-    /// specifies the ZMQ_CURVE_SERVERKEY.    
+    /// specifies the ZMQ_CURVE_SERVERKEY.
     /// Property is a string value (Z85 encoding format).
     const string SUBSCRIBER_CURVE_KEY = "nl.remedy.it.PSDD.ZMQ.Subscriber.CurveKey";
 
