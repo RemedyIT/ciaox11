@@ -1,0 +1,169 @@
+/**
+* @file    topic.idl
+* @author  Martin Corino
+*
+* @brief   Message topic IDL
+*
+* @copyright Copyright (c) Remedy IT Expertise BV
+* Chamber of commerce Rotterdam nr.276339, The Netherlands
+*/
+
+#ifndef TOPIC_IDL
+#define TOPIC_IDL
+
+module Test
+{
+  struct B02 {
+    long  B02_1;
+  }; //@TopLevel(false)
+
+  typedef sequence<B02> B10;
+  typedef sequence<B02, 15> B11;
+
+  typedef sequence<octet>     B12;
+  typedef sequence<octet, 15> B13;
+  typedef sequence<octet>     B14;
+
+  typedef sequence<long> B15;
+  typedef double         B16[4][5];
+
+  struct B31 {
+    long B31_1;
+  }; //@TopLevel(false)
+
+  typedef B31 B32[2];
+  typedef B31 B33[4][5];
+  typedef B31 B34[6][7][8];
+
+  typedef long B40[2];
+  typedef long B41[2][3];
+
+  typedef long B42[2];
+  typedef long B43[4];
+
+  typedef string    B_50;
+  typedef string<5> B51;
+  typedef double    B52;
+  typedef B32       B53;
+  typedef B_50      B_54;
+  typedef B51       B55;
+  typedef string    B56[6][5];
+  typedef sequence<string> B57;
+  typedef string<512> B58;
+  typedef sequence<B58> B59;
+  typedef B59       B60;
+
+  typedef wstring    B61;
+  typedef wstring<5> B62;
+  typedef sequence<wstring> B63;
+  typedef wstring    B64[6][5];
+
+  enum B70 {
+    B70_1,
+    B70_2,
+    B70_3
+  };
+
+  struct B71;
+
+  typedef sequence<B71> B72;
+
+  struct B71
+  {
+    B70 e70;
+    B72 sb72;
+  };
+
+  union B73 switch (B70)
+  {
+    case B70_1: B71 b_71;
+    default:    B72 b_72;
+  };
+
+  union B80 switch (B70) {
+    case B70_1: B70 b_80_1;
+    case B70_2: B70 b_80_2;
+    case B70_3: B70 b_80_3;
+  };
+
+  struct B81 {
+    long a;
+    string b;
+    B58 c;
+  }; //@TopLevel(false)
+
+  typedef sequence <B81> B82;
+  struct B83 {
+    string a;
+    long b;
+    string c;
+    string d;
+    long e;
+    B82 f;
+  };
+
+  struct Topic
+  {
+    char           a_01;
+    wchar          a_02;
+    octet          a_03;
+    short          a_04;
+    unsigned short a_05;
+    long           a_06;
+    unsigned long  a_07;
+    long long      a_08;
+    unsigned long long a_09;
+    float          a_10;
+    double         a_11;
+    long double    a_12;
+    boolean        a_13;
+
+    B10 b_10;
+    B11 b_11;
+
+    B12 b_12;
+    B13 b_13;
+    B14 b_14;
+
+    B15 b_15;
+    B16 b_16;
+
+    B32 b_32;
+    B33 b_33;
+    B34 b_34;
+
+    B40 b_40;
+    B41 b_41;
+    B42 b_42;
+    B43 b_43;
+
+    B_50 b__50;
+    B51 b_51;
+    B52 b_52;
+    B53 b_53;
+    B_54 b__54;
+    B55 b_55;
+    B56 b_56;
+    B57 b_57;
+    B59 b_59;
+    B60 b_60;
+
+    B61 b_61;
+    B62 b_62;
+    B63 b_63;
+    B64 b_64;
+
+    B70 b_70;
+
+    B73 b_73;
+
+    B80 b_80;
+
+    B83 b_83;
+
+    string key;
+    unsigned long count;
+  }; //@TopLevel()
+};
+
+#endif

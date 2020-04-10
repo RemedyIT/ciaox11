@@ -1,0 +1,72 @@
+BRIX11 - > perl run_test.pl plan_zmq_read_filter.config
+Starting test for deployment plan_zmq_read_filter.config
+Starting Naming Service with  -ORBEndpoint iiop://127.0.0.2:60000 -o ns.ior
+Invoking node daemon
+Run dancex11_deployment_manager with --handler dancex11_node_dm_handler -p 60001 -N -n ReceiverNode=/home/martin/develop/axcioma.MCO/ciaox11/connectors/psdd4ccm/tests/custom-serializer/descriptors/Receiver.ior --deployment-nc corbaloc:iiop:127.0.0.2:60000/NameService
+Invoking domain deployment manager (dancex11_deployment_manager --handler dancex11_domain_dm_handler) with -l plan_zmq_read_filter.config
+[LP_DEBUG]    - 16:46:25.199903 - Receiver_exec_i::ccm_activate : subscribing to 'sample/type1' topic instances
+[LP_DEBUG]    - 16:46:25.199962 - Receiver_exec_i::ccm_activate : subscribed
+[LP_DEBUG]    - 16:46:25.199972 - Receiver_exec_i::ccm_activate : activating reader tick
+[LP_DEBUG]    - 16:46:25.200017 - Receiver_exec_i::ccm_activate : scheduled reader tick
+[LP_DEBUG]    - 16:46:27.202204 - Receiver_exec_i::tick : no topic
+[LP_DEBUG]    - 16:46:27.202271 - Receiver_exec_i::tick : scheduling next reader tick
+[LP_DEBUG]    - 16:46:29.214585 - Receiver_exec_i::tick : no topic
+[LP_DEBUG]    - 16:46:29.214653 - Receiver_exec_i::tick : scheduling next reader tick
+Sleeping 20 seconds to allow task to complete
+[LP_DEBUG]    - 16:46:30.783974 - Receiver_exec_i::tick : read "Test::Topic{key="sample/type1",device=1,msgid=0,status=false,value=0}"
+[LP_DEBUG]    - 16:46:30.784032 - Receiver_exec_i::tick : scheduling next reader tick
+[LP_DEBUG]    - 16:46:30.984286 - Receiver_exec_i::tick : read "Test::Topic{key="sample/type1",device=2,msgid=1,status=true,value=12.345}"
+[LP_DEBUG]    - 16:46:30.984344 - Receiver_exec_i::tick : scheduling next reader tick
+[LP_DEBUG]    - 16:46:31.184605 - Receiver_exec_i::tick : read "Test::Topic{key="sample/type1",device=3,msgid=2,status=true,value=24.69}"
+[LP_DEBUG]    - 16:46:31.184663 - Receiver_exec_i::tick : scheduling next reader tick
+[LP_DEBUG]    - 16:46:31.385001 - Receiver_exec_i::tick : read "Test::Topic{key="sample/type1",device=4,msgid=3,status=false,value=37.035}"
+[LP_DEBUG]    - 16:46:31.385060 - Receiver_exec_i::tick : scheduling next reader tick
+[LP_DEBUG]    - 16:46:31.585315 - Receiver_exec_i::tick : read "Test::Topic{key="sample/type1",device=5,msgid=4,status=true,value=49.38}"
+[LP_DEBUG]    - 16:46:31.585374 - Receiver_exec_i::tick : scheduling next reader tick
+[LP_DEBUG]    - 16:46:31.785654 - Receiver_exec_i::tick : read "Test::Topic{key="sample/type1",device=1,msgid=5,status=true,value=61.725}"
+[LP_DEBUG]    - 16:46:31.785717 - Receiver_exec_i::tick : scheduling next reader tick
+[LP_DEBUG]    - 16:46:31.986001 - Receiver_exec_i::tick : read "Test::Topic{key="sample/type1",device=2,msgid=6,status=false,value=74.07}"
+[LP_DEBUG]    - 16:46:31.986060 - Receiver_exec_i::tick : scheduling next reader tick
+[LP_DEBUG]    - 16:46:32.186331 - Receiver_exec_i::tick : read "Test::Topic{key="sample/type1",device=3,msgid=7,status=true,value=0}"
+[LP_DEBUG]    - 16:46:32.186390 - Receiver_exec_i::tick : scheduling next reader tick
+[LP_DEBUG]    - 16:46:32.386661 - Receiver_exec_i::tick : read "Test::Topic{key="sample/type1",device=4,msgid=8,status=true,value=12.345}"
+[LP_DEBUG]    - 16:46:32.386720 - Receiver_exec_i::tick : scheduling next reader tick
+[LP_DEBUG]    - 16:46:32.587004 - Receiver_exec_i::tick : read "Test::Topic{key="sample/type1",device=5,msgid=9,status=false,value=24.69}"
+[LP_DEBUG]    - 16:46:32.587063 - Receiver_exec_i::tick : scheduling next reader tick
+[LP_DEBUG]    - 16:46:32.787257 - Receiver_exec_i::tick : read "Test::Topic{key="sample/type1",device=1,msgid=10,status=true,value=37.035}"
+[LP_DEBUG]    - 16:46:32.787285 - Receiver_exec_i::tick : scheduling next reader tick
+[LP_DEBUG]    - 16:46:32.987693 - Receiver_exec_i::tick : read "Test::Topic{key="sample/type1",device=2,msgid=11,status=true,value=49.38}"
+[LP_DEBUG]    - 16:46:32.987752 - Receiver_exec_i::tick : scheduling next reader tick
+[LP_DEBUG]    - 16:46:33.188039 - Receiver_exec_i::tick : read "Test::Topic{key="sample/type1",device=3,msgid=12,status=false,value=61.725}"
+[LP_DEBUG]    - 16:46:33.188104 - Receiver_exec_i::tick : scheduling next reader tick
+[LP_DEBUG]    - 16:46:33.388354 - Receiver_exec_i::tick : read "Test::Topic{key="sample/type1",device=4,msgid=13,status=true,value=74.07}"
+[LP_DEBUG]    - 16:46:33.388419 - Receiver_exec_i::tick : scheduling next reader tick
+[LP_DEBUG]    - 16:46:33.588656 - Receiver_exec_i::tick : read "Test::Topic{key="sample/type1",device=5,msgid=14,status=true,value=0}"
+[LP_DEBUG]    - 16:46:33.588724 - Receiver_exec_i::tick : scheduling next reader tick
+[LP_DEBUG]    - 16:46:33.788954 - Receiver_exec_i::tick : read "Test::Topic{key="sample/type1",device=1,msgid=15,status=false,value=12.345}"
+[LP_DEBUG]    - 16:46:33.789018 - Receiver_exec_i::tick : scheduling next reader tick
+[LP_DEBUG]    - 16:46:33.989343 - Receiver_exec_i::tick : read "Test::Topic{key="sample/type1",device=2,msgid=16,status=true,value=24.69}"
+[LP_DEBUG]    - 16:46:33.989402 - Receiver_exec_i::tick : scheduling next reader tick
+[LP_DEBUG]    - 16:46:34.189557 - Receiver_exec_i::tick : read "Test::Topic{key="sample/type1",device=3,msgid=17,status=true,value=37.035}"
+[LP_DEBUG]    - 16:46:34.189640 - Receiver_exec_i::tick : scheduling next reader tick
+[LP_DEBUG]    - 16:46:34.389816 - Receiver_exec_i::tick : read "Test::Topic{key="sample/type1",device=4,msgid=18,status=false,value=49.38}"
+[LP_DEBUG]    - 16:46:34.389875 - Receiver_exec_i::tick : scheduling next reader tick
+[LP_DEBUG]    - 16:46:34.590214 - Receiver_exec_i::tick : read "Test::Topic{key="sample/type1",device=5,msgid=19,status=true,value=61.725}"
+[LP_DEBUG]    - 16:46:34.590272 - Receiver_exec_i::tick : scheduling next reader tick
+[LP_DEBUG]    - 16:46:34.790575 - Receiver_exec_i::tick : read "Test::Topic{key="sample/type1",device=1,msgid=20,status=true,value=74.07}"
+[LP_DEBUG]    - 16:46:34.790633 - Receiver_exec_i::tick : scheduling next reader tick
+[LP_DEBUG]    - 16:46:34.990918 - Receiver_exec_i::tick : read "Test::Topic{key="sample/type1",device=2,msgid=21,status=false,value=0}"
+[LP_DEBUG]    - 16:46:34.990978 - Receiver_exec_i::tick : scheduling next reader tick
+[LP_DEBUG]    - 16:46:35.191277 - Receiver_exec_i::tick : read "Test::Topic{key="sample/type1",device=3,msgid=22,status=true,value=12.345}"
+[LP_DEBUG]    - 16:46:35.191336 - Receiver_exec_i::tick : scheduling next reader tick
+[LP_DEBUG]    - 16:46:35.391643 - Receiver_exec_i::tick : read "Test::Topic{key="sample/type1",device=4,msgid=23,status=true,value=24.69}"
+[LP_DEBUG]    - 16:46:35.391702 - Receiver_exec_i::tick : scheduling next reader tick
+[LP_DEBUG]    - 16:46:35.591974 - Receiver_exec_i::tick : read "Test::Topic{key="sample/type1",device=5,msgid=24,status=false,value=37.035}"
+[LP_DEBUG]    - 16:46:35.592032 - Receiver_exec_i::tick : finished reading
+Invoking executor - stop the application 
+by running dancex11_deployment_manager with -n ExecutionManager=/home/martin/develop/axcioma.MCO/ciaox11/connectors/psdd4ccm/tests/custom-serializer/descriptors/em.ior -x
+[LP_DEBUG]    - 16:46:50.324177 - Receiver_exec_i::ccm_remove : received 25 topic instances
+Executor returned.
+Shutting down rest of the processes.
+
+

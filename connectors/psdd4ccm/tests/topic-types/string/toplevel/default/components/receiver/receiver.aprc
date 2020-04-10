@@ -1,0 +1,21 @@
+
+component 'psdd_receiver', :psdd4ccm do |comp|
+
+  comp.idl %w{ topic.idl }
+
+  comp.define 'Test::Receiver' do |intf|
+    intf.port 'topic_sub' do |port|
+      port.subscribes 'Test::Topic', get: 'topic_read'
+    end
+    intf.port 'tt_scheduler', :timed_trigger
+
+    intf.attribute 'count', type: 'unsigned long'
+    intf.attribute 'delay', type: 'unsigned long'
+    intf.attribute 'interval', type: 'unsigned long'
+  end
+
+  comp.base_projects += 'ciaox11_psdd4ccm_logger'
+
+  comp.combined_lib true
+
+end

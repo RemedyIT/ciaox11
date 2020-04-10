@@ -1,0 +1,17 @@
+project(custom_zmq_serializer) : ciaox11_executor, ciaox11_psdd4ccm_zmq_impl {
+  after += base_stub topicPS_lem_stub
+  libs  += base_stub topicPS_lem_stub
+
+  libpaths += ../lib
+  libout = ../lib
+  includes += . ../base ../base/generated_code ../connector/zmq ../connector/zmq/generated_code generated_code
+
+  dynamicflags += SERIALIZER_BUILD_DLL
+
+  Source_Files {
+    topic_zmq_ser.cpp
+  }
+  Header_Files {
+    topic_zmq_ser.h
+  }
+}

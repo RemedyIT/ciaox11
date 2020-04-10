@@ -1,0 +1,19 @@
+
+connector 'topic_psdd_zmq_conn', :psdd4ccm_zmq do |conn|
+
+  conn.idl %w{topic.idl}
+
+  # prefix of generated export headers (default: recipe_id)
+  conn.export_name 'topic'
+
+  conn.shared_name 'topic'
+
+  conn.port_type :psdd4ccm do |tp|
+    tp.topic 'Test::Topic'
+    tp.middleware :zmq
+  end
+
+end
+
+
+

@@ -1,0 +1,34 @@
+/**
+* @file    topic.idl
+* @author  Martin Corino
+*
+* @brief   Message topic IDL
+*
+* @copyright Copyright (c) Remedy IT Expertise BV
+* Chamber of commerce Rotterdam nr.276339, The Netherlands
+*/
+
+#ifndef TOPIC_IDL
+#define TOPIC_IDL
+
+module Test
+{
+  struct Data
+  {
+    boolean flag;
+    unsigned long value;
+    char opt;
+  };
+
+  typedef sequence<Data> DataSeq;
+
+  struct Topic
+  {
+    string category;
+    string description;
+    DataSeq data;
+
+  }; //@TopLevel()
+};
+
+#endif

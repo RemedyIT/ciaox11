@@ -1,0 +1,20 @@
+
+component 'psdd_sender', :psdd4ccm do |comp|
+
+  comp.idl %w{ topic.idl }
+
+  comp.define 'Test::Sender' do |intf|
+    intf.port 'topic_pub' do |port|
+      port.publishes 'Test::Topic'
+    end
+    intf.port 'tt_scheduler', :timed_trigger
+
+    intf.attribute 'count', type: 'unsigned long'
+    intf.attribute 'delay', type: 'unsigned long'
+  end
+
+  comp.base_projects += 'ciaox11_psdd4ccm_logger'
+
+  comp.combined_lib true
+
+end
