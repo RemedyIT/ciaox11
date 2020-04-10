@@ -3,7 +3,6 @@
  * @author Martin Corino
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef PSDD4CCM_DYNAMIC_LOADER_H
 #define PSDD4CCM_DYNAMIC_LOADER_H

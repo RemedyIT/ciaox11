@@ -6,7 +6,6 @@
  * @brief   Definitions for middleware specific implementations
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef PSDD4CCM_MIDDLEWARE_T_H_
 #define PSDD4CCM_MIDDLEWARE_T_H_

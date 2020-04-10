@@ -6,7 +6,6 @@
  * @brief   Provides the context switch between PSDD middleware and PSDD4CCM
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef PSDD4CCM_CONTEXT_SWITCH_HANDLERS_T_H_
 #define PSDD4CCM_CONTEXT_SWITCH_HANDLERS_T_H_

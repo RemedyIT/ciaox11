@@ -6,7 +6,6 @@
  * @brief   ZMQ Service Helper for PSDD implementation
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef ZMQ_PSDD_SERVICE_HELPER_H_
 #define ZMQ_PSDD_SERVICE_HELPER_H_

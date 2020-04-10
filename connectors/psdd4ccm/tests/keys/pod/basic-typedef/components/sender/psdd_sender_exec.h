@@ -6,7 +6,6 @@
  * @brief   PSDD Sender executor.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef __RIDL_PSDD_SENDER_EXEC_H_JCIADJEC_INCLUDED__
 #define __RIDL_PSDD_SENDER_EXEC_H_JCIADJEC_INCLUDED__

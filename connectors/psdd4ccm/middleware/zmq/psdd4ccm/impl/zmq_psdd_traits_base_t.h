@@ -6,7 +6,6 @@
  * @brief   ZMQ PSDD traits for basic IDL types
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef ZMQ_PSDD4CCM_TRAITS_BASE_T_H_
 #define ZMQ_PSDD4CCM_TRAITS_BASE_T_H_

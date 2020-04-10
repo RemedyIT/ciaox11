@@ -6,7 +6,6 @@
  * @brief   ZMQ serializer template for PSDD
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef ZMQ_PSDD_SERIALIZER_T_H_
 #define ZMQ_PSDD_SERIALIZER_T_H_

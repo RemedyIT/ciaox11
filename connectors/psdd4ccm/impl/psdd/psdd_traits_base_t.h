@@ -5,7 +5,6 @@
  * @brief   Base PSDD traits for the topic type
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef PSDD4CCM_TRAITS_BASE_H_
 #define PSDD4CCM_TRAITS_BASE_H_

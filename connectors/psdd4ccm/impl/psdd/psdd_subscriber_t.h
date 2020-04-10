@@ -6,7 +6,6 @@
  * @brief   PSDD subscriber template
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef PSDD_SUBSCRIBER_T_H
 #define PSDD_SUBSCRIBER_T_H

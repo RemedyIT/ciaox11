@@ -5,7 +5,6 @@
  * @brief   Custom serializer for ZMQ Emitter topics.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef _TOPIC_ZMQ_SER_H_
 #define _TOPIC_ZMQ_SER_H_

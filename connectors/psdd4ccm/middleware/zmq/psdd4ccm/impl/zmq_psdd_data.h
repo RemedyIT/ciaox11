@@ -6,7 +6,6 @@
  * @brief   ZMQ Message Data for PSDD base
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef ZMQ_PSDD_DATA_H_
 #define ZMQ_PSDD_DATA_H_

@@ -6,7 +6,6 @@
  * @brief   ZMQ PSDD socket wrappers
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef ZMQ_PSDD_SOCKETS_H_
 #define ZMQ_PSDD_SOCKETS_H_

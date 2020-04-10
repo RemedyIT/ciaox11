@@ -6,7 +6,6 @@
  * @brief   ZMQ Context for PSDD implementation
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #include "psdd4ccm/impl/psdd4ccm_config_util.h"
 #include "psdd4ccm/impl/zmq_psdd_context_i.h"

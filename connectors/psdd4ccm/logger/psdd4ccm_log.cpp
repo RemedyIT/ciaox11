@@ -5,7 +5,6 @@
  * @brief   PSDD4CCM for X11 log module.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #include "psdd4ccm/logger/psdd4ccm_log.h"

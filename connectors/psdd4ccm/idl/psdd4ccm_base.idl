@@ -5,7 +5,6 @@
 * @brief   base idl for psdd4ccm
 *
 * @copyright Copyright (c) Remedy IT Expertise BV
-* Chamber of commerce Rotterdam nr.276339, The Netherlands
 */
 
 #ifndef PSDD4CCM_BASE_IDL

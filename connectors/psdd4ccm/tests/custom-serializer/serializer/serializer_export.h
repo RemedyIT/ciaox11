@@ -6,7 +6,6 @@
  * @brief   Custom serializer export header.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef __SERIALIZER_EXPORT_INCLUDED__
 #define __SERIALIZER_EXPORT_INCLUDED__

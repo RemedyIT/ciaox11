@@ -5,7 +5,6 @@
  * @brief   ZMQ Middleware specific include for the PSDD traits.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef PSDD4CCM_TRAITS_H_
 #define PSDD4CCM_TRAITS_H_

@@ -6,7 +6,6 @@
  * @brief   ZMQ safe message wrapper
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef ZMQ_SAFE_MSG_H_
 #define ZMQ_SAFE_MSG_H_

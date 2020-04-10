@@ -6,7 +6,6 @@
  * @brief   ZMQ PSDD subscriber template
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef ZMQ_PSDD_SUBSCRIBER_T_H
 #define ZMQ_PSDD_SUBSCRIBER_T_H

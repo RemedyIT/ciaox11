@@ -5,7 +5,6 @@
  * @brief   PSDD4CCM service configuration utilities.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #if !defined(PSDD4CCM_CONFIG_UTIL_H_)
 #define PSDD4CCM_CONFIG_UTIL_H_

@@ -6,7 +6,6 @@
  * @brief   Switch for middleware specific implementations
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef ZMQ_PSDD4CCM_MIDDLEWARE_T_CPP_
 #define ZMQ_PSDD4CCM_MIDDLEWARE_T_CPP_

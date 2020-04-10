@@ -5,7 +5,6 @@
  * @brief   PSDD4CCM X11 logger stream implementations
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef PSDD4CCM_LOGGER_LOG_H
 #define PSDD4CCM_LOGGER_LOG_H

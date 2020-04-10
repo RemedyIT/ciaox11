@@ -6,7 +6,6 @@
  * @brief   Implementation of the PSDD4CCM Event connector
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef PSDD4CCM_EVENT_CONNECTOR_H
 #define PSDD4CCM_EVENT_CONNECTOR_H
