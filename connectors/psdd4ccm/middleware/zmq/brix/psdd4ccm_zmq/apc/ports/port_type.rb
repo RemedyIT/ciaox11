@@ -5,7 +5,6 @@
 # @brief   PSDD4CCM ZMQ Port type extension loader
 #
 # @copyright Copyright (c) Remedy IT Expertise BV
-# Chamber of commerce Rotterdam nr.276339, The Netherlands
 #--------------------------------------------------------------------
 
 # load all interaction pattern port type implementations

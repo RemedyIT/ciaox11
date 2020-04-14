@@ -4,7 +4,6 @@
 // Base project for ZMQ PSDD connector implementations
 //
 // Copyright (c) Remedy IT Expertise BV
-// Chamber of commerce Rotterdam nr.276339, The Netherlands
 // --------------------------------------------------------------------
 
 project : ciaox11_psdd4ccm_zmq, ciaox11_psdd4ccm_impl, ciaox11_state \
