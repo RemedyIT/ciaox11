@@ -1,0 +1,919 @@
+include::_{backend}_settings.adoc[]
+
+= The PSDD4CCM ZMQ implemention
+
+== Introduction
+
+The ZMQ (ZeroMQ) embeddable network library provides the lower level middleware implementation for
+the ZMQ PSDD4CCM connector which implements the PSDD4CCM event interaction pattern.
+
+The ZMQ PSDD4CCM connector implementation uses ZMQ PUB/SUB sockets to implement the required networking
+to support the PSDD4CCM event pattern.
+
+The ZMQ PSDD4CCM connector implementation has been tested with ZMQ library versions >= 4.0.
+
+Like all middleware implementations the design and properties of the particular middleware determin the
+design and implementation details of the connector. This affects in particular two facets of the connector
+implementation.
+
+(de-)serialization::
+the lower level transport (wire) protocol affects the way in which key and data serialization must be
+implemented
+
+deployment configuration::
+the configuration API of the middleware determins the configuration possibilities and needed properties
+for DnCX11 deployment
+
+== Serializing
+
+ZMQ transport protocol is essentially opaque. Data transported over ZMQ is nothing more than byte packets
+transmitted in discrete message frames without any knowledge about inherent structure or origin.
+This requires that the PSDD4CCM serializer implementation for ZMQ provides all support for reliable
+(de-)serializing complex IDL defined data structures but also for maintaining platform independence
+for the data packets (with regard to endianness).
+
+In addition the ZMQ PUB/SUB message filtering is also based on opaque, binary comparison. Since ZMQ
+has no knowledge of platform origin of data packets (incl. the subscription filters) a fixed format
+of data "on the wire" has to be guaranteed to make sure that whatever platform, subscription data
+can be compared.
+
+Embedding byte order information in the data stream is not an option as that would alter the data
+stream when originating from different platforms.
+For the same reason it is also not advisable to embed size information (or delimiters) in data streams
+representing subscription filters or key data for variable length data like strings.
+Also, as ZMQ subscription comparison is essentially a binary prefix match which is only delimited by
+message frame boundaries, subscription matching might be influenced by data bytes appended after key
+bytes.
+
+To prevent subscription matching to be influenced by data bytes mixed with key bytes in a single data
+frame the PSDD4CCM ZMQ connector implementation by default sends PSDD4CCM serialized data in two separate
+ZMQ message frames; key bytes in the first frame followed by a second frame with field size
+information (for variable size key fields) and data bytes. ZMQ calls this the "Message envelope"
+approach.
+Using this approach is configurable (see <<Serializer properties,here>>).
+
+The PSDD4CCM ZMQ connector implementation optimizes the "Message envelope" approach such that when
+message data is all keys and no variable sized fields it foregoes sending/receiving the second message
+frame.
+
+The PSDD4CCM ZMQ connector implementation provides two `CCM_PSDD::PSData` (see
+<<psdd4ccm_custom_serializer.adoc,here>>) implementations that use the ACE CDR streams classes to
+support (de-)serialization.
+
+The interfaces of these implementations are shown here.
+
+[source,c++]
+.PSDD4CCM ZMQ PSData interfaces
+-----------------------------------------------
+namespace PSDD
+{
+  namespace ZMQ
+  {
+    enum class EByteOrder : int32_t
+    {
+      eBigEndian = ACE_CDR::BYTE_ORDER_BIG_ENDIAN,
+      eLittleEndian = ACE_CDR::BYTE_ORDER_LITTLE_ENDIAN
+    };
+
+    class ZMQ_PSDD_STUB_Export PSDataOut
+      : public ::CCM_PSDD::PSData
+    {
+    public:
+      virtual
+      ~PSDataOut () = default;
+
+      virtual void
+      set_byte_order (EByteOrder) = 0;
+
+      virtual ACE_OutputCDR&
+      key_out () = 0;
+
+      virtual ACE_OutputCDR&
+      data_out () = 0;
+
+    protected:
+      PSDataOut () = default;
+    };
+
+    class ZMQ_PSDD_STUB_Export PSDataIn
+      : public ::CCM_PSDD::PSData
+    {
+    public:
+      virtual
+      ~PSDataIn () = default;
+
+      virtual void
+      set_byte_order (EByteOrder) = 0;
+
+      virtual ACE_InputCDR&
+      key_in () = 0;
+
+      virtual ACE_InputCDR&
+      data_in () = 0;
+
+    protected:
+      PSDataIn () = default;
+    };
+  }
+}
+-----------------------------------------------
+
+An instance of `PSDD::ZMQ::PSDataOut` is used for serialization as an instance of
+`PSDD::ZMQ::PSDataIn` is used for deserialization.
+
+The classes provide a `set_byte_order` method to fix the byte order used in serialized data. The
+standard PSDD4CCM ZMQ serializer implementation fixes the byte order to `EByteOrder::eLittleEndian`.
+
+In case the "Message envelope" feature has been disabled (which causes the PSDD4CCM ZMQ connector
+implementation to use a single message frame for both key and payload date) the `key_in` (`key_out`)
+accessor method returns the same ACE CDR object as the `data_in` (`data_out`) accessor.
+
+Standard PSDD4CCM ZMQ (de-)serializing is based on standard and IDL generated traits templates for
+basic (primitive) and IDL defined data types.
+The interface of the traits templates is shown below.
+
+[source,c++]
+.PSDD4CCM ZMQ type traits
+-----------------------------------------------
+  template <typename T>
+  {
+    static
+    std::string get_type_name ();
+
+    typedef T value_type;
+
+    typedef std::true_type key_only;
+    typedef std::false_type no_key;
+
+    static
+    bool append_key (
+        IDL::traits<PSDataOut>::ref_type& d,
+        const T& datum);
+
+    static
+    bool append_data (
+        IDL::traits<PSDataOut>::ref_type& d,
+        const T& datum,
+        bool provides_key);
+
+    static
+    bool extract_key (
+        IDL::traits<PSDataIn>::ref_type& d,
+        T& datum);
+
+    static
+    bool extract_data (
+        IDL::traits<PSDataIn>::ref_type& d,
+        T& datum,
+        bool provides_key);
+  };
+-----------------------------------------------
+
+The PSDD4CCM ZMQ standard serializer takes care of separating key values and payload data based
+on the PSDD4CCM type traits.
+
+== Deployment
+
+PSDD4CCM defines middleware specific deployment properties that need to be used to configure
+a deployed PSDD4CCM connector in combination with the common attributes described
+<<psdd4ccm_deployment.adoc#_psdd4ccm_deployment_attributes,here>>.
+Depending on the middleware implementation for which the deployed PSDD4CCM connectors
+are generated and the settings of the `publish` and `subscribe` attributes the user must set values
+in accordance with the property specifications in the following paragraphs.
+
+=== ZeroMQ properties
+
+The ZeroMQ properties consist of 4 sets of properties defined in IDL:
+
+Publisher properties ::
+provide settings for the publishing functionality of the connector
+Subscriber properties ::
+provide settings for the subscribing functionality of the connector
+Service properties::
+provide settings for the optional core ZeroMQ service parameters
+Serailizer properties::
+provide settings for an optional custom serialization module to be used by
+the connector
+
+The following is an overview of the full list of configuration properties.
+
+.ZeroMQ configuration properties IDL overview
+[source,IDL]
+-------------------------------------------------------------------------------
+module PSDD
+{
+  module ZMQ
+  {
+    // Publisher properties
+
+    /// Specifies the publisher endpoints to bind to if publisher activated.
+    /// Property value is sequence/array of string.
+    const string PUBLISHER_ENDPOINTS = "nl.remedy.it.PSDD.ZMQ.Publisher.Endpoints";
+
+    /// Specifies what connection scheme to use for publisher socket.
+    /// Property value is a string (default "BIND").
+    const string PUBLISHER_CONN_SCHEME = "nl.remedy.it.PSDD.ZMQ.Publisher.Connection";
+
+    /// Specifies whether to support IPv6 endpoints (ZMQ_IPV6 option).
+    /// Property value is a boolean.
+    const string PUBLISHER_IPV6 = "nl.remedy.it.PSDD.ZMQ.Publisher.IPV6";
+
+    /// Specifies the ZMQ_SNDTIMEO option in millisec.
+    /// Property value is an int32.
+    const string PUBLISHER_SEND_TIMEOUT = "nl.remedy.it.PSDD.ZMQ.Publisher.SendTimeout";
+
+    /// Specifies the ZMQ_RECOVERY_IVL option in millisec.
+    /// Property value is an int32.
+    const string PUBLISHER_RECOVERY_IVL = "nl.remedy.it.PSDD.ZMQ.Publisher.RecoveryIVL";
+
+    // Tuning and tweaking settings for publishers.
+
+    /// Specifies the ZMQ_TOS option.
+    /// Property value is an int32.
+    const string PUBLISHER_TUNING_TOS = "nl.remedy.it.PSDD.ZMQ.Publisher.Tuning.TOS";
+
+    /// Specifies the ZMQ_AFFINITY option.
+    /// Property value is a uint64.
+    const string PUBLISHER_TUNING_IO_AFFINITY = "nl.remedy.it.PSDD.ZMQ.Publisher.Tuning.IOAffinity";
+
+    /// Specifies the ZMQ_LINGER option in millisec.
+    /// Property value is an int32.
+    const string PUBLISHER_TUNING_LINGER = "nl.remedy.it.PSDD.ZMQ.Publisher.Tuning.LINGER";
+
+    /// Specifies the ZMQ_MAXMSGSIZE option.
+    /// Property value is a int64.
+    const string PUBLISHER_TUNING_MAXMSGSIZE = "nl.remedy.it.PSDD.ZMQ.Publisher.Tuning.MaxMsgSize";
+
+    /// Specifies the ZMQ_MULTICAST_HOPS option.
+    /// Property value is a int32.
+    const string PUBLISHER_TUNING_MCAST_HOPS = "nl.remedy.it.PSDD.ZMQ.Publisher.Tuning.MulticastHops";
+
+    /// Specifies the ZMQ_MULTICAST_MAXTPDU option in bytes.
+    /// Property value is a int32.
+    const string PUBLISHER_TUNING_MCAST_MAXTPDU = "nl.remedy.it.PSDD.ZMQ.Publisher.Tuning.MulticastTPDU";
+
+    /// Specifies the ZMQ_RATE option in kilobits/sec.
+    /// Property value is a int32.
+    const string PUBLISHER_TUNING_MCAST_RATE = "nl.remedy.it.PSDD.ZMQ.Publisher.Tuning.MulticastRate";
+
+    /// Specifies the ZMQ_RCVBUF option in bytes.
+    /// Property value is a int32.
+    const string PUBLISHER_TUNING_RCVBUF = "nl.remedy.it.PSDD.ZMQ.Publisher.Tuning.RcvBuf";
+
+    /// Specifies the ZMQ_RCVHWM option in messages.
+    /// Property value is a int32.
+    const string PUBLISHER_TUNING_RCVHWM = "nl.remedy.it.PSDD.ZMQ.Publisher.Tuning.RcvHwm";
+
+    /// Specifies the ZMQ_SNDBUF option in bytes.
+    /// Property value is a int32.
+    const string PUBLISHER_TUNING_SNDBUF = "nl.remedy.it.PSDD.ZMQ.Publisher.Tuning.SndBuf";
+
+    /// Specifies the ZMQ_SNDHWM option in messages.
+    /// Property value is a int32.
+    const string PUBLISHER_TUNING_SNDHWM = "nl.remedy.it.PSDD.ZMQ.Publisher.Tuning.SndHwm";
+
+    /// Specifies the ZMQ_HANDSHAKE_IVL option in millisec.
+    /// Property value is an int32.
+    const string PUBLISHER_TUNING_HANDSHAKE_IVL = "nl.remedy.it.PSDD.ZMQ.Publisher.Tuning.HandshakeIVL";
+
+    // Security settings for publishers.
+
+    /// Specifies whether to set up as Curve server or client (ZMQ_CURVE_SERVER option).
+    /// Specifying this property (true or false) implicitly enables CURVE security.
+    /// If not specified no security is active.
+    /// Property value is a boolean.
+    const string PUBLISHER_CURVE_SERVER = "nl.remedy.it.PSDD.ZMQ.Publisher.CurveServer";
+
+    /// Specifies the CURVE key to apply. Ignored if no CURVE server property is specified.
+    /// When set up as a CURVE server this specifies the ZMQ_CURVE_SECRETKEY, otherwise this
+    /// specifies the ZMQ_CURVE_SERVERKEY.
+    /// Property is a string value (Z85 encoding format).
+    const string PUBLISHER_CURVE_KEY = "nl.remedy.it.PSDD.ZMQ.Publisher.CurveKey";
+
+    // Subscriber properties
+
+    /// Specifies the publisher endpoints to listen to if subscriber activated.
+    /// Property value is sequence/array of string.
+    const string SUBSCRIBER_ENDPOINTS = "nl.remedy.it.PSDD.ZMQ.Subscriber.Endpoints";
+
+    /// Specifies what connection scheme to use for subscriber socket.
+    /// Property value is a string (default "CONNECT").
+    const string SUBSCRIBER_CONN_SCHEME = "nl.remedy.it.PSDD.ZMQ.Subscriber.Connection";
+
+    /// Specifies whether to support IPv6 endpoints (ZMQ_IPV6 option).
+    /// Property value is a boolean.
+    const string SUBSCRIBER_IPV6 = "nl.remedy.it.PSDD.ZMQ.Subscriber.IPV6";
+
+    /// Specifies the ZMQ_RCVTIMEO option in millisec.
+    /// Property value is an int32.
+    const string SUBSCRIBER_RECEIVE_TIMEOUT = "nl.remedy.it.PSDD.ZMQ.Subscriber.ReceiveTimeout";
+
+    /// Specifies the ZMQ_RECONNECT_IVL option in millisec.
+    /// Property value is an int32.
+    const string SUBSCRIBER_RECONNECT_IVL = "nl.remedy.it.PSDD.ZMQ.Subscriber.ReconnectIVL";
+
+    /// Specifies the ZMQ_RECONNECT_IVL_MAX option in millisec.
+    /// Property value is an int32.
+    const string SUBSCRIBER_RECONNECT_IVL_MAX = "nl.remedy.it.PSDD.ZMQ.Subscriber.ReconnectIVLMax";
+
+    // Tuning and tweaking settings for subscribers.
+
+    /// Specifies the ZMQ_TOS option.
+    /// Property value is an int32.
+    const string SUBSCRIBER_TUNING_TOS = "nl.remedy.it.PSDD.ZMQ.Subscriber.Tuning.TOS";
+
+    /// Specifies the ZMQ_AFFINITY option.
+    /// Property value is a uint64.
+    const string SUBSCRIBER_TUNING_IO_AFFINITY = "nl.remedy.it.PSDD.ZMQ.Subscriber.Tuning.IOAffinity";
+
+    /// Specifies the ZMQ_LINGER option in millisec.
+    /// Property value is an int32.
+    const string SUBSCRIBER_TUNING_LINGER = "nl.remedy.it.PSDD.ZMQ.Subscriber.Tuning.LINGER";
+
+    /// Specifies the ZMQ_MAXMSGSIZE option.
+    /// Property value is a int64.
+    const string SUBSCRIBER_TUNING_MAXMSGSIZE = "nl.remedy.it.PSDD.ZMQ.Subscriber.Tuning.MaxMsgSize";
+
+    /// Specifies the ZMQ_MULTICAST_HOPS option.
+    /// Property value is a int32.
+    const string SUBSCRIBER_TUNING_MCAST_HOPS = "nl.remedy.it.PSDD.ZMQ.Subscriber.Tuning.MulticastHops";
+
+    /// Specifies the ZMQ_MULTICAST_MAXTPDU option in bytes.
+    /// Property value is a int32.
+    const string SUBSCRIBER_TUNING_MCAST_MAXTPDU = "nl.remedy.it.PSDD.ZMQ.Subscriber.Tuning.MulticastTPDU";
+
+    /// Specifies the ZMQ_RATE option in kilobits/sec.
+    /// Property value is a int32.
+    const string SUBSCRIBER_TUNING_MCAST_RATE = "nl.remedy.it.PSDD.ZMQ.Subscriber.Tuning.MulticastRate";
+
+    /// Specifies the ZMQ_RCVBUF option in bytes.
+    /// Property value is a int32.
+    const string SUBSCRIBER_TUNING_RCVBUF = "nl.remedy.it.PSDD.ZMQ.Subscriber.Tuning.RcvBuf";
+
+    /// Specifies the ZMQ_RCVHWM option in messages.
+    /// Property value is a int32.
+    const string SUBSCRIBER_TUNING_RCVHWM = "nl.remedy.it.PSDD.ZMQ.Subscriber.Tuning.RcvHwm";
+
+    /// Specifies the ZMQ_SNDBUF option in bytes.
+    /// Property value is a int32.
+    const string SUBSCRIBER_TUNING_SNDBUF = "nl.remedy.it.PSDD.ZMQ.Subscriber.Tuning.SndBuf";
+
+    /// Specifies the ZMQ_SNDHWM option in messages.
+    /// Property value is a int32.
+    const string SUBSCRIBER_TUNING_SNDHWM = "nl.remedy.it.PSDD.ZMQ.Subscriber.Tuning.SndHwm";
+
+    /// Specifies the ZMQ_HANDSHAKE_IVL option in millisec.
+    /// Property value is an int32.
+    const string SUBSCRIBER_TUNING_HANDSHAKE_IVL = "nl.remedy.it.PSDD.ZMQ.Subscriber.Tuning.HandshakeIVL";
+
+    // Security settings for subscribers.
+
+    /// Specifies whether to set up as Curve server or client (ZMQ_CURVE_SERVER option).
+    /// Specifying this property (true or false) implicitly enables CURVE security.
+    /// If not specified no security is active.
+    /// Property value is a boolean.
+    const string SUBSCRIBER_CURVE_SERVER = "nl.remedy.it.PSDD.ZMQ.Subscriber.CurveServer";
+
+    /// Specifies the CURVE key to apply. Ignored if no CURVE server property is specified.
+    /// When set up as a CURVE server this specifies the ZMQ_CURVE_SECRETKEY, otherwise this
+    /// specifies the ZMQ_CURVE_SERVERKEY.
+    /// Property is a string value (Z85 encoding format).
+    const string SUBSCRIBER_CURVE_KEY = "nl.remedy.it.PSDD.ZMQ.Subscriber.CurveKey";
+
+    // Service (context) properties.
+
+    /// Specifies the ZMQ_IO_THREADS option.
+    /// Property value is a int32.
+    const string SERVICE_IO_THREADS = "nl.remedy.it.PSDD.ZMQ.Service.IOThreads";
+
+    /// Specifies the number of polling threads to run for the builtin ZMQ PSDD poller.
+    /// Property value is a uint32 (default 2).
+    const string SERVICE_POLLING_THREADS = "nl.remedy.it.PSDD.ZMQ.Service.PollingThreads";
+
+    /// Specifies the ZMQ_MAX_SOCKETS option.
+    /// Property value is a int32.
+    const string SERVICE_MAX_SOCKETS = "nl.remedy.it.PSDD.ZMQ.Service.MaxSockets";
+
+    /// Specifies the ZMQ_THREAD_PRIORITY option.
+    /// Property value is a int32.
+    const string SERVICE_THREAD_PRIO = "nl.remedy.it.PSDD.ZMQ.Service.ThreadPrio";
+
+    /// Specifies the ZMQ_THREAD_SCHED_POLICY option.
+    /// Property value is a int32.
+    const string SERVICE_THREAD_SCHED_POLICY = "nl.remedy.it.PSDD.ZMQ.Service.ThreadSchedPolicy";
+
+    // Serializer properties.
+
+    /// Specifies if message envelopes (separate key and data frames) are to be used.
+    /// Property value is a boolean. Default true.
+    const string SERIALIZER_MSG_ENVELOPE = "nl.remedy.it.PSDD.ZMQ.Serializer.MessageEnvelope";
+
+    /// Specifies the name of the dynamic module for the custom serializer
+    /// Property value is a string.
+    const string SERIALIZER_MODULE = "nl.remedy.it.PSDD.ZMQ.Serializer.Module";
+
+    /// Specifies the name of the factory function for the custom serializer
+    /// Property value is a string.
+    const string SERIALIZER_FACTORY = "nl.remedy.it.PSDD.ZMQ.Serializer.Factory";
+
+    /// Specifies the open mode for the custom serializer
+    /// Property value is a uint32.
+    const string SERIALIZER_OPENMODE = "nl.remedy.it.PSDD.ZMQ.Serializer.OpenMode";
+  };
+};
+-------------------------------------------------------------------------------
+
+'''
+==== Publisher properties
+
+In case the `publish` attribute has been configured as `true` the minimal required publisher
+property is the `nl.remedy.it.PSDD.ZMQ.Publisher.Endpoints` property. All other publisher
+properties are optional in any case.
+If the `publish` attribute has been configured as `false` (the default) any specified publisher
+properties are ignored.
+
+The following publisher properties are available.
+
+[width="100%",cols="<1a,<4a",,]
+|=======================================================================
+2+|*nl.remedy.it.PSDD.ZMQ.Publisher.Endpoints*
+|sequence<string>
+|Specifies the endpoint(s) for the connector like `tcp://*:50005` which
+specifies an accepting endpoint for port 50005 on all interfaces. The value of this field
+must be a sequence of one or more strings. +
+Please see the link:http://api.zeromq.org[ZeroMQ documentation] for more information
+on supported endpoints.
+
+2+|*nl.remedy.it.PSDD.ZMQ.Publisher.Connection*
+|string
+|Specifies what connection scheme to use for the publisher socket. +
+The options are `"BIND"` (default if this option is not specified), `"BIND_MULTIPLEX"` and
+`"CONNECT"`.
+
+BIND::
+Sets up the socket connection by binding (`zmq_bind`) the publisher socket to the specified
+endpoint(s).
+BIND_MULTIPLEX::
+Sets up the socket connection using the builtin multiplexer support of PSDD4CCM. In this case the
+publisher socket connects to the multiplexers input socket and the multiplexer's socket binds to the
+specified endpoint(s). Multiple publisher sockets (from multiple connectors) deployed within in the
+same container can publish over the same endpoint(s) this way which otherwise would require separate
+endpoints for each publisher.
+Publishers from connector instances deployed in different container instances are always required
+to use unique endpoints.
+CONNECT::
+Sets up the socket connection by connecting (`zmq_connect`) the publisher socket to the specified
+endpoint(s). This allows the configuration of a _'reverse'_ connection scheme where one or more
+publishers connect to a single subscriber binding to an endpoint.
+
+2+|*nl.remedy.it.PSDD.ZMQ.Publisher.IPV6*
+|boolean
+|Specifies whether the connector should support IPV6 (set to *true*) or not (set to *false*,
+the default) for publishing.
+
+2+|*nl.remedy.it.PSDD.ZMQ.Publisher.SendTimeout*
+|long (int32)
+|Specifies the send timeout for the publishing connection in msec.
+See the link:http://api.zeromq.org[ZeroMQ documentation] on *ZMQ_SNDTIMEO* for more information.
+
+2+|*nl.remedy.it.PSDD.ZMQ.Publisher.RecoveryIVL*
+|long (int32)
+|Specifies the multicast recovery interval for the publishing connection in msec.
+See the link:http://api.zeromq.org[ZeroMQ documentation] on *ZMQ_RECOVERY_IVL* for more information.
+
+2+|*nl.remedy.it.PSDD.ZMQ.Publisher.Tuning.TOS*
+|long (int32)
+|See the link:http://api.zeromq.org[ZeroMQ documentation] on *ZMQ_TOS* for more information. +
+Requires ZeroMQ >= 4.1
+
+2+|*nl.remedy.it.PSDD.ZMQ.Publisher.Tuning.IOAffinity*
+|unsigned long long (uint64)
+|See the link:http://api.zeromq.org[ZeroMQ documentation] on *ZMQ_AFFINITY* for more information.
+
+2+|*nl.remedy.it.PSDD.ZMQ.Publisher.Tuning.LINGER*
+|long (int32)
+|See the link:http://api.zeromq.org[ZeroMQ documentation] on *ZMQ_LINGER* for more information.
+
+2+|*nl.remedy.it.PSDD.ZMQ.Publisher.Tuning.MaxMsgSize*
+|long long (int64)
+|See the link:http://api.zeromq.org[ZeroMQ documentation] on *ZMQ_MAXMSGSIZE* for more information.
+
+2+|*nl.remedy.it.PSDD.ZMQ.Publisher.Tuning.MulticastHops*
+|long (int32)
+|See the link:http://api.zeromq.org[ZeroMQ documentation] on *ZMQ_MULTICAST_HOPS* for more information.
+
+2+|*nl.remedy.it.PSDD.ZMQ.Publisher.Tuning.MulticastTPDU*
+|long (int32)
+|See the link:http://api.zeromq.org[ZeroMQ documentation] on *ZMQ_MULTICAST_MAXTPDU* for more information. +
+Requires ZeroMQ >= 4.1
+
+2+|*nl.remedy.it.PSDD.ZMQ.Publisher.Tuning.MulticastRate*
+|long (int32)
+|See the link:http://api.zeromq.org[ZeroMQ documentation] on *ZMQ_RATE* for more information.
+
+2+|*nl.remedy.it.PSDD.ZMQ.Publisher.Tuning.RcvBuf*
+|long (int32)
+|See the link:http://api.zeromq.org[ZeroMQ documentation] on *ZMQ_RCVBUF* for more information.
+
+2+|*nl.remedy.it.PSDD.ZMQ.Publisher.Tuning.RcvHwm*
+|long (int32)
+|See the link:http://api.zeromq.org[ZeroMQ documentation] on *ZMQ_RCVHWM* for more information.
+
+2+|*nl.remedy.it.PSDD.ZMQ.Publisher.Tuning.SndBuf*
+|long (int32)
+|See the link:http://api.zeromq.org[ZeroMQ documentation] on *ZMQ_SNDBUF* for more information.
+
+2+|*nl.remedy.it.PSDD.ZMQ.Publisher.Tuning.SndHwm*
+|long (int32)
+|See the link:http://api.zeromq.org[ZeroMQ documentation] on *ZMQ_SNDHWM* for more information.
+
+2+|*nl.remedy.it.PSDD.ZMQ.Publisher.Tuning.HandshakeIVL*
+|long (int32)
+|See the link:http://api.zeromq.org[ZeroMQ documentation] on *ZMQ_HANDSHAKE_IVL* for more information. +
+Requires ZeroMQ >= 4.1
+
+2+|*nl.remedy.it.PSDD.ZMQ.Publisher.CurveServer*
+|boolean
+|Specifies whether the connection will be initialized as a CURVE server
+(set to *true*) or a CURVE client (set to *false*). +
+Requires ZeroMQ >= 4.1
+
+2+|*nl.remedy.it.PSDD.ZMQ.Publisher.CurveKey*
+|string
+|Specifies a key string in Z85 encoding format (see the link:http://api.zeromq.org[ZeroMQ documentation] for
+more information). +
+Requires ZeroMQ >= 4.1
+|=======================================================================
+
+See <<CURVE security support>> for a description of how the `"security"` settings are used
+in the PSDD4CCM ZeroMQ CURVE support.
+
+'''
+==== Subscriber properties
+
+In case the `subscribe` attribute has been configured as `true` the minimal required subscriber
+property is the `nl.remedy.it.PSDD.ZMQ.Subscriber.Endpoints` property. All other subscriber
+properties are optional in any case.
+If the `subscribe` attribute has been configured as `false` (the default) any specified subscriber
+properties are ignored.
+
+The following subscriber properties are available.
+
+[width="100%",cols="<1a,<4a",,]
+|=======================================================================
+2+|*nl.remedy.it.PSDD.ZMQ.Subscriber.Endpoints*
+|sequence<string>
+|Specifies the endpoint(s) for the connector like `"tcp://localhost:50005"` which
+specifies a connecting endpoint for port 50005 on the `localhost` interface. The value of this field
+must be a sequence of one or more strings. +
+Please see the link:http://api.zeromq.org[ZeroMQ documentation] for more information
+on supported endpoints.
+
+2+|*nl.remedy.it.PSDD.ZMQ.Subscriber.Connection*
+|string
+|Specifies what connection scheme to use for the publisher socket. +
+The options are `"CONNECT"` (default if this option is not specified) and
+`"BIND"`.
+
+CONNECT::
+Sets up the socket connection by connecting (`zmq_connect`) the subscriber socket to the specified
+endpoint(s).
+BIND::
+Sets up the socket connection by binding (`zmq_bind`) the subscriber socket to the specified
+endpoint(s). This allows the configuration of a _'reverse'_ connection scheme where one or more
+publishers connect to a single subscriber binding to an endpoint.
+
+2+|*nl.remedy.it.PSDD.ZMQ.Subscriber.IPV6*
+|boolean
+|Specifies whether the connector should support IPV6 (set to *true*) or not (set to *false*,
+the default) for subscribing.
+
+2+|*nl.remedy.it.PSDD.ZMQ.Subscriber.ReceiveTimeout*
+|long (int32)
+|Specifies the receive timeout for the subscribing connection in msec.
+See the link:http://api.zeromq.org[ZeroMQ documentation] on *ZMQ_RCVTIMEO* for more information.
+
+2+|*nl.remedy.it.PSDD.ZMQ.Subscriber.ReconnectIVL*
+|long (int32)
+|Specifies the reconnection interval for the subscribing connection in msec.
+See the link:http://api.zeromq.org[ZeroMQ documentation] on *ZMQ_RECOVERY_IVL* for more information.
+
+2+|*nl.remedy.it.PSDD.ZMQ.Subscriber.ReconnectIVLMax*
+|long (int32)
+|Specifies the maximum reconnection interval for the subscribing connection in msec.
+See the link:http://api.zeromq.org[ZeroMQ documentation] on *ZMQ_RECONNECT_IVL_MAX* for more information.
+
+2+|*nl.remedy.it.PSDD.ZMQ.Subscriber.Tuning.TOS*
+|long (int32)
+|See the link:http://api.zeromq.org[ZeroMQ documentation] on *ZMQ_TOS* for more information. +
+Requires ZeroMQ >= 4.1
+
+2+|*nl.remedy.it.PSDD.ZMQ.Subscriber.Tuning.IOAffinity*
+|unsigned long long (uint64)
+|See the link:http://api.zeromq.org[ZeroMQ documentation] on *ZMQ_AFFINITY* for more information.
+
+2+|*nl.remedy.it.PSDD.ZMQ.Subscriber.Tuning.LINGER*
+|long (int32)
+|See the link:http://api.zeromq.org[ZeroMQ documentation] on *ZMQ_LINGER* for more information.
+
+2+|*nl.remedy.it.PSDD.ZMQ.Subscriber.Tuning.MaxMsgSize*
+|long long (int64)
+|See the link:http://api.zeromq.org[ZeroMQ documentation] on *ZMQ_MAXMSGSIZE* for more information.
+
+2+|*nl.remedy.it.PSDD.ZMQ.Subscriber.Tuning.MulticastHops*
+|long (int32)
+|See the link:http://api.zeromq.org[ZeroMQ documentation] on *ZMQ_MULTICAST_HOPS* for more information.
+
+2+|*nl.remedy.it.PSDD.ZMQ.Subscriber.Tuning.MulticastTPDU*
+|long (int32)
+|See the link:http://api.zeromq.org[ZeroMQ documentation] on *ZMQ_MULTICAST_MAXTPDU* for more information. +
+Requires ZeroMQ >= 4.1
+
+2+|*nl.remedy.it.PSDD.ZMQ.Subscriber.Tuning.MulticastRate*
+|long (int32)
+|See the link:http://api.zeromq.org[ZeroMQ documentation] on *ZMQ_RATE* for more information.
+
+2+|*nl.remedy.it.PSDD.ZMQ.Subscriber.Tuning.RcvBuf*
+|long (int32)
+|See the link:http://api.zeromq.org[ZeroMQ documentation] on *ZMQ_RCVBUF* for more information.
+
+2+|*nl.remedy.it.PSDD.ZMQ.Subscriber.Tuning.RcvHwm*
+|long (int32)
+|See the link:http://api.zeromq.org[ZeroMQ documentation] on *ZMQ_RCVHWM* for more information.
+
+2+|*nl.remedy.it.PSDD.ZMQ.Subscriber.Tuning.SndBuf*
+|long (int32)
+|See the link:http://api.zeromq.org[ZeroMQ documentation] on *ZMQ_SNDBUF* for more information.
+
+2+|*nl.remedy.it.PSDD.ZMQ.Subscriber.Tuning.SndHwm*
+|long (int32)
+|See the link:http://api.zeromq.org[ZeroMQ documentation] on *ZMQ_SNDHWM* for more information.
+
+2+|*nl.remedy.it.PSDD.ZMQ.Subscriber.Tuning.HandshakeIVL*
+|long (int32)
+|See the link:http://api.zeromq.org[ZeroMQ documentation] on *ZMQ_HANDSHAKE_IVL* for more information. +
+Requires ZeroMQ >= 4.1
+
+2+|*nl.remedy.it.PSDD.ZMQ.Subscriber.CurveServer*
+|boolean
+|Specifies whether the connection will be initialized as a CURVE server
+(set to *true*) or a CURVE client (set to *false*). +
+Requires ZeroMQ >= 4.1
+
+2+|*nl.remedy.it.PSDD.ZMQ.Subscriber.CurveKey*
+|string
+|Specifies a key string in Z85 encoding format (see the link:http://api.zeromq.org[ZeroMQ documentation] for
+more information). +
+Requires ZeroMQ >= 4.1
+|=======================================================================
+
+See <<CURVE security support>> for a description of how the `"security"` settings are used
+in the PSDD4CCM ZeroMQ CURVE support.
+
+'''
+==== Serializer properties
+
+The following serializer properties are available.
+
+[width="100%",cols="<1a,<4a",,]
+|=======================================================================
+2+|*nl.remedy.it.PSDD.ZMQ.Serializer.MessageEnvelope*
+|boolean
+|Specifies if message envelopes (separate key and data frames) are to be used. +
+See link:http://zguide.zeromq.org/php:chapter2#toc24[here] for more information
+on Pub-Sub message envelopes. By default message envelopes are used.
+
+2+|*nl.remedy.it.PSDD.ZMQ.Serializer.Module*
+|string
+|Specifies the name of the dynamically loadable module (library) providing the custom serializer.
+By default no custom serializer is used.
+
+2+|*nl.remedy.it.PSDD.ZMQ.Serializer.Factory*
+|string
+|Specifies the name of the factory function in the serializer module.
+
+2+|*nl.remedy.it.PSDD.ZMQ.Serializer.OpenMode*
+|unsigned long (uint32)
+|Specifies the optional openmode for loading the serializer module.
+
+|=======================================================================
+
+The serializer properties need to be specified either not for any or for *each* PSDD4CCM connector instance deployed
+on either end of PSDD4CCM pub-sub connections.
+
+'''
+==== Service properties
+
+Contrary to the publisher, subscriber and serializer properties described in the previous paragraphs
+the service properties should not be specified for deployed PSDD4CCM connector instances but instead for
+deployed container instances into which the PSDD4CCM connector instances are deployed.
+
+For each container instance into which PSDD4CCM connector instances are deployed a separate PSDD4CCM
+ZMQ context instance will be initialized using either defaults or any of these properties specified.
+
+The following service properties are available.
+
+[width="100%",cols="<1a,<4a",,]
+|=======================================================================
+2+|*nl.remedy.it.PSDD.ZMQ.Service.IOThreads*
+|long (int32)
+|Specifies the size of the ZeroMQ IO thread pool. +
+See the link:http://api.zeromq.org[ZeroMQ documentation] on `zmq_ctx_set` and *ZMQ_IO_THREADS* for
+more information.
+
+2+|*nl.remedy.it.PSDD.ZMQ.Service.PollingThreads*
+|unsigned long (uint32)
+|Specifies the number of PSDD4CCM ZeroMQ poller threads for processing `zmq_poll` incoming data events
+for listeners. The default is 2.
+
+2+|*nl.remedy.it.PSDD.ZMQ.Service.MaxSockets*
+|long (int32)
+|Specifies the maximum number of sockets allowed for the ZeroMQ context.  The default is 1024. +
+See the link:http://api.zeromq.org[ZeroMQ documentation] on `zmq_ctx_set` and *ZMQ_MAX_SOCKETS* for
+more information.
+
+2+|*nl.remedy.it.PSDD.ZMQ.Service.ThreadPrio*
+|long (int32)
+|Specifies the scheduling priority of the ZeroMQ IO threads. +
+See the link:http://api.zeromq.org[ZeroMQ documentation] on `zmq_ctx_set` and *ZMQ_THREAD_PRIORITY* for
+more information. +
+Requires ZeroMQ >= 4.1
+
+2+|*nl.remedy.it.PSDD.ZMQ.Service.ThreadSchedPolicy*
+|long (int32)
+|Specifies the scheduling policy of the ZeroMQ IO threads. +
+See the link:http://api.zeromq.org[ZeroMQ documentation] on `zmq_ctx_set` and *ZMQ_THREAD_SCHED_POLICY*
+for more information. +
+Requires ZeroMQ >= 4.1
+|=======================================================================
+
+.example of specifying service properties in _CONFIG_ descriptor format
+---------------------------------------------------------
+# container instance "SenderContainer" for locality "SenderLocality" on Node "SenderNode"
+nl.remedy.it.CCM.Container SenderContainer
+    nl.remedy.it.DnCX11.Node "SenderNode"
+    nl.remedy.it.DnCX11.Locality "SenderLocality"
+    nl.remedy.it.DnCX11.ConfigProperty nl.remedy.it.PSDD.ZMQ.Service.PollingThreads uint32:10
+    nl.remedy.it.DnCX11.ConfigProperty nl.remedy.it.PSDD.ZMQ.Service.MaxSockets int32:512
+
+# SenderComponent instance
+nl.remedy.it.CCM.Component SenderComponent psdd_sender_exec create_Test_Sender_Impl
+    nl.remedy.it.DnCX11.ExecParameter nl.remedy.it.DnCX11.Servant.Artifact "psdd_sender_svnt"
+    nl.remedy.it.DnCX11.ExecParameter nl.remedy.it.DnCX11.Servant.Factory "create_Test_Sender_Servant"
+    nl.remedy.it.DnCX11.Node "SenderNode"
+    nl.remedy.it.DnCX11.Locality "SenderLocality"
+    nl.remedy.it.DnCX11.Container "SenderContainer"
+    nl.remedy.it.DnCX11.ConfigProperty count uint32:100
+    nl.remedy.it.DnCX11.ConfigProperty mode "MSG"
+    nl.remedy.it.DnCX11.Connection SenderTimedTriggerProvider
+      tt_scheduler < tt_scheduler
+
+# SenderTimedTriggerProvider instance
+nl.remedy.it.CCM.Component SenderTimedTriggerProvider ciaox11_tt4ccm_conn create_CIAOX11_TT_TimedTrigger_Impl
+    nl.remedy.it.DnCX11.ExecParameter nl.remedy.it.DnCX11.Servant.Factory "create_CIAOX11_TT_TimedTrigger_Servant"
+    nl.remedy.it.DnCX11.Node "SenderNode"
+    nl.remedy.it.DnCX11.Locality "SenderLocality"
+    nl.remedy.it.DnCX11.Container "SenderContainer"
+
+# Sender_HelloConnector instance
+nl.remedy.it.CCM.Component Sender_HelloConnector hello_psdd_zmq_conn create_Test_Hello_PSDD_Event_Impl
+    nl.remedy.it.DnCX11.Node "SenderNode"
+    nl.remedy.it.DnCX11.Locality "SenderLocality"
+    nl.remedy.it.DnCX11.Container "SenderContainer"
+    nl.remedy.it.DnCX11.ConfigProperty topic_name "AXCIOMA::Hello"
+    nl.remedy.it.DnCX11.ConfigProperty publish true
+    nl.remedy.it.DnCX11.ConfigProperty nl.remedy.it.PSDD.ZMQ.Publisher.Endpoints ["tcp://*:50005"]
+    nl.remedy.it.DnCX11.Connection SenderComponent
+      supplier_data > hello_pub
+---------------------------------------------------------
+
+.example of specifying service properties in XML descriptor format
+---------------------------------------------------------
+  <implementation xmi:id="SenderContainerImpl">
+    <name>SenderContainerImpl</name>
+    <source/>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.ImplementationType</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>nl.remedy.it.CCM.Container</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <instance xmi:id="SenderContainerInst">
+    <name>SenderContainer</name>
+    <node>SenderNode</node>
+    <source/>
+    <configProperty>
+      <name>nl.remedy.it.PSDD.ZMQ.Service.PollingThreads</name>
+      <value>
+        <type>
+          <kind>tk_ulong</kind>
+        </type>
+        <value>
+          <ulong>10</ulong>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>nl.remedy.it.PSDD.ZMQ.Service.MaxSockets</name>
+      <value>
+        <type>
+          <kind>tk_long</kind>
+        </type>
+        <value>
+          <long>512</long>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+...
+...
+  <instance xmi:id="Sender_HelloConnectorInstance">
+    <name>Sender_HelloConnector</name>
+    <node>SenderNode</node>
+    <source/>
+    <implementation xmi:idref="Sender_HelloConnectorImplementation" />
+    <configProperty>
+      <name>nl.remedy.it.DnCX11.Container</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SenderContainer</string>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>topic_name</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>AXCIOMA::Hello</string>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>publish</name>
+      <value>
+        <type>
+          <kind>tk_boolean</kind>
+        </type>
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>nl.remedy.it.PSDD.ZMQ.Publisher.Endpoints</name>
+      <value>
+        <type>
+          <kind>tk_sequence</kind>
+          <sequence>
+            <elementType>
+              <kind>tk_string</kind>
+            </elementType>
+          </sequence>
+        </type>
+        <value>
+          <element>
+            <string>tcp://*:50005</string>
+          </element>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+....
+---------------------------------------------------------
+
+
+'''
+==== CURVE security support
+
+The PSDD4CCM ZeroMQ connector supports the CURVE security mechanism as described in the
+link:http://api.zeromq.org[ZeroMQ documentation] for `zmq_curve`.
+By default the PSDD4CCM ZeroMQ connector does not use any security.
+
+In case the `"curve_server"` field is set to *true* the ZeroMQ connection is set up for
+a CURVE server role (see the link:http://api.zeromq.org[ZeroMQ documentation] on
+*ZMQ_CURVE_SERVER* for more information) and the value of the `"curve_key"` field is
+used to install as the CURVE server secret key (see the link:http://api.zeromq.org[ZeroMQ documentation] on
+*ZMQ_CURVE_SECRETKEY* for more information).
+
+In case the `"curve_server"` field is set to *false* the ZeroMQ connection is set up for
+a CURVE client role (see the link:http://api.zeromq.org[ZeroMQ documentation] on
+*ZMQ_CURVE_SERVER* for more information) and the value of the `"curve_key"` field is
+used to install as the CURVE server public key (see the link:http://api.zeromq.org[ZeroMQ documentation] on
+*ZMQ_CURVE_SERVERKEY* for more information). +
+Additionally a public/private key-pair is generated and installed as the client's sercret
+and public key (see the link:http://api.zeromq.org[ZeroMQ documentation] on
+`zmq_curve_keypair`, *ZMQ_CURVE_SECRETKEY* and *ZMQ_CURVE_PUBLICKEY* for more information).
+
