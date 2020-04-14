@@ -26,7 +26,7 @@ namespace Hello_Sender_Impl
          : public IDL::traits<CCM_TT::TT_Handler>::base_type
   {
   public:
-    TT_Callback (IDL::traits< ::Hello::CCM_Sender>::weak_ref_type component_executor)
+    explicit TT_Callback (IDL::traits< ::Hello::CCM_Sender>::weak_ref_type component_executor)
     : component_executor_(component_executor)
     {}
 
