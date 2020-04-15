@@ -1,0 +1,30 @@
+/**
+* @file    zmq_psdd_listener.idl
+* @author  Martin Corino
+*
+* @brief   ZMQ Listener IDL for PSDD
+*
+* @copyright Copyright (c) Remedy IT Expertise BV
+*/
+
+#ifndef ZMQ_PSDD_LISTENER_IDL
+#define ZMQ_PSDD_LISTENER_IDL
+
+#include "psdd4ccm/impl/zmq_psdd_base.idl"
+
+module PSDD
+{
+  module ZMQ
+  {
+    local interface Listener
+    {
+      void mark_readable ();
+
+      void on_data_available ();
+
+      socket_type listen_socket ();
+    };
+  };
+};
+
+#endif

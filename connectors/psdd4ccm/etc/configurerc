@@ -1,0 +1,27 @@
+# configure setup for PSDD4CCM
+#
+
+configure :psdd4ccm_connector do
+
+  depends_on :ciaox11
+
+  # without supported Middleware psdd4ccm is disabled
+
+  ridl do
+    include '..'
+  end
+
+  brix11 do
+    include '..'
+  end
+
+  mpc do
+    include '$CIAOX11_ROOT/connectors/psdd4ccm/MPC/config'
+
+    mwc_include :psdd4ccm => %w{
+      $(CIAOX11_ROOT)/connectors/psdd4ccm/idl
+      $(CIAOX11_ROOT)/connectors/psdd4ccm/logger
+    }
+  end
+
+end

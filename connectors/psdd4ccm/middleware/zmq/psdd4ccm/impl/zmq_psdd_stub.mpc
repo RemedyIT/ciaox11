@@ -1,0 +1,62 @@
+project (*idl_gen) : ciaox11_psdd4ccm_idl {
+  custom_only = 1
+  idlflags += -Wb,stub_export_macro=ZMQ_PSDD_STUB_Export \
+              -Wb,stub_export_include=zmq_psdd_stub_export.h \
+              -I $(CIAOX11_ROOT)/connectors/psdd4ccm/middleware/zmq \
+              -Scdr -Scp -Sa -St
+
+  IDL_Files {
+    idlflags += -Gxhst
+    zmq_psdd_context.idl
+  }
+
+  IDL_Files {
+    idlflags += -Scc
+    zmq_psdd_base.idl
+    zmq_psdd_properties.idl
+  }
+
+  IDL_Files {
+    zmq_psdd_listener.idl
+  }
+}
+
+project (*) : ciaox11_psdd4ccm_stub, \
+              ciaox11_psdd4ccm_zmq, \
+              ciaox11_psdd4ccm_logger, \
+              ciaox11_state, \
+              ciaox11_output {
+  after += *idl_gen
+  sharedname = ciaox11_psdd_zmq_stub
+  includes += $(CIAOX11_ROOT)/connectors/psdd4ccm/middleware/zmq
+
+  dynamicflags += ZMQ_PSDD_STUB_BUILD_DLL
+
+  Header_Files {
+    zmq_psdd_stub_export.h
+    zmq_psdd_contextC.h
+    zmq_psdd_baseC.h
+    zmq_psdd_listenerC.h
+    zmq_psdd_context_i.h
+    zmq_psdd_data.h
+    zmq_psdd_data_i.h
+    zmq_psdd_service_helper.h
+    zmq_psdd_sockets.h
+    zmq_psdd_multiplex.h
+    zmq_psdd_poller.h
+    zmq_psdd_config.h
+  }
+
+  Source_Files {
+    zmq_psdd_contextC.cpp
+    zmq_psdd_listenerC.cpp
+    zmq_psdd_context_i.cpp
+    zmq_psdd_data_i.cpp
+    zmq_psdd_service_helper.cpp
+    zmq_psdd_sockets.cpp
+    zmq_psdd_multiplex.cpp
+    zmq_psdd_poller.cpp
+    zmq_psdd_config.cpp
+  }
+}
+

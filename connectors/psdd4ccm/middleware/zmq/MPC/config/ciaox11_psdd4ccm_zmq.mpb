@@ -1,0 +1,19 @@
+// --------------------------------------------------------------------
+// ciaox11_psdd4ccm_zmq.mpb
+//
+// Feature projects for specific PSDD middleware
+//
+// Copyright (c) Remedy IT Expertise BV
+// --------------------------------------------------------------------
+
+feature(psdd4ccm_zmq) : zmqlib {
+  macros += CIAOX11_PSDD4CCM_ZMQ=1
+}
+
+feature(!psdd4ccm_zmq) {
+  requires += dummy_label
+}
+
+feature(psdd4ccm, psdd4ccm_zmq) {
+  requires += zmq
+}

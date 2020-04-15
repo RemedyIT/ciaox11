@@ -1,0 +1,9 @@
+project(*) : taox11_exe, ciaox11_psdd4ccm_zmq_impl, ciaox11_psdd4ccm_logger {
+  requires += zmq
+
+  exename = emitter
+
+  Source_Files {
+    emitter.cpp
+  }
+}

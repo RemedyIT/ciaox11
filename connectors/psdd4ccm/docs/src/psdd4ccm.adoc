@@ -1,0 +1,153 @@
+include::_{backend}_settings.adoc[]
+
+= PubSub Data Distribution (PSDD4CCM)
+
+== What does a PSDD4CCM connector do?
+
+A PSDD4CCM connector implements a set of type specific interfaces
+providing an event pattern similar to <<{xref_docs_root}/dds4ccm/dds4ccm.html#,DDS4CCM>>. PSDD4CCM connectors do *not*
+provide a state pattern.
+
+PSDD4CCM is not part of the LwCCM specification but instead is an *AXCIOMA*
+specific, pluggable, feature targeted (among others) at IIOT environments.
+PSDD4CCM supports multiple middleware implementations often used in such
+environments. Currently PSDD4CCM supports ZeroMQ (MQTT support is available
+on request).
+
+By combining PSDD4CCM and DDS4CCM connectors *AXCIOMA* can also be used to
+bridge/route IIOT environments to corporate/production environments with
+little effort.
+Since PSDD4CCM and DDS4CCM both use IDL defined types, data can be simply
+be passed on from a PSDD4CCM receiving end to a DDS4CCM publishing end without
+need for conversion.
+
+PSDD4CCM also provides support for user defined data serialization such that
+an *AXCIOMA* application can be easily integrated with non-*AXCIOMA* IIOT
+devices or applications (an example has been provided).
+
+Applications requiring a (simple) event pattern without need for state or requiring
+integration with common IIOT protocols can generate and deploy type specific
+PSDD4CCM connector instances collocated with specific business components to
+connect event data to business processes (see <<psdd4ccm_design.adoc#,design>>).
+
+== Using a PSDD4CCM connector
+
+Like with <<{xref_docs_root}/dds4ccm/dds4ccm.html#,DDS4CCM>> the event data needs to
+be defined in IDL like this:
+[source,idl]
+-------------------
+module Test
+{
+  struct Message
+  {
+    string category; //@key
+    string description;
+    unsigned long value;
+  }; //@TopLevel()
+};
+-------------------
+
+Using the PSDD4CCM backend of the RIDL compiler it is than possible to fully generate
+the implementation of a PSDD4CCM connector based on this IDL definition.
+A PSDD4CMM connector defined and implemented in this way will provide interfaces
+compliant with the specification described <<psdd4ccm_design.adoc#,here>>.
+
+Please see <<psdd4ccm_details.adoc#,here>> for a more in-depth description of developing
+an application using PSDD4CCM connectors at the hand of an example provided in the *AXCIOMA*
+distribution.
+
+== Deploying a PSDD4CCM connector
+
+Like with DDS4CCM, connection management for PSDD4CCM connectors is outside the control of the
+*AXCIOMA* DnCX11 framework and therefor requires specifying connection parameters in the
+deployment plan. As the middleware supported by PSDD4CCM, ZeroMQ and MQTT (on request), lacks a standardized
+discovery protocol like DDS4CCM and each middleware implementation requires different parameters,
+middleware specific configuration property descriptors have been defined to use in deployment plans.
+
+Each PSDD4CCM connector instance requires the specification of at least two of three possible
+common `ConfigProperty` (or `ExecParameter`) descriptors in a deployment plan:
+
+. `topic_name` +
+a string value specifying the topic name used to identify the events being published or subscribed to
+. `publish` +
+a boolean value specifying whether the Publisher port of the connector needs to be activated.
+. `subscribe` +
+a boolean value specifying whether the Subscriber and Getter ports and the Listener receptacle need to be
+activated.
+
+In addition to these common properties a PSDD4CCM connector requires a selection of the middleware specific
+configuration properties specified to configure the connection endpoints and middleware behaviour.
+
+See <<{xref_docs_root}/dancex11/deployment-planning.html#_the_plan,here>> for more detailed information on how
+to specify instance properties in a deployment plan.
+
+This is an example of the configuration for a PSDD4CCM ZMQ connector in _CONFIG_ descriptor
+format:
+---------------------------------------------------------
+# Receiver_HelloConnector instance
+nl.remedy.it.CCM.Component Receiver_HelloConnector hello_psdd_zmq_conn create_Test_Hello_PSDD_Event_Impl
+    nl.remedy.it.DnCX11.ExecParameter nl.remedy.it.DnCX11.Servant.Factory "create_Test_Hello_PSDD_Event_Servant"
+    nl.remedy.it.DnCX11.Node "ReceiverNode"
+    nl.remedy.it.DnCX11.Locality "ReceiverLocality"
+    nl.remedy.it.DnCX11.ConfigProperty topic_name "AXCIOMA::Hello"
+    nl.remedy.it.DnCX11.ConfigProperty subscribe true
+    nl.remedy.it.DnCX11.ConfigProperty nl.remedy.it.PSDD.ZMQ.Subscriber.Endpoints ["tcp://localhost:50005"]
+    nl.remedy.it.DnCX11.ConfigProperty nl.remedy.it.PSDD.ZMQ.Subscriber.ReceiveTimeout int32:2000
+    nl.remedy.it.DnCX11.Connection ReceiverComponent
+      pull_consumer_data > hello_read
+      consumer_data_subscriber > hello_sub
+---------------------------------------------------------
+
+And this is an example of the configuration for a PSDD4CCM ZMQ connector in D&C standard XML
+descriptor format:
+---------------------------------------------------------
+  <instance xmi:id="Sender_HelloConnectorInstance">
+    <name>Sender_HelloConnector</name>
+    <node>SenderNode</node>
+    <source/>
+    <implementation xmi:idref="Sender_HelloConnectorImplementation" />
+    <configProperty>
+      <name>topic_name</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>AXCIOMA::Hello</string>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>publish</name>
+      <value>
+        <type>
+          <kind>tk_boolean</kind>
+        </type>
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>nl.remedy.it.PSDD.ZMQ.Publisher.Endpoints</name>
+      <value>
+        <type>
+          <kind>tk_sequence</kind>
+          <sequence>
+            <elementType>
+              <kind>tk_string</kind>
+            </elementType>
+          </sequence>
+        </type>
+        <value>
+          <element>
+            <string>tcp://*:50005</string>
+          </element>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+---------------------------------------------------------
+
+Please see <<psdd4ccm_deployment.adoc#,here>> for a more in-depth description of the deployment
+configuration of PSDD4CCM connectors.

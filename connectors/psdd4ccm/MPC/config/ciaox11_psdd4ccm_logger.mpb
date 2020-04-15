@@ -1,0 +1,11 @@
+// --------------------------------------------------------------------
+// ciaox11_psdd4ccm_logger.mpb
+//
+// Copyright (c) Remedy IT Expertise BV
+// --------------------------------------------------------------------
+
+// feature project for psdd4ccm_logging
+feature(x11_logging) {
+  after += ciaox11_psdd4ccm_logger
+  libs  += ciaox11_psdd4ccm_logger
+}

@@ -1,0 +1,31 @@
+/**
+* @file    topic.idl
+* @author  Martin Corino
+*
+* @brief   Message topic IDL
+*
+* @copyright Copyright (c) Remedy IT Expertise BV
+*/
+
+#ifndef TOPIC_IDL
+#define TOPIC_IDL
+
+module Test
+{
+  enum ECategory
+  {
+    ODD,
+    EVEN
+  };
+
+  struct Topic
+  {
+    ECategory category; //@key
+    unsigned long value; //@key
+    string description;
+    char opt;
+    boolean flag;
+  }; //@TopLevel()
+};
+
+#endif

@@ -1,0 +1,25 @@
+/**
+* @file    zmq_psdd_context.idl
+* @author  Martin Corino
+*
+* @brief   ZMQ Context IDL for PSDD
+*
+* @copyright Copyright (c) Remedy IT Expertise BV
+*/
+
+#ifndef ZMQ_PSDD_CONTEXT_IDL
+#define ZMQ_PSDD_CONTEXT_IDL
+
+module PSDD
+{
+  module ZMQ
+  {
+    const string PSDD4CCM_ZMQ_CONTEXT_ID = "PSDD4CCM.ZMQ.CONTEXT";
+
+    local interface ContextBase
+    {
+    };
+  };
+};
+
+#endif

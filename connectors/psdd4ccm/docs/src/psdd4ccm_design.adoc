@@ -1,0 +1,106 @@
+include::_{backend}_settings.adoc[]
+
+= The PSDD4CCM PubSub connector
+
+== Design
+
+
+The PSDD4CCM PubSub connector provides type specific interfaces for publishing and
+subscribing events in a way similar to DDS4CCM.
+PSDD4CCM comes with an RIDL backend extension (RIDL facet) which provides the support
+for generating connector implementations based on user defined IDL types. IDL
+templates are used to standardize and simplify code generation.
+The base PSDD4CCM IDL is defined link:{docs_root}/../../ciaox11/connectors/psdd4ccm/idl[here].
+
+The PSDD4CCM publish and subscribe interfaces are defined with this template IDL:
+
+[source,IDL]
+.PSDD4CCM PubSub interface IDL
+-----------------------------------------------
+module CCM_PSDD
+{
+  module Typed <typename T, sequence<T> TSeq> {
+
+    // -- Publisher: to publish data
+    local interface Publisher {
+      void write_one (in T datum)
+              raises (InternalError);
+      void write_many (in TSeq data)
+              raises (InternalError);
+    };
+
+    // -- Subscriber: to manage subscriptions
+    local interface Subscriber {
+      void subscribe_any ()
+                    raises (InternalError);
+      void subscribe (in T keyvalue)
+                    raises (InternalError);
+      void unsubscribe_any ()
+                    raises (InternalError);
+      void unsubscribe (in T keyvalue)
+              raises (InternalError);
+    };
+
+    // -- Getter: to get new data (and wait for)
+    local interface Getter {
+      boolean get_one (out T datum)
+              raises (InternalError);
+      boolean get_many (out TSeq data)
+              raises (InternalError);
+      attribute DataCount_t       max_data;     // default UNLIMITED (0)
+    };
+
+    // -- Listener: similar to a Getter but in push mode
+    local interface Listener {
+      void on_data (inout TSeq data);
+      attribute ListenerMode      listen_mode;  // default ONE_BY_ONE
+      attribute DataCount_t       max_data;     // default UNLIMITED (0)
+    };
+
+    connector PSDD_Event : PSDD_Base
+    {
+      provides Publisher  supplier_data;
+      provides Getter pull_consumer_data;
+      uses Listener push_consumer_data_listener;
+      provides Subscriber consumer_data_subscriber;
+    };
+
+  }; /* module Typed */
+
+}; /* module CCM_PSDD */
+-----------------------------------------------
+
+The _Publisher_ interface supports writing a single datum or many (sequence) at a
+time. +
+The `write_many` method will stop publishing datum instances from the provided
+sequence after the first error encountered.
+
+The _Subscriber_ interface supports subscribing to (any or filtered) or unsubscribing
+from events. +
+By default connectors will not subscribe and no events will be received or be available
+for reading. +
+The `subscribe` method will subscribe to any data matching the key value(s) supplied. In
+case of complex (multiple fields) keys optionally partial key values can be supplied
+(middleware specific caveats can apply; tread carefully). +
+The `subscribe` and `unsubscribe` methods can be called multiple times with different
+key values.
+
+The _Getter_ interface supports synchronous reading of a single datum or multiple
+(sequence) at a time. +
+The `get_one` and `get_many` methods will return `true` if data has been collected and
+`false` if no data could be collected before timing out (middleware specific configurable). +
+In case `true` is returned `get_many` will return all *available* data within the `max_data`
+limit. The receive timeout only applies to reading the first datum. When less than `max_data`
+data is available after collecting the first datum only those available will be collected
+and returned without waiting for more.
+
+The _Listener_ interface supports asynchronous collection of data (single or multiple). +
+The `listen_mode` attribute determines whether collection is disabled (`NOT_ENABLED`, default),
+enabled for a single datum at a time (`ONE_BY_ONE`) or for all available (`ANY_AVAILABLE`)
+within the limit set by `max_data`.
+Implementations of the _Listener_ interface should not block and return control to the caller
+as soon as possible to avoid starving the listener threads.
+
+All fully generated PSDD4CCM connectors provide facets implementing the _Publisher_,
+_Subscriber_ and _Getter_ interfaces as well as providing a base _Listener_ interface for implementing
+user defined listeners and implementing a receptacle for installing such a listener instance.

@@ -1,0 +1,142 @@
+include::_{backend}_settings.adoc[]
+
+= Deploying PSDD4CCM connectors
+
+== PSDD4CCM deployment configuration
+
+As the middleware supported by PSDD4CCM (ZeroMQ) lacks a standardized
+discovery protocol like DDS4CCM and each middleware implementation requires different parameters
+middleware specific configuration property descriptors have been defined to use in deployment
+plans.
+PSDD4CCM deployment configuration requires the specification of a selection of these properties
+complementing the basic configuration for the three common connector attributes.
+
+=== PSDD4CCM deployment attributes
+
+PSDD4CCM connectors define three attributes that need to be set to appropriate values
+in a deployment plan through the definition of a property for the PSDD4CCM
+connector instances in the plan.
+
+. `topic_name` +
+a string value specifying the topic name used to identify the events being published or subscribed to
+. `publish` +
+a boolean value specifying whether the Publisher port of the connector needs to be activated.
+. `subscribe` +
+a boolean value specifying whether the Subscriber and Getter ports and the Listener receptacle need to be
+activated.
+
+==== topic_name
+
+This attribute must be set to a string value providing an ID for the event samples
+published or subscribed. The ID will be used as the 'primary key' in the selection
+of event samples.
+
+.example of setting `topic_name` property in _CONFIG_ descriptor format
+---------------------------------------------------------
+    nl.remedy.it.DnCX11.ConfigProperty topic_name "AXCIOMA::Hello"
+---------------------------------------------------------
+
+.example of setting `topic_name` property in XML descriptor format
+---------------------------------------------------------
+    <configProperty>
+      <name>topic_name</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>AXCIOMA::Hello</string>
+        </value>
+      </value>
+    </configProperty>
+---------------------------------------------------------
+
+==== publish
+
+This attribute must be set to `true` to activate the Publisher port (`supplier_data`) and the required
+middleware functionality.
+
+.example of setting `publish` property in _CONFIG_ descriptor format
+---------------------------------------------------------
+    nl.remedy.it.DnCX11.ConfigProperty publish true
+---------------------------------------------------------
+
+.example of setting `publish` property in XML descriptor format
+---------------------------------------------------------
+    <configProperty>
+      <name>publish</name>
+      <value>
+        <type>
+          <kind>tk_boolean</kind>
+        </type>
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </value>
+    </configProperty>
+---------------------------------------------------------
+
+==== subscribe
+
+This attribute must be set to `true` to activate the Subscriber (`consumer_data_subscriber`) and Getter
+(`pull_consumer_data`) ports, the Listener (`push_consumer_data_listener`) receptacle and the required
+middleware functionality.
+
+.example of setting `subscribe` property in _CONFIG_ descriptor format
+---------------------------------------------------------
+    nl.remedy.it.DnCX11.ConfigProperty subscribe true
+---------------------------------------------------------
+
+.example of setting `subscribe` property in XML descriptor format
+---------------------------------------------------------
+    <configProperty>
+      <name>subscribe</name>
+      <value>
+        <type>
+          <kind>tk_boolean</kind>
+        </type>
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </value>
+    </configProperty>
+---------------------------------------------------------
+
+=== PSDD4CCM middleware configuration
+
+PSDD4CCM defines middleware specific deployment properties that need to be used to configure
+a deployed PSDD4CCM connector in combination with the common attributes described
+<<PSDD4CCM deployment attributes,here>>.
+Depending on the middleware implementation for which the deployed PSDD4CCM connectors
+are generated and the settings of the `publish` and `subscribe` attributes the user must set values
+in accordance with the appropriate property specifications.
+
+.example of setting a configuration property in _CONFIG_ descriptor format
+---------------------------------------------------------
+    nl.remedy.it.DnCX11.ConfigProperty nl.remedy.it.PSDD.ZMQ.Subscriber.Endpoints ["tcp://localhost:50005"]
+---------------------------------------------------------
+
+.example of setting `service_settings` property in XML descriptor format
+---------------------------------------------------------
+    <configProperty>
+      <name>nl.remedy.it.PSDD.ZMQ.Publisher.Endpoints</name>
+      <value>
+        <type>
+          <kind>tk_sequence</kind>
+          <sequence>
+            <elementType>
+              <kind>tk_string</kind>
+            </elementType>
+          </sequence>
+        </type>
+        <value>
+          <element>
+            <string>tcp://*:50005</string>
+          </element>
+        </value>
+      </value>
+    </configProperty>
+---------------------------------------------------------
+
+See <<psdd4ccm_zmq_details.adoc#_deployment,here>> for details concerning the deployment properties
+for the PSDD4CCM ZMQ middleware implementation.

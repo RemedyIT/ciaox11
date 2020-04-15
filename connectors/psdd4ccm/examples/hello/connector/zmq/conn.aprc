@@ -1,0 +1,52 @@
+
+# recipe for psdd4ccm connector with recipe_id 'hello_psdd_zmq_conn'
+connector 'hello_psdd_zmq_conn', :psdd4ccm_zmq do |conn|
+
+  # conn.idl %w{ ... }
+
+  # prefix of generated export headers (default: recipe_id)
+  conn.export_name 'hello'
+
+  # For the shared name of the psdd4ccm connector, the project creator adds '_psdd_<middleware>_conn' after
+  # the property 'shared_name' (default: recipe id)
+  conn.shared_name 'hello'
+
+  conn.port_type :psdd4ccm do |tp|
+    tp.topic 'string'
+    tp.topic_namespace 'Test'
+    tp.topic_sequence 'StringSeq_t'
+    tp.topic_interface 'Hello'
+    tp.middleware :zmq
+  end
+
+  # gen_dir is default 'generated_code'
+  # conn.gen_dir 'build'
+
+end
+
+# recipe for psdd4ccm connector with recipe_id 'msg_psdd_zmq_conn'
+connector 'msg_psdd_zmq_conn', :psdd4ccm_zmq do |conn|
+
+  conn.idl %w{ message.idl }
+
+  # prefix of generated export headers (default: recipe_id)
+  conn.export_name 'msg'
+
+  # For the shared name of the psdd4ccm connector, the project creator adds '_psdd_<middleware>_conn' after
+  # the property 'shared_name' (default: recipe id)
+  conn.shared_name 'msg'
+
+  conn.port_type :psdd4ccm do |tp|
+    tp.topic 'Test::Message'
+    tp.topic_sequence_suffix 'Seq_t'
+    tp.topic_interface 'Msg'
+    tp.middleware 'zmq'
+  end
+
+  # gen_dir is default 'generated_code'
+  # conn.gen_dir 'build'
+
+end
+
+
+

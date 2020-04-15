@@ -1,0 +1,364 @@
+include::_{backend}_settings.adoc[]
+
+= The PSDD4CCM Custom Serializer
+
+== Design
+
+The PSDD4CCM PubSub connector specifies a common serializer interface for implementing
+PSDD event serializing and de-serializing.
+
+This interface is also defined in the common PSDD4CCM IDL which can be found
+link:{docs_root}/../../ciaox11/connectors/psdd4ccm/idl[here].
+
+The serializer interface is defined in IDL as follows.
+
+[source,IDL]
+.PSDD4CCM serializer interface IDL
+-----------------------------------------------
+module CCM_PSDD
+{
+  module Typed <typename T, sequence<T> TSeq> {
+
+    ...
+
+    /// Serializer: packs/unpacks keys and data
+    local interface Serializer {
+      boolean setup_pack (in PSData data);
+      boolean pack_key (in PSData data, in T keyvalue);
+      boolean pack_data (in PSData data, in T datum);
+      void finalize_pack (in PSData data);
+
+      boolean setup_unpack (in PSData data);
+      boolean unpack_key (in PSData data, inout T keyvalue);
+      boolean unpack_data (in PSData data, inout T datum);
+      void finalize_unpack (in PSData data);
+    };
+  }; /* module Typed */
+
+}; /* module CCM_PSDD */
+-----------------------------------------------
+
+The interface defines 2 sets of 4 methods to implement; 4 for packing (serializing) data and 4 for
+unpacking (de-serializing) data.
+
+The processing sequence for packing and unpacking is similar and fixed.
+
+. setup (un)packing +
+-> triggers a call to the `setup_XXX` methods
+. (un)pack key data +
+-> triggers a call to the `XXX_key` methods
+. (un)pack non-key data +
+-> triggers a call to the `XXX_data` methods
+. finalize (un)packing +
+-> triggers a call to the `finalize_XXX` methods
+
+The packing sequence is triggered for publishing events *and* for subscribing to events. When packing
+for subscriptions the system will ignore any non-key data packed.
+
+The unpacking sequence is triggered for deserializing events being retrieved through the _Getter_ interface
+or being provided through the _Listener_ interface.
+
+As each middleware implementation has different requirements for providing key and payload data
+PSDD4CCM defines an opaque interface, `CCM_PSDD::PSData`, as a base for middleware specific data
+stream object implementations.
+
+The _PSData_ interface reference provided to the serializer methods is defined in IDL as follows.
+
+[source,IDL]
+.PSDD4CCM PSData interface IDL
+-----------------------------------------------
+module CCM_PSDD
+{
+  /// PSData: opaque handle for native event data
+  local interface PSData
+  {
+  };
+};
+-----------------------------------------------
+
+The interface reference provides an opaque handle to a middleware specific serialization object.
+
+Details concerning the middleware specific implementations of PSData objects and serialization can
+be found <<psdd4ccm_zmq_details.adoc#,here>> for ZMQ.
+
+== Implementation
+
+A test with an example implementation of a custom serializer can be found
+link:{docs_root}/../../ciaox11/connectors/psdd4ccm/tests/custom-serializer[here].
+
+When generating a PSDD4CCM connector from the connector IDL the PSDD4CCM backend does not only
+generate code for the typed _Publisher_, _Subscriber_, _Getter_ and _Listener_
+interfaces but also for the _Serializer_ interface.
+The generated `<connector-idl-basename>PSC.{h,cpp}` and `<connector-idl-basename>PSEC.{h,cpp}` files
+provide the generated stub and lem interfaces for `CCM_Serializer` (in the same scope as the other
+typed interfaces) which should be used as the base class for implementing the serializer.
+
+So, from connector IDL defining the PSDD4CCM template instantiation like this:
+
+[source,IDL]
+.PSDD4CCM connector IDL
+-----------------------------------------------
+#include <ccm_psdd.idl>
+
+#include "topic.idl"
+
+module Test
+{
+  typedef sequence<Test::Topic> TopicSeq;
+
+  module ::CCM_PSDD::Typed<Test::Topic, TopicSeq> TopicInterface;
+}; /* Test */
+-----------------------------------------------
+
+the following serializer stub en lem interfaces will be generated:
+
+[source,c++]
+.PSDD4CCM serializer stub
+-----------------------------------------------
+namespace Test
+{
+  namespace TopicInterface
+  {
+
+    // generated from c++11/templates/cli/hdr/interface_pre
+    /// @copydoc topicPS.idl::Test::TopicInterface::Serializer
+    class TOPICPS_STUB_Export Serializer
+      : public virtual TAOX11_NAMESPACE::CORBA::LocalObject
+    {
+    public:
+      template <typename T> friend struct TAOX11_CORBA::object_traits;
+
+      /// @name Member types
+      //@{
+      typedef TAOX11_IDL::traits< Serializer>           _traits_type;
+      /// Strong reference type
+      typedef TAOX11_IDL::traits< Serializer>::ref_type _ref_type;
+      //@}
+
+      /// Determine if we are of the type specified by the @a logical_type_id.
+      bool _is_a (const std::string& local_type_id) override;
+
+      // generated from c++11/templates/cli/hdr/operation
+      /// @copydoc topicPS.idl::Test::TopicInterface::Serializer::setup_pack
+      virtual
+      bool
+      setup_pack (
+          IDL::traits< ::CCM_PSDD::PSData>::ref_type data) = 0;
+
+      // generated from c++11/templates/cli/hdr/operation
+      /// @copydoc topicPS.idl::Test::TopicInterface::Serializer::pack_key
+      virtual
+      bool
+      pack_key (
+          IDL::traits< ::CCM_PSDD::PSData>::ref_type data,
+          const ::Test::Topic& keyvalue) = 0;
+
+      // generated from c++11/templates/cli/hdr/operation
+      /// @copydoc topicPS.idl::Test::TopicInterface::Serializer::pack_data
+      virtual
+      bool
+      pack_data (
+          IDL::traits< ::CCM_PSDD::PSData>::ref_type data,
+          const ::Test::Topic& datum) = 0;
+
+      // generated from c++11/templates/cli/hdr/operation
+      /// @copydoc topicPS.idl::Test::TopicInterface::Serializer::finalize_pack
+      virtual
+      void
+      finalize_pack (
+          IDL::traits< ::CCM_PSDD::PSData>::ref_type data) = 0;
+
+      // generated from c++11/templates/cli/hdr/operation
+      /// @copydoc topicPS.idl::Test::TopicInterface::Serializer::setup_unpack
+      virtual
+      bool
+      setup_unpack (
+          IDL::traits< ::CCM_PSDD::PSData>::ref_type data) = 0;
+
+      // generated from c++11/templates/cli/hdr/operation
+      /// @copydoc topicPS.idl::Test::TopicInterface::Serializer::unpack_key
+      virtual
+      bool
+      unpack_key (
+          IDL::traits< ::CCM_PSDD::PSData>::ref_type data,
+          ::Test::Topic& keyvalue) = 0;
+
+      // generated from c++11/templates/cli/hdr/operation
+      /// @copydoc topicPS.idl::Test::TopicInterface::Serializer::unpack_data
+      virtual
+      bool
+      unpack_data (
+          IDL::traits< ::CCM_PSDD::PSData>::ref_type data,
+          ::Test::Topic& datum) = 0;
+
+      // generated from c++11/templates/cli/hdr/operation
+      /// @copydoc topicPS.idl::Test::TopicInterface::Serializer::finalize_unpack
+      virtual
+      void
+      finalize_unpack (
+          IDL::traits< ::CCM_PSDD::PSData>::ref_type data) = 0;
+
+      // generated from c++11/templates/cli/hdr/interface_post
+    protected:
+      typedef std::shared_ptr<Serializer> _shared_ptr_type;
+
+#if defined (_MSC_VER) && (_MSC_VER < 1920)
+      /// Default constructor
+      Serializer () {};
+#else
+      /// Default constructor
+      Serializer () = default;
+#endif /* _MSC_VER < 1920 */
+      /// Destructor
+      virtual ~Serializer () = default;
+
+      /// Returns a strong client reference for the local object you are calling
+      IDL::traits< ::Test::TopicInterface::Serializer>::ref_type _this ();
+
+    private:
+      /** @name Illegal to be called. Deleted explicitly to let the compiler detect any violation */
+      //@{
+      Serializer (const Serializer&) = delete;
+      Serializer (Serializer&&) = delete;
+      Serializer& operator= (const Serializer&) = delete;
+      Serializer& operator= (Serializer&&) = delete;
+      //@}
+    }; // class Serializer
+  } // namespace TopicInterface
+
+} // namespace Test
+-----------------------------------------------
+
+[source,c++]
+.PSDD4CCM serializer LEM
+-----------------------------------------------
+namespace Test
+{
+  namespace TopicInterface
+  {
+
+    // generated from c++11/templates/cli/hdr/interface_pre
+    /// @copydoc topicPSE.idl::Test::TopicInterface::CCM_Serializer
+    class TOPICPS_LEM_STUB_Export CCM_Serializer
+      : public virtual ::Test::TopicInterface::Serializer
+    {
+    public:
+      template <typename T> friend struct TAOX11_CORBA::object_traits;
+
+      /// @name Member types
+      //@{
+      typedef TAOX11_IDL::traits< CCM_Serializer>           _traits_type;
+      /// Strong reference type
+      typedef TAOX11_IDL::traits< CCM_Serializer>::ref_type _ref_type;
+      //@}
+
+      /// Determine if we are of the type specified by the @a logical_type_id.
+      bool _is_a (const std::string& local_type_id) override;
+
+      // generated from c++11/templates/cli/hdr/interface_post
+    protected:
+      typedef std::shared_ptr<CCM_Serializer> _shared_ptr_type;
+
+#if defined (_MSC_VER) && (_MSC_VER < 1920)
+      /// Default constructor
+      CCM_Serializer () {};
+#else
+      /// Default constructor
+      CCM_Serializer () = default;
+#endif /* _MSC_VER < 1920 */
+      /// Destructor
+      virtual ~CCM_Serializer () = default;
+
+      /// Returns a strong client reference for the local object you are calling
+      IDL::traits< ::Test::TopicInterface::CCM_Serializer>::ref_type _this ();
+
+    private:
+      /** @name Illegal to be called. Deleted explicitly to let the compiler detect any violation */
+      //@{
+      CCM_Serializer (const CCM_Serializer&) = delete;
+      CCM_Serializer (CCM_Serializer&&) = delete;
+      CCM_Serializer& operator= (const CCM_Serializer&) = delete;
+      CCM_Serializer& operator= (CCM_Serializer&&) = delete;
+      //@}
+    }; // class CCM_Serializer
+  } // namespace TopicInterface
+
+} // namespace Test
+-----------------------------------------------
+
+When developing a custom serializer a shared library (DLL) should be implemented with an
+implementation of a serializer class derived from `CCM_Serializer` and exporting a single
+`extern "C"` declared function that implements the factory function for the implemented
+serializer.
+
+The header file for such a custom serializer could look like this.
+
+[source,c++]
+.PSDD4CCM custom serializer header
+-----------------------------------------------
+#include "topicPSEC.h"
+#include "serializer_export.h"
+
+namespace Emitter
+{
+  namespace Topic
+  {
+    class SERIALIZER_Export Custom_ZMQ_Serializer
+      : public ::Test::TopicInterface::CCM_Serializer
+    {
+    public:
+      Custom_ZMQ_Serializer () = default;
+      virtual ~Custom_ZMQ_Serializer () = default;
+
+      /// @copydoc topicPS.idl::LoRa::Topic::Serializer::setup_pack
+      bool
+      setup_pack (
+          IDL::traits< ::CCM_PSDD::PSData>::ref_type data) override;
+
+      /// @copydoc topicPS.idl::LoRa::Topic::Serializer::pack_key
+      bool
+      pack_key (
+          IDL::traits< ::CCM_PSDD::PSData>::ref_type data,
+          const ::Test::Topic& keyvalue) override;
+
+      /// @copydoc topicPS.idl::LoRa::Topic::Serializer::pack_data
+      bool
+      pack_data (
+          IDL::traits< ::CCM_PSDD::PSData>::ref_type data,
+          const ::Test::Topic& datum) override;
+
+      /// @copydoc topicPS.idl::LoRa::Topic::Serializer::finalize_pack
+      void
+      finalize_pack (
+          IDL::traits< ::CCM_PSDD::PSData>::ref_type data) override;
+
+      /// @copydoc topicPS.idl::LoRa::Topic::Serializer::setup_unpack
+      bool
+      setup_unpack (
+          IDL::traits< ::CCM_PSDD::PSData>::ref_type data) override;
+
+      /// @copydoc topicPS.idl::LoRa::Topic::Serializer::unpack_key
+      bool
+      unpack_key (
+          IDL::traits< ::CCM_PSDD::PSData>::ref_type data,
+          ::Test::Topic& keyvalue) override;
+
+      /// @copydoc topicPS.idl::LoRa::Topic::Serializer::unpack_data
+      bool
+      unpack_data (
+          IDL::traits< ::CCM_PSDD::PSData>::ref_type data,
+          ::Test::Topic& datum) override;
+
+      /// @copydoc topicPS.idl::LoRa::Topic::Serializer::finalize_unpack
+      void
+      finalize_unpack (
+          IDL::traits< ::CCM_PSDD::PSData>::ref_type data) override;
+    };
+  }
+}
+
+// Custom Topic ZMQ Serializer factory
+extern "C" SERIALIZER_Export  void
+create_Custom_Topic_ZMQ_Serializer (
+  IDL::traits<CORBA::LocalObject>::ref_type&);
+-----------------------------------------------

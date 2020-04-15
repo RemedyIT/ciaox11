@@ -1,0 +1,41 @@
+/**
+* @file    topic.idl
+* @author  Martin Corino
+*
+* @brief   Message topic IDL
+*
+* @copyright Copyright (c) Remedy IT Expertise BV
+*/
+
+#ifndef TOPIC_IDL
+#define TOPIC_IDL
+
+module Test
+{
+  enum ECategory
+  {
+    ODD,
+    EVEN
+  };
+
+  // Struct is not toplevel (not used as event by itself)
+  // and has no designated, separate, key memebers.
+  struct Key
+  {
+    ECategory category;
+    unsigned long value;
+  };
+
+  // Toplevel struct defines nokey struct as key member type
+  // in which case the member type is considered key-only
+  // (entire value is key value).
+  struct Topic
+  {
+    Key the_key; //@key
+    string description;
+    char opt;
+    boolean flag;
+  }; //@TopLevel()
+};
+
+#endif

@@ -1,0 +1,26 @@
+/**
+* @file    topic.idl
+* @author  Martin Corino
+*
+* @brief   Message topic IDL
+*
+* @copyright Copyright (c) Remedy IT Expertise BV
+*/
+
+#ifndef TOPIC_IDL
+#define TOPIC_IDL
+
+module Test
+{
+  typedef sequence<unsigned long, 10> ULongSeq;
+
+  struct Topic
+  {
+    string category;
+    string description;
+    ULongSeq values;
+
+  }; //@TopLevel()
+};
+
+#endif

@@ -1,0 +1,250 @@
+/**
+* @file    zmq_psdd_properties.idl
+* @author  Martin Corino
+*
+* @brief   ZMQ PSDD configuration properties
+*
+* @copyright Copyright (c) Remedy IT Expertise BV
+*/
+
+#ifndef ZMQ_PSDD_PROPERTIES_IDL
+#define ZMQ_PSDD_PROPERTIES_IDL
+
+module PSDD
+{
+  module ZMQ
+  {
+    /// Connection schemes
+    /// Bind socket to endpoint
+    const string CONN_BIND = "BIND";
+    /// Bind socket through multiplexer (exclusive for publishers)
+    const string CONN_BIND_MULTPLEX = "BIND_MULTIPLEX";
+    /// Connect socket to endpoint
+    const string CONN_CONNECT = "CONNECT";
+
+    enum ConnectionScheme
+    {
+      BIND,
+      BIND_MULTIPLEX,
+      CONNECT
+    };
+
+    // Publisher properties
+
+    /// Specifies the publisher endpoints to bind to if publisher activated.
+    /// Property value is sequence/array of string.
+    const string PUBLISHER_ENDPOINTS = "nl.remedy.it.PSDD.ZMQ.Publisher.Endpoints";
+
+    /// Specifies what connection scheme to use for publisher socket.
+    /// Property value is a string (default "BIND").
+    const string PUBLISHER_CONN_SCHEME = "nl.remedy.it.PSDD.ZMQ.Publisher.Connection";
+
+    /// Specifies whether to support IPv6 endpoints (ZMQ_IPV6 option).
+    /// Property value is a boolean.
+    const string PUBLISHER_IPV6 = "nl.remedy.it.PSDD.ZMQ.Publisher.IPV6";
+
+    /// Specifies the ZMQ_SNDTIMEO option in millisec.
+    /// Property value is an int32.
+    const string PUBLISHER_SEND_TIMEOUT = "nl.remedy.it.PSDD.ZMQ.Publisher.SendTimeout";
+
+    /// Specifies the ZMQ_RECOVERY_IVL option in millisec.
+    /// Property value is an int32.
+    const string PUBLISHER_RECOVERY_IVL = "nl.remedy.it.PSDD.ZMQ.Publisher.RecoveryIVL";
+
+    // Tuning and tweaking settings for publishers.
+
+    /// Specifies the ZMQ_TOS option.
+    /// Property value is an int32.
+    const string PUBLISHER_TUNING_TOS = "nl.remedy.it.PSDD.ZMQ.Publisher.Tuning.TOS";
+
+    /// Specifies the ZMQ_AFFINITY option.
+    /// Property value is a uint64.
+    const string PUBLISHER_TUNING_IO_AFFINITY = "nl.remedy.it.PSDD.ZMQ.Publisher.Tuning.IOAffinity";
+
+    /// Specifies the ZMQ_LINGER option in millisec.
+    /// Property value is an int32.
+    const string PUBLISHER_TUNING_LINGER = "nl.remedy.it.PSDD.ZMQ.Publisher.Tuning.LINGER";
+
+    /// Specifies the ZMQ_MAXMSGSIZE option.
+    /// Property value is a int64.
+    const string PUBLISHER_TUNING_MAXMSGSIZE = "nl.remedy.it.PSDD.ZMQ.Publisher.Tuning.MaxMsgSize";
+
+    /// Specifies the ZMQ_MULTICAST_HOPS option.
+    /// Property value is a int32.
+    const string PUBLISHER_TUNING_MCAST_HOPS = "nl.remedy.it.PSDD.ZMQ.Publisher.Tuning.MulticastHops";
+
+    /// Specifies the ZMQ_MULTICAST_MAXTPDU option in bytes.
+    /// Property value is a int32.
+    const string PUBLISHER_TUNING_MCAST_MAXTPDU = "nl.remedy.it.PSDD.ZMQ.Publisher.Tuning.MulticastTPDU";
+
+    /// Specifies the ZMQ_RATE option in kilobits/sec.
+    /// Property value is a int32.
+    const string PUBLISHER_TUNING_MCAST_RATE = "nl.remedy.it.PSDD.ZMQ.Publisher.Tuning.MulticastRate";
+
+    /// Specifies the ZMQ_RCVBUF option in bytes.
+    /// Property value is a int32.
+    const string PUBLISHER_TUNING_RCVBUF = "nl.remedy.it.PSDD.ZMQ.Publisher.Tuning.RcvBuf";
+
+    /// Specifies the ZMQ_RCVHWM option in messages.
+    /// Property value is a int32.
+    const string PUBLISHER_TUNING_RCVHWM = "nl.remedy.it.PSDD.ZMQ.Publisher.Tuning.RcvHwm";
+
+    /// Specifies the ZMQ_SNDBUF option in bytes.
+    /// Property value is a int32.
+    const string PUBLISHER_TUNING_SNDBUF = "nl.remedy.it.PSDD.ZMQ.Publisher.Tuning.SndBuf";
+
+    /// Specifies the ZMQ_SNDHWM option in messages.
+    /// Property value is a int32.
+    const string PUBLISHER_TUNING_SNDHWM = "nl.remedy.it.PSDD.ZMQ.Publisher.Tuning.SndHwm";
+
+    /// Specifies the ZMQ_HANDSHAKE_IVL option in millisec.
+    /// Property value is an int32.
+    const string PUBLISHER_TUNING_HANDSHAKE_IVL = "nl.remedy.it.PSDD.ZMQ.Publisher.Tuning.HandshakeIVL";
+
+    // Security settings for publishers.
+
+    /// Specifies whether to set up as Curve server or client (ZMQ_CURVE_SERVER option).
+    /// Specifying this property (true or false) implicitly enables CURVE security.
+    /// If not specified no security is active.
+    /// Property value is a boolean.
+    const string PUBLISHER_CURVE_SERVER = "nl.remedy.it.PSDD.ZMQ.Publisher.CurveServer";
+
+    /// Specifies the CURVE key to apply. Ignored if no CURVE server property is specified.
+    /// When set up as a CURVE server this specifies the ZMQ_CURVE_SECRETKEY, otherwise this
+    /// specifies the ZMQ_CURVE_SERVERKEY.
+    /// Property is a string value (Z85 encoding format).
+    const string PUBLISHER_CURVE_KEY = "nl.remedy.it.PSDD.ZMQ.Publisher.CurveKey";
+
+    // Subscriber properties
+
+    /// Specifies the publisher endpoints to listen to if subscriber activated.
+    /// Property value is sequence/array of string.
+    const string SUBSCRIBER_ENDPOINTS = "nl.remedy.it.PSDD.ZMQ.Subscriber.Endpoints";
+
+    /// Specifies what connection scheme to use for subscriber socket.
+    /// Property value is a string (default "CONNECT").
+    const string SUBSCRIBER_CONN_SCHEME = "nl.remedy.it.PSDD.ZMQ.Subscriber.Connection";
+
+    /// Specifies whether to support IPv6 endpoints (ZMQ_IPV6 option).
+    /// Property value is a boolean.
+    const string SUBSCRIBER_IPV6 = "nl.remedy.it.PSDD.ZMQ.Subscriber.IPV6";
+
+    /// Specifies the ZMQ_RCVTIMEO option in millisec.
+    /// Property value is an int32.
+    const string SUBSCRIBER_RECEIVE_TIMEOUT = "nl.remedy.it.PSDD.ZMQ.Subscriber.ReceiveTimeout";
+
+    /// Specifies the ZMQ_RECONNECT_IVL option in millisec.
+    /// Property value is an int32.
+    const string SUBSCRIBER_RECONNECT_IVL = "nl.remedy.it.PSDD.ZMQ.Subscriber.ReconnectIVL";
+
+    /// Specifies the ZMQ_RECONNECT_IVL_MAX option in millisec.
+    /// Property value is an int32.
+    const string SUBSCRIBER_RECONNECT_IVL_MAX = "nl.remedy.it.PSDD.ZMQ.Subscriber.ReconnectIVLMax";
+
+    // Tuning and tweaking settings for subscribers.
+
+    /// Specifies the ZMQ_TOS option.
+    /// Property value is an int32.
+    const string SUBSCRIBER_TUNING_TOS = "nl.remedy.it.PSDD.ZMQ.Subscriber.Tuning.TOS";
+
+    /// Specifies the ZMQ_AFFINITY option.
+    /// Property value is a uint64.
+    const string SUBSCRIBER_TUNING_IO_AFFINITY = "nl.remedy.it.PSDD.ZMQ.Subscriber.Tuning.IOAffinity";
+
+    /// Specifies the ZMQ_LINGER option in millisec.
+    /// Property value is an int32.
+    const string SUBSCRIBER_TUNING_LINGER = "nl.remedy.it.PSDD.ZMQ.Subscriber.Tuning.LINGER";
+
+    /// Specifies the ZMQ_MAXMSGSIZE option.
+    /// Property value is a int64.
+    const string SUBSCRIBER_TUNING_MAXMSGSIZE = "nl.remedy.it.PSDD.ZMQ.Subscriber.Tuning.MaxMsgSize";
+
+    /// Specifies the ZMQ_MULTICAST_HOPS option.
+    /// Property value is a int32.
+    const string SUBSCRIBER_TUNING_MCAST_HOPS = "nl.remedy.it.PSDD.ZMQ.Subscriber.Tuning.MulticastHops";
+
+    /// Specifies the ZMQ_MULTICAST_MAXTPDU option in bytes.
+    /// Property value is a int32.
+    const string SUBSCRIBER_TUNING_MCAST_MAXTPDU = "nl.remedy.it.PSDD.ZMQ.Subscriber.Tuning.MulticastTPDU";
+
+    /// Specifies the ZMQ_RATE option in kilobits/sec.
+    /// Property value is a int32.
+    const string SUBSCRIBER_TUNING_MCAST_RATE = "nl.remedy.it.PSDD.ZMQ.Subscriber.Tuning.MulticastRate";
+
+    /// Specifies the ZMQ_RCVBUF option in bytes.
+    /// Property value is a int32.
+    const string SUBSCRIBER_TUNING_RCVBUF = "nl.remedy.it.PSDD.ZMQ.Subscriber.Tuning.RcvBuf";
+
+    /// Specifies the ZMQ_RCVHWM option in messages.
+    /// Property value is a int32.
+    const string SUBSCRIBER_TUNING_RCVHWM = "nl.remedy.it.PSDD.ZMQ.Subscriber.Tuning.RcvHwm";
+
+    /// Specifies the ZMQ_SNDBUF option in bytes.
+    /// Property value is a int32.
+    const string SUBSCRIBER_TUNING_SNDBUF = "nl.remedy.it.PSDD.ZMQ.Subscriber.Tuning.SndBuf";
+
+    /// Specifies the ZMQ_SNDHWM option in messages.
+    /// Property value is a int32.
+    const string SUBSCRIBER_TUNING_SNDHWM = "nl.remedy.it.PSDD.ZMQ.Subscriber.Tuning.SndHwm";
+
+    /// Specifies the ZMQ_HANDSHAKE_IVL option in millisec.
+    /// Property value is an int32.
+    const string SUBSCRIBER_TUNING_HANDSHAKE_IVL = "nl.remedy.it.PSDD.ZMQ.Subscriber.Tuning.HandshakeIVL";
+
+    // Security settings for subscribers.
+
+    /// Specifies whether to set up as Curve server or client (ZMQ_CURVE_SERVER option).
+    /// Specifying this property (true or false) implicitly enables CURVE security.
+    /// If not specified no security is active.
+    /// Property value is a boolean.
+    const string SUBSCRIBER_CURVE_SERVER = "nl.remedy.it.PSDD.ZMQ.Subscriber.CurveServer";
+
+    /// Specifies the CURVE key to apply. Ignored if no CURVE server property is specified.
+    /// When set up as a CURVE server this specifies the ZMQ_CURVE_SECRETKEY, otherwise this
+    /// specifies the ZMQ_CURVE_SERVERKEY.
+    /// Property is a string value (Z85 encoding format).
+    const string SUBSCRIBER_CURVE_KEY = "nl.remedy.it.PSDD.ZMQ.Subscriber.CurveKey";
+
+    // Service (context) properties.
+
+    /// Specifies the ZMQ_IO_THREADS option.
+    /// Property value is a int32.
+    const string SERVICE_IO_THREADS = "nl.remedy.it.PSDD.ZMQ.Service.IOThreads";
+
+    /// Specifies the number of polling threads to run for the builtin ZMQ PSDD poller.
+    /// Property value is a uint32 (default 2).
+    const string SERVICE_POLLING_THREADS = "nl.remedy.it.PSDD.ZMQ.Service.PollingThreads";
+
+    /// Specifies the ZMQ_MAX_SOCKETS option.
+    /// Property value is a int32.
+    const string SERVICE_MAX_SOCKETS = "nl.remedy.it.PSDD.ZMQ.Service.MaxSockets";
+
+    /// Specifies the ZMQ_THREAD_PRIORITY option.
+    /// Property value is a int32.
+    const string SERVICE_THREAD_PRIO = "nl.remedy.it.PSDD.ZMQ.Service.ThreadPrio";
+
+    /// Specifies the ZMQ_THREAD_SCHED_POLICY option.
+    /// Property value is a int32.
+    const string SERVICE_THREAD_SCHED_POLICY = "nl.remedy.it.PSDD.ZMQ.Service.ThreadSchedPolicy";
+
+    // Serializer properties.
+
+    /// Specifies if message envelopes (separate key and data frames) are to be used.
+    /// Property value is a boolean. Default true.
+    const string SERIALIZER_MSG_ENVELOPE = "nl.remedy.it.PSDD.ZMQ.Serializer.MessageEnvelope";
+
+    /// Specifies the name of the dynamic module for the custom serializer
+    /// Property value is a string.
+    const string SERIALIZER_MODULE = "nl.remedy.it.PSDD.ZMQ.Serializer.Module";
+
+    /// Specifies the name of the factory function for the custom serializer
+    /// Property value is a string.
+    const string SERIALIZER_FACTORY = "nl.remedy.it.PSDD.ZMQ.Serializer.Factory";
+
+    /// Specifies the open mode for the custom serializer
+    /// Property value is a uint32.
+    const string SERIALIZER_OPENMODE = "nl.remedy.it.PSDD.ZMQ.Serializer.OpenMode";
+  };
+};
+
+#endif /* ZMQ_PSDD_PROPERTIES_IDL */

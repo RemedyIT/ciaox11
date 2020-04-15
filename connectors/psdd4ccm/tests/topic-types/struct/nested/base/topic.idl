@@ -1,0 +1,31 @@
+/**
+* @file    topic.idl
+* @author  Martin Corino
+*
+* @brief   Message topic IDL
+*
+* @copyright Copyright (c) Remedy IT Expertise BV
+*/
+
+#ifndef TOPIC_IDL
+#define TOPIC_IDL
+
+module Test
+{
+  struct Nested
+  {
+    boolean flag;
+    double rate;
+    char opt;
+  };
+
+  struct Topic
+  {
+    string category;
+    string description;
+    unsigned long value;
+    Nested data;
+  }; //@TopLevel()
+};
+
+#endif
