@@ -24,7 +24,7 @@ namespace PSL_SampleLostTest_Receiver_Impl
   : public IDL::traits<CCM_TT::TT_Handler>::base_type
   {
   public:
-    TT_Callback (IDL::traits< ::PSL_SampleLostTest::CCM_Receiver>::weak_ref_type component_executor)
+    explicit TT_Callback (IDL::traits< ::PSL_SampleLostTest::CCM_Receiver>::weak_ref_type component_executor)
     : component_executor_(component_executor)
     {}
 

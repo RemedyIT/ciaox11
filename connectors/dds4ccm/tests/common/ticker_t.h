@@ -23,7 +23,7 @@ namespace DDS4CCM_TEST_UTILS
     : public IDL::traits<CCM_TT::TT_Handler>::base_type
   {
   public:
-    ContextSwitch (EXECUTOR component_executor)
+    explicit ContextSwitch (EXECUTOR component_executor)
       : component_executor_ (std::move(component_executor))
     {
     }

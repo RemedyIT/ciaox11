@@ -26,7 +26,7 @@ namespace MDD_Getter_Test_Receiver_Impl
      : public IDL::traits<CCM_TT::TT_Handler>::base_type
    {
    public:
-     TT_Callback (IDL::traits< ::MDD_Getter_Test::CCM_Receiver_Context>::ref_type ctx)
+     explicit TT_Callback (IDL::traits< ::MDD_Getter_Test::CCM_Receiver_Context>::ref_type ctx)
           : ciao_context_ (ctx)
      {}
 

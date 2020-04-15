@@ -24,7 +24,7 @@ namespace publisher_comp_Impl
   class TT_Callback final : public IDL::traits<CCM_TT::TT_Handler>::base_type
   {
   public:
-    TT_Callback (IDL::traits<CCM_publisher_comp>::weak_ref_type component_executor)
+    explicit TT_Callback (IDL::traits<CCM_publisher_comp>::weak_ref_type component_executor)
     : component_executor_(component_executor)
     {}
 
