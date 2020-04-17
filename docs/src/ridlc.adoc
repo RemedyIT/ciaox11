@@ -121,6 +121,6 @@ include::{ciaox11_src_root}/ddsx11/docs/src/ridlc.asc[]
 
 include::{ciaox11_src_root}/connectors/dds4ccm/docs/src/ridlc.asc[]
 
-include::{ciaox11_src_root}/connectors/psdd4ccm/docs/src/ridlc.asc[opts=optional]
+include::{ciaox11_src_root}/connectors/psdd4ccm/docs/src/ridlc.asc[]
 
 include::{ciaox11_src_root}/exf/docs/src/ridlc.asc[opts=optional]
