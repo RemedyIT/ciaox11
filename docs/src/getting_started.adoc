@@ -21,7 +21,7 @@ providing support for:
 ** <<{xref_docs_root}/corba4ccm/corba4ccm.adoc#,CORBA4CCM>> delivering synchronous _Request/Reply_ interaction
 ** <<{xref_docs_root}/ami4ccm/ami4ccm.adoc#,AMI4CCM>> delivering asynchronous _Request/Reply_ interaction
 ** <<{xref_docs_root}/dds4ccm/dds4ccm.adoc#,DDS4CCM>> delivering _State and Event_ interaction
-include::{ciaox11_src_root}/connectors/psdd4ccm/docs/src/getting_started.asc[opts=optional]
+** <<{xref_docs_root}/psdd4ccm/psdd4ccm.adoc#,PSDD4CCM>> delivering _Publish and Subscribe Data Distribution_ interaction
 ** <<{xref_docs_root}/tt4ccm/tt4ccm.adoc#,TT4CCM>> delivering _Timed Trigger_ interaction
 include::{ciaox11_src_root}/exf/docs/src/getting_started.asc[opts=optional]
 * <<{xref_docs_root}/ddsx11/ddsx11.adoc#,DDSX11>> provides the
