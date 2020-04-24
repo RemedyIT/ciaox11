@@ -76,13 +76,13 @@ namespace CIAOX11
       : public DefaultEventStrategyBase
     {
     public:
-      typedef typename CCM_TYPE::push_consumer_data_listener_type listener_type;
+      typedef typename CCM_TYPE::consumer_traits::data_listener_type listener_type;
 
       DefaultPushConsumerEventStrategy_T () = default;
       DefaultPushConsumerEventStrategy_T (
         typename IDL::traits< typename CCM_TYPE::context_type>::ref_type ctx)
         : DefaultEventStrategyBase (ctx)
-        , listener_ (ctx->get_connection_push_consumer_data_listener ())
+        , listener_ (ctx->get_connection_consumer_data_listener ())
       {}
       DefaultPushConsumerEventStrategy_T (const DefaultPushConsumerEventStrategy_T& dpces)
         : DefaultEventStrategyBase (dpces)

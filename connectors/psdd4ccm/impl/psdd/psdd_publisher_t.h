@@ -14,7 +14,7 @@ namespace PSDD
 {
   template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
   class Publisher_T
-    : public CCM_TYPE::supplier_data_type
+    : public CCM_TYPE::supplier_traits::data_type
   {
   public:
     virtual ~Publisher_T () = default;
