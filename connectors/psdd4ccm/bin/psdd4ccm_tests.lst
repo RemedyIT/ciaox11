@@ -12,6 +12,16 @@ connectors/psdd4ccm/examples/hello/descriptors/run_test.pl plan_zmq_read.config:
 connectors/psdd4ccm/examples/hello/descriptors/run_test.pl plan_zmq_read_filter.config: PSDD4CCM PSDD4CCM_ZMQ
 connectors/psdd4ccm/examples/hello/descriptors/run_test.pl plan_zmq_read_multiplex.config: PSDD4CCM PSDD4CCM_ZMQ
 connectors/psdd4ccm/examples/hello/descriptors/run_test.pl plan_zmq_read_reverse.config: PSDD4CCM PSDD4CCM_ZMQ
+connectors/psdd4ccm/examples/hello_ports/descriptors/run_test.pl plan_zmq_curve_listen.config: PSDD4CCM PSDD4CCM_ZMQ
+connectors/psdd4ccm/examples/hello_ports/descriptors/run_test.pl plan_zmq_listen.config: PSDD4CCM PSDD4CCM_ZMQ
+connectors/psdd4ccm/examples/hello_ports/descriptors/run_test.pl plan_zmq_curve_listen_filter.config: PSDD4CCM PSDD4CCM_ZMQ
+connectors/psdd4ccm/examples/hello_ports/descriptors/run_test.pl plan_zmq_listen_filter.config: PSDD4CCM PSDD4CCM_ZMQ
+connectors/psdd4ccm/examples/hello_ports/descriptors/run_test.pl plan_zmq_listen_multiplex.config: PSDD4CCM PSDD4CCM_ZMQ
+connectors/psdd4ccm/examples/hello_ports/descriptors/run_test.pl plan_zmq_curve_read.config: PSDD4CCM PSDD4CCM_ZMQ
+connectors/psdd4ccm/examples/hello_ports/descriptors/run_test.pl plan_zmq_read.config: PSDD4CCM PSDD4CCM_ZMQ
+connectors/psdd4ccm/examples/hello_ports/descriptors/run_test.pl plan_zmq_read_filter.config: PSDD4CCM PSDD4CCM_ZMQ
+connectors/psdd4ccm/examples/hello_ports/descriptors/run_test.pl plan_zmq_read_multiplex.config: PSDD4CCM PSDD4CCM_ZMQ
+connectors/psdd4ccm/examples/hello_ports/descriptors/run_test.pl plan_zmq_read_reverse.config: PSDD4CCM PSDD4CCM_ZMQ
 connectors/psdd4ccm/tests/custom-serializer/descriptors/run_test.pl plan_zmq_read.config: PSDD4CCM PSDD4CCM_ZMQ
 connectors/psdd4ccm/tests/custom-serializer/descriptors/run_test.pl plan_zmq_read_filter.config: PSDD4CCM PSDD4CCM_ZMQ
 connectors/psdd4ccm/tests/data-types/descriptors/run_test.pl plan_zmq_read.config: PSDD4CCM PSDD4CCM_ZMQ
