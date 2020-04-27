@@ -88,14 +88,14 @@ module CCM_PSDD
     };
 
     // -- Extended Port types
-    
+
     porttype PSDD_Subscribe
     {
       uses Getter data;
       provides Listener data_listener;
       uses Subscriber data_subscriber;
     };
-    
+
     porttype PSDD_Publish
     {
       uses Publisher data;
