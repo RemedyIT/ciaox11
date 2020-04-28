@@ -65,13 +65,13 @@ namespace CIAOX11
        * PSDD4CCM PSD_Events ports
        */
       //@{
-      typename IDL::traits< typename CCM_TYPE::supplier_data_type>::ref_type
+      typename IDL::traits< typename CCM_TYPE::supplier_traits::data_type>::ref_type
       get_supplier_data () override;
 
-      typename IDL::traits< typename CCM_TYPE::pull_consumer_data_type>::ref_type
-      get_pull_consumer_data () override;
+      typename IDL::traits< typename CCM_TYPE::consumer_traits::data_type>::ref_type
+      get_consumer_data () override;
 
-      typename IDL::traits< typename CCM_TYPE::consumer_data_subscriber_type>::ref_type
+      typename IDL::traits< typename CCM_TYPE::consumer_traits::data_subscriber_type>::ref_type
       get_consumer_data_subscriber () override;
       //@}
 

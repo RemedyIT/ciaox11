@@ -45,7 +45,7 @@ namespace PSDD
         const std::string& local_type_id)
     {
       return this->::PSDD::Subscriber_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::_is_a (local_type_id)
-          || this->CCM_TYPE::pull_consumer_data_type::_is_a (local_type_id)
+          || this->CCM_TYPE::consumer_traits::data_type::_is_a (local_type_id)
           || this->::PSDD::ZMQ::Listener::_is_a (local_type_id);
     }
 

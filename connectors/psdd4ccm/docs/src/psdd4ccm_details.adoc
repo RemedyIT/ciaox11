@@ -770,7 +770,7 @@ of the "hello_pub" port (user) on the Sender component.
 (see <<psdd4ccm_design.html#,PSDD4CCM design>> and
 link:{docs_root}/../../ciaox11/connectors/psdd4ccm/examples/hello/components/sender/psdd_sender.idl[Sender component IDL]
 for more information). +
-Combining this all gives: `supplier_data > info_write_data`. +
+Combining this all gives: `supplier_data > hello_pub`. +
 A connection statement always begins with the (extended) port name of the current
 connector/component and ends with the (extended) port name of the other connector/component.
 The connector symbol (`<` or `>`) points from the facet (provider) to the receptacle (user).

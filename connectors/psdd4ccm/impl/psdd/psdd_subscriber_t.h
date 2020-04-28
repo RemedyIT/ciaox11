@@ -14,14 +14,14 @@ namespace PSDD
 {
   template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
   class Subscriber_T
-    : public CCM_TYPE::consumer_data_subscriber_type
+    : public CCM_TYPE::consumer_traits::data_subscriber_type
   {
   public:
     virtual ~Subscriber_T () = default;
 
     typedef typename CCM_TYPE::event_strategy_type event_strategy_type;
-    typedef typename CCM_TYPE::pull_consumer_data_type pull_consumer_data_type;
-    typedef typename CCM_TYPE::push_consumer_data_listener_type push_consumer_data_listener_type;
+    typedef typename CCM_TYPE::consumer_traits::data_type pull_consumer_data_type;
+    typedef typename CCM_TYPE::consumer_traits::data_listener_type push_consumer_data_listener_type;
     typedef typename CCM_TYPE::service_helper_type service_helper_type;
 
     virtual void

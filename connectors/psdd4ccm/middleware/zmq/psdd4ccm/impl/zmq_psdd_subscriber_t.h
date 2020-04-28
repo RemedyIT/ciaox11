@@ -33,7 +33,7 @@ namespace PSDD
     template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
     class Subscriber_T
       : public ::PSDD::Subscriber_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>
-      , public CCM_TYPE::pull_consumer_data_type
+      , public CCM_TYPE::consumer_traits::data_type
       , public ::PSDD::ZMQ::Listener
     {
     public:
@@ -42,8 +42,8 @@ namespace PSDD
       typedef typename _traits_type::ref_type _ref_type;
 
       typedef typename CCM_TYPE::event_strategy_type event_strategy_type;
-      typedef typename CCM_TYPE::pull_consumer_data_type pull_consumer_data_type;
-      typedef typename CCM_TYPE::push_consumer_data_listener_type push_consumer_data_listener_type;
+      typedef typename CCM_TYPE::consumer_traits::data_type pull_consumer_data_type;
+      typedef typename CCM_TYPE::consumer_traits::data_listener_type push_consumer_data_listener_type;
       typedef typename CCM_TYPE::service_helper_type service_helper_type;
       typedef typename CCM_TYPE::topic_psdd_traits_type topic_psdd_traits_type;
 

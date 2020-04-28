@@ -1,0 +1,15 @@
+
+component 'psdd_receiver', :psdd4ccm do |comp|
+
+  comp.idl %w{ psdd_receiver.idl }
+
+  comp.base_projects += 'ciaox11_psdd4ccm_logger'
+
+  # prefix sharednames, default recipe id (in this case: shapes_receiver_comp)
+
+  # prefix export headers, default recipe id in uppercase
+
+  # gen_dir is default 'generated_code'
+  # comp.gen_dir  'build'
+
+end

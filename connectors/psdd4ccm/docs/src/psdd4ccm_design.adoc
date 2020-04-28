@@ -57,12 +57,26 @@ module CCM_PSDD
       attribute DataCount_t       max_data;     // default UNLIMITED (0)
     };
 
+    // -- Extended Port types
+
+    porttype PSDD_Subscribe
+    {
+      uses Getter data;
+      provides Listener data_listener;
+      uses Subscriber data_subscriber;
+    };
+
+    porttype PSDD_Publish
+    {
+      uses Publisher data;
+    };
+
+    // -- PSDD Event Connector
+
     connector PSDD_Event : PSDD_Base
     {
-      provides Publisher  supplier_data;
-      provides Getter pull_consumer_data;
-      uses Listener push_consumer_data_listener;
-      provides Subscriber consumer_data_subscriber;
+      mirrorport PSDD_Publish supplier;
+      mirrorport PSDD_Subscribe consumer;
     };
 
   }; /* module Typed */
