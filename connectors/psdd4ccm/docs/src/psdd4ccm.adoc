@@ -17,7 +17,7 @@ on request).
 By combining PSDD4CCM and DDS4CCM connectors *AXCIOMA* can also be used to
 bridge/route IIOT environments to corporate/production environments with
 little effort.
-Since PSDD4CCM and DDS4CCM both use IDL defined types, data can be simply
+Since PSDD4CCM and DDS4CCM both use IDL defined types, data can simply
 be passed on from a PSDD4CCM receiving end to a DDS4CCM publishing end without
 need for conversion.
 
