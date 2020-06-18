@@ -6,8 +6,7 @@ namespace PSDD
   struct traits< <%= scoped_cxxtype %>>
     : public common_traits< <%= scoped_cxxtype %>>
   {
-    static
-    std::string get_type_name () { return "<%= scoped_cxxname %>"; }
+    static std::string get_type_name () { return "<%= scoped_cxxname %>"; }
 
     typedef std::true_type key_only;
     typedef std::false_type no_key;
@@ -34,7 +33,7 @@ namespace PSDD
         IDL::traits<PSDataIn>::ref_type& d,
         <%= scoped_cxx_out_type %> datum)
     {
-      uint32_t ev;
+      uint32_t ev {};
       if (::PSDD::traits<uint32_t>::extract_key (d, ev))
       {
         datum = static_cast< <%= scoped_cxxtype %>> (ev);
@@ -52,7 +51,7 @@ namespace PSDD
       if (provides_key)
         return true;
 
-      uint32_t ev;
+      uint32_t ev {};
       if (::PSDD::traits<uint32_t>::extract_data (d, ev, false))
       {
         datum = static_cast< <%= scoped_cxxtype %>> (ev);

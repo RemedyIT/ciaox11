@@ -15,8 +15,7 @@ namespace PSDD
                             <%= scoped_cxxtype %>::value_type,
                             <%= cxxdim_sizes.first %>>
   {
-    static
-    std::string get_type_name () { return "<%= scoped_cxxname %>"; }
+    static std::string get_type_name () { return "<%= scoped_cxxname %>"; }
 
     typedef std::false_type key_only;
     typedef std::true_type no_key;
