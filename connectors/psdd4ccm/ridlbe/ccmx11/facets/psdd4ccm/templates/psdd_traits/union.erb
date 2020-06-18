@@ -6,8 +6,7 @@ namespace PSDD
   struct traits< <%= scoped_cxxtype %>>
     : public common_traits< <%= scoped_cxxtype %>>
   {
-    static
-    std::string get_type_name () { return "<%= scoped_cxxname %>"; }
+    static std::string get_type_name () { return "<%= scoped_cxxname %>"; }
 
     typedef std::false_type key_only;
     typedef std::false_type no_key;
@@ -100,7 +99,7 @@ namespace PSDD
         <%= scoped_cxx_out_type %> datum,
         bool provides_key)
     {
-      <%= scoped_switch_cxxtype %> tmp_disc = datum._d ();
+      <%= scoped_switch_cxxtype %> tmp_disc { datum._d () };
       if (provides_key || ::PSDD::traits< <%= scoped_switch_cxxtype %>>::extract_data (d, tmp_disc, false))
       {
         switch (tmp_disc)

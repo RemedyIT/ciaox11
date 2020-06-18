@@ -17,8 +17,7 @@ namespace PSDD
     , public string_packing<<%= bound %>>
 % end
   {
-    static
-    std::string get_type_name () { return "<%= scoped_cxxname %>"; }
+    static std::string get_type_name () { return "<%= scoped_cxxname %>"; }
 
     typedef std::true_type key_only;
     typedef std::false_type no_key;
