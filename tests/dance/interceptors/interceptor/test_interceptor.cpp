@@ -352,7 +352,7 @@ namespace DAnCEX11
     if (this->node_ == "ReceiverNode")
       return;
 
-    IDL::traits< CORBA::Object>::ref_type ep;
+    IDL::traits<CORBA::Object>::ref_type ep;
     ref >>= ep;
     if (ep == nullptr)
       {

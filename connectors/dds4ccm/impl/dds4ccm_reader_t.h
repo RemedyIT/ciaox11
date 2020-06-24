@@ -51,7 +51,7 @@ namespace CIAOX11
         const ::DDS::InstanceHandle_t& instance_handle) override;
 
       ::CCM_DDS::QueryFilter
-      query ()  override;
+      query () override;
 
       void
       query (const CCM_DDS::QueryFilter &filter) override;

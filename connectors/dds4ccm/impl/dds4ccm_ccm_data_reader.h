@@ -58,7 +58,7 @@ namespace CIAOX11
         const ::DDS::StringSeq & ) override;
 
       ::DDS::ReturnCode_t
-      delete_readcondition (IDL::traits< ::DDS::ReadCondition>::ref_type ) override;
+      delete_readcondition (IDL::traits< ::DDS::ReadCondition>::ref_type) override;
 
       ::DDS::ReturnCode_t
       delete_contained_entities () override;

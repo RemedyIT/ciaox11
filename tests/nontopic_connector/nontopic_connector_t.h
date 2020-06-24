@@ -51,10 +51,10 @@ public:
    virtual ~NT2_Connector_T ();
 
    typename IDL::traits<typename CCM_TYPE::write_port_traits::foo2_type>::ref_type
-   get_write_port_foo2 ()  override;
+   get_write_port_foo2 () override;
 
-   typename CCM_TYPE::write_port_traits::port_attrib_type write_port_port_attrib()  override;
-   void write_port_port_attrib(const typename CCM_TYPE::write_port_traits::port_attrib_type& _v)  override;
+   typename CCM_TYPE::write_port_traits::port_attrib_type write_port_port_attrib() override;
+   void write_port_port_attrib(const typename CCM_TYPE::write_port_traits::port_attrib_type& _v) override;
 
    int16_t conn_attrib() override;
    void conn_attrib(int16_t _v) override;
@@ -91,13 +91,13 @@ public:
   void NT3_attrib(const typename CCM_TYPE::NT3_attrib_type& _v) override;
 
   typename IDL::traits<typename CCM_TYPE::foo3_type>::ref_type
-  get_foo3 ()  override;
+  get_foo3 () override;
 
   typename IDL::traits<typename CCM_TYPE::write_port_traits::foo2_type>::ref_type
-  get_foo5_foo2 ()  override;
+  get_foo5_foo2 () override;
 
   typename CCM_TYPE::foo5_traits::port_attrib_type foo5_port_attrib() override;
-  void foo5_port_attrib(const typename CCM_TYPE::foo5_traits::port_attrib_type& _v)  override;
+  void foo5_port_attrib(const typename CCM_TYPE::foo5_traits::port_attrib_type& _v) override;
 
 private:
   // Should be able to store a reference to a base type
