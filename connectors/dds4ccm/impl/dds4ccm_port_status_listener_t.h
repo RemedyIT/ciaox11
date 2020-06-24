@@ -35,7 +35,7 @@ namespace CIAOX11
 
       void on_sample_lost (
         IDL::traits< ::DDS::DataReader>::ref_type the_reader,
-        const ::DDS::SampleLostStatus & status)  override;
+        const ::DDS::SampleLostStatus & status) override;
 
       void
       on_requested_incompatible_qos (
@@ -54,7 +54,7 @@ namespace CIAOX11
 
       void
       on_data_available (
-        IDL::traits< ::DDS::DataReader>::ref_type ) override;
+        IDL::traits< ::DDS::DataReader>::ref_type) override;
 
       void
       on_subscription_matched (

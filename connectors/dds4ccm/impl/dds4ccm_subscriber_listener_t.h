@@ -55,7 +55,7 @@ namespace CIAOX11
 
       void
       on_data_available (
-        IDL::traits< ::DDS::DataReader>::ref_type ) override;
+        IDL::traits< ::DDS::DataReader>::ref_type) override;
 
       void
       on_sample_lost (

@@ -25,7 +25,7 @@ namespace PSDD
         "PSDD::ZMQ::ServiceHelper::get_service_context");
 
       // check if an ZMQ context already exists
-      IDL::traits< CORBA::Object>::ref_type ctx_obj;
+      IDL::traits<CORBA::Object>::ref_type ctx_obj;
       try
       {
         ctx_obj =
