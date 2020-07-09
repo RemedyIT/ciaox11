@@ -319,7 +319,7 @@ namespace Getter_Test_Receiver_Impl
     bool const result = getter->get_many (gettertest_seq, readinfo);
     if (result)
     {
-      if (gettertest_seq.size () == 0)
+      if (gettertest_seq.empty ())
       {
         DDS4CCM_TEST_ERROR << "Receiver_exec_i::get_many - "
           "No data returned. number of samples: expected at "

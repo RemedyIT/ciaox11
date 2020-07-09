@@ -774,7 +774,7 @@ namespace CIAOX11
   uint32_t
   Connection_Handler::retrieve_endpoint (const Deployment::PlanConnectionDescription &conn)
   {
-    if (conn.internalEndpoint ().size () == 0)
+    if (conn.internalEndpoint ().empty ())
     {
       // this should never happen
       CIAOX11_LOG_ERROR ("Connection_Handler::retrieve_endpoint - " <<
