@@ -98,7 +98,7 @@ namespace CIAOX11
 
     if (!service)
       {
-        CIAOX11_LOG_ERROR ("Service_Registry_i::resolve_service - service <" << service_id << "> not found");
+        CIAOX11_LOG_INFO ("Service_Registry_i::resolve_service - service <" << service_id << "> not found");
 
         throw Components::CCMException (Components::CCMExceptionReason::OBJECT_NOT_FOUND);
       }
