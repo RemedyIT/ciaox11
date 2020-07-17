@@ -42,7 +42,7 @@ namespace CIAOX11
 
           Name_Utilities::build_name (name, cos_name);
 
-          if (name.size () == 0)
+          if (name.empty ())
             {
               CIAOX11_LOG_ERROR ("Name_Utilities::bind_object - build_name resulted in an invalid name for component <"
                                   << IDL::traits<CosNaming::Name>::write (cos_name) << ">");

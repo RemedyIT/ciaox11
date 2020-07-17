@@ -193,7 +193,7 @@ namespace DDSX11
 
                 it->second = nullptr;
                 dp_entry->second.erase (it);
-                if (dp_entry->second.size () == 0UL)
+                if (dp_entry->second.empty ())
                   { // no more entries -> remove the participant from
                     // the list
                     participant_factories.erase (dp_entry);

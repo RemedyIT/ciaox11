@@ -509,7 +509,7 @@ ReadGetReceiverRunner_T<CONTEXT_TYPE, QUERY_ATTRIB>::read_all ()
         CommonTestMessageSeq samples;
         CCM_DDS::ReadInfoSeq readinfo_seq;
         reader->read_all (samples, readinfo_seq);
-        if (samples.size () == 0)
+        if (samples.empty ())
         {
           DDS4CCM_TEST_ERROR << "ERROR : ReadGetReceiverRunner_T<CONTEXT_TYPE, QUERY_ATTRIB>::read_all : "
             << "No samples available in Reader!" << std::endl;
@@ -586,7 +586,7 @@ ReadGetReceiverRunner_T<CONTEXT_TYPE, QUERY_ATTRIB>::read_all ()
         CommonTestMessageSeq samples;
         CCM_DDS::ReadInfoSeq readinfo_seq;
         reader->read_all (samples, readinfo_seq);
-        if (samples.size () == 0)
+        if (samples.empty ())
         {
           DDS4CCM_TEST_ERROR << "ERROR : ReadGetReceiverRunner_T<CONTEXT_TYPE, QUERY_ATTRIB>::read_all : "
             << "No samples available in Reader!" << std::endl;

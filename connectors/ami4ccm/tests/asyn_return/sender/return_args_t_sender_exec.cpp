@@ -160,7 +160,7 @@ namespace InterReturnT_Sender_Impl
 
     const InterReturnT::TestSeq seq_return_val =
           my_foo_->ret_seq ("Send me synch struct",out_str, l_cmd);
-    if ((l_cmd != 6)|| (seq_return_val.size() == 0))
+    if ((l_cmd != 6)|| (seq_return_val.empty ()))
     {
       CIAOX11_TEST_ERROR << "ERROR MyFoo_callback_exec_i::ret_seq: "
                          << "received the wrong long, expected 6,"
