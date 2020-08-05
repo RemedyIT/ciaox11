@@ -28,7 +28,7 @@ namespace CIAOX11
     class DefaultEventStrategyBase
     {
     protected:
-      DefaultEventStrategyBase (IDL::traits<Components::SessionContext>::ref_type ctx)
+      explicit DefaultEventStrategyBase (IDL::traits<Components::SessionContext>::ref_type ctx)
       {
         DDS4CCM_LOG_TRACE ("DefaultEventStrategyBase::" << "ctor");
 
@@ -48,17 +48,12 @@ namespace CIAOX11
           }
 #endif
       }
-      DefaultEventStrategyBase (const DefaultEventStrategyBase& des)
-#if (CIAOX11_DDS4CCM_CONTEXT_SWITCH == 1)
-        : reactor_ (des.reactor_)
-#endif
-      {}
-
-    public:
-      virtual ~DefaultEventStrategyBase () {}
+      DefaultEventStrategyBase (const DefaultEventStrategyBase&) = default;
+      DefaultEventStrategyBase (DefaultEventStrategyBase&&) = default;
+      virtual ~DefaultEventStrategyBase () = default;
 
     private:
-      DefaultEventStrategyBase (DefaultEventStrategyBase&&) = delete;
+      DefaultEventStrategyBase () = delete;
       DefaultEventStrategyBase& operator=(const DefaultEventStrategyBase&) = delete;
       DefaultEventStrategyBase& operator=(DefaultEventStrategyBase&&) = delete;
 
@@ -73,7 +68,7 @@ namespace CIAOX11
       : public DefaultEventStrategyBase
     {
     public:
-      DefaultErrorEventStrategy_T (
+      explicit DefaultErrorEventStrategy_T (
         typename IDL::traits<typename CCM_TYPE::context_type>::ref_type ctx)
         : DefaultEventStrategyBase (ctx)
       {
@@ -81,13 +76,12 @@ namespace CIAOX11
             ctx->get_connection_error_listener ();
         this->error_listener_ = erl;
         if (erl)
-          this->error_listener_connected_ = true;
+          {
+            this->error_listener_connected_ = true;
+          }
       }
-      DefaultErrorEventStrategy_T (const DefaultErrorEventStrategy_T& des)
-        : DefaultEventStrategyBase (des)
-        , error_listener_ (des.error_listener_)
-        , error_listener_connected_ (des.error_listener_connected_)
-      {}
+      DefaultErrorEventStrategy_T (DefaultErrorEventStrategy_T&&) = default;
+      DefaultErrorEventStrategy_T (const DefaultErrorEventStrategy_T&) = default;
       virtual ~DefaultErrorEventStrategy_T () = default;
 
       // on_unexpected_status
@@ -307,11 +301,11 @@ namespace CIAOX11
       }
 
     private:
-      DefaultErrorEventStrategy_T (DefaultErrorEventStrategy_T&&) = delete;
+      DefaultErrorEventStrategy_T () = delete;
       DefaultErrorEventStrategy_T& operator=(const DefaultErrorEventStrategy_T&) = delete;
       DefaultErrorEventStrategy_T& operator=(DefaultErrorEventStrategy_T&&) = delete;
 
-      IDL::traits< CCM_DDS::ConnectorStatusListener>::weak_ref_type error_listener_ {};
+      IDL::traits<CCM_DDS::ConnectorStatusListener>::weak_ref_type error_listener_ {};
       bool error_listener_connected_ {};
     };
 
@@ -319,16 +313,14 @@ namespace CIAOX11
       : public DefaultEventStrategyBase
     {
     protected:
-      DefaultPortStatusEventStrategyBase (
+      explicit DefaultPortStatusEventStrategyBase (
         IDL::traits<Components::SessionContext>::ref_type ctx,
         IDL::traits< ::CCM_DDS::PortStatusListener>::ref_type port_status_listener)
         : DefaultEventStrategyBase (std::move(ctx))
         , status_listener_ (std::move(port_status_listener))
       {}
-      DefaultPortStatusEventStrategyBase (const DefaultPortStatusEventStrategyBase& des)
-        : DefaultEventStrategyBase (des)
-        , status_listener_ (des.status_listener_)
-      {}
+      DefaultPortStatusEventStrategyBase (const DefaultPortStatusEventStrategyBase&) = default;
+      DefaultPortStatusEventStrategyBase (DefaultPortStatusEventStrategyBase&&) = default;
     public:
       virtual ~DefaultPortStatusEventStrategyBase () = default;
 
@@ -389,7 +381,7 @@ namespace CIAOX11
       }
 
     private:
-      DefaultPortStatusEventStrategyBase (DefaultPortStatusEventStrategyBase&&) = delete;
+      DefaultPortStatusEventStrategyBase () = delete;
       DefaultPortStatusEventStrategyBase& operator=(const DefaultPortStatusEventStrategyBase&) = delete;
       DefaultPortStatusEventStrategyBase& operator=(DefaultPortStatusEventStrategyBase&&) = delete;
 
@@ -401,17 +393,15 @@ namespace CIAOX11
       : public DefaultPortStatusEventStrategyBase
     {
     protected:
-      DefaultDataEventStrategyBase_T (
+      explicit DefaultDataEventStrategyBase_T (
         IDL::traits<Components::SessionContext>::ref_type ctx,
         IDL::traits< ::CCM_DDS::PortStatusListener>::ref_type port_status_listener,
         typename IDL::traits< DATA_LISTENER>::ref_type data_listener)
         : DefaultPortStatusEventStrategyBase (std::move(ctx), std::move(port_status_listener))
         , data_listener_ (data_listener)
       {}
-      DefaultDataEventStrategyBase_T (const DefaultDataEventStrategyBase_T& des)
-        : DefaultPortStatusEventStrategyBase (des)
-        , data_listener_ (des.data_listener_)
-      {}
+      DefaultDataEventStrategyBase_T (const DefaultDataEventStrategyBase_T&) = default;
+      DefaultDataEventStrategyBase_T (DefaultDataEventStrategyBase_T&&) = default;
     public:
       virtual ~DefaultDataEventStrategyBase_T () = default;
 
@@ -444,7 +434,7 @@ namespace CIAOX11
       }
 
     private:
-      DefaultDataEventStrategyBase_T (DefaultDataEventStrategyBase_T&&) = delete;
+      DefaultDataEventStrategyBase_T () = delete;
       DefaultDataEventStrategyBase_T& operator=(const DefaultDataEventStrategyBase_T&) = delete;
       DefaultDataEventStrategyBase_T& operator=(DefaultDataEventStrategyBase_T&&) = delete;
 
@@ -457,7 +447,7 @@ namespace CIAOX11
           typename CCM_TYPE::push_consumer_traits::data_listener_type>
     {
     public:
-      DefaultPushConsumerEventStrategy_T (
+      explicit DefaultPushConsumerEventStrategy_T (
         typename IDL::traits<typename CCM_TYPE::context_type>::ref_type ctx)
         : DefaultDataEventStrategyBase_T<
             typename CCM_TYPE::push_consumer_traits::data_listener_type> (
@@ -465,11 +455,13 @@ namespace CIAOX11
                 ctx->get_connection_push_consumer_status (),
                 ctx->get_connection_push_consumer_data_listener ())
       {}
-      DefaultPushConsumerEventStrategy_T (const DefaultPushConsumerEventStrategy_T& des)
-        : DefaultDataEventStrategyBase_T<
-            typename CCM_TYPE::push_consumer_traits::data_listener_type> (des)
-      {}
+      DefaultPushConsumerEventStrategy_T (const DefaultPushConsumerEventStrategy_T&) = default;
+      DefaultPushConsumerEventStrategy_T (DefaultPushConsumerEventStrategy_T&&) = default;
       virtual ~DefaultPushConsumerEventStrategy_T () = default;
+    private:
+      DefaultPushConsumerEventStrategy_T () = delete;
+      DefaultPushConsumerEventStrategy_T& operator=(const DefaultPushConsumerEventStrategy_T&) = delete;
+      DefaultPushConsumerEventStrategy_T& operator=(DefaultPushConsumerEventStrategy_T&&) = delete;
     };
 
     template <typename CCM_TYPE>
@@ -477,16 +469,19 @@ namespace CIAOX11
       : public DefaultPortStatusEventStrategyBase
     {
     public:
-      DefaultPullConsumerEventStrategy_T (
+      explicit DefaultPullConsumerEventStrategy_T (
         typename IDL::traits<typename CCM_TYPE::context_type>::ref_type ctx)
         : DefaultPortStatusEventStrategyBase (
                 ctx,
                 ctx->get_connection_pull_consumer_status ())
       {}
-      DefaultPullConsumerEventStrategy_T (const DefaultPullConsumerEventStrategy_T& des)
-        : DefaultPortStatusEventStrategyBase (des)
-      {}
+      DefaultPullConsumerEventStrategy_T (const DefaultPullConsumerEventStrategy_T&) = default;
+      DefaultPullConsumerEventStrategy_T (DefaultPullConsumerEventStrategy_T&&) = default;
       virtual ~DefaultPullConsumerEventStrategy_T () = default;
+    private:
+      DefaultPullConsumerEventStrategy_T () = delete;
+      DefaultPullConsumerEventStrategy_T& operator=(const DefaultPullConsumerEventStrategy_T&) = delete;
+      DefaultPullConsumerEventStrategy_T& operator=(DefaultPullConsumerEventStrategy_T&&) = delete;
     };
 
     template <typename CCM_TYPE>
@@ -494,16 +489,19 @@ namespace CIAOX11
       : public DefaultPortStatusEventStrategyBase
     {
     public:
-      DefaultPassiveObserverEventStrategy_T (
+      explicit DefaultPassiveObserverEventStrategy_T (
         typename IDL::traits<typename CCM_TYPE::context_type>::ref_type ctx)
         : DefaultPortStatusEventStrategyBase (
                 ctx,
                 ctx->get_connection_passive_observer_status ())
       {}
-      DefaultPassiveObserverEventStrategy_T (const DefaultPassiveObserverEventStrategy_T& des)
-        : DefaultPortStatusEventStrategyBase (des)
-      {}
+      DefaultPassiveObserverEventStrategy_T (const DefaultPassiveObserverEventStrategy_T&) = default;
+      DefaultPassiveObserverEventStrategy_T (DefaultPassiveObserverEventStrategy_T&&) = default;
       virtual ~DefaultPassiveObserverEventStrategy_T () = default;
+    private:
+      DefaultPassiveObserverEventStrategy_T () = delete;
+      DefaultPassiveObserverEventStrategy_T& operator=(const DefaultPassiveObserverEventStrategy_T&) = delete;
+      DefaultPassiveObserverEventStrategy_T& operator=(DefaultPassiveObserverEventStrategy_T&&) = delete;
     };
 
     template <typename CCM_TYPE>
@@ -511,16 +509,19 @@ namespace CIAOX11
       : public DefaultPortStatusEventStrategyBase
     {
     public:
-      DefaultPullObserverEventStrategy_T (
+      explicit DefaultPullObserverEventStrategy_T (
         typename IDL::traits<typename CCM_TYPE::context_type>::ref_type ctx)
         : DefaultPortStatusEventStrategyBase (
                 ctx,
                 ctx->get_connection_pull_observer_status ())
       {}
-      DefaultPullObserverEventStrategy_T (const DefaultPullObserverEventStrategy_T& des)
-        : DefaultPortStatusEventStrategyBase (des)
-      {}
+      DefaultPullObserverEventStrategy_T (const DefaultPullObserverEventStrategy_T&) = default;
+      DefaultPullObserverEventStrategy_T (DefaultPullObserverEventStrategy_T&&) = default;
       virtual ~DefaultPullObserverEventStrategy_T ()  = default;
+    private:
+      DefaultPullObserverEventStrategy_T () = delete;
+      DefaultPullObserverEventStrategy_T& operator=(const DefaultPullObserverEventStrategy_T&) = delete;
+      DefaultPullObserverEventStrategy_T& operator=(DefaultPullObserverEventStrategy_T&&) = delete;
     };
 
     template <typename CCM_TYPE>
@@ -529,7 +530,7 @@ namespace CIAOX11
           typename CCM_TYPE::push_observer_traits::data_listener_type>
     {
     public:
-      DefaultPushObserverEventStrategy_T (
+      explicit DefaultPushObserverEventStrategy_T (
         typename IDL::traits<typename CCM_TYPE::context_type>::ref_type ctx)
         : DefaultDataEventStrategyBase_T<
             typename CCM_TYPE::push_observer_traits::data_listener_type> (
@@ -537,11 +538,13 @@ namespace CIAOX11
                 ctx->get_connection_push_observer_status (),
                 ctx->get_connection_push_observer_data_listener ())
       {}
-      DefaultPushObserverEventStrategy_T (const DefaultPushObserverEventStrategy_T& des)
-        : DefaultDataEventStrategyBase_T<
-            typename CCM_TYPE::push_observer_traits::data_listener_type> (des)
-      {}
+      DefaultPushObserverEventStrategy_T (const DefaultPushObserverEventStrategy_T&) = default;
+      DefaultPushObserverEventStrategy_T (DefaultPushObserverEventStrategy_T&&) = default;
       virtual ~DefaultPushObserverEventStrategy_T () = default;
+    private:
+      DefaultPushObserverEventStrategy_T () = delete;
+      DefaultPushObserverEventStrategy_T& operator=(const DefaultPushObserverEventStrategy_T&) = delete;
+      DefaultPushObserverEventStrategy_T& operator=(DefaultPushObserverEventStrategy_T&&) = delete;
     };
 
     template <typename CCM_TYPE>
@@ -550,7 +553,7 @@ namespace CIAOX11
           typename CCM_TYPE::push_state_observer_traits::data_listener_type>
     {
     public:
-      DefaultPushStateObserverEventStrategy_T (
+      explicit DefaultPushStateObserverEventStrategy_T (
         typename IDL::traits<typename CCM_TYPE::context_type>::ref_type ctx)
         : DefaultDataEventStrategyBase_T<
             typename CCM_TYPE::push_state_observer_traits::data_listener_type> (
@@ -558,11 +561,13 @@ namespace CIAOX11
                 ctx->get_connection_push_state_observer_status (),
                 ctx->get_connection_push_state_observer_data_listener ())
       {}
-      DefaultPushStateObserverEventStrategy_T (const DefaultPushStateObserverEventStrategy_T& des)
-        : DefaultDataEventStrategyBase_T<
-            typename CCM_TYPE::push_state_observer_traits::data_listener_type> (des)
-      {}
+      DefaultPushStateObserverEventStrategy_T (const DefaultPushStateObserverEventStrategy_T&) = default;
+      DefaultPushStateObserverEventStrategy_T (DefaultPushStateObserverEventStrategy_T&&) = default;
       virtual ~DefaultPushStateObserverEventStrategy_T () = default;
+    private:
+      DefaultPushStateObserverEventStrategy_T () = delete;
+      DefaultPushStateObserverEventStrategy_T& operator=(const DefaultPushStateObserverEventStrategy_T&) = delete;
+      DefaultPushStateObserverEventStrategy_T& operator=(DefaultPushStateObserverEventStrategy_T&&) = delete;
     };
   }
 }
