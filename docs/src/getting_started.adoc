@@ -149,6 +149,7 @@ Comparing IDL to {cpp} with IDL to
 * GCC version 4.8 or newer
 * Microsoft Visual Studio 2015
 * Microsoft Visual Studio 2017
+* Microsoft Visual Studio 2019
 * Clang C++ version 5 or newer
 * Intel C++ 2016
 
@@ -156,7 +157,7 @@ Comparing IDL to {cpp} with IDL to
 
 *AXCIOMA* is currently actively supported on
 
-* CentOS 7.3 x86_64 using GCC 4.8.5
+* RHEL 7.5 x86_64 using GCC 4.8.5
 
 *AXCIOMA* is using at least the following {cxx11} features
 
