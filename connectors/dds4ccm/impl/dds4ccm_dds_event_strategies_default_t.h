@@ -28,7 +28,7 @@ namespace CIAOX11
     class DefaultEventStrategyBase
     {
     protected:
-      DefaultEventStrategyBase (IDL::traits<Components::SessionContext>::ref_type ctx)
+      explicit DefaultEventStrategyBase (IDL::traits<Components::SessionContext>::ref_type ctx)
       {
         DDS4CCM_LOG_TRACE ("DefaultEventStrategyBase::" << "ctor");
 
@@ -68,7 +68,7 @@ namespace CIAOX11
       : public DefaultEventStrategyBase
     {
     public:
-      DefaultErrorEventStrategy_T (
+      explicit DefaultErrorEventStrategy_T (
         typename IDL::traits<typename CCM_TYPE::context_type>::ref_type ctx)
         : DefaultEventStrategyBase (ctx)
       {
@@ -313,7 +313,7 @@ namespace CIAOX11
       : public DefaultEventStrategyBase
     {
     protected:
-      DefaultPortStatusEventStrategyBase (
+      explicit DefaultPortStatusEventStrategyBase (
         IDL::traits<Components::SessionContext>::ref_type ctx,
         IDL::traits< ::CCM_DDS::PortStatusListener>::ref_type port_status_listener)
         : DefaultEventStrategyBase (std::move(ctx))
@@ -393,7 +393,7 @@ namespace CIAOX11
       : public DefaultPortStatusEventStrategyBase
     {
     protected:
-      DefaultDataEventStrategyBase_T (
+      explicit DefaultDataEventStrategyBase_T (
         IDL::traits<Components::SessionContext>::ref_type ctx,
         IDL::traits< ::CCM_DDS::PortStatusListener>::ref_type port_status_listener,
         typename IDL::traits< DATA_LISTENER>::ref_type data_listener)
@@ -447,7 +447,7 @@ namespace CIAOX11
           typename CCM_TYPE::push_consumer_traits::data_listener_type>
     {
     public:
-      DefaultPushConsumerEventStrategy_T (
+      explicit DefaultPushConsumerEventStrategy_T (
         typename IDL::traits<typename CCM_TYPE::context_type>::ref_type ctx)
         : DefaultDataEventStrategyBase_T<
             typename CCM_TYPE::push_consumer_traits::data_listener_type> (
@@ -469,7 +469,7 @@ namespace CIAOX11
       : public DefaultPortStatusEventStrategyBase
     {
     public:
-      DefaultPullConsumerEventStrategy_T (
+      explicit DefaultPullConsumerEventStrategy_T (
         typename IDL::traits<typename CCM_TYPE::context_type>::ref_type ctx)
         : DefaultPortStatusEventStrategyBase (
                 ctx,
@@ -489,7 +489,7 @@ namespace CIAOX11
       : public DefaultPortStatusEventStrategyBase
     {
     public:
-      DefaultPassiveObserverEventStrategy_T (
+      explicit DefaultPassiveObserverEventStrategy_T (
         typename IDL::traits<typename CCM_TYPE::context_type>::ref_type ctx)
         : DefaultPortStatusEventStrategyBase (
                 ctx,
@@ -509,7 +509,7 @@ namespace CIAOX11
       : public DefaultPortStatusEventStrategyBase
     {
     public:
-      DefaultPullObserverEventStrategy_T (
+      explicit DefaultPullObserverEventStrategy_T (
         typename IDL::traits<typename CCM_TYPE::context_type>::ref_type ctx)
         : DefaultPortStatusEventStrategyBase (
                 ctx,
@@ -530,7 +530,7 @@ namespace CIAOX11
           typename CCM_TYPE::push_observer_traits::data_listener_type>
     {
     public:
-      DefaultPushObserverEventStrategy_T (
+      explicit DefaultPushObserverEventStrategy_T (
         typename IDL::traits<typename CCM_TYPE::context_type>::ref_type ctx)
         : DefaultDataEventStrategyBase_T<
             typename CCM_TYPE::push_observer_traits::data_listener_type> (
@@ -553,7 +553,7 @@ namespace CIAOX11
           typename CCM_TYPE::push_state_observer_traits::data_listener_type>
     {
     public:
-      DefaultPushStateObserverEventStrategy_T (
+      explicit DefaultPushStateObserverEventStrategy_T (
         typename IDL::traits<typename CCM_TYPE::context_type>::ref_type ctx)
         : DefaultDataEventStrategyBase_T<
             typename CCM_TYPE::push_state_observer_traits::data_listener_type> (
