@@ -63,7 +63,6 @@ jobs:
       CXX: ${{ matrix.CXX }}
     steps:
     - uses: actions/checkout@v2
-    - uses: actions/checkout@v2
     - name: checkout ACE_TAO
       uses: actions/checkout@v2
       with:
