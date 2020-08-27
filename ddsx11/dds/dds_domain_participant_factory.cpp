@@ -85,16 +85,24 @@ namespace DDSX11
     // of scope.
     listener_guard.release ();
 
-    IDL::traits< ::DDS::DomainParticipant>::ref_type retval =
+    IDL::traits< ::DDS::DomainParticipant>::ref_type domain_participant =
       VendorUtils::create_domain_participant_proxy (dds_dp);
 
-    if (retval)
+    if (domain_participant)
       {
-        DDS_ProxyEntityManager::register_dp_proxy (retval);
+        if (DDS_ProxyEntityManager::register_dp_proxy (domain_participant))
+          {
+            DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipantFactory_proxy::create_participant - "
+              << "Successfully created and registered a DomainParticipant for domain <"
+              << domain_id << ">");
+          }
+        else
+          {
+            domain_participant = nullptr;
 
-        DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipantFactory_proxy::create_participant - "
-          << "Successfully created a DomainParticipant for domain <"
-          << domain_id << ">");
+            DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipantFactory_proxy::create_participant - "
+              << "ERROR: Failed to register a domain participant proxy.");
+          }
       }
     else
       {
@@ -103,7 +111,7 @@ namespace DDSX11
           << domain_id << ">");
       }
 
-    return retval;
+    return domain_participant;
   }
 
 

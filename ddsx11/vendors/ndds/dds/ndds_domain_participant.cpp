@@ -82,10 +82,18 @@ namespace DDSX11
 
       if (publisher)
         {
-          DDS_ProxyEntityManager::register_publisher_proxy (publisher);
+          if (DDS_ProxyEntityManager::register_publisher_proxy (publisher))
+            {
+              DDSX11_IMPL_LOG_DEBUG ("NDDS_DomainParticipant_proxy::create_publisher_with_profile <"
+                << qos_profile << "> - Successfully created and registered a Publisher.");
+            }
+          else
+            {
+              publisher = nullptr;
 
-          DDSX11_IMPL_LOG_DEBUG ("NDDS_DomainParticipant_proxy::create_publisher_with_profile <"
-            << qos_profile << "> - Successfully created a Publisher.");
+              DDSX11_IMPL_LOG_ERROR ("NDDS_DomainParticipant_proxy::create_publisher_with_profile - "
+                << "ERROR: Failed to register a publisher proxy.");
+            }
         }
       else
         {
@@ -146,15 +154,23 @@ namespace DDSX11
       if (subscriber)
         {
           // Register the fresh created proxy in the proxy entity manager
-          DDS_ProxyEntityManager::register_subscriber_proxy (subscriber);
+          if (DDS_ProxyEntityManager::register_subscriber_proxy (subscriber))
+            {
+              DDSX11_IMPL_LOG_DEBUG ("NDDS_DomainParticipant_proxy::create_subscriber_with_profile <"
+                << qos_profile << "> - Successfully created and registered a subscriber.");
+            }
+          else
+            {
+              subscriber = nullptr;
 
-          DDSX11_IMPL_LOG_DEBUG ("NDDS_DomainParticipant_proxy::create_subscriber_with_profile <"
-            << qos_profile << "> - Successfully created a Subscriber.");
+              DDSX11_IMPL_LOG_ERROR ("NDDS_DomainParticipant_proxy::create_subscriber_with_profile - "
+                << "ERROR: Failed to register a subscriber proxy.");
+            }
         }
       else
         {
           DDSX11_IMPL_LOG_ERROR ("NDDS_DomainParticipant_proxy::create_subscriber_with_profile <"
-            << qos_profile << "> - ERROR: Failed to create a Subscriber.");
+            << qos_profile << "> - ERROR: Failed to create a subscriber.");
         }
 
       return subscriber;
@@ -225,20 +241,30 @@ namespace DDSX11
       // of scope.
       ccm_dds_tl.release ();
 
-      IDL::traits< ::DDS::Topic>::ref_type retval =
+      IDL::traits< ::DDS::Topic>::ref_type topic_reference =
         CORBA::make_reference<DDSX11::DDS_Topic_proxy>(dds_tp);
-      DDS_ProxyEntityManager::register_topic_proxy (retval);
-      if (retval)
+
+      if (topic_reference)
         {
-          DDSX11_IMPL_LOG_DEBUG ("NDDS_DomainParticipant_proxy::create_topic_with_profile <"
-            << qos_profile << "> - Successfully created a Topic.");
+          if (DDS_ProxyEntityManager::register_topic_proxy (topic_reference))
+            {
+              DDSX11_IMPL_LOG_DEBUG ("NDDS_DomainParticipant_proxy::create_topic_with_profile - "
+                << "Successfully created and registered a topic.");
+            }
+          else
+            {
+              topic_reference = nullptr;
+
+              DDSX11_IMPL_LOG_ERROR ("NDDS_DomainParticipant_proxy::create_topic_with_profile - "
+                << "ERROR: Failed to register a topic proxy.");
+            }
         }
       else
         {
           DDSX11_IMPL_LOG_ERROR ("NDDS_DomainParticipant_proxy::create_topic_with_profile <"
-            << qos_profile << "> - ERROR: Failed to create a Topic.");
+            << qos_profile << "> - ERROR: Failed to create a topic.");
         }
-      return retval;
+      return topic_reference;
     }
   }
 }

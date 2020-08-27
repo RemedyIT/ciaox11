@@ -97,10 +97,18 @@ namespace DDSX11
 
     if (publisher)
       {
-        DDS_ProxyEntityManager::register_publisher_proxy (publisher);
+        if (DDS_ProxyEntityManager::register_publisher_proxy (publisher))
+          {
+            DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::create_publisher - "
+              << "Successfully created and registered a publisher.");
+          }
+        else
+          {
+            publisher = nullptr;
 
-        DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::create_publisher - "
-          << "Successfully created a Publisher.");
+            DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::create_publisher - "
+              << "ERROR: Failed to register a publisher proxy.");
+          }
       }
     else
       {
@@ -216,10 +224,18 @@ namespace DDSX11
     if (subscriber)
       {
         // Register the fresh created proxy in the proxy entity manager
-        DDS_ProxyEntityManager::register_subscriber_proxy (subscriber);
+        if (DDS_ProxyEntityManager::register_subscriber_proxy (subscriber))
+          {
+            DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::create_subscriber - "
+              << "Successfully created and registered a subscriber.");
+          }
+        else
+          {
+            subscriber = nullptr;
 
-        DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::create_subscriber - "
-          << "Successfully created a Subscriber.");
+            DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::create_subscriber - "
+              << "ERROR: Failed to register a subscriber proxy.");
+          }
       }
     else
       {
@@ -384,10 +400,18 @@ namespace DDSX11
 
     if (topic_reference)
       {
-        DDS_ProxyEntityManager::register_topic_proxy (topic_reference);
+        if (DDS_ProxyEntityManager::register_topic_proxy (topic_reference))
+          {
+            DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::create_topic - "
+              << "Successfully created and registered a Topic.");
+          }
+        else
+          {
+            topic_reference = nullptr;
 
-        DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::create_topic - "
-          << "Successfully created a Topic.");
+            DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::create_topic - "
+              << "ERROR: Failed to register a topic proxy.");
+          }
       }
     else
       {

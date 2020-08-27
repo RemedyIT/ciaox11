@@ -170,7 +170,6 @@ module AxciomaPC
       end
 
       # Methods for MPC project file generation
-
       def mpc_genobj
         unless @mpc_genobj
           idlflags = idl_flags.add_flags.dup

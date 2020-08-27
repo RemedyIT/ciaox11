@@ -27,7 +27,7 @@ namespace DDSX11
   std::mutex DDS_ProxyEntityManager::dp_mutex;
 
   template<typename PROXY_TYPE, typename PROXY_MAP>
-  void
+  bool
   DDS_ProxyEntityManager::register_proxy (
     PROXY_TYPE proxy,
     PROXY_MAP &lst)
@@ -39,10 +39,13 @@ namespace DDSX11
     {
       DDSX11_IMPL_LOG_ERROR ("DDS_ProxyEntityManager::register_proxy - "
         "Registering proxy <" << proxy->get_instance_handle () << "> failed");
-      proxy = nullptr;
+      return false;
     }
+
     DDSX11_IMPL_LOG_DEBUG ("DDS_ProxyEntityManager::register_proxy - "
-      "Registered proxy with handle <" << proxy->get_instance_handle () << ">");
+      "Registering proxy with handle <" << proxy->get_instance_handle () << "> succeeded");
+
+    return true;
   }
 
   template<typename PROXY_TYPE, typename PROXY_MAP>
@@ -88,7 +91,6 @@ namespace DDSX11
     if (it != lst.end ())
     {
       lst.erase (it);
-      proxy = nullptr;
       DDSX11_IMPL_LOG_DEBUG ("DDS_ProxyEntityManager::unregister_proxy - "
         << "Removed proxy with handle <" << handle
         << "> from the list");
@@ -101,7 +103,7 @@ namespace DDSX11
     }
   }
 
-  void
+  bool
   DDS_ProxyEntityManager::register_datareader_proxy (
     ::IDL::traits< ::DDS::DataReader>::ref_type proxy)
   {
@@ -116,7 +118,7 @@ namespace DDSX11
         (proxy, DDS_ProxyEntityManager::dr_proxies);
   }
 
-  void
+  bool
   DDS_ProxyEntityManager::register_datawriter_proxy (
     ::IDL::traits< ::DDS::DataWriter>::ref_type proxy)
   {
@@ -131,7 +133,7 @@ namespace DDSX11
         (proxy, DDS_ProxyEntityManager::dw_proxies);
   }
 
-  void
+  bool
   DDS_ProxyEntityManager::register_subscriber_proxy (
     ::IDL::traits< ::DDS::Subscriber>::ref_type proxy)
   {
@@ -146,7 +148,7 @@ namespace DDSX11
         (proxy, DDS_ProxyEntityManager::sub_proxies);
   }
 
-  void
+  bool
   DDS_ProxyEntityManager::register_publisher_proxy (
     ::IDL::traits< ::DDS::Publisher>::ref_type proxy)
   {
@@ -161,7 +163,7 @@ namespace DDSX11
         (proxy, DDS_ProxyEntityManager::pub_proxies);
   }
 
-  void
+  bool
   DDS_ProxyEntityManager::register_topic_proxy (
     ::IDL::traits< ::DDS::Topic>::ref_type proxy)
   {
@@ -176,7 +178,7 @@ namespace DDSX11
         (proxy, DDS_ProxyEntityManager::tp_proxies);
   }
 
-  void
+  bool
   DDS_ProxyEntityManager::register_dp_proxy (
     ::IDL::traits< ::DDS::DomainParticipant>::ref_type proxy)
   {

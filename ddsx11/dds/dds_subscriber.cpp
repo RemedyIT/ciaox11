@@ -193,7 +193,7 @@ namespace DDSX11
     DDSX11_IMPL_LOG_DEBUG ("DDS_Subscriber_proxy::create_datareader - "
       << "Successfully created native datareader");
 
-    // Create the X11 typed data reader
+    // Create the X11 typed datareader
     IDL::traits< ::DDS::DataReader>::ref_type datareader =
       DDS_TypeSupport_i::create_datareader (
             this->get_participant (),
@@ -203,15 +203,23 @@ namespace DDSX11
     if (datareader)
       {
         // Register the fresh created proxy in the proxy entity manager
-        DDS_ProxyEntityManager::register_datareader_proxy (datareader);
+        if (DDS_ProxyEntityManager::register_datareader_proxy (datareader))
+          {
+            DDSX11_IMPL_LOG_DEBUG ("DDS_Subscriber_proxy::create_datareader - "
+              << "Successfully created and registered a datareader.");
+          }
+        else
+          {
+            datareader = nullptr;
 
-        DDSX11_IMPL_LOG_DEBUG ("DDS_Subscriber_proxy::create_datareader - "
-          << "Successfully created a data reader.");
+            DDSX11_IMPL_LOG_ERROR ("DDS_Publisher_proxy::create_datareader - "
+              << "ERROR: Failed to register a datareader proxy.");
+          }
       }
     else
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_Subscriber_proxy::create_datareader - "
-          << "ERROR: Failed to create a data reader.");
+          << "ERROR: Failed to create a datareader.");
       }
 
     return datareader;
