@@ -53,7 +53,7 @@ namespace DDSX11
     if (retcode != ::DDS::RETCODE_OK)
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::create_publisher - "
-          << "Error: Unable to retrieve default publisher qos: <"
+          << "Error: Unable to retrieve default publisher qos <"
           << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">");
         return {};
@@ -147,7 +147,7 @@ namespace DDSX11
     if (retcode != ::DDS::RETCODE_OK)
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::delete_publisher - "
-          << "Error: delete_publisher returned non-ok error code <"
+          << "Error: delete_publisher returned non-ok error <"
           << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">");
       }
@@ -179,7 +179,7 @@ namespace DDSX11
     if (retcode != ::DDS::RETCODE_OK)
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::create_subscriber - "
-          << "Error: Unable to retrieve default subscriber qos."
+          << "Error: Unable to retrieve default subscriber qos <"
           << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">");
         return {};
@@ -276,7 +276,7 @@ namespace DDSX11
     if (retcode != ::DDS::RETCODE_OK)
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::delete_subscriber - "
-          << "Error: delete_subscriber returned non-ok error code <"
+          << "Error: delete_subscriber returned non-ok error <"
           << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">");
       }
@@ -351,7 +351,7 @@ namespace DDSX11
     if (retcode != ::DDS::RETCODE_OK)
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::create_topic - "
-          << "Error: Unable to retrieve default topic qos: <"
+          << "Error: Unable to retrieve default topic qos <"
           << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">");
         return {};
@@ -446,10 +446,18 @@ namespace DDSX11
       ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
         this->native_entity ()->delete_topic (top));
 
-    DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::delete_topic - "
-      << "delete_topic returned error code <"
-      << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
-      << ">");
+    if (retcode != ::DDS::RETCODE_OK)
+      {
+        DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::delete_topic - "
+          << "Error: delete_topic returned non-ok error code <"
+          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+          << ">");
+      }
+    else
+      {
+        DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::delete_topic - "
+          << "Provided topic successfully deleted");
+      }
 
     return retcode;
   }
@@ -610,7 +618,7 @@ namespace DDSX11
     if (retcode != ::DDS::RETCODE_OK)
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::set_qos - "
-          << "Error: Unable to retrieve participant qos: <"
+          << "Error: Unable to retrieve participant qos <"
           << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">");
         return retcode;
@@ -766,7 +774,7 @@ namespace DDSX11
     if (retcode != ::DDS::RETCODE_OK)
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::set_default_publisher_qos - "
-          << "Error: Unable to retrieve default publisher qos: <"
+          << "Error: Unable to retrieve default publisher qos <"
           << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">");
         return retcode;
@@ -810,7 +818,7 @@ namespace DDSX11
     if (retcode != ::DDS::RETCODE_OK)
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::set_default_subscriber_qos - "
-          << "Error: Unable to retrieve default subscriber qos: <"
+          << "Error: Unable to retrieve default subscriber qos <"
           << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">");
         return retcode;
@@ -854,7 +862,7 @@ namespace DDSX11
     if (retcode != ::DDS::RETCODE_OK)
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::set_default_topic_qos - "
-          << "Error: Unable to retrieve default topic qos: <"
+          << "Error: Unable to retrieve default topic qos <"
           << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">");
         return retcode;

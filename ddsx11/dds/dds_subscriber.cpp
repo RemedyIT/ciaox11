@@ -80,7 +80,9 @@ namespace DDSX11
     if (retcode != ::DDS::RETCODE_OK)
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_Subscriber_proxy::create_native_datareader - "
-          << "Error: Unable to retrieve default datareader qos.");
+          << "Error: Unable to retrieve default datareader qos <"
+          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+          << ">");
         return nullptr;
       }
 #endif
@@ -115,7 +117,9 @@ namespace DDSX11
     if (retcode != ::DDS::RETCODE_OK)
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_Subscriber_proxy::create_native_datareader - "
-          << "Error: Unable to retrieve default datareader qos.");
+          << "Error: Unable to retrieve default datareader qos <"
+          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+          << ">");
         return nullptr;
       }
 #endif
@@ -366,7 +370,9 @@ namespace DDSX11
     if (retcode != ::DDS::RETCODE_OK)
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_Subscriber_proxy::set_qos - "
-          << "Error: Unable to retrieve subscriber qos.");
+          << "Error: Unable to retrieve subscriber qos <"
+          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+          << ">");
         return retcode;
       }
 #endif
@@ -483,7 +489,9 @@ namespace DDSX11
     if (retcode != ::DDS::RETCODE_OK)
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_Subscriber_proxy::set_default_datareader_qos - "
-          << "Error: Unable to retrieve default datareader qos.");
+          << "Error: Unable to retrieve default datareader qos <"
+          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+          << ">");
         return retcode;
       }
 #endif

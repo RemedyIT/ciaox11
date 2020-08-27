@@ -46,7 +46,9 @@ namespace DDSX11
     if (retcode != ::DDS::RETCODE_OK)
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipantFactory_proxy::create_participant - "
-          << "Error: Unable to retrieve default participant qos.");
+          << "Error: Unable to retrieve default participant QoS <"
+          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+          << ">");
         return {};
       }
 #endif
@@ -143,7 +145,7 @@ namespace DDSX11
     if (retcode != ::DDS::RETCODE_OK)
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipantFactory_proxy::delete_participant - "
-          << "delete_participant returned non-ok error code <"
+          << "delete_participant returned non-ok error <"
           << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">");
       }
@@ -203,7 +205,9 @@ namespace DDSX11
     if (retcode != ::DDS::RETCODE_OK)
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipantFactory_proxy::set_default_participant_qos - "
-          << "Error: Unable to retrieve default participant qos");
+          << "Error: Unable to retrieve default participant QoS <"
+          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+          << ">");
         return retcode;
       }
 #endif
@@ -244,7 +248,9 @@ namespace DDSX11
     if (retcode != ::DDS::RETCODE_OK)
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::set_qos - "
-          << "Error: Unable to retrieve participant factory qos.");
+          << "Error: Unable to retrieve domain participant factory QoS <"
+          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+          << ">");
         return retcode;
       }
 #endif

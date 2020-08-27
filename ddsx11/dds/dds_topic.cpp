@@ -40,7 +40,9 @@ namespace DDSX11
     if (retcode != ::DDS::RETCODE_OK)
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::set_qos - "
-          << "Error: Unable to retrieve participant qos.");
+          << "Error: Unable to retrieve participant QoS <"
+          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+          << ">");
         return retcode;
       }
 #endif

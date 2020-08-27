@@ -852,9 +852,10 @@ namespace DDSX11
         this->native_entity ()->get_qos (qos_in.value_));
     if (retcode != ::DDS::RETCODE_OK)
       {
-        DDSX11_IMPL_LOG_ERROR (
-          "DataReader_T<NATIVE_TYPED_READER, TYPED_READER_TYPE, TOPIC_TYPE, SEQ_TYPE, NATIVE_SEQ_TYPE>::set_qos - "
-          "Error: Unable to retrieve QoS.");
+        DDSX11_IMPL_LOG_ERROR ("DataReader_T<NATIVE_TYPED_READER, TYPED_READER_TYPE, TOPIC_TYPE, SEQ_TYPE, NATIVE_SEQ_TYPE>::set_qos - "
+          << "Error: Unable to retrieve QoS <"
+          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+          << ">");
         return retcode;
       }
 #endif
