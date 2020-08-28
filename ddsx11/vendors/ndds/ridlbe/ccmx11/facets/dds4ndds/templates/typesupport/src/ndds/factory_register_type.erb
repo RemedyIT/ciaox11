@@ -16,6 +16,10 @@ catch (const std::bad_alloc&)
 {
   return ::DDS::RETCODE_OUT_OF_RESOURCES;
 }
+catch (...)
+{
+  return ::DDS::RETCODE_ERROR;
+}
 
 if (DDSX11::DDS_TypeSupport_i::register_type (participant, type_name, std::move(factory)))
   {
