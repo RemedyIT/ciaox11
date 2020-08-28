@@ -48,7 +48,9 @@ namespace DDSX11
     if (retcode != ::DDS::RETCODE_OK)
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_Publisher_proxy::create_datawriter - "
-          << "Error: Unable to retrieve default datawriter qos.");
+          << "Error: Unable to retrieve default datawriter QoS <"
+          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+          << ">");
         return nullptr;
       }
 #endif
@@ -93,10 +95,18 @@ namespace DDSX11
                                             native_dw);
     if (datawriter)
     {
-      DDS_ProxyEntityManager::register_datawriter_proxy (datawriter);
+      if (DDS_ProxyEntityManager::register_datawriter_proxy (datawriter))
+        {
+          DDSX11_IMPL_LOG_DEBUG ("DDS_Publisher_proxy::create_datawriter - "
+            << "Successfully created and registered a DataWriter");
+        }
+      else
+        {
+          datawriter = nullptr;
 
-      DDSX11_IMPL_LOG_DEBUG ("DDS_Publisher_proxy::create_datawriter - "
-        << "Successfully created a DataWriter");
+          DDSX11_IMPL_LOG_ERROR ("DDS_Publisher_proxy::create_datawriter - "
+            << "ERROR: Failed to register a datawriter proxy.");
+        }
     }
     else
     {
@@ -142,7 +152,7 @@ namespace DDSX11
     if (retcode != ::DDS::RETCODE_OK)
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_Publisher_i::delete_datawriter - "
-          << "Error: Native delete_datawriter returned non-ok error code <"
+          << "Error: Native delete_datawriter returned non-ok error <"
           << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">");
       }
@@ -194,7 +204,9 @@ namespace DDSX11
     if (retcode != ::DDS::RETCODE_OK)
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_Publisher_proxy::set_qos - "
-          << "Error: Unable to retrieve publisher qos.");
+          << "Error: Unable to retrieve publisher QoS <"
+          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+          << ">");
         return retcode;
       }
 #endif
@@ -344,7 +356,9 @@ namespace DDSX11
     if (retcode != ::DDS::RETCODE_OK)
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_Publisher_proxy::set_default_datawriter_qos - "
-          << "Error: Unable to retrieve default datawriter qos.");
+          << "Error: Unable to retrieve default datawriter <"
+          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+          << ">");
         return retcode;
       }
 #endif

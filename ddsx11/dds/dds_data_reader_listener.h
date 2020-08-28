@@ -68,7 +68,7 @@ namespace DDSX11
     IDL::traits< ::DDS::DataReaderListener>::ref_type impl_;
 
     // In order to gain performance (especially for on_data_available), we keep
-    // a weak_ref_pointer to the data reader. This pointer will be set the first
+    // a weak_ref_pointer to the datareader. This pointer will be set the first
     // time a callback from DDS comes in. The pointer will be converted to a strong
     // reference and checked on each callback.
     // This prevents looking up the internal map in the ProxyEntityManager each

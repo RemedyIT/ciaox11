@@ -85,11 +85,19 @@ namespace DDSX11
 
       if (datawriter)
       {
-        DDS_ProxyEntityManager::register_datawriter_proxy (datawriter);
+        if (DDS_ProxyEntityManager::register_datawriter_proxy (datawriter))
+        {
+          DDSX11_IMPL_LOG_DEBUG ("NDDS_Publisher_proxy::create_datawriter_with_profile - "
+            << "Successfully created and registered a datawriter with profile <"
+            << qos_profile << ">");
+        }
+        else
+        {
+          datawriter = nullptr;
 
-        DDSX11_IMPL_LOG_DEBUG ("NDDS_Publisher_proxy::create_datawriter_with_profile - "
-          << "Successfully created a dataWriter with profile <"
-          << qos_profile << ">");
+          DDSX11_IMPL_LOG_ERROR ("DDS_Publisher_proxy::create_datawriter - "
+            << "ERROR: Failed to register a datawriter proxy.");
+        }
       }
       else
       {

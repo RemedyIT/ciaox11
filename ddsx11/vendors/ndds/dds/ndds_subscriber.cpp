@@ -148,10 +148,19 @@ namespace DDSX11
       if (datareader)
         {
           // Register the fresh created proxy in the proxy entity manager
-          DDS_ProxyEntityManager::register_datareader_proxy (datareader);
+          if (DDS_ProxyEntityManager::register_datareader_proxy (datareader))
+          {
+            DDSX11_IMPL_LOG_DEBUG ("NDDS_Subscriber_proxy::create_datareader_with_profile - "
+              << "Successfully created and registered a datareader with profile <"
+              << qos_profile << ">");
+          }
+          else
+          {
+            datareader = nullptr;
 
-          DDSX11_IMPL_LOG_DEBUG ("NDDS_Subscriber_proxy::create_datareader_with_profile - "
-            << "Successfully created a data reader.");
+            DDSX11_IMPL_LOG_ERROR ("NDDS_Subscriber_proxy::create_datareader_with_profile - "
+              << "ERROR: Failed to register a datareader proxy.");
+          }
         }
       else
         {

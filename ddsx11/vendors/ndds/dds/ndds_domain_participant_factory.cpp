@@ -91,11 +91,20 @@ namespace DDSX11
       if (retval)
         {
           // Register the fresh created proxy in the proxy entity manager
-          DDS_ProxyEntityManager::register_dp_proxy (retval);
+          if (DDS_ProxyEntityManager::register_dp_proxy (retval))
+            {
+              DDSX11_IMPL_LOG_DEBUG ("NDDS_DomainParticipantFactory_proxy::create_participant_with_profile <"
+                << qos_profile << "> - Successfully created and registered a DomainParticipant "
+                << "for domain <" << domain_id << ">");
+            }
+          else
+            {
+              retval = nullptr;
 
-          DDSX11_IMPL_LOG_DEBUG ("NDDS_DomainParticipantFactory_proxy::create_participant_with_profile <"
-            << qos_profile << "> - Successfully created a DomainParticipant "
-            << "for domain <" << domain_id << ">");
+              DDSX11_IMPL_LOG_ERROR ("NDDS_DomainParticipant_proxy::create_participant_with_profile - "
+                << "ERROR: Failed to register a domainparticipant proxy.");
+            }
+
         }
       else
         {

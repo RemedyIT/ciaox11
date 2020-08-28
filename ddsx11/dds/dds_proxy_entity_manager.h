@@ -61,35 +61,25 @@ namespace DDSX11
     ~DDS_ProxyEntityManager () = default;
 
     /**
-      * @name          register_xxx_proxy
-      * @brief         Storing the given proxy into the corresponding map
-      * @param proxy   The C++11 proxy to store. Will be set to a nullptr
-      *                if registration fails.
+      * @name         register_xxx_proxy
+      * @brief        Storing the given proxy into the corresponding map
+      * @param proxy  The C++11 proxy to store
+      * @retval true  Registering the proxy succeeded
+      * @retval false Registering the proxy failed
       */
     //@{
-    static void
-    register_datareader_proxy (
-      ::IDL::traits< ::DDS::DataReader>::ref_type proxy);
+    static bool
+    register_datareader_proxy (::IDL::traits< ::DDS::DataReader>::ref_type proxy);
 
-    static void
-    register_datawriter_proxy (
-      ::IDL::traits< ::DDS::DataWriter>::ref_type proxy);
+    static bool register_datawriter_proxy (::IDL::traits< ::DDS::DataWriter>::ref_type proxy);
 
-    static void
-    register_subscriber_proxy (
-      ::IDL::traits< ::DDS::Subscriber>::ref_type proxy);
+    static bool register_subscriber_proxy (::IDL::traits< ::DDS::Subscriber>::ref_type proxy);
 
-    static void
-    register_publisher_proxy (
-      ::IDL::traits< ::DDS::Publisher>::ref_type proxy);
+    static bool register_publisher_proxy (::IDL::traits< ::DDS::Publisher>::ref_type proxy);
 
-    static void
-    register_topic_proxy (
-      ::IDL::traits< ::DDS::Topic>::ref_type proxy);
+    static bool register_topic_proxy (::IDL::traits< ::DDS::Topic>::ref_type proxy);
 
-    static void
-    register_dp_proxy (
-      ::IDL::traits< ::DDS::DomainParticipant>::ref_type proxy);
+    static bool register_dp_proxy (::IDL::traits< ::DDS::DomainParticipant>::ref_type proxy);
     //@}
 
     /**
@@ -97,8 +87,6 @@ namespace DDSX11
       * @brief         Looking up the given proxy and remove it from
       *                the corresponding map
       * @param proxy   The C++11 proxy to unregister
-      * @return        The pointer to the native entity if ok, nullptr if an
-      *                error occurred.
       */
     //@{
     static void
@@ -171,15 +159,16 @@ namespace DDSX11
       * @name          register_proxy
       * @brief         Helper method, preventing double code.
       *                Stores the C++11 proxy in the given map in a consistent way.
-      * @tparam ENTITY_TYPE The type of entity to store (DataReader/DataWRiter/Topic/...)
-      * @tparam PROXY_MAP   The type of the map in which to store the given proxy
-      * @param  proxy   The C++11 proxy to store. Will be set to a nullptr is registration
-      *                 fails.
-      * @param  lst     reference to the map in which to store the proxy.
+      * @tparam PROXY_TYPE The type of entity to unregister (DataReader/DataWRiter/Topic/...)
+      * @tparam PROXY_MAP  The type of the map in which to store the given proxy
+      * @param  proxy   The C++11 proxy to store
+      * @param  lst     Reference to the map in which to store the proxy
+      * @retval true    The registering of the proxy succeeded
+      * @retval false   The registering of the proxy failed
       *
       */
     template<typename PROXY_TYPE, typename PROXY_MAP>
-    static void
+    static bool
     register_proxy (
       PROXY_TYPE proxy,
       PROXY_MAP &lst);
@@ -188,11 +177,11 @@ namespace DDSX11
       * @name          get_proxy
       * @brief         Helper method, preventing double code.
       *                Retrieves the C++11 proxy in the given map in a consistent way.
-      * @tparam ENTITY_TYPE The type of entity to return (DataReader/DataWRiter/Topic/...)
-      * @tparam PROXY_MAP   The type of the map from which to retrieve the given proxy
+      * @tparam PROXY_TYPE The type of entity to unregister (DataReader/DataWRiter/Topic/...)
+      * @tparam PROXY_MAP  The type of the map from which to retrieve the given proxy
       * @param  native_entity The native pointer to the entity
-      * @param  lst     reference to the map in which to store the proxy.
-      * @return        The C++11 proxies if found in the map, a nullptr if not found
+      * @param  lst     Reference to the map in which to store the proxy.
+      * @return         The C++11 proxies if found in the map, a nullptr if not found
       *
       */
     template<typename PROXY_TYPE, typename PROXY_MAP>
@@ -204,13 +193,11 @@ namespace DDSX11
     /**
       * @name          unregister_proxy
       * @brief         Helper method, preventing double code.
-      *                Removes the given proxy from the corresponding list and
-      *                sets it to a nullptr.
-      * @tparam ENTITY_TYPE The type of entity to unregister (DataReader/DataWRiter/Topic/...)
-      * @tparam PROXY_MAP   The type of the map from which to unregister the given proxy
+      *                Removes the given proxy from the corresponding list.
+      * @tparam PROXY_TYPE The type of entity to unregister (DataReader/DataWRiter/Topic/...)
+      * @tparam PROXY_MAP  The type of the map from which to unregister the given proxy
       * @param  proxy   The C++11 proxy to unregister
-      * @param  lst     reference to the map from which to unregister the proxy.
-      *
+      * @param  lst     Reference to the map from which to unregister the proxy
       */
     template<typename PROXY_TYPE, typename PROXY_MAP>
     static void
@@ -218,32 +205,32 @@ namespace DDSX11
       PROXY_TYPE proxy,
       PROXY_MAP &lst);
 
-    /// Place holder for DataReader C++11 proxies
+    /// Map containing all DataReader C++11 proxies
     typedef std::map< ::DDS::InstanceHandle_t, IDL::traits< ::DDS::DataReader>::ref_type, CompareHandles> DataReaderProxies;
     static DataReaderProxies dr_proxies;
     static std::mutex dr_mutex;
 
-    /// Place holder for DataWriter C++11 proxies
+    /// Map containing all DataWriter C++11 proxies
     typedef std::map< ::DDS::InstanceHandle_t, IDL::traits< ::DDS::DataWriter>::ref_type, CompareHandles> DataWriterProxies;
     static DataWriterProxies dw_proxies;
     static std::mutex dw_mutex;
 
-    /// Place holder for Subscriber C++11 proxies
+    /// Map containing all Subscriber C++11 proxies
     typedef std::map< ::DDS::InstanceHandle_t, IDL::traits< ::DDS::Subscriber>::ref_type, CompareHandles> SubscriberProxies;
     static SubscriberProxies sub_proxies;
     static std::mutex sub_mutex;
 
-    /// Place holder for Publisher C++11 proxies
+    /// Map containing all Publisher C++11 proxies
     typedef std::map< ::DDS::InstanceHandle_t, IDL::traits< ::DDS::Publisher>::ref_type, CompareHandles> PublisherProxies;
     static PublisherProxies pub_proxies;
     static std::mutex pub_mutex;
 
-    /// Place holder for Topic C++11 proxies
+    /// Map containing all Topic C++11 proxies
     typedef std::map< ::DDS::InstanceHandle_t, IDL::traits< ::DDS::Topic>::ref_type, CompareHandles> TopicProxies;
     static TopicProxies tp_proxies;
     static std::mutex tp_mutex;
 
-    /// Place holder for Participant C++11 proxies
+    /// Map containing all DomainParticipant C++11 proxies
     typedef std::map< ::DDS::InstanceHandle_t, IDL::traits< ::DDS::DomainParticipant>::ref_type, CompareHandles> DomainParticipantProxies;
     static DomainParticipantProxies dp_proxies;
     static std::mutex dp_mutex;
