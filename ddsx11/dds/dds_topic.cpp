@@ -109,9 +109,14 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_Topic_proxy::get_listener");
 
+    DDS_Native::DDS::TopicListener_var native_listener =
+      this->native_entity ()->get_listener ();
     DDS_TopicListener_proxy * topic_proxy =
-      dynamic_cast <DDS_TopicListener_proxy *> (
-        this->native_entity ()->get_listener ());
+#if (DDSX11_NDDS==1)
+      dynamic_cast <DDS_TopicListener_proxy *> (native_listener);
+#else
+      dynamic_cast <DDS_TopicListener_proxy *> (native_listener.in());
+#endif
     if (!topic_proxy)
       {
         DDSX11_IMPL_LOG_DEBUG ("DDS_Topic_proxy::get_listener - "
@@ -197,7 +202,9 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_Topic_proxy::get_participant");
 
-    return DDS_ProxyEntityManager::get_dp_proxy (
-      this->native_entity ()->get_participant ());
+    DDS_Native::DDS::DomainParticipant_var dp =
+      this->native_entity ()->get_participant ();
+
+    return DDS_ProxyEntityManager::get_dp_proxy (dp);
   }
 }

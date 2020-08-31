@@ -690,10 +690,14 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_DomainParticipant_proxy::get_listener");
 
-    DDS_Native::DDS::DomainParticipantListener* ccm_dds_dp_list =
+    DDS_Native::DDS::DomainParticipantListener_var native_listener =
       this->native_entity ()->get_listener ();
     DDS_DomainParticipantListener_proxy * list_proxyroxy =
-      dynamic_cast <DDS_DomainParticipantListener_proxy *> (ccm_dds_dp_list);
+#if (DDSX11_NDDS==1)
+      dynamic_cast <DDS_DomainParticipantListener_proxy *> (native_listener);
+#else
+      dynamic_cast <DDS_DomainParticipantListener_proxy *> (native_listener.in ());
+#endif
     if (!list_proxyroxy)
       {
         DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::get_listener - "
@@ -999,7 +1003,7 @@ namespace DDSX11
     DDSX11_LOG_TRACE ("DDS_DomainParticipant_proxy::get_statuscondition");
 
     IDL::traits< ::DDS::StatusCondition>::ref_type retval;
-      DDS_Native::DDS::StatusCondition_var sc =
+    DDS_Native::DDS::StatusCondition_var sc =
       this->native_entity ()->get_statuscondition ();
     if (sc)
       {

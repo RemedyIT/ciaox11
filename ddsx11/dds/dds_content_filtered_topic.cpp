@@ -58,8 +58,9 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_ContentFilteredTopic_proxy::get_related_topic");
 
-    return DDS_ProxyEntityManager::get_topic_proxy (
-      this->native_entity ()->get_related_topic ());
+    DDS_Native::DDS::Topic_var topic =
+      this->native_entity ()->get_related_topic ();
+    return DDS_ProxyEntityManager::get_topic_proxy (topic);
   }
 
   std::string
@@ -81,7 +82,8 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_ContentFilteredTopic_proxy::get_participant");
 
-    return DDS_ProxyEntityManager::get_dp_proxy (
-      this->native_entity ()->get_participant ());
+    DDS_Native::DDS::DomainParticipant_var dp =
+      this->native_entity ()->get_participant ();
+    return DDS_ProxyEntityManager::get_dp_proxy (dp);
   }
 }

@@ -41,7 +41,7 @@ namespace DDSX11
   DDS_Subscriber_proxy::get_statuscondition ()
   {
     IDL::traits< ::DDS::StatusCondition>::ref_type retval;
-    DDS_Native::DDS::StatusCondition* sc =
+    DDS_Native::DDS::StatusCondition_var sc =
       this->native_entity ()->get_statuscondition ();
     if (sc)
       {
@@ -440,9 +440,14 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_Subscriber_proxy::get_listener");
 
+    DDS_Native::DDS::SubscriberListener_var native_listener =
+      this->native_entity ()->get_listener ();
     DDS_SubscriberListener_proxy *list_proxyroxy =
-      dynamic_cast <DDS_SubscriberListener_proxy *> (
-        this->native_entity ()->get_listener ());
+#if (DDSX11_NDDS==1)
+      dynamic_cast <DDS_SubscriberListener_proxy *> (native_listener);
+#else
+      dynamic_cast <DDS_SubscriberListener_proxy *> (native_listener.in ());
+#endif
     if (!list_proxyroxy)
       {
         DDSX11_IMPL_LOG_DEBUG ("DDS_Subscriber_proxy::get_listener - "
@@ -471,8 +476,10 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_Subscriber_proxy::get_participant");
 
-    return DDS_ProxyEntityManager::get_dp_proxy (
-      this->native_entity ()->get_participant ());
+    DDS_Native::DDS::DomainParticipant_var dp =
+      this->native_entity ()->get_participant ();
+
+    return DDS_ProxyEntityManager::get_dp_proxy (dp);
   }
 
   ::DDS::ReturnCode_t

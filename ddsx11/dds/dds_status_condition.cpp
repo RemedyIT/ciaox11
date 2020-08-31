@@ -48,8 +48,10 @@ namespace DDSX11
   IDL::traits< ::DDS::Entity>::ref_type
   DDS_StatusCondition_proxy::get_entity ()
   {
-    return DDS_ProxyEntityManager::get_entity_proxy (
-      this->native_entity ()->get_entity ());
+    DDS_Native::DDS::Entity_var entity =
+      this->native_entity ()->get_entity ();
+
+    return DDS_ProxyEntityManager::get_entity_proxy (entity);
   }
 }
 

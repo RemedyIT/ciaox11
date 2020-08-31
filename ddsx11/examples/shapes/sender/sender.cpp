@@ -49,17 +49,17 @@ int main (int , char *[])
 
       if (publisher && topic)
       {
-       // DDS::traits<ShapeType>::datawriter_ref_type dw =
-          //publisher->create_datawriter_with_profile (topic, qos_profile, nullptr, 0);
+        DDS::traits<ShapeType>::datawriter_ref_type dw =
+          publisher->create_datawriter_with_profile (topic, qos_profile, nullptr, 0);
 
-//        DDS::traits<ShapeType>::typed_datawriter_ref_type shape_dw =
+        DDS::traits<ShapeType>::typed_datawriter_ref_type shape_dw =
           DDS::traits<ShapeType>::narrow (dw);
 
         if (shape_dw)
         {
           // Wait for discovery
           int32_t count {};
-          int32_t maxPollPeriods { 1 };
+          int32_t maxPollPeriods { 30 };
           while (count < maxPollPeriods)
           {
             DDS::PublicationMatchedStatus status;
@@ -86,7 +86,7 @@ int main (int , char *[])
           DDS::InstanceHandle_t instance_handle =
             shape_dw->register_instance (square);
 
-          for (uint32_t i = 0; i < 1; ++i)
+          for (uint32_t i = 0; i < 100; ++i)
           {
             shape_dw->write (square, instance_handle);
             std::cout << "Written sample " << square << std::endl;
@@ -105,25 +105,26 @@ int main (int , char *[])
             std::cerr << "Receiver: Failed to delete datawriter from publisher." << std::endl;
             return 1;
           }
-          retcode = domain_participant->delete_publisher (publisher);
-          publisher = nullptr;
-          if (retcode != DDS::RETCODE_OK)
-          {
-            std::cerr << "Receiver: Failed to delete publisher from domain participant." << std::endl;
-            return 1;
-          }
-          retcode = domain_participant->delete_topic (topic);
-          topic = nullptr;
-          if (retcode != DDS::RETCODE_OK)
-          {
-            std::cerr << "Receiver: Failed to delete topic from domain participant." << std::endl;
-            return 1;
-          }
         }
         else
         {
           std::cerr << "Sender: Typed datawriter is null." << std::endl;
           retcode = DDS::RETCODE_ERROR;
+        }
+
+        retcode = domain_participant->delete_publisher (publisher);
+        publisher = nullptr;
+        if (retcode != DDS::RETCODE_OK)
+        {
+          std::cerr << "Receiver: Failed to delete publisher from domain participant." << std::endl;
+          return 1;
+        }
+        retcode = domain_participant->delete_topic (topic);
+        topic = nullptr;
+        if (retcode != DDS::RETCODE_OK)
+        {
+          std::cerr << "Receiver: Failed to delete topic from domain participant." << std::endl;
+          return 1;
         }
       }
       else

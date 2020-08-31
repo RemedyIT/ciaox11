@@ -925,9 +925,14 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDSX11::DataReader_T <NATIVE_TYPED_READER, TYPED_READER_TYPE, TOPIC_TYPE, SEQ_TYPE, NATIVE_SEQ_TYPE>::get_listener");
 
+    DDS_Native::DDS::DataReaderListener_var native_listener =
+      this->native_entity ()->get_listener ();
     DDS_DataReaderListener_proxy * proxy =
-      dynamic_cast <DDS_DataReaderListener_proxy *> (
-        this->native_entity ()->get_listener ());
+#if (DDSX11_NDDS==1)
+      dynamic_cast <DDS_DataReaderListener_proxy *> (native_listener);
+#else
+      dynamic_cast <DDS_DataReaderListener_proxy *> (native_listener.in ());
+#endif
 
     if (!proxy)
       {
@@ -986,8 +991,10 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDSX11::DataReader_T::get_subscriber");
 
-    return DDS_ProxyEntityManager::get_subscriber_proxy (
-      this->native_entity ()->get_subscriber ());
+    DDS_Native::DDS::Subscriber_var subscriber =
+      this->native_entity ()->get_subscriber ();
+
+    return DDS_ProxyEntityManager::get_subscriber_proxy (subscriber);
   }
 
   template <typename NATIVE_TYPED_READER, typename TYPED_READER_TYPE, typename TOPIC_TYPE, typename SEQ_TYPE, typename NATIVE_SEQ_TYPE>

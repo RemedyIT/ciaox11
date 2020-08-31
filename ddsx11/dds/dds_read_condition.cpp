@@ -65,8 +65,10 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_ReadCondition_proxy::get_datareader");
 
-    return DDS_ProxyEntityManager::get_datareader_proxy (
-      this->native_entity ()->get_datareader ());
+    DDS_Native::DDS::DataReader_var datareader =
+      this->native_entity ()->get_datareader ();
+
+    return DDS_ProxyEntityManager::get_datareader_proxy (datareader);
   }
 }
 

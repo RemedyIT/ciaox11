@@ -40,6 +40,7 @@ namespace DDS_Native
 
       typedef ::DDSListener Listener;
       typedef ::DDSEntity Entity;
+      typedef ::DDSEntity* Entity_var;
       typedef ::DDSTopicDescription TopicDescription;
       typedef ::DDSTopicDescription* TopicDescription_var;
       typedef ::DDSTopic Topic;
@@ -62,9 +63,13 @@ namespace DDS_Native
       typedef ::DDSDataReaderSeq DataReaderSeq;
       typedef ::DDSTopicListener TopicListener;
       typedef ::DDSDataWriterListener DataWriterListener;
+      typedef ::DDSDataWriterListener* DataWriterListener_var;
       typedef ::DDSPublisherListener PublisherListener;
+      typedef ::DDSPublisherListener* PublisherListener_var;
       typedef ::DDSDataReaderListener DataReaderListener;
+      typedef ::DDSDataReaderListener* DataReaderListener_var;
       typedef ::DDSSubscriberListener SubscriberListener;
+      typedef ::DDSSubscriberListener( SubscriberListener_var;
       typedef ::DDSDomainParticipantListener DomainParticipantListener;
       typedef ::DDSDomainParticipantListener_var DomainParticipantListener_var;
       typedef ::DDSCondition Condition;

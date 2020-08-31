@@ -114,9 +114,14 @@ namespace DDSX11
     DDSX11_LOG_TRACE (
       "DataWriter_T<TOPIC_TYPE, NATIVE_TYPED_WRITER, TYPED_WRITER_TYPE>::get_listener");
 
+    DDS_Native::DDS::DataWriterListener_var native_listener =
+      this->native_entity ()->get_listener ();
     DDS_DataWriterListener_proxy * proxy =
-      dynamic_cast <DDS_DataWriterListener_proxy *> (
-        this->native_entity ()->get_listener ());
+#if (DDSX11_NDDS==1)
+      dynamic_cast <DDS_DataWriterListener_proxy *> (native_listener);
+#else
+      dynamic_cast <DDS_DataWriterListener_proxy *> (native_listener.in ());
+#endif
 
     if (!proxy)
       {
@@ -135,8 +140,10 @@ namespace DDSX11
     DDSX11_LOG_TRACE (
       "DataWriter_T<TOPIC_TYPE, NATIVE_TYPED_WRITER, TYPED_WRITER_TYPE>::get_topic");
 
-    return DDS_ProxyEntityManager::get_topic_proxy (
-      this->native_entity ()->get_topic ());
+    DDS_Native::DDS::Topic_var topic =
+      this->native_entity ()->get_topic ();
+
+    return DDS_ProxyEntityManager::get_topic_proxy (topic);
   }
 
   template <typename TOPIC_TYPE, typename NATIVE_TYPED_WRITER, typename TYPED_WRITER_TYPE>
@@ -146,8 +153,10 @@ namespace DDSX11
     DDSX11_LOG_TRACE (
       "DataWriter_T<TOPIC_TYPE, NATIVE_TYPED_WRITER, TYPED_WRITER_TYPE>::get_publisher");
 
-    return DDS_ProxyEntityManager::get_publisher_proxy (
-      this->native_entity ()->get_publisher ());
+    DDS_Native::DDS::Publisher_var publisher =
+      this->native_entity ()->get_publisher ();
+
+    return DDS_ProxyEntityManager::get_publisher_proxy (publisher);
   }
 
   template <typename TOPIC_TYPE, typename NATIVE_TYPED_WRITER, typename TYPED_WRITER_TYPE>
