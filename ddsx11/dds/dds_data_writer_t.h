@@ -23,7 +23,7 @@ namespace DDSX11
     explicit DataWriter_T (
       DDS_Native::DDS::DataWriter * dw);
 
-    virtual ~DataWriter_T () = default;
+    virtual ~DataWriter_T ();
 
     ::DDS::ReturnCode_t
     set_qos (const ::DDS::DataWriterQos & qos) override;
