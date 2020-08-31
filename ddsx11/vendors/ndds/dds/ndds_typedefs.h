@@ -69,7 +69,7 @@ namespace DDS_Native
       typedef ::DDSDataReaderListener DataReaderListener;
       typedef ::DDSDataReaderListener* DataReaderListener_var;
       typedef ::DDSSubscriberListener SubscriberListener;
-      typedef ::DDSSubscriberListener( SubscriberListener_var;
+      typedef ::DDSSubscriberListener* SubscriberListener_var;
       typedef ::DDSDomainParticipantListener DomainParticipantListener;
       typedef ::DDSDomainParticipantListener_var DomainParticipantListener_var;
       typedef ::DDSCondition Condition;
