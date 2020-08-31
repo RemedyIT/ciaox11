@@ -11,6 +11,13 @@
 namespace DDSX11
 {
   template<typename DDS_NATIVE_TYPE>
+  NativeEntityBase_T<DDS_NATIVE_TYPE>::NativeEntityBase_T (
+    DDS_NATIVE_TYPE *entity)
+    : native_entity_ (entity)
+  {
+  }
+
+  template<typename DDS_NATIVE_TYPE>
   NativeEntityBase_T<DDS_NATIVE_TYPE>::~NativeEntityBase_T ()
   {
   }
