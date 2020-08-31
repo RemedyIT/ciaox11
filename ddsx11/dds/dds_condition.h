@@ -29,7 +29,6 @@ namespace DDSX11
     : public virtual IDL::traits< ::DDS::Condition>::base_type
     , public virtual NativeEntityBase_T<DDS_Native::DDS::Condition>
   {
-
   public:
     /// Constructor
     DDS_Condition_proxy (DDS_Native::DDS::Condition * condition);
