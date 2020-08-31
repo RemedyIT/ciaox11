@@ -12,7 +12,7 @@ namespace DDSX11
   /// Conversion of <%= scoped_cxxname %> to DDS
   template<>
   inline char*&
-  to_dds< char*, <%= scoped_cxxtype %>> (
+  to_dds<char*, <%= scoped_cxxtype %>> (
     char* &to, const <%= scoped_cxxtype %> &from)
   {
     // Always allocate a buffer of max bound
@@ -25,7 +25,7 @@ namespace DDSX11
   /// Conversion of <%= scoped_cxxname %> from DDS
   template<>
   inline <%= scoped_cxxtype %>&
-  from_dds< char*, <%= scoped_cxxtype %>> (
+  from_dds<char*, <%= scoped_cxxtype %>> (
     <%= scoped_cxxtype %> &to, char* const &from)
   {
     to = <%= scoped_cxxtype %> (from);
