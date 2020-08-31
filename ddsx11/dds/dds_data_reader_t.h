@@ -21,8 +21,7 @@ namespace DDSX11
   {
   public:
     /// Constructor
-    explicit DataReader_T (
-      DDS_Native::DDS::DataReader * dr);
+    explicit DataReader_T (DDS_Native::DDS::DataReader * dr);
 
     /// Destructor
     virtual ~DataReader_T () = default;
