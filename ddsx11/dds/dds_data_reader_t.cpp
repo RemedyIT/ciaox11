@@ -511,7 +511,6 @@ namespace DDSX11
     DDSX11_LOG_TRACE ("DDSX11::DataReader_T::take_next_instance");
 
     DDS_Native::DDS::SampleInfoSeq native_sample_infos;
-
     NATIVE_SEQ_TYPE native_data_values;
 
     ::DDS::ReturnCode_t const retcode_take_instance =
@@ -708,7 +707,7 @@ namespace DDSX11
     DDSX11_LOG_TRACE ("DDSX11::DataReader_T::get_statuscondition");
 
     IDL::traits< ::DDS::StatusCondition>::ref_type retval;
-    DDS_Native::DDS::StatusCondition* sc = this->native_entity ()->get_statuscondition ();
+    DDS_Native::DDS::StatusCondition_var sc = this->native_entity ()->get_statuscondition ();
     if (sc)
       {
         retval = TAOX11_CORBA::make_reference<DDS_StatusCondition_proxy>(sc);
@@ -747,7 +746,7 @@ namespace DDSX11
 
     IDL::traits< ::DDS::ReadCondition>::ref_type retval;
 
-    DDS_Native::DDS::ReadCondition* rc =
+    DDS_Native::DDS::ReadCondition_var rc =
       this->native_entity ()->create_readcondition (
         ::DDSX11::traits< ::DDS::SampleStateMask>::in (sample_states),
         ::DDSX11::traits< ::DDS::ViewStateMask>::in (view_states),
@@ -772,7 +771,7 @@ namespace DDSX11
 
     IDL::traits< ::DDS::QueryCondition>::ref_type retval;
 
-    DDS_Native::DDS::QueryCondition* qc =
+    DDS_Native::DDS::QueryCondition_var qc =
       this->native_entity ()->create_querycondition (
         ::DDSX11::traits< ::DDS::SampleStateMask>::in (sample_states),
         ::DDSX11::traits< ::DDS::ViewStateMask>::in (view_states),
@@ -947,12 +946,12 @@ namespace DDSX11
     DDSX11_LOG_TRACE ("DDSX11::DataReader_T::get_topicdescription");
 
     IDL::traits< ::DDS::TopicDescription>::ref_type td;
-    DDS_Native::DDS::TopicDescription *native_td =
+    DDS_Native::DDS::TopicDescription_var native_td =
       this->native_entity ()->get_topicdescription ();
 
     if (native_td)
       {
-        DDS_Native::DDS::Topic * native_tp =
+        DDS_Native::DDS::Topic_var native_tp =
 #if (DDSX11_NDDS==1)
           DDS_Native::DDS::Topic::narrow (native_td);
 #else
@@ -965,7 +964,7 @@ namespace DDSX11
           }
         else
           {
-            DDS_Native::DDS::ContentFilteredTopic * native_cft =
+            DDS_Native::DDS::ContentFilteredTopic_var native_cft =
 #if (DDSX11_NDDS==1)
               DDS_Native::DDS::ContentFilteredTopic::narrow (native_td);
 #else

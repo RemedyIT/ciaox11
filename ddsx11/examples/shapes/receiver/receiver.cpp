@@ -119,12 +119,15 @@ int main (int argc, char *argv[])
         if (received_ == 0)
           std::cerr << "ERROR: No samples received." << std::endl;
 
-        retcode = subscriber->delete_datareader (dr);
-        dr = nullptr;
-        if (retcode != DDS::RETCODE_OK)
+        if (dr)
         {
-          std::cerr << "Receiver: Failed to delete datareader from subscriber." << std::endl;
-          return 1;
+          retcode = subscriber->delete_datareader (dr);
+          dr = nullptr;
+          if (retcode != DDS::RETCODE_OK)
+          {
+            std::cerr << "Receiver: Failed to delete datareader from subscriber." << std::endl;
+            return 1;
+          }
         }
         retcode = domain_participant->delete_subscriber (subscriber);
         subscriber = nullptr;

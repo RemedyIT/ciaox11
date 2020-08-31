@@ -53,7 +53,7 @@ namespace DDSX11
       std::string lib_name, prof_name;
       split_qos_profile (qos_profile, lib_name, prof_name);
 
-      DDS_Native::DDS::DataWriter *native_dw {};
+      DDS_Native::DDS::DataWriter_var native_dw {};
 
       if (!lib_name.empty () && !prof_name.empty ())
       {

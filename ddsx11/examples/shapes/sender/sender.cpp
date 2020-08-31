@@ -49,17 +49,17 @@ int main (int , char *[])
 
       if (publisher && topic)
       {
-        DDS::traits<ShapeType>::datawriter_ref_type dw =
-          publisher->create_datawriter_with_profile (topic, qos_profile, nullptr, 0);
+       // DDS::traits<ShapeType>::datawriter_ref_type dw =
+          //publisher->create_datawriter_with_profile (topic, qos_profile, nullptr, 0);
 
-        DDS::traits<ShapeType>::typed_datawriter_ref_type shape_dw =
+//        DDS::traits<ShapeType>::typed_datawriter_ref_type shape_dw =
           DDS::traits<ShapeType>::narrow (dw);
 
         if (shape_dw)
         {
           // Wait for discovery
           int32_t count {};
-          int32_t maxPollPeriods { 30 };
+          int32_t maxPollPeriods { 1 };
           while (count < maxPollPeriods)
           {
             DDS::PublicationMatchedStatus status;
@@ -78,7 +78,7 @@ int main (int , char *[])
           if (count == maxPollPeriods)
           {
             std::cout << "PublicationMatchedStatus status isn't received on time, so it is possible that not "
-                          " all written samples are going to be received." << std::endl;
+                          "all written samples are going to be received." << std::endl;
           }
 
           ShapeType square {"GREEN", 10, 10, 25};
@@ -86,7 +86,7 @@ int main (int , char *[])
           DDS::InstanceHandle_t instance_handle =
             shape_dw->register_instance (square);
 
-          for (uint32_t i = 0; i < 100; ++i)
+          for (uint32_t i = 0; i < 1; ++i)
           {
             shape_dw->write (square, instance_handle);
             std::cout << "Written sample " << square << std::endl;

@@ -57,7 +57,7 @@ namespace DDSX11
       std::string lib_name, prof_name;
       split_qos_profile (qos_profile, lib_name, prof_name);
 
-      DDS_Native::DDS::DomainParticipant * dds_dp {};
+      DDS_Native::DDS::DomainParticipant_var dds_dp {};
       if (!lib_name.empty () && !prof_name.empty ())
         {
           dds_dp =

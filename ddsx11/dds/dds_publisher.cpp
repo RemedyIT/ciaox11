@@ -69,7 +69,7 @@ namespace DDSX11
       << IDL::traits< ::DDS::DataWriterQos>::write (::DDSX11::traits <::DDS::DataWriterQos>::retn (qos_in))
       << ">");
 
-     DDS_Native::DDS::DataWriter *native_dw =
+     DDS_Native::DDS::DataWriter_var native_dw =
       this->native_entity ()->create_datawriter (
         topic_trait::native (a_topic),
         qos_in,
@@ -170,7 +170,7 @@ namespace DDSX11
   DDS_Publisher_proxy::lookup_datawriter (
     const std::string &impl_name)
   {
-    DDS_Native::DDS::DataWriter *native_dw =
+    DDS_Native::DDS::DataWriter_var native_dw =
       this->native_entity ()->lookup_datawriter (
         ::DDSX11::traits<std::string>::in (impl_name));
     if (!native_dw)
@@ -410,7 +410,7 @@ namespace DDSX11
   DDS_Publisher_proxy::get_statuscondition ()
   {
     IDL::traits< ::DDS::StatusCondition>::ref_type retval;
-      DDS_Native::DDS::StatusCondition* sc = this->native_entity ()->get_statuscondition ();
+    DDS_Native::DDS::StatusCondition_var sc = this->native_entity ()->get_statuscondition ();
     if (sc)
       {
         retval = TAOX11_CORBA::make_reference<DDS_StatusCondition_proxy> (sc);

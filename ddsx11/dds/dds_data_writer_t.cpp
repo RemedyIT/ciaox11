@@ -279,7 +279,7 @@ namespace DDSX11
       "DataWriter_T<TOPIC_TYPE, NATIVE_TYPED_WRITER, TYPED_WRITER_TYPE>::get_statuscondition");
 
     IDL::traits< ::DDS::StatusCondition>::ref_type retval;
-    DDS_Native::DDS::StatusCondition* sc = this->native_entity ()->get_statuscondition ();
+    DDS_Native::DDS::StatusCondition_var sc = this->native_entity ()->get_statuscondition ();
     if (sc)
       {
         retval = TAOX11_CORBA::make_reference<DDS_StatusCondition_proxy>(sc);

@@ -89,7 +89,7 @@ namespace DDSX11
           proxy_drl = std::make_unique<DDSX11::DDS_DataReaderListener_proxy> (a_listener);
         }
 
-      DDS_Native::DDS::DataReader * native_dr {};
+      DDS_Native::DDS::DataReader_var native_dr {};
 
       IDL::traits< ::DDS::Topic>::ref_type topic =
         IDL::traits< ::DDS::Topic>::narrow (a_topic);

@@ -154,7 +154,7 @@ namespace DDSX11
         listener_guard = new DDS_DataReaderListener_proxy (a_listener);
       }
 
-    DDS_Native::DDS::DataReader * native_dr {};
+    DDS_Native::DDS::DataReader_var native_dr {};
 
     IDL::traits< ::DDS::Topic>::ref_type dds_tp =
       IDL::traits< ::DDS::Topic>::narrow (a_topic);
@@ -289,7 +289,7 @@ namespace DDSX11
   DDS_Subscriber_proxy::lookup_datareader (
     const std::string &topic_name)
   {
-    DDS_Native::DDS::DataReader *native_dr =
+    DDS_Native::DDS::DataReader_var native_dr =
       this->native_entity ()->lookup_datareader (
         ::DDSX11::traits<std::string>::in (topic_name));
     if (!native_dr)

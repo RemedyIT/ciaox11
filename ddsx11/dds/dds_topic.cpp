@@ -147,7 +147,7 @@ namespace DDSX11
     DDSX11_LOG_TRACE ("DDS_Topic_proxy::get_statuscondition");
 
     IDL::traits< ::DDS::StatusCondition>::ref_type retval;
-    DDS_Native::DDS::StatusCondition* sc =
+    DDS_Native::DDS::StatusCondition_var sc =
       this->native_entity ()->get_statuscondition ();
     if (sc)
       {

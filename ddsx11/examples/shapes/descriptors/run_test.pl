@@ -13,7 +13,7 @@ eval '(exit $?0)' && eval 'exec perl -S $0 ${1+"$@"}'
 use lib "$ENV{ACE_ROOT}/bin";
 use PerlACE::TestTarget;
 
-$sleep_time = 30;
+$sleep_time = 1;
 $corrected_sleep_time = $sleep_time * $PerlACE::Process::WAIT_DELAY_FACTOR;
 
 my $status = 0;
@@ -28,12 +28,12 @@ $sender->SetEnv ("DDSX11_LOG_MASK", "all");
 
 my $RV = $receiver->CreateProcess ('../lib/receiver', "$corrected_sleep_time");
 my $SR = $sender->CreateProcess ('../lib/sender');
-my $receiver_status = $RV->Spawn ();
+#my $receiver_status = $RV->Spawn ();
 
-if ($receiver_status != 0) {
-    print STDERR "ERROR: server returned $receiver_status\n";
-    exit 1;
-}
+#if ($receiver_status != 0) {
+#    print STDERR "ERROR: server returned $receiver_status\n";
+#    exit 1;
+#}
 
 my $sender_status = $SR->SpawnWaitKill ($sender->ProcessStartWaitInterval());
 
