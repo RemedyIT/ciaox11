@@ -17,4 +17,10 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDSX11::DataReader_T::DataReader_T");
   }
+
+  template <typename NATIVE_TYPED_READER, typename TYPED_READER_TYPE, typename TOPIC_TYPE, typename SEQ_TYPE, typename NATIVE_SEQ_TYPE>
+  DataReader_T <NATIVE_TYPED_READER, TYPED_READER_TYPE, TOPIC_TYPE, SEQ_TYPE, NATIVE_SEQ_TYPE>::~DataReader_T ()
+  {
+    DDSX11_LOG_TRACE ("DDSX11::DataReader_T::~DataReader_T");
+  }
 }

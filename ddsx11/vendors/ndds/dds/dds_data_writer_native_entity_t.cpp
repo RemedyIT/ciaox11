@@ -17,4 +17,11 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDSX11::DataWriter_T::DataWriter_T");
   }
+
+  template <typename TOPIC_TYPE, typename NATIVE_TYPED_WRITER, typename TYPED_WRITER_TYPE>
+  DataWriter_T<TOPIC_TYPE, NATIVE_TYPED_WRITER, TYPED_WRITER_TYPE>::~DataWriter_T ()
+  {
+    DDSX11_LOG_TRACE ("DDSX11::DataWriter_T::DataWriter_T");
+  }
 }
+
