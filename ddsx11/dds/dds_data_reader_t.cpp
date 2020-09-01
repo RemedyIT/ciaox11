@@ -1032,7 +1032,7 @@ namespace DDSX11
   DataReader_T <NATIVE_TYPED_READER, TYPED_READER_TYPE, TOPIC_TYPE, SEQ_TYPE, NATIVE_SEQ_TYPE>::get_requested_deadline_missed_status (
     ::DDS::RequestedDeadlineMissedStatus & status)
   {
-    DDSX11_LOG_TRACE ("DDSX11::DataReader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::get_requested_deadline_missed_status");
+    DDSX11_LOG_TRACE ("DataReader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::get_requested_deadline_missed_status");
 
     return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->get_requested_deadline_missed_status (
