@@ -88,6 +88,9 @@ namespace DDSX11
   typedef DDSX11_Listener_Guard_T<
     DDS_Native::DDS::DataReaderListener,
     ::DDS::DataReaderListener> DataReaderListener_Guard;
+
+  typedef native_entity_traits< ::DDS::DataReaderListener, DDS_DataReaderListener_proxy, DDS_Native::DDS::DataReaderListener>
+    native_datareaderlistener_trait;
 }
 
 #endif /* DDSX11_IMPL_DATA_READER_LISTENER_H_ */

@@ -35,7 +35,7 @@ namespace DDSX11
       const ::DDS::ReturnCode_t & retcode,
       const std::string& method_name)
   {
-    DDSX11_LOG_TRACE ("DDSX11::DataReader_T::complete_read");
+    DDSX11_LOG_TRACE ("DDSX11::DataReader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::complete_read");
 
     if (retcode == ::DDS::RETCODE_OK)
     {
@@ -44,7 +44,8 @@ namespace DDSX11
     }
     else if (retcode != ::DDS::RETCODE_NO_DATA)
     {
-      DDSX11_IMPL_LOG_ERROR ("DataReader_T::" << method_name << " - "
+      DDSX11_IMPL_LOG_ERROR ("DataReader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name()
+        << ">::" << method_name << " - "
         << "Error while reading samples from DDS - <"
         << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
         << ">");
@@ -55,13 +56,13 @@ namespace DDSX11
         this->native_entity ()->return_loan (native_data_values, native_sample_infos));
     if (retcode_return_loan != ::DDS::RETCODE_OK)
       {
-        DDSX11_IMPL_LOG_ERROR (
-          "DataReader_T::" << method_name << " - Error returning loan to DDS - <"
+        DDSX11_IMPL_LOG_ERROR ("DataReader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name()
+          << ">::" << method_name << " - Error returning loan to DDS - <"
           << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode_return_loan)
           << ">");
         // In case a read action from DDS causes errors, the users wants to see
         // this error (and not the return loan error).
-        if (retcode  == ::DDS::RETCODE_OK)
+        if (retcode == ::DDS::RETCODE_OK)
           return retcode_return_loan;
       }
     return retcode;
@@ -77,10 +78,9 @@ namespace DDSX11
       ::DDS::ViewStateMask view_states,
       ::DDS::InstanceStateMask instance_states)
   {
-    DDSX11_LOG_TRACE ("DDSX11::DataReader_T::read");
+    DDSX11_LOG_TRACE ("DDSX11::DataReader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::read");
 
     DDS_Native::DDS::SampleInfoSeq native_sample_infos;
-
     NATIVE_SEQ_TYPE native_data_values;
 
     ::DDS::ReturnCode_t const retcode_read =
@@ -108,10 +108,9 @@ namespace DDSX11
     ::DDS::ViewStateMask view_states,
     ::DDS::InstanceStateMask instance_states)
   {
-    DDSX11_LOG_TRACE ("DDSX11::DataReader_T::take");
+    DDSX11_LOG_TRACE ("DDSX11::DataReader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::take");
 
     DDS_Native::DDS::SampleInfoSeq native_sample_infos;
-
     NATIVE_SEQ_TYPE native_data_values;
 
     ::DDS::ReturnCode_t const retcode_take =
@@ -137,7 +136,7 @@ namespace DDSX11
     int32_t max_samples,
     IDL::traits< ::DDS::ReadCondition>::ref_type a_condition)
   {
-    DDSX11_LOG_TRACE ("DDSX11::DataReader_T::read_w_condition");
+    DDSX11_LOG_TRACE ("DDSX11::DataReader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::read_w_condition");
 
     DDS_Native::DDS::SampleInfoSeq native_sample_infos;
     NATIVE_SEQ_TYPE native_data_values;
@@ -195,7 +194,7 @@ namespace DDSX11
     int32_t max_samples,
     IDL::traits< ::DDS::ReadCondition>::ref_type a_condition)
   {
-    DDSX11_LOG_TRACE ("DDSX11::DataReader_T::take_w_condition");
+    DDSX11_LOG_TRACE ("DDSX11::DataReader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::take_w_condition");
 
     DDS_Native::DDS::SampleInfoSeq native_sample_infos;
     NATIVE_SEQ_TYPE native_data_values;
@@ -252,7 +251,7 @@ namespace DDSX11
     TOPIC_TYPE & data_values,
     ::DDS::SampleInfo & sample_info)
   {
-    DDSX11_LOG_TRACE ("DDSX11::DataReader_T::read_next_sample");
+    DDSX11_LOG_TRACE ("DDSX11::DataReader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::read_next_sample");
 
     return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->read_next_sample (
@@ -266,7 +265,7 @@ namespace DDSX11
     TOPIC_TYPE & data_values,
     ::DDS::SampleInfo & sample_info)
   {
-    DDSX11_LOG_TRACE ("DDSX11::DataReader_T::take_next_sample");
+    DDSX11_LOG_TRACE ("DDSX11::DataReader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::take_next_sample");
 
     return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->take_next_sample (
@@ -285,7 +284,7 @@ namespace DDSX11
     ::DDS::ViewStateMask view_states,
     ::DDS::InstanceStateMask instance_states)
   {
-    DDSX11_LOG_TRACE ("DDSX11::DataReader_T::read_instance");
+    DDSX11_LOG_TRACE ("DDSX11::DataReader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::read_instance");
 
     DDS_Native::DDS::SampleInfoSeq native_sample_infos;
     NATIVE_SEQ_TYPE native_data_values;
@@ -317,7 +316,7 @@ namespace DDSX11
     ::DDS::ViewStateMask view_states,
     ::DDS::InstanceStateMask instance_states)
   {
-    DDSX11_LOG_TRACE ("DDSX11::DataReader_T::take_instance");
+    DDSX11_LOG_TRACE ("DDSX11::DataReader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::take_instance");
 
     DDS_Native::DDS::SampleInfoSeq native_sample_infos;
     NATIVE_SEQ_TYPE native_data_values;
@@ -348,7 +347,7 @@ namespace DDSX11
       const ::DDS::InstanceHandle_t& a_handle,
       IDL::traits< ::DDS::ReadCondition>::ref_type a_condition)
   {
-    DDSX11_LOG_TRACE ("DDSX11::DataReader_T::read_instance_w_condition");
+    DDSX11_LOG_TRACE ("DDSX11::DataReader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::read_instance_w_condition");
 
     DDS_Native::DDS::SampleInfoSeq native_sample_infos;
     NATIVE_SEQ_TYPE native_data_values;
@@ -411,7 +410,7 @@ namespace DDSX11
       const ::DDS::InstanceHandle_t& a_handle,
       IDL::traits< ::DDS::ReadCondition>::ref_type a_condition)
   {
-    DDSX11_LOG_TRACE ("DDSX11::DataReader_T::take_instance_w_condition");
+    DDSX11_LOG_TRACE ("DDSX11::DataReader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::take_instance_w_condition");
 
     DDS_Native::DDS::SampleInfoSeq native_sample_infos;
     NATIVE_SEQ_TYPE native_data_values;
@@ -476,7 +475,7 @@ namespace DDSX11
     ::DDS::ViewStateMask view_states,
     ::DDS::InstanceStateMask instance_states)
   {
-    DDSX11_LOG_TRACE ("DDSX11::DataReader_T::read_next_instance");
+    DDSX11_LOG_TRACE ("DDSX11::DataReader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::read_next_instance");
 
     DDS_Native::DDS::SampleInfoSeq native_sample_infos;
     NATIVE_SEQ_TYPE native_data_values;
@@ -508,7 +507,7 @@ namespace DDSX11
     ::DDS::ViewStateMask view_states,
     ::DDS::InstanceStateMask instance_states)
   {
-    DDSX11_LOG_TRACE ("DDSX11::DataReader_T::take_next_instance");
+    DDSX11_LOG_TRACE ("DDSX11::DataReader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::take_next_instance");
 
     DDS_Native::DDS::SampleInfoSeq native_sample_infos;
     NATIVE_SEQ_TYPE native_data_values;
@@ -538,7 +537,7 @@ namespace DDSX11
     const ::DDS::InstanceHandle_t& previous_handle,
     IDL::traits< ::DDS::ReadCondition>::ref_type a_condition)
   {
-    DDSX11_LOG_TRACE ("DDSX11::DataReader_T::read_next_instance_w_condition");
+    DDSX11_LOG_TRACE ("DDSX11::DataReader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::read_next_instance_w_condition");
 
     DDS_Native::DDS::SampleInfoSeq native_sample_infos;
     NATIVE_SEQ_TYPE                native_data_values;
@@ -600,7 +599,7 @@ namespace DDSX11
     const ::DDS::InstanceHandle_t& previous_handle,
     IDL::traits< ::DDS::ReadCondition>::ref_type a_condition)
   {
-    DDSX11_LOG_TRACE ("DDSX11::DataReader_T::take_next_instance_w_condition");
+    DDSX11_LOG_TRACE ("DDSX11::DataReader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::take_next_instance_w_condition");
 
     DDS_Native::DDS::SampleInfoSeq native_sample_infos;
     NATIVE_SEQ_TYPE native_data_values;
@@ -670,7 +669,7 @@ namespace DDSX11
     TOPIC_TYPE & key_holder,
     const ::DDS::InstanceHandle_t& handle)
   {
-    DDSX11_LOG_TRACE ("DDSX11::DataReader_T::get_key_value");
+    DDSX11_LOG_TRACE ("DDSX11::DataReader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::get_key_value");
 
     return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->get_key_value (
@@ -683,7 +682,7 @@ namespace DDSX11
   DataReader_T <NATIVE_TYPED_READER, TYPED_READER_TYPE, TOPIC_TYPE, SEQ_TYPE, NATIVE_SEQ_TYPE>::lookup_instance (
     const TOPIC_TYPE& an_instance)
   {
-    DDSX11_LOG_TRACE ("DDSX11::DataReader_T::lookup_instance");
+    DDSX11_LOG_TRACE ("DDSX11::DataReader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::lookup_instance");
 
     return ::DDSX11::traits< ::DDS::InstanceHandle_t>::retn (
       this->native_entity ()->lookup_instance (
@@ -694,7 +693,7 @@ namespace DDSX11
   ::DDS::ReturnCode_t
   DataReader_T <NATIVE_TYPED_READER, TYPED_READER_TYPE, TOPIC_TYPE, SEQ_TYPE, NATIVE_SEQ_TYPE>::enable ()
   {
-    DDSX11_LOG_TRACE ("DDSX11::DataReader_T::enable");
+    DDSX11_LOG_TRACE ("DDSX11::DataReader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::enable");
 
     return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->enable ());
@@ -704,7 +703,7 @@ namespace DDSX11
   IDL::traits< ::DDS::StatusCondition>::ref_type
   DataReader_T <NATIVE_TYPED_READER, TYPED_READER_TYPE, TOPIC_TYPE, SEQ_TYPE, NATIVE_SEQ_TYPE>::get_statuscondition ()
   {
-    DDSX11_LOG_TRACE ("DDSX11::DataReader_T::get_statuscondition");
+    DDSX11_LOG_TRACE ("DDSX11::DataReader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::get_statuscondition");
 
     IDL::traits< ::DDS::StatusCondition>::ref_type retval;
     DDS_Native::DDS::StatusCondition_var sc = this->native_entity ()->get_statuscondition ();
@@ -719,7 +718,7 @@ namespace DDSX11
   ::DDS::StatusMask
   DataReader_T <NATIVE_TYPED_READER, TYPED_READER_TYPE, TOPIC_TYPE, SEQ_TYPE, NATIVE_SEQ_TYPE>::get_status_changes ()
   {
-    DDSX11_LOG_TRACE ("DDSX11::DataReader_T::get_status_changes");
+    DDSX11_LOG_TRACE ("DDSX11::DataReader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::get_status_changes");
 
     return ::DDSX11::traits< ::DDS::StatusMask>::retn (
       this->native_entity ()->get_status_changes ());
@@ -729,7 +728,7 @@ namespace DDSX11
   ::DDS::InstanceHandle_t
   DataReader_T <NATIVE_TYPED_READER, TYPED_READER_TYPE, TOPIC_TYPE, SEQ_TYPE, RTI_SEQ_TYPE>::get_instance_handle ()
   {
-    DDSX11_LOG_TRACE ("DDSX11::DataReader_T::get_instance_handle");
+    DDSX11_LOG_TRACE ("DDSX11::DataReader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::get_instance_handle");
 
     return ::DDSX11::traits< ::DDS::InstanceHandle_t>::retn (
       this->native_entity ()->get_instance_handle ());
@@ -742,7 +741,7 @@ namespace DDSX11
     ::DDS::ViewStateMask view_states,
     ::DDS::InstanceStateMask instance_states)
   {
-    DDSX11_LOG_TRACE ("DDSX11::DataReader_T::create_readcondition");
+    DDSX11_LOG_TRACE ("DDSX11::DataReader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::create_readcondition");
 
     IDL::traits< ::DDS::ReadCondition>::ref_type retval;
 
@@ -767,7 +766,7 @@ namespace DDSX11
     const std::string &query_expression,
     const ::DDS::StringSeq &query_parameters)
   {
-    DDSX11_LOG_TRACE ("DDSX11::DataReader_T::create_querycondition");
+    DDSX11_LOG_TRACE ("DDSX11::DataReader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::create_querycondition");
 
     IDL::traits< ::DDS::QueryCondition>::ref_type retval;
 
@@ -790,7 +789,7 @@ namespace DDSX11
   DataReader_T <NATIVE_TYPED_READER, TYPED_READER_TYPE, TOPIC_TYPE, SEQ_TYPE, NATIVE_SEQ_TYPE>::delete_readcondition (
     IDL::traits< ::DDS::ReadCondition>::ref_type a_condition)
   {
-    DDSX11_LOG_TRACE ("DDSX11::DataReader_T::delete_readcondition");
+    DDSX11_LOG_TRACE ("DDSX11::DataReader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::delete_readcondition");
 
     DDS_Native::DDS::ReadCondition *native_rc {};
 
@@ -831,7 +830,7 @@ namespace DDSX11
   ::DDS::ReturnCode_t
   DataReader_T <NATIVE_TYPED_READER, TYPED_READER_TYPE, TOPIC_TYPE, SEQ_TYPE, NATIVE_SEQ_TYPE>::delete_contained_entities ()
   {
-    DDSX11_LOG_TRACE ("DDSX11::DataReader_T::delete_contained_entities");
+    DDSX11_LOG_TRACE ("DDSX11::DataReader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::delete_contained_entities");
 
     return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->delete_contained_entities ());
@@ -842,7 +841,8 @@ namespace DDSX11
   DataReader_T <NATIVE_TYPED_READER, TYPED_READER_TYPE, TOPIC_TYPE, SEQ_TYPE, NATIVE_SEQ_TYPE>::set_qos (
     const ::DDS::DataReaderQos & qos)
   {
-    DDSX11_LOG_TRACE ("DDSX11::DataReader_T::set_qos");
+    DDSX11_LOG_TRACE ("DDSX11::DataReader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::set_qos");
+
     ::DDSX11::traits< ::DDS::DataReaderQos>::in qos_in;
 #if defined(DDSX11_INITIALIZE_QOS_DEFAULTS)
     // Get the default QOS from DDS
@@ -851,8 +851,8 @@ namespace DDSX11
         this->native_entity ()->get_qos (qos_in.value_));
     if (retcode != ::DDS::RETCODE_OK)
       {
-        DDSX11_IMPL_LOG_ERROR ("DataReader_T<NATIVE_TYPED_READER, TYPED_READER_TYPE, TOPIC_TYPE, SEQ_TYPE, NATIVE_SEQ_TYPE>::set_qos - "
-          << "Error: Unable to retrieve QoS <"
+        DDSX11_IMPL_LOG_ERROR ("DDSX11::DataReader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name()
+          << ">::set_qos - Error: Unable to retrieve QoS <"
           << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">");
         return retcode;
@@ -860,8 +860,8 @@ namespace DDSX11
 #endif
     qos_in = qos;
 
-    DDSX11_IMPL_LOG_DEBUG ("DataReader_T::set_qos - "
-      << "Setting DataReaderQoS <"
+    DDSX11_IMPL_LOG_DEBUG ("DataReader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name()
+      << "::set_qos - Setting DataReaderQoS <"
       << IDL::traits< ::DDS::DataReaderQos>::write (::DDSX11::traits< ::DDS::DataReaderQos>::retn(qos_in))
       << ">");
 
@@ -874,7 +874,7 @@ namespace DDSX11
   DataReader_T <NATIVE_TYPED_READER, TYPED_READER_TYPE, TOPIC_TYPE, SEQ_TYPE, NATIVE_SEQ_TYPE>::get_qos (
     ::DDS::DataReaderQos & qos)
   {
-    DDSX11_LOG_TRACE ("DDSX11::DataReader_T::get_qos");
+    DDSX11_LOG_TRACE ("DDSX11::DataReader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::get_qos");
 
     return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()-> get_qos (
@@ -887,7 +887,7 @@ namespace DDSX11
     IDL::traits< ::DDS::DataReaderListener>::ref_type a_listener,
     ::DDS::StatusMask mask)
   {
-    DDSX11_LOG_TRACE ("DDSX11::DataReader_T <NATIVE_TYPED_READER, TYPED_READER_TYPE, TOPIC_TYPE, SEQ_TYPE, NATIVE_SEQ_TYPE>::set_listener");
+    DDSX11_LOG_TRACE ("DDSX11::DataReader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::set_listener");
 
     // Retrieve the previously set listener, the guard will make sure we destroy it when we succeed
     // in setting a new listener
@@ -923,32 +923,37 @@ namespace DDSX11
   IDL::traits< ::DDS::DataReaderListener>::ref_type
   DataReader_T <NATIVE_TYPED_READER, TYPED_READER_TYPE, TOPIC_TYPE, SEQ_TYPE, NATIVE_SEQ_TYPE>::get_listener ()
   {
-    DDSX11_LOG_TRACE ("DDSX11::DataReader_T <NATIVE_TYPED_READER, TYPED_READER_TYPE, TOPIC_TYPE, SEQ_TYPE, NATIVE_SEQ_TYPE>::get_listener");
+    DDSX11_LOG_TRACE ("DDSX11::DataReader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::get_listener");
 
     DDS_Native::DDS::DataReaderListener_var native_listener =
       this->native_entity ()->get_listener ();
-    DDS_DataReaderListener_proxy * proxy =
-#if (DDSX11_NDDS==1)
-      dynamic_cast <DDS_DataReaderListener_proxy *> (native_listener);
-#else
-      dynamic_cast <DDS_DataReaderListener_proxy *> (native_listener.in ());
-#endif
 
-    if (!proxy)
+    if (!native_listener)
       {
         DDSX11_IMPL_LOG_ERROR (
           "DataReader_T<NATIVE_TYPED_READER, TYPED_READER_TYPE, TOPIC_TYPE, SEQ_TYPE, NATIVE_SEQ_TYPE>::get_listener - "
-          "DDS returned a null listener.");
+          "DDS returned a null listener");
         return nullptr;
       }
-    return proxy->get_datareaderlistener ();
+
+    DDS_DataReaderListener_proxy * proxy_impl =
+       native_datareaderlistener_trait::proxy_impl (native_listener);
+
+    if (!proxy_impl)
+      {
+        DDSX11_IMPL_LOG_ERROR (
+          "DataReader_T<NATIVE_TYPED_READER, TYPED_READER_TYPE, TOPIC_TYPE, SEQ_TYPE, NATIVE_SEQ_TYPE>::get_listener - "
+          "DDS returned listener is not a DDSX11 listener.");
+        return nullptr;
+      }
+    return proxy_impl->get_datareaderlistener ();
   }
 
   template <typename NATIVE_TYPED_READER, typename TYPED_READER_TYPE, typename TOPIC_TYPE, typename SEQ_TYPE, typename NATIVE_SEQ_TYPE>
   IDL::traits< ::DDS::TopicDescription>::ref_type
   DataReader_T <NATIVE_TYPED_READER, TYPED_READER_TYPE, TOPIC_TYPE, SEQ_TYPE, NATIVE_SEQ_TYPE>::get_topicdescription ()
   {
-    DDSX11_LOG_TRACE ("DDSX11::DataReader_T::get_topicdescription");
+    DDSX11_LOG_TRACE ("DDSX11::DataReader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::get_topicdescription");
 
     IDL::traits< ::DDS::TopicDescription>::ref_type td;
     DDS_Native::DDS::TopicDescription_var native_td =
@@ -989,7 +994,7 @@ namespace DDSX11
   IDL::traits< ::DDS::Subscriber>::ref_type
   DataReader_T <NATIVE_TYPED_READER, TYPED_READER_TYPE, TOPIC_TYPE, SEQ_TYPE, NATIVE_SEQ_TYPE>::get_subscriber ()
   {
-    DDSX11_LOG_TRACE ("DDSX11::DataReader_T::get_subscriber");
+    DDSX11_LOG_TRACE ("DDSX11::DataReader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::get_subscriber");
 
     DDS_Native::DDS::Subscriber_var subscriber =
       this->native_entity ()->get_subscriber ();
@@ -1002,7 +1007,7 @@ namespace DDSX11
   DataReader_T <NATIVE_TYPED_READER, TYPED_READER_TYPE, TOPIC_TYPE, SEQ_TYPE, NATIVE_SEQ_TYPE>::get_sample_rejected_status (
     ::DDS::SampleRejectedStatus & status)
   {
-    DDSX11_LOG_TRACE ("DDSX11::DataReader_T::get_sample_rejected_status");
+    DDSX11_LOG_TRACE ("DDSX11::DataReader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::get_sample_rejected_status");
 
     return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->get_sample_rejected_status (
@@ -1014,7 +1019,7 @@ namespace DDSX11
   DataReader_T <NATIVE_TYPED_READER, TYPED_READER_TYPE, TOPIC_TYPE, SEQ_TYPE, NATIVE_SEQ_TYPE>::get_liveliness_changed_status (
     ::DDS::LivelinessChangedStatus & status)
   {
-    DDSX11_LOG_TRACE ("DDSX11::DataReader_T::get_liveliness_changed_status");
+    DDSX11_LOG_TRACE ("DDSX11::DataReader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::get_liveliness_changed_status");
 
     return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->get_liveliness_changed_status (
@@ -1026,7 +1031,7 @@ namespace DDSX11
   DataReader_T <NATIVE_TYPED_READER, TYPED_READER_TYPE, TOPIC_TYPE, SEQ_TYPE, NATIVE_SEQ_TYPE>::get_requested_deadline_missed_status (
     ::DDS::RequestedDeadlineMissedStatus & status)
   {
-    DDSX11_LOG_TRACE ("DDSX11::DataReader_T::get_requested_deadline_missed_status");
+    DDSX11_LOG_TRACE ("DDSX11::DataReader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::get_requested_deadline_missed_status");
 
     return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->get_requested_deadline_missed_status (
@@ -1038,7 +1043,7 @@ namespace DDSX11
   DataReader_T <NATIVE_TYPED_READER, TYPED_READER_TYPE, TOPIC_TYPE, SEQ_TYPE, NATIVE_SEQ_TYPE>::get_requested_incompatible_qos_status (
     ::DDS::RequestedIncompatibleQosStatus & status)
   {
-    DDSX11_LOG_TRACE ("DDSX11::DataReader_T::get_requested_incompatible_qos_status");
+    DDSX11_LOG_TRACE ("DDSX11::DataReader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::get_requested_incompatible_qos_status");
 
     return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->get_requested_incompatible_qos_status (
@@ -1050,7 +1055,7 @@ namespace DDSX11
   DataReader_T <NATIVE_TYPED_READER, TYPED_READER_TYPE, TOPIC_TYPE, SEQ_TYPE, NATIVE_SEQ_TYPE>::get_subscription_matched_status (
     ::DDS::SubscriptionMatchedStatus & status)
   {
-    DDSX11_LOG_TRACE ("DDSX11::DataReader_T::get_subscription_matched_status");
+    DDSX11_LOG_TRACE ("DDSX11::DataReader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::get_subscription_matched_status");
 
     return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->get_subscription_matched_status (
@@ -1062,7 +1067,7 @@ namespace DDSX11
   DataReader_T <NATIVE_TYPED_READER, TYPED_READER_TYPE, TOPIC_TYPE, SEQ_TYPE, NATIVE_SEQ_TYPE>::get_sample_lost_status (
     ::DDS::SampleLostStatus & status)
   {
-    DDSX11_LOG_TRACE ("DDSX11::DataReader_T::get_sample_lost_status");
+    DDSX11_LOG_TRACE ("DDSX11::DataReader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::get_sample_lost_status");
 
     return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->get_sample_lost_status (
@@ -1074,7 +1079,7 @@ namespace DDSX11
   DataReader_T <NATIVE_TYPED_READER, TYPED_READER_TYPE, TOPIC_TYPE, SEQ_TYPE, NATIVE_SEQ_TYPE>::wait_for_historical_data (
     const ::DDS::Duration_t & max_wait)
   {
-    DDSX11_LOG_TRACE ("DDSX11::DataReader_T::wait_for_historical_data");
+    DDSX11_LOG_TRACE ("DDSX11::DataReader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::wait_for_historical_data");
 
     return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->wait_for_historical_data (
@@ -1086,7 +1091,7 @@ namespace DDSX11
   DataReader_T <NATIVE_TYPED_READER, TYPED_READER_TYPE, TOPIC_TYPE, SEQ_TYPE, NATIVE_SEQ_TYPE>::get_matched_publications (
     ::DDS::InstanceHandleSeq & publication_handles)
   {
-    DDSX11_LOG_TRACE ("DDSX11::DataReader_T <NATIVE_TYPED_READER, TYPED_READER_TYPE, TOPIC_TYPE, SEQ_TYPE, NATIVE_SEQ_TYPE>::get_matched_publications");
+    DDSX11_LOG_TRACE ("DDSX11::DataReader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::get_matched_publications");
 
     return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->get_matched_publications (
@@ -1099,7 +1104,7 @@ namespace DDSX11
     ::DDS::PublicationBuiltinTopicData & publication_data,
     const ::DDS::InstanceHandle_t& publication_handle)
   {
-    DDSX11_LOG_TRACE ("DDSX11::DataReader_T::get_matched_publication_data");
+    DDSX11_LOG_TRACE ("DDSX11::DataReader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::get_matched_publication_data");
 
 #if defined DDSX11_HAS_MINIMUM_BIT
     X11_UNUSED_ARG(publication_data);
@@ -1119,8 +1124,8 @@ namespace DDSX11
   {
     if (!this->native_entity_)
       {
-        DDSX11_IMPL_LOG_DEBUG ("NativeEntityBase_T<DDS_NATIVE_TYPE>::entity "
-          << "Throwing BAD_INV_ORDER.");
+        DDSX11_IMPL_LOG_DEBUG ("DDSX11::DataReader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name()
+          << ">::entity Throwing BAD_INV_ORDER.");
         throw TAOX11_CORBA::BAD_INV_ORDER ();
       }
     return this->native_entity_;

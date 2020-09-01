@@ -38,7 +38,7 @@ namespace DDSX11
     }
 
     /**
-      * @brief Supplies the pointer to the native DDS entity
+      * @brief Returns the pointer to the native DDS entity
       * @param from The DDS entity ref_type
       * @return The pointer to the native DDS entity
       */
@@ -48,6 +48,22 @@ namespace DDSX11
       // Be aware that 'proxy' can return a nullptr
       typename IDL::traits<DDSX11_IMPL_TYPE>::ref_type pr = proxy (from);
       return pr ? pr->get_native_entity () : nullptr;
+    }
+  };
+
+  template<typename DDS_TYPE, typename DDSX11_IMPL_TYPE, typename NATIVE_TYPE>
+  class native_entity_traits
+  {
+  public:
+    /**
+      * @brief Narrows a native DDS entity to its proxy implementation.
+      * @param from The native DDS pointer
+      * @return A pointer to the proxy implementation.
+      */
+    static inline DDSX11_IMPL_TYPE*
+    proxy_impl (NATIVE_TYPE* from)
+    {
+      return dynamic_cast <DDSX11_IMPL_TYPE*> (from);
     }
   };
 }

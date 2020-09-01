@@ -70,6 +70,9 @@ namespace DDSX11
   typedef DDSX11_Listener_Guard_T<
     DDS_Native::DDS::DataWriterListener,
     ::DDS::DataWriterListener> DataWriterListener_Guard;
+
+  typedef entity_traits< ::DDS::DataWriterListener, DDS_DataWriterListener_proxy, DDS_Native::DDS::DataWriterListener>
+    datawriterlistener_trait;
 }
 
 #endif /* DDSX11_IMPL_DATA_WRITER_LISTENER_H_ */
