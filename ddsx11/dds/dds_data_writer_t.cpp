@@ -113,21 +113,26 @@ namespace DDSX11
 
     DDS_Native::DDS::DataWriterListener_var native_listener =
       this->native_entity ()->get_listener ();
-    DDS_DataWriterListener_proxy * proxy =
-#if (DDSX11_NDDS==1)
-      dynamic_cast <DDS_DataWriterListener_proxy *> (native_listener);
-#else
-      dynamic_cast <DDS_DataWriterListener_proxy *> (native_listener.in ());
-#endif
 
-    if (!proxy)
+    if (!native_listener)
       {
         DDSX11_IMPL_LOG_ERROR (
           "DataWriter_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name()
-          << ">::get_listener - DDS returned a null listener.");
-        return nullptr;
+          << ">::get_listener - DDS returned a null listener");
+        return {};
       }
-    return proxy->get_datawriterlistener ();
+
+    DDS_DataWriterListener_proxy * proxy_impl =
+       native_datawriterlistener_trait::proxy_impl (native_listener);
+
+    if (!proxy_impl)
+      {
+        DDSX11_IMPL_LOG_ERROR (
+          "DataWriter_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name()
+          << ">::get_listener - listener returned by DDS is not a DDSX11 listener");
+        return {};
+      }
+    return proxy_impl->get_datawriterlistener ();
   }
 
   template <typename TOPIC_TYPE, typename NATIVE_TYPED_WRITER, typename TYPED_WRITER_TYPE>

@@ -931,9 +931,9 @@ namespace DDSX11
     if (!native_listener)
       {
         DDSX11_IMPL_LOG_ERROR (
-          "DataReader_T<NATIVE_TYPED_READER, TYPED_READER_TYPE, TOPIC_TYPE, SEQ_TYPE, NATIVE_SEQ_TYPE>::get_listener - "
-          "DDS returned a null listener");
-        return nullptr;
+          "DataReader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name()
+          << ">::get_listener - DDS returned a null listener");
+        return {};
       }
 
     DDS_DataReaderListener_proxy * proxy_impl =
@@ -942,9 +942,9 @@ namespace DDSX11
     if (!proxy_impl)
       {
         DDSX11_IMPL_LOG_ERROR (
-          "DataReader_T<NATIVE_TYPED_READER, TYPED_READER_TYPE, TOPIC_TYPE, SEQ_TYPE, NATIVE_SEQ_TYPE>::get_listener - "
-          "DDS returned listener is not a DDSX11 listener.");
-        return nullptr;
+          "DataReader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name()
+          << ">::get_listener - listener returned by DDS is not a DDSX11 listener");
+        return {};
       }
     return proxy_impl->get_datareaderlistener ();
   }
