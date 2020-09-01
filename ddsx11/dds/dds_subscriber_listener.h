@@ -76,7 +76,6 @@ namespace DDSX11
     DDS_SubscriberListener_proxy(DDS_SubscriberListener_proxy&&) = delete;
     DDS_SubscriberListener_proxy& operator=(const DDS_SubscriberListener_proxy&) = delete;
     DDS_SubscriberListener_proxy& operator=(DDS_SubscriberListener_proxy&&) = delete;
-
   };
 
   typedef DDSX11_Listener_Guard_T<
