@@ -425,10 +425,10 @@ namespace Foo_Impl
     }};
 
     std::integral_constant<uint32_t, 2> const two_dimensions;
-    if (IDL::traits< multi_dimensional_short_array >::dimensions () != two_dimensions)
+    if (IDL::traits< multi_dimensional_short_array>::dimensions () != two_dimensions)
     {
       CIAOX11_TEST_ERROR << "ERROR: Unexpected dimension found. Expected <"
-        << two_dimensions << "> - found <" << IDL::traits< multi_dimensional_short_array >::dimensions ()
+        << two_dimensions << "> - found <" << IDL::traits< multi_dimensional_short_array>::dimensions ()
         << ">." << std::endl;
       ++error;
     }
