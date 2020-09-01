@@ -20,7 +20,7 @@ namespace CIAOX11
       IDL::traits<CORBA::Object>::weak_ref_type component)
       : FacetBase<GETTER_TYPE> (std::move(component))
     {
-      DDS4CCM_LOG_TRACE ("Getter_T::Getter_T");
+      DDS4CCM_LOG_TRACE ("Getter_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::Getter_T");
     }
 
     template <typename GETTER_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
@@ -30,7 +30,7 @@ namespace CIAOX11
       ::DDS::SampleInfoSeq & sample_info,
       uint32_t max_samples)
     {
-      DDS4CCM_LOG_TRACE ("Getter_T::get");
+      DDS4CCM_LOG_TRACE ("Getter_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::get");
 
       IDL::traits< ::DDS::ReadCondition>::ref_type rc =
         this->condition_manager_->read_condition ();
@@ -47,9 +47,9 @@ namespace CIAOX11
           this->condition_manager_->query_condition_getter ();
         if (!qc)
         {
-          DDS4CCM_LOG_ERROR ("Getter_T::get - "
-            "Unable to retrieve QueryCondition from "
-            "Condition manager.");
+          DDS4CCM_LOG_ERROR ("Getter_T<"
+            << ::DDS::traits<TOPIC_TYPE>::get_type_name()
+            << ">::get - Unable to retrieve QueryCondition from Condition manager.");
           return ::DDS::RETCODE_ERROR;
         }
         return this->get (data, sample_info, max_samples, qc);
@@ -64,7 +64,7 @@ namespace CIAOX11
       uint32_t max_samples,
       IDL::traits< ::DDS::QueryCondition>::ref_type qc)
     {
-      DDS4CCM_LOG_TRACE ("Getter_T::get (w_condition)");
+      DDS4CCM_LOG_TRACE ("Getter_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::get(w_condition)");
 
       if (qc)
       {
@@ -85,7 +85,7 @@ namespace CIAOX11
       uint32_t max_samples,
       IDL::traits< ::DDS::ReadCondition>::ref_type rd)
     {
-      DDS4CCM_LOG_TRACE ("CIAO::DDS4CCM::Getter_T::get");
+      DDS4CCM_LOG_TRACE ("Getter_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::get");
 
       if (rd)
       {
@@ -104,7 +104,7 @@ namespace CIAOX11
       TOPIC_SEQ_TYPE& instances,
       ::CCM_DDS::ReadInfoSeq& infos)
     {
-      DDS4CCM_LOG_TRACE ("Getter_T::get_many");
+      DDS4CCM_LOG_TRACE ("Getter_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::get_many");
 
       if (!this->condition_manager_->wait (this->time_out_))
       {
@@ -137,8 +137,9 @@ namespace CIAOX11
               ++number_read;
             }
           }
-          DDS4CCM_LOG_DEBUG ("Getter_T::get_many: "
-            << "read <" << sample_info.size () << "> - valid <"
+          DDS4CCM_LOG_DEBUG ("Getter_T<"
+            << ::DDS::traits<TOPIC_TYPE>::get_type_name()
+            << ">::get_many: read <" << sample_info.size () << "> - valid <"
             << number_read << ">.");
           infos.resize (number_read);
           instances.resize (number_read);
@@ -160,8 +161,9 @@ namespace CIAOX11
         // RETCODE_NO_DATA should be an error
         // because after a timeout there should be
         // data.
-        DDS4CCM_LOG_ERROR ("Getter_T::get_many - "
-          << "Error while reading from DDS: <"
+        DDS4CCM_LOG_ERROR ("Getter_T<"
+          << ::DDS::traits<TOPIC_TYPE>::get_type_name()
+          << ">::get_many - Error while reading from DDS: <"
           << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">.");
 
@@ -169,7 +171,9 @@ namespace CIAOX11
           this->dds_reader_->return_loan (data, sample_info);
         if (retcode_returnloan != ::DDS::RETCODE_OK)
         {
-          DDS4CCM_LOG_ERROR ("Getter_T::get_many - Error returning loan to DDS - <"
+          DDS4CCM_LOG_ERROR ("Getter_T<"
+            << ::DDS::traits<TOPIC_TYPE>::get_type_name()
+            << ">::get_many - Error returning loan to DDS - <"
             << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode_returnloan)
             << ">.");
         }
@@ -180,7 +184,9 @@ namespace CIAOX11
         this->dds_reader_->return_loan (data, sample_info);
       if (retcode_returnloan != ::DDS::RETCODE_OK)
       {
-        DDS4CCM_LOG_ERROR ("Getter_T::get_many - Error returning loan to DDS - <"
+        DDS4CCM_LOG_ERROR ("Getter_T<"
+          << ::DDS::traits<TOPIC_TYPE>::get_type_name()
+          << ">::get_many - Error returning loan to DDS - <"
           << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode_returnloan)
           << ">.");
 
@@ -194,7 +200,7 @@ namespace CIAOX11
     ::DDS::Duration_t
     Getter_T<GETTER_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::time_out ()
     {
-      DDS4CCM_LOG_TRACE ("Getter_T::time_out");
+      DDS4CCM_LOG_TRACE ("Getter_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::time_out");
 
       return this->time_out_;
     }
@@ -228,13 +234,13 @@ namespace CIAOX11
       IDL::traits< ::DDS::DataReader>::ref_type dr,
       SharedConditionManager condition_manager)
     {
-      DDS4CCM_LOG_TRACE ("Getter_T::set_dds_reader");
+      DDS4CCM_LOG_TRACE ("Getter_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::set_dds_reader");
 
       this->dds_reader_ = ::DDS::traits<TOPIC_TYPE>::narrow (dr);
 
       if (dr && !this->dds_reader_)
       {
-        DDS4CCM_LOG_ERROR ("Getter_T::set_dds_reader - narrow failed.");
+        DDS4CCM_LOG_ERROR ("Getter_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::set_dds_reader - narrow failed.");
         throw ::CORBA::INTERNAL ();
       }
       this->condition_manager_ = condition_manager;
@@ -253,7 +259,7 @@ namespace CIAOX11
       TOPIC_TYPE &an_instance,
       ::CCM_DDS::ReadInfo &info)
     {
-      DDS4CCM_LOG_TRACE ("Getter_T::get_one");
+      DDS4CCM_LOG_TRACE ("Getter_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::get_one");
 
       if (!this->condition_manager_->wait (this->time_out_))
         {
@@ -274,8 +280,9 @@ namespace CIAOX11
 
         if (retcode == ::DDS::RETCODE_NO_DATA)
         {
-          DDS4CCM_LOG_DEBUG ("Getter_T::get_one - "
-            << "DDS returned <"
+          DDS4CCM_LOG_DEBUG ("Getter_T<"
+            << ::DDS::traits<TOPIC_TYPE>::get_type_name()
+            << ">::get_one - DDS returned <"
             << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
             << ">. No data available in DDS.");
           return false;
@@ -283,8 +290,9 @@ namespace CIAOX11
         else if (retcode != ::DDS::RETCODE_OK)
         {
           // Something went wrong.
-          DDS4CCM_LOG_ERROR ("Getter_T::get_one - "
-            << "Error while reading from DDS: <"
+          DDS4CCM_LOG_ERROR ("Getter_T<"
+            << ::DDS::traits<TOPIC_TYPE>::get_type_name()
+            << ">::get_one - Error while reading from DDS <"
             << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
             << ">.");
 
@@ -292,7 +300,9 @@ namespace CIAOX11
             this->dds_reader_->return_loan (data, sample_info);
           if (retcode_returnloan != ::DDS::RETCODE_OK)
             {
-              DDS4CCM_LOG_ERROR ("Getter_T::get_one - Error returning loan to DDS - <"
+              DDS4CCM_LOG_ERROR ("Getter_T<"
+                << ::DDS::traits<TOPIC_TYPE>::get_type_name()
+                << ">::get_one - Error returning loan to DDS - <"
                 << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode_returnloan)
                 << ">.");
             }
@@ -301,8 +311,9 @@ namespace CIAOX11
         }
         else if (data.size () == 1 && sample_info.front ().valid_data ())
         {
-          DDS4CCM_LOG_DEBUG ("Getter_T::get_one - "
-            "Read one valid sample from DDS.");
+          DDS4CCM_LOG_DEBUG ("Getter_T>"
+            << ::DDS::traits<TOPIC_TYPE>::get_type_name()
+            << ">::get_one - Read one valid sample from DDS.");
 
           // Add the valid sample to the list which will be returned
           // to the caller
@@ -312,8 +323,9 @@ namespace CIAOX11
         }
         else
         {
-          DDS4CCM_LOG_DEBUG ("Getter_T::get_one - "
-            "No valid data available in DDS.");
+          DDS4CCM_LOG_DEBUG ("Getter_T<"
+            << ::DDS::traits<TOPIC_TYPE>::get_type_name()
+            << ">::get_one - No valid data available in DDS.");
         }
 
         // Return the loan of each read.
@@ -321,7 +333,9 @@ namespace CIAOX11
           this->dds_reader_->return_loan (data, sample_info);
         if (retcode_returnloan != ::DDS::RETCODE_OK)
         {
-          DDS4CCM_LOG_ERROR ("Getter_T::get_one - Error returning loan to DDS - <"
+          DDS4CCM_LOG_ERROR ("Getter_T<"
+            << ::DDS::traits<TOPIC_TYPE>::get_type_name()
+            << ">::get_one - Error returning loan to DDS - <"
             << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode_returnloan)
             << ">.");
 

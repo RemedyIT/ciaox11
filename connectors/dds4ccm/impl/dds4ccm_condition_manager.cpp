@@ -24,7 +24,7 @@ namespace CIAOX11
     IDL::traits< ::DDS::ReadCondition>::ref_type
     ConditionManager::read_condition ()
     {
-      DDS4CCM_LOG_TRACE ("CIAOX11::DDS4CCM::ConditionManager::read_condition");
+      DDS4CCM_LOG_TRACE ("ConditionManager::read_condition");
 
       return this->rd_condition_;
     }
@@ -32,7 +32,7 @@ namespace CIAOX11
     IDL::traits< ::DDS::QueryCondition>::ref_type
     ConditionManager::query_condition_getter ()
     {
-      DDS4CCM_LOG_TRACE ("CIAOX11::DDS4CCM::ConditionManager::query_condition_getter");
+      DDS4CCM_LOG_TRACE ("ConditionManager::query_condition_getter");
 
       return this->qc_getter_;
     }
@@ -40,7 +40,7 @@ namespace CIAOX11
     IDL::traits< ::DDS::QueryCondition>::ref_type
     ConditionManager::query_condition_listener ()
     {
-      DDS4CCM_LOG_TRACE ("CIAOX11::DDS4CCM::ConditionManager::query_condition_listener");
+      DDS4CCM_LOG_TRACE ("ConditionManager::query_condition_listener");
 
       return this->qc_listener_;
     }
@@ -48,7 +48,7 @@ namespace CIAOX11
     IDL::traits< ::DDS::QueryCondition>::ref_type
     ConditionManager::query_condition_reader ()
     {
-      DDS4CCM_LOG_TRACE ("CIAOX11::DDS4CCM::ConditionManager::query_condition_reader");
+      DDS4CCM_LOG_TRACE ("ConditionManager::query_condition_reader");
 
       return this->qc_reader_;
     }
@@ -68,7 +68,7 @@ namespace CIAOX11
     void
     ConditionManager::init_read_condition ()
     {
-      DDS4CCM_LOG_TRACE ("CIAOX11::DDS4CCM::ConditionManager::init_read_condition");
+      DDS4CCM_LOG_TRACE ("ConditionManager::init_read_condition");
 
       // The read condition is there for the getter to use. The read condition
       // will be attached to the waitset so that the getter extended port is able
@@ -107,7 +107,7 @@ namespace CIAOX11
     CCM_DDS::QueryFilter
     ConditionManager::query ()
     {
-      DDS4CCM_LOG_TRACE ("CIAOX11::DDS4CCM::ConditionManager::query");
+      DDS4CCM_LOG_TRACE ("ConditionManager::query");
 
       CCM_DDS::QueryFilter filter;
 
@@ -139,7 +139,7 @@ namespace CIAOX11
     ConditionManager::query (
       const ::CCM_DDS::QueryFilter &filter)
     {
-      DDS4CCM_LOG_TRACE ("CIAOX11::DDS4CCM::ConditionManager::query");
+      DDS4CCM_LOG_TRACE ("ConditionManager::query");
 
       // Since the readcondition for the getter is always created (at start up),
       // this should be removed first. Instead of a readcondition, there should
@@ -268,7 +268,7 @@ namespace CIAOX11
       const ::CCM_DDS::QueryFilter &filter,
       IDL::traits< ::DDS::QueryCondition>::ref_type qc)
     {
-      DDS4CCM_LOG_TRACE ("CIAOX11::DDS4CCM::ConditionManager::set_parameters");
+      DDS4CCM_LOG_TRACE ("ConditionManager::set_parameters");
 
       ::DDS::ReturnCode_t const retcode =
         qc->set_query_parameters (filter.parameters ());
@@ -286,7 +286,7 @@ namespace CIAOX11
     void
     ConditionManager::attach_querycondition ()
     {
-      DDS4CCM_LOG_TRACE ("CIAOX11::DDS4CCM::ConditionManager::attach_querycondition");
+      DDS4CCM_LOG_TRACE ("ConditionManager::attach_querycondition");
 
       ::DDS::ReturnCode_t const retcode =
         this->waitset ()->attach_condition (this->qc_getter_);
@@ -309,7 +309,7 @@ namespace CIAOX11
     bool
     ConditionManager::wait (const ::DDS::Duration_t &time_out)
     {
-      DDS4CCM_LOG_TRACE ("CIAOX11::DDS4CCM::ConditionManager::wait");
+      DDS4CCM_LOG_TRACE ("ConditionManager::wait");
 
 #if !defined (X11_NLOGGING)
       std::chrono::time_point<std::chrono::system_clock> start (
@@ -355,7 +355,7 @@ namespace CIAOX11
       IDL::traits< ::DDS::QueryCondition>::ref_type dds_qc,
       const std::string &type)
     {
-      DDS4CCM_LOG_TRACE ("CIAOX11::DDS4CCM::ConditionManager::remove_condition");
+      DDS4CCM_LOG_TRACE ("ConditionManager::remove_condition");
       if (dds_qc)
       {
         ::DDS::ReturnCode_t const retcode =
@@ -380,7 +380,7 @@ namespace CIAOX11
     void
     ConditionManager::remove_conditions ()
     {
-      DDS4CCM_LOG_TRACE ("CIAOX11::DDS4CCM::ConditionManager::remove_conditions");
+      DDS4CCM_LOG_TRACE ("ConditionManager::remove_conditions");
 
       // Safe to remove the query conditions of the reader and listener since
       // these are not attached to a waitset.
@@ -468,7 +468,7 @@ namespace CIAOX11
     void
     ConditionManager::passivate ()
     {
-      DDS4CCM_LOG_TRACE ("CIAOX11::DDS4CCM::ConditionManager::passivate");
+      DDS4CCM_LOG_TRACE ("ConditionManager::passivate");
 
       this->remove_conditions ();
     }
@@ -476,7 +476,7 @@ namespace CIAOX11
     IDL::traits< ::DDS::WaitSet>::ref_type
     ConditionManager::waitset ()
     {
-      DDS4CCM_LOG_TRACE ("CIAOX11::DDS4CCM::ConditionManager::waitset");
+      DDS4CCM_LOG_TRACE ("ConditionManager::waitset");
 
       if (!this->ws_)
       {
@@ -489,7 +489,7 @@ namespace CIAOX11
     ConditionManager::set_dds_entity (
       IDL::traits< ::DDS::DataReader>::ref_type dr)
     {
-      DDS4CCM_LOG_TRACE ("CIAOX11::DDS4CCM::ConditionManager::set_dds_entity");
+      DDS4CCM_LOG_TRACE ("ConditionManager::set_dds_entity");
 
       this->dr_ = std::move(dr);
     }

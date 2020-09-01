@@ -40,7 +40,8 @@ namespace CIAOX11
     std::string
     Event_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::type_name ()
     {
-      return ::PSDD::traits<TOPIC_TYPE>::get_type_name ();
+      return ::PSDD::traits<TOPIC_TYPE>::
+      ();
     }
 
     template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
