@@ -46,7 +46,7 @@ namespace DDS_Native
       typedef ::DDSTopic Topic;
       typedef ::DDSTopic* Topic_var;
       typedef ::DDSContentFilteredTopic ContentFilteredTopic;
-      typedef ::DDSContentFilteredTopic_var ContentFilteredTopic_var;
+      typedef ::DDSContentFilteredTopic* ContentFilteredTopic_var;
       typedef ::DDSMultiTopic MultiTopic;
       typedef ::DDSDataWriter DataWriter;
       typedef ::DDSDataWriter* DataWriter_var;
@@ -62,6 +62,7 @@ namespace DDS_Native
       typedef ::DDSDomainParticipantFactory* DomainParticipantFactory_var;
       typedef ::DDSDataReaderSeq DataReaderSeq;
       typedef ::DDSTopicListener TopicListener;
+      typedef ::DDSTopicListener* TopicListener_var;
       typedef ::DDSDataWriterListener DataWriterListener;
       typedef ::DDSDataWriterListener* DataWriterListener_var;
       typedef ::DDSPublisherListener PublisherListener;
@@ -71,7 +72,7 @@ namespace DDS_Native
       typedef ::DDSSubscriberListener SubscriberListener;
       typedef ::DDSSubscriberListener* SubscriberListener_var;
       typedef ::DDSDomainParticipantListener DomainParticipantListener;
-      typedef ::DDSDomainParticipantListener_var DomainParticipantListener_var;
+      typedef ::DDSDomainParticipantListener* DomainParticipantListener_var;
       typedef ::DDSCondition Condition;
       typedef ::DDSQueryCondition QueryCondition;
       typedef ::DDSQueryCondition* QueryCondition_var;
