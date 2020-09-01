@@ -442,19 +442,24 @@ namespace DDSX11
 
     DDS_Native::DDS::SubscriberListener_var native_listener =
       this->native_entity ()->get_listener ();
-    DDS_SubscriberListener_proxy *list_proxyroxy =
-#if (DDSX11_NDDS==1)
-      dynamic_cast <DDS_SubscriberListener_proxy *> (native_listener);
-#else
-      dynamic_cast <DDS_SubscriberListener_proxy *> (native_listener.in ());
-#endif
-    if (!list_proxyroxy)
+
+    if (!native_listener)
       {
-        DDSX11_IMPL_LOG_DEBUG ("DDS_Subscriber_proxy::get_listener - "
-          << "DDS returned a null listener.");
+        DDSX11_IMPL_LOG_ERROR (
+          "DDS_Subscriber_proxy::get_listener - DDS returned a null listener");
         return {};
       }
-    return list_proxyroxy->get_subscriber_listener ();
+
+    native_subscriberlistener_trait::proxy_impl_type * proxy_impl =
+       native_subscriberlistener_trait::proxy_impl (native_listener);
+
+    if (!proxy_impl)
+      {
+        DDSX11_IMPL_LOG_ERROR (
+          "DDS_Subscriber_proxy::get_listener - listener returned by DDS is not a DDSX11 listener");
+        return {};
+      }
+    return proxy_impl->get_subscriber_listener ();
   }
 
   ::DDS::ReturnCode_t

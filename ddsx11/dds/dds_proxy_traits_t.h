@@ -51,10 +51,15 @@ namespace DDSX11
     }
   };
 
+  /**
+   * Helper template to cast a DDS listener pointer to our implementation
+   * type
+   */
   template<typename DDS_TYPE, typename DDSX11_IMPL_TYPE, typename NATIVE_TYPE>
   class native_entity_traits
   {
   public:
+    typedef DDSX11_IMPL_TYPE proxy_impl_type;
     /**
       * @brief Narrows a native DDS entity to its proxy implementation.
       * @param from The native DDS pointer

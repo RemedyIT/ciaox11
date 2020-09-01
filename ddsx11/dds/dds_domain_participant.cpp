@@ -692,21 +692,25 @@ namespace DDSX11
 
     DDS_Native::DDS::DomainParticipantListener_var native_listener =
       this->native_entity ()->get_listener ();
-    DDS_DomainParticipantListener_proxy * list_proxyroxy =
-#if (DDSX11_NDDS==1)
-      dynamic_cast <DDS_DomainParticipantListener_proxy *> (native_listener);
-#else
-      dynamic_cast <DDS_DomainParticipantListener_proxy *> (native_listener.in ());
-#endif
-    if (!list_proxyroxy)
-      {
-        DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::get_listener - "
-          << "DDS returned a null listener.");
-        return nullptr;
-      }
-    return list_proxyroxy->get_domainparticipantlistener ();
-  }
 
+    if (!native_listener)
+      {
+        DDSX11_IMPL_LOG_ERROR (
+          "DDS_DomainParticipant_proxy::get_listener - DDS returned a null listener");
+        return {};
+      }
+
+    native_domainparticipantlistener_trait::proxy_impl_type * proxy_impl =
+       native_domainparticipantlistener_trait::proxy_impl (native_listener);
+
+    if (!proxy_impl)
+      {
+        DDSX11_IMPL_LOG_ERROR (
+          "DDS_DomainParticipant_proxy::get_listener - listener returned by DDS is not a DDSX11 listener");
+        return {};
+      }
+    return proxy_impl->get_domainparticipantlistener ();
+  }
 
   ::DDS::ReturnCode_t
   DDS_DomainParticipant_proxy::ignore_participant (

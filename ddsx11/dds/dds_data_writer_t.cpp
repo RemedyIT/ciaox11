@@ -14,6 +14,7 @@
 #include "dds/dds_data_writer_listener.h"
 #include "dds/dds_topic.h"
 #include "dds/dds_vendor_conversion_traits.h"
+#include "dds/dds_traits.h"
 
 #include "logger/ddsx11_log.h"
 
@@ -122,7 +123,7 @@ namespace DDSX11
         return {};
       }
 
-    DDS_DataWriterListener_proxy * proxy_impl =
+    native_datawriterlistener_trait::proxy_impl_type * proxy_impl =
        native_datawriterlistener_trait::proxy_impl (native_listener);
 
     if (!proxy_impl)

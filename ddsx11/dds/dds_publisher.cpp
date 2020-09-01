@@ -279,19 +279,24 @@ namespace DDSX11
 
     DDS_Native::DDS::PublisherListener_var native_listener =
       this->native_entity ()->get_listener ();
-    DDS_PublisherListener_proxy * publisher_proxy =
-#if (DDSX11_NDDS==1)
-      dynamic_cast <DDS_PublisherListener_proxy *> (native_listener);
-#else
-      dynamic_cast <DDS_PublisherListener_proxy *> (native_listener.in ());
-#endif
-    if (!publisher_proxy)
+
+    if (!native_listener)
       {
-        DDSX11_IMPL_LOG_DEBUG ("DDS_Publisher_proxy::get_listener - "
-          << "DDS returned a null listener.");
-        return nullptr;
+        DDSX11_IMPL_LOG_ERROR (
+          "DDS_Publisher_proxy::get_listener - DDS returned a null listener");
+        return {};
       }
-    return publisher_proxy->get_publisher_listener ();
+
+    native_publisherlistener_trait::proxy_impl_type * proxy_impl =
+       native_publisherlistener_trait::proxy_impl (native_listener);
+
+    if (!proxy_impl)
+      {
+        DDSX11_IMPL_LOG_ERROR (
+          "DDS_Publisher_proxy::get_listener - listener returned by DDS is not a DDSX11 listener");
+        return {};
+      }
+    return proxy_impl->get_publisher_listener ();
   }
 
 
