@@ -32,7 +32,6 @@ namespace CIAOX11
      * to save resources (running threads/memory usage).
      *
      * The DomainParticipantManager is a singleton.
-     *
      */
     class DDS4CCM_IMPL_Export DomainParticipantManager
     {
@@ -83,10 +82,10 @@ namespace CIAOX11
       };
 
       private:
-        DomainParticipantManager () = default;
+        DomainParticipantManager ();
 
       public:
-        ~DomainParticipantManager () = default;
+        ~DomainParticipantManager ();
 
         /**
         * Searches for the DomainParticipant in the internal map.
