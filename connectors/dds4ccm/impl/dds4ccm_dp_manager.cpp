@@ -71,7 +71,7 @@ namespace CIAOX11
     //============================================================
     DomainParticipantManager::DomainParticipantManager ()
     {
-      DDS4CCM_LOG_TRACE ("DomainParticipantManager::~DomainParticipantManager");
+      DDS4CCM_LOG_TRACE ("DomainParticipantManager::DomainParticipantManager");
     }
 
     DomainParticipantManager::~DomainParticipantManager ()
