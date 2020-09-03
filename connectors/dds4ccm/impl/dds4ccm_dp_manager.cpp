@@ -69,6 +69,16 @@ namespace CIAOX11
     //============================================================
     // DomainParticipantManager::DomainParticipantManager
     //============================================================
+    DomainParticipantManager::DomainParticipantManager ()
+    {
+      DDS4CCM_LOG_TRACE ("DomainParticipantManager::~DomainParticipantManager");
+    }
+
+    DomainParticipantManager::~DomainParticipantManager ()
+    {
+      DDS4CCM_LOG_TRACE ("DomainParticipantManager::~DomainParticipantManager");
+    }
+
     IDL::traits< ::DDS::DomainParticipant>::ref_type
     DomainParticipantManager::get_participant (const ::DDS::DomainId_t domain_id,
       const std::string &qos_profile)
