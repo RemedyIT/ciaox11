@@ -144,6 +144,10 @@ namespace DDSX11
         return ::DDS::RETCODE_ERROR;
       }
 
+    // Retrieve the DDS instance handle before deleting it, we need it when
+    // unregistering our proxy
+    ::DDS::InstanceHandle_t const handle = a_participant->get_instance_handle ();
+
     ::DDS::ReturnCode_t const retcode =
       ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
         this->native_entity ()->delete_participant (part));
@@ -157,7 +161,7 @@ namespace DDSX11
       }
     else
       {
-        DDS_ProxyEntityManager::unregister_dp_proxy (a_participant);
+        DDS_ProxyEntityManager::unregister_dp_proxy (handle);
         proxy->clear_native_entity ();
 
         DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipantFactory_proxy::delete_participant - "

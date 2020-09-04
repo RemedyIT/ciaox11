@@ -148,6 +148,10 @@ namespace DDSX11
       << "Successfully retrieved the native entity from the provided "
       << "datawriter.");
 
+    // Retrieve the DDS instance handle before deleting it, we need it when
+    // unregistering our proxy
+    ::DDS::InstanceHandle_t const handle = a_datawriter->get_instance_handle ();
+
     ::DDS::ReturnCode_t const retcode =
       ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
         this->native_entity ()->delete_datawriter (native_dw));
@@ -161,7 +165,7 @@ namespace DDSX11
       }
     else
       {
-        DDS_ProxyEntityManager::unregister_datawriter_proxy (dw_proxy);
+        DDS_ProxyEntityManager::unregister_datawriter_proxy (handle);
         dw_proxy->clear_native_entity ();
 
         DDSX11_IMPL_LOG_DEBUG ("DDS_Publisher_i::delete_datawriter - "

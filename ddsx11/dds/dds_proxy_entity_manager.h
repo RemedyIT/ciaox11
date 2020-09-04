@@ -83,35 +83,35 @@ namespace DDSX11
     //@}
 
     /**
-      * @name          unregister_xxx_proxy
-      * @brief         Looking up the given proxy and remove it from
-      *                the corresponding map
-      * @param proxy   The C++11 proxy to unregister
+      * @name  unregister_xxx_proxy
+      * @brief Looking up the given proxy and remove it from
+      *        the corresponding map
+      * @param handle The instance handle of the proxy to unregister
       */
     //@{
     static void
     unregister_datareader_proxy (
-      ::IDL::traits< ::DDS::DataReader>::ref_type proxy);
+      IDL::traits< ::DDS::InstanceHandle_t>::in_type handle);
 
     static void
     unregister_datawriter_proxy (
-      ::IDL::traits< ::DDS::DataWriter>::ref_type proxy);
+      IDL::traits< ::DDS::InstanceHandle_t>::in_type handle);
 
     static void
     unregister_subscriber_proxy (
-      ::IDL::traits< ::DDS::Subscriber>::ref_type proxy);
+      IDL::traits< ::DDS::InstanceHandle_t>::in_type handle);
 
     static void
     unregister_publisher_proxy (
-      ::IDL::traits< ::DDS::Publisher>::ref_type proxy);
+      IDL::traits< ::DDS::InstanceHandle_t>::in_type handle);
 
     static void
     unregister_topic_proxy (
-      ::IDL::traits< ::DDS::Topic>::ref_type proxy);
+      IDL::traits< ::DDS::InstanceHandle_t>::in_type handle);
 
     static void
     unregister_dp_proxy (
-      ::IDL::traits< ::DDS::DomainParticipant>::ref_type proxy);
+      IDL::traits< ::DDS::InstanceHandle_t>::in_type handle);
     //@}
 
     /**
@@ -194,15 +194,14 @@ namespace DDSX11
       * @name          unregister_proxy
       * @brief         Helper method, preventing double code.
       *                Removes the given proxy from the corresponding list.
-      * @tparam PROXY_TYPE The type of entity to unregister (DataReader/DataWRiter/Topic/...)
       * @tparam PROXY_MAP  The type of the map from which to unregister the given proxy
-      * @param  proxy   The C++11 proxy to unregister
-      * @param  lst     Reference to the map from which to unregister the proxy
+      * @param handle  The instance handle of the proxy we need to unregister
+      * @param lst     Reference to the map from which to unregister the proxy
       */
-    template<typename PROXY_TYPE, typename PROXY_MAP>
+    template<typename PROXY_MAP>
     static void
     unregister_proxy (
-      PROXY_TYPE proxy,
+      IDL::traits< ::DDS::InstanceHandle_t>::in_type handle,
       PROXY_MAP &lst);
 
     /// Map containing all DataReader C++11 proxies

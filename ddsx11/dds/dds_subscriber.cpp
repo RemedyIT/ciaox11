@@ -261,6 +261,10 @@ namespace DDSX11
     DDSX11_IMPL_LOG_DEBUG ("DDS_Subscriber_i::delete_datareader - "
       << "Successfully retrieved the native entity from the provided datareader");
 
+    // Retrieve the DDS instance handle before deleting it, we need it when
+    // unregistering our proxy
+    ::DDS::InstanceHandle_t const handle = a_datareader->get_instance_handle ();
+
     ::DDS::ReturnCode_t const retcode = ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->delete_datareader (native_dr));
 
@@ -273,7 +277,7 @@ namespace DDSX11
       }
     else
       {
-        DDS_ProxyEntityManager::unregister_datareader_proxy (dr_proxy);
+        DDS_ProxyEntityManager::unregister_datareader_proxy (handle);
         dr_proxy->clear_native_entity ();
 
         DDSX11_IMPL_LOG_DEBUG ("DDS_Subscriber_i::delete_datareader - "

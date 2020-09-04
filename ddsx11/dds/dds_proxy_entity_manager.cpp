@@ -80,14 +80,13 @@ namespace DDSX11
     return proxy;
   }
 
-  template<typename PROXY_TYPE, typename PROXY_MAP>
+  template<typename PROXY_MAP>
   void
   DDS_ProxyEntityManager::unregister_proxy (
-    PROXY_TYPE proxy,
+    IDL::traits< ::DDS::InstanceHandle_t>::in_type handle,
     PROXY_MAP &lst)
   {
-    const ::DDS::InstanceHandle_t handle = proxy->get_instance_handle ();
-    typename PROXY_MAP::iterator it = lst.find (handle);
+    typename PROXY_MAP::iterator const it = lst.find (handle);
     if (it != lst.end ())
     {
       lst.erase (it);
@@ -195,92 +194,80 @@ namespace DDSX11
 
   void
   DDS_ProxyEntityManager::unregister_datareader_proxy (
-    ::IDL::traits< ::DDS::DataReader>::ref_type proxy)
+    IDL::traits< ::DDS::InstanceHandle_t>::in_type handle)
   {
     std::lock_guard<std::mutex> __guard (DDS_ProxyEntityManager::dr_mutex);
 
     DDSX11_IMPL_LOG_DEBUG ("DDS_ProxyEntityManager::unregister_datareader_proxy - "
-      "Unregistered proxy with handle <" << proxy->get_instance_handle () << ">");
+      "Unregistered proxy with handle <" << handle << ">");
 
-    DDS_ProxyEntityManager::unregister_proxy<
-      ::IDL::traits< ::DDS::DataReader>::ref_type,
-      DDS_ProxyEntityManager::DataReaderProxies>
-        (proxy, DDS_ProxyEntityManager::dr_proxies);
+    DDS_ProxyEntityManager::unregister_proxy<DDS_ProxyEntityManager::DataReaderProxies>
+      (handle, DDS_ProxyEntityManager::dr_proxies);
   }
 
   void
   DDS_ProxyEntityManager::unregister_datawriter_proxy (
-    ::IDL::traits< ::DDS::DataWriter>::ref_type proxy)
+    IDL::traits< ::DDS::InstanceHandle_t>::in_type handle)
   {
     std::lock_guard<std::mutex> __guard (DDS_ProxyEntityManager::dw_mutex);
 
     DDSX11_IMPL_LOG_DEBUG ("DDS_ProxyEntityManager::unregister_datawriter_proxy - "
-      "Unregistered proxy with handle <" << proxy->get_instance_handle () << ">");
+      "Unregistered proxy with handle <" << handle << ">");
 
-    DDS_ProxyEntityManager::unregister_proxy<
-      ::IDL::traits< ::DDS::DataWriter>::ref_type,
-      DDS_ProxyEntityManager::DataWriterProxies>
-        (proxy, DDS_ProxyEntityManager::dw_proxies);
+    DDS_ProxyEntityManager::unregister_proxy<DDS_ProxyEntityManager::DataWriterProxies>
+      (handle, DDS_ProxyEntityManager::dw_proxies);
   }
 
   void
   DDS_ProxyEntityManager::unregister_subscriber_proxy (
-    ::IDL::traits< ::DDS::Subscriber>::ref_type proxy)
+    IDL::traits< ::DDS::InstanceHandle_t>::in_type handle)
   {
     std::lock_guard<std::mutex> __guard (DDS_ProxyEntityManager::sub_mutex);
 
     DDSX11_IMPL_LOG_DEBUG ("DDS_ProxyEntityManager::unregister_subscriber_proxy - "
-      "Unregistered proxy with handle <" << proxy->get_instance_handle () << ">");
+      "Unregistered proxy with handle <" << handle << ">");
 
-    DDS_ProxyEntityManager::unregister_proxy<
-      ::IDL::traits< ::DDS::Subscriber>::ref_type,
-      DDS_ProxyEntityManager::SubscriberProxies>
-        (proxy, DDS_ProxyEntityManager::sub_proxies);
+    DDS_ProxyEntityManager::unregister_proxy<DDS_ProxyEntityManager::SubscriberProxies>
+      (handle, DDS_ProxyEntityManager::sub_proxies);
   }
 
   void
   DDS_ProxyEntityManager::unregister_publisher_proxy (
-    ::IDL::traits< ::DDS::Publisher>::ref_type proxy)
+    IDL::traits< ::DDS::InstanceHandle_t>::in_type handle)
   {
     std::lock_guard<std::mutex> __guard (DDS_ProxyEntityManager::pub_mutex);
 
     DDSX11_IMPL_LOG_DEBUG ("DDS_ProxyEntityManager::unregister_publisher_proxy - "
-      "Unregistered proxy with handle <" << proxy->get_instance_handle () << ">");
+      "Unregistered proxy with handle <" << handle << ">");
 
-    DDS_ProxyEntityManager::unregister_proxy<
-      ::IDL::traits< ::DDS::Publisher>::ref_type,
-      DDS_ProxyEntityManager::PublisherProxies>
-        (proxy, DDS_ProxyEntityManager::pub_proxies);
+    DDS_ProxyEntityManager::unregister_proxy<DDS_ProxyEntityManager::PublisherProxies>
+      (handle, DDS_ProxyEntityManager::pub_proxies);
   }
 
   void
   DDS_ProxyEntityManager::unregister_topic_proxy (
-    ::IDL::traits< ::DDS::Topic>::ref_type proxy)
+    IDL::traits< ::DDS::InstanceHandle_t>::in_type handle)
   {
     std::lock_guard<std::mutex> __guard (DDS_ProxyEntityManager::tp_mutex);
 
     DDSX11_IMPL_LOG_DEBUG ("DDS_ProxyEntityManager::unregister_topic_proxy - "
-      "Unregistered proxy with handle <" << proxy->get_instance_handle () << ">");
+      "Unregistered proxy with handle <" << handle << ">");
 
-    DDS_ProxyEntityManager::unregister_proxy<
-      ::IDL::traits< ::DDS::Topic>::ref_type,
-      DDS_ProxyEntityManager::TopicProxies>
-        (proxy, DDS_ProxyEntityManager::tp_proxies);
+    DDS_ProxyEntityManager::unregister_proxy<DDS_ProxyEntityManager::TopicProxies>
+      (handle, DDS_ProxyEntityManager::tp_proxies);
   }
 
   void
   DDS_ProxyEntityManager::unregister_dp_proxy (
-    ::IDL::traits< ::DDS::DomainParticipant>::ref_type proxy)
+    IDL::traits< ::DDS::InstanceHandle_t>::in_type handle)
   {
     std::lock_guard<std::mutex> __guard (DDS_ProxyEntityManager::dp_mutex);
 
     DDSX11_IMPL_LOG_DEBUG ("DDS_ProxyEntityManager::unregister_dp_proxy - "
-      "Unregistered proxy with handle <" << proxy->get_instance_handle () << ">");
+      "Unregistered proxy with handle <" << handle << ">");
 
-    DDS_ProxyEntityManager::unregister_proxy<
-      ::IDL::traits< ::DDS::DomainParticipant>::ref_type,
-      DDS_ProxyEntityManager::DomainParticipantProxies>
-        (proxy, DDS_ProxyEntityManager::dp_proxies);
+    DDS_ProxyEntityManager::unregister_proxy<DDS_ProxyEntityManager::DomainParticipantProxies>
+      (handle, DDS_ProxyEntityManager::dp_proxies);
   }
 
   ::IDL::traits< ::DDS::DataReader>::ref_type
