@@ -1,5 +1,5 @@
 /**
- * @file   dncx11_log_backend_export.h
+ * @file   log_backend_export.h
  * @author Johnny Willemsen
  *
  * @brief  Export file for logging backend
