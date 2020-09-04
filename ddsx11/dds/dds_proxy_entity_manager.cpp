@@ -86,7 +86,7 @@ namespace DDSX11
     PROXY_TYPE proxy,
     PROXY_MAP &lst)
   {
-    const ::DDS::InstanceHandle_t handle = proxy->get_instance_handle ();
+    ::DDS::InstanceHandle_t const handle = proxy->get_instance_handle ();
     typename PROXY_MAP::iterator it = lst.find (handle);
     if (it != lst.end ())
     {
