@@ -242,22 +242,24 @@ namespace DDSX11
 
     IDL::traits< ::DDSX11::DDS_DataReader_proxy>::ref_type dr_proxy =
       data_reader_trait::proxy (a_datareader);
+    if (!dr_proxy)
+      {
+        DDSX11_IMPL_LOG_ERROR ("DDS_Subscriber_i::delete_datareader - "
+          << "Unable to retrieve the proxy from the provided datareader.");
+        return ::DDS::RETCODE_BAD_PARAMETER;
+      }
 
     DDS_Native::DDS::DataReader *native_dr =
       dr_proxy->get_native_entity ();
-
     if (!native_dr)
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_Subscriber_i::delete_datareader - "
-          << "Unable to retrieve the native entity from the provided "
-          << "datareader");
+          << "Unable to retrieve the native entity from the provided datareader");
         return ::DDS::RETCODE_BAD_PARAMETER;
       }
-    DDS_ProxyEntityManager::unregister_datareader_proxy (dr_proxy);
 
     DDSX11_IMPL_LOG_DEBUG ("DDS_Subscriber_i::delete_datareader - "
-      << "Successfully retrieved the native entity from the provided "
-      << "datareader");
+      << "Successfully retrieved the native entity from the provided datareader");
 
     ::DDS::ReturnCode_t const retcode = ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->delete_datareader (native_dr));
@@ -271,6 +273,9 @@ namespace DDSX11
       }
     else
       {
+        DDS_ProxyEntityManager::unregister_datareader_proxy (dr_proxy);
+        dr_proxy->clear_native_entity ();
+
         DDSX11_IMPL_LOG_DEBUG ("DDS_Subscriber_i::delete_datareader - "
           << "Provided datareader successfully deleted");
       }

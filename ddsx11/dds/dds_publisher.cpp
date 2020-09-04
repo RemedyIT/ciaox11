@@ -128,10 +128,14 @@ namespace DDSX11
 
     IDL::traits< ::DDSX11::DDS_DataWriter_proxy>::ref_type dw_proxy =
       data_writer_trait::proxy (a_datawriter);
+    if (!dw_proxy)
+      {
+        DDSX11_IMPL_LOG_ERROR ("DDS_Publisher_i::delete_datawriter - "
+          << "Unable to retrieve the proxy from the provided datawriter.");
+        return ::DDS::RETCODE_BAD_PARAMETER;
+      }
 
-    DDS_Native::DDS::DataWriter *native_dw =
-      dw_proxy->get_native_entity ();
-
+    DDS_Native::DDS::DataWriter *native_dw = dw_proxy->get_native_entity ();
     if (!native_dw)
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_Publisher_i::delete_datawriter - "
@@ -143,7 +147,6 @@ namespace DDSX11
     DDSX11_IMPL_LOG_DEBUG ("DDS_Publisher_i::delete_datawriter - "
       << "Successfully retrieved the native entity from the provided "
       << "datawriter.");
-    DDS_ProxyEntityManager::unregister_datawriter_proxy (dw_proxy);
 
     ::DDS::ReturnCode_t const retcode =
       ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
@@ -158,6 +161,9 @@ namespace DDSX11
       }
     else
       {
+        DDS_ProxyEntityManager::unregister_datawriter_proxy (dw_proxy);
+        dw_proxy->clear_native_entity ();
+
         DDSX11_IMPL_LOG_DEBUG ("DDS_Publisher_i::delete_datawriter - "
           << "Provided datawriter successfully deleted");
       }

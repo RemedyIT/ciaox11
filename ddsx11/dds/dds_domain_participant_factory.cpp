@@ -127,16 +127,22 @@ namespace DDSX11
     // when it has been set
     a_participant->set_listener(nullptr, 0);
 
-    DDS_Native::DDS::DomainParticipant *part =
-      domain_participant_trait::native (a_participant);
-
-    if (!part)
+    IDL::traits< ::DDSX11::DDS_DomainParticipant_proxy>::ref_type proxy =
+      domain_participant_trait::proxy (a_participant);
+    if (!proxy)
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipantFactory_proxy::delete_participant - "
           << "Unable to retrieve the proxy from the provided object reference.");
         return ::DDS::RETCODE_ERROR;
       }
-    DDS_ProxyEntityManager::unregister_dp_proxy (a_participant);
+
+    DDS_Native::DDS::DomainParticipant *part = proxy->get_native_entity ();
+    if (!part)
+      {
+        DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipantFactory_proxy::delete_participant - "
+          << "Unable to retrieve the native domainparticipant from the provided object reference.");
+        return ::DDS::RETCODE_ERROR;
+      }
 
     ::DDS::ReturnCode_t const retcode =
       ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
@@ -151,6 +157,9 @@ namespace DDSX11
       }
     else
       {
+        DDS_ProxyEntityManager::unregister_dp_proxy (a_participant);
+        proxy->clear_native_entity ();
+
         DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipantFactory_proxy::delete_participant - "
           "Successfully deleted provided participant.");
       }

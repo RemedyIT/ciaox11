@@ -240,6 +240,7 @@ namespace DDSX11
       const ::DDS::InstanceHandle_t& publication_handle) override;
 
     DDS_Native::DDS::DataReader *get_native_entity () override;
+    void clear_native_entity () override;
 
   private:
     NATIVE_TYPED_READER *native_entity ();

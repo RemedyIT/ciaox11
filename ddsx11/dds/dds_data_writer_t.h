@@ -134,6 +134,7 @@ namespace DDSX11
       const TOPIC_TYPE &instance_data) override;
 
     DDS_Native::DDS::DataWriter *get_native_entity () override;
+    void clear_native_entity () override;
 
   private:
     NATIVE_TYPED_WRITER *native_entity ();
