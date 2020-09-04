@@ -599,6 +599,8 @@ namespace DDSX11
   ::DDS::ReturnCode_t
   DDS_DomainParticipant_proxy::delete_contained_entities ()
   {
+    DDSX11_LOG_TRACE ("DDS_DomainParticipant_proxy::delete_contained_entities");
+
     return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->delete_contained_entities ());
   }
