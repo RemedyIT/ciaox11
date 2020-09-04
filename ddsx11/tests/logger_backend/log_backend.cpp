@@ -65,7 +65,6 @@ namespace DAnCE
           default:
             DDSX11_IMPL_LOG_ERROR("Unknown option for ddsx11_log_backend" << opts.last_option ());
           }
-
       }
 
     return this->open (ACE_TEXT (""));
