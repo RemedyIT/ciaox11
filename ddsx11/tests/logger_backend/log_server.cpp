@@ -58,7 +58,6 @@ bool parse_args (int argc, ACE_TCHAR **argv)
 
           return false;
         }
-
     }
   return true;
 }
@@ -102,11 +101,9 @@ public:
     DDS::traits<DnCX11::Log_Record>::datareader_ref_type the_reader) override;
 };
 
-
 int
 ACE_TMAIN (int argc, ACE_TCHAR **argv)
 {
-
   if (!parse_args (argc, argv))
     {
       DDSX11_IMPL_LOG_ERROR ("Unable to parse command line options");
