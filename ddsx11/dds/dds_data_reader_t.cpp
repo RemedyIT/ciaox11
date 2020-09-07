@@ -1113,9 +1113,9 @@ namespace DDSX11
   {
     if (!this->native_entity_)
       {
-        DDSX11_IMPL_LOG_DEBUG ("NativeEntityBase_T<DDS_NATIVE_TYPE>::entity "
-          << "Throwing std::logic_error");
-        throw std::logic_error ("Called DataReader_T::native_entity which contains a nullptr");
+        DDSX11_IMPL_LOG_DEBUG ("DataReader_T<DDS_NATIVE_TYPE>::native_entity "
+          << "Throwing CORBA::BAD_INV_ORDER because we have a nullptr to the native entity");
+        throw TAOX11_CORBA::BAD_INV_ORDER ();
       }
     return this->native_entity_;
   }

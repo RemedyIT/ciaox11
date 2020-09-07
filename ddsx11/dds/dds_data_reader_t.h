@@ -243,6 +243,13 @@ namespace DDSX11
     void clear_native_entity () override;
 
   private:
+    /**
+      * @name   native_entity
+      * @brief  All derived proxy classes should use this method when
+      *         interacting with DDS.
+      * @return The native DDS entity pointer
+      * @throw  CORBA::BAD_INV_ORDER when the internal DDS entity pointer was not set yet
+      */
     NATIVE_TYPED_READER *native_entity ();
 
     NATIVE_TYPED_READER *native_entity_ {};
