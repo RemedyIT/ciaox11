@@ -129,7 +129,7 @@ namespace DDSX11
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipantFactory_proxy::delete_participant - "
           << "Unable to retrieve the proxy from the provided object reference.");
-        return ::DDS::RETCODE_ERROR;
+        return ::DDS::RETCODE_BAD_PARAMETER;
       }
 
     DDS_Native::DDS::DomainParticipant *part = proxy->get_native_entity ();
@@ -137,7 +137,7 @@ namespace DDSX11
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipantFactory_proxy::delete_participant - "
           << "Unable to retrieve the native domainparticipant from the provided object reference.");
-        return ::DDS::RETCODE_ERROR;
+        return ::DDS::RETCODE_BAD_PARAMETER;
       }
 
     DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipantFactory_proxy::delete_participant - "

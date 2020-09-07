@@ -131,7 +131,7 @@ namespace DDSX11
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::delete_publisher - "
           << "Unable to retrieve the proxy publish from the given ref_type.");
-        return ::DDS::RETCODE_ERROR;
+        return ::DDS::RETCODE_BAD_PARAMETER;
       }
 
     DDS_Native::DDS::Publisher *native_pub = proxy->get_native_entity ();
@@ -139,7 +139,7 @@ namespace DDSX11
     {
       DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::delete_publisher - "
         << "Unable to retrieve the native publisher from the given ref_type.");
-      return ::DDS::RETCODE_ERROR;
+      return ::DDS::RETCODE_BAD_PARAMETER;
     }
 
     DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::delete_publisher - "
@@ -275,7 +275,7 @@ namespace DDSX11
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::delete_subscriber - "
           << "Unable to retrieve the proxy subscriber from the given ref_type.");
-        return ::DDS::RETCODE_ERROR;
+        return ::DDS::RETCODE_BAD_PARAMETER;
       }
 
     DDS_Native::DDS::Subscriber *native_sub = proxy->get_native_entity ();
@@ -283,7 +283,7 @@ namespace DDSX11
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::delete_subscriber - "
           << "Unable to retrieve the native subscriber from the given ref_type.");
-        return ::DDS::RETCODE_ERROR;
+        return ::DDS::RETCODE_BAD_PARAMETER;
       }
 
     DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::delete_subscriber - "
@@ -515,6 +515,8 @@ namespace DDSX11
   DDS_DomainParticipant_proxy::find_topic (const std::string &impl_name,
     const ::DDS::Duration_t & timeout)
   {
+    DDSX11_LOG_TRACE ("DDS_DomainParticipant_proxy::find_topic");
+
     // Go to the native DDS implementation and see if the topic exists there
     // when it exists we need to create a new proxy and don't reuse it from the PEM because
     // on each topic returned by find_topic also a delete_topic needs

@@ -11,8 +11,7 @@
 #include "shapetype_dds_typesupport.h"
 #include <iostream>
 #include <thread>
-
-// X11_FUZZ: disable check_cout_cerr
+#include "logger/ddsx11_log.h"
 
 int main (int, char *[])
 {
@@ -36,7 +35,7 @@ int main (int, char *[])
       retcode = DDS::traits<ShapeType>::register_type (domain_participant, "ShapeType");
       if (retcode != DDS::RETCODE_OK)
       {
-        std::cerr << "Receiver: Failed to register type." << std::endl;
+        DDSX11_IMPL_LOG_PANIC ("Receiver: Failed to register type.");
         return 1;
       }
 
@@ -46,44 +45,62 @@ int main (int, char *[])
       retcode = DDS::traits<ShapeType>::register_type (domain_participant, "ShapeType");
       if (retcode != DDS::RETCODE_OK)
       {
-        std::cerr << "Builtin: Error to register type." << std::endl;
+        DDSX11_IMPL_LOG_PANIC ("Builtin: Error to register type.");
+        return 1;
+      }
+
+      DDS::Duration_t const zero {0, 0};
+      DDS::traits<ShapeType>::topic_ref_type topic2 = domain_participant->find_topic ("Square", zero);
+
+      retcode = domain_participant->delete_topic (topic2);
+      if (retcode != DDS::RETCODE_OK)
+      {
+        DDSX11_IMPL_LOG_PANIC ("Receiver: Failed to delete topic2 from domain participant.");
         return 1;
       }
 
       retcode = domain_participant->delete_topic (topic);
-      topic = nullptr;
       if (retcode != DDS::RETCODE_OK)
       {
-        std::cerr << "Receiver: Failed to delete topic from domain participant." << std::endl;
+        DDSX11_IMPL_LOG_PANIC ("Receiver: Failed to delete topic from domain participant.");
         return 1;
       }
 
       // Try to delete the topic the second time, this should return a RETCODE_BAD_PARAMETER
       retcode = domain_participant->delete_topic (topic);
+      topic = nullptr;
       if (retcode != DDS::RETCODE_BAD_PARAMETER)
       {
-        std::cerr << "Receiver: Second delete topic didn't return correct return code." << std::endl;
+        DDSX11_IMPL_LOG_PANIC ("Receiver: Second delete topic didn't return correct return code.");
+        return 1;
+      }
+
+      retcode = dpf->delete_participant(domain_participant);
+      if (retcode != DDS::RETCODE_OK)
+      {
+        DDSX11_IMPL_LOG_PANIC ("Builtin: Failed to delete domain participant from domain participant factory.");
         return 1;
       }
 
       retcode = dpf->delete_participant(domain_participant);
       domain_participant = nullptr;
-      if (retcode != DDS::RETCODE_OK)
+      if (retcode != DDS::RETCODE_BAD_PARAMETER)
       {
-        std::cerr << "Builtin: Failed to delete domain participant from domain participant factory." << std::endl;
+        DDSX11_IMPL_LOG_PANIC ("Receiver: Second delete domain participant didn't return correct return code.");
         return 1;
       }
+
       retcode = dpf->finalize_instance ();
       dpf = nullptr;
       if (retcode != ::DDS::RETCODE_OK)
       {
-        std::cerr << "Builtin: Failed to finalize the domain participant factory." << std::endl;
+        DDSX11_IMPL_LOG_PANIC ("Builtin: Failed to finalize the domain participant factory.");
         return 1;
       }
     }
   catch (const std::exception& e)
     {
-      std::cerr << "exception caught: " << e.what () << std::endl;
+      DDSX11_IMPL_LOG_PANIC ("exception caught: " << e.what ());
       return 1;
     }
 
