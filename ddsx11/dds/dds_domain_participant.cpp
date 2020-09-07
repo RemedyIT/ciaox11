@@ -506,11 +506,24 @@ namespace DDSX11
   DDS_DomainParticipant_proxy::find_topic (const std::string &impl_name,
     const ::DDS::Duration_t & timeout)
   {
-    return DDS_ProxyEntityManager::get_topic_proxy (
+    // Go to the native DDS implementation and see if the topic exists there
+    // when it exists we need to create a new proxy and don't reuse it from the PEM because
+    // on each topic returned by find_topic also a delete_topic needs
+    // to be called. When we would return the proxy as it is
+    // in our PEM because after the first delete_topic call in the proxy
+    // the pointer will be set to nulltr
+    DDS_Native::DDS::Topic* native_topic =
       this->native_entity ()->find_topic (
         ::DDSX11::traits<std::string>::in (impl_name),
-        ::DDSX11::traits< ::DDS::Duration_t>::in (timeout)));
+        ::DDSX11::traits< ::DDS::Duration_t>::in (timeout));
 
+    IDL::traits< ::DDS::Topic>::ref_type topic_reference;
+    if (native_topic)
+      {
+        topic_reference = TAOX11_CORBA::make_reference<DDS_Topic_proxy> (native_topic);
+      }
+
+    return topic_reference;
   }
 
 
