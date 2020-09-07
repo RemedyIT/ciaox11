@@ -35,7 +35,7 @@ int main (int, char *[])
       retcode = DDS::traits<ShapeType>::register_type (domain_participant, "ShapeType");
       if (retcode != DDS::RETCODE_OK)
       {
-        DDSX11_IMPL_LOG_PANIC ("Receiver: Failed to register type.");
+        DDSX11_IMPL_LOG_PANIC ("double_delete: Failed to register type.");
         return 1;
       }
 
@@ -49,20 +49,79 @@ int main (int, char *[])
         return 1;
       }
 
+      DDS::traits<ShapeType>::publisher_ref_type publisher =
+        domain_participant->create_publisher (DDS::PUBLISHER_QOS_DEFAULT, nullptr, 0);
+      if (!publisher)
+      {
+        DDSX11_IMPL_LOG_PANIC ("double_delete: Failed to create publisher.");
+        return 1;
+      }
+
+      DDS::traits<ShapeType>::datawriter_ref_type dw =
+          publisher->create_datawriter(topic, DDS::DATAWRITER_QOS_DEFAULT, nullptr, 0);
+      if (!dw)
+      {
+        DDSX11_IMPL_LOG_PANIC ("double_delete: Failed to create datawriter.");
+        return 1;
+      }
+
       DDS::Duration_t const zero {0, 0};
       DDS::traits<ShapeType>::topic_ref_type topic2 = domain_participant->find_topic ("Square", zero);
 
       retcode = domain_participant->delete_topic (topic2);
       if (retcode != DDS::RETCODE_OK)
       {
-        DDSX11_IMPL_LOG_PANIC ("Receiver: Failed to delete topic2 from domain participant.");
+        DDSX11_IMPL_LOG_PANIC ("double_delete: Failed to delete topic2 from domain participant.");
+        return 1;
+      }
+
+      // Try to delete the publisher when it still has a datawriter, this should fail
+      retcode = domain_participant->delete_publisher (publisher);
+      if (retcode == DDS::RETCODE_OK)
+      {
+        DDSX11_IMPL_LOG_PANIC ("double_delete: Deleting publisher should fail.");
+        return 1;
+      }
+
+      // Now delete the datawriter, this should work
+      retcode = publisher->delete_datawriter (dw);
+      if (retcode != DDS::RETCODE_OK)
+      {
+        DDSX11_IMPL_LOG_PANIC ("double_delete: Failed to delete datawriter.");
+        return 1;
+      }
+
+      // Try to delete the datawriter a second time, this should fail
+      retcode = publisher->delete_datawriter (dw);
+      dw = nullptr;
+      if (retcode != DDS::RETCODE_BAD_PARAMETER)
+      {
+        DDSX11_IMPL_LOG_PANIC ("double_delete: Deleting the datawriter the second time should fail.");
+        return 1;
+      }
+
+      // Now delete the publisher after the datawriter has been deleted, it should
+      // now work
+      retcode = domain_participant->delete_publisher (publisher);
+      if (retcode != DDS::RETCODE_OK)
+      {
+        DDSX11_IMPL_LOG_PANIC ("double_delete: Failed to delete publisher.");
+        return 1;
+      }
+
+      // And try to delete the publisher another time, this should fail
+      retcode = domain_participant->delete_publisher (publisher);
+      publisher = nullptr;
+      if (retcode != DDS::RETCODE_BAD_PARAMETER)
+      {
+        DDSX11_IMPL_LOG_PANIC ("double_delete: Deleting the publisher the second time should fail.");
         return 1;
       }
 
       retcode = domain_participant->delete_topic (topic);
       if (retcode != DDS::RETCODE_OK)
       {
-        DDSX11_IMPL_LOG_PANIC ("Receiver: Failed to delete topic from domain participant.");
+        DDSX11_IMPL_LOG_PANIC ("double_delete: Failed to delete topic from domain participant.");
         return 1;
       }
 
@@ -71,7 +130,7 @@ int main (int, char *[])
       topic = nullptr;
       if (retcode != DDS::RETCODE_BAD_PARAMETER)
       {
-        DDSX11_IMPL_LOG_PANIC ("Receiver: Second delete topic didn't return correct return code.");
+        DDSX11_IMPL_LOG_PANIC ("double_delete: Second delete topic didn't return correct return code.");
         return 1;
       }
 
@@ -86,7 +145,7 @@ int main (int, char *[])
       domain_participant = nullptr;
       if (retcode != DDS::RETCODE_BAD_PARAMETER)
       {
-        DDSX11_IMPL_LOG_PANIC ("Receiver: Second delete domain participant didn't return correct return code.");
+        DDSX11_IMPL_LOG_PANIC ("double_delete: Second delete domain participant didn't return correct return code.");
         return 1;
       }
 
