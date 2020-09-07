@@ -30,8 +30,9 @@ namespace DDSX11
     if (!this->native_entity_)
       {
         DDSX11_IMPL_LOG_PANIC ("NativeEntityBase_T<DDS_NATIVE_TYPE>::entity "
-          << "Throwing BAD_INV_ORDER.");
-        throw std::logic_error ("Called native_entity");
+          << "Throwing std::logic_error");
+        ACE_DEBUG ((LM_DEBUG, "%?"));
+        throw std::logic_error ("Called NativeEntityBase_T::native_entity which contains a nullptr");
       }
     return this->native_entity_;
   }
