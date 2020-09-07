@@ -123,10 +123,6 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_DomainParticipantFactory_proxy::delete_participant");
 
-    // First set the listener to null, this will delete any existing listener
-    // when it has been set
-    a_participant->set_listener(nullptr, 0);
-
     IDL::traits< ::DDSX11::DDS_DomainParticipant_proxy>::ref_type proxy =
       domain_participant_trait::proxy (a_participant);
     if (!proxy)
@@ -143,6 +139,13 @@ namespace DDSX11
           << "Unable to retrieve the native domainparticipant from the provided object reference.");
         return ::DDS::RETCODE_ERROR;
       }
+
+    DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipantFactory_proxy::delete_participant - "
+      << "Successfully retrieved the native entity from the provided domainparticipant");
+
+    // Set the listener to null, this will delete any existing listener
+    // when it has been set
+    a_participant->set_listener(nullptr, 0);
 
     // Retrieve the DDS instance handle before deleting it, we need it when
     // unregistering our proxy

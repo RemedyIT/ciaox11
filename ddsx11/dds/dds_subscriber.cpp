@@ -236,10 +236,6 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_Subscriber_proxy::delete_datareader");
 
-    // First set the listener to null, this will delete any existing listener
-    // when it has been set
-    a_datareader->set_listener (nullptr, 0);
-
     IDL::traits< ::DDSX11::DDS_DataReader_proxy>::ref_type dr_proxy =
       data_reader_trait::proxy (a_datareader);
     if (!dr_proxy)
@@ -260,6 +256,10 @@ namespace DDSX11
 
     DDSX11_IMPL_LOG_DEBUG ("DDS_Subscriber_i::delete_datareader - "
       << "Successfully retrieved the native entity from the provided datareader");
+
+    // Set the listener to null, this will delete any existing listener
+    // when it has been set
+    a_datareader->set_listener (nullptr, 0);
 
     // Retrieve the DDS instance handle before deleting it, we need it when
     // unregistering our proxy

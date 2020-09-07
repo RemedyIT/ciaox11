@@ -122,10 +122,6 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_Publisher_proxy::delete_datawriter");
 
-    // First set the listener to null, this will delete any existing listener
-    // when it has been set
-    a_datawriter->set_listener(nullptr, 0);
-
     IDL::traits< ::DDSX11::DDS_DataWriter_proxy>::ref_type dw_proxy =
       data_writer_trait::proxy (a_datawriter);
     if (!dw_proxy)
@@ -147,6 +143,10 @@ namespace DDSX11
     DDSX11_IMPL_LOG_DEBUG ("DDS_Publisher_i::delete_datawriter - "
       << "Successfully retrieved the native entity from the provided "
       << "datawriter.");
+
+    // Set the listener to null, this will delete any existing listener
+    // when it has been set
+    a_datawriter->set_listener(nullptr, 0);
 
     // Retrieve the DDS instance handle before deleting it, we need it when
     // unregistering our proxy

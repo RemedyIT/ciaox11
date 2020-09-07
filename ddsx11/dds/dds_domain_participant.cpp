@@ -125,10 +125,6 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_DomainParticipant_proxy::delete_publisher");
 
-    // First set the listener to null, this will delete any existing listener
-    // when it has been set
-    p->set_listener(nullptr, 0);
-
     IDL::traits< ::DDSX11::DDS_Publisher_proxy>::ref_type proxy =
       publisher_trait::proxy (p);
     if (!proxy)
@@ -145,6 +141,13 @@ namespace DDSX11
         << "Unable to retrieve the native publisher from the given ref_type.");
       return ::DDS::RETCODE_ERROR;
     }
+
+    DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::delete_publisher - "
+      << "Successfully retrieved the native entity from the provided publisher");
+
+    // Set the listener to null, this will delete any existing listener
+    // when it has been set
+    p->set_listener(nullptr, 0);
 
     // Retrieve the DDS instance handle before deleting it, we need it when
     // unregistering our proxy
@@ -266,10 +269,6 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_DomainParticipant_proxy::delete_subscriber");
 
-    // First set the listener to null, this will delete any existing listener
-    // when it has been set
-    s->set_listener(nullptr, 0);
-
     IDL::traits< ::DDSX11::DDS_Subscriber_proxy>::ref_type proxy =
       subscriber_trait::proxy (s);
     if (!proxy)
@@ -286,6 +285,13 @@ namespace DDSX11
           << "Unable to retrieve the native subscriber from the given ref_type.");
         return ::DDS::RETCODE_ERROR;
       }
+
+    DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::delete_subscriber - "
+      << "Successfully retrieved the native entity from the provided subscriber");
+
+    // Set the listener to null, this will delete any existing listener
+    // when it has been set
+    s->set_listener(nullptr, 0);
 
     // Retrieve the DDS instance handle before deleting it, we need it when
     // unregistering our proxy
@@ -453,10 +459,6 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_DomainParticipant_proxy::delete_topic");
 
-    // First set the listener to null, this will delete any existing listener
-    // when it has been set
-    a_topic->set_listener(nullptr, 0);
-
     IDL::traits< ::DDSX11::DDS_Topic_proxy>::ref_type proxy =
       topic_trait::proxy (a_topic);
     if (!proxy)
@@ -473,6 +475,13 @@ namespace DDSX11
           << "Unable to retrieve the native topic from the given ref_type.");
         return ::DDS::RETCODE_BAD_PARAMETER;
       }
+
+    DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::delete_topic - "
+      << "Successfully retrieved the native entity from the provided topic");
+
+    // Set the listener to null, this will delete any existing listener
+    // when it has been set
+    a_topic->set_listener(nullptr, 0);
 
     // Retrieve the DDS instance handle before deleting it, we need it when
     // unregistering our proxy
