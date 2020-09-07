@@ -1,0 +1,15 @@
+This test demonstrate a ACE logging backend which publishes all non DDSX11 log messages
+onto DDS. A small log_server subscribes to DDS and prints all messages onto the console.
+
+This logging backend can be installed through the config files which are under dancex11/bin using
+the following directive:
+
+nl.remedy.it.DnCX11.ServiceObject log_record_ddsx11_logger _make_ddsx11_log_backend
+  nl.remedy.it.DnCX11.ConfigProperty nl.remedy.it.DnCX11.ServiceObject.Arguments "-d 0"
+
+As arguments the following flags are supported:
+-t Topic
+-d Domain
+-q QoS Profile
+-n Node name
+

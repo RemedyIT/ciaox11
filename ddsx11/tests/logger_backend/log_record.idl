@@ -1,0 +1,26 @@
+/**
+ * @file   log_record.idl
+ * @author Johnny Willemsen
+ *
+ * @brief  Defines a data structure for DnCX11 log records.
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ */
+
+module DnCX11
+{
+  struct Log_Record
+  {
+    /// The name of the node this originates from, if available
+    string node;
+
+    /// The process ID of the node.
+    long long pid;
+
+    /// The log priority of the message
+    unsigned long priority;
+
+    /// The error diagnostic
+    string message;
+  }; //@TopLevel()
+};
