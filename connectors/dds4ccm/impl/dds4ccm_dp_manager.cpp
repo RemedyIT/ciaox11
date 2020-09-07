@@ -126,8 +126,8 @@ namespace CIAOX11
         return false;
       }
 
-      IdQosProfile idqos = std::make_pair (qos_profile, domain_id);
-      DomainParticipants_iterator it_found = this->dps_.find (idqos);
+      IdQosProfile const idqos = std::make_pair (qos_profile, domain_id);
+      DomainParticipants_iterator const it_found = this->dps_.find (idqos);
 
       if (it_found == this->dps_.end())
       {
@@ -183,8 +183,8 @@ namespace CIAOX11
         return false;
       }
 
-      IdQosProfile idqos = std::make_pair (qos_profile, domain_id);
-      DomainParticipants_iterator iter = this->dps_.find (idqos);
+      IdQosProfile const idqos = std::make_pair (qos_profile, domain_id);
+      DomainParticipants_iterator const iter = this->dps_.find (idqos);
 
       if (iter != this->dps_.end ())
       {
