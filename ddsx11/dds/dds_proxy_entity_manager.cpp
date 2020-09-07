@@ -433,6 +433,7 @@ namespace DDSX11
   void
   DDS_ProxyEntityManager::finalize ()
   {
+    // @todo clear the native pointer within the proxy
     for (auto& it : DDS_ProxyEntityManager::dr_proxies)
     {
       DDSX11_IMPL_LOG_ERROR ("DDS_ProxyEntityManager::finalize - "
