@@ -164,7 +164,13 @@ namespace DDSX11
       }
     else
       {
-        DDS_ProxyEntityManager::unregister_dp_proxy (handle);
+
+        if (!DDS_ProxyEntityManager::unregister_dp_proxy (handle))
+          {
+            DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::delete_participant - "
+              << "Error: Can't unregister domainparticpant proxy for <" << handle << ">");
+            return ::DDS::RETCODE_ERROR;
+          }
         proxy->clear_native_entity ();
 
         DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipantFactory_proxy::delete_participant - "

@@ -81,11 +81,12 @@ namespace DDSX11
   }
 
   template<typename PROXY_MAP>
-  void
+  bool
   DDS_ProxyEntityManager::unregister_proxy (
     IDL::traits< ::DDS::InstanceHandle_t>::in_type handle,
     PROXY_MAP &lst)
   {
+    bool retval = false;
     typename PROXY_MAP::iterator const it = lst.find (handle);
     if (it != lst.end ())
     {
@@ -93,13 +94,15 @@ namespace DDSX11
       DDSX11_IMPL_LOG_DEBUG ("DDS_ProxyEntityManager::unregister_proxy - "
         << "Removed proxy with handle <" << handle
         << "> from the list");
+      retval = true;
     }
     else
     {
-      DDSX11_IMPL_LOG_INFO ("DDS_ProxyEntityManager::unregister_proxy - "
+      DDSX11_IMPL_LOG_ERROR ("DDS_ProxyEntityManager::unregister_proxy - "
         << "Could not find a proxy with handle <" << handle
-        << ">. Nothing to do");
+        << ">");
     }
+    return retval;
   }
 
   bool
@@ -192,7 +195,7 @@ namespace DDSX11
         (proxy, DDS_ProxyEntityManager::dp_proxies);
   }
 
-  void
+  bool
   DDS_ProxyEntityManager::unregister_datareader_proxy (
     IDL::traits< ::DDS::InstanceHandle_t>::in_type handle)
   {
@@ -201,11 +204,11 @@ namespace DDSX11
     DDSX11_IMPL_LOG_DEBUG ("DDS_ProxyEntityManager::unregister_datareader_proxy - "
       "Unregistered proxy with handle <" << handle << ">");
 
-    DDS_ProxyEntityManager::unregister_proxy<DDS_ProxyEntityManager::DataReaderProxies>
+    return DDS_ProxyEntityManager::unregister_proxy<DDS_ProxyEntityManager::DataReaderProxies>
       (handle, DDS_ProxyEntityManager::dr_proxies);
   }
 
-  void
+  bool
   DDS_ProxyEntityManager::unregister_datawriter_proxy (
     IDL::traits< ::DDS::InstanceHandle_t>::in_type handle)
   {
@@ -214,11 +217,11 @@ namespace DDSX11
     DDSX11_IMPL_LOG_DEBUG ("DDS_ProxyEntityManager::unregister_datawriter_proxy - "
       "Unregistered proxy with handle <" << handle << ">");
 
-    DDS_ProxyEntityManager::unregister_proxy<DDS_ProxyEntityManager::DataWriterProxies>
+    return DDS_ProxyEntityManager::unregister_proxy<DDS_ProxyEntityManager::DataWriterProxies>
       (handle, DDS_ProxyEntityManager::dw_proxies);
   }
 
-  void
+  bool
   DDS_ProxyEntityManager::unregister_subscriber_proxy (
     IDL::traits< ::DDS::InstanceHandle_t>::in_type handle)
   {
@@ -227,11 +230,11 @@ namespace DDSX11
     DDSX11_IMPL_LOG_DEBUG ("DDS_ProxyEntityManager::unregister_subscriber_proxy - "
       "Unregistered proxy with handle <" << handle << ">");
 
-    DDS_ProxyEntityManager::unregister_proxy<DDS_ProxyEntityManager::SubscriberProxies>
+    return DDS_ProxyEntityManager::unregister_proxy<DDS_ProxyEntityManager::SubscriberProxies>
       (handle, DDS_ProxyEntityManager::sub_proxies);
   }
 
-  void
+  bool
   DDS_ProxyEntityManager::unregister_publisher_proxy (
     IDL::traits< ::DDS::InstanceHandle_t>::in_type handle)
   {
@@ -240,11 +243,11 @@ namespace DDSX11
     DDSX11_IMPL_LOG_DEBUG ("DDS_ProxyEntityManager::unregister_publisher_proxy - "
       "Unregistered proxy with handle <" << handle << ">");
 
-    DDS_ProxyEntityManager::unregister_proxy<DDS_ProxyEntityManager::PublisherProxies>
+    return DDS_ProxyEntityManager::unregister_proxy<DDS_ProxyEntityManager::PublisherProxies>
       (handle, DDS_ProxyEntityManager::pub_proxies);
   }
 
-  void
+  bool
   DDS_ProxyEntityManager::unregister_topic_proxy (
     IDL::traits< ::DDS::InstanceHandle_t>::in_type handle)
   {
@@ -253,11 +256,11 @@ namespace DDSX11
     DDSX11_IMPL_LOG_DEBUG ("DDS_ProxyEntityManager::unregister_topic_proxy - "
       "Unregistered proxy with handle <" << handle << ">");
 
-    DDS_ProxyEntityManager::unregister_proxy<DDS_ProxyEntityManager::TopicProxies>
+    return DDS_ProxyEntityManager::unregister_proxy<DDS_ProxyEntityManager::TopicProxies>
       (handle, DDS_ProxyEntityManager::tp_proxies);
   }
 
-  void
+  bool
   DDS_ProxyEntityManager::unregister_dp_proxy (
     IDL::traits< ::DDS::InstanceHandle_t>::in_type handle)
   {
@@ -266,7 +269,7 @@ namespace DDSX11
     DDSX11_IMPL_LOG_DEBUG ("DDS_ProxyEntityManager::unregister_dp_proxy - "
       "Unregistered proxy with handle <" << handle << ">");
 
-    DDS_ProxyEntityManager::unregister_proxy<DDS_ProxyEntityManager::DomainParticipantProxies>
+    return DDS_ProxyEntityManager::unregister_proxy<DDS_ProxyEntityManager::DomainParticipantProxies>
       (handle, DDS_ProxyEntityManager::dp_proxies);
   }
 

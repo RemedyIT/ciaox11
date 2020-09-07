@@ -87,29 +87,31 @@ namespace DDSX11
       * @brief Looking up the given proxy and remove it from
       *        the corresponding map
       * @param handle The instance handle of the proxy to unregister
+      * @retval true The proxy has been successfully unregistered
+      * @retval false The proxy was not found
       */
     //@{
-    static void
+    static bool
     unregister_datareader_proxy (
       IDL::traits< ::DDS::InstanceHandle_t>::in_type handle);
 
-    static void
+    static bool
     unregister_datawriter_proxy (
       IDL::traits< ::DDS::InstanceHandle_t>::in_type handle);
 
-    static void
+    static bool
     unregister_subscriber_proxy (
       IDL::traits< ::DDS::InstanceHandle_t>::in_type handle);
 
-    static void
+    static bool
     unregister_publisher_proxy (
       IDL::traits< ::DDS::InstanceHandle_t>::in_type handle);
 
-    static void
+    static bool
     unregister_topic_proxy (
       IDL::traits< ::DDS::InstanceHandle_t>::in_type handle);
 
-    static void
+    static bool
     unregister_dp_proxy (
       IDL::traits< ::DDS::InstanceHandle_t>::in_type handle);
     //@}
@@ -197,9 +199,11 @@ namespace DDSX11
       * @tparam PROXY_MAP  The type of the map from which to unregister the given proxy
       * @param handle  The instance handle of the proxy we need to unregister
       * @param lst     Reference to the map from which to unregister the proxy
+      * @retval true The proxy has been successfully unregistered
+      * @retval false The proxy was not found
       */
     template<typename PROXY_MAP>
-    static void
+    static bool
     unregister_proxy (
       IDL::traits< ::DDS::InstanceHandle_t>::in_type handle,
       PROXY_MAP &lst);

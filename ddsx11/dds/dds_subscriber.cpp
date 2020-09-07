@@ -277,7 +277,12 @@ namespace DDSX11
       }
     else
       {
-        DDS_ProxyEntityManager::unregister_datareader_proxy (handle);
+        if (!DDS_ProxyEntityManager::unregister_datareader_proxy (handle))
+          {
+            DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::delete_datareader - "
+              << "Error: Can't unregister datareader proxy for <" << handle << ">");
+            return ::DDS::RETCODE_ERROR;
+          }
         dr_proxy->clear_native_entity ();
 
         DDSX11_IMPL_LOG_DEBUG ("DDS_Subscriber_i::delete_datareader - "

@@ -76,7 +76,6 @@ namespace DDSX11
     get_participant () override;
 
   private:
-
     DDS_Topic_proxy() = delete;
     DDS_Topic_proxy(const DDS_Topic_proxy&) = delete;
     DDS_Topic_proxy(DDS_Topic_proxy&&) = delete;

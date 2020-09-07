@@ -165,7 +165,13 @@ namespace DDSX11
       }
     else
       {
-        DDS_ProxyEntityManager::unregister_datawriter_proxy (handle);
+        if (!DDS_ProxyEntityManager::unregister_datawriter_proxy (handle))
+          {
+            DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::delete_datawriter - "
+              << "Error: Can't unregister datawriter proxy for <" << handle << ">");
+            return ::DDS::RETCODE_ERROR;
+          }
+
         dw_proxy->clear_native_entity ();
 
         DDSX11_IMPL_LOG_DEBUG ("DDS_Publisher_i::delete_datawriter - "

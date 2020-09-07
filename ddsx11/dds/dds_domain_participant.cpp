@@ -165,7 +165,12 @@ namespace DDSX11
       }
     else
       {
-        DDS_ProxyEntityManager::unregister_publisher_proxy (handle);
+        if (!DDS_ProxyEntityManager::unregister_publisher_proxy (handle))
+          {
+            DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::delete_publisher - "
+              << "Error: Can't unregister publisher proxy for <" <<handle << ">");
+            return ::DDS::RETCODE_ERROR;
+          }
         proxy->clear_native_entity ();
 
         DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::delete_publisher - "
@@ -309,7 +314,12 @@ namespace DDSX11
       }
     else
       {
-        DDS_ProxyEntityManager::unregister_subscriber_proxy (handle);
+        if (!DDS_ProxyEntityManager::unregister_subscriber_proxy (handle))
+          {
+            DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::delete_subscriber - "
+              << "Error: Can't unregister subscriber proxy for <" << handle << ">");
+            return ::DDS::RETCODE_ERROR;
+          }
         proxy->clear_native_entity ();
 
         DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::delete_subscriber - "
@@ -500,7 +510,12 @@ namespace DDSX11
       }
     else
       {
-        DDS_ProxyEntityManager::unregister_topic_proxy (handle);
+        if (!DDS_ProxyEntityManager::unregister_topic_proxy (handle))
+          {
+            DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::delete_topic - "
+              << "Error: Can't unregister topic proxy for <" << handle << ">");
+            return ::DDS::RETCODE_ERROR;
+          }
         proxy->clear_native_entity ();
 
         DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::delete_topic - "
