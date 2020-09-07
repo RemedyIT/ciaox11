@@ -1,0 +1,61 @@
+/**
+ * @file   log_backend_export.h
+ * @author Johnny Willemsen
+ *
+ * @brief  Export file for logging backend
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ */
+
+#ifndef DNCX11_LOG_BACKEND_EXPORT_H
+#define DNCX11_LOG_BACKEND_EXPORT_H
+
+#include "ace/config-all.h"
+
+#if defined (ACE_AS_STATIC_LIBS) && !defined (DNCX11_LOG_BACKEND_HAS_DLL)
+#  define DNCX11_LOG_BACKEND_HAS_DLL 0
+#endif /* ACE_AS_STATIC_LIBS && DNCX11_LOG_BACKEND_HAS_DLL */
+
+#if !defined (DNCX11_LOG_BACKEND_HAS_DLL)
+#  define DNCX11_LOG_BACKEND_HAS_DLL 1
+#endif /* ! DNCX11_LOG_BACKEND_HAS_DLL */
+
+#if defined (DNCX11_LOG_BACKEND_HAS_DLL) && (DNCX11_LOG_BACKEND_HAS_DLL == 1)
+#  if defined (DNCX11_LOG_BACKEND_BUILD_DLL)
+#    define DNCX11_LOG_BACKEND_Export ACE_Proper_Export_Flag
+#    define DNCX11_LOG_BACKEND_SINGLETON_DECLARATION(T) ACE_EXPORT_SINGLETON_DECLARATION (T)
+#    define DNCX11_LOG_BACKEND_SINGLETON_DECLARE(SINGLETON_TYPE, CLASS, LOCK) ACE_EXPORT_SINGLETON_DECLARE(SINGLETON_TYPE, CLASS, LOCK)
+#  else /* DNCX11_LOG_BACKEND_BUILD_DLL */
+#    define DNCX11_LOG_BACKEND_Export ACE_Proper_Import_Flag
+#    define DNCX11_LOG_BACKEND_SINGLETON_DECLARATION(T) ACE_IMPORT_SINGLETON_DECLARATION (T)
+#    define DNCX11_LOG_BACKEND_SINGLETON_DECLARE(SINGLETON_TYPE, CLASS, LOCK) ACE_IMPORT_SINGLETON_DECLARE(SINGLETON_TYPE, CLASS, LOCK)
+#  endif /* DNCX11_LOG_BACKEND_BUILD_DLL */
+#else /* DNCX11_LOG_BACKEND_HAS_DLL == 1 */
+#  define DNCX11_LOG_BACKEND_Export
+#  define DNCX11_LOG_BACKEND_SINGLETON_DECLARATION(T)
+#  define DNCX11_LOG_BACKEND_SINGLETON_DECLARE(SINGLETON_TYPE, CLASS, LOCK)
+#endif /* DNCX11_LOG_BACKEND_HAS_DLL == 1 */
+
+// Set DNCX11_LOG_BACKEND_NTRACE = 0 to turn on library specific tracing even if
+// tracing is turned off for ACE.
+#if !defined (DNCX11_LOG_BACKEND_NTRACE)
+#  if (ACE_NTRACE == 1)
+#    define DNCX11_LOG_BACKEND_NTRACE 1
+#  else /* (ACE_NTRACE == 1) */
+#    define DNCX11_LOG_BACKEND_NTRACE 0
+#  endif /* (ACE_NTRACE == 1) */
+#endif /* !DNCX11_LOG_BACKEND_NTRACE */
+
+#if (DNCX11_LOG_BACKEND_NTRACE == 1)
+#  define DNCX11_LOG_BACKEND_TRACE(X)
+#else /* (DNCX11_LOG_BACKEND_NTRACE == 1) */
+#  if !defined (ACE_HAS_TRACE)
+#    define ACE_HAS_TRACE
+#  endif /* ACE_HAS_TRACE */
+#  define DNCX11_LOG_BACKEND_TRACE(X) ACE_TRACE_IMPL(X)
+#  include "ace/Trace.h"
+#endif /* (DNCX11_LOG_BACKEND_NTRACE == 1) */
+
+#endif /* DNCX11_LOG_BACKEND_EXPORT_H */
+
+// End of auto generated file.

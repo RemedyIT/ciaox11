@@ -1,0 +1,85 @@
+project (*idl) : ddsx11_ts_defaults, ridl_ostream_defaults {
+  idlflags += -Wb,base_export_macro=LOG_RECORD \
+              -Wb,base_export_include=log_record \
+              -Gxhst \
+              -o GeneratedCode -SS -Scdr -Scp
+  custom_only = 1
+
+  IDL_Files {
+    gendir = GeneratedCode
+    log_record.idl
+  }
+}
+
+// Compile all C++11 stubs into one shared library
+project (*stub) : ddsx11_stub {
+  after += *idl
+
+  dynamicflags += LOG_RECORD_STUB_BUILD_DLL
+
+  Source_Files {
+    GeneratedCode/log_recordC.cpp
+    GeneratedCode/log_record_dds_typed_entitiesC.cpp
+  }
+}
+
+project (*ddsx11_ts) : ddsx11_vendor_ts_defaults {
+  after += *idl
+  NDDSTypeSupport_Files {
+    gendir = GeneratedCode
+    GeneratedCode/log_record_dds.idl
+  }
+  custom_only=1
+}
+
+project (*ddsx11_impl) : ddsx11_impl {
+  after += *stub *ddsx11_ts
+  libs += *stub
+
+  dynamicflags += LOG_RECORD_TYPESUPPORT_BUILD_DLL
+
+  Source_Files {
+    GeneratedCode/log_record_dds.cxx
+    GeneratedCode/log_record_ddsPlugin.cxx
+    GeneratedCode/log_record_ddsSupport.cxx
+    GeneratedCode/log_record_dds_typesupport.cpp
+  }
+
+  Header_Files {
+    GeneratedCode/log_record_dds.h
+    GeneratedCode/log_record_ddsPlugin.h
+    GeneratedCode/log_record_ddsSupport.h
+    GeneratedCode/log_record_dds_typesupport.h
+  }
+}
+
+project(*ddsx11_logger) : ddsx11_impl, ddsx11_logger {
+  dynamicflags += DNCX11_LOG_BACKEND_BUILD_DLL
+  after += log_record_stub log_record_ddsx11_impl
+  libs  += log_record_stub log_record_ddsx11_impl
+
+  includes += GeneratedCode
+
+  Source_Files {
+    log_backend.cpp
+  }
+
+  Header_Files {
+  }
+}
+
+project(*log_server) : ddsx11_impl {
+  after += log_record_stub log_record_ddsx11_impl
+  libs  += log_record_stub log_record_ddsx11_impl
+
+  exename = log_server
+
+  includes += GeneratedCode
+
+  Source_Files {
+    log_server.cpp
+  }
+
+  Header_Files {
+  }
+}
