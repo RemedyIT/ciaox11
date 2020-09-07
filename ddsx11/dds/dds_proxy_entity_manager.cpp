@@ -66,7 +66,7 @@ namespace DDSX11
       ::DDSX11::traits< ::DDS::InstanceHandle_t>::retn (
         native_entity->get_instance_handle ());
 
-    typename PROXY_MAP::iterator it = lst.find (handle);
+    typename PROXY_MAP::iterator const it = lst.find (handle);
     if (it != lst.end ())
     {
       proxy = it->second;
@@ -112,7 +112,7 @@ namespace DDSX11
     std::lock_guard<std::mutex> __guard (DDS_ProxyEntityManager::dr_mutex);
 
     DDSX11_IMPL_LOG_DEBUG ("DDS_ProxyEntityManager::register_datareader_proxy - "
-      "Registered proxy with handle <" << proxy->get_instance_handle () << ">");
+      "Registering proxy with handle <" << proxy->get_instance_handle () << ">");
 
     return DDS_ProxyEntityManager::register_proxy<
       ::IDL::traits< ::DDS::DataReader>::ref_type,
@@ -127,7 +127,7 @@ namespace DDSX11
     std::lock_guard<std::mutex> __guard (DDS_ProxyEntityManager::dw_mutex);
 
     DDSX11_IMPL_LOG_DEBUG ("DDS_ProxyEntityManager::register_datawriter_proxy - "
-      "Registered proxy with handle <" << proxy->get_instance_handle () << ">");
+      "Registering proxy with handle <" << proxy->get_instance_handle () << ">");
 
     return DDS_ProxyEntityManager::register_proxy<
       ::IDL::traits< ::DDS::DataWriter>::ref_type,
@@ -142,7 +142,7 @@ namespace DDSX11
     std::lock_guard<std::mutex> __guard (DDS_ProxyEntityManager::sub_mutex);
 
     DDSX11_IMPL_LOG_DEBUG ("DDS_ProxyEntityManager::register_subscriber_proxy - "
-      "Registered proxy with handle <" << proxy->get_instance_handle () << ">");
+      "Registering proxy with handle <" << proxy->get_instance_handle () << ">");
 
     return DDS_ProxyEntityManager::register_proxy<
       ::IDL::traits< ::DDS::Subscriber>::ref_type,
@@ -157,7 +157,7 @@ namespace DDSX11
     std::lock_guard<std::mutex> __guard (DDS_ProxyEntityManager::pub_mutex);
 
     DDSX11_IMPL_LOG_DEBUG ("DDS_ProxyEntityManager::register_publisher_proxy - "
-      "Registered proxy with handle <" << proxy->get_instance_handle () << ">");
+      "Registering proxy with handle <" << proxy->get_instance_handle () << ">");
 
     return DDS_ProxyEntityManager::register_proxy<
       ::IDL::traits< ::DDS::Publisher>::ref_type,
@@ -172,12 +172,35 @@ namespace DDSX11
     std::lock_guard<std::mutex> __guard (DDS_ProxyEntityManager::tp_mutex);
 
     DDSX11_IMPL_LOG_DEBUG ("DDS_ProxyEntityManager::register_topic_proxy - "
-      "Registered proxy with handle <" << proxy->get_instance_handle () << ">");
+      "Registering proxy with handle <" << proxy->get_instance_handle () << ">");
 
-    return DDS_ProxyEntityManager::register_proxy<
-      ::IDL::traits< ::DDS::Topic>::ref_type,
-      DDS_ProxyEntityManager::TopicProxies>
-        (proxy, DDS_ProxyEntityManager::tp_proxies);
+    // Let us find first whether we already have a topic proxy for the
+    // given instance handle
+    typename TopicProxies::iterator const it = tp_proxies.find (proxy->get_instance_handle ());
+    if (it != tp_proxies.end ())
+    {
+      // We have found a topic proxy, increment its reference count
+      ++it->second.first;
+    }
+    else
+    {
+      // We have not found a topic proxy, so add one to the map with a refcount of 1
+      std::pair <uint32_t, IDL::traits< ::DDS::Topic>::ref_type> refcount_pair (1, proxy);
+      std::pair<typename TopicProxies::iterator, bool> ret =
+        tp_proxies.insert (typename TopicProxies::value_type (
+        proxy->get_instance_handle (), refcount_pair));
+      if (!ret.second)
+      {
+        DDSX11_IMPL_LOG_ERROR ("DDS_ProxyEntityManager::register_topic_proxy - "
+          "Registering proxy <" << proxy->get_instance_handle () << "> failed");
+        return false;
+      }
+
+      DDSX11_IMPL_LOG_DEBUG ("DDS_ProxyEntityManager::register_topic_proxy - "
+        "Registering topic proxy with handle <" << proxy->get_instance_handle () << "> succeeded");
+    }
+
+    return true;
   }
 
   bool
@@ -187,7 +210,7 @@ namespace DDSX11
     std::lock_guard<std::mutex> __guard (DDS_ProxyEntityManager::dp_mutex);
 
     DDSX11_IMPL_LOG_DEBUG ("DDS_ProxyEntityManager::register_dp_proxy - "
-      "Registered proxy with handle <" << proxy->get_instance_handle () << ">");
+      "Registering proxy with handle <" << proxy->get_instance_handle () << ">");
 
     return DDS_ProxyEntityManager::register_proxy<
       ::IDL::traits< ::DDS::DomainParticipant>::ref_type,
@@ -202,7 +225,7 @@ namespace DDSX11
     std::lock_guard<std::mutex> __guard (DDS_ProxyEntityManager::dr_mutex);
 
     DDSX11_IMPL_LOG_DEBUG ("DDS_ProxyEntityManager::unregister_datareader_proxy - "
-      "Unregistered proxy with handle <" << handle << ">");
+      "Unregistering proxy with handle <" << handle << ">");
 
     return DDS_ProxyEntityManager::unregister_proxy<DDS_ProxyEntityManager::DataReaderProxies>
       (handle, DDS_ProxyEntityManager::dr_proxies);
@@ -215,7 +238,7 @@ namespace DDSX11
     std::lock_guard<std::mutex> __guard (DDS_ProxyEntityManager::dw_mutex);
 
     DDSX11_IMPL_LOG_DEBUG ("DDS_ProxyEntityManager::unregister_datawriter_proxy - "
-      "Unregistered proxy with handle <" << handle << ">");
+      "Unregistering proxy with handle <" << handle << ">");
 
     return DDS_ProxyEntityManager::unregister_proxy<DDS_ProxyEntityManager::DataWriterProxies>
       (handle, DDS_ProxyEntityManager::dw_proxies);
@@ -228,7 +251,7 @@ namespace DDSX11
     std::lock_guard<std::mutex> __guard (DDS_ProxyEntityManager::sub_mutex);
 
     DDSX11_IMPL_LOG_DEBUG ("DDS_ProxyEntityManager::unregister_subscriber_proxy - "
-      "Unregistered proxy with handle <" << handle << ">");
+      "Unregistering proxy with handle <" << handle << ">");
 
     return DDS_ProxyEntityManager::unregister_proxy<DDS_ProxyEntityManager::SubscriberProxies>
       (handle, DDS_ProxyEntityManager::sub_proxies);
@@ -241,7 +264,7 @@ namespace DDSX11
     std::lock_guard<std::mutex> __guard (DDS_ProxyEntityManager::pub_mutex);
 
     DDSX11_IMPL_LOG_DEBUG ("DDS_ProxyEntityManager::unregister_publisher_proxy - "
-      "Unregistered proxy with handle <" << handle << ">");
+      "Unregistering proxy with handle <" << handle << ">");
 
     return DDS_ProxyEntityManager::unregister_proxy<DDS_ProxyEntityManager::PublisherProxies>
       (handle, DDS_ProxyEntityManager::pub_proxies);
@@ -254,10 +277,36 @@ namespace DDSX11
     std::lock_guard<std::mutex> __guard (DDS_ProxyEntityManager::tp_mutex);
 
     DDSX11_IMPL_LOG_DEBUG ("DDS_ProxyEntityManager::unregister_topic_proxy - "
-      "Unregistered proxy with handle <" << handle << ">");
+      "Unregistering proxy with handle <" << handle << ">");
 
-    return DDS_ProxyEntityManager::unregister_proxy<DDS_ProxyEntityManager::TopicProxies>
-      (handle, DDS_ProxyEntityManager::tp_proxies);
+    bool retval = false;
+    typename TopicProxies::iterator const it = tp_proxies.find (handle);
+    if (it != tp_proxies.end ())
+    {
+      uint32_t const refcount = --it->second.first;
+      if (refcount == 0)
+        {
+          DDSX11_IMPL_LOG_DEBUG ("DDS_ProxyEntityManager::unregister_topic_proxy - "
+            << "Removed topic proxy with handle <" << handle
+            << "> from the list because its refcount dropped to zero");
+          tp_proxies.erase (it);
+          retval = true;
+        }
+      else
+        {
+          DDSX11_IMPL_LOG_DEBUG ("DDS_ProxyEntityManager::unregister_topic_proxy - "
+            << "Did not remove topic proxy with handle <" << handle
+            << "> from the list because its refcount dropped to " << refcount);
+        }
+    }
+    else
+    {
+      DDSX11_IMPL_LOG_ERROR ("DDS_ProxyEntityManager::unregister_proxy - "
+        << "Could not find a proxy with handle <" << handle
+        << ">");
+    }
+
+    return retval;
   }
 
   bool
@@ -267,7 +316,7 @@ namespace DDSX11
     std::lock_guard<std::mutex> __guard (DDS_ProxyEntityManager::dp_mutex);
 
     DDSX11_IMPL_LOG_DEBUG ("DDS_ProxyEntityManager::unregister_dp_proxy - "
-      "Unregistered proxy with handle <" << handle << ">");
+      "Unregistering proxy with handle <" << handle << ">");
 
     return DDS_ProxyEntityManager::unregister_proxy<DDS_ProxyEntityManager::DomainParticipantProxies>
       (handle, DDS_ProxyEntityManager::dp_proxies);
@@ -322,10 +371,32 @@ namespace DDSX11
     DDS_Native::DDS::Entity *native_entity)
   {
     std::lock_guard<std::mutex> __guard (DDS_ProxyEntityManager::tp_mutex);
-    return DDS_ProxyEntityManager::get_proxy<
-      ::IDL::traits< ::DDS::Topic>::ref_type,
-      DDS_ProxyEntityManager::TopicProxies>
-        (native_entity, DDS_ProxyEntityManager::tp_proxies);
+
+    if (!native_entity)
+    {
+      DDSX11_IMPL_LOG_DEBUG ("DDS_ProxyEntityManager::get_topic_proxy - "
+        << "Got a null entity from DDS.");
+      return {};
+    }
+
+    ::IDL::traits< ::DDS::Topic>::ref_type proxy {};
+    ::DDS::InstanceHandle_t const handle =
+      ::DDSX11::traits< ::DDS::InstanceHandle_t>::retn (
+        native_entity->get_instance_handle ());
+
+    typename TopicProxies::iterator const it = tp_proxies.find (handle);
+    if (it != tp_proxies.end ())
+    {
+      proxy = it->second.second;
+    }
+    else
+    {
+      DDSX11_IMPL_LOG_INFO ("DDS_ProxyEntityManager::get_proxy - "
+        << "Could not find a proxy with handle <" << handle
+        << ">");
+    }
+    return proxy;
+
   }
 
   ::IDL::traits< ::DDS::DomainParticipant>::ref_type
@@ -347,7 +418,7 @@ namespace DDSX11
     {
       DDSX11_IMPL_LOG_DEBUG ("DDS_ProxyEntityManager::get_entity_proxy - "
         << "Got a null entity from DDS.");
-      return nullptr;
+      return {};
     }
 
     ::IDL::traits< ::DDS::Entity>::ref_type proxy {};
@@ -412,7 +483,7 @@ namespace DDSX11
           DDS_ProxyEntityManager::tp_proxies.find (handle);
         if (tp_it != DDS_ProxyEntityManager::tp_proxies.end ())
         {
-          proxy = tp_it->second;
+          proxy = tp_it->second.second;
         }
       }
     }
@@ -487,7 +558,7 @@ namespace DDSX11
       DDSX11_IMPL_LOG_ERROR ("DDS_ProxyEntityManager::finalize - "
         << "Found a registered Topic with handle <" << it.first
         << ">. Resetting the registered reference.");
-      it.second = nullptr;
+      it.second.second = nullptr;
     }
     DDS_ProxyEntityManager::tp_proxies.clear ();
   }

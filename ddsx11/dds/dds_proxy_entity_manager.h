@@ -229,7 +229,10 @@ namespace DDSX11
     static std::mutex pub_mutex;
 
     /// Map containing all Topic C++11 proxies
-    typedef std::map< ::DDS::InstanceHandle_t, IDL::traits< ::DDS::Topic>::ref_type, CompareHandles> TopicProxies;
+    /// A topic can be registered multiple times because using find_topic the native DDS
+    /// implementation can return multiple times the same topic for which multiple times the delete_topic
+    /// must be called, only for the last instance the unregister will remove it from the map
+    typedef std::map< ::DDS::InstanceHandle_t, std::pair <uint32_t, IDL::traits< ::DDS::Topic>::ref_type>, CompareHandles> TopicProxies;
     static TopicProxies tp_proxies;
     static std::mutex tp_mutex;
 

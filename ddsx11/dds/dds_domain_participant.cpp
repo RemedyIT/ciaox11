@@ -512,11 +512,16 @@ namespace DDSX11
       {
         if (!DDS_ProxyEntityManager::unregister_topic_proxy (handle))
           {
-            DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::delete_topic - "
-              << "Error: Can't unregister topic proxy for <" << handle << ">");
-            return ::DDS::RETCODE_ERROR;
+            DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::delete_topic - "
+              << "Did not unregister topic proxy for <" << handle << "> because it is still used");
           }
-        proxy->clear_native_entity ();
+        else
+          {
+            // The unregister_topic_proxy returned true so only at this moment
+            // we don't have any references anymore to this proxy so we can clear
+            // the pointer to our native entity
+            proxy->clear_native_entity ();
+          }
 
         DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::delete_topic - "
           << "Provided topic successfully deleted");
@@ -533,23 +538,42 @@ namespace DDSX11
     DDSX11_LOG_TRACE ("DDS_DomainParticipant_proxy::find_topic");
 
     // Go to the native DDS implementation and see if the topic exists there
-    // when it exists we need to create a new proxy and don't reuse it from the PEM because
+    // when it exists we need to find the existing topic within our PEM which
+    // increments its refcount with 1 because
     // on each topic returned by find_topic also a delete_topic needs
-    // to be called. When we would return the proxy as it is
-    // in our PEM because after the first delete_topic call in the proxy
-    // the pointer will be set to nulltr
+    // to be called.
     DDS_Native::DDS::Topic* native_topic =
       this->native_entity ()->find_topic (
         ::DDSX11::traits<std::string>::in (impl_name),
         ::DDSX11::traits< ::DDS::Duration_t>::in (timeout));
 
-    IDL::traits< ::DDS::Topic>::ref_type topic_reference;
-    if (native_topic)
+    IDL::traits< ::DDS::Topic>::ref_type topic =
+      DDS_ProxyEntityManager::get_topic_proxy (native_topic);
+
+    if (topic)
       {
-        topic_reference = TAOX11_CORBA::make_reference<DDS_Topic_proxy> (native_topic);
+        // We have an existing topic proxy so we register it again to increment
+        // its refcount with 1
+        if (!DDS_ProxyEntityManager::register_topic_proxy (topic))
+          {
+            DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::find_topic - "
+              << "Error: Error registering topic proxy for <" << impl_name << "> again <"
+              << topic->get_instance_handle () << ">");
+          }
+        else
+          {
+            DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::find_topic - "
+              << "Registering topic proxy for <" << impl_name << "> again <"
+              << topic->get_instance_handle () << ">");
+          }
+      }
+    else
+      {
+        DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::find_topic - "
+          << "Didn't find a topic for <" << impl_name << ">");
       }
 
-    return topic_reference;
+    return topic;
   }
 
 
