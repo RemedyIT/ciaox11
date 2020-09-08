@@ -16,7 +16,6 @@
 #include "dds/dds_data_writer_t.h"
 #include "dds/dds_data_reader_t.h"
 #include "dds/dds_traits.h"
-
 #include "dds/dds_proxy_entity_manager.h"
 
 #include <map>

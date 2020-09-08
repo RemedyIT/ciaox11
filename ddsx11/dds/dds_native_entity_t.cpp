@@ -9,7 +9,7 @@
  */
 
 #include "logger/ddsx11_log.h"
-#include <stdexcept>
+#include "tao/x11/system_exception.h"
 
 // DDS vendor specific implementation part
 #include "dds/dds_native_entity_base_t.cpp"
