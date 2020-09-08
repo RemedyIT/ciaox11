@@ -7,6 +7,12 @@
  */
 #include "dds/dds_common.h"
 #include "dds/dds_proxy_entity_manager.h"
+#include "dds/dds_data_reader.h"
+#include "dds/dds_data_writer.h"
+#include "dds/dds_publisher.h"
+#include "dds/dds_subscriber.h"
+#include "dds/dds_domain_participant.h"
+#include "dds/dds_topic.h"
 
 #include "logger/ddsx11_log.h"
 #include "dds/dds_vendor_conversion_traits.h"
@@ -507,12 +513,17 @@ namespace DDSX11
   void
   DDS_ProxyEntityManager::finalize ()
   {
-    // @todo clear the native pointer within the proxy
     for (auto& it : DDS_ProxyEntityManager::dr_proxies)
     {
       DDSX11_IMPL_LOG_ERROR ("DDS_ProxyEntityManager::finalize - "
         << "Found a registered DataReader with handle <" << it.first
         << ">. Resetting the registered reference.");
+      IDL::traits< ::DDSX11::DDS_DataReader_proxy>::ref_type proxy =
+        data_reader_trait::proxy (it.second);
+      if (proxy)
+      {
+        proxy->clear_native_entity();
+      }
       it.second = nullptr;
     }
     DDS_ProxyEntityManager::dr_proxies.clear ();
@@ -522,6 +533,12 @@ namespace DDSX11
       DDSX11_IMPL_LOG_ERROR ("DDS_ProxyEntityManager::finalize - "
         << "Found a registered DataWriter with handle <" << it.first
         << ">. Resetting the registered reference.");
+      IDL::traits< ::DDSX11::DDS_DataWriter_proxy>::ref_type proxy =
+        data_writer_trait::proxy (it.second);
+      if (proxy)
+      {
+        proxy->clear_native_entity();
+      }
       it.second = nullptr;
     }
     DDS_ProxyEntityManager::dw_proxies.clear ();
@@ -531,6 +548,12 @@ namespace DDSX11
       DDSX11_IMPL_LOG_ERROR ("DDS_ProxyEntityManager::finalize - "
         << "Found a registered Publisher with handle <" << it.first
         << ">. Resetting the registered reference.");
+      IDL::traits< ::DDSX11::DDS_Publisher_proxy>::ref_type proxy =
+        publisher_trait::proxy (it.second);
+      if (proxy)
+      {
+        proxy->clear_native_entity();
+      }
       it.second = nullptr;
     }
     DDS_ProxyEntityManager::pub_proxies.clear ();
@@ -540,26 +563,44 @@ namespace DDSX11
       DDSX11_IMPL_LOG_ERROR ("DDS_ProxyEntityManager::finalize - "
         << "Found a registered Subscriber with handle <" << it.first
         << ">. Resetting the registered reference.");
+      IDL::traits< ::DDSX11::DDS_Subscriber_proxy>::ref_type proxy =
+        subscriber_trait::proxy (it.second);
+      if (proxy)
+      {
+        proxy->clear_native_entity();
+      }
       it.second = nullptr;
     }
     DDS_ProxyEntityManager::sub_proxies.clear ();
-
-    for (auto& it : DDS_ProxyEntityManager::dp_proxies)
-    {
-      DDSX11_IMPL_LOG_ERROR ("DDS_ProxyEntityManager::finalize - "
-        << "Found a registered DomainParticipant with handle <" << it.first
-        << ">. Resetting the registered reference.");
-      it.second = nullptr;
-    }
-    DDS_ProxyEntityManager::dp_proxies.clear ();
 
     for (auto& it : DDS_ProxyEntityManager::tp_proxies)
     {
       DDSX11_IMPL_LOG_ERROR ("DDS_ProxyEntityManager::finalize - "
         << "Found a registered Topic with handle <" << it.first
         << ">. Resetting the registered reference.");
+      IDL::traits< ::DDSX11::DDS_Topic_proxy>::ref_type proxy =
+        topic_trait::proxy (it.second.second);
+      if (proxy)
+      {
+        proxy->clear_native_entity();
+      }
       it.second.second = nullptr;
     }
     DDS_ProxyEntityManager::tp_proxies.clear ();
+
+    for (auto& it : DDS_ProxyEntityManager::dp_proxies)
+    {
+      DDSX11_IMPL_LOG_ERROR ("DDS_ProxyEntityManager::finalize - "
+        << "Found a registered DomainParticipant with handle <" << it.first
+        << ">. Resetting the registered reference.");
+      IDL::traits< ::DDSX11::DDS_DomainParticipant_proxy>::ref_type proxy =
+        domain_participant_trait::proxy (it.second);
+      if (proxy)
+      {
+        proxy->clear_native_entity();
+      }
+      it.second = nullptr;
+    }
+    DDS_ProxyEntityManager::dp_proxies.clear ();
   }
 }
