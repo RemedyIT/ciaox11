@@ -683,7 +683,7 @@ void DDS_Base_Connector_T<CCM_TYPE>::remove_topic (
 
   DDS4CCM_LOG_DEBUG ("DDS_Base_Connector_T::remove_topic - "
     << "Going to remove topic <" << topic_name << ">:<"
-    << IDL::traits< ::DDS::InstanceHandle_t>::write (topic_handle)
+    << topic_handle
     << "> from participant "
     << IDL::traits<DDS::Entity>::write<entity_formatter> (participant));
 
@@ -692,7 +692,7 @@ void DDS_Base_Connector_T<CCM_TYPE>::remove_topic (
   if (retcode != DDS::RETCODE_OK && retcode != DDS::RETCODE_PRECONDITION_NOT_MET)
   {
     DDS4CCM_LOG_ERROR ("DDS_Base_Connector_T::remove_topic - Error removing topic <"
-      << IDL::traits< ::DDS::InstanceHandle_t>::write (topic_handle)
+      << topic_handle
       << " from participant "
       << IDL::traits<DDS::Entity>::write<entity_formatter> (participant)
       << " - return code <"
@@ -704,7 +704,7 @@ void DDS_Base_Connector_T<CCM_TYPE>::remove_topic (
   {
     DDS4CCM_LOG_DEBUG ("DDS_Base_Connector_T::remove_topic - "
       << "Removed topic <" << topic_name << ">:<"
-      << IDL::traits< ::DDS::InstanceHandle_t>::write (topic_handle)
+      << topic_handle
       << "> from participant "
       << IDL::traits<DDS::Entity>::write<entity_formatter> (participant)
       << " - return code <"
