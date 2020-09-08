@@ -164,7 +164,6 @@ namespace DDSX11
       }
     else
       {
-
         if (!DDS_ProxyEntityManager::unregister_dp_proxy (handle))
           {
             DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::delete_participant - "

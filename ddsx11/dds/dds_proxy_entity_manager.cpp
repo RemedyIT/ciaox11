@@ -402,7 +402,6 @@ namespace DDSX11
         << ">");
     }
     return proxy;
-
   }
 
   ::IDL::traits< ::DDS::DomainParticipant>::ref_type
