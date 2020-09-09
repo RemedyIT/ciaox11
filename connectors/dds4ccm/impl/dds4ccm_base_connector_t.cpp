@@ -693,7 +693,7 @@ void DDS_Base_Connector_T<CCM_TYPE>::remove_topic (
   {
     DDS4CCM_LOG_ERROR ("DDS_Base_Connector_T::remove_topic - Error removing topic <"
       << topic_handle
-      << " from participant "
+      << "> from participant "
       << IDL::traits<DDS::Entity>::write<entity_formatter> (participant)
       << " - return code <"
       << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
