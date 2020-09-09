@@ -21,11 +21,19 @@ my $status = 0;
 my $builtin = PerlACE::TestTarget::create_target(2) || die "Create target 2 failed\n";
 $builtin->AddLibPath ('../lib');
 
-# Test builtin first
+# Test builtin
 $SV = $builtin->CreateProcess ("../lib/builtin");
 $builtin_status = $SV->SpawnWaitKill ($builtin->ProcessStartWaitInterval());
 if ($builtin_status != 0) {
     print STDERR "ERROR: builtin returned $builtin_status\n";
+    exit 1;
+}
+
+# Test double_delete
+$SV = $builtin->CreateProcess ("../lib/double_delete");
+$builtin_status = $SV->SpawnWaitKill ($builtin->ProcessStartWaitInterval());
+if ($builtin_status != 0) {
+    print STDERR "ERROR: double_delete returned $builtin_status\n";
     exit 1;
 }
 

@@ -43,7 +43,7 @@ namespace DDSX11
       * @brief  All derived proxy classes should use this method when
       *         interacting with DDS.
       * @return The native DDS entity pointer
-      * @throw BAD_INV_ORDER when the internal DDS entity pointer was not set yet
+      * @throw  CORBA::BAD_INV_ORDER when the internal DDS entity pointer was not set yet
       */
     DDS_NATIVE_TYPE *native_entity ();
 

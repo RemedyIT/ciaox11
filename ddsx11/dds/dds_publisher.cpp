@@ -122,16 +122,16 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_Publisher_proxy::delete_datawriter");
 
-    // First set the listener to null, this will delete any existing listener
-    // when it has been set
-    a_datawriter->set_listener(nullptr, 0);
-
     IDL::traits< ::DDSX11::DDS_DataWriter_proxy>::ref_type dw_proxy =
       data_writer_trait::proxy (a_datawriter);
+    if (!dw_proxy)
+      {
+        DDSX11_IMPL_LOG_ERROR ("DDS_Publisher_i::delete_datawriter - "
+          << "Unable to retrieve the proxy from the provided datawriter.");
+        return ::DDS::RETCODE_BAD_PARAMETER;
+      }
 
-    DDS_Native::DDS::DataWriter *native_dw =
-      dw_proxy->get_native_entity ();
-
+    DDS_Native::DDS::DataWriter *native_dw = dw_proxy->get_native_entity ();
     if (!native_dw)
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_Publisher_i::delete_datawriter - "
@@ -143,7 +143,14 @@ namespace DDSX11
     DDSX11_IMPL_LOG_DEBUG ("DDS_Publisher_i::delete_datawriter - "
       << "Successfully retrieved the native entity from the provided "
       << "datawriter.");
-    DDS_ProxyEntityManager::unregister_datawriter_proxy (dw_proxy);
+
+    // Set the listener to null, this will delete any existing listener
+    // when it has been set
+    a_datawriter->set_listener(nullptr, 0);
+
+    // Retrieve the DDS instance handle before deleting it, we need it when
+    // unregistering our proxy
+    ::DDS::InstanceHandle_t const handle = a_datawriter->get_instance_handle ();
 
     ::DDS::ReturnCode_t const retcode =
       ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
@@ -158,6 +165,15 @@ namespace DDSX11
       }
     else
       {
+        if (!DDS_ProxyEntityManager::unregister_datawriter_proxy (handle))
+          {
+            DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::delete_datawriter - "
+              << "Error: Can't unregister datawriter proxy for <" << handle << ">");
+            return ::DDS::RETCODE_ERROR;
+          }
+
+        dw_proxy->clear_native_entity ();
+
         DDSX11_IMPL_LOG_DEBUG ("DDS_Publisher_i::delete_datawriter - "
           << "Provided datawriter successfully deleted");
       }

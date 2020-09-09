@@ -269,7 +269,7 @@ DDS_Base_Connector_T<CCM_TYPE>::init_topic (
 
   IDL::traits< ::DDS::Topic>::ref_type topic;
 
-  ::DDS::Duration_t timeout (0, 0);
+  ::DDS::Duration_t timeout { 0, 0 };
   IDL::traits< ::DDS::Topic>::ref_type dds_tp =
     participant->find_topic (topic_name, timeout);
 
@@ -679,10 +679,12 @@ void DDS_Base_Connector_T<CCM_TYPE>::remove_topic (
   DDS4CCM_LOG_TRACE ("DDS_Base_Connector_T::remove_topic");
 
   std::string const topic_name = topic->get_name ();
+  ::DDS::InstanceHandle_t const topic_handle = topic->get_instance_handle ();
+
   DDS4CCM_LOG_DEBUG ("DDS_Base_Connector_T::remove_topic - "
-    << "Going to remove topic <" << topic_name << "> "
-    << IDL::traits<DDS::Entity>::write<entity_formatter> (topic)
-    << " from participant "
+    << "Going to remove topic <" << topic_name << ">:<"
+    << topic_handle
+    << "> from participant "
     << IDL::traits<DDS::Entity>::write<entity_formatter> (participant));
 
   ::DDS::ReturnCode_t const retcode = participant->delete_topic (topic);
@@ -690,8 +692,8 @@ void DDS_Base_Connector_T<CCM_TYPE>::remove_topic (
   if (retcode != DDS::RETCODE_OK && retcode != DDS::RETCODE_PRECONDITION_NOT_MET)
   {
     DDS4CCM_LOG_ERROR ("DDS_Base_Connector_T::remove_topic - Error removing topic <"
-      << IDL::traits<DDS::Entity>::write<entity_formatter> (topic)
-      << " from participant "
+      << topic_handle
+      << "> from participant "
       << IDL::traits<DDS::Entity>::write<entity_formatter> (participant)
       << " - return code <"
       << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
@@ -701,9 +703,9 @@ void DDS_Base_Connector_T<CCM_TYPE>::remove_topic (
   else
   {
     DDS4CCM_LOG_DEBUG ("DDS_Base_Connector_T::remove_topic - "
-      << "Removed topic <" << topic_name << "> "
-      << IDL::traits<DDS::Entity>::write<entity_formatter> (topic)
-      << " from participant "
+      << "Removed topic <" << topic_name << ">:<"
+      << topic_handle
+      << "> from participant "
       << IDL::traits<DDS::Entity>::write<entity_formatter> (participant)
       << " - return code <"
       << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
@@ -725,17 +727,7 @@ DDS_Base_Connector_T<CCM_TYPE>::remove_publisher (
     << " from participant "
     << IDL::traits<DDS::Entity>::write<entity_formatter> (participant));
 
-  ::DDS::ReturnCode_t retcode = publisher->delete_contained_entities ();
-  if (retcode != DDS::RETCODE_OK)
-  {
-    DDS4CCM_LOG_ERROR ("DDS_Base_Connector_T::remove_publisher - "
-      << "Unable to remove contained entities from publisher: <"
-      << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
-      << ">.");
-    throw CORBA::INTERNAL ();
-  }
-
-  retcode = participant->delete_publisher (publisher);
+  ::DDS::ReturnCode_t const retcode = participant->delete_publisher (publisher);
 
   if (retcode != DDS::RETCODE_OK)
   {
@@ -798,42 +790,12 @@ DDS_Base_Connector_T<CCM_TYPE>::remove_domain (
     this->domain_id_, this->qos_profile_, participant))
   {
     DDS4CCM_LOG_DEBUG ("DDS_Base_Connector_T::remove_domain - "
-      << "Going to remove contained entities of participant <"
-      << IDL::traits<DDS::Entity>::write<entity_formatter> (participant)
-      << "> for domain <" << this->domain_id_
-      << "> with qos <" << this->qos_profile_ << ">.");
-
-    ::DDS::ReturnCode_t retcode = participant->delete_contained_entities ();
-
-    if (retcode != DDS::RETCODE_OK)
-    {
-      DDS4CCM_LOG_ERROR ("DDS_Base_Connector_T::remove_domain - "
-        << "Error removing contained entities for participant <"
-        << IDL::traits<DDS::Entity>::write<entity_formatter> (participant)
-        << "> for domain <" << this->domain_id_
-        << "> with qos <" << this->qos_profile_ << "> - return code <"
-        << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
-        << ">.");
-      throw CCM_DDS::InternalError (retcode, 0);
-    }
-    else
-    {
-      DDS4CCM_LOG_DEBUG ("DDS_Base_Connector_T::remove_domain - "
-        << "Removed contained entities for participant <"
-        << IDL::traits<DDS::Entity>::write<entity_formatter> (participant)
-        << "> for domain <" << this->domain_id_
-        << "> with qos <" << this->qos_profile_ << "> - return code <"
-        << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
-        << ">.");
-    }
-
-    DDS4CCM_LOG_DEBUG ("DDS_Base_Connector_T::remove_domain - "
       << "Going to remove participant <"
       << IDL::traits<DDS::Entity>::write<entity_formatter> (participant)
       << "> for domain <" << this->domain_id_ << "> with qos <"
       << this->qos_profile_ << ">.");
 
-    retcode = this->participant_factory_->delete_participant (participant);
+    ::DDS::ReturnCode_t const retcode = this->participant_factory_->delete_participant (participant);
 
     if (retcode != DDS::RETCODE_OK)
     {

@@ -125,21 +125,33 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_DomainParticipant_proxy::delete_publisher");
 
-    // First set the listener to null, this will delete any existing listener
-    // when it has been set
-    p->set_listener(nullptr, 0);
-
     IDL::traits< ::DDSX11::DDS_Publisher_proxy>::ref_type proxy =
       publisher_trait::proxy (p);
+    if (!proxy)
+      {
+        DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::delete_publisher - "
+          << "Unable to retrieve the proxy publish from the given ref_type.");
+        return ::DDS::RETCODE_BAD_PARAMETER;
+      }
 
     DDS_Native::DDS::Publisher *native_pub = proxy->get_native_entity ();
     if (!native_pub)
     {
       DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::delete_publisher - "
         << "Unable to retrieve the native publisher from the given ref_type.");
-      return ::DDS::RETCODE_ERROR;
+      return ::DDS::RETCODE_BAD_PARAMETER;
     }
-    DDS_ProxyEntityManager::unregister_publisher_proxy (p);
+
+    DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::delete_publisher - "
+      << "Successfully retrieved the native entity from the provided publisher");
+
+    // Set the listener to null, this will delete any existing listener
+    // when it has been set
+    p->set_listener(nullptr, 0);
+
+    // Retrieve the DDS instance handle before deleting it, we need it when
+    // unregistering our proxy
+    ::DDS::InstanceHandle_t const handle = p->get_instance_handle ();
 
     ::DDS::ReturnCode_t const retcode = ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->delete_publisher (native_pub));
@@ -153,9 +165,18 @@ namespace DDSX11
       }
     else
       {
+        if (!DDS_ProxyEntityManager::unregister_publisher_proxy (handle))
+          {
+            DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::delete_publisher - "
+              << "Error: Can't unregister publisher proxy for <" <<handle << ">");
+            return ::DDS::RETCODE_ERROR;
+          }
+        proxy->clear_native_entity ();
+
         DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::delete_publisher - "
           << "Provided publisher successfully deleted.");
       }
+
     return retcode;
   }
 
@@ -253,22 +274,33 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_DomainParticipant_proxy::delete_subscriber");
 
-    // First set the listener to null, this will delete any existing listener
-    // when it has been set
-    s->set_listener(nullptr, 0);
-
     IDL::traits< ::DDSX11::DDS_Subscriber_proxy>::ref_type proxy =
       subscriber_trait::proxy (s);
+    if (!proxy)
+      {
+        DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::delete_subscriber - "
+          << "Unable to retrieve the proxy subscriber from the given ref_type.");
+        return ::DDS::RETCODE_BAD_PARAMETER;
+      }
 
     DDS_Native::DDS::Subscriber *native_sub = proxy->get_native_entity ();
-
     if (!native_sub)
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::delete_subscriber - "
           << "Unable to retrieve the native subscriber from the given ref_type.");
-        return ::DDS::RETCODE_ERROR;
+        return ::DDS::RETCODE_BAD_PARAMETER;
       }
-    DDS_ProxyEntityManager::unregister_subscriber_proxy (proxy);
+
+    DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::delete_subscriber - "
+      << "Successfully retrieved the native entity from the provided subscriber");
+
+    // Set the listener to null, this will delete any existing listener
+    // when it has been set
+    s->set_listener(nullptr, 0);
+
+    // Retrieve the DDS instance handle before deleting it, we need it when
+    // unregistering our proxy
+    ::DDS::InstanceHandle_t const handle = s->get_instance_handle ();
 
     ::DDS::ReturnCode_t const retcode = ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->delete_subscriber (native_sub));
@@ -282,6 +314,14 @@ namespace DDSX11
       }
     else
       {
+        if (!DDS_ProxyEntityManager::unregister_subscriber_proxy (handle))
+          {
+            DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::delete_subscriber - "
+              << "Error: Can't unregister subscriber proxy for <" << handle << ">");
+            return ::DDS::RETCODE_ERROR;
+          }
+        proxy->clear_native_entity ();
+
         DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::delete_subscriber - "
           << "Provided subscriber successfully deleted.");
       }
@@ -429,18 +469,33 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_DomainParticipant_proxy::delete_topic");
 
-    // First set the listener to null, this will delete any existing listener
-    // when it has been set
-    a_topic->set_listener(nullptr, 0);
+    IDL::traits< ::DDSX11::DDS_Topic_proxy>::ref_type proxy =
+      topic_trait::proxy (a_topic);
+    if (!proxy)
+      {
+        DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::delete_topic - "
+          << "Unable to retrieve the proxy topic from the given ref_type.");
+        return ::DDS::RETCODE_BAD_PARAMETER;
+      }
 
-    DDS_Native::DDS::Topic *top = topic_trait::native (a_topic);
+    DDS_Native::DDS::Topic *top = proxy->get_native_entity ();
     if (!top)
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::delete_topic - "
           << "Unable to retrieve the native topic from the given ref_type.");
         return ::DDS::RETCODE_BAD_PARAMETER;
       }
-    DDS_ProxyEntityManager::unregister_topic_proxy (a_topic);
+
+    DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::delete_topic - "
+      << "Successfully retrieved the native entity from the provided topic");
+
+    // Set the listener to null, this will delete any existing listener
+    // when it has been set
+    a_topic->set_listener(nullptr, 0);
+
+    // Retrieve the DDS instance handle before deleting it, we need it when
+    // unregistering our proxy
+    ::DDS::InstanceHandle_t const handle = a_topic->get_instance_handle ();
 
     ::DDS::ReturnCode_t const retcode =
       ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
@@ -455,6 +510,19 @@ namespace DDSX11
       }
     else
       {
+        if (!DDS_ProxyEntityManager::unregister_topic_proxy (handle))
+          {
+            DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::delete_topic - "
+              << "Did not unregister topic proxy for <" << handle << "> because it is still used");
+          }
+        else
+          {
+            // The unregister_topic_proxy returned true so only at this moment
+            // we don't have any references anymore to this proxy so we can clear
+            // the pointer to our native entity
+            proxy->clear_native_entity ();
+          }
+
         DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::delete_topic - "
           << "Provided topic successfully deleted");
       }
@@ -467,11 +535,45 @@ namespace DDSX11
   DDS_DomainParticipant_proxy::find_topic (const std::string &impl_name,
     const ::DDS::Duration_t & timeout)
   {
-    return DDS_ProxyEntityManager::get_topic_proxy (
+    DDSX11_LOG_TRACE ("DDS_DomainParticipant_proxy::find_topic");
+
+    // Go to the native DDS implementation and see if the topic exists there
+    // when it exists we need to find the existing topic within our PEM which
+    // increments its refcount with 1 because
+    // on each topic returned by find_topic also a delete_topic needs
+    // to be called.
+    DDS_Native::DDS::Topic* native_topic =
       this->native_entity ()->find_topic (
         ::DDSX11::traits<std::string>::in (impl_name),
-        ::DDSX11::traits< ::DDS::Duration_t>::in (timeout)));
+        ::DDSX11::traits< ::DDS::Duration_t>::in (timeout));
 
+    IDL::traits< ::DDS::Topic>::ref_type topic =
+      DDS_ProxyEntityManager::get_topic_proxy (native_topic);
+
+    if (topic)
+      {
+        // We have an existing topic proxy so we register it again to increment
+        // its refcount with 1
+        if (!DDS_ProxyEntityManager::register_topic_proxy (topic))
+          {
+            DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::find_topic - "
+              << "Error: Error registering topic proxy for <" << impl_name << "> again <"
+              << topic->get_instance_handle () << ">");
+          }
+        else
+          {
+            DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::find_topic - "
+              << "Registering topic proxy for <" << impl_name << "> again <"
+              << topic->get_instance_handle () << ">");
+          }
+      }
+    else
+      {
+        DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::find_topic - "
+          << "Didn't find a topic for <" << impl_name << ">");
+      }
+
+    return topic;
   }
 
 
@@ -559,8 +661,16 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_DomainParticipant_proxy::delete_contentfilteredtopic");
 
-    DDS_Native::DDS::ContentFilteredTopic* tp =
-      cft_trait::native (a_contentfilteredtopic);
+    IDL::traits< ::DDSX11::DDS_ContentFilteredTopic_proxy>::ref_type proxy =
+      cft_trait::proxy (a_contentfilteredtopic);
+    if (!proxy)
+      {
+        DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::delete_contentfilteredtopic - "
+          << "Unable to retrieve the proxy cft from the given ref_type.");
+        return ::DDS::RETCODE_BAD_PARAMETER;
+      }
+
+    DDS_Native::DDS::ContentFilteredTopic* tp = proxy->get_native_entity ();
     if (!tp)
       {
         DDSX11_IMPL_LOG_ERROR (
@@ -568,10 +678,28 @@ namespace DDSX11
           "Unable to retrieve a valid ContentFilteredTopic.\n");
         return ::DDS::RETCODE_BAD_PARAMETER;
       }
-    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
-      this->native_entity ()->delete_contentfilteredtopic (tp));
-  }
 
+    ::DDS::ReturnCode_t const retcode =
+      ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
+        this->native_entity ()->delete_contentfilteredtopic (tp));
+
+    if (retcode != ::DDS::RETCODE_OK)
+      {
+        DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipantFactory_proxy::delete_contentfilteredtopic - "
+          << "delete_contentfilteredtopic returned non-ok error <"
+          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+          << ">");
+      }
+    else
+      {
+        proxy->clear_native_entity ();
+
+        DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipantFactory_proxy::delete_contentfilteredtopic - "
+          "Successfully deleted cft.");
+      }
+
+    return retcode;
+  }
 
   IDL::traits< ::DDS::MultiTopic>::ref_type
   DDS_DomainParticipant_proxy::create_multitopic (
