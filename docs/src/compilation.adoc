@@ -74,7 +74,7 @@ Every part of an *AXCIOMA* application needs the stub library of the
 data types and interfaces:
 
 Command::
- `$TAOX11_ROOT/bin/ridlc`
+ `$X11_BASE_ROOT/bin/ridlc`
 
 Command line options::
 -----------------------------------
@@ -119,7 +119,7 @@ For the synchronous request/reply pattern it only involves the Local
 Executor Mapping IDL (lem).
 
 Command::
-`$TAOX11_ROOT/bin/ridlc`
+`$X11_BASE_ROOT/bin/ridlc`
 
 Command line options::
 
@@ -162,7 +162,7 @@ that pattern might be CORBA. This IDL makes sure that the IDL which
 realizes the CORBA implementation is generated.
 
 Command::
-`$TAOX11_ROOT/bin/ridlc`
+`$X11_BASE_ROOT/bin/ridlc`
 
 Command line options::
 
@@ -270,7 +270,7 @@ To create all files needed for a component, the following command
 can be used.
 
 Command::
-`$TAOX11_ROOT/bin/ridlc`
+`$X11_BASE_ROOT/bin/ridlc`
 
 Command line options::
 

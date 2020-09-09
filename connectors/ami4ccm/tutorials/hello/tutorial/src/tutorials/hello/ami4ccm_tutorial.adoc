@@ -207,7 +207,7 @@ In a command shell windows, navigate to the hello_asm/sender_comp/src
 and invoke the RIDL compiler by running the following command:
 
 -----
-$TAOX11_ROOT/bin/ridlc -I../../ports -I$CIAOX11_ROOT -I$CIAOX11_ROOT/ccm -Gex  --no-stubs --no-skel hello_sender_comp.idl
+$X11_BASE_ROOT/bin/ridlc -I../../ports -I$CIAOX11_ROOT -I$CIAOX11_ROOT/ccm -Gex  --no-stubs --no-skel hello_sender_comp.idl
 -----
 
 An example of the generated code can be found
@@ -225,7 +225,7 @@ Navigate to the hello_asm/receiver_comp/src and invoke the RIDL compiler
 by running the following command:
 
 -----
-$TAOX11_ROOT/bin/ridlc -I../../ports -I$CIAOX11_ROOT -I$CIAOX11_ROOT/ccm -Gex --no-stubs --no-skel hello_receiver_comp.idl
+$X11_BASE_ROOT/bin/ridlc -I../../ports -I$CIAOX11_ROOT -I$CIAOX11_ROOT/ccm -Gex --no-stubs --no-skel hello_receiver_comp.idl
 -----
 
 An example of the generated code can be found
