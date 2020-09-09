@@ -9,7 +9,7 @@
  */
 
 #include "logger/ddsx11_log.h"
-#include <stdexcept>
+#include "tao/x11/system_exception.h"
 
 // DDS vendor specific implementation part
 #include "dds/dds_native_entity_base_t.cpp"
@@ -29,9 +29,9 @@ namespace DDSX11
   {
     if (!this->native_entity_)
       {
-        DDSX11_IMPL_LOG_PANIC ("NativeEntityBase_T<DDS_NATIVE_TYPE>::entity "
-          << "Throwing BAD_INV_ORDER.");
-        throw std::logic_error ("Called native_entity");
+        DDSX11_IMPL_LOG_DEBUG ("NativeEntityBase_T<DDS_NATIVE_TYPE>::native_entity "
+          << "Throwing CORBA::BAD_INV_ORDER because we have a nullptr to the native entity");
+        throw TAOX11_CORBA::BAD_INV_ORDER ();
       }
     return this->native_entity_;
   }

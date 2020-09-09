@@ -26,8 +26,8 @@ namespace Test_TT_Tester_Impl
     : public IDL::traits<CCM_TT::TT_Handler>::base_type
   {
   public:
-    TT_Callback (std::string desc, uint32_t max_calls = 0)
-      : desc_ (desc), max_calls_ (max_calls) {}
+    explicit TT_Callback (std::string desc, uint32_t max_calls = 0)
+      : desc_ (std::move(desc)), max_calls_ (max_calls) {}
 
     void
     on_trigger (

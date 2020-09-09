@@ -123,20 +123,33 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_DomainParticipantFactory_proxy::delete_participant");
 
-    // First set the listener to null, this will delete any existing listener
-    // when it has been set
-    a_participant->set_listener(nullptr, 0);
-
-    DDS_Native::DDS::DomainParticipant *part =
-      domain_participant_trait::native (a_participant);
-
-    if (!part)
+    IDL::traits< ::DDSX11::DDS_DomainParticipant_proxy>::ref_type proxy =
+      domain_participant_trait::proxy (a_participant);
+    if (!proxy)
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipantFactory_proxy::delete_participant - "
           << "Unable to retrieve the proxy from the provided object reference.");
-        return ::DDS::RETCODE_ERROR;
+        return ::DDS::RETCODE_BAD_PARAMETER;
       }
-    DDS_ProxyEntityManager::unregister_dp_proxy (a_participant);
+
+    DDS_Native::DDS::DomainParticipant *part = proxy->get_native_entity ();
+    if (!part)
+      {
+        DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipantFactory_proxy::delete_participant - "
+          << "Unable to retrieve the native domainparticipant from the provided object reference.");
+        return ::DDS::RETCODE_BAD_PARAMETER;
+      }
+
+    DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipantFactory_proxy::delete_participant - "
+      << "Successfully retrieved the native entity from the provided domainparticipant");
+
+    // Set the listener to null, this will delete any existing listener
+    // when it has been set
+    a_participant->set_listener(nullptr, 0);
+
+    // Retrieve the DDS instance handle before deleting it, we need it when
+    // unregistering our proxy
+    ::DDS::InstanceHandle_t const handle = a_participant->get_instance_handle ();
 
     ::DDS::ReturnCode_t const retcode =
       ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
@@ -151,6 +164,14 @@ namespace DDSX11
       }
     else
       {
+        if (!DDS_ProxyEntityManager::unregister_dp_proxy (handle))
+          {
+            DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::delete_participant - "
+              << "Error: Can't unregister domainparticpant proxy for <" << handle << ">");
+            return ::DDS::RETCODE_ERROR;
+          }
+        proxy->clear_native_entity ();
+
         DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipantFactory_proxy::delete_participant - "
           "Successfully deleted provided participant.");
       }

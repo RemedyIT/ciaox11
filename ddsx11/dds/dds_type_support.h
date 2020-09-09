@@ -16,8 +16,7 @@
 #include "dds/dds_traits.h"
 #include "dds/dds_data_writer_t.h"
 #include "dds/dds_data_reader_t.h"
-
-#include "dds/dds_proxy_entity_manager.h"
+#include "dds/dds_traits.h"
 
 #include <map>
 
@@ -34,6 +33,11 @@ namespace DDSX11
 
     virtual IDL::traits< ::DDS::DataReader>::ref_type
     create_datareader (DDS_Native::DDS::DataReader* dr) = 0;
+  private:
+    DDS_TypeFactory_i(const DDS_TypeFactory_i&) = delete;
+    DDS_TypeFactory_i(DDS_TypeFactory_i&&) = delete;
+    DDS_TypeFactory_i& operator=(const DDS_TypeFactory_i&) = delete;
+    DDS_TypeFactory_i& operator=(DDS_TypeFactory_i&&) = delete;
   };
 
   /**
@@ -58,6 +62,11 @@ namespace DDSX11
       uint32_t _dec_ref ();
 
     private:
+      DDS_TypeFactory_i_ref() = delete;
+      DDS_TypeFactory_i_ref(const DDS_TypeFactory_i_ref&) = delete;
+      DDS_TypeFactory_i_ref(DDS_TypeFactory_i_ref&&) = delete;
+      DDS_TypeFactory_i_ref& operator=(const DDS_TypeFactory_i_ref&) = delete;
+      DDS_TypeFactory_i_ref& operator=(DDS_TypeFactory_i_ref&&) = delete;
       uint32_t ref_count_ { 1 };
       std::shared_ptr<DDS_TypeFactory_i> tf_;
   };
@@ -150,6 +159,10 @@ namespace DDSX11
   private:
     DDS_TypeSupport_i () = default;
     ~DDS_TypeSupport_i () = default;
+    DDS_TypeSupport_i(const DDS_TypeSupport_i&) = delete;
+    DDS_TypeSupport_i(DDS_TypeSupport_i&&) = delete;
+    DDS_TypeSupport_i& operator=(const DDS_TypeSupport_i&) = delete;
+    DDS_TypeSupport_i& operator=(DDS_TypeSupport_i&&) = delete;
 
     /// Store for a specific DDS type a type factory var with its own refcount
     typedef std::map <

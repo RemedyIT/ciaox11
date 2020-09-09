@@ -1126,7 +1126,7 @@ namespace DDSX11
     if (!this->native_entity_)
       {
         DDSX11_IMPL_LOG_DEBUG ("DataReader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name()
-          << ">::entity Throwing BAD_INV_ORDER.");
+          << ">::native_entity - Throwing CORBA::BAD_INV_ORDER because we have a nullptr to the native entity");
         throw TAOX11_CORBA::BAD_INV_ORDER ();
       }
     return this->native_entity_;

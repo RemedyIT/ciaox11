@@ -25,11 +25,11 @@ namespace Example_User_Impl
     : public IDL::traits<CCM_TT::TT_Handler>::base_type
   {
   public:
-    TT_Callback (
+    explicit TT_Callback (
         std::string conn,
         IDL::traits< ::Example::CCM_User_Context>::ref_type ctx)
-      : connection_ (conn)
-      , ciao_context_ (ctx)
+      : connection_ (std::move(conn))
+      , ciao_context_ (std::move(ctx))
     {}
 
     void
