@@ -14,22 +14,22 @@ class MyEntity
   : public IDL::traits<DDS::Entity>::base_type
 {
 public:
-  virtual DDS::ReturnCode_t enable() override
+  DDS::ReturnCode_t enable() override
   {
     return ::DDS::RETCODE_OK;
   }
 
-  virtual IDL::traits<DDS::StatusCondition>::ref_type get_statuscondition() override
+  IDL::traits<DDS::StatusCondition>::ref_type get_statuscondition() override
   {
     return nullptr;
   }
 
-  virtual DDS::StatusMask get_status_changes() override
+  DDS::StatusMask get_status_changes() override
   {
     return DDS::LIVELINESS_LOST_STATUS;
   }
 
-  virtual DDS::InstanceHandle_t get_instance_handle() override
+  DDS::InstanceHandle_t get_instance_handle() override
   {
 #if defined DDSX11_NDDS
     return DDS::InstanceHandle_t {{{15,14,13,12,11,10,9,8,7,6,5,4,3,2,1,0}}, 16, false};

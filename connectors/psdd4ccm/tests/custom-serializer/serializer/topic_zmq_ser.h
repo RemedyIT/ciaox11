@@ -24,53 +24,45 @@ namespace Emitter
       virtual ~Custom_ZMQ_Serializer () = default;
 
       /// @copydoc topicPS.idl::LoRa::Topic::Serializer::setup_pack
-      virtual
       bool
       setup_pack (
           IDL::traits< ::CCM_PSDD::PSData>::ref_type data) override;
 
       /// @copydoc topicPS.idl::LoRa::Topic::Serializer::pack_key
-      virtual
       bool
       pack_key (
           IDL::traits< ::CCM_PSDD::PSData>::ref_type data,
           const ::Test::Topic& keyvalue) override;
 
       /// @copydoc topicPS.idl::LoRa::Topic::Serializer::pack_data
-      virtual
       bool
       pack_data (
           IDL::traits< ::CCM_PSDD::PSData>::ref_type data,
           const ::Test::Topic& datum) override;
 
       /// @copydoc topicPS.idl::LoRa::Topic::Serializer::finalize_pack
-      virtual
       void
       finalize_pack (
           IDL::traits< ::CCM_PSDD::PSData>::ref_type data) override;
 
       /// @copydoc topicPS.idl::LoRa::Topic::Serializer::setup_unpack
-      virtual
       bool
       setup_unpack (
           IDL::traits< ::CCM_PSDD::PSData>::ref_type data) override;
 
       /// @copydoc topicPS.idl::LoRa::Topic::Serializer::unpack_key
-      virtual
       bool
       unpack_key (
           IDL::traits< ::CCM_PSDD::PSData>::ref_type data,
           ::Test::Topic& keyvalue) override;
 
       /// @copydoc topicPS.idl::LoRa::Topic::Serializer::unpack_data
-      virtual
       bool
       unpack_data (
           IDL::traits< ::CCM_PSDD::PSData>::ref_type data,
           ::Test::Topic& datum) override;
 
       /// @copydoc topicPS.idl::LoRa::Topic::Serializer::finalize_unpack
-      virtual
       void
       finalize_unpack (
           IDL::traits< ::CCM_PSDD::PSData>::ref_type data) override;
