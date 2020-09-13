@@ -52,7 +52,7 @@ namespace CIAOX11
         IDL::traits< ::DDS::QueryCondition>::ref_type qc,
         TOPIC_SEQ_TYPE &data,
         ::DDS::SampleInfoSeq &sample_info,
-        int32_t max_samples) override = 0;
+        int32_t max_samples) = 0;
 
       DataReaderListenerBase_T() = delete;
       DataReaderListenerBase_T(const DataReaderListenerBase_T&) = delete;
