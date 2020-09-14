@@ -24,11 +24,11 @@ public:
   TestTypeFactory () = default;
   virtual ~TestTypeFactory() {}
 
-  virtual IDL::traits< ::DDS::DataWriter>::ref_type
+  IDL::traits< ::DDS::DataWriter>::ref_type
   create_datawriter (
     ::DDS_Native::DDS::DataWriter* dw) override;
 
-  virtual IDL::traits< ::DDS::DataReader>::ref_type
+  IDL::traits< ::DDS::DataReader>::ref_type
   create_datareader (
     ::DDS_Native::DDS::DataReader* dr) override;
 };

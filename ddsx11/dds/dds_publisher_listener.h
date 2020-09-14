@@ -26,7 +26,7 @@ namespace DDSX11
       IDL::traits< ::DDS::PublisherListener>::ref_type p);
 
     /// Destructor
-    virtual ~DDS_PublisherListener_proxy () override = default;
+    ~DDS_PublisherListener_proxy () override = default;
 
     void
     on_offered_deadline_missed (

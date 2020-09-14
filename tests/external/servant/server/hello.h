@@ -20,21 +20,17 @@ public:
   Hello (IDL::traits<CORBA::ORB>::ref_type orb);
   virtual ~Hello ();
 
-  virtual
   std::string
   get_string (
       int32_t answer) override;
 
-  virtual
   int16_t
   interface_attrib () override;
 
-  virtual
   void
   interface_attrib (
       int16_t _v) override;
 
-  virtual
   void
   shutdown () override;
 
