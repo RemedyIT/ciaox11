@@ -24,51 +24,6 @@ namespace CIAOX11
       return &instance_;
     }
 
-    //============================================================
-    // DomainParticipantManager::DDSParticipantTopic::DDSParticipantTopic
-    //============================================================
-    DomainParticipantManager::DDSParticipantTopic::DDSParticipantTopic (
-      IDL::traits< ::DDS::DomainParticipant>::ref_type dp)
-      : dp_ (std::move(dp))
-    {
-      DDS4CCM_LOG_TRACE ("DomainParticipantManager::DDSParticipantTopic::DDSParticipantTopic");
-    }
-
-    DomainParticipantManager::DDSParticipantTopic::~DDSParticipantTopic ()
-    {
-      DDS4CCM_LOG_TRACE ("DomainParticipantManager::DDSParticipantTopic::~DDSParticipantTopic");
-    }
-
-    IDL::traits< ::DDS::DomainParticipant>::ref_type
-    DomainParticipantManager::DDSParticipantTopic::get_participant ()
-    {
-      DDS4CCM_LOG_TRACE ("DomainParticipantManager::DDSParticipantTopic::get_participant");
-
-      return this->dp_;
-    }
-
-    uint32_t
-    DomainParticipantManager::DDSParticipantTopic::_ref_count () const
-    {
-      return this->ref_count_;
-    }
-
-    void
-    DomainParticipantManager::DDSParticipantTopic::_inc_ref ()
-    {
-      ++this->ref_count_;
-    }
-
-    void
-    DomainParticipantManager::DDSParticipantTopic::_dec_ref ()
-    {
-      --this->ref_count_;
-    }
-
-
-    //============================================================
-    // DomainParticipantManager::DomainParticipantManager
-    //============================================================
     DomainParticipantManager::DomainParticipantManager ()
     {
       DDS4CCM_LOG_TRACE ("DomainParticipantManager::DomainParticipantManager");
@@ -89,18 +44,20 @@ namespace CIAOX11
         << "Searching DomainParticipant for domain <" << domain_id
         << "> with profile <" << qos_profile << ">");
 
-      IdQosProfile idqos = std::make_pair (qos_profile, domain_id);
-      DomainParticipants_iterator it_found = this->dps_.find (idqos);
+      std::lock_guard<std::mutex> __guard (this->dps_mutex_);
 
-      if (it_found != this->dps_.end () && it_found->second)
+      IdQosProfile const idqos = std::make_pair (qos_profile, domain_id);
+      DomainParticipants_iterator const it_found = this->dps_.find (idqos);
+
+      if (it_found != this->dps_.end () && it_found->second.first)
       {
-        it_found->second->_inc_ref ();
-        IDL::traits< ::DDS::DomainParticipant>::ref_type dp =
-          it_found->second->get_participant ();
+        // Increment refcount on the domain participant
+        uint32_t const refcount = ++it_found->second.second;
+        IDL::traits< ::DDS::DomainParticipant>::ref_type const dp = it_found->second.first;
         DDS4CCM_LOG_DEBUG ("DomainParticipantManager::get_participant - "
           << "DomainParticipant found. domain <" << domain_id << "> - "
           << "profile <" << qos_profile << "> - ref_count <"
-          << it_found->second->_ref_count () << "> - handle <"
+          << refcount << "> - handle <"
           << IDL::traits< ::DDS::Entity>::write<entity_formatter> (dp)
           << ">.");
         return dp;
@@ -108,7 +65,7 @@ namespace CIAOX11
       DDS4CCM_LOG_DEBUG ("DomainParticipantManager::get_participant - "
         << "DomainParticipant for domain <" << domain_id << "> with profile <"
         << qos_profile << "> does not exist.");
-      return nullptr;
+      return {};
     }
 
     bool
@@ -119,12 +76,12 @@ namespace CIAOX11
     {
       DDS4CCM_LOG_TRACE ("DomainParticipantManager::register_participant");
 
-      std::lock_guard<std::mutex> __guard (this->dps_mutex_);
-
       if (!dp)
       {
         return false;
       }
+
+      std::lock_guard<std::mutex> __guard (this->dps_mutex_);
 
       IdQosProfile const idqos = std::make_pair (qos_profile, domain_id);
       DomainParticipants_iterator const it_found = this->dps_.find (idqos);
@@ -133,10 +90,9 @@ namespace CIAOX11
       {
         try
         {
-          std::unique_ptr<DDSParticipantTopic> dt =
-            std::make_unique<DDSParticipantTopic> (dp);
+          DomainParticipantRefcount const dp_pair = std::make_pair (dp, 1);
           std::pair <DomainParticipants_iterator, bool> to_insert =
-            this->dps_.insert (std::make_pair (idqos, std::move (dt)));
+            this->dps_.insert (std::make_pair (idqos, std::move (dp_pair)));
           if (!to_insert.second)
           {
             DDS4CCM_LOG_ERROR ("DomainParticipantManager::register_participant - "
@@ -165,6 +121,7 @@ namespace CIAOX11
         << qos_profile << "> since it already exists as handle <"
         << IDL::traits< ::DDS::Entity>::write<entity_formatter> (dp)
         << ">");
+
       return false;
     }
 
@@ -176,39 +133,40 @@ namespace CIAOX11
     {
       DDS4CCM_LOG_TRACE ("DomainParticipantManager::unregister_participant");
 
-      std::lock_guard<std::mutex> __guard (this->dps_mutex_);
-
       if (!dp)
       {
         return false;
       }
+
+      std::lock_guard<std::mutex> __guard (this->dps_mutex_);
 
       IdQosProfile const idqos = std::make_pair (qos_profile, domain_id);
       DomainParticipants_iterator const iter = this->dps_.find (idqos);
 
       if (iter != this->dps_.end ())
       {
-        if (iter->second->_ref_count () == 1)
+        uint32_t const refcount = iter->second.second;
+
+        if (refcount == 0)
         {
           DDS4CCM_LOG_DEBUG ("DomainParticipantManager::unregister_participant - "
             << "Delete participant <"
             << IDL::traits< ::DDS::Entity>::write<entity_formatter> (dp)
             << "> for domain <" << domain_id << "> with profile <"
-            << qos_profile << "> since ref_count is one.");
-
+            << qos_profile << "> since ref_count dropped to zero.");
           // Save to remove from list
-          iter->second = nullptr;
+          iter->second.first = nullptr;
           this->dps_.erase (iter);
         }
         else
         {
+
           DDS4CCM_LOG_DEBUG ("DomainParticipantManager::unregister_participant - "
             << "Decrement refcount for participant <"
             << IDL::traits< ::DDS::Entity>::write<entity_formatter> (dp)
             << "> for domain <" << domain_id << "> with profile <"
-            << qos_profile << "> since " << "it's still used - ref_count is <"
-            << iter->second->_ref_count () << ">");
-          iter->second->_dec_ref ();
+            << qos_profile << "> since " << "it's still used - ref_count dropped to <"
+            << refcount << ">");
           return false;
         }
       }
@@ -226,7 +184,7 @@ namespace CIAOX11
           DDS4CCM_LOG_DEBUG ("DomainParticipantManager::close - "
             << "No participants anymore, shutting down DDS.");
 
-          ::DDS::ReturnCode_t retcode =
+          ::DDS::ReturnCode_t const retcode =
             ::DDS::traits< ::DDS::DomainParticipantFactory>::get_instance ()->finalize_instance ();
 
           if (retcode != ::DDS::RETCODE_OK)

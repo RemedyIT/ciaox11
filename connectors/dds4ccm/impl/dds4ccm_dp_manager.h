@@ -35,119 +35,74 @@ namespace CIAOX11
      */
     class DDS4CCM_IMPL_Export DomainParticipantManager
     {
+    private:
+      DomainParticipantManager ();
+
+    public:
+      ~DomainParticipantManager ();
+
       /**
-      * @class DDSParticipantTopic
-      *
-      * Stores a list of topics for a specific domain. If
-      * several connectors run in the same process and those
-      * connectors are making use of the same topic, the topics
-      * are shared amongst the connectors.
-      *
-      * This class maintains a reference count. It's save to remove
-      * a topic once the reference count becomes one.
-      *
+      * Searches for the DomainParticipant in the internal map.
+      * Search is based on the given domain ID and the given QOS
+      * (QOS profile string). If found, it'll increment the
+      * reference count of the DDSParticipantTopic instance.
       */
-      class DDSParticipantTopic
-      {
-        public:
-          explicit DDSParticipantTopic (
-            IDL::traits< ::DDS::DomainParticipant>::ref_type dp);
-          ~DDSParticipantTopic ();
+      IDL::traits< ::DDS::DomainParticipant>::ref_type
+      get_participant (const ::DDS::DomainId_t domain_id,
+        const std::string &qos_profile);
 
-          /**
-          * Returns the reference count of this class
-          */
-          uint32_t _ref_count () const;
-          /**
-          * Increments the reference count of this class
-          */
-          void _inc_ref ();
-          /**
-          * Decrements the reference count of this class
-          */
-          void _dec_ref ();
+      /**
+      * Adding a DDSParticipantTopic instance when the
+      * internal maps doesn't contain a reference. Returns
+      * false if there's already an DDSParticipantTopic
+      * available (base on domain ID and QOS)
+      */
+      bool
+      register_participant (::DDS::DomainId_t domain_id,
+        const std::string &qos_profile,
+        IDL::traits< ::DDS::DomainParticipant>::ref_type dp);
 
-          IDL::traits< ::DDS::DomainParticipant>::ref_type get_participant ();
+      /**
+      * Removes the DDSParticipantTopic instance when the
+      * reference count is one.
+      * Returns false if the reference count of the corresponding
+      * DDSParticipantTopic was not nil
+      */
+      bool
+      unregister_participant (::DDS::DomainId_t domain_id,
+        const std::string& qos_profile,
+        IDL::traits< ::DDS::DomainParticipant>::ref_type dp);
 
-        private:
-          IDL::traits< ::DDS::DomainParticipant>::ref_type dp_;
+      /**
+      * Try to close the DPM, at the moment no domain participants are
+      * registered anymore we are going to shutdown DDS interaction
+      * @retval true The DPM is now fully closed, no domain participants
+      * are registered anymore
+      * @retval false The DPM stays active because there are domain
+      * participants registered
+      */
+      bool close ();
 
-          uint32_t ref_count_ { 1 };
+      /**
+      * Get DPM singleton instance.
+      */
+      static DomainParticipantManager* getInstance ();
 
-          DDSParticipantTopic() = delete;
-          DDSParticipantTopic(const DDSParticipantTopic&) = delete;
-          DDSParticipantTopic(DDSParticipantTopic&&) = delete;
-          DDSParticipantTopic& operator=(const DDSParticipantTopic&) = delete;
-          DDSParticipantTopic& operator=(DDSParticipantTopic&&) = delete;
-      };
+    private:
+      std::mutex dps_mutex_;
 
-      private:
-        DomainParticipantManager ();
+      typedef std::pair<std::string, ::DDS::DomainId_t> IdQosProfile;
+      typedef std::pair<IDL::traits< ::DDS::DomainParticipant>::ref_type, uint32_t> DomainParticipantRefcount;
+      typedef std::map<IdQosProfile, DomainParticipantRefcount> DomainParticipants;
+      DomainParticipants dps_;
 
-      public:
-        ~DomainParticipantManager ();
+      typedef DomainParticipants::iterator DomainParticipants_iterator;
 
-        /**
-        * Searches for the DomainParticipant in the internal map.
-        * Search is based on the given domain ID and the given QOS
-        * (QOS profile string). If found, it'll increment the
-        * reference count of the DDSParticipantTopic instance.
-        */
-        IDL::traits< ::DDS::DomainParticipant>::ref_type
-        get_participant (const ::DDS::DomainId_t domain_id,
-          const std::string &qos_profile);
-
-        /**
-        * Adding a DDSParticipantTopic instance when the
-        * internal maps doesn't contain a reference. Returns
-        * false if there's already an DDSParticipantTopic
-        * available (base on domain ID and QOS)
-        */
-        bool
-        register_participant (::DDS::DomainId_t domain_id,
-          const std::string &qos_profile,
-          IDL::traits< ::DDS::DomainParticipant>::ref_type dp);
-
-        /**
-        * Removes the DDSParticipantTopic instance when the
-        * reference count is one.
-        * Returns false if the reference count of the corresponding
-        * DDSParticipantTopic was not nil
-        */
-        bool
-        unregister_participant (::DDS::DomainId_t domain_id,
-          const std::string& qos_profile,
-          IDL::traits< ::DDS::DomainParticipant>::ref_type dp);
-
-        /**
-        * Try to close the DPM, at the moment no domain participants are
-        * registered anymore we are going to shutdown DDS interaction
-        * @retval true The DPM is now fully closed, no domain participants
-        * are registered anymore
-        * @retval false The DPM stays active because there are domain
-        * participants registered
-        */
-        bool close ();
-
-        /**
-        * Get DPM singleton instance.
-        */
-        static DomainParticipantManager* getInstance ();
-
-      private:
-        std::mutex dps_mutex_;
-
-        typedef std::pair<std::string, ::DDS::DomainId_t> IdQosProfile;
-        typedef std::map<IdQosProfile, std::unique_ptr<DDSParticipantTopic>> DomainParticipants;
-        DomainParticipants dps_;
-
-        typedef DomainParticipants::iterator DomainParticipants_iterator;
-
-        DomainParticipantManager(const DomainParticipantManager&) = delete;
-        DomainParticipantManager(DomainParticipantManager&&) = delete;
-        DomainParticipantManager& operator=(const DomainParticipantManager&) = delete;
-        DomainParticipantManager& operator=(DomainParticipantManager&&) = delete;
-      };
+      DomainParticipantManager(const DomainParticipantManager&) = delete;
+      DomainParticipantManager(DomainParticipantManager&&) = delete;
+      DomainParticipantManager& operator=(const DomainParticipantManager&) = delete;
+      DomainParticipantManager& operator=(DomainParticipantManager&&) = delete;
+    };
   }
 }
 
