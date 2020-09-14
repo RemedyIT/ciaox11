@@ -232,7 +232,8 @@ namespace DDSX11
     /// A topic can be registered multiple times because using find_topic the native DDS
     /// implementation can return multiple times the same topic for which multiple times the delete_topic
     /// must be called, only for the last instance the unregister will remove it from the map
-    typedef std::map< ::DDS::InstanceHandle_t, std::pair <uint32_t, IDL::traits< ::DDS::Topic>::ref_type>, CompareHandles> TopicProxies;
+    typedef std::pair <uint32_t, IDL::traits< ::DDS::Topic>::ref_type> TopicRefcount;
+    typedef std::map< ::DDS::InstanceHandle_t, TopicRefcount, CompareHandles> TopicProxies;
     static TopicProxies tp_proxies;
     static std::mutex tp_mutex;
 
