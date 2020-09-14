@@ -31,7 +31,7 @@ namespace DDSX11
   {
   public:
     /// Constructor
-    DDS_StatusCondition_proxy (
+    explicit DDS_StatusCondition_proxy (
       DDS_Native::DDS::StatusCondition *sc);
 
     /// Destructor

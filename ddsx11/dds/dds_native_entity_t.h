@@ -21,7 +21,7 @@ namespace DDSX11
   class NativeEntityBase_T
   {
   public:
-    NativeEntityBase_T (DDS_NATIVE_TYPE *);
+    explicit NativeEntityBase_T (DDS_NATIVE_TYPE *);
     virtual ~NativeEntityBase_T ();
 
     /**

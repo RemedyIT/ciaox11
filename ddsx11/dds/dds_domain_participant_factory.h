@@ -30,7 +30,7 @@ namespace DDSX11
   {
   public:
     /// Constructor
-    DDS_DomainParticipantFactory_proxy (DDS_Native::DDS::DomainParticipantFactory * dpf);
+    explicit DDS_DomainParticipantFactory_proxy (DDS_Native::DDS::DomainParticipantFactory * dpf);
 
     /// Destructor
     virtual ~DDS_DomainParticipantFactory_proxy () = default;

@@ -31,7 +31,7 @@ namespace DDSX11
   {
   public:
     /// Constructor
-    DDS_TopicDescription_proxy (
+    explicit DDS_TopicDescription_proxy (
       DDS_Native::DDS::TopicDescription * rc);
 
     /// Destructor

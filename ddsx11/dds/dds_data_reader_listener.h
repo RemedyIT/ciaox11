@@ -23,7 +23,7 @@ namespace DDSX11
   {
   public:
     /// Constructor
-    DDS_DataReaderListener_proxy (
+    explicit DDS_DataReaderListener_proxy (
       IDL::traits< ::DDS::DataReaderListener>::ref_type p);
 
     /// Destructor

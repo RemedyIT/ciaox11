@@ -31,7 +31,7 @@ namespace DDSX11
   {
   public:
     /// Constructor
-    DDS_QueryCondition_proxy (
+    explicit DDS_QueryCondition_proxy (
       DDS_Native::DDS::QueryCondition * qc);
 
     /// Destructor

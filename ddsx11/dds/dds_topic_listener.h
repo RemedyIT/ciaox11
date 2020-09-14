@@ -22,7 +22,7 @@ namespace DDSX11
   {
   public:
     /// Constructor
-    DDS_TopicListener_proxy (
+    explicit DDS_TopicListener_proxy (
       IDL::traits< ::DDS::TopicListener>::ref_type t);
 
     /// Destructor
