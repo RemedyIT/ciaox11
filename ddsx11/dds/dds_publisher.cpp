@@ -144,10 +144,6 @@ namespace DDSX11
       << "Successfully retrieved the native entity from the provided "
       << "datawriter.");
 
-    // Set the listener to null, this will delete any existing listener
-    // when it has been set
-    a_datawriter->set_listener(nullptr, 0);
-
     // Retrieve the DDS instance handle before deleting it, we need it when
     // unregistering our proxy
     ::DDS::InstanceHandle_t const handle = a_datawriter->get_instance_handle ();

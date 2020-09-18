@@ -143,10 +143,6 @@ namespace DDSX11
     DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipantFactory_proxy::delete_participant - "
       << "Successfully retrieved the native entity from the provided domainparticipant");
 
-    // Set the listener to null, this will delete any existing listener
-    // when it has been set
-    a_participant->set_listener(nullptr, 0);
-
     // Retrieve the DDS instance handle before deleting it, we need it when
     // unregistering our proxy
     ::DDS::InstanceHandle_t const handle = a_participant->get_instance_handle ();

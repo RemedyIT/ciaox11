@@ -145,10 +145,6 @@ namespace DDSX11
     DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::delete_publisher - "
       << "Successfully retrieved the native entity from the provided publisher");
 
-    // Set the listener to null, this will delete any existing listener
-    // when it has been set
-    p->set_listener(nullptr, 0);
-
     // Retrieve the DDS instance handle before deleting it, we need it when
     // unregistering our proxy
     ::DDS::InstanceHandle_t const handle = p->get_instance_handle ();
@@ -293,10 +289,6 @@ namespace DDSX11
 
     DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::delete_subscriber - "
       << "Successfully retrieved the native entity from the provided subscriber");
-
-    // Set the listener to null, this will delete any existing listener
-    // when it has been set
-    s->set_listener(nullptr, 0);
 
     // Retrieve the DDS instance handle before deleting it, we need it when
     // unregistering our proxy
@@ -488,10 +480,6 @@ namespace DDSX11
 
     DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::delete_topic - "
       << "Successfully retrieved the native entity from the provided topic");
-
-    // Set the listener to null, this will delete any existing listener
-    // when it has been set
-    a_topic->set_listener(nullptr, 0);
 
     // Retrieve the DDS instance handle before deleting it, we need it when
     // unregistering our proxy
