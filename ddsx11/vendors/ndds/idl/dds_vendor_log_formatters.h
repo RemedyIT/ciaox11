@@ -24,10 +24,10 @@ inline std::string translate_vendor_statuskind (const ::DDS::StatusKind &ret)
 
 inline void translate_vendor_statusmask (std::string &ret, ::DDS::StatusMask const &mask)
 {
-#define DDS_VENDOR_STATUS_MASK_1(X) if (mask == X) ret += #X; return
-  DDS_VENDOR_STATUS_MASK_1 (::DDS::STATUS_MASK_NONE);
-  DDS_VENDOR_STATUS_MASK_1 (::DDS::STATUS_MASK_ALL);
-#undef DDS_VENDOR_STATUS_MASK_1
+#define DDS_VENDOR_STATUS_MASK(X) if (mask == X) {ret += #X; return; }
+  DDS_VENDOR_STATUS_MASK (::DDS::STATUS_MASK_NONE)
+  DDS_VENDOR_STATUS_MASK (::DDS::STATUS_MASK_ALL)
+#undef DDS_VENDOR_STATUS_MASK
 #define DDS_VENDOR_CHECK_MASK(Y) \
     if (mask & Y) { \
       if (!ret.empty ()) \
