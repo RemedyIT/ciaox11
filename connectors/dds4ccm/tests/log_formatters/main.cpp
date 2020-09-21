@@ -39,7 +39,6 @@ public:
   }
 };
 
-
 int main (int , char **)
 {
   std::ostringstream ostr;
@@ -191,6 +190,17 @@ int main (int , char **)
   ostr << "Logging DDS::QosPolicyId_t : "
     << DDS::dds_write (policy_id) << std::endl;
 #endif /* DDSX11_NDDS */
+
+  DDS::StatusMask const mask_pub_match { DDS::PUBLICATION_MATCHED_STATUS };
+  DDS::StatusMask const mask_all { DDS::STATUS_MASK_ALL };
+  DDS::StatusMask const mask_none { DDS::STATUS_MASK_NONE };
+
+  DDS4CCM_TEST_DEBUG << "Logging mask pub match : "
+    << IDL::traits< ::DDS::StatusMask>::write<status_mask_formatter> (mask_pub_match) << std::endl;
+  DDS4CCM_TEST_DEBUG << "Logging mask all : "
+    << IDL::traits< ::DDS::StatusMask>::write<status_mask_formatter> (mask_all) << std::endl;
+  DDS4CCM_TEST_DEBUG << "Logging mask none : "
+    << IDL::traits< ::DDS::StatusMask>::write<status_mask_formatter> (mask_none) << std::endl;
 
   return 0;
 }

@@ -73,7 +73,7 @@ int main (int argc, char *argv[])
         DDS::traits<DDS::DomainParticipantFactory >::get_instance ();
       DDS::traits<ShapeType>::domainparticipant_ref_type domain_participant =
         dpf->create_participant_with_profile (
-          domain_id_, qos_profile, nullptr, 0);
+          domain_id_, qos_profile, nullptr, DDS::STATUS_MASK_NONE);
 
       retcode = DDS::traits<ShapeType>::register_type (domain_participant, "ShapeType");
       if (retcode != DDS::RETCODE_OK)
@@ -83,10 +83,10 @@ int main (int argc, char *argv[])
       }
 
       DDS::traits<ShapeType>::topic_ref_type topic = domain_participant->create_topic_with_profile (
-        "Square", DDS::traits<ShapeType>::get_type_name (), qos_profile, nullptr, 0);
+        "Square", DDS::traits<ShapeType>::get_type_name (), qos_profile, nullptr, DDS::STATUS_MASK_NONE);
 
       DDS::traits<ShapeType>::subscriber_ref_type subscriber =
-        domain_participant->create_subscriber (DDS::SUBSCRIBER_QOS_DEFAULT, nullptr, 0);
+        domain_participant->create_subscriber (DDS::SUBSCRIBER_QOS_DEFAULT, nullptr, DDS::STATUS_MASK_NONE);
 
       if (topic && subscriber)
       {

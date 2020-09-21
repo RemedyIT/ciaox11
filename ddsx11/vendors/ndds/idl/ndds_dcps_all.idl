@@ -88,6 +88,8 @@ module DDS {
 
     typedef unsigned long StatusKind;
     typedef unsigned long StatusMask;    // bit-mask StatusKind
+    const StatusMask STATUS_MASK_NONE = 0;           // Empty mask
+    const StatusMask STATUS_MASK_ALL  = 0xffffffff;  // Mask with all bits set
 
     const StatusKind INCONSISTENT_TOPIC_STATUS                = 0x0001 << 0;
     const StatusKind OFFERED_DEADLINE_MISSED_STATUS           = 0x0001 << 1;

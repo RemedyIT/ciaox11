@@ -143,7 +143,7 @@ namespace DAnCE
             this->domain_,
             DDS::PARTICIPANT_QOS_DEFAULT,
             nullptr,
-            0);
+            DDS::STATUS_MASK_NONE);
       }
     else
       {
@@ -152,7 +152,7 @@ namespace DAnCE
             this->domain_,
             this->qos_profile_,
             nullptr,
-            0);
+            DDS::STATUS_MASK_NONE);
       }
 
     if (!this->participant_)
@@ -188,7 +188,7 @@ namespace DAnCE
         DDS::traits<DnCX11::Log_Record>::get_type_name (),
         tqos,
         nullptr,
-        0);
+        DDS::STATUS_MASK_NONE);
 
     if (!this->topic_)
       {
@@ -210,7 +210,7 @@ namespace DAnCE
       this->participant_->create_publisher (
         pubqos,
         nullptr,
-        0);
+        DDS::STATUS_MASK_NONE);
 
     if (!this->publisher_)
       {
@@ -233,7 +233,7 @@ namespace DAnCE
         this->topic_,
         writerqos,
         nullptr,
-        0);
+        DDS::STATUS_MASK_NONE);
 
     if (!this->datawriter_)
       {

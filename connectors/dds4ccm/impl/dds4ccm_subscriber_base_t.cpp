@@ -78,7 +78,7 @@ DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::configuration_compl
     {
       // A QOS profile is set in the deployment plan; need to apply that.
       dr = subscriber->create_datareader_with_profile (
-             td, qos_profile, nullptr, 0);
+             td, qos_profile, nullptr, ::DDS::STATUS_MASK_NONE);
     }
     else
     {
@@ -100,7 +100,7 @@ DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::configuration_compl
       // Create a datareader without a listener; this will be set
       // upon activation.
       dr = subscriber->create_datareader (
-            td, drqos, nullptr, 0);
+            td, drqos, nullptr, ::DDS::STATUS_MASK_NONE);
     }
     if (dr)
     {
@@ -159,7 +159,7 @@ DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::activate (
       PortStatusListener_type::get_mask (status);
 
   // Add the listener to the datareader (if needed)
-  if (mask != 0)
+  if (mask != ::DDS::STATUS_MASK_NONE)
   {
     if (!this->listener_)
     {

@@ -95,28 +95,27 @@ inline std::string translate_qos_policy_id (const ::DDS::QosPolicyId_t &ret)
 #undef DDS_QOS_POLICY_ID
 }
 
-inline void translate_listenermask (std::string &ret, ::DDS::StatusMask const &mask)
+inline void translate_statusmask (std::string &ret, ::DDS::StatusMask const &mask)
 {
-#define DDS_CHECK_MASK(X, Y, Z) \
-    if (X & Y) { \
-      if (!Z.empty ()) \
-          Z += " | "; \
-      Z += translate_statuskind (Y); \
+#define DDS_CHECK_MASK(Y) \
+    if (mask & Y) { \
+      if (!ret.empty ()) \
+          ret += " | "; \
+      ret += translate_statuskind (Y); \
     }
-  DDS_CHECK_MASK (mask, ::DDS::INCONSISTENT_TOPIC_STATUS, ret);
-  DDS_CHECK_MASK (mask, ::DDS::OFFERED_DEADLINE_MISSED_STATUS, ret);
-  DDS_CHECK_MASK (mask, ::DDS::REQUESTED_DEADLINE_MISSED_STATUS, ret);
-  DDS_CHECK_MASK (mask, ::DDS::OFFERED_INCOMPATIBLE_QOS_STATUS, ret);
-  DDS_CHECK_MASK (mask, ::DDS::REQUESTED_INCOMPATIBLE_QOS_STATUS, ret);
-  DDS_CHECK_MASK (mask, ::DDS::SAMPLE_LOST_STATUS, ret);
-  DDS_CHECK_MASK (mask, ::DDS::SAMPLE_REJECTED_STATUS, ret);
-  DDS_CHECK_MASK (mask, ::DDS::DATA_ON_READERS_STATUS, ret);
-  DDS_CHECK_MASK (mask, ::DDS::DATA_AVAILABLE_STATUS, ret);
-  DDS_CHECK_MASK (mask, ::DDS::LIVELINESS_LOST_STATUS, ret);
-  DDS_CHECK_MASK (mask, ::DDS::LIVELINESS_CHANGED_STATUS, ret);
-  DDS_CHECK_MASK (mask, ::DDS::PUBLICATION_MATCHED_STATUS, ret);
-  DDS_CHECK_MASK (mask, ::DDS::SUBSCRIPTION_MATCHED_STATUS, ret);
-
+  DDS_CHECK_MASK (::DDS::INCONSISTENT_TOPIC_STATUS);
+  DDS_CHECK_MASK (::DDS::OFFERED_DEADLINE_MISSED_STATUS);
+  DDS_CHECK_MASK (::DDS::REQUESTED_DEADLINE_MISSED_STATUS);
+  DDS_CHECK_MASK (::DDS::OFFERED_INCOMPATIBLE_QOS_STATUS);
+  DDS_CHECK_MASK (::DDS::REQUESTED_INCOMPATIBLE_QOS_STATUS);
+  DDS_CHECK_MASK (::DDS::SAMPLE_LOST_STATUS);
+  DDS_CHECK_MASK (::DDS::SAMPLE_REJECTED_STATUS);
+  DDS_CHECK_MASK (::DDS::DATA_ON_READERS_STATUS);
+  DDS_CHECK_MASK (::DDS::DATA_AVAILABLE_STATUS);
+  DDS_CHECK_MASK (::DDS::LIVELINESS_LOST_STATUS);
+  DDS_CHECK_MASK (::DDS::LIVELINESS_CHANGED_STATUS);
+  DDS_CHECK_MASK (::DDS::PUBLICATION_MATCHED_STATUS);
+  DDS_CHECK_MASK (::DDS::SUBSCRIPTION_MATCHED_STATUS);
 #undef DDS_CHECK_MASK
 }
 
@@ -213,6 +212,27 @@ struct status_kind_formatter_os
   {
     os_ <<
       IDL::traits< ::DDS::StatusKind>::write<status_kind_formatter>(val_);
+    return os_;
+  }
+};
+
+/**
+ * Special writer methods for usage in user space.
+ * Since the StatusMask is vendor specific, the
+ * implementation of the status_mask_formatter is
+ * put in the vendor specific part of the DDS proxy
+ */
+template <typename OS>
+struct status_mask_formatter_os
+{
+  status_mask_formatter_os () {}
+
+  inline OS& operator ()(
+      OS& os_,
+      const ::DDS::StatusMask& val_)
+  {
+    os_ <<
+      IDL::traits< ::DDS::StatusMask>::write<status_mask_formatter>(val_);
     return os_;
   }
 };

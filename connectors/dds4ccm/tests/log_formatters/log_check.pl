@@ -13,7 +13,7 @@ eval '(exit $?0)' && eval 'exec perl -S $0 ${1+"$@"}'
 $status = 0;
 
 $found = 0;
-$expected = 33;
+$expected = 36;
 
 sub check_readinfo
 {
@@ -320,6 +320,39 @@ while (my $line = <FILE>)
         else
         {
             print "ERROR: Error in DDS::QosPolicyId_t logging detected\n";
+        }
+    }
+    elsif ($line =~ "Logging mask all")
+    {
+        if ($line =~ "STATUS_MASK_ALL")
+        {
+            $found=$found+1;
+        }
+        else
+        {
+            print "ERROR: Error in DDS::STATUS_MASK_ALL logging detected\n";
+        }
+    }
+    elsif ($line =~ "Logging mask none")
+    {
+        if ($line =~ "STATUS_MASK_NONE")
+        {
+            $found=$found+1;
+        }
+        else
+        {
+            print "ERROR: Error in DDS::STATUS_MASK_NONE logging detected\n";
+        }
+    }
+    elsif ($line =~ "Logging mask pub")
+    {
+        if ($line =~ "PUBLICATION_MATCHED_STATUS")
+        {
+            $found=$found+1;
+        }
+        else
+        {
+            print "ERROR: Error in DDS::PUBLICATION_MATCHED_STATUS logging detected\n";
         }
     }
 }

@@ -22,18 +22,22 @@ inline std::string translate_vendor_statuskind (const ::DDS::StatusKind &ret)
   return translate_statuskind (ret);
 }
 
-inline void translate_vendor_listenermask (std::string &ret, ::DDS::StatusMask const &mask)
+inline void translate_vendor_statusmask (std::string &ret, ::DDS::StatusMask const &mask)
 {
-#define DDS_VENDOR_CHECK_MASK(X, Y, Z) \
-    if (X & Y) { \
-      if (!Z.empty ()) \
-          Z += " | "; \
-      Z += translate_vendor_statuskind (Y); \
+#define DDS_VENDOR_STATUS_MASK_1(X) if (mask == X) ret += #X; return
+  DDS_VENDOR_STATUS_MASK_1 (::DDS::STATUS_MASK_NONE);
+  DDS_VENDOR_STATUS_MASK_1 (::DDS::STATUS_MASK_ALL);
+#undef DDS_VENDOR_STATUS_MASK_1
+#define DDS_VENDOR_CHECK_MASK(Y) \
+    if (mask & Y) { \
+      if (!ret.empty ()) \
+          ret += " | "; \
+      ret += translate_vendor_statuskind (Y); \
     }
-  DDS_VENDOR_CHECK_MASK (mask, ::DDS::RELIABLE_WRITER_CACHE_CHANGED_STATUS, ret);
-  DDS_VENDOR_CHECK_MASK (mask, ::DDS::RELIABLE_READER_ACTIVITY_CHANGED_STATUS, ret);
+  DDS_VENDOR_CHECK_MASK (::DDS::RELIABLE_WRITER_CACHE_CHANGED_STATUS);
+  DDS_VENDOR_CHECK_MASK (::DDS::RELIABLE_READER_ACTIVITY_CHANGED_STATUS);
 #undef DDS_VENDOR_CHECK_MASK
-  translate_listenermask(ret, mask);
+  translate_statusmask(ret, mask);
 }
 
 inline std::string translate_vendor_qos_policy_id (const ::DDS::QosPolicyId_t &ret)
@@ -152,7 +156,7 @@ struct status_mask_formatter
     ::DDS::StatusMask const &val_)
   {
     std::string mask;
-    translate_vendor_listenermask (mask, val_);
+    translate_vendor_statusmask (mask, val_);
     os_ << mask;
     return os_;
   }

@@ -172,7 +172,7 @@ ACE_TMAIN (int argc, ACE_TCHAR **argv)
         DDS::traits<DnCX11::Log_Record>::get_type_name (),
         tqos,
         nullptr,
-        0);
+        DDS::STATUS_MASK_NONE);
 
       if (!topic_)
         {
@@ -194,7 +194,7 @@ ACE_TMAIN (int argc, ACE_TCHAR **argv)
         participant_->create_subscriber (
           subqos,
           nullptr,
-          0);
+          DDS::STATUS_MASK_NONE);
 
       if (!subscriber_)
         {
