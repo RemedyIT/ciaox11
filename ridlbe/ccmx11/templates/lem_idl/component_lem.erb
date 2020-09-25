@@ -18,7 +18,7 @@ local interface <%= ccm_name %>
     <%= _p.interface_type.scoped_unescaped_name %> objref;
     Components::Cookie ck;
   };
-  using <%= _p.lem_name %>Connections = sequence<<%= _p.lem_name %>Connection>;
+  typedef sequence<<%= _p.lem_name %>Connection> <%= _p.lem_name %>Connections;
 %  props={}
 %  props[:port]=_p
 %  visit_lem_extra_multiple_receptacles(props)
