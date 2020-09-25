@@ -5,8 +5,8 @@
     //@{
 %    interfaces_with_multiple_ami4ccm_ports.each do |_mp|
     /// Map type of connection name and <%= _mp.interface_type.scoped_ami4ccm_name %> references
-    typedef std::map<std::string, IDL::traits< ::<%= _mp.interface_type.scoped_ami4ccm_name %>>::ref_type>
-    SENDC_<%= _mp.interface_type.scoped_cxxname.upcase.identify %>_CONTEXT_TABLE;
+    using SENDC_<%= _mp.interface_type.scoped_cxxname.upcase.identify %>_CONTEXT_TABLE =
+      std::map<std::string, IDL::traits< ::<%= _mp.interface_type.scoped_ami4ccm_name %>>::ref_type>;
 %    end
     //@}
 
