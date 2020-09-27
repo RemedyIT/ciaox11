@@ -18,13 +18,13 @@ namespace DDS
       * Type specific X11 DataReader and DataWriter typedefs
       */
     //@{
-    typedef <%= scoped_cxxtype %>DataWriter datawriter_type;
-    typedef <%= scoped_cxxtype %>DataReader datareader_type;
+    using datawriter_type = <%= scoped_cxxtype %>DataWriter;
+    using datareader_type = <%= scoped_cxxtype %>DataReader;
 
-    typedef IDL::traits< <%= scoped_cxxtype %>DataWriter>::ref_type typed_datawriter_ref_type;
-    typedef IDL::traits< <%= scoped_cxxtype %>DataReader>::ref_type typed_datareader_ref_type;
-    typedef IDL::traits< <%= scoped_cxxtype %>DataWriter>::weak_ref_type typed_datawriter_weak_ref_type;
-    typedef IDL::traits< <%= scoped_cxxtype %>DataReader>::weak_ref_type typed_datareader_weak_ref_type;
+    using typed_datawriter_ref_type = IDL::traits< <%= scoped_cxxtype %>DataWriter>::ref_type;
+    using typed_datareader_ref_type = IDL::traits< <%= scoped_cxxtype %>DataReader>::ref_type;
+    using typed_datawriter_weak_ref_type = IDL::traits< <%= scoped_cxxtype %>DataWriter>::weak_ref_type;
+    using typed_datareader_weak_ref_type = IDL::traits< <%= scoped_cxxtype %>DataReader>::weak_ref_type;
     //@}
 
     static typed_datawriter_ref_type
