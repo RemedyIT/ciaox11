@@ -57,7 +57,7 @@ namespace CIAOX11
     IDL::traits<CORBA::ORB>::ref_type orb_;
 
     /// Map storing for the executor locator for each component
-    typedef std::map<std::string, IDL::traits<CIAOX11::ExecutorLocator>::ref_type> ExecutorLocatorMap;
+    using ExecutorLocatorMap = std::map<std::string, IDL::traits<CIAOX11::ExecutorLocator>::ref_type>;
     ExecutorLocatorMap executor_locator_map_;
 
     Container_i () = delete;

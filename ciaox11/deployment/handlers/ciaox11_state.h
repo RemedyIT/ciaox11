@@ -80,21 +80,21 @@ namespace CIAOX11
     std::mutex state_mutex_;
 
     /// Container administration
-    typedef std::pair <std::string, std::shared_ptr<CIAOX11::Container>> CONTAINERS_PAIR;
-    typedef std::map <std::string, std::shared_ptr<CIAOX11::Container>> CONTAINERS;
+    using CONTAINERS_PAIR = std::pair <std::string, std::shared_ptr<CIAOX11::Container>>;
+    using CONTAINERS = std::map <std::string, std::shared_ptr<CIAOX11::Container>>;
 
     CONTAINERS containers_;
 
     /// Administration which components are instantiated in which container
-    typedef std::pair < std::string, std::string > INSTANCE_PAIR;
-    typedef std::map < std::string, std::string > INSTANCE_CONTAINER;
+    using INSTANCE_PAIR = std::pair <std::string, std::string>;
+    using INSTANCE_CONTAINER = std::map <std::string, std::string>;
 
     /// maps instance ids to containers.
     INSTANCE_CONTAINER instance_container_;
 
     /// Administers configuration of instances
-    typedef std::pair < std::string, Components::ConfigValues > CONFIG_PAIR;
-    typedef std::map < std::string, Components::ConfigValues > INSTANCE_CONFIG;
+    using CONFIG_PAIR = std::pair <std::string, Components::ConfigValues>;
+    using INSTANCE_CONFIG = std::map <std::string, Components::ConfigValues>;
 
     /// maps container ids to configuration.
     INSTANCE_CONFIG container_config_;
