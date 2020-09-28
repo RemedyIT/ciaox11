@@ -44,7 +44,7 @@ namespace CIAOX11
 
       static CIAOX11_Log_Msg* getInstance();
 
-      typedef x11_logger::Log_Type_T<CIAOX11_Log_Msg> log_type;
+      using log_type = x11_logger::Log_Type_T<CIAOX11_Log_Msg>;
 
     private:
       CIAOX11_Log_Msg();
@@ -57,7 +57,7 @@ namespace CIAOX11
     public:
       virtual ~CIAOX11_Test_Log_Msg ();
 
-      typedef x11_logger::Log_Type_T<CIAOX11_Test_Log_Msg> log_type;
+      using log_type = x11_logger::Log_Type_T<CIAOX11_Test_Log_Msg>;
 
       static CIAOX11_Test_Log_Msg* getInstance();
 
