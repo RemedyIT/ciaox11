@@ -26,7 +26,7 @@ void
 NT_Connector_T<CCM_TYPE, T, U, Tseq, Useq>::set_session_context (
     IDL::traits<Components::SessionContext>::ref_type /* ctx*/)
 {
-  CIAOX11_TEST_INFO << "set_session_context - NT1 1" << std::endl;
+  CIAOX11_TEST_INFO << "NT_Connector_T::set_session_context" << std::endl;
 }
 
 template <typename CCM_TYPE,
@@ -37,7 +37,7 @@ template <typename CCM_TYPE,
 void
 NT_Connector_T<CCM_TYPE, T, U, Tseq, Useq>::configuration_complete ()
 {
-  CIAOX11_TEST_INFO << "configuration_complete - NT1 2" << std::endl;
+  CIAOX11_TEST_INFO << "NT_Connector_T::configuration_complete" << std::endl;
 }
 
 template <typename CCM_TYPE,
@@ -48,7 +48,7 @@ template <typename CCM_TYPE,
 void
 NT_Connector_T<CCM_TYPE, T, U, Tseq, Useq>::ccm_remove ()
 {
-  CIAOX11_TEST_INFO << "ccm_remove - NT1 5" << std::endl;
+  CIAOX11_TEST_INFO << "NT_Connector_T::ccm_remove" << std::endl;
 }
 
 template <typename CCM_TYPE,
@@ -59,7 +59,7 @@ template <typename CCM_TYPE,
 void
 NT_Connector_T<CCM_TYPE, T, U, Tseq, Useq>::ccm_activate ()
 {
-  CIAOX11_TEST_INFO << "ccm_activate - NT1 3" << std::endl;
+  CIAOX11_TEST_INFO << "NT_Connector_T::ccm_activate" << std::endl;
 }
 
 template <typename CCM_TYPE,
@@ -70,7 +70,7 @@ template <typename CCM_TYPE,
 void
 NT_Connector_T<CCM_TYPE, T, U, Tseq, Useq>::ccm_passivate ()
 {
-  CIAOX11_TEST_INFO << "ccm_passivate - NT1 4" << std::endl;
+  CIAOX11_TEST_INFO << "NT_Connector_T::ccm_passivate" << std::endl;
 }
 
 template <typename CCM_TYPE,
@@ -175,7 +175,7 @@ void
 NT2_Connector_T<CCM_TYPE, T, U, Tseq, Useq>::set_session_context (
     IDL::traits<Components::SessionContext>::ref_type /* ctx*/)
 {
-  CIAOX11_TEST_INFO << "set_session_context - NT2 1 " << std::endl;
+  CIAOX11_TEST_INFO << "NT2_Connector_T::set_session_context" << std::endl;
 }
 
 template <typename CCM_TYPE,
@@ -186,7 +186,7 @@ template <typename CCM_TYPE,
 void
 NT2_Connector_T<CCM_TYPE, T, U, Tseq, Useq>::configuration_complete ()
 {
-  CIAOX11_TEST_INFO << "configuration_complete - NT2 2" << std::endl;
+  CIAOX11_TEST_INFO << "NT2_Connector_T::configuration_complete" << std::endl;
 }
 
 template <typename CCM_TYPE,
@@ -197,7 +197,7 @@ template <typename CCM_TYPE,
 void
 NT2_Connector_T<CCM_TYPE, T, U, Tseq, Useq>::ccm_remove ()
 {
-  CIAOX11_TEST_INFO << "ccm_remove - NT2 5" << std::endl;
+  CIAOX11_TEST_INFO << "NT2_Connector_T::ccm_remove" << std::endl;
 }
 
 template <typename CCM_TYPE,
@@ -208,7 +208,7 @@ template <typename CCM_TYPE,
 void
 NT2_Connector_T<CCM_TYPE, T, U, Tseq, Useq>::ccm_activate ()
 {
-  CIAOX11_TEST_INFO << "ccm_activate - NT2 3" << std::endl;
+  CIAOX11_TEST_INFO << "NT2_Connector_T::ccm_activate" << std::endl;
 }
 
 template <typename CCM_TYPE,
@@ -219,7 +219,63 @@ template <typename CCM_TYPE,
 void
 NT2_Connector_T<CCM_TYPE, T, U, Tseq, Useq>::ccm_passivate ()
 {
-  CIAOX11_TEST_INFO << "ccm_passivate - NT2 4" << std::endl;
+  CIAOX11_TEST_INFO << "NT2_Connector_T::ccm_passivate" << std::endl;
+}
+
+template <typename CCM_TYPE,
+          typename T,
+          typename U,
+          typename Tseq,
+          typename Useq>
+void
+NT3_Connector_T<CCM_TYPE, T, U, Tseq, Useq>::set_session_context (
+    IDL::traits<Components::SessionContext>::ref_type /* ctx*/)
+{
+  CIAOX11_TEST_INFO << "NT3_Connector_T::set_session_context" << std::endl;
+}
+
+template <typename CCM_TYPE,
+          typename T,
+          typename U,
+          typename Tseq,
+          typename Useq>
+void
+NT3_Connector_T<CCM_TYPE, T, U, Tseq, Useq>::configuration_complete ()
+{
+  CIAOX11_TEST_INFO << "NT3_Connector_T::configuration_complete" << std::endl;
+}
+
+template <typename CCM_TYPE,
+          typename T,
+          typename U,
+          typename Tseq,
+          typename Useq>
+void
+NT3_Connector_T<CCM_TYPE, T, U, Tseq, Useq>::ccm_remove ()
+{
+  CIAOX11_TEST_INFO << "NT3_Connector_T::ccm_remove" << std::endl;
+}
+
+template <typename CCM_TYPE,
+          typename T,
+          typename U,
+          typename Tseq,
+          typename Useq>
+void
+NT3_Connector_T<CCM_TYPE, T, U, Tseq, Useq>::ccm_activate ()
+{
+  CIAOX11_TEST_INFO << "NT3_Connector_T::ccm_activate" << std::endl;
+}
+
+template <typename CCM_TYPE,
+          typename T,
+          typename U,
+          typename Tseq,
+          typename Useq>
+void
+NT3_Connector_T<CCM_TYPE, T, U, Tseq, Useq>::ccm_passivate ()
+{
+  CIAOX11_TEST_INFO << "NT3_Connector_T::ccm_passivate" << std::endl;
 }
 
 template <typename CCM_TYPE,
@@ -291,30 +347,35 @@ template <typename CCM_TYPE>
 void
 Bar_Connector_T<CCM_TYPE>::set_session_context (IDL::traits<Components::SessionContext>::ref_type /*ctx*/)
 {
+  CIAOX11_TEST_INFO << "Bar_Connector_T::set_session_context" << std::endl;
 }
 
 template <typename CCM_TYPE>
 void
 Bar_Connector_T<CCM_TYPE>::configuration_complete ()
 {
+  CIAOX11_TEST_INFO << "Bar_Connector_T::configuration_complete" << std::endl;
 }
 
 template <typename CCM_TYPE>
 void
 Bar_Connector_T<CCM_TYPE>::ccm_remove ()
 {
+  CIAOX11_TEST_INFO << "Bar_Connector_T::ccm_remove" << std::endl;
 }
 
 template <typename CCM_TYPE>
 void
 Bar_Connector_T<CCM_TYPE>::ccm_activate ()
 {
+  CIAOX11_TEST_INFO << "Bar_Connector_T::ccm_activate" << std::endl;
 }
 
 template <typename CCM_TYPE>
 void
 Bar_Connector_T<CCM_TYPE>::ccm_passivate ()
 {
+  CIAOX11_TEST_INFO << "Bar_Connector_T::ccm_passivate" << std::endl;
 }
 
 template <typename CCM_TYPE>

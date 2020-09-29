@@ -96,6 +96,12 @@ public:
   typename CCM_TYPE::foo5_traits::port_attrib_type foo5_port_attrib() override;
   void foo5_port_attrib(const typename CCM_TYPE::foo5_traits::port_attrib_type& _v) override;
 
+  void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
+  void configuration_complete () override;
+  void ccm_remove () override;
+  void ccm_activate () override;
+  void ccm_passivate () override;
+
 private:
   // Should be able to store a reference to a base type
   typename IDL::traits<typename CCM_TYPE::write_port_traits::foo2_type>::ref_type write_foo2_type_ref {};
@@ -120,14 +126,13 @@ public:
   virtual ~Bar_Connector_T () = default;
 
   void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
-
   void configuration_complete () override;
   void ccm_remove () override;
   void ccm_activate () override;
   void ccm_passivate () override;
 
-   int16_t foo() override;
-   void foo(int16_t _v) override;
+  int16_t foo() override;
+  void foo(int16_t _v) override;
 
 private:
   Bar_Connector_T(const Bar_Connector_T&) = delete;
