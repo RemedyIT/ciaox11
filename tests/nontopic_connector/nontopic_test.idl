@@ -65,5 +65,4 @@ module Typed_NonTopic_Test_b<typename T,typename U,
   };
 };
 
-
 #endif
