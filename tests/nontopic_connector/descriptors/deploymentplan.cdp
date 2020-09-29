@@ -7,8 +7,6 @@
   <implementation xmi:id="NonTopic_ConnectorHomeImplementation">
     <name>NonTopic_ConnectorHomeImplementation</name>
     <source/>
-    <artifact xmi:idref="NonTopic_Connector_ExecArtifact"/>
-    <artifact xmi:idref="NonTopic_Connector_SvntArtifact"/>
     <execParameter>
       <name>nl.remedy.it.DnCX11.Executor.Factory</name>
       <value>
@@ -27,7 +25,7 @@
           <kind>tk_string</kind>
         </type>
         <value>
-          <string>nontopic_connector_exec</string>
+          <string>NT_Connector_exec</string>
         </value>
       </value>
     </execParameter>
@@ -49,7 +47,7 @@
           <kind>tk_string</kind>
         </type>
         <value>
-          <string>nontopic_connector_svnt</string>
+          <string>NT_Connector_svnt</string>
         </value>
       </value>
     </execParameter>
@@ -58,8 +56,6 @@
   <implementation xmi:id="NonTopic_ConnectorHomeImplementation2">
     <name>NonTopic_ConnectorHomeImplementation2</name>
     <source/>
-    <artifact xmi:idref="NonTopic_Connector_NT2_ExecArtifact"/>
-    <artifact xmi:idref="NonTopic_Connector_NT2_SvntArtifact"/>
     <execParameter>
       <name>nl.remedy.it.DnCX11.Executor.Factory</name>
       <value>
@@ -78,7 +74,7 @@
           <kind>tk_string</kind>
         </type>
         <value>
-          <string>nontopic_connector_NT2_exec</string>
+          <string>NT_Connector_exec</string>
         </value>
       </value>
     </execParameter>
@@ -100,7 +96,7 @@
           <kind>tk_string</kind>
         </type>
         <value>
-          <string>nontopic_connector_NT2_svnt</string>
+          <string>NT_Connector_svnt</string>
         </value>
       </value>
     </execParameter>
@@ -109,8 +105,6 @@
   <implementation xmi:id="NonTopic_ConnectorHomeImplementation3">
     <name>NonTopic_ConnectorHomeImplementation3</name>
     <source/>
-    <artifact xmi:idref="NonTopic_Connector_NT3_ExecArtifact"/>
-    <artifact xmi:idref="NonTopic_Connector_NT3_SvntArtifact"/>
     <execParameter>
       <name>nl.remedy.it.DnCX11.Executor.Factory</name>
       <value>
@@ -129,7 +123,7 @@
           <kind>tk_string</kind>
         </type>
         <value>
-          <string>nontopic_connector_NT3_exec</string>
+          <string>NT_Connector_exec</string>
         </value>
       </value>
     </execParameter>
@@ -151,7 +145,7 @@
           <kind>tk_string</kind>
         </type>
         <value>
-          <string>nontopic_connector_NT3_svnt</string>
+          <string>NT_Connector_svnt</string>
         </value>
       </value>
     </execParameter>
@@ -160,8 +154,6 @@
   <implementation xmi:id="NonTopic_ConnectorHomeImplementationBar">
     <name>NonTopic_ConnectorHomeImplementation3</name>
     <source/>
-    <artifact xmi:idref="NonTopic_Connector_Bar_ExecArtifact"/>
-    <artifact xmi:idref="NonTopic_Connector_Bar_SvntArtifact"/>
     <execParameter>
       <name>nl.remedy.it.DnCX11.Executor.Factory</name>
       <value>
@@ -180,7 +172,7 @@
           <kind>tk_string</kind>
         </type>
         <value>
-          <string>nontopic_connector_Bar_exec</string>
+          <string>NT_Connector_exec</string>
         </value>
       </value>
     </execParameter>
@@ -202,7 +194,7 @@
           <kind>tk_string</kind>
         </type>
         <value>
-          <string>nontopic_connector_Bar_svnt</string>
+          <string>NT_Connector_svnt</string>
         </value>
       </value>
     </execParameter>
@@ -235,150 +227,5 @@
     <source/>
     <implementation xmi:idref="NonTopic_ConnectorHomeImplementationBar"/>
   </instance>
-
-  <artifact xmi:id="NonTopic_Connector_SvntArtifact">
-    <name>nontopic_connector_svnt</name>
-    <source/>
-    <node/>
-    <location>NT_Connector_svnt</location>
-    <execParameter>
-      <name>entryPoint</name>
-      <value>
-        <type>
-          <kind>tk_string</kind>
-        </type>
-        <value>
-          <string>create_Xtest_a_NT_Servant</string>
-        </value>
-      </value>
-    </execParameter>
-  </artifact>
-
-  <artifact xmi:id="NonTopic_Connector_ExecArtifact">
-    <name>nontopic_connector_exec</name>
-    <source/>
-    <node/>
-    <location>NT_Connector_exec</location>
-    <execParameter>
-      <name>entryPoint</name>
-      <value>
-        <type>
-          <kind>tk_string</kind>
-        </type>
-        <value>
-          <string>create_Xtest_a_NT_Impl</string>
-        </value>
-      </value>
-    </execParameter>
-  </artifact>
-
-  <artifact xmi:id="NonTopic_Connector_NT2_SvntArtifact">
-    <name>nontopic_connector_NT2_svnt</name>
-    <source/>
-    <node/>
-    <location>NT_Connector_svnt</location>
-    <execParameter>
-      <name>entryPoint</name>
-      <value>
-        <type>
-          <kind>tk_string</kind>
-        </type>
-        <value>
-          <string>create_Xtest_b_NT2_Servant</string>
-        </value>
-      </value>
-    </execParameter>
-  </artifact>
-
-  <artifact xmi:id="NonTopic_Connector_NT2_ExecArtifact">
-    <name>nontopic_connector_NT2_exec</name>
-    <source/>
-    <node/>
-    <location>NT_Connector_exec</location>
-    <execParameter>
-      <name>entryPoint</name>
-      <value>
-        <type>
-          <kind>tk_string</kind>
-        </type>
-        <value>
-          <string>create_Xtest_b_NT2_Impl</string>
-        </value>
-      </value>
-    </execParameter>
-  </artifact>
-
-  <artifact xmi:id="NonTopic_Connector_NT3_SvntArtifact">
-    <name>nontopic_connector_NT3_svnt</name>
-    <source/>
-    <node/>
-    <location>NT_Connector_svnt</location>
-    <execParameter>
-      <name>entryPoint</name>
-      <value>
-        <type>
-          <kind>tk_string</kind>
-        </type>
-        <value>
-          <string>create_Xtest_b_NT3_Servant</string>
-        </value>
-      </value>
-    </execParameter>
-  </artifact>
-
-  <artifact xmi:id="NonTopic_Connector_NT3_ExecArtifact">
-    <name>nontopic_connector_NT3_exec</name>
-    <source/>
-    <node/>
-    <location>NT_Connector_exec</location>
-    <execParameter>
-      <name>entryPoint</name>
-      <value>
-        <type>
-          <kind>tk_string</kind>
-        </type>
-        <value>
-          <string>create_Xtest_b_NT3_Impl</string>
-        </value>
-      </value>
-    </execParameter>
-  </artifact>
-
-  <artifact xmi:id="NonTopic_Connector_Bar_SvntArtifact">
-    <name>nontopic_connector_Bar_svnt</name>
-    <source/>
-    <node/>
-    <location>NT_Connector_svnt</location>
-    <execParameter>
-      <name>entryPoint</name>
-      <value>
-        <type>
-          <kind>tk_string</kind>
-        </type>
-        <value>
-          <string>create_Bar_Servant</string>
-        </value>
-      </value>
-    </execParameter>
-  </artifact>
-
-  <artifact xmi:id="NonTopic_Connector_Bar_ExecArtifact">
-    <name>nontopic_connector_Bar_exec</name>
-    <source/>
-    <node/>
-    <location>NT_Connector_exec</location>
-    <execParameter>
-      <name>entryPoint</name>
-      <value>
-        <type>
-          <kind>tk_string</kind>
-        </type>
-        <value>
-          <string>create_Bar_Impl</string>
-        </value>
-      </value>
-    </execParameter>
-  </artifact>
-
 
 </Deployment:DeploymentPlan>
