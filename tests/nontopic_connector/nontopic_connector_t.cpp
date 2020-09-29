@@ -286,3 +286,46 @@ NT3_Connector_T<CCM_TYPE, T, U, Tseq, Useq>::foo5_port_attrib(
     const typename CCM_TYPE::foo5_traits::port_attrib_type& /*_v*/)
 {
 }
+
+template <typename CCM_TYPE>
+void
+Bar_Connector_T<CCM_TYPE>::set_session_context (IDL::traits<Components::SessionContext>::ref_type /*ctx*/)
+{
+}
+
+template <typename CCM_TYPE>
+void
+Bar_Connector_T<CCM_TYPE>::configuration_complete ()
+{
+}
+
+template <typename CCM_TYPE>
+void
+Bar_Connector_T<CCM_TYPE>::ccm_remove ()
+{
+}
+
+template <typename CCM_TYPE>
+void
+Bar_Connector_T<CCM_TYPE>::ccm_activate ()
+{
+}
+
+template <typename CCM_TYPE>
+void
+Bar_Connector_T<CCM_TYPE>::ccm_passivate ()
+{
+}
+
+template <typename CCM_TYPE>
+int16_t
+Bar_Connector_T<CCM_TYPE>::foo ()
+{
+  return {};
+}
+
+template <typename CCM_TYPE>
+void
+Bar_Connector_T<CCM_TYPE>::foo (int16_t)
+{
+}

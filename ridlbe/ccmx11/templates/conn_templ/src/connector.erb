@@ -30,7 +30,7 @@ namespace <%= executor_cxx_namespace %>
 
 % _args = template_args.dup
   using <%= cxxname %>_exec_i = <%= template_name %> <
-       CCM_<%= scoped_cxxname.scope_to_cxxname %>_Traits<%= !template_args.empty? ? ',' : '>' %>
+       CCM_<%= scoped_cxxname.scope_to_cxxname %>_Traits<%= !template_args.empty? ? ',' : '>;' %>
 % while !_args.empty?
 %   _arg = _args.shift
        <%= _arg.cxx_type %><%= !_args.empty? ? ',' : '>;' %>
