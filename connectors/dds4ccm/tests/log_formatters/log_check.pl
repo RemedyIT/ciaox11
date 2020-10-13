@@ -13,7 +13,7 @@ eval '(exit $?0)' && eval 'exec perl -S $0 ${1+"$@"}'
 $status = 0;
 
 $found = 0;
-$expected = 36;
+$expected = 37;
 
 sub check_readinfo
 {
@@ -219,7 +219,7 @@ while (my $line = <FILE>)
     {
         $start_found = $found;
         if ($line =~ "total_count=11" && $line =~ "total_count_change=16" &&
-            $line =~ "last_policy_id=::DDS::ENTITYFACTORY_QOS_POLICY_ID")
+            $line =~ "last_policy_id=DDS::ENTITYFACTORY_QOS_POLICY_ID")
         {
             $found=$found+1;
         }
@@ -235,7 +235,7 @@ while (my $line = <FILE>)
     {
         $start_found = $found;
         if ($line =~ "total_count=12" && $line =~ "total_count_change=17" &&
-            $line =~ "last_policy_id=::DDS::DATAWRITERRESOURCELIMITS_QOS_POLICY_ID")
+            $line =~ "last_policy_id=DDS::DATAWRITERRESOURCELIMITS_QOS_POLICY_ID")
         {
             $found=$found+1;
         }
@@ -324,7 +324,7 @@ while (my $line = <FILE>)
     }
     elsif ($line =~ "Logging mask all")
     {
-        if ($line =~ "STATUS_MASK_ALL")
+        if ($line =~ "DDS::STATUS_MASK_ALL")
         {
             $found=$found+1;
         }
@@ -335,7 +335,7 @@ while (my $line = <FILE>)
     }
     elsif ($line =~ "Logging mask none")
     {
-        if ($line =~ "STATUS_MASK_NONE")
+        if ($line =~ "DDS::STATUS_MASK_NONE")
         {
             $found=$found+1;
         }
@@ -344,7 +344,7 @@ while (my $line = <FILE>)
             print "ERROR: Error in DDS::STATUS_MASK_NONE logging detected\n";
         }
     }
-    elsif ($line =~ "Logging mask pub")
+    elsif ($line =~ "Logging mask pub:")
     {
         if ($line =~ "PUBLICATION_MATCHED_STATUS")
         {
@@ -353,6 +353,17 @@ while (my $line = <FILE>)
         else
         {
             print "ERROR: Error in DDS::PUBLICATION_MATCHED_STATUS logging detected\n";
+        }
+    }
+    elsif ($line =~ "Logging mask pub data:")
+    {
+        if ($line =~ "DDS::DATA_ON_READERS_STATUS | DDS::PUBLICATION_MATCHED_STATUS")
+        {
+            $found=$found+1;
+        }
+        else
+        {
+            print "ERROR: Error in DDS::DATA_ON_READERS_STATUS|DDS::PUBLICATION_MATCHED_STATUS logging detected\n";
         }
     }
 }
