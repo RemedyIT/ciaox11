@@ -20,14 +20,14 @@ namespace CIAOX11
       {
         static DDS4CCM_Log_Module instance_;
 
-        return &instance_;
+        return std::addressof(instance_);
       }
 
       DDS4CCM_Test_Log_Module* DDS4CCM_Test_Log_Module::getInstance()
       {
         static DDS4CCM_Test_Log_Module instance_;
 
-        return &instance_;
+        return std::addressof(instance_);
       }
 
       DDS4CCM_Log_Module::DDS4CCM_Log_Module ()
