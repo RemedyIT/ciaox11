@@ -19,14 +19,14 @@ namespace CIAOX11
     {
       static CIAOX11_Log_Msg instance_;
 
-      return &instance_;
+      return std::addressof(instance_);
     }
 
     CIAOX11_Test_Log_Msg* CIAOX11_Test_Log_Msg::getInstance()
     {
       static CIAOX11_Test_Log_Msg instance_;
 
-      return &instance_;
+      return std::addressof(instance_);
     }
 
     CIAOX11_Log_Msg::CIAOX11_Log_Msg()

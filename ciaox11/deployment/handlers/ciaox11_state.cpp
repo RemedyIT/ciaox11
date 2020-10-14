@@ -14,7 +14,7 @@ namespace CIAOX11
   {
     static Deployment_State instance_;
 
-    return &instance_;
+    return std::addressof(instance_);
   }
 
   void
