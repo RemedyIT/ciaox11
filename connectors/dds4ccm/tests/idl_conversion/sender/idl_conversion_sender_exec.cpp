@@ -296,6 +296,20 @@ namespace IDL_Conversion_Test_Sender_Impl
         }
       }
 
+      Example::B17 b17;
+      b17.reserve (10);
+      for (uint16_t i = 0; i < 10; ++i)
+      {
+        b17[i] = (i%2) ? true : false;
+      }
+
+      Example::B18 b18;
+      b18.reserve (15);
+      for (uint16_t i = 0; i < 15; ++i)
+      {
+        b18[i] = (i%2) ? true : false;
+      }
+
 
       Example::B32 b32;
       b32[0] = Example::B31 (3*this->last_iteration_);
@@ -422,6 +436,8 @@ namespace IDL_Conversion_Test_Sender_Impl
           b14,
           b15,
           b16,
+          b17,
+          b18,
           b32,
           b33,
           b34,
