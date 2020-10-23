@@ -149,6 +149,13 @@ module Example {
     string key;
     short iteration;
   }; //@TopLevel()
+
+  struct ColorStruct;
+  typedef sequence <ColorStruct> ColorList;
+  struct ColorStruct {
+    string colorString;
+    long colorNum;
+  };
 };
 
 // Test a module with only non-DDS translatable types/constants
