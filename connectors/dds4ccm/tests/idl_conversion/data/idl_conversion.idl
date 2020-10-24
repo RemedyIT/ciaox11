@@ -151,13 +151,39 @@ module Example {
   }; //@TopLevel()
 
   struct ColorStruct;
-  typedef sequence <ColorStruct> ColorList;
+  //typedef sequence <ColorStruct> ColorList;
+  struct ColorStruct {
+    string colorString;
+    long colorNum;
+  };
+
+  union B03;
+  //typedef sequence <B03> B03List;
+  union B03 switch (long)
+  {
+    case 2: short b_03_3;
+  };
+};
+
+module Foo
+{
+  struct ColorStruct;
+  //typedef sequence <ColorStruct> ColorList;
   struct ColorStruct {
     string colorString;
     long colorNum;
   };
 };
 
+module UnionTest
+{
+  union B03;
+  //typedef sequence <B03> B03List;
+  union B03 switch (long)
+  {
+    case 2: short b_03_3;
+  };
+};
 // Test a module with only non-DDS translatable types/constants
 // => should result in omitted module in DDS IDL
 module Empty
