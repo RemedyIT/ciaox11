@@ -1,0 +1,16 @@
+project(*double_delete) : ddsx11_impl {
+
+  after += builtin_stub builtin_ddsx11_impl
+  libs  += builtin_stub builtin_ddsx11_impl
+
+  libpaths += ../lib
+
+  exename = double_delete
+  exeout  = ../lib
+
+  includes += ../base/GeneratedCode
+
+  Source_Files {
+    double_delete.cpp
+  }
+}

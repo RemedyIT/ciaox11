@@ -54,7 +54,7 @@ namespace CIAOX11
       DAnCEX11::Utility::PROPERTY_MAP pmap;
     };
 
-    typedef std::map <std::string, Instance_Info> INSTANCES;
+    using INSTANCES = std::map <std::string, Instance_Info>;
 
   private:
     // Helper methods for get_ccm_object.

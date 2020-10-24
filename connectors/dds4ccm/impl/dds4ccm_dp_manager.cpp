@@ -21,7 +21,7 @@ namespace CIAOX11
     {
       static DomainParticipantManager instance_;
 
-      return &instance_;
+      return std::addressof(instance_);
     }
 
     //============================================================
@@ -69,6 +69,16 @@ namespace CIAOX11
     //============================================================
     // DomainParticipantManager::DomainParticipantManager
     //============================================================
+    DomainParticipantManager::DomainParticipantManager ()
+    {
+      DDS4CCM_LOG_TRACE ("DomainParticipantManager::DomainParticipantManager");
+    }
+
+    DomainParticipantManager::~DomainParticipantManager ()
+    {
+      DDS4CCM_LOG_TRACE ("DomainParticipantManager::~DomainParticipantManager");
+    }
+
     IDL::traits< ::DDS::DomainParticipant>::ref_type
     DomainParticipantManager::get_participant (const ::DDS::DomainId_t domain_id,
       const std::string &qos_profile)
@@ -116,8 +126,8 @@ namespace CIAOX11
         return false;
       }
 
-      IdQosProfile idqos = std::make_pair (qos_profile, domain_id);
-      DomainParticipants_iterator it_found = this->dps_.find (idqos);
+      IdQosProfile const idqos = std::make_pair (qos_profile, domain_id);
+      DomainParticipants_iterator const it_found = this->dps_.find (idqos);
 
       if (it_found == this->dps_.end())
       {
@@ -173,8 +183,8 @@ namespace CIAOX11
         return false;
       }
 
-      IdQosProfile idqos = std::make_pair (qos_profile, domain_id);
-      DomainParticipants_iterator iter = this->dps_.find (idqos);
+      IdQosProfile const idqos = std::make_pair (qos_profile, domain_id);
+      DomainParticipants_iterator const iter = this->dps_.find (idqos);
 
       if (iter != this->dps_.end ())
       {

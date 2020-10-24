@@ -33,7 +33,7 @@ DDS_Write_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::configuration_complete (
     {
       this->data_writer_ =
         publisher->create_datawriter_with_profile (
-          topic, qos_profile, nullptr, 0);
+          topic, qos_profile, nullptr, ::DDS::STATUS_MASK_NONE);
     }
     else
     {
@@ -53,7 +53,7 @@ DDS_Write_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::configuration_complete (
 
       this->data_writer_ =
         publisher->create_datawriter (
-          topic, dwqos, nullptr, 0);
+          topic, dwqos, nullptr, ::DDS::STATUS_MASK_NONE);
     }
 
     if (this->data_writer_)

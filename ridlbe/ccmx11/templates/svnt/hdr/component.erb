@@ -69,8 +69,8 @@ namespace <%= executor_cxx_namespace %>
     //@{
 %  interfaces_with_multiple_receptacle_ports.each do |_mp|
     /// Map type of connection name and <%= _mp.interface_type.scoped_cxxname %> references
-    typedef std::map<std::string, IDL::traits< <%= _mp.interface_type.scoped_cxxname %>>::ref_type>
-    <%= _mp.interface_type.scoped_cxxname.upcase.identify %>_CONTEXT_TABLE;
+    using <%= _mp.interface_type.scoped_cxxname.upcase.identify %>_CONTEXT_TABLE =
+      std::map<std::string, IDL::traits< <%= _mp.interface_type.scoped_cxxname %>>::ref_type>;
 %  end
     //@}
 %  end

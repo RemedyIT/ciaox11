@@ -25,6 +25,9 @@ module Example {
   typedef sequence<long> B15;
   typedef double         B16[4][5];
 
+  typedef sequence<boolean> B17;
+  typedef sequence<boolean, 15> B18;
+
   struct B31 {
     long B31_1;
   }; //@TopLevel(false)
@@ -108,6 +111,9 @@ module Example {
 
     B15 b_15;
     B16 b_16;
+
+    B17 b_17;
+    B18 b_18;
 
     B32 b_32;
     B33 b_33;

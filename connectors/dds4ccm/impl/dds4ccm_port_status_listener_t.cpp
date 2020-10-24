@@ -106,7 +106,7 @@ namespace CIAOX11
     {
       DDS4CCM_LOG_TRACE ("PortStatusListener_T<EVT_STRATEGY>::get_mask");
 
-      ::DDS::StatusMask mask {};
+      ::DDS::StatusMask mask { ::DDS::STATUS_MASK_NONE };
       if (psl)
       {
         mask = ::DDS::REQUESTED_DEADLINE_MISSED_STATUS |

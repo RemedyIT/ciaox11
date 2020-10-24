@@ -24,11 +24,11 @@ public:
   TestTypeFactory () = default;
   virtual ~TestTypeFactory() {}
 
-  virtual IDL::traits< ::DDS::DataWriter>::ref_type
+  IDL::traits< ::DDS::DataWriter>::ref_type
   create_datawriter (
     ::DDS_Native::DDS::DataWriter* dw) override;
 
-  virtual IDL::traits< ::DDS::DataReader>::ref_type
+  IDL::traits< ::DDS::DataReader>::ref_type
   create_datareader (
     ::DDS_Native::DDS::DataReader* dr) override;
 };
@@ -68,10 +68,10 @@ int main (int , char **)
 
       ::DDS::DomainParticipantQos qos;
       IDL::traits< ::DDS::DomainParticipant>::ref_type dp1 =
-        pf->create_participant (domain_id, qos, nullptr, 0);
+        pf->create_participant (domain_id, qos, nullptr, ::DDS::STATUS_MASK_NONE);
 
       IDL::traits< ::DDS::DomainParticipant>::ref_type dp2 =
-        pf->create_participant (domain_id, qos, nullptr, 0);
+        pf->create_participant (domain_id, qos, nullptr, ::DDS::STATUS_MASK_NONE);
 
       const std::string type1 ("DataType1");
       const std::string type2 ("DataType2");

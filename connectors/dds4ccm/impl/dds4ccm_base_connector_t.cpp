@@ -196,7 +196,7 @@ DDS_Base_Connector_T<CCM_TYPE>::init_domain ()
           this->domain_id_,
           qos,
           nullptr,
-          0);
+          ::DDS::STATUS_MASK_NONE);
     }
     else
     {
@@ -205,7 +205,7 @@ DDS_Base_Connector_T<CCM_TYPE>::init_domain ()
           this->domain_id_,
           this->qos_profile_,
           nullptr,
-          0);
+          ::DDS::STATUS_MASK_NONE);
     }
 
     if (!participant)
@@ -269,7 +269,7 @@ DDS_Base_Connector_T<CCM_TYPE>::init_topic (
 
   IDL::traits< ::DDS::Topic>::ref_type topic;
 
-  ::DDS::Duration_t timeout (0, 0);
+  ::DDS::Duration_t timeout { 0, 0 };
   IDL::traits< ::DDS::Topic>::ref_type dds_tp =
     participant->find_topic (topic_name, timeout);
 
@@ -291,7 +291,7 @@ DDS_Base_Connector_T<CCM_TYPE>::init_topic (
           type_name,
           this->qos_profile_,
           nullptr,
-          0);
+          ::DDS::STATUS_MASK_NONE);
     }
     else
     {
@@ -313,7 +313,7 @@ DDS_Base_Connector_T<CCM_TYPE>::init_topic (
                       type_name,
                       tqos,
                       nullptr,
-                      0);
+                      ::DDS::STATUS_MASK_NONE);
     }
   }
   if (topic)
@@ -350,7 +350,7 @@ DDS_Base_Connector_T<CCM_TYPE>::init_publisher (
     publisher = participant->create_publisher_with_profile (
         this->qos_profile_,
         nullptr,
-        0);
+        ::DDS::STATUS_MASK_NONE);
   }
   else
   {
@@ -369,7 +369,7 @@ DDS_Base_Connector_T<CCM_TYPE>::init_publisher (
     publisher = participant->create_publisher (
                     pqos,
                     nullptr,
-                    0);
+                    ::DDS::STATUS_MASK_NONE);
   }
 
   if (publisher)
@@ -414,7 +414,7 @@ DDS_Base_Connector_T<CCM_TYPE>::init_subscriber (
     subscriber = participant->create_subscriber_with_profile (
         this->qos_profile_,
         nullptr,
-        0);
+        ::DDS::STATUS_MASK_NONE);
   }
   else
   {
@@ -430,7 +430,7 @@ DDS_Base_Connector_T<CCM_TYPE>::init_subscriber (
       throw CCM_DDS::InternalError (retcode, 0);
     }
 
-    subscriber = participant->create_subscriber (sqos, nullptr, 0);
+    subscriber = participant->create_subscriber (sqos, nullptr, ::DDS::STATUS_MASK_NONE);
   }
 
   if (subscriber)
@@ -479,11 +479,11 @@ DDS_Base_Connector_T<CCM_TYPE>::activate_topic (
   typedef CIAOX11::DDS4CCM::TopicListener_T<event_strategy_type> topic_listener_type;
 
   // Even if error_listener is nil, it is possible for some vendors
-  // that mask isn't 0 .
+  // that mask isn't DDS::STATUS_MASK_NONE.
   ::DDS::StatusMask const mask =
       topic_listener_type::get_mask (error_listener);
 
-  if (mask != 0)
+  if (mask != ::DDS::STATUS_MASK_NONE)
   {
     topic_listener =
       DDS::make_reference<topic_listener_type>(
@@ -520,12 +520,12 @@ DDS_Base_Connector_T<CCM_TYPE>::activate_publisher (
   typedef typename CCM_TYPE::error_event_strategy_type event_strategy_type;
 
   // Even if error_listener is nil, it is possible for some vendors
-  // that mask isn't 0 .
+  // that mask isn't DDS::STATUS_MASK_NONE.
   ::DDS::StatusMask const mask =
     CIAOX11::DDS4CCM::VendorUtils::get_publisher_listener_mask<event_strategy_type> (
         error_listener);
 
-  if (mask != 0)
+  if (mask != ::DDS::STATUS_MASK_NONE)
   {
     publisher_listener = CIAOX11::DDS4CCM::VendorUtils::create_publisher_listener<event_strategy_type> (
       event_strategy_type (this->context_));
@@ -561,11 +561,11 @@ DDS_Base_Connector_T<CCM_TYPE>::activate_subscriber (
   typedef CIAOX11::DDS4CCM::SubscriberListener_T<event_strategy_type> subscriber_listener_type;
 
   // Even if error_listener is nil, it is possible for some vendors
-  // that mask isn't 0 .
+  // that mask isn't DDS::STATUS_MASK_NONE.
   ::DDS::StatusMask const mask =
       subscriber_listener_type::get_mask (error_listener);
 
-  if (mask != 0)
+  if (mask != ::DDS::STATUS_MASK_NONE)
   {
     subscriber_listener =
       DDS::make_reference<subscriber_listener_type>
@@ -679,10 +679,12 @@ void DDS_Base_Connector_T<CCM_TYPE>::remove_topic (
   DDS4CCM_LOG_TRACE ("DDS_Base_Connector_T::remove_topic");
 
   std::string const topic_name = topic->get_name ();
+  ::DDS::InstanceHandle_t const topic_handle = topic->get_instance_handle ();
+
   DDS4CCM_LOG_DEBUG ("DDS_Base_Connector_T::remove_topic - "
-    << "Going to remove topic <" << topic_name << "> "
-    << IDL::traits<DDS::Entity>::write<entity_formatter> (topic)
-    << " from participant "
+    << "Going to remove topic <" << topic_name << ">:<"
+    << topic_handle
+    << "> from participant "
     << IDL::traits<DDS::Entity>::write<entity_formatter> (participant));
 
   ::DDS::ReturnCode_t const retcode = participant->delete_topic (topic);
@@ -690,8 +692,8 @@ void DDS_Base_Connector_T<CCM_TYPE>::remove_topic (
   if (retcode != DDS::RETCODE_OK && retcode != DDS::RETCODE_PRECONDITION_NOT_MET)
   {
     DDS4CCM_LOG_ERROR ("DDS_Base_Connector_T::remove_topic - Error removing topic <"
-      << IDL::traits<DDS::Entity>::write<entity_formatter> (topic)
-      << " from participant "
+      << topic_handle
+      << "> from participant "
       << IDL::traits<DDS::Entity>::write<entity_formatter> (participant)
       << " - return code <"
       << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
@@ -701,9 +703,9 @@ void DDS_Base_Connector_T<CCM_TYPE>::remove_topic (
   else
   {
     DDS4CCM_LOG_DEBUG ("DDS_Base_Connector_T::remove_topic - "
-      << "Removed topic <" << topic_name << "> "
-      << IDL::traits<DDS::Entity>::write<entity_formatter> (topic)
-      << " from participant "
+      << "Removed topic <" << topic_name << ">:<"
+      << topic_handle
+      << "> from participant "
       << IDL::traits<DDS::Entity>::write<entity_formatter> (participant)
       << " - return code <"
       << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
@@ -725,17 +727,7 @@ DDS_Base_Connector_T<CCM_TYPE>::remove_publisher (
     << " from participant "
     << IDL::traits<DDS::Entity>::write<entity_formatter> (participant));
 
-  ::DDS::ReturnCode_t retcode = publisher->delete_contained_entities ();
-  if (retcode != DDS::RETCODE_OK)
-  {
-    DDS4CCM_LOG_ERROR ("DDS_Base_Connector_T::remove_publisher - "
-      << "Unable to remove contained entities from publisher: <"
-      << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
-      << ">.");
-    throw CORBA::INTERNAL ();
-  }
-
-  retcode = participant->delete_publisher (publisher);
+  ::DDS::ReturnCode_t const retcode = participant->delete_publisher (publisher);
 
   if (retcode != DDS::RETCODE_OK)
   {
@@ -798,42 +790,12 @@ DDS_Base_Connector_T<CCM_TYPE>::remove_domain (
     this->domain_id_, this->qos_profile_, participant))
   {
     DDS4CCM_LOG_DEBUG ("DDS_Base_Connector_T::remove_domain - "
-      << "Going to remove contained entities of participant <"
-      << IDL::traits<DDS::Entity>::write<entity_formatter> (participant)
-      << "> for domain <" << this->domain_id_
-      << "> with qos <" << this->qos_profile_ << ">.");
-
-    ::DDS::ReturnCode_t retcode = participant->delete_contained_entities ();
-
-    if (retcode != DDS::RETCODE_OK)
-    {
-      DDS4CCM_LOG_ERROR ("DDS_Base_Connector_T::remove_domain - "
-        << "Error removing contained entities for participant <"
-        << IDL::traits<DDS::Entity>::write<entity_formatter> (participant)
-        << "> for domain <" << this->domain_id_
-        << "> with qos <" << this->qos_profile_ << "> - return code <"
-        << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
-        << ">.");
-      throw CCM_DDS::InternalError (retcode, 0);
-    }
-    else
-    {
-      DDS4CCM_LOG_DEBUG ("DDS_Base_Connector_T::remove_domain - "
-        << "Removed contained entities for participant <"
-        << IDL::traits<DDS::Entity>::write<entity_formatter> (participant)
-        << "> for domain <" << this->domain_id_
-        << "> with qos <" << this->qos_profile_ << "> - return code <"
-        << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
-        << ">.");
-    }
-
-    DDS4CCM_LOG_DEBUG ("DDS_Base_Connector_T::remove_domain - "
       << "Going to remove participant <"
       << IDL::traits<DDS::Entity>::write<entity_formatter> (participant)
       << "> for domain <" << this->domain_id_ << "> with qos <"
       << this->qos_profile_ << ">.");
 
-    retcode = this->participant_factory_->delete_participant (participant);
+    ::DDS::ReturnCode_t const retcode = this->participant_factory_->delete_participant (participant);
 
     if (retcode != DDS::RETCODE_OK)
     {

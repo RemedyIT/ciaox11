@@ -30,6 +30,7 @@ namespace DDSX11
     virtual ~DDS_DataReader_proxy () = default;
 
     virtual DDS_Native::DDS::DataReader *get_native_entity () = 0;
+    virtual void clear_native_entity () = 0;
 
   private:
     DDS_DataReader_proxy(const DDS_DataReader_proxy&) = delete;

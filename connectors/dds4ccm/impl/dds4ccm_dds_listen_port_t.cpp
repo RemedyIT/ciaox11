@@ -30,7 +30,7 @@ DDS_Listen_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE, LRT>::activate (
   ::DDS::StatusMask const mask =
     DataReaderListener_type::get_mask (listener, status);
 
-  if (mask != 0)
+  if (mask != ::DDS::STATUS_MASK_NONE)
   {
     if (!this->listener_)
     {

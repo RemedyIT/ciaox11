@@ -27,7 +27,7 @@ namespace DDSX11
     /// Destructor
     virtual ~DDS_TopicListener_proxy () = default;
 
-    virtual void
+    void
     on_inconsistent_topic (
       DDS_Native::DDS::Topic* the_topic,
       const DDS_Native::DDS::InconsistentTopicStatus& status) override;

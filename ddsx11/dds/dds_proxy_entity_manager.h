@@ -83,35 +83,37 @@ namespace DDSX11
     //@}
 
     /**
-      * @name          unregister_xxx_proxy
-      * @brief         Looking up the given proxy and remove it from
-      *                the corresponding map
-      * @param proxy   The C++11 proxy to unregister
+      * @name  unregister_xxx_proxy
+      * @brief Looking up the given proxy and remove it from
+      *        the corresponding map
+      * @param handle The instance handle of the proxy to unregister
+      * @retval true The proxy has been successfully unregistered
+      * @retval false The proxy was not found
       */
     //@{
-    static void
+    static bool
     unregister_datareader_proxy (
-      ::IDL::traits< ::DDS::DataReader>::ref_type proxy);
+      IDL::traits< ::DDS::InstanceHandle_t>::in_type handle);
 
-    static void
+    static bool
     unregister_datawriter_proxy (
-      ::IDL::traits< ::DDS::DataWriter>::ref_type proxy);
+      IDL::traits< ::DDS::InstanceHandle_t>::in_type handle);
 
-    static void
+    static bool
     unregister_subscriber_proxy (
-      ::IDL::traits< ::DDS::Subscriber>::ref_type proxy);
+      IDL::traits< ::DDS::InstanceHandle_t>::in_type handle);
 
-    static void
+    static bool
     unregister_publisher_proxy (
-      ::IDL::traits< ::DDS::Publisher>::ref_type proxy);
+      IDL::traits< ::DDS::InstanceHandle_t>::in_type handle);
 
-    static void
+    static bool
     unregister_topic_proxy (
-      ::IDL::traits< ::DDS::Topic>::ref_type proxy);
+      IDL::traits< ::DDS::InstanceHandle_t>::in_type handle);
 
-    static void
+    static bool
     unregister_dp_proxy (
-      ::IDL::traits< ::DDS::DomainParticipant>::ref_type proxy);
+      IDL::traits< ::DDS::InstanceHandle_t>::in_type handle);
     //@}
 
     /**
@@ -194,15 +196,16 @@ namespace DDSX11
       * @name          unregister_proxy
       * @brief         Helper method, preventing double code.
       *                Removes the given proxy from the corresponding list.
-      * @tparam PROXY_TYPE The type of entity to unregister (DataReader/DataWRiter/Topic/...)
       * @tparam PROXY_MAP  The type of the map from which to unregister the given proxy
-      * @param  proxy   The C++11 proxy to unregister
-      * @param  lst     Reference to the map from which to unregister the proxy
+      * @param handle  The instance handle of the proxy we need to unregister
+      * @param lst     Reference to the map from which to unregister the proxy
+      * @retval true The proxy has been successfully unregistered
+      * @retval false The proxy was not found
       */
-    template<typename PROXY_TYPE, typename PROXY_MAP>
-    static void
+    template<typename PROXY_MAP>
+    static bool
     unregister_proxy (
-      PROXY_TYPE proxy,
+      IDL::traits< ::DDS::InstanceHandle_t>::in_type handle,
       PROXY_MAP &lst);
 
     /// Map containing all DataReader C++11 proxies
@@ -226,7 +229,10 @@ namespace DDSX11
     static std::mutex pub_mutex;
 
     /// Map containing all Topic C++11 proxies
-    typedef std::map< ::DDS::InstanceHandle_t, IDL::traits< ::DDS::Topic>::ref_type, CompareHandles> TopicProxies;
+    /// A topic can be registered multiple times because using find_topic the native DDS
+    /// implementation can return multiple times the same topic for which multiple times the delete_topic
+    /// must be called, only for the last instance the unregister will remove it from the map
+    typedef std::map< ::DDS::InstanceHandle_t, std::pair <uint32_t, IDL::traits< ::DDS::Topic>::ref_type>, CompareHandles> TopicProxies;
     static TopicProxies tp_proxies;
     static std::mutex tp_mutex;
 
