@@ -68,10 +68,10 @@ int main (int , char **)
 
       ::DDS::DomainParticipantQos qos;
       IDL::traits< ::DDS::DomainParticipant>::ref_type dp1 =
-        pf->create_participant (domain_id, qos, nullptr, 0);
+        pf->create_participant (domain_id, qos, nullptr, ::DDS::STATUS_MASK_NONE);
 
       IDL::traits< ::DDS::DomainParticipant>::ref_type dp2 =
-        pf->create_participant (domain_id, qos, nullptr, 0);
+        pf->create_participant (domain_id, qos, nullptr, ::DDS::STATUS_MASK_NONE);
 
       const std::string type1 ("DataType1");
       const std::string type2 ("DataType2");

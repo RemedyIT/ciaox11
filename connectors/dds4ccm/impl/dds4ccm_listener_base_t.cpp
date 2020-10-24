@@ -49,7 +49,7 @@ namespace CIAOX11
     {
       DDS4CCM_LOG_TRACE ("ListenerBase_T::get_mask");
 
-      ::DDS::StatusMask mask {};
+      ::DDS::StatusMask mask { ::DDS::STATUS_MASK_NONE };
 
       if (listener)
       {
