@@ -2,7 +2,7 @@
  * @file    ciaox11_testlog.h
  * @author  Marcel Smit
  *
- * @brief   CORBA C++11 Test Logging module
+ * @brief   CIAOX11 Test Logging module
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
  */
@@ -12,14 +12,9 @@
 #include "ciaox11/logger/log.h"
 
 #if defined(X11_NLOGGING)
-
 #define CIAOX11_TEST_LOGGER   x11_logger::NULL_LogType
-
 #else
-
-#define CIAOX11_TEST_LOGGER \
-  CIAOX11::ciaox11_logger::CIAOX11_Test_Log_Msg::log_type
-
+#define CIAOX11_TEST_LOGGER CIAOX11::ciaox11_logger::CIAOX11_Test_Log_Msg::log_type
 #endif /* !X11_NLOGGING */
 
 #define CIAOX11_TEST_TRACE      X11_TRACE_LOG(CIAOX11_TEST_LOGGER)

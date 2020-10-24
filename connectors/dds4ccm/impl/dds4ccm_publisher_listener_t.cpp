@@ -101,7 +101,7 @@ namespace CIAOX11
     PublisherListener_T<EVT_STRATEGY>::get_mask (
       IDL::traits< CCM_DDS::ConnectorStatusListener>::ref_type error_listener)
     {
-      ::DDS::StatusMask mask {};
+      ::DDS::StatusMask mask { ::DDS::STATUS_MASK_NONE };
 
       if (error_listener)
       {

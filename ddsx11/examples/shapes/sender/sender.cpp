@@ -32,7 +32,7 @@ int main (int , char *[])
         DDS::traits<DDS::DomainParticipantFactory>::get_instance ();
       DDS::traits<ShapeType>::domainparticipant_ref_type domain_participant =
         dpf->create_participant_with_profile (
-            domain_id_, qos_profile, nullptr, 0);
+            domain_id_, qos_profile, nullptr, DDS::STATUS_MASK_NONE);
 
       retcode = DDS::traits<ShapeType>::register_type (domain_participant, "ShapeType");
       if (retcode != DDS::RETCODE_OK)
@@ -42,15 +42,15 @@ int main (int , char *[])
       }
 
       DDS::traits<ShapeType>::topic_ref_type topic = domain_participant->create_topic_with_profile (
-        "Square", DDS::traits<ShapeType>::get_type_name (), qos_profile, nullptr, 0);
+        "Square", DDS::traits<ShapeType>::get_type_name (), qos_profile, nullptr, DDS::STATUS_MASK_NONE);
 
       DDS::traits<ShapeType>::publisher_ref_type publisher =
-        domain_participant->create_publisher_with_profile (qos_profile, nullptr, 0);
+        domain_participant->create_publisher_with_profile (qos_profile, nullptr, DDS::STATUS_MASK_NONE);
 
       if (publisher && topic)
       {
         DDS::traits<ShapeType>::datawriter_ref_type dw =
-          publisher->create_datawriter_with_profile (topic, qos_profile, nullptr, 0);
+          publisher->create_datawriter_with_profile (topic, qos_profile, nullptr, DDS::STATUS_MASK_NONE);
 
         DDS::traits<ShapeType>::typed_datawriter_ref_type shape_dw =
           DDS::traits<ShapeType>::narrow (dw);

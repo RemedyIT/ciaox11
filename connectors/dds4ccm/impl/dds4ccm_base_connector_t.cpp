@@ -196,7 +196,7 @@ DDS_Base_Connector_T<CCM_TYPE>::init_domain ()
           this->domain_id_,
           qos,
           nullptr,
-          0);
+          ::DDS::STATUS_MASK_NONE);
     }
     else
     {
@@ -205,7 +205,7 @@ DDS_Base_Connector_T<CCM_TYPE>::init_domain ()
           this->domain_id_,
           this->qos_profile_,
           nullptr,
-          0);
+          ::DDS::STATUS_MASK_NONE);
     }
 
     if (!participant)
@@ -291,7 +291,7 @@ DDS_Base_Connector_T<CCM_TYPE>::init_topic (
           type_name,
           this->qos_profile_,
           nullptr,
-          0);
+          ::DDS::STATUS_MASK_NONE);
     }
     else
     {
@@ -313,7 +313,7 @@ DDS_Base_Connector_T<CCM_TYPE>::init_topic (
                       type_name,
                       tqos,
                       nullptr,
-                      0);
+                      ::DDS::STATUS_MASK_NONE);
     }
   }
   if (topic)
@@ -350,7 +350,7 @@ DDS_Base_Connector_T<CCM_TYPE>::init_publisher (
     publisher = participant->create_publisher_with_profile (
         this->qos_profile_,
         nullptr,
-        0);
+        ::DDS::STATUS_MASK_NONE);
   }
   else
   {
@@ -369,7 +369,7 @@ DDS_Base_Connector_T<CCM_TYPE>::init_publisher (
     publisher = participant->create_publisher (
                     pqos,
                     nullptr,
-                    0);
+                    ::DDS::STATUS_MASK_NONE);
   }
 
   if (publisher)
@@ -414,7 +414,7 @@ DDS_Base_Connector_T<CCM_TYPE>::init_subscriber (
     subscriber = participant->create_subscriber_with_profile (
         this->qos_profile_,
         nullptr,
-        0);
+        ::DDS::STATUS_MASK_NONE);
   }
   else
   {
@@ -430,7 +430,7 @@ DDS_Base_Connector_T<CCM_TYPE>::init_subscriber (
       throw CCM_DDS::InternalError (retcode, 0);
     }
 
-    subscriber = participant->create_subscriber (sqos, nullptr, 0);
+    subscriber = participant->create_subscriber (sqos, nullptr, ::DDS::STATUS_MASK_NONE);
   }
 
   if (subscriber)
@@ -479,11 +479,11 @@ DDS_Base_Connector_T<CCM_TYPE>::activate_topic (
   typedef CIAOX11::DDS4CCM::TopicListener_T<event_strategy_type> topic_listener_type;
 
   // Even if error_listener is nil, it is possible for some vendors
-  // that mask isn't 0 .
+  // that mask isn't DDS::STATUS_MASK_NONE.
   ::DDS::StatusMask const mask =
       topic_listener_type::get_mask (error_listener);
 
-  if (mask != 0)
+  if (mask != ::DDS::STATUS_MASK_NONE)
   {
     topic_listener =
       DDS::make_reference<topic_listener_type>(
@@ -520,12 +520,12 @@ DDS_Base_Connector_T<CCM_TYPE>::activate_publisher (
   typedef typename CCM_TYPE::error_event_strategy_type event_strategy_type;
 
   // Even if error_listener is nil, it is possible for some vendors
-  // that mask isn't 0 .
+  // that mask isn't DDS::STATUS_MASK_NONE.
   ::DDS::StatusMask const mask =
     CIAOX11::DDS4CCM::VendorUtils::get_publisher_listener_mask<event_strategy_type> (
         error_listener);
 
-  if (mask != 0)
+  if (mask != ::DDS::STATUS_MASK_NONE)
   {
     publisher_listener = CIAOX11::DDS4CCM::VendorUtils::create_publisher_listener<event_strategy_type> (
       event_strategy_type (this->context_));
@@ -561,11 +561,11 @@ DDS_Base_Connector_T<CCM_TYPE>::activate_subscriber (
   typedef CIAOX11::DDS4CCM::SubscriberListener_T<event_strategy_type> subscriber_listener_type;
 
   // Even if error_listener is nil, it is possible for some vendors
-  // that mask isn't 0 .
+  // that mask isn't DDS::STATUS_MASK_NONE.
   ::DDS::StatusMask const mask =
       subscriber_listener_type::get_mask (error_listener);
 
-  if (mask != 0)
+  if (mask != ::DDS::STATUS_MASK_NONE)
   {
     subscriber_listener =
       DDS::make_reference<subscriber_listener_type>

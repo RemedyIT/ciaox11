@@ -43,7 +43,7 @@ namespace CIAOX11
     {
       DDS4CCM_LOG_TRACE("CIAOX11::DDS4CCM::TopicListener_T::get_mask");
 
-      ::DDS::StatusMask mask {};
+      ::DDS::StatusMask mask { ::DDS::STATUS_MASK_NONE };
 
       if (error_listener)
       {
