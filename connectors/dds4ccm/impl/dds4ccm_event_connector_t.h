@@ -32,7 +32,7 @@ class DDS_Event_Connector_T
 {
 public:
   DDS_Event_Connector_T () = default;
-  virtual ~DDS_Event_Connector_T () = default;
+  virtual ~DDS_Event_Connector_T ();
 
   /**
    * @name DDS_Write

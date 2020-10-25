@@ -11,6 +11,12 @@
 #include "dds4ccm/logger/dds4ccm_log.h"
 #include "dds4ccm/impl/dds4ccm_conf.h"
 
+template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
+DDS_Event_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::~DDS_Event_Connector_T ()
+{
+  DDS4CCM_LOG_TRACE ("DDS_Event_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">>::~DDS_Event_Connector_T");
+}
+
 /**
   * @name DDS_Write
   * DDS_Write operations
