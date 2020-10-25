@@ -22,7 +22,7 @@ namespace CIAOX11
       SharedConditionManager condition_manager)
       : ListenerBase_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE> (evs, std::move(control), condition_manager)
     {
-      DDS4CCM_LOG_TRACE ("DataReaderListenerBase_T::DataReaderListenerBase_T");
+      DDS4CCM_LOG_TRACE ("DataReaderListenerBase_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::DataReaderListenerBase_T");
     }
 
     template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
@@ -31,11 +31,11 @@ namespace CIAOX11
       IDL::traits< ::DDS::DataReader>::ref_type rdr,
       typename IDL::traits<typename CCM_TYPE::data_listener_type>::ref_type listener)
     {
-      DDS4CCM_LOG_TRACE ("DataReaderListenerBase_T::on_data_available_i");
+      DDS4CCM_LOG_TRACE ("DataReaderListenerBase_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::on_data_available_i");
 
       if (!rdr)
       {
-        DDS4CCM_LOG_ERROR ("DataReaderListenerBase_T::on_data_available_i - "
+        DDS4CCM_LOG_ERROR ("DataReaderListenerBase_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::on_data_available_i - "
           << "No datareader received.");
         return;
       }
@@ -52,7 +52,7 @@ namespace CIAOX11
 
       if (!reader)
       {
-        DDS4CCM_LOG_ERROR ("DataReaderListenerBase_T::on_data_available_i - "
+        DDS4CCM_LOG_ERROR ("DataReaderListenerBase_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::on_data_available_i - "
           << "Failed to narrow DataReader to a type specific DataReader.");
         return;
       }
@@ -78,7 +78,7 @@ namespace CIAOX11
             this->condition_manager_->query_condition_listener (),
             data, sample_info, max_samples);
 
-        DDS4CCM_LOG_DEBUG ("DataReaderListenerBase_T::on_data_available_i - "
+        DDS4CCM_LOG_DEBUG ("DataReaderListenerBase_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::on_data_available_i - "
           << "Get data returned <"
           << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">.");
@@ -141,7 +141,7 @@ namespace CIAOX11
           reader->return_loan (data, sample_info);
         if (retcode_returnloan != ::DDS::RETCODE_OK)
         {
-          DDS4CCM_LOG_ERROR ("DataReaderListenerBase_T::on_data_available_i - "
+          DDS4CCM_LOG_ERROR ("DataReaderListenerBase_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::on_data_available_i - "
             << "Error returning loan to DDS - <"
             << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode_returnloan)
             << ">.");
@@ -149,7 +149,7 @@ namespace CIAOX11
           // It will likely causes a crash in their implementation
         }
       }
-      catch_dds4ccm_listener_ex (ex, "DataReaderListenerBase_T::on_data_available_i")
+      catch_dds4ccm_listener_ex (ex, "DataReaderListenerBase_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::on_data_available_i")
     }
   }
 }

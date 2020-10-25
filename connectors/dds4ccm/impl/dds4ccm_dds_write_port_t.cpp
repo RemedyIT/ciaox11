@@ -68,7 +68,7 @@ DDS_Write_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::configuration_complete (
     }
     else
     {
-      DDS4CCM_LOG_ERROR ("DDS_Write_Port_T"
+      DDS4CCM_LOG_ERROR ("DDS_Write_Port_T<"
         << ::DDS::traits<TOPIC_TYPE>::get_type_name()
         << ">::configuration_complete - Error: DDS returned a nil datawriter.");
       throw ::CORBA::INTERNAL ();

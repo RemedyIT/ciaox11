@@ -29,6 +29,7 @@ namespace CIAOX11
       ::DDS::StatusKind status_kind)
     {
       DDS4CCM_LOG_TRACE("PublisherListener_T<EVT_STRATEGY>::on_unexpected_status");
+
       DDS4CCM_LOG_INFO("PublisherListener_T<EVT_STRATEGY>::on_unexpected_status" <<
           IDL::traits< ::DDS::StatusKind>::write<status_kind_formatter> (status_kind));
 

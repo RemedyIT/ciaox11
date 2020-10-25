@@ -22,7 +22,7 @@ namespace CIAOX11
       IDL::traits<CORBA::Object>::weak_ref_type component)
       : FacetBase<READER_TYPE> (component)
     {
-      DDS4CCM_LOG_TRACE ("Reader_T" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::Reader_T");
+      DDS4CCM_LOG_TRACE ("Reader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::Reader_T");
     }
 
     template <typename READER_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
@@ -45,7 +45,7 @@ namespace CIAOX11
       const TOPIC_TYPE &an_instance,
       const ::DDS::InstanceHandle_t& instance_handle)
     {
-      DDS4CCM_LOG_TRACE ("Reader_T" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::check_handle");
+      DDS4CCM_LOG_TRACE ("Reader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::check_handle");
 
       ::DDS::InstanceHandle_t const lookup_hnd =
         this->dds_reader_->lookup_instance (an_instance);
@@ -62,7 +62,7 @@ namespace CIAOX11
       const ::DDS::SampleInfoSeq &sample_infos,
       bool determine_last)
     {
-      DDS4CCM_LOG_TRACE ("Reader_T" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::get_nr_valid_samples");
+      DDS4CCM_LOG_TRACE ("Reader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::get_nr_valid_samples");
 
       uint32_t nr_of_samples {};
       if (determine_last)
@@ -96,7 +96,7 @@ namespace CIAOX11
       ::CCM_DDS::ReadInfoSeq &infos,
       const ::DDS::SampleInfoSeq &sample_info)
     {
-      DDS4CCM_LOG_TRACE ("Reader_T" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::convert_data");
+      DDS4CCM_LOG_TRACE ("Reader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::convert_data");
 
       uint32_t const samples_to_return =
         this->get_nr_valid_samples (sample_info, false);
@@ -123,7 +123,7 @@ namespace CIAOX11
       const ::DDS::InstanceHandle_t& lookup_hnd,
       IDL::traits< ::DDS::QueryCondition>::ref_type qc)
     {
-      DDS4CCM_LOG_TRACE ("Reader_T" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::read_w_instance");
+      DDS4CCM_LOG_TRACE ("Reader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::read_w_instance");
 
       DDS4CCM_LOG_DEBUG (
         "Reader_T<"
@@ -167,7 +167,7 @@ namespace CIAOX11
       ::DDS::SampleInfoSeq &sample_info,
       IDL::traits< ::DDS::QueryCondition>::ref_type qc)
     {
-      DDS4CCM_LOG_TRACE ("Reader_T" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::read_wo_instance");
+      DDS4CCM_LOG_TRACE ("Reader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::read_wo_instance");
 
       ::DDS::ReturnCode_t retval = ::DDS::RETCODE_ERROR;
 
@@ -210,7 +210,7 @@ namespace CIAOX11
       ::DDS::SampleInfoSeq sample_info,
       bool throw_exception)
     {
-      DDS4CCM_LOG_TRACE ("Reader_T" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::return_loan");
+      DDS4CCM_LOG_TRACE ("Reader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::return_loan");
 
       ::DDS::ReturnCode_t const retcode =
         this->dds_reader_->return_loan (data, sample_info);
@@ -234,7 +234,7 @@ namespace CIAOX11
       TOPIC_SEQ_TYPE &instances,
       ::CCM_DDS::ReadInfoSeq &infos)
     {
-      DDS4CCM_LOG_TRACE ("Reader_T" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::read_last");
+      DDS4CCM_LOG_TRACE ("Reader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::read_last");
 
       // This function has to return the last sample of all instances
       ::DDS::SampleInfoSeq sample_info;
@@ -269,7 +269,7 @@ namespace CIAOX11
       TOPIC_SEQ_TYPE &instances,
       ::CCM_DDS::ReadInfoSeq &infos)
     {
-      DDS4CCM_LOG_TRACE ("Reader_T" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::read_all");
+      DDS4CCM_LOG_TRACE ("Reader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::read_all");
 
       // This function has to return all samples of all instances
       ::DDS::SampleInfoSeq sample_info;
@@ -290,7 +290,7 @@ namespace CIAOX11
       CCM_DDS::ReadInfo &info,
       const ::DDS::InstanceHandle_t& instance_handle)
     {
-      DDS4CCM_LOG_TRACE ("Reader_T" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::read_one_last");
+      DDS4CCM_LOG_TRACE ("Reader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::read_one_last");
 
       ::DDS::InstanceHandle_t const lookup_hnd =
         this->check_handle (an_instance, instance_handle);
@@ -303,7 +303,7 @@ namespace CIAOX11
       this->read_w_instance (data, sample_info, lookup_hnd, qc);
 
       typename TOPIC_SEQ_TYPE::size_type sample = data.size ();
-      DDS4CCM_LOG_DEBUG ("Reader_T::read_one_last - "
+      DDS4CCM_LOG_DEBUG ("Reader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::read_one_last - "
         "total number of samples <" << sample << ">.");
       while (sample > 0 && !sample_info[sample-1].valid_data ())
       {
@@ -328,7 +328,7 @@ namespace CIAOX11
       ::CCM_DDS::ReadInfoSeq &infos,
       const ::DDS::InstanceHandle_t& instance_handle)
     {
-      DDS4CCM_LOG_TRACE ("Reader_T" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::read_one_all");
+      DDS4CCM_LOG_TRACE ("Reader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::read_one_all");
 
       ::DDS::InstanceHandle_t const lookup_hnd =
         this->check_handle (an_instance, instance_handle);
@@ -347,7 +347,7 @@ namespace CIAOX11
     ::CCM_DDS::QueryFilter
     Reader_T<READER_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::query ()
     {
-      DDS4CCM_LOG_TRACE ("Reader_T" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::query");
+      DDS4CCM_LOG_TRACE ("Reader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::query");
 
       return this->condition_manager ()->query ();
     }
@@ -357,7 +357,7 @@ namespace CIAOX11
     Reader_T<READER_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::query (
       const ::CCM_DDS::QueryFilter &query)
     {
-      DDS4CCM_LOG_TRACE ("Reader_T" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::query");
+      DDS4CCM_LOG_TRACE ("Reader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::query");
 
       this->condition_manager ()->query (query);
     }
@@ -368,13 +368,13 @@ namespace CIAOX11
       IDL::traits< ::DDS::DataReader>::ref_type dr,
       SharedConditionManager condition_manager)
     {
-      DDS4CCM_LOG_TRACE ("Reader_T" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::set_dds_reader");
+      DDS4CCM_LOG_TRACE ("Reader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::set_dds_reader");
 
       this->dds_reader_ = ::DDS::traits<TOPIC_TYPE>::narrow (dr);
 
       if (dr && !this->dds_reader_)
       {
-        DDS4CCM_LOG_ERROR ("Reader_T::set_dds_reader - narrow failed.");
+        DDS4CCM_LOG_ERROR ("Reader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::set_dds_reader - narrow failed.");
         throw ::CORBA::INTERNAL ();
       }
       this->condition_manager_ = condition_manager;
@@ -384,7 +384,7 @@ namespace CIAOX11
     IDL::traits< ::DDS::DataReader>::ref_type
     Reader_T<READER_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_dds_reader ()
     {
-      DDS4CCM_LOG_TRACE ("Reader_T" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::get_dds_reader");
+      DDS4CCM_LOG_TRACE ("Reader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::get_dds_reader");
 
       return this->dds_reader_;
     }
