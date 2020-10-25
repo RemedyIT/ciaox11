@@ -149,7 +149,62 @@ module Example {
     string key;
     short iteration;
   }; //@TopLevel()
+
+  struct ColorStruct;
+  // @todo Enabling the typedef below triggers non-compilable RTI generated code, see 00047246
+  //typedef sequence <ColorStruct> ColorList;
+  struct ColorStruct {
+    string colorString;
+    long colorNum;
+  };
+
+  union B03;
+  // @todo Enabling the typedef below triggers non-compilable RTI generated code, see 00047246
+  //typedef sequence <B03> B03List;
+  union B03 switch (long)
+  {
+    case 2: short b_03_3;
+  };
 };
+
+module Foo
+{
+  struct ColorStruct;
+  // @todo Enabling the typedef below triggers non-compilable RTI generated code, see 00047246
+  //typedef sequence <ColorStruct> ColorList;
+  struct ColorStruct {
+    string colorString;
+    long colorNum;
+  };
+};
+
+module UnionTest
+{
+  union B03;
+  // @todo Enabling the typedef below triggers non-compilable RTI generated code, see 00047246
+  //typedef sequence <B03> B03List;
+  union B03 switch (long)
+  {
+    case 2: short b_03_3;
+  };
+};
+
+/**
+ * @todo Don't work due to bugs in RTI Connext DDS 6.0.1, see case 00047247
+module Escaping
+{
+  union _private;
+  union _private switch (long)
+  {
+    case 2: short b_03_3;
+  };
+  struct _public;
+  struct _public
+  {
+    string bar;
+  };
+};
+*/
 
 // Test a module with only non-DDS translatable types/constants
 // => should result in omitted module in DDS IDL

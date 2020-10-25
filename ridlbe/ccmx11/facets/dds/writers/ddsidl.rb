@@ -52,6 +52,11 @@ module IDL
           visitor(IncludeVisitor).visit(node)
         end
 
+        def declare_struct(node)
+          check_namespace_begin
+          visitor(StructVisitor).visit_fwd(node)
+        end
+
         def enter_struct(node)
           check_namespace_begin
           visitor(::IDL::Cxx11::StructVisitor).visit_struct(node)
@@ -60,6 +65,11 @@ module IDL
         def visit_enum(node)
           check_namespace_begin
           visitor(EnumVisitor).visit_enum(node)
+        end
+
+        def declare_union(node)
+          check_namespace_begin
+          visitor(UnionVisitor).visit_fwd(node)
         end
 
         def enter_union(node)
