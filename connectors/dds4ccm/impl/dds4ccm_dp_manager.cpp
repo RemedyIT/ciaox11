@@ -21,7 +21,7 @@ namespace CIAOX11
     {
       static DomainParticipantManager instance_;
 
-      return &instance_;
+      return std::addressof(instance_);
     }
 
     DomainParticipantManager::DomainParticipantManager ()

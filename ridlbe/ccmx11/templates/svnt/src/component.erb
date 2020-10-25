@@ -114,7 +114,7 @@ namespace <%= executor_cxx_namespace %>
     std::lock_guard<std::mutex> lock (this->context_tbl_lock_);
     <%= scoped_ccm_name %>::<%= _p.lem_name %>Connections retv;
     retv.reserve (this-><%= _p.lem_name %>_context_tbl_.size());
-    typedef IDL::traits< <%= scoped_ccm_name %>::<%= _p.lem_name %>Connections>::element_traits::value_type conn_type;
+    using conn_type = IDL::traits< <%= scoped_ccm_name %>::<%= _p.lem_name %>Connections>::element_traits::value_type;
 
     for (const auto& elem : this-><%= _p.lem_name %>_context_tbl_)
     {

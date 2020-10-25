@@ -160,6 +160,34 @@ namespace IDL_Conversion_Test_Receiver_Impl
       }
     }
 
+    c = 0;
+    /// Check b_17 [Example::B17 (std::vector< bool >)]
+    for (bool val : datum.b_17 ())
+    {
+      bool expected = (c%2) ? true : false;
+      if (val != expected)
+      {
+        DDS4CCM_TEST_ERROR << "Receiver check - ERROR: unexpected value for "
+          << "datum.b_17[" << c << "]: expected <" << expected << "> - got <"
+          << val << ">" << std::endl;
+      }
+      c++;
+    }
+
+    c = 0;
+    /// Check b_18 [Example::B18 (IDL::bounded_vector< bool, 15 >)]
+    for (bool val : datum.b_18 ())
+    {
+      bool expected = (c%2) ? true : false;
+      if (val != expected)
+      {
+        DDS4CCM_TEST_ERROR << "Receiver check - ERROR: unexpected value for "
+          << "datum.b_18[" << c << "]: expected <" << expected << "> - got <"
+          << val << ">" << std::endl;
+      }
+      c++;
+    }
+
     /// Check b_32 [Example::B32 (std::array< B31, 2 >)]
     this->check_b31_array (datum.b_32 (), datum.iteration ());
 

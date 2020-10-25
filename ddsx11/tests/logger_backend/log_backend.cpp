@@ -17,13 +17,13 @@
 #include "ace/Log_Record.h"
 #include "ace/Get_Opt.h"
 #include <iostream>
-#include "logger/ddsx11_log.h"
+#include "tests/testlib/ddsx11_testlog.h"
 
 namespace DAnCE
 {
   ddsx11_log_backend::~ddsx11_log_backend (void)
   {
-    DDSX11_LOG_TRACE ("ddsx11_log_backend::~ddsx11_log_backend");
+    DDSX11_TEST_TRACE << "ddsx11_log_backend::~ddsx11_log_backend" << std::endl;
 
     // Fallback close, should normally already be done by fini()
     (void) this->close ();
@@ -32,7 +32,7 @@ namespace DAnCE
   int
   ddsx11_log_backend::init (int argc, ACE_TCHAR **argv)
   {
-    DDSX11_LOG_TRACE ("ddsx11_log_backend::init");
+    DDSX11_TEST_TRACE << "ddsx11_log_backend::init" << std::endl;
 
     ACE_Get_Opt opts (argc, argv, ACE_TEXT ("t:d:q:n:"), 0, 0, ACE_Get_Opt::RETURN_IN_ORDER);
     opts.long_option (ACE_TEXT ("topic"), 't', ACE_Get_Opt::ARG_REQUIRED);
@@ -63,7 +63,7 @@ namespace DAnCE
             break;
 
           default:
-            DDSX11_IMPL_LOG_ERROR("Unknown option for ddsx11_log_backend" << opts.last_option ());
+            DDSX11_TEST_ERROR << "Unknown option for ddsx11_log_backend" << opts.last_option () << std::endl;
           }
       }
 
@@ -73,7 +73,7 @@ namespace DAnCE
   int
   ddsx11_log_backend::fini (void)
   {
-    DDSX11_LOG_TRACE ("ddsx11_log_backend::fini");
+    DDSX11_TEST_TRACE << "ddsx11_log_backend::fini"<< std::endl;
 
     // We are instructed to shutdown, first step is to put the old logger
     // backend back so that we don't get log messages from our own
@@ -88,7 +88,7 @@ namespace DAnCE
   int
   ddsx11_log_backend::info (ACE_TCHAR **, size_t) const
   {
-    DDSX11_LOG_TRACE ("ddsx11_log_backend::info");
+    DDSX11_TEST_TRACE << "ddsx11_log_backend::info"<< std::endl;
 
     return 0;
   }
@@ -96,41 +96,41 @@ namespace DAnCE
   void
   ddsx11_log_backend::get_configuration ()
   {
-    DDSX11_LOG_TRACE ("ddsx11_log_backend::get_configuration");
+    DDSX11_TEST_TRACE << "ddsx11_log_backend::get_configuration" << std::endl;
 
     const char* env_domain = std::getenv ("DNCX11_DDS_LOG_DOMAIN");
     if (env_domain)
       {
         this->domain_ = std::atoi (env_domain);
-        DDSX11_IMPL_LOG_DEBUG ("ddsx11_log_backend::get_configuration - domain set to " << this->domain_);
+        DDSX11_TEST_DEBUG << "ddsx11_log_backend::get_configuration - domain set to " << this->domain_<< std::endl;
       }
 
     const char* env_topic = std::getenv ("DNCX11_DDS_LOG_TOPIC");
     if (env_topic)
       {
         this->topic_name_ = env_topic;
-        DDSX11_IMPL_LOG_DEBUG ("ddsx11_log_backend::get_configuration - topic set to " << this->topic_name_);
+        DDSX11_TEST_DEBUG << "ddsx11_log_backend::get_configuration - topic set to " << this->topic_name_<< std::endl;
       }
 
     const char* env_node = std::getenv ("DNCX11_DDS_NODE_NAME");
     if (env_topic)
       {
         this->node_ = env_node;
-        DDSX11_IMPL_LOG_DEBUG ("ddsx11_log_backend::get_configuration - node name set to " << this->node_);
+        DDSX11_TEST_DEBUG << "ddsx11_log_backend::get_configuration - node name set to " << this->node_<< std::endl;
       }
 
     const char* env_qos_profile = std::getenv ("DNCX11_DDS_QOS_PROFILE");
     if (env_topic)
       {
         this->qos_profile_ = env_qos_profile;
-        DDSX11_IMPL_LOG_DEBUG ("ddsx11_log_backend::get_configuration - QoS profile set to " << this->qos_profile_);
+        DDSX11_TEST_DEBUG << "ddsx11_log_backend::get_configuration - QoS profile set to " << this->qos_profile_<< std::endl;
       }
   }
 
   bool
   ddsx11_log_backend::configure_dds (void)
   {
-    DDSX11_LOG_TRACE ("ddsx11_log_backend::configure_dds");
+    DDSX11_TEST_TRACE << "ddsx11_log_backend::configure_dds" << std::endl;
 
     DDS::traits<DnCX11::Log_Record>::domainparticipantfactory_ref_type dpf =
       DDS::traits<DDS::DomainParticipantFactory>::get_instance ();
@@ -143,7 +143,7 @@ namespace DAnCE
             this->domain_,
             DDS::PARTICIPANT_QOS_DEFAULT,
             nullptr,
-            0);
+            DDS::STATUS_MASK_NONE);
       }
     else
       {
@@ -152,12 +152,12 @@ namespace DAnCE
             this->domain_,
             this->qos_profile_,
             nullptr,
-            0);
+            DDS::STATUS_MASK_NONE);
       }
 
     if (!this->participant_)
       {
-        DDSX11_IMPL_LOG_ERROR ("ddsx11_log_backend::open - Failed to create participant");
+        DDSX11_TEST_ERROR <<"ddsx11_log_backend::open - Failed to create participant"<< std::endl;
         return false;
       }
 
@@ -168,7 +168,7 @@ namespace DAnCE
 
     if (retval != DDS::RETCODE_OK)
       {
-        DDSX11_IMPL_LOG_ERROR ("ddsx11_log_backend::open - Failed to register type");
+        DDSX11_TEST_ERROR <<"ddsx11_log_backend::open - Failed to register type"<< std::endl;
         (void) this->close ();
         return false;
       }
@@ -177,7 +177,7 @@ namespace DAnCE
     retval = participant_->get_default_topic_qos (tqos);
     if (retval != DDS::RETCODE_OK)
       {
-        DDSX11_IMPL_LOG_ERROR ("ddsx11_log_backend::open - Failed to retrieve default topic QoS");
+        DDSX11_TEST_ERROR <<"ddsx11_log_backend::open - Failed to retrieve default topic QoS"<< std::endl;
         (void) this->close ();
         return false;
       }
@@ -188,11 +188,11 @@ namespace DAnCE
         DDS::traits<DnCX11::Log_Record>::get_type_name (),
         tqos,
         nullptr,
-        0);
+        DDS::STATUS_MASK_NONE);
 
     if (!this->topic_)
       {
-        DDSX11_IMPL_LOG_ERROR ("ddsx11_log_backend::open - Failed to create topic");
+        DDSX11_TEST_ERROR <<"ddsx11_log_backend::open - Failed to create topic"<< std::endl;
         this->close ();
         return false;
       }
@@ -201,7 +201,7 @@ namespace DAnCE
     retval = participant_->get_default_publisher_qos (pubqos);
     if (retval != DDS::RETCODE_OK)
       {
-        DDSX11_IMPL_LOG_ERROR ("ddsx11_log_backend::open - Failed to retrieve default publisher QoS");
+        DDSX11_TEST_ERROR <<"ddsx11_log_backend::open - Failed to retrieve default publisher QoS"<< std::endl;
         (void) this->close ();
         return false;
       }
@@ -210,11 +210,11 @@ namespace DAnCE
       this->participant_->create_publisher (
         pubqos,
         nullptr,
-        0);
+        DDS::STATUS_MASK_NONE);
 
     if (!this->publisher_)
       {
-        DDSX11_IMPL_LOG_ERROR ("ddsx11_log_backend::open - Failed to create publisher");
+        DDSX11_TEST_ERROR <<"ddsx11_log_backend::open - Failed to create publisher"<< std::endl;
         this->close ();
         return false;
       }
@@ -223,7 +223,7 @@ namespace DAnCE
     retval = publisher_->get_default_datawriter_qos (writerqos);
     if (retval != DDS::RETCODE_OK)
       {
-        DDSX11_IMPL_LOG_ERROR ("ddsx11_log_backend::open - Failed to retrieve default datawriter QoS");
+        DDSX11_TEST_ERROR <<"ddsx11_log_backend::open - Failed to retrieve default datawriter QoS"<< std::endl;
         (void) this->close ();
         return false;
       }
@@ -233,11 +233,11 @@ namespace DAnCE
         this->topic_,
         writerqos,
         nullptr,
-        0);
+        DDS::STATUS_MASK_NONE);
 
     if (!this->datawriter_)
       {
-        DDSX11_IMPL_LOG_ERROR ("ddsx11_log_backend::open - Failed to create the datawriter");
+        DDSX11_TEST_ERROR <<"ddsx11_log_backend::open - Failed to create the datawriter"<< std::endl;
         this->close ();
         return false;
       }
@@ -247,7 +247,7 @@ namespace DAnCE
 
     if (!this->log_record_writer_)
       {
-        DDSX11_IMPL_LOG_ERROR ("ddsx11_log_backend::open - Failed to narrow the typed datawriter");
+        DDSX11_TEST_ERROR <<"ddsx11_log_backend::open - Failed to narrow the typed datawriter"<< std::endl;
         this->close ();
         return false;
       }
@@ -258,14 +258,14 @@ namespace DAnCE
   int
   ddsx11_log_backend::open (const ACE_TCHAR *)
   {
-    DDSX11_LOG_TRACE ("ddsx11_log_backend::open");
+    DDSX11_TEST_TRACE << "ddsx11_log_backend::open"<< std::endl;
 
     // Check our environment
     this->get_configuration ();
 
     if (!this->configure_dds ())
       {
-        DDSX11_IMPL_LOG_ERROR ("ddsx11_log_backend::open - unable to create DDS entities");
+        DDSX11_TEST_ERROR <<"ddsx11_log_backend::open - unable to create DDS entities"<< std::endl;
         return -1;
       }
 
@@ -278,7 +278,7 @@ namespace DAnCE
   int
   ddsx11_log_backend::reset (void)
   {
-    DDSX11_LOG_TRACE ("ddsx11_log_backend::reset");
+    DDSX11_TEST_TRACE << "ddsx11_log_backend::reset" << std::endl;
 
     return this->close ();
   }
@@ -286,7 +286,7 @@ namespace DAnCE
   int
   ddsx11_log_backend::close (void)
   {
-    DDSX11_LOG_TRACE ("ddsx11_log_backend::close");
+    DDSX11_TEST_TRACE << "ddsx11_log_backend::close" << std::endl;
 
     if (datawriter_)
       {
@@ -295,9 +295,9 @@ namespace DAnCE
 
         if (retval != DDS::RETCODE_OK)
           {
-            DDSX11_IMPL_LOG_ERROR ("log_server - Unable to delete datawriter <"
+            DDSX11_TEST_ERROR <<"log_server - Unable to delete datawriter <"
               << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retval)
-              << ">.");
+              << ">."<< std::endl;
           }
         datawriter_ = nullptr;
         log_record_writer_ = nullptr;
@@ -310,9 +310,9 @@ namespace DAnCE
 
         if (retval != DDS::RETCODE_OK)
           {
-            DDSX11_IMPL_LOG_ERROR ("log_server - Unable to delete publisher <"
+            DDSX11_TEST_ERROR <<"log_server - Unable to delete publisher <"
               << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retval)
-              << ">.");
+              << ">."<< std::endl;
           }
         publisher_ = nullptr;
       }
@@ -324,9 +324,9 @@ namespace DAnCE
 
         if (retval != DDS::RETCODE_OK)
           {
-            DDSX11_IMPL_LOG_ERROR ("log_server - Unable to delete topic <"
+            DDSX11_TEST_ERROR <<"log_server - Unable to delete topic <"
               << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retval)
-              << ">.");
+              << ">."<< std::endl;
           }
         topic_ = nullptr;
       }
@@ -341,9 +341,9 @@ namespace DAnCE
 
         if (retval != DDS::RETCODE_OK)
           {
-            DDSX11_IMPL_LOG_ERROR ("ddsx11_log_backend::close - Unable to delete participant <"
+            DDSX11_TEST_ERROR <<"ddsx11_log_backend::close - Unable to delete participant <"
               << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retval)
-              << ">.");
+              << ">."<< std::endl;
           }
 
         this->participant_ = nullptr;
@@ -352,9 +352,9 @@ namespace DAnCE
 
         if (retval != DDS::RETCODE_OK)
           {
-            DDSX11_IMPL_LOG_ERROR ("ddsx11_log_backend::close - Unable to finalize participant factory <"
+            DDSX11_TEST_ERROR <<"ddsx11_log_backend::close - Unable to finalize participant factory <"
               << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retval)
-              << ">.");
+              << ">."<< std::endl;
           }
       }
 
@@ -376,7 +376,7 @@ namespace DAnCE
 
         if (retval != DDS::RETCODE_OK)
           {
-            DDSX11_IMPL_LOG_ERROR ("Unable to write log record to DDS");
+            DDSX11_TEST_ERROR <<"Unable to write log record to DDS"<< std::endl;
             return 0;
           }
       }
