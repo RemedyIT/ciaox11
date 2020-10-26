@@ -300,14 +300,14 @@ namespace IDL_Conversion_Test_Sender_Impl
       b17.reserve (10);
       for (uint16_t i = 0; i < 10; ++i)
       {
-        b17[i] = (i%2) ? true : false;
+        b17.push_back ((i%2) ? true : false);
       }
 
       Example::B18 b18;
       b18.reserve (15);
       for (uint16_t i = 0; i < 15; ++i)
       {
-        b18[i] = (i%2) ? true : false;
+        b18.push_back ((i%2) ? true : false);
       }
 
 
