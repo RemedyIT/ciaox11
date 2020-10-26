@@ -14,7 +14,7 @@
 template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::~DDS_State_Connector_T ()
 {
-  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">>::~DDS_State_Connector_T");
+  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::~DDS_State_Connector_T");
 }
 
 /**
@@ -26,7 +26,7 @@ template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 typename DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::Observable_type *
 DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::observable ()
 {
-  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">>::observable");
+  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::observable");
 
   if (!this->observable_)
   {
@@ -40,7 +40,7 @@ template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 typename IDL::traits<typename CCM_TYPE::observable_traits::data_type>::ref_type
 DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_observable_data ()
 {
-  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">>::get_observable_data");
+  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::get_observable_data");
 
   return this->observable ()->get_data ();
 }
@@ -49,7 +49,7 @@ template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 IDL::traits< ::DDS::CCM_DataWriter>::ref_type
 DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_observable_dds_entity ()
 {
-  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">>::get_observable_dds_entity");
+  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::get_observable_dds_entity");
 
   return this->observable ()->get_dds_entity ();
 }
@@ -65,7 +65,7 @@ template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 typename DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::PassiveObserver_type *
 DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::passive_observer ()
 {
-  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">>::passive_observer");
+  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::passive_observer");
 
   if (!this->passive_observer_)
   {
@@ -78,7 +78,7 @@ template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 typename IDL::traits<typename CCM_TYPE::passive_observer_traits::data_type>::ref_type
 DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_passive_observer_data ()
 {
-  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">>::get_passive_observer_data");
+  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::get_passive_observer_data");
 
   return this->passive_observer ()->get_data ();
 }
@@ -87,7 +87,7 @@ template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 IDL::traits< ::DDS::CCM_DataReader>::ref_type
 DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_passive_observer_dds_entity ()
 {
-  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">>::get_passive_observer_dds_entity");
+  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::get_passive_observer_dds_entity");
 
   return this->passive_observer ()->get_dds_entity ();
 }
@@ -97,7 +97,7 @@ template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 IDL::traits< CCM_DDS::CCM_ContentFilterSetting>::ref_type
 DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_passive_observer_filter_config ()
 {
-  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">>::get_passive_observer_filter_config");
+  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::get_passive_observer_filter_config");
 
   return this->passive_observer ()->get_filter_config ();
 }
@@ -106,7 +106,7 @@ template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 ::CCM_DDS::QueryFilter
 DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::passive_observer_filter ()
 {
-  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">>::passive_observer_filter");
+  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::passive_observer_filter");
 
   return this->passive_observer ()->filter ();
 }
@@ -116,7 +116,7 @@ void
 DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::passive_observer_filter (
   const ::CCM_DDS::QueryFilter &filter)
 {
-  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">>::passive_observer_filter");
+  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::passive_observer_filter");
 
   this->passive_observer ()->filter (filter);
 }
@@ -132,7 +132,7 @@ template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 typename DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::PullObserver_type *
 DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::pull_observer ()
 {
-  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">>::pull_observer");
+  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::pull_observer");
 
   if (!this->pull_observer_)
   {
@@ -145,7 +145,7 @@ template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 typename IDL::traits<typename CCM_TYPE::pull_observer_traits::fresh_data_type>::ref_type
 DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_pull_observer_fresh_data ()
 {
-  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">>::get_pull_observer_fresh_data");
+  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::get_pull_observer_fresh_data");
 
   return this->pull_observer ()->get_fresh_data ();
 }
@@ -154,7 +154,7 @@ template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 typename IDL::traits<typename CCM_TYPE::pull_observer_traits::data_type>::ref_type
 DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_pull_observer_data ()
 {
-  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">>::get_pull_observer_data");
+  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::get_pull_observer_data");
 
   return this->pull_observer ()->get_data ();
 }
@@ -163,7 +163,7 @@ template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 IDL::traits< CCM_DDS::CCM_ContentFilterSetting>::ref_type
 DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_pull_observer_filter_config ()
 {
-  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">>::get_pull_observer_filter_config");
+  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::get_pull_observer_filter_config");
 
   return this->pull_observer ()->get_filter_config ();
 }
@@ -172,7 +172,7 @@ template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 IDL::traits< ::DDS::CCM_DataReader>::ref_type
 DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_pull_observer_dds_entity ()
 {
-  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">>::get_pull_observer_dds_entity");
+  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::get_pull_observer_dds_entity");
 
   return this->pull_observer ()->get_dds_entity ();
 }
@@ -181,7 +181,7 @@ template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 CCM_DDS::QueryFilter
 DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::pull_observer_filter ()
 {
-  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">>::pull_observer_filter");
+  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::pull_observer_filter");
 
   return this->pull_observer ()->filter ();
 }
@@ -191,7 +191,7 @@ void
 DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::pull_observer_filter (
   const CCM_DDS::QueryFilter &filter)
 {
-  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">>::pull_observer_filter");
+  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::pull_observer_filter");
 
   this->pull_observer ()->filter (filter);
 }
@@ -207,7 +207,7 @@ template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 typename DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::PushObserver_type *
 DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::push_observer ()
 {
-  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">>::push_observer");
+  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::push_observer");
 
   if (!this->push_observer_)
   {
@@ -220,7 +220,7 @@ template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 typename IDL::traits<typename CCM_TYPE::push_observer_traits::data_type>::ref_type
 DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_push_observer_data ()
 {
-  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">>::get_push_observer_data");
+  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::get_push_observer_data");
 
   return this->push_observer ()->get_data ();
 }
@@ -229,7 +229,7 @@ template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 IDL::traits< CCM_DDS::CCM_DataListenerControl>::ref_type
 DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_push_observer_data_control ()
 {
-  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">>::get_push_observer_data_control");
+  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::get_push_observer_data_control");
 
   return this->push_observer ()->get_data_control ();
 }
@@ -238,7 +238,7 @@ template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 IDL::traits< ::DDS::CCM_DataReader>::ref_type
 DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_push_observer_dds_entity ()
 {
-  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">>::get_push_observer_dds_entity");
+  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::get_push_observer_dds_entity");
 
   return this->push_observer ()->get_dds_entity ();
 }
@@ -247,7 +247,7 @@ template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 IDL::traits< CCM_DDS::CCM_ContentFilterSetting>::ref_type
 DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_push_observer_filter_config ()
 {
-  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">>::get_push_observer_filter_config");
+  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::get_push_observer_filter_config");
 
   return this->push_observer ()->get_filter_config ();
 }
@@ -256,7 +256,7 @@ template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 CCM_DDS::QueryFilter
 DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::push_observer_filter ()
 {
-  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">>::push_observer_filter");
+  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::push_observer_filter");
 
   return this->push_observer ()->filter ();
 }
@@ -266,7 +266,7 @@ void
 DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::push_observer_filter (
   const CCM_DDS::QueryFilter &filter)
 {
-  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">>::push_observer_filter");
+  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::push_observer_filter");
 
   this->push_observer ()->filter (filter);
 }
@@ -282,7 +282,7 @@ template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 typename DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::PushStateObserver_type *
 DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::push_state_observer ()
 {
-  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">>::push_state_observer");
+  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::push_state_observer");
 
   if (!this->push_state_observer_)
   {
@@ -295,7 +295,7 @@ template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 typename IDL::traits<typename CCM_TYPE::push_state_observer_traits::data_type>::ref_type
 DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_push_state_observer_data ()
 {
-  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">>::get_push_state_observer_data");
+  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::get_push_state_observer_data");
 
   return this->push_state_observer ()->get_data ();
 }
@@ -304,7 +304,7 @@ template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 IDL::traits< CCM_DDS::CCM_StateListenerControl>::ref_type
 DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_push_state_observer_data_control ()
 {
-  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">>::get_push_state_observer_data_control");
+  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::get_push_state_observer_data_control");
 
   return this->push_state_observer ()->get_data_control ();
 }
@@ -313,7 +313,7 @@ template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 IDL::traits< ::DDS::CCM_DataReader>::ref_type
 DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_push_state_observer_dds_entity ()
 {
-  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">>::get_push_state_observer_dds_entity");
+  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::get_push_state_observer_dds_entity");
 
   return this->push_state_observer ()->get_dds_entity ();
 }
@@ -322,7 +322,7 @@ template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 IDL::traits< CCM_DDS::CCM_ContentFilterSetting>::ref_type
 DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_push_state_observer_filter_config ()
 {
-  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">>::get_push_state_observer_filter_config");
+  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::get_push_state_observer_filter_config");
 
   return this->push_state_observer ()->get_filter_config ();
 }
@@ -331,7 +331,7 @@ template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 ::CCM_DDS::QueryFilter
 DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::push_state_observer_filter ()
 {
-  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">>::push_state_observer_filter");
+  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::push_state_observer_filter");
 
   return this->push_state_observer ()->filter ();
 }
@@ -341,7 +341,7 @@ void
 DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::push_state_observer_filter (
   const ::CCM_DDS::QueryFilter & filter)
 {
-  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">>::push_state_observer_filter");
+  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::push_state_observer_filter");
 
   this->push_state_observer ()->filter (filter);
 }
@@ -352,7 +352,7 @@ template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 void
 DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::do_configuration_complete ()
 {
-  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">>::do_configuration_complete");
+  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::do_configuration_complete");
 
   typename IDL::traits<typename CCM_TYPE::push_observer_traits::data_listener_type>::ref_type
     push_observer_data_listener =
@@ -506,7 +506,7 @@ template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 void
 DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::do_ccm_activate ()
 {
-  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">>::do_ccm_activate");
+  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::do_ccm_activate");
 
   TopicBaseConnector::ccm_activate ();
 
@@ -561,7 +561,7 @@ template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 void
 DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::ccm_passivate ()
 {
-  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">>::ccm_passivate");
+  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::ccm_passivate");
 
   // No need to explicitly passivate the Updater basic port.
 
@@ -605,7 +605,7 @@ template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 void
 DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::do_ccm_remove ()
 {
-  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">>::do_ccm_remove");
+  DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::do_ccm_remove");
 
   try
   {
