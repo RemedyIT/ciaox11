@@ -19,7 +19,7 @@ namespace CIAOX11
         const EVT_STRATEGY& evs)
       : evs_ (evs)
     {
-      DDS4CCM_LOG_TRACE ("CIAOX11::DDS4CCM::PortStatusListener_T<EVT_STRATEGY>::PortStatusListener_T");
+      DDS4CCM_LOG_TRACE ("PortStatusListener_T<EVT_STRATEGY>::PortStatusListener_T");
     }
 
     template <typename EVT_STRATEGY>
@@ -28,7 +28,7 @@ namespace CIAOX11
      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
      const ::DDS::RequestedDeadlineMissedStatus & status)
     {
-      DDS4CCM_LOG_TRACE ("CIAOX11::DDS4CCM::PortStatusListener_T<EVT_STRATEGY>::on_requested_deadline_missed");
+      DDS4CCM_LOG_TRACE ("PortStatusListener_T<EVT_STRATEGY>::on_requested_deadline_missed");
 
       DDS4CCM_LOG_DEBUG ("PortStatusListener_T<EVT_STRATEGY>::on_requested_deadline_missed - "
         << IDL::traits< ::DDS::RequestedDeadlineMissedStatus>::write (status));
@@ -42,7 +42,7 @@ namespace CIAOX11
       IDL::traits< ::DDS::DataReader>::ref_type the_reader,
       const ::DDS::SampleLostStatus & status)
     {
-      DDS4CCM_LOG_TRACE ("CIAOX11::DDS4CCM::PortStatusListener_T<EVT_STRATEGY>::on_sample_lost");
+      DDS4CCM_LOG_TRACE ("PortStatusListener_T<EVT_STRATEGY>::on_sample_lost");
 
       DDS4CCM_LOG_DEBUG ("PortStatusListener_T<EVT_STRATEGY>::on_sample_lost - "
         << IDL::traits< ::DDS::SampleLostStatus>::write (status));
@@ -104,7 +104,7 @@ namespace CIAOX11
     PortStatusListener_T<EVT_STRATEGY>::get_mask (
       IDL::traits< CCM_DDS::PortStatusListener>::ref_type psl)
     {
-      DDS4CCM_LOG_TRACE ("CIAOX11::DDS4CCM::PortStatusListener_T<EVT_STRATEGY>::get_mask");
+      DDS4CCM_LOG_TRACE ("PortStatusListener_T<EVT_STRATEGY>::get_mask");
 
       ::DDS::StatusMask mask { ::DDS::STATUS_MASK_NONE };
       if (psl)

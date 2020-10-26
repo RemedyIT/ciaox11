@@ -19,7 +19,7 @@ namespace CIAOX11
       const EVT_STRATEGY &evs)
       : evs_ (evs)
     {
-      DDS4CCM_LOG_TRACE ("CIAOX11::DDS4CCM::PublisherListener_T<EVT_STRATEGY>::PublisherListener");
+      DDS4CCM_LOG_TRACE ("PublisherListener_T<EVT_STRATEGY>::PublisherListener");
     }
 
     template <typename EVT_STRATEGY>
@@ -28,8 +28,9 @@ namespace CIAOX11
       IDL::traits< ::DDS::Entity>::ref_type entity,
       ::DDS::StatusKind status_kind)
     {
-      DDS4CCM_LOG_TRACE("CIAOX11::DDS4CCM::PublisherListener_T<EVT_STRATEGY>::on_unexpected_status");
-      DDS4CCM_LOG_INFO("CIAOX11::DDS4CCM::PublisherListener_T<EVT_STRATEGY>::on_unexpected_status" <<
+      DDS4CCM_LOG_TRACE("PublisherListener_T<EVT_STRATEGY>::on_unexpected_status");
+
+      DDS4CCM_LOG_INFO("PublisherListener_T<EVT_STRATEGY>::on_unexpected_status" <<
           IDL::traits< ::DDS::StatusKind>::write<status_kind_formatter> (status_kind));
 
       this->evs_.handle_unexpected_status_event (std::move(entity), status_kind);
@@ -41,7 +42,7 @@ namespace CIAOX11
       IDL::traits< ::DDS::DataWriter>::ref_type the_Writer,
       const ::DDS::OfferedDeadlineMissedStatus & status)
     {
-      DDS4CCM_LOG_TRACE("CIAOX11::DDS4CCM::PublisherListener_T<EVT_STRATEGY>::on_offered_deadline_missed");
+      DDS4CCM_LOG_TRACE("PublisherListener_T<EVT_STRATEGY>::on_offered_deadline_missed");
 
       DDS4CCM_LOG_INFO ("PublisherListener_T<EVT_STRATEGY>::on_offered_deadline_missed: "
         << IDL::traits< ::DDS::OfferedDeadlineMissedStatus>::write (status));
@@ -55,7 +56,7 @@ namespace CIAOX11
       IDL::traits< ::DDS::DataWriter>::ref_type the_Writer,
       const ::DDS::OfferedIncompatibleQosStatus & status)
     {
-      DDS4CCM_LOG_TRACE("CIAOX11::DDS4CCM::PublisherListener_T<EVT_STRATEGY>::on_offered_incompatible_qos");
+      DDS4CCM_LOG_TRACE("PublisherListener_T<EVT_STRATEGY>::on_offered_incompatible_qos");
 
       DDS4CCM_LOG_INFO ("PublisherListener_T<EVT_STRATEGY>::on_offered_incompatible_qos - "
         << IDL::traits< ::DDS::OfferedIncompatibleQosStatus>::write (status));
@@ -74,7 +75,7 @@ namespace CIAOX11
       IDL::traits< ::DDS::DataWriter>::ref_type the_Writer,
       const ::DDS::LivelinessLostStatus & status)
     {
-      DDS4CCM_LOG_TRACE("CIAOX11::DDS4CCM::PublisherListener_T<EVT_STRATEGY>::on_liveliness_lost");
+      DDS4CCM_LOG_TRACE("PublisherListener_T<EVT_STRATEGY>::on_liveliness_lost");
 
       DDS4CCM_LOG_INFO ("PublisherListener_T<EVT_STRATEGY>::on_liveliness_lost - "
         << IDL::traits< ::DDS::LivelinessLostStatus>::write (status));
@@ -88,7 +89,7 @@ namespace CIAOX11
       IDL::traits< ::DDS::DataWriter>::ref_type the_Writer,
       const ::DDS::PublicationMatchedStatus & status)
     {
-      DDS4CCM_LOG_TRACE("CIAOX11::DDS4CCM::PublisherListener_T<EVT_STRATEGY>::on_publication_matched");
+      DDS4CCM_LOG_TRACE("PublisherListener_T<EVT_STRATEGY>::on_publication_matched");
 
       DDS4CCM_LOG_INFO ("PublisherListener_T<EVT_STRATEGY>::on_publication_matched - "
         << IDL::traits< ::DDS::PublicationMatchedStatus>::write (status));
