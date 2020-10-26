@@ -311,7 +311,7 @@ namespace CIAOX11
         }
         else if (data.size () == 1 && sample_info.front ().valid_data ())
         {
-          DDS4CCM_LOG_DEBUG ("Getter_T>"
+          DDS4CCM_LOG_DEBUG ("Getter_T<"
             << ::DDS::traits<TOPIC_TYPE>::get_type_name()
             << ">::get_one - Read one valid sample from DDS.");
 
