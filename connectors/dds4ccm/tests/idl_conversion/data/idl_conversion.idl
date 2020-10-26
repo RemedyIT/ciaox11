@@ -190,7 +190,7 @@ module UnionTest
 };
 
 /**
- * @todo Don't work due to bugs in RTI Connext DDS 6.0.1, see case 00047247
+ * @todo Don't work due to bugs in RTI Connext DDS 6.0.1, see CODEGENII-1263
 module Escaping
 {
   union _private;
