@@ -19,7 +19,7 @@ template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 bool
 DDS_TopicBase_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::late_binding ()
 {
-  DDS4CCM_LOG_TRACE ("DDS_TopicBase_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::late_binding");
+  DDS4CCM_LOG_TRACE ("DDS_TopicBase_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::late_binding");
   return this->late_binding_;
 }
 
@@ -27,7 +27,7 @@ template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 void
 DDS_TopicBase_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::late_binding (bool late_binding)
 {
-  DDS4CCM_LOG_TRACE ("DDS_TopicBase_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::late_binding");
+  DDS4CCM_LOG_TRACE ("DDS_TopicBase_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::late_binding");
   this->late_binding_ |= late_binding;
 }
 
@@ -36,7 +36,7 @@ bool
 DDS_TopicBase_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::stop_dds (
   const std::string &topic_name)
 {
-  DDS4CCM_LOG_TRACE ("DDS_TopicBase_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::stop_dds");
+  DDS4CCM_LOG_TRACE ("DDS_TopicBase_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::stop_dds");
 
   if (!this->topic_name_.empty ())
   { // topic name already set
@@ -51,7 +51,7 @@ bool
 DDS_TopicBase_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::late_binded (
   const std::string &topic_name)
 {
-  DDS4CCM_LOG_TRACE ("DDS_TopicBase_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::late_binded");
+  DDS4CCM_LOG_TRACE ("DDS_TopicBase_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::late_binded");
 
   if (!topic_name.empty () && this->topic_name_.empty () && this->late_binding_)
   {
@@ -79,7 +79,7 @@ template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 IDL::traits< ::DDS::DomainParticipant>::ref_type
 DDS_TopicBase_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::domain_participant ()
 {
-  DDS4CCM_LOG_TRACE ("DDS_TopicBase_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::domain_participant");
+  DDS4CCM_LOG_TRACE ("DDS_TopicBase_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::domain_participant");
 
   if (!this->domain_participant_)
   {
@@ -92,7 +92,7 @@ template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 IDL::traits< ::DDS::Topic>::ref_type
 DDS_TopicBase_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::topic ()
 {
-  DDS4CCM_LOG_TRACE ("DDS_TopicBase_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::topic");
+  DDS4CCM_LOG_TRACE ("DDS_TopicBase_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::topic");
 
   if (!this->topic_)
   {
@@ -109,7 +109,7 @@ template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 IDL::traits< ::DDS::Publisher>::ref_type
 DDS_TopicBase_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::publisher ()
 {
-  DDS4CCM_LOG_TRACE ("DDS_TopicBase_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::publisher");
+  DDS4CCM_LOG_TRACE ("DDS_TopicBase_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::publisher");
 
   if (!this->publisher_)
   {
@@ -122,7 +122,7 @@ template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 IDL::traits< ::DDS::Subscriber>::ref_type
 DDS_TopicBase_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::subscriber ()
 {
-  DDS4CCM_LOG_TRACE ("DDS_TopicBase_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::subscriber");
+  DDS4CCM_LOG_TRACE ("DDS_TopicBase_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::subscriber");
 
   if (!this->subscriber_)
   {
@@ -138,8 +138,7 @@ template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 void
 DDS_TopicBase_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::configuration_complete ()
 {
-  DDS4CCM_LOG_TRACE (
-    "DDS_TopicBase_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::configuration_complete");
+  DDS4CCM_LOG_TRACE ("DDS_TopicBase_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::configuration_complete");
 
   this->configuration_completed (true);
 
@@ -156,8 +155,7 @@ template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 void
 DDS_TopicBase_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::ccm_activate ()
 {
-  DDS4CCM_LOG_TRACE (
-    "DDS_TopicBase_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::ccm_activate");
+  DDS4CCM_LOG_TRACE ("DDS_TopicBase_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::ccm_activate");
 
   this->topic_listener_ = this->activate_topic (this->topic_);
 
@@ -176,8 +174,7 @@ template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 void
 DDS_TopicBase_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::ccm_passivate ()
 {
-  DDS4CCM_LOG_TRACE (
-    "DDS_TopicBase_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::ccm_passivate");
+  DDS4CCM_LOG_TRACE ("DDS_TopicBase_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::ccm_passivate");
 
   if (this->topic_)
   {
@@ -201,8 +198,7 @@ template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 void
 DDS_TopicBase_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::ccm_remove ()
 {
-  DDS4CCM_LOG_TRACE (
-    "DDS_TopicBase_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::ccm_remove");
+  DDS4CCM_LOG_TRACE ("DDS_TopicBase_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::ccm_remove");
 
   if (this->topic_)
   {
@@ -231,7 +227,6 @@ DDS_TopicBase_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::ccm_remove ()
   }
 }
 
-
 /**
   * Type registration
  **/
@@ -241,7 +236,7 @@ DDS_TopicBase_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::register_type (
   IDL::traits< ::DDS::DomainParticipant>::ref_type participant,
   const std::string &typesupport_name)
 {
-  DDS4CCM_LOG_TRACE ("DDS_TopicBase_Connector_T::register_type");
+  DDS4CCM_LOG_TRACE ("DDS_TopicBase_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::register_type");
 
   DDS4CCM_LOG_DEBUG ("DDS_TopicBase_Connector_T::register_type - "
     "About to register type <" << typesupport_name << ">.");
@@ -269,7 +264,7 @@ DDS_TopicBase_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::unregister_type
   IDL::traits< ::DDS::DomainParticipant>::ref_type participant,
   const std::string &typesupport_name)
 {
-  DDS4CCM_LOG_TRACE ("DDS_TopicBase_Connector_T::unregister_type");
+  DDS4CCM_LOG_TRACE ("DDS_TopicBase_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::unregister_type");
 
   ::DDS::ReturnCode_t const retcode =
     ::DDS::traits<TOPIC_TYPE>::unregister_type (participant, typesupport_name);
@@ -289,8 +284,7 @@ template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 std::string
 DDS_TopicBase_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::topic_name ()
 {
-  DDS4CCM_LOG_TRACE (
-    "DDS_TopicBase_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::topic_name (get)");
+  DDS4CCM_LOG_TRACE ("DDS_TopicBase_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::topic_name");
 
   return this->topic_name_;
 }
@@ -300,8 +294,7 @@ void
 DDS_TopicBase_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::topic_name (
   const std::string &topic_name)
 {
-  DDS4CCM_LOG_TRACE (
-    "DDS_TopicBase_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::topic_name (set)");
+  DDS4CCM_LOG_TRACE ("DDS_TopicBase_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::topic_name");
 
   this->topic_name_ = topic_name;
 }
@@ -310,8 +303,7 @@ template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 std::string
 DDS_TopicBase_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::type_name ()
 {
-  DDS4CCM_LOG_TRACE (
-    "DDS_TopicBase_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::type_name");
+  DDS4CCM_LOG_TRACE ("DDS_TopicBase_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::type_name");
 
   // When the user has not set a type_name we default to the DDS
   // vendor defined default type_name
@@ -328,8 +320,7 @@ void
 DDS_TopicBase_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::type_name (
   const std::string &type_name)
 {
-  DDS4CCM_LOG_TRACE (
-    "DDS_TopicBase_Connector_T<CCM_TYPE, DDS_TYPE, FIXED>::type_name");
+  DDS4CCM_LOG_TRACE ("DDS_TopicBase_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::type_name");
 
   this->type_name_ = type_name;
 }
