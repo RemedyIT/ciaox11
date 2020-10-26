@@ -188,6 +188,23 @@ namespace IDL_Conversion_Test_Receiver_Impl
       c++;
     }
 
+    /// Check b_20 [Example::B20_4 (IDL::bounded_vector < B20_4, 1>)]
+    if (datum.b_20 ().size () != 0)
+    {
+      DDS4CCM_TEST_ERROR << "Receiver check - ERROR: unexpected value for "
+        << "b_20.size: expected<0> - got <" << datum.b_20 ().size ()
+        << "> - details <" << datum.b_20 () << ">"
+        << std::endl;
+    }
+
+    /// Check b_21 [Example::B21_6 (IDL::bounded_vector < B20_2, 1>)]
+    if (datum.b_21 ().size () != 1 || datum.b_21 ()[0] != 21.6)
+    {
+      DDS4CCM_TEST_ERROR << "Receiver check - ERROR: unexpected value for "
+        << "b_21: expected single element 21.6 - got <" << datum.b_21 () << ">"
+        << std::endl;
+    }
+
     /// Check b_32 [Example::B32 (std::array< B31, 2 >)]
     this->check_b31_array (datum.b_32 (), datum.iteration ());
 
