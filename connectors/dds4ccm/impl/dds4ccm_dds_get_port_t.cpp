@@ -15,6 +15,7 @@ DDS_Get_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::DDS_Get_Port_T (
   IDL::traits<CORBA::Object>::ref_type component)
   : DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE> (std::move(component))
 {
+  DDS4CCM_LOG_TRACE ("DDS_Get_Port_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::DDS_Get_Port_T");
 }
 
 template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
@@ -24,7 +25,7 @@ DDS_Get_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::configuration_complete (
   IDL::traits< ::DDS::Subscriber>::ref_type subscriber,
   const std::string &qos_profile)
 {
-  DDS4CCM_LOG_TRACE ("DDS_Get_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::configuration_complete");
+  DDS4CCM_LOG_TRACE ("DDS_Get_Port_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::configuration_complete");
 
   SubscriberBase_type::configuration_complete (topic, subscriber, qos_profile);
 
@@ -40,7 +41,7 @@ template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 typename IDL::traits<typename CCM_TYPE::fresh_data_type>::ref_type
 DDS_Get_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_fresh_data ()
 {
-  DDS4CCM_LOG_TRACE ("DDS_Get_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_fresh_data");
+  DDS4CCM_LOG_TRACE ("DDS_Get_Port_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::get_fresh_data");
 
   if (!this->dds4ccm_getter_)
   {

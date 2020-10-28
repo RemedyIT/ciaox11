@@ -23,7 +23,7 @@ DDS_Write_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::configuration_complete (
   IDL::traits< ::DDS::Publisher>::ref_type publisher,
   const std::string &qos_profile)
 {
-  DDS4CCM_LOG_TRACE ("DDS_Write_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::configuration_complete");
+  DDS4CCM_LOG_TRACE ("DDS_Write_Port_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::configuration_complete");
 
   // Check whether a connection has been made to one of the basic ports.
   // If so, a DataWriter should be created.
@@ -43,8 +43,9 @@ DDS_Write_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::configuration_complete (
 
       if (retcode != DDS::RETCODE_OK)
       {
-        DDS4CCM_LOG_ERROR ("DDS_Write_Port_T::configuration_complete - "
-          << "Error: Unable to retrieve get_default_datawriter_qos: <"
+        DDS4CCM_LOG_ERROR ("DDS_Write_Port_T<"
+          << ::DDS::traits<TOPIC_TYPE>::get_type_name()
+          << ">::configuration_complete - Error: Unable to retrieve get_default_datawriter_qos: <"
           << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">.");
         throw ::CCM_DDS::InternalError (retcode, 0);
@@ -57,8 +58,9 @@ DDS_Write_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::configuration_complete (
 
     if (this->data_writer_)
     {
-      DDS4CCM_LOG_DEBUG ("DDS_Write_Port_T::configuration_complete - "
-        << "Created datawriter <"
+      DDS4CCM_LOG_DEBUG ("DDS_Write_Port_T<"
+        << ::DDS::traits<TOPIC_TYPE>::get_type_name()
+        << ">::configuration_complete - Created datawriter <"
         << IDL::traits<DDS::Entity>::write<entity_formatter> (this->data_writer_)
         << "> using publisher <"
         << IDL::traits<DDS::Entity>::write<entity_formatter> (publisher)
@@ -66,17 +68,19 @@ DDS_Write_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::configuration_complete (
     }
     else
     {
-      DDS4CCM_LOG_ERROR ("DDS_Write_Port_T::configuration_complete - "
-        "Error: DDS returned a nil datawriter.");
+      DDS4CCM_LOG_ERROR ("DDS_Write_Port_T<"
+        << ::DDS::traits<TOPIC_TYPE>::get_type_name()
+        << ">::configuration_complete - Error: DDS returned a nil datawriter.");
       throw ::CORBA::INTERNAL ();
     }
 
     ::DDS::ReturnCode_t const retcode = this->data_writer_->enable ();
     if (retcode != ::DDS::RETCODE_OK)
     {
-      DDS4CCM_LOG_ERROR ("DDS_Write_Port_T::configuration_complete - "
-        "Error: Unable to enable the datawriter: <" <<
-        IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode) << ">.");
+      DDS4CCM_LOG_ERROR ("DDS_Write_Port_T<"
+        << ::DDS::traits<TOPIC_TYPE>::get_type_name()
+        << ">::configuration_complete - Error: Unable to enable the datawriter: <"
+        << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode) << ">.");
       throw ::CORBA::INTERNAL ();
     }
 
@@ -96,7 +100,7 @@ void
 DDS_Write_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::remove (
   IDL::traits< ::DDS::Publisher>::ref_type publisher)
 {
-  DDS4CCM_LOG_TRACE ("DDS_Write_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::remove");
+  DDS4CCM_LOG_TRACE ("DDS_Write_Port_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::remove");
 
   if (this->dds4ccm_writer_)
   {
@@ -109,8 +113,9 @@ DDS_Write_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::remove (
 
   if (this->data_writer_)
   {
-    DDS4CCM_LOG_DEBUG ("DDS_Write_Port_T::remove - "
-      << "About to remove DataWriter "
+    DDS4CCM_LOG_DEBUG ("DDS_Write_Port_T<"
+      << ::DDS::traits<TOPIC_TYPE>::get_type_name()
+      << ">::remove - About to remove DataWriter "
       << IDL::traits<DDS::Entity>::write<entity_formatter> (this->data_writer_)
       << " from publisher "
       << IDL::traits<DDS::Entity>::write<entity_formatter> (publisher));
@@ -120,14 +125,17 @@ DDS_Write_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::remove (
 
     if (retcode != ::DDS::RETCODE_OK)
     {
-      DDS4CCM_LOG_ERROR ("DDS_Write_Port_T::remove - Unable to remove DataWriter: <"
+      DDS4CCM_LOG_ERROR ("DDS_Write_Port_T<"
+        << ::DDS::traits<TOPIC_TYPE>::get_type_name()
+        << ">::remove - Unable to remove DataWriter: <"
         << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
         << ">.");
       throw ::CORBA::INTERNAL ();
     }
     else
     {
-      DDS4CCM_LOG_DEBUG ("DDS_Write_Port_T::remove - deleted DataWriter.");
+      DDS4CCM_LOG_DEBUG ("DDS_Write_Port_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name()
+        << ">::remove - deleted DataWriter.");
     }
 
     this->data_writer_ = nullptr;
@@ -141,7 +149,7 @@ template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 typename IDL::traits<typename  CCM_TYPE::data_type>::ref_type
 DDS_Write_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_data ()
 {
-  DDS4CCM_LOG_TRACE ("DDS_Write_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_data");
+  DDS4CCM_LOG_TRACE ("DDS_Write_Port_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::get_data");
 
   if (!this->dds4ccm_writer_)
   {
@@ -155,7 +163,7 @@ template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 typename IDL::traits<typename CCM_TYPE::dds_entity_type>::ref_type
 DDS_Write_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_dds_entity ()
 {
-  DDS4CCM_LOG_TRACE ("DDS_Write_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_dds_entity");
+  DDS4CCM_LOG_TRACE ("DDS_Write_Port_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::get_dds_entity");
 
   if (!this->ccm_data_writer_)
   {

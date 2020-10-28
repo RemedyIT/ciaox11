@@ -22,7 +22,7 @@ namespace CIAOX11
       : FacetBase<WRITER_TYPE> (component)
       , InstanceHandleManager_T<WRITER_TYPE, TOPIC_TYPE> (component)
     {
-      DDS4CCM_LOG_TRACE ("CIAOX11::DDS4CCM::Writer_T::Writer_T");
+      DDS4CCM_LOG_TRACE ("Writer_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::Writer_T");
     }
 
     template <typename WRITER_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
@@ -32,15 +32,16 @@ namespace CIAOX11
       const ::DDS::InstanceHandle_t& instance_handle,
       typename TOPIC_SEQ_TYPE::size_type index)
     {
-      DDS4CCM_LOG_TRACE ("CIAOX11::DDS4CCM::Writer_T::write_i");
+      DDS4CCM_LOG_TRACE ("Writer_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::write_i");
 
       ::DDS::ReturnCode_t const retcode =
         this->dds_writer_->write (datum, instance_handle);
 
       if (retcode != ::DDS::RETCODE_OK)
       {
-        DDS4CCM_LOG_ERROR ("Writer_T::write_i - "
-          << "Write unsuccessful, received error code <"
+        DDS4CCM_LOG_ERROR ("Writer_T<"
+          << ::DDS::traits<TOPIC_TYPE>::get_type_name()
+          << ">::write_i - Write unsuccessful, received error code <"
           << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">.");
         throw CCM_DDS::InternalError (
@@ -55,11 +56,11 @@ namespace CIAOX11
       const TOPIC_TYPE &an_instance,
       const ::DDS::InstanceHandle_t& instance_handle)
     {
-      DDS4CCM_LOG_TRACE ("CIAOX11::DDS4CCM::Writer_T::write_one");
+      DDS4CCM_LOG_TRACE ("Writer_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::write_one");
 
       this->write_i (an_instance, instance_handle, 0);
 
-      DDS4CCM_LOG_DEBUG ("Writer_T::write_one - Write successful.");
+      DDS4CCM_LOG_DEBUG ("Writer_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::write_one - Write successful.");
     }
 
     template <typename WRITER_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
@@ -67,13 +68,14 @@ namespace CIAOX11
     Writer_T<WRITER_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::write_many (
       const TOPIC_SEQ_TYPE &instances)
     {
-      DDS4CCM_LOG_TRACE ("CIAOX11::DDS4CCM::Writer_T::write_many");
+      DDS4CCM_LOG_TRACE ("Writer_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::write_many");
 
       IDL::traits< ::DDS::Publisher>::ref_type pub = this->dds_writer_->get_publisher ();
       if (!pub)
       {
-        DDS4CCM_LOG_ERROR ("Writer_T::write_many - "
-          << "Publisher on DataWriter seems to be NIL.");
+        DDS4CCM_LOG_ERROR ("Writer_T<"
+          << ::DDS::traits<TOPIC_TYPE>::get_type_name()
+          << ">::write_many - Publisher on DataWriter seems to be NIL.");
         throw CCM_DDS::InternalError (::DDS::RETCODE_ERROR, 0);
       }
 
@@ -81,7 +83,9 @@ namespace CIAOX11
         pub,
         this->is_coherent_write_);
 
-      DDS4CCM_LOG_DEBUG ("Writer_T::write_many - Preparing to write to DDS.");
+      DDS4CCM_LOG_DEBUG ("Writer_T<"
+        << ::DDS::traits<TOPIC_TYPE>::get_type_name()
+        << ">::write_many - Preparing to write to DDS.");
 
       typename TOPIC_SEQ_TYPE::size_type index = 0;
       for (const TOPIC_TYPE& vt : instances)
@@ -89,7 +93,9 @@ namespace CIAOX11
         this->write_i (vt, ::DDS::HANDLE_NIL, index++);
       }
 
-      DDS4CCM_LOG_DEBUG ("Writer_T::write_many - Write successful.");
+      DDS4CCM_LOG_DEBUG ("Writer_T<"
+        << ::DDS::traits<TOPIC_TYPE>::get_type_name()
+        << ">::write_many - Write successful.");
     }
 
     template <typename WRITER_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
