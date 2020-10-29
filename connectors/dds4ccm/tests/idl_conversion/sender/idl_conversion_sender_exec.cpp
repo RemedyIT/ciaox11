@@ -300,16 +300,20 @@ namespace IDL_Conversion_Test_Sender_Impl
       b17.reserve (10);
       for (uint16_t i = 0; i < 10; ++i)
       {
-        b17[i] = (i%2) ? true : false;
+        b17.push_back ((i%2) ? true : false);
       }
 
       Example::B18 b18;
       b18.reserve (15);
       for (uint16_t i = 0; i < 15; ++i)
       {
-        b18[i] = (i%2) ? true : false;
+        b18.push_back ((i%2) ? true : false);
       }
 
+      Example::B20_4 b20;
+
+      Example::B21_6 b21;
+      b21.push_back (21.6);
 
       Example::B32 b32;
       b32[0] = Example::B31 (3*this->last_iteration_);
@@ -438,6 +442,8 @@ namespace IDL_Conversion_Test_Sender_Impl
           b16,
           b17,
           b18,
+          b20,
+          b21,
           b32,
           b33,
           b34,
