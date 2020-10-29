@@ -15,6 +15,7 @@ template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE, CIAOX
 DDS_Listen_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE, LRT>::DDS_Listen_Port_T (IDL::traits<CORBA::Object>::ref_type component)
   : DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE> (component)
 {
+  DDS4CCM_LOG_TRACE ("DDS_Listen_Port_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::DDS_Listen_Port_T");
 }
 
 template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE, CIAOX11::DDS4CCM::DDS4CCM_LISTENER_READ_TAKE LRT>
@@ -24,12 +25,12 @@ DDS_Listen_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE, LRT>::activate (
   typename IDL::traits<typename CCM_TYPE::data_listener_type>::ref_type listener,
   IDL::traits< CCM_DDS::PortStatusListener>::ref_type status)
 {
-  DDS4CCM_LOG_TRACE ("DDS_Listen_Port_T::activate");
+  DDS4CCM_LOG_TRACE ("DDS_Listen_Port_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::activate");
 
   ::DDS::StatusMask const mask =
     DataReaderListener_type::get_mask (listener, status);
 
-  if (mask != 0)
+  if (mask != ::DDS::STATUS_MASK_NONE)
   {
     if (!this->listener_)
     {
@@ -48,8 +49,9 @@ DDS_Listen_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE, LRT>::activate (
 
       if (retcode != ::DDS::RETCODE_OK)
       {
-        DDS4CCM_LOG_ERROR ("DDS_Listen_Port_T::activate - "
-          << "Error while setting the listener on the listen - <"
+        DDS4CCM_LOG_ERROR ("DDS_Listen_Port_T<"
+          << ::DDS::traits<TOPIC_TYPE>::get_type_name()
+          << ">::activate - Error while setting the listener on the listen - <"
           << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">.");
         throw ::CORBA::INTERNAL ();
@@ -57,8 +59,9 @@ DDS_Listen_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE, LRT>::activate (
     }
     else
     {
-      DDS4CCM_LOG_ERROR ("DDS_Listen_Port_T::activate - "
-        "Error while retrieving the DataReader.");
+      DDS4CCM_LOG_ERROR ("DDS_Listen_Port_T<"
+        << ::DDS::traits<TOPIC_TYPE>::get_type_name()
+        << ">::activate - Error while retrieving the DataReader.");
       throw ::CORBA::INTERNAL ();
     }
   }
@@ -68,7 +71,7 @@ template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE, CIAOX
 IDL::traits< CCM_DDS::CCM_DataListenerControl>::ref_type
 DDS_Listen_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE, LRT>::get_data_control ()
 {
-  DDS4CCM_LOG_TRACE ("DDS_Listen_Port_T::get_data_control");
+  DDS4CCM_LOG_TRACE ("DDS_Listen_Port_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::get_data_control");
 
   if (!this->data_control_)
   {

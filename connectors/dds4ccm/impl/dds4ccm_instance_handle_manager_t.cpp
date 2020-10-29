@@ -45,14 +45,15 @@ namespace CIAOX11
     InstanceHandleManager_T<BASE_TYPE, TOPIC_TYPE>::set_dds_writer (
       IDL::traits< ::DDS::DataWriter>::ref_type dds_writer)
     {
-      DDS4CCM_LOG_TRACE ("CIAOX11::DDS4CCM::InstanceHandleManager_T::set_dds_writer");
+      DDS4CCM_LOG_TRACE ("InstanceHandleManager_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::set_dds_writer");
 
       this->dds_writer_ = ::DDS::traits<TOPIC_TYPE>::narrow (dds_writer);
 
       if (dds_writer && !this->dds_writer_)
       {
-        DDS4CCM_LOG_ERROR ("InstanceHandleManager_T::set_dds_writer - "
-          "narrow failed.");
+        DDS4CCM_LOG_ERROR ("InstanceHandleManager_T<"
+          << ::DDS::traits<TOPIC_TYPE>::get_type_name()
+          << ">::set_dds_writer - narrow failed.");
         throw ::CORBA::INTERNAL ();
       }
     }

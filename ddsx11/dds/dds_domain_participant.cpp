@@ -1134,14 +1134,12 @@ namespace DDSX11
     return retval;
   }
 
-
   ::DDS::StatusMask
   DDS_DomainParticipant_proxy::get_status_changes ()
   {
     return ::DDSX11::traits< ::DDS::StatusMask>::retn (
       this->native_entity ()->get_status_changes ());
   }
-
 
   ::DDS::InstanceHandle_t
   DDS_DomainParticipant_proxy::get_instance_handle ()

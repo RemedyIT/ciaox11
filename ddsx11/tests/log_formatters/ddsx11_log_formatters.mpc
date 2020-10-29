@@ -1,0 +1,8 @@
+project(*main) : taox11_exe, \
+                 ddsx11_impl, ddsx11_logger {
+  exename = ddsx11_log_formatters_test
+
+  Source_Files {
+    main.cpp
+  }
+}

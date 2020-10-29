@@ -2,7 +2,7 @@
  * @file    dds4ccm_testlog.h
  * @author  Marcel Smit
  *
- * @brief   CORBA C++11 Test Logging module
+ * @brief   DDS4CCM Test Logging module
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
  */
@@ -12,14 +12,9 @@
 #include "dds4ccm/logger/dds4ccm_log.h"
 
 #if defined(X11_NLOGGING)
-
 #define DDS4CCM_TEST_LOGGER   x11_logger::NULL_LogType
-
 #else
-
-#define DDS4CCM_TEST_LOGGER \
-  CIAOX11::DDS4CCM::dds4ccm_logger::DDS4CCM_Test_Log_Module::log_type
-
+#define DDS4CCM_TEST_LOGGER CIAOX11::DDS4CCM::dds4ccm_logger::DDS4CCM_Test_Log_Module::log_type
 #endif /* !X11_NLOGGING */
 
 #define DDS4CCM_TEST_TRACE      X11_TRACE_LOG(DDS4CCM_TEST_LOGGER)
@@ -29,7 +24,6 @@
 #define DDS4CCM_TEST_ERROR      X11_ERROR_LOG(DDS4CCM_TEST_LOGGER)
 #define DDS4CCM_TEST_CRITICAL   X11_CRITICAL_LOG(DDS4CCM_TEST_LOGGER)
 #define DDS4CCM_TEST_PANIC      X11_PANIC_LOG(DDS4CCM_TEST_LOGGER)
-
 
 #define DDS4CCM_TEST_TRACE_W    X11_TRACE_W_LOG(DDS4CCM_TEST_LOGGER)
 #define DDS4CCM_TEST_DEBUG_W    X11_DEBUG_W_LOG(DDS4CCM_TEST_LOGGER)

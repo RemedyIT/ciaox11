@@ -23,6 +23,8 @@ namespace DDSX11
   {
 %if is_bounded_string_type?
     return DDSX11::bounded_string_sequence_from_dds(to, from);
+%elsif is_boolean_type? && is_bounded?
+    return DDSX11::bounded_boolean_sequence_from_dds(to, from);
 %else
     return DDSX11::sequence_from_dds(to, from);
 %end

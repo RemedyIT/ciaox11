@@ -19,6 +19,11 @@
 module Typed_NonTopic_Test_a< ::X,::Z,::XSeq,::ZSeq> Xtest_a;
 module Typed_NonTopic_Test_b< ::X,::Z,::XSeq,::ZSeq> Xtest_b;
 
+connector Bar
+{
+  attribute short foo;
+};
+
 #endif /* NONTOPIC_CONNECTOR_IDL_ */
 
 

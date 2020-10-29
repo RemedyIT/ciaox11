@@ -24,6 +24,10 @@ module IDL
         is_string_type? && !self._resolved_idltype.basetype.resolved_type.length.nil?
       end
 
+      def is_boolean_type?
+        ::IDL::Type::Boolean === self._resolved_idltype.basetype.resolved_type
+      end
+
     end # SequenceVisitor
 
   end # CCMX11

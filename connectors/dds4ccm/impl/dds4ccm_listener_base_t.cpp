@@ -24,7 +24,7 @@ namespace CIAOX11
         control_ (std::move(control)),
         condition_manager_ (condition_manager)
     {
-      DDS4CCM_LOG_TRACE ("ListenerBase_T::ListenerBase_T");
+      DDS4CCM_LOG_TRACE ("ListenerBase_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::ListenerBase_T");
     }
 
     template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
@@ -32,7 +32,7 @@ namespace CIAOX11
     ListenerBase_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::on_data_available (
       IDL::traits< ::DDS::DataReader>::ref_type rdr)
     {
-      DDS4CCM_LOG_TRACE ("ListenerBase_T::on_data_available");
+      DDS4CCM_LOG_TRACE ("ListenerBase_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::on_data_available");
 
       if (rdr && this->control_ && this->control_->mode () != ::CCM_DDS::ListenerMode::NOT_ENABLED)
       {
@@ -47,9 +47,9 @@ namespace CIAOX11
       typename IDL::traits<typename CCM_TYPE::data_listener_type>::ref_type listener,
       IDL::traits< ::CCM_DDS::PortStatusListener>::ref_type status)
     {
-      DDS4CCM_LOG_TRACE ("ListenerBase_T::get_mask");
+      DDS4CCM_LOG_TRACE ("ListenerBase_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::get_mask");
 
-      ::DDS::StatusMask mask {};
+      ::DDS::StatusMask mask { ::DDS::STATUS_MASK_NONE };
 
       if (listener)
       {
@@ -57,8 +57,9 @@ namespace CIAOX11
         mask |= PortStatusListener_T<typename CCM_TYPE::event_strategy_type>::get_mask (status);
       }
 
-      DDS4CCM_LOG_DEBUG ("ListenerBase_T::get_mask - "
-        << "Mask becomes <"
+      DDS4CCM_LOG_DEBUG ("ListenerBase_T<"
+        << ::DDS::traits<TOPIC_TYPE>::get_type_name()
+        << ">::get_mask - Mask becomes <"
         << IDL::traits< ::DDS::StatusMask>::write<status_mask_formatter> (mask)
         << ">.");
       return mask;
@@ -73,7 +74,7 @@ namespace CIAOX11
       ::DDS::SampleInfoSeq &sample_info,
       int32_t max_samples)
     {
-      DDS4CCM_LOG_TRACE ("ListenerBase_T::take_data_i");
+      DDS4CCM_LOG_TRACE ("ListenerBase_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::take_data_i");
 
       ::DDS::ReturnCode_t result = ::DDS::RETCODE_OK;
       if (qc)
@@ -104,7 +105,7 @@ namespace CIAOX11
       ::DDS::SampleInfoSeq &sample_info,
       int32_t max_samples)
     {
-      DDS4CCM_LOG_TRACE ("ListenerBase_T::read_data_i");
+      DDS4CCM_LOG_TRACE ("ListenerBase_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::read_data_i");
 
       ::DDS::ReturnCode_t result = ::DDS::RETCODE_OK;
       if (qc)

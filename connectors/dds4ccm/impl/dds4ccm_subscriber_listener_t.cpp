@@ -19,7 +19,7 @@ namespace CIAOX11
       const EVT_STRATEGY &evs)
       : evs_ (evs)
     {
-      DDS4CCM_LOG_TRACE("CIAOX11::DDS4CCM::SubscriberListener_T<EVT_STRATEGY>::SubscriberListener");
+      DDS4CCM_LOG_TRACE("SubscriberListener_T<EVT_STRATEGY>::SubscriberListener");
     }
 
     template <typename EVT_STRATEGY>
@@ -28,7 +28,7 @@ namespace CIAOX11
       IDL::traits< ::DDS::DataReader>::ref_type reader,
       const ::DDS::RequestedIncompatibleQosStatus & status)
     {
-      DDS4CCM_LOG_TRACE("CIAOX11::DDS4CCM::SubscriberListener_T<EVT_STRATEGY>::on_requested_incompatible_qos");
+      DDS4CCM_LOG_TRACE("SubscriberListener_T<EVT_STRATEGY>::on_requested_incompatible_qos");
 
       DDS4CCM_LOG_DEBUG ("SubscriberListener_T<EVT_STRATEGY>::on_requested_incompatible_qos - "
         << IDL::traits< ::DDS::RequestedIncompatibleQosStatus>::write (status));
@@ -48,7 +48,7 @@ namespace CIAOX11
       IDL::traits< ::DDS::Entity>::ref_type entity,
       ::DDS::StatusKind status_kind)
     {
-      DDS4CCM_LOG_TRACE("CIAOX11::DDS4CCM::SubscriberListener_T<EVT_STRATEGY>::on_unexpected_status");
+      DDS4CCM_LOG_TRACE("SubscriberListener_T<EVT_STRATEGY>::on_unexpected_status");
 
       this->evs_.handle_unexpected_status_event (std::move(entity), status_kind);
     }
@@ -59,7 +59,7 @@ namespace CIAOX11
       IDL::traits< ::DDS::DataReader>::ref_type reader,
       const ::DDS::LivelinessChangedStatus& status)
     {
-      DDS4CCM_LOG_TRACE("CIAOX11::DDS4CCM::SubscriberListener_T<EVT_STRATEGY>::on_liveliness_changed");
+      DDS4CCM_LOG_TRACE("SubscriberListener_T<EVT_STRATEGY>::on_liveliness_changed");
 
       DDS4CCM_LOG_DEBUG ("SubscriberListener_T<EVT_STRATEGY>::on_liveliness_changed - "
         << IDL::traits< ::DDS::LivelinessChangedStatus>::write (status));
@@ -73,7 +73,7 @@ namespace CIAOX11
       IDL::traits< ::DDS::DataReader>::ref_type reader,
       const ::DDS::SampleRejectedStatus & status)
     {
-      DDS4CCM_LOG_TRACE("CIAOX11::DDS4CCM::SubscriberListener_T<EVT_STRATEGY>::on_sample_rejected");
+      DDS4CCM_LOG_TRACE("SubscriberListener_T<EVT_STRATEGY>::on_sample_rejected");
 
       DDS4CCM_LOG_DEBUG ("SubscriberListener_T<EVT_STRATEGY>::on_sample_rejected - "
         << IDL::traits< ::DDS::SampleRejectedStatus>::write (status));
@@ -87,7 +87,7 @@ namespace CIAOX11
       IDL::traits< ::DDS::DataReader>::ref_type reader,
       const ::DDS::SubscriptionMatchedStatus & status)
     {
-      DDS4CCM_LOG_TRACE("CIAOX11::DDS4CCM::SubscriberListener_T<EVT_STRATEGY>::on_subscription_matched");
+      DDS4CCM_LOG_TRACE("SubscriberListener_T<EVT_STRATEGY>::on_subscription_matched");
 
       DDS4CCM_LOG_DEBUG ("SubscriberListener_T<EVT_STRATEGY>::on_subscription_matched - "
         << IDL::traits< ::DDS::SubscriptionMatchedStatus>::write (status));
@@ -100,7 +100,7 @@ namespace CIAOX11
     SubscriberListener_T<EVT_STRATEGY>::on_data_on_readers (
       IDL::traits< ::DDS::Subscriber>::ref_type)
     {
-      DDS4CCM_LOG_TRACE("CIAOX11::DDS4CCM::SubscriberListener_T<EVT_STRATEGY>::on_data_on_readers");
+      DDS4CCM_LOG_TRACE("SubscriberListener_T<EVT_STRATEGY>::on_data_on_readers");
       //do nothing by design
     }
 
@@ -138,7 +138,7 @@ namespace CIAOX11
     SubscriberListener_T<EVT_STRATEGY>::get_mask (
       IDL::traits< CCM_DDS::ConnectorStatusListener>::ref_type csl)
     {
-      ::DDS::StatusMask mask {};
+      ::DDS::StatusMask mask { ::DDS::STATUS_MASK_NONE };
 
       if (csl)
       {

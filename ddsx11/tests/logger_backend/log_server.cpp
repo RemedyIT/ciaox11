@@ -10,14 +10,13 @@
 #include "ace/Log_Msg.h"
 #include "ace/Get_Opt.h"
 #include "log_record_dds_typesupport.h"
-#include "logger/ddsx11_log.h"
+#include "tests/testlib/ddsx11_testlog.h"
 
 #include <string>
 #include <iostream>
 #include <thread>
 
 // @todo add listener, cleanup all dds entities one by one
-
 struct Options
 {
   std::string topic_;
@@ -54,7 +53,7 @@ bool parse_args (int argc, ACE_TCHAR **argv)
           break;
 
         default:
-          DDSX11_IMPL_LOG_ERROR("Unknown option for log_server " << opts.last_option ());
+          DDSX11_TEST_ERROR << "Unknown option for log_server " << opts.last_option () << std::endl;
 
           return false;
         }
@@ -106,7 +105,7 @@ ACE_TMAIN (int argc, ACE_TCHAR **argv)
 {
   if (!parse_args (argc, argv))
     {
-      DDSX11_IMPL_LOG_ERROR ("Unable to parse command line options");
+      DDSX11_TEST_ERROR << "Unable to parse command line options" << std::endl;
       return 1;
     }
 
@@ -141,7 +140,7 @@ ACE_TMAIN (int argc, ACE_TCHAR **argv)
 
       if (!participant_)
         {
-          DDSX11_IMPL_LOG_ERROR ("log_server - Failed to create participant");
+          DDSX11_TEST_ERROR << "log_server - Failed to create participant" << std::endl;
           return 1;
         }
 
@@ -152,7 +151,7 @@ ACE_TMAIN (int argc, ACE_TCHAR **argv)
 
       if (retval != DDS::RETCODE_OK)
         {
-          DDSX11_IMPL_LOG_ERROR ("log_server - Failed to register type");
+          DDSX11_TEST_ERROR << "log_server - Failed to register type" << std::endl;
           throw 1;
         }
 
@@ -161,9 +160,9 @@ ACE_TMAIN (int argc, ACE_TCHAR **argv)
 
       if (retval != DDS::RETCODE_OK)
       {
-          DDSX11_IMPL_LOG_ERROR ("log_server - Failed to register type <"
+          DDSX11_TEST_ERROR << "log_server - Failed to register type <"
             << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retval)
-            << ">.");
+            << ">." << std::endl;
           throw 1;
       }
 
@@ -172,11 +171,11 @@ ACE_TMAIN (int argc, ACE_TCHAR **argv)
         DDS::traits<DnCX11::Log_Record>::get_type_name (),
         tqos,
         nullptr,
-        0);
+        DDS::STATUS_MASK_NONE);
 
       if (!topic_)
         {
-          DDSX11_IMPL_LOG_ERROR ("log_server - Failed to create topic");
+          DDSX11_TEST_ERROR << "log_server - Failed to create topic" << std::endl;
           throw 1;
         }
 
@@ -184,9 +183,9 @@ ACE_TMAIN (int argc, ACE_TCHAR **argv)
       retval = participant_->get_default_subscriber_qos (subqos);
       if (retval != DDS::RETCODE_OK)
         {
-          DDSX11_IMPL_LOG_ERROR ("log_server - Failed to retrieve default subscriber QoS <"
+          DDSX11_TEST_ERROR << "log_server - Failed to retrieve default subscriber QoS <"
             << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retval)
-            << ">.");
+            << ">." << std::endl;
           throw 1;
         }
 
@@ -194,11 +193,11 @@ ACE_TMAIN (int argc, ACE_TCHAR **argv)
         participant_->create_subscriber (
           subqos,
           nullptr,
-          0);
+          DDS::STATUS_MASK_NONE);
 
       if (!subscriber_)
         {
-          DDSX11_IMPL_LOG_ERROR ("log_server - Failed to create subscriber");
+          DDSX11_TEST_ERROR << "log_server - Failed to create subscriber" << std::endl;
           throw 1;
         }
 
@@ -206,9 +205,9 @@ ACE_TMAIN (int argc, ACE_TCHAR **argv)
       retval = subscriber_->get_default_datareader_qos (readerqos);
       if (retval != DDS::RETCODE_OK)
         {
-          DDSX11_IMPL_LOG_ERROR ("log_server - Failed to retrieve default datareader QoS <"
+          DDSX11_TEST_ERROR << "log_server - Failed to retrieve default datareader QoS <"
             << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retval)
-            << ">.");
+            << ">." << std::endl;
           throw 1;
         }
 
@@ -223,7 +222,7 @@ ACE_TMAIN (int argc, ACE_TCHAR **argv)
 
       if (!datareader_)
         {
-          DDSX11_IMPL_LOG_ERROR ("log_server - Failed to create the datareader");
+          DDSX11_TEST_ERROR << "log_server - Failed to create the datareader" << std::endl;
           throw 1;
         }
 
@@ -232,7 +231,7 @@ ACE_TMAIN (int argc, ACE_TCHAR **argv)
 
       if (!log_record_reader_)
         {
-          DDSX11_IMPL_LOG_ERROR ("log_server - Failed to narrow the typed datareader");
+          DDSX11_TEST_ERROR << "log_server - Failed to narrow the typed datareader" << std::endl;
           throw 1;
         }
 
@@ -252,9 +251,9 @@ ACE_TMAIN (int argc, ACE_TCHAR **argv)
 
       if (retval != DDS::RETCODE_OK)
         {
-          DDSX11_IMPL_LOG_ERROR ("log_server - Unable to delete datareader <"
+          DDSX11_TEST_ERROR << "log_server - Unable to delete datareader <"
             << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retval)
-            << ">.");
+            << ">." << std::endl;
         }
 
       datareader_ = nullptr;
@@ -268,9 +267,9 @@ ACE_TMAIN (int argc, ACE_TCHAR **argv)
 
       if (retval != DDS::RETCODE_OK)
         {
-          DDSX11_IMPL_LOG_ERROR ("log_server - Unable to delete subscriber <"
+          DDSX11_TEST_ERROR << "log_server - Unable to delete subscriber <"
             << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retval)
-            << ">.");
+            << ">." << std::endl;
         }
       subscriber_ = nullptr;
     }
@@ -282,9 +281,9 @@ ACE_TMAIN (int argc, ACE_TCHAR **argv)
 
       if (retval != DDS::RETCODE_OK)
         {
-          DDSX11_IMPL_LOG_ERROR ("log_server - Unable to delete topic <"
+          DDSX11_TEST_ERROR << "log_server - Unable to delete topic <"
             << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retval)
-            << ">.");
+            << ">." << std::endl;
         }
       topic_ = nullptr;
     }
@@ -296,9 +295,9 @@ ACE_TMAIN (int argc, ACE_TCHAR **argv)
 
       if (retval != DDS::RETCODE_OK)
         {
-          DDSX11_IMPL_LOG_ERROR ("log_server - Unable to delete participant <"
+          DDSX11_TEST_ERROR << "log_server - Unable to delete participant <"
             << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retval)
-            << ">.");
+            << ">." << std::endl;
         }
       participant_ = nullptr;
     }
@@ -310,9 +309,9 @@ ACE_TMAIN (int argc, ACE_TCHAR **argv)
 
       if (retval != DDS::RETCODE_OK)
         {
-          DDSX11_IMPL_LOG_ERROR ("log_server - Unable to finalize participant factory <"
+          DDSX11_TEST_ERROR << "log_server - Unable to finalize participant factory <"
             << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retval)
-            << ">.");
+            << ">." << std::endl;
         }
       dpf_ = nullptr;
     }
@@ -325,7 +324,7 @@ Log_RecordListener::on_requested_deadline_missed (
   DDS::traits<DnCX11::Log_Record>::datareader_ref_type ,
   const DDS::RequestedDeadlineMissedStatus& )
 {
-  DDSX11_IMPL_LOG_DEBUG ("Log_RecordListener::on_requested_deadline_missed received");
+  DDSX11_TEST_DEBUG << "Log_RecordListener::on_requested_deadline_missed received" << std::endl;
 }
 
 void
@@ -333,7 +332,7 @@ Log_RecordListener::on_requested_incompatible_qos (
   DDS::traits<DnCX11::Log_Record>::datareader_ref_type ,
   const DDS::RequestedIncompatibleQosStatus& )
 {
-  DDSX11_IMPL_LOG_DEBUG ("Log_RecordListener::on_requested_incompatible_qos received");
+  DDSX11_TEST_DEBUG << "Log_RecordListener::on_requested_incompatible_qos received" << std::endl;
 }
 
 void
@@ -341,7 +340,7 @@ Log_RecordListener::on_sample_rejected (
   DDS::traits<DnCX11::Log_Record>::datareader_ref_type ,
   const DDS::SampleRejectedStatus& )
 {
-  DDSX11_IMPL_LOG_DEBUG ("Log_RecordListener::on_sample_rejected received");
+  DDSX11_TEST_DEBUG << "Log_RecordListener::on_sample_rejected received" << std::endl;
 }
 
 void
@@ -349,7 +348,7 @@ Log_RecordListener::on_liveliness_changed (
   DDS::traits<DnCX11::Log_Record>::datareader_ref_type ,
   const DDS::LivelinessChangedStatus& )
 {
-  DDSX11_IMPL_LOG_DEBUG ("Log_RecordListener::on_liveliness_changed received");
+  DDSX11_TEST_DEBUG << "Log_RecordListener::on_liveliness_changed received" << std::endl;
 }
 
 void
@@ -357,7 +356,7 @@ Log_RecordListener::on_subscription_matched (
   DDS::traits<DnCX11::Log_Record>::datareader_ref_type ,
   const DDS::SubscriptionMatchedStatus& )
 {
-  DDSX11_IMPL_LOG_DEBUG ("Log_RecordListener::on_subscription_matched received");
+  DDSX11_TEST_DEBUG << "Log_RecordListener::on_subscription_matched received" << std::endl;
 }
 
 void
@@ -365,14 +364,14 @@ Log_RecordListener::on_sample_lost (
   DDS::traits<DnCX11::Log_Record>::datareader_ref_type ,
   const DDS::SampleLostStatus& )
 {
-  DDSX11_IMPL_LOG_DEBUG ("Log_RecordListener::on_sample_lost received");
+  DDSX11_TEST_DEBUG << "Log_RecordListener::on_sample_lost received" << std::endl;
 }
 
 void
 Log_RecordListener::on_data_available (
   DDS::traits<DnCX11::Log_Record>::datareader_ref_type the_reader)
 {
-  DDSX11_IMPL_LOG_DEBUG ("Log_RecordListener::on_data_available received");
+  DDSX11_TEST_DEBUG << "Log_RecordListener::on_data_available received" << std::endl;
 
   DDS::traits<DnCX11::Log_Record>::typed_datareader_ref_type rd =
     DDS::traits<DnCX11::Log_Record>::narrow (the_reader);
@@ -389,14 +388,14 @@ Log_RecordListener::on_data_available (
     }
     else if (retval != DDS::RETCODE_OK)
     {
-      DDSX11_IMPL_LOG_DEBUG ("Unable to take data from datareader, error <"
+      DDSX11_TEST_DEBUG << "Unable to take data from datareader, error <"
         << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retval)
-        << ">");
+        << ">" << std::endl;
       break;
     }
     else if (info.valid_data ())
     {
-      DDSX11_IMPL_LOG_DEBUG ("Received: " << log_record);
+      DDSX11_TEST_DEBUG << "Received: " << log_record << std::endl;
     }
   }
 }

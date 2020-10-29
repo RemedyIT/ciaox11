@@ -46,69 +46,47 @@ namespace DDSX11
     private:
       DDSX11_Log_Module ();
     };
+
+    class DDSX11_Logger_Export DDSX11_Test_Log_Module
+      : public x11_logger::Log_Module
+    {
+    public:
+      virtual ~DDSX11_Test_Log_Module ();
+
+      static DDSX11_Test_Log_Module* getInstance ();
+
+      typedef x11_logger::Log_Type_T<DDSX11_Test_Log_Module> log_type;
+
+    private:
+      DDSX11_Test_Log_Module ();
+    };
   } // namespace ddsx11_logger
 #endif
 } // namespace DDSX11
 
 #if defined(X11_NLOGGING)
-
 # define DDSX11_IMPL_LOGGER x11_logger::NULL_LogType
-
 #else
-
-# define DDSX11_IMPL_LOGGER \
-    DDSX11::ddsx11_logger::DDSX11_Log_Module::log_type
+# define DDSX11_IMPL_LOGGER DDSX11::ddsx11_logger::DDSX11_Log_Module::log_type
 #endif
 
-using namespace DDSX11;
-
 // CORE logging
-#define DDSX11_LOG_TRACE(__stmt__) \
-  X11_LOG_TRACE (DDSX11_IMPL_LOGGER, __stmt__)
+#define DDSX11_LOG_TRACE(__stmt__) X11_LOG_TRACE (DDSX11_IMPL_LOGGER, __stmt__)
+#define DDSX11_IMPL_LOG_DEBUG(__stmt__) X11_LOG_DEBUG(DDSX11_IMPL_LOGGER, __stmt__)
+#define DDSX11_IMPL_LOG_INFO(__stmt__) X11_LOG_INFO(DDSX11_IMPL_LOGGER, __stmt__)
+#define DDSX11_IMPL_LOG_WARNING( __stmt__) X11_LOG_WARNING(DDSX11_IMPL_LOGGER, __stmt__)
+#define DDSX11_IMPL_LOG_ERROR(__stmt__) X11_LOG_ERROR(DDSX11_IMPL_LOGGER, __stmt__)
+#define DDSX11_IMPL_LOG_CRITICAL(__stmt__) X11_LOG_CRITICAL(DDSX11_IMPL_LOGGER, __stmt__)
+#define DDSX11_IMPL_LOG_PANIC(__stmt__) X11_LOG_PANIC(DDSX11_IMPL_LOGGER, __stmt__)
+#define DDSX11_LOG_TRACE_W(__stmt__) X11_LOG_TRACE_W (DDSX11_IMPL_LOGGER, __stmt__)
+#define DDSX11_IMPL_LOG_DEBUG_W(__stmt__) X11_LOG_DEBUG_W(DDSX11_IMPL_LOGGER, __stmt__)
+#define DDSX11_IMPL_LOG_INFO_W(__stmt__) X11_LOG_INFO (DDSX11_IMPL_LOGGER, __stmt__)
+#define DDSX11_IMPL_LOG_WARNING_W( __stmt__) X11_LOG_WARNING_W (DDSX11_IMPL_LOGGER, __stmt__)
+#define DDSX11_IMPL_LOG_ERROR_W(__stmt__) X11_LOG_ERROR_W (DDSX11_IMPL_LOGGER, __stmt__)
+#define DDSX11_IMPL_LOG_CRITICAL_W(__stmt__) X11_LOG_CRITICAL_W (DDSX11_IMPL_LOGGER, __stmt__)
+#define DDSX11_IMPL_LOG_PANIC_W(__stmt__) X11_LOG_PANIC_W (DDSX11_IMPL_LOGGER, __stmt__)
 
-#define DDSX11_IMPL_LOG_DEBUG(__stmt__) \
-  X11_LOG_DEBUG(DDSX11_IMPL_LOGGER, __stmt__)
-
-#define DDSX11_IMPL_LOG_INFO(__stmt__) \
-  X11_LOG_INFO(DDSX11_IMPL_LOGGER, __stmt__)
-
-#define DDSX11_IMPL_LOG_WARNING( __stmt__) \
-  X11_LOG_WARNING(DDSX11_IMPL_LOGGER, __stmt__)
-
-#define DDSX11_IMPL_LOG_ERROR(__stmt__) \
-  X11_LOG_ERROR(DDSX11_IMPL_LOGGER, __stmt__)
-
-#define DDSX11_IMPL_LOG_CRITICAL(__stmt__) \
-  X11_LOG_CRITICAL(DDSX11_IMPL_LOGGER, __stmt__)
-
-#define DDSX11_IMPL_LOG_PANIC(__stmt__) \
-  X11_LOG_PANIC(DDSX11_IMPL_LOGGER, __stmt__)
-
-#define DDSX11_LOG_TRACE_W(__stmt__) \
-   X11_LOG_TRACE_W (DDSX11_IMPL_LOGGER, __stmt__)
-
-#define DDSX11_IMPL_LOG_DEBUG_W(__stmt__) \
-  X11_LOG_DEBUG_W(DDSX11_IMPL_LOGGER, __stmt__)
-
-#define DDSX11_IMPL_LOG_INFO_W(__stmt__) \
-  X11_LOG_INFO (DDSX11_IMPL_LOGGER, __stmt__)
-
-#define DDSX11_IMPL_LOG_WARNING_W( __stmt__) \
-  X11_LOG_WARNING_W (DDSX11_IMPL_LOGGER, __stmt__)
-
-#define DDSX11_IMPL_LOG_ERROR_W(__stmt__) \
-  X11_LOG_ERROR_W (DDSX11_IMPL_LOGGER, __stmt__)
-
-#define DDSX11_IMPL_LOG_CRITICAL_W(__stmt__) \
-  X11_LOG_CRITICAL_W (DDSX11_IMPL_LOGGER, __stmt__)
-
-#define DDSX11_IMPL_LOG_PANIC_W(__stmt__) \
-  X11_LOG_PANIC_W (DDSX11_IMPL_LOGGER, __stmt__)
-
-#define DDSX11_CALL_TRACE(__call__) \
-  X11_CALL_TRACE(DDSX11_LOGGER, __call__)
-
-#define DDSX11_CALL_TRACE_W(__call__) \
-  X11_CALL_TRACE_W(DDSX11_LOGGER, __call__)
+#define DDSX11_CALL_TRACE(__call__) X11_CALL_TRACE(DDSX11_LOGGER, __call__)
+#define DDSX11_CALL_TRACE_W(__call__) X11_CALL_TRACE_W(DDSX11_LOGGER, __call__)
 
 #endif /* DDSX11_LOG_H_ */

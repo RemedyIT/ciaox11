@@ -42,7 +42,7 @@ namespace CIAOX11
 
   private:
     /// Administration of installed service
-    typedef std::map<std::string, IDL::traits<CORBA::Object>::ref_type> Services;
+    using Services = std::map<std::string, IDL::traits<CORBA::Object>::ref_type>;
     Services services_;
 
     Service_Registry_i (const Service_Registry_i&) = delete;
