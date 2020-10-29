@@ -197,8 +197,13 @@ namespace CIAOX11
 
           return true;
         }
+      else
+        {
+          DDS4CCM_LOG_DEBUG ("DomainParticipantManager::close - "
+            << "Not shutting down DDS, still <" << this->dps_.size() << "> participants in existence");
 
-      return false;
+          return false;
+        }
     }
   }
 }
