@@ -8,8 +8,6 @@
  * @copyright Copyright (c) Remedy IT Expertise BV
  */
 
-
-
 #include "dds4ccm/logger/dds4ccm_testlog.h"
 
 #if (DDSX11_NDDS == 1)
@@ -193,7 +191,7 @@ int main (int , char **)
         }
 
       /// Unregister a registered type by using a used domain participant,
-      /// the refcount drops to 1 making this return faluse
+      /// the refcount drops to 1 making this return false
       if (::DDSX11::DDS_TypeSupport_i::unregister_type (dp1, type1))
         {
           DDS4CCM_TEST_ERROR
