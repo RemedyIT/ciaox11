@@ -8,7 +8,7 @@
  * @copyright Copyright (c) Remedy IT Expertise BV
  */
 
-#include "dds4ccm/logger/dds4ccm_testlog.h"
+#include "tests/testlib/ddsx11_testlog.h"
 
 #if (DDSX11_NDDS == 1)
 
@@ -53,7 +53,7 @@ int main (int , char **)
 
   try
     {
-      const char * domain = std::getenv ("DDS4CCM_DEFAULT_DOMAIN_ID");
+      const char * domain = std::getenv ("DDSX11_DEFAULT_DOMAIN_ID");
       uint16_t domain_id = 0;
 
       if (domain)
@@ -85,13 +85,13 @@ int main (int , char **)
           type1,
           f1))
         {
-          DDS4CCM_TEST_DEBUG
+          DDSX11_TEST_DEBUG
             << "OK - Type <" << type1 << "> and Factory <" << f1
             << "> successfully registered for DP1" << std::endl;
         }
       else
         {
-          DDS4CCM_TEST_ERROR
+          DDSX11_TEST_ERROR
             << "ERROR - Type <" << type1 << "> and Factory <" << f1
             << "> could not be registered for DP1" << std::endl;
           ++ret;
@@ -105,14 +105,14 @@ int main (int , char **)
           type1,
           f1))
         {
-          DDS4CCM_TEST_ERROR
+          DDSX11_TEST_ERROR
             << "ERROR - Type <" << type1 << "> and Factory <" << f1
             << "> are indicated to be a fresh DP1" << std::endl;
           ++ret;
         }
       else
         {
-          DDS4CCM_TEST_DEBUG
+          DDSX11_TEST_DEBUG
             << "OK - Type <" << type1 << "> and Factory <" << f1
             << "> are not fresh for DP1" << std::endl;
         }
@@ -124,13 +124,13 @@ int main (int , char **)
           type2,
           f1))
         {
-          DDS4CCM_TEST_DEBUG
+          DDSX11_TEST_DEBUG
             << "OK - Type <" << type2 << "> and Factory <" << f1
             << "> successfully registered for DP1" << std::endl;
         }
       else
         {
-          DDS4CCM_TEST_ERROR
+          DDSX11_TEST_ERROR
             << "ERROR - Type <" << type2 << "> and Factory <" << f1
             << "> could not be registered for DP1" << std::endl;
           ++ret;
@@ -143,14 +143,14 @@ int main (int , char **)
           type2,
           f2))
         {
-          DDS4CCM_TEST_ERROR
+          DDSX11_TEST_ERROR
             << "ERROR - Type <" << type2 << "> and Factory <" << f2
             << "> could be registered for DP1" << std::endl;
           ++ret;
         }
       else
         {
-          DDS4CCM_TEST_DEBUG
+          DDSX11_TEST_DEBUG
             << "OK - Type <" << type2 << "> and Factory <" << f2
             << "> could not be registered for DP1" << std::endl;
         }
@@ -162,13 +162,13 @@ int main (int , char **)
           type3,
           f3))
         {
-          DDS4CCM_TEST_DEBUG
+          DDSX11_TEST_DEBUG
             << "OK - Type <" << type3 << "> and Factory <" << f3
             << "> successfully registered for DP1" << std::endl;
         }
       else
         {
-          DDS4CCM_TEST_ERROR
+          DDSX11_TEST_ERROR
             << "ERROR - Type <" << type3 << "> and Factory <" << f3
             << "> could be registered for DP1" << std::endl;
           ++ret;
@@ -178,14 +178,14 @@ int main (int , char **)
       /// Unregister an unused factory by using an unused domain participant
       if (::DDSX11::DDS_TypeSupport_i::unregister_type (dp2, type1))
         {
-          DDS4CCM_TEST_ERROR
+          DDSX11_TEST_ERROR
             << "ERROR - Unregistered type <" << type1 << "> for DP2 could be "
             << "unregistered." << std::endl;
           ++ret;
         }
       else
         {
-          DDS4CCM_TEST_DEBUG
+          DDSX11_TEST_DEBUG
             << "OK - Unregistered type <" << type1 << "> for DP2 could not "
             << "be unregistered" << std::endl;
         }
@@ -194,14 +194,14 @@ int main (int , char **)
       /// the refcount drops to 1 making this return false
       if (::DDSX11::DDS_TypeSupport_i::unregister_type (dp1, type1))
         {
-          DDS4CCM_TEST_ERROR
+          DDSX11_TEST_ERROR
             << "ERROR - Registered type <" << type1 << "> for DP1 returns false "
             << std::endl;
           ++ret;
         }
       else
         {
-          DDS4CCM_TEST_DEBUG
+          DDSX11_TEST_DEBUG
             << "OK - Registered type <" << type1 << "> for DP1 could "
             << "be unregistered and return false" << std::endl;
         }
@@ -211,13 +211,13 @@ int main (int , char **)
       /// should drop the refcount to zero and return true
       if (::DDSX11::DDS_TypeSupport_i::unregister_type (dp1, type1))
         {
-          DDS4CCM_TEST_DEBUG
+          DDSX11_TEST_DEBUG
             << "OK - Unregistered type <" << type1 << "> for DP1 could "
             << "be unregistered" << std::endl;
         }
       else
         {
-          DDS4CCM_TEST_ERROR
+          DDSX11_TEST_ERROR
             << "ERROR - Unregistered type <" << type1 << "> for DP1 could not "
             << "be unregistered" << std::endl;
           ++ret;
@@ -230,14 +230,14 @@ int main (int , char **)
       /// Unregister the type and domain participant which should be removed by 'close'
       if (::DDSX11::DDS_TypeSupport_i::unregister_type (dp1, type2))
         {
-          DDS4CCM_TEST_ERROR
+          DDSX11_TEST_ERROR
             << "ERROR - Deleted type <" << type2 << "> for DP1 could be "
             << "unregistered" << std::endl;
           ++ret;
         }
       else
         {
-          DDS4CCM_TEST_DEBUG
+          DDSX11_TEST_DEBUG
             << "OK - Deleted type <" << type2 << "> for DP1 could not be "
             << "unregistered" << std::endl;
         }
@@ -245,14 +245,14 @@ int main (int , char **)
       /// Unregister the type and domain participant which should be removed by 'close'
       if (::DDSX11::DDS_TypeSupport_i::unregister_type (dp1, type3))
         {
-          DDS4CCM_TEST_ERROR
+          DDSX11_TEST_ERROR
             << "ERROR - Deleted type <" << type3 << "> for DP1 could be "
             << "unregistered" << std::endl;
           ++ret;
         }
       else
         {
-          DDS4CCM_TEST_DEBUG
+          DDSX11_TEST_DEBUG
             << "OK - Deleted type <" << type3 << "> for DP1 could not be "
             << "unregistered" << std::endl;
         }
@@ -263,27 +263,27 @@ int main (int , char **)
     }
   catch (const ::CORBA::Exception& e)
     {
-      DDS4CCM_TEST_ERROR
+      DDSX11_TEST_ERROR
         << "ACE_TMAIN - Caught unexpected CORBA exception : " << e << std::endl;
       return 1;
     }
   catch (...)
     {
-      DDS4CCM_TEST_ERROR
+      DDSX11_TEST_ERROR
          << "ACE_TMAIN - ERROR: Caught unexpected exception" << std::endl;
       return 1;
     }
   if (ret == 0)
     {
-      DDS4CCM_TEST_DEBUG << "Test passed !" << std::endl;
+      DDSX11_TEST_DEBUG << "Test passed !" << std::endl;
     }
   else
     {
-      DDS4CCM_TEST_ERROR << ret << " errors found during test !" << std::endl;
+      DDSX11_TEST_ERROR << ret << " errors found during test !" << std::endl;
     }
   return ret;
 #else
-  DDS4CCM_TEST_DEBUG << "RTI NDDS only test" << std::endl;
+  DDSX11_TEST_DEBUG << "RTI Connext DDS only test" << std::endl;
   return 0;
 #endif
 
