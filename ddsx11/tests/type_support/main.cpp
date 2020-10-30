@@ -48,7 +48,7 @@ int main (int , char **)
 
   try
     {
-      const char * domain = std::getenv ("DDSX11_DEFAULT_DOMAIN_ID");
+      const char * domain = std::getenv ("DDS4CCM_DEFAULT_DOMAIN_ID");
       uint16_t domain_id = 0;
 
       if (domain)
