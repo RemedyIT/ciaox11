@@ -2,15 +2,12 @@
  * @file    main.cpp
  * @author  Marcel Smit
  *
- * @brief   Testing type support and dp-re-use. This test is explicitly create for
- *          RTI NDDS since each dp there creates multiple threads.
+ * @brief   Testing type support and dp-re-use.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
  */
 
 #include "tests/testlib/ddsx11_testlog.h"
-
-#if (DDSX11_NDDS == 1)
 
 # include "dds/dds_type_support.h"
 # include "dds/dds_vendor_adapter.h"
@@ -44,11 +41,9 @@ TestTypeFactory::create_datareader (
 {
   return nullptr;
 }
-#endif /* DDSX11_NDDS == 1 */
 
 int main (int , char **)
 {
-#if (DDSX11_NDDS == 1)
   int ret = 0;
 
   try
@@ -80,10 +75,7 @@ int main (int , char **)
       std::shared_ptr<TestTypeFactory> f3 = std::make_shared<TestTypeFactory> ();
 
       /// Register type 1 with f1
-      if (::DDSX11::DDS_TypeSupport_i::register_type (
-          dp1,
-          type1,
-          f1))
+      if (::DDSX11::DDS_TypeSupport_i::register_type (dp1, type1, f1))
         {
           DDSX11_TEST_DEBUG
             << "OK - Type <" << type1 << "> and Factory <" << f1
@@ -100,10 +92,7 @@ int main (int , char **)
 
       /// Register the same factory again, this should return false because
       /// the type was already there
-      if (::DDSX11::DDS_TypeSupport_i::register_type (
-          dp1,
-          type1,
-          f1))
+      if (::DDSX11::DDS_TypeSupport_i::register_type (dp1, type1, f1))
         {
           DDSX11_TEST_ERROR
             << "ERROR - Type <" << type1 << "> and Factory <" << f1
@@ -119,10 +108,7 @@ int main (int , char **)
       /// DP1 should now contain one type-factory combination
 
       /// Register the same factory again but with another name
-      if (::DDSX11::DDS_TypeSupport_i::register_type (
-          dp1,
-          type2,
-          f1))
+      if (::DDSX11::DDS_TypeSupport_i::register_type (dp1, type2, f1))
         {
           DDSX11_TEST_DEBUG
             << "OK - Type <" << type2 << "> and Factory <" << f1
@@ -138,10 +124,7 @@ int main (int , char **)
       /// DP1 should now contain two type-factory combinations
 
       /// Register the same type with another factory
-      if (::DDSX11::DDS_TypeSupport_i::register_type (
-          dp1,
-          type2,
-          f2))
+      if (::DDSX11::DDS_TypeSupport_i::register_type (dp1, type2, f2))
         {
           DDSX11_TEST_ERROR
             << "ERROR - Type <" << type2 << "> and Factory <" << f2
@@ -157,10 +140,7 @@ int main (int , char **)
       /// DP1 should now contain two type-factory combinations
 
       /// Just register type 3 with f3
-      if (::DDSX11::DDS_TypeSupport_i::register_type (
-          dp1,
-          type3,
-          f3))
+      if (::DDSX11::DDS_TypeSupport_i::register_type (dp1, type3, f3))
         {
           DDSX11_TEST_DEBUG
             << "OK - Type <" << type3 << "> and Factory <" << f3
@@ -284,9 +264,4 @@ int main (int , char **)
       DDSX11_TEST_ERROR << ret << " errors found during test !" << std::endl;
     }
   return ret;
-#else
-  DDSX11_TEST_DEBUG << "RTI Connext DDS only test" << std::endl;
-  return 0;
-#endif
-
 }
