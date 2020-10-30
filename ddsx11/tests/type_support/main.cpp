@@ -260,6 +260,8 @@ int main (int , char **)
       /// No need to remove f1, f2, and f3 since ::close will remove them.
       pf->delete_participant(dp1);
       pf->delete_participant(dp2);
+
+      pf->finalize_instance ();
     }
   catch (const ::CORBA::Exception& e)
     {
