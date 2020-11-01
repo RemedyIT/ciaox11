@@ -145,7 +145,7 @@ namespace CIAOX11
 
       if (iter != this->dps_.end ())
       {
-        uint32_t const refcount = iter->second.second;
+        uint32_t const refcount = --iter->second.second;
 
         if (refcount == 0)
         {
@@ -162,7 +162,7 @@ namespace CIAOX11
         {
 
           DDS4CCM_LOG_DEBUG ("DomainParticipantManager::unregister_participant - "
-            << "Decrement refcount for participant <"
+            << "Decremented refcount for participant <"
             << IDL::traits< ::DDS::Entity>::write<entity_formatter> (dp)
             << "> for domain <" << domain_id << "> with profile <"
             << qos_profile << "> since " << "it's still used - ref_count dropped to <"
@@ -197,8 +197,13 @@ namespace CIAOX11
 
           return true;
         }
+      else
+        {
+          DDS4CCM_LOG_DEBUG ("DomainParticipantManager::close - "
+            << "Not shutting down DDS, still <" << this->dps_.size() << "> participants in existence");
 
-      return false;
+          return false;
+        }
     }
   }
 }
