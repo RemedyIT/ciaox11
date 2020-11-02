@@ -17,7 +17,7 @@ inline std::string translate_retcode (const ::DDS::ReturnCode_t &ret)
 #define DDS_RETCODE(X) case ::X: return #X
   switch (ret)
   {
-    case ::DDS::RETCODE_OK: return "DDS::RETCODE_OK";
+    DDS_RETCODE (DDS::RETCODE_OK);
     DDS_RETCODE (DDS::RETCODE_ERROR);
     DDS_RETCODE (DDS::RETCODE_UNSUPPORTED);
     DDS_RETCODE (DDS::RETCODE_BAD_PARAMETER);
