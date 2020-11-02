@@ -30,6 +30,21 @@ project (*ddsx11_ts) : ddsx11_vendor_ts_defaults {
     gendir = GeneratedCode
     GeneratedCode/shapetype_dds.idl
   }
+//  TypeSupport_Files {
+//    gendir = GeneratedCode
+//    GeneratedCode/shapetype_dds.idl
+//    dcps_ts_flags += -o GeneratedCode \
+//                     -Wb,export_macro=SHAPES_TYPESUPPORT_Export \
+//                     -Wb,export_include=shapes_typesupport_export.h
+//  }
+//  IDL_Files {
+//    gendir = GeneratedCode
+//    GeneratedCode/shapetype_dds.idl
+//    GeneratedCode/shapetype_ddsTypeSupport.idl
+//    idlflags += -Wb,stub_export_macro=SHAPES_TYPESUPPORT_Export \
+//                -Wb,stub_export_include=shapes_typesupport_export.h \
+//                -IGeneratedCode -o GeneratedCode
+//  }
   custom_only=1
 }
 
@@ -46,6 +61,10 @@ project (*ddsx11_impl) : ddsx11_impl {
     GeneratedCode/shapetype_dds.cxx
     GeneratedCode/shapetype_ddsPlugin.cxx
     GeneratedCode/shapetype_ddsSupport.cxx
+//    GeneratedCode/shapetype_ddsC.cpp
+//    GeneratedCode/shapetype_ddsTypeSupportC.cpp
+//    GeneratedCode/shapetype_ddsTypeSupportImpl.cpp
+//    GeneratedCode/shapetype_ddsTypeSupportS.cpp
     GeneratedCode/shapetype_dds_typesupport.cpp
   }
 

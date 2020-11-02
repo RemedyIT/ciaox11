@@ -2,7 +2,7 @@
  * @file    dds_vendor_adapter.h
  * @author  Marcel Smit
  *
- * @brief   Generic class which creates the NDDS specific entities.
+ * @brief   Generic class which creates the DDS specific entities.
  *          Entry point for the vendor specific DLL.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV

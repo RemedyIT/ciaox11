@@ -13,6 +13,7 @@
 #include "dds/dds_common.h"
 #include "idl/dds_dcpsC.h"
 #include "dds/dds_listener_guard_t.h"
+#include "dds/dds_proxy_traits_t.h"
 
 namespace DDSX11
 {
@@ -21,7 +22,7 @@ namespace DDSX11
   {
   public:
     /// Constructor
-    DDS_SubscriberListener_proxy (
+    explicit DDS_SubscriberListener_proxy (
       IDL::traits< ::DDS::SubscriberListener>::ref_type s);
 
     /// Destructor
@@ -76,12 +77,14 @@ namespace DDSX11
     DDS_SubscriberListener_proxy(DDS_SubscriberListener_proxy&&) = delete;
     DDS_SubscriberListener_proxy& operator=(const DDS_SubscriberListener_proxy&) = delete;
     DDS_SubscriberListener_proxy& operator=(DDS_SubscriberListener_proxy&&) = delete;
-
   };
 
   typedef DDSX11_Listener_Guard_T<
     DDS_Native::DDS::SubscriberListener,
     ::DDS::SubscriberListener> SubscriberListener_Guard;
+
+  typedef native_entity_traits< ::DDS::SubscriberListener, DDS_SubscriberListener_proxy, DDS_Native::DDS::SubscriberListener>
+    native_subscriberlistener_trait;
 }
 
 #endif /* DDSX11_IMPL_SUBSCRIBER_LISTENER_H_ */

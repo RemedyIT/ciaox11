@@ -13,7 +13,7 @@ eval '(exit $?0)' && eval 'exec perl -S $0 ${1+"$@"}'
 use lib "$ENV{ACE_ROOT}/bin";
 use PerlACE::TestTarget;
 
-$sleep_time = 30;
+$sleep_time = 15;
 $corrected_sleep_time = $sleep_time * $PerlACE::Process::WAIT_DELAY_FACTOR;
 
 my $status = 0;
@@ -38,7 +38,7 @@ if ($receiver_status != 0) {
 my $sender_status = $SR->SpawnWaitKill ($sender->ProcessStartWaitInterval());
 
 if ($sender_status != 0) {
-    print STDERR "ERROR: client returned $sender_status\n";
+    print STDERR "ERROR: sender returned $sender_status\n";
     $status = 1;
 }
 
@@ -48,7 +48,7 @@ sleep ($corrected_sleep_time);
 $receiver_status = $RV->WaitKill ($receiver->ProcessStopWaitInterval());
 
 if ($receiver_status != 0) {
-    print STDERR "ERROR: server returned $receiver_status\n";
+    print STDERR "ERROR: receiver returned $receiver_status\n";
     $status = 1;
 }
 

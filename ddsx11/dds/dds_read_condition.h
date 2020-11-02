@@ -31,7 +31,7 @@ namespace DDSX11
   {
   public:
     /// Constructor
-    DDS_ReadCondition_proxy (
+    explicit DDS_ReadCondition_proxy (
       DDS_Native::DDS::ReadCondition * rc);
 
     /// Destructor

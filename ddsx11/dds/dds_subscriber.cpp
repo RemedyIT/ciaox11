@@ -41,7 +41,7 @@ namespace DDSX11
   DDS_Subscriber_proxy::get_statuscondition ()
   {
     IDL::traits< ::DDS::StatusCondition>::ref_type retval;
-    DDS_Native::DDS::StatusCondition* sc =
+    DDS_Native::DDS::StatusCondition_var sc =
       this->native_entity ()->get_statuscondition ();
     if (sc)
       {
@@ -154,7 +154,7 @@ namespace DDSX11
         listener_guard = new DDS_DataReaderListener_proxy (a_listener);
       }
 
-    DDS_Native::DDS::DataReader * native_dr {};
+    DDS_Native::DDS::DataReader_var native_dr {};
 
     IDL::traits< ::DDS::Topic>::ref_type dds_tp =
       IDL::traits< ::DDS::Topic>::narrow (a_topic);
@@ -305,7 +305,7 @@ namespace DDSX11
   DDS_Subscriber_proxy::lookup_datareader (
     const std::string &topic_name)
   {
-    DDS_Native::DDS::DataReader *native_dr =
+    DDS_Native::DDS::DataReader_var native_dr =
       this->native_entity ()->lookup_datareader (
         ::DDSX11::traits<std::string>::in (topic_name));
     if (!native_dr)
@@ -456,16 +456,26 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_Subscriber_proxy::get_listener");
 
-    DDS_SubscriberListener_proxy *list_proxyroxy =
-      dynamic_cast <DDS_SubscriberListener_proxy *> (
-        this->native_entity ()->get_listener ());
-    if (!list_proxyroxy)
+    DDS_Native::DDS::SubscriberListener_var native_listener =
+      this->native_entity ()->get_listener ();
+
+    if (!native_listener)
       {
-        DDSX11_IMPL_LOG_DEBUG ("DDS_Subscriber_proxy::get_listener - "
-          << "DDS returned a null listener.");
+        DDSX11_IMPL_LOG_ERROR (
+          "DDS_Subscriber_proxy::get_listener - DDS returned a null listener");
         return {};
       }
-    return list_proxyroxy->get_subscriber_listener ();
+
+    native_subscriberlistener_trait::proxy_impl_type * proxy_impl =
+       native_subscriberlistener_trait::proxy_impl (native_listener);
+
+    if (!proxy_impl)
+      {
+        DDSX11_IMPL_LOG_ERROR (
+          "DDS_Subscriber_proxy::get_listener - listener returned by DDS is not a DDSX11 listener");
+        return {};
+      }
+    return proxy_impl->get_subscriber_listener ();
   }
 
   ::DDS::ReturnCode_t
@@ -487,8 +497,10 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_Subscriber_proxy::get_participant");
 
-    return DDS_ProxyEntityManager::get_dp_proxy (
-      this->native_entity ()->get_participant ());
+    DDS_Native::DDS::DomainParticipant_var dp =
+      this->native_entity ()->get_participant ();
+
+    return DDS_ProxyEntityManager::get_dp_proxy (dp);
   }
 
   ::DDS::ReturnCode_t

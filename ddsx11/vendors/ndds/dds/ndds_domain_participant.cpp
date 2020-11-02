@@ -52,7 +52,7 @@ namespace DDSX11
       std::string lib_name, prof_name;
       split_qos_profile (qos_profile, lib_name, prof_name);
 
-      DDS_Native::DDS::Publisher *native_pub = nullptr;
+      DDS_Native::DDS::Publisher_var native_pub {};
 
       if (!lib_name.empty () && !prof_name.empty ())
         {
@@ -124,7 +124,7 @@ namespace DDSX11
       std::string lib_name, prof_name;
       split_qos_profile (qos_profile, lib_name, prof_name);
 
-      DDS_Native::DDS::Subscriber * native_sub {};
+      DDS_Native::DDS::Subscriber_var native_sub {};
 
       if (!lib_name.empty () && !prof_name.empty ())
         {
@@ -212,7 +212,7 @@ namespace DDSX11
           ccm_dds_tl = std::make_unique<DDSX11::DDS_TopicListener_proxy> (a_listener);
         }
 
-      DDS_Native::DDS::Topic * dds_tp = nullptr;
+      DDS_Native::DDS::Topic_var dds_tp {};
 
       std::string lib_name, prof_name;
       split_qos_profile (qos_profile, lib_name, prof_name);

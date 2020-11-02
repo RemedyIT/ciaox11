@@ -31,7 +31,7 @@ namespace DDSX11
   {
   public:
     /// Constructor
-    DDS_Publisher_proxy (DDS_Native::DDS::Publisher * p);
+    explicit DDS_Publisher_proxy (DDS_Native::DDS::Publisher * p);
 
     /// Destructor
     virtual ~DDS_Publisher_proxy () = default;

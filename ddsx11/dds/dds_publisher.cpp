@@ -69,7 +69,7 @@ namespace DDSX11
       << IDL::traits< ::DDS::DataWriterQos>::write (::DDSX11::traits <::DDS::DataWriterQos>::retn (qos_in))
       << ">");
 
-     DDS_Native::DDS::DataWriter *native_dw =
+     DDS_Native::DDS::DataWriter_var native_dw =
       this->native_entity ()->create_datawriter (
         topic_trait::native (a_topic),
         qos_in,
@@ -186,7 +186,7 @@ namespace DDSX11
   DDS_Publisher_proxy::lookup_datawriter (
     const std::string &impl_name)
   {
-    DDS_Native::DDS::DataWriter *native_dw =
+    DDS_Native::DDS::DataWriter_var native_dw =
       this->native_entity ()->lookup_datawriter (
         ::DDSX11::traits<std::string>::in (impl_name));
     if (!native_dw)
@@ -295,16 +295,26 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_Publisher_proxy::get_listener");
 
-    DDS_PublisherListener_proxy * publisher_proxy =
-      dynamic_cast <DDS_PublisherListener_proxy *> (
-        this->native_entity ()->get_listener ());
-    if (!publisher_proxy)
+    DDS_Native::DDS::PublisherListener_var native_listener =
+      this->native_entity ()->get_listener ();
+
+    if (!native_listener)
       {
-        DDSX11_IMPL_LOG_DEBUG ("DDS_Publisher_proxy::get_listener - "
-          << "DDS returned a null listener.");
-        return nullptr;
+        DDSX11_IMPL_LOG_ERROR (
+          "DDS_Publisher_proxy::get_listener - DDS returned a null listener");
+        return {};
       }
-    return publisher_proxy->get_publisher_listener ();
+
+    native_publisherlistener_trait::proxy_impl_type * proxy_impl =
+       native_publisherlistener_trait::proxy_impl (native_listener);
+
+    if (!proxy_impl)
+      {
+        DDSX11_IMPL_LOG_ERROR (
+          "DDS_Publisher_proxy::get_listener - listener returned by DDS is not a DDSX11 listener");
+        return {};
+      }
+    return proxy_impl->get_publisher_listener ();
   }
 
 
@@ -355,8 +365,10 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_Publisher_proxy::get_participant");
 
-    return DDS_ProxyEntityManager::get_dp_proxy (
-      this->native_entity ()->get_participant ());
+    DDS_Native::DDS::DomainParticipant_var dp =
+      this->native_entity ()->get_participant ();
+
+    return DDS_ProxyEntityManager::get_dp_proxy (dp);
   }
 
 
@@ -428,7 +440,7 @@ namespace DDSX11
   DDS_Publisher_proxy::get_statuscondition ()
   {
     IDL::traits< ::DDS::StatusCondition>::ref_type retval;
-      DDS_Native::DDS::StatusCondition* sc = this->native_entity ()->get_statuscondition ();
+    DDS_Native::DDS::StatusCondition_var sc = this->native_entity ()->get_statuscondition ();
     if (sc)
       {
         retval = TAOX11_CORBA::make_reference<DDS_StatusCondition_proxy> (sc);

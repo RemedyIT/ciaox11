@@ -66,7 +66,7 @@ namespace DDSX11
         listener_guard = new DDS_DomainParticipantListener_proxy(a_listener);
       }
 
-    DDS_Native::DDS::DomainParticipant * dds_dp =
+    DDS_Native::DDS::DomainParticipant_var dds_dp =
       this->native_entity ()->create_participant (
         domain_id,
         qos_in,
@@ -184,7 +184,7 @@ namespace DDSX11
     ::DDS::DomainId_t domain_id)
   {
     IDL::traits< ::DDS::DomainParticipant>::ref_type retval;
-    DDS_Native::DDS::DomainParticipant * dp =
+    DDS_Native::DDS::DomainParticipant_var dp =
       this->native_entity ()->lookup_participant (domain_id);
 
     if (dp)

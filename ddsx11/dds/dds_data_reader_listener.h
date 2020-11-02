@@ -14,6 +14,7 @@
 #include "dds/dds_common.h"
 #include "idl/dds_dcpsC.h"
 #include "dds/dds_listener_guard_t.h"
+#include "dds/dds_proxy_traits_t.h"
 
 namespace DDSX11
 {
@@ -22,7 +23,7 @@ namespace DDSX11
   {
   public:
     /// Constructor
-    DDS_DataReaderListener_proxy (
+    explicit DDS_DataReaderListener_proxy (
       IDL::traits< ::DDS::DataReaderListener>::ref_type p);
 
     /// Destructor
@@ -88,6 +89,9 @@ namespace DDSX11
   typedef DDSX11_Listener_Guard_T<
     DDS_Native::DDS::DataReaderListener,
     ::DDS::DataReaderListener> DataReaderListener_Guard;
+
+  typedef native_entity_traits< ::DDS::DataReaderListener, DDS_DataReaderListener_proxy, DDS_Native::DDS::DataReaderListener>
+    native_datareaderlistener_trait;
 }
 
 #endif /* DDSX11_IMPL_DATA_READER_LISTENER_H_ */

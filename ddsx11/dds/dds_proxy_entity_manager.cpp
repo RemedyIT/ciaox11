@@ -191,7 +191,7 @@ namespace DDSX11
     else
     {
       // We have not found a topic proxy, so add one to the map with a refcount of 1
-      std::pair <uint32_t, IDL::traits< ::DDS::Topic>::ref_type> refcount_pair (1, proxy);
+      TopicRefcount const refcount_pair = std::make_pair (1, proxy);
       std::pair<typename TopicProxies::iterator, bool> ret =
         tp_proxies.insert (typename TopicProxies::value_type (
         proxy->get_instance_handle (), refcount_pair));

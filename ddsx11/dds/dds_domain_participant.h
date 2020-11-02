@@ -31,7 +31,7 @@ namespace DDSX11
   {
   public:
     /// Constructor
-    DDS_DomainParticipant_proxy (
+    explicit DDS_DomainParticipant_proxy (
       DDS_Native::DDS::DomainParticipant * dp);
 
     /// Destructor

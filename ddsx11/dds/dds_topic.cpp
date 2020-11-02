@@ -109,16 +109,26 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_Topic_proxy::get_listener");
 
-    DDS_TopicListener_proxy * topic_proxy =
-      dynamic_cast <DDS_TopicListener_proxy *> (
-        this->native_entity ()->get_listener ());
-    if (!topic_proxy)
+    DDS_Native::DDS::TopicListener_var native_listener =
+      this->native_entity ()->get_listener ();
+
+    if (!native_listener)
       {
-        DDSX11_IMPL_LOG_DEBUG ("DDS_Topic_proxy::get_listener - "
-          << "DDS returned a null listener.");
-        return nullptr;
+        DDSX11_IMPL_LOG_ERROR (
+          "DDS_Topic_proxy::get_listener - DDS returned a null listener");
+        return {};
       }
-    return topic_proxy->get_topic_listener ();
+
+    native_topiclistener_trait::proxy_impl_type * proxy_impl =
+       native_topiclistener_trait::proxy_impl (native_listener);
+
+    if (!proxy_impl)
+      {
+        DDSX11_IMPL_LOG_ERROR (
+          "DDS_Topic_proxy::get_listener - listener returned by DDS is not a DDSX11 listener");
+        return {};
+      }
+    return proxy_impl->get_topic_listener ();
   }
 
   ::DDS::ReturnCode_t
@@ -147,7 +157,7 @@ namespace DDSX11
     DDSX11_LOG_TRACE ("DDS_Topic_proxy::get_statuscondition");
 
     IDL::traits< ::DDS::StatusCondition>::ref_type retval;
-    DDS_Native::DDS::StatusCondition* sc =
+    DDS_Native::DDS::StatusCondition_var sc =
       this->native_entity ()->get_statuscondition ();
     if (sc)
       {
@@ -197,7 +207,9 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_Topic_proxy::get_participant");
 
-    return DDS_ProxyEntityManager::get_dp_proxy (
-      this->native_entity ()->get_participant ());
+    DDS_Native::DDS::DomainParticipant_var dp =
+      this->native_entity ()->get_participant ();
+
+    return DDS_ProxyEntityManager::get_dp_proxy (dp);
   }
 }

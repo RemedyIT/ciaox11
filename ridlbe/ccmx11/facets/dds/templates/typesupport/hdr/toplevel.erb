@@ -40,9 +40,10 @@ namespace DDS
     }
 
     /// Return the default name for the data-type represented by the TypeSupport
-    static std::string get_type_name ()
+    static const std::string& get_type_name ()
     {
-      return "<%= type_name %>";
+      static const std::string type_name { "<%= type_name %>" };
+      return type_name;
     }
 
     /// Register the type as @a type_name to @a participant

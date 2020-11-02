@@ -74,7 +74,7 @@ namespace DDSX11
       << IDL::traits< ::DDS::PublisherQos>::write (::DDSX11::traits< ::DDS::PublisherQos>::retn(qos_in))
       << ">");
 
-    DDS_Native::DDS::Publisher *native_pub =
+    DDS_Native::DDS::Publisher_var native_pub =
       this->native_entity ()->create_publisher (
         qos_in,
         listener_guard.get (),
@@ -220,7 +220,7 @@ namespace DDSX11
       << IDL::traits< ::DDS::SubscriberQos>::write (::DDSX11::traits< ::DDS::SubscriberQos>::retn(qos_in))
       << ">");
 
-    DDS_Native::DDS::Subscriber * native_sub =
+    DDS_Native::DDS::Subscriber_var native_sub =
       this->native_entity ()->create_subscriber (
         qos_in,
         listener_guard.get (),
@@ -341,7 +341,7 @@ namespace DDSX11
       }
     else
       {
-        DDS_Native::DDS::Subscriber * native_sub =
+        DDS_Native::DDS::Subscriber_var native_sub =
           this->native_entity ()->get_builtin_subscriber ();
 
         if (!native_sub)
@@ -412,7 +412,7 @@ namespace DDSX11
       << IDL::traits< ::DDS::TopicQos>::write (::DDSX11::traits< ::DDS::TopicQos>::retn (qos_in))
       << ">");
 
-    DDS_Native::DDS::Topic * dds_tp =
+    DDS_Native::DDS::Topic_var dds_tp =
       this->native_entity ()->create_topic (
         ::DDSX11::traits<std::string>::in (impl_name),
         ::DDSX11::traits<std::string>::in (type_name),
@@ -586,13 +586,13 @@ namespace DDSX11
       << "Looking up topic: name <" << name << ">");
 
     IDL::traits< ::DDS::TopicDescription>::ref_type td;
-    DDS_Native::DDS::TopicDescription *native_td =
+    DDS_Native::DDS::TopicDescription_var native_td =
       this->native_entity ()->lookup_topicdescription (
         ::DDSX11::traits<std::string>::in (name));
     if (native_td)
       {
         // Check the entity: is it a Topic or a ContentFilteredTopic
-        DDS_Native::DDS::Topic * native_tp =
+        DDS_Native::DDS::Topic_var native_tp =
 #if (DDSX11_NDDS==1)
           DDS_Native::DDS::Topic::narrow (native_td);
 #else
@@ -604,7 +604,7 @@ namespace DDSX11
           }
         else
           {
-            DDS_Native::DDS::ContentFilteredTopic *native_cftp =
+            DDS_Native::DDS::ContentFilteredTopic_var native_cftp =
 #if (DDSX11_NDDS==1)
               DDS_Native::DDS::ContentFilteredTopic::narrow (native_td);
 #else
@@ -637,7 +637,7 @@ namespace DDSX11
         return {};
       }
 
-    DDS_Native::DDS::ContentFilteredTopic *native_cftp =
+    DDS_Native::DDS::ContentFilteredTopic_var native_cftp =
       this->native_entity ()->create_contentfilteredtopic (
         ::DDSX11::traits<std::string>::in (name),
         top,
@@ -820,19 +820,27 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_DomainParticipant_proxy::get_listener");
 
-    DDS_Native::DDS::DomainParticipantListener *ccm_dds_dp_list =
+    DDS_Native::DDS::DomainParticipantListener_var native_listener =
       this->native_entity ()->get_listener ();
-    DDS_DomainParticipantListener_proxy * list_proxyroxy =
-      dynamic_cast <DDS_DomainParticipantListener_proxy *> (ccm_dds_dp_list);
-    if (!list_proxyroxy)
-      {
-        DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::get_listener - "
-          << "DDS returned a null listener.");
-        return nullptr;
-      }
-    return list_proxyroxy->get_domainparticipantlistener ();
-  }
 
+    if (!native_listener)
+      {
+        DDSX11_IMPL_LOG_ERROR (
+          "DDS_DomainParticipant_proxy::get_listener - DDS returned a null listener");
+        return {};
+      }
+
+    native_domainparticipantlistener_trait::proxy_impl_type * proxy_impl =
+       native_domainparticipantlistener_trait::proxy_impl (native_listener);
+
+    if (!proxy_impl)
+      {
+        DDSX11_IMPL_LOG_ERROR (
+          "DDS_DomainParticipant_proxy::get_listener - listener returned by DDS is not a DDSX11 listener");
+        return {};
+      }
+    return proxy_impl->get_domainparticipantlistener ();
+  }
 
   ::DDS::ReturnCode_t
   DDS_DomainParticipant_proxy::ignore_participant (
@@ -1129,7 +1137,7 @@ namespace DDSX11
     DDSX11_LOG_TRACE ("DDS_DomainParticipant_proxy::get_statuscondition");
 
     IDL::traits< ::DDS::StatusCondition>::ref_type retval;
-      DDS_Native::DDS::StatusCondition* sc =
+    DDS_Native::DDS::StatusCondition_var sc =
       this->native_entity ()->get_statuscondition ();
     if (sc)
       {

@@ -31,7 +31,7 @@ namespace DDSX11
   {
   public:
     /// Constructor
-    DDS_Condition_proxy (DDS_Native::DDS::Condition * condition);
+    explicit DDS_Condition_proxy (DDS_Native::DDS::Condition * condition);
 
     /// Destructor
     virtual ~DDS_Condition_proxy () = default;

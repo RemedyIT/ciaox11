@@ -78,7 +78,7 @@ int main (int , char *[])
           if (count == maxPollPeriods)
           {
             std::cout << "PublicationMatchedStatus status isn't received on time, so it is possible that not "
-                          " all written samples are going to be received." << std::endl;
+                          "all written samples are going to be received." << std::endl;
           }
 
           ShapeType square {"GREEN", 10, 10, 25};
@@ -105,25 +105,26 @@ int main (int , char *[])
             std::cerr << "Receiver: Failed to delete datawriter from publisher." << std::endl;
             return 1;
           }
-          retcode = domain_participant->delete_publisher (publisher);
-          publisher = nullptr;
-          if (retcode != DDS::RETCODE_OK)
-          {
-            std::cerr << "Receiver: Failed to delete publisher from domain participant." << std::endl;
-            return 1;
-          }
-          retcode = domain_participant->delete_topic (topic);
-          topic = nullptr;
-          if (retcode != DDS::RETCODE_OK)
-          {
-            std::cerr << "Receiver: Failed to delete topic from domain participant." << std::endl;
-            return 1;
-          }
         }
         else
         {
           std::cerr << "Sender: Typed datawriter is null." << std::endl;
           retcode = DDS::RETCODE_ERROR;
+        }
+
+        retcode = domain_participant->delete_publisher (publisher);
+        publisher = nullptr;
+        if (retcode != DDS::RETCODE_OK)
+        {
+          std::cerr << "Receiver: Failed to delete publisher from domain participant." << std::endl;
+          return 1;
+        }
+        retcode = domain_participant->delete_topic (topic);
+        topic = nullptr;
+        if (retcode != DDS::RETCODE_OK)
+        {
+          std::cerr << "Receiver: Failed to delete topic from domain participant." << std::endl;
+          return 1;
         }
       }
       else

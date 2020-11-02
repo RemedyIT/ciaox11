@@ -13,6 +13,7 @@
 #include "dds/dds_common.h"
 #include "idl/dds_dcpsC.h"
 #include "dds/dds_listener_guard_t.h"
+#include "dds/dds_proxy_traits_t.h"
 
 namespace DDSX11
 {
@@ -21,7 +22,7 @@ namespace DDSX11
   {
   public:
     /// Constructor
-    DDS_PublisherListener_proxy (
+    explicit DDS_PublisherListener_proxy (
       IDL::traits< ::DDS::PublisherListener>::ref_type p);
 
     /// Destructor
@@ -65,6 +66,8 @@ namespace DDSX11
     DDS_Native::DDS::PublisherListener,
     ::DDS::PublisherListener> PublisherListener_Guard;
 
+  typedef native_entity_traits< ::DDS::PublisherListener, DDS_PublisherListener_proxy, DDS_Native::DDS::PublisherListener>
+    native_publisherlistener_trait;
 }
 
 #endif /* DDSX11_IMPL_PUBLISHER_LISTENER_H_ */

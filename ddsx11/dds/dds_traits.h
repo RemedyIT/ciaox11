@@ -16,6 +16,7 @@ namespace DDS
   template <typename DATA_TYPE>
   struct traits
   {
+    static const std::string& get_type_name ();
   };
 } // namespace DDS
 
