@@ -12,7 +12,7 @@
 
 inline std::string translate_vendor_statuskind (const ::DDS::StatusKind &ret)
 {
-#define DDS_VENDOR_STATUSKIND(X) case X: return #X
+#define DDS_VENDOR_STATUSKIND(X) case ::X: return #X
   switch (ret)
   {
     DDS_VENDOR_STATUSKIND (DDS::RELIABLE_WRITER_CACHE_CHANGED_STATUS);
@@ -24,7 +24,7 @@ inline std::string translate_vendor_statuskind (const ::DDS::StatusKind &ret)
 
 inline void translate_vendor_statusmask (std::string &ret, ::DDS::StatusMask const &mask)
 {
-#define DDS_VENDOR_STATUS_MASK(X) if (mask == X) {ret += #X; return; }
+#define DDS_VENDOR_STATUS_MASK(X) if (mask == ::X) {ret += #X; return; }
   DDS_VENDOR_STATUS_MASK (DDS::STATUS_MASK_NONE)
   DDS_VENDOR_STATUS_MASK (DDS::STATUS_MASK_ALL)
 #undef DDS_VENDOR_STATUS_MASK
@@ -42,7 +42,7 @@ inline void translate_vendor_statusmask (std::string &ret, ::DDS::StatusMask con
 
 inline std::string translate_vendor_qos_policy_id (const ::DDS::QosPolicyId_t &ret)
 {
-#define DDS_QOS_POLICY_ID(X) case X: return #X
+#define DDS_QOS_POLICY_ID(X) case ::X: return #X
   switch (ret)
   {
     DDS_QOS_POLICY_ID (DDS::TYPE_CONSISTENCY_ENFORCEMENT_QOS_POLICY_ID);
@@ -102,7 +102,7 @@ struct instance_handle_formatter
     for (uint32_t i = 0; i < 4; ++i)
     {
       uint32_t idx = i*4;
-      int32_t val = ntohl(val_.value ()[idx] | (val_.value ()[idx+1] << 8) | (val_.value ()[idx+2] << 16) | val_.value ()[idx+3] << 24);
+      int32_t const val = ntohl(val_.value ()[idx] | (val_.value ()[idx+1] << 8) | (val_.value ()[idx+2] << 16) | val_.value ()[idx+3] << 24);
       os_ << "0X"<< std::uppercase << std::hex << val << std::dec << std::nouppercase;
       if (i != 3) os_ << ",";
     }
