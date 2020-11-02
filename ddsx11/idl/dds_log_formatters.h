@@ -14,10 +14,10 @@
 /// a readable string
 inline std::string translate_retcode (const ::DDS::ReturnCode_t &ret)
 {
-#define DDS_RETCODE(X) case X: return #X
+#define DDS_RETCODE(X) case ::X: return #X
   switch (ret)
   {
-    DDS_RETCODE (DDS::RETCODE_OK);
+    case ::DDS::RETCODE_OK: return "DDS::RETCODE_OK";
     DDS_RETCODE (DDS::RETCODE_ERROR);
     DDS_RETCODE (DDS::RETCODE_UNSUPPORTED);
     DDS_RETCODE (DDS::RETCODE_BAD_PARAMETER);
@@ -39,7 +39,7 @@ inline std::string translate_retcode (const ::DDS::ReturnCode_t &ret)
 /// a readable string
 inline std::string translate_statuskind (const ::DDS::StatusKind &ret)
 {
-#define DDS_STATUS_KIND(X) case X: return #X
+#define DDS_STATUS_KIND(X) case ::X: return #X
   switch (ret)
   {
     DDS_STATUS_KIND (DDS::INCONSISTENT_TOPIC_STATUS);
@@ -63,7 +63,7 @@ inline std::string translate_statuskind (const ::DDS::StatusKind &ret)
 
 inline std::string translate_qos_policy_id (const ::DDS::QosPolicyId_t &ret)
 {
-#define DDS_QOS_POLICY_ID(X) case X: return #X
+#define DDS_QOS_POLICY_ID(X) case ::X: return #X
   switch (ret)
   {
     DDS_QOS_POLICY_ID (DDS::INVALID_QOS_POLICY_ID);
@@ -98,7 +98,7 @@ inline std::string translate_qos_policy_id (const ::DDS::QosPolicyId_t &ret)
 inline void translate_statusmask (std::string &ret, ::DDS::StatusMask const &mask)
 {
 #define DDS_CHECK_MASK(Y) \
-    if (mask & Y) { \
+    if (mask & ::Y) { \
       if (!ret.empty ()) \
           ret += " | "; \
       ret += translate_statuskind (Y); \
