@@ -29,10 +29,10 @@ inline void translate_vendor_statusmask (std::string &ret, ::DDS::StatusMask con
   DDS_VENDOR_STATUS_MASK (DDS::STATUS_MASK_ALL)
 #undef DDS_VENDOR_STATUS_MASK
 #define DDS_VENDOR_CHECK_MASK(Y) \
-    if (mask & Y) { \
+    if (mask & ::Y) { \
       if (!ret.empty ()) \
           ret += " | "; \
-      ret += translate_vendor_statuskind (Y); \
+      ret += translate_vendor_statuskind (::Y); \
     }
   DDS_VENDOR_CHECK_MASK (DDS::RELIABLE_WRITER_CACHE_CHANGED_STATUS);
   DDS_VENDOR_CHECK_MASK (DDS::RELIABLE_READER_ACTIVITY_CHANGED_STATUS);

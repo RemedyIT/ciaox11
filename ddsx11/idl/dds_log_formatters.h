@@ -101,7 +101,7 @@ inline void translate_statusmask (std::string &ret, ::DDS::StatusMask const &mas
     if (mask & ::Y) { \
       if (!ret.empty ()) \
           ret += " | "; \
-      ret += translate_statuskind (Y); \
+      ret += translate_statuskind (::Y); \
     }
   DDS_CHECK_MASK (DDS::INCONSISTENT_TOPIC_STATUS);
   DDS_CHECK_MASK (DDS::OFFERED_DEADLINE_MISSED_STATUS);
