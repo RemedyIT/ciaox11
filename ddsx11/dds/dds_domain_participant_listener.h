@@ -26,7 +26,7 @@ namespace DDSX11
       IDL::traits< ::DDS::DomainParticipantListener>::ref_type p);
 
     /// Destructor
-    virtual ~DDS_DomainParticipantListener_proxy () override;
+    ~DDS_DomainParticipantListener_proxy () override;
 
     void
     on_inconsistent_topic (

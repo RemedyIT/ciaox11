@@ -25,7 +25,7 @@ namespace DDSX11
     explicit DDS_TopicListener_proxy (IDL::traits< ::DDS::TopicListener>::ref_type t);
 
     /// Destructor
-    virtual ~DDS_TopicListener_proxy ();
+    ~DDS_TopicListener_proxy () override;
 
     void
     on_inconsistent_topic (

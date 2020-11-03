@@ -27,7 +27,7 @@ namespace DDSX11
       IDL::traits< ::DDS::DataWriterListener>::ref_type p);
 
     /// Destructor
-    virtual ~DDS_DataWriterListener_proxy () override;
+    ~DDS_DataWriterListener_proxy () override;
 
     void on_offered_deadline_missed (
       DDS_Native::DDS::DataWriter *the_writer,

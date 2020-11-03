@@ -26,7 +26,7 @@ namespace DDSX11
       IDL::traits< ::DDS::SubscriberListener>::ref_type s);
 
     /// Destructor
-    virtual ~DDS_SubscriberListener_proxy () override;
+    ~DDS_SubscriberListener_proxy () override;
 
     void
     on_requested_deadline_missed (
