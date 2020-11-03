@@ -24,6 +24,11 @@ namespace DDSX11
     DDSX11_LOG_TRACE ("DDS_PublisherListener_proxy::DDS_PublisherListener_proxy");
   }
 
+  DDS_PublisherListener_proxy::~DDS_PublisherListener_proxy ()
+  {
+    DDSX11_LOG_TRACE ("DDS_PublisherListener_proxy::~DDS_PublisherListener_proxy");
+  }
+
   void
   DDS_PublisherListener_proxy::on_offered_deadline_missed (
     DDS_Native::DDS::DataWriter* the_writer,

@@ -27,7 +27,7 @@ namespace DDSX11
       IDL::traits< ::DDS::DataWriterListener>::ref_type p);
 
     /// Destructor
-    virtual ~DDS_DataWriterListener_proxy () = default;
+    virtual ~DDS_DataWriterListener_proxy () override;
 
     void on_offered_deadline_missed (
       DDS_Native::DDS::DataWriter *the_writer,
@@ -68,12 +68,10 @@ namespace DDSX11
     DDS_DataWriterListener_proxy& operator=(DDS_DataWriterListener_proxy&&) = delete;
   };
 
-  typedef DDSX11_Listener_Guard_T<
-    DDS_Native::DDS::DataWriterListener,
-    ::DDS::DataWriterListener> DataWriterListener_Guard;
+  using DataWriterListener_Guard = DDSX11_Listener_Guard_T<DDS_Native::DDS::DataWriterListener>;
 
-  typedef native_entity_traits< ::DDS::DataWriterListener, DDS_DataWriterListener_proxy, DDS_Native::DDS::DataWriterListener>
-    native_datawriterlistener_trait;
+  using native_datawriterlistener_trait =
+    native_entity_traits< ::DDS::DataWriterListener, DDS_DataWriterListener_proxy, DDS_Native::DDS::DataWriterListener>;
 }
 
 #endif /* DDSX11_IMPL_DATA_WRITER_LISTENER_H_ */

@@ -149,11 +149,19 @@ namespace DDSX11
     // unregistering our proxy
     ::DDS::InstanceHandle_t const handle = p->get_instance_handle ();
 
+    // Retrieve our listener so that we can delete it when the delete of the DDS entity
+    // has been successful
+    PublisherListener_Guard listener_guard { native_pub->get_listener () };
+
     ::DDS::ReturnCode_t const retcode = ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->delete_publisher (native_pub));
 
     if (retcode != ::DDS::RETCODE_OK)
       {
+        // The delete failed so release the listener guard so that we don't delete
+        // the listener
+        listener_guard.release ();
+
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::delete_publisher - "
           << "Error: delete_publisher returned non-ok error <"
           << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
@@ -294,11 +302,19 @@ namespace DDSX11
     // unregistering our proxy
     ::DDS::InstanceHandle_t const handle = s->get_instance_handle ();
 
+    // Retrieve our listener so that we can delete it when the delete of the DDS entity
+    // has been successful
+    SubscriberListener_Guard listener_guard { native_sub->get_listener () };
+
     ::DDS::ReturnCode_t const retcode = ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->delete_subscriber (native_sub));
 
     if (retcode != ::DDS::RETCODE_OK)
       {
+        // The delete failed so release the listener guard so that we don't delete
+        // the listener
+        listener_guard.release ();
+
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::delete_subscriber - "
           << "Error: delete_subscriber returned non-ok error <"
           << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
@@ -485,12 +501,20 @@ namespace DDSX11
     // unregistering our proxy
     ::DDS::InstanceHandle_t const handle = a_topic->get_instance_handle ();
 
+    // Retrieve our listener so that we can delete it when the delete of the DDS entity
+    // has been successful
+    TopicListener_Guard listener_guard { top->get_listener () };
+
     ::DDS::ReturnCode_t const retcode =
       ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
         this->native_entity ()->delete_topic (top));
 
     if (retcode != ::DDS::RETCODE_OK)
       {
+        // The delete failed so release the listener guard so that we don't delete
+        // the listener
+        listener_guard.release ();
+
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::delete_topic - "
           << "Error: delete_topic returned non-ok error code <"
           << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)

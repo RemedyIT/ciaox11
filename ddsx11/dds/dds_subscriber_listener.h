@@ -26,7 +26,7 @@ namespace DDSX11
       IDL::traits< ::DDS::SubscriberListener>::ref_type s);
 
     /// Destructor
-    virtual ~DDS_SubscriberListener_proxy () override = default;
+    virtual ~DDS_SubscriberListener_proxy () override;
 
     void
     on_requested_deadline_missed (
@@ -79,12 +79,10 @@ namespace DDSX11
     DDS_SubscriberListener_proxy& operator=(DDS_SubscriberListener_proxy&&) = delete;
   };
 
-  typedef DDSX11_Listener_Guard_T<
-    DDS_Native::DDS::SubscriberListener,
-    ::DDS::SubscriberListener> SubscriberListener_Guard;
+  using SubscriberListener_Guard = DDSX11_Listener_Guard_T<DDS_Native::DDS::SubscriberListener>;
 
-  typedef native_entity_traits< ::DDS::SubscriberListener, DDS_SubscriberListener_proxy, DDS_Native::DDS::SubscriberListener>
-    native_subscriberlistener_trait;
+  using native_subscriberlistener_trait =
+    native_entity_traits< ::DDS::SubscriberListener, DDS_SubscriberListener_proxy, DDS_Native::DDS::SubscriberListener>;
 }
 
 #endif /* DDSX11_IMPL_SUBSCRIBER_LISTENER_H_ */

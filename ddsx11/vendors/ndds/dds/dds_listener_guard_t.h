@@ -12,7 +12,7 @@
 
 namespace DDSX11
 {
-  template <typename NATIVE_LISTENER_TYPE, typename X11_REF_TYPE>
+  template <typename NATIVE_LISTENER_TYPE>
   class DDSX11_Listener_Guard_T
   {
   public:

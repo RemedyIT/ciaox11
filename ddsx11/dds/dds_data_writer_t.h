@@ -20,10 +20,9 @@ namespace DDSX11
     , public virtual DDS_DataWriter_proxy
   {
   public:
-    explicit DataWriter_T (
-      DDS_Native::DDS::DataWriter * dw);
+    explicit DataWriter_T (DDS_Native::DDS::DataWriter * dw);
 
-    virtual ~DataWriter_T ();
+    virtual ~DataWriter_T () override;
 
     ::DDS::ReturnCode_t
     set_qos (const ::DDS::DataWriterQos & qos) override;

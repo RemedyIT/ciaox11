@@ -148,12 +148,20 @@ namespace DDSX11
     // unregistering our proxy
     ::DDS::InstanceHandle_t const handle = a_datawriter->get_instance_handle ();
 
+    // Retrieve our listener so that we can delete it when the delete of the DDS entity
+    // has been successful
+    DataWriterListener_Guard listener_guard { native_dw->get_listener () };
+
     ::DDS::ReturnCode_t const retcode =
       ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
         this->native_entity ()->delete_datawriter (native_dw));
 
     if (retcode != ::DDS::RETCODE_OK)
       {
+        // The delete failed so release the listener guard so that we don't delete
+        // the listener
+        listener_guard.release ();
+
         DDSX11_IMPL_LOG_ERROR ("DDS_Publisher_i::delete_datawriter - "
           << "Error: Native delete_datawriter returned non-ok error <"
           << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)

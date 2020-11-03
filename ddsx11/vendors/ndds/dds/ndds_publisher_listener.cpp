@@ -23,6 +23,12 @@ namespace DDSX11
         IDL::traits< ::DDS::PublisherListener>::ref_type p)
       : DDS_PublisherListener_proxy (std::move(p))
     {
+      DDSX11_LOG_TRACE ("NDDS_PublisherListener_proxy::NDDS_PublisherListener_proxy");
+    }
+
+    NDDS_PublisherListener_proxy::~NDDS_PublisherListener_proxy ()
+    {
+      DDSX11_LOG_TRACE ("NDDS_PublisherListener_proxy::~NDDS_PublisherListener_proxy");
     }
 
     void

@@ -147,12 +147,20 @@ namespace DDSX11
     // unregistering our proxy
     ::DDS::InstanceHandle_t const handle = a_participant->get_instance_handle ();
 
+    // Retrieve our listener so that we can delete it when the delete of the DDS entity
+    // has been successful
+    DomainParticipantListener_Guard listener_guard { part->get_listener () };
+
     ::DDS::ReturnCode_t const retcode =
       ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
         this->native_entity ()->delete_participant (part));
 
     if (retcode != ::DDS::RETCODE_OK)
       {
+        // The delete failed so release the listener guard so that we don't delete
+        // the listener
+        listener_guard.release ();
+
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipantFactory_proxy::delete_participant - "
           << "delete_participant returned non-ok error <"
           << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)

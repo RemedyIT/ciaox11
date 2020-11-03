@@ -20,6 +20,12 @@ namespace DDSX11
     IDL::traits< ::DDS::TopicListener>::ref_type t)
     : impl_ (std::move (t))
   {
+    DDSX11_LOG_TRACE ("DDS_TopicListener_proxy::DDS_TopicListener_proxy");
+  }
+
+  DDS_TopicListener_proxy::~DDS_TopicListener_proxy ()
+  {
+    DDSX11_LOG_TRACE ("DDS_TopicListener_proxy::~DDS_TopicListener_proxy");
   }
 
   void

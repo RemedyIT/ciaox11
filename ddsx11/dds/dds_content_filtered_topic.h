@@ -65,9 +65,7 @@ namespace DDSX11
     DDS_ContentFilteredTopic_proxy& operator=(DDS_ContentFilteredTopic_proxy&&) = delete;
   };
 
-  typedef entity_traits< ::DDS::ContentFilteredTopic, DDS_ContentFilteredTopic_proxy, DDS_Native::DDS::ContentFilteredTopic>
-    cft_trait;
-
+  using cft_trait = entity_traits< ::DDS::ContentFilteredTopic, DDS_ContentFilteredTopic_proxy, DDS_Native::DDS::ContentFilteredTopic>;
 } /* DDS_X11 */
 
 #endif /* DDSX11_IMPL_CONTENT_FILTERED_TOPIC_H_ */

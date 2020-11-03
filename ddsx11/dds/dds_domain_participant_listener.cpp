@@ -19,6 +19,12 @@ namespace DDSX11
     IDL::traits< ::DDS::DomainParticipantListener>::ref_type p)
     : impl_ (std::move (p))
   {
+    DDSX11_LOG_TRACE ("DDS_DomainParticipantListener_proxy::DDS_DomainParticipantListener_proxy");
+  }
+
+  DDS_DomainParticipantListener_proxy::~DDS_DomainParticipantListener_proxy ()
+  {
+    DDSX11_LOG_TRACE ("DDS_DomainParticipantListener_proxy::~DDS_DomainParticipantListener_proxy");
   }
 
   void

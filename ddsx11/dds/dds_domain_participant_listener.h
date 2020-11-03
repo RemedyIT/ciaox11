@@ -26,7 +26,7 @@ namespace DDSX11
       IDL::traits< ::DDS::DomainParticipantListener>::ref_type p);
 
     /// Destructor
-    virtual ~DDS_DomainParticipantListener_proxy () = default;
+    virtual ~DDS_DomainParticipantListener_proxy () override;
 
     void
     on_inconsistent_topic (
@@ -104,12 +104,10 @@ namespace DDSX11
     DDS_DomainParticipantListener_proxy& operator=(DDS_DomainParticipantListener_proxy&&) = delete;
   };
 
-  typedef DDSX11_Listener_Guard_T<
-    DDS_Native::DDS::DomainParticipantListener,
-    ::DDS::DomainParticipantListener> DomainParticipantListener_Guard;
+  using DomainParticipantListener_Guard = DDSX11_Listener_Guard_T<DDS_Native::DDS::DomainParticipantListener>;
 
-  typedef native_entity_traits< ::DDS::DomainParticipantListener, DDS_DomainParticipantListener_proxy, DDS_Native::DDS::DomainParticipantListener>
-    native_domainparticipantlistener_trait;
+  using native_domainparticipantlistener_trait =
+    native_entity_traits< ::DDS::DomainParticipantListener, DDS_DomainParticipantListener_proxy, DDS_Native::DDS::DomainParticipantListener>;
 }
 
 #endif /* DDSX11_IMPL_DOMAIN_PARTICIPANT_LISTENER_H_ */

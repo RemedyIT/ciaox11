@@ -245,8 +245,7 @@ namespace DDSX11
         return ::DDS::RETCODE_BAD_PARAMETER;
       }
 
-    DDS_Native::DDS::DataReader *native_dr =
-      dr_proxy->get_native_entity ();
+    DDS_Native::DDS::DataReader *native_dr = dr_proxy->get_native_entity ();
     if (!native_dr)
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_Subscriber_i::delete_datareader - "
@@ -261,11 +260,19 @@ namespace DDSX11
     // unregistering our proxy
     ::DDS::InstanceHandle_t const handle = a_datareader->get_instance_handle ();
 
+    // Retrieve our listener so that we can delete it when the delete of the DDS entity
+    // has been successful
+    DataReaderListener_Guard listener_guard { native_dr->get_listener () };
+
     ::DDS::ReturnCode_t const retcode = ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->delete_datareader (native_dr));
 
     if (retcode != ::DDS::RETCODE_OK)
       {
+        // The delete failed so release the listener guard so that we don't delete
+        // the listener
+        listener_guard.release ();
+
         DDSX11_IMPL_LOG_ERROR ("DDS_Subscriber_i::delete_datareader - "
           << "Error: Native delete_datareader returned non-ok error code <"
           << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)

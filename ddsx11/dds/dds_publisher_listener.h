@@ -26,7 +26,7 @@ namespace DDSX11
       IDL::traits< ::DDS::PublisherListener>::ref_type p);
 
     /// Destructor
-    ~DDS_PublisherListener_proxy () override = default;
+    virtual ~DDS_PublisherListener_proxy () override;
 
     void
     on_offered_deadline_missed (
@@ -62,12 +62,10 @@ namespace DDSX11
     DDS_PublisherListener_proxy& operator=(DDS_PublisherListener_proxy&&) = delete;
   };
 
-  typedef DDSX11_Listener_Guard_T<
-    DDS_Native::DDS::PublisherListener,
-    ::DDS::PublisherListener> PublisherListener_Guard;
+  using PublisherListener_Guard = DDSX11_Listener_Guard_T<DDS_Native::DDS::PublisherListener>;
 
-  typedef native_entity_traits< ::DDS::PublisherListener, DDS_PublisherListener_proxy, DDS_Native::DDS::PublisherListener>
-    native_publisherlistener_trait;
+  using native_publisherlistener_trait =
+    native_entity_traits< ::DDS::PublisherListener, DDS_PublisherListener_proxy, DDS_Native::DDS::PublisherListener>;
 }
 
 #endif /* DDSX11_IMPL_PUBLISHER_LISTENER_H_ */
