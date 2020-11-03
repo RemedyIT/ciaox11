@@ -27,7 +27,7 @@ namespace DDSX11
       IDL::traits< ::DDS::DataReaderListener>::ref_type p);
 
     /// Destructor
-    virtual ~DDS_DataReaderListener_proxy () = default;
+    virtual ~DDS_DataReaderListener_proxy ();
 
     void
     on_requested_deadline_missed (
