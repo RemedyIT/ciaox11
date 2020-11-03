@@ -52,7 +52,6 @@ private:
   CCM_DDS_DataListenerControl_T(CCM_DDS_DataListenerControl_T&&) = delete;
   CCM_DDS_DataListenerControl_T& operator=(const CCM_DDS_DataListenerControl_T&) = delete;
   CCM_DDS_DataListenerControl_T& operator=(CCM_DDS_DataListenerControl_T&&) = delete;
-
 };
 
 #include "dds4ccm/impl/dds4ccm_data_listener_control_t.cpp"
