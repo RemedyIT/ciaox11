@@ -71,9 +71,7 @@ namespace DDSX11
     DDS_QueryCondition_proxy& operator=(DDS_QueryCondition_proxy&&) = delete;
   };
 
-  typedef entity_traits< ::DDS::QueryCondition, DDS_QueryCondition_proxy, DDS_Native::DDS::QueryCondition>
-    query_condition_trait;
-
+  using query_condition_trait = entity_traits< ::DDS::QueryCondition, DDS_QueryCondition_proxy, DDS_Native::DDS::QueryCondition>;
 }
 
 #endif /* DDSX11_IMPL_QUERY_CONDITION_H_ */

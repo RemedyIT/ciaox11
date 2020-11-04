@@ -220,8 +220,7 @@ namespace DDSX11
     IDL::traits< ::DDS::Subscriber>::ref_type builtin_subscriber_ {};
   };
 
-  typedef entity_traits< ::DDS::DomainParticipant, DDS_DomainParticipant_proxy, DDS_Native::DDS::DomainParticipant>
-    domain_participant_trait;
+  using domain_participant_trait = entity_traits< ::DDS::DomainParticipant, DDS_DomainParticipant_proxy, DDS_Native::DDS::DomainParticipant>;
 }
 
 #endif /* DDSX11_IMPL_DOMAIN_PARTICIPANT_H_ */

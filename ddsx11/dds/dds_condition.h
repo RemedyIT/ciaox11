@@ -45,8 +45,7 @@ namespace DDSX11
     DDS_Condition_proxy& operator=(DDS_Condition_proxy&&) = delete;
   };
 
-  typedef entity_traits< ::DDS::Condition, DDS_Condition_proxy, DDS_Native::DDS::Condition>
-    condition_trait;
+  using condition_trait = entity_traits< ::DDS::Condition, DDS_Condition_proxy, DDS_Native::DDS::Condition>;
 } /* DDS_X11 */
 
 #endif /* DDSX11_IMPL_CONDITION_H_ */

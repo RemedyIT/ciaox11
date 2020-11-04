@@ -22,11 +22,10 @@ namespace DDSX11
   {
   public:
     /// Constructor
-    explicit DDS_TopicListener_proxy (
-      IDL::traits< ::DDS::TopicListener>::ref_type t);
+    explicit DDS_TopicListener_proxy (IDL::traits< ::DDS::TopicListener>::ref_type t);
 
     /// Destructor
-    virtual ~DDS_TopicListener_proxy () = default;
+    ~DDS_TopicListener_proxy () override;
 
     void
     on_inconsistent_topic (
@@ -46,12 +45,10 @@ namespace DDSX11
     DDS_TopicListener_proxy& operator=(DDS_TopicListener_proxy&&) = delete;
   };
 
-  typedef DDSX11_Listener_Guard_T<
-    DDS_Native::DDS::TopicListener,
-    ::DDS::TopicListener> TopicListener_Guard;
+  using TopicListener_Guard = DDSX11_Listener_Guard_T<DDS_Native::DDS::TopicListener>;
 
-  typedef native_entity_traits< ::DDS::TopicListener, DDS_TopicListener_proxy, DDS_Native::DDS::TopicListener>
-    native_topiclistener_trait;
+  using native_topiclistener_trait=
+    native_entity_traits< ::DDS::TopicListener, DDS_TopicListener_proxy, DDS_Native::DDS::TopicListener>;
 }
 
 #endif /* DDSX11_IMPL_TOPIC_LISTENER_T_H_ */

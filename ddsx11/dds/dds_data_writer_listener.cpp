@@ -15,11 +15,16 @@
 
 namespace DDSX11
 {
-
   DDS_DataWriterListener_proxy::DDS_DataWriterListener_proxy (
     IDL::traits< ::DDS::DataWriterListener>::ref_type s)
     : impl_ (std::move (s))
   {
+    DDSX11_LOG_TRACE ("DDS_DataWriterListener_proxy::DDS_DataWriterListener_proxy");
+  }
+
+  DDS_DataWriterListener_proxy::~DDS_DataWriterListener_proxy ()
+  {
+    DDSX11_LOG_TRACE ("DDS_DataWriterListener_proxy::~DDS_DataWriterListener_proxy");
   }
 
   IDL::traits< ::DDS::DataWriter>::ref_type

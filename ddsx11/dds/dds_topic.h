@@ -83,8 +83,7 @@ namespace DDSX11
     DDS_Topic_proxy& operator=(DDS_Topic_proxy&&) = delete;
   };
 
-  typedef entity_traits< ::DDS::Topic, DDS_Topic_proxy, DDS_Native::DDS::Topic>
-    topic_trait;
+  using topic_trait = entity_traits< ::DDS::Topic, DDS_Topic_proxy, DDS_Native::DDS::Topic>;
 }
 
 #endif /* DDSX11_IMPL_TOPIC_H_ */

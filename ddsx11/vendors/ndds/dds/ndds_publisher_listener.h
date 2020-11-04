@@ -25,7 +25,7 @@ namespace DDSX11
       NDDS_PublisherListener_proxy (
         IDL::traits< ::DDS::PublisherListener>::ref_type p);
 
-      virtual ~NDDS_PublisherListener_proxy () = default;
+      ~NDDS_PublisherListener_proxy () override;
 
       /**
        * NDDS specific callback methods.

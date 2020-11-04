@@ -27,7 +27,7 @@ namespace DDSX11
       IDL::traits< ::DDS::DataReaderListener>::ref_type p);
 
     /// Destructor
-    virtual ~DDS_DataReaderListener_proxy () = default;
+    ~DDS_DataReaderListener_proxy () override;
 
     void
     on_requested_deadline_missed (
@@ -86,12 +86,10 @@ namespace DDSX11
     DDS_DataReaderListener_proxy& operator=(DDS_DataReaderListener_proxy&&) = delete;
   };
 
-  typedef DDSX11_Listener_Guard_T<
-    DDS_Native::DDS::DataReaderListener,
-    ::DDS::DataReaderListener> DataReaderListener_Guard;
+  using DataReaderListener_Guard = DDSX11_Listener_Guard_T<DDS_Native::DDS::DataReaderListener>;
 
-  typedef native_entity_traits< ::DDS::DataReaderListener, DDS_DataReaderListener_proxy, DDS_Native::DDS::DataReaderListener>
-    native_datareaderlistener_trait;
+  using native_datareaderlistener_trait =
+    native_entity_traits< ::DDS::DataReaderListener, DDS_DataReaderListener_proxy, DDS_Native::DDS::DataReaderListener>;
 }
 
 #endif /* DDSX11_IMPL_DATA_READER_LISTENER_H_ */

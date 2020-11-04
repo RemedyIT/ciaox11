@@ -34,7 +34,7 @@ namespace DDSX11
     DDS_WaitSet_proxy ();
 
     /// Destructor
-    virtual ~DDS_WaitSet_proxy ();
+    ~DDS_WaitSet_proxy () override;
 
     /**
       * Waits for DDS until the attached read/query conditions are met

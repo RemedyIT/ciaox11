@@ -24,7 +24,7 @@ namespace DDSX11
     explicit DataReader_T (DDS_Native::DDS::DataReader * dr);
 
     /// Destructor
-    virtual ~DataReader_T ();
+    ~DataReader_T () override;
 
     ::DDS::ReturnCode_t
     read (

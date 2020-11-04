@@ -144,13 +144,13 @@ namespace DDSX11
       << "Successfully retrieved the native entity from the provided "
       << "datawriter.");
 
-    // Set the listener to null, this will delete any existing listener
-    // when it has been set
-    a_datawriter->set_listener(nullptr, 0);
-
     // Retrieve the DDS instance handle before deleting it, we need it when
     // unregistering our proxy
     ::DDS::InstanceHandle_t const handle = a_datawriter->get_instance_handle ();
+
+    // Retrieve our listener so that we can delete it when the delete of the DDS entity
+    // has been successful
+    DataWriterListener_Guard listener_guard { native_dw->get_listener () };
 
     ::DDS::ReturnCode_t const retcode =
       ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
@@ -158,6 +158,10 @@ namespace DDSX11
 
     if (retcode != ::DDS::RETCODE_OK)
       {
+        // The delete failed so release the listener guard so that we don't delete
+        // the listener
+        listener_guard.release ();
+
         DDSX11_IMPL_LOG_ERROR ("DDS_Publisher_i::delete_datawriter - "
           << "Error: Native delete_datawriter returned non-ok error <"
           << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)

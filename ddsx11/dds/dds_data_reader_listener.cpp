@@ -19,6 +19,12 @@ namespace DDSX11
     IDL::traits< ::DDS::DataReaderListener>::ref_type p)
     : impl_ (std::move (p))
   {
+    DDSX11_LOG_TRACE ("DDS_DataReaderListener_proxy::DDS_DataReaderListener_proxy");
+  }
+
+  DDS_DataReaderListener_proxy::~DDS_DataReaderListener_proxy ()
+  {
+    DDSX11_LOG_TRACE ("DDS_DataReaderListener_proxy::~DDS_DataReaderListener_proxy");
   }
 
   IDL::traits< ::DDS::DataReader>::ref_type

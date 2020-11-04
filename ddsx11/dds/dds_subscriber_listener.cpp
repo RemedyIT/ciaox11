@@ -25,6 +25,11 @@ namespace DDSX11
     DDSX11_LOG_TRACE ("DDS_SubscriberListener_proxy::DDS_SubscriberListener_proxy");
   }
 
+  DDS_SubscriberListener_proxy::~DDS_SubscriberListener_proxy ()
+  {
+    DDSX11_LOG_TRACE ("DDS_SubscriberListener_proxy::~DDS_SubscriberListener_proxy");
+  }
+
   void
   DDS_SubscriberListener_proxy::on_data_on_readers (
     DDS_Native::DDS::Subscriber* the_subscriber)
