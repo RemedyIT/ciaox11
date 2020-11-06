@@ -17,7 +17,7 @@ namespace CIAOX11
   {
     template <typename LISTENER, typename DATA_LISTENER>
     DataReaderContextSwitch_T<LISTENER, DATA_LISTENER>::DataReaderContextSwitch_T (
-      typename IDL::traits< LISTENER>::ref_type drl,
+      typename IDL::traits<LISTENER>::ref_type drl,
       IDL::traits< ::DDS::DataReader>::ref_type dr,
       typename IDL::traits<DATA_LISTENER>::weak_ref_type dl)
       : drl_ (drl.weak_reference ())
@@ -39,9 +39,9 @@ namespace CIAOX11
     template <typename LISTENER, typename DATA_LISTENER>
     void
     DataReaderContextSwitch_T<LISTENER, DATA_LISTENER>::handle_event (
-        typename IDL::traits< LISTENER>::ref_type drl,
-        IDL::traits< ::DDS::DataReader>::ref_type dr,
-        typename IDL::traits<DATA_LISTENER>::ref_type dl)
+      typename IDL::traits<LISTENER>::ref_type drl,
+      IDL::traits< ::DDS::DataReader>::ref_type dr,
+      typename IDL::traits<DATA_LISTENER>::ref_type dl)
     {
       try
       {
