@@ -68,7 +68,7 @@ namespace CIAOX11
     template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
     ::DDS::ReturnCode_t
     ListenerBase_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::take_data_i (
-      typename ::DDS::traits< TOPIC_TYPE>::typed_datareader_ref_type reader,
+      typename ::DDS::traits<TOPIC_TYPE>::typed_datareader_ref_type reader,
       IDL::traits< ::DDS::QueryCondition>::ref_type qc,
       TOPIC_SEQ_TYPE &data,
       ::DDS::SampleInfoSeq &sample_info,
@@ -99,7 +99,7 @@ namespace CIAOX11
     template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
     ::DDS::ReturnCode_t
     ListenerBase_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::read_data_i (
-      typename ::DDS::traits< TOPIC_TYPE>::typed_datareader_ref_type reader,
+      typename ::DDS::traits<TOPIC_TYPE>::typed_datareader_ref_type reader,
       IDL::traits< ::DDS::QueryCondition>::ref_type qc,
       TOPIC_SEQ_TYPE &data,
       ::DDS::SampleInfoSeq &sample_info,
