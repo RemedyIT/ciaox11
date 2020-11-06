@@ -31,7 +31,7 @@ namespace CIAOX11
       int handle_exception (ACE_HANDLE fc = ACE_INVALID_HANDLE) override;
 
       static void handle_event (
-          typename IDL::traits< HANDLER>::ref_type dh,
+          typename IDL::traits<HANDLER>::ref_type dh,
           typename IDL::traits<LISTENER>::ref_type dl);
 
     private:
