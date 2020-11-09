@@ -17,7 +17,7 @@ module BRIX11
       TITLE = 'NDDS'.freeze
       DESC = 'BRIX11 NDDS brix collection'.freeze
       COPYRIGHT = "Copyright (c) 2014-#{Time.now.year} Remedy IT Expertise BV, The Netherlands".freeze
-      VERSION = {major: 0, minor: 1, release: 0}
+      VERSION = {major: 1, minor: 0, release: 0}
 
       Collection.configure(:ndds, ROOT, TITLE, DESC, COPYRIGHT, VERSION) do |cfg|
 

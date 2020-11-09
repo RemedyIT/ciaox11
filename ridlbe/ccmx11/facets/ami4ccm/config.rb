@@ -17,7 +17,7 @@ module IDL
 
       ## Configure facet
       #
-      Backend::Facet.configure('ami4ccm', File.dirname(__FILE__), TITLE, COPYRIGHT, {major: 1, minor: 0, release: 0}) do |fctcfg|
+      Backend::Facet.configure('ami4ccm', File.dirname(__FILE__), TITLE, COPYRIGHT, IDL::CCMX11.ciaox11_version) do |fctcfg|
 
         def self.add_extended_options(ol)
           ol.for_switch '-G{generation options}', :type => String, :separator => true do |swcfg|
