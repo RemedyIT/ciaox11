@@ -89,31 +89,38 @@ module IDL
       end
     end # add_extended_options
 
-    VERSION_REGEXP = /\#\s*define\s+CIAOX11_(\w+)_VERSION\s+(\d+)/
+    class << self
 
-    def self.determine_ciaox11_version()
-      x11_version = {
-        :major => 0,
-        :minor => 0,
-        :micro => 0
-      }
+      VERSION_REGEXP = /\#\s*define\s+CIAOX11_(\w+)_VERSION\s+(\d+)/
 
-      base = File.join(File.dirname(__FILE__), '..', '..', 'ciaox11','versionx11.h')
-      File.open(base, "r") do |file|
-        while (line = file.gets)
-          if VERSION_REGEXP =~ line
-            x11_version[$1.downcase.to_sym] = $2.to_i
+      def determine_ciaox11_version
+        x11_version = {
+          :major => 0,
+          :minor => 0,
+          :micro => 0
+        }
+
+        base = File.join(File.dirname(__FILE__), '..', '..', 'ciaox11','versionx11.h')
+        File.open(base, "r") do |file|
+          while (line = file.gets)
+            if VERSION_REGEXP =~ line
+              x11_version[$1.downcase.to_sym] = $2.to_i
+            end
           end
         end
-      end
-      x11_version[:release] ||= x11_version[:micro]
-      x11_version
-    end # determine_ciaox11_version
+        x11_version[:release] ||= x11_version[:micro]
+        x11_version
+      end # determine_ciaox11_version
+      private :determine_ciaox11_version
 
+      def ciaox11_version
+        @ciaox11_version ||= determine_ciaox11_version
+      end
+    end
 
     ## Configure C++11 backend
     #
-    Backend.configure('ccmx11', File.dirname(__FILE__), TITLE, COPYRIGHT, IDL::CCMX11.determine_ciaox11_version()) do |becfg|
+    Backend.configure('ccmx11', File.dirname(__FILE__), TITLE, COPYRIGHT, IDL::CCMX11.ciaox11_version) do |becfg|
 
       # load c++11 backend as base
       becfg.add_backend('c++11')
