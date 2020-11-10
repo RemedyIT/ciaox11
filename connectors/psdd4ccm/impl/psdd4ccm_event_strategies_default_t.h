@@ -102,7 +102,7 @@ namespace CIAOX11
       // on_data_available
       template <typename HANDLER>
       void handle_data_available_event (
-          typename IDL::traits< HANDLER>::ref_type dh)
+          typename IDL::traits<HANDLER>::ref_type dh)
       {
         typedef DataListenerContextSwitch_T<listener_type, HANDLER> DataListenerHandler_type;
 

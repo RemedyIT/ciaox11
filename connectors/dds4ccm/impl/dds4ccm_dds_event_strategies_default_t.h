@@ -396,7 +396,7 @@ namespace CIAOX11
       explicit DefaultDataEventStrategyBase_T (
         IDL::traits<Components::SessionContext>::ref_type ctx,
         IDL::traits< ::CCM_DDS::PortStatusListener>::ref_type port_status_listener,
-        typename IDL::traits< DATA_LISTENER>::ref_type data_listener)
+        typename IDL::traits<DATA_LISTENER>::ref_type data_listener)
         : DefaultPortStatusEventStrategyBase (std::move(ctx), std::move(port_status_listener))
         , data_listener_ (data_listener)
       {}
@@ -408,7 +408,7 @@ namespace CIAOX11
       // on_data_available
       template <typename LISTENER>
       void handle_data_available_event (
-          typename IDL::traits< LISTENER>::ref_type drl,
+          typename IDL::traits<LISTENER>::ref_type drl,
           IDL::traits< ::DDS::DataReader>::ref_type dr)
       {
         typedef DataReaderContextSwitch_T<LISTENER, DATA_LISTENER> DataReaderHandler_type;
@@ -438,7 +438,7 @@ namespace CIAOX11
       DefaultDataEventStrategyBase_T& operator=(const DefaultDataEventStrategyBase_T&) = delete;
       DefaultDataEventStrategyBase_T& operator=(DefaultDataEventStrategyBase_T&&) = delete;
 
-      typename IDL::traits< DATA_LISTENER>::weak_ref_type data_listener_ {};
+      typename IDL::traits<DATA_LISTENER>::weak_ref_type data_listener_ {};
     };
 
     template <typename CCM_TYPE>

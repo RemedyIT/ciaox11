@@ -57,14 +57,14 @@ namespace CIAOX11
         IDL::traits< ::CCM_DDS::PortStatusListener>::ref_type status);
 
       static ::DDS::ReturnCode_t take_data_i (
-        typename ::DDS::traits< TOPIC_TYPE>::typed_datareader_ref_type reader,
+        typename ::DDS::traits<TOPIC_TYPE>::typed_datareader_ref_type reader,
         IDL::traits< ::DDS::QueryCondition>::ref_type qc,
         TOPIC_SEQ_TYPE &data,
         ::DDS::SampleInfoSeq &sample_info,
         int32_t max_samples);
 
       static ::DDS::ReturnCode_t read_data_i (
-        typename ::DDS::traits< TOPIC_TYPE>::typed_datareader_ref_type reader,
+        typename ::DDS::traits<TOPIC_TYPE>::typed_datareader_ref_type reader,
         IDL::traits< ::DDS::QueryCondition>::ref_type qc,
         TOPIC_SEQ_TYPE &data,
         ::DDS::SampleInfoSeq &sample_info,
@@ -77,7 +77,7 @@ namespace CIAOX11
     private:
       /// Pure virtual helper method to get (read/take) data from DDS
       virtual ::DDS::ReturnCode_t get_data_i (
-        typename ::DDS::traits< TOPIC_TYPE>::typed_datareader_ref_type reader,
+        typename ::DDS::traits<TOPIC_TYPE>::typed_datareader_ref_type reader,
         IDL::traits< ::DDS::QueryCondition>::ref_type qc,
         TOPIC_SEQ_TYPE &data,
         ::DDS::SampleInfoSeq &sample_info,

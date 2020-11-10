@@ -47,7 +47,7 @@ namespace CIAOX11
       /// Helper method to get data from DDS
       virtual ::DDS::ReturnCode_t
       get_data_i (
-        typename ::DDS::traits< TOPIC_TYPE>::typed_datareader_ref_type reader,
+        typename ::DDS::traits<TOPIC_TYPE>::typed_datareader_ref_type reader,
         IDL::traits< ::DDS::QueryCondition>::ref_type qc,
         TOPIC_SEQ_TYPE &data,
         ::DDS::SampleInfoSeq &sample_info,
@@ -84,7 +84,7 @@ namespace CIAOX11
     private:
       /// Helper method to take data from DDS
       ::DDS::ReturnCode_t get_data_i (
-        typename ::DDS::traits< TOPIC_TYPE>::typed_datareader_ref_type reader,
+        typename ::DDS::traits<TOPIC_TYPE>::typed_datareader_ref_type reader,
         IDL::traits< ::DDS::QueryCondition>::ref_type qc,
         TOPIC_SEQ_TYPE &data,
         ::DDS::SampleInfoSeq &sample_info,
@@ -126,7 +126,7 @@ namespace CIAOX11
     private:
       /// Helper method to read data from DDS
       ::DDS::ReturnCode_t get_data_i (
-        typename ::DDS::traits< TOPIC_TYPE>::typed_datareader_ref_type reader,
+        typename ::DDS::traits<TOPIC_TYPE>::typed_datareader_ref_type reader,
         IDL::traits< ::DDS::QueryCondition>::ref_type qc,
         TOPIC_SEQ_TYPE &data,
         ::DDS::SampleInfoSeq &sample_info,

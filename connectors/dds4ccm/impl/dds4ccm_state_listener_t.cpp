@@ -50,7 +50,7 @@ namespace CIAOX11
 
       // Narrow to a type specific datareader
       typename ::DDS::traits<TOPIC_TYPE>::typed_datareader_ref_type reader =
-        ::DDS::traits< TOPIC_TYPE>::narrow (rdr);
+        ::DDS::traits<TOPIC_TYPE>::narrow (rdr);
 
       if (!reader)
       {
