@@ -25,6 +25,7 @@ module IDL
           self.ddsx11_incl << 'dds/dds_domain_participant_factory.h'
           self.ddsx11_incl << 'dds/dds_domain_participant.h'
           self.ddsx11_incl << 'dds/dds_type_support.h'
+          self.ddsx11_incl << 'dds/dds_typefactory_t.h'
         end
         ddsx11_incl
       end
