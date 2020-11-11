@@ -12,10 +12,18 @@
 #define DDSX11_IMPL_TYPE_SUPPORT_H_
 
 #include "dds/dds_export.h"
-#include "dds/dds_common.h"
 #include "dds/dds_traits.h"
 #include "idl/dds_dcpsC.h"
 #include <map>
+
+#if !defined (DDSX11_HAS_VENDOR_TYPEDEFS)
+namespace DDS_Native {
+  namespace DDS {
+    class DataWriter;
+    class DataReader;
+  }
+}
+#endif /* DDSX11_HAS_VENDOR_TYPEDEFS */
 
 namespace DDSX11
 {
