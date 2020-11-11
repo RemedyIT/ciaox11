@@ -37,7 +37,7 @@ namespace CIAOX11
       if (rdr && this->control_ && this->control_->mode () != ::CCM_DDS::ListenerMode::NOT_ENABLED)
       {
         auto drl = IDL::traits<ListenerBase_type>::narrow (this->_this ());
-        this->evs_.handle_data_available_event<ListenerBase_type> (drl, rdr);
+        this->evs_.template handle_data_available_event<ListenerBase_type> (drl, rdr);
       }
     }
 
