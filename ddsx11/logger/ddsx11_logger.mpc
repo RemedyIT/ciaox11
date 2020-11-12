@@ -1,4 +1,4 @@
-project(ddsx11_logger) : x11_logger, ddsx11_output {
+project(ddsx11_logger) : x11_logger, ciaox11_rules, ddsx11_output {
   requires += x11_logging
 
   dynamicflags = DDSX11_LOGGER_BUILD_DLL

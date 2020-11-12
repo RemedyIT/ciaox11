@@ -2,7 +2,8 @@ project(ddsx11_core_impl) : install, \
                        taox11_lib, \
                        ddsx11_output, \
                        ddsx11_vendor_impl, \
-                       ddsx11_logger {
+                       ddsx11_logger, \
+                       ciaox11_rules {
 
   dynamicflags += DDSX11_IMPL_BUILD_DLL
 

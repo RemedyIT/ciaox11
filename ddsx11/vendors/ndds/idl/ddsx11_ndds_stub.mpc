@@ -75,7 +75,8 @@ project (ddsx11_ndds_dcps_idl_gen) : install, \
 
 project (ddsx11_ndds_stub) : ddsx11_output, \
                              ddsx11_ndds_flags, \
-                             taox11_anytypecode {
+                             taox11_anytypecode, \
+                             ciaox11_rules {
 
   after += ddsx11_ndds_dcps_idl_gen
 
