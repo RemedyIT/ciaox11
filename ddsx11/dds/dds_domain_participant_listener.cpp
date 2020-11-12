@@ -12,6 +12,8 @@
 #include "dds/dds_type_support.h"
 #include "dds/dds_vendor_adapter.h"
 #include "dds/dds_proxy_entity_manager.h"
+#include "dds/dds_topic.h"
+#include "dds/dds_vendor_conversion_traits.h"
 
 namespace DDSX11
 {
