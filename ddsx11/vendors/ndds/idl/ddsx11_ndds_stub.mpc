@@ -1,7 +1,8 @@
 project (ddsx11_ndds_types_idl_gen) : install, \
                                       ddsx11_ndds_idl_defaults, \
-                                      taox11_anytypecode, \
-                                      ddsx11_ndds_conversion_traits {
+                                      ddsx11_ndds_conversion_traits, \
+                                      taox11_anytypecode \
+{
   custom_only = 1
   idlflags += -Wb,stub_export_macro=DDSX11_NDDS_STUB_Export \
               -Wb,stub_export_include=ddsx11_ndds_stub_export.h \
@@ -73,11 +74,11 @@ project (ddsx11_ndds_dcps_idl_gen) : install, \
   }
 }
 
-project (ddsx11_ndds_stub) : ddsx11_output, \
+project (ddsx11_ndds_stub) : ciaox11_rules , \
+                             ddsx11_output, \
                              ddsx11_ndds_flags, \
-                             taox11_anytypecode, \
-                             ciaox11_rules {
-
+                             taox11_anytypecode \
+{
   after += ddsx11_ndds_dcps_idl_gen
 
   dynamicflags += DDSX11_NDDS_STUB_BUILD_DLL

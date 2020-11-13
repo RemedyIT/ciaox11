@@ -6,9 +6,10 @@
 // Copyright (c) Remedy IT Expertise BV
 // --------------------------------------------------------------------
 
-project : taox11_defaults, ciaox11_lib, ciaox11_corba4ccm, \
+project : ciaox11_lib, ciaox11_corba4ccm, \
           ciaox11_ccm_session_stub, ciaox11_logger, \
-          ciaox11_ccmobject_skel, ciaox11_corba_util \
+          ciaox11_ccmobject_skel, ciaox11_corba_util, \
+          taox11_defaults \
 {
   after += ciaox11_corba4ccm_impl
   libs += ciaox11_corba4ccm_impl

@@ -4,7 +4,7 @@
 // Copyright (c) Remedy IT Expertise BV
 // --------------------------------------------------------------------
 
-project : taox11_lib {
+project : ciaox11, taox11_lib {
   libpaths += ../lib
   libout = ../lib
   includes += . .. ../base ../base/generated_code generated_code

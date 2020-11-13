@@ -4,11 +4,11 @@
 // Copyright (c) Remedy IT Expertise BV
 // --------------------------------------------------------------------
 
-feature(dds4ccm, ndds) : gen_ostream, \
-          ciaox11_dds4ccm_lem_stub, \
+feature(dds4ccm, ndds) : ciaox11_dds4ccm_lem_stub, \
           ddsx11_ndds_lem_stub, \
           ddsx11_ndds_impl, \
-          ciaox11_dds4ccm_logger {
+          ciaox11_dds4ccm_logger, \
+          gen_ostream {
 }
 
 feature(!ndds) {

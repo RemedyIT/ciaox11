@@ -15,9 +15,9 @@ project(ciaox11_corba4ccm_idl_gen) : install, ciaox11_idldefaults {
   }
 }
 
-project(ciaox11_corba4ccm_impl) : install, taox11_portableserver, \
-                                  ciaox11_ccm_session_stub, \
-                                  ciaox11_logger, ciaox11_output, ciaox11_ccmobject_skel {
+project(ciaox11_corba4ccm_impl) : install, ciaox11_ccm_session_stub, \
+                                  ciaox11_logger, ciaox11_output, ciaox11_ccmobject_skel, \
+                                  taox11_portableserver {
   after += ciaox11_corba4ccm_idl_gen
   sharedname = ciaox11_corba4ccm_impl
   dynamicflags += CORBA4CCM_STUB_BUILD_DLL

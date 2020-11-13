@@ -4,9 +4,9 @@
 // Copyright (c) Remedy IT Expertise BV
 // --------------------------------------------------------------------
 
-project : taox11_defaults, ciaox11_corba_util, \
+project : ciaox11_corba_util, ciaox11_ami4ccm_stub, \
           ciaox11_ccm_session_stub, ciaox11_logger, \
-          taox11_portableserver,taox11_messaging, ciaox11_ami4ccm_stub {
+          taox11_defaults, taox11_portableserver,taox11_messaging {
   after += ciaox11_ami4ccm_impl
   libs += ciaox11_ami4ccm_impl
 }

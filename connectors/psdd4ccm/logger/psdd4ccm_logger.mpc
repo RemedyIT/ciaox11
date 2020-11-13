@@ -1,4 +1,4 @@
-project(ciaox11_psdd4ccm_logger) : x11_logger, ciaox11_rules, ciaox11_output {
+project(ciaox11_psdd4ccm_logger) : ciaox11_rules, ciaox11_output, x11_logger {
   requires += x11_logging
 
   includes += $(CIAOX11_ROOT)/connectors
