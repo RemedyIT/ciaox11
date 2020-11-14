@@ -64,7 +64,7 @@ namespace CIAOX11
         int32_t max_samples = this->control_->max_delivered_data ();
 
         if (mode == ::CCM_DDS::ListenerMode::ONE_BY_ONE ||
-          this->control_->max_delivered_data () == 0)
+            max_samples == 0)
         {
           // Read everything. In case ONE_BY_ONE, the samples are provided to
           // the user one by one (on_one_data);
