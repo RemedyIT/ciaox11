@@ -4,7 +4,7 @@
 // Copyright (c) Remedy IT Expertise BV
 // --------------------------------------------------------------------
 
-project : taox11_defaults, taox11_anytypecode, ciaox11_config {
+project : ciaox11_config, taox11_defaults, taox11_anytypecode {
   libs += ciaox11_corba_util
   after += ciaox11_corba_util_impl
 }

@@ -1,5 +1,5 @@
-project(*main) : taox11_exe, \
-                 ddsx11_impl, ddsx11_logger {
+project(*main) : ddsx11_impl, ddsx11_logger, taox11_exe \
+{
   exename = ddsx11_log_formatters_test
 
   Source_Files {

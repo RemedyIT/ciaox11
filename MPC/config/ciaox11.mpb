@@ -6,6 +6,6 @@
 // Copyright (c) Remedy IT Expertise BV
 // --------------------------------------------------------------------
 
-project {
+project : ciaox11_rules {
   includes += $(CIAOX11_ROOT) $(CIAOX11_ROOT)/ccm
 }
