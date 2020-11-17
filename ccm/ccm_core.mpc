@@ -114,9 +114,9 @@ project(ciaox11_ccmobject_stub) : install \
 }
 
 project(ciaox11_ccmobject_skel) : install \
-                           , taox11_portableserver \
                            , ciaox11_ccmobject_stub \
-                           , ciaox11_output {
+                           , ciaox11_output \
+                           , taox11_portableserver {
   dynamicflags += CIAOX11_CCMOBJECT_SKEL_BUILD_DLL
   after += ciaox11_ccm_core_idl ciaox11_ccm_object_idl
 

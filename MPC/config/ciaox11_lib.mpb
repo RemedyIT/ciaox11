@@ -6,6 +6,6 @@
 // Copyright (c) Remedy IT Expertise BV
 // --------------------------------------------------------------------
 
-project : taox11_lib, ciaox11 {
+project : ciaox11, taox11_lib {
   libpaths += $(CIAOX11_ROOT)/lib
 }

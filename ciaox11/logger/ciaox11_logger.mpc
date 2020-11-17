@@ -1,4 +1,4 @@
-project(ciaox11_logger) : x11_logger, ciaox11_output {
+project(ciaox11_logger) : ciaox11_rules, x11_logger, ciaox11_output {
   requires     += x11_logging
   includes     += $(CIAOX11_ROOT)
   sharedname    = ciaox11_logger

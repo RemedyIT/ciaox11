@@ -1,0 +1,7 @@
+// -*- MPC -*-
+
+project {
+  verbatim(gnuace, extension, 1) {
+    include $(CIAOX11_ROOT)/rules.ciaox11.GNU
+  }
+}

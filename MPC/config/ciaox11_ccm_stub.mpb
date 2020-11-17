@@ -4,7 +4,7 @@
 // Copyright (c) Remedy IT Expertise BV
 // --------------------------------------------------------------------
 
-project : taox11_defaults, ciaox11_lib, taox11_core_anytypecode {
+project : ciaox11_lib, taox11_defaults, taox11_core_anytypecode {
   libs += ciaox11_ccm_stub
   after += ciaox11_ccm_stub
 }

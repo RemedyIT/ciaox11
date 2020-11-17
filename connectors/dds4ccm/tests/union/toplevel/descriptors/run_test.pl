@@ -1,6 +1,6 @@
 #---------------------------------------------------------------------
 # @file   run_test.pl
-# @author Marcel Smit
+# @author Marijke Hengstmengel
 #
 # @copyright Copyright (c) Remedy IT Expertise BV
 #---------------------------------------------------------------------
@@ -20,9 +20,9 @@ $DANCEX11_BIN_FOLDER = $ENV{'DANCEX11_BIN_FOLDER'} || 'bin';
 $sleep_time = 25;
 
 $nr_daemon = 2;
-@ports = ( 60001, 60002 );
-@iorbases = ( 'Sender.ior', 'Receiver.ior' );
-@nodenames = ( 'SenderNode', 'ReceiverNode' );
+@ports = ( 60001, 60002);
+@iorbases = ( 'Sender.ior','Receiver.ior' );
+@nodenames = ('SenderNode','ReceiverNode' );
 
 $daemons_running = 0;
 $em_running = 0;
@@ -48,20 +48,6 @@ $tg_naming = 0;
 $tg_domain_dep_man = 0;
 
 $status = 0;
-
-$plan_fmt = 'config';
-$plan = 'plan';
-
-while ($i = shift) {
-    if ($i eq '-fmt') {
-        $plan_fmt = shift;
-    }
-    if ($i eq '-pln') {
-        $plan = shift;
-    }
-}
-
-$plan_file = "$plan.$plan_fmt";
 
 sub create_targets {
     #   naming service
@@ -91,6 +77,9 @@ sub delete_ior_files {
     }
     $tg_naming->DeleteFile ($ior_nsbase);
     $tg_domain_dep_man->DeleteFile ($ior_embase);
+    for ($i = 0; $i < $nr_daemon; ++$i) {
+        $iorfiles[$i] = $tg_daemons[$i]->LocalFile ($iorbases[$i]);
+    }
 }
 
 sub kill_node_daemon {
@@ -113,7 +102,7 @@ sub kill_open_processes {
     }
     # in case shutdown did not perform as expected
     for ($i = 0; $i < $nr_daemon; ++$i) {
-        $tg_daemons[$i]->KillAll ('dancex11_deployment_manager');
+      $tg_daemons[$i]->KillAll ('dancex11_deployment_manager');
     }
 }
 
@@ -148,100 +137,119 @@ sub run_node_daemons {
     return 0;
 }
 
-create_targets ();
-init_ior_files ();
-
-$my_ip = $tg_naming->IP_Address ();
-
-# Invoke naming service
-
-$NS = $tg_naming->CreateProcess ("$TAO_ROOT/orbsvcs/Naming_Service/tao_cosnaming",
-                                 " -ORBEndpoint iiop://$my_ip:60003 -o $ior_nsfile");
-
-$ns_status = $NS->Spawn ();
-
-if ($ns_status != 0) {
-    print STDERR "ERROR: Unable to execute the naming service\n";
-    kill_open_processes ();
-    exit 1;
-}
-
-print STDERR "Starting Naming Service with  -ORBEndpoint iiop://$my_ip:60003 -o ns.ior\n";
-
-if ($tg_naming->WaitForFileTimed ($ior_nsbase,
-                                  $tg_naming->ProcessStartWaitInterval ()) == -1) {
-    print STDERR "ERROR: cannot find naming service IOR file\n";
-    $NS->Kill (); $NS->TimedWait (1);
-    exit 1;
-}
-
-$ns_running = 1;
-# Set up NamingService environment
-$ENV{'NameServiceIOR'} = "corbaloc:iiop:$my_ip:60003/NameService";
-
-# Invoke node daemon.
-print "Invoking node daemon\n";
-$status = run_node_daemons ();
-
-if ($status != 0) {
-    print STDERR "ERROR: Unable to execute the node daemon\n";
-    kill_open_processes ();
-    exit 1;
-}
-
-$daemons_running = 1;
-
-# # Invoke domain deployment manager.
-print "Invoking domain deployment manager " .
-  "(dancex11_deployment_manager --handler dancex11_domain_dm_handler) with " .
-  "-l $plan_file\n";
-
-$EM = $tg_domain_dep_man->CreateProcess ("$DANCEX11_ROOT/$DANCEX11_BIN_FOLDER/dancex11_deployment_manager",
-                                  "--handler dancex11_domain_dm_handler -l " . $tg_domain_dep_man->LocalFile($plan_file) .
-                                  " -n ExecutionManager=$ior_emfile --deployment-nc " .
-                                  $ENV{'NameServiceIOR'});
-$em_status = $EM->Spawn ();
-
-if ($em_status != 0) {
-    print STDERR "ERROR: dancex11_deployment_manager returned $em_status";
-    exit 1;
-}
-
-if ($tg_domain_dep_man->WaitForFileTimed ($ior_embase,
-                                $tg_domain_dep_man->ProcessStartWaitInterval ()) == -1) {
-    print STDERR
-      "ERROR: The ior file of execution manager could not be found\n";
-    kill_open_processes ();
-    exit 1;
-}
-
-$em_running = 1;
-
-$corrected_sleep_time = $sleep_time * $PerlACE::Process::WAIT_DELAY_FACTOR;
-print "Sleeping $corrected_sleep_time seconds to allow task to complete\n";
-sleep ($corrected_sleep_time);
-
-# Invoke executor manager - stop the application -.
-print "Invoking executor - stop the application \n";
-print "by running dancex11_deployment_manager with -n ExecutionManager=$ior_emfile -x\n";
-
-$E = $tg_domain_dep_man->CreateProcess ("$DANCEX11_ROOT/$DANCEX11_BIN_FOLDER/dancex11_deployment_manager",
-                                 "-n ExecutionManager=$ior_emfile -x");
-$pl_status = $E->SpawnWaitKill ($PerlACE::Process::WAIT_DELAY_FACTOR * $tg_domain_dep_man->ProcessStartWaitInterval ());
-
-if ($pl_status != 0) {
-    print STDERR "ERROR: dancex11_deployment_manager returned $pl_status\n";
-    kill_open_processes ();
-    exit 1;
+if ($#ARGV == -1) {
+    opendir(DIR, ".");
+    @files = grep(/\.(cdp|config)$/,readdir(DIR));
+    closedir(DIR);
 }
 else {
-    $EM->WaitKill ($tg_domain_dep_man->ProcessStopWaitInterval ());
+    @files = @ARGV;
 }
 
-print "Executor returned.\n";
-print "Shutting down rest of the processes.\n";
+foreach $file (@files) {
+    if ($file =~ /NoFailure/) {
+      next;
+    }
 
-delete_ior_files ();
-kill_open_processes ();
+    print "Starting test for deployment $file\n";
+
+    create_targets ();
+    init_ior_files ();
+
+    $my_ip = $tg_naming->IP_Address ();
+
+    # Invoke naming service
+
+    $NS = $tg_naming->CreateProcess ("$TAO_ROOT/orbsvcs/Naming_Service/tao_cosnaming",
+                                    " -ORBEndpoint iiop://$my_ip:60003 -o $ior_nsfile");
+
+    $ns_status = $NS->Spawn ();
+
+    if ($ns_status != 0) {
+        print STDERR "ERROR: Unable to execute the naming service\n";
+        kill_open_processes ();
+        exit 1;
+    }
+
+    print STDERR "Starting Naming Service with  -ORBEndpoint iiop://$my_ip:60003 -o ns.ior\n";
+
+    if ($tg_naming->WaitForFileTimed ($ior_nsbase,
+                                      $tg_naming->ProcessStartWaitInterval ()) == -1) {
+        print STDERR "ERROR: cannot find naming service IOR file\n";
+        $NS->Kill (); $NS->TimedWait (1);
+        exit 1;
+    }
+
+    $ns_running = 1;
+    # Set up NamingService environment
+    $ENV{'NameServiceIOR'} = "corbaloc:iiop:$my_ip:60003/NameService";
+
+    # Invoke node daemon.
+    print "Invoking node daemon\n";
+    $status = run_node_daemons ();
+
+    if ($status != 0) {
+        print STDERR "ERROR: Unable to execute the node daemon\n";
+        kill_open_processes ();
+        exit 1;
+    }
+
+    $daemons_running = 1;
+
+    # Invoke domain deployment manager.
+    print "Invoking domain deployment manager " .
+      "(dancex11_deployment_manager --handler dancex11_domain_dm_handler) with " .
+      "-l $file\n";
+
+    $EM = $tg_domain_dep_man->CreateProcess ("$DANCEX11_ROOT/$DANCEX11_BIN_FOLDER/dancex11_deployment_manager",
+                                  "--handler dancex11_domain_dm_handler -l " . $tg_domain_dep_man->LocalFile($file) .
+                                  " -n ExecutionManager=$ior_emfile --deployment-nc " .
+                                      $ENV{'NameServiceIOR'});
+    $em_status = $EM->Spawn ();
+
+    if ($em_status != 0) {
+        print STDERR "ERROR: dance_execution_manager returned $em_status";
+        exit 1;
+    }
+
+    if ($tg_domain_dep_man->WaitForFileTimed ($ior_embase,
+                                    $tg_domain_dep_man->ProcessStartWaitInterval ()) == -1) {
+        print STDERR
+          "ERROR: The ior file of execution manager could not be found\n";
+        kill_open_processes ();
+        exit 1;
+    }
+
+    $em_running = 1;
+
+    $corrected_sleep_time = $sleep_time * $PerlACE::Process::WAIT_DELAY_FACTOR;
+    print "Sleeping $corrected_sleep_time seconds to allow task to complete\n";
+    sleep ($corrected_sleep_time);
+
+    # Invoke executor manager - stop the application -.
+    print "Invoking executor - stop the application \n";
+    print "by running dancex11_deployment_manager with -n ExecutionManager=$ior_emfile -x\n";
+
+    $E = $tg_domain_dep_man->CreateProcess ("$DANCEX11_ROOT/$DANCEX11_BIN_FOLDER/dancex11_deployment_manager",
+                                    "-n ExecutionManager=$ior_emfile -x");
+    $pl_status = $E->SpawnWaitKill ($PerlACE::Process::WAIT_DELAY_FACTOR * $tg_domain_dep_man->ProcessStartWaitInterval ());
+
+    if ($pl_status != 0) {
+        print STDERR "ERROR: dancex11_deployment_manager returned $pl_status\n";
+        kill_open_processes ();
+        exit 1;
+    }
+    else {
+        $EM->WaitKill ($tg_domain_dep_man->ProcessStopWaitInterval ());
+    }
+
+    print "Executor returned.\n";
+    print "Shutting down rest of the processes.\n";
+
+    delete_ior_files ();
+    kill_open_processes ();
+    print "\n\n";
+}
+
 
 exit $status;

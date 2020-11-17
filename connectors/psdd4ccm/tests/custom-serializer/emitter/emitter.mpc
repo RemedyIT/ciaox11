@@ -1,4 +1,4 @@
-project(*) : taox11_exe, ciaox11_psdd4ccm_zmq_impl, ciaox11_psdd4ccm_logger {
+project(*) : ciaox11_psdd4ccm_zmq_impl, ciaox11_psdd4ccm_logger, taox11_exe {
   requires += zmq
 
   exename = emitter
