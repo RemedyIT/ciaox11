@@ -35,9 +35,10 @@ project(ciaox11_ami4ccm_stub) : install, ciaox11_lib, ciaox11_output {
   }
 }
 
-project(ciaox11_ami4ccm_impl) : install, taox11_portableserver, taox11_messaging, \
-                                ciaox11_ccm_session_stub, \
-                                ciaox11_logger, ciaox11_output {
+project(ciaox11_ami4ccm_impl) : install, ciaox11_ccm_session_stub, \
+                                ciaox11_logger, ciaox11_output, \
+                                taox11_portableserver, taox11_messaging \
+{
   after += ciaox11_ami4ccm_idl_gen ciaox11_ami4ccm_stub
   libs += ciaox11_ami4ccm_stub
   sharedname = ciaox11_ami4ccm_impl

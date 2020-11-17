@@ -53,9 +53,9 @@ project (ciaox11_dds4ccm_idl_gen) : install, \
 }
 
 project (ciaox11_dds4ccm_stub) : install, \
-                                 ddsx11_stub, \
                                  ciaox11_ccm_stub, \
                                  ciaox11_output, \
+                                 ddsx11_stub, \
                                  taox11_core_anytypecode {
   after += ciaox11_dds4ccm_idl_gen
 

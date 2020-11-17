@@ -19,7 +19,7 @@ project(*cc_idl_gen) : ciaox11_idldefaults, ciaox11_corba4ccm_idl {
   }
 }
 
-project(*skel) : taox11_lib, taox11_portableserver, ciaox11_corba4ccm {
+project(*skel) : ciaox11_corba4ccm, taox11_lib, taox11_portableserver {
   after += base_stub *cc_idl_gen
   libs  += base_stub
 

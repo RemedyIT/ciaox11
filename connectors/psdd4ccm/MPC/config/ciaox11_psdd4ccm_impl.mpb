@@ -6,7 +6,8 @@
 // Copyright (c) Remedy IT Expertise BV
 // --------------------------------------------------------------------
 
-project : taox11_defaults, ciaox11_lib, ciaox11_psdd4ccm_stub, \
-          ciaox11_ccm_session_stub, ciaox11_psdd4ccm_logger \
+project : ciaox11_lib, ciaox11_psdd4ccm_stub, \
+          ciaox11_ccm_session_stub, ciaox11_psdd4ccm_logger, \
+          taox11_defaults \
 {
 }

@@ -97,7 +97,7 @@ project(*conn_lemae_gen) : ciaox11_idldefaults, ciaox11_ami4ccm {
 }
 
 //stub without ami
-project(*stub) : taox11_lib, ciaox11_ami4ccm  {
+project(*stub) : ciaox11_ami4ccm, taox11_lib {
   after += *idl_gen
   libout = ../lib
   libpaths += ../lib
@@ -223,7 +223,7 @@ project(*conn_lem_stub) : ciaox11_ami4ccm_stub, ciaox11_ccm_session_stub {
   }
 }
 
-project(*skel) : taox11_lib, taox11_portableserver, ciaox11_ami4ccm {
+project(*skel) : ciaox11_ami4ccm, taox11_lib, taox11_portableserver {
   after      += *stub
   sharedname  = Hello_skel
   libs       += Hello_stub

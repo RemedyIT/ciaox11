@@ -1,7 +1,7 @@
-project(*main) : taox11_exe, \
-                 taox11_core_anytypecode, \
-                 ciaox11_dds4ccm_base, \
-                 ciaox11_dds4ccm_impl {
+project(*main) : ciaox11_dds4ccm_base, \
+                 ciaox11_dds4ccm_impl, \
+                 taox11_exe, \
+                 taox11_core_anytypecode {
   exename = log_formatters_test
 
   Source_Files {
