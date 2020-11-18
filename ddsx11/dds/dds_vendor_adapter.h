@@ -33,15 +33,15 @@ namespace DDSX11
 {
   namespace VendorUtils
   {
-    DDSX11_IMPL_Export IDL::traits< ::DDS::Publisher>::ref_type
+    IDL::traits< ::DDS::Publisher>::ref_type
     create_publisher_proxy (
       DDS_Native::DDS::Publisher *p);
 
-    DDSX11_IMPL_Export IDL::traits< ::DDS::Subscriber>::ref_type
+    IDL::traits< ::DDS::Subscriber>::ref_type
     create_subscriber_proxy (
       DDS_Native::DDS::Subscriber *s);
 
-    DDSX11_IMPL_Export IDL::traits< ::DDS::DomainParticipant>::ref_type
+    IDL::traits< ::DDS::DomainParticipant>::ref_type
     create_domain_participant_proxy (
       DDS_Native::DDS::DomainParticipant *dp);
 
