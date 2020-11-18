@@ -47,7 +47,7 @@ namespace DDSX11
 
       IDL::traits< ::DDS::Topic>::ref_type
       create_topic_with_profile (
-        const std::string &impl_name,
+        const std::string &topic_name,
         const std::string &type_name,
         const std::string &qos_profile,
         IDL::traits< ::DDS::TopicListener>::ref_type a_listener,
