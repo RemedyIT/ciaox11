@@ -179,7 +179,7 @@ namespace DDSX11
 
     IDL::traits< ::DDS::Topic>::ref_type
     NDDS_DomainParticipant_proxy::create_topic_with_profile (
-      const std::string &impl_name,
+      const std::string &topic_name,
       const std::string &type_name,
       const std::string &qos_profile,
       IDL::traits< ::DDS::TopicListener>::ref_type a_listener,
@@ -187,7 +187,7 @@ namespace DDSX11
     {
       DDSX11_LOG_TRACE ("NDDS_DomainParticipant_proxy::create_topic_with_profile");
 
-      if (impl_name.empty ())
+      if (topic_name.empty ())
         {
           DDSX11_IMPL_LOG_ERROR ("NDDS_DomainParticipant_proxy::create_topic_with_profile <"
             << qos_profile << "> - Error: provided null topic name.");
@@ -203,7 +203,7 @@ namespace DDSX11
 
       DDSX11_IMPL_LOG_DEBUG ("NDDS_DomainParticipant_proxy::create_topic_with_profile <"
         << qos_profile << "> - Attempting to create topic with name <"
-        << impl_name << "> and type <" << type_name << ">");
+        << topic_name << "> and type <" << type_name << ">");
 
       std::unique_ptr<DDSX11::DDS_TopicListener_proxy> ccm_dds_tl {};
       if (a_listener != nullptr)
@@ -221,7 +221,7 @@ namespace DDSX11
         {
           dds_tp =
             this->native_entity ()->create_topic_with_profile (
-              ::DDSX11::traits<std::string>::in (impl_name),
+              ::DDSX11::traits<std::string>::in (topic_name),
               ::DDSX11::traits<std::string>::in (type_name),
               ::DDSX11::traits<std::string>::in (lib_name),
               ::DDSX11::traits<std::string>::in (prof_name),

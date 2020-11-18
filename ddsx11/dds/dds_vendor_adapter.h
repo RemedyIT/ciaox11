@@ -58,56 +58,6 @@ namespace DDSX11
       IDL::traits< ::DDS::PublisherListener>::ref_type listener);
     //@}
 
-    /** @name Create DDS entities with profile. */
-    //@{
-    IDL::traits< ::DDS::DomainParticipant>::ref_type
-    create_participant_with_profile (
-      IDL::traits< ::DDS::DomainParticipantFactory>::ref_type participant_factory,
-      ::DDS::DomainId_t domain_id,
-      const std::string &qos_profile,
-      IDL::traits< ::DDS::DomainParticipantListener>::ref_type listener,
-      ::DDS::StatusMask mask);
-
-    IDL::traits< ::DDS::Topic>::ref_type
-    create_topic_with_profile (
-      IDL::traits< ::DDS::DomainParticipant>::ref_type participant,
-      const std::string &topic_name,
-      const std::string &type_name,
-      const std::string &qos_profile,
-      IDL::traits< ::DDS::TopicListener>::ref_type listener,
-      ::DDS::StatusMask mask);
-
-    IDL::traits< ::DDS::Publisher>::ref_type
-    create_publisher_with_profile (
-      IDL::traits< ::DDS::DomainParticipant>::ref_type participant,
-      const std::string &profile,
-      IDL::traits< ::DDS::PublisherListener>::ref_type listener,
-      ::DDS::StatusMask mask);
-
-    IDL::traits< ::DDS::Subscriber>::ref_type
-    create_subscriber_with_profile (
-      IDL::traits< ::DDS::DomainParticipant>::ref_type participant,
-      const std::string &profile,
-      IDL::traits< ::DDS::SubscriberListener>::ref_type listener,
-      ::DDS::StatusMask mask);
-
-    IDL::traits< ::DDS::DataWriter>::ref_type
-    create_datawriter_with_profile (
-      IDL::traits< ::DDS::Publisher>::ref_type publisher,
-      IDL::traits< ::DDS::Topic>::ref_type topic,
-      const std::string &qos_profile,
-      IDL::traits< ::DDS::DataWriterListener>::ref_type listener,
-      ::DDS::StatusMask mask);
-
-    IDL::traits< ::DDS::DataReader>::ref_type
-    create_datareader_with_profile (
-      IDL::traits< ::DDS::Subscriber>::ref_type subscriber,
-      IDL::traits< ::DDS::TopicDescription>::ref_type topic,
-      const std::string &qos_profile,
-      IDL::traits< ::DDS::DataReaderListener>::ref_type listener,
-      ::DDS::StatusMask mask);
-    //@}
-
     /** @name Default QOSs. */
     //@{
     DDSX11_IMPL_Export ::DDS::DomainParticipantQos participant_qos_default ();
