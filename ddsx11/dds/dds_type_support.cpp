@@ -9,6 +9,7 @@
  */
 #include "dds/dds_common.h"
 #include "dds/dds_type_support.h"
+#include "logger/ddsx11_log.h"
 
 namespace DDSX11
 {

@@ -12,7 +12,6 @@
 #define DDSX11_IMPL_DATA_WRITER_H_
 
 #include "dds/dds_proxy_traits_t.h"
-#include "dds/dds_common.h"
 
 #if !defined (DDSX11_HAS_VENDOR_TYPEDEFS)
 namespace DDS_Native {

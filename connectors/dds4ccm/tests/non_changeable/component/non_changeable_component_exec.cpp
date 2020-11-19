@@ -133,7 +133,7 @@ namespace NonChangeableComponent_Impl
     try
     {
       // First retrieve the domain_id
-      DDS::DomainId_t domain_id = -1;
+      DDS::DomainId_t domain_id { -1 };
       const char * domain = std::getenv ("DDS4CCM_DEFAULT_DOMAIN_ID");
       if (domain)
       {

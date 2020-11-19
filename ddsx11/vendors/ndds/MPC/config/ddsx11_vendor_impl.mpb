@@ -19,6 +19,7 @@ project : ddsx11_ndds_flags, \
     ../vendors/ndds/dds/ndds_domain_participant.h
     ../vendors/ndds/dds/ndds_publisher.h
     ../vendors/ndds/dds/ndds_subscriber.h
+    ../vendors/ndds/dds/dds_listener_guard_t.h
   }
 
   Source_Files {
@@ -32,7 +33,6 @@ project : ddsx11_ndds_flags, \
   }
 
   Template_Files {
-    ../vendors/ndds/dds/dds_listener_guard_t.h
     ../vendors/ndds/dds/dds_data_reader_native_entity_t.cpp
   }
 }

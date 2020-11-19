@@ -14,7 +14,7 @@ module BRIX11
     module NDDS
 
       ROOT = File.dirname(__FILE__)
-      TITLE = 'NDDS'.freeze
+      TITLE = 'DDSX11 NDDS'.freeze
       DESC = 'BRIX11 NDDS brix collection'.freeze
       COPYRIGHT = "Copyright (c) 2014-#{Time.now.year} Remedy IT Expertise BV, The Netherlands".freeze
       VERSION = {major: 1, minor: 0, release: 0}

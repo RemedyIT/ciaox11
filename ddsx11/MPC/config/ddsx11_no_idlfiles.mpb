@@ -1,4 +1,4 @@
-project : taoidldefaults {
+project : ciaox11_rules, taoidldefaults {
   IDL_Files {
   }
 }

@@ -13,6 +13,10 @@
 #include "dds/ndds_publisher_listener.h"
 #include "dds/dds_type_support.h"
 #include "dds/ndds_utils.h"
+#include "dds/dds_topic.h"
+#include "dds/dds_data_writer_listener.h"
+#include "dds/ndds_base_traits.h"
+#include "dds/dds_proxy_entity_manager.h"
 
 namespace DDSX11
 {

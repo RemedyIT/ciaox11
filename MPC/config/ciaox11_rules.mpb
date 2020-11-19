@@ -1,0 +1,4 @@
+// -*- MPC -*-
+
+project : ciaox11_rules_def, taox11_rules {
+}

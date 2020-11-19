@@ -12,13 +12,18 @@
 #define DDSX11_IMPL_TYPE_SUPPORT_H_
 
 #include "dds/dds_export.h"
-#include "dds/dds_common.h"
 #include "dds/dds_traits.h"
-#include "dds/dds_data_writer_t.h"
-#include "dds/dds_data_reader_t.h"
-#include "dds/dds_traits.h"
-
+#include "idl/dds_dcpsC.h"
 #include <map>
+
+#if !defined (DDSX11_HAS_VENDOR_TYPEDEFS)
+namespace DDS_Native {
+  namespace DDS {
+    class DataWriter;
+    class DataReader;
+  }
+}
+#endif /* DDSX11_HAS_VENDOR_TYPEDEFS */
 
 namespace DDSX11
 {
@@ -69,38 +74,6 @@ namespace DDSX11
       DDS_TypeFactory_i_ref& operator=(DDS_TypeFactory_i_ref&&) = delete;
       uint32_t ref_count_ { 1 };
       std::shared_ptr<DDS_TypeFactory_i> tf_;
-  };
-
-  template <typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE, typename NATIVE_SEQ_TYPE, typename NATIVE_DATAREADER_TYPE, typename NATIVE_DATAWRITER_TYPE>
-  class DDS_TypeFactory_T final
-    : public DDS_TypeFactory_i
-  {
-  public:
-    IDL::traits< ::DDS::DataWriter>::ref_type
-    create_datawriter (DDS_Native::DDS::DataWriter *dw) override
-    {
-      typedef DDSX11::DataWriter_T<
-          TOPIC_TYPE,
-          NATIVE_DATAWRITER_TYPE,
-          typename ::DDS::traits<TOPIC_TYPE>::datawriter_type>
-        DataWriter_type;
-      auto proxy = TAOX11_CORBA::make_reference<DataWriter_type>(dw);
-      return proxy;
-    }
-
-    IDL::traits< ::DDS::DataReader>::ref_type
-    create_datareader (DDS_Native::DDS::DataReader *dr) override
-    {
-      typedef DDSX11::DataReader_T<
-          NATIVE_DATAREADER_TYPE,
-          typename ::DDS::traits<TOPIC_TYPE>::datareader_type,
-          TOPIC_TYPE,
-          TOPIC_SEQ_TYPE,
-          NATIVE_SEQ_TYPE>
-        DataReader_type;
-      auto proxy = TAOX11_CORBA::make_reference<DataReader_type> (dr);
-      return proxy;
-    }
   };
 
   class DDSX11_IMPL_Export DDS_TypeSupport_i final

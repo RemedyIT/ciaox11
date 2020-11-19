@@ -1,6 +1,7 @@
-project(*main) : taox11_exe, \
-                 taox11_core_anytypecode, \
-                 ddsx11_impl  {
+project(*main) : ddsx11_impl, \
+                 taox11_exe, \
+                 taox11_core_anytypecode \
+{
   exename = typesupport_test
 
   Source_Files {

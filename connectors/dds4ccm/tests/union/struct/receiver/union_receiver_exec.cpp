@@ -296,7 +296,7 @@ namespace Uni_Receiver_Impl
       if (msg.b_03 ().b_03_5 () != "XX")
       {
         DDS4CCM_TEST_ERROR << "ERROR: info_out_data_listener_exec_i::handle_assignment_d <b_03>  - "
-          << "unexpected value for the last member detected. Expected <5> - got <"
+          << "unexpected value for the last member detected. Expected <XX> - got <"
           << msg.b_03 ().b_03_5 () << ">." << std::endl;
       }
     }
@@ -319,7 +319,7 @@ namespace Uni_Receiver_Impl
       if (msg.d ().globalData ().x () != 4)
       {
         DDS4CCM_TEST_ERROR << "ERROR: info_out_data_listener_exec_i::handle_assignment_d <d> - "
-          << "unexpected value for the last member detected. Expected <5> - got <"
+          << "unexpected value for the last member detected. Expected <4> - got <"
           << msg.d ().globalData ().x () << ">." << std::endl;
       }
     }

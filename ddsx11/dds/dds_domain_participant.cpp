@@ -524,6 +524,9 @@ namespace DDSX11
       {
         if (!DDS_ProxyEntityManager::unregister_topic_proxy (handle))
           {
+            // The topic proxy is still used, so don't destruct the listener yet
+            listener_guard.release ();
+
             DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::delete_topic - "
               << "Did not unregister topic proxy for <" << handle << "> because it is still used");
           }
@@ -575,7 +578,7 @@ namespace DDSX11
         else
           {
             DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::find_topic - "
-              << "Registering topic proxy for <" << impl_name << "> again <"
+              << "Registered topic proxy for <" << impl_name << "> again <"
               << topic->get_instance_handle () << ">");
           }
       }

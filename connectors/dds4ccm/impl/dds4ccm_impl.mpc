@@ -1,10 +1,10 @@
 project(ciaox11_dds4ccm_impl) : install, \
                                 ciaox11_dds4ccm_lem_stub, \
-                                taox11_lib, \
                                 ciaox11_output, \
                                 ciaox11_ccm_stub, \
                                 ciaox11_dds4ccm_logger, \
                                 ciaox11_dds4ccm_base, \
+                                taox11_lib, \
                                 ddsx11_impl {
 
   dynamicflags += DDS4CCM_IMPL_BUILD_DLL

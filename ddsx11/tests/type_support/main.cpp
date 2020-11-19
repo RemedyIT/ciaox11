@@ -62,13 +62,25 @@ int main (int , char **)
       ::DDS::DomainParticipantQos qos;
       IDL::traits< ::DDS::DomainParticipant>::ref_type dp1 =
         pf->create_participant (domain_id, qos, nullptr, ::DDS::STATUS_MASK_NONE);
+      if (!dp1)
+        {
+          DDSX11_TEST_ERROR
+            << "ERROR - Could not create DP1" << std::endl;
+          ++ret;
+        }
 
       IDL::traits< ::DDS::DomainParticipant>::ref_type dp2 =
         pf->create_participant (domain_id, qos, nullptr, ::DDS::STATUS_MASK_NONE);
+      if (!dp2)
+        {
+          DDSX11_TEST_ERROR
+            << "ERROR - Could not create DP2" << std::endl;
+          ++ret;
+        }
 
-      const std::string type1 ("DataType1");
-      const std::string type2 ("DataType2");
-      const std::string type3 ("DataType3");
+      std::string const type1 ("DataType1");
+      std::string const type2 ("DataType2");
+      std::string const type3 ("DataType3");
 
       std::shared_ptr<TestTypeFactory> f1 = std::make_shared<TestTypeFactory> ();
       std::shared_ptr<TestTypeFactory> f2 = std::make_shared<TestTypeFactory> ();
