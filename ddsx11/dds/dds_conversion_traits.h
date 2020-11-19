@@ -92,7 +92,7 @@ namespace DDSX11
       dds_in_type value_;
 
       in () { ::DDSX11::dds_init (value_); }
-      in (const in_type& v) { ::DDSX11::dds_init (value_);; ::DDSX11::to_dds (this->value_, v); }
+      in (const in_type& v) { ::DDSX11::dds_init (value_); ::DDSX11::to_dds (this->value_, v); }
       ~in () { ::DDSX11::dds_finalize (value_); }
       in& operator =(const in_type& v) { ::DDSX11::to_dds (this->value_, v); return *this; }
       operator const dds_in_type& () const {  return this->value_; }
@@ -196,7 +196,7 @@ namespace DDSX11
 
       in () = default;
       in (const in_type& v) : value_ (v) {}
-      in& operator =(const in_type& v) { ::DDSX11::to_dds (this->value_, v); return *this; }
+      in& operator =(const in_type& v) { this->value_ = v; return *this; }
       operator const dds_in_type & () const { return this->value_; }
     };
   };
