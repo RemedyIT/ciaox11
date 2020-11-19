@@ -78,7 +78,7 @@ namespace Uni_Receiver_Impl
     /** @name User defined members. */
     //@{
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Uni_Receiver_Impl::info_out_data_listener_exec_i[user_members]
-    uint16_t samples_received_ {};
+    ::Uni::TopUnionMessageSeq::size_type samples_received_ {};
     //@@{__RIDL_REGEN_MARKER__} - END : Uni_Receiver_Impl::info_out_data_listener_exec_i[user_members]
     //@}
 

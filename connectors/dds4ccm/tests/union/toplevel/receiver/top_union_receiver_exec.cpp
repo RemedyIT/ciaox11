@@ -14,7 +14,7 @@
 //@@{__RIDL_REGEN_MARKER__} - END : Uni_Receiver_Impl[user_includes]
 
 //@@{__RIDL_REGEN_MARKER__} - BEGIN : Uni_Receiver_Impl[user_global_impl]
-#define SAMPLES_EXPECTED 2*3+1
+constexpr ::Uni::TopUnionMessageSeq::size_type SAMPLES_EXPECTED { 2*3+1 };
 //@@{__RIDL_REGEN_MARKER__} - END : Uni_Receiver_Impl[user_global_impl]
 
 namespace Uni_Receiver_Impl
@@ -84,10 +84,11 @@ namespace Uni_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Uni_Receiver_Impl::info_out_data_listener_exec_i::on_many_data[_data_infos]
     X11_UNUSED_ARG(infos);
 
-    this->samples_received_ += ACE_Utils::truncate_cast<uint16_t> (data.size ());
+    this->samples_received_ += data.size ();
 
     for (const Uni::TopUnionMessage& msg : data)
     {
+      DDS4CCM_TEST_DEBUG << "Received: <" << msg << ">" << std::endl;
       if (msg._d () == 4)
       {
         if (msg.x () != 5)
