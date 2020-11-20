@@ -184,6 +184,8 @@ namespace RG_LateBinding_Sender_Impl
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : RG_LateBinding_Sender_Impl::Sender_exec_i[user_members]
     IDL::traits<CCM_TT::TT_Timer>::ref_type tm_;
     bool first_run_ { true };
+    // Cached version of the topic_name for logging purposes
+    std::string topic_name_;
     //@@{__RIDL_REGEN_MARKER__} - END : RG_LateBinding_Sender_Impl::Sender_exec_i[user_members]
     //@}
 

@@ -38,8 +38,8 @@ namespace DDS4CCM_TEST_UTILS
     catch (const ::CCM_DDS::NonExistent &)
     {
       DDS4CCM_TEST_DEBUG << "DDS4CCM_TEST_UTILS::check_last - "
-        << "Caught a NonExistent exception for key - "
-        << datum << std::endl;
+        << "Caught a NonExistent exception for key <"
+        << key_str << ">" << std::endl;
     }
     catch_dds4ccm_test_ex(ex, "DDS4CCM_TEST_UTILS::check_last")
     return false;
