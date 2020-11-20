@@ -58,6 +58,15 @@ namespace CIAOX11
       const ::DDS::InstanceHandle_t& instance_handle,
       const ::DDS::InstanceHandle_t& lookup_handle)
     {
+      DDS4CCM_LOG_TRACE ("ConditionManager::check_handle");
+
+      DDS4CCM_LOG_DEBUG ("ConditionManager::check_handle - "
+        << "Checking instance handle <"
+        << instance_handle
+        << "> with lookup handle <"
+        << lookup_handle
+        << ">.");
+
       if (instance_handle != ::DDS::HANDLE_NIL && instance_handle != lookup_handle)
         throw CCM_DDS::InternalError (::DDS::RETCODE_ERROR, 0);
       if (lookup_handle == ::DDS::HANDLE_NIL)
