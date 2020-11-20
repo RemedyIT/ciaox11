@@ -103,7 +103,7 @@ namespace RG_LateBinding_Sender_Impl
     {
       IDL::traits< ::CommonTestConnector::Writer>::ref_type writer =
         this->context_->get_connection_info_write_data ();
-      DDS4CCM_TEST_DEBUG << "Sender_exec_i::notify - Samples: " << std::endl;
+      DDS4CCM_TEST_DEBUG << "Sender_exec_i::notify - Start writing samples " << std::endl;
       for (uint16_t key = 1; key < this->keys_ + 1; ++key)
       {
         CommonTestMessage sample;
