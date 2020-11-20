@@ -41,7 +41,10 @@ namespace DDSX11
     if (retcode == ::DDS::RETCODE_OK)
     {
       sample_infos = ::DDSX11::traits< ::DDS::SampleInfoSeq, ::DDS_Native::DDS::SampleInfoSeq>::retn (native_sample_infos);
-      data_values = typename ::DDSX11::traits<SEQ_TYPE>::retn (native_data_values);
+      // MCO 20201120 - this explicit member reference and move instruction are to circumvent a disturbing (and fatal) compiler
+      //                optimization (seemingly a binary copy was generated for the topic type elements of the sequence)
+      //                encountered here without those
+      data_values = std::move ((typename ::DDSX11::traits<SEQ_TYPE>::retn (native_data_values)).value_);
     }
     else if (retcode != ::DDS::RETCODE_NO_DATA)
     {
