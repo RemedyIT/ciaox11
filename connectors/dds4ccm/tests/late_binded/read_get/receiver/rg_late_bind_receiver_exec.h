@@ -235,7 +235,7 @@ namespace RG_LateBinding_Receiver_Impl
     //@{
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : RG_LateBinding_Receiver_Impl::Receiver_exec_i[user_private_ops]
 
-    uint16_t samples_read_ {};
+    CommonTestMessageSeq::size_type samples_read_ {};
 
     void set_topic_name ();
 

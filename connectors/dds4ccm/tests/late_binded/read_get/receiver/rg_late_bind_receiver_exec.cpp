@@ -301,7 +301,7 @@ namespace RG_LateBinding_Receiver_Impl
       // it could be that sample were read in the last-sample-checker.
       // Therefor the getter does not represent the correct number of
       // samples in DDS. The reader does since it does read all samples.
-      this->samples_read_ += ACE_Utils::truncate_cast<uint16_t> (samples.size ());
+      this->samples_read_ += samples.size ();
     }
 
     if (error)
