@@ -113,7 +113,7 @@ namespace RG_LateBinding_Sender_Impl
           {
             sample.iteration (iter);
             writer->write_one (sample, ::DDS::HANDLE_NIL);
-            DDS4CCM_TEST_DEBUG << '\t' << sample << std::endl;
+            DDS4CCM_TEST_DEBUG << "Sender_exec_i::notify - Write sample <" << sample << "> for topic <" << topic_name_ << ">" << std::endl;
           }
       }
       IDL::traits< ReaderStarter>::ref_type starter =
@@ -184,6 +184,7 @@ namespace RG_LateBinding_Sender_Impl
       }
 
       conn->topic_name (topic_name);
+      this->topic_name_ = topic_name;
     }
     catch (const ::CCM_DDS::NonChangeable &)
     {
