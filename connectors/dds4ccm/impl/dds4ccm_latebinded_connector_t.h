@@ -35,9 +35,7 @@ public:
    * @name topic_name attribute
    * Setter for the topic_name attribute
    */
-  void
-  topic_name (
-    const std::string &topic_name) override;
+  void topic_name (const std::string &topic_name) override;
 
   /**
    * @name Life cycle methods

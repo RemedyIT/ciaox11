@@ -39,7 +39,11 @@ DDS_TopicBase_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::stop_dds (
   DDS4CCM_LOG_TRACE ("DDS_TopicBase_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::stop_dds");
 
   if (!this->topic_name_.empty ())
-  { // topic name already set
+  {
+    DDS4CCM_LOG_DEBUG ("DDS_TopicBase_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::stop_dds - "
+      << "Checking topic_name change from <" << this->topic_name_ << "> to <" << topic_name << ">");
+
+    // topic name already set
     // do not stop DDS when topic names are equal
     return this->topic_name_ != topic_name;
   }
