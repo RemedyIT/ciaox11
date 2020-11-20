@@ -413,8 +413,8 @@ namespace QA_Read_Get_Test_Receiver_Impl
     this->last_get = false;
     this->last_listen = false;
 
-    uint32_t read_before_run_getter = this->received_4_getter_;
-    uint32_t read_before_run_reader = this->received_4_reader_;
+    uint32_t const read_before_run_getter = this->received_4_getter_;
+    uint32_t const read_before_run_reader = this->received_4_reader_;
 
     DDS4CCM_TEST_DEBUG << "Receiver_exec_i::run - " << this->run_ << std::endl;
     ReadGetReceiverRunner_T<QA_Read_Get_Test::CCM_Receiver_Context, true> runner (
@@ -422,9 +422,9 @@ namespace QA_Read_Get_Test_Receiver_Impl
     this->run_ = runner.run ();
     runner.get_received (this->received_4_getter_, this->received_4_reader_);
 
-    uint16_t run_to_check = this->run_ - 1;
-    uint32_t read_during_run_getter = this->received_4_getter_ - read_before_run_getter;
-    uint32_t read_during_run_reader = this->received_4_reader_ - read_before_run_reader;
+    uint16_t const run_to_check = this->run_ - 1;
+    uint32_t const read_during_run_getter = this->received_4_getter_ - read_before_run_getter;
+    uint32_t const read_during_run_reader = this->received_4_reader_ - read_before_run_reader;
 
     switch (run_to_check)
     {
