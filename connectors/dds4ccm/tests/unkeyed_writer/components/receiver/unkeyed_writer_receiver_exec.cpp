@@ -201,7 +201,7 @@ namespace UnkeyedWriterTest_Receiver_Impl
   void Receiver_exec_i::ccm_passivate ()
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : UnkeyedWriterTest_Receiver_Impl::Receiver_exec_i[ccm_passivate]
-    uint32_t expected = (2 * this->keys_ * this->iterations_) - this->keys_;
+    uint32_t const expected = (2 * this->keys_ * this->iterations_) - this->keys_;
     bool qos_used = true;
 
     try

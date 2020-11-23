@@ -343,7 +343,7 @@ namespace UnkeyedWriterTest_Sender_Impl
   {
     DDS4CCM_TEST_DEBUG << "Sender_exec_i::write_many" << std::endl;
 
-    uint32_t nr_samples = this->keys_ * this->iterations_;
+    uint32_t const nr_samples = this->keys_ * this->iterations_;
     UnkeyedWriterTest::UnkeyedWriterMessageSeq write_many_no_excep;
     write_many_no_excep.resize (nr_samples);
     // Write with no exception
