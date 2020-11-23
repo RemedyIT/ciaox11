@@ -35,7 +35,7 @@ public:
 #if defined DDSX11_NDDS
     return DDS::InstanceHandle_t {{{15,14,13,12,11,10,9,8,7,6,5,4,3,2,1,0}}, 16, false};
 #else
-    return DDS::InstanceHandle_t {{0}};
+    return DDS::InstanceHandle_t {{6}};
 #endif
   }
 };
@@ -45,8 +45,8 @@ int main (int, char **)
   std::ostringstream ostr;
 
   ::DDS::QosPolicyCountSeq policy_count_seq;
-#if defined DDSX11_NDDS
-  ::DDS::QosPolicyCount const policy_count (::DDS::DOMAINPARTICIPANTRESOURCELIMITS_QOS_POLICY_ID, 5);
+
+  ::DDS::QosPolicyCount const policy_count (::DDS::PRESENTATION_QOS_POLICY_ID, 5);
   DDSX11_TEST_DEBUG << "Logging QosPolicyCount : " << DDS::dds_write (policy_count) << std::endl;
   ostr << "Logging QosPolicyCount : " << DDS::dds_write (policy_count) << std::endl;
 
@@ -55,7 +55,6 @@ int main (int, char **)
   policy_count_seq.push_back (policy_count);
   DDSX11_TEST_DEBUG << "Logging QosPolicyCountSeq : " << DDS::dds_write (policy_count_seq) << std::endl;
   ostr << "Logging QosPolicyCountSeq : " << DDS::dds_write (policy_count_seq) << std::endl;
-#endif /* DDSX11_NDDS */
 
   ::DDS::Time_t const time (15, 0);
   DDSX11_TEST_DEBUG << "Logging Time_t : " << DDS::dds_write (time) << std::endl;
@@ -120,14 +119,12 @@ int main (int, char **)
   ostr << "Logging DDS::OfferedDeadlineMissedStatus : "
     << DDS::dds_write (offered_deadline_missed_status) << std::endl;
 
-#if defined DDSX11_NDDS
   DDS::OfferedIncompatibleQosStatus const offered_incompatible_qos_status (
-    12, 17, ::DDS::DATAWRITERRESOURCELIMITS_QOS_POLICY_ID, policy_count_seq);
+    12, 17, ::DDS::READERDATALIFECYCLE_QOS_POLICY_ID, policy_count_seq);
   DDSX11_TEST_DEBUG << "Logging DDS::OfferedIncompatibleQosStatus : "
     << DDS::dds_write (offered_incompatible_qos_status) << std::endl;
   ostr << "Logging DDS::OfferedIncompatibleQosStatus : "
     << DDS::dds_write (offered_incompatible_qos_status) << std::endl;
-#endif /* DDSX11_NDDS */
 
   DDS::PublicationMatchedStatus const publication_matched_status (
     20, 15, 12, 7, instance_handle);
@@ -162,13 +159,11 @@ int main (int, char **)
   ostr << "Logging DDS::Duration_t : "
     << DDS::dds_write (duration) << std::endl;
 
-#if defined DDSX11_NDDS
-  DDS::QosPolicyId_t const policy_id (DDS::DOMAINPARTICIPANTRESOURCELIMITS_QOS_POLICY_ID);
+  DDS::QosPolicyId_t const policy_id (DDS::INVALID_QOS_POLICY_ID);
   DDSX11_TEST_DEBUG << "Logging DDS::QosPolicyId_t : "
     << DDS::dds_write (policy_id) << std::endl;
   ostr << "Logging DDS::QosPolicyId_t : "
     << DDS::dds_write (policy_id) << std::endl;
-#endif /* DDSX11_NDDS */
 
   DDS::StatusMask const mask_pub_match { DDS::PUBLICATION_MATCHED_STATUS };
   DDS::StatusMask const mask_pub_data_match { DDS::PUBLICATION_MATCHED_STATUS | DDS::DATA_ON_READERS_STATUS };
