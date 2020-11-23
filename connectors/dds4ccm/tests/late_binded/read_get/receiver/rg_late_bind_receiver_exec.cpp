@@ -482,11 +482,12 @@ namespace RG_LateBinding_Receiver_Impl
       DDS4CCM_TEST_DEBUG << "Receiver_exec_i::ccm_passivate - "
         << "<" << this->samples_read_ << "> samples were read from DDS." << std::endl;
     }
-    if (this->samples_read_ != (2 * this->keys_ * this->iterations_))
+    CommonTestMessageSeq::size_type const samples_expected = 2 * this->keys_ * this->iterations_;
+    if (this->samples_read_ != samples_expected)
     {
       DDS4CCM_TEST_ERROR << "Receiver_exec_i::ccm_passivate - "
         << "ERROR: unexpected number of samples read from DDS: expected <"
-        << 2 * this->keys_ * this->iterations_ << "> - read <" << this->samples_read_
+        << samples_expected << "> - read <" << this->samples_read_
         << ">." << std::endl;
     }
     //@@{__RIDL_REGEN_MARKER__} - END : RG_LateBinding_Receiver_Impl::Receiver_exec_i[ccm_passivate]
