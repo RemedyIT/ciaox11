@@ -19,8 +19,23 @@ sub check_policy_count
 {
     my $line = shift;
     print $line;
-    if ($line =~ "DOMAINPARTICIPANTRESOURCELIMITS_QOS_POLICY_ID" &&
+    if ($line =~ "DDS::PRESENTATION_QOS_POLICY_ID" &&
         $line =~ "count=5")
+    {
+      return 1;
+    }
+  return 0;
+}
+
+# Check the instance handle, returns 1 in case of ok, 0 in case of a failure
+sub check_instance_handle
+{
+    my $line = shift;
+    if ($line =~ "0X10203,0X4050607,0X8090A0B,0XC0D0E0F" )
+    {
+      return 1;
+    }
+    if ($line =~ "6" )
     {
       return 1;
     }
@@ -67,7 +82,7 @@ while (my $line = <FILE>)
     }
     elsif ($line =~ "Logging StatusKind")
     {
-        if ($line =~ "RELIABLE_WRITER_CACHE_CHANGED_STATUS")
+        if ($line =~ "DDS::RELIABLE_WRITER_CACHE_CHANGED_STATUS")
         {
             $found=$found+1;
         }
@@ -78,7 +93,7 @@ while (my $line = <FILE>)
     }
     elsif ($line =~ "Logging InstanceHandle_t")
     {
-        if ($line =~ "0X10203,0X4050607,0X8090A0B,0XC0D0E0F")
+        if (check_instance_handle($line))
         {
             $found=$found+1;
         }
@@ -89,7 +104,7 @@ while (my $line = <FILE>)
     }
     elsif ($line =~ "Logging DDS::Entity")
     {
-        if ($line =~ "0XF0E0D0C,0XB0A0908,0X7060504,0X3020100")
+        if (check_instance_handle($line))
         {
             $found=$found+1;
         }
@@ -113,7 +128,7 @@ while (my $line = <FILE>)
     {
         if ($line =~ "total_count=6" && $line =~ "total_count_change=11" &&
             $line =~ "last_instance_handle=" &&
-            $line =~ "0X10203,0X4050607,0X8090A0B,0XC0D0E0F")
+            check_instance_handle($line))
         {
             $found=$found+1;
         }
@@ -137,7 +152,7 @@ while (my $line = <FILE>)
     {
         if ($line =~ "total_count=15" && $line =~ "total_count_change=20" &&
             $line =~ "REJECTED_BY_SAMPLES_LIMIT" &&
-            $line =~ "0X10203,0X4050607,0X8090A0B,0XC0D0E0F")
+            check_instance_handle($line))
         {
             $found=$found+1;
         }
@@ -150,7 +165,7 @@ while (my $line = <FILE>)
     {
         if ($line =~ "total_count=7" && $line =~ "total_count_change=12" &&
             $line =~ "last_instance_handle=" &&
-            $line =~ "0X10203,0X4050607,0X8090A0B,0XC0D0E0F")
+            check_instance_handle($line))
         {
             $found=$found+1;
         }
@@ -179,7 +194,7 @@ while (my $line = <FILE>)
     {
         $start_found = $found;
         if ($line =~ "total_count=12" && $line =~ "total_count_change=17" &&
-            $line =~ "last_policy_id=DDS::DATAWRITERRESOURCELIMITS_QOS_POLICY_ID")
+            $line =~ "last_policy_id=DDS::READERDATALIFECYCLE_QOS_POLICY_ID")
         {
             $found=$found+1;
         }
@@ -196,7 +211,7 @@ while (my $line = <FILE>)
         if ($line =~ "total_count=20" && $line =~ "total_count_change=15" &&
             $line =~ "current_count=12" && "current_count_change=7" &&
             $line =~ "last_subscription_handle=" &&
-            $line =~ "0X10203,0X4050607,0X8090A0B,0XC0D0E0F")
+            check_instance_handle($line))
         {
             $found=$found+1;
         }
@@ -210,7 +225,7 @@ while (my $line = <FILE>)
         if ($line =~ "total_count=7" && $line =~ "total_count_change=12" &&
             $line =~ "current_count=15" && "current_count_change=20" &&
             $line =~ "last_publication_handle=" &&
-            $line =~ "0X10203,0X4050607,0X8090A0B,0XC0D0E0F")
+            check_instance_handle($line))
         {
             $found=$found+1;
         }
@@ -235,7 +250,7 @@ while (my $line = <FILE>)
         if ($line =~ "alive_count=9" && $line =~ "not_alive_count=14" &&
             $line =~ "alive_count_change=16" && $line =~ "not_alive_count_change=21" &&
             $line =~ "last_publication_handle=" &&
-            $line =~ "0X10203,0X4050607,0X8090A0B,0XC0D0E0F")
+            check_instance_handle($line))
         {
             $found=$found+1;
         }
@@ -257,7 +272,7 @@ while (my $line = <FILE>)
     }
     elsif ($line =~ "Logging DDS::QosPolicyId_t")
     {
-        if ($line =~ "DOMAINPARTICIPANTRESOURCELIMITS_QOS_POLICY_ID")
+        if ($line =~ "DDS::INVALID_QOS_POLICY_ID")
         {
             $found=$found+1;
         }
