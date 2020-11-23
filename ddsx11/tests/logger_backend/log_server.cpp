@@ -126,7 +126,7 @@ ACE_TMAIN (int argc, ACE_TCHAR **argv)
               program_options.domain_,
               DDS::PARTICIPANT_QOS_DEFAULT,
               nullptr,
-              0);
+              DDS::STATUS_MASK_NONE);
         }
       else
         {
@@ -135,7 +135,7 @@ ACE_TMAIN (int argc, ACE_TCHAR **argv)
               program_options.domain_,
               program_options.qosprofile_,
               nullptr,
-              0);
+              DDS::STATUS_MASK_NONE);
         }
 
       if (!participant_)

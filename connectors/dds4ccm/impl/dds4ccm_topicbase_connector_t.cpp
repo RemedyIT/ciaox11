@@ -209,7 +209,6 @@ DDS_TopicBase_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::ccm_remove ()
     this->remove_topic (this->domain_participant (), this->topic_);
     this->topic_ = nullptr;
 
-
     this->unregister_type (this->domain_participant (), this->type_name ());
   }
 
