@@ -582,7 +582,6 @@ namespace DDS
     return __DDS_Writer< ::DDS::SampleRejectedStatus> (srs);
   }
 
-#if (DDSX11_NDDS==1)
   /**
    * Writer for ::DDS::QosPolicyId_t
    */
@@ -600,7 +599,6 @@ namespace DDS
   {
     return __DDS_Writer< ::DDS::QosPolicyId_t> (qpi);
   }
-#endif
 
   /**
    * Writers for ::DDS::OfferedDeadlineMissedStatus and
