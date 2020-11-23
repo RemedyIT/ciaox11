@@ -33,7 +33,7 @@ namespace DDSX11
       SEQ_TYPE & data_values,
       DDS_Native::DDS::SampleInfoSeq & native_sample_infos,
       ::DDS::SampleInfoSeq & sample_infos,
-      const ::DDS::ReturnCode_t & retcode,
+      ::DDS::ReturnCode_t retcode,
       const std::string& method_name)
   {
     DDSX11_LOG_TRACE ("DataReader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::complete_read");
