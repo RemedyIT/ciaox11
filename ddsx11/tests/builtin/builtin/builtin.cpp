@@ -11,8 +11,8 @@
 #include "shapetype_dds_typesupport.h"
 #include <iostream>
 #include <thread>
+#include "tests/testlib/ddsx11_testlog.h"
 
-// X11_FUZZ: disable check_cout_cerr
 static std::string const qos_profile { "shapes#ShapesProfile" };
 
 int main (int, char *[])
@@ -37,7 +37,9 @@ int main (int, char *[])
       retcode = DDS::traits<ShapeType>::register_type (domain_participant, "ShapeType");
       if (retcode != DDS::RETCODE_OK)
       {
-        std::cerr << "Receiver: Failed to register type." << std::endl;
+        DDSX11_TEST_ERROR << "builtin: Failed to register type: "
+                          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                          << std::endl;
         return 1;
       }
 
@@ -51,11 +53,11 @@ int main (int, char *[])
         dpf->lookup_participant (domain_id_ + 1);
       if (!invalid_domain)
       {
-        std::cout << "Builtin: Correctly returned no domain participant" << std::endl;
+        DDSX11_TEST_DEBUG << "Builtin: Correctly returned no domain participant" << std::endl;
       }
       else
       {
-        std::cerr << "Builtin: Error, got a domain participant for invalid domain" << std::endl;
+        DDSX11_TEST_ERROR << "Builtin: Error, got a domain participant for invalid domain" << std::endl;
       }
 
       // Now retrieve a domain participant for our domain, this should succeed
@@ -63,18 +65,20 @@ int main (int, char *[])
         dpf->lookup_participant (domain_id_);
       if (domain_participant2)
       {
-        std::cout << "Builtin: Correctly returned domain participant " << std::endl;
+        DDSX11_TEST_DEBUG << "Builtin: Correctly returned domain participant " << std::endl;
       }
       else
       {
-        std::cerr << "Builtin: Error, got no domain participant for valid domain" << std::endl;
+        DDSX11_TEST_ERROR << "Builtin: Error, got no domain participant for valid domain" << std::endl;
       }
       domain_participant2 = nullptr;
 
       retcode = DDS::traits<ShapeType>::register_type (domain_participant, "ShapeType");
       if (retcode != DDS::RETCODE_OK)
       {
-        std::cerr << "Builtin: Error to register type." << std::endl;
+        DDSX11_TEST_ERROR << "Builtin: Error to register type: "
+                          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                          << std::endl;
         return 1;
       }
 
@@ -83,7 +87,7 @@ int main (int, char *[])
 
       if (!subscriber)
       {
-        std::cerr << "ERROR: Unable to get the builtin subscriber!" << std::endl;
+        DDSX11_TEST_ERROR << "ERROR: Unable to get the builtin subscriber!" << std::endl;
         retcode = DDS::RETCODE_ERROR;
       }
 
@@ -92,7 +96,7 @@ int main (int, char *[])
 
       if (!subscriber)
       {
-        std::cerr << "ERROR: Unable to get the builtin subscriber for the second time!" << std::endl;
+        DDSX11_TEST_ERROR << "ERROR: Unable to get the builtin subscriber for the second time!" << std::endl;
         retcode = DDS::RETCODE_ERROR;
       }
 
@@ -102,7 +106,7 @@ int main (int, char *[])
 
       if (foo_builtin_datareader)
       {
-        std::cerr << "ERROR: Should not have returned a datareader for Foo!" << std::endl;
+        DDSX11_TEST_ERROR << "ERROR: Should not have returned a datareader for Foo!" << std::endl;
         retcode = DDS::RETCODE_ERROR;
       }
 
@@ -112,7 +116,7 @@ int main (int, char *[])
 //
 //       if (!participant_builtin_datareader)
 //       {
-//         std::cerr << "ERROR: Should have returned a datareader for DCPSParticipant!" << std::endl;
+//         DDSX11_TEST_ERROR << "ERROR: Should have returned a datareader for DCPSParticipant!" << std::endl;
 //         retcode = DDS::RETCODE_ERROR;
 //       }
 
@@ -120,7 +124,9 @@ int main (int, char *[])
       topic = nullptr;
       if (retcode != DDS::RETCODE_OK)
       {
-        std::cerr << "Receiver: Failed to delete topic from domain participant." << std::endl;
+        DDSX11_TEST_ERROR << "Builtin: Failed to delete topic from domain participant: "
+                          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                          << std::endl;
         return 1;
       }
 
@@ -128,20 +134,24 @@ int main (int, char *[])
       domain_participant = nullptr;
       if (retcode != DDS::RETCODE_OK)
       {
-        std::cerr << "Builtin: Failed to delete domain participant from domain participant factory." << std::endl;
+        DDSX11_TEST_ERROR << "Builtin: Failed to delete domain participant from domain participant factory: "
+                          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                          << std::endl;
         return 1;
       }
       retcode = dpf->finalize_instance ();
       dpf = nullptr;
       if (retcode != ::DDS::RETCODE_OK)
       {
-        std::cerr << "Builtin: Failed to finalize the domain participant factory." << std::endl;
+        DDSX11_TEST_ERROR << "Builtin: Failed to finalize the domain participant factory: "
+                          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                          << std::endl;
         return 1;
       }
     }
   catch (const std::exception& e)
     {
-      std::cerr << "exception caught: " << e.what () << std::endl;
+      DDSX11_TEST_ERROR << "exception caught: " << e.what () << std::endl;
       return 1;
     }
 
