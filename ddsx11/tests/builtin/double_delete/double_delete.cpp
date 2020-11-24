@@ -35,7 +35,9 @@ int main (int, char *[])
       retcode = DDS::traits<ShapeType>::register_type (domain_participant, "ShapeType");
       if (retcode != DDS::RETCODE_OK)
       {
-        DDSX11_TEST_ERROR << "double_delete: Failed to register type." << std::endl;
+        DDSX11_TEST_ERROR << "double_delete: Failed to register type: "
+                          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                          << std::endl;
         return 1;
       }
 
@@ -45,7 +47,9 @@ int main (int, char *[])
       retcode = DDS::traits<ShapeType>::register_type (domain_participant, "ShapeType");
       if (retcode != DDS::RETCODE_OK)
       {
-        DDSX11_TEST_ERROR << "Builtin: Error to register type." << std::endl;
+        DDSX11_TEST_ERROR << "Builtin: Error to register type: "
+                          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                          << std::endl;
         return 1;
       }
 
@@ -71,7 +75,9 @@ int main (int, char *[])
       retcode = domain_participant->delete_topic (topic2);
       if (retcode != DDS::RETCODE_OK)
       {
-        DDSX11_TEST_ERROR << "double_delete: Failed to delete topic2 from domain participant." << std::endl;
+        DDSX11_TEST_ERROR << "double_delete: Failed to delete topic2 from domain participant: "
+                          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                          << std::endl;
         return 1;
       }
 
@@ -79,7 +85,9 @@ int main (int, char *[])
       retcode = domain_participant->delete_publisher (publisher);
       if (retcode == DDS::RETCODE_OK)
       {
-        DDSX11_TEST_ERROR << "double_delete: Deleting publisher should fail." << std::endl;
+        DDSX11_TEST_ERROR << "double_delete: Deleting publisher should fail: "
+                          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                          << std::endl;
         return 1;
       }
 
@@ -87,7 +95,9 @@ int main (int, char *[])
       retcode = publisher->delete_datawriter (dw);
       if (retcode != DDS::RETCODE_OK)
       {
-        DDSX11_TEST_ERROR << "double_delete: Failed to delete datawriter." << std::endl;
+        DDSX11_TEST_ERROR << "double_delete: Failed to delete datawriter: "
+                          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                          << std::endl;
         return 1;
       }
 
@@ -96,7 +106,9 @@ int main (int, char *[])
       dw = nullptr;
       if (retcode != DDS::RETCODE_BAD_PARAMETER)
       {
-        DDSX11_TEST_ERROR << "double_delete: Deleting the datawriter the second time should fail." << std::endl;
+        DDSX11_TEST_ERROR << "double_delete: Deleting the datawriter the second time should fail: "
+                          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                          << std::endl;
         return 1;
       }
 
@@ -105,7 +117,9 @@ int main (int, char *[])
       retcode = domain_participant->delete_publisher (publisher);
       if (retcode != DDS::RETCODE_OK)
       {
-        DDSX11_TEST_ERROR << "double_delete: Failed to delete publisher." << std::endl;
+        DDSX11_TEST_ERROR << "double_delete: Failed to delete publisher: "
+                          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                          << std::endl;
         return 1;
       }
 
@@ -114,14 +128,18 @@ int main (int, char *[])
       publisher = nullptr;
       if (retcode != DDS::RETCODE_BAD_PARAMETER)
       {
-        DDSX11_TEST_ERROR << "double_delete: Deleting the publisher the second time should fail." << std::endl;
+        DDSX11_TEST_ERROR << "double_delete: Deleting the publisher the second time should fail: "
+                          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                          << std::endl;
         return 1;
       }
 
       retcode = domain_participant->delete_topic (topic);
       if (retcode != DDS::RETCODE_OK)
       {
-        DDSX11_TEST_ERROR << "double_delete: Failed to delete topic from domain participant." << std::endl;
+        DDSX11_TEST_ERROR << "double_delete: Failed to delete topic from domain participant: "
+                          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                          << std::endl;
         return 1;
       }
 
@@ -130,14 +148,18 @@ int main (int, char *[])
       topic = nullptr;
       if (retcode != DDS::RETCODE_BAD_PARAMETER)
       {
-        DDSX11_TEST_ERROR << "double_delete: Second delete topic didn't return correct return code." << std::endl;
+        DDSX11_TEST_ERROR << "double_delete: Second delete topic didn't return correct return code: "
+                          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                          << std::endl;
         return 1;
       }
 
       retcode = dpf->delete_participant(domain_participant);
       if (retcode != DDS::RETCODE_OK)
       {
-        DDSX11_TEST_ERROR << "Builtin: Failed to delete domain participant from domain participant factory." << std::endl;
+        DDSX11_TEST_ERROR << "Builtin: Failed to delete domain participant from domain participant factory: "
+                          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                          << std::endl;
         return 1;
       }
 
@@ -145,7 +167,9 @@ int main (int, char *[])
       domain_participant = nullptr;
       if (retcode != DDS::RETCODE_BAD_PARAMETER)
       {
-        DDSX11_TEST_ERROR << "double_delete: Second delete domain participant didn't return correct return code." << std::endl;
+        DDSX11_TEST_ERROR << "double_delete: Second delete domain participant didn't return correct return code: "
+                          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                          << std::endl;
         return 1;
       }
 
@@ -153,7 +177,9 @@ int main (int, char *[])
       dpf = nullptr;
       if (retcode != ::DDS::RETCODE_OK)
       {
-        DDSX11_TEST_ERROR << "Builtin: Failed to finalize the domain participant factory." << std::endl;
+        DDSX11_TEST_ERROR << "Builtin: Failed to finalize the domain participant factory: "
+                          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                          << std::endl;
         return 1;
       }
     }
