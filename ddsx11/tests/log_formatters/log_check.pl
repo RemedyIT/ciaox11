@@ -31,11 +31,11 @@ sub check_policy_count
 sub check_instance_handle
 {
     my $line = shift;
-    if ($line =~ "0X10203,0X4050607,0X8090A0B,0XC0D0E0F" )
+    if ($line =~ "{0X10203,0X4050607,0X8090A0B,0XC0D0E0F}" )
     {
       return 1;
     }
-    if ($line =~ "6" )
+    if ($line =~ "{1234567}" )
     {
       return 1;
     }
@@ -82,7 +82,7 @@ while (my $line = <FILE>)
     }
     elsif ($line =~ "Logging StatusKind")
     {
-        if ($line =~ "DDS::RELIABLE_WRITER_CACHE_CHANGED_STATUS")
+        if ($line =~ "DDS::LIVELINESS_LOST_STATUS")
         {
             $found=$found+1;
         }
