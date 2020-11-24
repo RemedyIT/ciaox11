@@ -8,6 +8,8 @@
 
 feature(ddsx11, ndds) : ndds_ts_defaults {
   ndds_ts_flags += -enableEscapeChar
+  Define_Custom(TypeSupport) {
+  }
 }
 
 feature(ddsx11, ndds_no_optimize) : ndds_ts_defaults {
