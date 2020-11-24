@@ -34,7 +34,7 @@ project (*ddsx11_ndds_ts) : ddsx11_vendor_ts_defaults, ddsx11_no_idlfiles {
   custom_only=1
 }
 
-project (*ddsx11_opendds_ts) : ddsx11_vendor_ts_defaults, ddsx11_no_idlfiles, dcps_ts_subdir {
+project (*ddsx11_opendds_ts) : ddsx11_vendor_ts_defaults, ddsx11_no_idlfiles {
   after += *idl
   requires += opendds
   idlflags += -o GeneratedCode -I. -IGeneratedCode -SS
