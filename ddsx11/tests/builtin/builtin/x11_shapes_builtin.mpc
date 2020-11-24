@@ -1,7 +1,24 @@
-project(*i2c_shapes_receiver) : ddsx11_impl {
+project(*ndds_builtin) : ddsx11_impl {
+  after += builtin_stub builtin_ddsx11_ndds_impl
+  libs  += builtin_stub builtin_ddsx11_ndds_impl
+  requires += ndds
 
-  after += builtin_stub builtin_ddsx11_impl
-  libs  += builtin_stub builtin_ddsx11_impl
+  libpaths += ../lib
+
+  exename = builtin
+  exeout  = ../lib
+
+  includes += ../base/GeneratedCode
+
+  Source_Files {
+    builtin.cpp
+  }
+}
+
+project(*opendds_builtin) : ddsx11_impl {
+  after += builtin_stub builtin_ddsx11_opendds_impl
+  libs  += builtin_stub builtin_ddsx11_opendds_impl
+  requires += opendds
 
   libpaths += ../lib
 
