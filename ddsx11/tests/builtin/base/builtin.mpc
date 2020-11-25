@@ -45,6 +45,7 @@ project (*ddsx11_opendds_ts) : ddsx11_vendor_ts_defaults, ddsx11_no_idlfiles {
                      -Wb,export_include=shapes_stub_export.h
   }
   IDL_Files {
+    gendir = GeneratedCode
     GeneratedCode/shapetype_dds.idl
     idlflags += -Wb,stub_export_macro=SHAPES_STUB_Export \
                 -Wb,stub_export_include=shapes_stub_export.h \

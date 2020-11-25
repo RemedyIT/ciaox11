@@ -10,6 +10,9 @@ feature(ddsx11, ndds) : ndds_ts_defaults {
   ndds_ts_flags += -enableEscapeChar
   Define_Custom(TypeSupport) {
   }
+  Define_Custom(DummyTypeSupport) {
+    keyword dcps_ts_flags = commandflags
+  }
 }
 
 feature(ddsx11, ndds_no_optimize) : ndds_ts_defaults {
