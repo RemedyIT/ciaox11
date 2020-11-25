@@ -112,7 +112,7 @@ project(*ddsx11_logger) : ddsx11_impl, ddsx11_logger {
 }
 
 project(*log_server) : ddsx11_impl {
-  after += log_record_stub record_ddsx11_opendds_impl log_record_ddsx11_ndds_impl
+  after += log_record_stub log_record_ddsx11_opendds_impl log_record_ddsx11_ndds_impl
   libs  += log_record_stub log_record_ddsx11_impl
 
   exename = log_server
