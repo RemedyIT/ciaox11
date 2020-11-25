@@ -5,5 +5,5 @@
 // --------------------------------------------------------------------
 
 project : ddsx11_ndds_flags, ridl_defaults {
-  idlflags += -Scdr -I$(CIAOX11_ROOT)/ddsx11/vendors/ndds/idl
+  idlflags += -Scdr -I$(CIAOX11_ROOT)/ddsx11/vendors/ndds/idl -SS -Ssh
 }
