@@ -51,10 +51,11 @@ project (*ddsx11_opendds_ts) : ddsx11_vendor_ts_defaults, ddsx11_no_idlfiles {
   custom_only=1
 }
 
-project (*ddsx11_ndds_impl) : ddsx11_impl, ddsx11_no_idlfiles {
+project (*ddsx11_ndds_impl) : ddsx11_impl {
   after += *stub *ddsx11_ndds_ts
   libs += *stub
   requires += ndds
+  sharedname = builtin_ddsx11_impl
 
   dynamicflags += SHAPES_TYPESUPPORT_BUILD_DLL
 
@@ -80,6 +81,7 @@ project (*ddsx11_opendds_impl) : ddsx11_impl, ddsx11_no_idlfiles {
   after += *stub *ddsx11_opendds_ts
   libs += *stub
   requires += opendds
+  sharedname = builtin_ddsx11_impl
 
   dynamicflags += SHAPES_TYPESUPPORT_BUILD_DLL
 

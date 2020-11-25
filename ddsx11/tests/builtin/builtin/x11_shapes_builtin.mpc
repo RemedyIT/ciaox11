@@ -1,6 +1,6 @@
-project(*ndds_builtin) : ddsx11_impl {
-  after += builtin_stub builtin_ddsx11_ndds_impl
-  libs  += builtin_stub builtin_ddsx11_ndds_impl
+project(*builtin) : ddsx11_impl {
+  after += builtin_stub builtin_ddsx11_ndds_impl builtin_ddsx11_opendds_impl
+  libs  += builtin_stub builtin_ddsx11_impl
   requires += ndds
 
   libpaths += ../lib
@@ -15,19 +15,3 @@ project(*ndds_builtin) : ddsx11_impl {
   }
 }
 
-project(*opendds_builtin) : ddsx11_impl {
-  after += builtin_stub builtin_ddsx11_opendds_impl
-  libs  += builtin_stub builtin_ddsx11_opendds_impl
-  requires += opendds
-
-  libpaths += ../lib
-
-  exename = builtin
-  exeout  = ../lib
-
-  includes += ../base/GeneratedCode
-
-  Source_Files {
-    builtin.cpp
-  }
-}

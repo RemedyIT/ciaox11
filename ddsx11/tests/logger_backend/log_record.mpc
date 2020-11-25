@@ -23,8 +23,9 @@ project (*stub) : ddsx11_stub {
   }
 }
 
-project (*ddsx11_ts) : ddsx11_vendor_ts_defaults {
+project (*ddsx11_ndds_ts) : ddsx11_vendor_ts_defaults, ddsx11_no_idlfiles {
   after += *idl
+  requires += ndds
   NDDSTypeSupport_Files {
     gendir = GeneratedCode
     GeneratedCode/log_record_dds.idl
@@ -32,9 +33,28 @@ project (*ddsx11_ts) : ddsx11_vendor_ts_defaults {
   custom_only=1
 }
 
-project (*ddsx11_impl) : ddsx11_impl {
-  after += *stub *ddsx11_ts
+project (*ddsx11_opendds_ts) : ddsx11_vendor_ts_defaults, ddsx11_no_idlfiles {
+  after += *idl
+  requires += opendds
+  idlflags += -o GeneratedCode -I. -IGeneratedCode -SS
+  TypeSupport_Files {
+    gendir = GeneratedCode
+    GeneratedCode/log_record_dds.idl
+  }
+  IDL_Files {
+    GeneratedCode/log_record_dds.idl
+    idlflags += -Wb,stub_export_macro=LOG_RECORD_STUB_Export \
+                -Wb,stub_export_include=log_record_stub_export.h \
+                -SS
+  }
+  custom_only=1
+}
+
+project (*ddsx11_ndds_impl) : ddsx11_impl {
+  after += *stub *ddsx11_ndds_ts
   libs += *stub
+  requires += ndds
+  sharedname = log_record_ddsx11_impl
 
   dynamicflags += LOG_RECORD_TYPESUPPORT_BUILD_DLL
 
@@ -53,9 +73,32 @@ project (*ddsx11_impl) : ddsx11_impl {
   }
 }
 
+project (*ddsx11_opendds_impl) : ddsx11_impl, ddsx11_no_idlfiles {
+  after += *stub *ddsx11_opendds_ts
+  libs += *stub
+  requires += opendds
+  sharedname = log_record_ddsx11_impl
+
+  dynamicflags += LOG_RECORD_TYPESUPPORT_BUILD_DLL
+
+  Source_Files {
+    GeneratedCode/log_record_ddsC.cpp
+    GeneratedCode/log_record_ddsTypeSupportC.cpp
+    GeneratedCode/log_record_ddsTypeSupportImpl.cpp
+    GeneratedCode/log_record_dds_typesupport.cpp
+  }
+
+  Header_Files {
+    GeneratedCode/log_record_ddsC.h
+    GeneratedCode/log_record_ddsTypeSupportC.h
+    GeneratedCode/log_record_ddsTypeSupportImpl.
+    GeneratedCode/log_record_dds_typesupport.h
+  }
+}
+
 project(*ddsx11_logger) : ddsx11_impl, ddsx11_logger {
   dynamicflags += DNCX11_LOG_BACKEND_BUILD_DLL
-  after += log_record_stub log_record_ddsx11_impl
+  after += log_record_stub log_record_ddsx11_opendds_impl log_record_ddsx11_ndds_impl
   libs  += log_record_stub log_record_ddsx11_impl
 
   includes += GeneratedCode
@@ -69,7 +112,7 @@ project(*ddsx11_logger) : ddsx11_impl, ddsx11_logger {
 }
 
 project(*log_server) : ddsx11_impl {
-  after += log_record_stub log_record_ddsx11_impl
+  after += log_record_stub record_ddsx11_opendds_impl log_record_ddsx11_ndds_impl
   libs  += log_record_stub log_record_ddsx11_impl
 
   exename = log_server
