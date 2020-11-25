@@ -24,7 +24,7 @@ project (*stub) : ddsx11_stub {
   }
 }
 
-project (*ddsx11_ndds_ts) : ddsx11_vendor_ts_defaults, ddsx11_no_idlfiles {
+project (*ddsx11_ndds_ts) : ddsx11_vendor_ts_defaults {
   after += *idl
   requires += ndds
   NDDSTypeSupport_Files {
@@ -41,6 +41,8 @@ project (*ddsx11_opendds_ts) : ddsx11_vendor_ts_defaults, ddsx11_no_idlfiles {
   TypeSupport_Files {
     gendir = GeneratedCode
     GeneratedCode/shapetype_dds.idl
+    dcps_ts_flags += -Wb,export_macro=SHAPES_STUB_Export \
+                     -Wb,export_include=shapes_stub_export.h
   }
   IDL_Files {
     GeneratedCode/shapetype_dds.idl

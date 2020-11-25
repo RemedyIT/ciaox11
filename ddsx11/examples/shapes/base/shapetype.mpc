@@ -24,33 +24,41 @@ project (*stub) : ddsx11_stub {
   }
 }
 
-project (*ddsx11_ts) : ddsx11_vendor_ts_defaults {
+project (*ddsx11_ndds_ts) : ddsx11_vendor_ts_defaults {
   after += *idl
+  requires += ndds
   NDDSTypeSupport_Files {
     gendir = GeneratedCode
     GeneratedCode/shapetype_dds.idl
   }
-//  TypeSupport_Files {
-//    gendir = GeneratedCode
-//    GeneratedCode/shapetype_dds.idl
-//    dcps_ts_flags += -o GeneratedCode \
-//                     -Wb,export_macro=SHAPES_TYPESUPPORT_Export \
-//                     -Wb,export_include=shapes_typesupport_export.h
-//  }
-//  IDL_Files {
-//    gendir = GeneratedCode
-//    GeneratedCode/shapetype_dds.idl
-//    GeneratedCode/shapetype_ddsTypeSupport.idl
-//    idlflags += -Wb,stub_export_macro=SHAPES_TYPESUPPORT_Export \
-//                -Wb,stub_export_include=shapes_typesupport_export.h \
-//                -IGeneratedCode -o GeneratedCode
-//  }
   custom_only=1
 }
 
-project (*ddsx11_impl) : ddsx11_impl {
-  after += *stub *ddsx11_ts
+project (*ddsx11_opendds_ts) : ddsx11_vendor_ts_defaults {
+  after += *idl
+  requires += opendds
+  idlflags += -o GeneratedCode -I. -IGeneratedCode -SS
+  TypeSupport_Files {
+    gendir = GeneratedCode
+    GeneratedCode/shapetype_dds.idl
+    dcps_ts_flags += -Wb,export_macro=SHAPES_TYPESUPPORT_Export \
+                     -Wb,export_include=shapes_typesupport_export.h
+  }
+  IDL_Files {
+    gendir = GeneratedCode
+    GeneratedCode/shapetype_dds.idl
+    GeneratedCode/shapetype_ddsTypeSupport.idl
+    idlflags += -Wb,stub_export_macro=SHAPES_TYPESUPPORT_Export \
+                -Wb,stub_export_include=shapes_typesupport_export.h
+  }
+  custom_only=1
+}
+
+project (*ddsx11_ndds_impl) : ddsx11_impl {
+  after += *stub *ddsx11_ndds_ts
   libs += *stub
+  requires += ndds
+  sharedname = shapetype_ddsx11_impl
 
   dynamicflags += SHAPES_TYPESUPPORT_BUILD_DLL
 
@@ -61,10 +69,6 @@ project (*ddsx11_impl) : ddsx11_impl {
     GeneratedCode/shapetype_dds.cxx
     GeneratedCode/shapetype_ddsPlugin.cxx
     GeneratedCode/shapetype_ddsSupport.cxx
-//    GeneratedCode/shapetype_ddsC.cpp
-//    GeneratedCode/shapetype_ddsTypeSupportC.cpp
-//    GeneratedCode/shapetype_ddsTypeSupportImpl.cpp
-//    GeneratedCode/shapetype_ddsTypeSupportS.cpp
     GeneratedCode/shapetype_dds_typesupport.cpp
   }
 
@@ -72,6 +76,32 @@ project (*ddsx11_impl) : ddsx11_impl {
     GeneratedCode/shapetype_dds.h
     GeneratedCode/shapetype_ddsPlugin.h
     GeneratedCode/shapetype_ddsSupport.h
+    GeneratedCode/shapetype_dds_typesupport.h
+  }
+}
+
+project (*ddsx11_opendds_impl) : ddsx11_impl {
+  after += *stub *ddsx11_opendds_ts
+  libs += *stub
+  requires += opendds
+  sharedname = shapetype_ddsx11_impl
+
+  dynamicflags += SHAPES_TYPESUPPORT_BUILD_DLL
+
+  libout    = ../lib
+  libpaths += ../lib
+
+  Source_Files {
+    GeneratedCode/shapetype_ddsC.cpp
+    GeneratedCode/shapetype_ddsTypeSupportC.cpp
+    GeneratedCode/shapetype_ddsTypeSupportImpl.cpp
+    GeneratedCode/shapetype_dds_typesupport.cpp
+  }
+
+  Header_Files {
+    GeneratedCode/shapetype_ddsC.h
+    GeneratedCode/shapetype_ddsTypeSupportC.h
+    GeneratedCode/shapetype_ddsTypeSupportImpl.h
     GeneratedCode/shapetype_dds_typesupport.h
   }
 }
