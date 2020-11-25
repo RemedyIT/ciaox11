@@ -6,6 +6,7 @@ project (ddsx11_ndds_types_idl_gen) : install, \
   custom_only = 1
   idlflags += -Wb,stub_export_macro=DDSX11_NDDS_STUB_Export \
               -Wb,stub_export_include=ddsx11_ndds_stub_export.h \
+              -SS
   // Do not suppress cdr streaming since anytypecode needs it..
   // TODO CHECK
   idlflags -= -Scdr
@@ -26,7 +27,7 @@ project (ddsx11_ndds_dcps_all_idl_gen) : install, \
   custom_only = 1
   idlflags += -Sddsx11,nddslfc \
               -Wb,stub_export_macro=DDSX11_NDDS_STUB_Export \
-              -Wb,stub_export_include=ddsx11_ndds_stub_export.h -Scp
+              -Wb,stub_export_include=ddsx11_ndds_stub_export.h -Scp -SS
 
   IDL_Files {
     ndds_dcps_all.idl
@@ -43,7 +44,7 @@ project (ddsx11_ndds_instancehandle_idl_gen) : install, \
   custom_only = 1
   idlflags += -Wb,stub_export_macro=DDSX11_NDDS_STUB_Export \
               -Wb,stub_export_include=ddsx11_ndds_stub_export.h \
-              -Wb,post_include=idl/ndds_dcps_instance_handle.h -Scp
+              -Wb,post_include=idl/ndds_dcps_instance_handle.h -Scp -SS
 
   IDL_Files {
     ndds_dcps_instance_handle.idl
@@ -60,7 +61,7 @@ project (ddsx11_ndds_dcps_idl_gen) : install, \
   idlflags += -Wb,stub_export_macro=DDSX11_NDDS_STUB_Export \
               -Wb,stub_export_include=ddsx11_ndds_stub_export.h \
               -Wb,post_include=idl/dds_log_formatters.h \
-              -Glem -Gxhst
+              -Glem -Gxhst -SS
 
   // Make sure we first compile the vendor specific IDL
   after += ddsx11_ndds_types_idl_gen ddsx11_ndds_instancehandle_idl_gen ddsx11_ndds_dcps_all_idl_gen
