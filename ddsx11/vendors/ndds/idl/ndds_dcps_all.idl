@@ -18,16 +18,6 @@
 #include "ndds_dcps_instance_handle.idl"
 #include "ndds_dcps_types.idl"
 
-#define TheParticipantFactory
-#define PARTICIPANT_QOS_DEFAULT
-#define TOPIC_QOS_DEFAULT
-#define PUBLISHER_QOS_DEFAULT
-#define SUBSCRIBER_QOS_DEFAULT
-#define DATAWRITER_QOS_DEFAULT
-#define DATAREADER_QOS_DEFAULT
-#define DATAWRITER_QOS_USE_TOPIC_QOS
-#define DATAREADER_QOS_USE_TOPIC_QOS
-
 module DDS {
 
     struct BuiltinTopicKey_t {
