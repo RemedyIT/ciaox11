@@ -38,6 +38,7 @@ configure :ddsx11ndds do
     enable :ddsx11 do
       depends_exclusively_on :ndds
     end
+    disable :opendds
 
   end
 
