@@ -11,12 +11,11 @@
 #ifndef NDDS_DCPS_TYPES_IDL_
 #define NDDS_DCPS_TYPES_IDL_
 
-#define DOMAINID_TYPE_NATIVE    long
 #define HANDLE_TYPE_NATIVE      long
 #define BUILTIN_TOPIC_KEY_TYPE_NATIVE unsigned long
 
 module DDS {
-  typedef DOMAINID_TYPE_NATIVE DomainId_t;
+  typedef long DomainId_t;
 
   // @todo, move this to its own file so that we can put the converter into the core????
   typedef BUILTIN_TOPIC_KEY_TYPE_NATIVE long_4[4];
