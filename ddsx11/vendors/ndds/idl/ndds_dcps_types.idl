@@ -11,8 +11,6 @@
 #ifndef NDDS_DCPS_TYPES_IDL_
 #define NDDS_DCPS_TYPES_IDL_
 
-#define HANDLE_TYPE_NATIVE      long
-
 module DDS {
   typedef long DomainId_t;
 
