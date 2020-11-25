@@ -2,8 +2,7 @@
  * @file    ndds_dcps_types.idl
  * @author  Marcel Smit
  *
- * @brief   Placeholder for anytypecode.
- *          RTI NDDS compliant IDL code.
+ * @brief   All DDS IDL types for which we need to generate AnyTypecode support
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
  */
@@ -12,11 +11,12 @@
 #define NDDS_DCPS_TYPES_IDL_
 
 module DDS {
+  // For DomainId_t AnyTypecode support has to be generated because it is in the
+  // DDS4CCM IDL as attribute
   typedef long DomainId_t;
 
-  // @todo, move this to its own file so that we can put the converter into the core????
-  typedef unsigned long long_4[4];
-
+  // For StringSeq AnyTypecode support has to be generated because it is in the
+  // DDS4CCM IDL as attribute
   typedef sequence<string> StringSeq;
 };
 
