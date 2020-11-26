@@ -1,24 +1,6 @@
-project(*ndds_double_delete) : ddsx11_impl {
-  after += builtin_stub builtin_ddsx11_ndds_impl
-  libs  += builtin_stub builtin_ddsx11_ndds_impl
-  requires += ndds
-
-  libpaths += ../lib
-
-  exename = double_delete
-  exeout  = ../lib
-
-  includes += ../base/GeneratedCode
-
-  Source_Files {
-    double_delete.cpp
-  }
-}
-
-project(*opendds_double_delete) : ddsx11_impl {
-  after += builtin_stub builtin_ddsx11_opendds_impl
-  libs  += builtin_stub builtin_ddsx11_opendds_impl
-  requires += opendds
+project(*double_delete) : ddsx11_impl {
+  after += builtin_stub builtin_ddsx11_opendds_impl builtin_ddsx11_ndds_impl
+  libs  += builtin_stub builtin_ddsx11_impl
 
   libpaths += ../lib
 

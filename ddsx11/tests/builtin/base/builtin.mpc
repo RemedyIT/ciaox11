@@ -24,7 +24,7 @@ project (*stub) : ddsx11_stub {
   }
 }
 
-project (*ddsx11_ndds_ts) : ddsx11_vendor_ts_defaults, ddsx11_no_idlfiles {
+project (*ddsx11_ndds_ts) : ddsx11_vendor_ts_defaults {
   after += *idl
   requires += ndds
   NDDSTypeSupport_Files {
@@ -41,8 +41,11 @@ project (*ddsx11_opendds_ts) : ddsx11_vendor_ts_defaults, ddsx11_no_idlfiles {
   TypeSupport_Files {
     gendir = GeneratedCode
     GeneratedCode/shapetype_dds.idl
+    dcps_ts_flags += -Wb,export_macro=SHAPES_STUB_Export \
+                     -Wb,export_include=shapes_stub_export.h
   }
   IDL_Files {
+    gendir = GeneratedCode
     GeneratedCode/shapetype_dds.idl
     idlflags += -Wb,stub_export_macro=SHAPES_STUB_Export \
                 -Wb,stub_export_include=shapes_stub_export.h \
@@ -51,10 +54,11 @@ project (*ddsx11_opendds_ts) : ddsx11_vendor_ts_defaults, ddsx11_no_idlfiles {
   custom_only=1
 }
 
-project (*ddsx11_ndds_impl) : ddsx11_impl, ddsx11_no_idlfiles {
+project (*ddsx11_ndds_impl) : ddsx11_impl {
   after += *stub *ddsx11_ndds_ts
   libs += *stub
   requires += ndds
+  sharedname = builtin_ddsx11_impl
 
   dynamicflags += SHAPES_TYPESUPPORT_BUILD_DLL
 
@@ -80,6 +84,7 @@ project (*ddsx11_opendds_impl) : ddsx11_impl, ddsx11_no_idlfiles {
   after += *stub *ddsx11_opendds_ts
   libs += *stub
   requires += opendds
+  sharedname = builtin_ddsx11_impl
 
   dynamicflags += SHAPES_TYPESUPPORT_BUILD_DLL
 
