@@ -31,11 +31,11 @@ sub check_policy_count
 sub check_instance_handle
 {
     my $line = shift;
-    if ($line =~ "\{0X10203,0X4050607,0X8090A0B,0XC0D0E0F\}" )
+    if ($line =~ /\Q{0X10203,0X4050607,0X8090A0B,0XC0D0E0F}\E/ )
     {
       return 1;
     }
-    if ($line =~ "\{1234567\}" )
+    if ($line =~ /\Q\{1234567\}\E/ )
     {
       return 1;
     }
