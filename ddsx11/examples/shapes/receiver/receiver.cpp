@@ -259,7 +259,7 @@ ShapeTypeListener::on_data_available (
     }
     else if (retcode != DDS::RETCODE_OK)
     {
-      DDSX11_TEST_DEBUG << "receiver: Unable to take data from data reader, error "
+      DDSX11_TEST_ERROR << "receiver: Unable to take data from data reader, error "
                         << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
                         << std::endl;
       break;
