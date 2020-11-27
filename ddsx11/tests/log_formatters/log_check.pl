@@ -35,7 +35,7 @@ sub check_instance_handle
     {
       return 1;
     }
-    if ($line =~ /\Q\{1234567\}\E/ )
+    if ($line =~ /\Q{1234567}\E/ )
     {
       return 1;
     }
