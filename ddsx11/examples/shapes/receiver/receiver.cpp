@@ -9,10 +9,8 @@
  */
 
 #include "shapetype_dds_typesupport.h"
-#include <iostream>
 #include <thread>
-
-// X11_FUZZ: disable check_cout_cerr
+#include "tests/testlib/ddsx11_testlog.h"
 
 int16_t received_ {};
 static std::string const qos_profile { "shapes#ShapesProfile" };
@@ -78,7 +76,9 @@ int main (int argc, char *argv[])
       retcode = DDS::traits<ShapeType>::register_type (domain_participant, "ShapeType");
       if (retcode != DDS::RETCODE_OK)
       {
-        std::cerr << "Receiver: Failed to register type." << std::endl;
+        DDSX11_TEST_ERROR << "receiver: Failed to register type: "
+                          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                          << std::endl;
         return 1;
       }
 
@@ -99,12 +99,12 @@ int main (int argc, char *argv[])
 
           if (!dr)
           {
-            std::cerr << "ERROR: receiver in creating datareader!" << std::endl;
+            DDSX11_TEST_ERROR << "receiver: Error in creating datareader!" << std::endl;
           }
         }
         else
         {
-          std::cerr << "ERROR: receiver has no listener!" << std::endl;
+          DDSX11_TEST_ERROR << "receiver: No listener created!" << std::endl;
         }
 
         std::string sleep_time { "10" };
@@ -112,12 +112,12 @@ int main (int argc, char *argv[])
         {
           sleep_time = argv[1];
         }
-        std::cout << "Waiting " << sleep_time << " seconds in order to receive "
+        DDSX11_TEST_DEBUG << "Waiting " << sleep_time << " seconds in order to receive "
           << "all samples." << std::endl;
         std::this_thread::sleep_for (std::chrono::seconds (std::stoi (sleep_time)));
-        std::cout << "Received " << received_ << ". Closing..." << std::endl;
+        DDSX11_TEST_DEBUG << "Received " << received_ << ". Closing..." << std::endl;
         if (received_ == 0)
-          std::cerr << "ERROR: No samples received." << std::endl;
+          DDSX11_TEST_ERROR << "ERROR: No samples received." << std::endl;
 
         if (dr)
         {
@@ -125,7 +125,9 @@ int main (int argc, char *argv[])
           dr = nullptr;
           if (retcode != DDS::RETCODE_OK)
           {
-            std::cerr << "Receiver: Failed to delete datareader from subscriber." << std::endl;
+            DDSX11_TEST_ERROR << "receiver: Failed to delete datareader from subscriber."
+                              << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                              << std::endl;
             return 1;
           }
         }
@@ -133,20 +135,24 @@ int main (int argc, char *argv[])
         subscriber = nullptr;
         if (retcode != DDS::RETCODE_OK)
         {
-          std::cerr << "Receiver: Failed to delete subscriber from domain participant." << std::endl;
+          DDSX11_TEST_ERROR << "receiver: Failed to delete subscriber from domain participant." << std::endl
+                            << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                            << std::endl;
           return 1;
         }
         retcode = domain_participant->delete_topic (topic);
         topic = nullptr;
         if (retcode != DDS::RETCODE_OK)
         {
-          std::cerr << "Receiver: Failed to delete topic from domain participant." << std::endl;
+          DDSX11_TEST_ERROR << "receiver: Failed to delete topic from domain participant"
+                            << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                            << std::endl;
           return 1;
         }
       }
       else
       {
-        std::cerr << "Receiver: Either Topic or Subscriber is null." << std::endl;
+        DDSX11_TEST_ERROR << "receiver: Either Topic or Subscriber is null." << std::endl;
         retcode = DDS::RETCODE_ERROR;
       }
 
@@ -154,20 +160,25 @@ int main (int argc, char *argv[])
       domain_participant = nullptr;
       if (retcode != DDS::RETCODE_OK)
       {
-        std::cerr << "Receiver: Failed to delete domain participant from domain participant factory." << std::endl;
+        DDSX11_TEST_ERROR << "receiver: Failed to delete domain participant from domain participant factory: "
+                          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                          << std::endl;
         return 1;
       }
       retcode = dpf->finalize_instance ();
       dpf = nullptr;
       if (retcode != ::DDS::RETCODE_OK)
       {
-        std::cerr << "Receiver: Failed to finalize the domain participant factory." << std::endl;
+        DDSX11_TEST_ERROR << "receiver: Failed to finalize the domain participant factory: "
+                          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                          << std::endl;
         return 1;
       }
     }
   catch (const std::exception& e)
     {
-      std::cerr << "exception caught: " << e.what () << std::endl;
+      DDSX11_TEST_ERROR << "receiver: exception caught: " << e.what ()
+                        << std::endl;
       return 1;
     }
 
@@ -179,8 +190,8 @@ ShapeTypeListener::on_requested_deadline_missed (
   DDS::traits<ShapeType>::datareader_ref_type ,
   const DDS::RequestedDeadlineMissedStatus& )
 {
-  std::cout << "ShapeTypeListener::on_requested_deadline_missed received"
-            << std::endl;
+  DDSX11_TEST_DEBUG << "ShapeTypeListener::on_requested_deadline_missed received"
+                    << std::endl;
 }
 
 void
@@ -188,8 +199,8 @@ ShapeTypeListener::on_requested_incompatible_qos (
   DDS::traits<ShapeType>::datareader_ref_type ,
   const DDS::RequestedIncompatibleQosStatus& )
 {
-  std::cout << "ShapeTypeListener::on_requested_incompatible_qos received"
-            << std::endl;
+  DDSX11_TEST_DEBUG << "ShapeTypeListener::on_requested_incompatible_qos received"
+                    << std::endl;
 }
 
 void
@@ -197,8 +208,8 @@ ShapeTypeListener::on_sample_rejected (
   DDS::traits<ShapeType>::datareader_ref_type ,
   const DDS::SampleRejectedStatus& )
 {
-  std::cout << "ShapeTypeListener::on_sample_rejected received"
-            << std::endl;
+  DDSX11_TEST_DEBUG << "ShapeTypeListener::on_sample_rejected received"
+                    << std::endl;
 }
 
 void
@@ -206,8 +217,8 @@ ShapeTypeListener::on_liveliness_changed (
   DDS::traits<ShapeType>::datareader_ref_type ,
   const DDS::LivelinessChangedStatus& )
 {
-  std::cout << "ShapeTypeListener::on_liveliness_changed received"
-            << std::endl;
+  DDSX11_TEST_DEBUG << "ShapeTypeListener::on_liveliness_changed received"
+                    << std::endl;
 }
 
 void
@@ -215,8 +226,8 @@ ShapeTypeListener::on_subscription_matched (
   DDS::traits<ShapeType>::datareader_ref_type ,
   const DDS::SubscriptionMatchedStatus& )
 {
-  std::cout << "ShapeTypeListener::on_subscription_matched received"
-            << std::endl;
+  DDSX11_TEST_DEBUG << "ShapeTypeListener::on_subscription_matched received"
+                    << std::endl;
 }
 
 void
@@ -224,15 +235,15 @@ ShapeTypeListener::on_sample_lost (
   DDS::traits<ShapeType>::datareader_ref_type ,
   const DDS::SampleLostStatus& )
 {
-  std::cout << "ShapeTypeListener::on_sample_lost received"
-            << std::endl;
+  DDSX11_TEST_DEBUG << "ShapeTypeListener::on_sample_lost received"
+                    << std::endl;
 }
 
 void
 ShapeTypeListener::on_data_available (
   DDS::traits<ShapeType>::datareader_ref_type the_reader)
 {
-  std::cout << "ShapeTypeListener::on_data_available" << std::endl;
+  DDSX11_TEST_DEBUG << "ShapeTypeListener::on_data_available" << std::endl;
   DDS::traits<ShapeType>::typed_datareader_ref_type rd =
     DDS::traits<ShapeType>::narrow (the_reader);
 
@@ -248,12 +259,14 @@ ShapeTypeListener::on_data_available (
     }
     else if (retcode != DDS::RETCODE_OK)
     {
-      std::cerr << "Unable to take data from data reader, error " << retcode << std::endl;
+      DDSX11_TEST_DEBUG << "receiver: Unable to take data from data reader, error "
+                        << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                        << std::endl;
       break;
     }
     else if (info.valid_data ())
     {
-      std::cout << "Received <" << ++received_ << ">: " << shape << std::endl;
+      DDSX11_TEST_DEBUG << "Received <" << ++received_ << ">: " << shape << std::endl;
     }
   }
 }

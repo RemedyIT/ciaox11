@@ -20,11 +20,9 @@ my $status = 0;
 
 my $receiver = PerlACE::TestTarget::create_target(2) || die "Create target 2 failed\n";
 $receiver->AddLibPath ('../lib');
-$receiver->SetEnv ("DDSX11_LOG_MASK", "all");
 
 my $sender = PerlACE::TestTarget::create_target(3) || die "Create target 3 failed\n";
 $sender->AddLibPath ('../lib');
-$sender->SetEnv ("DDSX11_LOG_MASK", "all");
 
 my $RV = $receiver->CreateProcess ('../lib/receiver', "$corrected_sleep_time");
 my $SR = $sender->CreateProcess ('../lib/sender');

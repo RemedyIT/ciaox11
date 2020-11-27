@@ -9,10 +9,9 @@
  */
 
 #include "shapetype_dds_typesupport.h"
-#include <iostream>
 #include <thread>
+#include "tests/testlib/ddsx11_testlog.h"
 
-// X11_FUZZ: disable check_cout_cerr
 static std::string const qos_profile { "shapes#ShapesProfile" };
 
 int main (int , char *[])
@@ -37,7 +36,9 @@ int main (int , char *[])
       retcode = DDS::traits<ShapeType>::register_type (domain_participant, "ShapeType");
       if (retcode != DDS::RETCODE_OK)
       {
-        std::cerr << "Sender: Failed to register type." << std::endl;
+        DDSX11_TEST_ERROR << "sender: Failed to register type: "
+                          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                          << std::endl;
         return 1;
       }
 
@@ -63,12 +64,14 @@ int main (int , char *[])
           while (count < maxPollPeriods)
           {
             DDS::PublicationMatchedStatus status;
-            DDS::ReturnCode_t ret_pm = dw->get_publication_matched_status(status);
-            std::cout << "PublicationMatchedStatus: status is " << status << ", return_code is "
-                      << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (ret_pm) << std::endl;
+            DDS::ReturnCode_t const ret_pm = dw->get_publication_matched_status(status);
+            DDSX11_TEST_DEBUG << "sender: PublicationMatchedStatus: status is " << status << ", return_code is "
+                              << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (ret_pm) << std::endl;
             if (status.total_count() == 1)
             {
-              std::cout << "PublicationMatchedStatus status has been received" << std::endl;
+              DDSX11_TEST_DEBUG << "sender: PublicationMatchedStatus status has been received"
+                                << std::endl;
+
               break;
             }
             ++count;
@@ -77,8 +80,8 @@ int main (int , char *[])
 
           if (count == maxPollPeriods)
           {
-            std::cout << "PublicationMatchedStatus status isn't received on time, so it is possible that not "
-                          "all written samples are going to be received." << std::endl;
+            DDSX11_TEST_DEBUG << "sender: PublicationMatchedStatus status isn't received on time, so it is possible that not "
+                                 "all written samples are going to be received." << std::endl;
           }
 
           ShapeType square {"GREEN", 10, 10, 25};
@@ -89,12 +92,14 @@ int main (int , char *[])
           for (uint32_t i = 0; i < 100; ++i)
           {
             shape_dw->write (square, instance_handle);
-            std::cout << "Written sample " << square << std::endl;
+            DDSX11_TEST_DEBUG << "sender: Written sample " << square << std::endl;
             ++square.x(); ++square.y();
             std::this_thread::sleep_for (std::chrono::milliseconds (10));
           }
-          std::cout << std::endl << "Written 100 samples. Last sample: " << square
-            << std::endl;
+
+          DDSX11_TEST_DEBUG << "sender: Written 100 samples. Last sample: "
+                            << square
+                            << std::endl;
 
           shape_dw->unregister_instance (square, instance_handle);
 
@@ -102,13 +107,15 @@ int main (int , char *[])
           shape_dw = nullptr;
           if (retcode != DDS::RETCODE_OK)
           {
-            std::cerr << "Receiver: Failed to delete datawriter from publisher." << std::endl;
+            DDSX11_TEST_ERROR << "sender: Failed to delete datawriter from publisher: "
+                              << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                              << std::endl;
             return 1;
           }
         }
         else
         {
-          std::cerr << "Sender: Typed datawriter is null." << std::endl;
+          DDSX11_TEST_ERROR << "Sender: Typed datawriter is null." << std::endl;
           retcode = DDS::RETCODE_ERROR;
         }
 
@@ -116,20 +123,24 @@ int main (int , char *[])
         publisher = nullptr;
         if (retcode != DDS::RETCODE_OK)
         {
-          std::cerr << "Receiver: Failed to delete publisher from domain participant." << std::endl;
+          DDSX11_TEST_ERROR << "sender: Failed to delete publisher from domain participant"
+                            << std::endl;
           return 1;
         }
         retcode = domain_participant->delete_topic (topic);
         topic = nullptr;
         if (retcode != DDS::RETCODE_OK)
         {
-          std::cerr << "Receiver: Failed to delete topic from domain participant." << std::endl;
+          DDSX11_TEST_ERROR << "sender: Failed to delete topic from domain participant"
+                            << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                            << std::endl;
           return 1;
         }
       }
       else
       {
-        std::cerr << "Sender: Either Topic or Publisher is null." << std::endl;
+        DDSX11_TEST_ERROR << "sender: Either Topic or Publisher is null"
+                          << std::endl;
         retcode = DDS::RETCODE_ERROR;
       }
 
@@ -137,20 +148,25 @@ int main (int , char *[])
       domain_participant = nullptr;
       if (retcode != DDS::RETCODE_OK)
       {
-        std::cerr << "Receiver: Failed to delete domain participant from domain participant factory." << std::endl;
+        DDSX11_TEST_ERROR << "sender: Failed to delete domain participant from domain participant factory: "
+                          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                          << std::endl;
         return 1;
       }
       retcode = dpf->finalize_instance ();
       dpf = nullptr;
       if (retcode != ::DDS::RETCODE_OK)
       {
-        std::cerr << "Receiver: Failed to finalize the domain participant factory." << std::endl;
+        DDSX11_TEST_ERROR << "sender: Failed to finalize the domain participant factory: "
+                          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                          << std::endl;
         return 1;
       }
     }
   catch (const std::exception& e)
     {
-      std::cerr << "exception caught: " << e.what () << std::endl;
+      DDSX11_TEST_ERROR << "sender: exception caught: " << e.what ()
+                        << std::endl;
       return 1;
     }
 
