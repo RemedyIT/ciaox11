@@ -50,7 +50,8 @@ namespace DDSX11
     IDL::traits< ::DDS::WaitSet>::ref_type
     create_waitset ()
     {
-      return CORBA::make_reference<DDSX11::DDS_WaitSet_proxy> ();
+      DDS_Native::DDS::WaitSet_var waitset = new DDS_Native::DDS::WaitSet ();
+      return CORBA::make_reference<DDSX11::DDS_WaitSet_proxy> (waitset);
     }
 
     IDL::traits< ::DDS::DomainParticipantFactory>::ref_type

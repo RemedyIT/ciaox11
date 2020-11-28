@@ -31,7 +31,7 @@ namespace DDSX11
 
   public:
     /// Constructor
-    DDS_WaitSet_proxy ();
+    explicit DDS_WaitSet_proxy (DDS_Native::DDS::WaitSet* native_waitset);
 
     /// Destructor
     ~DDS_WaitSet_proxy () override;
