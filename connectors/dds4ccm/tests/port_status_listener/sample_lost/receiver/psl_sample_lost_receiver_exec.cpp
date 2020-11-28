@@ -261,8 +261,8 @@ namespace PSL_SampleLostTest_Receiver_Impl
       const ::DDS::InconsistentTopicStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : PSL_SampleLostTest_Receiver_Impl::connector_status_exec_i::on_inconsistent_topic[_the_topic_status]
-    X11_UNUSED_ARG(the_topic);
-    X11_UNUSED_ARG(status);
+    DDS4CCM_TEST_ERROR << "connector_status_exec_i::on_inconsistent_topic - "
+      << DDS::dds_write (the_topic) << " - " << DDS::dds_write (status) << std::endl;
     //@@{__RIDL_REGEN_MARKER__} - END : PSL_SampleLostTest_Receiver_Impl::connector_status_exec_i::on_inconsistent_topic[_the_topic_status]
   }
 
@@ -272,8 +272,8 @@ namespace PSL_SampleLostTest_Receiver_Impl
       const ::DDS::RequestedIncompatibleQosStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : PSL_SampleLostTest_Receiver_Impl::connector_status_exec_i::on_requested_incompatible_qos[_the_reader_status]
-    X11_UNUSED_ARG(the_reader);
-    X11_UNUSED_ARG(status);
+    DDS4CCM_TEST_ERROR << "connector_status_exec_i::on_requested_incompatible_qos - "
+      << DDS::dds_write (the_reader) << " - " << DDS::dds_write (status) << std::endl;
     //@@{__RIDL_REGEN_MARKER__} - END : PSL_SampleLostTest_Receiver_Impl::connector_status_exec_i::on_requested_incompatible_qos[_the_reader_status]
   }
 
@@ -294,8 +294,8 @@ namespace PSL_SampleLostTest_Receiver_Impl
       const ::DDS::OfferedDeadlineMissedStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : PSL_SampleLostTest_Receiver_Impl::connector_status_exec_i::on_offered_deadline_missed[_the_writer_status]
-    X11_UNUSED_ARG(the_writer);
-    X11_UNUSED_ARG(status);
+    DDS4CCM_TEST_ERROR << "connector_status_exec_i::on_offered_deadline_missed - "
+      << DDS::dds_write (the_writer) << " - " << DDS::dds_write (status) << std::endl;
     //@@{__RIDL_REGEN_MARKER__} - END : PSL_SampleLostTest_Receiver_Impl::connector_status_exec_i::on_offered_deadline_missed[_the_writer_status]
   }
 
@@ -305,8 +305,8 @@ namespace PSL_SampleLostTest_Receiver_Impl
       const ::DDS::OfferedIncompatibleQosStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : PSL_SampleLostTest_Receiver_Impl::connector_status_exec_i::on_offered_incompatible_qos[_the_writer_status]
-    X11_UNUSED_ARG(the_writer);
-    X11_UNUSED_ARG(status);
+    DDS4CCM_TEST_ERROR << "connector_status_exec_i::on_offered_incompatible_qos - "
+      << DDS::dds_write (the_writer) << " - " << DDS::dds_write (status) << std::endl;
     //@@{__RIDL_REGEN_MARKER__} - END : PSL_SampleLostTest_Receiver_Impl::connector_status_exec_i::on_offered_incompatible_qos[_the_writer_status]
   }
 
@@ -316,8 +316,8 @@ namespace PSL_SampleLostTest_Receiver_Impl
       ::DDS::StatusKind status_kind)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : PSL_SampleLostTest_Receiver_Impl::connector_status_exec_i::on_unexpected_status[_the_entity_status_kind]
-    X11_UNUSED_ARG(the_entity);
-    X11_UNUSED_ARG(status_kind);
+    DDS4CCM_TEST_DEBUG << "connector_status_exec_i::on_unexpected_status - "
+      << DDS::dds_write (the_entity) << " - " << DDS::dds_write (status_kind) << std::endl;
     //@@{__RIDL_REGEN_MARKER__} - END : PSL_SampleLostTest_Receiver_Impl::connector_status_exec_i::on_unexpected_status[_the_entity_status_kind]
   }
 
