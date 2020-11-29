@@ -71,6 +71,7 @@ namespace DDSX11
       ::DDS::ConditionSeq & attached_conditions) override;
 
   private:
+    DDS_WaitSet_proxy() = delete;
     DDS_WaitSet_proxy(const DDS_WaitSet_proxy&) = delete;
     DDS_WaitSet_proxy(DDS_WaitSet_proxy&&) = delete;
     DDS_WaitSet_proxy& operator=(const DDS_WaitSet_proxy&) = delete;
