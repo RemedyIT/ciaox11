@@ -17,15 +17,15 @@
 
 namespace DDSX11
 {
-  DDS_WaitSet_proxy::DDS_WaitSet_proxy ()
-    : NativeEntityBase_T<DDS_Native::DDS::WaitSet>(
-      std::make_unique<DDS_Native::DDS::WaitSet> ().release ())
+  DDS_WaitSet_proxy::DDS_WaitSet_proxy (DDS_Native::DDS::WaitSet* waitset)
+    : NativeEntityBase_T<DDS_Native::DDS::WaitSet>(waitset)
   {
     DDSX11_LOG_TRACE ("DDS_WaitSet_proxy::DDS_WaitSet_proxy");
   }
 
   DDS_WaitSet_proxy::~DDS_WaitSet_proxy ()
   {
+    DDSX11_LOG_TRACE ("DDS_WaitSet_proxy::~DDS_WaitSet_proxy");
 #if (DDSX11_NDDS==1)
    // Since this is the only DDS Entity that need to be created as a pointer
     // (its not created by DDS), we need to manually remove it here.

@@ -80,6 +80,7 @@ namespace DDS_Native
       typedef ::DDSReadCondition* ReadCondition_var;
       typedef ::DDSConditionSeq ConditionSeq;
       typedef ::DDSWaitSet WaitSet;
+      typedef ::DDSWaitSet* WaitSet_var;
       typedef ::DDSGuardCondition GuardCondition;
       typedef ::DDSStatusCondition StatusCondition;
       typedef ::DDSStatusCondition* StatusCondition_var;
