@@ -50,7 +50,6 @@ project (*ddsx11_opendds_ts) : ddsx11_vendor_ts_defaults, ddsx11_no_idlfiles {
   IDL_Files {
     gendir = GeneratedCode
     GeneratedCode/shapetype_dds.idl
-    GeneratedCode/shapetype_ddsTypeSupport.idl
   }
   custom_only=1
 }
