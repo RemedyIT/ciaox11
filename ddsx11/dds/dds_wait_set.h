@@ -31,7 +31,7 @@ namespace DDSX11
 
   public:
     /// Constructor
-    DDS_WaitSet_proxy ();
+    explicit DDS_WaitSet_proxy (DDS_Native::DDS::WaitSet* native_waitset);
 
     /// Destructor
     ~DDS_WaitSet_proxy () override;
@@ -71,6 +71,7 @@ namespace DDSX11
       ::DDS::ConditionSeq & attached_conditions) override;
 
   private:
+    DDS_WaitSet_proxy() = delete;
     DDS_WaitSet_proxy(const DDS_WaitSet_proxy&) = delete;
     DDS_WaitSet_proxy(DDS_WaitSet_proxy&&) = delete;
     DDS_WaitSet_proxy& operator=(const DDS_WaitSet_proxy&) = delete;
