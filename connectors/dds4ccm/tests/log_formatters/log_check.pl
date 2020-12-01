@@ -15,11 +15,26 @@ $status = 0;
 $found = 0;
 $expected = 6;
 
+# Check the instance handle, returns 1 in case of ok, 0 in case of a failure
+sub check_instance_handle
+{
+    my $line = shift;
+    if ($line =~ /\Q{0X10203,0X4050607,0X8090A0B,0XC0D0E0F}\E/ )
+    {
+      return 1;
+    }
+    if ($line =~ /\Q{1234567}\E/ )
+    {
+      return 1;
+    }
+  return 0;
+}
+
 sub check_readinfo
 {
     my $line = shift;
     print $line;
-    if ($line =~ "0X10203,0X4050607,0X8090A0B,0XC0D0E0F" &&
+    if (check_instance_handle($line) &&
         $line =~ /1970-01-01 0[0-9]:00:16/ &&
         $line =~ "FRESH_INFO" &&
         $line =~ "INSTANCE_FILTERED_IN")

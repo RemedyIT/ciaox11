@@ -25,7 +25,7 @@ int main (int , char **)
 #if defined DDSX11_NDDS
   DDS::InstanceHandle_t const instance_handle ({{0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15}}, 16, true);
 #else
-  DDS::InstanceHandle_t const instance_handle {{6}};
+  DDS::InstanceHandle_t const instance_handle {{1234567}};
 #endif /* DDSX11_NDDS */
   CCM_DDS::ReadInfo const ri (instance_handle,
                               ::DDS::Time_t (16,0),
