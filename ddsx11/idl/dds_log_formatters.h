@@ -119,6 +119,32 @@ inline void translate_statusmask (std::string &ret, ::DDS::StatusMask const &mas
 #undef DDS_CHECK_MASK
 }
 
+inline std::string translate_viewstatekind (const ::DDS::ViewStateKind &ret)
+{
+#define DDS_VIEWSTATE_KIND(X) case ::X: return #X
+  switch (ret)
+  {
+    DDS_VIEWSTATE_KIND (DDS::NEW_VIEW_STATE);
+    DDS_VIEWSTATE_KIND (DDS::NOT_NEW_VIEW_STATE);
+  }
+  // Not found.
+  return "***Unknown enum value for DDS::ViewStateKind detected***";
+#undef DDS_STATUS_KIND
+}
+
+inline std::string translate_samplestatekind (const ::DDS::SampleStateKind &ret)
+{
+#define DDS_SAMPLESTATE_KIND(X) case ::X: return #X
+  switch (ret)
+  {
+    DDS_SAMPLESTATE_KIND (DDS::READ_SAMPLE_STATE);
+    DDS_SAMPLESTATE_KIND (DDS::NOT_READ_SAMPLE_STATE);
+  }
+  // Not found.
+  return "***Unknown enum value for DDS::SampleStateKind detected***";
+#undef DDS_STATUS_KIND
+}
+
 #include "idl/dds_vendor_log_formatters.h"
 #include "ace/Time_Value.h"
 #include "ace/ACE.h"
@@ -339,6 +365,34 @@ namespace DDS
   inline __DDS_Writer< ::DDS::StatusKind> dds_write (::DDS::StatusKind const &sk)
   {
     return __DDS_Writer< ::DDS::StatusKind> (sk);
+  }
+
+  /**
+   * Writers for ::DDS::SampleInfo
+   */
+  template <typename OS>
+  inline OS&
+  operator << (OS& os, __DDS_Writer< ::DDS::SampleInfo> const &w)
+  {
+    os << "DDS::SampleInfo{sample_state=" << w.dds_writer_.sample_state ()
+      << ",view_state=" << w.dds_writer_.view_state ()
+      << ",instance_state=" << w.dds_writer_.instance_state ()
+      << ",source_timestamp=" << w.dds_writer_.source_timestamp ()
+      << ",instance_handle=" << ::DDS::dds_write (w.dds_writer_.instance_handle ())
+      << ",publication_handle=" << ::DDS::dds_write (w.dds_writer_.publication_handle ())
+      << ",disposed_generation_count=" << w.dds_writer_.disposed_generation_count ()
+      << ",no_writers_generation_count=" << w.dds_writer_.no_writers_generation_count ()
+      << ",sample_rank=" << w.dds_writer_.sample_rank ()
+      << ",generation_rank=" << w.dds_writer_.generation_rank ()
+      << ",absolute_generation_rank=" << w.dds_writer_.absolute_generation_rank ()
+      << ",valid_data=" << w.dds_writer_.valid_data ()
+      << "}";
+    return os;
+  }
+
+  inline __DDS_Writer< ::DDS::SampleInfo> dds_write (::DDS::SampleInfo const &pms)
+  {
+    return __DDS_Writer< ::DDS::SampleInfo> (pms);
   }
 
   /**
