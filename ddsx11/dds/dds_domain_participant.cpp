@@ -557,7 +557,7 @@ namespace DDSX11
     // increments its refcount with 1 because
     // on each topic returned by find_topic also a delete_topic needs
     // to be called.
-    DDS_Native::DDS::Topic* native_topic =
+    DDS_Native::DDS::Topic_var native_topic =
       this->native_entity ()->find_topic (
         ::DDSX11::traits<std::string>::in (impl_name),
         ::DDSX11::traits< ::DDS::Duration_t>::in (timeout));
