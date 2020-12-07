@@ -128,8 +128,8 @@ inline std::string translate_viewstatekind (const ::DDS::ViewStateKind &ret)
     DDS_VIEWSTATE_KIND (DDS::NOT_NEW_VIEW_STATE);
   }
   // Not found.
-  return "***Unknown enum value for DDS::ViewStateKind detected***";
-#undef DDS_STATUS_KIND
+  return "***Unknown value for DDS::ViewStateKind detected***";
+#undef DDS_VIEWSTATE_KIND
 }
 
 inline std::string translate_samplestatekind (const ::DDS::SampleStateKind &ret)
@@ -141,8 +141,22 @@ inline std::string translate_samplestatekind (const ::DDS::SampleStateKind &ret)
     DDS_SAMPLESTATE_KIND (DDS::NOT_READ_SAMPLE_STATE);
   }
   // Not found.
-  return "***Unknown enum value for DDS::SampleStateKind detected***";
-#undef DDS_STATUS_KIND
+  return "***Unknown value for DDS::SampleStateKind detected***";
+#undef DDS_SAMPLESTATE_KIND
+}
+
+inline std::string translate_instancestatekind (const ::DDS::InstanceStateKind &ret)
+{
+#define DDS_INSTANCESTATE_KIND(X) case ::X: return #X
+  switch (ret)
+  {
+    DDS_INSTANCESTATE_KIND (DDS::ALIVE_INSTANCE_STATE);
+    DDS_INSTANCESTATE_KIND (DDS::NOT_ALIVE_DISPOSED_INSTANCE_STATE);
+    DDS_INSTANCESTATE_KIND (DDS::NOT_ALIVE_NO_WRITERS_INSTANCE_STATE);
+  }
+  // Not found.
+  return "***Unknown value for DDS::InstanceStateKind detected***";
+#undef DDS_INSTANCESTATE_KIND
 }
 
 #include "idl/dds_vendor_log_formatters.h"
@@ -374,9 +388,12 @@ namespace DDS
   inline OS&
   operator << (OS& os, __DDS_Writer< ::DDS::SampleInfo> const &w)
   {
-    os << "DDS::SampleInfo{sample_state=" << w.dds_writer_.sample_state ()
-      << ",view_state=" << w.dds_writer_.view_state ()
-      << ",instance_state=" << w.dds_writer_.instance_state ()
+    os << "DDS::SampleInfo{sample_state="
+      << translate_samplestatekind (w.dds_writer_.sample_state ())
+      << ",view_state="
+      << translate_viewstatekind (w.dds_writer_.view_state ())
+      << ",instance_state="
+      << translate_instancestatekind (w.dds_writer_.instance_state ())
       << ",source_timestamp=" << w.dds_writer_.source_timestamp ()
       << ",instance_handle=" << ::DDS::dds_write (w.dds_writer_.instance_handle ())
       << ",publication_handle=" << ::DDS::dds_write (w.dds_writer_.publication_handle ())
