@@ -159,6 +159,9 @@ module AxciomaPC
 
         generate_sev_port('port', @config[:typename])
         set_intf_name @interface_recipe.topic_interface_module+'::DDS_Write'
+
+        # add interface IDL include path to component recipe
+        recipe.idl_includes << File.dirname(@interface_recipe.interface_idl_path)
       end
     end
     module UpdaterPort
@@ -170,6 +173,9 @@ module AxciomaPC
 
         generate_sev_port('port', @config[:typename])
         set_intf_name @interface_recipe.topic_interface_module+'::DDS_Update'
+
+        # add interface IDL include path to component recipe
+        recipe.idl_includes << File.dirname(@interface_recipe.interface_idl_path)
       end
     end
     module ReaderPort
@@ -177,6 +183,9 @@ module AxciomaPC
         BRIX11.log(4, "[%s] verify", self)
         generate_sev_port('port', @config[:typename])
         set_intf_name @interface_recipe.topic_interface_module+'::DDS_Read'
+
+        # add interface IDL include path to component recipe
+        recipe.idl_includes << File.dirname(@interface_recipe.interface_idl_path)
       end
     end
     module GetterPort
@@ -184,6 +193,9 @@ module AxciomaPC
         BRIX11.log(4, "[%s] verify", self)
         generate_sev_port('port', @config[:typename])
         set_intf_name @interface_recipe.topic_interface_module+'::DDS_Get'
+
+        # add interface IDL include path to component recipe
+        recipe.idl_includes << File.dirname(@interface_recipe.interface_idl_path)
       end
     end
     module MonitorPort
@@ -191,6 +203,9 @@ module AxciomaPC
         BRIX11.log(4, "[%s] verify", self)
         generate_sev_port('port', @config[:typename])
         set_intf_name @interface_recipe.topic_interface_module+'::DDS_Listen'
+
+        # add interface IDL include path to component recipe
+        recipe.idl_includes << File.dirname(@interface_recipe.interface_idl_path)
       end
     end
     module ObserverPort
@@ -198,6 +213,9 @@ module AxciomaPC
         BRIX11.log(4, "[%s] verify", self)
         generate_sev_port('port', @config[:typename])
         set_intf_name @interface_recipe.topic_interface_module+'::DDS_StateListen'
+
+        # add interface IDL include path to component recipe
+        recipe.idl_includes << File.dirname(@interface_recipe.interface_idl_path)
       end
     end
   end
