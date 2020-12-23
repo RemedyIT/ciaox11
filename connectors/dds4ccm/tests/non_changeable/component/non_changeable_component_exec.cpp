@@ -151,7 +151,7 @@ namespace NonChangeableComponent_Impl
       else
       {
         DDS4CCM_TEST_ERROR << "ERROR: NonChangeableComponent_exec_i::test_domain_id - "
-          << "Unable to retrieve domain_id." << std::endl;
+          << "Unable to retrieve DDS4CCM_DEFAULT_DOMAIN_ID from the environment." << std::endl;
       }
 
       conn->domain_id (254);

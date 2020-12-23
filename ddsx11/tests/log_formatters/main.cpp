@@ -177,5 +177,12 @@ int main (int, char **)
   DDSX11_TEST_DEBUG << "Logging mask none: "
     << IDL::traits< ::DDS::StatusMask>::write<status_mask_formatter> (mask_none) << std::endl;
 
+  DDS::SampleInfo si {};
+  si.sample_state (DDS::READ_SAMPLE_STATE);
+  si.view_state (DDS::NEW_VIEW_STATE);
+  si.instance_state (DDS::NOT_ALIVE_NO_WRITERS_INSTANCE_STATE);
+  DDSX11_TEST_DEBUG << "Logging SampleInfo: "
+    << DDS::dds_write (si) << std::endl;
+
   return 0;
 }

@@ -13,7 +13,7 @@ eval '(exit $?0)' && eval 'exec perl -S $0 ${1+"$@"}'
 $status = 0;
 
 $found = 0;
-$expected = 31;
+$expected = 32;
 
 sub check_policy_count
 {
@@ -323,6 +323,19 @@ while (my $line = <FILE>)
         else
         {
             print "ERROR: Error in DDS::DATA_ON_READERS_STATUS|DDS::PUBLICATION_MATCHED_STATUS logging detected\n";
+        }
+    }
+    elsif ($line =~ "Logging SampleInfo:")
+    {
+        if ($line =~ "DDS::READ_SAMPLE_STATE" &&
+            $line =~ "DDS::NEW_VIEW_STATE" &&
+            $line =~ "DDS::NOT_ALIVE_NO_WRITERS_INSTANCE_STATE")
+        {
+            $found=$found+1;
+        }
+        else
+        {
+            print "ERROR: Error in SampleInfo logging detected\n";
         }
     }
 }

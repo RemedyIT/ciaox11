@@ -206,6 +206,9 @@ module AxciomaPC
             BRIX11.log_fatal("[#{self}] Invalid interaction #{p} specified!")
           end
         end
+
+        # add interface IDL include path to component recipe
+        recipe.idl_includes << File.dirname(@interface_recipe.interface_idl_path)
       end
     end
     module PublisherPort
@@ -213,6 +216,9 @@ module AxciomaPC
         BRIX11.log(4, "[%s] verify", self)
         generate_pubsub_port('uses', @config[:typename])
         set_intf_name @interface_recipe.topic_interface_module+'::Publisher'
+
+        # add interface IDL include path to component recipe
+        recipe.idl_includes << File.dirname(@interface_recipe.interface_idl_path)
       end
     end
   end
