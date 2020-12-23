@@ -154,8 +154,6 @@ module AxciomaPC
         (idlfile.properties[:includepaths] ||= []).concat([
           File.join(ciaox11_root, 'connectors/psdd4ccm/idl')+'/',
         ])
-        # add include path for interface IDL to project
-        project.idl_includes << File.dirname(interface_idl_path)
       end
 
       # only allow a single topic IDL file

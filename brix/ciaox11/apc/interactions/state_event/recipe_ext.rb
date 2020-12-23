@@ -166,9 +166,6 @@ module AxciomaPC
           'CIAOX11_DDS4CCM_STATE' => true,
           'CIAOX11_DDS4CCM_EVENT' => true
         })
-        #@todo vendor changes
-        # add include path for interface IDL to project
-        project.idl_includes << File.dirname(interface_idl_path)
       end
 
       # only allow a single topic IDL file

@@ -9,14 +9,12 @@
  */
 #include "dds/ndds_utils.h"
 #include "logger/ddsx11_log.h"
-
-#include <string.h>
+#include <cstring>
 
 namespace DDSX11
 {
   namespace NDDS_PROXY
   {
-
     bool split_qos_profile (
       const std::string &qos_profile,
       std::string& library_name,
