@@ -44,15 +44,6 @@ namespace CIAOX11
         typename IDL::traits<typename CCM_TYPE::data_listener_type>::ref_type listener) override;
 
     private:
-      /// Helper method to get data from DDS
-      virtual ::DDS::ReturnCode_t
-      get_data_i (
-        typename ::DDS::traits<TOPIC_TYPE>::typed_datareader_ref_type reader,
-        IDL::traits< ::DDS::QueryCondition>::ref_type qc,
-        TOPIC_SEQ_TYPE &data,
-        ::DDS::SampleInfoSeq &sample_info,
-        int32_t max_samples) = 0;
-
       DataReaderStateListenerBase_T() = delete;
       DataReaderStateListenerBase_T(const DataReaderStateListenerBase_T&) = delete;
       DataReaderStateListenerBase_T(DataReaderStateListenerBase_T&&) = delete;

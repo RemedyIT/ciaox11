@@ -74,7 +74,6 @@ namespace CIAOX11
       IDL::traits< ::CCM_DDS::DataListenerControl>::ref_type control_;
       SharedConditionManager condition_manager_;
 
-    private:
       /// Pure virtual helper method to get (read/take) data from DDS
       virtual ::DDS::ReturnCode_t get_data_i (
         typename ::DDS::traits<TOPIC_TYPE>::typed_datareader_ref_type reader,
@@ -83,6 +82,7 @@ namespace CIAOX11
         ::DDS::SampleInfoSeq &sample_info,
         int32_t max_samples) = 0;
 
+    private:
       ListenerBase_T() = delete;
       ListenerBase_T(const ListenerBase_T&) = delete;
       ListenerBase_T(ListenerBase_T&&) = delete;
