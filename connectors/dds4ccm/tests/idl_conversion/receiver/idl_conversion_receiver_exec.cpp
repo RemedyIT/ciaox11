@@ -486,6 +486,29 @@ namespace IDL_Conversion_Test_Receiver_Impl
       }
       ++c;
     }
+
+    if (datum.b_85()._d () != 1)
+    {
+      DDS4CCM_TEST_ERROR << "Receiver check - ERROR: unexpected value for "
+        << "datum.b_85 ()._d(): expected <" << 1  << "> - got <"
+        << datum.b_85()._d () << ">" << std::endl;
+    }
+    else
+    {
+      Example::B42 b85_1 = datum.b_85().b_85_1 ();
+      if (b85_1[0] != 5)
+      {
+        DDS4CCM_TEST_ERROR << "Receiver check - ERROR: unexpected value for "
+          << "datum.b_85 ().b_85_1()[0]: expected <" << 5  << "> - got <"
+          << b85_1[0] << ">" << std::endl;
+      }
+      if (b85_1[1] != 12)
+      {
+        DDS4CCM_TEST_ERROR << "Receiver check - ERROR: unexpected value for "
+          << "datum.b_85 ().b_85_1()[1]: expected <" << 12  << "> - got <"
+          << b85_1[1] << ">" << std::endl;
+      }
+    }
   }
 
   void

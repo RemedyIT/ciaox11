@@ -22,6 +22,10 @@ module IDL
       def is_string_type?
         ::IDL::Type::String === self._resolved_idltype
       end
+
+      def is_array_type?
+        ::IDL::Type::Array === self._resolved_idltype
+      end
     end
 
     class UnionVisitor

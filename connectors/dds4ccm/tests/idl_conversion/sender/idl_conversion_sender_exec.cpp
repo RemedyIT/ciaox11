@@ -415,6 +415,9 @@ namespace IDL_Conversion_Test_Sender_Impl
         b81.c("B81 BOUNDED STRING C VALUE_"+std::to_string (val));
         b83.f().push_back (b81);
       }
+      Example::B85 b85;
+      Example::B42 b85_1 { 5, 12};
+      b85.b_85_1 (b85_1);
 
       bool a_13 = (this->last_iteration_%2) == 1;
 
@@ -464,6 +467,7 @@ namespace IDL_Conversion_Test_Sender_Impl
           a_13 ? Example::B70::B70_1 : Example::B70::B70_2,
           b80,
           b83,
+          b85,
           key,
           this->last_iteration_);
 
