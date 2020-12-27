@@ -9,7 +9,7 @@ switch (from._d)
 %     end
 %   end
   {
-    <%= _m.scoped_cxxtype %> tmp {};
+    <%= _m.scoped_cxxtype %> tmp <% if _m.is_array? %>{{}}<% else %>{}<% end %>;
     ::DDSX11::from_dds (tmp, from._u.<%= _m.cxxname %>);
     to.<%= _m.cxxname %> (tmp);
   }
