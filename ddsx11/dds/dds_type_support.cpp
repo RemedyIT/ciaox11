@@ -13,10 +13,6 @@
 
 namespace DDSX11
 {
-  DDS_TypeFactory_i::~DDS_TypeFactory_i ()
-  {
-  }
-
   DDS_TypeFactory_i_ref::DDS_TypeFactory_i_ref (
     std::shared_ptr<DDS_TypeFactory_i> tf)
     : tf_ (tf)
@@ -79,7 +75,7 @@ namespace DDSX11
       << IDL::traits< ::DDS::Entity>::write<entity_formatter> (dp)
       << "> of type <" << type << "> could not be found.");
 
-    return nullptr;
+    return {};
   }
 
   bool

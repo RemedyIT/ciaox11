@@ -31,7 +31,7 @@ namespace DDSX11
   {
   public:
     DDS_TypeFactory_i () = default;
-    virtual ~DDS_TypeFactory_i ();
+    virtual ~DDS_TypeFactory_i () = default;
 
     virtual IDL::traits< ::DDS::DataWriter>::ref_type
     create_datawriter (DDS_Native::DDS::DataWriter* dw) = 0;
