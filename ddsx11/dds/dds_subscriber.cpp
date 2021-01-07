@@ -197,10 +197,13 @@ namespace DDSX11
     DDSX11_IMPL_LOG_DEBUG ("DDS_Subscriber_proxy::create_datareader - "
       << "Successfully created native datareader");
 
+    DDS_Native::DDS::DomainParticipant_var native_dp =
+      this->native_entity ()->get_participant ();
+
     // Create the X11 typed datareader
     IDL::traits< ::DDS::DataReader>::ref_type datareader =
       DDS_TypeSupport_i::create_datareader (
-            this->get_participant (),
+            native_dp,
             a_topic->get_type_name (),
             native_dr);
 

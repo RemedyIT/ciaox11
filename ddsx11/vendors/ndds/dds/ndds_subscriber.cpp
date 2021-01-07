@@ -139,10 +139,13 @@ namespace DDSX11
           "Successfully created native datareader with profile <"
           << qos_profile << ">");
 
+      DDS_Native::DDS::DomainParticipant_var native_dp =
+        this->native_entity ()->get_participant ();
+
       // Create the X11 typed data reader
       IDL::traits< ::DDS::DataReader>::ref_type datareader =
         DDS_TypeSupport_i::create_datareader (
-              this->get_participant (),
+              native_dp,
               a_topic->get_type_name (),
               native_dr);
 

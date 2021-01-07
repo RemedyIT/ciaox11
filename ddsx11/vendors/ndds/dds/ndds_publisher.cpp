@@ -82,8 +82,11 @@ namespace DDSX11
       // of scope.
       proxy_dwl.release ();
 
+      DDS_Native::DDS::DomainParticipant_var native_dp =
+        this->native_entity ()->get_participant ();
+
       IDL::traits< ::DDS::DataWriter>::ref_type datawriter =
-        DDS_TypeSupport_i::create_datawriter (this->get_participant (),
+        DDS_TypeSupport_i::create_datawriter (native_dp,
                                               a_topic->get_type_name (),
                                               native_dw);
 
