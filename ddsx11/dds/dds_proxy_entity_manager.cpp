@@ -68,7 +68,7 @@ namespace DDSX11
     }
 
     PROXY_TYPE proxy {};
-    const ::DDS::InstanceHandle_t handle =
+    ::DDS::InstanceHandle_t const handle =
       ::DDSX11::traits< ::DDS::InstanceHandle_t>::retn (
         native_entity->get_instance_handle ());
 
