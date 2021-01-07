@@ -92,7 +92,7 @@ namespace DDSX11
 
     if (domain_participant)
       {
-        if (DDS_ProxyEntityManager::register_dp_proxy (domain_participant))
+        if (DDS_ProxyEntityManager::register_dp_proxy (domain_participant, dds_dp))
           {
             DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipantFactory_proxy::create_participant - "
               << "Successfully created and registered a DomainParticipant for domain <"
@@ -168,7 +168,7 @@ namespace DDSX11
       }
     else
       {
-        if (!DDS_ProxyEntityManager::unregister_dp_proxy (handle))
+        if (!DDS_ProxyEntityManager::unregister_dp_proxy (part, handle))
           {
             DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::delete_participant - "
               << "Error: Can't unregister domainparticpant proxy for <" << handle << ">");

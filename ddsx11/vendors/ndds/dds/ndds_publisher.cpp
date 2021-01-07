@@ -89,7 +89,7 @@ namespace DDSX11
 
       if (datawriter)
       {
-        if (DDS_ProxyEntityManager::register_datawriter_proxy (datawriter))
+        if (DDS_ProxyEntityManager::register_datawriter_proxy (datawriter, native_dw))
         {
           DDSX11_IMPL_LOG_DEBUG ("NDDS_Publisher_proxy::create_datawriter_with_profile - "
             << "Successfully created and registered a datawriter with profile <"

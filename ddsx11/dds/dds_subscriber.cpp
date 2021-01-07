@@ -207,7 +207,7 @@ namespace DDSX11
     if (datareader)
       {
         // Register the fresh created proxy in the proxy entity manager
-        if (DDS_ProxyEntityManager::register_datareader_proxy (datareader))
+        if (DDS_ProxyEntityManager::register_datareader_proxy (datareader, native_dr))
           {
             DDSX11_IMPL_LOG_DEBUG ("DDS_Subscriber_proxy::create_datareader - "
               << "Successfully created and registered a datareader.");
@@ -280,7 +280,7 @@ namespace DDSX11
       }
     else
       {
-        if (!DDS_ProxyEntityManager::unregister_datareader_proxy (handle))
+        if (!DDS_ProxyEntityManager::unregister_datareader_proxy (native_dr, handle))
           {
             DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::delete_datareader - "
               << "Error: Can't unregister datareader proxy for <" << handle << ">");

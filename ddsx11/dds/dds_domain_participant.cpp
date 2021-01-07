@@ -97,7 +97,7 @@ namespace DDSX11
 
     if (publisher)
       {
-        if (DDS_ProxyEntityManager::register_publisher_proxy (publisher))
+        if (DDS_ProxyEntityManager::register_publisher_proxy (publisher, native_pub))
           {
             DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::create_publisher - "
               << "Successfully created and registered a publisher.");
@@ -169,7 +169,7 @@ namespace DDSX11
       }
     else
       {
-        if (!DDS_ProxyEntityManager::unregister_publisher_proxy (handle))
+        if (!DDS_ProxyEntityManager::unregister_publisher_proxy (native_pub, handle))
           {
             DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::delete_publisher - "
               << "Error: Can't unregister publisher proxy for <" <<handle << ">");
@@ -249,7 +249,7 @@ namespace DDSX11
     if (subscriber)
       {
         // Register the fresh created proxy in the proxy entity manager
-        if (DDS_ProxyEntityManager::register_subscriber_proxy (subscriber))
+        if (DDS_ProxyEntityManager::register_subscriber_proxy (subscriber, native_sub))
           {
             DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::create_subscriber - "
               << "Successfully created and registered a subscriber.");
@@ -322,7 +322,7 @@ namespace DDSX11
       }
     else
       {
-        if (!DDS_ProxyEntityManager::unregister_subscriber_proxy (handle))
+        if (!DDS_ProxyEntityManager::unregister_subscriber_proxy (native_sub, handle))
           {
             DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::delete_subscriber - "
               << "Error: Can't unregister subscriber proxy for <" << handle << ">");
@@ -448,7 +448,7 @@ namespace DDSX11
 
     if (topic_reference)
       {
-        if (DDS_ProxyEntityManager::register_topic_proxy (topic_reference))
+        if (DDS_ProxyEntityManager::register_topic_proxy (topic_reference, dds_tp))
           {
             DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::create_topic - "
               << "Successfully created and registered a Topic.");
@@ -522,7 +522,7 @@ namespace DDSX11
       }
     else
       {
-        if (!DDS_ProxyEntityManager::unregister_topic_proxy (handle))
+        if (!DDS_ProxyEntityManager::unregister_topic_proxy (top, handle))
           {
             // The topic proxy is still used, so don't destruct the listener yet
             listener_guard.release ();
@@ -569,7 +569,7 @@ namespace DDSX11
       {
         // We have an existing topic proxy so we register it again to increment
         // its refcount with 1
-        if (!DDS_ProxyEntityManager::register_topic_proxy (topic))
+        if (!DDS_ProxyEntityManager::register_topic_proxy (topic, native_topic))
           {
             DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::find_topic - "
               << "Error: Error registering topic proxy for <" << impl_name << "> again <"

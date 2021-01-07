@@ -149,7 +149,7 @@ namespace DDSX11
       if (datareader)
         {
           // Register the fresh created proxy in the proxy entity manager
-          if (DDS_ProxyEntityManager::register_datareader_proxy (datareader))
+          if (DDS_ProxyEntityManager::register_datareader_proxy (datareader, native_dr))
           {
             DDSX11_IMPL_LOG_DEBUG ("NDDS_Subscriber_proxy::create_datareader_with_profile - "
               << "Successfully created and registered a datareader with profile <"
