@@ -69,7 +69,7 @@ namespace DDSX11
         if (it != entry->second.end ())
           {
             DDSX11_IMPL_LOG_DEBUG ("DDS_TypeSupport_i::get_factory_i - "
-            << "A factory for domain participant <" << handle
+            << "A factory for domain participant <" << handle << ":" << dp
             << "> of type <" << type << "> has been found.");
             return it->second->get_factory ();
           }
@@ -77,7 +77,7 @@ namespace DDSX11
 
     DDSX11_IMPL_LOG_ERROR ("DDS_TypeSupport_i::get_factory_i - "
       << "A factory for domain participant <"
-      << handle
+      << handle << ":" << dp
       << "> of type <" << type << "> could not be found.");
 
     return {};
@@ -121,7 +121,7 @@ namespace DDSX11
           {
             DDSX11_IMPL_LOG_ERROR ("DDS_TypeSupport_i::register_type - "
               << "Unable to create DomainParticipant entry: type <"
-              << type << "> - DomainParticipant <" << handle
+              << type << "> - DomainParticipant <" << handle << ":" << native_dp
               << ">");
             return false;
           }
@@ -145,7 +145,7 @@ namespace DDSX11
           {
             DDSX11_IMPL_LOG_DEBUG ("DDS_TypeSupport_i::register_type - "
               << "Created factory entry for type <" << type << "> for "
-              << "participant <" << handle
+              << "participant <" << handle << ":" << native_dp
               << ">");
             // Returning true in case we first register the type, that way the
             // caller knows we also have to register the type with DDS
@@ -155,7 +155,7 @@ namespace DDSX11
           {
             DDSX11_IMPL_LOG_ERROR ("DDS_TypeSupport_i::register_type - "
               << "Unable to create -new- factory entry type <" << type
-              << "> for participant <" << handle
+              << "> for participant <" << handle << ":" << native_dp
               << ">");
           }
       }
@@ -165,7 +165,7 @@ namespace DDSX11
         DDSX11_IMPL_LOG_DEBUG ("DDS_TypeSupport_i::register_type - "
           << "Incremented refcount to <" << refcount
           << "> for type-factory " << "for participant <"
-          << handle << "> since it already exists for "
+          << handle << ":" << native_dp << "> since it already exists for "
           << "type <" << type << ">");
       }
     return retval;
@@ -203,7 +203,7 @@ namespace DDSX11
     if (dp_entry != participant_factories.end ())
       {
         DDSX11_IMPL_LOG_DEBUG ("DDS_TypeSupport_i::unregister_type - "
-          << "Found entry for participant <" << handle
+          << "Found entry for participant <" << handle << ":" << native_dp
           << "> and type <" << type << ">");
         // Found the domain participant
         typefactories::iterator it = dp_entry->second.find (type);
@@ -219,7 +219,7 @@ namespace DDSX11
                 // Erase it from the list will decrement the use_count with one.
                 DDSX11_IMPL_LOG_DEBUG ("DDS_TypeSupport_i::unregister_type - "
                   << "Decremented refcount on factory for participant <"
-                  << handle
+                  << handle << ":" << native_dp
                   << "> and type <" << type << ">. Refcount dropped to zero");
 
                 it->second = nullptr;
@@ -231,7 +231,7 @@ namespace DDSX11
 
                     DDSX11_IMPL_LOG_DEBUG ("DDS_TypeSupport_i::unregister_type - "
                       << "Erased participant entry for participant <"
-                      << handle << ">, no type factories left anymore");
+                      << handle << ":" << native_dp << ">, no type factories left anymore");
                   }
               }
             else
@@ -239,21 +239,21 @@ namespace DDSX11
                 DDSX11_IMPL_LOG_DEBUG ("DDS_TypeSupport_i::unregister_type - "
                   << "Decremented refcount to <" << refcount
                   << "> for factory for participant <"
-                  << handle << "> and type <" << type << ">");
+                  << handle << ":" << native_dp << "> and type <" << type << ">");
               }
           }
         else
           {
             DDSX11_IMPL_LOG_ERROR ("DDS_TypeSupport_i::unregister_type - "
               << "Could not find the correct factory belonging to participant <"
-              << handle << "> and type <" << type << ">. Unable to remove.");
+              << handle << ":" << native_dp << "> and type <" << type << ">. Unable to remove.");
           }
       }
     else
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_TypeSupport_i::unregister_type - "
           << "Could not find the entry for participant <"
-          << handle << ">. Unable to remove.");
+          << handle << ":" << native_dp << ">. Unable to remove.");
       }
     return retval;
   }
@@ -275,7 +275,7 @@ namespace DDSX11
       {
         DDSX11_IMPL_LOG_DEBUG ("DDS_TypeSupport_i::create_datawriter - "
           << "Type factory found for type <" << type_name << "> for "
-          << "participant <" << handle
+          << "participant <" << handle << ":" << dp
           << ">");
 
         return f->create_datawriter (dw);
@@ -284,7 +284,7 @@ namespace DDSX11
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_TypeSupport_i::create_datawriter - "
           << "Error creating DDS_Native::DDS::DataWriter for type <" << type_name
-          << "> for participant <" << handle
+          << "> for participant <" << handle << ":" << dp
           << ">");
       }
 
@@ -308,7 +308,7 @@ namespace DDSX11
       {
         DDSX11_IMPL_LOG_DEBUG ("DDS_TypeSupport_i::create_datareader - "
           << "Created DDS_Native::DDS::DataReader for type <" << type_name
-          << "> for participant <" << handle
+          << "> for participant <" << handle << ":" << dp
           << ">");
 
         return f->create_datareader (dr);
@@ -318,7 +318,7 @@ namespace DDSX11
         DDSX11_IMPL_LOG_ERROR ("DDS_TypeSupport_i::create_datareader - "
           << "Error creating DDS_Native::DDS::DataReader for type <" << type_name
           << "> for participant <"
-          << handle
+          << handle << ":" << dp
           << ">");
       }
 
