@@ -250,7 +250,7 @@ namespace Uni_Sender_Impl
   {
     try
     {
-      IDL::traits < Uni::TopUnionConnector::Writer>::ref_type writer =
+      IDL::traits <Uni::TopUnionConnector::Writer>::ref_type writer =
         this->context_->get_connection_info_write_data ();
 
       switch (this->last_assignment_)
