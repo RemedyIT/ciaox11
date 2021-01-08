@@ -91,19 +91,19 @@ namespace CIAOX11
         {
           if (mode == ::CCM_DDS::ListenerMode::ONE_BY_ONE)
           {
-            typename TOPIC_SEQ_TYPE::size_type topic_idx = 0;
+            typename TOPIC_SEQ_TYPE::size_type topic_idx {};
             for (::DDS::SampleInfo const &si : sample_info)
             {
               if (si.valid_data ())
               {
-                listener->on_one_data (data[topic_idx],
-                  ::DDS4CCM::traits< ::DDS::SampleInfo>::to_readinfo (si));
+                listener->on_one_data (data[topic_idx], ::DDS4CCM::traits< ::DDS::SampleInfo>::to_readinfo (si));
               }
+              ++topic_idx;
             }
           }
           else
           {
-            uint32_t nr_of_samples = 0;
+            uint32_t nr_of_samples {};
             for (const ::DDS::SampleInfo &si : sample_info)
             {
               if (si.valid_data ())
