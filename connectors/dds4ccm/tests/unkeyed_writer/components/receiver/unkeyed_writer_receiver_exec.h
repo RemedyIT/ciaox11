@@ -49,7 +49,7 @@ namespace UnkeyedWriterTest_Receiver_Impl
     info_out_data_listener_exec_i (
       IDL::traits<UnkeyedWriterTest::CCM_Receiver_Context>::ref_type context,
       uint16_t iterations,
-      std::atomic_ulong &samples_received);
+      std::atomic<uint32_t> &samples_received);
     //@@{__RIDL_REGEN_MARKER__} - END : UnkeyedWriterTest_Receiver_Impl::info_out_data_listener_exec_i[ctor]
 
     /// Destructor
@@ -84,7 +84,7 @@ namespace UnkeyedWriterTest_Receiver_Impl
     //@{
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : UnkeyedWriterTest_Receiver_Impl::info_out_data_listener_exec_i[user_members]
     uint16_t iterations_ {};
-    std::atomic_ulong &samples_received_;
+    std::atomic<uint32_t> &samples_received_;
     //@@{__RIDL_REGEN_MARKER__} - END : UnkeyedWriterTest_Receiver_Impl::info_out_data_listener_exec_i[user_members]
     //@}
 
@@ -243,7 +243,7 @@ namespace UnkeyedWriterTest_Receiver_Impl
     /** @name User defined members. */
     //@{
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : UnkeyedWriterTest_Receiver_Impl::Receiver_exec_i[user_members]
-    std::atomic_ulong samples_received_ {};
+    std::atomic<uint32_t> samples_received_ {};
     //@@{__RIDL_REGEN_MARKER__} - END : UnkeyedWriterTest_Receiver_Impl::Receiver_exec_i[user_members]
     //@}
 
