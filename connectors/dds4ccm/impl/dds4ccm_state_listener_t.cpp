@@ -66,8 +66,7 @@ namespace CIAOX11
         ::DDS::SampleInfoSeq sample_info;
         int32_t max_samples = this->control_->max_delivered_data ();
 
-        if (mode == ::CCM_DDS::ListenerMode::ONE_BY_ONE ||
-            max_samples == 0)
+        if (mode == ::CCM_DDS::ListenerMode::ONE_BY_ONE || max_samples == 0)
         {
           // Read everything. In case ONE_BY_ONE, the samples are provided to
           // the user one by one (on_one_data);
@@ -102,7 +101,7 @@ namespace CIAOX11
         }
         if (mode == ::CCM_DDS::ListenerMode::ONE_BY_ONE)
         {
-          typename TOPIC_SEQ_TYPE::size_type topic_idx = 0;
+          typename TOPIC_SEQ_TYPE::size_type topic_idx {};
           for (::DDS::SampleInfo const &si : sample_info)
           {
             // Sample data may not be valid anymore when
@@ -110,20 +109,17 @@ namespace CIAOX11
             // here.
             if (si.instance_state () == ::DDS::NOT_ALIVE_DISPOSED_INSTANCE_STATE)
             {
-              listener->on_deletion (data[topic_idx],
-                ::DDS4CCM::traits< ::DDS::SampleInfo>::to_readinfo (si));
+              listener->on_deletion (data[topic_idx], ::DDS4CCM::traits< ::DDS::SampleInfo>::to_readinfo (si));
             }
             else if (si.valid_data ())
             {
               if (si.view_state () == ::DDS::NEW_VIEW_STATE)
               {
-                listener->on_creation (data[topic_idx],
-                  ::DDS4CCM::traits< ::DDS::SampleInfo>::to_readinfo (si));
+                listener->on_creation (data[topic_idx], ::DDS4CCM::traits< ::DDS::SampleInfo>::to_readinfo (si));
               }
               else
               {
-                listener->on_one_update (data[topic_idx],
-                  ::DDS4CCM::traits< ::DDS::SampleInfo>::to_readinfo (si));
+                listener->on_one_update (data[topic_idx], ::DDS4CCM::traits< ::DDS::SampleInfo>::to_readinfo (si));
               }
             }
             ++topic_idx;
@@ -134,7 +130,7 @@ namespace CIAOX11
           typedef std::vector<uint32_t> Updates;
           Updates updates;
 
-          uint32_t idx_to_add = 0;
+          uint32_t idx_to_add {};
           for (::DDS::SampleInfo const &si : sample_info)
           {
             if ((si.valid_data () && si.view_state () == ::DDS::NEW_VIEW_STATE) ||
@@ -147,7 +143,7 @@ namespace CIAOX11
                 TOPIC_SEQ_TYPE inst_seq        (updates.size ());
                 ::CCM_DDS::ReadInfoSeq infoseq (updates.size ());
 
-                uint32_t ix = 0;
+                uint32_t ix {};
                 for(uint32_t add : updates)
                 {
                   infoseq[ix]  = ::DDS4CCM::traits< ::DDS::SampleInfo>::to_readinfo (sample_info[add]);
@@ -182,7 +178,7 @@ namespace CIAOX11
             TOPIC_SEQ_TYPE         inst_seq (updates.size ());
             ::CCM_DDS::ReadInfoSeq infoseq  (updates.size ());
 
-            uint32_t ix = 0;
+            uint32_t ix {};
             for (uint32_t add : updates)
             {
               infoseq[ix]  = ::DDS4CCM::traits< ::DDS::SampleInfo>::to_readinfo (sample_info[add]);
