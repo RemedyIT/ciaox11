@@ -251,7 +251,7 @@ namespace Uni_Sender_Impl
   {
     try
     {
-      IDL::traits < Uni::UnionConnector::Writer>::ref_type writer =
+      IDL::traits <Uni::UnionConnector::Writer>::ref_type writer =
         this->context_->get_connection_info_write_data ();
 
       Uni::Assignment assignment { Uni::Assignment::NONE };
