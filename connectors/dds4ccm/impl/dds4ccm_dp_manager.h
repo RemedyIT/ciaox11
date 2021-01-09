@@ -91,7 +91,11 @@ namespace CIAOX11
     private:
       std::mutex dps_mutex_;
 
+      /// Key type, we store a domain participant for the unique combination of
+      /// QoS profile and Domain Id
       typedef std::pair<std::string, ::DDS::DomainId_t> IdQosProfile;
+      /// A domain participant can be used multiple times, so keep a ref count how many times
+      /// it is used
       typedef std::pair<IDL::traits< ::DDS::DomainParticipant>::ref_type, uint32_t> DomainParticipantRefcount;
       typedef std::map<IdQosProfile, DomainParticipantRefcount> DomainParticipants;
       DomainParticipants dps_;
