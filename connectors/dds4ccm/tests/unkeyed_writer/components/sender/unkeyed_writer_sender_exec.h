@@ -232,8 +232,8 @@ namespace UnkeyedWriterTest_Sender_Impl
     IDL::traits<CCM_TT::TT_Timer>::ref_type tm_activate_;
     IDL::traits<CCM_TT::TT_Scheduler>::ref_type tt_s;
     bool already_publishing_ {};
-
-
+    /// Each sample we send receives an unique index which we will check at the receiver side
+    uint32_t sample_index_ {};
 
     std::mutex mutex_ {};
     typedef std::map<std::string, UnkeyedWriterTest::UnkeyedWriterMessage> Writer_Table;

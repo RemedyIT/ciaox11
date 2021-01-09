@@ -258,7 +258,7 @@ namespace UnkeyedWriterTest_Sender_Impl
       {
         std::string key("KEY_" + std::to_string (i));
         OctetSeq seq (0);
-        UnkeyedWriterTest::UnkeyedWriterMessage new_key (key, 1, seq);
+        UnkeyedWriterTest::UnkeyedWriterMessage new_key (key, 1, seq, 0);
         this->ktests_[key] = new_key;
 
         DDS4CCM_TEST_DEBUG << "Created key : " << new_key << std::endl;
@@ -285,6 +285,8 @@ namespace UnkeyedWriterTest_Sender_Impl
   void
   Sender_exec_i::start_new_assignment (WRITER_ASSIGNMENT assignment)
   {
+    DDS4CCM_TEST_DEBUG << "Starting new assignment" << std::endl;
+
     this->last_key_ = this->ktests_.begin ();
     this->assignment_ = assignment;
     reset_iterations ();
@@ -299,14 +301,16 @@ namespace UnkeyedWriterTest_Sender_Impl
     {
       try
       {
-        IDL::traits < UnkeyedWriterTest::UnkeyedWriterMessageConnector::Writer>::ref_type writer =
+        IDL::traits <UnkeyedWriterTest::UnkeyedWriterMessageConnector::Writer>::ref_type writer =
           this->context_->get_connection_info_write_data ();
 
-        ++this->last_key_->second.iteration ();
+        UnkeyedWriterTest::UnkeyedWriterMessage& message = this->last_key_->second;
+        ++message.iteration ();
+        message.sample_index (this->sample_index_++);
         OctetSeq reply_mesg (1);
-        this->last_key_->second.data (reply_mesg);
-        DDS4CCM_TEST_DEBUG << "Going to write " << this->last_key_->second << std::endl;
-        writer->write_one (this->last_key_->second, ::DDS::HANDLE_NIL);
+        message.data (reply_mesg);
+        DDS4CCM_TEST_DEBUG << "Going to write " << message << std::endl;
+        writer->write_one (message, ::DDS::HANDLE_NIL);
       }
       catch (const CCM_DDS::InternalError& )
       {
@@ -323,7 +327,7 @@ namespace UnkeyedWriterTest_Sender_Impl
       {
         if (this->last_key_->second.iteration () == this->iterations_)
         {
-          //next key
+          // next key
           ++this->last_key_;
         }
         else
@@ -350,12 +354,12 @@ namespace UnkeyedWriterTest_Sender_Impl
     for (uint32_t i = 1; i < nr_samples + 1; ++i)
     {
       OctetSeq reply_mesg (i);
-      UnkeyedWriterTest::UnkeyedWriterMessage new_key ("KEY_1", 1, reply_mesg);
+      UnkeyedWriterTest::UnkeyedWriterMessage new_key ("KEY_1", 1, reply_mesg, this->sample_index_++);
       write_many_no_excep[i-1] = new_key;
     }
     try
     {
-      IDL::traits < UnkeyedWriterTest::UnkeyedWriterMessageConnector::Writer>::ref_type writer =
+      IDL::traits <UnkeyedWriterTest::UnkeyedWriterMessageConnector::Writer>::ref_type writer =
         this->context_->get_connection_info_write_data ();
 
       writer->write_many (write_many_no_excep);
@@ -382,12 +386,15 @@ namespace UnkeyedWriterTest_Sender_Impl
       // Only NDDS throws an exception when we send a large amount of data
       try
       {
-        IDL::traits < UnkeyedWriterTest::UnkeyedWriterMessageConnector::Writer>::ref_type writer =
+        IDL::traits <UnkeyedWriterTest::UnkeyedWriterMessageConnector::Writer>::ref_type writer =
           this->context_->get_connection_info_write_data ();
 
+        UnkeyedWriterTest::UnkeyedWriterMessage& message = this->last_key_->second;
         OctetSeq reply_mesg (1000);
-        this->last_key_->second.data (reply_mesg);
-        writer->write_one (this->last_key_->second, ::DDS::HANDLE_NIL);
+        message.data (reply_mesg);
+        message.sample_index (this->sample_index_++);
+
+        writer->write_one (message, ::DDS::HANDLE_NIL);
         DDS4CCM_TEST_DEBUG << "ERROR: No InternalError caught while "
           << "writing a large amount of data." << std::endl;
       }
@@ -427,10 +434,10 @@ namespace UnkeyedWriterTest_Sender_Impl
     try
     {
       this->tm_ = tt_s->schedule_repeated_trigger (
-                     CORBA::make_reference<TT_Callback> (IDL::traits<UnkeyedWriterTest::CCM_Sender>::narrow (this->_lock()),false),
-                  CCM_TT::TT_Duration (0, 1000000000 / this->rate_),
-                  CCM_TT::TT_Duration (0, 1000000000 / this->rate_),
-                  100);
+                    CORBA::make_reference<TT_Callback> (IDL::traits<UnkeyedWriterTest::CCM_Sender>::narrow (this->_lock()),false),
+                    CCM_TT::TT_Duration (0, 1000000000 / this->rate_),
+                    CCM_TT::TT_Duration (0, 1000000000 / this->rate_),
+                    100);
     }
     catch_dds4ccm_test_ex(ex, "Sender_exec_i::start")
   }

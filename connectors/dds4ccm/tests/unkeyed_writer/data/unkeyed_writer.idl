@@ -15,8 +15,12 @@ module UnkeyedWriterTest
 {
   struct UnkeyedWriterMessage {
     string key;
-    long iteration;
+    unsigned long iteration;
     ::OctetSeq data;
+    /// Unique index for each sample we write so that
+    /// the receiver can check that we don't get duplicate
+    /// samples
+    unsigned long sample_index;
   }; //@TopLevel()
 };
 

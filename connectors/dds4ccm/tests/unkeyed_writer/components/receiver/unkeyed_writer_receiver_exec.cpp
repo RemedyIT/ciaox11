@@ -32,7 +32,7 @@ namespace UnkeyedWriterTest_Receiver_Impl
   info_out_data_listener_exec_i::info_out_data_listener_exec_i (
     IDL::traits<UnkeyedWriterTest::CCM_Receiver_Context>::ref_type context,
     uint16_t iterations,
-    std::atomic_ulong &samples_received)
+    std::atomic<uint32_t> &samples_received)
     : context_ (std::move (context))
     , iterations_ (iterations)
     , samples_received_ (samples_received)
@@ -67,6 +67,12 @@ namespace UnkeyedWriterTest_Receiver_Impl
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : UnkeyedWriterTest_Receiver_Impl::info_out_data_listener_exec_i::on_one_data[_datum_info]
     X11_UNUSED_ARG(info);
+    if (datum.sample_index () != this->samples_received_)
+    {
+      DDS4CCM_TEST_ERROR << "ERROR: received sample <" << datum.sample_index ()
+        << "> but we expected sample <"
+        << this->samples_received_ << ">" << std::endl;
+    }
     ++this->samples_received_;
     DDS4CCM_TEST_DEBUG << "info_out_data_listener_exec_i::on_one_data received writer "
       << "info : " << datum << std::endl;
@@ -74,7 +80,7 @@ namespace UnkeyedWriterTest_Receiver_Impl
     {
       DDS4CCM_TEST_ERROR << "ERROR: received iteration greater than expected : "
         << "expected <" << this->iterations_ << "> - received <"
-        << datum.iteration () << ">." << std::endl;
+        << datum.iteration () << ">" << std::endl;
     }
     if (datum.iteration () == 0)
     {
@@ -222,14 +228,14 @@ namespace UnkeyedWriterTest_Receiver_Impl
         DDS4CCM_TEST_ERROR << "ERROR: Receiver_exec_i::ccm_passivate - "
           << "Did not receive the expected number of samples: "
           << "expected <" << expected << "> - received <"
-          << this->samples_received_ << ">." << std::endl;
+          << this->samples_received_ << ">" << std::endl;
       }
       else
       {
         DDS4CCM_TEST_DEBUG << "Receiver_exec_i::ccm_passivate - "
                   << "Did receive the expected number of samples: "
                   << "expected <" << expected << "> - received <"
-                  << this->samples_received_ << ">." << std::endl;
+                  << this->samples_received_ << ">" << std::endl;
 
       }
     }
@@ -240,7 +246,7 @@ namespace UnkeyedWriterTest_Receiver_Impl
         DDS4CCM_TEST_ERROR << "ERROR: Receiver_exec_i::ccm_passivate - "
           << "Did not receive the expected number of samples: "
           << "expected at least ten percent of <" << expected << "> - received <"
-          << this->samples_received_ << ">." << std::endl;
+          << this->samples_received_ << ">" << std::endl;
       }
     }
     //@@{__RIDL_REGEN_MARKER__} - END : UnkeyedWriterTest_Receiver_Impl::Receiver_exec_i[ccm_passivate]
