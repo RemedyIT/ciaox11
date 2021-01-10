@@ -139,17 +139,20 @@ namespace DDSX11
           "Successfully created native datareader with profile <"
           << qos_profile << ">");
 
+      DDS_Native::DDS::DomainParticipant_var native_dp =
+        this->native_entity ()->get_participant ();
+
       // Create the X11 typed data reader
       IDL::traits< ::DDS::DataReader>::ref_type datareader =
         DDS_TypeSupport_i::create_datareader (
-              this->get_participant (),
+              native_dp,
               a_topic->get_type_name (),
               native_dr);
 
       if (datareader)
         {
           // Register the fresh created proxy in the proxy entity manager
-          if (DDS_ProxyEntityManager::register_datareader_proxy (datareader))
+          if (DDS_ProxyEntityManager::register_datareader_proxy (datareader, native_dr))
           {
             DDSX11_IMPL_LOG_DEBUG ("NDDS_Subscriber_proxy::create_datareader_with_profile - "
               << "Successfully created and registered a datareader with profile <"

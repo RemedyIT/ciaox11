@@ -82,14 +82,17 @@ namespace DDSX11
       // of scope.
       proxy_dwl.release ();
 
+      DDS_Native::DDS::DomainParticipant_var native_dp =
+        this->native_entity ()->get_participant ();
+
       IDL::traits< ::DDS::DataWriter>::ref_type datawriter =
-        DDS_TypeSupport_i::create_datawriter (this->get_participant (),
+        DDS_TypeSupport_i::create_datawriter (native_dp,
                                               a_topic->get_type_name (),
                                               native_dw);
 
       if (datawriter)
       {
-        if (DDS_ProxyEntityManager::register_datawriter_proxy (datawriter))
+        if (DDS_ProxyEntityManager::register_datawriter_proxy (datawriter, native_dw))
         {
           DDSX11_IMPL_LOG_DEBUG ("NDDS_Publisher_proxy::create_datawriter_with_profile - "
             << "Successfully created and registered a datawriter with profile <"

@@ -89,13 +89,16 @@ namespace DDSX11
     // of scope.
     listener_guard.release ();
 
+    DDS_Native::DDS::DomainParticipant_var native_dp =
+      this->native_entity ()->get_participant ();
+
     IDL::traits< ::DDS::DataWriter>::ref_type datawriter =
-      DDS_TypeSupport_i::create_datawriter (this->get_participant (),
+      DDS_TypeSupport_i::create_datawriter (native_dp,
                                             a_topic->get_type_name (),
                                             native_dw);
     if (datawriter)
     {
-      if (DDS_ProxyEntityManager::register_datawriter_proxy (datawriter))
+      if (DDS_ProxyEntityManager::register_datawriter_proxy (datawriter, native_dw))
         {
           DDSX11_IMPL_LOG_DEBUG ("DDS_Publisher_proxy::create_datawriter - "
             << "Successfully created and registered a DataWriter");
@@ -169,7 +172,7 @@ namespace DDSX11
       }
     else
       {
-        if (!DDS_ProxyEntityManager::unregister_datawriter_proxy (handle))
+        if (!DDS_ProxyEntityManager::unregister_datawriter_proxy (native_dw, handle))
           {
             DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::delete_datawriter - "
               << "Error: Can't unregister datawriter proxy for <" << handle << ">");

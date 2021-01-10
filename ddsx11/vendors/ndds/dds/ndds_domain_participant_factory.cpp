@@ -91,7 +91,7 @@ namespace DDSX11
       if (retval)
         {
           // Register the fresh created proxy in the proxy entity manager
-          if (DDS_ProxyEntityManager::register_dp_proxy (retval))
+          if (DDS_ProxyEntityManager::register_dp_proxy (retval, dds_dp))
             {
               DDSX11_IMPL_LOG_DEBUG ("NDDS_DomainParticipantFactory_proxy::create_participant_with_profile <"
                 << qos_profile << "> - Successfully created and registered a DomainParticipant "
