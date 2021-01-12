@@ -216,7 +216,11 @@ namespace DDSX11
     SubscriberListener_Guard listener_guard {};
     if (a_listener)
       {
-        listener_guard = new DDS_SubscriberListener_proxy (a_listener);
+        listener_guard = new (std::nothrow) DDS_SubscriberListener_proxy (a_listener);
+        if (!listener_guard)
+        {
+          return {};
+        }
       }
 
     DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::create_subscriber - "
@@ -410,7 +414,11 @@ namespace DDSX11
     TopicListener_Guard listener_guard {};
     if (a_listener)
       {
-        listener_guard = new DDS_TopicListener_proxy (a_listener);
+        listener_guard = new (std::nothrow) DDS_TopicListener_proxy (a_listener);
+        if (!listener_guard)
+        {
+          return {};
+        }
       }
 
     qos_in = qos;
@@ -805,7 +813,11 @@ namespace DDSX11
     DomainParticipantListener_Guard new_guard {};
     if (a_listener)
       {
-        new_guard = new DDS_DomainParticipantListener_proxy (a_listener);
+        new_guard = new (std::nothrow) DDS_DomainParticipantListener_proxy (a_listener);
+        if (!new_guard)
+        {
+          return ::DDS::RETCODE_ERROR;
+        }
       }
 
     ::DDS::ReturnCode_t const retcode =
