@@ -38,9 +38,9 @@ namespace CIAOX11
     private:
       DomainParticipantManager ();
 
-    public:
       ~DomainParticipantManager ();
 
+    public:
       /**
       * Searches for the DomainParticipant in the internal map.
       * Search is based on the given domain ID and the given QOS
