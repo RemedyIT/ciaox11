@@ -31,6 +31,11 @@ namespace DDSX11
     {
       listener_.release ();
     }
+    explicit operator bool() const noexcept
+    {
+      return listener_ != nullptr;
+    }
+
   private:
     std::unique_ptr<NATIVE_LISTENER_TYPE> listener_;
     DDSX11_Listener_Guard_T(const DDSX11_Listener_Guard_T&) = delete;

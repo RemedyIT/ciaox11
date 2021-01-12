@@ -50,7 +50,11 @@ namespace DDSX11
     IDL::traits< ::DDS::WaitSet>::ref_type
     create_waitset ()
     {
-      DDS_Native::DDS::WaitSet_var waitset = new DDS_Native::DDS::WaitSet ();
+      DDS_Native::DDS::WaitSet_var waitset = new (std::nothrow) DDS_Native::DDS::WaitSet ();
+      if (!waitset)
+      {
+        return {};
+      }
       return CORBA::make_reference<DDSX11::DDS_WaitSet_proxy> (waitset);
     }
 

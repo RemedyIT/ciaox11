@@ -59,7 +59,11 @@ namespace DDSX11
     DataWriterListener_Guard listener_guard {};
     if (a_listener)
       {
-        listener_guard = new DDS_DataWriterListener_proxy (a_listener);
+        listener_guard = new (std::nothrow) DDS_DataWriterListener_proxy (a_listener);
+        if (!listener_guard)
+        {
+          return {};
+        }
       }
 
     qos_in = qos;

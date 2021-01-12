@@ -63,7 +63,11 @@ namespace DDSX11
     DomainParticipantListener_Guard listener_guard {};
     if (a_listener)
       {
-        listener_guard = new DDS_DomainParticipantListener_proxy(a_listener);
+        listener_guard = new (std::nothrow) DDS_DomainParticipantListener_proxy(a_listener);
+        if (!listener_guard)
+        {
+          return {};
+        }
       }
 
     DDS_Native::DDS::DomainParticipant_var dds_dp =

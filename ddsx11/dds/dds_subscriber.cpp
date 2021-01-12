@@ -151,7 +151,11 @@ namespace DDSX11
     DataReaderListener_Guard listener_guard {};
     if (a_listener)
       {
-        listener_guard = new DDS_DataReaderListener_proxy (a_listener);
+        listener_guard = new (std::nothrow) DDS_DataReaderListener_proxy (a_listener);
+        if (!listener_guard)
+        {
+          return {};
+        }
       }
 
     DDS_Native::DDS::DataReader_var native_dr {};
@@ -433,7 +437,11 @@ namespace DDSX11
     SubscriberListener_Guard new_guard {};
     if (a_listener)
       {
-        new_guard = new DDS_SubscriberListener_proxy (a_listener);
+        new_guard = new (std::nothrow) DDS_SubscriberListener_proxy (a_listener);
+        if (!new_guard)
+        {
+          return ::DDS::RETCODE_ERROR;
+        }
       }
 
     ::DDS::ReturnCode_t const retcode =

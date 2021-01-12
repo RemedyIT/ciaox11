@@ -82,7 +82,11 @@ namespace DDSX11
     DataWriterListener_Guard new_guard {};
     if (a_listener)
       {
-        new_guard = new DDS_DataWriterListener_proxy (a_listener);
+        new_guard = new (std::nothrow) DDS_DataWriterListener_proxy (a_listener);
+        if (!new_guard)
+        {
+          return ::DDS::RETCODE_ERROR;
+        }
       }
 
     ::DDS::ReturnCode_t const retcode =
