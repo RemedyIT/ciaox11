@@ -92,15 +92,12 @@ namespace DDSX11
     IDL::traits< ::DDS::InstanceHandle_t>::in_type handle,
     PROXY_MAP &lst)
   {
-    bool retval = false;
-    typename PROXY_MAP::iterator const it = lst.find (handle);
-    if (it != lst.end ())
+    if (lst.erase (handle) > 0)
     {
-      lst.erase (it);
       DDSX11_IMPL_LOG_DEBUG ("DDS_ProxyEntityManager::unregister_proxy - "
         << "Removed proxy with handle <" << handle
         << "> from the list");
-      retval = true;
+      return true;
     }
     else
     {
@@ -108,7 +105,7 @@ namespace DDSX11
         << "Could not find a proxy with handle <" << handle
         << ">");
     }
-    return retval;
+    return false;
   }
 
   bool
