@@ -82,7 +82,7 @@ namespace DDSX11
 
       if (publisher)
         {
-          if (DDS_ProxyEntityManager::register_publisher_proxy (publisher, native_pub))
+          if (DDS_ProxyEntityManager::register_publisher_proxy (publisher))
             {
               DDSX11_IMPL_LOG_DEBUG ("NDDS_DomainParticipant_proxy::create_publisher_with_profile <"
                 << qos_profile << "> - Successfully created and registered a Publisher.");
@@ -154,7 +154,7 @@ namespace DDSX11
       if (subscriber)
         {
           // Register the fresh created proxy in the proxy entity manager
-          if (DDS_ProxyEntityManager::register_subscriber_proxy (subscriber, native_sub))
+          if (DDS_ProxyEntityManager::register_subscriber_proxy (subscriber))
             {
               DDSX11_IMPL_LOG_DEBUG ("NDDS_DomainParticipant_proxy::create_subscriber_with_profile <"
                 << qos_profile << "> - Successfully created and registered a subscriber.");
@@ -246,7 +246,7 @@ namespace DDSX11
 
       if (topic_reference)
         {
-          if (DDS_ProxyEntityManager::register_topic_proxy (topic_reference, dds_tp))
+          if (DDS_ProxyEntityManager::register_topic_proxy (topic_reference))
             {
               DDSX11_IMPL_LOG_DEBUG ("NDDS_DomainParticipant_proxy::create_topic_with_profile - "
                 << "Successfully created and registered a topic.");

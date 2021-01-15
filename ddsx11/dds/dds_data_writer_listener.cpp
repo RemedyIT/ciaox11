@@ -62,6 +62,7 @@ namespace DDSX11
     }
   }
 
+
   void
   DDS_DataWriterListener_proxy::on_offered_incompatible_qos (
     DDS_Native::DDS::DataWriter *the_writer,

@@ -64,24 +64,18 @@ int main (int , char **)
         pf->create_participant (domain_id, qos, nullptr, ::DDS::STATUS_MASK_NONE);
       if (!dp1)
         {
-          DDSX11_TEST_ERROR << "ERROR - Could not create DP1" << std::endl;
+          DDSX11_TEST_ERROR
+            << "ERROR - Could not create DP1" << std::endl;
           ++ret;
-        }
-      else
-        {
-          DDSX11_TEST_DEBUG << "Created DP1" << std::endl;
         }
 
       IDL::traits< ::DDS::DomainParticipant>::ref_type dp2 =
         pf->create_participant (domain_id, qos, nullptr, ::DDS::STATUS_MASK_NONE);
       if (!dp2)
         {
-          DDSX11_TEST_ERROR << "ERROR - Could not create DP2" << std::endl;
+          DDSX11_TEST_ERROR
+            << "ERROR - Could not create DP2" << std::endl;
           ++ret;
-        }
-      else
-        {
-          DDSX11_TEST_DEBUG << "Created DP2" << std::endl;
         }
 
       std::string const type1 ("DataType1");
@@ -256,23 +250,8 @@ int main (int , char **)
         }
 
       /// No need to remove f1, f2, and f3 since ::close will remove them.
-      if (pf->delete_participant(dp1) != ::DDS::RETCODE_OK)
-        {
-          DDSX11_TEST_ERROR << "ERROR - Error deleting dp1 " << std::endl;
-        }
-      else
-        {
-          DDSX11_TEST_DEBUG << "Deleted dp1" << std::endl;
-        }
-
-      if (pf->delete_participant(dp2) != ::DDS::RETCODE_OK)
-        {
-          DDSX11_TEST_ERROR << "ERROR - Error deleting dp2 " << std::endl;
-        }
-      else
-        {
-          DDSX11_TEST_DEBUG << "Deleted dp2" << std::endl;
-        }
+      pf->delete_participant(dp1);
+      pf->delete_participant(dp2);
 
       pf->finalize_instance ();
     }
