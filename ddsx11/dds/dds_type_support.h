@@ -21,7 +21,6 @@ namespace DDS_Native {
   namespace DDS {
     class DataWriter;
     class DataReader;
-    class DomainParticipant;
   }
 }
 #endif /* DDSX11_HAS_VENDOR_TYPEDEFS */
@@ -32,7 +31,7 @@ namespace DDSX11
   {
   public:
     DDS_TypeFactory_i () = default;
-    virtual ~DDS_TypeFactory_i () = default;
+    virtual ~DDS_TypeFactory_i ();
 
     virtual IDL::traits< ::DDS::DataWriter>::ref_type
     create_datawriter (DDS_Native::DDS::DataWriter* dw) = 0;
@@ -118,7 +117,7 @@ namespace DDSX11
       */
     static IDL::traits< ::DDS::DataWriter>::ref_type
     create_datawriter (
-      DDS_Native::DDS::DomainParticipant* dp,
+      IDL::traits< ::DDS::DomainParticipant>::ref_type dp,
       const std::string& type_name,
       DDS_Native::DDS::DataWriter* dw);
     /**
@@ -126,7 +125,7 @@ namespace DDSX11
       */
     static IDL::traits< ::DDS::DataReader>::ref_type
     create_datareader (
-      DDS_Native::DDS::DomainParticipant* dp,
+      IDL::traits< ::DDS::DomainParticipant>::ref_type dp,
       const std::string& type_name,
       DDS_Native::DDS::DataReader* dr);
 
@@ -145,7 +144,12 @@ namespace DDSX11
 
     /// For each domain participant we store a map with type factories for the
     /// types that participant has
-    typedef std::map<DDS_Native::DDS::DomainParticipant*, typefactories> participantfactories;
+#if (DDSX11_NDDS==1)
+    typedef ::DDS::octet_value instance_handle_type;
+#else
+    typedef int32_t instance_handle_type;
+#endif
+    typedef std::map<instance_handle_type, typefactories> participantfactories;
 
     static participantfactories participant_factories;
 
@@ -153,7 +157,7 @@ namespace DDSX11
       * Searches for a TypeFactory, based on a type and DomainParticipant
       */
     static std::shared_ptr<DDS_TypeFactory_i> get_factory_i (
-      DDS_Native::DDS::DomainParticipant* dp,
+      IDL::traits< ::DDS::DomainParticipant>::ref_type dp,
       const std::string &type);
   };
 }

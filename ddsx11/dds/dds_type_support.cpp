@@ -10,11 +10,14 @@
 #include "dds/dds_common.h"
 #include "dds/dds_type_support.h"
 #include "logger/ddsx11_log.h"
-#include "dds/dds_vendor_conversion_traits.h"
-#include "dds/dds_domain_participant.h"
 
 namespace DDSX11
 {
+  DDS_TypeFactory_i::~DDS_TypeFactory_i ()
+  {
+    DDSX11_LOG_TRACE ("DDS_TypeFactory_i_ref::~DDS_TypeFactory_i_ref");
+  }
+
   DDS_TypeFactory_i_ref::DDS_TypeFactory_i_ref (
     std::shared_ptr<DDS_TypeFactory_i> tf)
     : tf_ (std::move(tf))
@@ -49,18 +52,14 @@ namespace DDSX11
 
   std::shared_ptr<DDS_TypeFactory_i>
   DDS_TypeSupport_i::get_factory_i (
-    DDS_Native::DDS::DomainParticipant* dp,
+    IDL::traits< ::DDS::DomainParticipant>::ref_type dp,
     const std::string &type)
   {
     DDSX11_LOG_TRACE ("DDS_TypeSupport_i::get_factory_i");
 
     participantfactories::iterator entry =
-      participant_factories.find (dp);
-
-    ::DDS::InstanceHandle_t const handle =
-      ::DDSX11::traits< ::DDS::InstanceHandle_t>::retn (
-        dp->get_instance_handle ());
-
+      participant_factories.find (
+        dp->get_instance_handle ().value ());
     if (entry != participant_factories.end ())
       {
         // We have found the domain participant, now search for a type factory
@@ -69,7 +68,8 @@ namespace DDSX11
         if (it != entry->second.end ())
           {
             DDSX11_IMPL_LOG_DEBUG ("DDS_TypeSupport_i::get_factory_i - "
-            << "A factory for domain participant <" << handle << ":" << dp
+            << "A factory for domain participant <"
+            << IDL::traits< ::DDS::Entity>::write<entity_formatter> (dp)
             << "> of type <" << type << "> has been found.");
             return it->second->get_factory ();
           }
@@ -77,10 +77,10 @@ namespace DDSX11
 
     DDSX11_IMPL_LOG_ERROR ("DDS_TypeSupport_i::get_factory_i - "
       << "A factory for domain participant <"
-      << handle << ":" << dp
+      << IDL::traits< ::DDS::Entity>::write<entity_formatter> (dp)
       << "> of type <" << type << "> could not be found.");
 
-    return {};
+    return nullptr;
   }
 
   bool
@@ -91,37 +91,22 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_TypeSupport_i::register_type");
 
-    IDL::traits< ::DDSX11::DDS_DomainParticipant_proxy>::ref_type proxy =
-      domain_participant_trait::proxy (dp);
-    if (!proxy)
-      {
-        DDSX11_IMPL_LOG_ERROR ("DDS_TypeSupport_i::register_type - "
-          << "Unable to retrieve the proxy from the provided object reference.");
-        return false;
-      }
-
-    DDS_Native::DDS::DomainParticipant *native_dp = proxy->get_native_entity ();
-    if (!native_dp)
-      {
-        DDSX11_IMPL_LOG_ERROR ("DDS_TypeSupport_i::register_type - "
-          << "Unable to retrieve the native domainparticipant from the provided object reference.");
-        return false;
-      }
-
-    ::DDS::InstanceHandle_t const handle = dp->get_instance_handle ();
-
-    participantfactories::iterator dp_entry = participant_factories.find (native_dp);
+    participantfactories::iterator dp_entry =
+      participant_factories.find (dp->get_instance_handle ().value ());
     if (dp_entry == participant_factories.end ())
       {
         // The domain participant has not been found, insert the domain
         // participant first
-        std::pair<participantfactories::iterator, bool> const dp_ret =
-          participant_factories.insert (participantfactories::value_type (native_dp, typefactories ()));
+        std::pair<participantfactories::iterator, bool> dp_ret =
+          participant_factories.insert (
+            participantfactories::value_type (
+              dp->get_instance_handle ().value (), typefactories ()));
         if (!dp_ret.second)
           {
             DDSX11_IMPL_LOG_ERROR ("DDS_TypeSupport_i::register_type - "
               << "Unable to create DomainParticipant entry: type <"
-              << type << "> - DomainParticipant <" << handle << ":" << native_dp
+              << type << "> - DomainParticipant <"
+              << IDL::traits< ::DDS::Entity>::write<entity_formatter> (dp)
               << ">");
             return false;
           }
@@ -145,7 +130,8 @@ namespace DDSX11
           {
             DDSX11_IMPL_LOG_DEBUG ("DDS_TypeSupport_i::register_type - "
               << "Created factory entry for type <" << type << "> for "
-              << "participant <" << handle << ":" << native_dp
+              << "participant <"
+              << IDL::traits< ::DDS::Entity>::write<entity_formatter> (dp)
               << ">");
             // Returning true in case we first register the type, that way the
             // caller knows we also have to register the type with DDS
@@ -155,7 +141,8 @@ namespace DDSX11
           {
             DDSX11_IMPL_LOG_ERROR ("DDS_TypeSupport_i::register_type - "
               << "Unable to create -new- factory entry type <" << type
-              << "> for participant <" << handle << ":" << native_dp
+              << "> for participant <"
+              << IDL::traits< ::DDS::Entity>::write<entity_formatter> (dp)
               << ">");
           }
       }
@@ -165,7 +152,8 @@ namespace DDSX11
         DDSX11_IMPL_LOG_DEBUG ("DDS_TypeSupport_i::register_type - "
           << "Incremented refcount to <" << refcount
           << "> for type-factory " << "for participant <"
-          << handle << ":" << native_dp << "> since it already exists for "
+          << IDL::traits< ::DDS::Entity>::write<entity_formatter> (dp)
+          << "> since it already exists for "
           << "type <" << type << ">");
       }
     return retval;
@@ -178,32 +166,15 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_TypeSupport_i::unregister_type");
 
-    IDL::traits< ::DDSX11::DDS_DomainParticipant_proxy>::ref_type proxy =
-      domain_participant_trait::proxy (dp);
-    if (!proxy)
-      {
-        DDSX11_IMPL_LOG_ERROR ("DDS_TypeSupport_i::unregister_type - "
-          << "Unable to retrieve the proxy from the provided object reference.");
-        return false;
-      }
-
-    DDS_Native::DDS::DomainParticipant *native_dp = proxy->get_native_entity ();
-    if (!native_dp)
-      {
-        DDSX11_IMPL_LOG_ERROR ("DDS_TypeSupport_i::unregister_type - "
-          << "Unable to retrieve the native domainparticipant from the provided object reference.");
-        return false;
-      }
-
     bool retval = false;
-    participantfactories::iterator dp_entry = participant_factories.find (native_dp);
-
-    ::DDS::InstanceHandle_t const handle = dp->get_instance_handle ();
+    participantfactories::iterator dp_entry =
+      participant_factories.find (dp->get_instance_handle().value ());
 
     if (dp_entry != participant_factories.end ())
       {
         DDSX11_IMPL_LOG_DEBUG ("DDS_TypeSupport_i::unregister_type - "
-          << "Found entry for participant <" << handle << ":" << native_dp
+          << "Found entry for participant <"
+          << IDL::traits< ::DDS::Entity>::write<entity_formatter> (dp)
           << "> and type <" << type << ">");
         // Found the domain participant
         typefactories::iterator it = dp_entry->second.find (type);
@@ -219,7 +190,7 @@ namespace DDSX11
                 // Erase it from the list will decrement the use_count with one.
                 DDSX11_IMPL_LOG_DEBUG ("DDS_TypeSupport_i::unregister_type - "
                   << "Decremented refcount on factory for participant <"
-                  << handle << ":" << native_dp
+                  << IDL::traits< ::DDS::Entity>::write<entity_formatter> (dp)
                   << "> and type <" << type << ">. Refcount dropped to zero");
 
                 it->second = nullptr;
@@ -231,7 +202,8 @@ namespace DDSX11
 
                     DDSX11_IMPL_LOG_DEBUG ("DDS_TypeSupport_i::unregister_type - "
                       << "Erased participant entry for participant <"
-                      << handle << ":" << native_dp << ">, no type factories left anymore");
+                      << IDL::traits< ::DDS::Entity>::write<entity_formatter> (dp)
+                      << ">, no type factories left anymore");
                   }
               }
             else
@@ -239,43 +211,43 @@ namespace DDSX11
                 DDSX11_IMPL_LOG_DEBUG ("DDS_TypeSupport_i::unregister_type - "
                   << "Decremented refcount to <" << refcount
                   << "> for factory for participant <"
-                  << handle << ":" << native_dp << "> and type <" << type << ">");
+                  << IDL::traits< ::DDS::Entity>::write<entity_formatter> (dp)
+                  << "> and type <" << type << ">");
               }
           }
         else
           {
             DDSX11_IMPL_LOG_ERROR ("DDS_TypeSupport_i::unregister_type - "
               << "Could not find the correct factory belonging to participant <"
-              << handle << ":" << native_dp << "> and type <" << type << ">. Unable to remove.");
+              << IDL::traits< ::DDS::Entity>::write<entity_formatter> (dp)
+              << "> and type <" << type << ">. Unable to remove.");
           }
       }
     else
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_TypeSupport_i::unregister_type - "
           << "Could not find the entry for participant <"
-          << handle << ":" << native_dp << ">. Unable to remove.");
+          << IDL::traits< ::DDS::Entity>::write<entity_formatter> (dp)
+          << ">. Unable to remove.");
       }
     return retval;
   }
 
   IDL::traits< ::DDS::DataWriter>::ref_type
   DDS_TypeSupport_i::create_datawriter (
-    DDS_Native::DDS::DomainParticipant* dp,
+    IDL::traits< ::DDS::DomainParticipant>::ref_type dp,
     const std::string& type_name,
     DDS_Native::DDS::DataWriter* dw)
   {
     DDSX11_LOG_TRACE ("DDS_TypeSupport_i::create_datawriter");
-
-    ::DDS::InstanceHandle_t const handle =
-      ::DDSX11::traits< ::DDS::InstanceHandle_t>::retn (
-        dp->get_instance_handle ());
 
     std::shared_ptr<DDS_TypeFactory_i> f = get_factory_i (dp, type_name);
     if (f)
       {
         DDSX11_IMPL_LOG_DEBUG ("DDS_TypeSupport_i::create_datawriter - "
           << "Type factory found for type <" << type_name << "> for "
-          << "participant <" << handle << ":" << dp
+          << "participant <"
+          << IDL::traits< ::DDS::Entity>::write<entity_formatter> (dp)
           << ">");
 
         return f->create_datawriter (dw);
@@ -284,31 +256,29 @@ namespace DDSX11
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_TypeSupport_i::create_datawriter - "
           << "Error creating DDS_Native::DDS::DataWriter for type <" << type_name
-          << "> for participant <" << handle << ":" << dp
+          << "> for participant <"
+          << IDL::traits< ::DDS::Entity>::write<entity_formatter> (dp)
           << ">");
       }
 
-    return {};
+    return nullptr;
   }
 
   IDL::traits< ::DDS::DataReader>::ref_type
   DDS_TypeSupport_i::create_datareader (
-    DDS_Native::DDS::DomainParticipant* dp,
+    IDL::traits< ::DDS::DomainParticipant>::ref_type dp,
     const std::string& type_name,
     DDS_Native::DDS::DataReader* dr)
   {
     DDSX11_LOG_TRACE ("DDS_TypeSupport_i::create_datareader");
-
-    ::DDS::InstanceHandle_t const handle =
-      ::DDSX11::traits< ::DDS::InstanceHandle_t>::retn (
-        dp->get_instance_handle ());
 
     std::shared_ptr<DDS_TypeFactory_i> f = get_factory_i (dp, type_name);
     if (f)
       {
         DDSX11_IMPL_LOG_DEBUG ("DDS_TypeSupport_i::create_datareader - "
           << "Created DDS_Native::DDS::DataReader for type <" << type_name
-          << "> for participant <" << handle << ":" << dp
+          << "> for participant <"
+          << IDL::traits< ::DDS::Entity>::write<entity_formatter> (dp)
           << ">");
 
         return f->create_datareader (dr);
@@ -318,11 +288,11 @@ namespace DDSX11
         DDSX11_IMPL_LOG_ERROR ("DDS_TypeSupport_i::create_datareader - "
           << "Error creating DDS_Native::DDS::DataReader for type <" << type_name
           << "> for participant <"
-          << handle << ":" << dp
+          << IDL::traits< ::DDS::Entity>::write<entity_formatter> (dp)
           << ">");
       }
 
-    return {};
+    return nullptr;
   }
 
   void
