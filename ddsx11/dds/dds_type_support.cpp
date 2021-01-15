@@ -15,11 +15,12 @@ namespace DDSX11
 {
   DDS_TypeFactory_i::~DDS_TypeFactory_i ()
   {
+    DDSX11_LOG_TRACE ("DDS_TypeFactory_i_ref::~DDS_TypeFactory_i_ref");
   }
 
   DDS_TypeFactory_i_ref::DDS_TypeFactory_i_ref (
     std::shared_ptr<DDS_TypeFactory_i> tf)
-    : tf_ (tf)
+    : tf_ (std::move(tf))
   {
     DDSX11_LOG_TRACE ("DDS_TypeFactory_i_ref::DDS_TypeFactory_i_ref");
   }
