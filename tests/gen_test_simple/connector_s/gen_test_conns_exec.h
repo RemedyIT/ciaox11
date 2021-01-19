@@ -85,7 +85,7 @@ namespace Hello_MyBaseEvent_Impl
     /** @name Members to store attribute values from ::Hello::CCM_MyFoo */
     //@{
     /// Class member storing value of interface_attrib attribute
-    int16_t interface_attrib_ {};
+    int16_t interface_attrib_{};
     //@}
 
     /** @name User defined members. */

@@ -91,9 +91,9 @@ namespace Test_Receiver_Impl
     /** @name Members to store attribute values from ::Test::Hello::CCM_Listener */
     //@{
     /// Class member storing value of listen_mode attribute
-    ::CCM_PSDD::ListenerMode listen_mode_ {};
+    ::CCM_PSDD::ListenerMode listen_mode_{};
     /// Class member storing value of max_data attribute
-    ::CCM_PSDD::DataCount_t max_data_ {};
+    ::CCM_PSDD::DataCount_t max_data_{};
     //@}
 
     /** @name User defined members. */
@@ -166,9 +166,9 @@ namespace Test_Receiver_Impl
     /** @name Members to store attribute values from ::Test::Msg::CCM_Listener */
     //@{
     /// Class member storing value of listen_mode attribute
-    ::CCM_PSDD::ListenerMode listen_mode_ {};
+    ::CCM_PSDD::ListenerMode listen_mode_{};
     /// Class member storing value of max_data attribute
-    ::CCM_PSDD::DataCount_t max_data_ {};
+    ::CCM_PSDD::DataCount_t max_data_{};
     //@}
 
     /** @name User defined members. */
@@ -291,15 +291,15 @@ namespace Test_Receiver_Impl
     /** @name Component attributes. */
     //@{
     /// Class member storing value of mode attribute
-    std::string mode_;
+    std::string mode_{};
     /// Class member storing value of subscription attribute
-    std::string subscription_;
+    std::string subscription_{};
     /// Class member storing value of count attribute
-    uint32_t count_ {};
+    uint32_t count_{};
     /// Class member storing value of delay attribute
-    uint32_t delay_ {};
+    uint32_t delay_{};
     /// Class member storing value of interval attribute
-    uint32_t interval_ {};
+    uint32_t interval_{};
     //@}
 
     /** @name Component facets. */

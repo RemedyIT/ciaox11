@@ -92,7 +92,7 @@ namespace AttrComp_Impl
     /** @name Component attributes. */
     //@{
     /// Class member storing value of TestBar attribute
-    ::Foo::Bar TestBar_;
+    ::Foo::Bar TestBar_{};
     //@}
 
     /** @name User defined members. */

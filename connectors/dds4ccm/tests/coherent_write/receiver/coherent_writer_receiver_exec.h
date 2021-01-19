@@ -220,7 +220,7 @@ namespace CoherentWriter_Receiver_Impl
     /** @name Component attributes. */
     //@{
     /// Class member storing value of nr_runs attribute
-    uint16_t nr_runs_ {};
+    uint16_t nr_runs_{};
     //@}
 
     /** @name Component facets. */

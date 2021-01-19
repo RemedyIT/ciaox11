@@ -279,7 +279,7 @@ namespace GetComponentComponent_Impl
     /** @name Component attributes. */
     //@{
     /// Class member storing value of act_as_sender attribute
-    bool act_as_sender_ {};
+    bool act_as_sender_{};
     //@}
 
     /** @name Component facets. */

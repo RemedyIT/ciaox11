@@ -108,9 +108,9 @@ namespace Hello_Sender_Impl
     /** @name Component attributes. */
     //@{
     /// Class member storing value of ojee attribute
-    int16_t ojee_ {};
+    int16_t ojee_{};
     /// Class member storing value of ojeetje attribute
-    int16_t ojeetje_ {};
+    int16_t ojeetje_{};
     //@}
 
     /** @name Component facets. */

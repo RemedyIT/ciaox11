@@ -84,9 +84,9 @@ namespace Foo_Impl
     /** @name Members to store attribute values from CCM_MyFoo */
     //@{
     /// Class member storing value of short attribute
-    int16_t _cxx_short_ {};
+    int16_t _cxx_short_{};
     /// Class member storing value of while attribute
-    int16_t _cxx_while_ {};
+    int16_t _cxx_while_{};
     //@}
 
     /** @name User defined members. */
@@ -242,25 +242,25 @@ namespace Foo_Impl
     /** @name Component attributes. */
     //@{
     /// Class member storing value of m_foo_pt_component attribute
-    int16_t m_foo_pt_component_ {};
+    int16_t m_foo_pt_component_{};
     /// Class member storing value of m_foo_pt_virtual attribute
-    int16_t m_foo_pt_virtual_ {};
+    int16_t m_foo_pt_virtual_{};
     /// Class member storing value of and attribute
-    int16_t _cxx_and_ {};
+    int16_t _cxx_and_{};
     /// Class member storing value of auto attribute
-    int16_t _cxx_auto_ {};
+    int16_t _cxx_auto_{};
     /// Class member storing value of int16_t attribute
-    int16_t _cxx_int16_t_ {};
+    int16_t _cxx_int16_t_{};
     /// Class member storing value of port attribute
-    int16_t port_ {};
+    int16_t port_{};
     /// Class member storing value of mirrorport attribute
-    int16_t mirrorport_ {};
+    int16_t mirrorport_{};
     /// Class member storing value of interface attribute
-    int16_t interface_ {};
+    int16_t interface_{};
     /// Class member storing value of abstract attribute
-    int16_t abstract_ {};
+    int16_t abstract_{};
     /// Class member storing value of override attribute
-    ::Bar override_;
+    ::Bar override_{};
     //@}
 
     /** @name Component facets. */

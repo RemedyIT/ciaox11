@@ -108,9 +108,9 @@ namespace Test_Sender_Impl
     /** @name Component attributes. */
     //@{
     /// Class member storing value of count attribute
-    uint32_t count_ {};
+    uint32_t count_{};
     /// Class member storing value of delay attribute
-    uint32_t delay_ {};
+    uint32_t delay_{};
     //@}
 
     /** @name Component facets. */

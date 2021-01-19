@@ -109,9 +109,9 @@ namespace Hello_MyBaseEvent_Impl
     /** @name Component attributes. */
     //@{
     /// Class member storing value of consumer_port_attrib attribute
-    int16_t consumer_port_attrib_ {};
+    int16_t consumer_port_attrib_{};
     /// Class member storing value of conn_attrib attribute
-    int16_t conn_attrib_ {};
+    int16_t conn_attrib_{};
     //@}
 
     /** @name Component facets. */

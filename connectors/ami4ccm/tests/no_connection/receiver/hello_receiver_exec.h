@@ -88,9 +88,9 @@ namespace HelloT_Receiver_Impl
     /** @name Members to store attribute values from ::HelloT::CCM_MyFoo */
     //@{
     /// Class member storing value of rw_attrib attribute
-    int16_t rw_attrib_ {};
+    int16_t rw_attrib_{};
     /// Class member storing value of ro_attrib attribute
-    int16_t ro_attrib_ {};
+    int16_t ro_attrib_{};
     //@}
 
     /** @name User defined members. */

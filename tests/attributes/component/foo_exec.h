@@ -103,9 +103,9 @@ namespace Base_Impl
     /** @name Component attributes. */
     //@{
     /// Class member storing value of m_base_pt_base_pt attribute
-    int16_t m_base_pt_base_pt_ {};
+    int16_t m_base_pt_base_pt_{};
     /// Class member storing value of attr_base attribute
-    int16_t attr_base_ {};
+    int16_t attr_base_{};
     //@}
 
     /** @name User defined members. */
@@ -842,165 +842,165 @@ namespace Foo_Impl
     /** @name Component attributes. */
     //@{
     /// Class member storing value of m_base_pt_base_pt attribute
-    int16_t m_base_pt_base_pt_ {};
+    int16_t m_base_pt_base_pt_{};
     /// Class member storing value of attr_base attribute
-    int16_t attr_base_ {};
+    int16_t attr_base_{};
     /// Class member storing value of m_foo_pt_foo_pt attribute
-    int16_t m_foo_pt_foo_pt_ {};
+    int16_t m_foo_pt_foo_pt_{};
     /// Class member storing value of the_byte_get_set_raise attribute
-    uint8_t the_byte_get_set_raise_ {};
+    uint8_t the_byte_get_set_raise_{};
     /// Class member storing value of the_byte_set_raise attribute
-    uint8_t the_byte_set_raise_ {};
+    uint8_t the_byte_set_raise_{};
     /// Class member storing value of the_byte_get_raise attribute
-    uint8_t the_byte_get_raise_ {};
+    uint8_t the_byte_get_raise_{};
     /// Class member storing value of readonly_short_raise attribute
-    int16_t readonly_short_raise_ {};
+    int16_t readonly_short_raise_{};
     /// Class member storing value of readonly_short attribute
-    int16_t readonly_short_ {};
+    int16_t readonly_short_{};
     /// Class member storing value of my_char attribute
-    char my_char_ {};
+    char my_char_{};
     /// Class member storing value of my_octet attribute
-    uint8_t my_octet_ {};
+    uint8_t my_octet_{};
     /// Class member storing value of my_boolean attribute
-    bool my_boolean_ {};
+    bool my_boolean_{};
     /// Class member storing value of my_short attribute
-    int16_t my_short_ {};
+    int16_t my_short_{};
     /// Class member storing value of my_long attribute
-    int32_t my_long_ {};
+    int32_t my_long_{};
     /// Class member storing value of my_float attribute
-    float my_float_ {};
+    float my_float_{};
     /// Class member storing value of my_double attribute
-    double my_double_ {};
+    double my_double_{};
     /// Class member storing value of my_ulong attribute
-    uint32_t my_ulong_ {};
+    uint32_t my_ulong_{};
     /// Class member storing value of my_longlong attribute
-    int64_t my_longlong_ {};
+    int64_t my_longlong_{};
     /// Class member storing value of my_ulonglong attribute
-    uint64_t my_ulonglong_ {};
+    uint64_t my_ulonglong_{};
     /// Class member storing value of my_default_char attribute
-    char my_default_char_ {};
+    char my_default_char_{};
     /// Class member storing value of my_default_octet attribute
-    uint8_t my_default_octet_ {};
+    uint8_t my_default_octet_{};
     /// Class member storing value of my_default_boolean attribute
-    bool my_default_boolean_ {};
+    bool my_default_boolean_{};
     /// Class member storing value of my_default_short attribute
-    int16_t my_default_short_ {};
+    int16_t my_default_short_{};
     /// Class member storing value of my_default_long attribute
-    int32_t my_default_long_ {};
+    int32_t my_default_long_{};
     /// Class member storing value of my_default_float attribute
-    float my_default_float_ {};
+    float my_default_float_{};
     /// Class member storing value of my_default_double attribute
-    double my_default_double_ {};
+    double my_default_double_{};
     /// Class member storing value of my_default_ulong attribute
-    uint32_t my_default_ulong_ {};
+    uint32_t my_default_ulong_{};
     /// Class member storing value of my_default_longlong attribute
-    int64_t my_default_longlong_ {};
+    int64_t my_default_longlong_{};
     /// Class member storing value of my_default_ulonglong attribute
-    uint64_t my_default_ulonglong_ {};
+    uint64_t my_default_ulonglong_{};
     /// Class member storing value of my_longdouble attribute
-    long double my_longdouble_ {};
+    long double my_longdouble_{};
     /// Class member storing value of my_default_longdouble attribute
-    long double my_default_longdouble_ {};
+    long double my_default_longdouble_{};
     /// Class member storing value of my_bounded_string attribute
-    ::bounded_string my_bounded_string_;
+    ::bounded_string my_bounded_string_{};
     /// Class member storing value of my_variable_string attribute
-    std::string my_variable_string_;
+    std::string my_variable_string_{};
     /// Class member storing value of my_default_variable_string attribute
-    std::string my_default_variable_string_;
+    std::string my_default_variable_string_{};
     /// Class member storing value of my_bounded_wstring attribute
-    ::bounded_wstring my_bounded_wstring_;
+    ::bounded_wstring my_bounded_wstring_{};
     /// Class member storing value of my_variable_wstring attribute
-    std::wstring my_variable_wstring_;
+    std::wstring my_variable_wstring_{};
     /// Class member storing value of my_long_array attribute
-    ::long_array my_long_array_;
+    ::long_array my_long_array_{{}};
     /// Class member storing value of my_ulong_array attribute
-    ::ulong_array my_ulong_array_;
+    ::ulong_array my_ulong_array_{{}};
     /// Class member storing value of my_longlong_array attribute
-    ::longlong_array my_longlong_array_;
+    ::longlong_array my_longlong_array_{{}};
     /// Class member storing value of my_ulonglong_array attribute
-    ::ulonglong_array my_ulonglong_array_;
+    ::ulonglong_array my_ulonglong_array_{{}};
     /// Class member storing value of my_short_array attribute
-    ::short_array my_short_array_;
+    ::short_array my_short_array_{{}};
     /// Class member storing value of my_ushort_array attribute
-    ::ushort_array my_ushort_array_;
+    ::ushort_array my_ushort_array_{{}};
     /// Class member storing value of my_string_array attribute
-    ::string_array my_string_array_;
+    ::string_array my_string_array_{{}};
     /// Class member storing value of my_wstring_array attribute
-    ::wstring_array my_wstring_array_;
+    ::wstring_array my_wstring_array_{{}};
     /// Class member storing value of my_char_array attribute
-    ::char_array my_char_array_;
+    ::char_array my_char_array_{{}};
     /// Class member storing value of my_wchar_array attribute
-    ::wchar_array my_wchar_array_;
+    ::wchar_array my_wchar_array_{{}};
     /// Class member storing value of my_double_array attribute
-    ::double_array my_double_array_;
+    ::double_array my_double_array_{{}};
     /// Class member storing value of my_longdouble_array attribute
-    ::longdouble_array my_longdouble_array_;
+    ::longdouble_array my_longdouble_array_{{}};
     /// Class member storing value of my_float_array attribute
-    ::float_array my_float_array_;
+    ::float_array my_float_array_{{}};
     /// Class member storing value of my_boolean_array attribute
-    ::boolean_array my_boolean_array_;
+    ::boolean_array my_boolean_array_{{}};
     /// Class member storing value of my_octet_array attribute
-    ::octet_array my_octet_array_;
+    ::octet_array my_octet_array_{{}};
     /// Class member storing value of my_multi_dimensional_short_array attribute
-    ::multi_dimensional_short_array my_multi_dimensional_short_array_;
+    ::multi_dimensional_short_array my_multi_dimensional_short_array_{{}};
     /// Class member storing value of my_short_sequence attribute
-    ::short_sequence my_short_sequence_;
+    ::short_sequence my_short_sequence_{};
     /// Class member storing value of my_empty_sequence attribute
-    ::short_sequence my_empty_sequence_;
+    ::short_sequence my_empty_sequence_{};
     /// Class member storing value of my_long_sequence attribute
-    ::long_sequence my_long_sequence_;
+    ::long_sequence my_long_sequence_{};
     /// Class member storing value of my_float_sequence attribute
-    ::float_sequence my_float_sequence_;
+    ::float_sequence my_float_sequence_{};
     /// Class member storing value of my_double_sequence attribute
-    ::double_sequence my_double_sequence_;
+    ::double_sequence my_double_sequence_{};
     /// Class member storing value of my_string_sequence attribute
-    ::string_sequence my_string_sequence_;
+    ::string_sequence my_string_sequence_{};
     /// Class member storing value of my_string_sequence_2 attribute
-    ::string_sequence2 my_string_sequence_2_;
+    ::string_sequence2 my_string_sequence_2_{};
     /// Class member storing value of my_array_sequence attribute
-    ::array_sequence my_array_sequence_;
+    ::array_sequence my_array_sequence_{};
     /// Class member storing value of my_bar_struct attribute
-    ::Bar my_bar_struct_;
+    ::Bar my_bar_struct_{};
     /// Class member storing value of my_default_bar_struct attribute
-    ::Bar my_default_bar_struct_;
+    ::Bar my_default_bar_struct_{};
     /// Class member storing value of my_bar_array attribute
-    ::BarArray my_bar_array_;
+    ::BarArray my_bar_array_{{}};
     /// Class member storing value of my_bar_array_2 attribute
-    ::BarArray2 my_bar_array_2_;
+    ::BarArray2 my_bar_array_2_{{}};
     /// Class member storing value of my_sequence_array attribute
-    ::SequenceArray my_sequence_array_;
+    ::SequenceArray my_sequence_array_{{}};
     /// Class member storing value of my_bar_struct_array attribute
-    ::BarStruct my_bar_struct_array_;
+    ::BarStruct my_bar_struct_array_{};
     /// Class member storing value of my_baz_struct attribute
-    ::Baz my_baz_struct_;
+    ::Baz my_baz_struct_{};
     /// Class member storing value of my_data_union attribute
-    ::Data my_data_union_;
+    ::Data my_data_union_{};
     /// Class member storing value of my_var_data_union attribute
-    ::Data2 my_var_data_union_;
+    ::Data2 my_var_data_union_{};
     /// Class member storing value of my_struct_struct attribute
-    ::StructModule::StructStruct my_struct_struct_;
+    ::StructModule::StructStruct my_struct_struct_{};
     /// Class member storing value of my_sequence_bounded_string attribute
-    ::sequence_bounded_string my_sequence_bounded_string_;
+    ::sequence_bounded_string my_sequence_bounded_string_{};
     /// Class member storing value of my_sequence_bounded_wstring attribute
-    ::sequence_bounded_wstring my_sequence_bounded_wstring_;
+    ::sequence_bounded_wstring my_sequence_bounded_wstring_{};
     /// Class member storing value of my_bounded_sequence_bounded_string attribute
-    ::bounded_sequence_bounded_string my_bounded_sequence_bounded_string_;
+    ::bounded_sequence_bounded_string my_bounded_sequence_bounded_string_{};
     /// Class member storing value of my_bounded_sequence_bounded_wstring attribute
-    ::bounded_sequence_bounded_wstring my_bounded_sequence_bounded_wstring_;
+    ::bounded_sequence_bounded_wstring my_bounded_sequence_bounded_wstring_{};
     /// Class member storing value of my_bounded_string_array attribute
-    ::bounded_string_array my_bounded_string_array_;
+    ::bounded_string_array my_bounded_string_array_{{}};
     /// Class member storing value of my_bounded_wstring_array attribute
-    ::bounded_wstring_array my_bounded_wstring_array_;
+    ::bounded_wstring_array my_bounded_wstring_array_{{}};
     /// Class member storing value of my_data_type attribute
-    ::DataType my_data_type_ {};
+    ::DataType my_data_type_{};
     /// Class member storing value of my_data_type_type attribute
-    ::data_type_type my_data_type_type_ {};
+    ::data_type_type my_data_type_type_{};
     /// Class member storing value of my_any attribute
-    CORBA::Any my_any_;
+    CORBA::Any my_any_{};
     /// Class member storing value of my_any_type attribute
-    ::any_type my_any_type_;
+    ::any_type my_any_type_{};
     /// Class member storing value of my_foo_interface attribute
-    IDL::traits< ::MyFoo>::ref_type my_foo_interface_;
+    IDL::traits< ::MyFoo>::ref_type my_foo_interface_{};
     //@}
 
     /** @name Component facets. */

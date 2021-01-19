@@ -61,7 +61,7 @@ namespace <%= executor_cxx_namespace %>
       }
 %     else
       {
-        <%= attr.cxx_member_type %> _extract_val;
+        <%= attr.cxx_member_type %> _extract_val<%= attr.zero_initializer %>;
         if (!(descr_value >>= _extract_val))
         {
           // Unable to extract value from Any

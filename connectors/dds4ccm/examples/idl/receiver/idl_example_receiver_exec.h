@@ -220,7 +220,7 @@ namespace Example_BasicSubscriber_comp_Impl
     /** @name Component attributes. */
     //@{
     /// Class member storing value of count attribute
-    uint32_t count_ {};
+    uint32_t count_{};
     //@}
 
     /** @name Component facets. */

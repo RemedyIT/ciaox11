@@ -96,7 +96,7 @@ namespace Example_User_Impl
     /** @name Component attributes. */
     //@{
     /// Class member storing value of connection attribute
-    std::string connection_;
+    std::string connection_{};
     //@}
 
     /** @name Component facets. */
