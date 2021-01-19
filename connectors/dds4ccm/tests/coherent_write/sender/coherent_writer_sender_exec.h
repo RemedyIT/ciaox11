@@ -247,9 +247,9 @@ namespace CoherentWriter_Sender_Impl
     /** @name Component attributes. */
     //@{
     /// Class member storing value of act_as_updater attribute
-    bool act_as_updater_ {};
+    bool act_as_updater_{};
     /// Class member storing value of iterations attribute
-    uint16_t iterations_ {};
+    uint16_t iterations_{};
     //@}
 
     /** @name Component facets. */

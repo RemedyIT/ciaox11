@@ -23,7 +23,7 @@
 %    if _p.port_type == :receptacle
 %      if !_p.is_multiple? && _p.is_ami4ccm_port?
     /// Member variable for storing a reference for the sendc <%= _p.cxxname %> receptacle
-    IDL::traits< ::<%= _p.interface_type.scoped_ami4ccm_name %>>::ref_type sendc_<%= _p.cxxname %>_;
+    IDL::traits< ::<%= _p.interface_type.scoped_ami4ccm_name %>>::ref_type sendc_<%= _p.cxxname %>_{};
 %      end
 %    end
     //@}

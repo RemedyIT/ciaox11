@@ -201,17 +201,17 @@ namespace Hello_Sender_Impl
     /** @name Component attributes. */
     //@{
     /// Class member storing value of my_attribute attribute
-    ::Hello::foo_seq my_attribute_;
+    ::Hello::foo_seq my_attribute_{};
     /// Class member storing value of my_attrib2 attribute
-    ::Hello::foo_long my_attrib2_ {};
+    ::Hello::foo_long my_attrib2_{};
     /// Class member storing value of my_attrib3 attribute
-    ::Hello::bar_seq my_attrib3_;
+    ::Hello::bar_seq my_attrib3_{};
     /// Class member storing value of my_attrib4 attribute
-    ::Hello::foo_struct my_attrib4_;
+    ::Hello::foo_struct my_attrib4_{};
     /// Class member storing value of my_attrib5 attribute
-    int32_t my_attrib5_ {};
+    int32_t my_attrib5_{};
     /// Class member storing value of my_attrib6 attribute
-    ::Hello::out_seq my_attrib6_;
+    ::Hello::out_seq my_attrib6_{};
     //@}
 
     /** @name Component facets. */

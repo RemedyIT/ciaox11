@@ -101,9 +101,9 @@ namespace Hello_Sender_Impl
     /** @name Members to store attribute values from ::Hello::CCM_MyFoo */
     //@{
     /// Class member storing value of rw_attrib attribute
-    int16_t rw_attrib_ {};
+    int16_t rw_attrib_{};
     /// Class member storing value of ro_attrib attribute
-    int16_t ro_attrib_ {};
+    int16_t ro_attrib_{};
     //@}
 
     /** @name User defined members. */
@@ -261,13 +261,13 @@ namespace Hello_Sender_Impl
     /** @name Component attributes. */
     //@{
     /// Class member storing value of my_sen_attrib attribute
-    int32_t my_sen_attrib_ {};
+    int32_t my_sen_attrib_{};
     /// Class member storing value of my_sen_attrib2 attribute
-    int16_t my_sen_attrib2_ {};
+    int16_t my_sen_attrib2_{};
     /// Class member storing value of Test attribute
-    ::Bar Test_;
+    ::Bar Test_{};
     /// Class member storing value of TestBar attribute
-    ::Foo::Bar TestBar_;
+    ::Foo::Bar TestBar_{};
     //@}
 
     /** @name Component facets. */

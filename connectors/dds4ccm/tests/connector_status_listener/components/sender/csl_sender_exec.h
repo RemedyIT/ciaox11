@@ -222,9 +222,9 @@ namespace CSL_Test_Sender_Impl
     /** @name Component attributes. */
     //@{
     /// Class member storing value of csl_assignment attribute
-    std::string csl_assignment_;
+    std::string csl_assignment_{};
     /// Class member storing value of samples_to_write attribute
-    uint32_t samples_to_write_ {};
+    uint32_t samples_to_write_{};
     //@}
 
     /** @name Component facets. */

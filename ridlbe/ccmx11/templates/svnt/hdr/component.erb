@@ -80,14 +80,14 @@ namespace <%= executor_cxx_namespace %>
 %  all_ports.each do |_mps|
 %    if _mps.port_type == :receptacle && _mps.is_multiple?
     /// Member variable for storing a map for the multiplex <%= _mps.interface_type.scoped_cxxname %> <%= _mps.lem_name %> connection
-    <%= _mps.interface_type.scoped_cxxname.upcase.identify %>_CONTEXT_TABLE <%= _mps.lem_name %>_context_tbl_;
+    <%= _mps.interface_type.scoped_cxxname.upcase.identify %>_CONTEXT_TABLE <%= _mps.lem_name %>_context_tbl_{};
 %    end
 %  end
 %  all_ports.each do |_p|
 %    if _p.port_type == :receptacle
 %      if !_p.is_multiple?
     /// Member variable for storing a reference for the <%= _p.cxxname %> receptacle
-    <%= _p.interface_type.scoped_cxx_member_type %> <%= _p.cxxname %>_;
+    <%= _p.interface_type.scoped_cxx_member_type %> <%= _p.cxxname %>_{};
 %      end
 %    end
 %  end

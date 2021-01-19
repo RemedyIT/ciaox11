@@ -132,15 +132,15 @@ namespace Shapes_Control_comp_Impl
     /** @name Component attributes. */
     //@{
     /// Class member storing value of rate attribute
-    uint32_t rate_ {};
+    uint32_t rate_{};
     /// Class member storing value of max_x attribute
-    uint16_t max_x_ {};
+    uint16_t max_x_{};
     /// Class member storing value of max_y attribute
-    uint16_t max_y_ {};
+    uint16_t max_y_{};
     /// Class member storing value of max_size attribute
-    uint16_t max_size_ {};
+    uint16_t max_size_{};
     /// Class member storing value of resize_shape attribute
-    bool resize_shape_ {};
+    bool resize_shape_{};
     //@}
 
     /** @name Component facets. */

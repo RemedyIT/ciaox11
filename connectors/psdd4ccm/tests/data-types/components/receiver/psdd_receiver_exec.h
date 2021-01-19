@@ -115,11 +115,11 @@ namespace Test_Receiver_Impl
     /** @name Component attributes. */
     //@{
     /// Class member storing value of count attribute
-    uint32_t count_ {};
+    uint32_t count_{};
     /// Class member storing value of delay attribute
-    uint32_t delay_ {};
+    uint32_t delay_{};
     /// Class member storing value of interval attribute
-    uint32_t interval_ {};
+    uint32_t interval_{};
     //@}
 
     /** @name Component facets. */

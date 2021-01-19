@@ -191,9 +191,9 @@ namespace CFT_EL_Test_Sender_Impl
     /** @name Component attributes. */
     //@{
     /// Class member storing value of keys attribute
-    uint16_t keys_ {};
+    uint16_t keys_{};
     /// Class member storing value of iterations attribute
-    uint16_t iterations_ {};
+    uint16_t iterations_{};
     //@}
 
     /** @name Component facets. */

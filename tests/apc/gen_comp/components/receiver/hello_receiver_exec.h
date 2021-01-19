@@ -90,9 +90,9 @@ namespace Hello_Receiver_Impl
     /** @name Members to store attribute values from ::Hello::CCM_MyFoo */
     //@{
     /// Class member storing value of rw_attrib attribute
-    int16_t rw_attrib_ {};
+    int16_t rw_attrib_{};
     /// Class member storing value of ro_attrib attribute
-    int16_t ro_attrib_ {};
+    int16_t ro_attrib_{};
     //@}
 
     /** @name User defined members. */
@@ -166,9 +166,9 @@ namespace Hello_Receiver_Impl
     /** @name Members to store attribute values from ::Hello::CCM_MyFoo */
     //@{
     /// Class member storing value of rw_attrib attribute
-    int16_t rw_attrib_ {};
+    int16_t rw_attrib_{};
     /// Class member storing value of ro_attrib attribute
-    int16_t ro_attrib_ {};
+    int16_t ro_attrib_{};
     //@}
 
     /** @name User defined members. */
@@ -304,7 +304,7 @@ namespace Hello_Receiver_Impl
     /** @name Component attributes. */
     //@{
     /// Class member storing value of my_rec_attrib_bar attribute
-    ::Foo::Bar_in_Bar my_rec_attrib_bar_;
+    ::Foo::Bar_in_Bar my_rec_attrib_bar_{};
     //@}
 
     /** @name Component facets. */

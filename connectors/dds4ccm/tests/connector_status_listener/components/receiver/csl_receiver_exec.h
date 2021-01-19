@@ -277,9 +277,9 @@ namespace CSL_Test_Receiver_Impl
     /** @name Component attributes. */
     //@{
     /// Class member storing value of csl_assignment attribute
-    std::string csl_assignment_;
+    std::string csl_assignment_{};
     /// Class member storing value of samples_to_receive attribute
-    uint32_t samples_to_receive_ {};
+    uint32_t samples_to_receive_{};
     //@}
 
     /** @name Component facets. */

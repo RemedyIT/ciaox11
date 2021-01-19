@@ -206,11 +206,11 @@ namespace Hello_Sender_Impl
     /** @name Component attributes. */
     //@{
     /// Class member storing value of rate attribute
-    uint16_t rate_ {};
+    uint16_t rate_{};
     /// Class member storing value of iterations attribute
-    uint16_t iterations_ {};
+    uint16_t iterations_{};
     /// Class member storing value of keys attribute
-    uint16_t keys_ {};
+    uint16_t keys_{};
     //@}
 
     /** @name Component facets. */

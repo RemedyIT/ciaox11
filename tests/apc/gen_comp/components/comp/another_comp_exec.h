@@ -195,19 +195,19 @@ namespace AnotherComp_Impl
     /** @name Component attributes. */
     //@{
     /// Class member storing value of my_sen_attrib attribute
-    int32_t my_sen_attrib_ {};
+    int32_t my_sen_attrib_{};
     /// Class member storing value of TestBar attribute
-    ::Foo::Bar TestBar_;
+    ::Foo::Bar TestBar_{};
     /// Class member storing value of my_sen_attrib_2 attribute
-    int32_t my_sen_attrib_2_ {};
+    int32_t my_sen_attrib_2_{};
     /// Class member storing value of my_sen_attrib_3 attribute
-    int32_t my_sen_attrib_3_ {};
+    int32_t my_sen_attrib_3_{};
     /// Class member storing value of TestBar_2 attribute
-    ::Foo::Bar TestBar_2_;
+    ::Foo::Bar TestBar_2_{};
     /// Class member storing value of TestBarBar attribute
-    ::Foo::Bar_in_Bar TestBarBar_;
+    ::Foo::Bar_in_Bar TestBarBar_{};
     /// Class member storing value of TestBarNestedBar attribute
-    ::Foo::Bar_with_nested_bar TestBarNestedBar_;
+    ::Foo::Bar_with_nested_bar TestBarNestedBar_{};
     //@}
 
     /** @name Component facets. */
