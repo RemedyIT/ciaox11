@@ -100,7 +100,7 @@ namespace Hello_Sender_Impl
     /** @name Component attributes. */
     //@{
     /// Class member storing value of ojee attribute
-    int16_t ojee_ {};
+    int16_t ojee_{};
     //@}
 
     /** @name Component facets. */

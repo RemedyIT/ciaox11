@@ -116,11 +116,11 @@ namespace BST_BST_comp_Impl
     /** @name Component attributes. */
     //@{
     /// Class member storing value of MyBoundedString attribute
-    ::BST::MyBoundedStringType MyBoundedString_;
+    ::BST::MyBoundedStringType MyBoundedString_{};
     /// Class member storing value of MyUnboundedString attribute
-    ::BST::MyStringTypedef MyUnboundedString_;
+    ::BST::MyStringTypedef MyUnboundedString_{};
     /// Class member storing value of MyStruct attribute
-    ::BST::MyStructType MyStruct_;
+    ::BST::MyStructType MyStruct_{};
     //@}
 
     /** @name Component facets. */
