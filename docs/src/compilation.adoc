@@ -24,7 +24,7 @@ pattern
 ** <<{xref_docs_root}/corba4ccm/corba4ccm.adoc#,synchronous request/reply>>
 ** <<{xref_docs_root}/ami4ccm/ami4ccm.adoc#,asynchronous request/reply>>
 ** <<{xref_docs_root}/dds4ccm/dds4ccm.adoc#,state/event>>
-include::{ciaox11_src_root}/connectors/psdd4ccm/docs/src/compilation.asc[tag=pattern1,opts=optional]
+include::{ciaox11_src_root}/connectors/psdd4ccm/docs/src/compilation.asc[tag=pattern1]
 
 .  The "connector" IDL +
 Defines the connector that realizes a specific interaction pattern.
@@ -110,7 +110,7 @@ This is the implied IDL that should be used for a certain pattern
 * <<{xref_docs_root}/corba4ccm/corba4ccm.adoc#,synchronous request/reply>>
 * <<{xref_docs_root}/ami4ccm/ami4ccm.adoc#,asynchronous request/reply>>
 * <<{xref_docs_root}/dds4ccm/dds4ccm.adoc#,state/event>>
-include::{ciaox11_src_root}/connectors/psdd4ccm/docs/src/compilation.asc[tag=pattern2,opts=optional]
+include::{ciaox11_src_root}/connectors/psdd4ccm/docs/src/compilation.asc[tag=pattern2]
 
 
 ==== Synchronous request/reply

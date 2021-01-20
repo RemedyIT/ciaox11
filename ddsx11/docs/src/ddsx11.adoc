@@ -242,6 +242,6 @@ Given an IDL type `foo` this can be done using the
 
 == DDS vendor support
 
-include::{ciaox11_src_root}/ddsx11/vendors/ndds/docs/src/ddsx11.asc[]
-
 include::{ciaox11_src_root}/ddsx11/vendors/opendds/docs/src/ddsx11.asc[opts=optional]
+
+include::{ciaox11_src_root}/ddsx11/vendors/ndds/docs/src/ddsx11.asc[]
