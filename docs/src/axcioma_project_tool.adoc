@@ -760,7 +760,7 @@ Properties::
 [footnote]#xref:comp-port-gets[icon:caret-right[]{nbsp}{nbsp}gets]# +
 [footnote]#xref:comp-port-monitors[icon:caret-right[]{nbsp}{nbsp}monitors]# +
 [footnote]#xref:comp-port-observes[icon:caret-right[]{nbsp}{nbsp}observes]# +
-include::{ciaox11_src_root}/connectors/psdd4ccm/docs/src/axcioma_project_tool.asc[tag=pubsubporttype,opts=optional]
+include::{ciaox11_src_root}/connectors/psdd4ccm/docs/src/axcioma_project_tool.asc[tag=pubsubporttype]
 [footnote]#xref:comp-port-timed_trigger[icon:caret-right[]{nbsp}{nbsp}timed_trigger]#
 
 [cols="<2m,<8a",options="header"]
@@ -1109,7 +1109,7 @@ comp.define 'Module::Receiver' do \|intf\|
 end
 ----
 
-include::{ciaox11_src_root}/connectors/psdd4ccm/docs/src/axcioma_project_tool.asc[tag=porttype,opts=optional]
+include::{ciaox11_src_root}/connectors/psdd4ccm/docs/src/axcioma_project_tool.asc[tag=porttype]
 
 |[[comp-port-timed_trigger]]timed_trigger
 |
@@ -1258,7 +1258,7 @@ for synchronous request-reply interaction
 for asynchronous request-reply interaction
 * `_:dds4ccm_` +
 for state and event interaction
-include::{ciaox11_src_root}/connectors/psdd4ccm/docs/src/axcioma_project_tool.asc[tag=connectorkind,opts=optional]
+include::{ciaox11_src_root}/connectors/psdd4ccm/docs/src/axcioma_project_tool.asc[tag=connectorkind]
 
 The following properties can be used to define a `connector` recipe. If a property is not mandatory it can be omitted in
 which case the default applies.
@@ -1332,7 +1332,7 @@ possible <port type> values:::
 * `:corba4ccm`
 * `:ami4ccm`
 * `:dds4ccm`
-include::{ciaox11_src_root}/connectors/psdd4ccm/docs/src/axcioma_project_tool.asc[tag=porttypelist,opts=optional]
+include::{ciaox11_src_root}/connectors/psdd4ccm/docs/src/axcioma_project_tool.asc[tag=porttypelist]
 
 .example
 [source, ruby]
@@ -1635,7 +1635,7 @@ end
 
 |=======================================================================
 
-include::{ciaox11_src_root}/connectors/psdd4ccm/docs/src/axcioma_project_tool.asc[leveloffset=+4,tag=porttypeproperties,opts=optional]
+include::{ciaox11_src_root}/connectors/psdd4ccm/docs/src/axcioma_project_tool.asc[leveloffset=+4,tag=porttypeproperties]
 
 ==== Base recipe
 
