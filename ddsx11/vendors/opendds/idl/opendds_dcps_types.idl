@@ -1,0 +1,23 @@
+/**
+ * @file    opendds_dcps_types.idl
+ * @author  Johnny Willemsen
+ *
+ * @brief   All DDS IDL types for which we need to generate AnyTypecode support
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ */
+
+#ifndef OPENDDS_DCPS_TYPES_IDL_
+#define OPENDDS_DCPS_TYPES_IDL_
+
+module DDS {
+  // For DomainId_t AnyTypecode support has to be generated because it is in the
+  // DDS4CCM IDL as attribute
+  typedef long DomainId_t;
+
+  // For StringSeq AnyTypecode support has to be generated because it is in the
+  // DDS4CCM IDL as attribute
+  typedef sequence<string> StringSeq;
+};
+
+#endif /* OPENDDS_DCPS_TYPES_IDL_ */
