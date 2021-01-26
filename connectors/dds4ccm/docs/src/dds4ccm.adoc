@@ -16,7 +16,7 @@ DDS4CCM implementation uses several DDSX11 generated files which are
 link:{docs_root}/../../ciaox11/ddsx11/examples/shapes[DDSX11] for an example DDS Shapes
 sender and receiver using DDSX11.
 
-include::{ciaox11_src_root}/ddsx11/vendors/opendds/dds4ccm/docs/src/dds4ccm.asc[opts=optional]
+include::{ciaox11_src_root}/ddsx11/vendors/opendds/dds4ccm/docs/src/dds4ccm.asc[]
 
 include::{ciaox11_src_root}/ddsx11/vendors/ndds/dds4ccm/docs/src/dds4ccm.asc[]
 
