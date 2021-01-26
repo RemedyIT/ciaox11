@@ -22,7 +22,7 @@ module BRIX11
 
       def run(*args)
         # return project if  exist
-        project = AxciomaPC::Project.get_project()
+        project = AxciomaPC::Project.load_project(:never)
 
         if options[:verbose] > 5
           project.dump

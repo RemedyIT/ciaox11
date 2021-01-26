@@ -77,20 +77,23 @@ module AxciomaPC
         @projects ||= {}
       end
 
-      # retrieve previously loaded project for given root path OR
+      # retrieve previously loaded project for given root path (if any)
+      def get_project(root_path)
+        BRIX11.log(1, '[APC::Project] retrieving project [%s]', projects[root_path])
+        projects[root_path]
+      end
+
       # (re-)load project for current working environment
-      def get_project(root_path=nil)
+      def load_project(autogen = :allways)
         BRIX11.log(2, '[APC::Project] loading project')
-        if root_path.nil? || root_path.empty?
-          root_path = find_project_root
-          # make sure that recipes are loaded and interpreted again
-          if !projects[root_path].nil?
-            projects[root_path] = nil
-          end
-          # project doesn't exist yet/anymore.
-          # so add a new project
-          projects[root_path] = add_project(root_path)
+        root_path = find_project_root
+        # make sure that recipes are loaded and interpreted again
+        if !projects[root_path].nil?
+          projects[root_path] = nil
         end
+        # project doesn't exist yet/anymore.
+        # so add a new project
+        projects[root_path] = add_project(root_path, autogen)
         BRIX11.log(1, '[%s] loaded project', projects[root_path])
         projects[root_path]
       end
@@ -120,9 +123,9 @@ module AxciomaPC
       end
 
       # load and add a new project
-      def add_project(root_path)
+      def add_project(root_path, autogen)
         BRIX11.log(2, '[APC::Project] creating project for root %s', root_path)
-        prj = AxciomaPC::Project.new(root_path)
+        prj = AxciomaPC::Project.new(root_path, autogen)
         frc = File.join(root_path, RCFILE)
         if File.file?(frc) && File.readable?(frc)
           prj.configure(File.read(frc), frc)
@@ -135,8 +138,9 @@ module AxciomaPC
 
     end
 
-    def initialize(root_path)
+    def initialize(root_path, autogen = :allways)
       @root_path = root_path
+      @autogenerate = autogen
       @idl_files = {}
       @idl_dirs = {}
       @idl_index = {}
@@ -152,7 +156,7 @@ module AxciomaPC
       libout('lib')
     end
 
-    attr_accessor :root_path
+    attr_accessor :root_path, :autogenerate
 
     def configure(code, path)
       prj = Configurator.new(self)
