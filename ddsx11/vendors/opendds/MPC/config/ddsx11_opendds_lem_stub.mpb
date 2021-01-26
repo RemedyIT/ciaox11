@@ -1,0 +1,10 @@
+// --------------------------------------------------------------------
+// ddsx11_opendds_lem_stub.mpb
+//
+// Copyright (c) Remedy IT Expertise BV
+// --------------------------------------------------------------------
+
+project : ddsx11_opendds_stub {
+  after += ddsx11_opendds_lem_stub
+  libs += ddsx11_opendds_lem_stub
+}

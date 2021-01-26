@@ -1,0 +1,24 @@
+// --------------------------------------------------------------------
+// ddsx11_opendds_conversion_traits.mpb
+//
+// Copyright (c) Remedy IT Expertise BV
+// --------------------------------------------------------------------
+
+feature(ddsx11, opendds) {
+  // Let the RIDL compiler generate the conversion traits.
+  idlflags += -Gddsx11,traits
+
+  Modify_Custom (IDL) {
+    optional(header_pre_extension) {
+      commandflags(-Gddsx11,traits) += _dds_traits
+    }
+  }
+}
+
+feature(!ddsx11) {
+  requires += dummy_label
+}
+
+feature(ddsx11, !opendds) {
+  requires += dummy_label
+}

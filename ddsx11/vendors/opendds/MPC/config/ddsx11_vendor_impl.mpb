@@ -1,0 +1,36 @@
+// --------------------------------------------------------------------
+// ddsx11_vendor_impl.mpb
+//
+// Copyright (c) Remedy IT Expertise BV
+// --------------------------------------------------------------------
+
+project : ddsx11_opendds_flags, \
+          ddsx11_opendds_libs, \
+          ddsx11_opendds_stub {
+
+  sharedname = ddsx11_opendds_impl
+
+  Header_Files {
+    ../vendors/opendds/dds/base_traits.h
+    ../vendors/opendds/dds/dds_common.h
+    ../vendors/opendds/dds/dds_vendor_conversion_traits.h
+    ../vendors/opendds/dds/opendds_domain_participant.h
+    ../vendors/opendds/dds/opendds_domain_participant_factory.h
+    ../vendors/opendds/dds/opendds_publisher.h
+    ../vendors/opendds/dds/opendds_subscriber.h
+    ../vendors/opendds/dds/opendds_typedefs.h
+    ../vendors/opendds/dds/dds_listener_guard_t.h
+  }
+
+  Source_Files {
+    ../vendors/opendds/dds/opendds_domain_participant.cpp
+    ../vendors/opendds/dds/opendds_domain_participant_factory.cpp
+    ../vendors/opendds/dds/opendds_publisher.cpp
+    ../vendors/opendds/dds/opendds_specific.cpp
+    ../vendors/opendds/dds/opendds_subscriber.cpp
+  }
+
+  Template_Files {
+    ../vendors/opendds/dds/dds_data_reader_native_entity_t.cpp
+  }
+}

@@ -1,0 +1,18 @@
+// --------------------------------------------------------------------
+// ddsx11_vendor_ts_defaults.mpb
+//
+// Vendor specific IDL compiler flags.
+//
+// Copyright (c) Remedy IT Expertise BV
+// --------------------------------------------------------------------
+
+feature(ddsx11, opendds) : ddsx11_dcps, dcps_ts_subdir {
+  // this allows the user's project to reference NDDSTypeSupport_Files,
+  // which will simply be ignored
+  Define_Custom(NDDSTypeSupport) {
+  }
+}
+
+feature(!opendds) {
+  requires += dummy_label
+}

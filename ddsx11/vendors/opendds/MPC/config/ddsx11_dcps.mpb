@@ -1,0 +1,29 @@
+// --------------------------------------------------------------------
+// ddsx11_dcps.mpb
+//
+// Copyright (c) Remedy IT Expertise BV
+// --------------------------------------------------------------------
+
+// Helper project to only make this available dependent on a MPC feature
+feature(ddsx11, opendds) : dcps {
+}
+
+feature(ddsx11, !opendds) {
+  requires += dummy_label
+  Define_Custom(TypeSupport) {
+    keyword dcps_ts_flags = commandflags
+  }
+  Define_Custom(IDL) {
+    keyword idlflags = commandflags
+  }
+}
+
+feature(!ddsx11) {
+  requires += dummy_label
+  Define_Custom(TypeSupport) {
+    keyword dcps_ts_flags = commandflags
+  }
+  Define_Custom(IDL) {
+    keyword idlflags = commandflags
+  }
+}
