@@ -42,7 +42,7 @@ module BRIX11
 
       def run(argv)
         # return project if  exist
-        project = AxciomaPC::Project.get_project()
+        project = AxciomaPC::Project.load_project(:ifneeded)
 
         if !project
           raise Command::CmdError, 'Unable to locate AXCIOMA project root'

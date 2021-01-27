@@ -88,38 +88,45 @@ module AxciomaPC
       end
 
       def create_component_idl
-        options_ = {
-          name: @recipe.recipe_id,
-          modules: @recipe.comp_name.split('::'),
-          attributes: @attributes,
-          ports: @ports,
-          idl: Util::UniqueStringList.new
-        }
-        options_[:comp_name] = options_[:modules].pop
-
-        @ports.each do |p|
-          if p.type == 'uses' && p.intf_name == 'CCM_TT::TT_Scheduler'
-             # no user defined idl_interface, use always <ccm_timed_trigger.idl>
-             options_[:ttc] = true
-          else
-            options_[:idl] << p.idl_interface
-          end
-        end
-
-        @attributes.each do |a|
-          options_[:idl] << a.idl_attribute
-        end
-
         # create output path
         file_name_ = File.join(@recipe.recipe_file.path,"#{@recipe.recipe_id}.idl")
-        BRIX11.log(5, 'generating component IDL [%s]', file_name_)
-        # execute file creation task for IDL file
-        BRIX11::GenFile.transaction do
-          w = ComponentIDLWriter.new(BRIX11::GenFile.new(file_name_), options_)
-          w.visit_comp_idl
-        end
         # keep administration of generated idl files
-        @recipe.project.add_idl_file(file_name_, :generated)
+        idl_file = @recipe.project.add_idl_file(file_name_, :generated)
+        if @recipe.project.autogenerate == :allways || (@recipe.project.autogenerate == :ifneeded && !File.exist?(file_name_))
+          BRIX11.log(5, 'generating component IDL [%s]', file_name_)
+
+          options_ = {
+            name: @recipe.recipe_id,
+            modules: @recipe.comp_name.split('::'),
+            attributes: @attributes,
+            ports: @ports,
+            idl: Util::UniqueStringList.new
+          }
+          options_[:comp_name] = options_[:modules].pop
+
+          @ports.each do |p|
+            if p.type == 'uses' && p.intf_name == 'CCM_TT::TT_Scheduler'
+               # no user defined idl_interface, use always <ccm_timed_trigger.idl>
+               options_[:ttc] = true
+            else
+              options_[:idl] << p.idl_interface
+            end
+          end
+
+          @attributes.each do |a|
+            options_[:idl] << a.idl_attribute
+          end
+
+          # execute file creation task for IDL file
+          BRIX11::GenFile.transaction do
+            w = ComponentIDLWriter.new(BRIX11::GenFile.new(file_name_), options_)
+            w.visit_comp_idl
+          end
+        else
+          # mark as scanned so no scanning will be attempted
+          idl_file.set_scanned
+        end
+        idl_file
       end
       private :create_component_idl
 

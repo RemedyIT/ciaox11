@@ -141,8 +141,10 @@ module AxciomaPC
         BRIX11.log(4, '[%s] post_configure', self)
         # keep topic idl if any
         @topic_idl = idl_files.values.first
-        # create and register interface IDLFile object with project
-        create_interface_idl
+        if project.autogenerate == :allways || (project.autogenerate == :ifneeded && !File.exist?(interface_idl_path))
+          # create and register interface IDLFile object with project
+          create_interface_idl
+        end
         # register as generated IDL in the project
         idlfile = project.add_idl_file(interface_idl_path, :generated)
         # mark the idl file for state/event interaction pattern requirements
