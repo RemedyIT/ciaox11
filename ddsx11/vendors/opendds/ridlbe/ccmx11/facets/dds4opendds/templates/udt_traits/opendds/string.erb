@@ -1,0 +1,74 @@
+% if is_bounded_type?
+
+// generated from <%= ridl_template_path %>
+// Unaliased type : <%= resolved_cxxtype %>
+% alias_md5 =  resolved_cxxtype.to_md5
+// MD5            : <%= alias_md5 %>
+#if !defined(_ALIAS_<%= alias_md5 %>_UDT_TRAITS_DECL_)
+#define _ALIAS_<%= alias_md5 %>_UDT_TRAITS_DECL_
+
+namespace DDSX11
+{
+  /// Conversion of <%= scoped_cxxname %> to DDS
+  template<>
+  inline char*&
+  to_dds<char*, <%= scoped_cxxtype %>> (
+    char* &to, const <%= scoped_cxxtype %> &from)
+  {
+    to = TAO_CORBA::string_dup (from.c_str ());
+    return to;
+  }
+
+  /// Conversion of <%= scoped_cxxname %> to DDS
+  template<>
+  inline const char*&
+  to_dds<const char*, <%= scoped_cxxtype %>> (
+    const char* &to, const <%= scoped_cxxtype %> &from)
+  {
+    to = from.c_str ();
+    return to;
+  }
+
+  /// Conversion of <%= scoped_cxxname %> to TAO String Manager
+  template<>
+  inline TAO::String_Manager&
+  to_dds<TAO::String_Manager, <%= scoped_cxxtype %>> (
+    TAO::String_Manager &to, const <%= scoped_cxxtype %> &from)
+  {
+    to = TAO_CORBA::string_dup (from.c_str ());
+    return to;
+  }
+
+  /// Conversion of <%= scoped_cxxname %> from DDS
+  template<>
+  inline <%= scoped_cxxtype %>&
+  from_dds<char*, <%= scoped_cxxtype %>> (
+    <%= scoped_cxxtype %> &to, char* const &from)
+  {
+    to = <%= scoped_cxxtype %> (from);
+    return to;
+  }
+
+  /// Conversion of <%= scoped_cxxname %> from TAO String Manager
+  template<>
+  inline <%= scoped_cxxtype %>&
+  from_dds<TAO::String_Manager, <%= scoped_cxxtype %>> (
+    <%= scoped_cxxtype %> &to, TAO::String_Manager const &from)
+  {
+    to = <%= scoped_cxxtype %> (from);
+    return to;
+  }
+
+  template <>
+  struct traits< <%= scoped_cxxtype %>>
+    : public common_traits< <%= scoped_cxxtype %>, char*>
+    , public convert_in< <%= scoped_cxxtype %>, char*>
+    , public convert_out_by_ref< <%= scoped_cxxtype %>, char*>
+    , public convert_retn< <%= scoped_cxxtype %>, char*>
+  {
+  };
+} // DDSX11
+
+#endif /* _ALIAS_<%= alias_md5 %>_UDT_TRAITS_DECL_ */
+
+% end

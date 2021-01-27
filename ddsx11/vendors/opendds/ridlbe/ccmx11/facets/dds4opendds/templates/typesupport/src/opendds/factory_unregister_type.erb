@@ -1,0 +1,16 @@
+// generated from <%= ridl_template_path %>
+if (DDSX11::DDS_TypeSupport_i::unregister_type (participant, type_name))
+{
+  // Type has been successfully unregistered from DDSX11, unregister it now
+  // from the DDS vendor. OpenDDS doesn't have state in its TypeSupportImpl so we
+  // create a new instance just to get a proxy to invoke into the OpenDDS core
+  ::DDS_Native<%= scoped_cxxtype %>TypeSupport_var ts = new (std::nothrow) ::DDS_Native<%= scoped_cxxtype %>TypeSupportImpl;
+  if (!ts)
+  {
+    return ::DDS::RETCODE_ERROR;
+  }
+  return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
+    ts->unregister_type(DDSX11::domain_participant_trait::native (participant),
+    ::DDSX11::traits<std::string>::in (type_name)));
+}
+return ::DDS::RETCODE_OK;

@@ -1,0 +1,37 @@
+// generated from <%= ridl_template_path %>
+typedef DDSX11::DDS_TypeFactory_T <
+  <%= scoped_cxxtype %>,
+  <%= scoped_cxxtype %>Seq,
+  ::DDS_Native<%= scoped_cxxtype %>Seq,
+  ::DDS_Native<%= scoped_cxxtype %>DataReader,
+  ::DDS_Native<%= scoped_cxxtype %>DataWriter> DDS_type_factory_type;
+
+std::shared_ptr<DDS_type_factory_type> factory {};
+
+try
+{
+  factory = std::make_shared<DDS_type_factory_type> ();
+}
+catch (const std::bad_alloc&)
+{
+  return ::DDS::RETCODE_OUT_OF_RESOURCES;
+}
+catch (...)
+{
+  return ::DDS::RETCODE_ERROR;
+}
+
+if (DDSX11::DDS_TypeSupport_i::register_type (participant, type_name, std::move(factory)))
+{
+  // First time registration to DDSX11 so we have to register it also
+  // to the DDS vendor
+  ::DDS_Native<%= scoped_cxxtype %>TypeSupport_var ts = new (std::nothrow) ::DDS_Native<%= scoped_cxxtype %>TypeSupportImpl;
+  if (!ts)
+  {
+    return ::DDS::RETCODE_ERROR;
+  }
+  return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
+    ts->register_type(DDSX11::domain_participant_trait::native (participant),
+    ::DDSX11::traits<std::string>::in (type_name)));
+}
+return ::DDS::RETCODE_OK;

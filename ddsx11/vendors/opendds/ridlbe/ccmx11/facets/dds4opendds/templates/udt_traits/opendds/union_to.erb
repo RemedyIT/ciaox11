@@ -1,0 +1,28 @@
+switch (from._d ())
+{
+% members.each do |_m|
+%   if _m.is_default?
+  default:
+%   else
+%     _m.nondefault_labels.each do |_l|
+  case <%= _l %>:
+%     end
+%   end
+  {
+%if _m.is_string_type?
+    char* tmp {};
+%else
+    <%= _m.native_type_name %> tmp;
+%end
+    ::DDSX11::to_dds (tmp, from.<%= _m.cxxname %> ());
+    to.<%= _m.cxxname %> (tmp);
+    break;
+  }
+% end
+}
+
+<%= native_scoped_switch_cxxtype %> tmp {};
+::DDSX11::to_dds (tmp, from._d ());
+to._d (tmp);
+
+return to;
