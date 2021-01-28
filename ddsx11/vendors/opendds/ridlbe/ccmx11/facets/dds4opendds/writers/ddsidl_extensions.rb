@@ -2,7 +2,7 @@
 # @file    ddsidl_extensions.rb
 # @author  Johnny Willemsen
 #
-# @brief   DDS4NDDS extensions for dds idl traits generation
+# @brief   DDS4OPENDDS extensions for dds idl traits generation
 #
 # @copyright Copyright (c) Remedy IT Expertise BV
 #--------------------------------------------------------------------
