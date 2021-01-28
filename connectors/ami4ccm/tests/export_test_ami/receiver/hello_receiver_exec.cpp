@@ -64,7 +64,6 @@ namespace Hello_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::do_my_foo_exec_i::foo[_in_str_answer]
     answer = "Hello you " + in_str;
     return 300;
-    return 0;
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::do_my_foo_exec_i::foo[_in_str_answer]
   }
 
