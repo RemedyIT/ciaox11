@@ -243,7 +243,6 @@ namespace DDSX11
     return this->complete_read (
       native_data_values, data_values, native_sample_infos,
       sample_infos, retcode_take_w_condition, "take_w_condition");
-    return retcode_take_w_condition;
   }
 
   template <typename NATIVE_TYPED_READER, typename TYPED_READER_TYPE, typename TOPIC_TYPE, typename SEQ_TYPE, typename NATIVE_SEQ_TYPE>
