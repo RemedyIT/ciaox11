@@ -180,10 +180,7 @@ namespace publisher_comp_Impl
   void publisher_comp_exec_i::ccm_passivate ()
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : publisher_comp_Impl::publisher_comp_exec_i[ccm_passivate]
-    IDL::traits<CORBA::Object>::ref_type orb_object =
-      this->context_->the_service_registry ()->resolve_service (CIAOX11::SVCID_ORB);
-    IDL::traits<CORBA::ORB>::ref_type orb =
-      IDL::traits<CORBA::ORB>::narrow (orb_object);
+    // Your code here
     //@@{__RIDL_REGEN_MARKER__} - END : publisher_comp_Impl::publisher_comp_exec_i[ccm_passivate]
   }
 

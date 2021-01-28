@@ -51,7 +51,7 @@ namespace CIAOX11
                               "unable to determine endpoint type");
           return {};
         }
-        uint32_t eptype;
+        uint32_t eptype {};
         if (!(cvalue >>= eptype))
         {
           CIAOX11_LOG_ERROR ("CORBA::Utility::get_provider_reference - "
