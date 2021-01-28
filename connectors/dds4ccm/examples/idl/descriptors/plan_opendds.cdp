@@ -1,0 +1,444 @@
+<!--
+  @file      plan_ndds.cdp
+  @author    Johnny Willemsen
+
+  @copyright Copyright (c) Remedy IT Expertise BV
+  Chamber of commerce Rotterdam nr.276339, The Netherlands
+-->
+
+<Deployment:DeploymentPlan
+   xmlns:Deployment="http://www.omg.org/Deployment"
+   xmlns:xmi="http://www.omg.org/XMI"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.omg.org/Deployment Deployment.xsd">
+  <label>IDL_Example_Depl_1</label>
+  <UUID>IDL_Example_Depl_1</UUID>
+
+  <implementation xmi:id="ReceiverComponentImplementation">
+    <name>ReceiverComponentImplementation</name>
+    <source/>
+    <artifact xmi:idref="Receiver_ExecArtifact" />
+    <execParameter>
+      <!-- entrypoint as exec parameter (see 10.6.1) -->
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_Example_BasicSubscriber_comp_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_Example_BasicSubscriber_comp_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Receiver_svnt</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>idl_example_receiver_exec</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="DDS4CCM_ConnectorImplementation">
+    <name>DDS4CCM_ConnectorImplementation</name>
+    <source/>
+    <artifact xmi:idref="DDS4CCM_Connector_ExecArtifact" />
+    <execParameter>
+      <!-- entrypoint as exec parameter (see 10.6.1) -->
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_Example_CA1_conn_DDS_Event_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_Example_CA1_conn_DDS_Event_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>idl_example_connector_conn</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>idl_example_connector_conn</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="SenderComponentImplementation">
+    <name>SenderComponentImplementation</name>
+    <source/>
+    <artifact xmi:idref="Sender_ExecArtifact" />
+    <execParameter>
+      <!-- entrypoint as exec parameter (see 10.6.1) -->
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_Example_BasicPublisher_comp_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_Example_BasicPublisher_comp_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Sender_svnt</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>idl_example_sender_exec</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="TimeTriggerConnectorImplementation">
+    <name>TimeTriggerConnectorImplementation</name>
+    <source/>
+    <execParameter>
+      <!-- entrypoint as exec parameter (see 10.6.1) -->
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_CIAOX11_TT_TimedTrigger_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_CIAOX11_TT_TimedTrigger_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>ciaox11_tt4ccm_conn</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <instance xmi:id="TimeTriggerConnectorInstance">
+    <name>TimeTriggerConnector</name>
+    <node>SenderNode</node>
+    <!-- hostname -->
+    <source/>
+    <implementation xmi:idref="TimeTriggerConnectorImplementation" />
+  </instance>
+  <instance xmi:id="ReceiverComponentInstance">
+    <name>ReceiverComponent</name>
+    <node>ReceiverNode</node>
+    <!-- hostname -->
+    <source/>
+    <implementation xmi:idref="ReceiverComponentImplementation" />
+    <configProperty>
+      <name>count</name>
+      <value>
+        <type>
+          <kind>tk_ulong</kind>
+        </type>
+        <value>
+          <ulong>100</ulong>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <instance xmi:id="DDS4CCM_SenderConnectorComponentInstance">
+    <name>DDS4CCM_SenderConnectorComponentInstance</name>
+    <node>SenderNode</node>
+    <!-- hostname -->
+    <source/>
+    <implementation xmi:idref="DDS4CCM_ConnectorImplementation" />
+    <configProperty>
+      <name>topic_name</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>IDL_Example</string>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>qos_profile</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>defaultlibrary#defaultprofile</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <instance xmi:id="DDS4CCM_ReceiverConnectorComponentInstance">
+    <name>DDS4CCM_ReceiverConnectorComponentInstance</name>
+    <node>ReceiverNode</node>
+    <!-- hostname -->
+    <source/>
+    <implementation xmi:idref="DDS4CCM_ConnectorImplementation" />
+    <configProperty>
+      <name>topic_name</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>IDL_Example</string>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>qos_profile</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>defaultlibrary#defaultprofile</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <instance xmi:id="SenderComponentInstance">
+    <name>SenderComponent</name>
+    <node>SenderNode</node>
+    <!-- hostname -->
+    <source/>
+    <implementation xmi:idref="SenderComponentImplementation" />
+    <configProperty>
+      <name>count</name>
+      <value>
+        <type>
+          <kind>tk_ulong</kind>
+        </type>
+        <value>
+          <ulong>100</ulong>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <connection>
+    <name>_reader</name>
+    <internalEndpoint>
+      <portName>CA1DataSub_data</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="ReceiverComponentInstance" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>push_consumer_data</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="DDS4CCM_ReceiverConnectorComponentInstance" />
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>_listener</name>
+    <internalEndpoint>
+      <portName>CA1DataSub_data_listener</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="ReceiverComponentInstance" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>push_consumer_data_listener</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="DDS4CCM_ReceiverConnectorComponentInstance" />
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>_datacontrol</name>
+    <internalEndpoint>
+      <portName>CA1DataSub_data_control</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="ReceiverComponentInstance" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>push_consumer_data_control</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="DDS4CCM_ReceiverConnectorComponentInstance" />
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>writer_connection</name>
+    <internalEndpoint>
+      <portName>CA1DataPub_data</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="SenderComponentInstance" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>supplier_data</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="DDS4CCM_SenderConnectorComponentInstance" />
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>writer_dds_entity</name>
+    <internalEndpoint>
+      <portName>CA1DataPub_dds_entity</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="SenderComponentInstance" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>supplier_dds_entity</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="DDS4CCM_SenderConnectorComponentInstance" />
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>connector_status_connection</name>
+    <internalEndpoint>
+      <portName>error_listener</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="DDS4CCM_SenderConnectorComponentInstance" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>CA1DataPub_CSL</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="SenderComponentInstance" />
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>timed_trigger_connection</name>
+    <internalEndpoint>
+      <portName>tt_scheduler</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="SenderComponentInstance" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>tt_scheduler</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="TimeTriggerConnectorInstance" />
+    </internalEndpoint>
+  </connection>
+
+  <artifact xmi:id="Sender_ExecArtifact">
+    <name>idl_example_sender_exec</name>
+    <source/>
+    <node/>
+    <location>Sender_exec</location>
+  </artifact>
+  <artifact xmi:id="DDS4CCM_Connector_ExecArtifact">
+    <name>idl_example_connector_conn</name>
+    <source/>
+    <node/>
+    <location>CA1_conn_dds_opendds_conn</location>
+  </artifact>
+  <artifact xmi:id="Receiver_ExecArtifact">
+    <name>idl_example_receiver_exec</name>
+    <source/>
+    <node/>
+    <location>Receiver_exec</location>
+  </artifact>
+</Deployment:DeploymentPlan>

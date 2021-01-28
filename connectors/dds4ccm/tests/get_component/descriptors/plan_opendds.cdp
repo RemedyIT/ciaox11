@@ -1,0 +1,320 @@
+<!--
+  @file      plan_opendds.cdp
+  @author    Johnny Willemsen
+
+  @copyright Copyright (c) Remedy IT Expertise BV
+  Chamber of commerce Rotterdam nr.276339, The Netherlands
+-->
+
+<Deployment:DeploymentPlan
+                          xmlns:Deployment="http://www.omg.org/Deployment"
+                          xmlns:xmi="http://www.omg.org/XMI"
+                          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                          xsi:schemaLocation="http://www.omg.org/Deployment Deployment.xsd">
+  <label>GetComponentEventTest_Depl</label>
+  <UUID>GetComponentEventTest_Depl</UUID>
+
+  <implementation xmi:id="ComponentImplementation">
+    <name>ComponentImplementation</name>
+    <source/>
+    <artifact xmi:idref="Component_ExecArtifact" />
+    <execParameter>
+      <!-- entrypoint as exec parameter (see 10.6.1) -->
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_GetComponentComponent_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_GetComponentComponent_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>GetComponentComponent_svnt</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>GetComponentComponent_exec</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="Common_Connector_Implementation">
+    <name>Common_Connector_Implementation</name>
+    <source/>
+    <artifact xmi:idref="Common_Connector_ExecArtifact" />
+    <execParameter>
+      <!-- entrypoint as exec parameter (see 10.6.1) -->
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_CommonTestConnector_DDS_Event_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_CommonTestConnector_DDS_Event_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>common_connector_conn</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>common_connector_conn</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <!-- act as sender-->
+  <instance xmi:id="ComponentInstanceSender">
+    <name>Sender</name>
+    <node>SenderNode</node>
+    <source/>
+    <implementation xmi:idref="ComponentImplementation" />
+    <configProperty>
+      <name>act_as_sender</name>
+      <value>
+        <type>
+          <kind>tk_boolean</kind>
+        </type>
+        <value>
+          <boolean>true</boolean>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <instance xmi:id="GCE_Test_ConnectorInstanceSender">
+    <name>GCE_Test_ConnectorSender</name>
+    <node>SenderNode</node>
+    <source/>
+    <implementation xmi:idref="Common_Connector_Implementation" />
+    <configProperty>
+      <name>topic_name</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>GetComponent</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <!-- act as receiver -->
+  <instance xmi:id="ComponentInstanceReceiver">
+    <name>Receiver</name>
+    <node>ReceiverNode</node>
+    <!-- hostname -->
+    <source/>
+    <implementation xmi:idref="ComponentImplementation" />
+    <configProperty>
+      <name>act_as_sender</name>
+      <value>
+        <type>
+          <kind>tk_boolean</kind>
+        </type>
+        <value>
+          <boolean>false</boolean>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <instance xmi:id="GCE_Test_ConnectorInstanceReceiver">
+    <name>GCE_Test_ConnectorReceiver</name>
+    <node>ReceiverNode</node>
+    <!-- hostname -->
+    <source/>
+    <implementation xmi:idref="Common_Connector_Implementation" />
+    <configProperty>
+      <name>topic_name</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>GetComponent</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <!-- SENDER COMPONENT CONNECTIONS -->
+  <connection>
+    <name>write_data</name>
+    <internalEndpoint>
+      <portName>info_write_data</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="ComponentInstanceSender" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>supplier_data</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="GCE_Test_ConnectorInstanceSender" />
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>write_dds_entity</name>
+    <internalEndpoint>
+      <portName>info_write_dds_entity</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="ComponentInstanceSender" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>supplier_dds_entity</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="GCE_Test_ConnectorInstanceSender" />
+    </internalEndpoint>
+  </connection>
+
+  <!-- RECEIVER COMPONENT CONNECTIONS -->
+  <!--   DDS_Get port -->
+  <connection>
+    <name>get_data_port</name>
+    <internalEndpoint>
+      <portName>info_get_data</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="ComponentInstanceReceiver" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>pull_consumer_data</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="GCE_Test_ConnectorInstanceReceiver" />
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>get_dds_entity_port</name>
+    <internalEndpoint>
+      <portName>info_get_dds_entity</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="ComponentInstanceReceiver" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>pull_consumer_dds_entity</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="GCE_Test_ConnectorInstanceReceiver" />
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>get_fresh_data_port</name>
+    <internalEndpoint>
+      <portName>info_get_fresh_data</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="ComponentInstanceReceiver" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>pull_consumer_fresh_data</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="GCE_Test_ConnectorInstanceReceiver" />
+    </internalEndpoint>
+  </connection>
+
+  <!--   DDS_Listen port -->
+  <connection>
+    <name>listen_data_port</name>
+    <internalEndpoint>
+      <portName>info_listen_data</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="ComponentInstanceReceiver" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>push_consumer_data</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="GCE_Test_ConnectorInstanceReceiver" />
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>listen_data_control_port</name>
+    <internalEndpoint>
+      <portName>info_listen_data_control</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="ComponentInstanceReceiver" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>push_consumer_data_control</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="GCE_Test_ConnectorInstanceReceiver" />
+    </internalEndpoint>
+  </connection>
+
+  <artifact xmi:id="Common_Connector_ExecArtifact">
+    <name>common_connector_conn</name>
+    <source/>
+    <node/>
+    <location>common_dds_opendds_conn</location>
+  </artifact>
+
+  <artifact xmi:id="Component_ExecArtifact">
+    <name>GetComponentComponent_exec</name>
+    <source/>
+    <node/>
+    <location>GetComponentComponent_exec</location>
+  </artifact>
+</Deployment:DeploymentPlan>
