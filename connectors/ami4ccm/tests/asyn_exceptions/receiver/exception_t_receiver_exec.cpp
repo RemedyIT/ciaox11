@@ -134,10 +134,10 @@ namespace ExceptionT_Receiver_Impl
       int16_t rw_attrib)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : ExceptionT_Receiver_Impl::do_my_foo_exec_i::rw_attrib[setter]
+    this->rw_attrib_ = rw_attrib;
     ExceptionT::InternalError ex (42, "Rec.Exc.rw_attrib",
                                       "thrown by receiver");
     throw ex;
-    this->rw_attrib_ = rw_attrib;
     //@@{__RIDL_REGEN_MARKER__} - END : ExceptionT_Receiver_Impl::do_my_foo_exec_i::rw_attrib[setter]
   }
 
@@ -148,7 +148,6 @@ namespace ExceptionT_Receiver_Impl
     ExceptionT::InternalError ex (42, "Rec.Exc.get_rw_attrib_g",
                                       "thrown by receiver");
     throw ex;
-    return this->rw_attrib_g_;
     //@@{__RIDL_REGEN_MARKER__} - END : ExceptionT_Receiver_Impl::do_my_foo_exec_i::rw_attrib_g[getter]
   }
 
@@ -157,10 +156,10 @@ namespace ExceptionT_Receiver_Impl
       int16_t rw_attrib_g)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : ExceptionT_Receiver_Impl::do_my_foo_exec_i::rw_attrib_g[setter]
+    this->rw_attrib_g_ = rw_attrib_g;
     ExceptionT::InternalError ex (42, "Rec.Exc.set_rw_attrib_g",
                                       "thrown by receiver");
     throw ex;
-    this->rw_attrib_g_ = rw_attrib_g;
     //@@{__RIDL_REGEN_MARKER__} - END : ExceptionT_Receiver_Impl::do_my_foo_exec_i::rw_attrib_g[setter]
   }
 
@@ -171,7 +170,6 @@ namespace ExceptionT_Receiver_Impl
     ExceptionT::InternalError ex (42, "Rec.Exc.get_rw_attrib_s",
                                       "thrown by receiver");
     throw ex;
-    return this->rw_attrib_s_;
     //@@{__RIDL_REGEN_MARKER__} - END : ExceptionT_Receiver_Impl::do_my_foo_exec_i::rw_attrib_s[getter]
   }
 
@@ -180,10 +178,10 @@ namespace ExceptionT_Receiver_Impl
       int16_t rw_attrib_s)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : ExceptionT_Receiver_Impl::do_my_foo_exec_i::rw_attrib_s[setter]
+    this->rw_attrib_s_ = rw_attrib_s;
     ExceptionT::InternalError ex (42, "Rec.Exc.set_rw_attrib_s",
                                       "thrown by receiver");
     throw ex;
-    this->rw_attrib_s_ = rw_attrib_s;
     //@@{__RIDL_REGEN_MARKER__} - END : ExceptionT_Receiver_Impl::do_my_foo_exec_i::rw_attrib_s[setter]
   }
 
@@ -194,7 +192,6 @@ namespace ExceptionT_Receiver_Impl
     ExceptionT::InternalError ex (42, "Rec.Exc.get_ro_attrib_r",
                                       "thrown by receiver");
     throw ex;
-    return this->ro_attrib_r_;
     //@@{__RIDL_REGEN_MARKER__} - END : ExceptionT_Receiver_Impl::do_my_foo_exec_i::ro_attrib_r[getter]
   }
 
@@ -206,7 +203,6 @@ namespace ExceptionT_Receiver_Impl
     ExceptionT::InternalError ex (42, "Rec.Exc.get_ro_attrib",
                                       "thrown by receiver");
     throw ex;
-    return this->ro_attrib_;
     //@@{__RIDL_REGEN_MARKER__} - END : ExceptionT_Receiver_Impl::do_my_foo_exec_i::ro_attrib[getter]
   }
 
