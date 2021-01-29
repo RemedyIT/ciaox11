@@ -183,9 +183,7 @@ namespace PSDD
 
       if (this->socket_ && this->readable_)
       {
-        typedef _this_type handler_type;
-        _ref_type self = this->_this ();
-        this->evs_.template handle_data_available_event<handler_type> (this->_this ());
+        this->evs_.template handle_data_available_event<_this_type> (this->_this ());
       }
     }
 
@@ -213,7 +211,7 @@ namespace PSDD
 
       try
       {
-        ::CCM_PSDD::ListenerMode lm =
+        ::CCM_PSDD::ListenerMode const lm =
             dl->listen_mode ();
 
         if (this->socket_ && lm != ::CCM_PSDD::ListenerMode::NOT_ENABLED)
@@ -232,7 +230,7 @@ namespace PSDD
           }
           else
           {
-            ::CCM_PSDD::DataCount_t max_data =
+            ::CCM_PSDD::DataCount_t const max_data =
                 dl->max_data ();
 
             while (max_data == ::CCM_PSDD::UNLIMITED
@@ -548,7 +546,7 @@ namespace PSDD
         data.clear ();
         TOPIC_TYPE datum;
         bool nowait {false};
-        ::CCM_PSDD::DataCount_t max_data = this->max_data_;
+        ::CCM_PSDD::DataCount_t const max_data = this->max_data_;
         while (this->read_i (datum, nowait))
         {
           data.push_back (std::move (datum));
