@@ -1,0 +1,21 @@
+// --------------------------------------------------------------------
+// ddsx11_opendds_stub.mpb
+//
+// Copyright (c) Remedy IT Expertise BV
+// --------------------------------------------------------------------
+
+// Use taox11_core_anytypecode because we only want to link with anytypecode
+// and not enable anytypecode on the IDL compiler by default
+feature(ddsx11, opendds) : taox11_defaults, taox11_core_anytypecode, ddsx11_opendds_flags {
+  after += ddsx11_opendds_stub
+  libs += ddsx11_opendds_stub
+  libpaths += $(CIAOX11_ROOT)/lib
+}
+
+feature(!opendds) : taox11_defaults {
+  requires += dummy_label
+}
+
+feature(!ddsx11) : taox11_defaults {
+  requires += dummy_label
+}

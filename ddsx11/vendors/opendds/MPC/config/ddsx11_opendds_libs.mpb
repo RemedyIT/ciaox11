@@ -1,0 +1,14 @@
+// --------------------------------------------------------------------
+// ddsx11_opendds_libs.mpb
+//
+// Provides the needed DDS libs for a specific DDS vendor
+//
+// Copyright (c) Remedy IT Expertise BV
+// --------------------------------------------------------------------
+
+feature(ddsx11, opendds) : ddsx11_dcps, dcps_qos_xml_handler {
+}
+
+feature(!opendds) {
+  requires += dummy_label
+}

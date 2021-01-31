@@ -395,7 +395,6 @@ namespace CIAOX11
       // these are not attached to a waitset.
       // Explicitly setting the conditions to a nullptr. If not, the nullptr checks fail and
       // therefor the resetting the topicname fails.
-      ::DDS::ReturnCode_t retcode = ::DDS::RETCODE_OK;
       if (this->qc_reader_)
       {
         this->remove_condition (this->qc_reader_, "reader");
@@ -407,6 +406,7 @@ namespace CIAOX11
         this->qc_listener_ = nullptr;
       }
 
+      ::DDS::ReturnCode_t retcode = ::DDS::RETCODE_OK;
       // Check whether a query condition was created (and thus attached
       // to the waitset).
       if (this->qc_getter_)

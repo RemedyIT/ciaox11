@@ -1,0 +1,112 @@
+/**
+ * @file    dds_dcps.idl
+ * @author  Johnny Willemsen
+ *
+ * @brief   OpenDDS specific IDL.
+ *
+ * Starter IDL for the OpenDDS specific implementation.
+ * This IDL only contains those datatypes that need a lem;
+ * opendds_dcps_all contains the rest.
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ */
+
+#ifndef NDDS_DCPS_IDL_
+#define NDDS_DCPS_IDL_
+
+#include "opendds_dcps_all.idl"
+
+module DDS {
+
+    local interface DataWriter : Entity {
+        ReturnCode_t set_qos(
+            in DataWriterQos qos);
+        ReturnCode_t get_qos(
+            inout DataWriterQos qos);
+
+        ReturnCode_t set_listener(
+            in DataWriterListener a_listener,
+            in StatusMask mask);
+        DataWriterListener get_listener();
+
+        Topic get_topic();
+        Publisher get_publisher();
+
+        ReturnCode_t wait_for_acknowledgments(
+            in Duration_t max_wait);
+
+        // Access the status
+        ReturnCode_t get_liveliness_lost_status(
+            inout LivelinessLostStatus status);
+        ReturnCode_t get_offered_deadline_missed_status(
+            inout OfferedDeadlineMissedStatus status);
+        ReturnCode_t get_offered_incompatible_qos_status(
+            inout OfferedIncompatibleQosStatus status);
+        ReturnCode_t get_publication_matched_status(
+            inout PublicationMatchedStatus status);
+
+        ReturnCode_t assert_liveliness();
+
+        ReturnCode_t get_matched_subscriptions(
+            inout InstanceHandleSeq subscription_handles);
+        ReturnCode_t get_matched_subscription_data(
+            inout SubscriptionBuiltinTopicData subscription_data,
+            in InstanceHandle_t subscription_handle);
+    };
+
+    local interface DataReader : Entity {
+        ReadCondition create_readcondition(
+            in SampleStateMask sample_states,
+            in ViewStateMask view_states,
+            in InstanceStateMask instance_states);
+
+        QueryCondition create_querycondition(
+            in SampleStateMask sample_states,
+            in ViewStateMask view_states,
+            in InstanceStateMask instance_states,
+            in string query_expression,
+            in StringSeq query_parameters);
+
+        ReturnCode_t delete_readcondition(
+            in ReadCondition a_condition);
+
+        ReturnCode_t delete_contained_entities();
+
+        ReturnCode_t set_qos(
+            in DataReaderQos qos);
+        ReturnCode_t get_qos(
+            inout DataReaderQos qos);
+
+        ReturnCode_t set_listener(
+            in DataReaderListener a_listener,
+            in StatusMask mask);
+        DataReaderListener get_listener();
+
+        TopicDescription get_topicdescription();
+        Subscriber get_subscriber();
+
+        ReturnCode_t get_sample_rejected_status(
+            inout SampleRejectedStatus status);
+        ReturnCode_t get_liveliness_changed_status(
+            inout LivelinessChangedStatus status);
+        ReturnCode_t get_requested_deadline_missed_status(
+            inout RequestedDeadlineMissedStatus status);
+        ReturnCode_t get_requested_incompatible_qos_status(
+            inout RequestedIncompatibleQosStatus status);
+        ReturnCode_t get_subscription_matched_status(
+            inout SubscriptionMatchedStatus status);
+        ReturnCode_t get_sample_lost_status(
+            inout SampleLostStatus status);
+
+        ReturnCode_t wait_for_historical_data(
+            in Duration_t max_wait);
+
+        ReturnCode_t get_matched_publications(
+            inout InstanceHandleSeq publication_handles);
+        ReturnCode_t get_matched_publication_data(
+            inout PublicationBuiltinTopicData publication_data,
+            in InstanceHandle_t publication_handle);
+    };
+};
+
+#endif /* NDDS_DCPS_IDL_ */

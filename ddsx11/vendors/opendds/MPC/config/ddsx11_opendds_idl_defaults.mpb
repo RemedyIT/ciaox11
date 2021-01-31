@@ -1,0 +1,17 @@
+// --------------------------------------------------------------------
+// ddsx11_opendds_idl_defaults.mpb
+//
+// Copyright (c) Remedy IT Expertise BV
+// --------------------------------------------------------------------
+
+feature(ddsx11, opendds) : ddsx11_opendds_flags, ridl_defaults {
+  idlflags += -Scdr -I$(CIAOX11_ROOT)/ddsx11/vendors/opendds/idl -I$(CIAOX11_ROOT) -SS -Ssh
+}
+
+feature(!opendds) : ridl_defaults {
+  requires += dummy_label
+}
+
+feature(!ddsx11) : ridl_defaults {
+  requires += dummy_label
+}

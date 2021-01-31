@@ -1,0 +1,13 @@
+// --------------------------------------------------------------------
+// ciaox11_dds4ccm_vendor.mpb
+//
+// Copyright (c) Remedy IT Expertise BV
+// --------------------------------------------------------------------
+
+feature(dds4ccm, opendds) : ddsx11_opendds_idl_defaults, ciaox11_dds4ccm_features {
+  after += ddsx11_opendds_lem_stub_idl_gen
+}
+
+feature(!opendds) {
+  requires += dummy_label
+}

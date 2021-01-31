@@ -1,0 +1,50 @@
+
+# configure setup for DDSX11 OpenDDS
+#
+
+configure :ddsx11opendds do
+
+  depends_on :ddsx11_core
+
+  dependencies do
+
+    require :opendds do
+      environment :openddsroot do
+        name 'DDS_ROOT'
+        description 'OpenDDS root folder'
+      end
+      file '${DDS_ROOT}/dds/DdsDcps.idl'
+    end
+
+  end
+
+  features do
+
+    enable :ddsx11 do
+      depends_exclusively_on :opendds
+    end
+
+    disable :multi_topic
+    disable :ndds
+
+  end
+
+  ridl do
+    include '..'
+  end
+
+  brix11 do
+    include '..'
+  end
+
+  mpc do
+    include %w{$CIAOX11_ROOT/ddsx11/vendors/opendds/MPC/config $DDS_ROOT/MPC/config}
+    dynamic_type '$DDS_ROOT/MPC'
+
+    mwc_include %w{
+      $(CIAOX11_ROOT)/ddsx11/vendors/opendds/idl
+      $(DDS_ROOT)/dds
+    }
+  end
+
+end

@@ -1,0 +1,22 @@
+// --------------------------------------------------------------------
+// ddsx11_opendds_flags.mpb
+//
+// Set the needed compiler flags for a specific DDS vendor
+//
+// Copyright (c) Remedy IT Expertise BV
+// --------------------------------------------------------------------
+
+feature(ddsx11, opendds) : taox11_lib {
+  requires += opendds
+  macros   += DDSX11_OPENDDS=1
+
+  includes += $(CIAOX11_ROOT) $(CIAOX11_ROOT)/ddsx11 $(CIAOX11_ROOT)/ddsx11/vendors/opendds $(CIAOX11_ROOT)/ddsx11/vendors/opendds/idl
+}
+
+feature(!ddsx11) {
+  requires += dummy_label
+}
+
+feature(!opendds) {
+  requires += dummy_label
+}

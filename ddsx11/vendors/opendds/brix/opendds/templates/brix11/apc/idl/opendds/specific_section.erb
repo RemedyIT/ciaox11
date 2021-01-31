@@ -1,0 +1,21 @@
+// Special section DDS IDL
+idlflags += -o <%= gen_dir %> <%= includes_flags %> -I<%= gen_dir %> -SS \
+            -Wb,stub_export_macro=<%= recipe.export_name.upcase %>_TYPESUPPORT_Export \
+            -Wb,stub_export_include=<%= recipe.export_name %>_typesupport_export.h
+
+TypeSupport_Files {
+  dcps_ts_flags += -o <%= gen_dir %> <%= includes_flags %> -I<%= gen_dir %> \
+                   -Wb,export_macro=<%= recipe.export_name.upcase %>_TYPESUPPORT_Export \
+                   -Wb,export_include=<%= recipe.export_name %>_typesupport_export.h
+  gendir = <%= gen_dir %>
+% sources.each do |f|
+  <%= f %>
+% end
+}
+IDL_Files {
+  gendir=<%= gen_dir %>
+% sources.each do |f|
+  <%= f %>
+% end
+}
+custom_only = 1

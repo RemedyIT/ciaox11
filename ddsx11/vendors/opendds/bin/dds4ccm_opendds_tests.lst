@@ -1,0 +1,70 @@
+# This is the list of run_test.pl's that need to be run by
+# auto_run_tests.pl.
+# Each line has its own test, and a test can be followed by a
+# list of configurations it does _not_ run on.
+#
+# Example: TAO\examples\foo\run_test.pl:
+#
+connectors/dds4ccm/examples/idl/descriptors/run_test.pl plan_opendds.cdp: DDS4CCM_EVENT OPENDDS
+connectors/dds4ccm/examples/idl/descriptors/run_test.pl plan_opendds.config: DDS4CCM_EVENT OPENDDS
+#connectors/dds4ccm/examples/custom/descriptors/run_test.pl: DDS4CCM_EVENT OPENDDS
+#connectors/dds4ccm/examples/custom/descriptors/run_test.pl -fmt cdp: DDS4CCM_EVENT CORBA4CCM OPENDDS
+connectors/dds4ccm/examples/shapes_asm/deployment/scripts/run_test.pl -dds opendds: DDS4CCM_EVENT CORBA4CCM OPENDDS
+connectors/dds4ccm/examples/shapes_asm/deployment/scripts/run_test.pl -fmt cdp -dds opendds: DDS4CCM_EVENT CORBA4CCM OPENDDS
+connectors/dds4ccm/examples/shapes_asm/deployment/scripts/run_test_cdd.pl -dds opendds: DDS4CCM_EVENT CORBA4CCM !CROSS OPENDDS
+connectors/dds4ccm/examples/shapes_asm/deployment/scripts/run_test_cdd.pl -fmt cdp -dds opendds: DDS4CCM_EVENT CORBA4CCM !CROSS OPENDDS
+connectors/dds4ccm/tests/apc/apc_event_defaults/descriptors/run_test.pl plan_opendds.config: DDS4CCM_EVENT CORBA4CCM OPENDDS
+connectors/dds4ccm/tests/apc/apc_event_extended/descriptors/run_test.pl plan_opendds.config: DDS4CCM_EVENT CORBA4CCM OPENDDS
+connectors/dds4ccm/tests/apc/gen_comp/descriptors/run_test.pl plan_opendds.config: DDS4CCM_EVENT DDS4CCM_STATE CORBA4CCM OPENDDS
+connectors/dds4ccm/tests/apc/gen_comp_only/descriptors/run_test.pl: DDS4CCM_EVENT DDS4CCM_STATE CORBA4CCM
+connectors/dds4ccm/tests/coherent_write/descriptors/run_test.pl write_opendds.config: DDS4CCM_EVENT DDS4CCM_STATE CORBA4CCM OPENDDS
+connectors/dds4ccm/tests/coherent_write/descriptors/run_test.pl update_opendds.config: DDS4CCM_EVENT DDS4CCM_STATE CORBA4CCM OPENDDS
+connectors/dds4ccm/tests/connector_status_listener/descriptors/run_test.pl plan_on_deadline_missed_opendds.cdp: DDS4CCM_EVENT OPENDDS
+connectors/dds4ccm/tests/connector_status_listener/descriptors/run_test.pl plan_on_deadline_missed_opendds.config: DDS4CCM_EVENT OPENDDS
+connectors/dds4ccm/tests/connector_status_listener/descriptors/run_test.pl plan_on_incompatible_qos_opendds.cdp: DDS4CCM_EVENT OPENDDS
+connectors/dds4ccm/tests/connector_status_listener/descriptors/run_test.pl plan_on_incompatible_qos_opendds.config: DDS4CCM_EVENT OPENDDS
+connectors/dds4ccm/tests/connector_status_listener/descriptors/run_test.pl plan_on_inconsistent_topic_opendds.cdp: DDS4CCM_EVENT OPENDDS
+connectors/dds4ccm/tests/connector_status_listener/descriptors/run_test.pl plan_on_inconsistent_topic_opendds.config: DDS4CCM_EVENT OPENDDS
+connectors/dds4ccm/tests/connector_status_listener/descriptors/run_test.pl plan_on_sample_rejected_opendds.cdp: DDS4CCM_EVENT OPENDDS
+connectors/dds4ccm/tests/connector_status_listener/descriptors/run_test.pl plan_on_sample_rejected_opendds.config: DDS4CCM_EVENT OPENDDS
+connectors/dds4ccm/tests/connector_status_listener/descriptors/run_test.pl plan_on_unexpected_status_opendds.cdp: DDS4CCM_EVENT OPENDDS
+connectors/dds4ccm/tests/connector_status_listener/descriptors/run_test.pl plan_on_unexpected_status_opendds.config: DDS4CCM_EVENT OPENDDS
+connectors/dds4ccm/tests/content_filtered_topics/event_listener/descriptors/run_test.pl plan_opendds.cdp: DDS4CCM_EVENT OPENDDS
+connectors/dds4ccm/tests/get_component/descriptors/run_test.pl plan_opendds.config: DDS4CCM_EVENT OPENDDS
+connectors/dds4ccm/tests/get_component/descriptors/run_test.pl plan_opendds.cdp: DDS4CCM_EVENT OPENDDS
+connectors/dds4ccm/tests/getter/descriptors/run_test.pl plan_opendds.config: DDS4CCM_EVENT CORBA4CCM OPENDDS
+connectors/dds4ccm/tests/getter/descriptors/run_test.pl plan_opendds.cdp: DDS4CCM_EVENT CORBA4CCM OPENDDS
+connectors/dds4ccm/tests/idl_conversion/descriptors/run_test.pl plan_opendds.config: DDS4CCM_EVENT OPENDDS
+connectors/dds4ccm/tests/idl_conversion/descriptors/run_test.pl plan_opendds.cdp: DDS4CCM_EVENT OPENDDS
+connectors/dds4ccm/tests/invalid_qos/descriptors/run_test.pl plan_opendds.config invalidqoslibrary_wrong.xml invalidqoslibrary.xml: DDS4CCM_EVENT OPENDDS
+connectors/dds4ccm/tests/invalid_qos/descriptors/run_test.pl plan_opendds.config invalidqoslibrary_wrong2.xml invalidqoslibrary.xml: DDS4CCM_EVENT OPENDDS
+connectors/dds4ccm/tests/late_binded/read_get/descriptors/run_test.pl plan_opendds.config: DDS4CCM_EVENT CORBA4CCM OPENDDS
+connectors/dds4ccm/tests/late_binded/read_get/descriptors/run_test.pl plan_opendds.cdp: DDS4CCM_EVENT CORBA4CCM OPENDDS
+connectors/dds4ccm/tests/log_formatters/run_test.pl: DDS4CCM_EVENT OPENDDS
+connectors/dds4ccm/tests/kitchensink/descriptors/run_test.pl plan_opendds.config: DDS4CCM_EVENT CORBA4CCM OPENDDS
+connectors/dds4ccm/tests/max_delivered_data/getter/descriptors/run_test.pl plan_opendds.config: DDS4CCM_STATE OPENDDS
+connectors/dds4ccm/tests/max_delivered_data/listeners/state/descriptors/run_test.pl plan_opendds.config: DDS4CCM_STATE OPENDDS
+connectors/dds4ccm/tests/max_delivered_data/listeners/data/descriptors/run_test.pl plan_opendds.config: DDS4CCM_STATE OPENDDS
+connectors/dds4ccm/tests/non_changeable/descriptors/run_test.pl plan_opendds.config: DDS4CCM_EVENT OPENDDS
+connectors/dds4ccm/tests/port_status_listener/deadline_missed/descriptors/run_test.pl plan_opendds.config: DDS4CCM_EVENT OPENDDS
+connectors/dds4ccm/tests/port_status_listener/deadline_missed/descriptors/run_test.pl plan_opendds.cdp: DDS4CCM_EVENT OPENDDS
+connectors/dds4ccm/tests/port_status_listener/sample_lost/descriptors/run_test.pl plan_opendds.config: DDS4CCM_EVENT OPENDDS
+connectors/dds4ccm/tests/filters/filter_attrib/read_get/descriptors/run_test.pl plan_opendds.cdp: DDS4CCM_EVENT CORBA4CCM OPENDDS
+connectors/dds4ccm/tests/filters/filter_attrib/listeners/event/descriptors/run_test.pl plan_opendds.cdp: DDS4CCM_EVENT CORBA4CCM OPENDDS
+connectors/dds4ccm/tests/filters/filter_attrib/listeners/state/descriptors/run_test.pl plan_opendds.cdp: DDS4CCM_STATE CORBA4CCM OPENDDS
+connectors/dds4ccm/tests/filters/query_attrib/read_get/descriptors/run_test.pl plan_opendds.cdp: DDS4CCM_EVENT CORBA4CCM OPENDDS
+connectors/dds4ccm/tests/filters/query_attrib/read_get/descriptors/run_test.pl plan_opendds.config: DDS4CCM_EVENT CORBA4CCM OPENDDS
+connectors/dds4ccm/tests/filters/query_attrib/listeners/event/descriptors/run_test.pl plan_opendds.cdp: DDS4CCM_EVENT OPENDDS
+connectors/dds4ccm/tests/filters/query_attrib/listeners/event/descriptors/run_test.pl plan_opendds.config: DDS4CCM_EVENT OPENDDS
+connectors/dds4ccm/tests/filters/query_attrib/listeners/state/descriptors/run_test.pl plan_opendds.cdp: DDS4CCM_STATE CORBA4CCM OPENDDS
+connectors/dds4ccm/tests/filters/query_attrib/listeners/state/descriptors/run_test.pl plan_opendds.config: DDS4CCM_STATE CORBA4CCM OPENDDS
+connectors/dds4ccm/tests/type_name/descriptors/run_test.pl plan_opendds.config: DDS4CCM_EVENT OPENDDS
+connectors/dds4ccm/tests/union/struct/descriptors/run_test.pl plan_opendds.config: DDS4CCM_EVENT OPENDDS
+connectors/dds4ccm/tests/union/toplevel/descriptors/run_test.pl plan_opendds.config: DDS4CCM_EVENT OPENDDS
+connectors/dds4ccm/tests/unkeyed_writer/descriptors/run_test.pl plan_opendds.config: DDS4CCM_EVENT OPENDDS
+connectors/dds4ccm/tests/unkeyed_writer/descriptors/run_test.pl plan_opendds.cdp: DDS4CCM_EVENT OPENDDS
+connectors/dds4ccm/tests/unkeyed_writer/descriptors/run_test_snl.pl plan_opendds.config: DDS4CCM_EVENT OPENDDS
+connectors/dds4ccm/tests/unkeyed_writer/descriptors/run_test_snl.pl plan_opendds.cdp: DDS4CCM_EVENT !CROSS OPENDDS
+connectors/dds4ccm/tests/unkeyed_writer/descriptors/run_test_pl.pl plan_opendds.config: DDS4CCM_EVENT OPENDDS
+connectors/dds4ccm/tests/updater/descriptors/run_test.pl plan_opendds.config: DDS4CCM_STATE CORBA4CCM OPENDDS
+connectors/dds4ccm/tests/updater/descriptors/run_test_pl.pl plan_opendds.config: DDS4CCM_STATE CORBA4CCM OPENDDS

@@ -1,0 +1,52 @@
+// --------------------------------------------------------------------
+// ddsx11_ts_defaults.mpb
+//
+// Vendor specific settings. No relations to ATCD allowed.
+//
+// Copyright (c) Remedy IT Expertise BV
+// --------------------------------------------------------------------
+
+feature(ddsx11, opendds) : ddsx11_opendds_flags, ridl_defaults {
+  idlflags += -Gddsx11,adds -Gxhst
+  idlflags += -I$(CIAOX11_ROOT)/ddsx11/vendors/opendds/idl -I$(CIAOX11_ROOT) -SS -Ssh
+
+  Modify_Custom(IDL) {
+
+    optional(header_pre_extension) {
+      // Typed entities
+      commandflags(-Gddsx11,adds || -Gite) += _dds_typed_entitiesC
+      // OpenDDS conversion traits.
+      commandflags(-Gddsx11,adds || -Gddsx11,traits) += _dds_traits
+    }
+    optional(source_pre_extension) {
+      // Typed entities
+      commandflags(-Gddsx11,adds || -Gite) += _dds_typed_entitiesC
+    }
+
+    optional(source_outputext) {
+      commandflags(-Gddsx11,adds || -Gite) = .cpp
+    }
+
+    optional(header_outputext) {
+      commandflags(-Gddsx11,adds || -Gite || -Gddsx11,traits) = .h
+    }
+
+    // (N)DDS output IDL files.
+    optional(generic_outputext) {
+      commandflags(-Gddsx11,adds || -Gddsx11,idds || -Gite) = .idl
+    }
+
+    optional(generic_pre_extension) {
+      commandflags(-Gddsx11,adds || -Gddsx11,idds) += _dds
+      commandflags(-Gddsx11,adds || -Gite) += _dds_typed_entities
+    }
+  }
+}
+
+feature(!opendds) {
+  requires += dummy_label
+}
+
+feature(!ddsx11) {
+  requires += dummy_label
+}

@@ -1,0 +1,19 @@
+/**
+ * @file    opendds_dcps_instance_handle.idl
+ * @author  Johnny Willemsen
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ */
+
+#ifndef OPENDDS_DCPS_INSTANCE_HANDLE_IDL_
+#define OPENDDS_DCPS_INSTANCE_HANDLE_IDL_
+
+module DDS {
+  struct InstanceHandle_t
+  {
+    long value;
+  };
+};
+
+#endif /* OPENDDS_DCPS_INSTANCE_HANDLE_IDL_ */
+

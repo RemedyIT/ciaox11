@@ -1,0 +1,107 @@
+project (ddsx11_opendds_types_idl_gen) : install, \
+                                       ddsx11_opendds_idl_defaults, \
+                                       taox11_anytypecode, \
+                                       ddsx11_opendds_conversion_traits {
+  custom_only = 1
+  idlflags += -Wb,stub_export_macro=DDSX11_OPENDDS_STUB_Export \
+              -Wb,stub_export_include=idl/ddsx11_opendds_stub_export.h \
+  // Do not suppress cdr streaming since anytypecode needs it..
+  // TODO CHECK
+  idlflags -= -Scdr
+
+  IDL_Files {
+    opendds_dcps_types.idl
+  }
+
+  specific {
+    install_dir = ddsx11/vendors/opendds/idl
+  }
+}
+
+project (ddsx11_opendds_dcps_all_idl_gen) : install, \
+                                     ddsx11_opendds_idl_defaults, \
+                                     ddsx11_opendds_conversion_traits {
+  after += ddsx11_opendds_types_idl_gen
+  idlflags += -Wb,stub_export_macro=DDSX11_OPENDDS_STUB_Export \
+              -Wb,stub_export_include=idl/ddsx11_opendds_stub_export.h \
+              -Scp
+
+  custom_only = 1
+
+  IDL_Files {
+    opendds_dcps_all.idl
+  }
+
+  specific {
+    install_dir = ddsx11/vendors/opendds/idl
+  }
+}
+
+project (ddsx11_opendds_instancehandle_idl_gen) : install, \
+                                        ddsx11_opendds_idl_defaults {
+  custom_only = 1
+  idlflags += -Wb,stub_export_macro=DDSX11_OPENDDS_STUB_Export \
+              -Wb,stub_export_include=idl/ddsx11_opendds_stub_export.h \
+              -Wb,post_include=idl/opendds_dcps_instance_handle.h -Scp
+
+  IDL_Files {
+    opendds_dcps_instance_handle.idl
+  }
+
+  specific {
+    install_dir = ddsx11/vendors/opendds/idl
+  }
+}
+
+project (ddsx11_opendds_dcps_idl_gen) : install, \
+                                        ddsx11_opendds_idl_defaults {
+  custom_only = 1
+  idlflags += -Wb,stub_export_macro=DDSX11_OPENDDS_STUB_Export \
+              -Wb,stub_export_include=ddsx11_opendds_stub_export.h \
+              -Wb,post_include=idl/dds_log_formatters.h \
+              -Glem -Gxhst -Scp
+
+  // Make sure we first compile the vendor specific IDL
+  after += ddsx11_opendds_types_idl_gen ddsx11_opendds_instancehandle_idl_gen ddsx11_opendds_dcps_all_idl_gen
+
+  IDL_Files {
+    dds_dcps.idl
+  }
+
+  specific {
+    install_dir = ddsx11/vendors/opendds/idl
+  }
+}
+
+project (ddsx11_opendds_stub) : ddsx11_output, \
+                        ddsx11_opendds_flags, \
+                        taox11_anytypecode {
+
+  after += ddsx11_opendds_dcps_idl_gen
+
+  dynamicflags += DDSX11_OPENDDS_STUB_BUILD_DLL
+
+  IDL_Files {
+  }
+
+  Source_Files {
+    dds_dcpsC.cpp
+    opendds_dcps_allC.cpp
+    opendds_dcps_instance_handleC.cpp
+    opendds_dcps_instance_handle.cpp
+    opendds_dcps_typesC.cpp
+  }
+
+  Header_Files {
+    dds_dcpsC.h
+    ddsx11_opendds_stub_export.h
+    opendds_dcps_allC.h
+    opendds_dcps_instance_handleC.h
+    opendds_dcps_instance_handle.h
+    opendds_dcps_typesC.h
+  }
+
+  specific {
+    install_dir = ddsx11/vendors/opendds/idl
+  }
+}
