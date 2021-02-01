@@ -419,17 +419,17 @@ namespace FA_Read_Get_Test_Receiver_Impl
     //reset last_get and last_listen for the next start_write run
     this->last_get = false;
     this->last_listen = false;
-    uint32_t read_before_run_getter = this->received_4_getter_;
-    uint32_t read_before_run_reader = this->received_4_reader_;
+    uint32_t const read_before_run_getter = this->received_4_getter_;
+    uint32_t const read_before_run_reader = this->received_4_reader_;
 
     ReadGetReceiverRunner_T<FA_Read_Get_Test::CCM_Receiver_Context, false> runner (
       this->context_, this->run_);
     this->run_ = runner.run ();
     runner.get_received (this->received_4_getter_, this->received_4_reader_);
 
-    uint16_t run_to_check = this->run_ - 1;
-    uint32_t read_during_run_getter = this->received_4_getter_ - read_before_run_getter;
-    uint32_t read_during_run_reader = this->received_4_reader_ - read_before_run_reader;
+    uint16_t const run_to_check = this->run_ - 1;
+    uint32_t const read_during_run_getter = this->received_4_getter_ - read_before_run_getter;
+    uint32_t const read_during_run_reader = this->received_4_reader_ - read_before_run_reader;
 
     switch (run_to_check)
     {
