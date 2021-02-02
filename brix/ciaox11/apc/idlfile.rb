@@ -124,7 +124,7 @@ module AxciomaPC
     def dump(indent=0, out=STDERR)
       out.puts (' '*indent)+self.to_s
       out.puts (' '*(indent+2))+'{'
-      properties.each do |k,v|
+      properties.each do |k, v|
         out.print "#{' '*(indent+4)}#{k} => "
         if k == :includes
           out.puts "[#{v.join(',')}]"

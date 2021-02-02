@@ -18,7 +18,7 @@ module AxciomaPC
         #noop
       end
 
-      def self.process_component_dependencies(recipe,project_dependencies)
+      def self.process_component_dependencies(recipe, project_dependencies)
         BRIX11.log(3, '[%s|PS] process_component_dependencies', self)
         recipe.setup_comp_gen_pubsub(project_dependencies)
         recipe.setup_stub_comp_pubsub(project_dependencies)
@@ -174,10 +174,10 @@ module AxciomaPC
         BRIX11.log(4, "[%s] verify", self)
         generate_pubsub_port('uses', @config[:typename])
         set_intf_name @interface_recipe.topic_interface_module+'::Subscriber'
-        inports = @config[:interaction].inject({}) do |hsh,int|
+        inports = @config[:interaction].inject({}) do |hsh, int|
                     case int
                     when Hash
-                      int.inject(hsh) {|h,(k,v)| h[k.to_sym] = v.to_s; h }
+                      int.inject(hsh) {|h, (k, v)| h[k.to_sym] = v.to_s; h }
                     when String, Symbol
                       hsh[int.to_sym] = "#{name}_#{int}"
                     when NilClass
@@ -187,7 +187,7 @@ module AxciomaPC
                     end
                     hsh
                   end
-        inports.each do |p,n|
+        inports.each do |p, n|
           if p == :listen
             port = ComponentRecipe::PortDefinition.new(n, @comp)
             port.set_type 'provides'

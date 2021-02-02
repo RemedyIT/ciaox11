@@ -89,7 +89,7 @@ module AxciomaPC
 
       def create_component_idl
         # create output path
-        file_name_ = File.join(@recipe.recipe_file.path,"#{@recipe.recipe_id}.idl")
+        file_name_ = File.join(@recipe.recipe_file.path, "#{@recipe.recipe_id}.idl")
         # keep administration of generated idl files
         idl_file = @recipe.project.add_idl_file(file_name_, :generated)
         if @recipe.project.autogenerate == :allways || (@recipe.project.autogenerate == :ifneeded && !File.exist?(file_name_))
@@ -142,7 +142,7 @@ module AxciomaPC
               if kind.size > 1
                 raise "Only a single port definition tuple allowed. Specifying #{kind} is invalid."
               else
-                kind.each do |(method_,arg_)|
+                kind.each do |(method_, arg_)|
                   if port.possible_ports.include?(method_.to_s) && port.respond_to?(method_)
                     if ::Array === arg_
                       port.send(method_, *arg_)

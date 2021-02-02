@@ -42,7 +42,7 @@ module AxciomaPC
         mpc_obj = create_conn_lib
         mpc_file.add_mpc_project(mpc_obj)
 
-        recipe.idl_files.each do |_,fidl|
+        recipe.idl_files.each do |_, fidl|
           inc_fidl = project.idl_files[fidl.full_path]
           setup_recipe_idl(inc_fidl)
         end
@@ -59,7 +59,7 @@ module AxciomaPC
         BRIX11.log(3, '[%s] process project dependencies', self)
 
         project_dependencies = MPC::Dependencies.new
-        recipe.idl_files.each do |_,fidl|
+        recipe.idl_files.each do |_, fidl|
           inc_fidl = project.idl_files[fidl.full_path]
           rcp = inc_fidl.recipes.first
           rcp.get_dependencies(inc_fidl, [:corba4ccm], project_dependencies)
@@ -84,12 +84,12 @@ module AxciomaPC
 
       def setup_conn_gen(project_dependencies)
         mpc_obj = mpc_file[:corba_conn_gen]
-        recipe.idl_files.each { |n,f| mpc_obj.add_project_file(f.full_path) }
+        recipe.idl_files.each { |n, f| mpc_obj.add_project_file(f.full_path) }
 
         # idl_includes: idl in recipe self, concat with includes given in project root apcrc file
         mpc_obj.includes << idl_includes << project.idl_includes
         # Also needed the own generated output dir
-        mpc_obj.includes << File.expand_path(recipe.gen_dir,recipe.recipe_file.path)
+        mpc_obj.includes << File.expand_path(recipe.gen_dir, recipe.recipe_file.path)
 
         mpc_obj.add_dependencies(project_dependencies, :lem_gen)
       end

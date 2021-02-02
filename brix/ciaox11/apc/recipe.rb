@@ -28,7 +28,7 @@ module AxciomaPC
     def load_recipes
       BRIX11.log(3, '[%s] loading recipes', self)
       begin
-        instance_eval(File.read(full_path) ,full_path)
+        instance_eval(File.read(full_path) , full_path)
       rescue
         BRIX11.log_error($!.message)
         $!.backtrace.find do |bt|
@@ -101,7 +101,7 @@ module AxciomaPC
         if (!rcp.gen_dir || rcp.gen_dir == '.')
           #do nothing because the user has indicated as generated_code dir, the same dir as the recipe dir
         else
-          gen_dir_path = File.join(@path,rcp.gen_dir)
+          gen_dir_path = File.join(@path, rcp.gen_dir)
           if Dir.exist?(gen_dir_path)
             # if gen dir is empty or only contains export headers, it is save to remove this dir.
             # Attention: export headers aren't removed with a make clean, so in the case a user has put a export header himself in
@@ -570,7 +570,7 @@ module AxciomaPC
     def dump(indent=0, out=STDERR, data=nil)
       out.puts (' '*indent)+self.to_s
       out.puts((' '*(indent+2))+data.to_s) if data
-      @idl_files.each { |n,f| out.puts (' '*(indent+2))+"#{n} =>"; f.dump(indent+4, out) }
+      @idl_files.each { |n, f| out.puts (' '*(indent+2))+"#{n} =>"; f.dump(indent+4, out) }
       out.puts (' ')
     end
 

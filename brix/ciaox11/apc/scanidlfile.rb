@@ -61,7 +61,7 @@ module AxciomaPC
         elsif IDL::AST::Module === node
           # recurse into IDL Module
           node.walk_members do |n|
-            check_node(n,delegator)
+            check_node(n, delegator)
           end
         else
           # check for special IDL generation properties of data nodes
@@ -113,8 +113,8 @@ module AxciomaPC
       # make sure include paths always end with '/'
       @ridl_opts[:includepaths] << (taox11_root.end_with?('/', '\\') ? taox11_root : taox11_root+'/')
       @ridl_opts[:includepaths] << (ciaox11_root.end_with?('/', '\\') ? ciaox11_root : ciaox11_root+'/')
-      @ridl_opts[:includepaths] << (File.join(ciaox11_root,'ccm') + '/')
-      @ridl_opts[:includepaths] << (File.join(ciaox11_root,'connectors/tt4ccm/idl') + '/')
+      @ridl_opts[:includepaths] << (File.join(ciaox11_root, 'ccm') + '/')
+      @ridl_opts[:includepaths] << (File.join(ciaox11_root, 'connectors/tt4ccm/idl') + '/')
 
       # # recipe specific includes
       # @ridl_opts[:xincludepaths].concat(@recipe.recipe_idl_includes.collect {|inc| inc.end_with?('/', '\\') ? inc : inc+'/' })
@@ -195,7 +195,7 @@ module AxciomaPC
           if (!@type_checked) && IDL::AST::Module === node
             # recurse into IDL Module
             node.walk_members do |n|
-              check_node(n,delegator)
+              check_node(n, delegator)
               break if @type_checked
             end
           end
@@ -253,7 +253,7 @@ module AxciomaPC
           if (!@type_checked) && IDL::AST::Module === node
             # recurse into IDL Module
             node.walk_members do |n|
-              check_node(n,delegator)
+              check_node(n, delegator)
               break if @type_checked
             end
           end
@@ -312,7 +312,7 @@ module IDL
           idlfile = project.idl_files[fpinc]
           if idlfile
             @includepaths.concat(idlfile.properties[:includepaths]) if idlfile.properties[:includepaths]
-            idlfile.properties[:macros].each {|k,v| @defined[k] = v } if idlfile.properties[:macros]
+            idlfile.properties[:macros].each {|k, v| @defined[k] = v } if idlfile.properties[:macros]
           end
         end
       else
@@ -327,7 +327,7 @@ module IDL
             fpinc = idlfile.full_path
             # check for additionally required include paths and/or macros
             @includepaths.concat(idlfile.properties[:includepaths]) if idlfile.properties[:includepaths]
-            idlfile.properties[:macros].each {|k,v| @defined[k] = v } if idlfile.properties[:macros]
+            idlfile.properties[:macros].each {|k, v| @defined[k] = v } if idlfile.properties[:macros]
           end
         end
       end

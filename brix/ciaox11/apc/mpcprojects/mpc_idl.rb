@@ -99,7 +99,7 @@ module AxciomaPC
         super(type, recipe)
         @idl_flags = IDLFlags.new
         @extras = Util::UniqueStringList.new
-        DEFAULTS[type].each do |k,v|
+        DEFAULTS[type].each do |k, v|
           case k
           when :auto_dependencies
             v.each {|adp| project_dependencies  << "#{mpc_id}_#{adp}" }

@@ -380,12 +380,12 @@ module AxciomaPC
       def process_project_dependencies
         BRIX11.log(3, '[%s] process_project_dependencies', self)
         project_dependencies = MPC::Dependencies.new
-        @idl_files.each do |_,fidl|
+        @idl_files.each do |_, fidl|
           fidl.includes.each do |ifidl|
             if ifidl.is_member?
               rcp = ifidl.recipes.first
               unless rcp == self
-                rcp.get_dependencies(ifidl,[:sev], project_dependencies)
+                rcp.get_dependencies(ifidl, [:sev], project_dependencies)
               end
             end
           end

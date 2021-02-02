@@ -75,7 +75,7 @@ module CIAOX11_Plan_Converter
     # Remove_local_interface
     file_tmp.rewind
     start_line = 0
-    line1,line2, line3 = ""
+    line1, line2, line3 = ""
     @line_nr =0
     file_tmp.each_line do |line|
       @line_nr +=1
@@ -109,7 +109,7 @@ module CIAOX11_Plan_Converter
           output_file.write(line1)
           output_file.write(line2)
           output_file.write(line)
-          line1,line2 = ""
+          line1, line2 = ""
         end
       when 3
         if line.include?($local_interface_array[3])

@@ -125,7 +125,7 @@ module AxciomaPC
       @idl_files[name || idl_file.full_path] = idl_file
     end
 
-    def handle_interaction_setup(interaction_type,fidl)
+    def handle_interaction_setup(interaction_type, fidl)
       self.class.handle_interaction_setup(self, interaction_type, fidl)
     end
     protected :handle_interaction_setup
@@ -136,7 +136,7 @@ module AxciomaPC
     protected :handle_interaction_dependencies
 
     def get_interaction_dependencies(interaction_type, idl_prj_dependencies, project_dependencies)
-      self.class.get_interaction_dependencies(self,interaction_type,idl_prj_dependencies, project_dependencies)
+      self.class.get_interaction_dependencies(self, interaction_type, idl_prj_dependencies, project_dependencies)
     end
     protected :get_interaction_dependencies
 

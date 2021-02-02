@@ -318,7 +318,7 @@ module AxciomaPC
       interaction_types = Set.new
       project_dependencies = MPC::Dependencies.new
       @idl_files.each_value do |fidl|
-        BRIX11.log(4,"[#{self}] #{fidl}")
+        BRIX11.log(4, "[#{self}] #{fidl}")
         fidl.includes.each do |ifidl|
           if ifidl.is_member?
             BRIX11.log(4, "[#{self}] #{ifidl}")
@@ -378,7 +378,7 @@ module AxciomaPC
     def setup_comp_gen(project_dependencies)
       BRIX11.log(4, '[%s] setup_comp_gen: project_dependencies = %s', self, project_dependencies)
       mpc_obj = mpc_file[:comp_gen]
-      @idl_files.collect { |n,f| mpc_obj.add_project_file(f.full_path) }
+      @idl_files.collect { |n, f| mpc_obj.add_project_file(f.full_path) }
 
       # idl_includes: idl in recipe self, concat with includes given in project root aprc file
       mpc_obj.includes << idl_includes << project.idl_includes
@@ -477,7 +477,7 @@ module AxciomaPC
           end
         end
         # check any attributes on this IDL Component
-        check_attributes_for_anytypecode(idl_scanner,node)
+        check_attributes_for_anytypecode(idl_scanner, node)
       when IDL::AST::Module,
            IDL::AST::ComponentBase,
            IDL::AST::Porttype,

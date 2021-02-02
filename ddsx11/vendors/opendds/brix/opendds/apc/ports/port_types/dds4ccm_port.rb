@@ -27,7 +27,7 @@ module AxciomaPC
           mpc_obj = create_opendds_conn_lib
           mpc_file.add_mpc_project(mpc_obj)
 
-          recipe.idl_files.each do |_,fidl|
+          recipe.idl_files.each do |_, fidl|
             inc_fidl = project.idl_files[fidl.full_path]
             rcp = inc_fidl.recipes.first
             #set the interaction type

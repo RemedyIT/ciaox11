@@ -105,7 +105,7 @@ module AxciomaPC
           if idf_full_path
             idl_file = recipe.project.add_idl_file(idf_full_path)
             idl_scanner = IDLFileScannerAttr.new(recipe)
-            if idl_scanner.idl_has_attrib_def?(idl_file,@type)
+            if idl_scanner.idl_has_attrib_def?(idl_file, @type)
               return idf
             end
           else

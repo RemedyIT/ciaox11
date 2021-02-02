@@ -36,7 +36,7 @@ module AxciomaPC
           # by not specifying the recipe for the :lem_stub dependency (nil) this is a noop
           # but the linked :stub dependency is active and pulled in
           fidl.project_dependencies <<
-              MPC::Dependency.new(:lem_stub,MPC::LinkDependency.new(:stub, recipe))
+              MPC::Dependency.new(:lem_stub, MPC::LinkDependency.new(:stub, recipe))
         end
       end
 

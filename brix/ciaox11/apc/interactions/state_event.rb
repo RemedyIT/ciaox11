@@ -18,7 +18,7 @@ module AxciomaPC
         #noop
       end
 
-      def self.process_component_dependencies(recipe,project_dependencies)
+      def self.process_component_dependencies(recipe, project_dependencies)
         BRIX11.log(3, '[%s|SEV] process_component_dependencies', self)
         recipe.setup_comp_gen_sev(project_dependencies)
         recipe.setup_stub_comp_sev(project_dependencies)
@@ -140,7 +140,7 @@ module AxciomaPC
       protected :generate_sev_interface_recipe
 
       def extra_listener_port(name, comp)
-        port = ComponentRecipe::PortDefinition.new(name,comp)
+        port = ComponentRecipe::PortDefinition.new(name, comp)
         port.set_type 'provides'
         port.set_intf_name 'CCM_DDS::ConnectorStatusListener'
         #check if already a ConnectorStatusListener exist for this InterFace

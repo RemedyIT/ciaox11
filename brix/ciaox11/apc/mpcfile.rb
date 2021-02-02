@@ -113,7 +113,7 @@ module AxciomaPC
         # start with all direct dependencies
         preqs = ::Set.new(recipes.collect {|rcp| (rcp.mpc_file[project_type].wants_build? && rcp.mpc_file[project_type].project_name) || nil }.compact)
         # now collect all (unique) recorded dependencies for these direct prerequisites
-        preq_deps = recipes.inject([]) {|list,rcp| list.concat(rcp.mpc_file[project_type].project_dependencies) }
+        preq_deps = recipes.inject([]) {|list, rcp| list.concat(rcp.mpc_file[project_type].project_dependencies) }
         # now add all projects from indirect dependencies that are not covered by direct dependencies
         dependencies.each do |idep|
           preqs.merge(idep.prerequisite_projects - preq_deps)

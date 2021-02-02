@@ -47,7 +47,7 @@ module AxciomaPC
         mpc_obj = create_conn_lib
         mpc_file.add_mpc_project(mpc_obj)
 
-        recipe.idl_files.each do |_,fidl|
+        recipe.idl_files.each do |_, fidl|
           inc_fidl = project.idl_files[fidl.full_path]
           rcp = inc_fidl.recipes.first
           #set the interaction type
@@ -59,7 +59,7 @@ module AxciomaPC
         BRIX11.log(3, '[%s] process project dependencies', self)
 
         project_dependencies = MPC::Dependencies.new
-        recipe.idl_files.each do |_,fidl|
+        recipe.idl_files.each do |_, fidl|
           inc_fidl = project.idl_files[fidl.full_path]
           rcp = inc_fidl.recipes.first
           rcp.get_dependencies(inc_fidl, [:ami4ccm], project_dependencies)
@@ -88,7 +88,7 @@ module AxciomaPC
 
       def setup_ami_lem_gen(project_dependencies)
         mpc_obj = mpc_file[:ami_lem_gen]
-        recipe.idl_files.collect do |n,f|
+        recipe.idl_files.collect do |n, f|
           # get generated name for idl_file
           name = f.name.gsub('.idl', 'A.idl')
           # get gen_dir path for recipe managing idl file
@@ -105,21 +105,21 @@ module AxciomaPC
 
       def setup_conn_gen(project_dependencies)
         mpc_obj = mpc_file[:amic_conn_gen]
-        recipe.idl_files.collect { |n,f| mpc_obj.add_project_file(f.full_path) }
+        recipe.idl_files.collect { |n, f| mpc_obj.add_project_file(f.full_path) }
 
         mpc_obj.add_dependencies(project_dependencies, :lem_gen)
 
         #Also needed the gen_dir from the original recipe of the idl_files for the includes
-        recipe.idl_files.each do |n,idf|
+        recipe.idl_files.each do |n, idf|
           org_fidl = project.idl_files[idf.full_path]
           rcp = org_fidl.recipes.first
-          mpc_obj.includes << File.expand_path(rcp.gen_dir,rcp.recipe_file.path)
+          mpc_obj.includes << File.expand_path(rcp.gen_dir, rcp.recipe_file.path)
         end
 
         # idl_includes: idl in recipe self, concat with includes given in project root apcrc file
         mpc_obj.includes << idl_includes << project.idl_includes
         # Also needed the own generated output dir
-        mpc_obj.includes << File.expand_path(recipe.gen_dir,recipe.recipe_file.path)
+        mpc_obj.includes << File.expand_path(recipe.gen_dir, recipe.recipe_file.path)
       end
 
       def setup_conn_lib(project_dependencies)

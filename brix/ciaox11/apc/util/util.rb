@@ -22,7 +22,7 @@ module AxciomaPC
       #use match.match()[1] to get the value between $( and ) , for using in ENV .
    #   new_path = path.gsub(/\$\((.*?)\)/) {|match| ENV[match.match(/\$\((.*?)\)/)[1]]}
       #Use the brix11 environment variable if set, else use the user set environment variable
-      new_path = path.gsub(/\$\((.*?)\)/) {|match| BRIX11::Exec.get_run_environment(match.match(/\$\((.*?)\)/)[1],true)}
+      new_path = path.gsub(/\$\((.*?)\)/) {|match| BRIX11::Exec.get_run_environment(match.match(/\$\((.*?)\)/)[1], true)}
     end
 
   end

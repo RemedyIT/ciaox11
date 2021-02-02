@@ -52,7 +52,7 @@ module IDL
 
           def add_ami4ccm_receptacle(s)
             # strip start and end characters (should be the '""' or '<>' brackets)
-            s = s[1,s.size-2]
+            s = s[1, s.size-2]
             ami4ccm_receptacles << s
           end
 
@@ -62,7 +62,7 @@ module IDL
 
           def add_ami4ccm_idl_include(s)
             # strip start and end characters (should be the '""' or '<>' brackets)
-            s = s[1,s.size-2]
+            s = s[1, s.size-2]
             ami4ccm_idl_includes << s
             if IDL::AST::Include === @cur
               # if this is parsed from an include file register the ami4ccm idl include there as well

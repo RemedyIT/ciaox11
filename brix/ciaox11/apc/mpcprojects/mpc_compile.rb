@@ -16,7 +16,7 @@ module AxciomaPC
       # returns all necessary link libraries resulting from this dependency
       def libs
         # start with libraries resulting from direct dependencies
-        libs = ::Set.new(recipes.inject([]) {|list,rcp| list.concat(rcp.mpc_file[project_type].lib_dependencies) })
+        libs = ::Set.new(recipes.inject([]) {|list, rcp| list.concat(rcp.mpc_file[project_type].lib_dependencies) })
         # now add libraries resulting from indirect dependencies
         dependencies.each do |idep|
           libs.merge(idep.libs)
@@ -27,7 +27,7 @@ module AxciomaPC
       # returns all necessary link library search paths resulting from this dependency
       def lib_paths
         # start with library search paths resulting from direct dependencies
-        lib_paths = ::Set.new(recipes.inject([]) {|list,rcp| list.concat(rcp.mpc_file[project_type].lib_paths) })
+        lib_paths = ::Set.new(recipes.inject([]) {|list, rcp| list.concat(rcp.mpc_file[project_type].lib_paths) })
         # now add library search paths resulting from indirect dependencies
         dependencies.each do |idep|
           lib_paths.merge(idep.lib_paths)
@@ -57,7 +57,7 @@ module AxciomaPC
       EXEC_NM_EXT = '_exec'
       EXEC_F = '_exec'
 
-      def initialize(type,recipe)
+      def initialize(type, recipe)
         super(type, recipe)
         @sources = Util::UniqueStringList.new(:ws)
         @headers = Util::UniqueStringList.new(:ws)
