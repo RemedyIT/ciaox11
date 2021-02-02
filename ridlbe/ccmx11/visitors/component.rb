@@ -292,7 +292,7 @@ module IDL
       end
 
       def cxx_ptr_name
-        cxxname+PTR_TYPE_SUFFIX
+        cxxname + PTR_TYPE_SUFFIX
       end
 
       def skel_cxxname
@@ -323,7 +323,7 @@ module IDL
       end
 
       def executor_cxx_namespace
-        scoped_cxxname.scope_to_cxxname+'_Impl'
+        scoped_cxxname.scope_to_cxxname + '_Impl'
       end
 
       def has_concrete_base?
@@ -400,7 +400,7 @@ module IDL
 
       public
       def supported_interface_ids
-        @sup_intf_ids ||= (collect_ancestors([], node).collect {|ancestor| ancestor.repository_id } <<  node.repository_id)
+        @sup_intf_ids ||= (collect_ancestors([], node).collect {|ancestor| ancestor.repository_id } << node.repository_id)
       end
 
     end

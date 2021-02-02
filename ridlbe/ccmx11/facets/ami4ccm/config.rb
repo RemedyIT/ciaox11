@@ -154,18 +154,18 @@ module IDL
       ##
 
       def self.check_ami_lem_stub_export_params(options)
-        options[:ami_lem_stub_export_macro] = options[:base_export_macro]+"_AMI4CCM_LEM_STUB" + options[:export_macro_pfx] unless options[:ami_lem_stub_export_macro] || options[:base_export_macro].nil?
-        options[:ami_lem_stub_export_include] = options[:base_export_include]+"_ami4ccm_lem_stub" + options[:export_header_pfx] unless options[:ami_lem_stub_export_include] || options[:base_export_include].nil?
+        options[:ami_lem_stub_export_macro] = options[:base_export_macro] + "_AMI4CCM_LEM_STUB" + options[:export_macro_pfx] unless options[:ami_lem_stub_export_macro] || options[:base_export_macro].nil?
+        options[:ami_lem_stub_export_include] = options[:base_export_include] + "_ami4ccm_lem_stub" + options[:export_header_pfx] unless options[:ami_lem_stub_export_include] || options[:base_export_include].nil?
       end
 
       def self.check_conn_lem_stub_export_params(options)
-        options[:conn_lem_stub_export_macro] = options[:base_export_macro]+"_LEM_STUB_AMI_CONN" + options[:export_macro_pfx] unless options[:conn_lem_stub_export_macro] || options[:base_export_macro].nil?
-        options[:conn_lem_stub_export_include] = options[:base_export_include]+"_lem_stub_ami_conn" + options[:export_header_pfx] unless options[:conn_lem_stub_export_include] || options[:base_export_include].nil?
+        options[:conn_lem_stub_export_macro] = options[:base_export_macro] + "_LEM_STUB_AMI_CONN" + options[:export_macro_pfx] unless options[:conn_lem_stub_export_macro] || options[:base_export_macro].nil?
+        options[:conn_lem_stub_export_include] = options[:base_export_include] + "_lem_stub_ami_conn" + options[:export_header_pfx] unless options[:conn_lem_stub_export_include] || options[:base_export_include].nil?
       end
 
       def self.check_ami_stub_export_params(options)
-        options[:ami_stub_export_macro] = options[:base_export_macro]+"_AMI4CCM_STUB" + options[:export_macro_pfx] unless options[:ami_stub_export_macro] || options[:base_export_macro].nil?
-        options[:ami_stub_export_include] = options[:base_export_include]+"_ami4ccm_stub" + options[:export_header_pfx] unless options[:ami_stub_export_include] || options[:base_export_include].nil?
+        options[:ami_stub_export_macro] = options[:base_export_macro] + "_AMI4CCM_STUB" + options[:export_macro_pfx] unless options[:ami_stub_export_macro] || options[:base_export_macro].nil?
+        options[:ami_stub_export_include] = options[:base_export_include] + "_ami4ccm_stub" + options[:export_header_pfx] unless options[:ami_stub_export_include] || options[:base_export_include].nil?
       end
 
       #########################################################################
@@ -193,7 +193,7 @@ module IDL
       # necessary for compiling the ami4ccm dependent files must already be present .
       def self.gen_ami_connector_only_ami4ccm_complete(options, idl_ext)
         # do this once
-        options[:gen_amiconn_only_ami4ccm_complete]=false
+        options[:gen_amiconn_only_ami4ccm_complete] = false
 
         # check export directive parameters for derived generations
         IDL::CCMX11.check_lem_stub_export_params(options)
@@ -254,7 +254,7 @@ module IDL
       # Except the A.idl file and it's derivatives
       def self.gen_ami_connector_complete(options, idl_ext)
         # do this once
-        options[:gen_amiconn_complete]=false
+        options[:gen_amiconn_complete] = false
 
         # check export directive parameters for derived generations
         IDL::CCMX11.check_lem_stub_export_params(options)
@@ -412,7 +412,7 @@ module IDL
               impl_opts.delete(:stub_export_file) if impl_opts.has_key?(:stub_export_file)
             end
             if impl_opts[:lem_stub_export_file]
-              impl_opts[:stub_export_file]= 'ami_conn_' + impl_opts[:lem_stub_export_file]
+              impl_opts[:stub_export_file] = 'ami_conn_' + impl_opts[:lem_stub_export_file]
             end
           end
         end
@@ -421,7 +421,7 @@ module IDL
 
       # determine xxxA_conn.idl filename for templated connector instantiation declaration
       def self.acon_conn_idl(options, idl_ext)
-        options[:acon_conn_idl] = File.join(options.outputdir, File.basename(options[:idlfile], idl_ext)+options[:ami_idl_conn_pfx]+idl_ext)
+        options[:acon_conn_idl] = File.join(options.outputdir, File.basename(options[:idlfile], idl_ext) + options[:ami_idl_conn_pfx] + idl_ext)
       end
 
       # generate  xxxA_conn.idl and ami connector
@@ -443,8 +443,8 @@ module IDL
 
         options[:ami4ccm] = true
         options[:conn_exec_outputdir] = options.outputdir unless options[:conn_exec_outputdir]
-        options[:conn_exec_output_hdr] = File.join(options[:conn_exec_outputdir], File.basename(options[:idlfile], idl_ext)+options[:comp_exec_pfx])
-        options[:conn_exec_output_src] = options[:conn_exec_output_hdr]+options.src_ext
+        options[:conn_exec_output_hdr] = File.join(options[:conn_exec_outputdir], File.basename(options[:idlfile], idl_ext) + options[:comp_exec_pfx])
+        options[:conn_exec_output_src] = options[:conn_exec_output_hdr] + options.src_ext
         options[:conn_exec_output_hdr] += options.hdr_ext
 
         conn_exec_h = GenFile.new(options[:conn_exec_output_hdr])
@@ -542,7 +542,7 @@ module IDL
 
       # determine xxxAidl filename for Async Request/Reply pattern interfaces
       def self.acon_idl(options, idl_ext)
-        options[:acon_idl] = File.join(options.outputdir, File.basename(options[:idlfile], idl_ext)+options[:ami_idl_pfx]+idl_ext)
+        options[:acon_idl] = File.join(options.outputdir, File.basename(options[:idlfile], idl_ext) + options[:ami_idl_pfx] + idl_ext)
       end
 
       # generate xxxA.idl with Async Request/Reply pattern interfaces
@@ -647,8 +647,8 @@ module IDL
             def check_stub_export_params_with_ami4ccm(options)
               if options.gen_ami_idl && options.gen_export_st
                 # use composite _stub_export for stub generated of *A.idl file unless specified explicitly
-                options.stub_export_macro = options.base_export_macro+'_AMI4CCM_STUB' + options.export_macro_pfx unless options.stub_export_macro || options.base_export_macro.nil?
-                options.stub_export_include = options.base_export_include+'_ami4ccm_stub' + options.export_header_pfx unless options.stub_export_include || options.base_export_include.nil?
+                options.stub_export_macro = options.base_export_macro + '_AMI4CCM_STUB' + options.export_macro_pfx unless options.stub_export_macro || options.base_export_macro.nil?
+                options.stub_export_include = options.base_export_include + '_ami4ccm_stub' + options.export_header_pfx unless options.stub_export_include || options.base_export_include.nil?
               end
               check_stub_export_params_without_ami4ccm(options)
             end

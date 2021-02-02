@@ -13,7 +13,7 @@ require 'brix/ciaox11/apc/project'
 module BRIX11
   module CIAOX11
 
-    class MakeProject  < Command::Base
+    class MakeProject < Command::Base
 
       DESC = 'Make (build) the AXCIOMA project.'.freeze
 
@@ -26,7 +26,7 @@ module BRIX11
 
       def self.setup(optparser, options)
         options[:axpmake] = OPTIONS.dup
-        optparser.banner = "#{DESC}\n\n"+
+        optparser.banner = "#{DESC}\n\n" +
                            "Usage: #{options[:script_name]} apc make [options] [-- make-options]\n\n"
 
         optparser.on('-c', '--clean', 'Clean project only.') { options[:axpmake][:clean] = true; options[:axpmake][:build] = false }

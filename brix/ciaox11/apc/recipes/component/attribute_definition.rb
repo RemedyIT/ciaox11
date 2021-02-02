@@ -72,7 +72,7 @@ module AxciomaPC
       end
 
       def readonly(readonly=nil)
-        @readonly=readonly unless readonly.nil?
+        @readonly = readonly unless readonly.nil?
         @readonly
       end
 
@@ -93,7 +93,7 @@ module AxciomaPC
         # project idl_includes dirs.
         recipe.idl.each do |idf|
           if File.exist?(File.join(recipe.recipe_file.full_path, idf))
-            idf_full_path =  File.join(recipe.recipe_file.full_path, idf)
+            idf_full_path = File.join(recipe.recipe_file.full_path, idf)
           else
             recipe.project.idl_includes.each do |ii|
               if File.exist?(File.join(ii, idf))

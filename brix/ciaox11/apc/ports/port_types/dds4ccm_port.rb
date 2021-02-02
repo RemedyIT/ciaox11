@@ -51,7 +51,7 @@ module AxciomaPC
 
       def setup
         # create implicit interface recipe if no explicit version is defined
-        idlmatch = project.match_idl_files(interface_name+'.idl')
+        idlmatch = project.match_idl_files(interface_name + '.idl')
         intf_idl_file = idlmatch.find do |fidl|
           if rcp = fidl.recipes.first
              SEV::InterfaceRecipe === rcp && rcp.topic == topic

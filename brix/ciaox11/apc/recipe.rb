@@ -108,7 +108,7 @@ module AxciomaPC
             # the gen dir , this file will be removed also
             # solution: adapt mpc to remove generated export headers also.
             files = Dir.entries(gen_dir_path)
-            if files.select {|ff| ff !~ /export.h/ && ff !='.' && ff != '..'  }.empty?
+            if files.select {|ff| ff !~ /export.h/ && ff != '.' && ff != '..'  }.empty?
               # empty or no other then export file, so remove
               FileUtils.remove_dir(gen_dir_path)
             end
@@ -149,8 +149,8 @@ module AxciomaPC
     end
 
     def dump(indent=0, out=STDERR)
-      out.puts (' '*indent)+self.to_s
-      recipes.each { |rcp| rcp.dump(indent+2, out) }
+      out.puts (' ' * indent) + self.to_s
+      recipes.each { |rcp| rcp.dump(indent + 2, out) }
     end
 
   end # RecipeFile
@@ -334,7 +334,7 @@ module AxciomaPC
 
     # set/get shared library base name
     def shared_name(shared_name=nil)
-      @shared_name=shared_name.to_s if shared_name
+      @shared_name = shared_name.to_s if shared_name
       @shared_name
     end
 
@@ -364,7 +364,7 @@ module AxciomaPC
 
     # set/get export base name
     def export_name(export_name=nil)
-      @export_name=export_name.downcase if export_name
+      @export_name = export_name.downcase if export_name
       @export_name
     end
 
@@ -387,7 +387,7 @@ module AxciomaPC
 
     # get MPC file name for recipe
     def mpc_name
-      File.join(self.recipe_file.path, @mpc_id+'.mpc')
+      File.join(self.recipe_file.path, @mpc_id + '.mpc')
     end
 
     # get MPC::File for recipe
@@ -524,7 +524,7 @@ module AxciomaPC
         end
       else
         # IDL file is only one or all others are also without recipes so we create internal implicit DataRecipe
-        imp_rcpfile = project.add_recipe_file(File.join(idl_dir, 'implicit.'+AxciomaPC::RECIPE_FILE_EXT), true)
+        imp_rcpfile = project.add_recipe_file(File.join(idl_dir, 'implicit.' + AxciomaPC::RECIPE_FILE_EXT), true)
         imp_rcp = DataIdlRecipe.new(imp_rcpfile, File.basename(idl_dir).sub('.', '_'))
         imp_rcpfile.add_recipe(imp_rcp)
         imp_rcp.add_idl_file(idl_file, idl_file.name)
@@ -568,9 +568,9 @@ module AxciomaPC
     end
 
     def dump(indent=0, out=STDERR, data=nil)
-      out.puts (' '*indent)+self.to_s
-      out.puts((' '*(indent+2))+data.to_s) if data
-      @idl_files.each { |n, f| out.puts (' '*(indent+2))+"#{n} =>"; f.dump(indent+4, out) }
+      out.puts (' ' * indent) + self.to_s
+      out.puts((' ' * (indent + 2)) + data.to_s) if data
+      @idl_files.each { |n, f| out.puts (' ' * (indent + 2)) + "#{n} =>"; f.dump(indent + 4, out) }
       out.puts (' ')
     end
 

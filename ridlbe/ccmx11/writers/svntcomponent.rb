@@ -60,12 +60,12 @@ module IDL
         super
         self.template_root = File.join(self.template_root, 'hdr')
         @include_guard = "__RIDL_#{File.basename(params[:svntcomp_output_h] || '').to_random_include_guard}_INCLUDED__"
-        properties[:svnt_lem_include] = File.basename(params[:idlfile], params[:idlext])+params[:lem_pfx]+params[:stub_pfx]+params[:hdr_ext]
+        properties[:svnt_lem_include] = File.basename(params[:idlfile], params[:idlext]) + params[:lem_pfx] + params[:stub_pfx] + params[:hdr_ext]
 
         # Get the base svnt header
-        base_name =  File.basename(params[:idlfile], params[:idlext])
+        base_name = File.basename(params[:idlfile], params[:idlext])
         base_name = base_name.chomp(params[:ccon_pfx])
-        properties[:base_svnt_header] = base_name + params[:svnt_impl_pfx]+params[:hdr_ext]
+        properties[:base_svnt_header] = base_name + params[:svnt_impl_pfx] + params[:hdr_ext]
       end
 
       def uses_multiple?

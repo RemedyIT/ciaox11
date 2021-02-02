@@ -39,7 +39,7 @@ module IDL
         module Methods
           def add_lem_include(s)
             # strip start and end characters (should be the '""' or '<>' brackets)
-            s = s[1, s.size-2]
+            s = s[1, s.size - 2]
             if IDL::AST::Include === @cur
               IDL.log(3, "registering LEM include [#{s}] from #{@cur.filename}")
               # if this is parsed from an include file register the lem include there
@@ -49,7 +49,7 @@ module IDL
 
           def add_impl_include(s)
             # strip start and end characters (should be the '""' or '<>' brackets)
-            s = s[1, s.size-2]
+            s = s[1, s.size - 2]
             (@impl_includes ||= []) << s
             if IDL::AST::Include === @cur
               # if this is parsed from an include file register the template include there
@@ -108,25 +108,25 @@ module IDL
     # AST::ComponentBase node customization mixin
     module ComponentBaseMixin
       def proxy_cxxname
-        cxxname+Cxx11::STUB_PROXY_SUFFIX
+        cxxname + Cxx11::STUB_PROXY_SUFFIX
       end
       def scoped_proxy_cxxname
-        scoped_cxxname+Cxx11::STUB_PROXY_SUFFIX
+        scoped_cxxname + Cxx11::STUB_PROXY_SUFFIX
       end
       def srvproxy_cxxname
-        cxxname+Cxx11::SRV_PROXY_SUFFIX
+        cxxname + Cxx11::SRV_PROXY_SUFFIX
       end
       def scoped_srvproxy_cxxname
-        scoped_skel_cxxnamespace+'::'+srvproxy_cxxname
+        scoped_skel_cxxnamespace + '::' + srvproxy_cxxname
       end
       def scoped_skel_cxxnamespace
-        ((enclosure && !enclosure.scopes.empty?) ? enclosure.scoped_cxxname+'::' : '')+'POA'
+        ((enclosure && !enclosure.scopes.empty?) ? enclosure.scoped_cxxname + '::' : '') + 'POA'
       end
       def skel_cxxname
         cxxname
       end
       def scoped_skel_cxxname
-        scoped_skel_cxxnamespace+'::'+skel_cxxname
+        scoped_skel_cxxnamespace + '::' + skel_cxxname
       end
     end # ComponentBaseMixin
 

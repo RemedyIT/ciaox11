@@ -188,7 +188,7 @@ module IDL
         options[:gen_dds4ccm_lem] = false
 
         idl_base = File.basename(options[:idlfile], idl_ext)
-        options[:dds4ccm_lem_idl_file] = File.join(options.outputdir, idl_base+'SE'+idl_ext)
+        options[:dds4ccm_lem_idl_file] = File.join(options.outputdir, idl_base + 'SE' + idl_ext)
         dds4ccm_lem_idl_file = GenFile.new(options[:dds4ccm_lem_idl_file])
 
         # schedule dds4ccm lem IDL generation

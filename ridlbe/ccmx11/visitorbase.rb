@@ -24,7 +24,7 @@ module IDL
       end
 
       def exec_export_macro
-        params[:exec_export_macro] ? params[:exec_export_macro]+' ' : self.export_macro
+        params[:exec_export_macro] ? params[:exec_export_macro] + ' ' : self.export_macro
       end
 
       def svnt_export_include?
@@ -36,7 +36,7 @@ module IDL
       end
 
       def svnt_export_macro
-        params[:svnt_export_macro] ? params[:svnt_export_macro]+' ' : self.export_macro
+        params[:svnt_export_macro] ? params[:svnt_export_macro] + ' ' : self.export_macro
       end
 
       def conn_export_include?
@@ -48,7 +48,7 @@ module IDL
       end
 
       def conn_export_macro
-        params[:conn_export_macro] ? params[:conn_export_macro]+' ' : self.export_macro
+        params[:conn_export_macro] ? params[:conn_export_macro] + ' ' : self.export_macro
       end
 
     end

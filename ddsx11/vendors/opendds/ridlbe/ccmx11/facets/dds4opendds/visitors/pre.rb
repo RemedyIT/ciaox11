@@ -17,17 +17,17 @@ module IDL
 
       def opendds_support_include
         # return without any output directories prefixed
-        idl_base+params[:dds_idl_pfx]+'C.h'
+        idl_base + params[:dds_idl_pfx] + 'C.h'
       end
 
       def opendds_native_stub_include
         # return without any output directories prefixed
-        idl_base+params[:dds_idl_pfx]+'C.h'
+        idl_base + params[:dds_idl_pfx] + 'C.h'
       end
 
       def opendds_typesupport_impl_include
         # return without any output directories prefixed
-        idl_base+params[:opendds_typesupportimpl_pfx]+params[:hdr_ext]
+        idl_base + params[:opendds_typesupportimpl_pfx] + params[:hdr_ext]
       end
 
     end # PreVisitor

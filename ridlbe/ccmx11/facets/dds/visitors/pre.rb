@@ -36,22 +36,22 @@ module IDL
       end
 
       def stub_include
-        idl_base+'C.h'
+        idl_base + 'C.h'
       end
 
       def dds_traits_include
         # return without any output directories prefixed
-        idl_base+params[:dds_idl_pfx]+'_traits.h'
+        idl_base + params[:dds_idl_pfx] + '_traits.h'
       end
 
       def dds_typesupport_include
         # return without any output directories prefixed
-        include = idl_base+params[:dds_typesupport_pfx]+params[:hdr_ext]
+        include = idl_base + params[:dds_typesupport_pfx] + params[:hdr_ext]
       end
 
       def dds_entity_include
         # return without any output directories prefixed
-        idl_base+params[:dds_typed_entities_pfx]+params[:stub_pfx]+params[:hdr_ext]
+        idl_base + params[:dds_typed_entities_pfx] + params[:stub_pfx] + params[:hdr_ext]
       end
 
     end # PreVisitor

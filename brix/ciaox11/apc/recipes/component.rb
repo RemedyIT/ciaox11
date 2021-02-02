@@ -425,8 +425,8 @@ module AxciomaPC
       #include paths, lib_paths and libs given in recipe:
       mpc_obj.includes << include_dirs << project.include_dirs
       mpc_obj.lib_paths << lib_paths << project.lib_paths
-      mpc_obj.link_libs << libs  + project.libs
-      mpc_obj.link_lit_libs << lit_libs  + project.lit_libs
+      mpc_obj.link_libs << libs + project.libs
+      mpc_obj.link_lit_libs << lit_libs + project.lit_libs
 
       if (!self.combined_lib?) && self.needs_stub? && self.creates_stubcode?
         mpc_obj.set_stub
@@ -502,7 +502,7 @@ module AxciomaPC
     def check_attributes_for_anytypecode(idl_scanner, node)
       # Attributes from components and attributes from mirror ports are needed,
       # so we can't use node.attributes, but we have to walk the members self.
-      attrs=[]
+      attrs = []
       node.walk_members do |m|
         if m.is_a?(IDL::AST::Attribute)
           attrs << m

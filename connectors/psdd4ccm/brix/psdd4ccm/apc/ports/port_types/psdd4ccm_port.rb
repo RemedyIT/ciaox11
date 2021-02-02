@@ -52,7 +52,7 @@ module AxciomaPC
       def setup
         BRIX11.log(3, "[%s] setup", self)
         # create implicit interface recipe if no explicit version is defined
-        idlmatch = project.match_idl_files(interface_name+'.idl')
+        idlmatch = project.match_idl_files(interface_name + '.idl')
         intf_idl_file = idlmatch.find do |fidl|
           if rcp = fidl.recipes.first
              PS::InterfaceRecipe === rcp && rcp.topic == topic
@@ -92,7 +92,7 @@ module AxciomaPC
       def interface_name
         unless @interface_name
           if recipe.idl.empty?
-            @interface_name = topic.tr(' ', '_')+'PS'
+            @interface_name = topic.tr(' ', '_') + 'PS'
           else
             @interface_name = "#{File.basename(recipe.idl.first, '.*')}PS"
           end

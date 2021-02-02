@@ -112,7 +112,7 @@ module AxciomaPC
         ridl_args << "-I#{BRIX11::Exec.get_run_environment('TAOX11_ROOT')}"
         if self.idl.empty?
           ridl_args << '--no-input' <<            # no input parsing
-                       topic.tr(' ', '_')+'.idl'   # 'fake' input filename as template for output
+                       topic.tr(' ', '_') + '.idl'   # 'fake' input filename as template for output
         else
           # use '--search-includepath' to have RIDL search for the input file in one
           # of the given include directories
@@ -154,7 +154,7 @@ module AxciomaPC
         # register required PubSub specific includepaths and macros to facilitate IDL scanner
         ciaox11_root = BRIX11::Exec.get_run_environment('CIAOX11_ROOT')
         (idlfile.properties[:includepaths] ||= []).concat([
-          File.join(ciaox11_root, 'connectors/psdd4ccm/idl')+'/',
+          File.join(ciaox11_root, 'connectors/psdd4ccm/idl') + '/',
         ])
       end
 
@@ -176,7 +176,7 @@ module AxciomaPC
       def interface_name
         unless @interface_name
           if self.idl.empty?
-            @interface_name = topic.tr(' ', '_')+'PS'
+            @interface_name = topic.tr(' ', '_') + 'PS'
           else
             @interface_name = "#{File.basename(self.idl.first, '.*')}PS"
           end
@@ -191,7 +191,7 @@ module AxciomaPC
       end
 
       def interface_idl_path
-        File.join(full_gen_path, interface_name+'.idl')
+        File.join(full_gen_path, interface_name + '.idl')
       end
 
       def topic=(name)

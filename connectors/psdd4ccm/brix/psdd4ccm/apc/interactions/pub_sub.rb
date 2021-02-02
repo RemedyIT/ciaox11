@@ -84,7 +84,7 @@ module AxciomaPC
             raise "No valid data type #{type_name} found for component recipe #{recipe.recipe_id}!"
           end
           generate_pubsub_interface_recipe(type_name, ps_data_idl)
-          @idl_interface = @interface_recipe.interface_name+'.idl'
+          @idl_interface = @interface_recipe.interface_name + '.idl'
         end
       end
       protected :generate_pubsub_port
@@ -93,11 +93,11 @@ module AxciomaPC
         BRIX11.log(4, "[%s] generate_pubsub_interface_recipe : type_name=%s, ps_data_idl=%s", self, type_name, ps_data_idl)
         # create implicit interface recipe if no explicit or implicit version is defined
         ps_name = if ps_data_idl
-                     File.basename(ps_data_idl, '.idl')+'PS'
+                     File.basename(ps_data_idl, '.idl') + 'PS'
                    else
-                     type_name.tr(' ', '_')+'PS'
+                     type_name.tr(' ', '_') + 'PS'
                    end
-        idlmatch = recipe.project.match_idl_files(ps_name+'.idl')
+        idlmatch = recipe.project.match_idl_files(ps_name + '.idl')
         topic = type_name
         if !idlmatch.empty?
           intf_idl_file = idlmatch.find do |fidl|
@@ -173,7 +173,7 @@ module AxciomaPC
       def verify
         BRIX11.log(4, "[%s] verify", self)
         generate_pubsub_port('uses', @config[:typename])
-        set_intf_name @interface_recipe.topic_interface_module+'::Subscriber'
+        set_intf_name @interface_recipe.topic_interface_module + '::Subscriber'
         inports = @config[:interaction].inject({}) do |hsh, int|
                     case int
                     when Hash
@@ -191,14 +191,14 @@ module AxciomaPC
           if p == :listen
             port = ComponentRecipe::PortDefinition.new(n, @comp)
             port.set_type 'provides'
-            port.set_intf_name @interface_recipe.topic_interface_module+'::Listener'
+            port.set_intf_name @interface_recipe.topic_interface_module + '::Listener'
             if !@comp.port_exist?(port)
               @comp.add_port(port)
             end
           elsif p == :get
             port = ComponentRecipe::PortDefinition.new(n, @comp)
             port.set_type 'uses'
-            port.set_intf_name @interface_recipe.topic_interface_module+'::Getter'
+            port.set_intf_name @interface_recipe.topic_interface_module + '::Getter'
             if !@comp.port_exist?(port)
               @comp.add_port(port)
             end
@@ -215,7 +215,7 @@ module AxciomaPC
       def verify
         BRIX11.log(4, "[%s] verify", self)
         generate_pubsub_port('uses', @config[:typename])
-        set_intf_name @interface_recipe.topic_interface_module+'::Publisher'
+        set_intf_name @interface_recipe.topic_interface_module + '::Publisher'
 
         # add interface IDL include path to component recipe
         recipe.idl_includes << File.dirname(@interface_recipe.interface_idl_path)

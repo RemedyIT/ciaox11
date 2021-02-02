@@ -195,7 +195,7 @@ module AxciomaPC
           unless attrib_def && attrib_def[:type]
             raise "Type of attribute '#{attrib}' is missing."
           else
-            type_name =  attrib_def[:type]
+            type_name = attrib_def[:type]
             attribute.set_type(type_name)
             attribute.readonly( attrib_def[:readonly])
           end

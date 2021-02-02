@@ -16,7 +16,7 @@ module BRIX11
       DESC = 'Remove generated files from AXCIOMA project.'.freeze
 
       def self.setup(optparser, options)
-        optparser.banner = "#{DESC}\n\n"+
+        optparser.banner = "#{DESC}\n\n" +
                            "Usage: #{options[:script_name]} apc clean'\n\n"
       end
 

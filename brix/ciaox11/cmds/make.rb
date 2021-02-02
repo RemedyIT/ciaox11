@@ -12,7 +12,7 @@ module BRIX11
 
   module Common
 
-    class Make  < Command::Base
+    class Make < Command::Base
 
       class ListBuilder
 

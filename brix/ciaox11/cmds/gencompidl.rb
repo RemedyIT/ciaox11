@@ -23,8 +23,8 @@ module BRIX11
 
       def self.setup(optparser, options)
         options[:gencompidl] = OPTIONS.dup
-        optparser.banner = "#{DESC}\n\n"+
-                           "Usage: #{options[:script_name]} gen[erate] compidl [options] [NAME]\n\n"+
+        optparser.banner = "#{DESC}\n\n" +
+                           "Usage: #{options[:script_name]} gen[erate] compidl [options] [NAME]\n\n" +
                            "       NAME := name to use for IDL file; default 'test_comp'\n\n"
 
         optparser.on('-c', '--component', '=NAME',

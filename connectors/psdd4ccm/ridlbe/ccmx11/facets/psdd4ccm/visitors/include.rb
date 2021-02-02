@@ -19,7 +19,7 @@ module IDL
       end
 
       def psdd_traits_include
-        self.include_directory + '/' + File.basename(node.filename, '.*')+params[:psdd_traits_pfx]+params[:hdr_ext]
+        self.include_directory + '/' + File.basename(node.filename, '.*') + params[:psdd_traits_pfx] + params[:hdr_ext]
       end
     end
   end

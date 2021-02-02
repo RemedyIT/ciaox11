@@ -58,7 +58,7 @@ module IDL
         def init_visitor(v, node)
           v.properties[:topic_namespaces] =
               (params[:dds_topic_namespace] && params[:dds_topic_namespace].split('::')) ||
-                  node.scopes[0, node.scopes.length-1].collect {|s| s.name }
+                  node.scopes[0, node.scopes.length - 1].collect {|s| s.name }
           v.properties[:topic_sequence] =
               (params[:dds_topic] && params[:dds_topic_seq]) ||
                   "#{node.name}#{params[:dds_topic_seq_suffix] || 'Seq'}"

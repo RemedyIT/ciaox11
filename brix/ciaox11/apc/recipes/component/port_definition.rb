@@ -103,7 +103,7 @@ module AxciomaPC
           # these idl files must be in the same dir as the recipe or otherwise in the
           # project idl_includes dirs.
           if File.exist?(File.join(recipe.recipe_file.path, idf))
-            idf_full_path =  File.join(recipe.recipe_file.path, idf)
+            idf_full_path = File.join(recipe.recipe_file.path, idf)
           else
             recipe.project.idl_includes.each do |ii|
               if File.exist?(File.join(ii, idf))

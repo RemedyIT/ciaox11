@@ -91,7 +91,7 @@ module AxciomaPC
     def uses(intf_name, multiple=nil)
       @config[:kind] = :receptacle
       @config[:type_name] = intf_name
-      if ::Hash === multiple && multiple.size==1
+      if ::Hash === multiple && multiple.size == 1
         @config[:multiple] = multiple[:multiple]
       else
         raise "Invalid :multiple specification #{multiple}." unless multiple.nil?

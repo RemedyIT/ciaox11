@@ -92,8 +92,8 @@ module AxciomaPC
       end
 
       def dump(indent=0, out=STDERR)
-        out.puts (' '*indent)+self.to_s
-        dependencies.dump(indent+2, out)
+        out.puts (' ' * indent) + self.to_s
+        dependencies.dump(indent + 2, out)
       end
     end # Dependency
 
@@ -146,9 +146,9 @@ module AxciomaPC
       end
 
       def dump(indent=0, out=STDERR)
-        out.puts (' '*indent)+self.to_s
-        out.puts (' '*(indent+2))+"[#{recipes.to_a.join(',')}]"
-        dependencies.dump(indent+2, out)
+        out.puts (' ' * indent) + self.to_s
+        out.puts (' ' * (indent + 2)) + "[#{recipes.to_a.join(',')}]"
+        dependencies.dump(indent + 2, out)
       end
     end # CompileDependency
 
@@ -199,8 +199,8 @@ module AxciomaPC
       end
 
       def dump(indent=0, out=STDERR)
-        out.puts (' '*indent)+self.to_s
-        self.each {|dep| dep.dump(indent+2, out) }
+        out.puts (' ' * indent) + self.to_s
+        self.each {|dep| dep.dump(indent + 2, out) }
       end
 
     end # Dependencies
@@ -255,7 +255,7 @@ module AxciomaPC
         @project_postfix = @type.to_s
         @includes = Util::UniqueStringList.new(:ws)
         @base_projects = Util::UniqueStringList.new(:ws)
-        @project_dependencies =  Util::UniqueStringList.new(:ws)
+        @project_dependencies = Util::UniqueStringList.new(:ws)
         @project_files = Util::UniqueStringList.new
         @mpc_file = nil
       end

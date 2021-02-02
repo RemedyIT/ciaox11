@@ -162,7 +162,7 @@ module AxciomaPC
         add_idl_file(idlfile)
         # register required State/Event specific include paths and macros to facilitate IDL scanner
         ciaox11_root = BRIX11::Exec.get_run_environment('CIAOX11_ROOT')
-        (idlfile.properties[:includepaths] ||= []) << (File.join(ciaox11_root, 'connectors/dds4ccm/idl')+File::SEPARATOR)
+        (idlfile.properties[:includepaths] ||= []) << (File.join(ciaox11_root, 'connectors/dds4ccm/idl') + File::SEPARATOR)
         idlfile.properties[:includepaths].concat(InterfaceRecipe.vendor_idl_includes)
         (idlfile.properties[:macros] ||= {}).merge!({
           'CIAOX11_DDS4CCM_STATE' => true,
@@ -196,7 +196,7 @@ module AxciomaPC
       end
 
       def interface_idl_path
-        File.join(full_gen_path, interface_name+'.idl')
+        File.join(full_gen_path, interface_name + '.idl')
       end
 
       def topic=(name)

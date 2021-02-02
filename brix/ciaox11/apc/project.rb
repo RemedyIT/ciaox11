@@ -384,11 +384,11 @@ module AxciomaPC
     end
 
     def dump(indent=0, out=STDERR)
-      out.puts (' '*indent)+self.to_s
-      out.puts (' '*(indent+2))+'-----'
-      recipe_files.each_value { |frcp| frcp.dump(indent+2, out) }
-      out.puts (' '*(indent+2))+'-----'
-      idl_files.each_value { |fidl| fidl.dump(indent+2, out) }
+      out.puts (' ' * indent) + self.to_s
+      out.puts (' ' * (indent + 2)) + '-----'
+      recipe_files.each_value { |frcp| frcp.dump(indent + 2, out) }
+      out.puts (' ' * (indent + 2)) + '-----'
+      idl_files.each_value { |fidl| fidl.dump(indent + 2, out) }
     end
 
   end

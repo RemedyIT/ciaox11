@@ -20,7 +20,7 @@ module IDL
 
       def visit_attribute(node)
         return if node.enclosure.is_a?(IDL::AST::Component) ||
-                  node.enclosure.is_a?(IDL::AST::Connector)||
+                  node.enclosure.is_a?(IDL::AST::Connector) ||
                   node.enclosure.is_local? ||
                   node.enclosure.is_abstract?
         visitor(AttributeVisitor).visit_attribute(node)

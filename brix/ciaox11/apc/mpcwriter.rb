@@ -77,7 +77,7 @@ module AxciomaPC
           begin
             target.respond_to?(m) ? target.__send__(m, *args, &block) : super(m, *args, &block)
           ensure
-            $@.delete_if {|t| %r"\A#{Regexp.quote(__FILE__)}:#{__LINE__-2}:"o =~ t} if $@
+            $@.delete_if {|t| %r"\A#{Regexp.quote(__FILE__)}:#{__LINE__ - 2}:"o =~ t} if $@
           end
         end
       end

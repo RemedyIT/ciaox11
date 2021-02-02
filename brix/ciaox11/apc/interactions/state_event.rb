@@ -75,7 +75,7 @@ module AxciomaPC
       def generate_sev_interface_recipe(type_name, sev_data_idl)
         # create implicit interface recipe if no explicit or implicit version is defined
         base_name = File.basename(sev_data_idl, '.idl')
-        idlmatch = recipe.project.match_idl_files(base_name+'SE.idl')
+        idlmatch = recipe.project.match_idl_files(base_name + 'SE.idl')
         topic = type_name
         if !idlmatch.empty?
           intf_idl_file = idlmatch.find do |fidl|
@@ -158,7 +158,7 @@ module AxciomaPC
         extra_listener_port('connector_status_' + @config[:typename], @comp)
 
         generate_sev_port('port', @config[:typename])
-        set_intf_name @interface_recipe.topic_interface_module+'::DDS_Write'
+        set_intf_name @interface_recipe.topic_interface_module + '::DDS_Write'
 
         # add interface IDL include path to component recipe
         recipe.idl_includes << File.dirname(@interface_recipe.interface_idl_path)
@@ -172,7 +172,7 @@ module AxciomaPC
         extra_listener_port('connector_status_' + @config[:typename], @comp)
 
         generate_sev_port('port', @config[:typename])
-        set_intf_name @interface_recipe.topic_interface_module+'::DDS_Update'
+        set_intf_name @interface_recipe.topic_interface_module + '::DDS_Update'
 
         # add interface IDL include path to component recipe
         recipe.idl_includes << File.dirname(@interface_recipe.interface_idl_path)
@@ -182,7 +182,7 @@ module AxciomaPC
       def verify
         BRIX11.log(4, "[%s] verify", self)
         generate_sev_port('port', @config[:typename])
-        set_intf_name @interface_recipe.topic_interface_module+'::DDS_Read'
+        set_intf_name @interface_recipe.topic_interface_module + '::DDS_Read'
 
         # add interface IDL include path to component recipe
         recipe.idl_includes << File.dirname(@interface_recipe.interface_idl_path)
@@ -192,7 +192,7 @@ module AxciomaPC
       def verify
         BRIX11.log(4, "[%s] verify", self)
         generate_sev_port('port', @config[:typename])
-        set_intf_name @interface_recipe.topic_interface_module+'::DDS_Get'
+        set_intf_name @interface_recipe.topic_interface_module + '::DDS_Get'
 
         # add interface IDL include path to component recipe
         recipe.idl_includes << File.dirname(@interface_recipe.interface_idl_path)
@@ -202,7 +202,7 @@ module AxciomaPC
       def verify
         BRIX11.log(4, "[%s] verify", self)
         generate_sev_port('port', @config[:typename])
-        set_intf_name @interface_recipe.topic_interface_module+'::DDS_Listen'
+        set_intf_name @interface_recipe.topic_interface_module + '::DDS_Listen'
 
         # add interface IDL include path to component recipe
         recipe.idl_includes << File.dirname(@interface_recipe.interface_idl_path)
@@ -212,7 +212,7 @@ module AxciomaPC
       def verify
         BRIX11.log(4, "[%s] verify", self)
         generate_sev_port('port', @config[:typename])
-        set_intf_name @interface_recipe.topic_interface_module+'::DDS_StateListen'
+        set_intf_name @interface_recipe.topic_interface_module + '::DDS_StateListen'
 
         # add interface IDL include path to component recipe
         recipe.idl_includes << File.dirname(@interface_recipe.interface_idl_path)

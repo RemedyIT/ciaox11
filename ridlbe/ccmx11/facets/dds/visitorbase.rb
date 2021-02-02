@@ -58,7 +58,7 @@ module IDL
       end
 
       def typesupport_export_macro
-        params[:typesupport_export_macro] ? params[:typesupport_export_macro]+' ' : ''
+        params[:typesupport_export_macro] ? params[:typesupport_export_macro] + ' ' : ''
       end
     end # VisitorBase
 

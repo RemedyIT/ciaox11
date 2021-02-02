@@ -111,8 +111,8 @@ module AxciomaPC
       taox11_root = BRIX11::Exec.get_run_environment('TAOX11_ROOT')
       ciaox11_root = BRIX11::Exec.get_run_environment('CIAOX11_ROOT')
       # make sure include paths always end with '/'
-      @ridl_opts[:includepaths] << (taox11_root.end_with?('/', '\\') ? taox11_root : taox11_root+'/')
-      @ridl_opts[:includepaths] << (ciaox11_root.end_with?('/', '\\') ? ciaox11_root : ciaox11_root+'/')
+      @ridl_opts[:includepaths] << (taox11_root.end_with?('/', '\\') ? taox11_root : taox11_root + '/')
+      @ridl_opts[:includepaths] << (ciaox11_root.end_with?('/', '\\') ? ciaox11_root : ciaox11_root + '/')
       @ridl_opts[:includepaths] << (File.join(ciaox11_root, 'ccm') + '/')
       @ridl_opts[:includepaths] << (File.join(ciaox11_root, 'connectors/tt4ccm/idl') + '/')
 
@@ -120,10 +120,10 @@ module AxciomaPC
       # @ridl_opts[:xincludepaths].concat(@recipe.recipe_idl_includes.collect {|inc| inc.end_with?('/', '\\') ? inc : inc+'/' })
 
       # user defined project includes
-      @ridl_opts[:xincludepaths].concat(@recipe.project.idl_includes.collect {|inc| inc.end_with?('/', '\\') ? inc : inc+'/' })
+      @ridl_opts[:xincludepaths].concat(@recipe.project.idl_includes.collect {|inc| inc.end_with?('/', '\\') ? inc : inc + '/' })
 
       # user defined recipe includes
-      @ridl_opts[:xincludepaths].concat(@recipe.idl_includes.collect {|inc| inc.end_with?('/', '\\') ? inc : inc+'/' })
+      @ridl_opts[:xincludepaths].concat(@recipe.idl_includes.collect {|inc| inc.end_with?('/', '\\') ? inc : inc + '/' })
     end
 
     def scan_idl_file(idl_file)
@@ -190,7 +190,7 @@ module AxciomaPC
           @type_found = type_check.call(node)
         end
         # only do full scan if not yet scanned yet
-        if idl_file.has_been_scanned? || @inclvl>0
+        if idl_file.has_been_scanned? || @inclvl > 0
           # otherwise recurse to check for type if not found yet
           if (!@type_checked) && IDL::AST::Module === node
             # recurse into IDL Module
