@@ -16,7 +16,7 @@ module BRIX11
       DESC = 'Remove generated files from AXCIOMA project.'.freeze
 
       def self.setup(optparser, options)
-        optparser.banner = "#{DESC}\n\n"+
+        optparser.banner = "#{DESC}\n\n" +
                            "Usage: #{options[:script_name]} apc clean'\n\n"
       end
 
@@ -38,7 +38,7 @@ module BRIX11
         AxciomaPC::MPC.remove(project)
 
         prj = Project.handler(options[:config][:project_type])
-        unless !prj.project_exists?(nil,project.root_path)
+        unless !prj.project_exists?(nil, project.root_path)
           options[:make] = BRIX11::Common::Make::OPTIONS.dup
           options[:make][:clean] = true
           options[:make][:build] = false
@@ -61,7 +61,7 @@ module BRIX11
 
         # remove gen_dirs, unless gen_dir is same as recipe dir  or gen_dir was an already existing dir
         # with 'not generated' files
-        project.recipe_files.each { |_k,rcpf| rcpf.clean }
+        project.recipe_files.each { |_k, rcpf| rcpf.clean }
 
         # lib dir, difficult to remove, maybe it already exists before making the project and maybe it contains user libs
         # but we always remove it if it is empty

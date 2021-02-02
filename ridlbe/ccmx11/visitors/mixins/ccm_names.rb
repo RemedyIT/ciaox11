@@ -12,7 +12,7 @@ module IDL
 
       #original escaped name used in composed name with 'CCM_'
       def ccm_name
-        'CCM_'+name
+        'CCM_' + name
       end
 
       #original escaped name for using in composed names
@@ -22,15 +22,15 @@ module IDL
 
       #needed for generating idl from idl
       def scoped_unescaped_ccm_name
-        ((@node.enclosure && !@node.enclosure.scopes.empty?) ? scoped_enclosure_unescaped_name+'::'+ccm_name : ccm_name)
+        ((@node.enclosure && !@node.enclosure.scopes.empty?) ? scoped_enclosure_unescaped_name + '::' + ccm_name : ccm_name)
       end
       #needed for generating idl from idl
       def scoped_unescaped_type
-        ((@node.enclosure && !@node.enclosure.scopes.empty?) ? scoped_enclosure_unescaped_name+'::'+unescaped_name : unescaped_name)
+        ((@node.enclosure && !@node.enclosure.scopes.empty?) ? scoped_enclosure_unescaped_name + '::' + unescaped_name : unescaped_name)
       end
 
       def scoped_ccm_name
-        ((@node.enclosure && !@node.enclosure.scopes.empty?) ? '::'+scoped_enclosure_cxxname+'::'+ccm_name : ccm_name)
+        ((@node.enclosure && !@node.enclosure.scopes.empty?) ? '::' + scoped_enclosure_cxxname + '::' + ccm_name : ccm_name)
       end
 
       def scoped_ccm_name_in_type
@@ -46,7 +46,7 @@ module IDL
       end
 
       def scoped_ccm_type
-        scoped_ccm_type ||= (((node.enclosure && !node.enclosure.scopes.empty?) ? node.enclosure.scoped_cxxname+'::' : '')+
+        scoped_ccm_type ||= (((node.enclosure && !node.enclosure.scopes.empty?) ? node.enclosure.scoped_cxxname + '::' : '') +
                                       ccm_name)
       end
     end

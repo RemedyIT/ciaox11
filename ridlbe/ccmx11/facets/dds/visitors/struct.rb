@@ -14,7 +14,7 @@ module IDL
 
     # Reopen visitor class to add DDS specifics
     #
-    class StructVisitor  < Cxx11::NodeVisitorBase
+    class StructVisitor < Cxx11::NodeVisitorBase
       include CcmNames
 
       optional_template :life_cycle_traits

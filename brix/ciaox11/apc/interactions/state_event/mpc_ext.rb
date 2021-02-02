@@ -39,14 +39,14 @@ module AxciomaPC
         @base_projects = %w{ciaox11_dds4ccm_lem_stub}
         # add default sources and headers
         @sources.concat([
-            ((recipe.gen_dir+"/") << recipe.interface_name << 'C.cpp'),
-            ((recipe.gen_dir+"/") << recipe.interface_name << 'EC.cpp')
+            ((recipe.gen_dir + "/") << recipe.interface_name << 'C.cpp'),
+            ((recipe.gen_dir + "/") << recipe.interface_name << 'EC.cpp')
         ])
         @headers.concat([
-            ((recipe.gen_dir+"/") << recipe.interface_name << 'C.h'),
-            ((recipe.gen_dir+"/") << recipe.interface_name << 'EC.h'),
-            ((recipe.gen_dir+"/") << recipe.export_name << '_stub_export.h'),
-            ((recipe.gen_dir+"/") << recipe.export_name << '_lem_stub_export.h')
+            ((recipe.gen_dir + "/") << recipe.interface_name << 'C.h'),
+            ((recipe.gen_dir + "/") << recipe.interface_name << 'EC.h'),
+            ((recipe.gen_dir + "/") << recipe.export_name << '_stub_export.h'),
+            ((recipe.gen_dir + "/") << recipe.export_name << '_lem_stub_export.h')
         ])
       end
 

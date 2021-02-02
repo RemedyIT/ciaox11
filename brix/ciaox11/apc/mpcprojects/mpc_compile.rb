@@ -16,7 +16,7 @@ module AxciomaPC
       # returns all necessary link libraries resulting from this dependency
       def libs
         # start with libraries resulting from direct dependencies
-        libs = ::Set.new(recipes.inject([]) {|list,rcp| list.concat(rcp.mpc_file[project_type].lib_dependencies) })
+        libs = ::Set.new(recipes.inject([]) {|list, rcp| list.concat(rcp.mpc_file[project_type].lib_dependencies) })
         # now add libraries resulting from indirect dependencies
         dependencies.each do |idep|
           libs.merge(idep.libs)
@@ -27,7 +27,7 @@ module AxciomaPC
       # returns all necessary link library search paths resulting from this dependency
       def lib_paths
         # start with library search paths resulting from direct dependencies
-        lib_paths = ::Set.new(recipes.inject([]) {|list,rcp| list.concat(rcp.mpc_file[project_type].lib_paths) })
+        lib_paths = ::Set.new(recipes.inject([]) {|list, rcp| list.concat(rcp.mpc_file[project_type].lib_paths) })
         # now add library search paths resulting from indirect dependencies
         dependencies.each do |idep|
           lib_paths.merge(idep.lib_paths)
@@ -57,7 +57,7 @@ module AxciomaPC
       EXEC_NM_EXT = '_exec'
       EXEC_F = '_exec'
 
-      def initialize(type,recipe)
+      def initialize(type, recipe)
         super(type, recipe)
         @sources = Util::UniqueStringList.new(:ws)
         @headers = Util::UniqueStringList.new(:ws)
@@ -151,15 +151,15 @@ module AxciomaPC
         base_projects(%w(taox11_lib))
         project_dependencies << "#{mpc_id}_idl_gen"
         # add default sources and headers
-        @headers << ((recipe.gen_dir+'/') << recipe.export_name << '_' << @project_postfix << EXPORT_HEADER)
+        @headers << ((recipe.gen_dir + '/') << recipe.export_name << '_' << @project_postfix << EXPORT_HEADER)
       end
 
       def add_sources(idf)
-        @sources << ((recipe.gen_dir+'/') << idf << STUB_F << EXT_CPP)
+        @sources << ((recipe.gen_dir + '/') << idf << STUB_F << EXT_CPP)
       end
 
       def add_headers(idf)
-        @headers << ((recipe.gen_dir+'/') << idf << STUB_F << EXT_HEADER)
+        @headers << ((recipe.gen_dir + '/') << idf << STUB_F << EXT_HEADER)
       end
     end
 
@@ -171,12 +171,12 @@ module AxciomaPC
         project_dependencies << "#{mpc_id}_comp_gen"
         # add default sources and headers
         recipe.idl_files.each do |idlfn, fidl|
-          @headers << ((recipe.gen_dir+'/') << ::File.basename(idlfn, '.idl')  << STUB_F << EXT_HEADER)
-          if (fidl.creates_stubcode? || fidl.needs_anytype?)  # stub code?
-            @sources << ((recipe.gen_dir+'/') << ::File.basename(idlfn, '.idl')  << STUB_F << EXT_CPP)
+          @headers << ((recipe.gen_dir + '/') << ::File.basename(idlfn, '.idl') << STUB_F << EXT_HEADER)
+          if fidl.creates_stubcode? || fidl.needs_anytype?  # stub code?
+            @sources << ((recipe.gen_dir + '/') << ::File.basename(idlfn, '.idl') << STUB_F << EXT_CPP)
           end
         end
-        @headers << ((recipe.gen_dir+'/') << recipe.export_name << STUB_NM_EXT << EXPORT_HEADER)
+        @headers << ((recipe.gen_dir + '/') << recipe.export_name << STUB_NM_EXT << EXPORT_HEADER)
       end
     end
 
@@ -184,12 +184,12 @@ module AxciomaPC
       def initialize(recipe)
         super(:comp_lem, recipe)
         @project_postfix = 'comp_lem'
-        project_dependencies <<  "#{mpc_id}_comp_gen"
+        project_dependencies << "#{mpc_id}_comp_gen"
         base_projects(%w(ciaox11_ccm_session_stub))
         # add default sources and headers
-        @sources << (recipe.idl_without_ext.collect {|ifs| ((recipe.gen_dir+'/') << ifs << LEM_STUB_F << EXT_CPP) })
-        @headers << (recipe.idl_without_ext.collect {|ifs| ((recipe.gen_dir+'/') << ifs << LEM_STUB_F << EXT_HEADER) })
-        @headers << ((recipe.gen_dir+'/') << recipe.export_name << LEM_STUB_NM_EXT << EXPORT_HEADER)
+        @sources << (recipe.idl_without_ext.collect {|ifs| ((recipe.gen_dir + '/') << ifs << LEM_STUB_F << EXT_CPP) })
+        @headers << (recipe.idl_without_ext.collect {|ifs| ((recipe.gen_dir + '/') << ifs << LEM_STUB_F << EXT_HEADER) })
+        @headers << ((recipe.gen_dir + '/') << recipe.export_name << LEM_STUB_NM_EXT << EXPORT_HEADER)
       end
 
       #overwrite because we must use here always the LEM_STUB_NM_EXT
@@ -198,8 +198,8 @@ module AxciomaPC
       end
 
       def set_stub
-        link_libs <<  (recipe.shared_name + STUB_NM_EXT)
-        project_dependencies <<  "#{mpc_id}#{STUB_NM_EXT}"
+        link_libs << (recipe.shared_name + STUB_NM_EXT)
+        project_dependencies << "#{mpc_id}#{STUB_NM_EXT}"
       end
     end
 
@@ -209,14 +209,14 @@ module AxciomaPC
         super(:comp_svnt, recipe)
         @project_postfix = 'svnt'
         if recipe.type == :component
-          project_dependencies <<  "#{mpc_id}#{COMP_LEM_NM_EXT}"
-          link_libs <<  "#{recipe.shared_name}#{COMP_LEM_NM_EXT}"
+          project_dependencies << "#{mpc_id}#{COMP_LEM_NM_EXT}"
+          link_libs << "#{recipe.shared_name}#{COMP_LEM_NM_EXT}"
         end
         base_projects(%w(ciaox11_ccm_session_stub))
         # add default sources and headers
-        @sources << (recipe.idl_without_ext.collect {|ifs| ((recipe.gen_dir+'/') << ifs << SVNT_F << EXT_CPP) })
-        @headers << (recipe.idl_without_ext.collect {|ifs| ((recipe.gen_dir+'/') << ifs << SVNT_F << EXT_HEADER) })
-        @headers << ((recipe.gen_dir+'/') << recipe.export_name << SVNT_NM_EXT << EXPORT_HEADER)
+        @sources << (recipe.idl_without_ext.collect {|ifs| ((recipe.gen_dir + '/') << ifs << SVNT_F << EXT_CPP) })
+        @headers << (recipe.idl_without_ext.collect {|ifs| ((recipe.gen_dir + '/') << ifs << SVNT_F << EXT_HEADER) })
+        @headers << ((recipe.gen_dir + '/') << recipe.export_name << SVNT_NM_EXT << EXPORT_HEADER)
       end
 
       def set_stub

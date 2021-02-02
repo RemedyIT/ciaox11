@@ -100,7 +100,7 @@ module IDL
           :micro => 0
         }
 
-        base = File.join(File.dirname(__FILE__), '..', '..', 'ciaox11','versionx11.h')
+        base = File.join(File.dirname(__FILE__), '..', '..', 'ciaox11', 'versionx11.h')
         File.open(base, "r") do |file|
           while (line = file.gets)
             if VERSION_REGEXP =~ line
@@ -208,26 +208,26 @@ module IDL
     def self.check_executor_export_params(options, prefix = nil, force = false)
       if options.gen_export_ex || options.export_ex || force
         unless options.exec_export_macro || options.base_export_macro
-          IDL.fatal("ERROR: it isn't allowed to use -Gxhex or -Xex without specifying the macro with -Wb,exec_export_macro=MACRO "+
+          IDL.fatal("ERROR: it isn't allowed to use -Gxhex or -Xex without specifying the macro with -Wb,exec_export_macro=MACRO " +
                         'or with -Wb,base_export_macro=MACRO_PREFIX')
         end
         # only in case export header generation has been explicitly enabled will
         # we derive missing export parameters from base parameters
-        options.exec_export_macro = options.base_export_macro+"#{(prefix || '').upcase}_EXEC" + options.export_macro_pfx unless options.base_export_macro.nil? || options.exec_export_macro
-        options.exec_export_include = options.base_export_include+"#{prefix}_exec" + options.export_header_pfx unless options.base_export_include.nil? || options.exec_export_include
+        options.exec_export_macro = options.base_export_macro + "#{(prefix || '').upcase}_EXEC" + options.export_macro_pfx unless options.base_export_macro.nil? || options.exec_export_macro
+        options.exec_export_include = options.base_export_include + "#{prefix}_exec" + options.export_header_pfx unless options.base_export_include.nil? || options.exec_export_include
       end
     end
 
     def self.check_servant_export_params(options, prefix = nil, force = false)
       if options.gen_export_svnt || options.export_svnt || force
         unless options.svnt_export_macro || options.base_export_macro
-          IDL.fatal("ERROR: it isn't allowed to use -Gxhsv or -Xsv without specifying the macro with -Wb,svnt_export_macro=MACRO "+
+          IDL.fatal("ERROR: it isn't allowed to use -Gxhsv or -Xsv without specifying the macro with -Wb,svnt_export_macro=MACRO " +
                         'or with -Wb,base_export_macro=MACRO_PREFIX')
         end
         # only in case export header generation has been explicitly enabled will
         # we derive missing export parameters from base parameters
-        options.svnt_export_macro = options.base_export_macro+"#{(prefix || '').upcase}_SVNT" + options.export_macro_pfx unless options.base_export_macro.nil? || options.svnt_export_macro
-        options.svnt_export_include = options.base_export_include+"#{prefix}_svnt" + options.export_header_pfx unless options.base_export_include.nil? || options.svnt_export_include
+        options.svnt_export_macro = options.base_export_macro + "#{(prefix || '').upcase}_SVNT" + options.export_macro_pfx unless options.base_export_macro.nil? || options.svnt_export_macro
+        options.svnt_export_include = options.base_export_include + "#{prefix}_svnt" + options.export_header_pfx unless options.base_export_include.nil? || options.svnt_export_include
       end
     end
 
@@ -236,20 +236,20 @@ module IDL
       # are used to overwrite regular stub parameters for stub generation from implicitly
       # generated LEM IDL;
       # set the export headers and macros for a component if possible unless already set
-      options.lem_stub_export_macro = options.base_export_macro+"#{(prefix || '').upcase}_LEM_STUB" + options.export_macro_pfx unless options.base_export_macro.nil? || options.lem_stub_export_macro
-      options.lem_stub_export_include = options.base_export_include+"#{prefix}_lem_stub" + options.export_header_pfx unless options.base_export_include.nil? || options.lem_stub_export_include
+      options.lem_stub_export_macro = options.base_export_macro + "#{(prefix || '').upcase}_LEM_STUB" + options.export_macro_pfx unless options.base_export_macro.nil? || options.lem_stub_export_macro
+      options.lem_stub_export_include = options.base_export_include + "#{prefix}_lem_stub" + options.export_header_pfx unless options.base_export_include.nil? || options.lem_stub_export_include
     end
 
     def self.check_conn_export_params(options, prefix = nil, force = false)
       if options.gen_export_conn || options.export_conn || force
         unless options.conn_export_macro || options.base_export_macro
-          IDL.fatal("ERROR: it isn't allowed to use -Gxhcn or -Xcn without specifying the macro with -Wb,conn_export_macro=MACRO "+
+          IDL.fatal("ERROR: it isn't allowed to use -Gxhcn or -Xcn without specifying the macro with -Wb,conn_export_macro=MACRO " +
                         'or with -Wb,base_export_macro=MACRO_PREFIX')
         end
         # only in case export header generation has been explicitly enabled will
         # we derive missing export parameters from base parameters
-        options.conn_export_macro = options.base_export_macro+"#{(prefix || '').upcase}_CONN" + options.export_macro_pfx unless options.base_export_macro.nil? || options.conn_export_macro
-        options.conn_export_include = options.base_export_include+"#{prefix}_conn" + options.export_header_pfx unless options.base_export_include.nil? || options.conn_export_include
+        options.conn_export_macro = options.base_export_macro + "#{(prefix || '').upcase}_CONN" + options.export_macro_pfx unless options.base_export_macro.nil? || options.conn_export_macro
+        options.conn_export_include = options.base_export_include + "#{prefix}_conn" + options.export_header_pfx unless options.base_export_include.nil? || options.conn_export_include
       end
     end
 
@@ -372,7 +372,7 @@ module IDL
     # determine the LEM idl out-/input file name
     def self.lem_output_file(base, options, idl_ext)
       options[:lem_outputdir] = options.outputdir unless options[:lem_outputdir]
-      options[:lem_output_file] = File.join(options[:lem_outputdir], File.basename(base, idl_ext )+options[:lem_pfx]+idl_ext)
+      options[:lem_output_file] = File.join(options[:lem_outputdir], File.basename(base, idl_ext ) + options[:lem_pfx] + idl_ext)
     end
 
     # schedule a generation (production) of the LEM idl
@@ -451,8 +451,8 @@ module IDL
       else
         options[:comp_exec_outputdir] = options.outputdir unless options[:comp_exec_outputdir]
       end
-      options[:comp_exec_output_hdr] = File.join(options[:comp_exec_outputdir], File.basename(options[:idlfile], idl_ext)+options[:comp_exec_pfx])
-      options[:comp_exec_output_src] = options[:comp_exec_output_hdr]+options.src_ext
+      options[:comp_exec_output_hdr] = File.join(options[:comp_exec_outputdir], File.basename(options[:idlfile], idl_ext) + options[:comp_exec_pfx])
+      options[:comp_exec_output_src] = options[:comp_exec_output_hdr] + options.src_ext
       options[:comp_exec_output_hdr] += options.hdr_ext
 
       check_executor_export_params(options) # TODO : remove this |, nil, true)  # force checks/init since exports are implicitly enabled
@@ -478,8 +478,8 @@ module IDL
     def self.gen_templated_connector_impl(options, idl_ext)
       return if IDL.has_production?(:templated_conn_impl_header)
       options[:conn_exec_outputdir] = options.outputdir unless options[:conn_exec_outputdir]
-      options[:conn_exec_output_hdr] = File.join(options[:conn_exec_outputdir], File.basename(options[:idlfile], idl_ext)+options[:conn_exec_pfx])
-      options[:conn_exec_output_src] = options[:conn_exec_output_hdr]+options.src_ext
+      options[:conn_exec_output_hdr] = File.join(options[:conn_exec_outputdir], File.basename(options[:idlfile], idl_ext) + options[:conn_exec_pfx])
+      options[:conn_exec_output_src] = options[:conn_exec_output_hdr] + options.src_ext
       options[:conn_exec_output_hdr] += options.hdr_ext
 
       conn_exec_h = GenFile.new(options[:conn_exec_output_hdr])
@@ -500,10 +500,10 @@ module IDL
       # only the output_dir may differ .
       #svnt files
       if facet
-        options[:svntcomp_output] = File.join(options[:conn_outputdir], File.basename(options[:idlfile], idl_ext)+
+        options[:svntcomp_output] = File.join(options[:conn_outputdir], File.basename(options[:idlfile], idl_ext) +
                                     options[:svnt_impl_pfx])
       else
-        options[:svntcomp_output] = File.join(options[:svntcomp_outputdir], File.basename(options[:idlfile], idl_ext)+
+        options[:svntcomp_output] = File.join(options[:svntcomp_outputdir], File.basename(options[:idlfile], idl_ext) +
                                     options[:svnt_impl_pfx])
       end
 

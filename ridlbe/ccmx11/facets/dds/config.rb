@@ -79,7 +79,7 @@ module IDL
 
           idl_ext = (options.idlext ||= File.extname(options.idlfile))
 
-          options.dds_idl_file_base = File.basename(options.idlfile, idl_ext)+options[:dds_idl_pfx]
+          options.dds_idl_file_base = File.basename(options.idlfile, idl_ext) + options[:dds_idl_pfx]
 
           if options.gen_all_dds_related_files
             options.gen_user_defined_type_traits_for_dds = true
@@ -114,7 +114,7 @@ module IDL
       #
       def self.prepare_dds_options(options, idl_ext)
         options.dds_udt_header_file_base =
-          File.basename(options.idlfile, idl_ext)+options.dds_traits_pfx
+          File.basename(options.idlfile, idl_ext) + options.dds_traits_pfx
       end
 
       #########################################################################
@@ -126,7 +126,7 @@ module IDL
       #
       def self.gen_idl_for_dds(options, idl_ext)
         dds_gen_idl_file = GenFile.new(File.join(options.outputdir,
-                                                 options.dds_idl_file_base+idl_ext))
+                                                 options.dds_idl_file_base + idl_ext))
 
         # schedule dds IDL generation
         IDL.push_production(:dds_idl, ::IDL::CCMX11::DDSX11::DDSIDLWriter.new(dds_gen_idl_file, options))
@@ -143,7 +143,7 @@ module IDL
 
         options.dds_typed_entities_idl_file =
           File.join(options.outputdir,
-            File.basename(options.idlfile, idl_ext)+options.dds_typed_entities_pfx+idl_ext)
+            File.basename(options.idlfile, idl_ext) + options.dds_typed_entities_pfx + idl_ext)
 
         dds_typed_entities_idl_file = GenFile.new(options.dds_typed_entities_idl_file)
 
@@ -181,8 +181,8 @@ module IDL
       ##
 
       def self.check_typesupport_export_params(options)
-        options.typesupport_export_macro = options.base_export_macro+"_TYPESUPPORT" + options.export_macro_pfx unless options.typesupport_export_macro || options.base_export_macro.nil?
-        options.typesupport_export_include = options.base_export_include+"_typesupport" + options.export_header_pfx unless options.typesupport_export_include || options.base_export_include.nil?
+        options.typesupport_export_macro = options.base_export_macro + "_TYPESUPPORT" + options.export_macro_pfx unless options.typesupport_export_macro || options.base_export_macro.nil?
+        options.typesupport_export_include = options.base_export_include + "_typesupport" + options.export_header_pfx unless options.typesupport_export_include || options.base_export_include.nil?
       end
 
       def self.gen_typesupport_export(options, prefix = nil)
@@ -206,10 +206,10 @@ module IDL
 
         options.dds_typesupport_header_file =
           File.join(options.outputdir,
-            File.basename(options.idlfile, idl_ext)+options.dds_typesupport_pfx+options.hdr_ext)
+            File.basename(options.idlfile, idl_ext) + options.dds_typesupport_pfx + options.hdr_ext)
         options[:dds_typesupport_source_file] =
           File.join(options.outputdir,
-            File.basename(options[:idlfile], idl_ext)+options[:dds_typesupport_pfx]+options.src_ext)
+            File.basename(options[:idlfile], idl_ext) + options[:dds_typesupport_pfx] + options.src_ext)
 
         dds_typesupport_header_file = GenFile.new(options.dds_typesupport_header_file)
         dds_typesupport_source_file = GenFile.new(options.dds_typesupport_source_file)
@@ -232,7 +232,7 @@ module IDL
       #
       def self.gen_user_defined_type_traits_for_dds(options, idl_ext)
         dds_traits_file = GenFile.new(File.join(options.outputdir,
-                                                options.dds_udt_header_file_base+options.hdr_ext))
+                                                options.dds_udt_header_file_base + options.hdr_ext))
 
         # schedule dds type traits generation
         IDL.push_production(:dds_type_traits,

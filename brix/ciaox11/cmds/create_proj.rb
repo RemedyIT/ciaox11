@@ -22,16 +22,16 @@ module BRIX11
 
       def self.setup(optparser, options)
         options[:axpcreate] = OPTIONS.dup
-        optparser.banner = "#{DESC}\n\n"+
+        optparser.banner = "#{DESC}\n\n" +
                            "Usage: #{options[:script_name]} apc prepare [options] [-- [mwc_options]]\n\n"
         optparser.on('-e', '--enable', '=FEATURE',
                      'Enable feature(s). If specifying more than 1 separate by \',\'') {|v|
-                        options[:axpcreate][:features]||={};
+                        options[:axpcreate][:features] ||= {};
                         v.split(',').each { |f| options[:axpcreate][:features][f] = 1 }
                      }
         optparser.on('-d', '--disable', '=FEATURE',
                      'Disable feature(s). If specifying more than 1 separate by \',\'') {|v|
-                        options[:axpcreate][:features]||={};
+                        options[:axpcreate][:features] ||= {};
                         v.split(',').each { |f| options[:axpcreate][:features][f] = 0 }
                      }
         optparser.on('-m', '--mpc', 'Do not remove mpc files.') { options[:axpcreate][:mpc] = true }
@@ -79,12 +79,12 @@ module BRIX11
             end
           end
 
-          opts[:genbuild][:recurse]= true
+          opts[:genbuild][:recurse] = true
           opts[:genbuild][:project] = project.root_path
           rc = BRIX11::Common::GenerateBuild.new(entry, opts).run(cmdargv)
         end
 
-        if (!options[:axpcreate][:mpc])
+        if !options[:axpcreate][:mpc]
           #throw away temporarily mpc files
           #remove mpc files
           AxciomaPC::MPC.remove(project)

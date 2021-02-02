@@ -51,7 +51,7 @@ module AxciomaPC
 
       def setup
         # create implicit interface recipe if no explicit version is defined
-        idlmatch = project.match_idl_files(interface_name+'.idl')
+        idlmatch = project.match_idl_files(interface_name + '.idl')
         intf_idl_file = idlmatch.find do |fidl|
           if rcp = fidl.recipes.first
              SEV::InterfaceRecipe === rcp && rcp.topic == topic
@@ -142,7 +142,7 @@ module AxciomaPC
 
       def process_project_dependencies
         project_dependencies = MPC::Dependencies.new
-        recipe.idl_files.each do |_,fidl|
+        recipe.idl_files.each do |_, fidl|
           BRIX11.log(3, '[%s] process_project_dependencies %s', self, fidl)
           inc_fidl = project.idl_files[fidl.full_path]
           rcp = inc_fidl.recipes.first
@@ -156,7 +156,7 @@ module AxciomaPC
           end
         end
         inc_fidl = project.idl_files[@interface_recipe.interface_idl_path]
-        @interface_recipe.get_dependencies(inc_fidl,[:sev].concat(middleware.collect {|m| :"dds4ccm_#{m}" }),project_dependencies)
+        @interface_recipe.get_dependencies(inc_fidl, [:sev].concat(middleware.collect {|m| :"dds4ccm_#{m}" }), project_dependencies)
 
         BRIX11.log(3, '[%s] process_project_dependencies inc_fidl: %s %s', self, inc_fidl, project_dependencies)
 
@@ -176,10 +176,10 @@ module AxciomaPC
         mpc_obj.includes << idl_includes << project.idl_includes
 
         #Also needed the gen_dir from the original recipe of the idl_files for the includes
-        recipe.idl_files.each do |n,idf|
+        recipe.idl_files.each do |n, idf|
           org_fidl = project.idl_files[idf.full_path]
           rcp = org_fidl.recipes.first
-          mpc_obj.includes << File.expand_path(rcp.gen_dir,rcp.recipe_file.path)
+          mpc_obj.includes << File.expand_path(rcp.gen_dir, rcp.recipe_file.path)
         end
         mpc_obj.add_dependencies(project_dependencies, :idl_gen)
         mpc_obj.add_dependencies(project_dependencies, :dds_lem_gen)

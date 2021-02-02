@@ -45,8 +45,8 @@ module AxciomaPC
 
           mpc_idl_stubs_obj = MPC::IDLProject.new(:ami4ccm_lem_gen, self)
           mpc_idl_stubs_obj.project_dependencies << mpc_idl_obj.project_name
-          mpc_idl_stubs_obj.add_idl_flags "-Wb,base_export_macro=#{export_name.upcase+'_AMI4CCM'}"
-          mpc_idl_stubs_obj.add_idl_flags "-Wb,base_export_include=#{export_name.downcase+'_ami4ccm'}"
+          mpc_idl_stubs_obj.add_idl_flags "-Wb,base_export_macro=#{export_name.upcase + '_AMI4CCM'}"
+          mpc_idl_stubs_obj.add_idl_flags "-Wb,base_export_include=#{export_name.downcase + '_ami4ccm'}"
           mpc_file.add_mpc_project(mpc_idl_stubs_obj)
           # set idl_includes set in recipe and set in  project file
           mpc_idl_stubs_obj.includes << idl_includes << project.idl_includes
@@ -58,7 +58,7 @@ module AxciomaPC
         # add with add_project_file the idl file to idl_files
         # for ami idl-project and to sources and headers for ami stub compile project
         mpc_idl_obj.add_project_file(fidl.full_path)
-        mpc_idl_stubs_obj.add_project_file(File.join(full_gen_path, File.basename(fidl.name, '.*')+'A.idl'))
+        mpc_idl_stubs_obj.add_project_file(File.join(full_gen_path, File.basename(fidl.name, '.*') + 'A.idl'))
         mpc_stub_obj.add_project_file(fidl.full_path)
 
         # register resulting project dependencies for IDL file

@@ -17,7 +17,7 @@ require 'fileutils'
 require 'tempfile'
 
 $NlRemedyIt = "nl.remedy.it"
-$DnCx11_pre  = $NlRemedyIt +".DnCX11"
+$DnCx11_pre = $NlRemedyIt + ".DnCX11"
 $EduVdrBilt = "edu.vanderbilt.dre"
 $EdudrVBilt = "edu.dre.vanderbilt"
 $CIAO_pre = $EduVdrBilt + ".CIAO"
@@ -37,9 +37,9 @@ $conversion_hash = {"#{$DAnCE_pre}.LocalityUUID" => "#{$DnCx11_pre}.DnCX11.Local
                     "#{$CIAO_pre}.ExecutorArtifact" => "#{$DnCx11_pre}.Executor.Artifact",
                     "#{$CIAO_pre}.ServantEntrypoint" => "#{$DnCx11_pre}.Servant.Factory",
                     "#{$CIAO_pre}.ServantArtifact" => "#{$DnCx11_pre}.Servant.Artifact",
-                    "#{$DAnCE_pre2}"=>"#{$DnCx11_pre}",
-                    "#{$DAnCE_pre}"=>"#{$DnCx11_pre}",
-                    "#{$CIAO_pre}"=>"#{$DnCx11_pre}",
+                    "#{$DAnCE_pre2}" => "#{$DnCx11_pre}",
+                    "#{$DAnCE_pre}" => "#{$DnCx11_pre}",
+                    "#{$CIAO_pre}" => "#{$DnCx11_pre}",
                     $EduVdrBilt => $NlRemedyIt
                    }
 
@@ -56,7 +56,7 @@ module CIAOX11_Plan_Converter
     file_tmp = Tempfile.new("cdp_out")
     @line_nr = 0
     File.open(options[:cdp_plan_in], "r").each_line do |line|
-      @line_nr +=1
+      @line_nr += 1
       $conversion_hash.each_pair do |key, value|
         if line.include?(key)
           line.sub!(key, value)
@@ -75,10 +75,10 @@ module CIAOX11_Plan_Converter
     # Remove_local_interface
     file_tmp.rewind
     start_line = 0
-    line1,line2, line3 = ""
-    @line_nr =0
+    line1, line2, line3 = ""
+    @line_nr = 0
     file_tmp.each_line do |line|
-      @line_nr +=1
+      @line_nr += 1
       case start_line
       when 0
         if line.include?($local_interface_array[0])
@@ -109,7 +109,7 @@ module CIAOX11_Plan_Converter
           output_file.write(line1)
           output_file.write(line2)
           output_file.write(line)
-          line1,line2 = ""
+          line1, line2 = ""
         end
       when 3
         if line.include?($local_interface_array[3])
@@ -164,18 +164,18 @@ module CIAOX11_Plan_Converter
   end
 
   def self.run(options)
-    if (check_input_file_name(options[:cdp_plan_in]) && check_output_file_name(options[:cdp_plan_out]))
+    if check_input_file_name(options[:cdp_plan_in]) && check_output_file_name(options[:cdp_plan_out])
       puts "Starting conversion deploymentplan in #{options[:cdp_plan_in]}"
       self.convert_plan(options)
     end
   end
 end
 
-options = {:cdp_plan_in => nil, :cdp_plan_out => nil, :logging =>false}
+options = {:cdp_plan_in => nil, :cdp_plan_out => nil, :logging => false}
 
 script_name = File.basename($0, '.*')
 if not script_name =~ /convert_plan/
-  script_name = 'ruby '+$0
+  script_name = 'ruby ' + $0
 end
 parser = OptionParser.new do|opts|
   opts.banner = "Usage: #{script_name} [options]"
@@ -203,7 +203,7 @@ if options[:cdp_plan_in] == nil
   begin
     print 'Enter filename of input cdp plan: '
     input_file = gets.chomp
-    if (CIAOX11_Plan_Converter::check_input_file_name(input_file))
+    if CIAOX11_Plan_Converter::check_input_file_name(input_file)
       options[:cdp_plan_in] = input_file
     end
   end until  options[:cdp_plan_in] != nil
@@ -213,7 +213,7 @@ if options[:cdp_plan_out] == nil
   begin
     print 'Enter filename of output cdp plan: '
     output_file = gets.chomp
-    if (CIAOX11_Plan_Converter::check_output_file_name(output_file))
+    if CIAOX11_Plan_Converter::check_output_file_name(output_file)
       options[:cdp_plan_out] = output_file
     end
   end until  options[:cdp_plan_out] != nil

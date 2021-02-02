@@ -187,7 +187,7 @@ module IDL
         options[:gen_psdd4ccm_lem] = false
 
         idl_base = File.basename(options[:idlfile], idl_ext)
-        options[:psdd4ccm_lem_idl_file] = File.join(options.outputdir, idl_base+'PS'+idl_ext)
+        options[:psdd4ccm_lem_idl_file] = File.join(options.outputdir, idl_base + 'PS' + idl_ext)
         psdd4ccm_lem_idl_file = GenFile.new(options[:psdd4ccm_lem_idl_file])
 
         # schedule psdd4ccm lem IDL generation
@@ -247,7 +247,7 @@ module IDL
 
       def self.gen_psdd_traits(options, idl_ext)
         psdd_traits_file = GenFile.new(File.join(options.outputdir,
-            File.basename(options[:idlfile], idl_ext)+options[:psdd_traits_pfx]+options.hdr_ext))
+            File.basename(options[:idlfile], idl_ext) + options[:psdd_traits_pfx] + options.hdr_ext))
 
         # schedule psdd traits generation
         IDL.push_production(:psdd_traits,

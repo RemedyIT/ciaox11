@@ -52,7 +52,7 @@ module AxciomaPC
       def setup
         BRIX11.log(3, "[%s] setup", self)
         # create implicit interface recipe if no explicit version is defined
-        idlmatch = project.match_idl_files(interface_name+'.idl')
+        idlmatch = project.match_idl_files(interface_name + '.idl')
         intf_idl_file = idlmatch.find do |fidl|
           if rcp = fidl.recipes.first
              PS::InterfaceRecipe === rcp && rcp.topic == topic
@@ -92,7 +92,7 @@ module AxciomaPC
       def interface_name
         unless @interface_name
           if recipe.idl.empty?
-            @interface_name = topic.tr(' ', '_')+'PS'
+            @interface_name = topic.tr(' ', '_') + 'PS'
           else
             @interface_name = "#{File.basename(recipe.idl.first, '.*')}PS"
           end
@@ -151,7 +151,7 @@ module AxciomaPC
           mpc_file.add_mpc_project(mpc_obj)
         end
 
-        recipe.idl_files.each do |_,fidl|
+        recipe.idl_files.each do |_, fidl|
           inc_fidl = project.idl_files[fidl.full_path]
           rcp = inc_fidl.recipes.first
           #set the interaction type
@@ -168,7 +168,7 @@ module AxciomaPC
 
       def process_project_dependencies
         project_dependencies = MPC::Dependencies.new
-        recipe.idl_files.each do |_,fidl|
+        recipe.idl_files.each do |_, fidl|
           BRIX11.log(3, '[%s] process_project_dependencies %s', self, fidl)
           inc_fidl = project.idl_files[fidl.full_path]
           rcp = inc_fidl.recipes.first
@@ -182,7 +182,7 @@ module AxciomaPC
           end
         end
         inc_fidl = project.idl_files[@interface_recipe.interface_idl_path]
-        @interface_recipe.get_dependencies(inc_fidl,[:pubsub, :psdd4ccm],project_dependencies)
+        @interface_recipe.get_dependencies(inc_fidl, [:pubsub, :psdd4ccm], project_dependencies)
 
         BRIX11.log(3, '[%s] process_project_dependencies inc_fidl: %s %s', self, inc_fidl, project_dependencies)
 
@@ -206,10 +206,10 @@ module AxciomaPC
         mpc_obj.includes << idl_includes << project.idl_includes
 
         #Also needed the gen_dir from the original recipe of the idl_files for the includes
-        recipe.idl_files.each do |n,idf|
+        recipe.idl_files.each do |n, idf|
           org_fidl = project.idl_files[idf.full_path]
           rcp = org_fidl.recipes.first
-          mpc_obj.includes << File.expand_path(rcp.gen_dir,rcp.recipe_file.path)
+          mpc_obj.includes << File.expand_path(rcp.gen_dir, rcp.recipe_file.path)
         end
         mpc_obj.add_dependencies(project_dependencies, :idl_gen)
         mpc_obj.add_dependencies(project_dependencies, :psdd_lem_gen)

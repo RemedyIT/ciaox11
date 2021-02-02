@@ -16,7 +16,7 @@ module IDL
     #
     class UnionMemberVisitor
       def dds_native_nondefault_labels(switchtype)
-        node.labels.collect { |_l| _l == :default ? nil : switchtype.is_a?(::IDL::Type::ScopedName) ? '::DDS_Native'+expression_to_s(_l) : expression_to_s(_l) }.compact
+        node.labels.collect { |_l| _l == :default ? nil : switchtype.is_a?(::IDL::Type::ScopedName) ? '::DDS_Native' + expression_to_s(_l) : expression_to_s(_l) }.compact
       end
 
       def is_string_type?
@@ -30,7 +30,7 @@ module IDL
 
     class UnionVisitor
       def native_scoped_switch_cxxtype
-        self.switchtype.is_a?(::IDL::Type::ScopedName) ? '::DDS_Native'+scoped_switch_cxxtype : scoped_switch_cxxtype
+        self.switchtype.is_a?(::IDL::Type::ScopedName) ? '::DDS_Native' + scoped_switch_cxxtype : scoped_switch_cxxtype
       end
 
       optional_template :life_cycle_traits

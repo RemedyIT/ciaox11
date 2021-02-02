@@ -162,7 +162,7 @@ module AxciomaPC
         add_idl_file(idlfile)
         # register required State/Event specific include paths and macros to facilitate IDL scanner
         ciaox11_root = BRIX11::Exec.get_run_environment('CIAOX11_ROOT')
-        (idlfile.properties[:includepaths] ||= []) << (File.join(ciaox11_root, 'connectors/dds4ccm/idl')+File::SEPARATOR)
+        (idlfile.properties[:includepaths] ||= []) << (File.join(ciaox11_root, 'connectors/dds4ccm/idl') + File::SEPARATOR)
         idlfile.properties[:includepaths].concat(InterfaceRecipe.vendor_idl_includes)
         (idlfile.properties[:macros] ||= {}).merge!({
           'CIAOX11_DDS4CCM_STATE' => true,
@@ -196,7 +196,7 @@ module AxciomaPC
       end
 
       def interface_idl_path
-        File.join(full_gen_path, interface_name+'.idl')
+        File.join(full_gen_path, interface_name + '.idl')
       end
 
       def topic=(name)
@@ -380,12 +380,12 @@ module AxciomaPC
       def process_project_dependencies
         BRIX11.log(3, '[%s] process_project_dependencies', self)
         project_dependencies = MPC::Dependencies.new
-        @idl_files.each do |_,fidl|
+        @idl_files.each do |_, fidl|
           fidl.includes.each do |ifidl|
             if ifidl.is_member?
               rcp = ifidl.recipes.first
               unless rcp == self
-                rcp.get_dependencies(ifidl,[:sev], project_dependencies)
+                rcp.get_dependencies(ifidl, [:sev], project_dependencies)
               end
             end
           end

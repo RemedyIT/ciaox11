@@ -44,20 +44,20 @@ module AxciomaPC
         project_dependencies << (mpc_id + STUB_NM_EXT)
         project_dependencies << (mpc_id + '_skel_gen')
         # add default sources and headers
-        @headers.concat((recipe.gen_dir+'/') << recipe.export_name << '_' << @project_postfix << EXPORT_HEADER)
+        @headers.concat((recipe.gen_dir + '/') << recipe.export_name << '_' << @project_postfix << EXPORT_HEADER)
       end
 
       def add_sources(idf)
-        @sources.concat((recipe.gen_dir+'/') << idf << SKEL_F << EXT_CPP)
+        @sources.concat((recipe.gen_dir + '/') << idf << SKEL_F << EXT_CPP)
       end
 
       def add_headers(idf)
-        @headers.concat((recipe.gen_dir+'/') << idf << SKEL_F << EXT_HEADER)
+        @headers.concat((recipe.gen_dir + '/') << idf << SKEL_F << EXT_HEADER)
       end
 
     end
 
-    class DataLemStubProject <  MPC::CompileProject
+    class DataLemStubProject < MPC::CompileProject
       def initialize(type, recipe)
         super(type, recipe)
         @project_postfix = 'lem_stub'
@@ -66,20 +66,20 @@ module AxciomaPC
         link_libs << (recipe.shared_name + STUB_NM_EXT)
         base_projects(%w(taox11_lib))
         # add default sources and headers
-        @headers.concat((recipe.gen_dir+'/') << recipe.export_name << '_' << @project_postfix << EXPORT_HEADER)
+        @headers.concat((recipe.gen_dir + '/') << recipe.export_name << '_' << @project_postfix << EXPORT_HEADER)
       end
 
       def set_stub
-        link_libs <<  (recipe.shared_name + STUB_NM_EXT)
-        project_dependencies <<  "#{mpc_id}#{STUB_NM_EXT}"
+        link_libs << (recipe.shared_name + STUB_NM_EXT)
+        project_dependencies << "#{mpc_id}#{STUB_NM_EXT}"
       end
 
       def add_sources(idf)
-        @sources.concat((recipe.gen_dir+'/') << idf << LEM_STUB_F << EXT_CPP)
+        @sources.concat((recipe.gen_dir + '/') << idf << LEM_STUB_F << EXT_CPP)
       end
 
       def add_headers(idf)
-        @headers.concat((recipe.gen_dir+'/') << idf << LEM_STUB_F << EXT_HEADER)
+        @headers.concat((recipe.gen_dir + '/') << idf << LEM_STUB_F << EXT_HEADER)
       end
     end
 

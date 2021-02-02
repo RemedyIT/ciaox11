@@ -103,7 +103,7 @@ module IDL
         if params[:stripped_filename] != nil
           properties[:org_idl_include] = params[:stripped_filename]
         else
-          properties[:org_idl_include] = File.basename(params[:idlfile], params[:idlext])+params[:idlext]
+          properties[:org_idl_include] = File.basename(params[:idlfile], params[:idlext]) + params[:idlext]
         end
       end
 

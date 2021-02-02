@@ -41,7 +41,7 @@ module AxciomaPC
         link_libs << "#{recipe.shared_name}#{STUB_NM_EXT}"
         base_projects << %w(ciaox11_ami4ccm_stub)
         # add default sources and headers
-        @headers.concat((recipe.gen_dir+'/') << recipe.export_name << AMI4CCM_NM_EXT << STUB_NM_EXT << EXPORT_HEADER)
+        @headers.concat((recipe.gen_dir + '/') << recipe.export_name << AMI4CCM_NM_EXT << STUB_NM_EXT << EXPORT_HEADER)
       end
 
       # overwrite because we can't use  @project_postfix ('_ami')
@@ -51,11 +51,11 @@ module AxciomaPC
       end
 
       def add_sources(idf)
-        @sources.concat((recipe.gen_dir+'/') << idf << 'A' << STUB_F << EXT_CPP)
+        @sources.concat((recipe.gen_dir + '/') << idf << 'A' << STUB_F << EXT_CPP)
       end
 
       def add_headers(idf)
-        @headers.concat((recipe.gen_dir+'/') << idf << 'A' << STUB_F << EXT_HEADER)
+        @headers.concat((recipe.gen_dir + '/') << idf << 'A' << STUB_F << EXT_HEADER)
       end
 
     end

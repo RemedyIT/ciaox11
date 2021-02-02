@@ -99,15 +99,15 @@ module AxciomaPC
         super(type, recipe)
         @idl_flags = IDLFlags.new
         @extras = Util::UniqueStringList.new
-        DEFAULTS[type].each do |k,v|
+        DEFAULTS[type].each do |k, v|
           case k
           when :auto_dependencies
-            v.each {|adp| project_dependencies  << "#{mpc_id}_#{adp}" }
+            v.each {|adp| project_dependencies << "#{mpc_id}_#{adp}" }
           else
             self.send(k, v)
           end
         end
-        @idl_files= Util::UniqueStringList.new
+        @idl_files = Util::UniqueStringList.new
       end
 
       def idl_flags(val=nil)
@@ -186,7 +186,7 @@ module AxciomaPC
           idl_sources = sources
           other_idl_flags = Util::Flags.new
           # Optimize by making sure export headers are only generated once per project
-          if idl_sources.size>1 && idlflags.include?(/-Gxh/)
+          if idl_sources.size > 1 && idlflags.include?(/-Gxh/)
             # create first IDL section with only 1 IDL source and
             # add all '-GxhXXX' flags for this section only
             idl_sections << OpenStruct.new(idl_flags_plus: Util::Flags.new,

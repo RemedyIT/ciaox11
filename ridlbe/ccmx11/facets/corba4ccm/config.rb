@@ -97,7 +97,7 @@ module IDL
       def self.gen_idl_for_corba_connector(options)
         options[:corba4ccm_idl_file] =
           File.join(options.outputdir,
-            File.basename(options[:idlfile], options[:idlext])+options[:corba4ccm_pfx]+options[:idlext])
+            File.basename(options[:idlfile], options[:idlext]) + options[:corba4ccm_pfx] + options[:idlext])
         corba4ccm_idl_file = GenFile.new(options[:corba4ccm_idl_file])
 
         IDL.push_production(

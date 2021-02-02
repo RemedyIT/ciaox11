@@ -122,10 +122,10 @@ module AxciomaPC
     end
 
     def dump(indent=0, out=STDERR)
-      out.puts (' '*indent)+self.to_s
-      out.puts (' '*(indent+2))+'{'
-      properties.each do |k,v|
-        out.print "#{' '*(indent+4)}#{k} => "
+      out.puts (' ' * indent) + self.to_s
+      out.puts (' ' * (indent + 2)) + '{'
+      properties.each do |k, v|
+        out.print "#{' ' * (indent + 4)}#{k} => "
         if k == :includes
           out.puts "[#{v.join(',')}]"
         elsif k == :interaction_types
@@ -134,9 +134,9 @@ module AxciomaPC
           out.puts "#{v}"
         end
       end
-      out.puts (' '*(indent+2))+'}'
-      out.puts (' '*(indent+2))+project_dependencies.to_s
-      recipes.each { |rcp| out.puts (' '*(indent+2))+rcp.to_s }
+      out.puts (' ' * (indent + 2)) + '}'
+      out.puts (' ' * (indent + 2)) + project_dependencies.to_s
+      recipes.each { |rcp| out.puts (' ' * (indent + 2)) + rcp.to_s }
       out.puts (' ')
     end
   end

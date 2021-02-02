@@ -23,8 +23,8 @@ module BRIX11
 
       def self.setup(optparser, options)
         options[:gencompidl] = OPTIONS.dup
-        optparser.banner = "#{DESC}\n\n"+
-                           "Usage: #{options[:script_name]} gen[erate] compidl [options] [NAME]\n\n"+
+        optparser.banner = "#{DESC}\n\n" +
+                           "Usage: #{options[:script_name]} gen[erate] compidl [options] [NAME]\n\n" +
                            "       NAME := name to use for IDL file; default 'test_comp'\n\n"
 
         optparser.on('-c', '--component', '=NAME',
@@ -41,13 +41,13 @@ module BRIX11
                      'Default: Generate includes for IDL files in working dir') {|v|
                      options[:gencompidl][:idl] = (v ? v.split(',') : true)}
 
-        optparser.on('-r','=INTERFACENAME PORTNAME',
+        optparser.on('-r', '=INTERFACENAME PORTNAME',
                      'Defines interface and name to use for a receptacle. ',
                      'Use scoped interface name (i.e. <name>::[<name>::]::<name>) to generate enclosing module(s).')
         optparser.on('-f', '=INTERFACENAME PORTNAME',
                      'Defines interface and name to use for a facet. ',
                      'Use scoped interface name (i.e. <name>::[<name>::]::<name>) to generate enclosing module(s).')
-        optparser.on('-a','=INTERFACENAME PORTNAME',
+        optparser.on('-a', '=INTERFACENAME PORTNAME',
                      'Defines interface and name to use for an ami4ccm facet and creates an ami4ccm receptacle pragma for it. ',
                      'Use scoped interface name (i.e. <name>::[<name>::]::<name>) to generate enclosing module(s).')
 

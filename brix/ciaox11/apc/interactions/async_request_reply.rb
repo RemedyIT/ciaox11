@@ -71,7 +71,7 @@ module AxciomaPC
         # check for support as this may be an unlicensed option
         if delegator.respond_to?(:ami4ccm_receptacles)
           # check all receptacles of component for ami4ccm
-          if (IDL::AST::Component === node)
+          if IDL::AST::Component === node
             node.ports.each do |p|
               if p.porttype == :receptacle
                 if delegator.ami4ccm_receptacles.include? p.scoped_name
@@ -140,7 +140,7 @@ module AxciomaPC
     def sends(intf_name, multiple=nil)
       @config[:kind] = :sender
       @config[:type_name] = intf_name
-      if ::Hash === multiple && multiple.size==1
+      if ::Hash === multiple && multiple.size == 1
         @config[:multiple] = multiple[:multiple]
       else
         raise "Invalid :multiple specification #{multiple}." unless multiple.nil?

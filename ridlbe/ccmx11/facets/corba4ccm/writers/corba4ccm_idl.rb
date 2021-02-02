@@ -15,7 +15,7 @@ module IDL
 
     module CORBA
 
-      class IDLForCorbaConnectorWriter <  Cxx11::CxxCodeWriterBase
+      class IDLForCorbaConnectorWriter < Cxx11::CxxCodeWriterBase
         helper Cxx11::IncludeGuardHelper
 
         def initialize(output = STDOUT, opts = {})

@@ -16,7 +16,7 @@ module AxciomaPC
     # initialize the vendor IDL include path for the SEV interface recipe
     # this solution requires that only one DDS vendor is configured for AXCIOMA
     SEV::InterfaceRecipe.vendor_idl_includes <<
-        (File.join(BRIX11::Exec.get_run_environment('CIAOX11_ROOT'), 'ddsx11/vendors/opendds/idl')+File::SEPARATOR)
+        (File.join(BRIX11::Exec.get_run_environment('CIAOX11_ROOT'), 'ddsx11/vendors/opendds/idl') + File::SEPARATOR)
 
     # reopen Port class
     class Port < PortType
@@ -27,7 +27,7 @@ module AxciomaPC
           mpc_obj = create_opendds_conn_lib
           mpc_file.add_mpc_project(mpc_obj)
 
-          recipe.idl_files.each do |_,fidl|
+          recipe.idl_files.each do |_, fidl|
             inc_fidl = project.idl_files[fidl.full_path]
             rcp = inc_fidl.recipes.first
             #set the interaction type

@@ -36,7 +36,7 @@ module AxciomaPC
           # by not specifying the recipe for the :lem_stub dependency (nil) this is a noop
           # but the linked :stub dependency is active and pulled in
           fidl.project_dependencies <<
-              MPC::Dependency.new(:lem_stub,MPC::LinkDependency.new(:stub, recipe))
+              MPC::Dependency.new(:lem_stub, MPC::LinkDependency.new(:stub, recipe))
         end
       end
 
@@ -91,7 +91,7 @@ module AxciomaPC
     def uses(intf_name, multiple=nil)
       @config[:kind] = :receptacle
       @config[:type_name] = intf_name
-      if ::Hash === multiple && multiple.size==1
+      if ::Hash === multiple && multiple.size == 1
         @config[:multiple] = multiple[:multiple]
       else
         raise "Invalid :multiple specification #{multiple}." unless multiple.nil?

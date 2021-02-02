@@ -315,7 +315,7 @@ module AxciomaPC
         idl_files[fp]
       else
         BRIX11.log(4, '[%s] registering IDL file %s', self, fp)
-        fidl = IDLFile.new(fp,self, state)
+        fidl = IDLFile.new(fp, self, state)
         (@idl_dirs[fidl.path] ||= []) << fidl if fidl.is_member?
         (@idl_index[fidl.name] ||= []) << fidl unless fidl.is_external?
         idl_files[fp] = fidl
@@ -339,7 +339,7 @@ module AxciomaPC
 
     # get all IDL filepaths of IDL files generated from recipes
     def generated_idl
-      @idl_files.select {|path,fidl| fidl.is_generated? }.keys
+      @idl_files.select {|path, fidl| fidl.is_generated? }.keys
     end
 
     # registry of known recipe files
@@ -384,11 +384,11 @@ module AxciomaPC
     end
 
     def dump(indent=0, out=STDERR)
-      out.puts (' '*indent)+self.to_s
-      out.puts (' '*(indent+2))+'-----'
-      recipe_files.each_value { |frcp| frcp.dump(indent+2,out) }
-      out.puts (' '*(indent+2))+'-----'
-      idl_files.each_value { |fidl| fidl.dump(indent+2,out) }
+      out.puts (' ' * indent) + self.to_s
+      out.puts (' ' * (indent + 2)) + '-----'
+      recipe_files.each_value { |frcp| frcp.dump(indent + 2, out) }
+      out.puts (' ' * (indent + 2)) + '-----'
+      idl_files.each_value { |fidl| fidl.dump(indent + 2, out) }
     end
 
   end

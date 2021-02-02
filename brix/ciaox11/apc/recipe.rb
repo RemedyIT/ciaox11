@@ -28,7 +28,7 @@ module AxciomaPC
     def load_recipes
       BRIX11.log(3, '[%s] loading recipes', self)
       begin
-        instance_eval(File.read(full_path) ,full_path)
+        instance_eval(File.read(full_path) , full_path)
       rescue
         BRIX11.log_error($!.message)
         $!.backtrace.find do |bt|
@@ -98,17 +98,17 @@ module AxciomaPC
     # cleanup generated artifacts
     def clean
       recipes.each do |rcp|
-        if (!rcp.gen_dir || rcp.gen_dir == '.')
+        if !rcp.gen_dir || rcp.gen_dir == '.'
           #do nothing because the user has indicated as generated_code dir, the same dir as the recipe dir
         else
-          gen_dir_path = File.join(@path,rcp.gen_dir)
+          gen_dir_path = File.join(@path, rcp.gen_dir)
           if Dir.exist?(gen_dir_path)
             # if gen dir is empty or only contains export headers, it is save to remove this dir.
             # Attention: export headers aren't removed with a make clean, so in the case a user has put a export header himself in
             # the gen dir , this file will be removed also
             # solution: adapt mpc to remove generated export headers also.
             files = Dir.entries(gen_dir_path)
-            if files.select {|ff| ff !~ /export.h/ && ff !='.' && ff != '..'  }.empty?
+            if files.select {|ff| ff !~ /export.h/ && ff != '.' && ff != '..'  }.empty?
               # empty or no other then export file, so remove
               FileUtils.remove_dir(gen_dir_path)
             end
@@ -149,8 +149,8 @@ module AxciomaPC
     end
 
     def dump(indent=0, out=STDERR)
-      out.puts (' '*indent)+self.to_s
-      recipes.each { |rcp| rcp.dump(indent+2, out) }
+      out.puts (' ' * indent) + self.to_s
+      recipes.each { |rcp| rcp.dump(indent + 2, out) }
     end
 
   end # RecipeFile
@@ -334,7 +334,7 @@ module AxciomaPC
 
     # set/get shared library base name
     def shared_name(shared_name=nil)
-      @shared_name=shared_name.to_s if shared_name
+      @shared_name = shared_name.to_s if shared_name
       @shared_name
     end
 
@@ -364,7 +364,7 @@ module AxciomaPC
 
     # set/get export base name
     def export_name(export_name=nil)
-      @export_name=export_name.downcase if export_name
+      @export_name = export_name.downcase if export_name
       @export_name
     end
 
@@ -387,7 +387,7 @@ module AxciomaPC
 
     # get MPC file name for recipe
     def mpc_name
-      File.join(self.recipe_file.path, @mpc_id+'.mpc')
+      File.join(self.recipe_file.path, @mpc_id + '.mpc')
     end
 
     # get MPC::File for recipe
@@ -524,7 +524,7 @@ module AxciomaPC
         end
       else
         # IDL file is only one or all others are also without recipes so we create internal implicit DataRecipe
-        imp_rcpfile = project.add_recipe_file(File.join(idl_dir, 'implicit.'+AxciomaPC::RECIPE_FILE_EXT), true)
+        imp_rcpfile = project.add_recipe_file(File.join(idl_dir, 'implicit.' + AxciomaPC::RECIPE_FILE_EXT), true)
         imp_rcp = DataIdlRecipe.new(imp_rcpfile, File.basename(idl_dir).sub('.', '_'))
         imp_rcpfile.add_recipe(imp_rcp)
         imp_rcp.add_idl_file(idl_file, idl_file.name)
@@ -568,9 +568,9 @@ module AxciomaPC
     end
 
     def dump(indent=0, out=STDERR, data=nil)
-      out.puts (' '*indent)+self.to_s
-      out.puts((' '*(indent+2))+data.to_s) if data
-      @idl_files.each { |n,f| out.puts (' '*(indent+2))+"#{n} =>"; f.dump(indent+4, out) }
+      out.puts (' ' * indent) + self.to_s
+      out.puts((' ' * (indent + 2)) + data.to_s) if data
+      @idl_files.each { |n, f| out.puts (' ' * (indent + 2)) + "#{n} =>"; f.dump(indent + 4, out) }
       out.puts (' ')
     end
 

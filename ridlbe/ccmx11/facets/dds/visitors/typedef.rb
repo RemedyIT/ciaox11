@@ -17,7 +17,7 @@ module IDL
     class TypedefVisitor
 
       def idl_typedef_type
-        idl_declaration=''
+        idl_declaration = ''
 
         if self.is_alias?
           idl_declaration += "#{strip_global_scope(self._idltype.idltype_name)} #{node.unescaped_name}"
@@ -26,7 +26,7 @@ module IDL
           typename = strip_global_scope(self._resolved_idltype.basetype.idltype_name)
           idl_declaration += typename
           if self.is_array_type?
-            sizes=self._resolved_idltype.sizes.collect { |s| "[#{IDL::Expression::ScopedName === s ? s.node.name : s.to_s}]" }.join
+            sizes = self._resolved_idltype.sizes.collect { |s| "[#{IDL::Expression::ScopedName === s ? s.node.name : s.to_s}]" }.join
             idl_declaration += " #{node.name}#{sizes}"
           end
           if self.is_sequence_typedef? && self.is_bounded_type?

@@ -35,7 +35,7 @@ module IDL
       def self.configure_extension(writer)
         writer.template_root = File.join(writer.template_root, 'corba')
         writer.properties[:svntc_skel_include] =
-            File.basename(writer.params[:idlfile],writer.params[:idlext]) + writer.params[:srv_pfx] + writer.params[:hdr_ext]
+            File.basename(writer.params[:idlfile], writer.params[:idlext]) + writer.params[:srv_pfx] + writer.params[:hdr_ext]
 
         # add CORBA4CCM specific template extensions
         writer.add_optional_template(:component_extra_public, IDL::CCMX11::ComponentVisitor)

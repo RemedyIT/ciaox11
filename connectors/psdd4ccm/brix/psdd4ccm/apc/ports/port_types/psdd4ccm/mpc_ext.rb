@@ -37,18 +37,18 @@ module AxciomaPC
         super(:"psdd_#{middleware}_conn", recipe)
         base_projects(%w{ciaox11_executor})
         base_projects << PSDDConnProject.middleware_base_projects[middleware]
-        project_dependencies <<  "#{mpc_id}_psdd_conn_gen"
+        project_dependencies << "#{mpc_id}_psdd_conn_gen"
         # add default sources and headers
         base = recipe.port_handler.interface_name
         @sources.concat([
-            ((recipe.gen_dir+'/') << base << '_conn' << EXT_CPP),
-            ((recipe.gen_dir+'/') << base << '_svnt' << EXT_CPP)
+            ((recipe.gen_dir + '/') << base << '_conn' << EXT_CPP),
+            ((recipe.gen_dir + '/') << base << '_svnt' << EXT_CPP)
         ])
         @headers.concat([
-            ((recipe.gen_dir+'/') << base << '_conn' << EXT_HEADER),
-            ((recipe.gen_dir+'/') << base << '_svnt' << EXT_HEADER),
-            ((recipe.gen_dir+'/') << recipe.export_name << '_conn_export' << EXT_HEADER),
-            ((recipe.gen_dir+'/') << recipe.export_name << '_svnt_export' << EXT_HEADER)
+            ((recipe.gen_dir + '/') << base << '_conn' << EXT_HEADER),
+            ((recipe.gen_dir + '/') << base << '_svnt' << EXT_HEADER),
+            ((recipe.gen_dir + '/') << recipe.export_name << '_conn_export' << EXT_HEADER),
+            ((recipe.gen_dir + '/') << recipe.export_name << '_svnt_export' << EXT_HEADER)
         ])
         # Add user defined extra sources from recipe
         @sources.concat recipe.sources

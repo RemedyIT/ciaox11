@@ -15,11 +15,11 @@ module IDL
     #
     class IncludeVisitor
       def dds_idl_include
-        self.include_directory + '/' + File.basename(node.filename, '.*')+params[:dds_idl_pfx]+params[:idlext]
+        self.include_directory + '/' + File.basename(node.filename, '.*') + params[:dds_idl_pfx] + params[:idlext]
       end
 
       def dds_udt_traits_include
-        self.include_directory + '/' + File.basename(node.filename, '.*')+params[:dds_traits_pfx]+params[:hdr_ext]
+        self.include_directory + '/' + File.basename(node.filename, '.*') + params[:dds_traits_pfx] + params[:hdr_ext]
       end
     end
   end

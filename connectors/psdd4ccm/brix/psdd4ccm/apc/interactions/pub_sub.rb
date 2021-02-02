@@ -18,7 +18,7 @@ module AxciomaPC
         #noop
       end
 
-      def self.process_component_dependencies(recipe,project_dependencies)
+      def self.process_component_dependencies(recipe, project_dependencies)
         BRIX11.log(3, '[%s|PS] process_component_dependencies', self)
         recipe.setup_comp_gen_pubsub(project_dependencies)
         recipe.setup_stub_comp_pubsub(project_dependencies)
@@ -84,7 +84,7 @@ module AxciomaPC
             raise "No valid data type #{type_name} found for component recipe #{recipe.recipe_id}!"
           end
           generate_pubsub_interface_recipe(type_name, ps_data_idl)
-          @idl_interface = @interface_recipe.interface_name+'.idl'
+          @idl_interface = @interface_recipe.interface_name + '.idl'
         end
       end
       protected :generate_pubsub_port
@@ -93,11 +93,11 @@ module AxciomaPC
         BRIX11.log(4, "[%s] generate_pubsub_interface_recipe : type_name=%s, ps_data_idl=%s", self, type_name, ps_data_idl)
         # create implicit interface recipe if no explicit or implicit version is defined
         ps_name = if ps_data_idl
-                     File.basename(ps_data_idl, '.idl')+'PS'
+                     File.basename(ps_data_idl, '.idl') + 'PS'
                    else
-                     type_name.tr(' ', '_')+'PS'
+                     type_name.tr(' ', '_') + 'PS'
                    end
-        idlmatch = recipe.project.match_idl_files(ps_name+'.idl')
+        idlmatch = recipe.project.match_idl_files(ps_name + '.idl')
         topic = type_name
         if !idlmatch.empty?
           intf_idl_file = idlmatch.find do |fidl|
@@ -173,11 +173,11 @@ module AxciomaPC
       def verify
         BRIX11.log(4, "[%s] verify", self)
         generate_pubsub_port('uses', @config[:typename])
-        set_intf_name @interface_recipe.topic_interface_module+'::Subscriber'
-        inports = @config[:interaction].inject({}) do |hsh,int|
+        set_intf_name @interface_recipe.topic_interface_module + '::Subscriber'
+        inports = @config[:interaction].inject({}) do |hsh, int|
                     case int
                     when Hash
-                      int.inject(hsh) {|h,(k,v)| h[k.to_sym] = v.to_s; h }
+                      int.inject(hsh) {|h, (k, v)| h[k.to_sym] = v.to_s; h }
                     when String, Symbol
                       hsh[int.to_sym] = "#{name}_#{int}"
                     when NilClass
@@ -187,18 +187,18 @@ module AxciomaPC
                     end
                     hsh
                   end
-        inports.each do |p,n|
+        inports.each do |p, n|
           if p == :listen
             port = ComponentRecipe::PortDefinition.new(n, @comp)
             port.set_type 'provides'
-            port.set_intf_name @interface_recipe.topic_interface_module+'::Listener'
+            port.set_intf_name @interface_recipe.topic_interface_module + '::Listener'
             if !@comp.port_exist?(port)
               @comp.add_port(port)
             end
           elsif p == :get
             port = ComponentRecipe::PortDefinition.new(n, @comp)
             port.set_type 'uses'
-            port.set_intf_name @interface_recipe.topic_interface_module+'::Getter'
+            port.set_intf_name @interface_recipe.topic_interface_module + '::Getter'
             if !@comp.port_exist?(port)
               @comp.add_port(port)
             end
@@ -215,7 +215,7 @@ module AxciomaPC
       def verify
         BRIX11.log(4, "[%s] verify", self)
         generate_pubsub_port('uses', @config[:typename])
-        set_intf_name @interface_recipe.topic_interface_module+'::Publisher'
+        set_intf_name @interface_recipe.topic_interface_module + '::Publisher'
 
         # add interface IDL include path to component recipe
         recipe.idl_includes << File.dirname(@interface_recipe.interface_idl_path)
@@ -261,4 +261,3 @@ end
 Dir.glob(File.join(File.dirname(__FILE__), 'pub_sub', '*.rb')).each do |fnm|
   require fnm
 end
-

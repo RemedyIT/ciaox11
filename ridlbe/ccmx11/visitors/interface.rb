@@ -16,7 +16,7 @@ module IDL
       include CCMX11::CcmNames
 
       def executor_cxx_namespace
-        scoped_cxxname.scope_to_cxxname+'_Impl'
+        scoped_cxxname.scope_to_cxxname + '_Impl'
       end
 
     end

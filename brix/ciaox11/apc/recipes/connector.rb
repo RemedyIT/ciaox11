@@ -67,11 +67,11 @@ module AxciomaPC
     end
 
     def idl_files_gen_dir_rel_path(idlfiles, postfix='')
-      idlfiles.collect do |n,f|
+      idlfiles.collect do |n, f|
         #get recipe file belonging to idl_file
         name = f.name.gsub('.idl', "#{postfix}.idl")
         gen_dir = f.recipes.first.gen_dir
-        Util::path_rel_to_path(File.join(f.path,gen_dir,name),self.recipe_file.path).to_s
+        Util::path_rel_to_path(File.join(f.path, gen_dir, name), self.recipe_file.path).to_s
       end
     end
 

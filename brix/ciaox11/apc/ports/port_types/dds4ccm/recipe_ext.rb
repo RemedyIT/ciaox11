@@ -17,15 +17,15 @@ module AxciomaPC
     module DataIDLExtension
 
       def dds_idl_file_path(fidl_name)
-        File.join(full_gen_path, File.basename(fidl_name, '.idl')+'_dds.idl')
+        File.join(full_gen_path, File.basename(fidl_name, '.idl') + '_dds.idl')
       end
 
       def dds_typed_entities_stub_noext(fidl)
-        File.join(gen_dir, File.basename(fidl.name, '.idl')+'_dds_typed_entitiesC')
+        File.join(gen_dir, File.basename(fidl.name, '.idl') + '_dds_typed_entitiesC')
       end
 
       def dds_typesupport_noext(fidl)
-        File.join(gen_dir, File.basename(fidl.name, '.idl')+'_typesupport')
+        File.join(gen_dir, File.basename(fidl.name, '.idl') + '_typesupport')
       end
 
       def process_dds4ccm_data_dependencies(project_dependencies, *prjtypes)

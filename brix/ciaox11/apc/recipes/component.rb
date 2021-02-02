@@ -318,7 +318,7 @@ module AxciomaPC
       interaction_types = Set.new
       project_dependencies = MPC::Dependencies.new
       @idl_files.each_value do |fidl|
-        BRIX11.log(4,"[#{self}] #{fidl}")
+        BRIX11.log(4, "[#{self}] #{fidl}")
         fidl.includes.each do |ifidl|
           if ifidl.is_member?
             BRIX11.log(4, "[#{self}] #{ifidl}")
@@ -378,7 +378,7 @@ module AxciomaPC
     def setup_comp_gen(project_dependencies)
       BRIX11.log(4, '[%s] setup_comp_gen: project_dependencies = %s', self, project_dependencies)
       mpc_obj = mpc_file[:comp_gen]
-      @idl_files.collect { |n,f| mpc_obj.add_project_file(f.full_path) }
+      @idl_files.collect { |n, f| mpc_obj.add_project_file(f.full_path) }
 
       # idl_includes: idl in recipe self, concat with includes given in project root aprc file
       mpc_obj.includes << idl_includes << project.idl_includes
@@ -425,8 +425,8 @@ module AxciomaPC
       #include paths, lib_paths and libs given in recipe:
       mpc_obj.includes << include_dirs << project.include_dirs
       mpc_obj.lib_paths << lib_paths << project.lib_paths
-      mpc_obj.link_libs << libs  + project.libs
-      mpc_obj.link_lit_libs << lit_libs  + project.lit_libs
+      mpc_obj.link_libs << libs + project.libs
+      mpc_obj.link_lit_libs << lit_libs + project.lit_libs
 
       if (!self.combined_lib?) && self.needs_stub? && self.creates_stubcode?
         mpc_obj.set_stub
@@ -477,7 +477,7 @@ module AxciomaPC
           end
         end
         # check any attributes on this IDL Component
-        check_attributes_for_anytypecode(idl_scanner,node)
+        check_attributes_for_anytypecode(idl_scanner, node)
       when IDL::AST::Module,
            IDL::AST::ComponentBase,
            IDL::AST::Porttype,
@@ -502,7 +502,7 @@ module AxciomaPC
     def check_attributes_for_anytypecode(idl_scanner, node)
       # Attributes from components and attributes from mirror ports are needed,
       # so we can't use node.attributes, but we have to walk the members self.
-      attrs=[]
+      attrs = []
       node.walk_members do |m|
         if m.is_a?(IDL::AST::Attribute)
           attrs << m

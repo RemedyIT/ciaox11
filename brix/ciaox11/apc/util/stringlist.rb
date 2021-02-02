@@ -47,7 +47,7 @@ module AxciomaPC
       def concat(val)
         if val
           if ::Enumerable === val
-            append_values(*val.inject([]) {|lv,el| lv.concat(split_value(el)) })
+            append_values(*val.inject([]) {|lv, el| lv.concat(split_value(el)) })
           else
             append_values(*split_value(val))
           end

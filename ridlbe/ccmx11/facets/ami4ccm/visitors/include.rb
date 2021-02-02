@@ -36,8 +36,8 @@ module IDL
       end
 
       def ami4ccm_idl_lem_includes
-        chomp_str =  params[:idlext]
-        @node.all_ami4ccm_idl_includes.map {|inc| inc.chomp(chomp_str) + params[:stub_pfx]+params[:hdr_ext]}
+        chomp_str = params[:idlext]
+        @node.all_ami4ccm_idl_includes.map {|inc| inc.chomp(chomp_str) + params[:stub_pfx] + params[:hdr_ext]}
       end
 
       def has_ami4ccm_idl_lem_includes?

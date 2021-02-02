@@ -27,7 +27,7 @@ module IDL
 
         @include_guard = "__RIDL_#{File.basename(params[:conn_exec_output_hdr] || '').to_random_include_guard}_INCLUDED__"
         # include without any output directories prefixed
-        properties[:conn_exec_lem_stub_include] = File.basename(params[:idlfile], params[:idlext])+params[:lem_pfx]+'C'+params[:hdr_ext]
+        properties[:conn_exec_lem_stub_include] = File.basename(params[:idlfile], params[:idlext]) + params[:lem_pfx] + 'C' + params[:hdr_ext]
       end
 
     end

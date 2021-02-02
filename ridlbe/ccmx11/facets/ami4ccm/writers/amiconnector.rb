@@ -37,7 +37,7 @@ module IDL
         properties[:idl_a_file] = File.join(File.basename(params[:idlfile], params[:idlext]) +
                                      params[:ami_idl_pfx] + params[:idlext])
         properties[:acon_lem_stub_include] = File.join(File.basename(params[:idlfile], params[:idlext]) +
-                                                params[:ami_idl_conn_pfx]+params[:lem_pfx] + params[:idlext])
+                                                params[:ami_idl_conn_pfx] + params[:lem_pfx] + params[:idlext])
       end
 
       def is_ami_conn_idl?
@@ -91,7 +91,7 @@ module IDL
         self.template_root = File.join(self.template_root, 'idl')
         @include_guard = "__RIDL_#{File.basename(params[:acon_idl] || '').to_random_include_guard}_INCLUDED__"
         properties[:acon_lem_stub_include] = File.join(File.basename(params[:idlfile], params[:idlext]) +
-                                                params[:ami_idl_pfx]+params[:lem_pfx] + params[:idlext])
+                                                params[:ami_idl_pfx] + params[:lem_pfx] + params[:idlext])
       end
 
       def is_ami_conn_idl?
@@ -130,7 +130,7 @@ module IDL
       end
 
       def enter_interface(node)
-        return if node.is_local? || node.is_abstract? ||!node.has_ami_annotation?
+        return if node.is_local? || node.is_abstract? || !node.has_ami_annotation?
         visitor(InterfaceVisitor).visit_ami(node)
       end
     end # AmiConnectorIDLWriter
@@ -141,15 +141,15 @@ module IDL
         self.template_root = File.join(self.template_root, 'hdr')
         @include_guard = "__RIDL_#{File.basename(params[:conn_exec_output_hdr] || '').to_random_include_guard}_INCLUDED__"
 
-        properties[:lem_stub_include] = File.basename(params[:idlfile], params[:idlext])+params[:lem_pfx]+params[:stub_pfx]+params[:hdr_ext]
+        properties[:lem_stub_include] = File.basename(params[:idlfile], params[:idlext]) + params[:lem_pfx] + params[:stub_pfx] + params[:hdr_ext]
 
         #get the base header, remove the A_conn.idl
-        base_name =  File.basename(params[:idlfile], params[:idlext])
+        base_name = File.basename(params[:idlfile], params[:idlext])
         base_name = base_name.chomp(params[:ami_idl_conn_pfx])
         #generate  the  AmiC.h name
-        properties[:ami_stub_include] = base_name + params[:ami_pfx] +params[:stub_pfx]+params[:hdr_ext]
+        properties[:ami_stub_include] = base_name + params[:ami_pfx] + params[:stub_pfx] + params[:hdr_ext]
         #gnerate the  AS.h name
-        properties[:svntc_skel_include] = base_name +params[:ami_idl_pfx] + params[:srv_pfx]+params[:hdr_ext]
+        properties[:svntc_skel_include] = base_name + params[:ami_idl_pfx] + params[:srv_pfx] + params[:hdr_ext]
       end
 
       def pre_visit(parser)

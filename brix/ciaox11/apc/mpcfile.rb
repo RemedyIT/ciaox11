@@ -92,8 +92,8 @@ module AxciomaPC
       end
 
       def dump(indent=0, out=STDERR)
-        out.puts (' '*indent)+self.to_s
-        dependencies.dump(indent+2, out)
+        out.puts (' ' * indent) + self.to_s
+        dependencies.dump(indent + 2, out)
       end
     end # Dependency
 
@@ -113,7 +113,7 @@ module AxciomaPC
         # start with all direct dependencies
         preqs = ::Set.new(recipes.collect {|rcp| (rcp.mpc_file[project_type].wants_build? && rcp.mpc_file[project_type].project_name) || nil }.compact)
         # now collect all (unique) recorded dependencies for these direct prerequisites
-        preq_deps = recipes.inject([]) {|list,rcp| list.concat(rcp.mpc_file[project_type].project_dependencies) }
+        preq_deps = recipes.inject([]) {|list, rcp| list.concat(rcp.mpc_file[project_type].project_dependencies) }
         # now add all projects from indirect dependencies that are not covered by direct dependencies
         dependencies.each do |idep|
           preqs.merge(idep.prerequisite_projects - preq_deps)
@@ -146,9 +146,9 @@ module AxciomaPC
       end
 
       def dump(indent=0, out=STDERR)
-        out.puts (' '*indent)+self.to_s
-        out.puts (' '*(indent+2))+"[#{recipes.to_a.join(',')}]"
-        dependencies.dump(indent+2, out)
+        out.puts (' ' * indent) + self.to_s
+        out.puts (' ' * (indent + 2)) + "[#{recipes.to_a.join(',')}]"
+        dependencies.dump(indent + 2, out)
       end
     end # CompileDependency
 
@@ -199,8 +199,8 @@ module AxciomaPC
       end
 
       def dump(indent=0, out=STDERR)
-        out.puts (' '*indent)+self.to_s
-        self.each {|dep| dep.dump(indent+2, out) }
+        out.puts (' ' * indent) + self.to_s
+        self.each {|dep| dep.dump(indent + 2, out) }
       end
 
     end # Dependencies
@@ -255,7 +255,7 @@ module AxciomaPC
         @project_postfix = @type.to_s
         @includes = Util::UniqueStringList.new(:ws)
         @base_projects = Util::UniqueStringList.new(:ws)
-        @project_dependencies =  Util::UniqueStringList.new(:ws)
+        @project_dependencies = Util::UniqueStringList.new(:ws)
         @project_files = Util::UniqueStringList.new
         @mpc_file = nil
       end

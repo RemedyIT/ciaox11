@@ -59,7 +59,7 @@ module AxciomaPC
           mpc_skel_obj = mpc_file[:skel]
           mpc_skel_obj.add_project_file(fidl.full_path)
           # register resulting project dependencies for IDL file
-          prj_dependencies << MPC::LinkDependency.new(:skel,self,
+          prj_dependencies << MPC::LinkDependency.new(:skel, self,
                                                       MPC::LinkDependency.new(:stub, self))
         else
           # Although no skel lib is needed when :needs_skel is false,
