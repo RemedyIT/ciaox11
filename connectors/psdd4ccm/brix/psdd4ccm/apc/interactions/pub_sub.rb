@@ -261,4 +261,3 @@ end
 Dir.glob(File.join(File.dirname(__FILE__), 'pub_sub', '*.rb')).each do |fnm|
   require fnm
 end
-

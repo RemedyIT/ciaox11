@@ -11,4 +11,3 @@
 Dir.glob(File.join(File.dirname(__FILE__), 'state_event', '*.rb')).each do |fnm|
   require fnm
 end
-

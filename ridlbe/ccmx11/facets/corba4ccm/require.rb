@@ -35,4 +35,3 @@ end
 Dir.glob(File.join(File.dirname(__FILE__), 'writers', '*.rb')).each do |f|
   require File.join(IDL::CCMX11::CORBA::ROOT, 'writers', File.basename(f, '.*'))
 end
-
