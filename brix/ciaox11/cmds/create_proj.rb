@@ -84,7 +84,7 @@ module BRIX11
           rc = BRIX11::Common::GenerateBuild.new(entry, opts).run(cmdargv)
         end
 
-        if (!options[:axpcreate][:mpc])
+        if !options[:axpcreate][:mpc]
           #throw away temporarily mpc files
           #remove mpc files
           AxciomaPC::MPC.remove(project)

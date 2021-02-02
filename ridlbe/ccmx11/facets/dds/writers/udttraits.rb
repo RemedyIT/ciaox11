@@ -72,9 +72,9 @@ module IDL
 
         def visit_typedef(node)
           if ::IDL::Type::Sequence === node.idltype
-            if (!(::IDL::Type::ScopedName === node.idltype.basetype) ||
+            if !(::IDL::Type::ScopedName === node.idltype.basetype) ||
                 ::IDL::Type::ScopedName === node.idltype.basetype &&
-                !(::IDL::AST::Interface === node.idltype.basetype.node))
+                !(::IDL::AST::Interface === node.idltype.basetype.node)
               # generate conversion traits for types, but not for interfaces.
               visitor(SequenceVisitor).visit_sequence(node)
             end

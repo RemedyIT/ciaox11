@@ -98,7 +98,7 @@ module AxciomaPC
     # cleanup generated artifacts
     def clean
       recipes.each do |rcp|
-        if (!rcp.gen_dir || rcp.gen_dir == '.')
+        if !rcp.gen_dir || rcp.gen_dir == '.'
           #do nothing because the user has indicated as generated_code dir, the same dir as the recipe dir
         else
           gen_dir_path = File.join(@path, rcp.gen_dir)

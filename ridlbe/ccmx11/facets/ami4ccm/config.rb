@@ -121,17 +121,17 @@ module IDL
           ## AMI4CCM Component related handling
 
           # Generate lem implementation ami4ccm component
-          if (options[:gen_lem_with_ami])
+          if options[:gen_lem_with_ami]
             IDL::CCMX11::AMI4CCM.gen_ami_lem_idl(options, idl_ext)
           end
 
           # svnt generation ami component
-          if (options[:gen_component_servant_with_ami])
+          if options[:gen_component_servant_with_ami]
             IDL::CCMX11::AMI4CCM.gen_ami_component_servant(options, idl_ext)
           end
 
           # executor generation ami component
-          if (options[:gen_component_executor_with_ami])
+          if options[:gen_component_executor_with_ami]
             IDL::CCMX11::AMI4CCM.gen_ami_component_executor(options, idl_ext)
           end
 
