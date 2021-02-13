@@ -99,7 +99,7 @@ project (*ddsx11_opendds_impl) : ddsx11_impl, ddsx11_no_idlfiles {
   }
 }
 
-project(*ddsx11_logger) : ddsx11_impl, ddsx11_logger {
+project(*ddsx11_logger) : ddsx11_impl, ddsx11_logger, ddsx11_no_idlfiles {
   dynamicflags += DNCX11_LOG_BACKEND_BUILD_DLL
   after += log_record_stub log_record_ddsx11_opendds_impl log_record_ddsx11_ndds_impl
   libs  += log_record_stub log_record_ddsx11_impl
@@ -114,7 +114,7 @@ project(*ddsx11_logger) : ddsx11_impl, ddsx11_logger {
   }
 }
 
-project(*log_server) : ddsx11_impl {
+project(*log_server) : ddsx11_impl, ddsx11_no_idlfiles {
   after += log_record_stub log_record_ddsx11_opendds_impl log_record_ddsx11_ndds_impl
   libs  += log_record_stub log_record_ddsx11_impl
 
