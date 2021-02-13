@@ -30,15 +30,6 @@ int main (int , char *[])
       DDS::traits<ShapeType>::domainparticipantfactory_ref_type dpf =
         DDS::traits<DDS::DomainParticipantFactory>::get_instance ();
 
-      retcode = dpf->set_default_participant_qos_with_profile(qos_profile);
-
-      if (retcode != DDS::RETCODE_OK)
-      {
-        DDSX11_TEST_ERROR << "Failed to set default participant QoS from profile: "
-                          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
-        return 1;
-      }
-
       DDS::traits<ShapeType>::domainparticipant_ref_type domain_participant =
         dpf->create_participant_with_profile (
             domain_id_, qos_profile, nullptr, DDS::STATUS_MASK_NONE);
