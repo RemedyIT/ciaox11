@@ -29,6 +29,14 @@ if ($builtin_status != 0) {
     exit 1;
 }
 
+# Test dpf_sdqwp
+$SV = $builtin->CreateProcess ("../lib/dpf_sdqwp");
+$builtin_status = $SV->SpawnWaitKill ($builtin->ProcessStartWaitInterval());
+if ($builtin_status != 0) {
+    print STDERR "ERROR: dpf_sdqwp returned $builtin_status\n";
+    exit 1;
+}
+
 # Test double_delete
 $SV = $builtin->CreateProcess ("../lib/double_delete");
 $builtin_status = $SV->SpawnWaitKill ($builtin->ProcessStartWaitInterval());
