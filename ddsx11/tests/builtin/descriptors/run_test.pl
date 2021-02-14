@@ -22,6 +22,7 @@ my $builtin = PerlACE::TestTarget::create_target(2) || die "Create target 2 fail
 $builtin->AddLibPath ('../lib');
 
 # Test builtin
+print "Running builtin test\n";
 $SV = $builtin->CreateProcess ("../lib/builtin");
 $builtin_status = $SV->SpawnWaitKill ($builtin->ProcessStartWaitInterval());
 if ($builtin_status != 0) {
@@ -29,7 +30,17 @@ if ($builtin_status != 0) {
     exit 1;
 }
 
+# Test dpf_sdqwp
+print "Running dpf_sdqwp test\n";
+$SV = $builtin->CreateProcess ("../lib/dpf_sdqwp");
+$builtin_status = $SV->SpawnWaitKill ($builtin->ProcessStartWaitInterval());
+if ($builtin_status != 0) {
+    print STDERR "ERROR: dpf_sdqwp returned $builtin_status\n";
+    exit 1;
+}
+
 # Test double_delete
+print "Running double_delete test\n";
 $SV = $builtin->CreateProcess ("../lib/double_delete");
 $builtin_status = $SV->SpawnWaitKill ($builtin->ProcessStartWaitInterval());
 if ($builtin_status != 0) {

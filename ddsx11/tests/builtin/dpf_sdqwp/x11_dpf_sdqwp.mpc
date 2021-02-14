@@ -1,0 +1,15 @@
+project(*dpf_sdqwp) : ddsx11_impl {
+  after += builtin_stub builtin_ddsx11_opendds_impl builtin_ddsx11_ndds_impl
+  libs  += builtin_stub builtin_ddsx11_impl
+
+  libpaths += ../lib
+
+  exename = dpf_sdqwp
+  exeout  = ../lib
+
+  includes += ../base/GeneratedCode
+
+  Source_Files {
+    dpf_sdqwp.cpp
+  }
+}
