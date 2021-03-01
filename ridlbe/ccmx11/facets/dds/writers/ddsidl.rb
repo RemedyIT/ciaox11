@@ -25,7 +25,7 @@ module IDL
           self.template_root = 'idl/dds'
           @include_guard = "__RIDL_DDS_ENTITIES_#{(File.basename(params[:idlfile], File.extname(params[:idlfile])) || '').to_random_include_guard}_IDL__"
           @dds_native_module = false
-          @last_module = nil
+          @current_module = -1
           @module_stack = []
         end
 
@@ -44,7 +44,7 @@ module IDL
         end
 
         def post_visit(parser)
-          end_dds_native_namespace if @dds_native_module
+          check_dds_native_namespace_end
           visitor(PostVisitor).visit
         end
 
@@ -78,52 +78,69 @@ module IDL
         end
 
         def visit_typedef(node)
-          check_namespace_begin
-          visitor(TypedefVisitor).visit_typedef(node)
+          case node.idltype.resolved_type
+          when IDL::Type::Valuebox,
+               IDL::Type::Valuetype,
+               IDL::Type::ValueBase,
+               IDL::Type::Eventtype,
+               IDL::Type::Exception,
+               IDL::Type::Native,
+               IDL::Type::Object,
+               IDL::Type::Interface
+            return
+          else
+            check_namespace_begin
+            visitor(TypedefVisitor).visit_typedef(node)
+          end
         end
 
       private
 
         def check_namespace_begin
-          start_dds_native_namespace unless @dds_native_module
-          if @last_module
-            printiln('module ' + @last_module.unescaped_name)
-            printiln('{')
-            inc_nest
-            @module_stack << @last_module
-            @last_module = nil
+          check_dds_native_namespace
+          unless @module_stack.empty?
+            module_ix = @current_module + 1
+            while module_ix < @module_stack.size
+              printiln('module ' + @module_stack[module_ix].unescaped_name)
+              printiln('{')
+              inc_nest
+              module_ix += 1
+            end
+            @current_module = @module_stack.size - 1
           end
         end
 
         def mark_namespace_begin(node)
-          check_namespace_begin
-          @last_module = node
+          @module_stack << node
         end
 
         def mark_namespace_end(node)
-          if @last_module == node
-            @last_module = nil
-          elsif @module_stack.last == node
+          if @current_module >= 0 && @module_stack[@current_module] == node
             dec_nest
             println()
             printiln("}; // module #{node.unescaped_name}")
-            @module_stack.pop
+            @current_module -= 1
+          end
+          @module_stack.pop
+        end
+
+        def check_dds_native_namespace
+          unless @dds_native_module
+            println()
+            printiln('module DDS_Native')
+            printiln('{')
+            inc_nest
+            @dds_native_module = true
           end
         end
 
-        def start_dds_native_namespace
-          println()
-          printiln('module DDS_Native')
-          printiln('{')
-          inc_nest
-          @dds_native_module = true
-        end
-
-        def end_dds_native_namespace
-          dec_nest
-          println()
-          printiln('}; // module DDS_Native')
-          @dds_native_module = false
+        def check_dds_native_namespace_end
+          if @dds_native_module
+            dec_nest
+            println()
+            printiln('}; // module DDS_Native')
+            @dds_native_module = false
+          end
         end
 
       end # DDSIDLWriter
