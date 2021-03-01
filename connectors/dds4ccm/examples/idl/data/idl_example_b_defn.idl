@@ -9,6 +9,8 @@
 #ifndef CX_PORTS__TYPES__EXAMPLE_B_DEFN_IDL
 #define CX_PORTS__TYPES__EXAMPLE_B_DEFN_IDL
 
+#include "idl_example_no_defn.idl"
+#include "idl_example_typedef_defn.idl"
 
 /// @namespace Example
 module Example {
@@ -26,7 +28,7 @@ module Example {
 
     /// @typedef B26
     ///
-    typedef sequence <octet, 256> B26;
+    typedef Octet256Seq B26;
 
     /// @typedef B36
     ///
@@ -38,11 +40,11 @@ module Example {
 
     /// @typedef B18
     ///
-    typedef sequence <octet, 256> B18;
+    typedef sequence <octet, NUM256> B18;
 
     /// @typedef B28
     ///
-    typedef sequence <octet, 256> B28;
+    typedef sequence <octet, NUM256> B28;
 
     /// @struct B27
     ///
