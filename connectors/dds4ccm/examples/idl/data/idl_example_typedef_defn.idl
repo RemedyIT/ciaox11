@@ -1,0 +1,26 @@
+/**
+ * @file    idl_example_typedef_defn.idl
+ * @author  Martin Corino
+ *
+ * @brief   Stress test for DDS4CCM
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ */
+#ifndef CX_PORTS__TYPES__EXAMPLE_TYPEDEF_DEFN_IDL
+#define CX_PORTS__TYPES__EXAMPLE_TYPEDEF_DEFN_IDL
+
+#include "idl_example_no_defn.idl"
+
+module Example
+{
+  typedef sequence<octet, NUM256> Octet256Seq;
+
+  module Nest1
+  {
+    valuetype VBShort short;
+
+    typedef VBShort MyVBShort;
+  };
+};
+
+#endif

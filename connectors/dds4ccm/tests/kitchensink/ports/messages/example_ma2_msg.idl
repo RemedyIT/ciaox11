@@ -10,17 +10,37 @@
 #include "example_na_defn.idl"
 #include "example_ma_defn.idl"
 
+module A {
+  module B {
+    const long CONST_VALUE = 5;
+  };
+};
+
+module A {
+  module B {
+    typedef long my_typedef;
+    module C {
+      struct MA2_msgfoo {
+        my_typedef bar;
+      };
+    };
+  };
+};
+
+module A {
+  module B {
+    const long SECOND_CONST_VALUE = 5;
+  };
+};
+
 /// @namespace Example
 module Example {
 
     /// @struct MA2_msg
     ///
     struct MA2_msg {
-
         Example::NA4 hdr;
-
         Example::MA4 data;
-
         boolean trigger;
     }; //@TopLevel()
 };
