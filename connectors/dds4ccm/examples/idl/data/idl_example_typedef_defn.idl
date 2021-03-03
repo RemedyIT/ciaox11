@@ -17,9 +17,12 @@ module Example
 
   module Nest1
   {
-    valuetype VBShort short;
+    local interface Foo
+    {
+      void do_foo();
+    };
 
-    typedef VBShort MyVBShort;
+    typedef Foo MyFoo;
   };
 };
 
