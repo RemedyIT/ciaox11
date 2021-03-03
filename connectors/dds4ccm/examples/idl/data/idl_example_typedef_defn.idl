@@ -17,7 +17,7 @@ module Example
 
   module Nest1
   {
-    interface Foo
+    local interface Foo
     {
       void do_foo();
     };
