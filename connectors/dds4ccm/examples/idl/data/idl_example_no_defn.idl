@@ -21,7 +21,7 @@ module Example
   {
     module Nest21
     {
-      typedef ValueBase MyValue;
+      typedef Object MyObject;
     };
   };
 };
