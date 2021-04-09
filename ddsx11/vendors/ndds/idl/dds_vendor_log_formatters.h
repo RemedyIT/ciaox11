@@ -98,7 +98,7 @@ struct instance_handle_formatter
       OS& os_,
       ::DDS::InstanceHandle_t const &val_)
   {
-    os_ << "DDS::InstanceHandle_t{";
+    os_ << "{";
     for (uint32_t i = 0; i < 4; ++i)
     {
       uint32_t idx = i*4;
