@@ -153,7 +153,7 @@ namespace CIAOX11
             << "Delete participant <"
             << IDL::traits< ::DDS::Entity>::write<entity_formatter> (dp)
             << "> for domain <" << domain_id << "> with profile <"
-            << qos_profile << "> since ref_count dropped to zero.");
+            << qos_profile << "> ref_count <0>");
           // Save to remove from list
           iter->second.first = nullptr;
           this->dps_.erase (iter);
@@ -165,7 +165,7 @@ namespace CIAOX11
             << "Decremented refcount for participant <"
             << IDL::traits< ::DDS::Entity>::write<entity_formatter> (dp)
             << "> for domain <" << domain_id << "> with profile <"
-            << qos_profile << "> since " << "it's still used - ref_count dropped to <"
+            << qos_profile << "> since " << "it's still used - ref_count <"
             << refcount << ">");
           return false;
         }
