@@ -509,6 +509,9 @@ namespace DDSX11
     // unregistering our proxy
     ::DDS::InstanceHandle_t const handle = a_topic->get_instance_handle ();
 
+    DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::delete_topic - "
+      << "Deleting topic <" << handle << "> <" << a_topic->get_type_name () << ">");
+
     // Retrieve our listener so that we can delete it when the delete of the DDS entity
     // has been successful
     TopicListener_Guard listener_guard { top->get_listener () };
