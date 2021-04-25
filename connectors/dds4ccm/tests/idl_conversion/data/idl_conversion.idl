@@ -225,6 +225,17 @@ module Escaping
     string bar;
   };
 };
+
+module Foo
+{
+  module _ATTRIBUTE
+  {
+    struct TopicA
+    {
+      string a;
+    };  //@TopLevel()
+  };
+};
 */
 
 // Test a module with only non-DDS translatable types/constants
