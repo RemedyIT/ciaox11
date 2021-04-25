@@ -362,7 +362,7 @@ namespace DAnCE
   }
 
   ssize_t
-  ddsx11_log_backend::log (ACE_Log_Record  &log_record)
+  ddsx11_log_backend::log (ACE_Log_Record &log_record)
   {
     // Construct a Log_Record to publish on DDS only when it isn't a DDSX11 log message (which would
     // trigger recursive logging
