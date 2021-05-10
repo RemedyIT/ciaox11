@@ -14,7 +14,6 @@ module Uni {
     case 6: long y;
   }; //@TopLevel()
 
-  // For bar we want to use _module but that doesn't work with RTI Connext 6.0, opened case CODEGENII-1263
   enum _module
   {
     dtLong
