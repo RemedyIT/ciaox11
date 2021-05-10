@@ -291,7 +291,7 @@ namespace CSL_Test_Sender_Impl
   void
   Sender_exec_i::start_publishing ()
   {
-    uint32_t interval = 100000000;
+    uint32_t interval { 100000000 };
     if (this->assignment_ == ASSIGNMENT::ASSIGNMENT_UNEXPECTED_STATUS)
     {
        interval = 1000000000;
