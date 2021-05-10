@@ -172,16 +172,14 @@ module Example {
   }; //@TopLevel()
 
   struct ColorStruct;
-  // @todo Enabling the typedef below triggers non-compilable RTI generated code, see CODEGENII-1428
-  //typedef sequence <ColorStruct> ColorList;
+  typedef sequence <ColorStruct> ColorList;
   struct ColorStruct {
     string colorString;
     long colorNum;
   };
 
   union B03;
-  // @todo Enabling the typedef below triggers non-compilable RTI generated code, see CODEGENII-1439
-  //typedef sequence <B03> B03List;
+  typedef sequence <B03> B03List;
   union B03 switch (long)
   {
     case 2: short b_03_3;
@@ -191,8 +189,7 @@ module Example {
 module Foo
 {
   struct ColorStruct;
-  // @todo Enabling the typedef below triggers non-compilable RTI generated code, see CODEGENII-1428
-  //typedef sequence <ColorStruct> ColorList;
+  typedef sequence <ColorStruct> ColorList;
   struct ColorStruct {
     string colorString;
     long colorNum;
@@ -202,8 +199,7 @@ module Foo
 module UnionTest
 {
   union B03;
-  // @todo Enabling the typedef below triggers non-compilable RTI generated code, see CODEGENII-1439
-  //typedef sequence <B03> B03List;
+  typedef sequence <B03> B03List;
   union B03 switch (long)
   {
     case 2: short b_03_3;
