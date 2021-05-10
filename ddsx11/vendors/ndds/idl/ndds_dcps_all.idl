@@ -674,18 +674,9 @@ module DDS {
       KEEP_ALL_HISTORY_QOS
   };
 
-  /// RTI DDS specific
-  enum RefilterQosPolicyKind {
-      NONE_REFILTER_QOS,
-      ALL_REFILTER_QOS,
-      ON_DEMAND_REFILTER_QOS
-  };
-
   struct HistoryQosPolicy {
       HistoryQosPolicyKind kind;
       long depth;
-      /// RTI DDS specific
-      RefilterQosPolicyKind refilter;
   };
 
   struct ResourceLimitsQosPolicy {
