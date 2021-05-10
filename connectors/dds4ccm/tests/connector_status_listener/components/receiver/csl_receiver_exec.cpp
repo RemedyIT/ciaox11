@@ -95,7 +95,8 @@ namespace CSL_Test_Receiver_Impl
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : CSL_Test_Receiver_Impl::info_get_status_exec_i::on_requested_deadline_missed[_the_reader_status]
     X11_UNUSED_ARG(the_reader);
-    X11_UNUSED_ARG(status);
+    DDS4CCM_TEST_DEBUG << "info_get_status_exec_i::on_requested_deadline_missed - "
+      << "status <" << DDS::dds_write (status) << ">." << std::endl;
     //@@{__RIDL_REGEN_MARKER__} - END : CSL_Test_Receiver_Impl::info_get_status_exec_i::on_requested_deadline_missed[_the_reader_status]
   }
 
@@ -106,7 +107,8 @@ namespace CSL_Test_Receiver_Impl
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : CSL_Test_Receiver_Impl::info_get_status_exec_i::on_sample_lost[_the_reader_status]
     X11_UNUSED_ARG(the_reader);
-    X11_UNUSED_ARG(status);
+    DDS4CCM_TEST_DEBUG << "info_get_status_exec_i::on_sample_lost - "
+      << "status <" << DDS::dds_write (status) << ">." << std::endl;
     //@@{__RIDL_REGEN_MARKER__} - END : CSL_Test_Receiver_Impl::info_get_status_exec_i::on_sample_lost[_the_reader_status]
   }
   /**
