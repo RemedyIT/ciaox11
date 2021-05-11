@@ -121,15 +121,15 @@
           <kind>BY_RECEPTION_TIMESTAMP_DESTINATIONORDER_QOS</kind>
         </destination_order>
         <history>
-          <kind>KEEP_LAST_HISTORY_QOS</kind>
-          <depth>100</depth>
+          <kind>KEEP_ALL_HISTORY_QOS</kind>
+          <depth>1</depth>
         </history>
         <resource_limits>
           <initial_samples>1</initial_samples>
           <initial_instances>1</initial_instances>
           <max_samples>1000</max_samples>
-          <max_instances>1</max_instances>
-          <max_samples_per_instance>100</max_samples_per_instance>
+          <max_instances>2</max_instances>
+          <max_samples_per_instance>1</max_samples_per_instance>
         </resource_limits>
         <ownership>
           <kind>SHARED_OWNERSHIP_QOS</kind>
