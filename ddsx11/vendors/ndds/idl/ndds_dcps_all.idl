@@ -212,8 +212,6 @@ module DDS {
       long                 total_count;
       long                 total_count_change;
       long                 current_count;
-      /***** RTI EXTENSIONS *****/
-      long                 current_count_peak;
       long                 current_count_change;
       InstanceHandle_t     last_subscription_handle;
   };
@@ -222,8 +220,6 @@ module DDS {
       long                 total_count;
       long                 total_count_change;
       long                 current_count;
-      /***** RTI EXTENSIONS *****/
-      long                 current_count_peak;
       long                 current_count_change;
       InstanceHandle_t     last_publication_handle;
   };
