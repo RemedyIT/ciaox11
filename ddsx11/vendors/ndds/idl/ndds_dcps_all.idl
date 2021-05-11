@@ -212,6 +212,8 @@ module DDS {
       long                 total_count;
       long                 total_count_change;
       long                 current_count;
+      /***** RTI EXTENSIONS *****/
+      long                 current_count_peak;
       long                 current_count_change;
       InstanceHandle_t     last_subscription_handle;
   };
@@ -220,6 +222,8 @@ module DDS {
       long                 total_count;
       long                 total_count_change;
       long                 current_count;
+      /***** RTI EXTENSIONS *****/
+      long                 current_count_peak;
       long                 current_count_change;
       InstanceHandle_t     last_publication_handle;
   };
@@ -247,17 +251,25 @@ module DDS {
       ReliableWriterCacheEventCount       high_watermark_reliable_writer_cache;
       long                                unacknowledged_sample_count;
       long                                unacknowledged_sample_count_peak;
+      long long                           replaced_unacknowledged_sample_count;
   };
 
   /// RTI DDS specific
   enum TypeConsistencyKind {
     DISALLOW_TYPE_COERCION,
-    ALLOW_TYPE_COERCION
+    ALLOW_TYPE_COERCION,
+    AUTO_TYPE_COERCION
   };
 
   /// RTI DDS specific
   struct TypeConsistencyEnforcementQosPolicy {
     TypeConsistencyKind kind;
+    boolean ignore_sequence_bounds;
+    boolean ignore_string_bounds;
+    boolean ignore_member_names;
+    boolean prevent_type_widening;
+    boolean force_type_validation;
+    boolean ignore_enum_literal_names;
   };
 
   // ----------------------------------------------------------------------
@@ -445,9 +457,51 @@ module DDS {
   const string WRITERDATALIFECYCLE_QOS_POLICY_NAME   = "WriterDataLifecycle";
   const string READERDATALIFECYCLE_QOS_POLICY_NAME   = "ReaderDataLifecycle";
   const string TOPICDATA_QOS_POLICY_NAME             = "TopicData";
-  const string GROUPDATA_QOS_POLICY_NAME             = "TransportPriority";
+  const string GROUPDATA_QOS_POLICY_NAME             = "GroupData";
   const string LIFESPAN_QOS_POLICY_NAME              = "Lifespan";
   const string DURABILITYSERVICE_POLICY_NAME         = "DurabilityService";
+  const string TRANSPORTPRIORITY_QOS_POLICY_NAME       = "TransportPriority";
+  const string DATA_REPRESENTATION_QOS_POLICY_NAME   = "DataRepresentation";
+  const string TYPE_CONSISTENCY_ENFORCEMENT_QOS_POLICY_NAME = "TypeConsistencyEnforcement";
+  const string DATATAG_QOS_POLICY_NAME               = "DataTag";
+
+  /***** RTI EXTENSIONS *****/
+  const string ASYNCHRONOUSPUBLISHER_QOS_POLICY_NAME         = "AsynchronousPublisher";
+  const string TYPESUPPORT_QOS_POLICY_NAME                = "TypeSupport";
+  const string WIREPROTOCOL_QOS_POLICY_NAME                = "WireProtocol";
+  const string DISCOVERY_QOS_POLICY_NAME                     = "Discovery";
+  const string DATAREADERRESOURCELIMITS_QOS_POLICY_NAME    = "DataReaderResourceLimits";
+  const string DATAWRITERRESOURCELIMITS_QOS_POLICY_NAME     = "DataWriterResourceLimits";
+  const string DATAREADERPROTOCOL_QOS_POLICY_NAME            = "DataReaderProtocol";
+  const string DATAWRITERPROTOCOL_QOS_POLICY_NAME            = "DataWriterProtocol";
+  const string DOMAINPARTICIPANTRESOURCELIMITS_QOS_POLICY_NAME    = "DomainParticipantResourceLimits";
+  const string EVENT_QOS_POLICY_NAME                        = "Event";
+  const string DATABASE_QOS_POLICY_NAME                    = "Database";
+  const string RECEIVERPOOL_QOS_POLICY_NAME                = "ReceiverPool";
+  const string DISCOVERYCONFIG_QOS_POLICY_NAME            = "DiscoveryConfig";
+  const string USEROBJECT_QOS_POLICY_NAME                    = "UserObject";
+  const string EXCLUSIVEAREA_QOS_POLICY_NAME                = "ExclusiveArea";
+  const string SYSTEMRESOURCELIMITS_QOS_POLICY_NAME        = "SystemResourceLimits";
+  const string TRANSPORTSELECTION_QOS_POLICY_NAME         = "TransportSelection";
+  const string TRANSPORTUNICAST_QOS_POLICY_NAME             = "TransportUnicast";
+  const string TRANSPORTMULTICAST_QOS_POLICY_NAME         = "TransportMulticast";
+  const string DDS_TRANSPORTMULTICASTMAPPING_QOS_POLICY_NAME      = "TransportMulticastMapping";
+  const string TRANSPORTBUILTIN_QOS_POLICY_NAME             = "TransportBuiltin";
+  const string PUBLISHMODE_QOS_POLICY_NAME                 = "PublishMode";
+  const string PROPERTY_QOS_POLICY_NAME                     = "Property";
+  const string ENTITYNAME_QOS_POLICY_NAME                 = "EntityName";
+  const string SERVICE_QOS_POLICY_NAME                     = "Service";
+  const string BATCH_QOS_POLICY_NAME                         = "Batch";
+  const string PROFILE_QOS_POLICY_NAME                    = "Profile";
+  const string LOCATORFILTER_QOS_POLICY_NAME                 = "LocatorFilter";
+  const string MULTICHANNEL_QOS_POLICY_NAME                = "MultiChannel";
+  const string TRANSPORTENCAPSULATION_QOS_POLICY_NAME     = "TransportEncapsulation";
+  const string PUBLISHERPROTOCOL_QOS_POLICY_NAME     = "PublisherProtocol";
+  const string SUBSCRIBERPROTOCOL_QOS_POLICY_NAME     = "SubscriberProtocol";
+  const string TOPICPROTOCOL_QOS_POLICY_NAME     = "TopicProtocol";
+  const string TOPICQUERYDISPATCH_QOS_POLICY_NAME     = "TopicQueryDispatch";
+  const string DATAWRITERTRANSFERMODE_QOS_POLICY_NAME = "DataWriterTransferMode";
+  const string DOMAINPARTICIPANTPROTOCOL_QOS_POLICY_NAME     = "DomainParticipantProtocol";
 
   const QosPolicyId_t INVALID_QOS_POLICY_ID              = 0;
   const QosPolicyId_t USERDATA_QOS_POLICY_ID             = 1;
@@ -476,79 +530,45 @@ module DDS {
   /// RTI DDS specific.
   const QosPolicyId_t TYPE_CONSISTENCY_ENFORCEMENT_QOS_POLICY_ID = 24;
 
-  /* --- Extension QoS policies: --- */
-  /// RTI DDS specific.
-  const QosPolicyId_t WIREPROTOCOL_QOS_POLICY_ID                    = 1000;
-  /// RTI DDS specific.
-  const QosPolicyId_t DISCOVERY_QOS_POLICY_ID                       = 1001;
-  /// RTI DDS specific.
-  const QosPolicyId_t DATAREADERRESOURCELIMITS_QOS_POLICY_ID        = 1003;
-  /// RTI DDS specific.
-  const QosPolicyId_t DATAWRITERRESOURCELIMITS_QOS_POLICY_ID        = 1004;
-  /// RTI DDS specific.
-  const QosPolicyId_t DATAREADERPROTOCOL_QOS_POLICY_ID              = 1005;
-  /// RTI DDS specific.
-  const QosPolicyId_t DATAWRITERPROTOCOL_QOS_POLICY_ID              = 1006;
-  /// RTI DDS specific.
-  const QosPolicyId_t DOMAINPARTICIPANTRESOURCELIMITS_QOS_POLICY_ID = 1007;
-  /// RTI DDS specific.
-  const QosPolicyId_t EVENT_QOS_POLICY_ID                           = 1008;
-  /// RTI DDS specific.
-  const QosPolicyId_t DATABASE_QOS_POLICY_ID                        = 1009;
-  /// RTI DDS specific.
-  const QosPolicyId_t RECEIVERPOOL_QOS_POLICY_ID                    = 1010;
-  /// RTI DDS specific.
-  const QosPolicyId_t DISCOVERYCONFIG_QOS_POLICY_ID                 = 1011;
-  /// RTI DDS specific.
-  const QosPolicyId_t EXCLUSIVEAREA_QOS_POLICY_ID                   = 1012;
-  /// RTI DDS specific.
-  const QosPolicyId_t USEROBJECT_QOS_POLICY_ID                      = 1013;
-  /// RTI DDS specific.
-  const QosPolicyId_t SYSTEMRESOURCELIMITS_QOS_POLICY_ID            = 1014;
-  /// RTI DDS specific.
-  const QosPolicyId_t TRANSPORTSELECTION_QOS_POLICY_ID              = 1015;
-  /// RTI DDS specific.
-  const QosPolicyId_t TRANSPORTUNICAST_QOS_POLICY_ID                = 1016;
-  /// RTI DDS specific.
-  const QosPolicyId_t TRANSPORTMULTICAST_QOS_POLICY_ID              = 1017;
-  /// RTI DDS specific.
-  const QosPolicyId_t TRANSPORTBUILTIN_QOS_POLICY_ID                = 1018;
-  /// RTI DDS specific.
-  const QosPolicyId_t TYPESUPPORT_QOS_POLICY_ID                     = 1019;
-  /// RTI DDS specific.
-  const QosPolicyId_t PROPERTY_QOS_POLICY_ID                        = 1020;
-  /// RTI DDS specific.
-  const QosPolicyId_t PUBLISHMODE_QOS_POLICY_ID                     = 1021;
-  /// RTI DDS specific.
-  const QosPolicyId_t ASYNCHRONOUSPUBLISHER_QOS_POLICY_ID           = 1022;
-  /// RTI DDS specific.
-  const QosPolicyId_t ENTITYNAME_QOS_POLICY_ID                      = 1023;
-  /// RTI DDS specific.
-  const QosPolicyId_t SERVICE_QOS_POLICY_ID                         = 1025;
-  /// RTI DDS specific.
-  const QosPolicyId_t BATCH_QOS_POLICY_ID                           = 1026;
-  /// RTI DDS specific.
-  const QosPolicyId_t PROFILE_QOS_POLICY_ID                         = 1027;
-  /// RTI DDS specific.
-  const QosPolicyId_t LOCATORFILTER_QOS_POLICY_ID                   = 1028;
-  /// RTI DDS specific.
-  const QosPolicyId_t MULTICHANNEL_QOS_POLICY_ID                    = 1029;
-  /// RTI DDS specific.
-  const QosPolicyId_t TRANSPORTENCAPSULATION_QOS_POLICY_ID          = 1030;
-  /// RTI DDS specific.
-  const QosPolicyId_t PUBLISHERPROTOCOL_QOS_POLICY_ID               = 1031;
-  /// RTI DDS specific.
-  const QosPolicyId_t SUBSCRIBERPROTOCOL_QOS_POLICY_ID              = 1032;
-  /// RTI DDS specific.
-  const QosPolicyId_t TOPICPROTOCOL_QOS_POLICY_ID                   = 1033;
-  /// RTI DDS specific.
-  const QosPolicyId_t DOMAINPARTICIPANTPROTOCOL_QOS_POLICY_ID       = 1034;
-  /// RTI DDS specific.
+  /***** RTI EXTENSIONS *****/
+  const QosPolicyId_t WIREPROTOCOL_QOS_POLICY_ID                         = 1000;
+  const QosPolicyId_t DISCOVERY_QOS_POLICY_ID                            = 1001;
+  const QosPolicyId_t DATAREADERRESOURCELIMITS_QOS_POLICY_ID             = 1003;
+  const QosPolicyId_t DATAWRITERRESOURCELIMITS_QOS_POLICY_ID             = 1004;
+  const QosPolicyId_t DATAREADERPROTOCOL_QOS_POLICY_ID                 = 1005;
+  const QosPolicyId_t DATAWRITERPROTOCOL_QOS_POLICY_ID                 = 1006;
+  const QosPolicyId_t DOMAINPARTICIPANTRESOURCELIMITS_QOS_POLICY_ID     = 1007;
+  const QosPolicyId_t EVENT_QOS_POLICY_ID                             = 1008;
+  const QosPolicyId_t DATABASE_QOS_POLICY_ID                             = 1009;
+  const QosPolicyId_t RECEIVERPOOL_QOS_POLICY_ID                         = 1010;
+  const QosPolicyId_t DISCOVERYCONFIG_QOS_POLICY_ID                     = 1011;
+  const QosPolicyId_t EXCLUSIVEAREA_QOS_POLICY_ID                     = 1012;
+  const QosPolicyId_t USEROBJECT_QOS_POLICY_ID                         = 1013;
+  const QosPolicyId_t SYSTEMRESOURCELIMITS_QOS_POLICY_ID                 = 1014;
+  const QosPolicyId_t TRANSPORTSELECTION_QOS_POLICY_ID                 = 1015;
+  const QosPolicyId_t TRANSPORTUNICAST_QOS_POLICY_ID                     = 1016;
+  const QosPolicyId_t TRANSPORTMULTICAST_QOS_POLICY_ID                 = 1017;
+  const QosPolicyId_t TRANSPORTBUILTIN_QOS_POLICY_ID                     = 1018;
+  const QosPolicyId_t TYPESUPPORT_QOS_POLICY_ID                         = 1019;
+  const QosPolicyId_t PROPERTY_QOS_POLICY_ID                             = 1020;
+  const QosPolicyId_t PUBLISHMODE_QOS_POLICY_ID                         = 1021;
+  const QosPolicyId_t ASYNCHRONOUSPUBLISHER_QOS_POLICY_ID             = 1022;
+  const QosPolicyId_t ENTITYNAME_QOS_POLICY_ID                         = 1023;
+  const QosPolicyId_t SERVICE_QOS_POLICY_ID                             = 1025;
+  const QosPolicyId_t BATCH_QOS_POLICY_ID                             = 1026;
+  const QosPolicyId_t    PROFILE_QOS_POLICY_ID                             = 1027;
+  const QosPolicyId_t LOCATORFILTER_QOS_POLICY_ID                     = 1028;
+  const QosPolicyId_t    MULTICHANNEL_QOS_POLICY_ID                         = 1029;
+  const QosPolicyId_t    TRANSPORTENCAPSULATION_QOS_POLICY_ID             = 1030;
+  const QosPolicyId_t    PUBLISHERPROTOCOL_QOS_POLICY_ID                 = 1031;
+  const QosPolicyId_t    SUBSCRIBERPROTOCOL_QOS_POLICY_ID                 = 1032;
+  const QosPolicyId_t    TOPICPROTOCOL_QOS_POLICY_ID                     = 1033;
+  const QosPolicyId_t    DOMAINPARTICIPANTPROTOCOL_QOS_POLICY_ID                     = 1034;
   const QosPolicyId_t AVAILABILITY_QOS_POLICY_ID                    = 1035;
-  /// RTI DDS specific.
   const QosPolicyId_t TRANSPORTMULTICASTMAPPING_QOS_POLICY_ID       = 1036;
-  /// RTI DDS specific.
   const QosPolicyId_t LOGGING_QOS_POLICY_ID                         = 1037;
+  const QosPolicyId_t    TOPICQUERYDISPATCH_QOS_POLICY_ID                =1038;
+  const QosPolicyId_t DATAWRITERTRANSFERMODE_QOS_POLICY_ID = 1039;
 
   typedef sequence<octet> OctetSeq;
 
@@ -580,6 +600,9 @@ module DDS {
   };
   struct DurabilityQosPolicy {
       DurabilityQosPolicyKind kind;
+      /***** RTI EXTENSIONS ****/
+      boolean direct_communication;
+      long writer_depth;
   };
 
   enum PresentationQosPolicyAccessScopeKind {
@@ -594,6 +617,8 @@ module DDS {
       PresentationQosPolicyAccessScopeKind access_scope;
       boolean coherent_access;
       boolean ordered_access;
+      /***** RTI EXTENSIONS ****/
+      boolean drop_incomplete_coherent_set;
   };
 
   struct DeadlineQosPolicy {
@@ -626,6 +651,7 @@ module DDS {
   struct LivelinessQosPolicy {
       LivelinessQosPolicyKind kind;
       Duration_t lease_duration;
+      long assertions_per_lease_duration;
   };
 
   struct TimeBasedFilterQosPolicy {
@@ -641,9 +667,17 @@ module DDS {
       RELIABLE_RELIABILITY_QOS
   };
 
+  enum ReliabilityQosPolicyAcknowledgmentModeKind {
+      PROTOCOL_ACKNOWLEDGEMENT_MODE,
+      APPLICATION_AUTO_ACKNOWLEDGEMENT_MODE,
+      APPLICATION_ORDERED_ACKNOWLEDGEMENT_MODE,
+      APPLICATION_EXPLICIT_ACKNOWLEDGEMENT_MODE
+  };
+
   struct ReliabilityQosPolicy {
       ReliabilityQosPolicyKind kind;
       Duration_t max_blocking_time;
+      ReliabilityQosPolicyAcknowledgmentModeKind acknowledgment_kind;
   };
 
   enum DestinationOrderQosPolicyKind {
@@ -703,6 +737,8 @@ module DDS {
 
   struct WriterDataLifecycleQosPolicy {
       boolean autodispose_unregistered_instances;
+      Duration_t autopurge_unregistered_instances_delay;
+      Duration_t autopurge_disposed_instances_delay;
   };
 
   /// RTI DDS specific
@@ -745,6 +781,8 @@ module DDS {
   struct ReaderDataLifecycleQosPolicy {
       Duration_t autopurge_nowriter_samples_delay;
       Duration_t autopurge_disposed_samples_delay;
+      Duration_t autopurge_disposed_instances_delay;
+      Duration_t autopurge_nowriter_instances_delay;
   };
 
   struct DurabilityServiceQosPolicy {
