@@ -119,7 +119,12 @@ module DDS {
     LOST_BY_REMOTE_WRITERS_PER_SAMPLE_LIMIT,
     LOST_BY_AVAILABILITY_WAITING_TIME,
     LOST_BY_REMOTE_WRITER_SAMPLES_PER_VIRTUAL_QUEUE_LIMIT,
-    LOST_BY_OUT_OF_MEMORY
+    LOST_BY_OUT_OF_MEMORY,
+    LOST_BY_UNKNOWN_INSTANCE,
+    LOST_BY_DESERIALIZATION_FAILURE,
+    LOST_BY_DECODE_FAILURE,
+    LOST_BY_SAMPLES_PER_INSTANCE_LIMIT,
+    LOST_BY_SAMPLES_LIMIT
   };
 
   struct SampleLostStatus {
@@ -132,21 +137,22 @@ module DDS {
   /// Kinds of reasons for rejecting a sample
   enum SampleRejectedStatusKind {
       NOT_REJECTED,
+      /* Not used */
       REJECTED_BY_INSTANCES_LIMIT,
       REJECTED_BY_SAMPLES_LIMIT,
       REJECTED_BY_SAMPLES_PER_INSTANCE_LIMIT,
-      /// RTI DDS specific
+      /***** RTI EXTENSIONS *****/
+      /* Deprecated */
       REJECTED_BY_REMOTE_WRITERS_LIMIT,
-      /// RTI DDS specific
+      /* Deprecated */
       REJECTED_BY_REMOTE_WRITERS_PER_INSTANCE_LIMIT,
-      /// RTI DDS specific
       REJECTED_BY_SAMPLES_PER_REMOTE_WRITER_LIMIT,
-      /// RTI DDS specific
+      /* Deprecated */
       REJECTED_BY_VIRTUAL_WRITERS_LIMIT,
-      /// RTI DDS specific
+      /* Deprecated */
       REJECTED_BY_REMOTE_WRITERS_PER_SAMPLE_LIMIT,
-      /// RTI DDS specific
-      REJECTED_BY_REMOTE_WRITER_SAMPLES_PER_VIRTUAL_QUEUE_LIMIT
+      REJECTED_BY_REMOTE_WRITER_SAMPLES_PER_VIRTUAL_QUEUE_LIMIT,
+      REJECTED_BY_DECODE_FAILURE
   };
 
   struct SampleRejectedStatus {
