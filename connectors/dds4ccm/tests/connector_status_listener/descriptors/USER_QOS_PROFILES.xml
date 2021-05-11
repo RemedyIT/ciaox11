@@ -92,7 +92,7 @@
       </participant_qos>
       <datawriter_qos>
         <reliability>
-          <kind>BEST_EFFORT_RELIABILITY_QOS</kind>
+          <kind>RELIABLE_RELIABILITY_QOS</kind>
           <max_blocking_time>
             <sec>0</sec>
             <nanosec>100000000</nanosec>
@@ -133,7 +133,7 @@
           </lease_duration>
         </liveliness>
         <reliability>
-          <kind>BEST_EFFORT_RELIABILITY_QOS</kind>
+          <kind>RELIABLE_RELIABILITY_QOS</kind>
           <max_blocking_time>
             <sec>0</sec>
             <nanosec>100000000</nanosec>
