@@ -15,6 +15,10 @@ on:
     - cron: '0 1 * * SUN'
   workflow_dispatch:
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 env:
   DOC_ROOT: ${{ github.workspace }}/ACE_TAO
   ACE_ROOT: ${{ github.workspace }}/ACE_TAO/ACE
@@ -122,6 +126,7 @@ jobs:
     - name: Add packages
       run: |
         sudo apt-get --yes update
+        sudo apt-get remove libzmq5
         sudo apt-get --yes install libxerces-c-dev libssl-dev libzmq3-dev ${{ matrix.PackageDeps }}
     - name: Run brix11 configure
       run: |
