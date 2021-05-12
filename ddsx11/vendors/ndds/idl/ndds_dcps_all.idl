@@ -596,9 +596,6 @@ module DDS {
   };
   struct DurabilityQosPolicy {
       DurabilityQosPolicyKind kind;
-      /***** RTI EXTENSIONS ****/
-      boolean direct_communication;
-      long writer_depth;
   };
 
   enum PresentationQosPolicyAccessScopeKind {
@@ -613,8 +610,6 @@ module DDS {
       PresentationQosPolicyAccessScopeKind access_scope;
       boolean coherent_access;
       boolean ordered_access;
-      /***** RTI EXTENSIONS ****/
-      boolean drop_incomplete_coherent_set;
   };
 
   struct DeadlineQosPolicy {
@@ -647,7 +642,6 @@ module DDS {
   struct LivelinessQosPolicy {
       LivelinessQosPolicyKind kind;
       Duration_t lease_duration;
-      long assertions_per_lease_duration;
   };
 
   struct TimeBasedFilterQosPolicy {
@@ -663,17 +657,9 @@ module DDS {
       RELIABLE_RELIABILITY_QOS
   };
 
-  enum ReliabilityQosPolicyAcknowledgmentModeKind {
-      PROTOCOL_ACKNOWLEDGEMENT_MODE,
-      APPLICATION_AUTO_ACKNOWLEDGEMENT_MODE,
-      APPLICATION_ORDERED_ACKNOWLEDGEMENT_MODE,
-      APPLICATION_EXPLICIT_ACKNOWLEDGEMENT_MODE
-  };
-
   struct ReliabilityQosPolicy {
       ReliabilityQosPolicyKind kind;
       Duration_t max_blocking_time;
-      ReliabilityQosPolicyAcknowledgmentModeKind acknowledgment_kind;
   };
 
   enum DestinationOrderQosPolicyKind {
@@ -733,8 +719,6 @@ module DDS {
 
   struct WriterDataLifecycleQosPolicy {
       boolean autodispose_unregistered_instances;
-      Duration_t autopurge_unregistered_instances_delay;
-      Duration_t autopurge_disposed_instances_delay;
   };
 
   /// RTI DDS specific
@@ -777,8 +761,6 @@ module DDS {
   struct ReaderDataLifecycleQosPolicy {
       Duration_t autopurge_nowriter_samples_delay;
       Duration_t autopurge_disposed_samples_delay;
-      Duration_t autopurge_disposed_instances_delay;
-      Duration_t autopurge_nowriter_instances_delay;
   };
 
   struct DurabilityServiceQosPolicy {
