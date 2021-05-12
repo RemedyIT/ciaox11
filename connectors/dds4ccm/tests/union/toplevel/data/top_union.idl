@@ -24,11 +24,11 @@ module Uni {
     case dtLong: long longData;
   }; //@TopLevel()
 
-  typedef long _interface;
+  typedef long _union;
 
   union foo2 switch (long)
   {
-    case 0: Uni::_interface longData;
+    case 0: Uni::_union longData;
   };
   //@TopLevel()
 };
