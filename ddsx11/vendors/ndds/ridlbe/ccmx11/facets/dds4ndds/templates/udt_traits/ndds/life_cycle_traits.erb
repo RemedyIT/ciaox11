@@ -3,7 +3,7 @@
 
   /// Life cycle management for <%= scoped_cxxname %> native DDS type
   template<>
-  inline void dds_init (::DDS_Native<%= scoped_cxxtype %>& sample)
+  inline void dds_init (<%= native_scoped_cxxtype %>& sample)
 % if is_visitor_type?(IDL::CCMX11::StructVisitor)
   {
 %  members.each do |_m|
@@ -40,9 +40,9 @@
 % end
 % if has_toplevel_annotation?
   template<>
-  inline void dds_finalize (::DDS_Native<%= scoped_cxxtype %>& sample)
+  inline void dds_finalize (<%= native_scoped_cxxtype %>& sample)
   {
-    ::DDS_Native<%= scoped_cxxtype %>_finalize (std::addressof (sample));
+    <%= native_scoped_cxxtype %>_finalize (std::addressof (sample));
   }
 % end
 %end

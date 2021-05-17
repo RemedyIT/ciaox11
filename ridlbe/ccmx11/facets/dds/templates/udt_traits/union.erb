@@ -10,9 +10,9 @@ namespace DDSX11
 {
   /// Conversion of <%= cxxname %> to DDS
   template<>
-  inline ::DDS_Native<%= scoped_cxxtype %>&
-  to_dds< ::DDS_Native<%= scoped_cxxtype %>, <%= scoped_cxxtype %>> (
-    ::DDS_Native<%= scoped_cxxtype %> &to, const <%= scoped_cxxtype %> &from)
+  inline <%= native_scoped_cxxtype %>&
+  to_dds< <%= native_scoped_cxxtype %>, <%= scoped_cxxtype %>> (
+    <%= native_scoped_cxxtype %> &to, const <%= scoped_cxxtype %> &from)
   {
 %nest(2) { visit_template('union_to') }
   }
@@ -20,8 +20,8 @@ namespace DDSX11
   /// Conversion of <%= cxxname %> from DDS
   template<>
   inline <%= scoped_cxxtype %>&
-  from_dds< ::DDS_Native<%= scoped_cxxtype %>, <%= scoped_cxxtype %>> (
-    <%= scoped_cxxtype %> &to, const ::DDS_Native<%= scoped_cxxtype %> &from)
+  from_dds< <%= native_scoped_cxxtype %>, <%= scoped_cxxtype %>> (
+    <%= scoped_cxxtype %> &to, const <%= native_scoped_cxxtype %> &from)
   {
 %nest(2) { visit_template('union_from') }
   }
@@ -30,10 +30,10 @@ namespace DDSX11
 
   template <>
   struct traits< <%= scoped_cxxtype %>>
-    : public common_traits< <%= scoped_cxxtype %>, ::DDS_Native<%= scoped_cxxtype %>>
-    , public convert_in< <%= scoped_cxxtype %>, ::DDS_Native<%= scoped_cxxtype %>>
-    , public convert_out_by_ref< <%= scoped_cxxtype %>, ::DDS_Native<%= scoped_cxxtype %>>
-    , public convert_retn< <%= scoped_cxxtype %>, ::DDS_Native<%= scoped_cxxtype %>>
+    : public common_traits< <%= scoped_cxxtype %>, <%= native_scoped_cxxtype %>>
+    , public convert_in< <%= scoped_cxxtype %>, <%= native_scoped_cxxtype %>>
+    , public convert_out_by_ref< <%= scoped_cxxtype %>, <%= native_scoped_cxxtype %>>
+    , public convert_retn< <%= scoped_cxxtype %>, <%= native_scoped_cxxtype %>>
   {
   };
 } // namespace DDSX11

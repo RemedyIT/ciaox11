@@ -1,8 +1,8 @@
 
 // generated from <%= ridl_template_path %>
 // Unaliased type : <%= resolved_cxxtype %>
-// Aliased DDS type : ::DDS_Native<%= scoped_cxxtype %>
-% opendds_alias_md5_string =  '::DDS_Native'+scoped_cxxtype+resolved_cxxtype
+// Aliased DDS type : <%= native_scoped_cxxtype %>
+% opendds_alias_md5_string =  native_scoped_cxxtype+resolved_cxxtype
 % opendds_alias_md5 = opendds_alias_md5_string.to_md5
 // OpenDDS MD5 : <%= opendds_alias_md5 %>
 #if !defined(_ALIAS_<%= opendds_alias_md5 %>_UDT_TRAITS_DECL_)
