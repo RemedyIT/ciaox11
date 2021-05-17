@@ -14,6 +14,6 @@ union <%= unescaped_name %> switch (<%= strip_global_scope(switchtype.idltype_na
 %     end
 %   end
     /// @copydoc <%= _m.doc_scoped_name %>
-    <%= _m.idl_type_name %> <%= _m.unescaped_name %>;
+    <%= strip_global_scope(_m.idl_type_name) %> <%= _m.unescaped_name %>;
 % end
 };
