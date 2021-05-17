@@ -34,10 +34,6 @@ module IDL
         typename.sub(/^::/, '')
       end
 
-      def idl_type_name
-        self.strip_global_scope self._idltype.idltype_name
-      end
-
       def type_name
         strip_global_scope(scoped_cxxtype)
       end

@@ -2,7 +2,7 @@
 /// @copydoc <%= doc_scoped_name %>
 struct <%= unescaped_name %> {
 % members.each do |_m|
-%   _s=_m.idl_type_name + ' ' + _m.unescaped_name + ';'
+%   _s=strip_global_scode(_m.idltype_unescaped_name) + ' ' + _m.unescaped_name + ';'
 %   if _m.has_key_annotation?
 %     _s = _s + ' //@key'
 %   end
