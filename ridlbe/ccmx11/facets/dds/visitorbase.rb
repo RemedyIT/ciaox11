@@ -24,7 +24,7 @@ module IDL
       end
 
       def native_scoped_cxxtype
-        '::DDS_Native' + (!scoped_enclosure_cxxname.empty? ? '::' : '') + "#{scoped_enclosure_cxxname}::#{scoped_cxxtype}"
+        (scoped_cxxtype.start_with?('::') ? '::DDS_Native' : '') + "#{scoped_cxxtype}"
       end
 
       def native_scoped_seq_cxxtype
