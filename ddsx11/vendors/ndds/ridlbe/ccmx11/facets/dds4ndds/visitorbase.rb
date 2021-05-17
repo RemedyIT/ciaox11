@@ -19,7 +19,7 @@ module IDL
       # For all implied C++11 types we need the escaped C++ namespace but the unescaped C++ name
       # because we add a postfix to the name which always results in a unique name which doesn't
       # conflict with a C++ keyword (for example Foo::structDataWriter), but rtiddsgen doesn't do
-      # that, uses the cxx name
+      # that, uses the cxxname
       def native_scoped_name_prefix
         scoped_cxxtype.start_with?('::') ? "DDS_Native::#{scoped_enclosure_cxxname}::#{cxxname}" : "#{cxxname}"
       end
