@@ -20,11 +20,11 @@ module IDL
       # because we add a postfix to the name which always results in a unique name which doesn't
       # conflict with a C++ keyword (for example Foo::structDataWriter)
       def native_scoped_name_prefix
-        scoped_cxxtype.start_with?('::') ? "DDS_Native::#{scoped_enclosure_cxxname}::#{name}" : "#{name}"
+        '::DDS_Native' + (!scoped_enclosure_cxxname.empty? ? '::' : '') + "#{scoped_enclosure_cxxname}::#{name}"
       end
 
       def native_scoped_cxxtype
-        scoped_cxxtype.start_with?('::') ? "DDS_Native#{scoped_cxxtype}" : "#{scoped_cxxtype}"
+        '::DDS_Native' + (!scoped_enclosure_cxxname.empty? ? '::' : '') + "#{scoped_enclosure_cxxname}::#{scoped_cxxtype}"
       end
 
       def native_scoped_seq_cxxtype
@@ -32,11 +32,11 @@ module IDL
       end
 
       def scoped_seq_cxxtype
-        "::#{scoped_enclosure_cxxname}::#{name}Seq"
+        (!scoped_enclosure_cxxname.empty? ? '::' : '') + "#{scoped_enclosure_cxxname}::#{name}Seq"
       end
 
       def scoped_implied_idl_prefix
-        "::#{scoped_enclosure_cxxname}::#{name}"
+        (!scoped_enclosure_cxxname.empty? ? '::' : '') + "#{scoped_enclosure_cxxname}::#{name}"
       end
 
       def typedef_sequence_dds_type_needed?

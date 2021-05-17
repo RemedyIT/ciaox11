@@ -21,7 +21,7 @@ module IDL
       # conflict with a C++ keyword (for example Foo::structDataWriter), but rtiddsgen doesn't do
       # that, uses the cxxname
       def native_scoped_name_prefix
-        scoped_cxxtype.start_with?('::') ? "DDS_Native::#{scoped_enclosure_cxxname}::#{cxxname}" : "#{cxxname}"
+        '::DDS_Native' + (!scoped_enclosure_cxxname.empty? ? '::' : '') + "#{scoped_enclosure_cxxname}::#{cxxname}"
       end
     end # VisitorBase
 
