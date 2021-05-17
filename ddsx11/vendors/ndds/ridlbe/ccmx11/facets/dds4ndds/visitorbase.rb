@@ -1,6 +1,6 @@
 #--------------------------------------------------------------------
 # @file    visitorbase.rb
-# @author  Marcel Smit
+# @author  Johnny Willemsen
 #
 # @brief   base class for DDS visitors
 #
