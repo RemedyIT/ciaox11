@@ -17,7 +17,7 @@ module IDL
     class VisitorBase
 
       # Need to put more native here, shouldn't add "DDS_Native" to templates
-      def native_type_name
+      def native_scoped_cxxtype
         scoped_cxxtype.start_with?('::') ? "DDS_Native#{scoped_cxxtype}" : "#{scoped_cxxtype}"
       end
 
