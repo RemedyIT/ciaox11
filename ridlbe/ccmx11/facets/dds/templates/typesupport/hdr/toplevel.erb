@@ -42,7 +42,7 @@ namespace DDS
     /// Return the default name for the data-type represented by the TypeSupport
     static const std::string& get_type_name ()
     {
-      static const std::string type_name { "<%= type_name %>" };
+      static const std::string type_name { "<%= strip_global_scope(scoped_cxxtype) %>" };
       return type_name;
     }
 

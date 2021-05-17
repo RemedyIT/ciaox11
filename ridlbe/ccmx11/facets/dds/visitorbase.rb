@@ -34,10 +34,6 @@ module IDL
         typename.sub(/^::/, '')
       end
 
-      def type_name
-        strip_global_scope(scoped_cxxtype)
-      end
-
       def has_toplevel_annotation?
         # 20190730 Add support for AXCIOMA 2 top-level annotation, issue #4729
         annot = self.annotations[:'top-level'].first || self.annotations[:TopLevel].first
