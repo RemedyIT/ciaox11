@@ -16,9 +16,27 @@ module IDL
     #
     class VisitorBase
 
-      # Need to put more native here, shouldn't add "DDS_Native" to templates
+      # For all implied C++11 types we need the escaped C++ namespace but the unescaped C++ name
+      # because we add a postfix to the name which always results in a unique name which doesn't
+      # conflict with a C++ keyword (for example Foo::structDataWriter)
+      def native_scoped_name_prefix
+        scoped_cxxtype.start_with?('::') ? "DDS_Native::#{scoped_enclosure_cxxname}::#{name}" : "#{name}"
+      end
+
       def native_scoped_cxxtype
         scoped_cxxtype.start_with?('::') ? "DDS_Native#{scoped_cxxtype}" : "#{scoped_cxxtype}"
+      end
+
+      def native_scoped_seq_cxxtype
+        "#{native_scoped_name_prefix}Seq"
+      end
+
+      def scoped_seq_cxxtype
+        "::#{scoped_enclosure_cxxname}::#{name}Seq"
+      end
+
+      def scoped_implied_idl_prefix
+        "::#{scoped_enclosure_cxxname}::#{name}"
       end
 
       def typedef_sequence_dds_type_needed?

@@ -1,10 +1,10 @@
 // generated from <%= ridl_template_path %>
 typedef DDSX11::DDS_TypeFactory_T <
   <%= scoped_cxxtype %>,
-  <%= scoped_cxxtype %>Seq,
-  ::DDS_Native<%= scoped_cxxtype %>Seq,
-  ::DDS_Native<%= scoped_cxxtype %>DataReader,
-  ::DDS_Native<%= scoped_cxxtype %>DataWriter> DDS_type_factory_type;
+  <%= scoped_seq_cxxtype %>,
+  <%= native_scoped_seq_cxxtype %>,
+  <%= native_scoped_name_prefix %>DataReader,
+  <%= native_scoped_name_prefix %>DataWriter> DDS_type_factory_type;
 
 std::shared_ptr<DDS_type_factory_type> factory {};
 
@@ -25,7 +25,7 @@ if (DDSX11::DDS_TypeSupport_i::register_type (participant, type_name, std::move(
 {
   // First time registration to DDSX11 so we have to register it also
   // to the DDS vendor
-  ::DDS_Native<%= scoped_cxxtype %>TypeSupport_var ts = new (std::nothrow) ::DDS_Native<%= scoped_cxxtype %>TypeSupportImpl;
+  <%= native_scoped_name_prefix %>TypeSupport_var ts = new (std::nothrow) <%= native_scoped_name_prefix %>TypeSupportImpl;
   if (!ts)
   {
     return ::DDS::RETCODE_ERROR;

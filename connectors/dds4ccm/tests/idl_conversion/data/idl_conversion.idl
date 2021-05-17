@@ -216,12 +216,12 @@ module Escaping
   union _private switch (long)
   {
     case 2: short b_03_3;
-  };
+  }; //@TopLevel()
   struct _public;
   struct _public
   {
     string bar;
-  };
+  }; //@TopLevel()
 };
 
 module Foo

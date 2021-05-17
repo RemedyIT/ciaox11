@@ -4,7 +4,7 @@ if (DDSX11::DDS_TypeSupport_i::unregister_type (participant, type_name))
   // Type has been successfully unregistered from DDSX11, unregister it now
   // from the DDS vendor. OpenDDS doesn't have state in its TypeSupportImpl so we
   // create a new instance just to get a proxy to invoke into the OpenDDS core
-  ::DDS_Native<%= scoped_cxxtype %>TypeSupport_var ts = new (std::nothrow) ::DDS_Native<%= scoped_cxxtype %>TypeSupportImpl;
+  <%= native_scoped_name_prefix %>TypeSupport_var ts = new (std::nothrow) <%= native_scoped_name_prefix %>TypeSupportImpl;
   if (!ts)
   {
     return ::DDS::RETCODE_ERROR;
