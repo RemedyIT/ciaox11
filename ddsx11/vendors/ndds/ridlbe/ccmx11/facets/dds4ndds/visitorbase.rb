@@ -12,7 +12,7 @@ module IDL
 
   module Cxx11
 
-    # Reopen C++11 VisitorBase to add custom RTI Connext DDS handled
+    # Reopen C++11 VisitorBase to add custom RTI Connext DDS handler
     #
     class VisitorBase
 
