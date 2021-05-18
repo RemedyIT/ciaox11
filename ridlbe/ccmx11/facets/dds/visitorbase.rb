@@ -16,7 +16,7 @@ module IDL
     #
     class VisitorBase
 
-      # For all implied C++11 types we need the escaped C++ namespace but the unescaped C++ name
+      # For all implied C++11 types we do not need the escaped C++ namespace but the unescaped C++ name
       # because we add a postfix to the name which always results in a unique name which doesn't
       # conflict with a C++ keyword (for example Foo::structDataWriter)
       def native_scoped_name_prefix
