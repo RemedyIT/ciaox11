@@ -178,6 +178,30 @@ module Example {
     long colorNum;
   };
 
+  struct Color2Struct;
+  typedef sequence<Color2Struct> Color2List;
+  typedef sequence<Color2Struct> Color2Seq;
+  struct Color2Struct {
+    string colorString;
+    long colorNum;
+  };
+
+  struct Color3Struct;
+  typedef sequence<Color3Struct> Color3List;
+  struct Color3Struct {
+    string colorString;
+    long colorNum;
+  }; //@TopLevel()
+  typedef sequence<Color3Struct> Color3Seq;
+
+  struct Color4Struct;
+  typedef sequence<Color4Struct> Color4List;
+  typedef sequence<Color4Struct> Color4Seq;
+  struct Color4Struct {
+    string colorString;
+    long colorNum;
+  }; //@TopLevel()
+
   union B03;
   typedef sequence <B03> B03List;
   union B03 switch (long)
@@ -191,6 +215,7 @@ module Foo
   typedef long _module;
   struct ColorStruct;
   typedef sequence <ColorStruct> ColorList;
+  typedef sequence <ColorStruct> ColorSeq;
   struct ColorStruct {
     string colorString;
     long colorNum;
@@ -203,6 +228,7 @@ module UnionTest
   typedef long _module;
   union B03;
   typedef sequence <B03> B03List;
+  typedef sequence <B03> B03Seq;
   union B03 switch (long)
   {
     case 2: short b_03_3;
@@ -263,6 +289,12 @@ module SequenceTest
     myLong myl;
     myLongSeq mylseq;
   }; //@TopLevel()
+
+  struct My_msg2
+  {
+    long myl;
+  }; //@TopLevel()
+  typedef sequence <My_msg2> My_msg2Seq;
 };
 
 #endif /* IDL_CONVERSION_BASE_IDL_ */
