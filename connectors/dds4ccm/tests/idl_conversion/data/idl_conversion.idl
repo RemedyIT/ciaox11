@@ -231,7 +231,7 @@ module Foo
     struct TopicA
     {
       string a;
-    };  //@TopLevel()
+    }; //@TopLevel()
   };
 };
 
@@ -252,6 +252,17 @@ module IDL_Module
   {
     void do_something ();
   };
+};
+
+module SequenceTest
+{
+  typedef long myLong;
+  typedef sequence <myLong> myLongSeq;
+  struct My_msg
+  {
+    myLong myl;
+    myLongSeq mylseq;
+  }; //@TopLevel()
 };
 
 #endif /* IDL_CONVERSION_BASE_IDL_ */
