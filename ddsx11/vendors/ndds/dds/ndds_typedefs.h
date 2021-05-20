@@ -152,7 +152,6 @@ namespace DDS_Native
       typedef ::DDS_DestinationOrderQosPolicyScopeKind DestinationOrderQosPolicyScopeKind;
       typedef ::DDS_DataWriterResourceLimitsInstanceReplacementKind DataWriterResourceLimitsInstanceReplacementKind;
       typedef ::DDS_HistoryQosPolicyKind HistoryQosPolicyKind;
-      typedef ::DDS_RefilterQosPolicyKind RefilterQosPolicyKind;
   } // namespace DDS
 } // namespace DDS_Native
 

@@ -353,6 +353,22 @@
   </connection>
 
   <connection>
+    <name>info_get_reader_status</name>
+    <internalEndpoint>
+      <portName>info_get_status</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="ReceiverComponentInstance" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>pull_consumer_status</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="CSL_Test_Connector_Instance_Receiver" />
+    </internalEndpoint>
+  </connection>
+
+  <connection>
     <name>writer_connection</name>
     <internalEndpoint>
       <portName>info_write_data</portName>

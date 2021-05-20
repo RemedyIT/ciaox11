@@ -172,16 +172,14 @@ module Example {
   }; //@TopLevel()
 
   struct ColorStruct;
-  // @todo Enabling the typedef below triggers non-compilable RTI generated code, see CODEGENII-1428
-  //typedef sequence <ColorStruct> ColorList;
+  typedef sequence <ColorStruct> ColorList;
   struct ColorStruct {
     string colorString;
     long colorNum;
   };
 
   union B03;
-  // @todo Enabling the typedef below triggers non-compilable RTI generated code, see CODEGENII-1439
-  //typedef sequence <B03> B03List;
+  typedef sequence <B03> B03List;
   union B03 switch (long)
   {
     case 2: short b_03_3;
@@ -190,40 +188,40 @@ module Example {
 
 module Foo
 {
+  typedef long _module;
   struct ColorStruct;
-  // @todo Enabling the typedef below triggers non-compilable RTI generated code, see CODEGENII-1428
-  //typedef sequence <ColorStruct> ColorList;
+  typedef sequence <ColorStruct> ColorList;
   struct ColorStruct {
     string colorString;
     long colorNum;
+    _module moduleNum;
   };
 };
 
 module UnionTest
 {
+  typedef long _module;
   union B03;
-  // @todo Enabling the typedef below triggers non-compilable RTI generated code, see CODEGENII-1439
-  //typedef sequence <B03> B03List;
+  typedef sequence <B03> B03List;
   union B03 switch (long)
   {
     case 2: short b_03_3;
+    case 3: _module b_03_4;
   };
 };
 
-/**
- * @todo Don't work due to bugs in RTI Connext DDS 6.0.1, see CODEGENII-1263
 module Escaping
 {
   union _private;
   union _private switch (long)
   {
     case 2: short b_03_3;
-  };
+  }; //@TopLevel()
   struct _public;
   struct _public
   {
     string bar;
-  };
+  }; //@TopLevel()
 };
 
 module Foo
@@ -236,7 +234,6 @@ module Foo
     };  //@TopLevel()
   };
 };
-*/
 
 // Test a module with only non-DDS translatable types/constants
 // => should result in omitted module in DDS IDL

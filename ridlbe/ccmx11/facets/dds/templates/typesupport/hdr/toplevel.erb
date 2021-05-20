@@ -18,13 +18,13 @@ namespace DDS
       * Type specific X11 DataReader and DataWriter typedefs
       */
     //@{
-    using datawriter_type = <%= scoped_cxxtype %>DataWriter;
-    using datareader_type = <%= scoped_cxxtype %>DataReader;
+    using datawriter_type = <%= scoped_implied_idl_prefix %>DataWriter;
+    using datareader_type = <%= scoped_implied_idl_prefix %>DataReader;
 
-    using typed_datawriter_ref_type = IDL::traits< <%= scoped_cxxtype %>DataWriter>::ref_type;
-    using typed_datareader_ref_type = IDL::traits< <%= scoped_cxxtype %>DataReader>::ref_type;
-    using typed_datawriter_weak_ref_type = IDL::traits< <%= scoped_cxxtype %>DataWriter>::weak_ref_type;
-    using typed_datareader_weak_ref_type = IDL::traits< <%= scoped_cxxtype %>DataReader>::weak_ref_type;
+    using typed_datawriter_ref_type = IDL::traits< <%= scoped_implied_idl_prefix %>DataWriter>::ref_type;
+    using typed_datareader_ref_type = IDL::traits< <%= scoped_implied_idl_prefix %>DataReader>::ref_type;
+    using typed_datawriter_weak_ref_type = IDL::traits< <%= scoped_implied_idl_prefix %>DataWriter>::weak_ref_type;
+    using typed_datareader_weak_ref_type = IDL::traits< <%= scoped_implied_idl_prefix %>DataReader>::weak_ref_type;
     //@}
 
     static typed_datawriter_ref_type
@@ -42,7 +42,7 @@ namespace DDS
     /// Return the default name for the data-type represented by the TypeSupport
     static const std::string& get_type_name ()
     {
-      static const std::string type_name { "<%= type_name %>" };
+      static const std::string type_name { "<%= strip_global_scope(idltype_name) %>" };
       return type_name;
     }
 

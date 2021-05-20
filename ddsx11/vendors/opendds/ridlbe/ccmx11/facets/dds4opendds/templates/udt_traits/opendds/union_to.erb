@@ -12,7 +12,7 @@ switch (from._d ())
 %if _m.is_string_type?
     char* tmp {};
 %else
-    <%= _m.native_type_name %> tmp;
+    <%= _m.native_scoped_cxxtype %> tmp;
 %end
     ::DDSX11::to_dds (tmp, from.<%= _m.cxxname %> ());
     to.<%= _m.cxxname %> (tmp);

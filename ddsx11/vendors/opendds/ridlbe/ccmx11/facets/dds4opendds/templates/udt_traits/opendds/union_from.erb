@@ -11,7 +11,7 @@ switch (from._d ())
   {
 %if _m.is_array_type?
     <%= _m.scoped_cxxtype %> tmp {{}};
-    <%=_m.native_type_name %>* native_tmp = (<%=_m.native_type_name %>*)from.<%= _m.cxxname %> ();
+    <%=_m.native_scoped_cxxtype %>* native_tmp = (<%=_m.native_scoped_cxxtype %>*)from.<%= _m.cxxname %> ();
     ::DDSX11::from_dds (tmp, *native_tmp);
     to.<%= _m.cxxname %> (tmp);
 %else
