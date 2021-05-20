@@ -178,6 +178,30 @@ module Example {
     long colorNum;
   };
 
+  struct Color2Struct;
+  typedef sequence<Color2Struct> Color2List;
+  typedef sequence<Color2Struct> Color2Seq;
+  struct Color2Struct {
+    string colorString;
+    long colorNum;
+  };
+
+  struct Color3Struct;
+  typedef sequence<Color3Struct> Color3List;
+  struct Color3Struct {
+    string colorString;
+    long colorNum;
+  }; //@TopLevel()
+  typedef sequence<Color3Struct> Color3Seq;
+
+  struct Color4Struct;
+  typedef sequence<Color4Struct> Color4List;
+  typedef sequence<Color4Struct> Color4Seq;
+  struct Color4Struct {
+    string colorString;
+    long colorNum;
+  }; //@TopLevel()
+
   union B03;
   typedef sequence <B03> B03List;
   union B03 switch (long)
