@@ -89,7 +89,12 @@ module IDL
         end
 
         def add_ami4ccm_idl_include(incfile)
-           ami4ccm_idl_includes << incfile unless ami4ccm_idl_includes.include?(incfile)
+          # prevent double inclusions
+          # allows use of "pragma ami4ccm idl" preceding "pragma ami4ccm interface" and registering included idl
+          # with path
+          unless ami4ccm_idl_includes.any? { |idlinc| File.basename(idlinc) == File.basename(incfile) }
+            ami4ccm_idl_includes << incfile
+          end
         end
 
         def has_ami4ccm_idl_includes?
