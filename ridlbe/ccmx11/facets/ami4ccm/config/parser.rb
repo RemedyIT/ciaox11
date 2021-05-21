@@ -64,10 +64,6 @@ module IDL
             ami4ccm_receptacles << s
           end
 
-          def ami4ccm_idl_includes
-            @ami4ccm_idl_includes ||= ::Set.new
-          end
-
           def add_ami4ccm_idl_include(s)
             # strip start and end characters (should be the '""' or '<>' brackets)
             s = s[1, s.size - 2]
@@ -75,7 +71,6 @@ module IDL
           end
 
           def add_ami4ccm_idl_include_i(s)
-            ami4ccm_idl_includes << s
             if IDL::AST::Include === @cur
               # if this is parsed from an include file register the ami4ccm idl include there as well
               @cur.add_ami4ccm_idl_include(s)
