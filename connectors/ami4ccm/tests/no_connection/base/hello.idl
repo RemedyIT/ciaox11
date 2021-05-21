@@ -11,7 +11,6 @@
 #define HELLO_T_IDL
 
 #pragma ami4ccm interface "HelloT::MyFoo"
-#pragma ami4ccm idl "helloA.idl"
 
 module HelloT
 {

@@ -13,7 +13,6 @@
 #pragma ami4ccm interface "InterMulti::One"
 #pragma ami4ccm interface "InterMulti::Two"
 #pragma ami4ccm interface "InterMulti::Three"
-#pragma ami4ccm idl "multi_inheritA.idl"
 
 module InterMulti
 {

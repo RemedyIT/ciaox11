@@ -11,8 +11,6 @@
 #define INTEROUTARGS_T_IDL
 
 #pragma ami4ccm interface "InterOutArgsT::MyFoo"
-#pragma ami4ccm idl "out_args_tA.idl"
-
 
 module InterOutArgsT
 {

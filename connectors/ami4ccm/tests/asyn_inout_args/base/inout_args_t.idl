@@ -12,7 +12,6 @@
 #define INTERINOUT_T_IDL
 
 #pragma ami4ccm interface "InterInOutT::MyFoo"
-#pragma ami4ccm idl "inout_args_tA.idl"
 
 module InterInOutT
 {

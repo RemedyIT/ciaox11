@@ -12,8 +12,6 @@
 
 #pragma ami4ccm interface "Hello::MyFoo"
 
-#pragma ami4ccm idl "helloA.idl"
-
 module Hello
 {
   exception InternalError
