@@ -25,7 +25,7 @@ module IDL
           # add AMI pragma handlers
           base.add_pragma_handler(:axcioma_ami4ccm_interface) do |_delegator, _curnode, _pragmastr|
             if (rc = (/^ami4ccm\s+interface\s+(.*)/ =~ _pragmastr ? true : false))
-              _delegator.add_ami_interfaces($1.strip)
+              _delegator.add_ami4ccm_interface($1.strip)
             end
             rc
           end
@@ -47,9 +47,9 @@ module IDL
 
         module Methods
           def add_ami4ccm_interface(s)
-            add_ami_interfaces($1.strip)  # add interface to ami_interfaces registry
+            add_ami_interfaces(s)  # add interface to ami_interfaces registry
             # determin current file name and transform to ami4ccm *A.idl
-            aidl = @scanner.position.name.gsub(/.idl\Z/, 'A.idl')
+            aidl = File.basename(@scanner.position.name).gsub(/.idl\Z/, 'A.idl')
             # now automatically register *A.idl
             add_ami4ccm_idl_include_i(aidl)
           end
