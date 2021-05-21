@@ -46,6 +46,14 @@ module IDL
         end
 
         module Methods
+          def add_ami4ccm_interface(s)
+            add_ami_interfaces($1.strip)  # add interface to ami_interfaces registry
+            # determin current file name and transform to ami4ccm *A.idl
+            aidl = @scanner.position.name.gsub(/.idl\Z/, 'A.idl')
+            # now automatically register *A.idl
+            add_ami4ccm_idl_include_i(aidl)
+          end
+
           def ami4ccm_receptacles
             @ami4ccm_receptacles ||= []
           end
@@ -57,12 +65,16 @@ module IDL
           end
 
           def ami4ccm_idl_includes
-            @ami4ccm_idl_includes ||= []
+            @ami4ccm_idl_includes ||= ::Set.new
           end
 
           def add_ami4ccm_idl_include(s)
             # strip start and end characters (should be the '""' or '<>' brackets)
             s = s[1, s.size - 2]
+            add_ami4ccm_idl_include_i(s)
+          end
+
+          def add_ami4ccm_idl_include_i(s)
             ami4ccm_idl_includes << s
             if IDL::AST::Include === @cur
               # if this is parsed from an include file register the ami4ccm idl include there as well
@@ -82,11 +94,11 @@ module IDL
         end
 
         def add_ami4ccm_idl_include(incfile)
-           self.ami4ccm_idl_includes << incfile
+           ami4ccm_idl_includes << incfile unless ami4ccm_idl_includes.include?(incfile)
         end
 
         def has_ami4ccm_idl_includes?
-          !self.ami4ccm_idl_includes.empty?
+          !ami4ccm_idl_includes.empty?
         end
 
         def all_ami4ccm_idl_includes
