@@ -21,8 +21,6 @@
 #pragma ami4ccm interface "Bar::public"
 #pragma ami4ccm interface "Bar::private"
 
-#pragma ami4ccm idl "ami4ccm_idltestA.idl"
-
 module Hello
 {
   enum test_enum

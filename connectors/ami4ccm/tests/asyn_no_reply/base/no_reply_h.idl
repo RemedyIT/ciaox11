@@ -11,7 +11,6 @@
 #define NOREPLYH_IDL
 
 #pragma ami4ccm interface "NoReplyH::MyFoo"
-#pragma ami4ccm idl "no_reply_hA.idl"
 
 module NoReplyH
 {

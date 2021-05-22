@@ -10,11 +10,9 @@
 #ifndef HELLO_IDL
 #define HELLO_IDL
 
-
-#pragma ami4ccm interface "Hello::MyFoo"
-
 #pragma ami4ccm idl "base/helloA.idl"
 
+#pragma ami4ccm interface "Hello::MyFoo"
 
 module Hello
 {

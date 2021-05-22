@@ -13,7 +13,6 @@
 
 #pragma ami4ccm interface "UsesSM::One"
 #pragma ami4ccm interface "UsesSM::Two"
-#pragma ami4ccm idl "uses_s_mA.idl"
 
 module UsesSM
 {
