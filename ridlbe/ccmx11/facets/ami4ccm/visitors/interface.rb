@@ -28,7 +28,7 @@ module IDL
       end
 
       def scoped_ami4ccm_name
-        scoped_enclosure_name.scope_to_cxxname + '::AMI4CCM_' + name
+        scoped_enclosure_name + '::AMI4CCM_' + name
       end
 
     end

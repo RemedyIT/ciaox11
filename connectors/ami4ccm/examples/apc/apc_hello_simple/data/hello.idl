@@ -10,7 +10,7 @@
 #ifndef HELLO_IDL_
 #define HELLO_IDL_
 
-#pragma ami4ccm interface "Hello::MyFoo"
+#pragma ami4ccm interface "Hello::Nested::MyFoo"
 
 #pragma ami4ccm idl "helloA.idl"
 
@@ -22,23 +22,26 @@ module Hello
       string error_string;
     };
 
-  // Sender/Receiver interface
-  interface MyFoo
-    {
-      long foo (in string in_str, out string answer)
-        raises (InternalError);
+  module Nested
+  {
+    // Sender/Receiver interface
+    interface MyFoo
+      {
+        long foo (in string in_str, out string answer)
+          raises (InternalError);
 
-      void hello (out long answer)
-        raises (InternalError);
+        void hello (out long answer)
+          raises (InternalError);
 
 
-      attribute short rw_attrib
-        getraises (InternalError)
-        setraises (InternalError);
+        attribute short rw_attrib
+          getraises (InternalError)
+          setraises (InternalError);
 
-      readonly attribute short ro_attrib
-        raises (InternalError);
-    };
+        readonly attribute short ro_attrib
+          raises (InternalError);
+      };
+  };
 };
 
 #endif /* HELLO_IDL_ */
