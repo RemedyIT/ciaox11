@@ -11,7 +11,7 @@
     <qos_profile name="SampleLostProfile">
       <datawriter_qos>
         <reliability>
-          <kind>RELIABLE_RELIABILITY_QOS</kind>
+          <kind>BEST_EFFORT_RELIABILITY_QOS</kind>
           <max_blocking_time>
             <sec>2</sec>
             <nanosec>0</nanosec>
@@ -37,22 +37,19 @@
       <!-- QoS used to configure the data reader created in the example code -->
       <datareader_qos>
         <reliability>
-          <kind>RELIABLE_RELIABILITY_QOS</kind>
+          <kind>BEST_EFFORT_RELIABILITY_QOS</kind>
         </reliability>
         <history>
           <kind>KEEP_LAST_HISTORY_QOS</kind>
-          <depth>10</depth>
+          <depth>1</depth>
         </history>
         <resource_limits>
           <initial_samples>1</initial_samples>
           <initial_instances>1</initial_instances>
           <max_samples>10</max_samples>
-          <max_instances>1</max_instances>
+          <max_instances>2</max_instances>
           <max_samples_per_instance>10</max_samples_per_instance>
         </resource_limits>
-        <durability>
-          <kind>TRANSIENT_DURABILITY_QOS</kind>
-        </durability>
         <deadline>
           <period>
             <sec>3</sec>
