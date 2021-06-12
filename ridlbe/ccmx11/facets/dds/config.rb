@@ -241,7 +241,7 @@ module IDL
 
       # configuration methods
       def self.load_idl_scanner_patch
-        IDL::Scanner.send(:include, IDL::CCMX11::DDSX11::ScannerPatch)
+        IDL::Scanner.send(:include, IDL::CCMX11::DDSX11::ScannerPatch) unless IDL::Scanner < IDL::CCMX11::DDSX11::ScannerPatch
       end
     end # DDSX11
   end # CCMX11
