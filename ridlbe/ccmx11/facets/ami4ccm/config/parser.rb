@@ -116,9 +116,9 @@ module IDL
   end # CCMX11
 
   # extend with AMI4CCM pragma handling
-  Delegator.send(:include, CCMX11::AMI4CCM::PragmaExt)
+  Delegator.send(:include, CCMX11::AMI4CCM::PragmaExt) unless Delegator < CCMX11::AMI4CCM::PragmaExt
 
   # extend with AMI4CCM idl include properties
-  AST::Include.send(:include, CCMX11::AMI4CCM::IncludeMixin)
+  AST::Include.send(:include, CCMX11::AMI4CCM::IncludeMixin) unless AST::Include < CCMX11::AMI4CCM::IncludeMixin
 
 end # IDL
