@@ -79,7 +79,7 @@ namespace Hello_Receiver_Impl
     IDL::traits< ::Hello::CCM_Receiver_Context>::ref_type context)
     : context_ (std::move (context))
   {
-    this->control_ = CORBA::make_reference<TheStateKeeper> ();
+    this->control_ = IDL::traits< ::Hello::StateController>::make_reference<TheStateKeeper> ();
   }
   //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::do_my_foo_exec_i[ctor]
 
@@ -224,7 +224,7 @@ namespace Hello_Receiver_Impl
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::Receiver_exec_i[get_do_my_foo]
     if (!this->do_my_foo_)
     {
-      this->do_my_foo_ = CORBA::make_reference <do_my_foo_exec_i> (this->context_);
+      this->do_my_foo_ = IDL::traits< ::Hello::CCM_MyFoo>::make_reference <do_my_foo_exec_i> (this->context_);
     }
     return this->do_my_foo_;
   //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::Receiver_exec_i[get_do_my_foo]
@@ -252,7 +252,7 @@ extern "C" void
 create_Hello_Receiver_Impl (
   IDL::traits<Components::EnterpriseComponent>::ref_type& component)
 {
-  component = CORBA::make_reference <Hello_Receiver_Impl::Receiver_exec_i> ();
+  component = IDL::traits< ::Hello::CCM_Receiver>::make_reference < Hello_Receiver_Impl::Receiver_exec_i > ();
 }
 //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl[factory]
 //@@{__RIDL_REGEN_MARKER__} - BEGIN : hello_receiver_impl.cpp[Footer]
