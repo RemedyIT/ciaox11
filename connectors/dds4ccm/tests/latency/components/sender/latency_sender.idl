@@ -1,0 +1,30 @@
+/**
+ * @file    latency_sender.idl
+ * @author  Martin Corino
+ *
+ * @brief   Sender component declaration for the Latency test.
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ */
+#ifndef LATENCY_SENDER_IDL_
+#define LATENCY_SENDER_IDL_
+
+#include "latency_dataSE.idl"
+#include <ccm_timed_trigger.idl>
+
+module Test
+{
+  component Sender
+  {
+    port LatencyDataConnector::DDS_Write info_write;
+    port LatencyDataConnector::DDS_Listen info_recv;
+    provides CCM_DDS::ConnectorStatusListener connector_status;
+
+    uses CCM_TT::TT_Scheduler tt_scheduler;
+
+    attribute unsigned short rate;
+    attribute unsigned short iterations;
+  };
+};
+
+#endif /* LATENCY_SENDER_IDL_ */
