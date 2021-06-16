@@ -64,10 +64,10 @@ module AxciomaPC
           intf_recipe = intf_idl_file.recipes.first
           # make sure the details are correctly set
           intf_recipe.topic_namespace ||= @topic_namespace
-          intf_recipe.topic_sequence ||= @topic_seq
-          intf_recipe.topic_sequence_suffix ||= @topic_seq_suffix
-          intf_recipe.topic_interface ||= @topic_if
-          intf_recipe.topic_interface_suffix ||= @topic_if_suffix
+          intf_recipe.topic_seq ||= @topic_seq
+          intf_recipe.topic_seq_suffix ||= @topic_seq_suffix
+          intf_recipe.topic_if ||= @topic_if
+          intf_recipe.topic_if_suffix ||= @topic_if_suffix
           intf_recipe
         else
           intf_recipe =
