@@ -1,0 +1,19 @@
+project(*_ddsx11) : ddsx11_impl {
+
+  after += minimum_latency_data_stub minimum_latency_data_ddsx11_opendds_impl minimum_latency_data_ddsx11_ndds_impl
+  libs  += minimum_latency_data_stub minimum_latency_data_ddsx11_impl
+
+  libpaths += ../lib
+
+  exename = sender
+  exeout  = ../lib
+
+  includes += ../data/GeneratedCode
+
+  Source_Files {
+    main.cpp
+  }
+
+  Header_Files {
+  }
+}
