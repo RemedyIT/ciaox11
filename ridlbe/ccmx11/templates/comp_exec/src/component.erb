@@ -107,6 +107,6 @@ extern "C" void
 create_<%= scoped_name.scope_to_cxxname %>_Impl (
   IDL::traits<Components::EnterpriseComponent>::ref_type& component)
 {
-  component = IDL::traits< <%= scoped_ccm_name %>>::make_reference < <%= executor_cxx_namespace %>::<%= lem_name %>_exec_i > ();
+  component = IDL::traits< <%= scoped_ccm_name %>>::make_reference <<%= executor_cxx_namespace %>::<%= lem_name %>_exec_i> ();
 }
 % end
