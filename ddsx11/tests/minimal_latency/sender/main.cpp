@@ -180,7 +180,7 @@ private:
   // subscriber entities
   DDS::traits<Test::LatencyData>::topic_ref_type latency_echo_topic_ {};
   DDS::traits<Test::LatencyData>::subscriber_ref_type latency_echo_subscriber_ {};
-  CORBA::object_traits<DDS::DataReader>::ref_type latency_echo_reader_ {};
+  IDL::traits<DDS::DataReader>::ref_type latency_echo_reader_ {};
   DDS::traits<Test::LatencyData>::datareaderlistener_ref_type latency_echo_listener_ {};
 };
 
@@ -657,7 +657,7 @@ TestExecutor::calc_results (void)
                    {
                      const IterationResult* r1 = (const IterationResult*)result1;
                      const IterationResult* r2 = (const IterationResult*)result2;
-                     return (r2->tv_min_ < r1->tv_min_ ? -1 : (r2->tv_min_ > r1->tv_min_ ? 1 : 0));
+                     return (r2->tv_max_ < r1->tv_max_ ? -1 : (r2->tv_max_ > r1->tv_max_ ? 1 : 0));
                    });
         uint64_t tv_max_total = this->iteration_results_[0].tv_max_;
 

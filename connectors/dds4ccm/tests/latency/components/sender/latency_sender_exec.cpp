@@ -594,7 +594,7 @@ namespace Test_Sender_Impl
                      {
                        const IterationResult* r1 = (const IterationResult*)result1;
                        const IterationResult* r2 = (const IterationResult*)result2;
-                       return (r2->tv_min_ < r1->tv_min_ ? -1 : (r2->tv_min_ > r1->tv_min_ ? 1 : 0));
+                       return (r2->tv_max_ < r1->tv_max_ ? -1 : (r2->tv_max_ > r1->tv_max_ ? 1 : 0));
                      });
           uint64_t tv_max_total = this->iteration_results_[0].tv_max_;
 
