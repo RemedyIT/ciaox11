@@ -1,0 +1,22 @@
+/**
+ * @file latency_data.idl
+
+ * @author Martin Corino (mcorino@remedy.nl)
+ *
+ * @brief   Data IDL for the latency test.
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ */
+
+#ifndef LATENCY_DATA_IDL
+#define LATENCY_DATA_IDL
+
+module Test
+{
+  struct LatencyData 
+  {
+    long seq_num;
+  }; //@TopLevel()
+};
+
+#endif // LATENCY_DATA_IDL
