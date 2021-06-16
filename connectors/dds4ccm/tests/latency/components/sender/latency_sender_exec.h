@@ -41,7 +41,7 @@ namespace Test_Sender_Impl
     /// @param[in] context Component context
     info_recv_data_listener_exec_i (
         IDL::traits< ::Test::CCM_Sender_Context>::ref_type context,
-        IDL::traits< ::Test::CCM_Sender>::weak_ref_type component_executor);
+        IDL::traits< ::Test::CCM_Sender>::ref_type component_executor);
     //@@{__RIDL_REGEN_MARKER__} - END : Test_Sender_Impl::info_recv_data_listener_exec_i[ctor]
 
     /// Destructor
@@ -64,7 +64,7 @@ namespace Test_Sender_Impl
     /** @name User defined public operations. */
     //@{
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::info_recv_data_listener_exec_i[user_public_ops]
-    // Your code here
+    void shutdown ();
     //@@{__RIDL_REGEN_MARKER__} - END : Test_Sender_Impl::info_recv_data_listener_exec_i[user_public_ops]
     //@}
 
@@ -75,7 +75,7 @@ namespace Test_Sender_Impl
     /** @name User defined members. */
     //@{
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::info_recv_data_listener_exec_i[user_members]
-    IDL::traits<Test::CCM_Sender>::weak_ref_type component_executor_;
+    IDL::traits<::Test::CCM_Sender>::ref_type component_executor_;
     //@@{__RIDL_REGEN_MARKER__} - END : Test_Sender_Impl::info_recv_data_listener_exec_i[user_members]
     //@}
 
@@ -154,7 +154,7 @@ namespace Test_Sender_Impl
     /// @param[in] context Component context
     connector_status_exec_i (
         IDL::traits< ::Test::CCM_Sender_Context>::ref_type context,
-        IDL::traits< ::Test::CCM_Sender>::weak_ref_type component_executor);
+        IDL::traits< ::Test::CCM_Sender>::ref_type component_executor);
     //@@{__RIDL_REGEN_MARKER__} - END : Test_Sender_Impl::connector_status_exec_i[ctor]
 
     /// Destructor
@@ -197,7 +197,7 @@ namespace Test_Sender_Impl
     /** @name User defined public operations. */
     //@{
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::connector_status_exec_i[user_public_ops]
-    // Your code here
+    void shutdown ();
     //@@{__RIDL_REGEN_MARKER__} - END : Test_Sender_Impl::connector_status_exec_i[user_public_ops]
     //@}
 
@@ -208,7 +208,7 @@ namespace Test_Sender_Impl
     /** @name User defined members. */
     //@{
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::connector_status_exec_i[user_members]
-    IDL::traits<Test::CCM_Sender>::weak_ref_type component_executor_;
+    IDL::traits<Test::CCM_Sender>::ref_type component_executor_;
     bool started_ { false };
     //@@{__RIDL_REGEN_MARKER__} - END : Test_Sender_Impl::connector_status_exec_i[user_members]
     //@}
@@ -252,19 +252,35 @@ namespace Test_Sender_Impl
 
     /// Attribute rate
 
-    uint16_t
+    uint32_t
     rate () override;
 
     void
-    rate (uint16_t rate) override;
+    rate (uint32_t rate) override;
+
+    /// Attribute samples
+
+    uint32_t
+    samples () override;
+
+    void
+    samples (uint32_t samples) override;
+
+    /// Attribute sample_size
+
+    uint32_t
+    sample_size () override;
+
+    void
+    sample_size (uint32_t sample_size) override;
 
     /// Attribute iterations
 
-    uint16_t
+    uint32_t
     iterations () override;
 
     void
-    iterations (uint16_t iterations) override;
+    iterations (uint32_t iterations) override;
     //@}
 
     /** @name Session component operations */
@@ -294,6 +310,7 @@ namespace Test_Sender_Impl
     void tick ();
     void start_publishing ();
     void read (Test::LatencyData & instance, uint64_t receive_time);
+    void inc_unexpected_count ();
     //@@{__RIDL_REGEN_MARKER__} - END : Test_Sender_Impl::Sender_exec_i[user_public_ops]
     //@}
 
@@ -304,9 +321,13 @@ namespace Test_Sender_Impl
     /** @name Component attributes. */
     //@{
     /// Class member storing value of rate attribute
-    uint16_t rate_{};
+    uint32_t rate_{};
+    /// Class member storing value of samples attribute
+    uint32_t samples_{};
+    /// Class member storing value of sample_size attribute
+    uint32_t sample_size_{};
     /// Class member storing value of iterations attribute
-    uint16_t iterations_{};
+    uint32_t iterations_{};
     //@}
 
     /** @name Component facets. */
@@ -322,14 +343,13 @@ namespace Test_Sender_Impl
     IDL::traits<CCM_TT::TT_Timer>::ref_type tm_;
     IDL::traits<CCM_TT::TT_Timer>::ref_type tm_activate_;
     IDL::traits<CCM_TT::TT_Scheduler>::ref_type tt_s;
+    IDL::traits<CCM_TT::TT_Handler>::ref_type tmh_;
     bool already_publishing_ {};
 
 
     IDL::traits< ::Test::LatencyDataConnector::Writer>::ref_type writer_ {};
 
-    uint16_t datalen_ {100};
-    uint16_t datalen_idx_ {};
-    uint16_t nr_of_runs_ {10};
+    uint32_t iteration_nr_ {};
     std::atomic<bool> matched_ {};
     uint64_t tv_total_ {};
     uint64_t tv_max_ {};
@@ -343,9 +363,21 @@ namespace Test_Sender_Impl
     uint64_t start_time_test_ {};
     uint64_t end_time_test_ {};
 
+    struct IterationResult
+    {
+      double tv_avg_ {};
+      double sigma_duration_squared_;
+      uint64_t tv_max_ {};
+      uint64_t tv_min_ {};
+      double per50_;
+      double per90_;
+      double per99_;
+      double per9999_;
+    };
+
     Test::LatencyData test_topic_ {};
-    uint64_t* duration_times_ {};
-    int16_t* datalen_range_ {};
+    std::unique_ptr<uint64_t[]> duration_times_ {};
+    std::unique_ptr<IterationResult[]> iteration_results_;
     int32_t _clock_overhead_ {};
     std::atomic<int32_t> unexpected_count_ {};
     //@@{__RIDL_REGEN_MARKER__} - END : Test_Sender_Impl::Sender_exec_i[user_members]

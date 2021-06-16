@@ -154,7 +154,7 @@ namespace Test_Sender_Impl
     /// @param[in] context Component context
     connector_status_exec_i (
         IDL::traits< ::Test::CCM_Sender_Context>::ref_type context,
-        IDL::traits< ::Test::CCM_Sender>::weak_ref_type component_executor);
+        IDL::traits< ::Test::CCM_Sender>::ref_type component_executor);
     //@@{__RIDL_REGEN_MARKER__} - END : Test_Sender_Impl::connector_status_exec_i[ctor]
 
     /// Destructor
@@ -197,7 +197,7 @@ namespace Test_Sender_Impl
     /** @name User defined public operations. */
     //@{
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::connector_status_exec_i[user_public_ops]
-    // Your code here
+    void shutdown ();
     //@@{__RIDL_REGEN_MARKER__} - END : Test_Sender_Impl::connector_status_exec_i[user_public_ops]
     //@}
 
@@ -208,7 +208,7 @@ namespace Test_Sender_Impl
     /** @name User defined members. */
     //@{
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::connector_status_exec_i[user_members]
-    IDL::traits<Test::CCM_Sender>::weak_ref_type component_executor_;
+    IDL::traits<Test::CCM_Sender>::ref_type component_executor_;
     bool started_ { false };
     //@@{__RIDL_REGEN_MARKER__} - END : Test_Sender_Impl::connector_status_exec_i[user_members]
     //@}
@@ -302,6 +302,7 @@ namespace Test_Sender_Impl
     void tick ();
     void start_publishing ();
     void read (Test::LatencyData & instance, uint64_t receive_time);
+    void inc_unexpected_count ();
     //@@{__RIDL_REGEN_MARKER__} - END : Test_Sender_Impl::Sender_exec_i[user_public_ops]
     //@}
 
@@ -368,6 +369,7 @@ namespace Test_Sender_Impl
     std::unique_ptr<uint64_t[]> duration_times_ {};
     std::unique_ptr<IterationResult[]> iteration_results_;
     int32_t _clock_overhead_ {};
+    std::atomic<int32_t> unexpected_count_ {};
     //@@{__RIDL_REGEN_MARKER__} - END : Test_Sender_Impl::Sender_exec_i[user_members]
     //@}
 

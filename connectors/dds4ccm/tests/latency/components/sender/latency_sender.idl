@@ -22,8 +22,10 @@ module Test
 
     uses CCM_TT::TT_Scheduler tt_scheduler;
 
-    attribute unsigned short rate;
-    attribute unsigned short iterations;
+    attribute unsigned long rate;
+    attribute unsigned long samples;
+    attribute unsigned long sample_size;
+    attribute unsigned long iterations;
   };
 };
 

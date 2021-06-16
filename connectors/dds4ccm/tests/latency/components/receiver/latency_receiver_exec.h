@@ -41,7 +41,7 @@ namespace Test_Receiver_Impl
     /// @param[in] context Component context
     info_out_data_listener_exec_i (
         IDL::traits< ::Test::CCM_Receiver_Context>::ref_type context,
-        IDL::traits< ::Test::CCM_Receiver>::weak_ref_type component_executor);
+        IDL::traits< ::Test::CCM_Receiver>::ref_type component_executor);
     //@@{__RIDL_REGEN_MARKER__} - END : Test_Receiver_Impl::info_out_data_listener_exec_i[ctor]
 
     /// Destructor
@@ -64,7 +64,7 @@ namespace Test_Receiver_Impl
     /** @name User defined public operations. */
     //@{
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Receiver_Impl::info_out_data_listener_exec_i[user_public_ops]
-    // Your code here
+    void shutdown ();
     //@@{__RIDL_REGEN_MARKER__} - END : Test_Receiver_Impl::info_out_data_listener_exec_i[user_public_ops]
     //@}
 
@@ -75,7 +75,7 @@ namespace Test_Receiver_Impl
     /** @name User defined members. */
     //@{
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Receiver_Impl::info_out_data_listener_exec_i[user_members]
-    IDL::traits<Test::CCM_Receiver>::weak_ref_type component_executor_;
+    IDL::traits<::Test::CCM_Receiver>::ref_type component_executor_;
     //@@{__RIDL_REGEN_MARKER__} - END : Test_Receiver_Impl::info_out_data_listener_exec_i[user_members]
     //@}
 

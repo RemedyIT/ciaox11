@@ -7,16 +7,14 @@
 
 //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl[user_includes]
 #include "dds4ccm/logger/dds4ccm_testlog.h"
-#include "ace/OS_NS_math.h"
 #include "ace/High_Res_Timer.h"
 #include <iomanip>
+#include <cstdlib>
+#include <cmath>
+#include <fstream>
 //@@{__RIDL_REGEN_MARKER__} - END : Test_Sender_Impl[user_includes]
 
 //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl[user_global_impl]
-static int compare_two_longs (const void *long1, const void *long2)
-{
-  return (int)(*(uint64_t*)long1 - *(uint64_t*)long2);
-}
 //@@{__RIDL_REGEN_MARKER__} - END : Test_Sender_Impl[user_global_impl]
 
 namespace Test_Sender_Impl
@@ -27,9 +25,10 @@ namespace Test_Sender_Impl
   public:
     explicit
     TT_Callback (
-        IDL::traits<::Test::CCM_Sender>::weak_ref_type component_executor,
-        bool activate) :
-        component_executor_ (component_executor), activate_ (activate)
+        IDL::traits<Sender_exec_i>::ref_type component_executor,
+        bool activate)
+      : component_executor_ (std::move (component_executor))
+      , activate_ (activate)
     {
     }
 
@@ -37,8 +36,11 @@ namespace Test_Sender_Impl
     on_trigger (IDL::traits<::CCM_TT::TT_Timer>::ref_type timer,
                 const ::CCM_TT::TT_Duration &time, uint32_t round) override;
 
+    void
+    shutdown ();
+
   private:
-    IDL::traits<::Test::CCM_Sender>::weak_ref_type component_executor_;
+    IDL::traits<Sender_exec_i>::ref_type component_executor_;
     bool const activate_;
   };
 
@@ -47,15 +49,19 @@ namespace Test_Sender_Impl
                            const ::CCM_TT::TT_Duration& /*time*/,
                            uint32_t /*round*/)
   {
-    auto cex = IDL::traits<Sender_exec_i>::narrow (
-        this->component_executor_.lock ());
-    if (cex)
+    if (this->component_executor_)
     {
       if (this->activate_)
-        cex->check_status ();
+        this->component_executor_->check_status ();
       else
-        cex->tick ();
+        this->component_executor_->tick ();
     }
+  }
+
+  void
+  TT_Callback::shutdown ()
+  {
+    this->component_executor_.reset ();
   }
   //@@{__RIDL_REGEN_MARKER__} - END : Test_Sender_Impl[user_namespace_impl]
 
@@ -66,7 +72,7 @@ namespace Test_Sender_Impl
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::info_recv_data_listener_exec_i[ctor]
   info_recv_data_listener_exec_i::info_recv_data_listener_exec_i (
     IDL::traits< ::Test::CCM_Sender_Context>::ref_type context,
-    IDL::traits< ::Test::CCM_Sender>::weak_ref_type component_executor)
+    IDL::traits< ::Test::CCM_Sender>::ref_type component_executor)
     : context_ (std::move (context))
     , component_executor_ (std::move (component_executor))
   {
@@ -82,7 +88,11 @@ namespace Test_Sender_Impl
 
   /** User defined public operations. */
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::info_recv_data_listener_exec_i[user_public_ops]
-  // Your code here
+  void
+  info_recv_data_listener_exec_i::shutdown ()
+  {
+    this->component_executor_.reset ();
+  }
   //@@{__RIDL_REGEN_MARKER__} - END : Test_Sender_Impl::info_recv_data_listener_exec_i[user_public_ops]
 
   /** User defined private operations. */
@@ -108,10 +118,9 @@ namespace Test_Sender_Impl
     {
       uint64_t  receive_time = 0;
       ACE_High_Res_Timer::gettimeofday_hr ().to_usec (receive_time);
-      auto cex = IDL::traits<Sender_exec_i>::narrow (this->component_executor_.lock ());
-      if (cex)
+      if (this->component_executor_)
       {
-        cex->read(const_cast<Test::LatencyData&> (datum), receive_time);
+        IDL::traits<Sender_exec_i>::narrow(this->component_executor_)->read(const_cast<Test::LatencyData&> (datum), receive_time);
       }
       else
       {
@@ -192,7 +201,7 @@ namespace Test_Sender_Impl
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::connector_status_exec_i[ctor]
   connector_status_exec_i::connector_status_exec_i (
     IDL::traits< ::Test::CCM_Sender_Context>::ref_type context,
-    IDL::traits< ::Test::CCM_Sender>::weak_ref_type component_executor)
+    IDL::traits< ::Test::CCM_Sender>::ref_type component_executor)
     : context_ (std::move (context))
     , component_executor_ (std::move (component_executor))
   {
@@ -208,7 +217,11 @@ namespace Test_Sender_Impl
 
   /** User defined public operations. */
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::connector_status_exec_i[user_public_ops]
-  // Your code here
+  void
+  connector_status_exec_i::shutdown ()
+  {
+    this->component_executor_.reset ();
+  }
   //@@{__RIDL_REGEN_MARKER__} - END : Test_Sender_Impl::connector_status_exec_i[user_public_ops]
 
   /** User defined private operations. */
@@ -281,26 +294,23 @@ namespace Test_Sender_Impl
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::connector_status_exec_i::on_unexpected_status[_the_entity_status_kind]
 
-    //DDS4CCM_TEST_DEBUG << "connector_status_exec_i::on_unexpected_status status_kind <" << DDS::dds_write(status_kind) << ">" << std::endl;
-
     // dds4ccm/tests/updater/sender/updater_sender_exec.cpp for an explanation of the
     // started_ flag.
     if (!this->started_)
     {
       if (DDS4CCM_TEST_UTILS::check_publication_matched_status (the_entity, status_kind, 1))
       {
-        auto cex = IDL::traits<Sender_exec_i>::narrow (this->component_executor_.lock ());
-        if (cex)
+        if (this->component_executor_)
         {
           this->started_ = true;
-          cex->start_publishing ();
+          IDL::traits<Sender_exec_i>::narrow (this->component_executor_)->start_publishing ();
         }
-        else
-        {
-          DDS4CCM_TEST_DEBUG << "connector_status_exec_i::on_unexpected_status - "
-                            << "WARNING: failed to lock component executor" << std::endl;
-        }
+        return;
       }
+    }
+    if (this->component_executor_)
+    {
+      IDL::traits<Sender_exec_i>::narrow (this->component_executor_)->inc_unexpected_count ();
     }
     //@@{__RIDL_REGEN_MARKER__} - END : Test_Sender_Impl::connector_status_exec_i::on_unexpected_status[_the_entity_status_kind]
   }
@@ -310,18 +320,17 @@ namespace Test_Sender_Impl
    */
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::Sender_exec_i[ctor]
   Sender_exec_i::Sender_exec_i ()
+  : rate_(100)
+  , samples_ (10000)
+  , sample_size_ (1024)
+  , iterations_ (10)
   {
-    this->rate_ = 100;
-    this->iterations_ = 10000;
-    this->datalen_range_ = new int16_t[this->nr_of_runs_];
   }
   //@@{__RIDL_REGEN_MARKER__} - END : Test_Sender_Impl::Sender_exec_i[ctor]
 
   Sender_exec_i::~Sender_exec_i ()
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::Sender_exec_i[dtor]
-    delete [] this->duration_times_;
-    delete [] this->datalen_range_;
     //@@{__RIDL_REGEN_MARKER__} - END : Test_Sender_Impl::Sender_exec_i[dtor]
   }
 
@@ -374,7 +383,7 @@ namespace Test_Sender_Impl
   void
   Sender_exec_i::tick ()
   {
-    if (this->number_of_msg_ == 0 && this->datalen_idx_ == 0)
+    if (this->number_of_msg_ == 0)
     {
       ACE_High_Res_Timer::gettimeofday_hr ().to_usec (this->start_time_test_);
     }
@@ -382,23 +391,25 @@ namespace Test_Sender_Impl
     // is received back.
     if (this->number_of_msg_ == 0 || this->received_)
     {
-      // All messages send, stop timer.
-      if (this->iterations_ != 0 && this->number_of_msg_ >= this->iterations_)
+      // All messages sent, stop iteration.
+      if (this->samples_ != 0 && this->number_of_msg_ >= this->samples_)
       {
-        if (this->datalen_idx_ >= (this->nr_of_runs_ - 1))
+        // All iterations run, stop timer.
+        if (this->iteration_nr_ >= (this->iterations_ - 1))
         {
           this->tm_->cancel ();
           this->calc_results ();
           ACE_High_Res_Timer::gettimeofday_hr ().to_usec (this->end_time_test_);
-
+          // signal that we are finished
+          std::ofstream ostrm("FINISHED", std::ios::binary);
+          ostrm << 1;
+          ostrm.close();
         }
         else
         {
           this->calc_results ();
           this->reset_results ();
-          ++this->datalen_idx_;
-          this->datalen_ = this->datalen_range_[this->datalen_idx_];
-          this->test_topic_.data ().resize (this->datalen_);
+          ++this->iteration_nr_;
         }
       }
       else
@@ -433,6 +444,12 @@ namespace Test_Sender_Impl
         this->received_ = true;
       }
   }
+
+  void
+  Sender_exec_i::inc_unexpected_count ()
+  {
+    this->unexpected_count_++;
+  }
   //@@{__RIDL_REGEN_MARKER__} - END : Test_Sender_Impl::Sender_exec_i[user_public_ops]
 
   /** User defined private operations. */
@@ -441,10 +458,9 @@ namespace Test_Sender_Impl
   void
   Sender_exec_i::reset_results()
   {
-    delete [] this->duration_times_;
     this->count_ = 0;
 
-    this->duration_times_ = new uint64_t[this->iterations_];
+    this->duration_times_.reset (new uint64_t[this->samples_]);
 
     this->tv_total_ = 0L;
     this->tv_max_ = 0L;
@@ -459,81 +475,154 @@ namespace Test_Sender_Impl
   Sender_exec_i::calc_results (void)
   {
     // Sort all duration times.
-    ::qsort(this->duration_times_,
-            this->count_,
-            sizeof(uint64_t),
-            compare_two_longs);
+    std::qsort (this->duration_times_.get (),
+                this->count_,
+                sizeof(uint64_t),
+                [] (const void *long1, const void *long2)
+                {
+                  return (int)(*(uint64_t*)long1 - *(uint64_t*)long2);
+                });
 
     // Show latency_50_percentile, latency_90_percentile,
     // latency_99_percentile and latency_99.99_percentile.
     // For example duration_times[per50] is the median i.e. 50% of the
     // samples have a latency time <= duration_times[per50]
     int const per50 = this->count_ / 2;
-    int const per90 = (int)(this->count_ * 0.90);
-    int const per99 = (int)(this->count_ * 0.990);
-    int const per9999 = (int)(this->count_ * 0.9999);
+    int const per90 = (int) (this->count_ * 0.90);
+    int const per99 = (int) (this->count_ * 0.990);
+    int const per9999 = (int) (this->count_ * 0.9999);
 
-    double const avg = (double)(this->tv_total_ / this->count_);
+    double const avg = (double) (this->tv_total_ / this->count_);
     // Calculate standard deviation.
-    double const roundtrip_time_std  = ::sqrt(
-        (this->sigma_duration_squared_ / (double)this->count_) -
-        (avg * avg));
+    double const roundtrip_time_std = ::sqrt (
+        (this->sigma_duration_squared_ / (double) this->count_) - (avg * avg));
+
+    this->iteration_results_[this->iteration_nr_].tv_avg_ = avg;
+    this->iteration_results_[this->iteration_nr_].sigma_duration_squared_ =
+        this->sigma_duration_squared_;
+    this->iteration_results_[this->iteration_nr_].tv_min_ = this->tv_min_;
+    this->iteration_results_[this->iteration_nr_].tv_max_ = this->tv_max_;
+    this->iteration_results_[this->iteration_nr_].per50_ =
+        this->duration_times_[per50 - 1];
+    this->iteration_results_[this->iteration_nr_].per90_ =
+        this->duration_times_[per90 - 1];
+    this->iteration_results_[this->iteration_nr_].per99_ =
+        this->duration_times_[per99 - 1];
+    this->iteration_results_[this->iteration_nr_].per9999_ =
+        this->duration_times_[per9999 - 1];
 
     // Show values as float, in order to be comparable with RTI performance test.
     if (this->count_ > 0)
+    {
+      if (this->iteration_nr_ == 0)
       {
-        if (this->datalen_idx_ == 0)
+          #if (CIAOX11_DDS4CCM_CONTEXT_SWITCH==1)
+            DDS4CCM_TEST_INFO << std::endl <<
+                                 "YES, we're using a threadswitch between DDS and CCM" <<
+                                 std::endl;
+          #else
+            DDS4CCM_TEST_INFO << std::endl <<
+                                 "NO, we're not using a threadswitch between DDS and CCM" <<
+                                 std::endl;
+          #endif
+          DDS4CCM_TEST_INFO <<
+           "Collecting statistics on " << this->count_ << " samples per message (size " << this->sample_size_ << " bytes)" << std::endl <<
+           "at a rate of 1 sample per " << this->rate_ << "usec." << std::endl <<
+           "This is the roundtrip time, *not* the one-way-latency" << std::endl <<
+           " stdev us ave us   min us   50%% us  90%% us  99%% us  99.99%%  max us" << std::endl <<
+           " --------+--------+--------+--------+--------+--------+--------+--------" << std::endl <<
+            std::setw(9) << std::fixed << std::setprecision(1) << roundtrip_time_std <<
+            std::setw(9) << std::fixed << std::setprecision(1) << avg <<
+            std::setw(9) << std::fixed << std::setprecision(1) << (double)this->tv_min_ <<
+            std::setw(9) << std::fixed << std::setprecision(1) << (double)this->duration_times_[per50-1] <<
+            std::setw(9) << std::fixed << std::setprecision(1) << (double)this->duration_times_[per90-1] <<
+            std::setw(9) << std::fixed << std::setprecision(1) << (double)this->duration_times_[per99-1] <<
+            std::setw(9) << std::fixed << std::setprecision(1) << (double)this->duration_times_[per9999-1] <<
+            std::setw(9) << std::fixed << std::setprecision(1) << (double)this->tv_max_ << std::endl;
+      }
+      else
+      {
+        DDS4CCM_TEST_INFO <<
+          std::setw(9) << std::fixed << std::setprecision(1) << roundtrip_time_std <<
+          std::setw(9) << std::fixed << std::setprecision(1) << avg <<
+          std::setw(9) << std::fixed << std::setprecision(1) << (double)this->tv_min_ <<
+          std::setw(9) << std::fixed << std::setprecision(1) << (double)this->duration_times_[per50-1] <<
+          std::setw(9) << std::fixed << std::setprecision(1) << (double)this->duration_times_[per90-1] <<
+          std::setw(9) << std::fixed << std::setprecision(1) << (double)this->duration_times_[per99-1] <<
+          std::setw(9) << std::fixed << std::setprecision(1) << (double)this->duration_times_[per9999-1] <<
+          std::setw(9) << std::fixed << std::setprecision(1) << (double)this->tv_max_ << std::endl;
+
+        if (this->iterations_ > 1 && this->iteration_nr_ >= (this->iterations_ - 1))
+        {
+          double total_avg {}, total_sigma {};
+          double avg_per50 {}, avg_per90 {}, avg_per99 {}, avg_per9999 {};
+          for (uint32_t n=0; n<this->iterations_ ;++n)
           {
-            #if (CIAOX11_DDS4CCM_CONTEXT_SWITCH==1)
-              DDS4CCM_TEST_INFO << std::endl <<
-                                   "YES, we're using a threadswitch between DDS and CCM" <<
-                                   std::endl;
-            #else
-              DDS4CCM_TEST_INFO << std::endl <<
-                                   "NO, we're not using a threadswitch between DDS and CCM" <<
-                                   std::endl;
-            #endif
-            DDS4CCM_TEST_INFO <<
-             "Collecting statistics on " << this->count_ << " samples per message size" << std::endl <<
-             "at a rate of 1 sample per " << this->rate_ << "usec." << std::endl <<
-             "This is the roundtrip time, *not* the one-way-latency" << std::endl <<
-             "bytes ,stdev us,ave us  ,min us  ,50%% us ,90%% us ,99%% us ,99.99%% ,max us" << std::endl <<
-             "------,--------,--------,--------,--------,--------,--------,--------,--------" << std::endl <<
-              std::setw(6) << this->datalen_ <<
-              std::setw(9) << std::fixed << std::setprecision(1) << roundtrip_time_std <<
-              std::setw(9) << std::fixed << std::setprecision(1) << avg <<
-              std::setw(9) << std::fixed << std::setprecision(1) << (double)this->tv_min_ <<
-              std::setw(9) << std::fixed << std::setprecision(1) << (double)this->duration_times_[per50-1] <<
-              std::setw(9) << std::fixed << std::setprecision(1) << (double)this->duration_times_[per90-1] <<
-              std::setw(9) << std::fixed << std::setprecision(1) << (double)this->duration_times_[per99-1] <<
-              std::setw(9) << std::fixed << std::setprecision(1) << (double)this->duration_times_[per9999-1] <<
-              std::setw(9) << std::fixed << std::setprecision(1) << (double)this->tv_max_ << std::endl;
+            total_avg += this->iteration_results_[n].tv_avg_;
+            total_sigma += this->iteration_results_[n].sigma_duration_squared_;
+            avg_per50 += this->iteration_results_[n].per50_;
+            avg_per90 += this->iteration_results_[n].per90_;
+            avg_per99 += this->iteration_results_[n].per99_;
+            avg_per9999 += this->iteration_results_[n].per9999_;
           }
-        else
-          {
-            DDS4CCM_TEST_INFO <<
-                std::setw(6) << this->datalen_ <<
-                std::setw(9) << std::fixed << std::setprecision(1) << roundtrip_time_std <<
-                std::setw(9) << std::fixed << std::setprecision(1) << avg <<
-                std::setw(9) << std::fixed << std::setprecision(1) << (double)this->tv_min_ <<
-                std::setw(9) << std::fixed << std::setprecision(1) << (double)this->duration_times_[per50-1] <<
-                std::setw(9) << std::fixed << std::setprecision(1) << (double)this->duration_times_[per90-1] <<
-                std::setw(9) << std::fixed << std::setprecision(1) << (double)this->duration_times_[per99-1] <<
-                std::setw(9) << std::fixed << std::setprecision(1) << (double)this->duration_times_[per9999-1] <<
-                std::setw(9) << std::fixed << std::setprecision(1) << (double)this->tv_max_ << std::endl;
-          }
-       }
-     else
-       {
-         DDS4CCM_TEST_INFO << "SUMMARY SENDER latency time:\n "
-                               "No samples received back." << std::endl;
-       }
+          total_avg /= this->iterations_;
+          avg_per50 /= this->iterations_;
+          avg_per90 /= this->iterations_;
+          avg_per99 /= this->iterations_;
+          avg_per9999 /= this->iterations_;
+          double const avg_roundtrip_time_std  = ::sqrt(
+              (total_sigma / (double)(this->samples_ * this->iterations_)) -
+              (total_avg * total_avg));
+
+          // Sort all minimum duration times.
+          std::qsort(this->iteration_results_.get (),
+                     this->iterations_,
+                     sizeof(IterationResult),
+                     [](const void *result1, const void *result2)
+                     {
+                       const IterationResult* r1 = (const IterationResult*)result1;
+                       const IterationResult* r2 = (const IterationResult*)result2;
+                       return (r1->tv_min_ < r2->tv_min_ ? -1 : (r1->tv_min_ > r2->tv_min_ ? 1 : 0));
+                     });
+          uint64_t tv_min_total = this->iteration_results_[0].tv_min_;
+
+          // Sort all maximum duration times (in reverse order).
+          std::qsort(this->iteration_results_.get (),
+                     this->iterations_,
+                     sizeof(IterationResult),
+                     [](const void *result1, const void *result2)
+                     {
+                       const IterationResult* r1 = (const IterationResult*)result1;
+                       const IterationResult* r2 = (const IterationResult*)result2;
+                       return (r2->tv_min_ < r1->tv_min_ ? -1 : (r2->tv_min_ > r1->tv_min_ ? 1 : 0));
+                     });
+          uint64_t tv_max_total = this->iteration_results_[0].tv_max_;
+
+
+          DDS4CCM_TEST_INFO <<
+           " --------+--------+--------+--------+--------+--------+--------+--------" << std::endl <<
+            std::setw(9) << std::fixed << std::setprecision(1) << avg_roundtrip_time_std <<
+            std::setw(9) << std::fixed << std::setprecision(1) << total_avg <<
+            std::setw(9) << std::fixed << std::setprecision(1) << (double)tv_min_total <<
+            std::setw(9) << std::fixed << std::setprecision(1) << (double)avg_per50 <<
+            std::setw(9) << std::fixed << std::setprecision(1) << (double)avg_per90 <<
+            std::setw(9) << std::fixed << std::setprecision(1) << (double)avg_per99 <<
+            std::setw(9) << std::fixed << std::setprecision(1) << (double)avg_per9999 <<
+            std::setw(9) << std::fixed << std::setprecision(1) << (double)tv_max_total << std::endl;
+        }
+      }
+    }
+    else
+    {
+      DDS4CCM_TEST_INFO << "SUMMARY SENDER latency time:\n "
+          "No samples received back." << std::endl;
+    }
   }
 
   void
   Sender_exec_i::record_time (uint64_t receive_time)
   {
-    if (this->count_ < this->iterations_)
+    if (this->count_ < this->samples_)
     {
       uint64_t interval = receive_time - this->start_time_;
       uint64_t duration = interval - this->_clock_overhead_;
@@ -553,7 +642,7 @@ namespace Test_Sender_Impl
     else
     {
       DDS4CCM_TEST_ERROR << "Sender_exec_i::record_time : received exceed iterations (" <<
-                            this->count_ << "<>" << this->iterations_ << "; " << this->number_of_msg_ << ")" << std::endl;
+                            this->count_ << "<>" << this->samples_ << "; " << this->number_of_msg_ << ")" << std::endl;
     }
   }
 
@@ -575,20 +664,12 @@ namespace Test_Sender_Impl
   void
   Sender_exec_i::init_values (void)
   {
-    delete [] this->duration_times_;
-    this->duration_times_ = new uint64_t[this->iterations_];
-    int start = 16;
-    for (int i = 0; i < this->nr_of_runs_; i++)
-      {
-        this->datalen_range_[i] = start;
-        start = 2 * start;
-      }
-
-    this->datalen_ = this->datalen_range_[0];
+    this->duration_times_.reset (new uint64_t[this->samples_]);
+    this->iteration_results_.reset (new IterationResult[this->iterations_]);
 
     // make instances of Topic
     this->test_topic_.seq_num (0);
-    this->test_topic_.data ().resize (this->datalen_);
+    this->test_topic_.data ().resize (this->sample_size_);
     calculate_clock_overhead ();
   }
 
@@ -597,8 +678,14 @@ namespace Test_Sender_Impl
   {
     try
     {
+      if (this->tmh_)
+      {
+        IDL::traits<TT_Callback>::narrow(this->tmh_)->shutdown ();
+      }
+      this->tmh_ = IDL::traits<CCM_TT::TT_Handler>::make_reference<TT_Callback> (
+          IDL::traits< Sender_exec_i>::narrow (this->_lock()), false);
       this->tm_ = tt_s->schedule_repeated_trigger (
-                    IDL::traits<CCM_TT::TT_Handler>::make_reference<TT_Callback> (IDL::traits< ::Test::CCM_Sender>::narrow (this->_lock()),false),
+                    this->tmh_,
                     CCM_TT::TT_Duration (this->rate_ / 1000000, (this->rate_ % 1000000) * 1000),
                     CCM_TT::TT_Duration (this->rate_ / 1000000, (this->rate_ % 1000000) * 1000),
                     0);
@@ -628,8 +715,10 @@ namespace Test_Sender_Impl
       this->init_values();
 
       this->tt_s = this->context_->get_connection_tt_scheduler ();
+      this->tmh_ = IDL::traits<CCM_TT::TT_Handler>::make_reference<TT_Callback> (
+          IDL::traits< Sender_exec_i>::narrow (this->_lock()), true);
       this->tm_activate_ = this->tt_s->schedule_repeated_trigger (
-                                IDL::traits<CCM_TT::TT_Handler>::make_reference<TT_Callback> (IDL::traits< ::Test::CCM_Sender>::narrow (this->_lock()),true),
+                                this->tmh_,
                                 CCM_TT::TT_Duration (0, 100000000),
                                 CCM_TT::TT_Duration (0, 100000000),
                                 0);
@@ -641,6 +730,10 @@ namespace Test_Sender_Impl
   void Sender_exec_i::ccm_passivate ()
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::Sender_exec_i[ccm_passivate]
+    if (this->tmh_)
+    {
+      IDL::traits<TT_Callback>::narrow(this->tmh_)->shutdown ();
+    }
     if (!this->tm_)
     {
        DDS4CCM_TEST_ERROR << "ERROR: Sender_exec_i::ccm_passivate - "
@@ -652,6 +745,14 @@ namespace Test_Sender_Impl
       if (!this->tm_->is_canceled())
       {
         this->tm_->cancel();
+      }
+      if (this->info_recv_data_listener_)
+      {
+        IDL::traits<info_recv_data_listener_exec_i>::narrow(this->info_recv_data_listener_)->shutdown();
+      }
+      if (this->connector_status_)
+      {
+        IDL::traits<connector_status_exec_i>::narrow(this->connector_status_)->shutdown();
       }
       if (this->tm_->rounds() < 1)
       {
@@ -670,29 +771,17 @@ namespace Test_Sender_Impl
   void Sender_exec_i::ccm_remove ()
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::Sender_exec_i[ccm_remove]
-    if (this->nr_of_runs_ - 1 != this->datalen_idx_)
+    if (this->count_ == 0)
     {
-      if (this->datalen_idx_ == 0)
-      {
-        DDS4CCM_TEST_ERROR << "ERROR SENDER: No run has taken place."
-            << std::endl;
-      }
-      else
-      {
-        DDS4CCM_TEST_INFO << "SUMMARY SENDER : " << this->datalen_idx_ << " of " << this->nr_of_runs_ << " runs completed." << std::endl <<
-                             " Number of messages sent of last run (" << (this->datalen_idx_+1) << "): " << this->number_of_msg_ << std::endl;
-      }
+      DDS4CCM_TEST_ERROR << "ERROR SENDER: No run has taken place."
+          << std::endl;
     }
-    else
+    else if (this->count_ < this->samples_)
     {
-      uint64_t test_time_usec = this->end_time_test_ - this->start_time_test_;
-
-      double sec = (double) test_time_usec / (1000 * 1000);
-      DDS4CCM_TEST_INFO << "TEST successful, number of runs (" << this->nr_of_runs_ << ") of " << this->number_of_msg_ <<
-                           " messages in " << std::setw(3) << std::setprecision(3) << sec << " seconds." << std::endl;
+      DDS4CCM_TEST_INFO << "SUMMARY SENDER : " << (this->iteration_nr_+1) << " of " << this->iterations_ << " iterations completed." << std::endl <<
+                           " Number of messages sent in last iteration: " << this->number_of_msg_ << "; received: " << this->count_ << std::endl;
     }
-    DDS4CCM_TEST_INFO << "\tNumber of unexpected events : " << (int32_t)this->unexpected_count_ << std::endl;
-
+    DDS4CCM_TEST_INFO << std::endl << " Number of unexpected events : " << (int32_t)this->unexpected_count_ << std::endl;
     //@@{__RIDL_REGEN_MARKER__} - END : Test_Sender_Impl::Sender_exec_i[ccm_remove]
   }
 
@@ -741,7 +830,7 @@ namespace Test_Sender_Impl
   }
 
 
-  uint16_t
+  uint32_t
   Sender_exec_i::rate ()
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::Sender_exec_i::rate[getter]
@@ -751,14 +840,48 @@ namespace Test_Sender_Impl
 
   void
   Sender_exec_i::rate (
-      uint16_t rate)
+      uint32_t rate)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::Sender_exec_i::rate[setter]
     this->rate_ = rate;
     //@@{__RIDL_REGEN_MARKER__} - END : Test_Sender_Impl::Sender_exec_i::rate[setter]
   }
 
-  uint16_t
+  uint32_t
+  Sender_exec_i::samples ()
+  {
+    //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::Sender_exec_i::samples[getter]
+    return this->samples_;
+    //@@{__RIDL_REGEN_MARKER__} - END : Test_Sender_Impl::Sender_exec_i::samples[getter]
+  }
+
+  void
+  Sender_exec_i::samples (
+      uint32_t samples)
+  {
+    //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::Sender_exec_i::samples[setter]
+    this->samples_ = samples;
+    //@@{__RIDL_REGEN_MARKER__} - END : Test_Sender_Impl::Sender_exec_i::samples[setter]
+  }
+
+  uint32_t
+  Sender_exec_i::sample_size ()
+  {
+    //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::Sender_exec_i::sample_size[getter]
+    return this->sample_size_;
+    //@@{__RIDL_REGEN_MARKER__} - END : Test_Sender_Impl::Sender_exec_i::sample_size[getter]
+  }
+
+  void
+  Sender_exec_i::sample_size (
+      uint32_t sample_size)
+  {
+    //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::Sender_exec_i::sample_size[setter]
+    this->sample_size_ = sample_size;
+    //@@{__RIDL_REGEN_MARKER__} - END : Test_Sender_Impl::Sender_exec_i::sample_size[setter]
+  }
+
+  uint32_t
   Sender_exec_i::iterations ()
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::Sender_exec_i::iterations[getter]
@@ -768,7 +891,7 @@ namespace Test_Sender_Impl
 
   void
   Sender_exec_i::iterations (
-      uint16_t iterations)
+      uint32_t iterations)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::Sender_exec_i::iterations[setter]
     this->iterations_ = iterations;

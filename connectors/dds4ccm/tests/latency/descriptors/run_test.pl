@@ -17,7 +17,7 @@ $TAO_ROOT = "$ENV{'TAO_ROOT'}";
 $DANCEX11_ROOT = "$ENV{'DANCEX11_ROOT'}";
 $DANCEX11_BIN_FOLDER = $ENV{'DANCEX11_BIN_FOLDER'} || 'bin';
 
-$sleep_time = 60;
+$sleep_time = 120;
 
 $nr_daemon = 2;
 @ports = ( 60001, 60002);
@@ -35,6 +35,10 @@ $ior_nsbase = 'ns.ior';
 $ior_nsfile = 0;
 $ior_embase = 'em.ior';
 $ior_emfile = 0;
+
+# finish signal file
+$finish_file = 'FINISHED';
+$finished = 0;
 
 #  Processes
 $E = 0;
@@ -77,6 +81,7 @@ sub delete_ior_files {
     }
     $tg_naming->DeleteFile ($ior_nsbase);
     $tg_domain_dep_man->DeleteFile ($ior_embase);
+    $tg_domain_dep_man->DeleteFile ($finish_file);
     for ($i = 0; $i < $nr_daemon; ++$i) {
         $iorfiles[$i] = $tg_daemons[$i]->LocalFile ($iorbases[$i]);
     }
@@ -222,9 +227,13 @@ foreach $file (@files) {
 
     $em_running = 1;
 
-    $corrected_sleep_time = $sleep_time * $PerlACE::Process::WAIT_DELAY_FACTOR;
-    print "Sleeping $corrected_sleep_time seconds to allow task to complete\n";
-    sleep ($corrected_sleep_time);
+	# wait until the FINISHED file appears or the EM terminates
+    print "Waiting for task to complete\n";
+	do {
+	    if ($tg_domain_dep_man->WaitForFileTimed ($finish_file, 1) != -1) {
+	  		$finished = 1;  	
+    	}
+	} while ((!$finished) and ($EM->TimedWait (1) == -1));
 
     # Invoke executor manager - stop the application -.
     print "Invoking executor - stop the application \n";

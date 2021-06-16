@@ -25,7 +25,7 @@ namespace Test_Receiver_Impl
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Receiver_Impl::info_out_data_listener_exec_i[ctor]
   info_out_data_listener_exec_i::info_out_data_listener_exec_i (
     IDL::traits< ::Test::CCM_Receiver_Context>::ref_type context,
-    IDL::traits< ::Test::CCM_Receiver>::weak_ref_type component_executor)
+    IDL::traits< ::Test::CCM_Receiver>::ref_type component_executor)
     : context_ (std::move (context))
     , component_executor_ (std::move (component_executor))
   {
@@ -41,7 +41,11 @@ namespace Test_Receiver_Impl
 
   /** User defined public operations. */
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Receiver_Impl::info_out_data_listener_exec_i[user_public_ops]
-  // Your code here
+  void
+  info_out_data_listener_exec_i::shutdown ()
+  {
+    this->component_executor_.reset ();
+  }
   //@@{__RIDL_REGEN_MARKER__} - END : Test_Receiver_Impl::info_out_data_listener_exec_i[user_public_ops]
 
   /** User defined private operations. */
@@ -65,16 +69,15 @@ namespace Test_Receiver_Impl
     if (info.instance_status() == ::CCM_DDS::InstanceStatus::INSTANCE_CREATED
         || info.instance_status() == ::CCM_DDS::InstanceStatus::INSTANCE_UPDATED)
     {
-      auto cex = IDL::traits<Receiver_exec_i>::narrow (this->component_executor_.lock ());
-      if (cex)
+      if (this->component_executor_)
       {
-        cex->echo (const_cast<Test::LatencyData&> (datum));
+        IDL::traits<Receiver_exec_i>::narrow(this->component_executor_)->echo (const_cast<Test::LatencyData&> (datum));
       }
-      else
-      {
-        DDS4CCM_TEST_WARNING << "info_out_data_listener_exec_i::on_one_data - "
-                             << "WARNING: failed to lock component executor" << std::endl;
-      }
+//      else
+//      {
+//        DDS4CCM_TEST_WARNING << "info_out_data_listener_exec_i::on_one_data - "
+//                             << "WARNING: failed to lock component executor" << std::endl;
+//      }
     }
     //@@{__RIDL_REGEN_MARKER__} - END : Test_Receiver_Impl::info_out_data_listener_exec_i::on_one_data[_datum_info]
   }
@@ -204,6 +207,10 @@ namespace Test_Receiver_Impl
   void Receiver_exec_i::ccm_passivate ()
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Receiver_Impl::Receiver_exec_i[ccm_passivate]
+    if (this->info_out_data_listener_)
+    {
+      IDL::traits<info_out_data_listener_exec_i>::narrow(this->info_out_data_listener_)->shutdown ();
+    }
     if (this->count_ == 0)
     {
       DDS4CCM_TEST_ERROR << "ERROR RECEIVER: No messages sent back." << std::endl;
@@ -233,7 +240,7 @@ namespace Test_Receiver_Impl
       this->info_out_data_listener_ =
           IDL::traits< ::Test::LatencyDataConnector::CCM_Listener>::make_reference <info_out_data_listener_exec_i> (
               this->context_,
-              IDL::traits<Test::CCM_Receiver>::narrow (this->_lock()));
+              IDL::traits<::Test::CCM_Receiver>::narrow (this->_lock()));
     }
     return this->info_out_data_listener_;
   //@@{__RIDL_REGEN_MARKER__} - END : Test_Receiver_Impl::Receiver_exec_i[get_info_out_data_listener]

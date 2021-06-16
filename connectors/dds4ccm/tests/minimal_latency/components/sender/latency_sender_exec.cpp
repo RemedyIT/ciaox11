@@ -201,7 +201,7 @@ namespace Test_Sender_Impl
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::connector_status_exec_i[ctor]
   connector_status_exec_i::connector_status_exec_i (
     IDL::traits< ::Test::CCM_Sender_Context>::ref_type context,
-    IDL::traits< ::Test::CCM_Sender>::weak_ref_type component_executor)
+    IDL::traits< ::Test::CCM_Sender>::ref_type component_executor)
     : context_ (std::move (context))
     , component_executor_ (std::move (component_executor))
   {
@@ -217,7 +217,11 @@ namespace Test_Sender_Impl
 
   /** User defined public operations. */
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::connector_status_exec_i[user_public_ops]
-  // Your code here
+  void
+  connector_status_exec_i::shutdown ()
+  {
+    this->component_executor_.reset ();
+  }
   //@@{__RIDL_REGEN_MARKER__} - END : Test_Sender_Impl::connector_status_exec_i[user_public_ops]
 
   /** User defined private operations. */
@@ -289,27 +293,23 @@ namespace Test_Sender_Impl
       ::DDS::StatusKind status_kind)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::connector_status_exec_i::on_unexpected_status[_the_entity_status_kind]
-
-    //DDS4CCM_TEST_DEBUG << "connector_status_exec_i::on_unexpected_status status_kind <" << DDS::dds_write(status_kind) << ">" << std::endl;
-
     // dds4ccm/tests/updater/sender/updater_sender_exec.cpp for an explanation of the
     // started_ flag.
     if (!this->started_)
     {
       if (DDS4CCM_TEST_UTILS::check_publication_matched_status (the_entity, status_kind, 1))
       {
-        auto cex = IDL::traits<Sender_exec_i>::narrow (this->component_executor_.lock ());
-        if (cex)
+        if (this->component_executor_)
         {
           this->started_ = true;
-          cex->start_publishing ();
+          IDL::traits<Sender_exec_i>::narrow (this->component_executor_)->start_publishing ();
         }
-        else
-        {
-          DDS4CCM_TEST_DEBUG << "connector_status_exec_i::on_unexpected_status - "
-                            << "WARNING: failed to lock component executor" << std::endl;
-        }
+        return;
       }
+    }
+    if (this->component_executor_)
+    {
+      IDL::traits<Sender_exec_i>::narrow (this->component_executor_)->inc_unexpected_count ();
     }
     //@@{__RIDL_REGEN_MARKER__} - END : Test_Sender_Impl::connector_status_exec_i::on_unexpected_status[_the_entity_status_kind]
   }
@@ -440,6 +440,12 @@ namespace Test_Sender_Impl
         this->record_time (receive_time);
         this->received_ = true;
       }
+  }
+
+  void
+  Sender_exec_i::inc_unexpected_count ()
+  {
+    this->unexpected_count_++;
   }
   //@@{__RIDL_REGEN_MARKER__} - END : Test_Sender_Impl::Sender_exec_i[user_public_ops]
 
@@ -736,6 +742,10 @@ namespace Test_Sender_Impl
       {
         IDL::traits<info_recv_data_listener_exec_i>::narrow(this->info_recv_data_listener_)->shutdown();
       }
+      if (this->connector_status_)
+      {
+        IDL::traits<connector_status_exec_i>::narrow(this->connector_status_)->shutdown();
+      }
       if (this->tm_->rounds() < 1)
       {
         DDS4CCM_TEST_ERROR << "ERROR: Sender_exec_i::ccm_passivate - "
@@ -758,15 +768,12 @@ namespace Test_Sender_Impl
       DDS4CCM_TEST_ERROR << "ERROR SENDER: No run has taken place."
           << std::endl;
     }
-    else
+    else if (this->count_ < this->samples_)
     {
-      uint64_t test_time_usec = this->end_time_test_ - this->start_time_test_;
-
-      double sec = (double) test_time_usec / (1000 * 1000);
-      DDS4CCM_TEST_INFO << "TEST successful, " << this->number_of_msg_ <<
-                           " number of messages in " << std::fixed << std::setprecision(3) << sec << " seconds." << std::endl;
+      DDS4CCM_TEST_INFO << "SUMMARY SENDER : " << (this->iteration_nr_+1) << " of " << this->iterations_ << " iterations completed." << std::endl <<
+                           " Number of messages sent in last iteration: " << this->number_of_msg_ << "; received: " << this->count_ << std::endl;
     }
-
+    DDS4CCM_TEST_INFO << "\tNumber of unexpected events : " << (int32_t)this->unexpected_count_ << std::endl;
     //@@{__RIDL_REGEN_MARKER__} - END : Test_Sender_Impl::Sender_exec_i[ccm_remove]
   }
 
