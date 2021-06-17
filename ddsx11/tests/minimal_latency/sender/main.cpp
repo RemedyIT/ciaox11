@@ -325,7 +325,7 @@ TestExecutor::usage ()
     "\t--rate RATE          timer frequency in microseconds (default 100)" << std::endl <<
     "\t--samples COUNT      number of samples to send each iteration (default 10000)" << std::endl <<
     "\t--iterations COUNT   number of iterations to run (default 10)" << std::endl <<
-    "\t--domain DOMAINID    DDS domain ID (default 0)" << std::endl <<
+    "\t--domain DOMAINID    DDS domain ID (default $DDS4CCM_DEFAULT_DOMAIN_ID)" << std::endl <<
     "\t-h|--help            print this help message" << std::endl << std::endl;
   //X11_FUZZ: enable check_cout_cerr
 }

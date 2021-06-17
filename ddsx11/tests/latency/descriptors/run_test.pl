@@ -12,8 +12,47 @@ eval '(exit $?0)' && eval 'exec perl -S $0 ${1+"$@"}'
 
 use lib "$ENV{ACE_ROOT}/bin";
 use PerlACE::TestTarget;
+use Getopt::Long;
 
 my $status = 0;
+
+sub print_help {
+  my $fd = shift;
+  print $fd "\n" .
+    "run_test.pl [<options> ...]\n" .
+    "\n" .
+    "Executes test\n" .
+    "\n" .
+    "Options:\n" .
+    "    --help | -h              Display this help\n" .
+
+	"    --rate RATE              timer frequency in microseconds (default 100)\n" .
+    "    --samples COUNT          number of samples to send each iteration (default 10000)\n" .
+    "    --samplesize SIZE        size of sample to send (default 1024) in bytes\n" .
+    "    --iterations COUNT       number of iterations to run (default 10)\n" .
+    "    --domain ID              DDS Domain ID (default \$DDS4CCM_DEFAULT_DOMAIN_ID)\n\n";
+}
+
+# Parse Options
+my $help = 0;
+my $rate = '';
+my $samples = '';
+my $samplesize = '';
+my $iterations = '';
+my $domain_id = '';
+Getopt::Long::Configure('bundling', 'no_auto_abbrev');
+my $invalid_arguments = !GetOptions(
+  'help|h' => \$help,
+  'rate=s' => \$rate,
+  'samples=s' => \$samples,
+  'samplesize=s' => \$samplesize,
+  'iterations=s' => \$iterations,
+  'domain=s' => \$domain_id,
+);
+if ($invalid_arguments || $help) {
+  print_help($invalid_arguments ? *STDERR : *STDOUT);
+  exit($invalid_arguments ? 1 : 0);
+}
 
 my $receiver = PerlACE::TestTarget::create_target(2) || die "Create target 2 failed\n";
 $receiver->AddLibPath ('../lib');
@@ -23,8 +62,24 @@ $sender->AddLibPath ('../lib');
 
 $sender->DeleteFile ('TEST_MANUAL_EVENT');
 
-my $RV = $receiver->CreateProcess ('../lib/receiver');
-my $SR = $sender->CreateProcess ('../lib/sender');
+my $cmdargs = '';
+if ($domain_id != '') {
+	$cmdargs .= "--domain $domain_id ";
+}
+my $RV = $receiver->CreateProcess ('../lib/receiver', $cmdargs);
+if ($rate != '') {
+	$cmdargs .= "--rate $rate";
+}
+if ($samples != '') {
+	$cmdargs .= "--samples $samples";
+}
+if ($samplesize != '') {
+	$cmdargs .= "--samplesize $samplesize";
+}
+if ($iterations != '') {
+	$cmdargs .= "--iterations $iterations";
+}
+my $SR = $sender->CreateProcess ('../lib/sender', $cmdargs);
 my $receiver_status = $RV->Spawn ();
 
 if ($receiver_status != 0) {

@@ -241,7 +241,7 @@ TestExecutor::usage ()
   std::cerr << std::endl <<
     "receiver " << std::endl <<
     "\tOptions:" << std::endl <<
-    "\t--domain DOMAINID    DDS domain ID (default 0)" << std::endl <<
+    "\t--domain DOMAINID    DDS domain ID (default $DDS4CCM_DEFAULT_DOMAIN_ID)" << std::endl <<
     "\t-h|--help            print this help message" << std::endl << std::endl;
   //X11_FUZZ: enable check_cout_cerr
 }
