@@ -253,7 +253,6 @@ create_Hello_Receiver_Impl (
   IDL::traits<Components::EnterpriseComponent>::ref_type& component)
 {
   component = IDL::traits< ::Hello::CCM_Receiver>::make_reference <Hello_Receiver_Impl::Receiver_exec_i> ();
-``
 }
 //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl[factory]
 //@@{__RIDL_REGEN_MARKER__} - BEGIN : hello_receiver_impl.cpp[Footer]
