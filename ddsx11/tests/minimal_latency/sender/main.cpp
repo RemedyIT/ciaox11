@@ -13,6 +13,8 @@
 #include "ace/Reactor.h"
 #include "ace/Event_Handler.h"
 #include "ace/High_Res_Timer.h"
+#include "ace/Get_Opt.h"
+#include "ace/Manual_Event.h"
 #include <iostream>
 #include <thread>
 #include <iomanip>
@@ -106,7 +108,7 @@ public:
   TestExecutor () {}
   ~TestExecutor () { cleanup (); }
 
-  bool initialize (::DDS::DomainId_t domain_id);
+  bool initialize (int argc, char*argv[]);
 
   void cleanup ();
 
@@ -119,6 +121,8 @@ public:
 
 private:
 
+  void usage ();
+  bool parse_args (int argc, char * argv[]);
   void calc_results (void);
   void reset_results (void);
   void init_values (void);
@@ -132,6 +136,7 @@ private:
   uint32_t rate_{100};
   uint32_t samples_{10000};
   uint32_t iterations_{10};
+  ::DDS::DomainId_t domain_id_ {};
 
   bool already_publishing_ {};
 
@@ -185,21 +190,14 @@ private:
 };
 
 
-int main (int, char *[])
+int main (int argc, char *argv[])
 {
-  TestExecutor tester;
-
-
   try
   {
-    const char * domain = std::getenv ("DDS4CCM_DEFAULT_DOMAIN_ID");
-    ::DDS::DomainId_t domain_id_ {};
-    if (domain)
-    {
-      domain_id_ = std::atoi (domain);
-    }
+    TestExecutor tester;
 
-    if (tester.initialize (domain_id_))
+
+    if (tester.initialize (argc, argv))
     {
       tester.run ();
 
@@ -223,14 +221,25 @@ int main (int, char *[])
 
 
 bool
-TestExecutor::initialize (::DDS::DomainId_t domain_id)
+TestExecutor::initialize (int argc, char* argv[])
 {
+  const char * domain = std::getenv ("DDS4CCM_DEFAULT_DOMAIN_ID");
+  if (domain)
+  {
+    this->domain_id_ = std::atoi (domain);
+  }
+
+  if (!parse_args(argc, argv))
+  {
+    return false;
+  }
+
   this->dpf_=
     DDS::traits<DDS::DomainParticipantFactory>::get_instance ();
 
   this->domain_participant_ =
     this->dpf_->create_participant_with_profile (
-        domain_id, qos_profile, nullptr, DDS::STATUS_MASK_NONE);
+        this->domain_id_, qos_profile, nullptr, DDS::STATUS_MASK_NONE);
 
   DDS::ReturnCode_t retcode = DDS::traits<Test::LatencyData>::register_type (
       this->domain_participant_, DDS::traits<Test::LatencyData>::get_type_name ());
@@ -300,6 +309,87 @@ TestExecutor::initialize (::DDS::DomainId_t domain_id)
     {
       DDSX11_TEST_ERROR << "sender: No listener created!" << std::endl;
       return false;
+    }
+  }
+
+  return true;
+}
+
+void
+TestExecutor::usage ()
+{
+  //X11_FUZZ: disable check_cout_cerr
+  std::cerr << std::endl <<
+    "sender " << std::endl <<
+    "\tOptions:" << std::endl <<
+    "\t--rate RATE          timer frequency in microseconds (default 100)" << std::endl <<
+    "\t--samples COUNT      number of samples to send each iteration (default 10000)" << std::endl <<
+    "\t--iterations COUNT   number of iterations to run (default 10)" << std::endl <<
+    "\t--domain DOMAINID    DDS domain ID (default 0)" << std::endl <<
+    "\t-h|--help            print this help message" << std::endl << std::endl;
+  //X11_FUZZ: enable check_cout_cerr
+}
+
+bool
+TestExecutor::parse_args (int argc, char * argv[])
+{
+  ACE_Get_Opt get_opts (argc,
+                        argv,
+                        ACE_TEXT("h"),
+                        1,
+                        0,
+                        ACE_Get_Opt::RETURN_IN_ORDER);
+
+  get_opts.long_option (ACE_TEXT("rate"), ACE_Get_Opt::ARG_REQUIRED);
+  get_opts.long_option (ACE_TEXT("samples"), ACE_Get_Opt::ARG_REQUIRED);
+  get_opts.long_option (ACE_TEXT("iterations"), ACE_Get_Opt::ARG_REQUIRED);
+  get_opts.long_option (ACE_TEXT("domain"), ACE_Get_Opt::ARG_REQUIRED);
+  get_opts.long_option (ACE_TEXT("help"), ACE_Get_Opt::NO_ARG);
+
+  int c {};
+  while ( (c = get_opts ()) != -1)
+  {
+    switch (c)
+    {
+    //X11_FUZZ: disable check_cout_cerr
+    case 'h':
+      this->usage ();
+      ACE_OS::exit (0);
+      break;
+    //X11_FUZZ: enable check_cout_cerr
+
+    case 0:
+      if (ACE_OS::strcmp (get_opts.long_option (),
+                          ACE_TEXT("rate")) == 0)
+      {
+        this->rate_ = std::atoi (get_opts.opt_arg ());
+      }
+      else if (ACE_OS::strcmp (get_opts.long_option (),
+                               ACE_TEXT("samples")) == 0)
+      {
+        this->samples_ = std::atoi (get_opts.opt_arg ());
+      }
+      else if (ACE_OS::strcmp (get_opts.long_option (),
+                               ACE_TEXT("iterations")) == 0)
+      {
+        this->iterations_ = std::atoi (get_opts.opt_arg ());
+      }
+      else if (ACE_OS::strcmp (get_opts.long_option (),
+                               ACE_TEXT("domain")) == 0)
+      {
+        this->domain_id_ = std::atoi (get_opts.opt_arg ());
+      }
+      else
+      {
+        DDSX11_TEST_WARNING << "TestExecutor::parse_args - "
+                               "Ignoring unknown long option: " <<
+                               get_opts.long_option () << std::endl;
+      }
+      break;
+
+    default:
+      DDSX11_TEST_WARNING << "TestExecutor::parse_args - ignoring incorrect option: " <<
+                             (get_opts.opt_arg () ? get_opts.opt_arg () : "") << std::endl;
     }
   }
 
@@ -433,6 +523,10 @@ TestExecutor::check_status ()
 void
 TestExecutor::run ()
 {
+  DDSX11_TEST_INFO << "Sender: starting test" << std::endl;
+
+  ACE_Manual_Event test_event (0, USYNC_PROCESS, "TEST_MANUAL_EVENT");
+
   this->init_values();
 
   ACE_Event_Handler_var evh =
@@ -452,6 +546,11 @@ TestExecutor::run ()
       ACE_Reactor::instance ()->handle_events ();
     }
   }
+
+  // signal receiver that we finished
+  test_event.signal();
+
+  DDSX11_TEST_INFO << "Sender: finished test" << std::endl;
 }
 
 void
