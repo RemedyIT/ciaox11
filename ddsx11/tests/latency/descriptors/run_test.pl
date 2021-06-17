@@ -68,16 +68,16 @@ if ($domain_id != '') {
 }
 my $RV = $receiver->CreateProcess ('../lib/receiver', $cmdargs);
 if ($rate != '') {
-	$cmdargs .= "--rate $rate";
+	$cmdargs .= "--rate $rate ";
 }
 if ($samples != '') {
-	$cmdargs .= "--samples $samples";
+	$cmdargs .= "--samples $samples ";
 }
 if ($samplesize != '') {
-	$cmdargs .= "--samplesize $samplesize";
+	$cmdargs .= "--samplesize $samplesize ";
 }
 if ($iterations != '') {
-	$cmdargs .= "--iterations $iterations";
+	$cmdargs .= "--iterations $iterations ";
 }
 my $SR = $sender->CreateProcess ('../lib/sender', $cmdargs);
 my $receiver_status = $RV->Spawn ();

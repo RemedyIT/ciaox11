@@ -60,8 +60,9 @@ class LatencyDataListener final :
   public DDS::traits<Test::LatencyData>::datareaderlistener_type
 {
 public:
-  LatencyDataListener(TestExecutor* executor)
+  LatencyDataListener(TestExecutor* executor, bool read_one)
     : executor_ (executor)
+    , read_one_ (read_one)
   {}
 
   void
@@ -100,6 +101,7 @@ public:
 
 private:
   TestExecutor* executor_;
+  bool read_one_ {};
 };
 
 class TestExecutor
@@ -137,6 +139,7 @@ private:
   uint32_t samples_{10000};
   uint32_t iterations_{10};
   ::DDS::DomainId_t domain_id_ {};
+  bool read_one_ {true};
 
   bool already_publishing_ {};
 
@@ -292,7 +295,7 @@ TestExecutor::initialize (int argc, char* argv[])
   if (this->latency_echo_topic_ && this->latency_echo_subscriber_)
   {
     this->latency_echo_listener_ =
-      DDS::make_reference<LatencyDataListener> (this);
+      DDS::make_reference<LatencyDataListener> (this, this->read_one_);
     if (this->latency_echo_listener_)
     {
       this->latency_echo_reader_ =
@@ -326,6 +329,7 @@ TestExecutor::usage ()
     "\t--samples COUNT      number of samples to send each iteration (default 10000)" << std::endl <<
     "\t--iterations COUNT   number of iterations to run (default 10)" << std::endl <<
     "\t--domain DOMAINID    DDS domain ID (default $DDS4CCM_DEFAULT_DOMAIN_ID)" << std::endl <<
+    "\t--readall            read all available samples on data_available (default :readone)" << std::endl <<
     "\t-h|--help            print this help message" << std::endl << std::endl;
   //X11_FUZZ: enable check_cout_cerr
 }
@@ -344,6 +348,7 @@ TestExecutor::parse_args (int argc, char * argv[])
   get_opts.long_option (ACE_TEXT("samples"), ACE_Get_Opt::ARG_REQUIRED);
   get_opts.long_option (ACE_TEXT("iterations"), ACE_Get_Opt::ARG_REQUIRED);
   get_opts.long_option (ACE_TEXT("domain"), ACE_Get_Opt::ARG_REQUIRED);
+  get_opts.long_option (ACE_TEXT("readall"), ACE_Get_Opt::NO_ARG);
   get_opts.long_option (ACE_TEXT("help"), ACE_Get_Opt::NO_ARG);
 
   int c {};
@@ -378,6 +383,11 @@ TestExecutor::parse_args (int argc, char * argv[])
                                ACE_TEXT("domain")) == 0)
       {
         this->domain_id_ = std::atoi (get_opts.opt_arg ());
+      }
+      else if (ACE_OS::strcmp (get_opts.long_option (),
+                               ACE_TEXT("readall")) == 0)
+      {
+        this->read_one_ = false;
       }
       else
       {
@@ -689,7 +699,7 @@ TestExecutor::calc_results (void)
                            std::endl;
       DDSX11_TEST_INFO <<
        "Collecting statistics on " << this->count_ << " samples of a single long value" << std::endl <<
-       "at a rate of 1 sample per " << this->rate_ << "usec." << std::endl <<
+       "at a rate of 1 sample per " << this->rate_ << "usec. (" << (this->read_one_ ? "readone" : "readall") << ")" << std::endl <<
        "This is the roundtrip time, *not* the one-way-latency" << std::endl <<
        " stdev us ave us   min us   50%% us  90%% us  99%% us  99.99%%  max us" << std::endl <<
        " --------+--------+--------+--------+--------+--------+--------+--------" << std::endl <<
@@ -911,31 +921,76 @@ LatencyDataListener::on_data_available (
 
   if (rd)
   {
-    Test::LatencyData datum;
-    DDS::SampleInfo info;
-    DDS::ReturnCode_t const retcode = rd->take_next_sample(datum, info);
-    if (retcode == DDS::RETCODE_NO_DATA)
+    if (this->read_one_)
     {
-      DDSX11_TEST_ERROR << "LatencyDataListener::on_data_available: No data available!"
-                        << std::endl;
-    }
-    else if (retcode != DDS::RETCODE_OK)
-    {
-      DDSX11_TEST_ERROR << "LatencyDataListener::on_data_available: Unable to take data from data reader, error "
-                        << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
-                        << std::endl;
-    }
-    else if (info.valid_data ())
-    {
-      if ( (info.instance_state () == ::DDS::ALIVE_INSTANCE_STATE &&
-              info.view_state () == ::DDS::NEW_VIEW_STATE)
-          || ((info.instance_state () == ::DDS::ALIVE_INSTANCE_STATE &&
-                  info.view_state () == ::DDS::NOT_NEW_VIEW_STATE) ||
-               info.instance_state () == ::DDS::NOT_ALIVE_NO_WRITERS_INSTANCE_STATE))
+      Test::LatencyData datum;
+      DDS::SampleInfo info;
+      DDS::ReturnCode_t const retcode = rd->take_next_sample(datum, info);
+      if (retcode == DDS::RETCODE_NO_DATA)
       {
-        uint64_t  receive_time = 0;
-        ACE_High_Res_Timer::gettimeofday_hr ().to_usec (receive_time);
-        this->executor_->read(const_cast<Test::LatencyData&> (datum), receive_time);
+        DDSX11_TEST_ERROR << "LatencyDataListener::on_data_available: No data available!"
+                          << std::endl;
+      }
+      else if (retcode != DDS::RETCODE_OK)
+      {
+        DDSX11_TEST_ERROR << "LatencyDataListener::on_data_available: Unable to take data from data reader, error "
+                          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                          << std::endl;
+      }
+      else if (info.valid_data ())
+      {
+        if ( (info.instance_state () == ::DDS::ALIVE_INSTANCE_STATE &&
+                info.view_state () == ::DDS::NEW_VIEW_STATE)
+            || ((info.instance_state () == ::DDS::ALIVE_INSTANCE_STATE &&
+                    info.view_state () == ::DDS::NOT_NEW_VIEW_STATE) ||
+                 info.instance_state () == ::DDS::NOT_ALIVE_NO_WRITERS_INSTANCE_STATE))
+        {
+          uint64_t  receive_time = 0;
+          ACE_High_Res_Timer::gettimeofday_hr ().to_usec (receive_time);
+          this->executor_->read(const_cast<Test::LatencyData&> (datum), receive_time);
+        }
+      }
+    }
+    else
+    {
+      ::DDS::SampleInfoSeq sample_info;
+      Test::LatencyDataSeq dataseq;
+      DDS::ReturnCode_t const retcode = rd->take(dataseq,
+                                                 sample_info,
+                                                 ::DDS::LENGTH_UNLIMITED,
+                                                 ::DDS::NOT_READ_SAMPLE_STATE,
+                                                 ::DDS::NEW_VIEW_STATE | ::DDS::NOT_NEW_VIEW_STATE,
+                                                 ::DDS::ANY_INSTANCE_STATE);
+      if (retcode == DDS::RETCODE_NO_DATA)
+      {
+        DDSX11_TEST_ERROR << "LatencyDataListener::on_data_available: No data available!"
+                          << std::endl;
+      }
+      else if (retcode != DDS::RETCODE_OK)
+      {
+        DDSX11_TEST_ERROR << "LatencyDataListener::on_data_available: Unable to take data from data reader, error "
+                          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                          << std::endl;
+      }
+      else
+      {
+        Test::LatencyDataSeq::size_type topic_idx {};
+        for (DDS::SampleInfo info : sample_info)
+        {
+          if (info.valid_data ())
+          {
+            if ( (info.instance_state () == ::DDS::ALIVE_INSTANCE_STATE &&
+                    info.view_state () == ::DDS::NEW_VIEW_STATE)
+                || ((info.instance_state () == ::DDS::ALIVE_INSTANCE_STATE &&
+                        info.view_state () == ::DDS::NOT_NEW_VIEW_STATE) ||
+                     info.instance_state () == ::DDS::NOT_ALIVE_NO_WRITERS_INSTANCE_STATE))
+            {
+              uint64_t  receive_time = 0;
+              ACE_High_Res_Timer::gettimeofday_hr ().to_usec (receive_time);
+              this->executor_->read(const_cast<Test::LatencyData&> (dataseq[topic_idx]), receive_time);
+            }
+          }
+        }
       }
     }
   }

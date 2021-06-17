@@ -29,7 +29,8 @@ sub print_help {
 	"    --rate RATE              timer frequency in microseconds (default 100)\n" .
     "    --samples COUNT          number of samples to send each iteration (default 10000)\n" .
     "    --iterations COUNT       number of iterations to run (default 10)\n" .
-    "    --domain ID              DDS Domain ID (default \$DDS4CCM_DEFAULT_DOMAIN_ID)\n\n";
+    "    --domain ID              DDS Domain ID (default \$DDS4CCM_DEFAULT_DOMAIN_ID)\n" .
+    "    --readall                read all available samples on data_available (default :readone)\n\n";
 }
 
 # Parse Options
@@ -38,6 +39,7 @@ my $rate = '';
 my $samples = '';
 my $iterations = '';
 my $domain_id = '';
+my $readall = 0;
 Getopt::Long::Configure('bundling', 'no_auto_abbrev');
 my $invalid_arguments = !GetOptions(
   'help|h' => \$help,
@@ -45,6 +47,7 @@ my $invalid_arguments = !GetOptions(
   'samples=s' => \$samples,
   'iterations=s' => \$iterations,
   'domain=s' => \$domain_id,
+  'readall' => \$readall,
 );
 if ($invalid_arguments || $help) {
   print_help($invalid_arguments ? *STDERR : *STDOUT);
@@ -65,13 +68,16 @@ if ($domain_id != '') {
 }
 my $RV = $receiver->CreateProcess ('../lib/receiver', $cmdargs);
 if ($rate != '') {
-	$cmdargs .= "--rate $rate";
+	$cmdargs .= "--rate $rate ";
 }
 if ($samples != '') {
-	$cmdargs .= "--samples $samples";
+	$cmdargs .= "--samples $samples ";
 }
 if ($iterations != '') {
-	$cmdargs .= "--iterations $iterations";
+	$cmdargs .= "--iterations $iterations ";
+}
+if ($readall) {
+	$cmdargs .= "--readall";
 }
 my $SR = $sender->CreateProcess ('../lib/sender', $cmdargs);
 my $receiver_status = $RV->Spawn ();
