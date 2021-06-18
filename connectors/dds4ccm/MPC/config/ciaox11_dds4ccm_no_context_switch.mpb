@@ -1,0 +1,9 @@
+// --------------------------------------------------------------------
+// ciaox11_dds4ccm_no_context_switch.mpb
+//
+// Copyright (c) Remedy IT Expertise BV
+// --------------------------------------------------------------------
+
+feature(dds4ccm) {
+	macros   += CIAOX11_DDS4CCM_CONTEXT_SWITCH=0
+}
