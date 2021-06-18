@@ -139,7 +139,7 @@ private:
   uint32_t samples_{10000};
   uint32_t iterations_{10};
   ::DDS::DomainId_t domain_id_ {};
-  bool read_one_ {true};
+  bool read_one_ {false};
 
   bool already_publishing_ {};
 
@@ -329,7 +329,8 @@ TestExecutor::usage ()
     "\t--samples COUNT      number of samples to send each iteration (default 10000)" << std::endl <<
     "\t--iterations COUNT   number of iterations to run (default 10)" << std::endl <<
     "\t--domain DOMAINID    DDS domain ID (default $DDS4CCM_DEFAULT_DOMAIN_ID)" << std::endl <<
-    "\t--readall            read all available samples on data_available (default :readone)" << std::endl <<
+    "\t--readall            read all available samples on data_available" << std::endl <<
+    "\t--readone            read a single sample at a time on data_available (default :readall)" << std::endl <<
     "\t-h|--help            print this help message" << std::endl << std::endl;
   //X11_FUZZ: enable check_cout_cerr
 }
@@ -349,6 +350,7 @@ TestExecutor::parse_args (int argc, char * argv[])
   get_opts.long_option (ACE_TEXT("iterations"), ACE_Get_Opt::ARG_REQUIRED);
   get_opts.long_option (ACE_TEXT("domain"), ACE_Get_Opt::ARG_REQUIRED);
   get_opts.long_option (ACE_TEXT("readall"), ACE_Get_Opt::NO_ARG);
+  get_opts.long_option (ACE_TEXT("readone"), ACE_Get_Opt::NO_ARG);
   get_opts.long_option (ACE_TEXT("help"), ACE_Get_Opt::NO_ARG);
 
   int c {};
@@ -388,6 +390,11 @@ TestExecutor::parse_args (int argc, char * argv[])
                                ACE_TEXT("readall")) == 0)
       {
         this->read_one_ = false;
+      }
+      else if (ACE_OS::strcmp (get_opts.long_option (),
+                               ACE_TEXT("readone")) == 0)
+      {
+        this->read_one_ = true;
       }
       else
       {

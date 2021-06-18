@@ -30,7 +30,8 @@ sub print_help {
     "    --samples COUNT          number of samples to send each iteration (default 10000)\n" .
     "    --iterations COUNT       number of iterations to run (default 10)\n" .
     "    --domain ID              DDS Domain ID (default \$DDS4CCM_DEFAULT_DOMAIN_ID)\n" .
-    "    --readall                read all available samples on data_available (default :readone)\n\n";
+    "    --readall                read all available samples on data_available\n" .
+    "    --readone                read a single sample at a time on data_available (default :readall)\n\n";
 }
 
 # Parse Options
@@ -40,6 +41,7 @@ my $samples = '';
 my $iterations = '';
 my $domain_id = '';
 my $readall = 0;
+my $readone = 0;
 Getopt::Long::Configure('bundling', 'no_auto_abbrev');
 my $invalid_arguments = !GetOptions(
   'help|h' => \$help,
@@ -48,6 +50,7 @@ my $invalid_arguments = !GetOptions(
   'iterations=s' => \$iterations,
   'domain=s' => \$domain_id,
   'readall' => \$readall,
+  'readone' => \$readone,
 );
 if ($invalid_arguments || $help) {
   print_help($invalid_arguments ? *STDERR : *STDOUT);
@@ -77,7 +80,10 @@ if ($iterations != '') {
 	$cmdargs .= "--iterations $iterations ";
 }
 if ($readall) {
-	$cmdargs .= "--readall";
+	$cmdargs .= "--readall ";
+}
+if ($readone) {
+	$cmdargs .= "--readone ";
 }
 my $SR = $sender->CreateProcess ('../lib/sender', $cmdargs);
 my $receiver_status = $RV->Spawn ();
