@@ -27,6 +27,14 @@ namespace CIAOX11
   {
     class DefaultEventStrategyBase
     {
+    public:
+#if (CIAOX11_DDS4CCM_CONTEXT_SWITCH == 1)
+      using uses_context_switch = std::true_type;
+      static constexpr const char* context_switch_type = "reactor";
+#else
+      using uses_context_switch = std::false_type;
+      static constexpr const char* context_switch_type = nullptr;
+#endif
     protected:
       explicit DefaultEventStrategyBase (IDL::traits<Components::SessionContext>::ref_type ctx)
       {
@@ -46,6 +54,8 @@ namespace CIAOX11
             DDS4CCM_LOG_WARNING ("DefaultEventStrategyBase::" << "ctor" <<
                 " - unable to resolve ORB for reactor" );
           }
+#else
+        X11_UNUSED_ARG(ctx);
 #endif
       }
       DefaultEventStrategyBase (const DefaultEventStrategyBase&) = default;
