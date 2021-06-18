@@ -22,6 +22,8 @@ connector 'latency_data_noctxsw' do |conn|
   conn.gen_dir 'generated_code_noctxsw'
 end
 
+if BRIX11::CIAOX11.const_defined?(:ExF)
+
 connector 'latency_data_exf' do |conn|
   conn.idl %w{ latency_data.idl }
 
@@ -33,4 +35,6 @@ connector 'latency_data_exf' do |conn|
   end
   conn.use_exf true
   conn.gen_dir 'generated_code_exf'
+end
+
 end
