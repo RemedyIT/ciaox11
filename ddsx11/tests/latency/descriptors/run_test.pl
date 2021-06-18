@@ -1,6 +1,6 @@
 #---------------------------------------------------------------------
 # @file   run_test.pl
-# @author Martin Corino (mcorino@remedy.nl)
+# @author Martin Corino
 #
 # @copyright Copyright (c) Remedy IT Expertise BV
 #---------------------------------------------------------------------
