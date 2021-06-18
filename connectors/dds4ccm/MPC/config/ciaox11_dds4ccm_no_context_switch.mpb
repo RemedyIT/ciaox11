@@ -4,6 +4,7 @@
 // Copyright (c) Remedy IT Expertise BV
 // --------------------------------------------------------------------
 
+
 feature(dds4ccm) {
 	macros   += CIAOX11_DDS4CCM_CONTEXT_SWITCH=0
 }
