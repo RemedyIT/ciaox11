@@ -597,7 +597,8 @@ TestExecutor::tick ()
     // All messages send, stop timer.
     if (this->samples_ != 0 && this->number_of_msg_ >= this->samples_)
     {
-      if (this->iteration_nr_ >= (this->iterations_ - 1))
+      // iterate max (iterations_+1) times; ignoring the first iteration
+      if (this->iteration_nr_ >= this->iterations_)
       {
         ACE_Reactor::instance ()->cancel_timer(this->timer_id_);
         this->calc_results ();
@@ -663,6 +664,9 @@ TestExecutor::reset_results()
 void
 TestExecutor::calc_results (void)
 {
+  if (this->iteration_nr_ == 0)
+    return; // ignore first iteration
+
   // Sort all duration times.
   std::qsort(this->duration_times_.get (),
              this->count_,
@@ -687,19 +691,21 @@ TestExecutor::calc_results (void)
       (this->sigma_duration_squared_ / (double)this->count_) -
       (avg * avg));
 
-  this->iteration_results_[this->iteration_nr_].tv_avg_ = avg;
-  this->iteration_results_[this->iteration_nr_].sigma_duration_squared_ = this->sigma_duration_squared_;
-  this->iteration_results_[this->iteration_nr_].tv_min_ = this->tv_min_;
-  this->iteration_results_[this->iteration_nr_].tv_max_ = this->tv_max_;
-  this->iteration_results_[this->iteration_nr_].per50_ = this->duration_times_[per50-1];
-  this->iteration_results_[this->iteration_nr_].per90_ = this->duration_times_[per90-1];
-  this->iteration_results_[this->iteration_nr_].per99_ = this->duration_times_[per99-1];
-  this->iteration_results_[this->iteration_nr_].per9999_ = this->duration_times_[per9999-1];
+  uint32_t iteration_ix = this->iteration_nr_-1;
+
+  this->iteration_results_[iteration_ix].tv_avg_ = avg;
+  this->iteration_results_[iteration_ix].sigma_duration_squared_ = this->sigma_duration_squared_;
+  this->iteration_results_[iteration_ix].tv_min_ = this->tv_min_;
+  this->iteration_results_[iteration_ix].tv_max_ = this->tv_max_;
+  this->iteration_results_[iteration_ix].per50_ = this->duration_times_[per50-1];
+  this->iteration_results_[iteration_ix].per90_ = this->duration_times_[per90-1];
+  this->iteration_results_[iteration_ix].per99_ = this->duration_times_[per99-1];
+  this->iteration_results_[iteration_ix].per9999_ = this->duration_times_[per9999-1];
 
   // Show values as float, in order to be comparable with RTI performance test.
   if (this->count_ > 0)
   {
-    if (this->iteration_nr_ == 0)
+    if (iteration_ix == 0)
     {
       DDSX11_TEST_INFO << std::endl <<
                            "NO, we're not using a threadswitch between DDS and DDSX11" <<
@@ -731,7 +737,7 @@ TestExecutor::calc_results (void)
         std::setw(9) << std::fixed << std::setprecision(1) << (double)this->duration_times_[per9999-1] <<
         std::setw(9) << std::fixed << std::setprecision(1) << (double)this->tv_max_ << std::endl;
 
-      if (this->iterations_ > 1 && this->iteration_nr_ >= (this->iterations_ - 1))
+      if (this->iterations_ > 1 && this->iteration_nr_ >= this->iterations_)
       {
         double total_avg {}, total_sigma {};
         double avg_per50 {}, avg_per90 {}, avg_per99 {}, avg_per9999 {};
