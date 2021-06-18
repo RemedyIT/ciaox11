@@ -37,7 +37,7 @@ module AxciomaPC
         end
        	def disable_context_switch
        	  @port_type.disable_context_switch
-   		end
+   		  end
       end
 
       CONFIGURATOR = Port::Configurator
