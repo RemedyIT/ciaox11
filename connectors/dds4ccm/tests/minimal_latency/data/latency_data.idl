@@ -13,7 +13,7 @@
 
 module Test
 {
-  struct LatencyData 
+  struct LatencyData
   {
     long seq_num;
   }; //@TopLevel()
