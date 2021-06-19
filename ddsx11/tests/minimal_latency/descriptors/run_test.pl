@@ -26,7 +26,7 @@ sub print_help {
     "Options:\n" .
     "    --help | -h              Display this help\n" .
 
-	"    --rate RATE              timer frequency in microseconds (default 100)\n" .
+  "    --rate RATE              timer frequency in microseconds (default 100)\n" .
     "    --samples COUNT          number of samples to send each iteration (default 10000)\n" .
     "    --iterations COUNT       number of iterations to run (default 10)\n" .
     "    --domain ID              DDS Domain ID (default \$DDS4CCM_DEFAULT_DOMAIN_ID)\n" .
@@ -67,23 +67,23 @@ $sender->DeleteFile ('TEST_MANUAL_EVENT');
 
 my $cmdargs = '';
 if ($domain_id != '') {
-	$cmdargs .= "--domain $domain_id ";
+  $cmdargs .= "--domain $domain_id ";
 }
 my $RV = $receiver->CreateProcess ('../lib/receiver', $cmdargs);
 if ($rate != '') {
-	$cmdargs .= "--rate $rate ";
+  $cmdargs .= "--rate $rate ";
 }
 if ($samples != '') {
-	$cmdargs .= "--samples $samples ";
+  $cmdargs .= "--samples $samples ";
 }
 if ($iterations != '') {
-	$cmdargs .= "--iterations $iterations ";
+  $cmdargs .= "--iterations $iterations ";
 }
 if ($readall) {
-	$cmdargs .= "--readall ";
+  $cmdargs .= "--readall ";
 }
 if ($readone) {
-	$cmdargs .= "--readone ";
+  $cmdargs .= "--readone ";
 }
 my $SR = $sender->CreateProcess ('../lib/sender', $cmdargs);
 my $receiver_status = $RV->Spawn ();

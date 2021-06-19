@@ -17,7 +17,7 @@ typedef sequence<octet, MAX_DATA_SEQUENCE_LENGTH> BD_oct_seq;
 
 module Test
 {
-  struct LatencyData 
+  struct LatencyData
   {
     long seq_num;
     BD_oct_seq data;

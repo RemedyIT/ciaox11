@@ -227,13 +227,13 @@ foreach $file (@files) {
 
     $em_running = 1;
 
-	# wait until the FINISHED file appears or the EM terminates
+  # wait until the FINISHED file appears or the EM terminates
     print "Waiting for task to complete\n";
-	do {
-	    if ($tg_domain_dep_man->WaitForFileTimed ($finish_file, 1) != -1) {
-	  		$finished = 1;  	
-    	}
-	} while ((!$finished) and ($EM->TimedWait (1) == -1));
+  do {
+      if ($tg_domain_dep_man->WaitForFileTimed ($finish_file, 1) != -1) {
+        $finished = 1;
+      }
+  } while ((!$finished) and ($EM->TimedWait (1) == -1));
 
     # Invoke executor manager - stop the application -.
     print "Invoking executor - stop the application \n";
