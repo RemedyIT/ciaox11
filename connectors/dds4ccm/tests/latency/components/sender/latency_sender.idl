@@ -26,6 +26,8 @@ module Test
     attribute unsigned long samples;
     attribute unsigned long sample_size;
     attribute unsigned long iterations;
+    attribute boolean uses_context_switch;
+    attribute string context_switch_type;
   };
 };
 

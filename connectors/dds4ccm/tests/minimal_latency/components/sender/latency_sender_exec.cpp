@@ -328,6 +328,7 @@ namespace Test_Sender_Impl
     : rate_(100)
     , samples_ (10000)
     , iterations_ (10)
+    , uses_context_switch_ (true)
   {
   }
   //@@{__RIDL_REGEN_MARKER__} - END : Test_Sender_Impl::Sender_exec_i[ctor]
@@ -521,15 +522,14 @@ namespace Test_Sender_Impl
     {
       if (iteration_ix == 0)
       {
-        #if (CIAOX11_DDS4CCM_CONTEXT_SWITCH==1)
+        if (this->uses_context_switch_)
           DDS4CCM_TEST_INFO << std::endl <<
-                               "YES, we're using a threadswitch between DDS and CCM" <<
+                               "YES, we're using a threadswitch (" << this->context_switch_type_ << ") between DDS and CCM" <<
                                std::endl;
-        #else
+        else
           DDS4CCM_TEST_INFO << std::endl <<
                                "NO, we're not using a threadswitch between DDS and CCM" <<
                                std::endl;
-        #endif
         DDS4CCM_TEST_INFO <<
          "Collecting statistics on " << this->count_ << " samples of a single long value" << std::endl <<
          "at a rate of 1 sample per " << this->rate_ << "usec." << std::endl <<
@@ -883,6 +883,40 @@ namespace Test_Sender_Impl
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::Sender_exec_i::iterations[setter]
     this->iterations_ = iterations;
     //@@{__RIDL_REGEN_MARKER__} - END : Test_Sender_Impl::Sender_exec_i::iterations[setter]
+  }
+
+  bool
+  Sender_exec_i::uses_context_switch ()
+  {
+    //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::Sender_exec_i::uses_context_switch[getter]
+    return this->uses_context_switch_;
+    //@@{__RIDL_REGEN_MARKER__} - END : Test_Sender_Impl::Sender_exec_i::uses_context_switch[getter]
+  }
+
+  void
+  Sender_exec_i::uses_context_switch (
+      bool uses_context_switch)
+  {
+    //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::Sender_exec_i::uses_context_switch[setter]
+    this->uses_context_switch_ = uses_context_switch;
+    //@@{__RIDL_REGEN_MARKER__} - END : Test_Sender_Impl::Sender_exec_i::uses_context_switch[setter]
+  }
+
+  std::string
+  Sender_exec_i::context_switch_type ()
+  {
+    //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::Sender_exec_i::context_switch_type[getter]
+    return this->context_switch_type_;
+    //@@{__RIDL_REGEN_MARKER__} - END : Test_Sender_Impl::Sender_exec_i::context_switch_type[getter]
+  }
+
+  void
+  Sender_exec_i::context_switch_type (
+      const std::string& context_switch_type)
+  {
+    //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::Sender_exec_i::context_switch_type[setter]
+    this->context_switch_type_ = context_switch_type;
+    //@@{__RIDL_REGEN_MARKER__} - END : Test_Sender_Impl::Sender_exec_i::context_switch_type[setter]
   }
 
   /// Operations from Components::SessionComponent

@@ -287,6 +287,22 @@ namespace Test_Sender_Impl
 
     void
     iterations (uint32_t iterations) override;
+
+    /// Attribute uses_context_switch
+
+    bool
+    uses_context_switch () override;
+
+    void
+    uses_context_switch (bool uses_context_switch) override;
+
+    /// Attribute context_switch_type
+
+    std::string
+    context_switch_type () override;
+
+    void
+    context_switch_type (const std::string& context_switch_type) override;
     //@}
 
     /** @name Session component operations */
@@ -334,6 +350,10 @@ namespace Test_Sender_Impl
     uint32_t sample_size_{};
     /// Class member storing value of iterations attribute
     uint32_t iterations_{};
+    /// Class member storing value of uses_context_switch attribute
+    bool uses_context_switch_{};
+    /// Class member storing value of context_switch_type attribute
+    std::string context_switch_type_{};
     //@}
 
     /** @name Component facets. */

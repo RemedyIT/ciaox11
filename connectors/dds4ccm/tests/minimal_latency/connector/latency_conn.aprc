@@ -9,6 +9,19 @@ connector 'latency_data' do |conn|
   end
 end
 
+connector 'latency_data_noctxsw' do |conn|
+  conn.idl %w{ latency_data.idl }
+
+  conn.port_type :dds4ccm do |tp|
+    tp.topic 'Test::LatencyData'
+    # use default DDS vendor
+    # tp.middleware :ndds
+    tp.topic_interface_suffix 'Connector'
+    tp.disable_context_switch
+  end
+  conn.gen_dir 'generated_code_noctxsw'
+end
+
 if BRIX11::CIAOX11.const_defined?(:ExF)
 
 connector 'latency_data_exf' do |conn|
