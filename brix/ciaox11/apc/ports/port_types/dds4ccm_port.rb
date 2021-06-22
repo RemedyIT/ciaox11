@@ -35,6 +35,9 @@ module AxciomaPC
         def middleware(name)
           @port_type.middleware([name])
         end
+        def disable_context_switch
+          @port_type.disable_context_switch
+        end
       end
 
       CONFIGURATOR = Port::Configurator
@@ -127,6 +130,14 @@ module AxciomaPC
        end.compact unless names.empty?
        # if none specified build all configured/available implementations
        @middleware || [Port.middleware_implementations.first]
+      end
+
+      def disable_context_switch
+        @context_switch_disabled = true
+      end
+
+      def context_switch_disabled?
+        !!@context_switch_disabled
       end
 
       def topic
