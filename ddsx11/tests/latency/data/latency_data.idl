@@ -1,0 +1,26 @@
+/**
+ * @file latency_data.idl
+
+ * @author Martin Corino (mcorino@remedy.nl)
+ *
+ * @brief   Data IDL for the latency test
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ */
+#ifndef LATENCY_DATA_IDL
+#define LATENCY_DATA_IDL
+
+const short MAX_DATA_SEQUENCE_LENGTH = 8192;
+
+typedef sequence<octet, MAX_DATA_SEQUENCE_LENGTH> BD_oct_seq;
+
+module Test
+{
+  struct LatencyData
+  {
+    long seq_num;
+    BD_oct_seq data;
+  }; //@TopLevel()
+};
+
+#endif // LATENCY_DATA_IDL

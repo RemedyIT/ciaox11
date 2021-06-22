@@ -10,3 +10,5 @@ ddsx11/examples/shapes/descriptors/run_test.pl: OPENDDS
 ddsx11/tests/logger_backend/run_test.pl: OPENDDS
 ddsx11/tests/log_formatters/run_test.pl: OPENDDS
 ddsx11/tests/type_support/run_test.pl: OPENDDS
+ddsx11/tests/latency/run_test.pl: OPENDDS
+ddsx11/tests/minimal_latency/run_test.pl: OPENDDS
