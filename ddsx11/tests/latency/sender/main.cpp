@@ -703,10 +703,10 @@ TestExecutor::calc_results (void)
   this->iteration_results_[iteration_ix].sigma_duration_squared_ = this->sigma_duration_squared_;
   this->iteration_results_[iteration_ix].tv_min_ = this->tv_min_;
   this->iteration_results_[iteration_ix].tv_max_ = this->tv_max_;
-  this->iteration_results_[iteration_ix].per50_ = this->duration_times_[per50-1];
-  this->iteration_results_[iteration_ix].per90_ = this->duration_times_[per90-1];
-  this->iteration_results_[iteration_ix].per99_ = this->duration_times_[per99-1];
-  this->iteration_results_[iteration_ix].per9999_ = this->duration_times_[per9999-1];
+  this->iteration_results_[iteration_ix].per50_ = (double)this->duration_times_[per50-1];
+  this->iteration_results_[iteration_ix].per90_ = (double)this->duration_times_[per90-1];
+  this->iteration_results_[iteration_ix].per99_ = (double)this->duration_times_[per99-1];
+  this->iteration_results_[iteration_ix].per9999_ = (double)this->duration_times_[per9999-1];
 
   // Show values as float, in order to be comparable with RTI performance test.
   if (this->count_ > 0)
