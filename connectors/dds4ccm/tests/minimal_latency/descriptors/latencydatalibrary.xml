@@ -13,7 +13,8 @@
         <reliability>
           <kind>BEST_EFFORT_RELIABILITY_QOS</kind>
         </reliability>
-        <history><kind>DDS_KEEP_LAST_HISTORY_QOS</kind>
+        <history>
+          <kind>KEEP_LAST_HISTORY_QOS</kind>
           <depth>1</depth>
         </history>
         <durability>
@@ -32,7 +33,7 @@
           <kind>BEST_EFFORT_RELIABILITY_QOS</kind>
         </reliability>
         <history>
-          <kind>DDS_KEEP_LAST_HISTORY_QOS</kind>
+          <kind>KEEP_LAST_HISTORY_QOS</kind>
           <depth>1</depth>
         </history>
         <resource_limits>
