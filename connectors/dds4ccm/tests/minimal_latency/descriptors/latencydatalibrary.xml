@@ -34,6 +34,7 @@
         </reliability>
         <history>
           <kind>KEEP_LAST_HISTORY_QOS</kind>
+          <depth>1</depth>
         </history>
         <durability>
           <kind>VOLATILE_DURABILITY_QOS</kind>
