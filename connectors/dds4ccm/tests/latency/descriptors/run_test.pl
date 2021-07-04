@@ -17,7 +17,8 @@ $TAO_ROOT = "$ENV{'TAO_ROOT'}";
 $DANCEX11_ROOT = "$ENV{'DANCEX11_ROOT'}";
 $DANCEX11_BIN_FOLDER = $ENV{'DANCEX11_BIN_FOLDER'} || 'bin';
 
-$sleep_time = 120;
+$max_sleep_time = 360;
+$sleep_time = 0;
 
 $nr_daemon = 2;
 @ports = ( 60001, 60002);
@@ -227,13 +228,20 @@ foreach $file (@files) {
 
     $em_running = 1;
 
-  # wait until the FINISHED file appears or the EM terminates
+    # wait until the FINISHED file appears or the EM terminates
     print "Waiting for task to complete\n";
-  do {
+    do {
       if ($tg_domain_dep_man->WaitForFileTimed ($finish_file, 1) != -1) {
         $finished = 1;
+      } else {
+        $sleep_time++;
       }
-  } while ((!$finished) and ($EM->TimedWait (1) == -1));
+      if ($sleep_time == $max_sleep_time) {
+        print STDERR "ERROR: test took more than $max_sleep_time seconds\n";
+        kill_open_processes ();
+        exit 1;
+      }
+    } while ((!$finished) and ($EM->TimedWait (1) == -1));
 
     # Invoke executor manager - stop the application -.
     print "Invoking executor - stop the application \n";
