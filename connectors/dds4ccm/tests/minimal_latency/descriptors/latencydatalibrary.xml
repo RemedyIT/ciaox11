@@ -13,13 +13,13 @@
         <reliability>
           <kind>BEST_EFFORT_RELIABILITY_QOS</kind>
         </reliability>
+        <durability>
+          <kind>VOLATILE_DURABILITY_QOS</kind>
+        </durability>
         <history>
           <kind>KEEP_LAST_HISTORY_QOS</kind>
           <depth>1</depth>
         </history>
-        <durability>
-          <kind>VOLATILE_DURABILITY_QOS</kind>
-        </durability>
         <resource_limits>
           <max_instances>1</max_instances>
           <initial_instances>1</initial_instances>
@@ -34,8 +34,10 @@
         </reliability>
         <history>
           <kind>KEEP_LAST_HISTORY_QOS</kind>
-          <depth>1</depth>
         </history>
+        <durability>
+          <kind>VOLATILE_DURABILITY_QOS</kind>
+        </durability>
         <resource_limits>
           <initial_samples>100</initial_samples>
           <initial_instances>1</initial_instances>
@@ -43,9 +45,6 @@
           <max_instances>1</max_instances>
           <max_samples_per_instance>LENGTH_UNLIMITED</max_samples_per_instance>
         </resource_limits>
-        <durability>
-          <kind>VOLATILE_DURABILITY_QOS</kind>
-        </durability>
       </datareader_qos>
     </qos_profile>
 </dds>
