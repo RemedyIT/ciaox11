@@ -48,7 +48,7 @@ namespace subscriber_comp_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : subscriber_comp_Impl::info_out_data_listener_exec_i[ctor]
 
     /// Destructor
-    virtual ~info_out_data_listener_exec_i ();
+    ~info_out_data_listener_exec_i () override;
 
     /** @name Operations from ::ShapeTypeInterface::CCM_Listener */
     //@{
@@ -104,7 +104,7 @@ namespace subscriber_comp_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : subscriber_comp_Impl::info_out_status_exec_i[ctor]
 
     /// Destructor
-    virtual ~info_out_status_exec_i ();
+    ~info_out_status_exec_i () override;
 
     /** @name Operations from ::CCM_DDS::CCM_PortStatusListener */
     //@{
@@ -160,7 +160,7 @@ namespace subscriber_comp_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : subscriber_comp_Impl::info_read_status_exec_i[ctor]
 
     /// Destructor
-    virtual ~info_read_status_exec_i ();
+    ~info_read_status_exec_i () override;
 
     /** @name Operations from ::CCM_DDS::CCM_PortStatusListener */
     //@{
@@ -216,7 +216,7 @@ namespace subscriber_comp_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : subscriber_comp_Impl::info_get_status_exec_i[ctor]
 
     /// Destructor
-    virtual ~info_get_status_exec_i ();
+    ~info_get_status_exec_i () override;
 
     /** @name Operations from ::CCM_DDS::CCM_PortStatusListener */
     //@{
@@ -272,7 +272,7 @@ namespace subscriber_comp_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : subscriber_comp_Impl::info_state_data_listener_exec_i[ctor]
 
     /// Destructor
-    virtual ~info_state_data_listener_exec_i ();
+    ~info_state_data_listener_exec_i () override;
 
     /** @name Operations from ::ShapeTypeInterface::CCM_StateListener */
     //@{
@@ -338,7 +338,7 @@ namespace subscriber_comp_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : subscriber_comp_Impl::info_state_status_exec_i[ctor]
 
     /// Destructor
-    virtual ~info_state_status_exec_i ();
+    ~info_state_status_exec_i () override;
 
     /** @name Operations from ::CCM_DDS::CCM_PortStatusListener */
     //@{
@@ -390,7 +390,7 @@ namespace subscriber_comp_Impl
     subscriber_comp_exec_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : subscriber_comp_Impl::subscriber_comp_exec_i[ctor]
     /// Destructor
-    virtual ~subscriber_comp_exec_i ();
+    ~subscriber_comp_exec_i () override;
 
     /** @name Component port operations. */
     //@{
