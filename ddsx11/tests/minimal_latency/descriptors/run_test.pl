@@ -25,8 +25,7 @@ sub print_help {
     "\n" .
     "Options:\n" .
     "    --help | -h              Display this help\n" .
-
-  "    --rate RATE              timer frequency in microseconds (default 100)\n" .
+    "    --rate RATE              timer frequency in microseconds (default 100)\n" .
     "    --samples COUNT          number of samples to send each iteration (default 10000)\n" .
     "    --iterations COUNT       number of iterations to run (default 10)\n" .
     "    --domain ID              DDS Domain ID (default \$DDS4CCM_DEFAULT_DOMAIN_ID)\n" .
