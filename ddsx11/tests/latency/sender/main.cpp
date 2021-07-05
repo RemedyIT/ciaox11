@@ -15,6 +15,7 @@
 #include "ace/High_Res_Timer.h"
 #include "ace/Get_Opt.h"
 #include "ace/Manual_Event.h"
+#include "ace/OS_NS_string.h"
 #include <iostream>
 #include <thread>
 #include <iomanip>

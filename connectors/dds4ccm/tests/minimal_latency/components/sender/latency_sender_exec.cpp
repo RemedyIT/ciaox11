@@ -477,7 +477,7 @@ namespace Test_Sender_Impl
   }
 
   void
-  Sender_exec_i::calc_results (void)
+  Sender_exec_i::calc_results ()
   {
     if (this->iteration_nr_ == 0)
       return; // ignore first iteration
@@ -652,7 +652,7 @@ namespace Test_Sender_Impl
   }
 
   void
-  Sender_exec_i::calculate_clock_overhead (void)
+  Sender_exec_i::calculate_clock_overhead ()
   {
     int num_of_loops_clock = 320;
     uint64_t begin_time = 0;
@@ -667,7 +667,7 @@ namespace Test_Sender_Impl
   }
 
   void
-  Sender_exec_i::init_values (void)
+  Sender_exec_i::init_values ()
   {
     this->duration_times_.reset (new uint64_t[this->samples_]);
     this->iteration_results_.reset (new IterationResult[this->iterations_]);
