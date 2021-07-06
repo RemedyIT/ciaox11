@@ -56,7 +56,7 @@ namespace CFT_EL_Test_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : CFT_EL_Test_Receiver_Impl::info_listen_data_listener_exec_i[ctor]
 
     /// Destructor
-    virtual ~info_listen_data_listener_exec_i ();
+    ~info_listen_data_listener_exec_i () override;
 
     /** @name Operations from ::CommonTestConnector::CCM_Listener */
     //@{
@@ -113,7 +113,7 @@ namespace CFT_EL_Test_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : CFT_EL_Test_Receiver_Impl::info_listen_status_exec_i[ctor]
 
     /// Destructor
-    virtual ~info_listen_status_exec_i ();
+    ~info_listen_status_exec_i () override;
 
     /** @name Operations from ::CCM_DDS::CCM_PortStatusListener */
     //@{
@@ -165,7 +165,7 @@ namespace CFT_EL_Test_Receiver_Impl
     Receiver_exec_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : CFT_EL_Test_Receiver_Impl::Receiver_exec_i[ctor]
     /// Destructor
-    virtual ~Receiver_exec_i ();
+    ~Receiver_exec_i () override;
 
     /** @name Component port operations. */
     //@{

@@ -51,7 +51,7 @@ namespace Getter_Test_Sender_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Getter_Test_Sender_Impl::info_out_connector_status_exec_i[ctor]
 
     /// Destructor
-    virtual ~info_out_connector_status_exec_i ();
+    ~info_out_connector_status_exec_i () override;
 
     /** @name Operations from ::CCM_DDS::CCM_ConnectorStatusListener */
     //@{
@@ -124,7 +124,7 @@ namespace Getter_Test_Sender_Impl
     Sender_exec_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : Getter_Test_Sender_Impl::Sender_exec_i[ctor]
     /// Destructor
-    virtual ~Sender_exec_i ();
+    ~Sender_exec_i () override;
 
     /** @name Component port operations. */
     //@{

@@ -47,7 +47,7 @@ namespace CoherentWriter_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : CoherentWriter_Receiver_Impl::info_get_status_exec_i[ctor]
 
     /// Destructor
-    virtual ~info_get_status_exec_i ();
+    ~info_get_status_exec_i () override;
 
     /** @name Operations from ::CCM_DDS::CCM_PortStatusListener */
     //@{
@@ -104,7 +104,7 @@ namespace CoherentWriter_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : CoherentWriter_Receiver_Impl::start_reading_exec_i[ctor]
 
     /// Destructor
-    virtual ~start_reading_exec_i ();
+    ~start_reading_exec_i () override;
 
     /** @name Operations from CCM_ReaderStarter */
     //@{
@@ -158,7 +158,7 @@ namespace CoherentWriter_Receiver_Impl
     Receiver_exec_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : CoherentWriter_Receiver_Impl::Receiver_exec_i[ctor]
     /// Destructor
-    virtual ~Receiver_exec_i ();
+    ~Receiver_exec_i () override;
 
     /** @name Component port operations. */
     //@{
