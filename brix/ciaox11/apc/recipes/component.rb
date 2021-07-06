@@ -300,6 +300,8 @@ module AxciomaPC
       # Until now all components have the above mentioned mpc projects
       # Maybe in the future this must move to interaction specific component handling
 
+      @compdef.setup_projects if @compdef
+
       # handle interaction specific project setup for each (unique)
       # collected transaction type
       interaction_types.each do |int_type|

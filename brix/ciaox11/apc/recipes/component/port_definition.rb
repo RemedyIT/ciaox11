@@ -72,6 +72,10 @@ module AxciomaPC
         ## noop
       end
 
+      def setup_projects
+        ## noop
+      end
+
       def timed_trigger
         self.extend TimedTriggerPort
         @config[:kind] = :timed_trigger
