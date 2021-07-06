@@ -47,7 +47,7 @@ namespace publisher_comp_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : publisher_comp_Impl::connector_status_ShapeType_exec_i[ctor]
 
     /// Destructor
-    virtual ~connector_status_ShapeType_exec_i ();
+    ~connector_status_ShapeType_exec_i () override;
 
     /** @name Operations from ::CCM_DDS::CCM_ConnectorStatusListener */
     //@{
@@ -119,7 +119,7 @@ namespace publisher_comp_Impl
     publisher_comp_exec_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : publisher_comp_Impl::publisher_comp_exec_i[ctor]
     /// Destructor
-    virtual ~publisher_comp_exec_i ();
+    ~publisher_comp_exec_i () override;
 
     /** @name Component port operations. */
     //@{

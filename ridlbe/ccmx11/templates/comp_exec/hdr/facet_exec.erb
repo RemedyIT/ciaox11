@@ -9,7 +9,7 @@ public:
 % visit_facet_constructor
 
   /// Destructor
-  virtual ~<%= lem_name %>_exec_i ();
+  ~<%= lem_name %>_exec_i () override;
 
 %if interface_type.all_operations.size > 0
   /** @name Operations from <%= interface_type.scoped_ccm_name %> */

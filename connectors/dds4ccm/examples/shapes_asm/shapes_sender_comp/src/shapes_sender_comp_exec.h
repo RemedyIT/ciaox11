@@ -52,7 +52,7 @@ namespace Shapes_Sender_comp_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Shapes_Sender_comp_Impl::control_exec_i[ctor]
 
     /// Destructor
-    virtual ~control_exec_i ();
+    ~control_exec_i () override;
 
     /** @name Operations from ::Shapes::CCM_Control_obj */
     //@{
@@ -103,7 +103,7 @@ namespace Shapes_Sender_comp_Impl
     Sender_comp_exec_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : Shapes_Sender_comp_Impl::Sender_comp_exec_i[ctor]
     /// Destructor
-    virtual ~Sender_comp_exec_i ();
+    ~Sender_comp_exec_i () override;
 
     /** @name Component port operations. */
     //@{

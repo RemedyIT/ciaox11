@@ -20,7 +20,7 @@ namespace <%= executor_cxx_namespace %>
     <%= lem_name %>_Context (IDL::traits<CIAOX11::Service_Registry>::ref_type svcreg, std::string ins_name);
 
     /// Destructor
-    virtual ~<%= lem_name %>_Context () = default;
+    ~<%= lem_name %>_Context () override = default;
 
     /// Retrieve the service registry
     IDL::traits<CIAOX11::Service_Registry>::ref_type the_service_registry () override;
@@ -130,7 +130,7 @@ namespace <%= executor_cxx_namespace %>
       IDL::traits<<%= lem_name %>_Context>::ref_type component_context);
 
     /// Destructor
-    virtual ~<%= lem_name %>_ExecutorLocator () = default;
+    ~<%= lem_name %>_ExecutorLocator () override = default;
 
     /**
      * Configure the component

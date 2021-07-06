@@ -48,7 +48,7 @@ namespace Hello_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::do_my_B_exec_i[ctor]
 
     /// Destructor
-    virtual ~do_my_B_exec_i ();
+    ~do_my_B_exec_i () override;
 
     /** @name Operations from ::Hello::CCM_B */
     //@{
@@ -99,7 +99,7 @@ namespace Hello_Receiver_Impl
     Receiver_exec_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::Receiver_exec_i[ctor]
     /// Destructor
-    virtual ~Receiver_exec_i ();
+    ~Receiver_exec_i () override;
 
     /** @name Component port operations. */
     //@{

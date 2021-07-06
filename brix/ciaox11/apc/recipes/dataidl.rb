@@ -206,7 +206,7 @@ module AxciomaPC
         end
       end
 
-      # process colected dependencies for included IDL
+      # process collected dependencies for included IDL
       mpc_file[:idl_gen].add_dependencies(project_dependencies, :idl_gen)
       if mpc_stub_proj = mpc_file[:stub]
         mpc_stub_proj.add_dependencies(project_dependencies, :stub)

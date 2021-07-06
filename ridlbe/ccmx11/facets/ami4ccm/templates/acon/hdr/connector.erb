@@ -21,7 +21,7 @@ namespace <%= executor_cxx_namespace %>
     /// Constructor
     <%= lem_name %>_conn_i () = default;
     /// Destructor
-    virtual ~<%= lem_name %>_conn_i () = default;
+    ~<%= lem_name %>_conn_i () override = default;
 % if all_ports.size > 0
 
     /** @name Component port operations. */
