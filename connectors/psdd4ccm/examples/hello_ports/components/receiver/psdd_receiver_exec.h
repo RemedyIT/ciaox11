@@ -51,7 +51,7 @@ namespace Test_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Test_Receiver_Impl::hello_sub_data_listener_exec_i[ctor]
 
     /// Destructor
-    virtual ~hello_sub_data_listener_exec_i ();
+    ~hello_sub_data_listener_exec_i () override;
 
     /** @name Operations from ::Test::Hello::CCM_Listener */
     //@{
@@ -126,7 +126,7 @@ namespace Test_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Test_Receiver_Impl::msg_sub_data_listener_exec_i[ctor]
 
     /// Destructor
-    virtual ~msg_sub_data_listener_exec_i ();
+    ~msg_sub_data_listener_exec_i () override;
 
     /** @name Operations from ::Test::Msg::CCM_Listener */
     //@{
@@ -196,7 +196,7 @@ namespace Test_Receiver_Impl
     Receiver_exec_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : Test_Receiver_Impl::Receiver_exec_i[ctor]
     /// Destructor
-    virtual ~Receiver_exec_i ();
+    ~Receiver_exec_i () override;
 
     /** @name Component port operations. */
     //@{

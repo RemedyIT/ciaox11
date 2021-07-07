@@ -44,7 +44,7 @@ namespace Hello_Sender_Impl
   Sender_exec_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Sender_Impl::Sender_exec_i[ctor]
     /// Destructor
-    virtual ~Sender_exec_i ();
+    ~Sender_exec_i () override;
 
     /** @name Component port operations. */
     //@{

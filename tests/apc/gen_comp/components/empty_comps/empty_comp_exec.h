@@ -44,7 +44,7 @@ namespace EmptyComp_Impl
     EmptyComp_exec_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : EmptyComp_Impl::EmptyComp_exec_i[ctor]
     /// Destructor
-    virtual ~EmptyComp_exec_i ();
+    ~EmptyComp_exec_i () override;
 
     /** @name Session component operations */
     //@{

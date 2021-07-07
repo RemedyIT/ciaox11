@@ -47,7 +47,7 @@ namespace Hello_MyBaseEvent_Impl
     MyBaseEvent_exec_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_MyBaseEvent_Impl::MyBaseEvent_exec_i[ctor]
     /// Destructor
-    virtual ~MyBaseEvent_exec_i ();
+    ~MyBaseEvent_exec_i () override;
 
     /** @name Component port operations. */
     //@{
