@@ -47,7 +47,7 @@ namespace TypeNameComponent_Impl
     TypeNameComponent_exec_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : TypeNameComponent_Impl::TypeNameComponent_exec_i[ctor]
     /// Destructor
-    virtual ~TypeNameComponent_exec_i ();
+    ~TypeNameComponent_exec_i () override;
 
     /** @name Component port operations. */
     //@{

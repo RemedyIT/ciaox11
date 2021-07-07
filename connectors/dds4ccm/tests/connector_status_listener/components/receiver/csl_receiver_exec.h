@@ -53,7 +53,7 @@ namespace CSL_Test_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : CSL_Test_Receiver_Impl::info_get_status_exec_i[ctor]
 
     /// Destructor
-    virtual ~info_get_status_exec_i ();
+    ~info_get_status_exec_i () override;
 
     /** @name Operations from ::CCM_DDS::CCM_PortStatusListener */
     //@{
@@ -124,7 +124,7 @@ namespace CSL_Test_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : CSL_Test_Receiver_Impl::connector_status_receiver_exec_i[ctor]
 
     /// Destructor
-    virtual ~connector_status_receiver_exec_i ();
+    ~connector_status_receiver_exec_i () override;
 
     /** @name Operations from ::CCM_DDS::CCM_ConnectorStatusListener */
     //@{
@@ -210,7 +210,7 @@ namespace CSL_Test_Receiver_Impl
     Receiver_exec_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : CSL_Test_Receiver_Impl::Receiver_exec_i[ctor]
     /// Destructor
-    virtual ~Receiver_exec_i ();
+    ~Receiver_exec_i () override;
 
     /** @name Component port operations. */
     //@{
