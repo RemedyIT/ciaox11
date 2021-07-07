@@ -149,7 +149,13 @@ module AxciomaPC
         end
       end
       protected :extra_listener_port
+
+      def setup_projects
+        BRIX11.log(4, "[%s] setup_projects", self)
+        @interface_recipe.setup_project_interaction(@interface_recipe.idl_files.values.first, :sev)
+      end
     end
+
     module WriterPort
       def verify
         BRIX11.log(4, "[%s] verify", self)
