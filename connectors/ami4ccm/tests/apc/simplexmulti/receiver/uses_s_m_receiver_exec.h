@@ -51,7 +51,7 @@ namespace UsesSM_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : UsesSM_Receiver_Impl::do_my_one_exec_i[ctor]
 
     /// Destructor
-    virtual ~do_my_one_exec_i ();
+    ~do_my_one_exec_i () override;
 
     /** @name Operations from ::UsesSM::CCM_One */
     //@{
@@ -107,7 +107,7 @@ namespace UsesSM_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : UsesSM_Receiver_Impl::do_my_two_exec_i[ctor]
 
     /// Destructor
-    virtual ~do_my_two_exec_i ();
+    ~do_my_two_exec_i () override;
 
     /** @name Operations from ::UsesSM::CCM_Two */
     //@{
@@ -157,7 +157,7 @@ namespace UsesSM_Receiver_Impl
     Receiver_exec_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : UsesSM_Receiver_Impl::Receiver_exec_i[ctor]
     /// Destructor
-    virtual ~Receiver_exec_i ();
+    ~Receiver_exec_i () override;
 
     /** @name Component port operations. */
     //@{

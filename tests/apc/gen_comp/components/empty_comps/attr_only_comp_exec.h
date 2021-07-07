@@ -44,7 +44,7 @@ namespace AttrComp_Impl
     AttrComp_exec_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : AttrComp_Impl::AttrComp_exec_i[ctor]
     /// Destructor
-    virtual ~AttrComp_exec_i ();
+    ~AttrComp_exec_i () override;
 
     /** @name Supported attributes. */
     //@{

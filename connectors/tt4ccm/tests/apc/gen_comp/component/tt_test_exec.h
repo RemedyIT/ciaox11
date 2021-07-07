@@ -45,7 +45,7 @@ namespace Test_TT_Tester_Impl
     TT_Tester_exec_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : Test_TT_Tester_Impl::TT_Tester_exec_i[ctor]
     /// Destructor
-    virtual ~TT_Tester_exec_i ();
+    ~TT_Tester_exec_i () override;
 
     /** @name Component port operations. */
     //@{

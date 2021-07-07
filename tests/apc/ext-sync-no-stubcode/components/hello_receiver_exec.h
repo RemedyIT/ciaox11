@@ -48,7 +48,7 @@ namespace Test_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Test_Receiver_Impl::do_myfoo_exec_i[ctor]
 
     /// Destructor
-    virtual ~do_myfoo_exec_i ();
+    ~do_myfoo_exec_i () override;
 
     /** @name Operations from ::Hello::CCM_MyFoo */
     //@{
@@ -95,7 +95,7 @@ namespace Test_Receiver_Impl
     Receiver_exec_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : Test_Receiver_Impl::Receiver_exec_i[ctor]
     /// Destructor
-    virtual ~Receiver_exec_i ();
+    ~Receiver_exec_i () override;
 
     /** @name Component port operations. */
     //@{

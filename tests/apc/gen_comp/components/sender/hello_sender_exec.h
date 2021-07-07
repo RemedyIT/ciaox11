@@ -59,7 +59,7 @@ namespace Hello_Sender_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Sender_Impl::run_my_foo_prov_exec_i[ctor]
 
     /// Destructor
-    virtual ~run_my_foo_prov_exec_i ();
+    ~run_my_foo_prov_exec_i () override;
 
     /** @name Operations from ::Hello::CCM_MyFoo */
     //@{
@@ -135,7 +135,7 @@ namespace Hello_Sender_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Sender_Impl::run_my_bar_foo_prov_exec_i[ctor]
 
     /// Destructor
-    virtual ~run_my_bar_foo_prov_exec_i ();
+    ~run_my_bar_foo_prov_exec_i () override;
 
     /** @name Operations from ::Foo::CCM_MyFoo */
     //@{
@@ -181,7 +181,7 @@ namespace Hello_Sender_Impl
   Sender_exec_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Sender_Impl::Sender_exec_i[ctor]
     /// Destructor
-    virtual ~Sender_exec_i ();
+    ~Sender_exec_i () override;
 
     /** @name Component port operations. */
     //@{

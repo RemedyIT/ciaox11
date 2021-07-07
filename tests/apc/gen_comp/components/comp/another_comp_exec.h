@@ -48,7 +48,7 @@ namespace AnotherComp_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : AnotherComp_Impl::run_my_bar_foo_prov_exec_i[ctor]
 
     /// Destructor
-    virtual ~run_my_bar_foo_prov_exec_i ();
+    ~run_my_bar_foo_prov_exec_i () override;
 
     /** @name Operations from ::Foo::CCM_MyFoo */
     //@{
@@ -94,7 +94,7 @@ namespace AnotherComp_Impl
     AnotherComp_exec_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : AnotherComp_Impl::AnotherComp_exec_i[ctor]
     /// Destructor
-    virtual ~AnotherComp_exec_i ();
+    ~AnotherComp_exec_i () override;
 
     /** @name Component port operations. */
     //@{
