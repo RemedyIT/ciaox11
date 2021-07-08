@@ -73,9 +73,11 @@ int main (int, char *[])
       DDS::traits<ShapeType>::topic_ref_type topic2 = domain_participant->find_topic ("Square", zero);
 
       // topic2 and topic should have different instance handles
-      if (topic2->get_instance_handle () == topic->get_instance_handle())
+      if (topic2->get_instance_handle () == topic->get_instance_handle ())
       {
-        DDSX11_TEST_ERROR << "double_delete: topic and topic2 should have different instance handles"
+        DDSX11_TEST_ERROR << "double_delete: topic and topic2 should have different instance handles "
+                          << topic2->get_instance_handle ()
+                          << topic->get_instance_handle ()
                           << std::endl;
         return 1;
       }
