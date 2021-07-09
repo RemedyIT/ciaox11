@@ -689,7 +689,7 @@ void DDS_Base_Connector_T<CCM_TYPE>::remove_topic (
 
   ::DDS::ReturnCode_t const retcode = participant->delete_topic (topic);
 
-#if OPENDDS_VERSION_EXACTLY(3, 17, 0)
+#if defined (OPENDDS_VERSION_EXACTLY) && (OPENDDS_VERSION_EXACTLY(3, 17, 0))
   if (retcode != DDS::RETCODE_OK && retcode != DDS::RETCODE_PRECONDITION_NOT_MET)
 #else
   if (retcode != DDS::RETCODE_OK)
