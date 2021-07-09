@@ -264,7 +264,7 @@ namespace DDSX11
         }
       else
         {
-          if (!DDS_ProxyEntityManager::unregister_topic_proxy (handle))
+          if (!DDS_ProxyEntityManager::unregister_topic_proxy (top, handle))
             {
               // The topic proxy is still used, so don't destruct the listener yet
               listener_guard.release ();

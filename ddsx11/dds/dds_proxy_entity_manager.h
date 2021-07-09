@@ -77,7 +77,7 @@ namespace DDSX11
 
     static bool register_publisher_proxy (::IDL::traits< ::DDS::Publisher>::ref_type proxy);
 
-    static bool register_topic_proxy (::IDL::traits< ::DDS::Topic>::ref_type proxy);
+    static bool register_topic_proxy (::IDL::traits< ::DDS::Topic>::ref_type proxy, DDS_Native::DDS::Entity *native_entity);
 
     static bool register_dp_proxy (::IDL::traits< ::DDS::DomainParticipant>::ref_type proxy);
     //@}
@@ -109,6 +109,7 @@ namespace DDSX11
 
     static bool
     unregister_topic_proxy (
+      DDS_Native::DDS::Entity *native_entity,
       IDL::traits< ::DDS::InstanceHandle_t>::in_type handle);
 
     static bool
@@ -233,7 +234,7 @@ namespace DDSX11
     /// implementation can return multiple times the same topic for which multiple times the delete_topic
     /// must be called, only for the last instance the unregister will remove it from the map
     typedef std::pair <uint32_t, IDL::traits< ::DDS::Topic>::ref_type> TopicRefcount;
-    typedef std::map< ::DDS::InstanceHandle_t, TopicRefcount, CompareHandles> TopicProxies;
+    typedef std::map<DDS_Native::DDS::Entity *, TopicRefcount> TopicProxies;
     static TopicProxies tp_proxies;
     static std::mutex tp_mutex;
 
