@@ -54,8 +54,10 @@ namespace DDSX11
         ::DDS::StatusMask mask) override;
       //@}
 
+#if OPENDDS_VERSION_EXACTLY(3, 17, 0)
       ::DDS::ReturnCode_t delete_topic (
         IDL::traits< ::DDS::Topic>::ref_type a_topic) override;
+#endif
 
     private:
       OpenDDS_DomainParticipant_proxy() = delete;

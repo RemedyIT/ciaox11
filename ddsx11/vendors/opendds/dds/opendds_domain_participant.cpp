@@ -205,6 +205,7 @@ namespace DDSX11
       return this->create_topic (topic_name, type_name, qos, std::move(a_listener), mask);
     }
 
+#if OPENDDS_VERSION_EXACTLY(3, 17, 0)
     // Special OpenDDS version of delete_topic. Within OpenDDS the find_topic
     // returns a topic but on which we can only call delete_topic when we
     // don't use it at all anymore, at the moment we call it before any
@@ -303,5 +304,6 @@ namespace DDSX11
 
       return retcode;
     }
+#endif
   }
 }

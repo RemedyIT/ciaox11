@@ -689,7 +689,11 @@ void DDS_Base_Connector_T<CCM_TYPE>::remove_topic (
 
   ::DDS::ReturnCode_t const retcode = participant->delete_topic (topic);
 
+#if OPENDDS_VERSION_EXACTLY(3, 17, 0)
   if (retcode != DDS::RETCODE_OK && retcode != DDS::RETCODE_PRECONDITION_NOT_MET)
+#else
+  if (retcode != DDS::RETCODE_OK)
+#endif
   {
     DDS4CCM_LOG_ERROR ("DDS_Base_Connector_T::remove_topic - Error removing topic <"
       << topic_handle
