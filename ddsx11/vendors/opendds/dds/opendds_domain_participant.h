@@ -54,9 +54,6 @@ namespace DDSX11
         ::DDS::StatusMask mask) override;
       //@}
 
-      ::DDS::ReturnCode_t delete_topic (
-        IDL::traits< ::DDS::Topic>::ref_type a_topic) override;
-
     private:
       OpenDDS_DomainParticipant_proxy() = delete;
       OpenDDS_DomainParticipant_proxy(const OpenDDS_DomainParticipant_proxy&) = delete;

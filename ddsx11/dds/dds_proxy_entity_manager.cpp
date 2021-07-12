@@ -170,7 +170,8 @@ namespace DDSX11
 
   bool
   DDS_ProxyEntityManager::register_topic_proxy (
-    ::IDL::traits< ::DDS::Topic>::ref_type proxy)
+    ::IDL::traits< ::DDS::Topic>::ref_type proxy,
+    DDS_Native::DDS::Entity *native_entity)
   {
     std::lock_guard<std::mutex> __guard (DDS_ProxyEntityManager::tp_mutex);
 
@@ -179,7 +180,7 @@ namespace DDSX11
 
     // Let us find first whether we already have a topic proxy for the
     // given instance handle
-    typename TopicProxies::iterator const it = tp_proxies.find (proxy->get_instance_handle ());
+    typename TopicProxies::iterator const it = tp_proxies.find (native_entity);
     if (it != tp_proxies.end ())
     {
       // We have found a topic proxy, increment its reference count
@@ -191,7 +192,7 @@ namespace DDSX11
       TopicRefcount const refcount_pair = std::make_pair (1, proxy);
       std::pair<typename TopicProxies::iterator, bool> ret =
         tp_proxies.insert (typename TopicProxies::value_type (
-        proxy->get_instance_handle (), refcount_pair));
+        native_entity, refcount_pair));
       if (!ret.second)
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_ProxyEntityManager::register_topic_proxy - "
@@ -275,15 +276,16 @@ namespace DDSX11
 
   bool
   DDS_ProxyEntityManager::unregister_topic_proxy (
+    DDS_Native::DDS::Entity *native_entity,
     IDL::traits< ::DDS::InstanceHandle_t>::in_type handle)
   {
     std::lock_guard<std::mutex> __guard (DDS_ProxyEntityManager::tp_mutex);
 
     DDSX11_IMPL_LOG_DEBUG ("DDS_ProxyEntityManager::unregister_topic_proxy - "
-      "Unregistering proxy with handle <" << handle << ">");
+      "Unregistering proxy with handle <" << handle << ":" << native_entity << ">");
 
     bool retval = false;
-    typename TopicProxies::iterator const it = tp_proxies.find (handle);
+    typename TopicProxies::iterator const it = tp_proxies.find (native_entity);
     if (it != tp_proxies.end ())
     {
       uint32_t const refcount = --it->second.first;
@@ -387,7 +389,7 @@ namespace DDSX11
       ::DDSX11::traits< ::DDS::InstanceHandle_t>::retn (
         native_entity->get_instance_handle ());
 
-    typename TopicProxies::iterator const it = tp_proxies.find (handle);
+    typename TopicProxies::iterator const it = tp_proxies.find (native_entity);
     if (it != tp_proxies.end ())
     {
       proxy = it->second.second;
@@ -482,7 +484,7 @@ namespace DDSX11
       {
         std::lock_guard<std::mutex> __guard (DDS_ProxyEntityManager::tp_mutex);
         DDS_ProxyEntityManager::TopicProxies::iterator tp_it =
-          DDS_ProxyEntityManager::tp_proxies.find (handle);
+          DDS_ProxyEntityManager::tp_proxies.find (native_entity);
         if (tp_it != DDS_ProxyEntityManager::tp_proxies.end ())
         {
           proxy = tp_it->second.second;
