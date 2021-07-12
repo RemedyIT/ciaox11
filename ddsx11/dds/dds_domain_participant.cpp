@@ -568,18 +568,20 @@ namespace DDSX11
         ::DDSX11::traits<std::string>::in (impl_name),
         ::DDSX11::traits< ::DDS::Duration_t>::in (timeout));
 
-    IDL::traits< ::DDS::Topic>::ref_type topic =
-      TAOX11_CORBA::make_reference<DDS_Topic_proxy> (native_topic);
-
-    if (topic)
+    if (native_topic)
       {
+        IDL::traits< ::DDS::Topic>::ref_type topic =
+          TAOX11_CORBA::make_reference<DDS_Topic_proxy> (native_topic);
+
         // Register the topic, when it is already in the map its refcount
-        // wil increase
+        // will increase
         if (DDS_ProxyEntityManager::register_topic_proxy (topic, native_topic))
           {
             DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::find_topic - "
               << "Registered topic proxy for <" << impl_name << "> again <"
               << topic->get_instance_handle () << ">");
+
+            return topic;
           }
         else
           {
@@ -594,9 +596,8 @@ namespace DDSX11
           << "Didn't find a topic for <" << impl_name << ">");
       }
 
-    return topic;
+    return {};
   }
-
 
   IDL::traits< ::DDS::TopicDescription>::ref_type
   DDS_DomainParticipant_proxy::lookup_topicdescription (const std::string &name)
