@@ -30,7 +30,9 @@ sub print_help {
     "    --iterations COUNT       number of iterations to run (default 10)\n" .
     "    --domain ID              DDS Domain ID (default \$DDS4CCM_DEFAULT_DOMAIN_ID)\n" .
     "    --readall                read all available samples on data_available\n" .
-    "    --readone                read a single sample at a time on data_available (default :readall)\n\n";
+    "    --readone                read a single sample at a time on data_available (default :readall)\n" .
+    "    --chrt SCHEDULER         run using chrt with specified scheduler arg (fifo|rr|other)\n" .
+    "    --prio PRIORITY          priority for chrt (default 0)\n\n";
 }
 
 # Parse Options
@@ -41,19 +43,30 @@ my $iterations = '';
 my $domain_id = '';
 my $readall = 0;
 my $readone = 0;
+my $chrt = '';
+my $prio = '0';
+my $chrt_cmd = '';
 Getopt::Long::Configure('bundling', 'no_auto_abbrev');
 my $invalid_arguments = !GetOptions(
-  'help|h' => \$help,
-  'rate=s' => \$rate,
-  'samples=s' => \$samples,
-  'iterations=s' => \$iterations,
-  'domain=s' => \$domain_id,
-  'readall' => \$readall,
-  'readone' => \$readone,
+  'help|h'          => \$help,
+  'rate=s'          => \$rate,
+  'samples=s'       => \$samples,
+  'iterations=s'    => \$iterations,
+  'domain=s'        => \$domain_id,
+  'readall'         => \$readall,
+  'readone'         => \$readone,
+  'chrt=s'          => \$chrt,
+  'prio=s'          => \$prio
 );
 if ($invalid_arguments || $help) {
   print_help($invalid_arguments ? *STDERR : *STDOUT);
   exit($invalid_arguments ? 1 : 0);
+}
+
+if ($chrt ne '') {
+  $chrt_cmd = qx(which chrt);
+  $chrt_cmd = "$chrt_cmd";
+  chomp($chrt_cmd);
 }
 
 my $receiver = PerlACE::TestTarget::create_target(2) || die "Create target 2 failed\n";
@@ -64,27 +77,44 @@ $sender->AddLibPath ('../lib');
 
 $sender->DeleteFile ('TEST_MANUAL_EVENT');
 
+my $cmd = '../lib/receiver';
 my $cmdargs = '';
-if ($domain_id != '') {
-  $cmdargs .= "--domain $domain_id ";
+if ($chrt ne '') {
+  $cmdargs = '--' . $chrt . ' ' . $prio . ' ' . $cmd;
+  $cmd = $chrt_cmd;
 }
-my $RV = $receiver->CreateProcess ('../lib/receiver', $cmdargs);
-if ($rate != '') {
-  $cmdargs .= "--rate $rate ";
+if ($domain_id ne '') {
+  $cmdargs .= " --domain $domain_id";
 }
-if ($samples != '') {
-  $cmdargs .= "--samples $samples ";
+my $RV = $receiver->CreateProcess ($cmd, $cmdargs);
+$cmd = '../lib/sender';
+$cmdargs = '';
+if ($chrt ne '') {
+  $cmdargs = '--' . $chrt . ' ' . $prio . ' ' . $cmd;
+  $cmd = $chrt_cmd;
 }
-if ($iterations != '') {
-  $cmdargs .= "--iterations $iterations ";
+if ($domain_id ne '') {
+  $cmdargs .= " --domain $domain_id";
+}
+if ($rate ne '') {
+  $cmdargs .= " --rate $rate";
+}
+if ($samples ne '') {
+  $cmdargs .= " --samples $samples";
+}
+if ($samplesize ne '') {
+  $cmdargs .= " --samplesize $samplesize";
+}
+if ($iterations ne '') {
+  $cmdargs .= " --iterations $iterations";
 }
 if ($readall) {
-  $cmdargs .= "--readall ";
+  $cmdargs .= " --readall";
 }
 if ($readone) {
-  $cmdargs .= "--readone ";
+  $cmdargs .= " --readone";
 }
-my $SR = $sender->CreateProcess ('../lib/sender', $cmdargs);
+my $SR = $sender->CreateProcess ($cmd, $cmdargs);
 my $receiver_status = $RV->Spawn ();
 
 if ($receiver_status != 0) {
