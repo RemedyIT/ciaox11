@@ -1,0 +1,24 @@
+
+component 'latency_sender' do |comp|
+  comp.idl %w{ latency_data.idl }
+
+  comp.define 'Test::Sender' do |intf|
+    intf.port 'info_write' do |port|
+      port.publishes 'Test::LatencyData'
+    end
+    intf.port 'info_sub' do |port|
+      port.subscribes 'Test::LatencyData', listen: 'info_recv'
+    end
+    intf.port 'tt_scheduler', :timed_trigger
+
+    intf.attribute 'rate', type: 'unsigned long'
+    intf.attribute 'samples', type: 'unsigned long'
+    intf.attribute 'sample_size', type: 'unsigned long'
+    intf.attribute 'iterations', type: 'unsigned long'
+    intf.attribute 'uses_context_switch', type: 'boolean'
+    intf.attribute 'context_switch_type', type: 'string'
+  end
+
+  comp.base_projects += 'ciaox11_psdd4ccm_logger'
+  comp.combined_lib true
+end
