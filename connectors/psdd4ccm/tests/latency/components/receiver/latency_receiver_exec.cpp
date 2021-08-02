@@ -1,5 +1,11 @@
-/*
- * Your header here.
+// -*- C++ -*-
+/**
+ * @file    latency_receiver_exec.cpp
+ * @author  Martin Corino
+ *
+ * @brief   Receiver component implementation.
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
  */
 //@@{__RIDL_REGEN_MARKER__} - HEADER_END : latency_receiver_impl.cpp[Header]
 

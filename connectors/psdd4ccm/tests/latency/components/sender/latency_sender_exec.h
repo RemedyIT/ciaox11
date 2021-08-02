@@ -1,6 +1,12 @@
-  /*
-   * Your header here.
-   */
+// -*- C++ -*-
+/**
+ * @file    latency_sender_exec.h
+ * @author  Martin Corino
+ *
+ * @brief   Sender component implementation.
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ */
 #ifndef __RIDL_LATENCY_SENDER_EXEC_H_HAJHBIAB_INCLUDED__
 #define __RIDL_LATENCY_SENDER_EXEC_H_HAJHBIAB_INCLUDED__
 

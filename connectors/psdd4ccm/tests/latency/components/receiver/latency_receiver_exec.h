@@ -1,6 +1,12 @@
-  /*
-   * Your header here.
-   */
+// -*- C++ -*-
+/**
+ * @file    latency_receiver_exec.h
+ * @author  Martin Corino
+ *
+ * @brief   Receiver component implementation.
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ */
 #ifndef __RIDL_LATENCY_RECEIVER_EXEC_H_BBFABJFG_INCLUDED__
 #define __RIDL_LATENCY_RECEIVER_EXEC_H_BBFABJFG_INCLUDED__
 
