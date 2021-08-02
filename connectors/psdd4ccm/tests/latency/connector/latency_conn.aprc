@@ -1,0 +1,37 @@
+connector 'latency_data' do |conn|
+  conn.idl %w{ latency_data.idl }
+
+  conn.port_type :psdd4ccm do |tp|
+    tp.topic 'Test::LatencyData'
+    tp.middleware :zmq
+    tp.topic_interface_suffix 'Connector'
+  end
+end
+
+connector 'latency_data_noctxsw' do |conn|
+  conn.idl %w{ latency_data.idl }
+
+  conn.port_type :psdd4ccm do |tp|
+    tp.topic 'Test::LatencyData'
+    tp.topic_interface_suffix 'Connector'
+    tp.middleware :zmq
+    tp.disable_context_switch
+  end
+  conn.gen_dir 'generated_code_noctxsw'
+end
+
+if BRIX11::CIAOX11.const_defined?(:ExF)
+
+connector 'latency_data_exf' do |conn|
+  conn.idl %w{ latency_data.idl }
+
+  conn.port_type :psdd4ccm do |tp|
+    tp.topic 'Test::LatencyData'
+    tp.middleware :zmq
+    tp.topic_interface_suffix 'Connector'
+  end
+  conn.use_exf true
+  conn.gen_dir 'generated_code_exf'
+end
+
+end
