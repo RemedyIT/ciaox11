@@ -7,7 +7,7 @@ component 'latency_receiver' do |comp|
       port.publishes 'Test::LatencyData'
     end
     intf.port 'info_sub' do |port|
-      port.subscribes 'Test::LatencyData', listen: 'info_out' 
+      port.subscribes 'Test::LatencyData', listen: 'info_out'
     end
   end
 
