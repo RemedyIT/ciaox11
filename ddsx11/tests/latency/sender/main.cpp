@@ -10,11 +10,14 @@
 
 #if DDSX11_NDDS==1
 #include "dds/ndds_typedefs.h"
-#else
-#include "dds/opendds_typedefs.h"
-#endif
 #include "latency_data_dds_typesupport.h"
 #include "latency_data_ddsSupport.h"
+#else
+#include "latency_data_ddsTypeSupportImpl.h"
+#include "dds/opendds_typedefs.h"
+#include "latency_data_dds_typesupport.h"
+#include "latency_data_ddsC.h"
+#endif
 #include "latency_data_dds_traits.h"
 #include "tests/testlib/ddsx11_testlog.h"
 #include "ace/Reactor.h"
