@@ -8,7 +8,14 @@
  * @copyright Copyright (c) Remedy IT Expertise BV
  */
 
+#if DDSX11_NDDS==1
+#include "dds/ndds_typedefs.h"
+#else
+#include "dds/opendds_typedefs.h"
+#endif
 #include "latency_data_dds_typesupport.h"
+#include "latency_data_ddsSupport.h"
+#include "latency_data_dds_traits.h"
 #include "tests/testlib/ddsx11_testlog.h"
 #include "ace/Reactor.h"
 #include "ace/Event_Handler.h"
@@ -113,6 +120,8 @@ public:
 
   bool initialize (int argc, char*argv[]);
 
+  void calculate_conversion_overhead ();
+
   void cleanup ();
 
   void tick ();
@@ -204,6 +213,8 @@ int main (int argc, char *argv[])
 
     if (tester.initialize (argc, argv))
     {
+      tester.calculate_conversion_overhead();
+
       tester.run ();
 
       tester.cleanup ();
@@ -317,6 +328,8 @@ TestExecutor::initialize (int argc, char* argv[])
     }
   }
 
+  this->calculate_clock_overhead();
+
   return true;
 }
 
@@ -353,6 +366,8 @@ TestExecutor::parse_args (int argc, char * argv[])
   get_opts.long_option (ACE_TEXT("samplesize"), ACE_Get_Opt::ARG_REQUIRED);
   get_opts.long_option (ACE_TEXT("iterations"), ACE_Get_Opt::ARG_REQUIRED);
   get_opts.long_option (ACE_TEXT("domain"), ACE_Get_Opt::ARG_REQUIRED);
+  get_opts.long_option (ACE_TEXT("readall"), ACE_Get_Opt::NO_ARG);
+  get_opts.long_option (ACE_TEXT("readone"), ACE_Get_Opt::NO_ARG);
   get_opts.long_option (ACE_TEXT("help"), ACE_Get_Opt::NO_ARG);
 
   int c {};
@@ -418,6 +433,58 @@ TestExecutor::parse_args (int argc, char * argv[])
   }
 
   return true;
+}
+
+void
+TestExecutor::calculate_conversion_overhead ()
+{
+  uint64_t total_sample_count = this->samples_ * static_cast<uint64_t> (this->iterations_);
+  ::Test::LatencyData data_in;
+  data_in.data().resize(this->sample_size_);
+
+  uint64_t total_time {};
+
+  for (uint64_t n=0; n<total_sample_count ;++n)
+  {
+    // prepare sample
+    data_in.seq_num(n % this->iterations_);
+
+    uint64_t start_time;
+    ACE_High_Res_Timer::gettimeofday_hr ().to_usec (start_time);
+
+    // C++11 sample to native DDS
+    ::DDSX11::traits< ::Test::LatencyData>::in convert_in1 (data_in);
+    const ::DDS_Native::Test::LatencyData& dds_data_1 = convert_in1;
+    // native DDS sample to C++11
+    ::DDSX11::traits< ::Test::LatencyData>::retn convert_retn1 (dds_data_1);
+    // C++11 sample to native DDS
+    ::DDSX11::traits< ::Test::LatencyData>::in convert_in2 (convert_retn1.value_);
+    const ::DDS_Native::Test::LatencyData& dds_data_2 = convert_in2;
+    // native DDS sample to C++11
+    ::DDSX11::traits< ::Test::LatencyData>::retn convert_retn2 (dds_data_2);
+
+    // check
+    if (convert_retn2.value_.seq_num () == data_in.seq_num () && convert_retn2.value_.data ().size () == data_in.data ().size ())
+    {
+      // ok
+
+      uint64_t end_time;
+      ACE_High_Res_Timer::gettimeofday_hr ().to_usec (end_time);
+
+      uint64_t interval = end_time - start_time;
+      total_time += (interval - this->_clock_overhead_);
+    }
+    else
+    {
+      DDSX11_TEST_ERROR << "SENDER: Conversion failed" << std::endl << std::endl;
+      return;
+    }
+  }
+
+  uint64_t avg_conversion_time = (total_time / total_sample_count);
+  DDSX11_TEST_INFO << std::endl
+                   << "SENDER: Average conversion overhead per sample per roundtrip (== 4 conversions) = " << avg_conversion_time << " usec"
+                   << std::endl << std::endl;
 }
 
 void
