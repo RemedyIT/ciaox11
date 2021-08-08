@@ -8,7 +8,17 @@
  * @copyright Copyright (c) Remedy IT Expertise BV
  */
 
+#if DDSX11_NDDS==1
+#include "dds/ndds_typedefs.h"
 #include "latency_data_dds_typesupport.h"
+#include "latency_data_ddsSupport.h"
+#else
+#include "latency_data_ddsTypeSupportImpl.h"
+#include "dds/opendds_typedefs.h"
+#include "latency_data_dds_typesupport.h"
+#include "latency_data_ddsC.h"
+#endif
+#include "latency_data_dds_traits.h"
 #include "tests/testlib/ddsx11_testlog.h"
 #include "ace/Reactor.h"
 #include "ace/Event_Handler.h"
@@ -58,7 +68,7 @@ private:
 };
 
 class LatencyDataListener final :
-  public DDS::traits<Test::LatencyData>::datareaderlistener_type
+  public ::DDS::traits<Test::LatencyData>::datareaderlistener_type
 {
 public:
   LatencyDataListener(TestExecutor* executor, bool read_one)
@@ -68,37 +78,37 @@ public:
 
   void
   on_requested_deadline_missed (
-    DDS::traits<Test::LatencyData>::datareader_ref_type the_reader,
-    const DDS::RequestedDeadlineMissedStatus& status) override;
+    ::DDS::traits<Test::LatencyData>::datareader_ref_type the_reader,
+    const ::DDS::RequestedDeadlineMissedStatus& status) override;
 
   void
   on_requested_incompatible_qos (
-    DDS::traits<Test::LatencyData>::datareader_ref_type the_reader,
-    const DDS::RequestedIncompatibleQosStatus& status) override;
+    ::DDS::traits<Test::LatencyData>::datareader_ref_type the_reader,
+    const ::DDS::RequestedIncompatibleQosStatus& status) override;
 
   void
   on_sample_rejected (
-    DDS::traits<Test::LatencyData>::datareader_ref_type the_reader,
-    const DDS::SampleRejectedStatus& status) override;
+    ::DDS::traits<Test::LatencyData>::datareader_ref_type the_reader,
+    const ::DDS::SampleRejectedStatus& status) override;
 
   void
   on_liveliness_changed (
-    DDS::traits<Test::LatencyData>::datareader_ref_type the_reader,
-    const DDS::LivelinessChangedStatus& status) override;
+    ::DDS::traits<Test::LatencyData>::datareader_ref_type the_reader,
+    const ::DDS::LivelinessChangedStatus& status) override;
 
   void
   on_subscription_matched (
-      DDS::traits<Test::LatencyData>::datareader_ref_type the_reader,
-      const DDS::SubscriptionMatchedStatus& status) override;
+      ::DDS::traits<Test::LatencyData>::datareader_ref_type the_reader,
+      const ::DDS::SubscriptionMatchedStatus& status) override;
 
   void
   on_sample_lost (
-      DDS::traits<Test::LatencyData>::datareader_ref_type the_reader,
-      const DDS::SampleLostStatus& status) override;
+      ::DDS::traits<Test::LatencyData>::datareader_ref_type the_reader,
+      const ::DDS::SampleLostStatus& status) override;
 
   void
   on_data_available (
-    DDS::traits<Test::LatencyData>::datareader_ref_type the_reader) override;
+    ::DDS::traits<Test::LatencyData>::datareader_ref_type the_reader) override;
 
 private:
   TestExecutor* executor_;
@@ -112,6 +122,8 @@ public:
   ~TestExecutor () { cleanup (); }
 
   bool initialize (int argc, char*argv[]);
+
+  void calculate_conversion_overhead ();
 
   void cleanup ();
 
@@ -177,21 +189,21 @@ private:
 
   long timer_id_;
 
-  DDS::traits<Test::LatencyData>::domainparticipantfactory_ref_type dpf_ {};
-  DDS::traits<Test::LatencyData>::domainparticipant_ref_type domain_participant_ {};
+  ::DDS::traits<Test::LatencyData>::domainparticipantfactory_ref_type dpf_ {};
+  ::DDS::traits<Test::LatencyData>::domainparticipant_ref_type domain_participant_ {};
 
   // publisher entities
-  DDS::traits<Test::LatencyData>::topic_ref_type latency_topic_ {};
-  DDS::traits<Test::LatencyData>::publisher_ref_type latency_publisher_ {};
-  DDS::traits<Test::LatencyData>::datawriter_ref_type latency_dw_ {};
-  DDS::traits<Test::LatencyData>::typed_datawriter_ref_type latency_writer_ {};
+  ::DDS::traits<Test::LatencyData>::topic_ref_type latency_topic_ {};
+  ::DDS::traits<Test::LatencyData>::publisher_ref_type latency_publisher_ {};
+  ::DDS::traits<Test::LatencyData>::datawriter_ref_type latency_dw_ {};
+  ::DDS::traits<Test::LatencyData>::typed_datawriter_ref_type latency_writer_ {};
   Test::LatencyData latency_sample_ {};
 
   // subscriber entities
-  DDS::traits<Test::LatencyData>::topic_ref_type latency_echo_topic_ {};
-  DDS::traits<Test::LatencyData>::subscriber_ref_type latency_echo_subscriber_ {};
-  IDL::traits<DDS::DataReader>::ref_type latency_echo_reader_ {};
-  DDS::traits<Test::LatencyData>::datareaderlistener_ref_type latency_echo_listener_ {};
+  ::DDS::traits<Test::LatencyData>::topic_ref_type latency_echo_topic_ {};
+  ::DDS::traits<Test::LatencyData>::subscriber_ref_type latency_echo_subscriber_ {};
+  IDL::traits<::DDS::DataReader>::ref_type latency_echo_reader_ {};
+  ::DDS::traits<Test::LatencyData>::datareaderlistener_ref_type latency_echo_listener_ {};
 };
 
 
@@ -204,6 +216,8 @@ int main (int argc, char *argv[])
 
     if (tester.initialize (argc, argv))
     {
+      tester.calculate_conversion_overhead();
+
       tester.run ();
 
       tester.cleanup ();
@@ -240,15 +254,15 @@ TestExecutor::initialize (int argc, char* argv[])
   }
 
   this->dpf_=
-    DDS::traits<DDS::DomainParticipantFactory>::get_instance ();
+    ::DDS::traits<::DDS::DomainParticipantFactory>::get_instance ();
 
   this->domain_participant_ =
     this->dpf_->create_participant_with_profile (
-        this->domain_id_, qos_profile, nullptr, DDS::STATUS_MASK_NONE);
+        this->domain_id_, qos_profile, nullptr, ::DDS::STATUS_MASK_NONE);
 
-  DDS::ReturnCode_t retcode = DDS::traits<Test::LatencyData>::register_type (
-      this->domain_participant_, DDS::traits<Test::LatencyData>::get_type_name ());
-  if (retcode != DDS::RETCODE_OK)
+  ::DDS::ReturnCode_t retcode = ::DDS::traits<Test::LatencyData>::register_type (
+      this->domain_participant_, ::DDS::traits<Test::LatencyData>::get_type_name ());
+  if (retcode != ::DDS::RETCODE_OK)
   {
     DDSX11_TEST_ERROR << "sender: Failed to register type: "
                       << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
@@ -258,20 +272,20 @@ TestExecutor::initialize (int argc, char* argv[])
 
   this->latency_topic_ =
       this->domain_participant_->create_topic_with_profile (
-          "LatencyData", DDS::traits<Test::LatencyData>::get_type_name (), qos_profile, nullptr, DDS::STATUS_MASK_NONE);
+          "LatencyData", ::DDS::traits<Test::LatencyData>::get_type_name (), qos_profile, nullptr, ::DDS::STATUS_MASK_NONE);
 
   this->latency_publisher_ =
     this->domain_participant_->create_publisher_with_profile (
-        qos_profile, nullptr, DDS::STATUS_MASK_NONE);
+        qos_profile, nullptr, ::DDS::STATUS_MASK_NONE);
 
   if (this->latency_publisher_ && this->latency_topic_)
   {
     this->latency_dw_ =
       this->latency_publisher_->create_datawriter_with_profile (
-          this->latency_topic_, qos_profile, nullptr, DDS::STATUS_MASK_NONE);
+          this->latency_topic_, qos_profile, nullptr, ::DDS::STATUS_MASK_NONE);
 
     this->latency_writer_ =
-      DDS::traits<Test::LatencyData>::narrow (this->latency_dw_);
+      ::DDS::traits<Test::LatencyData>::narrow (this->latency_dw_);
 
     if (!this->latency_writer_)
     {
@@ -289,20 +303,20 @@ TestExecutor::initialize (int argc, char* argv[])
 
   this->latency_echo_topic_ =
       this->domain_participant_->create_topic_with_profile (
-          "LatencyDataEcho", DDS::traits<Test::LatencyData>::get_type_name (), qos_profile, nullptr, DDS::STATUS_MASK_NONE);
+          "LatencyDataEcho", ::DDS::traits<Test::LatencyData>::get_type_name (), qos_profile, nullptr, ::DDS::STATUS_MASK_NONE);
 
   this->latency_echo_subscriber_ =
-    this->domain_participant_->create_subscriber (DDS::SUBSCRIBER_QOS_DEFAULT, nullptr, DDS::STATUS_MASK_NONE);
+    this->domain_participant_->create_subscriber (::DDS::SUBSCRIBER_QOS_DEFAULT, nullptr, ::DDS::STATUS_MASK_NONE);
 
   if (this->latency_echo_topic_ && this->latency_echo_subscriber_)
   {
     this->latency_echo_listener_ =
-      DDS::make_reference<LatencyDataListener> (this, this->read_one_);
+      ::DDS::make_reference<LatencyDataListener> (this, this->read_one_);
     if (this->latency_echo_listener_)
     {
       this->latency_echo_reader_ =
           this->latency_echo_subscriber_->create_datareader_with_profile (
-              this->latency_echo_topic_, qos_profile, this->latency_echo_listener_, DDS::DATA_AVAILABLE_STATUS);
+              this->latency_echo_topic_, qos_profile, this->latency_echo_listener_, ::DDS::DATA_AVAILABLE_STATUS);
 
       if (!this->latency_echo_reader_)
       {
@@ -316,6 +330,8 @@ TestExecutor::initialize (int argc, char* argv[])
       return false;
     }
   }
+
+  this->calculate_clock_overhead();
 
   return true;
 }
@@ -353,6 +369,8 @@ TestExecutor::parse_args (int argc, char * argv[])
   get_opts.long_option (ACE_TEXT("samplesize"), ACE_Get_Opt::ARG_REQUIRED);
   get_opts.long_option (ACE_TEXT("iterations"), ACE_Get_Opt::ARG_REQUIRED);
   get_opts.long_option (ACE_TEXT("domain"), ACE_Get_Opt::ARG_REQUIRED);
+  get_opts.long_option (ACE_TEXT("readall"), ACE_Get_Opt::NO_ARG);
+  get_opts.long_option (ACE_TEXT("readone"), ACE_Get_Opt::NO_ARG);
   get_opts.long_option (ACE_TEXT("help"), ACE_Get_Opt::NO_ARG);
 
   int c {};
@@ -421,13 +439,65 @@ TestExecutor::parse_args (int argc, char * argv[])
 }
 
 void
+TestExecutor::calculate_conversion_overhead ()
+{
+  uint64_t total_sample_count = this->samples_ * static_cast<uint64_t> (this->iterations_);
+  ::Test::LatencyData data_in;
+  data_in.data().resize(this->sample_size_);
+
+  uint64_t total_time {};
+
+  for (uint64_t n=0; n<total_sample_count ;++n)
+  {
+    // prepare sample
+    data_in.seq_num(n % this->iterations_);
+
+    uint64_t start_time;
+    ACE_High_Res_Timer::gettimeofday_hr ().to_usec (start_time);
+
+    // C++11 sample to native DDS
+    ::DDSX11::traits< ::Test::LatencyData>::in convert_in1 (data_in);
+    const ::DDS_Native::Test::LatencyData& dds_data_1 = convert_in1;
+    // native DDS sample to C++11
+    ::DDSX11::traits< ::Test::LatencyData>::retn convert_retn1 (dds_data_1);
+    // C++11 sample to native DDS
+    ::DDSX11::traits< ::Test::LatencyData>::in convert_in2 (convert_retn1.value_);
+    const ::DDS_Native::Test::LatencyData& dds_data_2 = convert_in2;
+    // native DDS sample to C++11
+    ::DDSX11::traits< ::Test::LatencyData>::retn convert_retn2 (dds_data_2);
+
+    // check
+    if (convert_retn2.value_.seq_num () == data_in.seq_num () && convert_retn2.value_.data ().size () == data_in.data ().size ())
+    {
+      // ok
+
+      uint64_t end_time;
+      ACE_High_Res_Timer::gettimeofday_hr ().to_usec (end_time);
+
+      uint64_t interval = end_time - start_time;
+      total_time += (interval - this->_clock_overhead_);
+    }
+    else
+    {
+      DDSX11_TEST_ERROR << "SENDER: Conversion failed" << std::endl << std::endl;
+      return;
+    }
+  }
+
+  uint64_t avg_conversion_time = (total_time / total_sample_count);
+  DDSX11_TEST_INFO << std::endl
+                   << "SENDER: Average conversion overhead per sample per roundtrip (== 4 conversions) = " << avg_conversion_time << " usec"
+                   << std::endl << std::endl;
+}
+
+void
 TestExecutor::cleanup ()
 {
   if (this->latency_writer_)
   {
-    DDS::ReturnCode_t retcode = this->latency_publisher_->delete_datawriter (this->latency_writer_);
+    ::DDS::ReturnCode_t retcode = this->latency_publisher_->delete_datawriter (this->latency_writer_);
     this->latency_writer_ = nullptr;
-    if (retcode != DDS::RETCODE_OK)
+    if (retcode != ::DDS::RETCODE_OK)
     {
       DDSX11_TEST_ERROR << "sender: Failed to delete datawriter from publisher: "
                         << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
@@ -436,9 +506,9 @@ TestExecutor::cleanup ()
   }
   if (this->latency_publisher_)
   {
-    DDS::ReturnCode_t retcode = this->domain_participant_->delete_publisher (this->latency_publisher_);
+    ::DDS::ReturnCode_t retcode = this->domain_participant_->delete_publisher (this->latency_publisher_);
     this->latency_publisher_ = nullptr;
-    if (retcode != DDS::RETCODE_OK)
+    if (retcode != ::DDS::RETCODE_OK)
     {
       DDSX11_TEST_ERROR << "sender: Failed to delete publisher from domain participant"
                         << std::endl;
@@ -446,9 +516,9 @@ TestExecutor::cleanup ()
   }
   if (this->latency_topic_)
   {
-    DDS::ReturnCode_t retcode = this->domain_participant_->delete_topic (this->latency_topic_);
+    ::DDS::ReturnCode_t retcode = this->domain_participant_->delete_topic (this->latency_topic_);
     this->latency_topic_ = nullptr;
-    if (retcode != DDS::RETCODE_OK)
+    if (retcode != ::DDS::RETCODE_OK)
     {
       DDSX11_TEST_ERROR << "sender: Failed to delete topic from domain participant"
                         << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
@@ -458,9 +528,9 @@ TestExecutor::cleanup ()
 
   if (this->latency_echo_reader_)
   {
-    DDS::ReturnCode_t retcode = this->latency_echo_subscriber_->delete_datareader (this->latency_echo_reader_);
+    ::DDS::ReturnCode_t retcode = this->latency_echo_subscriber_->delete_datareader (this->latency_echo_reader_);
     this->latency_echo_reader_ = nullptr;
-    if (retcode != DDS::RETCODE_OK)
+    if (retcode != ::DDS::RETCODE_OK)
     {
       DDSX11_TEST_ERROR << "sender: Failed to delete datareader from subscriber."
                         << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
@@ -469,9 +539,9 @@ TestExecutor::cleanup ()
   }
   if (this->latency_echo_subscriber_)
   {
-    DDS::ReturnCode_t retcode = this->domain_participant_->delete_subscriber (this->latency_echo_subscriber_);
+    ::DDS::ReturnCode_t retcode = this->domain_participant_->delete_subscriber (this->latency_echo_subscriber_);
     this->latency_echo_subscriber_ = nullptr;
-    if (retcode != DDS::RETCODE_OK)
+    if (retcode != ::DDS::RETCODE_OK)
     {
       DDSX11_TEST_ERROR << "sender: Failed to delete subscriber from domain participant." << std::endl
                         << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
@@ -480,9 +550,9 @@ TestExecutor::cleanup ()
   }
   if (this->latency_echo_topic_)
   {
-    DDS::ReturnCode_t retcode = this->domain_participant_->delete_topic (this->latency_echo_topic_);
+    ::DDS::ReturnCode_t retcode = this->domain_participant_->delete_topic (this->latency_echo_topic_);
     this->latency_echo_topic_ = nullptr;
-    if (retcode != DDS::RETCODE_OK)
+    if (retcode != ::DDS::RETCODE_OK)
     {
       DDSX11_TEST_ERROR << "sender: Failed to delete topic from domain participant"
                         << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
@@ -492,9 +562,9 @@ TestExecutor::cleanup ()
 
   if (this->domain_participant_)
   {
-    DDS::ReturnCode_t retcode = this->dpf_->delete_participant(this->domain_participant_);
+    ::DDS::ReturnCode_t retcode = this->dpf_->delete_participant(this->domain_participant_);
     this->domain_participant_ = nullptr;
-    if (retcode != DDS::RETCODE_OK)
+    if (retcode != ::DDS::RETCODE_OK)
     {
       DDSX11_TEST_ERROR << "sender: Failed to delete domain participant from domain participant factory: "
                         << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
@@ -503,7 +573,7 @@ TestExecutor::cleanup ()
   }
   if (this->dpf_)
   {
-    DDS::ReturnCode_t retcode = this->dpf_->finalize_instance ();
+    ::DDS::ReturnCode_t retcode = this->dpf_->finalize_instance ();
     this->dpf_ = nullptr;
     if (retcode != ::DDS::RETCODE_OK)
     {
@@ -627,7 +697,7 @@ TestExecutor::tick ()
       this->seq_num_ = this->number_of_msg_;
       this->received_ = false;
       ACE_High_Res_Timer::gettimeofday_hr ().to_usec (this->start_time_);
-      DDS::ReturnCode_t retcode = this->latency_writer_->write (this->latency_sample_, ::DDS::HANDLE_NIL);
+      ::DDS::ReturnCode_t retcode = this->latency_writer_->write (this->latency_sample_, ::DDS::HANDLE_NIL);
       if (retcode != ::DDS::RETCODE_OK)
       {
         DDSX11_TEST_ERROR <<"TestExecutor::tick - "
@@ -880,8 +950,8 @@ TestExecutor::start ()
 
 void
 LatencyDataListener::on_requested_deadline_missed (
-  DDS::traits<Test::LatencyData>::datareader_ref_type ,
-  const DDS::RequestedDeadlineMissedStatus& )
+  ::DDS::traits<Test::LatencyData>::datareader_ref_type ,
+  const ::DDS::RequestedDeadlineMissedStatus& )
 {
   DDSX11_TEST_DEBUG << "LatencyDataListener::on_requested_deadline_missed received"
                     << std::endl;
@@ -889,8 +959,8 @@ LatencyDataListener::on_requested_deadline_missed (
 
 void
 LatencyDataListener::on_requested_incompatible_qos (
-  DDS::traits<Test::LatencyData>::datareader_ref_type ,
-  const DDS::RequestedIncompatibleQosStatus& )
+  ::DDS::traits<Test::LatencyData>::datareader_ref_type ,
+  const ::DDS::RequestedIncompatibleQosStatus& )
 {
   DDSX11_TEST_DEBUG << "LatencyDataListener::on_requested_incompatible_qos received"
                     << std::endl;
@@ -898,8 +968,8 @@ LatencyDataListener::on_requested_incompatible_qos (
 
 void
 LatencyDataListener::on_sample_rejected (
-  DDS::traits<Test::LatencyData>::datareader_ref_type ,
-  const DDS::SampleRejectedStatus& )
+  ::DDS::traits<Test::LatencyData>::datareader_ref_type ,
+  const ::DDS::SampleRejectedStatus& )
 {
   DDSX11_TEST_DEBUG << "LatencyDataListener::on_sample_rejected received"
                     << std::endl;
@@ -907,8 +977,8 @@ LatencyDataListener::on_sample_rejected (
 
 void
 LatencyDataListener::on_liveliness_changed (
-  DDS::traits<Test::LatencyData>::datareader_ref_type ,
-  const DDS::LivelinessChangedStatus& )
+  ::DDS::traits<Test::LatencyData>::datareader_ref_type ,
+  const ::DDS::LivelinessChangedStatus& )
 {
   DDSX11_TEST_DEBUG << "LatencyDataListener::on_liveliness_changed received"
                     << std::endl;
@@ -916,8 +986,8 @@ LatencyDataListener::on_liveliness_changed (
 
 void
 LatencyDataListener::on_subscription_matched (
-  DDS::traits<Test::LatencyData>::datareader_ref_type ,
-  const DDS::SubscriptionMatchedStatus& )
+  ::DDS::traits<Test::LatencyData>::datareader_ref_type ,
+  const ::DDS::SubscriptionMatchedStatus& )
 {
   DDSX11_TEST_DEBUG << "LatencyDataListener::on_subscription_matched received"
                     << std::endl;
@@ -925,8 +995,8 @@ LatencyDataListener::on_subscription_matched (
 
 void
 LatencyDataListener::on_sample_lost (
-  DDS::traits<Test::LatencyData>::datareader_ref_type ,
-  const DDS::SampleLostStatus& )
+  ::DDS::traits<Test::LatencyData>::datareader_ref_type ,
+  const ::DDS::SampleLostStatus& )
 {
   DDSX11_TEST_DEBUG << "LatencyDataListener::on_sample_lost received"
                     << std::endl;
@@ -934,25 +1004,25 @@ LatencyDataListener::on_sample_lost (
 
 void
 LatencyDataListener::on_data_available (
-  DDS::traits<Test::LatencyData>::datareader_ref_type the_reader)
+  ::DDS::traits<Test::LatencyData>::datareader_ref_type the_reader)
 {
   //DDSX11_TEST_DEBUG << "LatencyDataListener::on_data_available" << std::endl;
-  DDS::traits<Test::LatencyData>::typed_datareader_ref_type rd =
-    DDS::traits<Test::LatencyData>::narrow (the_reader);
+  ::DDS::traits<Test::LatencyData>::typed_datareader_ref_type rd =
+    ::DDS::traits<Test::LatencyData>::narrow (the_reader);
 
   if (rd)
   {
     if (this->read_one_)
     {
       Test::LatencyData datum;
-      DDS::SampleInfo info;
-      DDS::ReturnCode_t const retcode = rd->take_next_sample(datum, info);
-      if (retcode == DDS::RETCODE_NO_DATA)
+      ::DDS::SampleInfo info;
+      ::DDS::ReturnCode_t const retcode = rd->take_next_sample(datum, info);
+      if (retcode == ::DDS::RETCODE_NO_DATA)
       {
         DDSX11_TEST_ERROR << "LatencyDataListener::on_data_available: No data available!"
                           << std::endl;
       }
-      else if (retcode != DDS::RETCODE_OK)
+      else if (retcode != ::DDS::RETCODE_OK)
       {
         DDSX11_TEST_ERROR << "LatencyDataListener::on_data_available: Unable to take data from data reader, error "
                           << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
@@ -976,18 +1046,18 @@ LatencyDataListener::on_data_available (
     {
       ::DDS::SampleInfoSeq sample_info;
       Test::LatencyDataSeq dataseq;
-      DDS::ReturnCode_t const retcode = rd->take(dataseq,
+      ::DDS::ReturnCode_t const retcode = rd->take(dataseq,
                                                  sample_info,
                                                  ::DDS::LENGTH_UNLIMITED,
                                                  ::DDS::NOT_READ_SAMPLE_STATE,
                                                  ::DDS::NEW_VIEW_STATE | ::DDS::NOT_NEW_VIEW_STATE,
                                                  ::DDS::ANY_INSTANCE_STATE);
-      if (retcode == DDS::RETCODE_NO_DATA)
+      if (retcode == ::DDS::RETCODE_NO_DATA)
       {
         DDSX11_TEST_ERROR << "LatencyDataListener::on_data_available: No data available!"
                           << std::endl;
       }
-      else if (retcode != DDS::RETCODE_OK)
+      else if (retcode != ::DDS::RETCODE_OK)
       {
         DDSX11_TEST_ERROR << "LatencyDataListener::on_data_available: Unable to take data from data reader, error "
                           << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
@@ -996,7 +1066,7 @@ LatencyDataListener::on_data_available (
       else
       {
         Test::LatencyDataSeq::size_type topic_idx {};
-        for (DDS::SampleInfo info : sample_info)
+        for (::DDS::SampleInfo info : sample_info)
         {
           if (info.valid_data ())
           {
