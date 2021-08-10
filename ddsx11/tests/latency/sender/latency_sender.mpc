@@ -13,6 +13,8 @@ project(*_ddsx11_ndds) : ddsx11_impl {
 
   includes += ../data/GeneratedCode
 
+  macros += LATENCY_TYPESUPPORT_BUILD_DLL
+
   Source_Files {
     ../data/GeneratedCode/latency_data_dds.cxx
     ../data/GeneratedCode/latency_data_ddsPlugin.cxx
@@ -39,6 +41,8 @@ project(*_ddsx11_opendds) : ddsx11_impl {
   exeout  = ../lib
 
   includes += ../data/GeneratedCode
+
+  macros += LATENCY_TYPESUPPORT_BUILD_DLL
 
   Source_Files {
     ../data/GeneratedCode/latency_data_ddsC.cpp
