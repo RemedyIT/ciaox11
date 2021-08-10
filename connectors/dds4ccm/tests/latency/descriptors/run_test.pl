@@ -88,10 +88,7 @@ sub delete_ior_files {
     }
     $tg_naming->DeleteFile ($ior_nsbase);
     $tg_domain_dep_man->DeleteFile ($ior_embase);
-    $tg_domain_dep_man->DeleteFile ($finish_file);
-    for ($i = 0; $i < $nr_daemon; ++$i) {
-        $iorfiles[$i] = $tg_daemons[$i]->LocalFile ($iorbases[$i]);
-    }
+    $tg_daemons[0]->DeleteFile ($finish_file);
 }
 
 sub kill_node_daemon {
@@ -273,7 +270,7 @@ foreach $file (@files) {
     # wait until the FINISHED file appears or the EM terminates
     print "Waiting for task to complete\n";
     do {
-      if ($tg_domain_dep_man->WaitForFileTimed ($finish_file, 1) != -1) {
+      if ($tg_daemons[0]->WaitForFileTimed ($finish_file, 1) != -1) {
         $finished = 1;
       } else {
         $sleep_time++;

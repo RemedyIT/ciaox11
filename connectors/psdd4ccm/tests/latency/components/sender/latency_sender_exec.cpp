@@ -604,7 +604,7 @@ namespace Test_Sender_Impl
     if (!this->tm_)
     {
        PSDD4CCM_TEST_ERROR << "ERROR: Sender_exec_i::ccm_passivate - "
-                             "Test did not start, because no DDS::PUBLICATION_MATCHED_STATUS was received."
+                             "Test did not start, because no startup was matched."
                           << std::endl;
     }
     else
