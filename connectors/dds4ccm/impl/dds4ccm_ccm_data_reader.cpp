@@ -17,7 +17,7 @@ namespace CIAOX11
   {
     CCM_DataReader::CCM_DataReader (
       IDL::traits<CORBA::Object>::weak_ref_type component)
-      : FacetBase< ::DDS::CCM_DataReader > (component)
+      : FacetBase< ::DDS::CCM_DataReader> (component)
     {
     }
 

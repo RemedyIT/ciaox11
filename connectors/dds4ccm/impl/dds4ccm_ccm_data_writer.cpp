@@ -17,7 +17,7 @@ namespace CIAOX11
   {
     CCM_DataWriter::CCM_DataWriter (
       IDL::traits<CORBA::Object>::weak_ref_type component)
-      : FacetBase< ::DDS::CCM_DataWriter > (component)
+      : FacetBase< ::DDS::CCM_DataWriter> (component)
     {
     }
 
