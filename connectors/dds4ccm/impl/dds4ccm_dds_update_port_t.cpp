@@ -41,8 +41,7 @@ DDS_Update_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::configuration_complete 
     else
     {
       ::DDS::DataWriterQos dwqos;
-      ::DDS::ReturnCode_t const retcode =
-        publisher->get_default_datawriter_qos (dwqos);
+      ::DDS::ReturnCode_t const retcode = publisher->get_default_datawriter_qos (dwqos);
 
       if (retcode != DDS::RETCODE_OK)
       {
