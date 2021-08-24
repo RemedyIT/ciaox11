@@ -12,6 +12,7 @@ eval '(exit $?0)' && eval 'exec perl -S $0 ${1+"$@"}'
 
 use lib "$ENV{'ACE_ROOT'}/bin";
 use PerlACE::TestTarget;
+use Getopt::Long;
 
 $TAO_ROOT = "$ENV{'TAO_ROOT'}";
 $DANCEX11_ROOT = "$ENV{'DANCEX11_ROOT'}";
@@ -54,6 +55,11 @@ $tg_domain_dep_man = 0;
 
 $status = 0;
 
+my $help = 0;
+my $chrt = '';
+my $prio = '0';
+my $chrt_cmd = '';
+
 sub create_targets {
     #   naming service
     $tg_naming = PerlACE::TestTarget::create_target (1) || die "Create target for ns failed\n";
@@ -82,10 +88,7 @@ sub delete_ior_files {
     }
     $tg_naming->DeleteFile ($ior_nsbase);
     $tg_domain_dep_man->DeleteFile ($ior_embase);
-    $tg_domain_dep_man->DeleteFile ($finish_file);
-    for ($i = 0; $i < $nr_daemon; ++$i) {
-        $iorfiles[$i] = $tg_daemons[$i]->LocalFile ($iorbases[$i]);
-    }
+    $tg_daemons[0]->DeleteFile ($finish_file);
 }
 
 sub kill_node_daemon {
@@ -121,11 +124,16 @@ sub run_node_daemons {
         $dancex11_root = $tg_daemons[$i]->LocalEnvDir("$DANCEX11_ROOT");
 
         $d_cmd = "$DANCEX11_ROOT/$DANCEX11_BIN_FOLDER/dancex11_deployment_manager";
-        $d_param = "--handler dancex11_node_dm_handler -p $port " .
-                   "-ORBDottedDecimalAddresses 1 -n $nodename=$iorfile " .
-                   "--deployment-nc " . $ENV{'NameServiceIOR'};
+        if ($chrt ne '') {
+            $d_param = '--' . $chrt . ' ' . $prio . ' ' . $d_cmd . ' ';
+            $d_cmd = $chrt_cmd;
+        }
 
-        print "Run dancex11_deployment_manager with $d_param\n";
+        $d_param .= "--handler dancex11_node_dm_handler -p $port " .
+                    "-ORBDottedDecimalAddresses 1 -n $nodename=$iorfile " .
+                    "--deployment-nc " . $ENV{'NameServiceIOR'};
+
+        print "Run $d_cmd $d_param\n";
 
         $DEAMONS[$i] = $tg_daemons[$i]->CreateProcess ($d_cmd, $d_param);
         $DEAMONS[$i]->Spawn ();
@@ -141,6 +149,37 @@ sub run_node_daemons {
         }
     }
     return 0;
+}
+
+sub print_help {
+  my $fd = shift;
+  print $fd "\n" .
+    "run_test.pl [<options> ...] [PLAN]\n" .
+    "\n" .
+    "Executes test\n" .
+    "\n" .
+    "Options:\n" .
+    "    --help | -h              Display this help\n" .
+    "    --chrt SCHEDULER         run using chrt with specified scheduler arg (fifo|rr|other)\n" .
+    "    --prio PRIORITY          priority for chrt (default 0)\n\n";
+}
+
+# Parse Options
+Getopt::Long::Configure('bundling', 'no_auto_abbrev');
+my $invalid_arguments = !GetOptions(
+  'help|h'          => \$help,
+  'chrt=s'          => \$chrt,
+  'prio=s'          => \$prio
+);
+if ($invalid_arguments || $help) {
+  print_help($invalid_arguments ? *STDERR : *STDOUT);
+  exit($invalid_arguments ? 1 : 0);
+}
+
+if ($chrt ne '') {
+  $chrt_cmd = qx(which chrt);
+  $chrt_cmd = "$chrt_cmd";
+  chomp($chrt_cmd);
 }
 
 if ($#ARGV == -1) {
@@ -231,7 +270,7 @@ foreach $file (@files) {
     # wait until the FINISHED file appears or the EM terminates
     print "Waiting for task to complete\n";
     do {
-      if ($tg_domain_dep_man->WaitForFileTimed ($finish_file, 1) != -1) {
+      if ($tg_daemons[0]->WaitForFileTimed ($finish_file, 1) != -1) {
         $finished = 1;
       } else {
         $sleep_time++;

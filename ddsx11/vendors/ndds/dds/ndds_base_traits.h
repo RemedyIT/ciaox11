@@ -345,7 +345,6 @@ namespace DDSX11
     if (to.ensure_length (ACE_Utils::truncate_cast<DDS_Native::DDS::sequence_size_type> (from.size ()),
                           ACE_Utils::truncate_cast<DDS_Native::DDS::sequence_size_type> (from.size ())))
     {
-      to.length (ACE_Utils::truncate_cast<DDS_Native::DDS::sequence_size_type> (from.size ()));
       DDS_Native::DDS::sequence_size_type c {};
       for (const auto& val: from)
         {

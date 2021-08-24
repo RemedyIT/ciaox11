@@ -1,7 +1,10 @@
-project(*_ddsx11) : ddsx11_impl {
 
-  after += latency_data_stub latency_data_ddsx11_opendds_impl latency_data_ddsx11_ndds_impl
-  libs  += latency_data_stub latency_data_ddsx11_impl
+project(*_ddsx11_ndds) : ddsx11_impl {
+
+  after += latency_data_stub latency_data_ddsx11_ndds_ts
+  libs += latency_data_stub
+
+  requires += ndds
 
   libpaths += ../lib
 
@@ -10,7 +13,42 @@ project(*_ddsx11) : ddsx11_impl {
 
   includes += ../data/GeneratedCode
 
+  macros += LATENCY_TYPESUPPORT_BUILD_DLL
+
   Source_Files {
+    ../data/GeneratedCode/latency_data_dds.cxx
+    ../data/GeneratedCode/latency_data_ddsPlugin.cxx
+    ../data/GeneratedCode/latency_data_ddsSupport.cxx
+    ../data/GeneratedCode/latency_data_dds_typesupport.cpp
+    main.cpp
+  }
+
+  Header_Files {
+  }
+}
+
+
+project(*_ddsx11_opendds) : ddsx11_impl {
+
+  after += latency_data_stub latency_data_ddsx11_opendds_ts
+  libs += latency_data_stub
+
+  requires += opendds
+
+  libpaths += ../lib
+
+  exename = sender
+  exeout  = ../lib
+
+  includes += ../data/GeneratedCode
+
+  macros += LATENCY_TYPESUPPORT_BUILD_DLL
+
+  Source_Files {
+    ../data/GeneratedCode/latency_data_ddsC.cpp
+    ../data/GeneratedCode/latency_data_ddsTypeSupportC.cpp
+    ../data/GeneratedCode/latency_data_ddsTypeSupportImpl.cpp
+    ../data/GeneratedCode/latency_data_dds_typesupport.cpp
     main.cpp
   }
 
