@@ -47,7 +47,8 @@ namespace Shapes_Sender_comp_Impl
     /// Constructor
     /// @param[in] context Component context
     connector_status_exec_i (
-        IDL::traits< ::Shapes::CCM_Sender_comp_Context>::ref_type context);
+        IDL::traits< ::Shapes::CCM_Sender_comp_Context>::ref_type context,
+        IDL::traits< ::Shapes::CCM_Sender_comp>::weak_ref_type component_executor);
     //@@{__RIDL_REGEN_MARKER__} - END : Shapes_Sender_comp_Impl::connector_status_exec_i[ctor]
 
     /// Destructor
@@ -101,7 +102,8 @@ namespace Shapes_Sender_comp_Impl
     /** @name User defined members. */
     //@{
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Shapes_Sender_comp_Impl::connector_status_exec_i[user_members]
-    // Your code here
+    IDL::traits<Shapes::CCM_Sender_comp>::weak_ref_type component_executor_;
+    bool started_ { false };
     //@@{__RIDL_REGEN_MARKER__} - END : Shapes_Sender_comp_Impl::connector_status_exec_i[user_members]
     //@}
 
@@ -156,6 +158,7 @@ namespace Shapes_Sender_comp_Impl
     /** @name User defined public operations. */
     //@{
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Shapes_Sender_comp_Impl::Sender_comp_exec_i[user_public_ops]
+    void start_publishing ();
     //@@{__RIDL_REGEN_MARKER__} - END : Shapes_Sender_comp_Impl::Sender_comp_exec_i[user_public_ops]
     //@}
 
@@ -172,13 +175,14 @@ namespace Shapes_Sender_comp_Impl
     //@{
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Shapes_Sender_comp_Impl::Sender_comp_exec_i[user_members]
     ::DDS::InstanceHandle_t instance_handle_ { ::DDS::HANDLE_NIL };
+    ShapeType square_ {"GREEN", 10, 10, 1};
+    bool already_publishing_ {};
     //@@{__RIDL_REGEN_MARKER__} - END : Shapes_Sender_comp_Impl::Sender_comp_exec_i[user_members]
     //@}
 
     /** @name User defined private operations. */
     //@{
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Shapes_Sender_comp_Impl::Sender_comp_exec_i[user_private_ops]
-    void start_publishing ();
     //@@{__RIDL_REGEN_MARKER__} - END : Shapes_Sender_comp_Impl::Sender_comp_exec_i[user_private_ops]
     //@}
 

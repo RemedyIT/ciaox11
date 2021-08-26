@@ -9,5 +9,6 @@ component 'shapes_receiver_comp' do |comp|
 
   # gen_dir is default 'generated_code'
   comp.gen_dir  'build'
-
+  comp.includes '$(CIAOX11_ROOT)/connectors'
+  comp.libs 'ciaox11_dds4ccm_logger'
 end

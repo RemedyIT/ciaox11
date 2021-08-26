@@ -13,10 +13,11 @@
 
 //@@{__RIDL_REGEN_MARKER__} - BEGIN : Shapes_Sender_comp_Impl[user_includes]
 #include "ciaox11/testlib/ciaox11_testlog.h"
+#include "dds4ccm/logger/dds4ccm_testlog.h"
+#include "dds4ccm/tests/common/dds4ccm_test_utils.h"
 //@@{__RIDL_REGEN_MARKER__} - END : Shapes_Sender_comp_Impl[user_includes]
 
 //@@{__RIDL_REGEN_MARKER__} - BEGIN : Shapes_Sender_comp_Impl[user_global_impl]
-// Your declarations here
 //@@{__RIDL_REGEN_MARKER__} - END : Shapes_Sender_comp_Impl[user_global_impl]
 
 namespace Shapes_Sender_comp_Impl
@@ -126,7 +127,7 @@ namespace Shapes_Sender_comp_Impl
     {
       if (DDS4CCM_TEST_UTILS::check_publication_matched_status (the_entity, status_kind, 1))
       {
-        auto cex = IDL::traits<Sender_exec_i>::narrow (this->component_executor_.lock ());
+        auto cex = IDL::traits<Sender_comp_exec_i>::narrow (this->component_executor_.lock ());
         if (cex)
         {
           this->started_ = true;
@@ -141,7 +142,6 @@ namespace Shapes_Sender_comp_Impl
     }
     //@@{__RIDL_REGEN_MARKER__} - END : Shapes_Sender_comp_Impl::connector_status_exec_i::on_unexpected_status[_the_entity_status_kind]
   }
-
 
   /**
    * Component Executor Implementation Class : Sender_comp_exec_i
@@ -173,12 +173,11 @@ namespace Shapes_Sender_comp_Impl
           IDL::traits< ::ShapeTypeInterface::Writer>::ref_type writer =
             this->context_->get_connection_info_write_data ();
 
-          ShapeType square {"GREEN", 10, 10, 1};
-          writer->write_one (square, this->instance_handle_);
+          writer->write_one (square_, this->instance_handle_);
 
           CIAOX11_TEST_DEBUG
             << "Updated "
-            << IDL::traits<ShapeType>::write (square)
+            << IDL::traits<ShapeType>::write (square_)
             << std::endl;
         }
     }
@@ -262,6 +261,19 @@ namespace Shapes_Sender_comp_Impl
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Shapes_Sender_comp_Impl::Sender_comp_exec_i[ccm_remove]
     // Your code here
     //@@{__RIDL_REGEN_MARKER__} - END : Shapes_Sender_comp_Impl::Sender_comp_exec_i[ccm_remove]
+  }
+
+  IDL::traits< ::CCM_DDS::CCM_ConnectorStatusListener>::ref_type
+  Sender_comp_exec_i::get_connector_status ()
+  {
+  //@@{__RIDL_REGEN_MARKER__} - BEGIN : Shapes_Sender_comp_Impl::Sender_comp_exec_i[get_connector_status]
+    if (!this->connector_status_)
+    {
+      this->connector_status_ = IDL::traits< ::CCM_DDS::CCM_ConnectorStatusListener>::make_reference <connector_status_exec_i> (
+        this->context_, IDL::traits<Shapes::CCM_Sender_comp>::narrow (this->_lock()));
+    }
+    return this->connector_status_;
+  //@@{__RIDL_REGEN_MARKER__} - END : Shapes_Sender_comp_Impl::Sender_comp_exec_i[get_connector_status]
   }
 
   /// Operations from Components::SessionComponent
