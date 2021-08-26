@@ -327,6 +327,13 @@ namespace DDSX11
 
   template <typename DDS_NATIVE_SEQ, typename DDS_SEQ>
   inline DDS_NATIVE_SEQ&
+  fixedsize_sequence_to_dds (DDS_NATIVE_SEQ& to, const DDS_SEQ& from)
+  {
+    return sequence_to_dds (to, from);
+  }
+
+  template <typename DDS_NATIVE_SEQ, typename DDS_SEQ>
+  inline DDS_NATIVE_SEQ&
   string_sequence_to_dds (DDS_NATIVE_SEQ& to, const DDS_SEQ& from)
   {
     to.length (ACE_Utils::truncate_cast<DDS_Native::DDS::sequence_size_type> (from.size ()));
@@ -367,22 +374,9 @@ namespace DDSX11
     return to;
   }
 
-  template <typename DDS_NATIVE_SEQ>
-  inline std::vector<bool>&
-  sequence_from_dds (std::vector<bool>& to, const DDS_NATIVE_SEQ& from)
-  {
-    to.resize (from.length ());
-    typename std::vector<bool>::size_type c {};
-    for (DDS_Native::DDS::sequence_size_type i {}; i < from.length(); ++i)
-    {
-      to[c++] = (from[i] ? true : false);
-    }
-    return to;
-  }
-
-  template <const uint32_t Bound, typename DDS_NATIVE_SEQ>
-  inline IDL::bounded_vector<bool, Bound>&
-  bounded_boolean_sequence_from_dds (IDL::bounded_vector<bool, Bound>& to, const DDS_NATIVE_SEQ& from)
+  template <typename DDS_SEQ, typename DDS_NATIVE_SEQ>
+  inline DDS_SEQ&
+  boolean_sequence_from_dds (DDS_SEQ& to, const DDS_NATIVE_SEQ& from)
   {
     to.resize (from.length ());
     typename std::vector<bool>::size_type c {};

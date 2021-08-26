@@ -6,10 +6,14 @@ namespace DDSX11
   to_dds< <%= native_scoped_cxxtype %>, <%= scoped_cxxtype %>> (
     <%= native_scoped_cxxtype %> &to, const <%= scoped_cxxtype %> &from)
   {
-%if is_bounded_string_type?
+%if is_string_type?
+% if is_bounded?
     return DDSX11::bounded_string_sequence_to_dds(to, from);
-%elsif is_string_type?
+% else
     return DDSX11::string_sequence_to_dds(to, from);
+% end
+%elsif is_integer_type? || is_char_type? || is_float_type?
+    return DDSX11::fixedsize_sequence_to_dds(to, from);
 %else
     return DDSX11::sequence_to_dds(to, from);
 %end
@@ -23,8 +27,10 @@ namespace DDSX11
   {
 %if is_bounded_string_type?
     return DDSX11::bounded_string_sequence_from_dds(to, from);
-%elsif is_boolean_type? && is_bounded?
-    return DDSX11::bounded_boolean_sequence_from_dds(to, from);
+%elsif is_boolean_type?
+    return DDSX11::boolean_sequence_from_dds(to, from);
+%elsif is_integer_type? || is_char_type? || is_float_type?
+    return DDSX11::fixedsize_sequence_from_dds(to, from);
 %else
     return DDSX11::sequence_from_dds(to, from);
 %end
