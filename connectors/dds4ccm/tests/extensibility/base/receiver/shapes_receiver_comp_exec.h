@@ -47,7 +47,8 @@ namespace Shapes_Receiver_comp_Impl
     /// Constructor
     /// @param[in] context Component context
     info_out_data_listener_exec_i (
-      IDL::traits<Shapes::CCM_Receiver_comp_Context>::ref_type context);
+      IDL::traits<Shapes::CCM_Receiver_comp_Context>::ref_type context,
+      bool& success);
     //@@{__RIDL_REGEN_MARKER__} - END : Shapes_Receiver_comp_Impl::info_out_data_listener_exec_i[ctor]
 
     /// Destructor
@@ -81,7 +82,7 @@ namespace Shapes_Receiver_comp_Impl
     /** @name User defined members. */
     //@{
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Shapes_Receiver_comp_Impl::info_out_data_listener_exec_i[user_members]
-    // Your code here
+    bool& success_;
     //@@{__RIDL_REGEN_MARKER__} - END : Shapes_Receiver_comp_Impl::info_out_data_listener_exec_i[user_members]
     //@}
 
@@ -144,7 +145,6 @@ namespace Shapes_Receiver_comp_Impl
     /** @name User defined private operations. */
     //@{
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Shapes_Receiver_comp_Impl::info_out_status_exec_i[user_private_ops]
-    // Your code here
     //@@{__RIDL_REGEN_MARKER__} - END : Shapes_Receiver_comp_Impl::info_out_status_exec_i[user_private_ops]
     //@}
   };
@@ -216,7 +216,7 @@ namespace Shapes_Receiver_comp_Impl
     /** @name User defined members. */
     //@{
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Shapes_Receiver_comp_Impl::Receiver_comp_exec_i[user_members]
-    // Your code here
+    bool success_ { false };
     //@@{__RIDL_REGEN_MARKER__} - END : Shapes_Receiver_comp_Impl::Receiver_comp_exec_i[user_members]
     //@}
 

@@ -30,8 +30,10 @@ namespace Shapes_Receiver_comp_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Shapes_Receiver_comp_Impl::info_out_data_listener_exec_i[ctor]
   info_out_data_listener_exec_i::info_out_data_listener_exec_i (
-    IDL::traits<Shapes::CCM_Receiver_comp_Context>::ref_type context)
+    IDL::traits<Shapes::CCM_Receiver_comp_Context>::ref_type context,
+    bool& success)
     : context_ (std::move (context))
+    , success_ (success)
   {
   }
   //@@{__RIDL_REGEN_MARKER__} - END : Shapes_Receiver_comp_Impl::info_out_data_listener_exec_i[ctor]
@@ -64,7 +66,15 @@ namespace Shapes_Receiver_comp_Impl
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Shapes_Receiver_comp_Impl::info_out_data_listener_exec_i::on_one_data[_datum_info]
     X11_UNUSED_ARG(info);
     CIAOX11_TEST_DEBUG << "Receiver, on_one_data " << IDL::traits<ShapeType>::write (datum) << std::endl;
-
+    if (datum.color() == "GREEN" && datum.x() == 10 && datum.y() == 11 && datum.shapesize() == 12)
+    {
+      CIAOX11_TEST_DEBUG << "Received correct sample" << std::endl;
+      success_ = true;
+    }
+    else
+    {
+      CIAOX11_TEST_ERROR << "ERROR Receiverd incorrect sample" << std::endl;
+    }
     //@@{__RIDL_REGEN_MARKER__} - END : Shapes_Receiver_comp_Impl::info_out_data_listener_exec_i::on_one_data[_datum_info]
   }
 
@@ -178,7 +188,10 @@ namespace Shapes_Receiver_comp_Impl
   void Receiver_comp_exec_i::ccm_passivate ()
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Shapes_Receiver_comp_Impl::Receiver_comp_exec_i[ccm_passivate]
-    // Your code here
+    if (!success_)
+    {
+      CIAOX11_TEST_ERROR << "ERROR: Receiver, didn't got correct result" << std::endl;
+    }
     //@@{__RIDL_REGEN_MARKER__} - END : Shapes_Receiver_comp_Impl::Receiver_comp_exec_i[ccm_passivate]
   }
 
@@ -195,7 +208,7 @@ namespace Shapes_Receiver_comp_Impl
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Shapes_Receiver_comp_Impl::Receiver_comp_exec_i[get_info_out_data_listener]
   if (!this->info_out_data_listener_)
   {
-    this->info_out_data_listener_ = CORBA::make_reference <info_out_data_listener_exec_i> (this->context_);
+    this->info_out_data_listener_ = CORBA::make_reference <info_out_data_listener_exec_i> (this->context_, success_);
   }
   return this->info_out_data_listener_;
   //@@{__RIDL_REGEN_MARKER__} - END : Shapes_Receiver_comp_Impl::Receiver_comp_exec_i[get_info_out_data_listener]
