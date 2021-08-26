@@ -11,6 +11,8 @@
 #include "dds/dds_vendor_adapter.h"
 #include <dds/DCPS/Marked_Default_Qos.h>
 #include "dds/DCPS/transport/framework/TransportDebug.h"
+#include "dds/DCPS/transport/framework/TransportConfig_rch.h"
+#include "dds/DCPS/transport/framework/TransportRegistry.h"
 
 #include "dds/opendds_publisher.h"
 #include "dds/opendds_subscriber.h"
@@ -70,6 +72,14 @@ namespace DDSX11
       OpenDDS::DCPS::Transport_debug_level = dcpsdtl;
 
       TheServiceParticipant->set_default_discovery (OpenDDS::DCPS::Discovery::DEFAULT_RTPS);
+
+      // For appendable extensibility to work we need to make sure rtps_udp is used
+      OpenDDS::DCPS::TransportConfig_rch transport_config =
+        TheTransportRegistry->create_config("default_rtps_transport_config");
+      OpenDDS::DCPS::TransportInst_rch transport_inst =
+        TheTransportRegistry->create_inst("default_rtps_transport", "rtps_udp");
+      transport_config->instances_.push_back(transport_inst);
+      TheTransportRegistry->global_config(transport_config);
 
       DDS_Native::DDS::DomainParticipantFactory_var dpf = TheParticipantFactory;
       return TAOX11_CORBA::make_reference<DDSX11::OpenDDS_PROXY::OpenDDS_DomainParticipantFactory_proxy> (dpf);
