@@ -259,8 +259,7 @@ foreach $file (@files) {
 
     if ($tg_domain_dep_man->WaitForFileTimed ($ior_embase,
                                     $tg_domain_dep_man->ProcessStartWaitInterval ()) == -1) {
-        print STDERR
-          "ERROR: The ior file of execution manager could not be found\n";
+        print STDERR "ERROR: The ior file of execution manager could not be found\n";
         kill_open_processes ();
         exit 1;
     }
