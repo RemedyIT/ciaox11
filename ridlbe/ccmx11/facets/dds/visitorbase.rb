@@ -12,7 +12,7 @@ module IDL
 
   module Cxx11
 
-    # Reopen C++11 VisitorBase to add CCMX11 specific properties
+    # Reopen C++11 VisitorBase to add DDSX11 specific properties
     #
     class VisitorBase
 
@@ -57,6 +57,12 @@ module IDL
         annot = self.annotations[:'top-level'].first || self.annotations[:TopLevel].first
         return false if annot.nil?
         return annot.fields[:value].nil? || annot.fields[:value]
+      end
+
+      def extensibility_annotation
+        # DDS X-Types defines that the default for extensibility is appendable
+        return :final if self.annotations[:'final'].first
+        :appendable
       end
 
       def typesupport_export_include?

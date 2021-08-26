@@ -25,75 +25,123 @@ namespace Shapes_Sender_comp_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : Shapes_Sender_comp_Impl[user_namespace_impl]
 
   /**
-   * Facet Executor Implementation Class : control_exec_i
+   * Facet Executor Implementation Class : connector_status_exec_i
    */
 
-  //@@{__RIDL_REGEN_MARKER__} - BEGIN : Shapes_Sender_comp_Impl::control_exec_i[ctor]
-  control_exec_i::control_exec_i (
+  //@@{__RIDL_REGEN_MARKER__} - BEGIN : Shapes_Sender_comp_Impl::connector_status_exec_i[ctor]
+  connector_status_exec_i::connector_status_exec_i (
     IDL::traits<Shapes::CCM_Sender_comp_Context>::ref_type context,
     IDL::traits<Shapes::CCM_Sender_comp>::weak_ref_type component_executor)
     : context_ (std::move (context))
     , component_executor_ (std::move(component_executor))
   {
   }
-  //@@{__RIDL_REGEN_MARKER__} - END : Shapes_Sender_comp_Impl::control_exec_i[ctor]
+  //@@{__RIDL_REGEN_MARKER__} - END : Shapes_Sender_comp_Impl::connector_status_exec_i[ctor]
 
-  control_exec_i::~control_exec_i ()
+  connector_status_exec_i::~connector_status_exec_i ()
   {
-    //@@{__RIDL_REGEN_MARKER__} - BEGIN : Shapes_Sender_comp_Impl::control_exec_i[dtor]
-    // Your code here
-    //@@{__RIDL_REGEN_MARKER__} - END : Shapes_Sender_comp_Impl::control_exec_i[dtor]
+    //@@{__RIDL_REGEN_MARKER__} - BEGIN : Shapes_Sender_comp_Impl::connector_status_exec_i[dtor]
+  // Your code here
+    //@@{__RIDL_REGEN_MARKER__} - END : Shapes_Sender_comp_Impl::connector_status_exec_i[dtor]
   }
 
   /** User defined public operations. */
-  //@@{__RIDL_REGEN_MARKER__} - BEGIN : Shapes_Sender_comp_Impl::control_exec_i[user_public_ops]
+  //@@{__RIDL_REGEN_MARKER__} - BEGIN : Shapes_Sender_comp_Impl::connector_status_exec_i[user_public_ops]
   // Your code here
-  //@@{__RIDL_REGEN_MARKER__} - END : Shapes_Sender_comp_Impl::control_exec_i[user_public_ops]
+  //@@{__RIDL_REGEN_MARKER__} - END : Shapes_Sender_comp_Impl::connector_status_exec_i[user_public_ops]
 
   /** User defined private operations. */
-  //@@{__RIDL_REGEN_MARKER__} - BEGIN : Shapes_Sender_comp_Impl::control_exec_i[user_private_ops]
+  //@@{__RIDL_REGEN_MARKER__} - BEGIN : Shapes_Sender_comp_Impl::connector_status_exec_i[user_private_ops]
   // Your code here
-  //@@{__RIDL_REGEN_MARKER__} - END : Shapes_Sender_comp_Impl::control_exec_i[user_private_ops]
+  //@@{__RIDL_REGEN_MARKER__} - END : Shapes_Sender_comp_Impl::connector_status_exec_i[user_private_ops]
 
 
-  /** Operations and attributes from control */
+  /** Operations and attributes from connector_status */
 
-  ::Shapes::ReturnStatus
-  control_exec_i::setSize (
-      uint16_t size)
+  void
+  connector_status_exec_i::on_inconsistent_topic (
+      IDL::traits< ::DDS::Topic>::ref_type the_topic,
+      const ::DDS::InconsistentTopicStatus& status)
   {
-    //@@{__RIDL_REGEN_MARKER__} - BEGIN : Shapes_Sender_comp_Impl::control_exec_i::setSize[_size]
-    ::Shapes::ReturnStatus status = ::Shapes::ReturnStatus::RETURN_ERROR;
-    auto cex = IDL::traits<Sender_comp_exec_i>::narrow (this->component_executor_.lock ());
-    if (cex)
-      status = cex->setSize (size);
-    else
-    {
-      CIAOX11_TEST_ERROR << "control_exec_i::setSize - "
-        "ERROR: failed to lock component executor" << std::endl;
-    }
-    return status;
-    //@@{__RIDL_REGEN_MARKER__} - END : Shapes_Sender_comp_Impl::control_exec_i::setSize[_size]
+    //@@{__RIDL_REGEN_MARKER__} - BEGIN : Shapes_Sender_comp_Impl::connector_status_exec_i::on_inconsistent_topic[_the_topic_status]
+    X11_UNUSED_ARG(the_topic);
+    X11_UNUSED_ARG(status);
+    //@@{__RIDL_REGEN_MARKER__} - END : Shapes_Sender_comp_Impl::connector_status_exec_i::on_inconsistent_topic[_the_topic_status]
   }
 
-  ::Shapes::ReturnStatus
-  control_exec_i::setLocation (
-      uint16_t x,
-      uint16_t y)
+  void
+  connector_status_exec_i::on_requested_incompatible_qos (
+      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      const ::DDS::RequestedIncompatibleQosStatus& status)
   {
-    //@@{__RIDL_REGEN_MARKER__} - BEGIN : Shapes_Sender_comp_Impl::control_exec_i::setLocation[_x_y]
-    ::Shapes::ReturnStatus status = ::Shapes::ReturnStatus::RETURN_ERROR;
-    auto cex = IDL::traits<Sender_comp_exec_i>::narrow (this->component_executor_.lock ());
-    if (cex)
-      status = cex->setLocation (x, y);
-    else
-    {
-      CIAOX11_TEST_ERROR << "control_exec_i::setLocation - "
-        "ERROR: failed to lock component executor" << std::endl;
-    }
-    return status;
-    //@@{__RIDL_REGEN_MARKER__} - END : Shapes_Sender_comp_Impl::control_exec_i::setLocation[_x_y]
+    //@@{__RIDL_REGEN_MARKER__} - BEGIN : Shapes_Sender_comp_Impl::connector_status_exec_i::on_requested_incompatible_qos[_the_reader_status]
+    X11_UNUSED_ARG(the_reader);
+    X11_UNUSED_ARG(status);
+    //@@{__RIDL_REGEN_MARKER__} - END : Shapes_Sender_comp_Impl::connector_status_exec_i::on_requested_incompatible_qos[_the_reader_status]
   }
+
+  void
+  connector_status_exec_i::on_sample_rejected (
+      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      const ::DDS::SampleRejectedStatus& status)
+  {
+    //@@{__RIDL_REGEN_MARKER__} - BEGIN : Shapes_Sender_comp_Impl::connector_status_exec_i::on_sample_rejected[_the_reader_status]
+    X11_UNUSED_ARG(the_reader);
+    X11_UNUSED_ARG(status);
+    //@@{__RIDL_REGEN_MARKER__} - END : Shapes_Sender_comp_Impl::connector_status_exec_i::on_sample_rejected[_the_reader_status]
+  }
+
+  void
+  connector_status_exec_i::on_offered_deadline_missed (
+      IDL::traits< ::DDS::DataWriter>::ref_type the_writer,
+      const ::DDS::OfferedDeadlineMissedStatus& status)
+  {
+    //@@{__RIDL_REGEN_MARKER__} - BEGIN : Shapes_Sender_comp_Impl::connector_status_exec_i::on_offered_deadline_missed[_the_writer_status]
+    X11_UNUSED_ARG(the_writer);
+    X11_UNUSED_ARG(status);
+    //@@{__RIDL_REGEN_MARKER__} - END : Shapes_Sender_comp_Impl::connector_status_exec_i::on_offered_deadline_missed[_the_writer_status]
+  }
+
+  void
+  connector_status_exec_i::on_offered_incompatible_qos (
+      IDL::traits< ::DDS::DataWriter>::ref_type the_writer,
+      const ::DDS::OfferedIncompatibleQosStatus& status)
+  {
+    //@@{__RIDL_REGEN_MARKER__} - BEGIN : Shapes_Sender_comp_Impl::connector_status_exec_i::on_offered_incompatible_qos[_the_writer_status]
+    X11_UNUSED_ARG(the_writer);
+    X11_UNUSED_ARG(status);
+    //@@{__RIDL_REGEN_MARKER__} - END : Shapes_Sender_comp_Impl::connector_status_exec_i::on_offered_incompatible_qos[_the_writer_status]
+  }
+
+  void
+  connector_status_exec_i::on_unexpected_status (
+      IDL::traits< ::DDS::Entity>::ref_type the_entity,
+      ::DDS::StatusKind status_kind)
+  {
+    //@@{__RIDL_REGEN_MARKER__} - BEGIN : Shapes_Sender_comp_Impl::connector_status_exec_i::on_unexpected_status[_the_entity_status_kind]
+    DDS4CCM_TEST_DEBUG << "connector_status_exec_i::on_unexpected_status status_kind <" << DDS::dds_write(status_kind) << ">" << std::endl;
+    // dds4ccm/tests/updater/sender/updater_sender_exec.cpp for an explanation of the
+    // started_ flag.
+    if (!this->started_)
+    {
+      if (DDS4CCM_TEST_UTILS::check_publication_matched_status (the_entity, status_kind, 1))
+      {
+        auto cex = IDL::traits<Sender_exec_i>::narrow (this->component_executor_.lock ());
+        if (cex)
+        {
+          this->started_ = true;
+          cex->start_publishing ();
+        }
+        else
+        {
+          DDS4CCM_TEST_DEBUG << "connector_status_exec_i::on_unexpected_status - "
+                            << "WARNING: failed to lock component executor" << std::endl;
+        }
+      }
+    }
+    //@@{__RIDL_REGEN_MARKER__} - END : Shapes_Sender_comp_Impl::connector_status_exec_i::on_unexpected_status[_the_entity_status_kind]
+  }
+
 
   /**
    * Component Executor Implementation Class : Sender_comp_exec_i
@@ -113,60 +161,32 @@ namespace Shapes_Sender_comp_Impl
 
   /** User defined public operations. */
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Shapes_Sender_comp_Impl::Sender_comp_exec_i[user_public_ops]
-  ::Shapes::ReturnStatus
-  Sender_comp_exec_i::setSize (uint16_t size)
+  void
+  Sender_comp_exec_i::start_publishing ()
   {
-    this->square_.shapesize(size);
-    return this->update_square ();
-  }
+    if (!this->already_publishing_)
+    {
+      this->already_publishing_ = true;
 
-  ::Shapes::ReturnStatus
-  Sender_comp_exec_i::setLocation (uint16_t x, uint16_t y)
-   {
-    this->square_.x(x);
-    this->square_.y(y);
-    return this->update_square ();
+      if (this->instance_handle_ != ::DDS::HANDLE_NIL)
+        {
+          IDL::traits< ::ShapeTypeInterface::Writer>::ref_type writer =
+            this->context_->get_connection_info_write_data ();
+
+          ShapeType square {"GREEN", 10, 10, 1};
+          writer->write_one (square, this->instance_handle_);
+
+          CIAOX11_TEST_DEBUG
+            << "Updated "
+            << IDL::traits<ShapeType>::write (square)
+            << std::endl;
+        }
+    }
   }
   //@@{__RIDL_REGEN_MARKER__} - END : Shapes_Sender_comp_Impl::Sender_comp_exec_i[user_public_ops]
 
   /** User defined private operations. */
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Shapes_Sender_comp_Impl::Sender_comp_exec_i[user_private_ops]
-  ::Shapes::ReturnStatus
-  Sender_comp_exec_i::update_square ()
-  {
-    Shapes::ReturnStatus retval { Shapes::ReturnStatus::RETURN_OK };
-    try
-      {
-        if (this->instance_handle_ != ::DDS::HANDLE_NIL)
-          {
-            IDL::traits< ::ShapeTypeInterface::Writer>::ref_type writer =
-              this->context_->get_connection_info_write_data ();
-
-            writer->write_one (this->square_, this->instance_handle_);
-
-            CIAOX11_TEST_DEBUG
-              << "Updated "
-              << IDL::traits<ShapeType>::write (this->square_)
-              << std::endl;
-          }
-      }
-    catch (const CCM_DDS::NonExistent& )
-      {
-        retval = Shapes::ReturnStatus::RETURN_ERROR;
-        CIAOX11_TEST_ERROR
-          << "NonExistent Error while writing "
-          << IDL::traits<ShapeType>::write (this->square_) << std::endl;
-      }
-    catch (const CCM_DDS::InternalError& ex)
-      {
-        retval = Shapes::ReturnStatus::RETURN_ERROR;
-        CIAOX11_TEST_ERROR
-          << "Internal Error while writing "
-          << IDL::traits<ShapeType>::write (this->square_)
-          << ": " << ex << std::endl;
-      }
-    return retval;
-  }
   //@@{__RIDL_REGEN_MARKER__} - END : Shapes_Sender_comp_Impl::Sender_comp_exec_i[user_private_ops]
 
   /** Session component operations */
@@ -242,20 +262,6 @@ namespace Shapes_Sender_comp_Impl
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Shapes_Sender_comp_Impl::Sender_comp_exec_i[ccm_remove]
     // Your code here
     //@@{__RIDL_REGEN_MARKER__} - END : Shapes_Sender_comp_Impl::Sender_comp_exec_i[ccm_remove]
-  }
-
-  IDL::traits< ::Shapes::CCM_Control_obj>::ref_type
-  Sender_comp_exec_i::get_control ()
-  {
-  //@@{__RIDL_REGEN_MARKER__} - BEGIN : Shapes_Sender_comp_Impl::Sender_comp_exec_i[get_control]
-  if (!this->control_)
-  {
-    this->control_ =
-      CORBA::make_reference <control_exec_i>
-        (this->context_, IDL::traits<Shapes::CCM_Sender_comp>::narrow (this->_lock()));
-  }
-  return this->control_;
-  //@@{__RIDL_REGEN_MARKER__} - END : Shapes_Sender_comp_Impl::Sender_comp_exec_i[get_control]
   }
 
   /// Operations from Components::SessionComponent
