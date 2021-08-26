@@ -30,6 +30,10 @@ connectors/dds4ccm/tests/connector_status_listener/descriptors/run_test.pl plan_
 connectors/dds4ccm/tests/connector_status_listener/descriptors/run_test.pl plan_on_unexpected_status_opendds.cdp: DDS4CCM_EVENT OPENDDS
 connectors/dds4ccm/tests/connector_status_listener/descriptors/run_test.pl plan_on_unexpected_status_opendds.config: DDS4CCM_EVENT OPENDDS
 connectors/dds4ccm/tests/content_filtered_topics/event_listener/descriptors/run_test.pl plan_opendds.cdp: DDS4CCM_EVENT OPENDDS
+connectors/dds4ccm/tests/extensibility/descriptors/run_test_extended_base.pl plan_opendds.config: DDS4CCM_EVENT OPENDDS
+connectors/dds4ccm/tests/extensibility/descriptors/run_test_base_extended.pl plan_opendds.config: DDS4CCM_EVENT OPENDDS
+connectors/dds4ccm/tests/extensibility/base/descriptors/run_test.pl plan_opendds.config: DDS4CCM_EVENT OPENDDS
+connectors/dds4ccm/tests/extensibility/extended/descriptors/run_test.pl plan_opendds.config: DDS4CCM_EVENT OPENDDS
 connectors/dds4ccm/tests/get_component/descriptors/run_test.pl plan_opendds.config: DDS4CCM_EVENT OPENDDS
 connectors/dds4ccm/tests/get_component/descriptors/run_test.pl plan_opendds.cdp: DDS4CCM_EVENT OPENDDS
 connectors/dds4ccm/tests/getter/descriptors/run_test.pl plan_opendds.config: DDS4CCM_EVENT CORBA4CCM OPENDDS
