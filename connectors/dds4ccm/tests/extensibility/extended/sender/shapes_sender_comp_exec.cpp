@@ -222,6 +222,42 @@ namespace Shapes_Sender_comp_Impl
           << IDL::traits<ShapeType>::write (this->square_)
           << ": " << ex << std::endl;
       }
+
+    if (!this->already_publishing_)
+    {
+      IDL::traits< ::DDS::DataWriter>::ref_type writer_dds_entity =
+        this->context_->get_connection_info_write_dds_entity ();
+      if (writer_dds_entity)
+      {
+        ::DDS::PublicationMatchedStatus status {};
+        ::DDS::ReturnCode_t const retcode = writer_dds_entity->get_publication_matched_status (status);
+
+        if (retcode != ::DDS::RETCODE_OK)
+        {
+          DDS4CCM_TEST_ERROR <<"Sender_comp_exec_i::ccm_activate - "
+            << "Error: Unable to get_publication_matched_status: <"
+            << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+            << ">." << std::endl;
+        }
+        else
+        {
+          DDS4CCM_TEST_DEBUG << "Sender_comp_exec_i::ccm_activate publication_matched current_count: "
+                             << status.current_count() << std::endl;
+
+          if (status.current_count() == 1)
+          {
+            DDS4CCM_TEST_DEBUG << "Sender_comp_exec_i::ccm_activate publication_matched received" << std::endl;
+            this->already_publishing_ = true;
+            this->start_publishing();
+          }
+        }
+      }
+      else
+      {
+        DDS4CCM_TEST_ERROR << "Sender_comp_exec_i::ccm_activate - "
+                           << "No dds_entity port connected" << std::endl;
+      }
+    }
     //@@{__RIDL_REGEN_MARKER__} - END : Shapes_Sender_comp_Impl::Sender_comp_exec_i[ccm_activate]
   }
 
