@@ -155,6 +155,9 @@ namespace DDS_Native
       typedef OPENDDS_VERSIONED_NAMESPACE_NAME::DDS::ReliabilityQosPolicyKind ReliabilityQosPolicyKind;
       typedef OPENDDS_VERSIONED_NAMESPACE_NAME::DDS::DestinationOrderQosPolicyKind DestinationOrderQosPolicyKind;
       typedef OPENDDS_VERSIONED_NAMESPACE_NAME::DDS::HistoryQosPolicyKind HistoryQosPolicyKind;
+      typedef OPENDDS_VERSIONED_NAMESPACE_NAME::DDS::DataRepresentationIdSeq DataRepresentationIdSeq;
+      typedef OPENDDS_VERSIONED_NAMESPACE_NAME::DDS::DataRepresentationQosPolicy DataRepresentationQosPolicy;
+      typedef OPENDDS_VERSIONED_NAMESPACE_NAME::DDS::TypeConsistencyEnforcementQosPolicy TypeConsistencyEnforcementQosPolicy;
     } // namespace DDS
 } // namespace DDS_Native
 
