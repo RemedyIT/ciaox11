@@ -66,7 +66,7 @@ namespace Shapes_Receiver_comp_Impl
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Shapes_Receiver_comp_Impl::info_out_data_listener_exec_i::on_one_data[_datum_info]
     X11_UNUSED_ARG(info);
     CIAOX11_TEST_DEBUG << "Receiver, on_one_data " << IDL::traits<ShapeType>::write (datum) << std::endl;
-    if (datum.color() == "RED" && datum.x() == 10 && datum.y() == 11 && datum.shapesize() == 12 && datum.angle() == 13)
+    if (datum.color() == "RED" && datum.x() == 20 && datum.y() == 21 && datum.shapesize() == 22 && datum.angle() == 23)
     {
       // The sender which sends the extended sample only sends RED, so there the angle should be 13
       CIAOX11_TEST_DEBUG << "Received correct extended sample" << std::endl;
