@@ -69,18 +69,18 @@ namespace Shapes_Receiver_comp_Impl
     if (datum.color() == "RED" && datum.x() == 20 && datum.y() == 21 && datum.shapesize() == 22 && datum.angle() == 23)
     {
       // The sender which sends the extended sample only sends RED, so there the angle should be 13
-      CIAOX11_TEST_DEBUG << "Received correct extended sample" << std::endl;
+      CIAOX11_TEST_DEBUG << "Extended receiver: Received correct extended sample" << std::endl;
       success_ = true;
     }
     else if (datum.color() == "GREEN" && datum.x() == 10 && datum.y() == 11 && datum.shapesize() == 12 && datum.angle() == 0)
     {
       // The sender which sends the base sample only sends GREEN, so there the angle should be the default value (0)
-      CIAOX11_TEST_DEBUG << "Received correct GREEN base sample" << std::endl;
+      CIAOX11_TEST_DEBUG << "Extended receiver: Received correct GREEN base sample" << std::endl;
       success_ = true;
     }
     else
     {
-      CIAOX11_TEST_ERROR << "ERROR Received incorrect sample" << std::endl;
+      CIAOX11_TEST_ERROR << "Extended receiver: ERROR Received incorrect sample" << std::endl;
     }
     //@@{__RIDL_REGEN_MARKER__} - END : Shapes_Receiver_comp_Impl::info_out_data_listener_exec_i::on_one_data[_datum_info]
   }

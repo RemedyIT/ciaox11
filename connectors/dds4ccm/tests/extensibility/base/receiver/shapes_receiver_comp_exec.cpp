@@ -68,17 +68,17 @@ namespace Shapes_Receiver_comp_Impl
     CIAOX11_TEST_DEBUG << "Receiver, on_one_data " << IDL::traits<ShapeType>::write (datum) << std::endl;
     if (datum.color() == "GREEN" && datum.x() == 10 && datum.y() == 11 && datum.shapesize() == 12)
     {
-      CIAOX11_TEST_DEBUG << "Received correct base sample" << std::endl;
+      CIAOX11_TEST_DEBUG << "Base receiver: Received correct base sample" << std::endl;
       success_ = true;
     }
     else if (datum.color() == "RED" && datum.x() == 20 && datum.y() == 21 && datum.shapesize() == 22)
     {
-      CIAOX11_TEST_DEBUG << "Received correct extended sample which just drops range" << std::endl;
+      CIAOX11_TEST_DEBUG << "Base receiver: Received correct extended sample which just drops range" << std::endl;
       success_ = true;
     }
     else
     {
-      CIAOX11_TEST_ERROR << "ERROR Received incorrect sample" << std::endl;
+      CIAOX11_TEST_ERROR << "Base receiver: ERROR Received incorrect sample" << std::endl;
     }
     //@@{__RIDL_REGEN_MARKER__} - END : Shapes_Receiver_comp_Impl::info_out_data_listener_exec_i::on_one_data[_datum_info]
   }
