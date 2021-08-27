@@ -53,7 +53,7 @@ int main (int , char **)
       }
 
       IDL::traits< ::DDS::DomainParticipantFactory>::ref_type pf =
-        ::DDSX11::VendorUtils::init_dds ();
+        DDS::traits<DDS::DomainParticipantFactory>::get_instance ();
 
       ::DDS::DomainParticipantQos qos;
       IDL::traits< ::DDS::DomainParticipant>::ref_type dp1 =
