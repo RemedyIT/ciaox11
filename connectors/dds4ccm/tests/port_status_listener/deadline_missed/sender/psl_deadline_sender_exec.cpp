@@ -110,7 +110,6 @@ namespace PSL_DeadlineTest_Sender_Impl
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : PSL_DeadlineTest_Sender_Impl::Sender_exec_i[configuration_complete]
     DDS4CCM_TEST_DEBUG << "Sender_exec_i::configuration_complete" << std::endl;
-    // Your code here
     //@@{__RIDL_REGEN_MARKER__} - END : PSL_DeadlineTest_Sender_Impl::Sender_exec_i[configuration_complete]
   }
 

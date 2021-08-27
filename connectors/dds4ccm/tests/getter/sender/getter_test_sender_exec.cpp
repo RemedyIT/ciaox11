@@ -382,7 +382,6 @@ namespace Getter_Test_Sender_Impl
                            CCM_TT::TT_Duration (0, 1000000000),
                            CCM_TT::TT_Duration (0, 1000000000),
                            0);
-
     //@@{__RIDL_REGEN_MARKER__} - END : Getter_Test_Sender_Impl::Sender_exec_i[ccm_activate]
   }
 
