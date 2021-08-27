@@ -82,7 +82,6 @@ namespace DDS
     get_instance ()
     {
       // See C++ specification section 6.7 [stmt.dcl] p4
-      ACE_DEBUG((LM_DEBUG, "STATIC GET_INSTANCE\n"));
       static IDL::traits< ::DDS::DomainParticipantFactory>::ref_type dpf = ::DDSX11::VendorUtils::init_dds ();
       return dpf;
     }
