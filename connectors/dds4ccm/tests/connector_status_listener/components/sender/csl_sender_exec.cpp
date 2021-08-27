@@ -213,7 +213,7 @@ namespace CSL_Test_Sender_Impl
           this->on_liveliness_lost_thread_id_ = std::this_thread::get_id ();
 
           IDL::traits< ::DDS::DataWriter>::ref_type writer =
-            IDL::traits< ::DDS::DataWriter >::narrow (the_entity);
+            IDL::traits< ::DDS::DataWriter>::narrow (the_entity);
           if (writer)
           {
             DDS::LivelinessLostStatus lls;
