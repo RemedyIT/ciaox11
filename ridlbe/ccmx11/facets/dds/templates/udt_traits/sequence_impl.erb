@@ -6,12 +6,10 @@ namespace DDSX11
   to_dds< <%= native_scoped_cxxtype %>, <%= scoped_cxxtype %>> (
     <%= native_scoped_cxxtype %> &to, const <%= scoped_cxxtype %> &from)
   {
-%if is_string_type?
-% if is_bounded?
+%if is_bounded_string_type?
     return DDSX11::bounded_string_sequence_to_dds(to, from);
-% else
+%elsif is_string_type?
     return DDSX11::string_sequence_to_dds(to, from);
-% end
 %elsif is_integer_type? || is_char_type? || is_float_type?
     return DDSX11::fixedsize_sequence_to_dds(to, from);
 %else
