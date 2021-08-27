@@ -14,7 +14,7 @@ template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::DDS_Subscriber_Base_T (
   IDL::traits<CORBA::Object>::ref_type component)
   : component_ (component.weak_reference ())
-  , condition_manager_ (std::make_shared< CIAOX11::DDS4CCM::ConditionManager > ())
+  , condition_manager_ (std::make_shared< CIAOX11::DDS4CCM::ConditionManager> ())
 {
   // DDS_Subscriber_Base_T is the base for the Subscribing extended ports (DDS_Get,
   // DDS_Listen, DDS_Read). When one of these is connected, the basic DataReader

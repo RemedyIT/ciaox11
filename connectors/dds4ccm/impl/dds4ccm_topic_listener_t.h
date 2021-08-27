@@ -18,7 +18,7 @@ namespace CIAOX11
   {
     template <typename EVT_STRATEGY>
     class TopicListener_T
-      : public virtual IDL::traits< ::DDS::TopicListener >::base_type
+      : public virtual IDL::traits< ::DDS::TopicListener>::base_type
     {
     public:
       explicit TopicListener_T (const EVT_STRATEGY &evs);

@@ -20,12 +20,11 @@ namespace CIAOX11
   namespace DDS4CCM
   {
     class DDS4CCM_IMPL_Export CCM_DataReader
-      : public virtual FacetBase< ::DDS::CCM_DataReader >
+      : public virtual FacetBase< ::DDS::CCM_DataReader>
     {
     public:
       /// Constructor
-      explicit CCM_DataReader (
-        IDL::traits<CORBA::Object>::weak_ref_type component);
+      explicit CCM_DataReader (IDL::traits<CORBA::Object>::weak_ref_type component);
 
       /// Destructor
       virtual ~CCM_DataReader () = default;
