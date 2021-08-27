@@ -11,8 +11,6 @@
 #include "dds/dds_vendor_adapter.h"
 #include <dds/DCPS/Marked_Default_Qos.h>
 #include "dds/DCPS/transport/framework/TransportDebug.h"
-#include "dds/DCPS/transport/framework/TransportConfig_rch.h"
-#include "dds/DCPS/transport/framework/TransportRegistry.h"
 
 #include "dds/opendds_publisher.h"
 #include "dds/opendds_subscriber.h"
