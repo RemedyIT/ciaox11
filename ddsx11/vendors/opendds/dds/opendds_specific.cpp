@@ -66,6 +66,8 @@ namespace DDSX11
     IDL::traits< ::DDS::DomainParticipantFactory>::ref_type
     init_dds ()
     {
+      DDSX11_IMPL_LOG_DEBUG ("DDSX11::VendorUtils::init_dds - Initializing OpenDDS");
+
       ACE_Env_Value<int> dcpsdl (ACE_TEXT("DDSX11_OPENDDS_LOG_LEVEL"), 0);
       OpenDDS::DCPS::DCPS_debug_level = dcpsdl;
       ACE_Env_Value<int> dcpsdtl (ACE_TEXT("DDSX11_OPENDDS_TRANSPORT_LOG_LEVEL"), 0);

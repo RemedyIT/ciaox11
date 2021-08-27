@@ -33,7 +33,7 @@ namespace DDSX11
     explicit DDS_DomainParticipantFactory_proxy (DDS_Native::DDS::DomainParticipantFactory * dpf);
 
     /// Destructor
-    virtual ~DDS_DomainParticipantFactory_proxy () = default;
+    ~DDS_DomainParticipantFactory_proxy () override = default;
 
     IDL::traits< ::DDS::DomainParticipant>::ref_type
     create_participant (

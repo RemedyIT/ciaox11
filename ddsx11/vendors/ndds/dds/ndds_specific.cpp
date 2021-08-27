@@ -61,6 +61,8 @@ namespace DDSX11
     IDL::traits< ::DDS::DomainParticipantFactory>::ref_type
     init_dds ()
     {
+      DDSX11_IMPL_LOG_DEBUG ("DDSX11::VendorUtils::init_dds - Initializing NDDS");
+
       const char * log_verbosity_env = std::getenv ("DDSX11_NDDS_LOG_VERBOSITY");
       if (log_verbosity_env != nullptr)
       {

@@ -38,16 +38,14 @@ namespace DDSX11
         IDL::traits< ::DDS::DomainParticipantListener>::ref_type a_listener,
         ::DDS::StatusMask mask) override;
 
-      ::DDS::ReturnCode_t
-      finalize_instance () override;
+      ::DDS::ReturnCode_t finalize_instance () override;
 
       /**
        * @name  set_default_participant_qos_with_profile
        * @brief OpenDDS extension.
        */
       ::DDS::ReturnCode_t
-      set_default_participant_qos_with_profile (
-        const std::string &qos_profile) override;
+      set_default_participant_qos_with_profile (const std::string &qos_profile) override;
 
     private:
       OpenDDS_DomainParticipantFactory_proxy() = delete;
