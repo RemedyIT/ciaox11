@@ -376,6 +376,13 @@ namespace DDSX11
 
   template <typename DDS_SEQ, typename DDS_NATIVE_SEQ>
   inline DDS_SEQ&
+  fixedsize_sequence_from_dds (DDS_SEQ& to, const DDS_NATIVE_SEQ& from)
+  {
+    return sequence_from_dds (to, from);
+  }
+
+  template <typename DDS_SEQ, typename DDS_NATIVE_SEQ>
+  inline DDS_SEQ&
   boolean_sequence_from_dds (DDS_SEQ& to, const DDS_NATIVE_SEQ& from)
   {
     to.resize (from.length ());
