@@ -73,16 +73,6 @@ namespace DDSX11
 
       TheServiceParticipant->set_default_discovery (OpenDDS::DCPS::Discovery::DEFAULT_RTPS);
 
-      // For appendable extensibility to work we need to make sure rtps_udp is used
-      /*
-      OpenDDS::DCPS::TransportConfig_rch transport_config =
-        TheTransportRegistry->create_config("default_rtps_transport_config");
-      OpenDDS::DCPS::TransportInst_rch transport_inst =
-        TheTransportRegistry->create_inst("default_rtps_transport", "rtps_udp");
-      transport_config->instances_.push_back(transport_inst);
-      TheTransportRegistry->global_config(transport_config);
-      */
-
       DDS_Native::DDS::DomainParticipantFactory_var dpf = TheParticipantFactory;
       return TAOX11_CORBA::make_reference<DDSX11::OpenDDS_PROXY::OpenDDS_DomainParticipantFactory_proxy> (dpf);
     }
