@@ -89,6 +89,15 @@ namespace DDSX11
       return TAOX11_CORBA::make_reference<DDSX11::OpenDDS_PROXY::OpenDDS_DomainParticipantFactory_proxy> (dpf);
     }
 
+    IDL::traits< ::DDS::DomainParticipantFactory>::ref_type
+    domain_participant_factory ()
+    {
+      DDSX11_IMPL_LOG_DEBUG ("DDSX11::VendorUtils::domain_participant_factory");
+      // See C++ specification section 6.7 [stmt.dcl] p4
+      static IDL::traits< ::DDS::DomainParticipantFactory>::ref_type dpf = init_dds ();
+      return dpf;
+    }
+
     DDS_Native::DDS::PublisherListener*
     create_publisher_listener (
       IDL::traits< ::DDS::PublisherListener>::ref_type listener)

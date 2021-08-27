@@ -44,7 +44,7 @@ namespace DDSX11
 
     DDSX11_IMPL_Export IDL::traits< ::DDS::WaitSet>::ref_type create_waitset ();
 
-    DDSX11_IMPL_Export IDL::traits< ::DDS::DomainParticipantFactory>::ref_type init_dds ();
+    DDSX11_IMPL_Export IDL::traits< ::DDS::DomainParticipantFactory>::ref_type domain_participant_factory ();
 
     /** @name Create DDS Listeners. */
     //@{
@@ -81,9 +81,7 @@ namespace DDS
     static IDL::traits< ::DDS::DomainParticipantFactory>::ref_type
     get_instance ()
     {
-      // See C++ specification section 6.7 [stmt.dcl] p4
-      static IDL::traits< ::DDS::DomainParticipantFactory>::ref_type dpf = ::DDSX11::VendorUtils::init_dds ();
-      return dpf;
+      return DDSX11::VendorUtils::domain_participant_factory ();
     }
   };
 }
