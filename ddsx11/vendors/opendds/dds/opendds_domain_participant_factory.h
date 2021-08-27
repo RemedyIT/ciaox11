@@ -22,9 +22,9 @@ namespace DDSX11
       : public virtual DDSX11::DDS_DomainParticipantFactory_proxy
     {
     public:
-      OpenDDS_DomainParticipantFactory_proxy (DDS_Native::DDS::DomainParticipantFactory * dpf);
+      explicit OpenDDS_DomainParticipantFactory_proxy (DDS_Native::DDS::DomainParticipantFactory * dpf);
 
-      virtual ~OpenDDS_DomainParticipantFactory_proxy () = default;
+      ~OpenDDS_DomainParticipantFactory_proxy () override = default;
 
       /**
        * @name  create_participant_with_profile
@@ -38,16 +38,14 @@ namespace DDSX11
         IDL::traits< ::DDS::DomainParticipantListener>::ref_type a_listener,
         ::DDS::StatusMask mask) override;
 
-      ::DDS::ReturnCode_t
-      finalize_instance () override;
+      ::DDS::ReturnCode_t finalize_instance () override;
 
       /**
        * @name  set_default_participant_qos_with_profile
        * @brief OpenDDS extension.
        */
       ::DDS::ReturnCode_t
-      set_default_participant_qos_with_profile (
-        const std::string &qos_profile) override;
+      set_default_participant_qos_with_profile (const std::string &qos_profile) override;
 
     private:
       OpenDDS_DomainParticipantFactory_proxy() = delete;

@@ -22,9 +22,9 @@ namespace DDSX11
       : public virtual DDSX11::DDS_DomainParticipantFactory_proxy
     {
     public:
-      NDDS_DomainParticipantFactory_proxy (DDS_Native::DDS::DomainParticipantFactory * dpf);
+      explicit NDDS_DomainParticipantFactory_proxy (DDS_Native::DDS::DomainParticipantFactory * dpf);
 
-      virtual ~NDDS_DomainParticipantFactory_proxy () = default;
+      ~NDDS_DomainParticipantFactory_proxy () override = default;
 
       /**
        * @name  create_participant_with_profile

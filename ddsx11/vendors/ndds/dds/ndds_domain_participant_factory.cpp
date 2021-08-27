@@ -27,6 +27,7 @@ namespace DDSX11
       : NativeEntityBase_T<DDS_Native::DDS::DomainParticipantFactory> (dpf)
       , DDSX11::DDS_DomainParticipantFactory_proxy (dpf)
     {
+      DDSX11_LOG_TRACE ("NDDS_DomainParticipantFactory_proxy::NDDS_DomainParticipantFactory_proxy");
     }
 
     IDL::traits< ::DDS::DomainParticipant>::ref_type
@@ -119,7 +120,7 @@ namespace DDSX11
     ::DDS::ReturnCode_t
     NDDS_DomainParticipantFactory_proxy::finalize_instance ()
     {
-      ::DDS::ReturnCode_t retcode =
+      ::DDS::ReturnCode_t const retcode =
         ::DDSX11::traits< ::DDS::ReturnCode_t>::retn
           (DDSDomainParticipantFactory::finalize_instance ());
       if (retcode != DDS::RETCODE_OK)
@@ -131,6 +132,7 @@ namespace DDSX11
       {
         DDSX11_IMPL_LOG_DEBUG ("NDDS_DomainParticipantFactory_proxy::finalize_instance - Finalizing NDDS");
         DDS_ProxyEntityManager::finalize ();
+        this->clear_native_entity ();
       }
 
       return retcode;

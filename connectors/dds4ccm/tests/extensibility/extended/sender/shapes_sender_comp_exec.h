@@ -176,7 +176,6 @@ namespace Shapes_Sender_comp_Impl
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Shapes_Sender_comp_Impl::Sender_comp_exec_i[user_members]
     ::DDS::InstanceHandle_t instance_handle_ { ::DDS::HANDLE_NIL };
     ShapeType square_ {"RED", 20, 21, 22, 23};
-    bool already_publishing_ {};
     //@@{__RIDL_REGEN_MARKER__} - END : Shapes_Sender_comp_Impl::Sender_comp_exec_i[user_members]
     //@}
 

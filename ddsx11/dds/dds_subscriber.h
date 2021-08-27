@@ -33,11 +33,10 @@ namespace DDSX11
   {
   public:
     /// Constructor
-    explicit DDS_Subscriber_proxy (
-      DDS_Native::DDS::Subscriber * sub);
+    explicit DDS_Subscriber_proxy (DDS_Native::DDS::Subscriber * sub);
 
     /// Destructor
-    virtual ~DDS_Subscriber_proxy () = default;
+    ~DDS_Subscriber_proxy () override = default;
 
     ::DDS::ReturnCode_t
     enable () override;

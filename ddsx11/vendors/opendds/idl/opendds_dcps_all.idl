@@ -362,6 +362,7 @@ module DDS {
   const string GROUPDATA_QOS_POLICY_NAME             = "TransportPriority";
   const string LIFESPAN_QOS_POLICY_NAME              = "Lifespan";
   const string DURABILITYSERVICE_POLICY_NAME         = "DurabilityService";
+  const string DATA_REPRESENTATION_QOS_POLICY_NAME   = "DataRepresentation";
 
   const QosPolicyId_t INVALID_QOS_POLICY_ID              = 0;
   const QosPolicyId_t USERDATA_QOS_POLICY_ID             = 1;
@@ -386,6 +387,7 @@ module DDS {
   const QosPolicyId_t TRANSPORTPRIORITY_QOS_POLICY_ID    = 20;
   const QosPolicyId_t LIFESPAN_QOS_POLICY_ID             = 21;
   const QosPolicyId_t DURABILITYSERVICE_QOS_POLICY_ID    = 22;
+  const QosPolicyId_t DATA_REPRESENTATION_QOS_POLICY_ID = 23;
 
   typedef sequence<octet> OctetSeq;
 
@@ -465,6 +467,30 @@ module DDS {
 
   struct TimeBasedFilterQosPolicy {
       Duration_t minimum_separation;
+  };
+
+  typedef short DataRepresentationId_t;
+  const DataRepresentationId_t XCDR_DATA_REPRESENTATION = 0;
+  const DataRepresentationId_t XML_DATA_REPRESENTATION = 1;
+  const DataRepresentationId_t XCDR2_DATA_REPRESENTATION = 2;
+
+  typedef sequence<DataRepresentationId_t> DataRepresentationIdSeq;
+
+  struct DataRepresentationQosPolicy {
+    DataRepresentationIdSeq value;
+  };
+
+  typedef short TypeConsistencyEnforcementQosPolicyKind_t;
+  const TypeConsistencyEnforcementQosPolicyKind_t DISALLOW_TYPE_COERCION = 1;
+  const TypeConsistencyEnforcementQosPolicyKind_t ALLOW_TYPE_COERCION = 2;
+
+  struct TypeConsistencyEnforcementQosPolicy {
+    TypeConsistencyEnforcementQosPolicyKind_t kind;
+    boolean ignore_sequence_bounds;
+    boolean ignore_string_bounds;
+    boolean ignore_member_names;
+    boolean prevent_type_widening;
+    boolean force_type_validation;
   };
 
   struct PartitionQosPolicy {
@@ -552,6 +578,7 @@ module DDS {
       LifespanQosPolicy                    lifespan;
 
       OwnershipQosPolicy                   ownership;
+      DataRepresentationQosPolicy          representation;
   };
 
   struct DataWriterQos {
@@ -571,6 +598,7 @@ module DDS {
       OwnershipQosPolicy                   ownership;
       OwnershipStrengthQosPolicy           ownership_strength;
       WriterDataLifecycleQosPolicy         writer_data_lifecycle;
+      DataRepresentationQosPolicy          representation;
   };
 
   struct PublisherQos {
@@ -594,6 +622,8 @@ module DDS {
       OwnershipQosPolicy                   ownership;
       TimeBasedFilterQosPolicy             time_based_filter;
       ReaderDataLifecycleQosPolicy         reader_data_lifecycle;
+      DataRepresentationQosPolicy          representation;
+      TypeConsistencyEnforcementQosPolicy  type_consistency;
   };
 
   struct SubscriberQos {

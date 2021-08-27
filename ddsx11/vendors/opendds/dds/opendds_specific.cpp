@@ -11,6 +11,8 @@
 #include "dds/dds_vendor_adapter.h"
 #include <dds/DCPS/Marked_Default_Qos.h>
 #include "dds/DCPS/transport/framework/TransportDebug.h"
+#include "dds/DCPS/transport/framework/TransportConfig_rch.h"
+#include "dds/DCPS/transport/framework/TransportRegistry.h"
 
 #include "dds/opendds_publisher.h"
 #include "dds/opendds_subscriber.h"
@@ -64,6 +66,8 @@ namespace DDSX11
     IDL::traits< ::DDS::DomainParticipantFactory>::ref_type
     init_dds ()
     {
+      DDSX11_IMPL_LOG_DEBUG ("DDSX11::VendorUtils::init_dds - Initializing OpenDDS");
+
       ACE_Env_Value<int> dcpsdl (ACE_TEXT("DDSX11_OPENDDS_LOG_LEVEL"), 0);
       OpenDDS::DCPS::DCPS_debug_level = dcpsdl;
       ACE_Env_Value<int> dcpsdtl (ACE_TEXT("DDSX11_OPENDDS_TRANSPORT_LOG_LEVEL"), 0);
@@ -71,8 +75,27 @@ namespace DDSX11
 
       TheServiceParticipant->set_default_discovery (OpenDDS::DCPS::Discovery::DEFAULT_RTPS);
 
+      // For appendable extensibility to work we need to make sure rtps_udp is used
+      /*
+      OpenDDS::DCPS::TransportConfig_rch transport_config =
+        TheTransportRegistry->create_config("default_rtps_transport_config");
+      OpenDDS::DCPS::TransportInst_rch transport_inst =
+        TheTransportRegistry->create_inst("default_rtps_transport", "rtps_udp");
+      transport_config->instances_.push_back(transport_inst);
+      TheTransportRegistry->global_config(transport_config);
+      */
+
       DDS_Native::DDS::DomainParticipantFactory_var dpf = TheParticipantFactory;
       return TAOX11_CORBA::make_reference<DDSX11::OpenDDS_PROXY::OpenDDS_DomainParticipantFactory_proxy> (dpf);
+    }
+
+    IDL::traits< ::DDS::DomainParticipantFactory>::ref_type
+    domain_participant_factory ()
+    {
+      DDSX11_IMPL_LOG_DEBUG ("DDSX11::VendorUtils::domain_participant_factory");
+      // See C++ specification section 6.7 [stmt.dcl] p4
+      static IDL::traits< ::DDS::DomainParticipantFactory>::ref_type dpf = init_dds ();
+      return dpf;
     }
 
     DDS_Native::DDS::PublisherListener*
