@@ -31,11 +31,10 @@ namespace DDSX11
   {
   public:
     /// Constructor
-    explicit DDS_QueryCondition_proxy (
-      DDS_Native::DDS::QueryCondition * qc);
+    explicit DDS_QueryCondition_proxy (DDS_Native::DDS::QueryCondition * qc);
 
     /// Destructor
-    virtual ~DDS_QueryCondition_proxy () = default;
+    ~DDS_QueryCondition_proxy () override = default;
 
     bool
     get_trigger_value () override;

@@ -31,11 +31,10 @@ namespace DDSX11
   {
   public:
     /// Constructor
-    explicit DDS_DomainParticipant_proxy (
-      DDS_Native::DDS::DomainParticipant * dp);
+    explicit DDS_DomainParticipant_proxy (DDS_Native::DDS::DomainParticipant * dp);
 
     /// Destructor
-    virtual ~DDS_DomainParticipant_proxy () = default;
+    ~DDS_DomainParticipant_proxy () override = default;
 
     IDL::traits< ::DDS::Publisher>::ref_type
     create_publisher (

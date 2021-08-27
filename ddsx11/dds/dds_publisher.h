@@ -34,7 +34,7 @@ namespace DDSX11
     explicit DDS_Publisher_proxy (DDS_Native::DDS::Publisher * p);
 
     /// Destructor
-    virtual ~DDS_Publisher_proxy () = default;
+    ~DDS_Publisher_proxy () override = default;
 
     IDL::traits< ::DDS::DataWriter>::ref_type
     create_datawriter (

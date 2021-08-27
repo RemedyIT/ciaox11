@@ -34,7 +34,7 @@ namespace DDSX11
     explicit DDS_Condition_proxy (DDS_Native::DDS::Condition * condition);
 
     /// Destructor
-    virtual ~DDS_Condition_proxy () = default;
+    ~DDS_Condition_proxy () override = default;
 
     bool get_trigger_value () override;
   private:

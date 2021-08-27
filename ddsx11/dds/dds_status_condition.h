@@ -31,11 +31,10 @@ namespace DDSX11
   {
   public:
     /// Constructor
-    explicit DDS_StatusCondition_proxy (
-      DDS_Native::DDS::StatusCondition *sc);
+    explicit DDS_StatusCondition_proxy (DDS_Native::DDS::StatusCondition *sc);
 
     /// Destructor
-    virtual ~DDS_StatusCondition_proxy () = default;
+    ~DDS_StatusCondition_proxy () override = default;
 
     bool
     get_trigger_value () override;

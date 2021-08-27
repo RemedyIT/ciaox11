@@ -17,27 +17,23 @@ class TestTypeFactory final :
 {
 public:
   TestTypeFactory () = default;
-  virtual ~TestTypeFactory() {}
+  ~TestTypeFactory() override = default;
 
   IDL::traits< ::DDS::DataWriter>::ref_type
-  create_datawriter (
-    ::DDS_Native::DDS::DataWriter* dw) override;
+  create_datawriter (::DDS_Native::DDS::DataWriter* dw) override;
 
   IDL::traits< ::DDS::DataReader>::ref_type
-  create_datareader (
-    ::DDS_Native::DDS::DataReader* dr) override;
+  create_datareader (::DDS_Native::DDS::DataReader* dr) override;
 };
 
 IDL::traits< ::DDS::DataWriter>::ref_type
-TestTypeFactory::create_datawriter (
-    ::DDS_Native::DDS::DataWriter*)
+TestTypeFactory::create_datawriter (::DDS_Native::DDS::DataWriter*)
 {
   return nullptr;
 }
 
 IDL::traits< ::DDS::DataReader>::ref_type
-TestTypeFactory::create_datareader (
-  ::DDS_Native::DDS::DataReader*)
+TestTypeFactory::create_datareader (::DDS_Native::DDS::DataReader*)
 {
   return nullptr;
 }

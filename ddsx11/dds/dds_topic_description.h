@@ -31,11 +31,10 @@ namespace DDSX11
   {
   public:
     /// Constructor
-    explicit DDS_TopicDescription_proxy (
-      DDS_Native::DDS::TopicDescription * rc);
+    explicit DDS_TopicDescription_proxy (DDS_Native::DDS::TopicDescription * rc);
 
     /// Destructor
-    virtual ~DDS_TopicDescription_proxy () = default;
+    ~DDS_TopicDescription_proxy () override = default;
 
     std::string get_type_name () override;
 
