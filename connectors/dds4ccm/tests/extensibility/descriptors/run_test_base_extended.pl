@@ -1,5 +1,5 @@
 #---------------------------------------------------------------------
-# @file   run_test.pl
+# @file   run_test_base_extended.pl
 # @author Marijke Hengstmengel
 #
 # @copyright Copyright (c) Remedy IT Expertise BV
