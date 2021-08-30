@@ -42,7 +42,6 @@ namespace Example_BasicSubscriber_comp_Impl
     : public IDL::traits< ::Example::CA1_conn::CCM_Listener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Example_BasicSubscriber_comp_Impl::CA1DataSub_data_listener_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -100,7 +99,6 @@ namespace Example_BasicSubscriber_comp_Impl
     : public IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Example_BasicSubscriber_comp_Impl::CA1DataSub_status_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context

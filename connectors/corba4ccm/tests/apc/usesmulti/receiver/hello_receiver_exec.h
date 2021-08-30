@@ -42,7 +42,6 @@ namespace UsesMulti_Receiver_Impl
     : public IDL::traits< ::UsesMulti::CCM_One>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : UsesMulti_Receiver_Impl::do_my_one_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context

@@ -45,7 +45,6 @@ namespace CFT_EL_Test_Receiver_Impl
     : public IDL::traits< ::CommonTestConnector::CCM_Listener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : CFT_EL_Test_Receiver_Impl::info_listen_data_listener_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -104,7 +103,6 @@ namespace CFT_EL_Test_Receiver_Impl
     : public IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : CFT_EL_Test_Receiver_Impl::info_listen_status_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context

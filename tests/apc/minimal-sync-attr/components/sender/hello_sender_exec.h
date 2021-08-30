@@ -50,7 +50,6 @@ namespace Hello_Sender_Impl
     : public IDL::traits< ::Hello::CCM_PortFooS>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl::foo_port_s_foo_prov_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context

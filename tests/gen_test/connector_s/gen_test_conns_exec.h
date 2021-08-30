@@ -42,7 +42,6 @@ namespace Hello_MyBaseEvent_Impl
     : public IDL::traits< ::Hello::CCM_MyFoo>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_MyBaseEvent_Impl::supplier_foo_uses_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context

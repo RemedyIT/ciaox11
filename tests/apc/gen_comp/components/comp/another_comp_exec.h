@@ -39,7 +39,6 @@ namespace AnotherComp_Impl
     : public IDL::traits< ::Foo::CCM_MyFoo>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : AnotherComp_Impl::run_my_bar_foo_prov_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context

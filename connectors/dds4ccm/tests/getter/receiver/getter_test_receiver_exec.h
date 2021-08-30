@@ -89,7 +89,6 @@ namespace Getter_Test_Receiver_Impl
     : public IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Getter_Test_Receiver_Impl::info_get_status_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -146,7 +145,6 @@ namespace Getter_Test_Receiver_Impl
     : public IDL::traits< CCM_GetInvoker>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Getter_Test_Receiver_Impl::getter_invoke_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context

@@ -42,7 +42,6 @@ namespace IDL_Conversion_Test_Receiver_Impl
     : public IDL::traits< ::Example::IDLConversionTestConnector::CCM_Listener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : IDL_Conversion_Test_Receiver_Impl::info_out_data_listener_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -101,7 +100,6 @@ namespace IDL_Conversion_Test_Receiver_Impl
     : public IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : IDL_Conversion_Test_Receiver_Impl::info_out_status_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context

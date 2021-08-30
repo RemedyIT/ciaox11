@@ -41,7 +41,6 @@ namespace Test_Sender_Impl
     : public IDL::traits< ::Test::LatencyDataConnector::CCM_Listener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::info_recv_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context

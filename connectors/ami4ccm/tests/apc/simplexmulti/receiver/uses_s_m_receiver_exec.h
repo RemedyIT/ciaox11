@@ -42,7 +42,6 @@ namespace UsesSM_Receiver_Impl
     : public IDL::traits< ::UsesSM::CCM_One>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : UsesSM_Receiver_Impl::do_my_one_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -98,7 +97,6 @@ namespace UsesSM_Receiver_Impl
     : public IDL::traits< ::UsesSM::CCM_Two>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : UsesSM_Receiver_Impl::do_my_two_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context

@@ -42,7 +42,6 @@ namespace QA_Read_Get_Test_Receiver_Impl
     : public IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : QA_Read_Get_Test_Receiver_Impl::get_port_status_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -98,7 +97,6 @@ namespace QA_Read_Get_Test_Receiver_Impl
     : public IDL::traits< ::CommonTestConnector::CCM_Listener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : QA_Read_Get_Test_Receiver_Impl::listen_port_data_listener_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -154,7 +152,6 @@ namespace QA_Read_Get_Test_Receiver_Impl
     : public IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : QA_Read_Get_Test_Receiver_Impl::listen_port_status_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -210,7 +207,6 @@ namespace QA_Read_Get_Test_Receiver_Impl
     : public IDL::traits< CCM_ReaderStarter>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : QA_Read_Get_Test_Receiver_Impl::start_reading_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context

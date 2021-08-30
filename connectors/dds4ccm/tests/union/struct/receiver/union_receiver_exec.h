@@ -39,7 +39,6 @@ namespace Uni_Receiver_Impl
     : public IDL::traits< ::Uni::UnionConnector::CCM_Listener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Uni_Receiver_Impl::info_out_data_listener_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -101,7 +100,6 @@ namespace Uni_Receiver_Impl
     : public IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Uni_Receiver_Impl::info_out_status_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context

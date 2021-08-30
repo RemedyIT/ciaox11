@@ -39,7 +39,6 @@ namespace subscriber_comp_Impl
     : public IDL::traits< ::ShapeTypeInterface::CCM_Listener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::info_out_data_listener_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -95,7 +94,6 @@ namespace subscriber_comp_Impl
     : public IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::info_out_status_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -151,7 +149,6 @@ namespace subscriber_comp_Impl
     : public IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::info_read_status_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -207,7 +204,6 @@ namespace subscriber_comp_Impl
     : public IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::info_get_status_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -263,7 +259,6 @@ namespace subscriber_comp_Impl
     : public IDL::traits< ::ShapeTypeInterface::CCM_StateListener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::info_state_data_listener_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -329,7 +324,6 @@ namespace subscriber_comp_Impl
     : public IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::info_state_status_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -385,7 +379,6 @@ namespace subscriber_comp_Impl
     : public IDL::traits< ::ShapeTypeInterface::CCM_Listener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::info_out_2_data_listener_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -441,7 +434,6 @@ namespace subscriber_comp_Impl
     : public IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::info_out_2_status_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -497,7 +489,6 @@ namespace subscriber_comp_Impl
     : public IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::info_read_2_status_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -553,7 +544,6 @@ namespace subscriber_comp_Impl
     : public IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::info_get_2_status_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -609,7 +599,6 @@ namespace subscriber_comp_Impl
     : public IDL::traits< ::ShapeTypeInterface::CCM_StateListener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::info_state_2_data_listener_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -675,7 +664,6 @@ namespace subscriber_comp_Impl
     : public IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::info_state_2_status_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context

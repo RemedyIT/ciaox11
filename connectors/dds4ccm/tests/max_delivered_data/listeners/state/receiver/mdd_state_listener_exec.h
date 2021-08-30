@@ -42,7 +42,6 @@ namespace MDD_State_Listener_Test_Receiver_Impl
     : public IDL::traits< ::CommonTestConnector::CCM_StateListener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : MDD_State_Listener_Test_Receiver_Impl::info_state_listen_data_listener_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -115,7 +114,6 @@ namespace MDD_State_Listener_Test_Receiver_Impl
     : public IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : MDD_State_Listener_Test_Receiver_Impl::info_state_listen_status_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
