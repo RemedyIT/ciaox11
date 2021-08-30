@@ -34,7 +34,7 @@ namespace DDSX11
     explicit DDS_Topic_proxy (DDS_Native::DDS::Topic* topic);
 
     /// Destructor
-    virtual ~DDS_Topic_proxy () = default;
+    ~DDS_Topic_proxy () override = default;
 
     ::DDS::ReturnCode_t
     set_qos (const ::DDS::TopicQos & qos) override;

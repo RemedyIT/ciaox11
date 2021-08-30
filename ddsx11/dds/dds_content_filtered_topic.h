@@ -31,11 +31,10 @@ namespace DDSX11
   {
   public:
     /// Constructor
-    explicit DDS_ContentFilteredTopic_proxy (
-      DDS_Native::DDS::ContentFilteredTopic * cft);
+    explicit DDS_ContentFilteredTopic_proxy (DDS_Native::DDS::ContentFilteredTopic * cft);
 
     /// Destructor
-    virtual ~DDS_ContentFilteredTopic_proxy () = default;
+    ~DDS_ContentFilteredTopic_proxy () override = default;
 
     std::string get_filter_expression () override;
 

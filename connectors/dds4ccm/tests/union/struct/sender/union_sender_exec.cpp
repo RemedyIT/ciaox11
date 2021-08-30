@@ -391,7 +391,7 @@ namespace Uni_Sender_Impl
   void Sender_exec_i::ccm_activate ()
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Uni_Sender_Impl::Sender_exec_i[ccm_activate]
-    //start status checker
+    // Start status checker
     this->tt_s = this->context_->get_connection_tt_scheduler ();
     this->tm_activate_ = this->tt_s->schedule_repeated_trigger (
                               CORBA::make_reference<TT_Callback> (IDL::traits< Uni::CCM_Sender>::narrow (this->_lock()),true),

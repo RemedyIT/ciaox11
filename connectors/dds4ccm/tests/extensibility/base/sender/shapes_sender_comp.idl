@@ -1,0 +1,22 @@
+/**
+ * @file    shapes_sender_comp.idl
+ * @author  Johnny Willemsen
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ */
+
+#ifndef SHAPES_SENDER_COMP_IDL_
+#define SHAPES_SENDER_COMP_IDL_
+
+#include "shapes_shapetype_msgSE.idl"
+
+module Shapes
+{
+  component Sender_comp
+  {
+    port ShapeTypeInterface::DDS_Write info_write;
+    provides CCM_DDS::ConnectorStatusListener connector_status;
+  };
+};
+
+#endif /* SHAPES_SENDER_COMP_IDL_ */

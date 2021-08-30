@@ -1,0 +1,23 @@
+#recipe for dds4ccm connector with recipe_id 'shapes_shapetype' .
+connector 'shapes_shapetype' do |conn|
+
+  conn.idl %w{ shapes_shapetype_msg.idl }
+
+  # prefix of generated export headers (default: recipe_id)
+  conn.export_name 'shapes_shapetype'
+
+  # For the shared name of the dds4ccm connector, the project creator adds '_dds_conn' after
+  # the property 'shared_name' (default: recipe id)
+  conn.shared_name 'shapes_shapetype'
+
+  conn.port_type :dds4ccm do |tp|
+    tp.topic 'ShapeType'
+  end
+
+  #gen_dir is default 'generated_code'
+  conn.gen_dir 'build'
+
+end
+
+#mpc name becomes recipe_id + '_dds4ccm' for a corba4ccm connector
+#project_name prefix is recipe_id

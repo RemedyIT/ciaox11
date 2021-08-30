@@ -41,7 +41,6 @@ namespace Test_Sender_Impl
     : public IDL::traits< ::Test::LatencyDataConnector::CCM_Listener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::info_recv_data_listener_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -98,7 +97,6 @@ namespace Test_Sender_Impl
     : public IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::info_recv_status_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -154,7 +152,6 @@ namespace Test_Sender_Impl
     : public IDL::traits< ::CCM_DDS::CCM_ConnectorStatusListener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::connector_status_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context

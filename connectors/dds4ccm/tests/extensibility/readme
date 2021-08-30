@@ -1,0 +1,3 @@
+This tests is for testing the @appendable annotation. The base and extended both publish and subscribe to a ShapeType but the extended has an optional field angle. The base publishes always GREEN so at that moment there is no angle, the extended should receive 0. The extended always published RED, so at that moment it just gets no angle.
+
+The run_test.pl in the deployment directory does a mixed deployment (base and extended), the run_test.pl in base/extended does not use mixed

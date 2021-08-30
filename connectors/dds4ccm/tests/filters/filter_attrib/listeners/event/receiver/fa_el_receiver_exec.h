@@ -39,7 +39,6 @@ namespace FA_Event_Listen_Test_Receiver_Impl
     : public IDL::traits< ::CommonTestConnector::CCM_Listener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : FA_Event_Listen_Test_Receiver_Impl::listen_port_1_data_listener_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -96,7 +95,6 @@ namespace FA_Event_Listen_Test_Receiver_Impl
     : public IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : FA_Event_Listen_Test_Receiver_Impl::listen_port_1_status_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -152,7 +150,6 @@ namespace FA_Event_Listen_Test_Receiver_Impl
     : public IDL::traits< ::CommonTestConnector::CCM_Listener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : FA_Event_Listen_Test_Receiver_Impl::listen_port_2_data_listener_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -209,7 +206,6 @@ namespace FA_Event_Listen_Test_Receiver_Impl
     : public IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : FA_Event_Listen_Test_Receiver_Impl::listen_port_2_status_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context

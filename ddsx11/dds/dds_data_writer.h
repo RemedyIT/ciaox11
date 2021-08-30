@@ -28,7 +28,7 @@ namespace DDSX11
   {
   public:
     DDS_DataWriter_proxy () = default;
-    virtual ~DDS_DataWriter_proxy () = default;
+    ~DDS_DataWriter_proxy () override = default;
 
     virtual DDS_Native::DDS::DataWriter *get_native_entity () = 0;
     virtual void clear_native_entity () = 0;

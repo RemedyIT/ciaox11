@@ -32,20 +32,20 @@ int main (int, char *[])
   // create new ZMQ context
   if ((context = ::zmq_ctx_new ()) == nullptr)
   {
-    PSDD4CCM_LOG_PANIC ("Unable to create ZMQ context.");
+    PSDD4CCM_LOG_PANIC ("Error: unable to create ZMQ context.");
     return (1);
   }
 
   void *socket;
   if ((socket = ::zmq_socket (context, ZMQ_PUB)) == nullptr)
   {
-    PSDD4CCM_LOG_PANIC ("Unable to create ZMQ socket.");
+    PSDD4CCM_LOG_PANIC ("Error: unable to create ZMQ socket.");
     return (1);
   }
 
   if (::zmq_bind (socket, endpoint.c_str ()) != 0)
   {
-    PSDD4CCM_LOG_PANIC ("Unable to bind ZMQ socket to [" << endpoint << "]");
+    PSDD4CCM_LOG_PANIC ("Error: unable to bind ZMQ socket to [" << endpoint << "]");
     return (1);
   }
 

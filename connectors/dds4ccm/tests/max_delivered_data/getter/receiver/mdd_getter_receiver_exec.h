@@ -40,7 +40,6 @@ namespace MDD_Getter_Test_Receiver_Impl
     : public IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : MDD_Getter_Test_Receiver_Impl::info_get_status_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context

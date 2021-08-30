@@ -39,7 +39,6 @@ namespace Hello_Receiver_Impl
     : public IDL::traits< ::Hello::CCM_MyFoo>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::do_my_foo_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -115,7 +114,6 @@ namespace Hello_Receiver_Impl
     : public IDL::traits< ::Hello::ShapeTypeInterface::CCM_Listener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::info_out_data_listener_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -171,7 +169,6 @@ namespace Hello_Receiver_Impl
     : public IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::info_out_status_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context

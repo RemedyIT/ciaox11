@@ -41,7 +41,6 @@ namespace Test_Receiver_Impl
     : public IDL::traits< ::Test::Hello::CCM_Listener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Receiver_Impl::hello_sub_data_listener_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -116,7 +115,6 @@ namespace Test_Receiver_Impl
     : public IDL::traits< ::Test::Msg::CCM_Listener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Receiver_Impl::msg_sub_data_listener_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context

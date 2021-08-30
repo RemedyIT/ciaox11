@@ -1,0 +1,27 @@
+/**
+ * @file    shapes_shapetype_msg.idl
+ * @author  Johnny Willemsen
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ */
+
+#ifndef SHAPES_SHAPETYPE_MSG_IDL_
+#define SHAPES_SHAPETYPE_MSG_IDL_
+
+typedef string<128> color_type;
+
+/// \struct ShapeType
+@appendable
+struct ShapeType {
+  /// This field contains the color of the shape.
+  @key color_type color;
+
+  /// This field contains the location of the shape along the x-axis.
+  long x;
+  /// This field contains the location of the shape along the y-axis.
+  long y;
+  /// This field contains the size of the shape.
+  long shapesize;
+}; //@TopLevel()
+
+#endif /* SHAPES_SHAPETYPE_MSG_IDL_ */

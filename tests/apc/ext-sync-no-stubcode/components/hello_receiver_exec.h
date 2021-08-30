@@ -39,7 +39,6 @@ namespace Test_Receiver_Impl
     : public IDL::traits< ::Hello::CCM_MyFoo>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Receiver_Impl::do_myfoo_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context

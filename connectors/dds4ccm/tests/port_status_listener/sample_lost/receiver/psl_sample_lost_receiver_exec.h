@@ -40,7 +40,6 @@ namespace PSL_SampleLostTest_Receiver_Impl
     : public IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : PSL_SampleLostTest_Receiver_Impl::info_get_status_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -99,7 +98,6 @@ namespace PSL_SampleLostTest_Receiver_Impl
     : public IDL::traits< ::CommonTestConnector::CCM_Listener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : PSL_SampleLostTest_Receiver_Impl::info_out_data_listener_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -155,7 +153,6 @@ namespace PSL_SampleLostTest_Receiver_Impl
     : public IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : PSL_SampleLostTest_Receiver_Impl::info_out_status_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -214,7 +211,6 @@ namespace PSL_SampleLostTest_Receiver_Impl
     : public IDL::traits< ::CCM_DDS::CCM_ConnectorStatusListener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : PSL_SampleLostTest_Receiver_Impl::connector_status_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context

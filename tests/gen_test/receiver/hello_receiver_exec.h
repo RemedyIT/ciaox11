@@ -42,7 +42,6 @@ namespace Hello_Receiver_Impl
     : public IDL::traits< ::Hello::CCM_MyFoo>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::rec_listen_port_foo_prov_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -108,7 +107,6 @@ namespace Hello_Receiver_Impl
     : public IDL::traits< ::Hello::CCM_MyBar>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::rec_listen_port_bar_prov_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context

@@ -38,7 +38,6 @@ namespace publisher_comp_Impl
     : public IDL::traits< ::CCM_DDS::CCM_ConnectorStatusListener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : publisher_comp_Impl::connector_status_ShapeType_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context

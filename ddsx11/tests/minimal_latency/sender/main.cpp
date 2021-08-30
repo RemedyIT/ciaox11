@@ -42,7 +42,7 @@ public:
       (ACE_Event_Handler::Reference_Counting_Policy::ENABLED);
   }
 
-  virtual ~TickerHandler () = default;
+  ~TickerHandler () override = default;
 
   int handle_timeout (const ACE_Time_Value&,
                       const void*) override;

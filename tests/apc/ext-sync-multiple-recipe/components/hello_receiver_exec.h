@@ -39,7 +39,6 @@ namespace Hello_Receiver_Impl
     : public IDL::traits< ::Hello::CCM_B>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::do_my_B_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context

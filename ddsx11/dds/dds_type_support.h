@@ -49,7 +49,7 @@ namespace DDSX11
     * Helper class to administrate the type factory and how many times
     * it has been registered
     */
-  class DDS_TypeFactory_i_ref
+  class DDS_TypeFactory_i_ref final
   {
     public:
       DDS_TypeFactory_i_ref (std::shared_ptr<DDS_TypeFactory_i> tf);
