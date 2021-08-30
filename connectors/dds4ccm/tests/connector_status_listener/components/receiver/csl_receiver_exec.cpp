@@ -538,7 +538,6 @@ namespace CSL_Test_Receiver_Impl
     IDL::traits<CCM_TT::TT_Scheduler>::ref_type tt_s = this->context_->get_connection_tt_scheduler ();
     if (this->assignment_ == ASSIGNMENT::ASSIGNMENT_UNEXPECTED_STATUS)
     {
-
       this->tm_ = tt_s->schedule_repeated_trigger (
                          CORBA::make_reference<TT_Callback> (IDL::traits< CSL_Test::CCM_Receiver>::narrow (this->_lock())),
                          CCM_TT::TT_Duration (6, 0),

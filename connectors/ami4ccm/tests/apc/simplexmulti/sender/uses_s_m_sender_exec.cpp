@@ -117,8 +117,8 @@ namespace UsesSM_Sender_Impl
      IDL::traits<UsesSM::CCM_Sender_Context>::ref_type context)
   {
     this->ciao_context_ = IDL::traits<UsesSM::CCM_Sender_Context>::narrow (std::move(context));
-
   }
+
   int synch_foo_generator::svc ()
   {
 

@@ -80,8 +80,8 @@ namespace InterOutArgsT_Sender_Impl
      IDL::traits<InterOutArgsT::CCM_Sender_Context>::ref_type context)
   {
     this->ciao_context_ = IDL::traits<InterOutArgsT::CCM_Sender_Context>::narrow (std::move(context));
-
   }
+
   int synch_foo_generator::svc ()
   {
     std::this_thread::sleep_for (std::chrono::seconds (3));

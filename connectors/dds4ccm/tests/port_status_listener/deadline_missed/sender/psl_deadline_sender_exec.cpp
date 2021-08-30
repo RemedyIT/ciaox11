@@ -120,7 +120,6 @@ namespace PSL_DeadlineTest_Sender_Impl
     // two seconds. Setting the interval to somewhat more than two seconds,
     // the reader should (almost) always receive an on_requested_deadline_missed
     // callback from DDS.
-
     IDL::traits<CCM_TT::TT_Scheduler>::ref_type tt_s = this->context_->get_connection_tt_scheduler ();
             this->tm_ = tt_s->schedule_repeated_trigger (
                                CORBA::make_reference<TT_Callback> (IDL::traits< PSL_DeadlineTest::CCM_Sender>::narrow (this->_lock())),

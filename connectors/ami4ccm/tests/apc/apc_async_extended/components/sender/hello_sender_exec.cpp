@@ -81,7 +81,6 @@ namespace Hello_Sender_Impl
     this->ciao_context_ = IDL::traits<Hello::CCM_Sender_Context>::narrow (std::move(context));
   }
 
-
   int asynch_foo_generator::svc()
   {
     std::this_thread::sleep_for (std::chrono::seconds (3));

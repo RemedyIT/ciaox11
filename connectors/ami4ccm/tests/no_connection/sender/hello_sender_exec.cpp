@@ -171,8 +171,8 @@ namespace HelloT_Sender_Impl
      IDL::traits<HelloT::CCM_Sender_Context>::ref_type context)
   {
     this->ciao_context_ = IDL::traits<HelloT::CCM_Sender_Context>::narrow (std::move(context));
-
   }
+
   int synch_foo_generator::svc ()
   {
     std::this_thread::sleep_for (std::chrono::seconds (3));
