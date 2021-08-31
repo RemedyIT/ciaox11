@@ -15,7 +15,7 @@ module Test
   struct LatencyData
   {
     long seq_num;
-  }; //@TopLevel()
+  }; //@TopLevel() @final
 };
 
 #endif // LATENCY_DATA_IDL
