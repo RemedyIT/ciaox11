@@ -362,7 +362,7 @@ namespace DDSX11
   inline DDS_NATIVE_SEQ&
   fixedsize_sequence_to_dds (DDS_NATIVE_SEQ& to, const DDS_SEQ& from)
   {
-    if (!to.from_array(from.data (), from.size ()))
+    if (!to.from_array(from.data (), ACE_Utils::truncate_cast<DDS_Native::DDS::sequence_size_type> (from.size ())))
     {
       throw std::runtime_error ("Unable to copy sequence data to DDS");
     }
@@ -401,7 +401,7 @@ namespace DDSX11
   fixedsize_sequence_from_dds (DDS_SEQ& to, const DDS_NATIVE_SEQ& from)
   {
     to.resize (from.length ());
-    const_cast<DDS_NATIVE_SEQ&> (from).to_array (to.data (), to.size ());
+    const_cast<DDS_NATIVE_SEQ&> (from).to_array (to.data (), ACE_Utils::truncate_cast<DDS_Native::DDS::sequence_size_type> (to.size ()));
     return to;
   }
 
