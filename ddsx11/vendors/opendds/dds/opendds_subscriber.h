@@ -22,10 +22,9 @@ namespace DDSX11
       : public virtual DDSX11::DDS_Subscriber_proxy
     {
     public:
-      OpenDDS_Subscriber_proxy (
-        DDS_Native::DDS::Subscriber * sub);
+      explicit OpenDDS_Subscriber_proxy (DDS_Native::DDS::Subscriber * sub);
 
-      virtual ~OpenDDS_Subscriber_proxy () = default;
+      ~OpenDDS_Subscriber_proxy () override = default;
 
       /**
        * @name  create_datareader_with_profile

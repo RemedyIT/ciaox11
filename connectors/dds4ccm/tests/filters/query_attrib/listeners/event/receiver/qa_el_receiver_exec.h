@@ -39,7 +39,6 @@ namespace QA_Event_Listen_Test_Receiver_Impl
     : public IDL::traits< ::CommonTestConnector::CCM_Listener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : QA_Event_Listen_Test_Receiver_Impl::listen_port_1_data_listener_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -49,7 +48,7 @@ namespace QA_Event_Listen_Test_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : QA_Event_Listen_Test_Receiver_Impl::listen_port_1_data_listener_exec_i[ctor]
 
     /// Destructor
-    virtual ~listen_port_1_data_listener_exec_i ();
+    ~listen_port_1_data_listener_exec_i () override;
 
     /** @name Operations from ::CommonTestConnector::CCM_Listener */
     //@{
@@ -96,7 +95,6 @@ namespace QA_Event_Listen_Test_Receiver_Impl
     : public IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : QA_Event_Listen_Test_Receiver_Impl::listen_port_1_status_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -105,7 +103,7 @@ namespace QA_Event_Listen_Test_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : QA_Event_Listen_Test_Receiver_Impl::listen_port_1_status_exec_i[ctor]
 
     /// Destructor
-    virtual ~listen_port_1_status_exec_i ();
+    ~listen_port_1_status_exec_i () override;
 
     /** @name Operations from ::CCM_DDS::CCM_PortStatusListener */
     //@{
@@ -152,7 +150,6 @@ namespace QA_Event_Listen_Test_Receiver_Impl
     : public IDL::traits< ::CommonTestConnector::CCM_Listener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : QA_Event_Listen_Test_Receiver_Impl::listen_port_2_data_listener_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -162,7 +159,7 @@ namespace QA_Event_Listen_Test_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : QA_Event_Listen_Test_Receiver_Impl::listen_port_2_data_listener_exec_i[ctor]
 
     /// Destructor
-    virtual ~listen_port_2_data_listener_exec_i ();
+    ~listen_port_2_data_listener_exec_i () override;
 
     /** @name Operations from ::CommonTestConnector::CCM_Listener */
     //@{
@@ -209,7 +206,6 @@ namespace QA_Event_Listen_Test_Receiver_Impl
     : public IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : QA_Event_Listen_Test_Receiver_Impl::listen_port_2_status_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -218,7 +214,7 @@ namespace QA_Event_Listen_Test_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : QA_Event_Listen_Test_Receiver_Impl::listen_port_2_status_exec_i[ctor]
 
     /// Destructor
-    virtual ~listen_port_2_status_exec_i ();
+    ~listen_port_2_status_exec_i () override;
 
     /** @name Operations from ::CCM_DDS::CCM_PortStatusListener */
     //@{
@@ -270,7 +266,7 @@ namespace QA_Event_Listen_Test_Receiver_Impl
     Receiver_exec_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : QA_Event_Listen_Test_Receiver_Impl::Receiver_exec_i[ctor]
     /// Destructor
-    virtual ~Receiver_exec_i ();
+    ~Receiver_exec_i () override;
 
     /** @name Component port operations. */
     //@{

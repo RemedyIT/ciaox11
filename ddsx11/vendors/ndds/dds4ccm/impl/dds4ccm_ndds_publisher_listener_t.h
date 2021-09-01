@@ -23,10 +23,9 @@ namespace CIAOX11
       : public virtual DDS4CCM::PublisherListener_T<EVT_STRATEGY>
     {
     public:
-      NDDSPublisherListener_T (
-          const EVT_STRATEGY &evs);
+      explicit NDDSPublisherListener_T (const EVT_STRATEGY &evs);
 
-      virtual ~NDDSPublisherListener_T () = default;
+      ~NDDSPublisherListener_T () override = default;
 
       void
       on_reliable_writer_cache_changed (

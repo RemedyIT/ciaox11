@@ -1453,6 +1453,7 @@ end
 * [footnote]#xref:conn-port-topic_sequence[icon:caret-right[]{nbsp}{nbsp}topic_sequence]#
 * [footnote]#xref:conn-port-topic_interface_suffix[icon:caret-right[]{nbsp}{nbsp}topic_interface_suffix]#
 * [footnote]#xref:conn-port-topic_interface[icon:caret-right[]{nbsp}{nbsp}topic_interface]#
+* [footnote]#xref:conn-port-disable-context-switch[icon:caret-right[]{nbsp}{nbsp}disable_context_switch]#
 
 For _DDS4CCM_ connector types the following additional port type property specification is
 required.
@@ -1627,11 +1628,34 @@ connector 'my_conn' do \|conn\|
   # ...
   conn.port_type :dd4ccm do \|tp\|
     tp.topic  'Hello::ShapeType'
-    tp_interface 'IShape'
+    tp.topic_interface 'IShape'
   end
   # ...
 end
 ----
+
+|[[conn-port-disable-context-switch]]disable_context_switch
+|
+Description::
+Specifies that the generated connector should not make use of context switch to provide
+listener callbacks on availability of DDS events but rather should callback on the incoming
+DDS thread itself.
+Syntax::
+port.disable_context_switch
+
+.example
+[source, ruby]
+----
+connector 'my_conn' do \|conn\|
+  # ...
+  conn.port_type :dd4ccm do \|tp\|
+    tp.topic  'Hello::ShapeType'
+    tp.disable_context_switch
+  end
+  # ...
+end
+----
+
 
 |=======================================================================
 

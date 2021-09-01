@@ -11,7 +11,6 @@
 #define EXCEPTION_T_IDL
 
 #pragma ami4ccm interface "ExceptionT::MyFoo"
-#pragma ami4ccm idl "exception_tA.idl"
 
 module ExceptionT
 {

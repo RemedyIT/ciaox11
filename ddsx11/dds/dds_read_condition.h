@@ -31,11 +31,10 @@ namespace DDSX11
   {
   public:
     /// Constructor
-    explicit DDS_ReadCondition_proxy (
-      DDS_Native::DDS::ReadCondition * rc);
+    explicit DDS_ReadCondition_proxy (DDS_Native::DDS::ReadCondition * rc);
 
     /// Destructor
-    virtual ~DDS_ReadCondition_proxy () = default;
+    ~DDS_ReadCondition_proxy () override = default;
 
     bool
     get_trigger_value () override;

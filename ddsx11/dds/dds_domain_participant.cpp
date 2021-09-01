@@ -456,7 +456,7 @@ namespace DDSX11
 
     if (topic_reference)
       {
-        if (DDS_ProxyEntityManager::register_topic_proxy (topic_reference))
+        if (DDS_ProxyEntityManager::register_topic_proxy (topic_reference, dds_tp))
           {
             DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::create_topic - "
               << "Successfully created and registered a Topic.");
@@ -533,7 +533,7 @@ namespace DDSX11
       }
     else
       {
-        if (!DDS_ProxyEntityManager::unregister_topic_proxy (handle))
+        if (!DDS_ProxyEntityManager::unregister_topic_proxy (top, handle))
           {
             // The topic proxy is still used, so don't destruct the listener yet
             listener_guard.release ();
@@ -563,33 +563,30 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_DomainParticipant_proxy::find_topic");
 
-    // Go to the native DDS implementation and see if the topic exists there
-    // when it exists we need to find the existing topic within our PEM which
-    // increments its refcount with 1 because
-    // on each topic returned by find_topic also a delete_topic needs
-    // to be called.
     DDS_Native::DDS::Topic_var native_topic =
       this->native_entity ()->find_topic (
         ::DDSX11::traits<std::string>::in (impl_name),
         ::DDSX11::traits< ::DDS::Duration_t>::in (timeout));
 
-    IDL::traits< ::DDS::Topic>::ref_type topic =
-      DDS_ProxyEntityManager::get_topic_proxy (native_topic);
-
-    if (topic)
+    if (native_topic)
       {
-        // We have an existing topic proxy so we register it again to increment
-        // its refcount with 1
-        if (!DDS_ProxyEntityManager::register_topic_proxy (topic))
-          {
-            DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::find_topic - "
-              << "Error: Error registering topic proxy for <" << impl_name << "> again <"
-              << topic->get_instance_handle () << ">");
-          }
-        else
+        IDL::traits< ::DDS::Topic>::ref_type topic =
+          TAOX11_CORBA::make_reference<DDS_Topic_proxy> (native_topic);
+
+        // Register the topic, when it is already in the map its refcount
+        // will increase
+        if (DDS_ProxyEntityManager::register_topic_proxy (topic, native_topic))
           {
             DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::find_topic - "
               << "Registered topic proxy for <" << impl_name << "> again <"
+              << topic->get_instance_handle () << ">");
+
+            return topic;
+          }
+        else
+          {
+            DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::find_topic - "
+              << "Error: Error registering topic proxy for <" << impl_name << "> again <"
               << topic->get_instance_handle () << ">");
           }
       }
@@ -599,9 +596,8 @@ namespace DDSX11
           << "Didn't find a topic for <" << impl_name << ">");
       }
 
-    return topic;
+    return {};
   }
-
 
   IDL::traits< ::DDS::TopicDescription>::ref_type
   DDS_DomainParticipant_proxy::lookup_topicdescription (const std::string &name)

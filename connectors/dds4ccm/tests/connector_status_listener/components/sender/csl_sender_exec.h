@@ -46,7 +46,6 @@ namespace CSL_Test_Sender_Impl
     : public IDL::traits< ::CCM_DDS::CCM_ConnectorStatusListener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : CSL_Test_Sender_Impl::connector_status_sender_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -69,7 +68,7 @@ namespace CSL_Test_Sender_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : CSL_Test_Sender_Impl::connector_status_sender_exec_i[ctor]
 
     /// Destructor
-    virtual ~connector_status_sender_exec_i ();
+    ~connector_status_sender_exec_i () override;
 
     /** @name Operations from ::CCM_DDS::CCM_ConnectorStatusListener */
     //@{
@@ -156,7 +155,7 @@ namespace CSL_Test_Sender_Impl
     Sender_exec_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : CSL_Test_Sender_Impl::Sender_exec_i[ctor]
     /// Destructor
-    virtual ~Sender_exec_i ();
+    ~Sender_exec_i () override;
 
     /** @name Component port operations. */
     //@{

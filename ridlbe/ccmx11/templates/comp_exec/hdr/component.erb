@@ -19,7 +19,7 @@ namespace <%= executor_cxx_namespace %>
   public:
 % visit_component_constructor
     /// Destructor
-    virtual ~<%= lem_name %>_exec_i ();
+    ~<%= lem_name %>_exec_i () override;
 % if all_ports.size > 0
 
     /** @name Component port operations. */

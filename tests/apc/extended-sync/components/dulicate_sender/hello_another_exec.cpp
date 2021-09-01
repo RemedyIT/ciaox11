@@ -101,7 +101,7 @@ extern "C" void
 create_Hello_Sender_Impl (
   IDL::traits<Components::EnterpriseComponent>::ref_type& component)
 {
-  component = CORBA::make_reference <Hello_Sender_Impl::Sender_exec_i> ();
+  component = IDL::traits< ::Hello::CCM_Sender>::make_reference <Hello_Sender_Impl::Sender_exec_i> ();
 }
 //@@{__RIDL_REGEN_MARKER__} - END : Hello_Sender_Impl[factory]
 //@@{__RIDL_REGEN_MARKER__} - BEGIN : hello_another_impl.cpp[Footer]

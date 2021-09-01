@@ -39,7 +39,6 @@ namespace PortComp_Impl
     : public IDL::traits< ::Foo::CCM_MyFoo>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : PortComp_Impl::run_my_bar_foo_prov_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -48,7 +47,7 @@ namespace PortComp_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : PortComp_Impl::run_my_bar_foo_prov_exec_i[ctor]
 
     /// Destructor
-    virtual ~run_my_bar_foo_prov_exec_i ();
+    ~run_my_bar_foo_prov_exec_i () override;
 
     /** @name Operations from ::Foo::CCM_MyFoo */
     //@{
@@ -94,7 +93,7 @@ namespace PortComp_Impl
     PortComp_exec_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : PortComp_Impl::PortComp_exec_i[ctor]
     /// Destructor
-    virtual ~PortComp_exec_i ();
+    ~PortComp_exec_i () override;
 
     /** @name Component port operations. */
     //@{

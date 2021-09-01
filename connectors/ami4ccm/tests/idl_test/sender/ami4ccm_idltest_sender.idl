@@ -13,7 +13,6 @@
 #include <Components.idl>
 
 #include "ami4ccm_idltest.idl"
-#pragma ami4ccm idl "ami4ccm_idltestA.idl"
 
 #pragma ami4ccm receptacle "Hello::Sender::run_my_foo"
 #pragma ami4ccm receptacle "Hello::Sender::run_my_derived"

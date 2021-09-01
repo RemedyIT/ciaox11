@@ -96,6 +96,18 @@ module CCM_PSDD
       uses Subscriber data_subscriber;
     };
 
+    porttype PSDD_Get
+    {
+      uses Getter data;
+      uses Subscriber data_subscriber;
+    };
+
+    porttype PSDD_Listen
+    {
+      provides Listener data_listener;
+      uses Subscriber data_subscriber;
+    };
+
     porttype PSDD_Publish
     {
       uses Publisher data;

@@ -40,7 +40,6 @@ namespace NonChangeableComponent_Impl
     : public IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : NonChangeableComponent_Impl::info_get_status_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -49,7 +48,7 @@ namespace NonChangeableComponent_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : NonChangeableComponent_Impl::info_get_status_exec_i[ctor]
 
     /// Destructor
-    virtual ~info_get_status_exec_i ();
+    ~info_get_status_exec_i () override;
 
     /** @name Operations from ::CCM_DDS::CCM_PortStatusListener */
     //@{
@@ -101,7 +100,7 @@ namespace NonChangeableComponent_Impl
     NonChangeableComponent_exec_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : NonChangeableComponent_Impl::NonChangeableComponent_exec_i[ctor]
     /// Destructor
-    virtual ~NonChangeableComponent_exec_i ();
+    ~NonChangeableComponent_exec_i () override;
 
     /** @name Component port operations. */
     //@{

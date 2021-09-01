@@ -38,7 +38,6 @@ namespace UpdaterModule_Receiver_Impl
     : public IDL::traits< ::CommonTestConnector::CCM_StateListener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : UpdaterModule_Receiver_Impl::info_out_one_by_one_data_listener_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -53,7 +52,7 @@ namespace UpdaterModule_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : UpdaterModule_Receiver_Impl::info_out_one_by_one_data_listener_exec_i[ctor]
 
     /// Destructor
-    virtual ~info_out_one_by_one_data_listener_exec_i ();
+    ~info_out_one_by_one_data_listener_exec_i () override;
 
     /** @name Operations from ::CommonTestConnector::CCM_StateListener */
     //@{
@@ -116,7 +115,6 @@ namespace UpdaterModule_Receiver_Impl
     : public IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : UpdaterModule_Receiver_Impl::info_out_one_by_one_status_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -125,7 +123,7 @@ namespace UpdaterModule_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : UpdaterModule_Receiver_Impl::info_out_one_by_one_status_exec_i[ctor]
 
     /// Destructor
-    virtual ~info_out_one_by_one_status_exec_i ();
+    ~info_out_one_by_one_status_exec_i () override;
 
     /** @name Operations from ::CCM_DDS::CCM_PortStatusListener */
     //@{
@@ -172,7 +170,6 @@ namespace UpdaterModule_Receiver_Impl
     : public IDL::traits< ::CommonTestConnector::CCM_StateListener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : UpdaterModule_Receiver_Impl::info_out_many_by_many_data_listener_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -187,7 +184,7 @@ namespace UpdaterModule_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : UpdaterModule_Receiver_Impl::info_out_many_by_many_data_listener_exec_i[ctor]
 
     /// Destructor
-    virtual ~info_out_many_by_many_data_listener_exec_i ();
+    ~info_out_many_by_many_data_listener_exec_i () override;
 
     /** @name Operations from ::CommonTestConnector::CCM_StateListener */
     //@{
@@ -250,7 +247,6 @@ namespace UpdaterModule_Receiver_Impl
     : public IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : UpdaterModule_Receiver_Impl::info_out_many_by_many_status_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -259,7 +255,7 @@ namespace UpdaterModule_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : UpdaterModule_Receiver_Impl::info_out_many_by_many_status_exec_i[ctor]
 
     /// Destructor
-    virtual ~info_out_many_by_many_status_exec_i ();
+    ~info_out_many_by_many_status_exec_i () override;
 
     /** @name Operations from ::CCM_DDS::CCM_PortStatusListener */
     //@{
@@ -311,7 +307,7 @@ namespace UpdaterModule_Receiver_Impl
     Receiver_exec_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : UpdaterModule_Receiver_Impl::Receiver_exec_i[ctor]
     /// Destructor
-    virtual ~Receiver_exec_i ();
+    ~Receiver_exec_i () override;
 
     /** @name Component port operations. */
     //@{

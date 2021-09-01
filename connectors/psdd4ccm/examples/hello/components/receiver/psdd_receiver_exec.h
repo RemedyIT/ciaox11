@@ -41,7 +41,6 @@ namespace Test_Receiver_Impl
     : public IDL::traits< ::Test::Hello::CCM_Listener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Receiver_Impl::hello_listen_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -51,7 +50,7 @@ namespace Test_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Test_Receiver_Impl::hello_listen_exec_i[ctor]
 
     /// Destructor
-    virtual ~hello_listen_exec_i ();
+    ~hello_listen_exec_i () override;
 
     /** @name Operations from ::Test::Hello::CCM_Listener */
     //@{
@@ -116,7 +115,6 @@ namespace Test_Receiver_Impl
     : public IDL::traits< ::Test::Msg::CCM_Listener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Receiver_Impl::msg_listen_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -126,7 +124,7 @@ namespace Test_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Test_Receiver_Impl::msg_listen_exec_i[ctor]
 
     /// Destructor
-    virtual ~msg_listen_exec_i ();
+    ~msg_listen_exec_i () override;
 
     /** @name Operations from ::Test::Msg::CCM_Listener */
     //@{
@@ -196,7 +194,7 @@ namespace Test_Receiver_Impl
     Receiver_exec_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : Test_Receiver_Impl::Receiver_exec_i[ctor]
     /// Destructor
-    virtual ~Receiver_exec_i ();
+    ~Receiver_exec_i () override;
 
     /** @name Component port operations. */
     //@{

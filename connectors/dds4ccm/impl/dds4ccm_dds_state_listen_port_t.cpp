@@ -43,8 +43,7 @@ DDS_State_Listen_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE, LRT>::activate (
       this->dds4ccm_reader_->get_dds_reader ();
     if (dr)
     {
-      ::DDS::ReturnCode_t const retcode = dr->set_listener (
-        this->listener_, mask);
+      ::DDS::ReturnCode_t const retcode = dr->set_listener (this->listener_, mask);
 
       if (retcode != ::DDS::RETCODE_OK)
       {

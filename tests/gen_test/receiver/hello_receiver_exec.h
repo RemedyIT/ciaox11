@@ -42,7 +42,6 @@ namespace Hello_Receiver_Impl
     : public IDL::traits< ::Hello::CCM_MyFoo>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::rec_listen_port_foo_prov_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -51,7 +50,7 @@ namespace Hello_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::rec_listen_port_foo_prov_exec_i[ctor]
 
     /// Destructor
-    virtual ~rec_listen_port_foo_prov_exec_i ();
+    ~rec_listen_port_foo_prov_exec_i () override;
 
     /** @name Operations from ::Hello::CCM_MyFoo */
     //@{
@@ -85,7 +84,7 @@ namespace Hello_Receiver_Impl
     /** @name Members to store attribute values from ::Hello::CCM_MyFoo */
     //@{
     /// Class member storing value of interface_attrib attribute
-    int16_t interface_attrib_ {};
+    int16_t interface_attrib_{};
     //@}
 
     /** @name User defined members. */
@@ -108,7 +107,6 @@ namespace Hello_Receiver_Impl
     : public IDL::traits< ::Hello::CCM_MyBar>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::rec_listen_port_bar_prov_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -117,7 +115,7 @@ namespace Hello_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::rec_listen_port_bar_prov_exec_i[ctor]
 
     /// Destructor
-    virtual ~rec_listen_port_bar_prov_exec_i ();
+    ~rec_listen_port_bar_prov_exec_i () override;
 
     /** @name Operations from ::Hello::CCM_MyBar */
     //@{
@@ -151,7 +149,7 @@ namespace Hello_Receiver_Impl
     /** @name Members to store attribute values from ::Hello::CCM_MyBar */
     //@{
     /// Class member storing value of bar_attrib attribute
-    int16_t bar_attrib_ {};
+    int16_t bar_attrib_{};
     //@}
 
     /** @name User defined members. */
@@ -179,7 +177,7 @@ namespace Hello_Receiver_Impl
     Receiver_exec_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::Receiver_exec_i[ctor]
     /// Destructor
-    virtual ~Receiver_exec_i ();
+    ~Receiver_exec_i () override;
 
     /** @name Component port operations. */
     //@{
@@ -238,7 +236,7 @@ namespace Hello_Receiver_Impl
     /** @name Component attributes. */
     //@{
     /// Class member storing value of test_topic attribute
-    ::Hello::TestTopic test_topic_;
+    ::Hello::TestTopic test_topic_{};
     //@}
 
     /** @name Component facets. */

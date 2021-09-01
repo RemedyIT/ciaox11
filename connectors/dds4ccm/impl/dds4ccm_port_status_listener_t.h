@@ -28,6 +28,9 @@ namespace CIAOX11
       /// Destructor
       virtual ~PortStatusListener_T () = default;
 
+      using uses_context_switch = typename EVT_STRATEGY::uses_context_switch;
+      static constexpr const char* context_switch_type = EVT_STRATEGY::context_switch_type;
+
       void
       on_requested_deadline_missed (
         IDL::traits< ::DDS::DataReader>::ref_type the_reader,

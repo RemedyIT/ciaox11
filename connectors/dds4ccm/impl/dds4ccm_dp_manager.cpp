@@ -182,7 +182,7 @@ namespace CIAOX11
       if (this->dps_.empty ())
         {
           DDS4CCM_LOG_DEBUG ("DomainParticipantManager::close - "
-            << "No participants anymore, shutting down DDS.");
+            << "No participants anymore, shutting down DDS");
 
           ::DDS::ReturnCode_t const retcode =
             ::DDS::traits< ::DDS::DomainParticipantFactory>::get_instance ()->finalize_instance ();
@@ -193,6 +193,11 @@ namespace CIAOX11
               << "Error finalizing domain participant factory - return code <"
               << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
               << ">");
+          }
+          else
+          {
+            DDS4CCM_LOG_DEBUG ("DomainParticipantManager::close - "
+              << "Successfully shutdown DDS");
           }
 
           return true;

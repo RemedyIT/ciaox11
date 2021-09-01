@@ -246,7 +246,7 @@ namespace DDSX11
 
       if (topic_reference)
         {
-          if (DDS_ProxyEntityManager::register_topic_proxy (topic_reference))
+          if (DDS_ProxyEntityManager::register_topic_proxy (topic_reference, dds_tp))
             {
               DDSX11_IMPL_LOG_DEBUG ("NDDS_DomainParticipant_proxy::create_topic_with_profile - "
                 << "Successfully created and registered a topic.");

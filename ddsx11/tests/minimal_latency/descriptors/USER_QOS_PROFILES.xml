@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  @file      USER_QOS_PROFILES.xml
+  @author    Martin Corino
+
+  @copyright Copyright (c) Remedy IT Expertise BV
+-->
+<dds xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="rti_dds_qos_profiles.xsd" version="5.2.3">
+  <qos_library name="latencydatalibrary">
+    <qos_profile name="LatencyDataProfile" is_default_qos="false">
+      <datawriter_qos>
+        <reliability>
+          <kind>BEST_EFFORT_RELIABILITY_QOS</kind>
+        </reliability>
+        <history>
+          <kind>KEEP_LAST_HISTORY_QOS</kind>
+          <depth>1</depth>
+        </history>
+        <durability>
+          <kind>VOLATILE_DURABILITY_QOS</kind>
+        </durability>
+        <resource_limits>
+          <max_instances>1</max_instances>
+          <initial_instances>1</initial_instances>
+          <max_samples>3</max_samples>
+          <initial_samples>3</initial_samples>
+          <max_samples_per_instance>3</max_samples_per_instance>
+        </resource_limits>
+        <protocol>
+          <rtps_reliable_writer>
+            <heartbeats_per_max_samples>3</heartbeats_per_max_samples>
+          </rtps_reliable_writer>
+        </protocol>
+      </datawriter_qos>
+      <datareader_qos>
+        <reliability>
+          <kind>BEST_EFFORT_RELIABILITY_QOS</kind>
+        </reliability>
+        <history>
+          <kind>KEEP_LAST_HISTORY_QOS</kind>
+          <depth>1</depth>
+        </history>
+        <resource_limits>
+          <initial_samples>100</initial_samples>
+          <initial_instances>1</initial_instances>
+          <max_samples>LENGTH_UNLIMITED</max_samples>
+          <max_instances>1</max_instances>
+          <max_samples_per_instance>LENGTH_UNLIMITED</max_samples_per_instance>
+        </resource_limits>
+        <durability>
+          <kind>VOLATILE_DURABILITY_QOS</kind>
+        </durability>
+      </datareader_qos>
+    </qos_profile>
+  </qos_library>
+</dds>

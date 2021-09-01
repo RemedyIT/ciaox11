@@ -13,9 +13,6 @@
 
 #pragma ami4ccm interface "UsesMulti::One"
 
-#pragma ami4ccm idl "usesmultiA.idl"
-
-
 module UsesMulti
 {
   exception InternalError

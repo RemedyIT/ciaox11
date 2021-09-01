@@ -1,0 +1,107 @@
+project (*idl) : ddsx11_ts_defaults, ridl_ostream_defaults {
+  idlflags += -Wb,base_export_macro=MINIMUM_LATENCY \
+              -Wb,base_export_include=minimum_latency \
+              -Gxhst \
+              -o GeneratedCode -SS -Scdr -Scp
+  custom_only = 1
+
+  IDL_Files {
+    gendir = GeneratedCode
+    latency_data.idl
+  }
+}
+
+// Compile all C++11 stubs into one shared library
+project (*stub) : ddsx11_stub {
+  after += *idl
+  libout = ../lib
+
+  dynamicflags += MINIMUM_LATENCY_STUB_BUILD_DLL
+
+  Source_Files {
+    GeneratedCode/latency_dataC.cpp
+    GeneratedCode/latency_data_dds_typed_entitiesC.cpp
+  }
+}
+
+project (*ddsx11_ndds_ts) : ddsx11_vendor_ts_defaults {
+  after += *idl
+  requires += ndds
+  NDDSTypeSupport_Files {
+    gendir = GeneratedCode
+    GeneratedCode/latency_data_dds.idl
+  }
+  custom_only=1
+}
+
+project (*ddsx11_opendds_ts) : ddsx11_vendor_ts_defaults, ddsx11_no_idlfiles {
+  after += *idl
+  requires += opendds
+  idlflags += -o GeneratedCode -I. -IGeneratedCode -SS \
+              -Wb,stub_export_macro=MINIMUM_LATENCY_TYPESUPPORT_Export \
+              -Wb,stub_export_include=minimum_latency_typesupport_export.h
+  TypeSupport_Files {
+    gendir = GeneratedCode
+    GeneratedCode/latency_data_dds.idl
+    dcps_ts_flags += -Wb,export_macro=MINIMUM_LATENCY_TYPESUPPORT_Export \
+                     -Wb,export_include=minimum_latency_typesupport_export.h \
+                     -o GeneratedCode
+  }
+  IDL_Files {
+    gendir = GeneratedCode
+    GeneratedCode/latency_data_dds.idl
+  }
+  custom_only=1
+}
+
+project (*ddsx11_ndds_impl) : ddsx11_impl {
+  after += *stub *ddsx11_ndds_ts
+  libs += *stub
+  requires += ndds
+  sharedname = minimum_latency_data_ddsx11_impl
+
+  dynamicflags += MINIMUM_LATENCY_TYPESUPPORT_BUILD_DLL
+
+  libout    = ../lib
+  libpaths += ../lib
+
+  Source_Files {
+    GeneratedCode/latency_data_dds.cxx
+    GeneratedCode/latency_data_ddsPlugin.cxx
+    GeneratedCode/latency_data_ddsSupport.cxx
+    GeneratedCode/latency_data_dds_typesupport.cpp
+  }
+
+  Header_Files {
+    GeneratedCode/latency_data_dds.h
+    GeneratedCode/latency_data_ddsPlugin.h
+    GeneratedCode/latency_data_ddsSupport.h
+    GeneratedCode/latency_data_dds_typesupport.h
+  }
+}
+
+project (*ddsx11_opendds_impl) : ddsx11_impl, ddsx11_no_idlfiles {
+  after += *stub *ddsx11_opendds_ts
+  libs += *stub
+  requires += opendds
+  sharedname = minimum_latency_data_ddsx11_impl
+
+  dynamicflags += MINIMUM_LATENCY_TYPESUPPORT_BUILD_DLL
+
+  libout    = ../lib
+  libpaths += ../lib
+
+  Source_Files {
+    GeneratedCode/latency_data_ddsC.cpp
+    GeneratedCode/latency_data_ddsTypeSupportC.cpp
+    GeneratedCode/latency_data_ddsTypeSupportImpl.cpp
+    GeneratedCode/latency_data_dds_typesupport.cpp
+  }
+
+  Header_Files {
+    GeneratedCode/latency_data_ddsC.h
+    GeneratedCode/latency_data_ddsTypeSupportC.h
+    GeneratedCode/latency_data_ddsTypeSupportImpl.h
+    GeneratedCode/latency_data_dds_typesupport.h
+  }
+}

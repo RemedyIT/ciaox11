@@ -28,6 +28,7 @@ namespace DDSX11
       : NativeEntityBase_T<DDS_Native::DDS::DomainParticipantFactory> (dpf)
       , DDSX11::DDS_DomainParticipantFactory_proxy (dpf)
     {
+      DDSX11_LOG_TRACE ("OpenDDS_DomainParticipantFactory_proxy::OpenDDS_DomainParticipantFactory_proxy");
     }
 
     IDL::traits< ::DDS::DomainParticipant>::ref_type

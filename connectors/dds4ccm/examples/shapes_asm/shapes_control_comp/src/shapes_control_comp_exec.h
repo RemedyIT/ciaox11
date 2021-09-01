@@ -47,7 +47,7 @@ namespace Shapes_Control_comp_Impl
     Control_comp_exec_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : Shapes_Control_comp_Impl::Control_comp_exec_i[ctor]
     /// Destructor
-    virtual ~Control_comp_exec_i ();
+    ~Control_comp_exec_i () override;
 
     /** @name Component port operations. */
     //@{

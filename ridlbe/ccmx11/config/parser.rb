@@ -133,12 +133,12 @@ module IDL
   end # CCMX11
 
   # extend with CCMX11 pragma handling
-  Delegator.send(:include, CCMX11::DelegatorExt)
+  Delegator.send(:include, CCMX11::DelegatorExt) unless Delegator < CCMX11::DelegatorExt
 
   # extend with CCMX11 lem&impl pragma properties
-  AST::Include.send(:include, CCMX11::IncludeMixin)
+  AST::Include.send(:include, CCMX11::IncludeMixin) unless AST::Include < CCMX11::IncludeMixin
 
   # extend with CCMX11 naming extensions
-  AST::ComponentBase.send(:include, CCMX11::ComponentBaseMixin)
+  AST::ComponentBase.send(:include, CCMX11::ComponentBaseMixin) unless AST::ComponentBase < CCMX11::ComponentBaseMixin
 
 end # IDL

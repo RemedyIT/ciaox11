@@ -18,11 +18,14 @@ namespace CIAOX11
   {
     template <typename EVT_STRATEGY>
     class TopicListener_T
-      : public virtual IDL::traits< ::DDS::TopicListener >::base_type
+      : public virtual IDL::traits< ::DDS::TopicListener>::base_type
     {
     public:
       explicit TopicListener_T (const EVT_STRATEGY &evs);
       virtual ~TopicListener_T () = default;
+
+      using uses_context_switch = typename EVT_STRATEGY::uses_context_switch;
+      static constexpr const char* context_switch_type = EVT_STRATEGY::context_switch_type;
 
       void
       on_inconsistent_topic (

@@ -28,6 +28,18 @@ module IDL
         ::IDL::Type::Boolean === self._resolved_idltype.basetype.resolved_type
       end
 
+      def is_integer_type?
+        ::IDL::Type::Integer === self._resolved_idltype.basetype.resolved_type
+      end
+
+      def is_float_type?
+        ::IDL::Type::Float === self._resolved_idltype.basetype.resolved_type
+      end
+
+      def is_char_type?
+        ::IDL::Type::Char === self._resolved_idltype.basetype.resolved_type || ::IDL::Type::WChar === self._resolved_idltype.basetype.resolved_type
+      end
+
     end # SequenceVisitor
 
   end # CCMX11

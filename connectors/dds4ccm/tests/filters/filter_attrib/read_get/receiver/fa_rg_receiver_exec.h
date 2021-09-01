@@ -41,7 +41,6 @@ namespace FA_Read_Get_Test_Receiver_Impl
     : public IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : FA_Read_Get_Test_Receiver_Impl::get_port_status_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -50,7 +49,7 @@ namespace FA_Read_Get_Test_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : FA_Read_Get_Test_Receiver_Impl::get_port_status_exec_i[ctor]
 
     /// Destructor
-    virtual ~get_port_status_exec_i ();
+    ~get_port_status_exec_i () override;
 
     /** @name Operations from ::CCM_DDS::CCM_PortStatusListener */
     //@{
@@ -97,7 +96,6 @@ namespace FA_Read_Get_Test_Receiver_Impl
     : public IDL::traits< ::CommonTestConnector::CCM_Listener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : FA_Read_Get_Test_Receiver_Impl::listen_port_data_listener_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -106,7 +104,7 @@ namespace FA_Read_Get_Test_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : FA_Read_Get_Test_Receiver_Impl::listen_port_data_listener_exec_i[ctor]
 
     /// Destructor
-    virtual ~listen_port_data_listener_exec_i ();
+    ~listen_port_data_listener_exec_i () override;
 
     /** @name Operations from ::CommonTestConnector::CCM_Listener */
     //@{
@@ -153,7 +151,6 @@ namespace FA_Read_Get_Test_Receiver_Impl
     : public IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : FA_Read_Get_Test_Receiver_Impl::listen_port_status_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -162,7 +159,7 @@ namespace FA_Read_Get_Test_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : FA_Read_Get_Test_Receiver_Impl::listen_port_status_exec_i[ctor]
 
     /// Destructor
-    virtual ~listen_port_status_exec_i ();
+    ~listen_port_status_exec_i () override;
 
     /** @name Operations from ::CCM_DDS::CCM_PortStatusListener */
     //@{
@@ -209,7 +206,6 @@ namespace FA_Read_Get_Test_Receiver_Impl
     : public IDL::traits< CCM_ReaderStarter>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : FA_Read_Get_Test_Receiver_Impl::start_reading_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -219,7 +215,7 @@ namespace FA_Read_Get_Test_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : FA_Read_Get_Test_Receiver_Impl::start_reading_exec_i[ctor]
 
     /// Destructor
-    virtual ~start_reading_exec_i ();
+    ~start_reading_exec_i () override;
 
     /** @name Operations from CCM_ReaderStarter */
     //@{
@@ -273,7 +269,7 @@ namespace FA_Read_Get_Test_Receiver_Impl
     Receiver_exec_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : FA_Read_Get_Test_Receiver_Impl::Receiver_exec_i[ctor]
     /// Destructor
-    virtual ~Receiver_exec_i ();
+    ~Receiver_exec_i () override;
 
     /** @name Component port operations. */
     //@{

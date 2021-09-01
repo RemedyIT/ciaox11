@@ -204,7 +204,6 @@ namespace RG_LateBinding_Sender_Impl
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : RG_LateBinding_Sender_Impl::Sender_exec_i[configuration_complete]
     DDS4CCM_TEST_DEBUG << "Sender_exec_i::configuration_complete" << std::endl;
-    // Your code here
     //@@{__RIDL_REGEN_MARKER__} - END : RG_LateBinding_Sender_Impl::Sender_exec_i[configuration_complete]
   }
 

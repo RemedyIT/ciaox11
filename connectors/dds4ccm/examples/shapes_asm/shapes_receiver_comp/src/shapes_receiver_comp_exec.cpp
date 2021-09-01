@@ -63,7 +63,7 @@ namespace Shapes_Receiver_comp_Impl
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Shapes_Receiver_comp_Impl::info_out_data_listener_exec_i::on_one_data[_datum_info]
     X11_UNUSED_ARG(info);
-    CIAOX11_TEST_DEBUG << "Receiver, on_one_data " << IDL::traits< ShapeType>::write (datum) << std::endl;
+    CIAOX11_TEST_DEBUG << "Receiver, on_one_data " << IDL::traits<ShapeType>::write (datum) << std::endl;
 
     //@@{__RIDL_REGEN_MARKER__} - END : Shapes_Receiver_comp_Impl::info_out_data_listener_exec_i::on_one_data[_datum_info]
   }

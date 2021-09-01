@@ -30,6 +30,10 @@ connectors/dds4ccm/tests/connector_status_listener/descriptors/run_test.pl plan_
 connectors/dds4ccm/tests/connector_status_listener/descriptors/run_test.pl plan_on_unexpected_status_ndds.cdp: DDS4CCM_EVENT NDDS
 connectors/dds4ccm/tests/connector_status_listener/descriptors/run_test.pl plan_on_unexpected_status_ndds.config: DDS4CCM_EVENT NDDS
 connectors/dds4ccm/tests/content_filtered_topics/event_listener/descriptors/run_test.pl plan_ndds.cdp: DDS4CCM_EVENT NDDS
+connectors/dds4ccm/tests/extensibility/descriptors/run_test_extended_base.pl plan_ndds.config: DDS4CCM_EVENT NDDS
+connectors/dds4ccm/tests/extensibility/descriptors/run_test_base_extended.pl plan_ndds.config: DDS4CCM_EVENT NDDS
+connectors/dds4ccm/tests/extensibility/base/descriptors/run_test.pl plan_ndds.config: DDS4CCM_EVENT NDDS
+connectors/dds4ccm/tests/extensibility/extended/descriptors/run_test.pl plan_ndds.config: DDS4CCM_EVENT NDDS
 connectors/dds4ccm/tests/get_component/descriptors/run_test.pl plan_ndds.config: DDS4CCM_EVENT NDDS
 connectors/dds4ccm/tests/get_component/descriptors/run_test.pl plan_ndds.cdp: DDS4CCM_EVENT NDDS
 connectors/dds4ccm/tests/getter/descriptors/run_test.pl plan_ndds.config: DDS4CCM_EVENT CORBA4CCM NDDS
@@ -68,3 +72,5 @@ connectors/dds4ccm/tests/unkeyed_writer/descriptors/run_test_snl.pl plan_ndds.cd
 connectors/dds4ccm/tests/unkeyed_writer/descriptors/run_test_pl.pl plan_ndds.config: DDS4CCM_EVENT NDDS
 connectors/dds4ccm/tests/updater/descriptors/run_test.pl plan_ndds.config: DDS4CCM_STATE CORBA4CCM NDDS
 connectors/dds4ccm/tests/updater/descriptors/run_test_pl.pl plan_ndds.config: DDS4CCM_STATE CORBA4CCM NDDS
+connectors/dds4ccm/tests/latency/descriptors/run_test.pl plan_ndds.config: DDS4CCM_EVENT NDDS
+connectors/dds4ccm/tests/minimal_latency/descriptors/run_test.pl plan_ndds.config: DDS4CCM_EVENT NDDS

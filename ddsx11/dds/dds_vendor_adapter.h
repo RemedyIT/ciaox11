@@ -34,28 +34,22 @@ namespace DDSX11
   namespace VendorUtils
   {
     IDL::traits< ::DDS::Publisher>::ref_type
-    create_publisher_proxy (
-      DDS_Native::DDS::Publisher *p);
+    create_publisher_proxy (DDS_Native::DDS::Publisher *p);
 
     IDL::traits< ::DDS::Subscriber>::ref_type
-    create_subscriber_proxy (
-      DDS_Native::DDS::Subscriber *s);
+    create_subscriber_proxy (DDS_Native::DDS::Subscriber *s);
 
     IDL::traits< ::DDS::DomainParticipant>::ref_type
-    create_domain_participant_proxy (
-      DDS_Native::DDS::DomainParticipant *dp);
+    create_domain_participant_proxy (DDS_Native::DDS::DomainParticipant *dp);
 
-    DDSX11_IMPL_Export IDL::traits< ::DDS::WaitSet>::ref_type
-    create_waitset ();
+    DDSX11_IMPL_Export IDL::traits< ::DDS::WaitSet>::ref_type create_waitset ();
 
-    DDSX11_IMPL_Export IDL::traits< ::DDS::DomainParticipantFactory>::ref_type
-    init_dds ();
+    DDSX11_IMPL_Export IDL::traits< ::DDS::DomainParticipantFactory>::ref_type domain_participant_factory ();
 
     /** @name Create DDS Listeners. */
     //@{
     DDS_Native::DDS::PublisherListener*
-    create_publisher_listener (
-      IDL::traits< ::DDS::PublisherListener>::ref_type listener);
+    create_publisher_listener (IDL::traits< ::DDS::PublisherListener>::ref_type listener);
     //@}
 
     /** @name Default QOSs. */
@@ -87,10 +81,7 @@ namespace DDS
     static IDL::traits< ::DDS::DomainParticipantFactory>::ref_type
     get_instance ()
     {
-      // See C++ specification section 6.7 [stmt.dcl] p4
-      static IDL::traits< ::DDS::DomainParticipantFactory>::ref_type dpf =
-        ::DDSX11::VendorUtils::init_dds ();
-      return dpf;
+      return DDSX11::VendorUtils::domain_participant_factory ();
     }
   };
 }

@@ -40,7 +40,6 @@ namespace PSL_SampleLostTest_Receiver_Impl
     : public IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : PSL_SampleLostTest_Receiver_Impl::info_get_status_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -51,7 +50,7 @@ namespace PSL_SampleLostTest_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : PSL_SampleLostTest_Receiver_Impl::info_get_status_exec_i[ctor]
 
     /// Destructor
-    virtual ~info_get_status_exec_i ();
+    ~info_get_status_exec_i () override;
 
     /** @name Operations from ::CCM_DDS::CCM_PortStatusListener */
     //@{
@@ -99,7 +98,6 @@ namespace PSL_SampleLostTest_Receiver_Impl
     : public IDL::traits< ::CommonTestConnector::CCM_Listener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : PSL_SampleLostTest_Receiver_Impl::info_out_data_listener_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -108,7 +106,7 @@ namespace PSL_SampleLostTest_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : PSL_SampleLostTest_Receiver_Impl::info_out_data_listener_exec_i[ctor]
 
     /// Destructor
-    virtual ~info_out_data_listener_exec_i ();
+    ~info_out_data_listener_exec_i () override;
 
     /** @name Operations from ::CommonTestConnector::CCM_Listener */
     //@{
@@ -155,7 +153,6 @@ namespace PSL_SampleLostTest_Receiver_Impl
     : public IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : PSL_SampleLostTest_Receiver_Impl::info_out_status_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -166,7 +163,7 @@ namespace PSL_SampleLostTest_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : PSL_SampleLostTest_Receiver_Impl::info_out_status_exec_i[ctor]
 
     /// Destructor
-    virtual ~info_out_status_exec_i ();
+    ~info_out_status_exec_i () override;
 
     /** @name Operations from ::CCM_DDS::CCM_PortStatusListener */
     //@{
@@ -214,7 +211,6 @@ namespace PSL_SampleLostTest_Receiver_Impl
     : public IDL::traits< ::CCM_DDS::CCM_ConnectorStatusListener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : PSL_SampleLostTest_Receiver_Impl::connector_status_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -223,7 +219,7 @@ namespace PSL_SampleLostTest_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : PSL_SampleLostTest_Receiver_Impl::connector_status_exec_i[ctor]
 
     /// Destructor
-    virtual ~connector_status_exec_i ();
+    ~connector_status_exec_i () override;
 
     /** @name Operations from ::CCM_DDS::CCM_ConnectorStatusListener */
     //@{
@@ -295,7 +291,7 @@ namespace PSL_SampleLostTest_Receiver_Impl
     Receiver_exec_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : PSL_SampleLostTest_Receiver_Impl::Receiver_exec_i[ctor]
     /// Destructor
-    virtual ~Receiver_exec_i ();
+    ~Receiver_exec_i () override;
 
     /** @name Component port operations. */
     //@{

@@ -22,10 +22,9 @@ namespace DDSX11
       : public virtual DDSX11::DDS_DomainParticipant_proxy
     {
     public:
-      NDDS_DomainParticipant_proxy (
-        DDS_Native::DDS::DomainParticipant *dp);
+      explicit NDDS_DomainParticipant_proxy (DDS_Native::DDS::DomainParticipant *dp);
 
-      virtual ~NDDS_DomainParticipant_proxy () = default;
+      ~NDDS_DomainParticipant_proxy () override = default;
 
       /**
        * @name  create_publisher_with_profile

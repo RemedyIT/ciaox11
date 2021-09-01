@@ -15,17 +15,9 @@ module IDL
     #
     class IncludeVisitor
 
-      # def has_ami4ccm_idl_includes?
-      #   @node.has_ami4ccm_idl_includes?
-      # end
-
       def has_ami4ccm_receptacles?
         !self.properties[:ami4ccm_receptacles].empty?
       end
-
-      # def ami4ccm_idl_includes
-      #   @node.ami4ccm_idl_includes.map
-      # end
 
       def has_ami4ccm_idl_includes?
         !self.ami4ccm_idl_includes.empty?

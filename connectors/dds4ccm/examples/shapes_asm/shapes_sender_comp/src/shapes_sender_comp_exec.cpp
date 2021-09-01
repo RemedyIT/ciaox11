@@ -146,7 +146,7 @@ namespace Shapes_Sender_comp_Impl
 
             CIAOX11_TEST_DEBUG
               << "Updated "
-              << IDL::traits< ShapeType>::write (this->square_)
+              << IDL::traits<ShapeType>::write (this->square_)
               << std::endl;
           }
       }
@@ -155,14 +155,14 @@ namespace Shapes_Sender_comp_Impl
         retval = Shapes::ReturnStatus::RETURN_ERROR;
         CIAOX11_TEST_ERROR
           << "NonExistent Error while writing "
-          << IDL::traits< ShapeType>::write (this->square_) << std::endl;
+          << IDL::traits<ShapeType>::write (this->square_) << std::endl;
       }
     catch (const CCM_DDS::InternalError& ex)
       {
         retval = Shapes::ReturnStatus::RETURN_ERROR;
         CIAOX11_TEST_ERROR
           << "Internal Error while writing "
-          << IDL::traits< ShapeType>::write (this->square_)
+          << IDL::traits<ShapeType>::write (this->square_)
           << ": " << ex << std::endl;
       }
     return retval;
@@ -188,19 +188,19 @@ namespace Shapes_Sender_comp_Impl
         this->instance_handle_ = writer->register_instance (this->square_);
 
         CIAOX11_TEST_DEBUG
-          << "Registered shape " << IDL::traits< ShapeType>::write (this->square_) << std::endl;
+          << "Registered shape " << IDL::traits<ShapeType>::write (this->square_) << std::endl;
       }
     catch (const CCM_DDS::AlreadyCreated& )
       {
         CIAOX11_TEST_ERROR
           << "AlreadyCreated Error while creating "
-          << IDL::traits< ShapeType>::write (this->square_) << std::endl;
+          << IDL::traits<ShapeType>::write (this->square_) << std::endl;
       }
     catch (const CCM_DDS::InternalError& ex)
       {
         CIAOX11_TEST_ERROR
           << "Internal Error while creating "
-          << IDL::traits< ShapeType>::write (this->square_)
+          << IDL::traits<ShapeType>::write (this->square_)
           << ": " << ex << std::endl;
       }
     //@@{__RIDL_REGEN_MARKER__} - END : Shapes_Sender_comp_Impl::Sender_comp_exec_i[ccm_activate]
@@ -211,7 +211,7 @@ namespace Shapes_Sender_comp_Impl
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Shapes_Sender_comp_Impl::Sender_comp_exec_i[ccm_passivate]
     try
       {
-        IDL::traits< ShapeTypeInterface::Writer>::ref_type writer =
+        IDL::traits<ShapeTypeInterface::Writer>::ref_type writer =
           this->context_->get_connection_info_write_data ();
 
         writer->unregister_instance (this->square_,
@@ -220,18 +220,18 @@ namespace Shapes_Sender_comp_Impl
         this->instance_handle_ = ::DDS::HANDLE_NIL;
 
         CIAOX11_TEST_DEBUG
-          << "Unregistered shape " << IDL::traits< ShapeType>::write (this->square_) << std::endl;
+          << "Unregistered shape " << IDL::traits<ShapeType>::write (this->square_) << std::endl;
       }
     catch (const CCM_DDS::NonExistent& )
       {
         CIAOX11_TEST_ERROR <<
-         IDL::traits< ShapeType>::write (this->square_)  << " not deleted." << std::endl;
+         IDL::traits<ShapeType>::write (this->square_)  << " not deleted." << std::endl;
       }
     catch (const CCM_DDS::InternalError& ex)
       {
         CIAOX11_TEST_ERROR
           << "Internal Error while deleting "
-          << IDL::traits< ShapeType>::write (this->square_)
+          << IDL::traits<ShapeType>::write (this->square_)
           << ": " << ex << std::endl;
       }
     //@@{__RIDL_REGEN_MARKER__} - END : Shapes_Sender_comp_Impl::Sender_comp_exec_i[ccm_passivate]

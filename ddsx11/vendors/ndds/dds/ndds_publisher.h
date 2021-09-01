@@ -22,10 +22,9 @@ namespace DDSX11
       : public virtual DDSX11::DDS_Publisher_proxy
     {
     public:
-      NDDS_Publisher_proxy (
-        DDS_Native::DDS::Publisher * p);
+      explicit NDDS_Publisher_proxy (DDS_Native::DDS::Publisher * p);
 
-      virtual ~NDDS_Publisher_proxy () = default;
+      ~NDDS_Publisher_proxy () override = default;
 
       /**
        * @name  create_datawriter_with_profile

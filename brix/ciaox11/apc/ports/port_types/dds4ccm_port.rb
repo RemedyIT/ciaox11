@@ -35,6 +35,9 @@ module AxciomaPC
         def middleware(name)
           @port_type.middleware([name])
         end
+        def disable_context_switch
+          @port_type.disable_context_switch
+        end
       end
 
       CONFIGURATOR = Port::Configurator
@@ -64,10 +67,10 @@ module AxciomaPC
           intf_recipe = intf_idl_file.recipes.first
           # make sure the details are correctly set
           intf_recipe.topic_namespace ||= @topic_namespace
-          intf_recipe.topic_sequence ||= @topic_seq
-          intf_recipe.topic_sequence_suffix ||= @topic_seq_suffix
-          intf_recipe.topic_interface ||= @topic_if
-          intf_recipe.topic_interface_suffix ||= @topic_if_suffix
+          intf_recipe.topic_seq ||= @topic_seq
+          intf_recipe.topic_seq_suffix ||= @topic_seq_suffix
+          intf_recipe.topic_if ||= @topic_if
+          intf_recipe.topic_if_suffix ||= @topic_if_suffix
           intf_recipe
         else
           intf_recipe =
@@ -127,6 +130,14 @@ module AxciomaPC
        end.compact unless names.empty?
        # if none specified build all configured/available implementations
        @middleware || [Port.middleware_implementations.first]
+      end
+
+      def disable_context_switch
+        @context_switch_disabled = true
+      end
+
+      def context_switch_disabled?
+        !!@context_switch_disabled
       end
 
       def topic

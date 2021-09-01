@@ -21,7 +21,7 @@ module Hello
 {
   component Sender
   {
-    uses MyFoo run_my_foo;
+    uses Nested::MyFoo run_my_foo;
   };
 };
 

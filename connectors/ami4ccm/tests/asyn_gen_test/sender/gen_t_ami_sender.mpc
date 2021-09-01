@@ -61,7 +61,7 @@ project(*exec) : ciaox11_executor, ciaox11_logger, ciaox11_ami4ccm_stub {
   libpaths += ../lib
   libout = ../lib
   dynamicflags += HELLO_SENDER_EXEC_BUILD_DLL
-  includes += .. ../base
+  includes += ..
 
   Source_Files {
     hello_sender_exec.cpp

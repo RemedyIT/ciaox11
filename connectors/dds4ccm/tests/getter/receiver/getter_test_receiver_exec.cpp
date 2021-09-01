@@ -153,7 +153,8 @@ namespace Getter_Test_Receiver_Impl
     IDL::traits<Getter_Test::CCM_Receiver>::weak_ref_type component_executor)
     : context_ (std::move (context))
     , component_executor_ (std::move(component_executor))
-  { DDS4CCM_TEST_DEBUG << "Receivergetter_invoke_exec_i::getter_invoke_exec_i" << std::endl;
+  {
+    DDS4CCM_TEST_DEBUG << "Receivergetter_invoke_exec_i::getter_invoke_exec_i" << std::endl;
   }
   //@@{__RIDL_REGEN_MARKER__} - END : Getter_Test_Receiver_Impl::getter_invoke_exec_i[ctor]
 

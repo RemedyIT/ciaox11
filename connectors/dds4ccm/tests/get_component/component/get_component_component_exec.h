@@ -44,7 +44,6 @@ namespace GetComponentComponent_Impl
     : public IDL::traits< ::CommonTestConnector::CCM_Listener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : GetComponentComponent_Impl::info_listen_data_listener_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -53,7 +52,7 @@ namespace GetComponentComponent_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : GetComponentComponent_Impl::info_listen_data_listener_exec_i[ctor]
 
     /// Destructor
-    virtual ~info_listen_data_listener_exec_i ();
+    ~info_listen_data_listener_exec_i () override;
 
     /** @name Operations from ::CommonTestConnector::CCM_Listener */
     //@{
@@ -100,7 +99,6 @@ namespace GetComponentComponent_Impl
     : public IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : GetComponentComponent_Impl::info_listen_status_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -109,7 +107,7 @@ namespace GetComponentComponent_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : GetComponentComponent_Impl::info_listen_status_exec_i[ctor]
 
     /// Destructor
-    virtual ~info_listen_status_exec_i ();
+    ~info_listen_status_exec_i () override;
 
     /** @name Operations from ::CCM_DDS::CCM_PortStatusListener */
     //@{
@@ -156,7 +154,6 @@ namespace GetComponentComponent_Impl
     : public IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : GetComponentComponent_Impl::info_get_status_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -165,7 +162,7 @@ namespace GetComponentComponent_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : GetComponentComponent_Impl::info_get_status_exec_i[ctor]
 
     /// Destructor
-    virtual ~info_get_status_exec_i ();
+    ~info_get_status_exec_i () override;
 
     /** @name Operations from ::CCM_DDS::CCM_PortStatusListener */
     //@{
@@ -217,7 +214,7 @@ namespace GetComponentComponent_Impl
     GetComponentComponent_exec_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : GetComponentComponent_Impl::GetComponentComponent_exec_i[ctor]
     /// Destructor
-    virtual ~GetComponentComponent_exec_i ();
+    ~GetComponentComponent_exec_i () override;
 
     /** @name Component port operations. */
     //@{

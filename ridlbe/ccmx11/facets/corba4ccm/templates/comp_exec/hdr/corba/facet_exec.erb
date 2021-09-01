@@ -8,7 +8,7 @@ public:
 % visit_facet_constructor
 
   /// Destructor
-  virtual ~<%= lem_name %>_exec_i () = default;
+  ~<%= lem_name %>_exec_i () override = default;
 
 %if interface_type.all_operations.size > 0
   /// @name Operations from <%= scoped_cxxname %>

@@ -81,14 +81,13 @@ namespace Hello_Sender_Impl
     this->ciao_context_ = IDL::traits<Hello::CCM_Sender_Context>::narrow (std::move(context));
   }
 
-
   int asynch_foo_generator::svc()
   {
     std::this_thread::sleep_for (std::chrono::seconds (3));
     CIAOX11_TEST_INFO << "Sender:\t->get_connection_sendc_run_my_foo "
       << std::endl;
 
-    IDL::traits< ::Hello::AMI4CCM_MyFoo>::ref_type my_foo_ami  =
+    IDL::traits< ::Hello::Nested::AMI4CCM_MyFoo>::ref_type my_foo_ami  =
       this->ciao_context_->get_connection_sendc_run_my_foo ();
 
     if (!my_foo_ami)
@@ -97,7 +96,7 @@ namespace Hello_Sender_Impl
                         << "returns null" << std::endl;
       return 1;
     }
-    IDL::traits< ::Hello::AMI4CCM_MyFooReplyHandler>::ref_type cb =
+    IDL::traits< ::Hello::Nested::AMI4CCM_MyFooReplyHandler>::ref_type cb =
       CORBA::make_reference<AMI4CCM_MyFooReplyHandler_run_my_foo_i> ();
 
     my_foo_ami->sendc_foo (cb,"Do something asynchronous");

@@ -50,7 +50,6 @@ namespace Hello_Sender_Impl
     : public IDL::traits< ::Hello::CCM_PortFooS>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl::foo_port_s_foo_prov_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -59,7 +58,7 @@ namespace Hello_Sender_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Sender_Impl::foo_port_s_foo_prov_exec_i[ctor]
 
     /// Destructor
-    virtual ~foo_port_s_foo_prov_exec_i ();
+    ~foo_port_s_foo_prov_exec_i () override;
 
     /** @name Operations from ::Hello::CCM_PortFooS */
     //@{
@@ -105,7 +104,7 @@ namespace Hello_Sender_Impl
   Sender_exec_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Sender_Impl::Sender_exec_i[ctor]
     /// Destructor
-    virtual ~Sender_exec_i ();
+    ~Sender_exec_i () override;
 
     /** @name Component port operations. */
     //@{

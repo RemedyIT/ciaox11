@@ -89,7 +89,6 @@ namespace Getter_Test_Receiver_Impl
     : public IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Getter_Test_Receiver_Impl::info_get_status_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -98,7 +97,7 @@ namespace Getter_Test_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Getter_Test_Receiver_Impl::info_get_status_exec_i[ctor]
 
     /// Destructor
-    virtual ~info_get_status_exec_i ();
+    ~info_get_status_exec_i () override;
 
     /** @name Operations from ::CCM_DDS::CCM_PortStatusListener */
     //@{
@@ -146,7 +145,6 @@ namespace Getter_Test_Receiver_Impl
     : public IDL::traits< CCM_GetInvoker>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Getter_Test_Receiver_Impl::getter_invoke_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -156,7 +154,7 @@ namespace Getter_Test_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Getter_Test_Receiver_Impl::getter_invoke_exec_i[ctor]
 
     /// Destructor
-    virtual ~getter_invoke_exec_i ();
+    ~getter_invoke_exec_i () override;
 
     /** @name Operations from CCM_GetInvoker */
     //@{
@@ -214,7 +212,7 @@ namespace Getter_Test_Receiver_Impl
     Receiver_exec_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : Getter_Test_Receiver_Impl::Receiver_exec_i[ctor]
     /// Destructor
-    virtual ~Receiver_exec_i ();
+    ~Receiver_exec_i () override;
 
     /** @name Component port operations. */
     //@{

@@ -41,7 +41,6 @@ namespace MDD_Data_Listener_Test_Receiver_Impl
     : public IDL::traits< ::CommonTestConnector::CCM_Listener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : MDD_Data_Listener_Test_Receiver_Impl::info_data_listen_data_listener_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -52,7 +51,7 @@ namespace MDD_Data_Listener_Test_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : MDD_Data_Listener_Test_Receiver_Impl::info_data_listen_data_listener_exec_i[ctor]
 
     /// Destructor
-    virtual ~info_data_listen_data_listener_exec_i ();
+    ~info_data_listen_data_listener_exec_i () override;
 
     /** @name Operations from ::CommonTestConnector::CCM_Listener */
     //@{
@@ -100,7 +99,6 @@ namespace MDD_Data_Listener_Test_Receiver_Impl
     : public IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : MDD_Data_Listener_Test_Receiver_Impl::info_data_listen_status_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -109,7 +107,7 @@ namespace MDD_Data_Listener_Test_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : MDD_Data_Listener_Test_Receiver_Impl::info_data_listen_status_exec_i[ctor]
 
     /// Destructor
-    virtual ~info_data_listen_status_exec_i ();
+    ~info_data_listen_status_exec_i () override;
 
     /** @name Operations from ::CCM_DDS::CCM_PortStatusListener */
     //@{
@@ -161,7 +159,7 @@ namespace MDD_Data_Listener_Test_Receiver_Impl
     Receiver_exec_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : MDD_Data_Listener_Test_Receiver_Impl::Receiver_exec_i[ctor]
     /// Destructor
-    virtual ~Receiver_exec_i ();
+    ~Receiver_exec_i () override;
 
     /** @name Component port operations. */
     //@{

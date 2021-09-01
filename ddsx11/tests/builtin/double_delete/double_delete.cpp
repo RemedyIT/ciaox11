@@ -71,7 +71,24 @@ int main (int, char *[])
 
       DDS::Duration_t const zero {0, 0};
       DDS::traits<ShapeType>::topic_ref_type topic2 = domain_participant->find_topic ("Square", zero);
+      if (!topic2)
+      {
+        DDSX11_TEST_ERROR << "double_delete: Failed to use find_topic Square." << std::endl;
+        return 1;
+      }
 
+      // topic2 and topic should have the same instance handles
+      DDSX11_TEST_DEBUG << "Checking instance handles of topic and topic2" << std::endl;
+      if (topic2->get_instance_handle () != topic->get_instance_handle ())
+      {
+        DDSX11_TEST_ERROR << "double_delete: topic and topic2 should have the same instance handles "
+                          << topic2->get_instance_handle () << ":"
+                          << topic->get_instance_handle ()
+                          << std::endl;
+        return 1;
+      }
+
+      DDSX11_TEST_DEBUG << "Deleting topic2" << std::endl;
       retcode = domain_participant->delete_topic (topic2);
       if (retcode != DDS::RETCODE_OK)
       {

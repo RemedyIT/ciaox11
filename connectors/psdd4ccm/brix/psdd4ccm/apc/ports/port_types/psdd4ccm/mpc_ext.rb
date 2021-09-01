@@ -37,6 +37,7 @@ module AxciomaPC
         super(:"psdd_#{middleware}_conn", recipe)
         base_projects(%w{ciaox11_executor})
         base_projects << PSDDConnProject.middleware_base_projects[middleware]
+        base_projects << 'ciaox11_psdd4ccm_no_context_switch' if recipe.port_handler.context_switch_disabled?
         project_dependencies << "#{mpc_id}_psdd_conn_gen"
         # add default sources and headers
         base = recipe.port_handler.interface_name

@@ -49,7 +49,6 @@ namespace RG_LateBinding_Sender_Impl
     : public IDL::traits< CCM_WriterStarter>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : RG_LateBinding_Sender_Impl::start_writing_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -59,7 +58,7 @@ namespace RG_LateBinding_Sender_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : RG_LateBinding_Sender_Impl::start_writing_exec_i[ctor]
 
     /// Destructor
-    virtual ~start_writing_exec_i ();
+    ~start_writing_exec_i () override;
 
     /** @name Operations from CCM_WriterStarter */
     //@{
@@ -104,7 +103,7 @@ namespace RG_LateBinding_Sender_Impl
     Sender_exec_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : RG_LateBinding_Sender_Impl::Sender_exec_i[ctor]
     /// Destructor
-    virtual ~Sender_exec_i ();
+    ~Sender_exec_i () override;
 
     /** @name Component port operations. */
     //@{

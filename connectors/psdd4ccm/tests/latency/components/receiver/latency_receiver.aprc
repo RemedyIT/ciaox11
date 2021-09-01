@@ -1,0 +1,16 @@
+
+component 'latency_receiver' do |comp|
+  comp.idl %w{ latency_data.idl }
+
+  comp.define 'Test::Receiver' do |intf|
+    intf.port 'info_echo' do |port|
+      port.publishes 'Test::LatencyData'
+    end
+    intf.port 'info_sub' do |port|
+      port.subscribes 'Test::LatencyData', listen: 'info_out'
+    end
+  end
+
+  comp.base_projects += 'ciaox11_psdd4ccm_logger'
+  comp.combined_lib true
+end

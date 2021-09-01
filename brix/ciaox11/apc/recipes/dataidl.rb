@@ -206,7 +206,13 @@ module AxciomaPC
         end
       end
 
-      # process colected dependencies for included IDL
+      # in case for some reason the IDL generation has not been created yet,
+      # create it now
+      unless mpc_file[:idl_gen]
+        @idl_files.each_value { |fidl| add_stub_proj(fidl) }
+      end
+
+      # process collected dependencies for included IDL
       mpc_file[:idl_gen].add_dependencies(project_dependencies, :idl_gen)
       if mpc_stub_proj = mpc_file[:stub]
         mpc_stub_proj.add_dependencies(project_dependencies, :stub)

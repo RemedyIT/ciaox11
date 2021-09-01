@@ -63,3 +63,5 @@ connectors/psdd4ccm/tests/topic-types/union/nested/descriptors/run_test.pl plan_
 connectors/psdd4ccm/tests/topic-types/union/toplevel/descriptors/run_test.pl plan_zmq_read.config: PSDD4CCM PSDD4CCM_ZMQ
 connectors/psdd4ccm/tests/write_many/descriptors/run_test.pl plan_zmq_read.config: PSDD4CCM PSDD4CCM_ZMQ
 connectors/psdd4ccm/tests/write_many/descriptors/run_test.pl plan_zmq_read_filter.config: PSDD4CCM PSDD4CCM_ZMQ
+connectors/psdd4ccm/tests/latency/descriptors/run_test.pl plan.config: PSDD4CCM PSDD4CCM_ZMQ
+connectors/psdd4ccm/tests/latency/descriptors/run_test.pl plan_noctxsw.config: PSDD4CCM PSDD4CCM_ZMQ

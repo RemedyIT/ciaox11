@@ -41,7 +41,6 @@ namespace Hello_Receiver_comp_Impl
     : public IDL::traits< ::Hello::CCM_MyFoo_obj>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_comp_Impl::do_my_foo_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -50,7 +49,7 @@ namespace Hello_Receiver_comp_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_comp_Impl::do_my_foo_exec_i[ctor]
 
     /// Destructor
-    virtual ~do_my_foo_exec_i ();
+    ~do_my_foo_exec_i () override;
 
     /** @name Operations from ::Hello::CCM_MyFoo_obj */
     //@{
@@ -122,7 +121,7 @@ namespace Hello_Receiver_comp_Impl
     Receiver_comp_exec_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_comp_Impl::Receiver_comp_exec_i[ctor]
     /// Destructor
-    virtual ~Receiver_comp_exec_i ();
+    ~Receiver_comp_exec_i () override;
 
     /** @name Component port operations. */
     //@{

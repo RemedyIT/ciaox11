@@ -24,6 +24,9 @@ namespace CIAOX11
       explicit SubscriberListener_T (const EVT_STRATEGY &evs);
       virtual ~SubscriberListener_T () = default;
 
+      using uses_context_switch = typename EVT_STRATEGY::uses_context_switch;
+      static constexpr const char* context_switch_type = EVT_STRATEGY::context_switch_type;
+
       void
       on_requested_incompatible_qos (
         IDL::traits< ::DDS::DataReader>::ref_type reader,

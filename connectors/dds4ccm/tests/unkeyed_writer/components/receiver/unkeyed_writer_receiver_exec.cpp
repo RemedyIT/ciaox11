@@ -184,7 +184,6 @@ namespace UnkeyedWriterTest_Receiver_Impl
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : UnkeyedWriterTest_Receiver_Impl::Receiver_exec_i[configuration_complete]
     DDS4CCM_TEST_DEBUG << "Receiver_exec_i::configuration_complete" << std::endl;
-    // Your code here
     //@@{__RIDL_REGEN_MARKER__} - END : UnkeyedWriterTest_Receiver_Impl::Receiver_exec_i[configuration_complete]
   }
 

@@ -87,6 +87,11 @@ module AxciomaPC
         @recipe.collect_idl_files
       end
 
+      def setup_projects
+        BRIX11.log(4, "[%s] setup_projects", self)
+        @ports.each { |p| p.setup_projects }
+      end
+
       def create_component_idl
         # create output path
         file_name_ = File.join(@recipe.recipe_file.path, "#{@recipe.recipe_id}.idl")

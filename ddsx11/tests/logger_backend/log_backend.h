@@ -30,7 +30,7 @@ namespace DAnCE
   public:
     ddsx11_log_backend () = default;
 
-    virtual ~ddsx11_log_backend ();
+    ~ddsx11_log_backend () override;
 
     // Methods from ACE_Log_Msg_Backend
     int open (const ACE_TCHAR *logger_key) override;
