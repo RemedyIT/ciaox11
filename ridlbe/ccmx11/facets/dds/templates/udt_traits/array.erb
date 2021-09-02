@@ -35,7 +35,7 @@ namespace DDSX11
   }
 
   /// Conversion of <%= scoped_cxxname %> from DDS
-  template <>
+  template<>
   inline <%= scoped_cxxtype %>&
   from_dds< <%= dds_native_element_cxxtype %>, <%= scoped_cxxtype %>> (
     <%= scoped_cxxtype %> &to, const <%= dds_native_element_cxxtype %> &from)
@@ -62,7 +62,7 @@ namespace DDSX11
 
 %visit_life_cycle_traits
 
-  template <>
+  template<>
   struct traits< <%= scoped_cxxtype %>>
     : public common_traits< <%= scoped_cxxtype %>, <%= dds_native_element_cxxtype %>>,
       public convert_in< <%= scoped_cxxtype %>, <%= dds_native_element_cxxtype %>>,
