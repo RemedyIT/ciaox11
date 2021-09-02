@@ -200,6 +200,7 @@ module Example {
   struct Color4Struct {
     string colorString;
     long colorNum;
+    Color3Seq color2seq;
   }; //@TopLevel()
 
   union B03;
