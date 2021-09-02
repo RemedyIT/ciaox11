@@ -2,8 +2,8 @@
 // generated from <%= ridl_template_path %>
 % if typedef_sequence_dds_type_needed?
 <%= typedef_sequence_dds_type %>
-% end
 
+% end
 local interface <%= name %>DataWriter : ::DDS::DataWriter
 {
   DDS::InstanceHandle_t register_instance(
