@@ -40,12 +40,18 @@ module IDL
       end
 
       def typedef_sequence_dds_type_needed?
-        params[:gen_typedef_sequence_dds_type]
+        # Only generate a implied unbounded sequence typedef when there is not in the enclosing scope a typedef of our type
+        # with a Seq postfix already
+        @node.enclosure.select_members { |m| m.is_a?(IDL::AST::Typedef) && m.idltype.is_a?(IDL::Type::Sequence) && (m.idltype.basetype.resolved_type.is_a?(IDL::Type::Struct) || m.idltype.basetype.resolved_type.is_a?(IDL::Type::Union)) && m.idltype.basetype.resolved_type.resolved_node == @node && m.unescaped_name == sequence_dds_type && m.idltype.size.nil?}.empty?
+      end
+
+      def sequence_dds_type
+        "#{name}Seq"
       end
 
       def typedef_sequence_dds_type
         # No cxxname since we're writing to IDL
-        return "typedef sequence<#{unescaped_name}> #{name}Seq;"
+        return "typedef sequence<#{unescaped_name}> #{sequence_dds_type};"
       end
 
       def strip_global_scope(typename)
