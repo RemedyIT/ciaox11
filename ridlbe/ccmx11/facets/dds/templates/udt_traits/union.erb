@@ -28,7 +28,7 @@ namespace DDSX11
 
 %visit_life_cycle_traits
 
-  template <>
+  template<>
   struct traits< <%= scoped_cxxtype %>>
     : public common_traits< <%= scoped_cxxtype %>, <%= native_scoped_cxxtype %>>
     , public convert_in< <%= scoped_cxxtype %>, <%= native_scoped_cxxtype %>>
