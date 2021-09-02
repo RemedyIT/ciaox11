@@ -23,6 +23,10 @@ module IDL
       def native_scoped_name_prefix
         '::DDS_Native' + (!scoped_enclosure_cxxname.empty? ? '::' : '') + "#{scoped_enclosure_cxxname}::#{cxxname}"
       end
+
+      def native_scoped_seq_cxxtype
+        "#{native_scoped_name_prefix}RTISeq"
+      end
     end # VisitorBase
 
   end # Cxx11
