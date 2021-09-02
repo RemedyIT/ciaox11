@@ -295,6 +295,12 @@ module SequenceTest
     long myl;
   }; //@TopLevel()
   typedef sequence <My_msg2> My_msg2Seq;
+
+  union My_msg3 switch (long)
+  {
+    case 2: long myl;
+  }; //@TopLevel()
+  typedef sequence <My_msg3> My_msg3Seq;
 };
 
 #endif /* IDL_CONVERSION_BASE_IDL_ */
