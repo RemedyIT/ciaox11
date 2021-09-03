@@ -285,6 +285,7 @@ module SequenceTest
 {
   typedef long myLong;
   typedef sequence <myLong> myLongSeq;
+  typedef sequence <myLong, 16> myLongSeq_b16;
   struct My_msg
   {
     myLong myl;
@@ -302,6 +303,20 @@ module SequenceTest
     case 2: long myl;
   }; //@TopLevel()
   typedef sequence <My_msg3> My_msg3Seq;
+
+  struct My_msg4
+  {
+    long myl;
+  }; //@TopLevel()
+  typedef sequence <My_msg4, 12> My_msg4Bounded;
+
+  union My_msg5 switch (long)
+  {
+    case 2: My_msg4Bounded myl;
+  }; //@TopLevel()
+  typedef sequence <My_msg5> My_msg5Seq;
+  typedef sequence <My_msg5, 12> My_msg5_b12;
+  typedef sequence <My_msg5, 11> My_msg5_b11;
 };
 
 #endif /* IDL_CONVERSION_BASE_IDL_ */
