@@ -7,6 +7,7 @@
 // --------------------------------------------------------------------
 
 feature(ddsx11, opendds) : ddsx11_dcps, dcps_ts_subdir {
+  dcps_ts_flags += --typeSequenceSuffix=OpenDDSSeq
   // this allows the user's project to reference NDDSTypeSupport_Files,
   // which will simply be ignored
   Define_Custom(NDDSTypeSupport) {
