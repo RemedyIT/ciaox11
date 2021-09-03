@@ -492,7 +492,7 @@ namespace ExceptionT_Sender_Impl
     catch (const std::exception& e)
     {
       CIAOX11_TEST_ERROR << "HandleException - ERROR - unexpected exception caught: "
-                         << e.what () << std::endl;
+                         << e << std::endl;
     }
     //@@{__RIDL_REGEN_MARKER__} - END : ExceptionT_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[hello_excep]
   }
@@ -527,7 +527,7 @@ namespace ExceptionT_Sender_Impl
     catch (const std::exception& e)
     {
       CIAOX11_TEST_ERROR << "HandleException - ERROR - get_rw_attrib_g_s (asyn) unexpected exception caught: "
-                         << e.what () << std::endl;
+                         << e << std::endl;
     }
     //@@{__RIDL_REGEN_MARKER__} - END : ExceptionT_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[get_rw_attrib_g_s_excep]
   }
@@ -560,7 +560,7 @@ namespace ExceptionT_Sender_Impl
     catch (const std::exception& e)
     {
       CIAOX11_TEST_ERROR << "HandleException - ERROR - set_rw_attrib_g_s (asyn) unexpected exception caught: "
-                         << e.what () << std::endl;
+                         << e << std::endl;
     }
     //@@{__RIDL_REGEN_MARKER__} - END : ExceptionT_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[set_rw_attrib_g_s_excep]
   }
@@ -661,7 +661,7 @@ namespace ExceptionT_Sender_Impl
     catch (const std::exception& e)
     {
       CIAOX11_TEST_ERROR << "HandleException - ERROR - get_rw_attrib_g (asyn) unexpected exception caught: "
-                         << e.what () << std::endl;
+                         << e << std::endl;
     }
     //@@{__RIDL_REGEN_MARKER__} - END : ExceptionT_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[get_rw_attrib_g_excep]
   }
@@ -761,7 +761,7 @@ namespace ExceptionT_Sender_Impl
     catch (const std::exception& e)
     {
       CIAOX11_TEST_ERROR << "HandleException - ERROR - set_rw_attrib_s (asyn)unexpected exception caught: "
-                         << e.what () << std::endl;
+                         << e << std::endl;
     }
     //@@{__RIDL_REGEN_MARKER__} - END : ExceptionT_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[set_rw_attrib_s_excep]
   }
@@ -797,7 +797,7 @@ namespace ExceptionT_Sender_Impl
     catch (const std::exception& e)
     {
       CIAOX11_TEST_ERROR << "HandleException - ERROR - get_ro_attrib_r (asyn)unexpected exception caught: "
-                         << e.what () << std::endl;
+                         << e << std::endl;
     }
     //@@{__RIDL_REGEN_MARKER__} - END : ExceptionT_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[get_ro_attrib_r_excep]
   }

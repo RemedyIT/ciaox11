@@ -86,24 +86,20 @@ namespace CIAOX11
       err << ex;
       CIAOX11_LOG_ERROR ("Connection_Handler::provide_endpoint_reference - " <<
                          "Caught CORBA exception <" << conn.name () << ">:<" << err.str () << ">");
-      throw ::Deployment::InvalidConnection (conn.name (),
-                                             err.str ());
+      throw ::Deployment::InvalidConnection (conn.name (), err.str ());
     }
     catch (const std::exception &ex)
     {
       CIAOX11_LOG_ERROR ("Component_Handler::provide_endpoint_reference - " <<
                          "Caught C++ std::exception <" << conn.name () << ">:<" <<
-                         ex.what () << ">");
-      throw ::Deployment::InvalidConnection (conn.name (),
-                                             ex.what ());
+                         ex << ">");
+      throw ::Deployment::InvalidConnection (conn.name (), ex.what ());
     }
     catch (...)
     {
       CIAOX11_LOG_ERROR ("Connection_Handler::provide_endpoint_reference - " <<
                          "Caught unknown C++ exception <" << conn.name () << ">");
-      throw ::Deployment::InvalidConnection (conn.name (),
-                                             "Unknown C++ exception whilst establishing "
-                                             "connection");
+      throw ::Deployment::InvalidConnection (conn.name (), "Unknown C++ exception whilst establishing connection");
     }
   }
 
@@ -187,8 +183,7 @@ namespace CIAOX11
                          "Caught CORBA exception while connecting "
                          << IDL::traits< ::Deployment::CCMComponentPortKind>::write (endpoint.kind ())
                          << " <" << conn.name () << ">:<" << err.str () << ">");
-      throw ::Deployment::InvalidConnection (conn.name (),
-                                             err.str ());
+      throw ::Deployment::InvalidConnection (conn.name (), err.str ());
     }
     catch (const std::exception &ex)
     {
@@ -196,9 +191,8 @@ namespace CIAOX11
                          "Caught C++ std::exception while connecting "
                          << IDL::traits< ::Deployment::CCMComponentPortKind>::write (endpoint.kind ())
                          << "<" << conn.name () << ">:<" <<
-                         ex.what () << ">");
-      throw ::Deployment::InvalidConnection (conn.name (),
-                                             ex.what ());
+                         ex << ">");
+      throw ::Deployment::InvalidConnection (conn.name (), ex.what ());
     }
     catch (...)
     {
@@ -206,8 +200,7 @@ namespace CIAOX11
                          "Caught unknown C++ exception while connecting "
                           << IDL::traits< ::Deployment::CCMComponentPortKind>::write (endpoint.kind ())
                           << " <" << conn.name () << ">");
-      throw ::Deployment::InvalidConnection (conn.name (),
-                                             "Unknown C++ Exception");
+      throw ::Deployment::InvalidConnection (conn.name (), "Unknown C++ Exception");
     }
   }
 
@@ -307,8 +300,7 @@ namespace CIAOX11
                          "Caught CORBA exception while disconnecting "
                          << IDL::traits< ::Deployment::CCMComponentPortKind>::write (endpoint.kind ())
                          << " <" << conn.name () << ">:<" << err.str () << ">");
-      throw ::Deployment::InvalidConnection (conn.name (),
-                                             err.str ());
+      throw ::Deployment::InvalidConnection (conn.name (), err.str ());
     }
     catch (const std::exception &ex)
     {
@@ -316,9 +308,8 @@ namespace CIAOX11
                          "Caught C++ std::exception while connecting "
                          << IDL::traits< ::Deployment::CCMComponentPortKind>::write (endpoint.kind ())
                          << "<" << conn.name () << ">:<" <<
-                         ex.what () << ">");
-      throw ::Deployment::InvalidConnection (conn.name (),
-                                             ex.what ());
+                         ex << ">");
+      throw ::Deployment::InvalidConnection (conn.name (), ex.what ());
     }
     catch (...)
     {
@@ -326,8 +317,7 @@ namespace CIAOX11
                          "Caught unknown C++ exception while disconnecting "
                          << IDL::traits< ::Deployment::CCMComponentPortKind>::write (endpoint.kind ())
                          << " <" << conn.name () << ">");
-      throw ::Deployment::InvalidConnection (conn.name (),
-                                             "Unknown C++ Exception");
+      throw ::Deployment::InvalidConnection (conn.name (), "Unknown C++ Exception");
     }
   }
   // plan used for getting component name

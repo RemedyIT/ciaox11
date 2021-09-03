@@ -359,7 +359,7 @@ namespace CIAOX11_TT_TimedTrigger_Impl
     {
       CIAOX11_LOG_ERROR ("tt_timer_i::on_timer" <<
                          " - timer[" << this->id_ <<
-                         "] caught exception : " << ex.what ());
+                         "] caught exception : " << ex);
     }
     catch (...)
     {

@@ -37,7 +37,7 @@ namespace CIAOX11
   catch (const std::exception &ex) \
   { \
     DDS4CCM_LOG_ERROR (L << " - " \
-      << "ERROR: Caught unexpected std exception: " << ex.what ()); \
+      << "ERROR: Caught unexpected std exception: " << ex); \
   } \
   catch (...) \
   { \
@@ -64,7 +64,7 @@ namespace CIAOX11
   { \
     DDS4CCM_LOG_ERROR (L << " - " \
       << "ERROR caught unexpected std exception: " \
-      << ex.what ()); \
+      << ex); \
     throw; \
   } \
   catch (...) \

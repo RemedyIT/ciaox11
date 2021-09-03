@@ -71,7 +71,7 @@ namespace Hello_Sender_Impl
     catch (const std::exception& e)
     {
       CIAOX11_TEST_ERROR << "HandleException - ERROR - unexpected exception caught: "
-                         << e.what () << std::endl;
+                         << e << std::endl;
     }
   }
   //============================================================
@@ -123,7 +123,7 @@ namespace Hello_Sender_Impl
     }
     catch (const std::exception& ex)
     {
-      CIAOX11_TEST_PANIC << "Sender (ASYNCH) :\tCAUGHT EXCEPTION [" << ex.what () << "]" << std::endl;
+      CIAOX11_TEST_PANIC << "Sender (ASYNCH) :\tCAUGHT EXCEPTION [" << ex << "]" << std::endl;
     }
     catch (...)
     {
@@ -193,7 +193,7 @@ namespace Hello_Sender_Impl
     }
     catch (const std::exception& ex)
     {
-      CIAOX11_TEST_PANIC << "Sender (SYNCH) :\tCAUGHT EXCEPTION [" << ex.what () << "]" << std::endl;
+      CIAOX11_TEST_PANIC << "Sender (SYNCH) :\tCAUGHT EXCEPTION [" << ex << "]" << std::endl;
     }
     catch (...)
     {

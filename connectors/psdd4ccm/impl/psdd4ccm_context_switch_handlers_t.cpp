@@ -59,7 +59,7 @@ namespace CIAOX11
       catch (const std::exception &ex)
       {
         PSDD4CCM_LOG_ERROR ("DataListenerContextSwitch_T<LISTENER, HANDLER>::handle_event" << " - "
-          << "ERROR: Caught unexpected std exception: " << ex.what ());
+          << "ERROR: Caught unexpected std exception: " << ex);
       }
       catch (...)
       {

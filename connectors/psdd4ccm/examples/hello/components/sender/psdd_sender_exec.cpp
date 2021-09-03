@@ -182,7 +182,7 @@ namespace Test_Sender_Impl
     {
       PSDD4CCM_TEST_ERROR << "ERROR: Sender_exec_i::tick_hello - "
         << "caught std::exception: "
-        << ex.what() << std::endl;
+        << ex << std::endl;
     }
     catch (...)
     {
@@ -235,7 +235,7 @@ namespace Test_Sender_Impl
     {
       PSDD4CCM_TEST_ERROR << "ERROR: Sender_exec_i::tick_msg - "
         << "caught std::exception: "
-        << ex.what() << std::endl;
+        << ex << std::endl;
     }
     catch (...)
     {

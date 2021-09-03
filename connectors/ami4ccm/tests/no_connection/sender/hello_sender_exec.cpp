@@ -81,7 +81,7 @@ namespace HelloT_Sender_Impl
     catch (const std::exception &ex)
     {
       CIAOX11_TEST_ERROR << "ERROR: Caught unexpected exception for sendc_hello:"
-                         << ex.what() << std::endl;
+                         << ex << std::endl;
     }
     try
     {
@@ -106,7 +106,7 @@ namespace HelloT_Sender_Impl
     }
     catch (const std::exception &ex)
     {
-      CIAOX11_TEST_ERROR << "ERROR: Caught unexpected exception for sendc_get_rw_attrib:" << ex.what() << std::endl;
+      CIAOX11_TEST_ERROR << "ERROR: Caught unexpected exception for sendc_get_rw_attrib:" << ex << std::endl;
     }
     try
     {
@@ -132,7 +132,7 @@ namespace HelloT_Sender_Impl
     catch (const std::exception &ex)
     {
       CIAOX11_TEST_ERROR << "ERROR: Caught unexpected exception for sendc_get_ro_attrib:"
-                         << ex.what() << std::endl;
+                         << ex << std::endl;
     }
     try
     {
@@ -158,7 +158,7 @@ namespace HelloT_Sender_Impl
     catch (const std::exception &ex)
     {
       CIAOX11_TEST_ERROR << "ERROR: Caught unexpected exception for sendc_set_rw_attrib:"
-                         << ex.what() << std::endl;
+                         << ex << std::endl;
     }
     return 0;
   }
