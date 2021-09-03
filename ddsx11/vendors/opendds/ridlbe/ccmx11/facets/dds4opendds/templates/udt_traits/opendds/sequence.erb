@@ -3,7 +3,7 @@
 // Unaliased type : <%= resolved_cxxtype %>
 // Aliased DDS type : <%= native_scoped_cxxtype %>
 % ddsx11_alias_md5_string =  native_scoped_cxxtype+resolved_cxxtype
-% ddsx11_alias_md5 = dddsx11_alias_md5_string.to_md5
+% ddsx11_alias_md5 = ddsx11_alias_md5_string.to_md5
 // DDSX11 MD5 : <%= ddsx11_alias_md5 %>
 #if !defined(_ALIAS_<%= ddsx11_alias_md5 %>_UDT_TRAITS_DECL_)
 #define _ALIAS_<%= ddsx11_alias_md5 %>_UDT_TRAITS_DECL_
