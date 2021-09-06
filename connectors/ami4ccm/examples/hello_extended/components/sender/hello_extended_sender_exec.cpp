@@ -64,7 +64,7 @@ namespace Hello_Sender_Impl
     catch (const std::exception& e)
     {
       CIAOX11_TEST_ERROR << "HandleException - ERROR - unexpected exception caught: "
-                          << e.what () << std::endl;
+                          << e << std::endl;
     }
   }
 

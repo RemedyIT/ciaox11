@@ -215,8 +215,7 @@ int main (int argc, char *argv[])
   }
   catch (const std::exception& e)
   {
-    DDSX11_TEST_ERROR << "sender: exception caught: " << e.what ()
-                      << std::endl;
+    DDSX11_TEST_ERROR << "sender: exception caught: " << e << std::endl;
     return 1;
   }
 
