@@ -258,7 +258,7 @@ namespace PSDD
                 "PSDD::ZMQ::Subscriber_T<>{" <<
                 topic_psdd_traits_type::get_type_name () <<
                 "}::dispatch_data_available" <<
-                " - on_data exception [" << x.what () << "]");
+                " - on_data exception [" << x << "]");
             }
             catch(...)
             {

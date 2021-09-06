@@ -249,7 +249,7 @@ namespace Example_BasicPublisher_comp_Impl
     {
       DDS4CCM_TEST_ERROR << "ERROR: BasicPublisher_comp_exec_i::tick - "
         << "caught std::exception: "
-        << ex.what() << std::endl;
+        << ex << std::endl;
     }
     catch (...)
     {
