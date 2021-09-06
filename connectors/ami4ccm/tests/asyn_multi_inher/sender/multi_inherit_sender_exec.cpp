@@ -65,7 +65,7 @@ namespace InterMulti_Sender_Impl
     catch (const std::exception& ex)
     {
       CIAOX11_TEST_ERROR << "Sender::asynch_one_generator: caught unexepected exception [" <<
-                            ex.what () << "]" << std::endl;
+                            ex << "]" << std::endl;
     }
     catch (...)
     {
@@ -115,7 +115,7 @@ namespace InterMulti_Sender_Impl
      catch (const std::exception& ex)
      {
        CIAOX11_TEST_ERROR << "Sender::asynch_two_generator: caught unexepected exception [" <<
-                             ex.what () << "]" << std::endl;
+                             ex << "]" << std::endl;
      }
      catch (...)
      {
@@ -169,7 +169,7 @@ namespace InterMulti_Sender_Impl
       catch (const std::exception& ex)
       {
         CIAOX11_TEST_ERROR << "Sender::asynch_three_generator: caught unexepected exception [" <<
-                              ex.what () << "]" << std::endl;
+                              ex << "]" << std::endl;
       }
       catch (...)
       {
@@ -223,7 +223,7 @@ namespace InterMulti_Sender_Impl
     catch (const std::exception& ex)
     {
       CIAOX11_TEST_ERROR << "Sender::synch_one_generator: caught unexepected exception [" <<
-                            ex.what () << "]" << std::endl;
+                            ex << "]" << std::endl;
     }
     catch (...)
     {
@@ -278,7 +278,7 @@ namespace InterMulti_Sender_Impl
     catch (const std::exception& ex)
     {
       CIAOX11_TEST_ERROR << "Sender::synch_three_generator: caught unexepected exception [" <<
-                            ex.what () << "]" << std::endl;
+                            ex << "]" << std::endl;
     }
     catch (...)
     {

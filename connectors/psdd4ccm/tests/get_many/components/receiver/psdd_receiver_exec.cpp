@@ -130,7 +130,7 @@ namespace Test_Receiver_Impl
     {
       PSDD4CCM_TEST_ERROR << "ERROR: Receiver_exec_i::tick - "
         << "caught std::exception: "
-        << ex.what() << std::endl;
+        << ex << std::endl;
     }
     catch (...)
     {

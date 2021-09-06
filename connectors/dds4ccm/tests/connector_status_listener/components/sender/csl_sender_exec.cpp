@@ -360,7 +360,7 @@ namespace CSL_Test_Sender_Impl
     catch (const std::exception &ex)
     {
       DDS4CCM_TEST_ERROR << "ERROR: Sender_exec_i::tick - "
-        "caught std::exception: " << ex.what() << std::endl;
+        "caught std::exception: " << ex << std::endl;
     }
     catch (...)
     {
