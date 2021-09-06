@@ -42,7 +42,6 @@ namespace Shapes_Sender_comp_Impl
     : public IDL::traits< ::Shapes::CCM_Control_obj>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Shapes_Sender_comp_Impl::control_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
