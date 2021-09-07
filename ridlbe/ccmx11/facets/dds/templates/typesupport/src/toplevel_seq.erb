@@ -1,7 +1,14 @@
 %if has_toplevel_annotation?
 
+% unaliased_type = 'std::vector< '+resolved_cxxtype+'>'
+// Unaliased type      : <%= unaliased_type %>
+// Scoped element type : <%= scoped_cxxtype %>
+% ddsx11_alias_md5 = (unaliased_type+scoped_cxxtype).to_md5
+// DDSX11 MD5 : <%= ddsx11_alias_md5 %>
 namespace DDSX11
 {
+#if !defined(_ALIAS_<%= ddsx11_alias_md5 %>_UDT_TRAITS_DECL_)
+#define _ALIAS_<%= ddsx11_alias_md5 %>_UDT_TRAITS_DECL_
   // generated from <%= ridl_template_path %>
   /// Conversion of <%= scoped_seq_cxxtype %> to DDS
   template<>
@@ -20,6 +27,7 @@ namespace DDSX11
   {
     return DDSX11::sequence_from_dds(to, from);
   }
+#endif /* _ALIAS_<%= ddsx11_alias_md5 %>_UDT_TRAITS_DECL_ */
 
   template<>
   struct traits< <%= scoped_seq_cxxtype %>>
@@ -30,4 +38,5 @@ namespace DDSX11
   {
   };
 } /* DDSX11 */
+
 %end

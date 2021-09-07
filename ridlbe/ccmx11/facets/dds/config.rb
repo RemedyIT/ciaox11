@@ -86,7 +86,6 @@ module IDL
             options.gen_idl_for_dds = true
             options.gen_idl_for_typed_entities = true
             options.gen_impl_for_type_support = true
-            options.gen_typedef_sequence_dds_type = true
           end
 
           IDL::CCMX11::DDSX11.prepare_dds_options(options, idl_ext)
