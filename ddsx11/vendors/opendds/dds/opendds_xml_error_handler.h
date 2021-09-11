@@ -23,11 +23,7 @@ namespace DDSX11
     *
     */
   class DDSX11_IMPL_Export DDSX11_XML_Error_Handler final
-#if ACE_VERSION_CODE <= 0x70003
-    : public xercesc::ErrorHandler
-#else
     : public XML::XML_Error_Handler
-#endif
   {
   public:
     DDSX11_XML_Error_Handler () = default;
