@@ -69,7 +69,7 @@ namespace IDL_Conversion_Test_Receiver_Impl
     uint16_t c = 0;
     for (const Example::B02 &b02 : datum.b_10 ())
     {
-      int32_t expected = ++c*datum.iteration ();
+      int32_t const expected = ++c*datum.iteration ();
       if (expected != b02.B02_1 ())
       {
         DDS4CCM_TEST_ERROR << "Receiver check - ERROR: unexpected value for "
@@ -90,7 +90,7 @@ namespace IDL_Conversion_Test_Receiver_Impl
     c = 0;
     for (const Example::B02 &b02 : datum.b_11 ())
     {
-      int32_t expected = (++c+1)*datum.iteration ();
+      int32_t const expected = (++c+1)*datum.iteration ();
       if (expected != b02.B02_1 ())
       {
         DDS4CCM_TEST_ERROR << "Receiver check - ERROR: unexpected value for "
@@ -134,7 +134,7 @@ namespace IDL_Conversion_Test_Receiver_Impl
     /// Check b_15 [Example::B15 (std::vector< int32_t>)]
     for (int32_t val : datum.b_15 ())
     {
-      int32_t expected = c * datum.iteration ();
+      int32_t const expected = c * datum.iteration ();
       if (val != expected)
       {
         DDS4CCM_TEST_ERROR << "Receiver check - ERROR: unexpected value for "
@@ -150,7 +150,7 @@ namespace IDL_Conversion_Test_Receiver_Impl
     {
       for (int y = 0; y < 5; ++y)
       {
-        double expected = x*y*datum.iteration ();
+        double const expected = x*y*datum.iteration ();
         if (datum.b_16 ()[x][y] != expected)
         {
           DDS4CCM_TEST_ERROR << "Receiver check - ERROR: unexpected value for "
@@ -164,7 +164,7 @@ namespace IDL_Conversion_Test_Receiver_Impl
     /// Check b_17 [Example::B17 (std::vector< bool >)]
     for (bool val : datum.b_17 ())
     {
-      bool expected = (c%2) ? true : false;
+      bool const expected = (c%2) ? true : false;
       if (val != expected)
       {
         DDS4CCM_TEST_ERROR << "Receiver check - ERROR: unexpected value for "
@@ -178,11 +178,67 @@ namespace IDL_Conversion_Test_Receiver_Impl
     /// Check b_18 [Example::B18 (IDL::bounded_vector< bool, 15 >)]
     for (bool val : datum.b_18 ())
     {
-      bool expected = (c%2) ? true : false;
+      bool const expected = (c%2) ? true : false;
       if (val != expected)
       {
         DDS4CCM_TEST_ERROR << "Receiver check - ERROR: unexpected value for "
           << "datum.b_18[" << c << "]: expected <" << expected << "> - got <"
+          << val << ">" << std::endl;
+      }
+      c++;
+    }
+
+    c = 0;
+    /// Check b19_1 [Example::B19_1 (std::vector< uint64_t>)]
+    for (uint64_t val : datum.b_19_1 ())
+    {
+      uint64_t const expected = c * datum.iteration () * 2;
+      if (val != expected)
+      {
+        DDS4CCM_TEST_ERROR << "Receiver check - ERROR: unexpected value for "
+          << "datum.b_19_1[" << c << "]: expected <" << expected << "> - got <"
+          << val << ">" << std::endl;
+      }
+      c++;
+    }
+
+    c = 0;
+    /// Check b19_2 [Example::B19_2 (IDL::bounded_vector< uint64_t, 10 >)]
+    for (uint64_t val : datum.b_19_2 ())
+    {
+      uint64_t const expected = c * datum.iteration () * 3;
+      if (val != expected)
+      {
+        DDS4CCM_TEST_ERROR << "Receiver check - ERROR: unexpected value for "
+          << "datum.b_19_2[" << c << "]: expected <" << expected << "> - got <"
+          << val << ">" << std::endl;
+      }
+      c++;
+    }
+
+    c = 0;
+    /// Check b19_3 [Example::B19_3 (std::vector< int64_t>)]
+    for (int64_t val : datum.b_19_3 ())
+    {
+      int64_t const expected = c * datum.iteration () * 4;
+      if (val != expected)
+      {
+        DDS4CCM_TEST_ERROR << "Receiver check - ERROR: unexpected value for "
+          << "datum.b_19_3[" << c << "]: expected <" << expected << "> - got <"
+          << val << ">" << std::endl;
+      }
+      c++;
+    }
+
+    c = 0;
+    /// Check b19_4 [Example::B19_4 (IDL::bounded_vector< int64_t, 10 >)]
+    for (int64_t val : datum.b_19_4 ())
+    {
+      int64_t const expected = c * datum.iteration () * 5;
+      if (val != expected)
+      {
+        DDS4CCM_TEST_ERROR << "Receiver check - ERROR: unexpected value for "
+          << "datum.b_19_4[" << c << "]: expected <" << expected << "> - got <"
           << val << ">" << std::endl;
       }
       c++;
@@ -216,7 +272,7 @@ namespace IDL_Conversion_Test_Receiver_Impl
       y = 0;
       for (const Example::B31 &val : arr)
       {
-        int32_t expected = x*y*datum.iteration ();
+        int32_t const expected = x*y*datum.iteration ();
         if (val.B31_1 () != expected)
         {
           DDS4CCM_TEST_ERROR << "Receiver check - ERROR: unexpected value for "
@@ -240,7 +296,7 @@ namespace IDL_Conversion_Test_Receiver_Impl
         z = 0;
         for (const Example::B31 &val : arr_2)
         {
-          int32_t expected = x*y*z*datum.iteration ();
+          int32_t const expected = x*y*z*datum.iteration ();
           if (val.B31_1 () != expected)
           {
             DDS4CCM_TEST_ERROR << "Receiver check - ERROR: unexpected value for "
@@ -259,7 +315,7 @@ namespace IDL_Conversion_Test_Receiver_Impl
     c = 0;
     for (int32_t val : datum.b_40 ())
     {
-      int32_t expected = (c++ + 2)*datum.iteration ();
+      int32_t const expected = (c++ + 2)*datum.iteration ();
       if (val != expected)
       {
         DDS4CCM_TEST_ERROR << "Receiver check - ERROR: unexpected value for "
@@ -277,7 +333,7 @@ namespace IDL_Conversion_Test_Receiver_Impl
       y = 0;
       for (int32_t val : arr)
       {
-        int32_t expected = (x+1)*(y+2)*datum.iteration ();
+        int32_t const expected = (x+1)*(y+2)*datum.iteration ();
         if (val != expected)
         {
           DDS4CCM_TEST_ERROR << "Receiver check - ERROR: unexpected value for "
@@ -288,7 +344,6 @@ namespace IDL_Conversion_Test_Receiver_Impl
       }
       ++x;
     }
-
 
     /// Check b_42 [Example::B42 (std::array< int32_t, 2 >)]
     if (datum.b_42 () != datum.b_40 ())
