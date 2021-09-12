@@ -20,6 +20,7 @@ project : ddsx11_opendds_flags, \
     ../vendors/opendds/dds/opendds_subscriber.h
     ../vendors/opendds/dds/opendds_typedefs.h
     ../vendors/opendds/dds/dds_listener_guard_t.h
+    ../vendors/opendds/dds/opendds_xml_error_handler.h
   }
 
   Source_Files {
@@ -28,9 +29,11 @@ project : ddsx11_opendds_flags, \
     ../vendors/opendds/dds/opendds_publisher.cpp
     ../vendors/opendds/dds/opendds_specific.cpp
     ../vendors/opendds/dds/opendds_subscriber.cpp
+    ../vendors/opendds/dds/opendds_xml_error_handler.cpp
   }
 
   Template_Files {
     ../vendors/opendds/dds/dds_data_reader_native_entity_t.cpp
+    ../vendors/opendds/dds/dds_data_writer_native_entity_t.cpp
   }
 }
