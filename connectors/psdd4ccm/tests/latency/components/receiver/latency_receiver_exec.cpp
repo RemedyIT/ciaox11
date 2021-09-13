@@ -28,7 +28,7 @@
   { \
     PSDD4CCM_TEST_ERROR << "ERROR: " << L << " - " \
       << "caught std::exception: " \
-      << ex.what() << std::endl; \
+      << ex << std::endl; \
   } \
   catch (...) \
   { \

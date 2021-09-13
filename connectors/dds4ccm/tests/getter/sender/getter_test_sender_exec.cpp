@@ -247,7 +247,7 @@ namespace Getter_Test_Sender_Impl
     catch (const std::exception& ex)
     {
       DDS4CCM_TEST_ERROR << "ERROR: Internal Error Sender_exec_i::check_status "
-                        << ex.what() << std::endl;
+                        << ex << std::endl;
     }
   }
 

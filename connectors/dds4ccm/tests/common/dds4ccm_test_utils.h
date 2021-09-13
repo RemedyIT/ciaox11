@@ -33,7 +33,7 @@ typedef std::atomic<std::thread::id> atomic_thread_id;
   { \
     DDS4CCM_TEST_ERROR << "ERROR: " << L << " - " \
       << "caught std::exception: " \
-      << ex.what() << std::endl; \
+      << ex << std::endl; \
   } \
   catch (...) \
   { \

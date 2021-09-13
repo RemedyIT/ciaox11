@@ -447,16 +447,14 @@ namespace CIAOX11
     {
       CIAOX11_LOG_ERROR ("Component_Handler::install_instance - " <<
                          "Caught C++ std::exception <" << idd.name () << ">:<" <<
-                         ex.what () << ">");
-      throw ::Deployment::StartError (idd.name (),
-                                      ex.what ());
+                         ex << ">");
+      throw ::Deployment::StartError (idd.name (), ex.what ());
     }
     catch (...)
     {
       CIAOX11_LOG_ERROR ("Component_Handler::install_instance - " <<
                          "Caught unknown C++ exception <" << idd.name () << ">");
-      throw ::Deployment::StartError (idd.name (),
-                                      "Unknown C++ exception\n");
+      throw ::Deployment::StartError (idd.name (), "Unknown C++ exception\n");
     }
 
     comp_ref = Deployment_Common::get_ccm_object (info.name);
@@ -509,17 +507,14 @@ namespace CIAOX11
     {
       CIAOX11_LOG_ERROR ("Component_Handler::activate_instance - " <<
                          "Caught C++ std::exception <" << name << ">:<" <<
-                         ex.what () << ">");
-      throw ::Deployment::StartError (name,
-                                      ex.what ());
+                         ex << ">");
+      throw ::Deployment::StartError (name, ex.what ());
     }
     catch (...)
     {
       CIAOX11_LOG_ERROR ("Component_Handler::activate_instance - " <<
                          "Caught unknown C++ exception <" << name << ">");
-      throw ::Deployment::StartError (
-          name,
-          "Unknown C++ exception during activation");
+      throw ::Deployment::StartError (name, "Unknown C++ exception during activation");
     }
   }
 
@@ -568,16 +563,14 @@ namespace CIAOX11
     {
       CIAOX11_LOG_ERROR ("Component_Handler::passivate_instance - " <<
                          "Caught C++ std::exception <" << name << ">:<" <<
-                         ex.what () << ">");
-      throw ::Deployment::StopError (name,
-                                      ex.what ());
+                         ex << ">");
+      throw ::Deployment::StopError (name, ex.what ());
     }
     catch (...)
     {
       CIAOX11_LOG_ERROR ("Component_Handler::passivate_instance - " <<
                          "Caught unknown C++ exception <" << name << ">");
-      throw ::Deployment::StopError (name,
-                                      "Unknown C++ exception during passivation");
+      throw ::Deployment::StopError (name, "Unknown C++ exception during passivation");
     }
   }
 
@@ -626,16 +619,14 @@ namespace CIAOX11
     {
       CIAOX11_LOG_ERROR ("Component_Handler::remove_instance - " <<
                          "Caught C++ std::exception <" << name << ">:<" <<
-                         ex.what () << ">");
-      throw ::Deployment::StopError (name,
-                                      ex.what ());
+                         ex << ">");
+      throw ::Deployment::StopError (name, ex.what ());
     }
     catch (...)
     {
       CIAOX11_LOG_ERROR ("Component_Handler::remove_instance - " <<
                          "Caught unknown C++ exception <" << name << ">");
-      throw ::Deployment::StopError (name,
-                                      "Unknown C++ exception during remove");
+      throw ::Deployment::StopError (name, "Unknown C++ exception during remove");
     }
 
     this->unregister_component (name);
@@ -717,21 +708,19 @@ namespace CIAOX11
     {
       CIAOX11_LOG_ERROR ("Component_Handler::instance_configured - " <<
                          "Caught C++ std::exception <" << name << ">:<" <<
-                         ex.what () << ">");
-      throw ::Deployment::StartError (name,
-                                      ex.what ());
+                         ex << ">");
+      throw ::Deployment::StartError (name, ex.what ());
     }
     catch (...)
     {
       CIAOX11_LOG_ERROR ("Component_Handler::instance_configured - " <<
                          "Caught unknown C++ exception <" << name << ">");
-      throw ::Deployment::StartError (name,
-                                      "Unknown C++ exception during instance configured");
+      throw ::Deployment::StartError (name, "Unknown C++ exception during instance configured");
     }
   }
 
   void
-  Component_Handler::configure (const ::Deployment::Properties & )
+  Component_Handler::configure (const ::Deployment::Properties &)
   {
   }
 }
