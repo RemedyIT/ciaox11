@@ -21,6 +21,7 @@
 #include "dds/dds_proxy_entity_manager.h"
 #include "dds/DCPS/QOS_XML_Handler/QOS_XML_Loader.h"
 #include "dds/dds_vendor_conversion_traits.h"
+#include "dds/opendds_xml_error_handler.h"
 
 namespace DDSX11
 {
