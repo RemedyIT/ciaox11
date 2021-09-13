@@ -21,6 +21,7 @@
 #include "dds/dds_proxy_entity_manager.h"
 #include "dds/DCPS/QOS_XML_Handler/QOS_XML_Loader.h"
 #include "dds/dds_vendor_conversion_traits.h"
+#include "dds/opendds_xml_error_handler.h"
 
 namespace DDSX11
 {
@@ -47,7 +48,11 @@ namespace DDSX11
       // Re are creating a XML Loader for each time we use it, we should
       // be able to reuse an instance, but each dds entity could have its own unique qos
       // file at the DDSX11 level but the XML loader can only handle one file at the time.
+#if OPENDDS_VERSION_AT_LEAST(3,19,0)
+      OpenDDS::DCPS::QOS_XML_Loader xml_loader (new DDSX11::DDSX11_XML_Error_Handler);
+#else
       OpenDDS::DCPS::QOS_XML_Loader xml_loader;
+#endif
       ::DDS::ReturnCode_t retcode = ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
         xml_loader.init (::DDSX11::traits<std::string>::in (qos_profile)));
       if (retcode != ::DDS::RETCODE_OK)
@@ -103,7 +108,11 @@ namespace DDSX11
       // Re are creating a XML Loader for each time we use it, we should
       // be able to reuse an instance, but each dds entity could have its own unique qos
       // file at the DDSX11 level but the XML loader can only handle one file at the time.
+#if OPENDDS_VERSION_AT_LEAST(3,19,0)
+      OpenDDS::DCPS::QOS_XML_Loader xml_loader (new DDSX11::DDSX11_XML_Error_Handler);
+#else
       OpenDDS::DCPS::QOS_XML_Loader xml_loader;
+#endif
       ::DDS::ReturnCode_t retcode = ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
         xml_loader.init (::DDSX11::traits<std::string>::in (qos_profile)));
       if (retcode != ::DDS::RETCODE_OK)
@@ -162,7 +171,11 @@ namespace DDSX11
       // Re are creating a XML Loader for each time we use it, we should
       // be able to reuse an instance, but each dds entity could have its own unique qos
       // file at the DDSX11 level but the XML loader can only handle one file at the time.
+#if OPENDDS_VERSION_AT_LEAST(3,19,0)
+      OpenDDS::DCPS::QOS_XML_Loader xml_loader (new DDSX11::DDSX11_XML_Error_Handler);
+#else
       OpenDDS::DCPS::QOS_XML_Loader xml_loader;
+#endif
       ::DDS::ReturnCode_t retcode = ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
         xml_loader.init (::DDSX11::traits<std::string>::in (qos_profile)));
       if (retcode != ::DDS::RETCODE_OK)

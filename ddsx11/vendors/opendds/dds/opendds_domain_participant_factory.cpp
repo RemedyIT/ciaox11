@@ -53,7 +53,7 @@ namespace DDSX11
 #if OPENDDS_VERSION_AT_LEAST(3,19,0)
       OpenDDS::DCPS::QOS_XML_Loader xml_loader (new DDSX11::DDSX11_XML_Error_Handler);
 #else
-      OpenDDS::DCPS::QOS_XML_Loader xml_loader ();
+      OpenDDS::DCPS::QOS_XML_Loader xml_loader;
 #endif
       ::DDS::ReturnCode_t retcode = ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
         xml_loader.init (::DDSX11::traits<std::string>::in (qos_profile)));
