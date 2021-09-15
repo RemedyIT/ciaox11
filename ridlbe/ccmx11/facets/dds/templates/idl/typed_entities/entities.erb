@@ -1,5 +1,10 @@
-%if has_toplevel_annotation?
+
 // generated from <%= ridl_template_path %>
+% topic_namespaces.each do |_topic_ns|
+module <%= _topic_ns %>
+{
+%   inc_nest
+% end
 % if typedef_sequence_dds_type_needed?
 <%= typedef_sequence_dds_type %>
 
@@ -152,5 +157,7 @@ local interface <%= name %>DataReader : ::DDS::DataReader
   DDS::InstanceHandle_t lookup_instance(
       in <%= unescaped_name %> instance_data);
 };
-
-%end
+% topic_namespaces.reverse_each do |_topic_ns|
+%   dec_nest
+}; /* <%= _topic_ns %> */
+% end

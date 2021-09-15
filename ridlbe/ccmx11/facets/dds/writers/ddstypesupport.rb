@@ -15,7 +15,36 @@ module IDL
 
     module DDSX11
 
-      class DDSTypeSupportHeaderWriter < Cxx11::CxxCodeWriterBase
+      class DDSTypeSupportBaseWriter < Cxx11::CxxCodeWriterBase
+
+        def initialize(output = STDOUT, opts = {})
+          super
+        end
+
+      protected
+        def init_visitor(v, node)
+          v.properties[:topic_namespaces] =
+              (params[:dds_topic_namespace] && params[:dds_topic_namespace].split('::')) ||
+                  node.scopes[0, node.scopes.length - 1].collect {|s| s.name }
+        end
+
+        def is_dds_topic?(node)
+          if params[:dds_topic].blank? || params[:dds_topic] == node.scoped_name
+            return has_toplevel_annotation?(node)
+          end
+          false
+        end
+
+        def has_toplevel_annotation?(node)
+          # 20190730 Add support for AXCIOMA 2 top-level annotation, issue #4729
+          annot = node.annotations[:'top-level'].first || node.annotations[:TopLevel].first
+          return false if annot.nil?
+          return annot.fields[:value].nil? || annot.fields[:value]
+        end
+
+      end # DDSTypeSupportBaseWriter
+
+      class DDSTypeSupportHeaderWriter < DDSTypeSupportBaseWriter
         helper Cxx11::IncludeGuardHelper
         helper Cxx11::VersionHelper
 
@@ -41,32 +70,22 @@ module IDL
           writer(DDSTraitsWriter).visit_nodes(parser)
         end
 
-        def enter_module(node)
-          super
-          println()
-          printiln('// generated from DDSTypeSupportHeaderWriter')
-          printiln('namespace ' + node.cxxname)
-          printiln('{')
-          inc_nest
-        end
-
-        def leave_module(node)
-          dec_nest
-          println()
-          printiln("} // namespace #{node.cxxname}")
-          super
-        end
-
         def enter_struct(node)
-          visitor(StructVisitor).visit_factory(node)
+          visitor(StructVisitor) do |v|
+            init_visitor(v, node)
+            v.visit_factory(node)
+          end if is_dds_topic?(node)
         end
 
         def enter_union(node)
-          visitor(UnionVisitor).visit_factory(node)
+          visitor(UnionVisitor) do |v|
+            init_visitor(v, node)
+            v.visit_factory(node)
+          end if is_dds_topic?(node)
         end
       end # DDSTypeSupportHeaderWriter
 
-      class DDSTraitsWriter < Cxx11::CxxCodeWriterBase
+      class DDSTraitsWriter < DDSTypeSupportBaseWriter
         helper Cxx11::IncludeGuardHelper
         helper Cxx11::VersionHelper
 
@@ -89,15 +108,21 @@ module IDL
         end
 
         def enter_struct(node)
-          visitor(StructVisitor).visit_toplevel(node)
+          visitor(StructVisitor) do |v|
+            init_visitor(v, node)
+            v.visit_toplevel(node)
+          end if is_dds_topic?(node)
         end
 
         def enter_union(node)
-          visitor(UnionVisitor).visit_toplevel(node)
+          visitor(UnionVisitor) do |v|
+            init_visitor(v, node)
+            v.visit_toplevel(node)
+          end if is_dds_topic?(node)
         end
       end # DDSTraitsWriter
 
-      class DDSX11TraitsWriter < Cxx11::CxxCodeWriterBase
+      class DDSX11TraitsWriter < DDSTypeSupportBaseWriter
         helper Cxx11::IncludeGuardHelper
         helper Cxx11::VersionHelper
 
@@ -120,15 +145,21 @@ module IDL
         end
 
         def enter_struct(node)
-          visitor(StructVisitor).visit_toplevel_seq(node)
+          visitor(StructVisitor) do |v|
+            init_visitor(v, node)
+            v.visit_toplevel_seq(node)
+          end if is_dds_topic?(node)
         end
 
         def enter_union(node)
-          visitor(UnionVisitor).visit_toplevel_seq(node)
+          visitor(UnionVisitor) do |v|
+            init_visitor(v, node)
+            v.visit_toplevel_seq(node)
+          end if is_dds_topic?(node)
         end
       end # DDSX11TraitsWriter
 
-      class DDSTypeSupportSourceWriter < Cxx11::CxxCodeWriterBase
+      class DDSTypeSupportSourceWriter < DDSTypeSupportBaseWriter
         helper Cxx11::IncludeGuardHelper
         helper CCMX11::VersionHelper
 
@@ -154,28 +185,18 @@ module IDL
           writer(DDSX11TraitsWriter).visit_nodes(parser)
         end
 
-        def enter_module(node)
-          super
-          println()
-          printiln('// generated from DDSTypeSupportSourceWriter')
-          printiln('namespace ' + node.cxxname)
-          printiln('{')
-          inc_nest
-        end
-
-        def leave_module(node)
-          dec_nest
-          println()
-          printiln("} // namespace #{node.cxxname}")
-          super
-        end
-
         def enter_struct(node)
-          visitor(StructVisitor).visit_factory(node)
+          visitor(StructVisitor)do |v|
+            init_visitor(v, node)
+            v.visit_factory(node)
+          end if is_dds_topic?(node)
         end
 
         def enter_union(node)
-          visitor(StructVisitor).visit_factory(node)
+          visitor(StructVisitor) do |v|
+            init_visitor(v, node)
+            v.visit_factory(node)
+          end if is_dds_topic?(node)
         end
       end # DDSTypeSupportSourceWriter
 

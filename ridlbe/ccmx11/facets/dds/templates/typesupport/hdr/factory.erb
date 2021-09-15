@@ -1,5 +1,9 @@
-%if has_toplevel_annotation?
 
+% topic_namespaces.each do |_topic_ns|
+namespace <%= _topic_ns %>
+{
+%   inc_nest
+% end
 // generated from <%= ridl_template_path %>
 class <%= typesupport_export_macro %><%= cxxname %>Factory final
 {
@@ -21,4 +25,7 @@ private:
   <%= cxxname %>Factory& operator= (const <%= cxxname %>Factory&) = delete;
   <%= cxxname %>Factory& operator= (<%= cxxname %>Factory&&) = delete;
 };
-%end
+% topic_namespaces.reverse_each do |_topic_ns|
+%   dec_nest
+} // namespace <%= _topic_ns %>
+% end

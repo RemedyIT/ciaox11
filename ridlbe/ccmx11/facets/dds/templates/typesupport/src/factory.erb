@@ -1,5 +1,9 @@
-%if has_toplevel_annotation?
 
+% topic_namespaces.each do |_topic_ns|
+namespace <%= _topic_ns %>
+{
+%   inc_nest
+% end
 // generated from <%= ridl_template_path %>
 ::DDS::ReturnCode_t
 <%= cxxname %>Factory::register_type (
@@ -16,4 +20,7 @@
 {
 %nest(1) { visit_template('factory_unregister_type') }
 }
-%end
+% topic_namespaces.reverse_each do |_topic_ns|
+%   dec_nest
+} // namespace <%= _topic_ns %>
+% end
