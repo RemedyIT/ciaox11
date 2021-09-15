@@ -28,6 +28,10 @@ module Example {
   typedef sequence<boolean> B17;
   typedef sequence<boolean, 15> B18;
 
+  typedef sequence<unsigned long long> B19_1;
+  typedef sequence<unsigned long long, 10> B19_2;
+  typedef sequence<long long> B19_3;
+  typedef sequence<long long, 10> B19_4;
 
   typedef double B20_1;
   typedef B20_1  B20_2;
@@ -96,6 +100,8 @@ module Example {
     string d;
     long e;
     B82 f;
+    unsigned long long g;
+    long long h;
   };
 
   union B85 switch (long) {
@@ -131,6 +137,12 @@ module Example {
 
     B17 b_17;
     B18 b_18;
+
+    B19_1 b_19_1;
+    B19_2 b_19_2;
+    B19_3 b_19_3;
+    B19_4 b_19_4;
+
     B20_4 b_20;
     B21_6 b_21;
 

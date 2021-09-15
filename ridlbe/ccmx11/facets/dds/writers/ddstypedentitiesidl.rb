@@ -34,28 +34,39 @@ module IDL
           visitor(PostVisitor).visit
         end
 
-        def enter_module(node)
-          super
-          println()
-          printiln('// generated from DDSTypeEntitiesIDLWriter#enter_module')
-          printiln('module ' + node.unescaped_name)
-          printiln('{')
-          inc_nest
-        end
-
-        def leave_module(node)
-          dec_nest
-          println()
-          printiln("}; // module #{node.unescaped_name}")
-          super
-        end
-
         def enter_struct(node)
-          visitor(StructVisitor).visit_entities(node)
+          visitor(StructVisitor) do |v|
+            init_visitor(v, node)
+            v.visit_entities(node)
+          end if is_dds_topic?(node)
         end
 
         def enter_union(node)
-          visitor(UnionVisitor).visit_entities(node)
+          visitor(UnionVisitor) do |v|
+            init_visitor(v, node)
+            v.visit_entities(node)
+          end if is_dds_topic?(node)
+        end
+
+      protected
+        def init_visitor(v, node)
+          v.properties[:topic_namespaces] =
+              (params[:dds_topic_namespace] && params[:dds_topic_namespace].split('::')) ||
+                  node.scopes[0, node.scopes.length - 1].collect {|s| s.unescaped_name }
+        end
+
+        def is_dds_topic?(node)
+          if params[:dds_topic].blank? || params[:dds_topic] == node.scoped_name
+            return has_toplevel_annotation?(node)
+          end
+          false
+        end
+
+        def has_toplevel_annotation?(node)
+          # 20190730 Add support for AXCIOMA 2 top-level annotation, issue #4729
+          annot = node.annotations[:'top-level'].first || node.annotations[:TopLevel].first
+          return false if annot.nil?
+          return annot.fields[:value].nil? || annot.fields[:value]
         end
 
       end # DDSTypeEntitiesIDLWriter
