@@ -151,7 +151,7 @@ namespace CIAOX11
             if (sample_info[j].valid_data ())
             {
               infos[number_read] = ::DDS4CCM::traits< ::DDS::SampleInfo>::to_readinfo (sample_info[j]);
-              instances[number_read] = data[j];
+              instances[number_read] = std::move(data[j]);
               ++number_read;
             }
           }
@@ -318,7 +318,7 @@ namespace CIAOX11
           // Add the valid sample to the list which will be returned
           // to the caller
           info = ::DDS4CCM::traits< ::DDS::SampleInfo>::to_readinfo (sample_info.front ());
-          an_instance = data.front ();
+          an_instance = std::move(data.front ());
           valid_data_read = true;
         }
         else

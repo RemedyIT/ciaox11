@@ -100,7 +100,7 @@ namespace CIAOX11
        */
       void
       convert_data (
-        const TOPIC_SEQ_TYPE &all_data,
+        TOPIC_SEQ_TYPE &all_data,
         TOPIC_SEQ_TYPE &data_to_return,
         CCM_DDS::ReadInfoSeq &infos,
         const ::DDS::SampleInfoSeq &sample_info);

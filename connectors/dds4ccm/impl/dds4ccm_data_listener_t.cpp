@@ -120,14 +120,16 @@ namespace CIAOX11
               inst_seq.resize (nr_of_samples);
               infoseq.resize (nr_of_samples);
 
-              // Copy the valid samples
+              // Move the valid samples
               uint32_t ix = 0;
               for (uint32_t i = 0 ; i < sample_info.size (); i++)
               {
                 if(sample_info[i].valid_data ())
                 {
                   infoseq[ix] = ::DDS4CCM::traits< ::DDS::SampleInfo>::to_readinfo (sample_info[i]);
-                  inst_seq[ix] = data[i];
+                  // Move the sample into the inst_seq sequence, we don't need the sample
+                  // anymore in the source data sequence
+                  inst_seq[ix] = std::move(data[i]);
                   ++ix;
                 }
               }
