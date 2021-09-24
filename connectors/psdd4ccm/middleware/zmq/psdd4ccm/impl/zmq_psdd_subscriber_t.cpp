@@ -224,7 +224,7 @@ namespace PSDD
               std::lock_guard<std::mutex> _g(this->lock_);
 
               if (this->read_i (datum, true))
-                dataseq.push_back (datum);
+                dataseq.push_back (std::move(datum));
             }
 
           }
@@ -242,7 +242,7 @@ namespace PSDD
               if (!this->read_i (datum, true))
                 break; // no data
 
-              dataseq.push_back (datum);
+              dataseq.push_back (std::move(datum));
             }
 
           }

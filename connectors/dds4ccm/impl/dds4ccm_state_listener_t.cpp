@@ -147,7 +147,9 @@ namespace CIAOX11
                 for(uint32_t add : updates)
                 {
                   infoseq[ix]  = ::DDS4CCM::traits< ::DDS::SampleInfo>::to_readinfo (sample_info[add]);
-                  inst_seq[ix] = data[add];
+                  // Move the sample into the inst_seq sequence, we don't need the sample
+                  // anymore in the source data sequence
+                  inst_seq[ix] = std::move(data[add]);
                   ++ix;
                 }
                 listener->on_many_updates (inst_seq, infoseq);
@@ -157,13 +159,11 @@ namespace CIAOX11
               // Now invoke on_creation or on_deletion
               if (si.valid_data () && si.view_state () == ::DDS::NEW_VIEW_STATE)
               {
-                listener->on_creation (data[idx_to_add],
-                  ::DDS4CCM::traits< ::DDS::SampleInfo>::to_readinfo (si));
+                listener->on_creation (data[idx_to_add], ::DDS4CCM::traits< ::DDS::SampleInfo>::to_readinfo (si));
               }
               else if (si.instance_state () == ::DDS::NOT_ALIVE_DISPOSED_INSTANCE_STATE)
               {
-                listener->on_deletion (data[idx_to_add],
-                  ::DDS4CCM::traits< ::DDS::SampleInfo>::to_readinfo (si));
+                listener->on_deletion (data[idx_to_add], ::DDS4CCM::traits< ::DDS::SampleInfo>::to_readinfo (si));
               }
             }
             else if (si.valid_data ())
@@ -182,7 +182,9 @@ namespace CIAOX11
             for (uint32_t add : updates)
             {
               infoseq[ix]  = ::DDS4CCM::traits< ::DDS::SampleInfo>::to_readinfo (sample_info[add]);
-              inst_seq[ix] = data[add];
+              // Move the sample into the inst_seq sequence, we don't need the sample
+              // anymore in the source data sequence
+              inst_seq[ix] = std::move(data[add]);
               ++ix;
             }
             listener->on_many_updates (inst_seq, infoseq);

@@ -91,15 +91,14 @@ namespace CIAOX11
     template <typename READER_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
     void
     Reader_T<READER_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::convert_data (
-      const TOPIC_SEQ_TYPE &all_data,
+      TOPIC_SEQ_TYPE &all_data,
       TOPIC_SEQ_TYPE &data_to_return,
       ::CCM_DDS::ReadInfoSeq &infos,
       const ::DDS::SampleInfoSeq &sample_info)
     {
       DDS4CCM_LOG_TRACE ("Reader_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::convert_data");
 
-      uint32_t const samples_to_return =
-        this->get_nr_valid_samples (sample_info, false);
+      uint32_t const samples_to_return = this->get_nr_valid_samples (sample_info, false);
       infos.resize (samples_to_return);
       data_to_return.resize (samples_to_return);
 
@@ -109,7 +108,7 @@ namespace CIAOX11
         if (sample_info[i].valid_data ())
           {
             infos[ix] = ::DDS4CCM::traits< ::DDS::SampleInfo>::to_readinfo(sample_info[i]);
-            data_to_return[ix] = all_data[i];
+            data_to_return[ix] = std::move(all_data[i]);
             ++ix;
           }
       }
@@ -256,7 +255,7 @@ namespace CIAOX11
         if (sample_info[i].valid_data () && sample_info[i].sample_rank () == 0)
         {
           infos[ix] = ::DDS4CCM::traits< ::DDS::SampleInfo>::to_readinfo(sample_info[i]);
-          instances[ix] = data[i];
+          instances[ix] = std::move(data[i]);
           ++ix;
         }
       }
@@ -313,7 +312,7 @@ namespace CIAOX11
       {
         if (sample_info[sample-1].valid_data ())
         {
-          an_instance = data[sample-1];
+          an_instance = std::move(data[sample-1]);
           info = ::DDS4CCM::traits< ::DDS::SampleInfo>::to_readinfo(sample_info[sample-1]);
         }
       }

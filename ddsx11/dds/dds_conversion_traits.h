@@ -126,7 +126,7 @@ namespace DDSX11
       retn () = default;
       retn (const dds_retn_type& v) { ::DDSX11::from_dds (this->value_, v); }
       retn& operator = (const dds_retn_type& v) { ::DDSX11::from_dds (this->value_, v); return *this; }
-      operator retn_type () { return this->value_; }
+      operator retn_type () { return std::move(this->value_); }
     };
   };
 
