@@ -190,6 +190,31 @@ module Example {
     long colorNum;
   };
 
+  struct Color2Struct;
+  typedef sequence<Color2Struct> Color2List;
+  typedef sequence<Color2Struct> Color2Seq;
+  struct Color2Struct {
+    string colorString;
+    long colorNum;
+  };
+
+  struct Color3Struct;
+  typedef sequence<Color3Struct> Color3List;
+  struct Color3Struct {
+    string colorString;
+    long colorNum;
+  }; //@TopLevel()
+  typedef sequence<Color3Struct> Color3Seq;
+
+  struct Color4Struct;
+  typedef sequence<Color4Struct> Color4List;
+  typedef sequence<Color4Struct> Color4Seq;
+  struct Color4Struct {
+    string colorString;
+    long colorNum;
+    Color3Seq color2seq;
+  }; //@TopLevel()
+
   union B03;
   typedef sequence <B03> B03List;
   union B03 switch (long)
@@ -203,6 +228,7 @@ module Foo
   typedef long _module;
   struct ColorStruct;
   typedef sequence <ColorStruct> ColorList;
+  typedef sequence <ColorStruct> ColorSeq;
   struct ColorStruct {
     string colorString;
     long colorNum;
@@ -215,6 +241,7 @@ module UnionTest
   typedef long _module;
   union B03;
   typedef sequence <B03> B03List;
+  typedef sequence <B03> B03Seq;
   union B03 switch (long)
   {
     case 2: short b_03_3;
@@ -243,7 +270,7 @@ module Foo
     struct TopicA
     {
       string a;
-    };  //@TopLevel()
+    }; //@TopLevel()
   };
 };
 
@@ -264,6 +291,44 @@ module IDL_Module
   {
     void do_something ();
   };
+};
+
+module SequenceTest
+{
+  typedef long myLong;
+  typedef sequence <myLong> myLongSeq;
+  typedef sequence <myLong, 16> myLongSeq_b16;
+  struct My_msg
+  {
+    myLong myl;
+    myLongSeq mylseq;
+  }; //@TopLevel()
+
+  struct My_msg2
+  {
+    long myl;
+  }; //@TopLevel()
+  typedef sequence <My_msg2> My_msg2Seq;
+
+  union My_msg3 switch (long)
+  {
+    case 2: long myl;
+  }; //@TopLevel()
+  typedef sequence <My_msg3> My_msg3Seq;
+
+  struct My_msg4
+  {
+    long myl;
+  }; //@TopLevel()
+  typedef sequence <My_msg4, 12> My_msg4Bounded;
+
+  union My_msg5 switch (long)
+  {
+    case 2: My_msg4Bounded myl;
+  }; //@TopLevel()
+  typedef sequence <My_msg5> My_msg5Seq;
+  typedef sequence <My_msg5, 12> My_msg5_b12;
+  typedef sequence <My_msg5, 11> My_msg5_b11;
 };
 
 #endif /* IDL_CONVERSION_BASE_IDL_ */
