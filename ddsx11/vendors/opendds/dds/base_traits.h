@@ -232,7 +232,7 @@ namespace DDSX11
         TAO_CORBA::string_free (v);
         return *this;
       }
-      operator retn_type () { return this->value_; }
+      operator retn_type () { return std::move(this->value_); }
     };
   };
 
