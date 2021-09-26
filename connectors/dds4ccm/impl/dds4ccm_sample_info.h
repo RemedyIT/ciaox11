@@ -58,8 +58,13 @@ namespace DDS4CCM
             this->read_info_.instance_status (::CCM_DDS::InstanceStatus::INSTANCE_UPDATED);
           }
       }
+
       operator ::CCM_DDS::ReadInfo ()
-      { return this->read_info_; }
+      {
+        // Move the read_info_ to the caller, we can only do a conversion once this
+        // way but it saves a copy in all cases
+        return std::move(this->read_info_);
+      }
     };
   };
 }
