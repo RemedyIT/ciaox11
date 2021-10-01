@@ -1,4 +1,4 @@
-include::_{backend}_settings.adoc[]
+include::_{backend}_settings.adoc[opts=optional]
 
 = Overview of the AXCIOMA libraries
 

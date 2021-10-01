@@ -1,4 +1,4 @@
-include::_{backend}_settings.adoc[]
+include::_{backend}_settings.adoc[opts=optional]
 
 = The component or connector Context
 
@@ -14,7 +14,7 @@ this context.
 
 Developers can use the context to retrieve references for its
 receptacles. However, if the receptacle is not connected in the
-<<{xref_docs_root}/dancex11/deployment-planning.adoc#,deployment plan>>,
+xref:{xref_docs_root}/dancex11/deployment-planning.adoc#[deployment plan],
 a nil reference is returned. It is *not* advised to cache the references
 returned from the context. Instead, retrieve it each time from the context. At
 the moment *AXCIOMA* is complemented by deployment tooling which
@@ -36,7 +36,7 @@ uses. These methods start with `get_connection_` followed by the name of
 the extended port (if any) and the name of the basic port.
 
 If there's no connection configured in the
-<<{xref_docs_root}/dancex11/deployment-planning.adoc#,deployment plan>>,
+xref:{xref_docs_root}/dancex11/deployment-planning.adoc#[deployment plan],
 the `get_connection_xxx` method will return a nil reference. Invoking an
 operation on a nil reference will result in a `CORBA::INV_OBJREF`
 exception.

@@ -1,10 +1,10 @@
-include::_{backend}_settings.adoc[]
+include::_{backend}_settings.adoc[opts=optional]
 
 = Good practice
 
 == Structure
 
-From reading the page <<philosophy.adoc#,*AXCIOMA* philosophy>> it
+From reading the page xref:philosophy.adoc#[*AXCIOMA* philosophy] it
 becomes clear there are 5 distinct parts/steps to any *AXCIOMA* application,
 where _Deployment_ should be treated as a separate item.
 Deployment is mentioned here as an example.
@@ -36,8 +36,8 @@ structure can be determined from the MPC files.
 
 == MPC base projects
 
-It is good practice to let the <<{xref_docs_root}/taox11/ridlc.adoc#,RIDL
-compiler>> generate the {cxx11} source files into a separate
+It is good practice to let the xref:{xref_docs_root}/taox11/ridlc.adoc#[RIDL compiler]
+generate the {cxx11} source files into a separate
 (sub)directory. This way the IDL and MPC files do not get mixed up with
 generated code. To make sure that all *AXCIOMA* tests are behaving the
 same, the *AXCIOMA* link:{docs_root}/../../ciaox11/MPC/config[MPC/config] directory and its
@@ -51,7 +51,7 @@ in the root of the test. This directory will be included in the link
 command.
 * The business component executor starter code will be (re)generated
 when the MPC feature `ciaox11_noregen_exec` is set to zero (0) in
-`default.features` (see <<executor_starter_code.adoc#,this page>>).
+`default.features` (see xref:executor_starter_code.adoc#[this page]).
 
 == Example
 
@@ -136,7 +136,7 @@ defined business component.
 
 The descriptors directory contains the deployment plan together with a perl script
 which starts and tears down the application, using the *AXCIOMA*
-<<{xref_docs_root}/dancex11/d+c-overview.adoc#,Deployment and configuration>>
+xref:{xref_docs_root}/dancex11/d+c-overview.adoc#[Deployment and configuration]
 framework.
 
 .ciaox11/examples/hello/extended/descriptors
@@ -145,11 +145,11 @@ dirlist::../../examples/hello/extended/descriptors/*[]
 == Compilation
 
 As mentioned in the
-<<getting_started.adoc#_developing_with_strong_axcioma_strong,Getting Started>> page,
+xref:getting_started.adoc#_developing_with_strong_axcioma_strong[Getting Started] page,
 there are two ways to compile your application:
 
-.  The <<{xref_docs_root}/taox11/getting_started.adoc#_classic_development,classic>> way.
-.  with the aid of <<{xref_docs_root}/brix11/brix11.adoc#,BRIX11>>. +
+.  The xref:{xref_docs_root}/taox11/getting_started.adoc#_classic_development[classic] way.
+.  with the aid of xref:{xref_docs_root}/brix11/brix11.adoc#[BRIX11]. +
 * Go to the root of your application and run `brix11 make .` to create
 the make files and compile your application.
 * Run your application by invoking `brix11 run test descriptors/`.
@@ -159,8 +159,8 @@ Be sure that the bin directory is in your path.
 == More
 
 More information about the *AXCIOMA* libraries can be found
-<<lib_mpc.adoc#,here>>.
+xref:lib_mpc.adoc#[here].
 
 Although *not recommended*, one can build an *AXCIOMA* application without
 the aid of MPC. More information about this can be found on
-<<compilation.adoc#,this page>>.
+xref:compilation.adoc#[this page].

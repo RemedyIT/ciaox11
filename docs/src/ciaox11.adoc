@@ -1,4 +1,4 @@
-include::_{backend}_settings.adoc[]
+include::_{backend}_settings.adoc[opts=optional]
 
 == What is CIAOX11?
 
@@ -29,7 +29,7 @@ plans
 
 CIAOX11 is based on the IDL to {cxx11} language mapping which brings you a
 lot of benefits as described in the
-<<{xref_docs_root}/taox11/getting_started.adoc#_the_idl_to_c_11_language_mapping,TAOX11 documentation>>.
+xref:{xref_docs_root}/taox11/getting_started.adoc#_the_idl_to_c_11_language_mapping[TAOX11 documentation].
 CIAOX11 brings you the following benefits:
 
 .  Faster development +
@@ -70,4 +70,3 @@ CIAOX11 is only standards compliant in the area of the user component
 executors. CIAOX11 has reduced dependencies on CORBA which has resulted
 in a much smaller and optimized implementation. For more details about
 our LwCCM compliance see <<lwccm_compliance.adoc#,here>>. +
-

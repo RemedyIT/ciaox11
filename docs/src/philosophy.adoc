@@ -1,4 +1,4 @@
-include::_{backend}_settings.adoc[]
+include::_{backend}_settings.adoc[opts=optional]
 
 = The AXCIOMA philosophy
 
@@ -40,7 +40,7 @@ be used, which contracts (interfaces) between components are necessary
 and which component provides or use which interface? +
 Once this all is determined, the Architect should determine which IDL
 should result in which interaction pattern. Once that is determined, the
-<<{xref_docs_root}/taox11/ridlc.adoc#,RIDL compiler>> is able to generate all
+xref:{xref_docs_root}/taox11/ridlc.adoc#[RIDL compiler] is able to generate all
 implied IDL and {cxx11} source code for the stubs of that certain
 interaction pattern. Mind that the stubs are not implementing the
 interaction pattern itself. In *AXCIOMA* it is possible to use various
@@ -65,26 +65,26 @@ code once the business components are modeled in IDL, the data stub
 libraries, and the interaction pattern stub libraries are available. To
 prevent the Programmer from writing a lot of boiler plate code, the RIDL
 compiler is able to generate starter code for the business code (see
-<<executor_starter_code.adoc#,this page>>). The Programmer is now
+xref:executor_starter_code.adoc#[this page]). The Programmer is now
 able to implement the business code without having to bother about
 boiler plate code.
 
 === Deployment planner
 
 The Deployment Planner starts the construction of a deployment plan
-(check <<{xref_docs_root}/dancex11/deployment-planning.adoc#,this page>>
+(check xref:{xref_docs_root}/dancex11/deployment-planning.adoc#[this page]
 about how this is done). Besides this, the deployment planner need to
 define the (DDS) QoS settings (if applicable). In *AXCIOMA* QoS settings
 are a deployment decision and these are never coded. +
 With the deployment plan, the QoS settings, and the collected
 libraries, the planner is able to run the application by making use of
-the <<{xref_docs_root}/dancex11/dancex11.adoc#,*AXCIOMA* deployment
-framework>>.
+the xref:{xref_docs_root}/dancex11/dancex11.adoc#[*AXCIOMA* deployment
+framework].
 
 .Structuring
 ****
 When developing an *AXCIOMA* application, good practice is to divide
 the IDL and MPC files, libraries, and directory structure in the same
 way *AXCIOMA* tests and examples are divided. More information about
-this can be found on <<good_practice.adoc#,this page>>.
+this can be found on xref:good_practice.adoc#[this page].
 ****

@@ -1,4 +1,4 @@
-include::_{backend}_settings.adoc[]
+include::_{backend}_settings.adoc[opts=optional]
 
 = Component Executor starter code
 
@@ -65,7 +65,7 @@ module Hello
 -----------------------------------------------
 
 Running the following command makes sure that the
-<<{xref_docs_root}/taox11/ridlc.adoc#,RIDL compiler>> only generates the
+xref:{xref_docs_root}/taox11/ridlc.adoc#[RIDL compiler] only generates the
 component executor starter code:
 
 --------------------------------------------------------------------------------------------------
@@ -101,7 +101,7 @@ component IDL and `_exec_i` (`Receiver_exec_i` in this case).
 * The getter and setter methods as well as the private class members of
 all attributes configured on the component.
 * Interaction support for
-<<{xref_docs_root}/dancex11/dancex11.adoc#,*AXCIOMA* deployment tooling>>:
+xref:{xref_docs_root}/dancex11/dancex11.adoc#[*AXCIOMA*] deployment tooling>>:
 ** Life cycle methods:
 *** `configuration_complete`
 *** `ccm_activate`
