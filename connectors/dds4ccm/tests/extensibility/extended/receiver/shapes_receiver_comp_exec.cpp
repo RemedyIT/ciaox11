@@ -197,7 +197,7 @@ namespace Shapes_Receiver_comp_Impl
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Shapes_Receiver_comp_Impl::Receiver_comp_exec_i[ccm_passivate]
     if (!success_)
     {
-      CIAOX11_TEST_ERROR << "ERROR: Receiver, didn't got correct result" << std::endl;
+      CIAOX11_TEST_ERROR << "ERROR: Extended receiver, didn't got correct result" << std::endl;
     }
     //@@{__RIDL_REGEN_MARKER__} - END : Shapes_Receiver_comp_Impl::Receiver_comp_exec_i[ccm_passivate]
   }
