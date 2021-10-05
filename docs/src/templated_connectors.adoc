@@ -62,14 +62,14 @@ class factory_connector_T final
 {
 public:
    factory_connector_T () = default;
-   virtual ~factory_connector_T () = default;
+   ~factory_connector_T () override = default;
 
-   virtual void set_session_context (IDL::traits<:sessioncontext>::ref_type ctx) override;
+   void set_session_context (IDL::traits<:sessioncontext>::ref_type ctx) override;
 
-   virtual void configuration_complete () override;
-   virtual void ccm_remove () override;
-   virtual void ccm_activate () override;
-   virtual void ccm_passivate () override;
+   void configuration_complete () override;
+   void ccm_remove () override;
+   void ccm_activate () override;
+   void ccm_passivate () override;
 
 private:
    factory_connector_T(const factory_connector_T&) = delete;
