@@ -78,8 +78,7 @@ namespace CIAOX11
   IDL::traits<Components::CCMObject>::ref_type
   Deployment_Common::get_ccm_object (const std::string& name)
   {
-    IDL::traits<CORBA::ORB>::ref_type orb =
-      DAnCEX11::State::instance ()->orb ();
+    IDL::traits<CORBA::ORB>::ref_type orb = DAnCEX11::State::instance ()->orb ();
 
     if (!orb)
     {
@@ -88,7 +87,7 @@ namespace CIAOX11
       throw Deployment::StartError (name,
         "Deployment_Common::get_ccm_object - Unable to retrieve ORB");
     }
-    // Get rootpoa in order to get the correct poa
+    // Get RootPOA in order to get the correct child POA
     IDL::traits<CORBA::Object>::ref_type poa_obj =
       orb->resolve_initial_references ("RootPOA");
 
@@ -144,7 +143,7 @@ namespace CIAOX11
         poa->id_to_servant(component_servant_id);
       obj = poa->servant_to_reference (svnt_ref);
     }
-    catch (const PortableServer::POA::ObjectNotActive& )
+    catch (const PortableServer::POA::ObjectNotActive&)
     {
       CIAOX11_LOG_DEBUG ("Deployment_Common::get_ccm_object - "
         << "CCM Object not active in the <" << poa->the_name ()
