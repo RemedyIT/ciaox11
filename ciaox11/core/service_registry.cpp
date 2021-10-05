@@ -8,7 +8,6 @@
  */
 
 #include "ciaox11/core/service_registry.h"
-
 #include "ccm/ccm_ccmexceptionC.h"
 #include "ciaox11/logger/log.h"
 

@@ -21,6 +21,8 @@
 
 namespace CIAOX11
 {
+  /// Base interfacae class for all container types for CIAOX11. Any container
+  /// *must* be derived from this base class
   class CIAOX11_CORE_Export Container
   {
   public:
