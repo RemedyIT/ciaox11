@@ -1,0 +1,22 @@
+/**
+ * @file    efc_connector.idl
+ * @author  Martin Corino
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ */
+
+#ifndef __EFC_CONNECTOR_IDL__
+#define __EFC_CONNECTOR_IDL__
+
+#include "efc_interface.idl"
+
+module EFC
+{
+   connector FooConnector
+   {
+      provides FooHandler request_handler;
+      uses FooListener reply_listener;
+   };
+};
+
+#endif /* __EFC_CONNECTOR_IDL__ */

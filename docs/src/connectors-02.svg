@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="67px" preserveAspectRatio="none" style="width:811px;height:67px;background:#FFFFFF;" version="1.1" viewBox="0 0 811 67" width="811px" zoomAndPan="magnify"><defs><filter height="300%" id="f1e584s6sx0zl0" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[ac138f1e66d5b4b37ce1a6e072637149]
+entity FooConnectorFragmentA--><rect fill="#8B0000" filter="url(#f1e584s6sx0zl0)" height="46.0986" style="stroke:#FFFFFF;stroke-width:1.5;" width="214" x="165.5" y="7"/><rect fill="#8B0000" height="10" style="stroke:#FFFFFF;stroke-width:1.5;" width="15" x="359.5" y="12"/><rect fill="#8B0000" height="2" style="stroke:#FFFFFF;stroke-width:1.5;" width="4" x="357.5" y="14"/><rect fill="#8B0000" height="2" style="stroke:#FFFFFF;stroke-width:1.5;" width="4" x="357.5" y="18"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="174" x="180.5" y="40.1318">FooConnectorFragmentA</text><!--MD5=[355a3cf20ead088a33e6a644cac85aaa]
+entity FooConnectorFragmentB--><rect fill="#8B0000" filter="url(#f1e584s6sx0zl0)" height="46.0986" style="stroke:#FFFFFF;stroke-width:1.5;" width="214" x="424.5" y="7"/><rect fill="#8B0000" height="10" style="stroke:#FFFFFF;stroke-width:1.5;" width="15" x="618.5" y="12"/><rect fill="#8B0000" height="2" style="stroke:#FFFFFF;stroke-width:1.5;" width="4" x="616.5" y="14"/><rect fill="#8B0000" height="2" style="stroke:#FFFFFF;stroke-width:1.5;" width="4" x="616.5" y="18"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="174" x="439.5" y="40.1318">FooConnectorFragmentB</text><!--MD5=[7966313a4b4f0684919c159713d096c7]
+entity ComponentA--><rect fill="#FEFECE" filter="url(#f1e584s6sx0zl0)" height="46.0986" style="stroke:#A80036;stroke-width:1.5;" width="123" x="7" y="7"/><rect fill="#FEFECE" height="10" style="stroke:#A80036;stroke-width:1.5;" width="15" x="110" y="12"/><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1.5;" width="4" x="108" y="14"/><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1.5;" width="4" x="108" y="18"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="83" x="22" y="40.1318">ComponentA</text><!--MD5=[6a5a8906cf8606d1a910ac18919bc878]
+entity ComponentB--><rect fill="#FEFECE" filter="url(#f1e584s6sx0zl0)" height="46.0986" style="stroke:#A80036;stroke-width:1.5;" width="123" x="674" y="7"/><rect fill="#FEFECE" height="10" style="stroke:#A80036;stroke-width:1.5;" width="15" x="777" y="12"/><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1.5;" width="4" x="775" y="14"/><rect fill="#FEFECE" height="2" style="stroke:#A80036;stroke-width:1.5;" width="4" x="775" y="18"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="83" x="689" y="40.1318">ComponentB</text><!--MD5=[c561c7675e3e43d22b5f8ea9b2d9d12d]
+reverse link ComponentA to FooConnectorFragmentA--><path d="M135.4539,30 C145.3901,30 155.3264,30 165.2627,30 " fill="none" id="ComponentA-backto-FooConnectorFragmentA" style="stroke:#A80036;stroke-width:1.0;"/><ellipse cx="130.2578" cy="30" fill="#FFFFFF" rx="6" ry="6" style="stroke:#A80036;stroke-width:1.5;"/><path d="M137.3289,37.0711 A10,10 0 0 0 137.3289 22.9289" fill="#FFFFFF" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="22" x="137.9672" y="27.5158">Foo</text><!--MD5=[a02555d584bbabe3aa724a3960e9b5be]
+link FooConnectorFragmentA to FooConnectorFragmentB--><path d="M384.916,30 C396.2722,30 407.8068,30 419.1622,30 " fill="none" id="FooConnectorFragmentA-FooConnectorFragmentB" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="424.3656,30,415.3656,26,419.3656,30,415.3656,34,424.3656,30" style="stroke:#A80036;stroke-width:1.0;"/><polygon fill="#A80036" points="379.7148,30,388.7148,34,384.7148,30,388.7148,26,379.7148,30" style="stroke:#A80036;stroke-width:1.0;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="0" x="406" y="24.1938"/><!--MD5=[6a010e145dfe0846bead9285d6d0e1dd]
+reverse link FooConnectorFragmentB to ComponentB--><path d="M643.9007,30 C653.8847,30 663.8687,30 673.8527,30 " fill="none" id="FooConnectorFragmentB-backto-ComponentB" style="stroke:#A80036;stroke-width:1.0;"/><ellipse cx="638.6797" cy="30" fill="#FFFFFF" rx="6" ry="6" style="stroke:#A80036;stroke-width:1.5;"/><path d="M645.7508,37.0711 A10,10 0 0 0 645.7508 22.9289" fill="#FFFFFF" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="22" x="644.0645" y="27.5219">Foo</text><!--MD5=[4544b6d8044c475522d8634f45c41cc1]
+@startuml
+'https://plantuml.com/component-diagram
+
+skinparam componentstyle uml2
+
+component "**FooConnectorFragmentA**" as FooConnectorFragmentA #DarkRed;text:white;line:white;
+component "**FooConnectorFragmentB**" as FooConnectorFragmentB #DarkRed;text:white;line:white;
+
+[ComponentA] "Foo " 0)- [FooConnectorFragmentA]
+[FooConnectorFragmentA] <-> [FooConnectorFragmentB] : "  "
+[FooConnectorFragmentB] "Foo" 0)- [ComponentB]
+
+@enduml
+
+@startuml
+
+skinparam componentstyle uml2
+
+component "**FooConnectorFragmentA**" as FooConnectorFragmentA #DarkRed;text:white;line:white;
+component "**FooConnectorFragmentB**" as FooConnectorFragmentB #DarkRed;text:white;line:white;
+
+[ComponentA] "Foo " 0)- [FooConnectorFragmentA]
+[FooConnectorFragmentA] <-> [FooConnectorFragmentB] : "  "
+[FooConnectorFragmentB] "Foo" 0)- [ComponentB]
+
+@enduml
+
+PlantUML version 1.2021.7(Sun May 23 14:40:07 CEST 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: ANSI_X3.4-1968
+Language: en
+Country: US
+--></g></svg>

@@ -1,0 +1,70 @@
+project (*idl_gen) : ciaox11_idldefaults {
+  custom_only = 1
+  after += efc_connector_stub_idl_gen
+  idlflags += -Wb,base_export_macro=EFCC_CONN \
+              -Wb,base_export_include=efcc_conn \
+              -Scdr -Scp \
+              -I ../idl
+
+  IDL_Files {
+    idlflags += -Gxhlst -Gxhex -Gxhsv -Gcomp -Gsvnt -Gex
+    ../idl/efc_connector.idl
+  }
+}
+
+project(*stub) : ciaox11_ccm_stub, ciaox11_ccm_session_stub {
+  after += *idl_gen efc_connector_stub
+  libout = ../lib
+  libs  += efc_connector_stub
+  libpaths += ../lib
+  includes += . ../idl
+  dynamicflags += EFCC_CONN_LEM_STUB_BUILD_DLL
+
+  Source_Files {
+    efc_connectorC.cpp
+    efc_connectorEC.cpp
+  }
+
+  Header_Files {
+    efc_connectorC.h
+    efc_connectorEC.h
+    efc_conn_lem_stub_export.h
+  }
+
+}
+
+project(*exec) : ciaox11_executor  {
+  after     += *stub
+  libout = ../lib
+  libs      += *stub efc_connector_stub
+  libpaths += ../lib
+  includes += . ../idl
+  dynamicflags += EFC_CONN_EXEC_BUILD_DLL
+
+  Source_Files {
+    efc_connector_exec.cpp
+  }
+
+  Header_Files {
+    efc_connector_exec.h
+    efc_conn_exec_export.h
+  }
+}
+
+project(*svnt) : ciaox11_ccm_session_stub {
+  after      += *stub
+  libout = ../lib
+  libs       += *stub efc_connector_stub
+  libpaths += ../lib
+  includes += . ../idl
+  dynamicflags += EFC_CONN_SVNT_BUILD_DLL
+
+  Source_Files {
+     efc_connector_svnt.cpp
+  }
+
+  Header_Files {
+    efc_connector_svnt.h
+    efc_conn_svnt_export.h
+  }
+}

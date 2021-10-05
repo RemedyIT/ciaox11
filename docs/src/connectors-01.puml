@@ -1,0 +1,11 @@
+@startuml
+'https://plantuml.com/component-diagram
+
+skinparam componentstyle rectangle
+
+component "**FooConnector**" as FooConnector #DarkRed;text:white;line:white;
+
+[ComponentA] "Foo" 0)- [FooConnector]
+[FooConnector] "Foo" 0)- [ComponentB]
+
+@enduml

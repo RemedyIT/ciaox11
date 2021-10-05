@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentScriptType="application/ecmascript" contentStyleType="text/css" height="55px" preserveAspectRatio="none" style="width:414px;height:55px;background:#FFFFFF;" version="1.1" viewBox="0 0 414 55" width="414px" zoomAndPan="magnify"><defs><filter height="300%" id="f1nf1jgg384e3d" width="300%" x="-1" y="-1"><feGaussianBlur result="blurOut" stdDeviation="2.0"/><feColorMatrix in="blurOut" result="blurOut2" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .4 0"/><feOffset dx="4.0" dy="4.0" in="blurOut2" result="blurOut3"/><feBlend in="SourceGraphic" in2="blurOut3" mode="normal"/></filter></defs><g><!--MD5=[08db3d4e1b23de3a8c707491b2cd7ba2]
+entity FooConnector--><rect fill="#8B0000" filter="url(#f1nf1jgg384e3d)" height="36.0986" style="stroke:#FFFFFF;stroke-width:1.5;" width="119" x="145" y="7"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="99" x="155" y="30.1318">FooConnector</text><!--MD5=[7966313a4b4f0684919c159713d096c7]
+entity ComponentA--><rect fill="#FEFECE" filter="url(#f1nf1jgg384e3d)" height="36.0986" style="stroke:#000000;stroke-width:1.5;" width="103" x="7" y="7"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="83" x="17" y="30.1318">ComponentA</text><!--MD5=[6a5a8906cf8606d1a910ac18919bc878]
+entity ComponentB--><rect fill="#FEFECE" filter="url(#f1nf1jgg384e3d)" height="36.0986" style="stroke:#000000;stroke-width:1.5;" width="103" x="299" y="7"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="83" x="309" y="30.1318">ComponentB</text><!--MD5=[c42134c90553fad9df9a233d2ba6bc4c]
+reverse link ComponentA to FooConnector--><path d="M115.2578,25 C125.0955,25 134.9332,25 144.7709,25 " fill="none" id="ComponentA-backto-FooConnector" style="stroke:#A80036;stroke-width:1.0;"/><ellipse cx="110.1133" cy="25" fill="#FFFFFF" rx="6" ry="6" style="stroke:#A80036;stroke-width:1.5;"/><path d="M117.1846,32.0709 A10,10 0 0 0 117.1842 17.9287" fill="#FFFFFF" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="22" x="118.1356" y="22.3514">Foo</text><!--MD5=[28b6d8586199e8c380e16c2fc799edb9]
+reverse link FooConnector to ComponentB--><path d="M269.2579,25 C279.1256,25 288.9934,25 298.8611,25 " fill="none" id="FooConnector-backto-ComponentB" style="stroke:#A80036;stroke-width:1.0;"/><ellipse cx="264.0977" cy="25" fill="#FFFFFF" rx="6" ry="6" style="stroke:#A80036;stroke-width:1.5;"/><path d="M271.169,32.0709 A10,10 0 0 0 271.1686 17.9287" fill="#FFFFFF" style="stroke:#A80036;stroke-width:1.5;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="22" x="268.964" y="22.167">Foo</text><!--MD5=[3012ecd31cf7db5d0b073312aee098f4]
+@startuml
+'https://plantuml.com/component-diagram
+
+skinparam componentstyle rectangle
+
+component "**FooConnector**" as FooConnector #DarkRed;text:white;line:white;
+
+[ComponentA] "Foo" 0)- [FooConnector]
+[FooConnector] "Foo" 0)- [ComponentB]
+
+@enduml
+
+@startuml
+
+skinparam componentstyle rectangle
+
+component "**FooConnector**" as FooConnector #DarkRed;text:white;line:white;
+
+[ComponentA] "Foo" 0)- [FooConnector]
+[FooConnector] "Foo" 0)- [ComponentB]
+
+@enduml
+
+PlantUML version 1.2021.7(Sun May 23 14:40:07 CEST 2021)
+(GPL source distribution)
+Java Runtime: OpenJDK Runtime Environment
+JVM: OpenJDK 64-Bit Server VM
+Default Encoding: ANSI_X3.4-1968
+Language: en
+Country: US
+--></g></svg>

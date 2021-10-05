@@ -1,0 +1,194 @@
+include::_{backend}_settings.adoc[opts=optional]
+
+= AXCIOMA Connectors
+
+== Introduction
+
+The *AXCIOMA* framework upgraded the use of the LwCCM _connector_ feature introduced with DDS4CCM and formalized in the OMG IDL 3+ specification to a common structural feature instead of the incidental, interaction type specific, feature it was in CIAO.
+
+The purpose of a _connector component_ is to abstract a common, technology specific service implementation in away that it can easily be deployed and (re-)used by different _business components_.
+
+*AXCIOMA* has made this the standard practice for distributed component based applications.
+To that end *AXCIOMA* provides connector implementations for *all* default supported middleware option and interaction pattern combinations as well as the standard _timed trigger_ connector (*TT4CCM*).
+Ideally, _business components_ in an *AXCIOMA* based application would never directly use interfaces that are in some way technology specific (specific library APIs, specific hardware interfaces) but instead would always interact through abstracted, (IDL defined) functional interfaces (ports) provided by _connector component_ implementations.
+
+In this document we will describe what makes _connector component_ implementations different from _business component_ implementations (if anything) and how to approach the task of a creating new (type of) _connector component_ implementation.
+
+== Components vs. Connectors
+
+The reason this document refers to _connector components_ and _business components_ is that from a technical standpoint (the *AXCIOMA* framework implementation) there is no structural difference between the two.
+To the *AXCIOMA* core framework implementation both type of component implementations are identical and managed in the same way.
+This fact is also reflected in the DnC depoyment structure where there also is no distinction between the deployment of either type of component instances.
+
+The distinction between the two is more a design issue and is reflected in the IDL 3+ language specification for _connector_ definitions compared to _component_ definitions.
+This specification describes _connectors_ as entities that are intended to provide interaction between _components_.
+
+.Connector design view
+image:{adoc_root}/connectors-01.svg[opts=inline]
+
+It is important to note that the IDL specification distinguishes between _connectors_ and _connector fragments_ here where the _connector_ is the conceptual entity providing a design time interaction between two (or more) _components_ and the _connector fragment_ refers to the implementation time object that is deployed in the same runtime context (collocated) with any one of the _component_ instances involved in an interaction scheme with this type of _connector_.
+
+.Connector (fragments) deployment view
+image:{adoc_root}/connectors-02.svg[opts=inline]
+
+*AXCIOMA* _connector component_ implementations do not adhere strictly to that distinction.
+Typically an *AXCIOMA* _connector component_ implementation contains the implementation for the functional fragments for both (or all) "sides" of the interaction and the same implementation will be deployed to fill the role all conceptual _connector fragments_ in the component application design.
+
+****
+NOTE: Although the standard *AXCIOMA* connector implementations typically contain full _fragment_ implementations(like for the CORBA4CCM, DDS4CCM and PSDD4CCM connectors) this is not mandatory in any way. +
+The AMI4CCM connector implementation for example only provides a single _fragment_ implementation; a _facet_ to connect to a component _receptacle_.
+In this case to deploy a complete connection an AMI4CCM connector instance needs to be combined (connected to) a CORBA4CCM connector instance as the complementary _connector fragment_. +
+Another example is the TT4CCM connector which also only provides a single _fragment_ implementation; a _facet_ providing the standard _timed trigger_ interface.
+The difference with AMI4CCM is that this connector does not provide a way to interact with another LwCCM component but instead provides access to an internal scheduling object only and therefor does not have any complementary _connector fragment_.
+****
+
+Although there is technically no structural difference between the two types of components in the common case there are functional differences from the intended purpose of _connector components_ and _business components_ in *AXCIOMA* based applications. +
+For _business components_ this is to implement business logic without any direct middleware (or other specific technology) dependencies including remote interface references.
+By default therefor the generated implementation for the standard framework methods of _business components_ will only allow local connections to collocated component instances. +
+On the other hand, _connector components_ are intended to implement technology specific logic to allow interaction with said technology (communication middleware, system components, special processing libraries ...) by way of the ports provided.
+The (possibly generated) implementation of the standard framework methods of _connector components_ will therefor commonly allow local connections to collocated components instances (_business components_ most likely) to allow access to the supported functionality.
+In the specific cases like the CORBA4CCM connectors the implementation will also allow remote connections as a way to connect two _connector fragments_ (or one fragment and an external service). +
+These differences do not result in structural differences needing special deployment options but they will have runtime consequences preventing certain deployment configurations.
+In the case of _business components_ implementing receptacles for an interface _Foo_ for example it will not be possible to execute a deployment where the receptacle for _Foo_ is directly connected through a remote interface reference for a facet (or external CORBA servant) for _Foo_.
+The CORBA4CCM connector generated for the _Foo_ interface however does allow that deployment connection setup as the code generated in this case provides for resolving remote object references.
+
+For simplicity the remainder of this document will use the term 'connector' to refer to _connector components_ and the term 'component' to refer to _business components_.
+
+== Creating a new connector
+
+The creation of any new connector (type), whether the intention is to have a generated connector in the end or not, starts with creating a "statically" defined and manually defined implementation (which could become the final implementation or a proof of concept).
+In case of a connector type with a single, fixed implementation like the TT4CCM connector this is the way the only step to take but in the case of connector types with variant implementations dependent of user defined IDL types this is just the first step to work out the general design and implementation.
+
+=== Define a connector interface
+
+The first step to create a new connector is to define it's interaction interface(s) and ports it is to provide. +
+As *AXCIOMA* (and LwCCM) is IDL based technology this should be done using IDL definitions.
+
+As an example consider the following link:{code_root}/ciaox11/connectors/idl/efc_interface.idl[IDL interface
+definitions].
+
+[source,IDL]
+.Interface definitions for FooConnector
+----
+module EFC
+{
+   struct FooRequest
+   {
+      string request_id;
+      string request_data;
+   };
+
+   struct FooReply
+   {
+      string request_id;
+      string reply_data;
+   };
+
+   local interface FooHandler
+   {
+      boolean submit(in FooRequest request);
+   };
+
+   local interface FooListener
+   {
+      void reply(in FooReply reply);
+   };
+}; /* module EFC */
+----
+
+For which we create a link:{code_root}/ciaox11/connectors/idl/efc_connector.idl[connector IDL definition] as follows.
+
+[source,IDL]
+.Connector definition for FooConnector
+----
+module EFC
+{
+   connector FooConnector
+   {
+      provides FooHandler request_handler;
+      uses FooReply reply_listener;
+   };
+};
+----
+
+This combination of IDL definitions specifies a connector FooConnector that is supposed to provide a facet for the
+`EFC::FooRequest` interface and a receptacle for the `EFC::FooReply` interface with the intention that _business components_ could connect and use the `request_handler` port to submit requests and connect the `reply_listener` port to listen for replies to the submitted requests.
+
+Next is the implemention of the C++ code.
+
+=== Creating a starting point
+
+To start the C++ code implementation the generic code generation for a component executor (and executor locator) can be used.
+As said before, technically there is no difference between connectors and component in *AXCIOMA* and therefor the standard code generated for components will do fine as startup skeleton code for implementing the connector.
+
+The generated connector starter code will depend on generated stub and LEM (Local Executor Mapping) code for the connector
+link:{code_root}/ciaox11/connectors/idl/efc_interface.idl[IDL interface definitions] for which you can find the
+example project link:{code_root}/ciaox11/connectors/idl/efc_connector_stub.mpc[here]. The make files generated from
+this project will generate the required stub and LEM code and build the `efc_connector_stub` code.
+
+The example project for creating the (startup) connector implementation can be found link:{code_root}/ciaox11/connectors/impl/efc_connector_impl.mpc[here]. The make files generated from this project
+will generate the required stub and LEM code for the connector, servant (or executor locator) and executor code as
+well as build 3 libraries:
+
+. `efc_connector_impl_stub` for the stub and LEM code;
+. `efc_connector_impl_svnt` for the servant (or executor locator) code and
+. `efc_connector_impl_exec` for the executor code.
+
+The first the project is executed RIDL will generate an executor code skeleton which only implements the minimal
+required logic to allow *AXCIOMA* framework interaction so the code can be compiled, linked and deployed.
+
+The generated stub and LEM code is standard and will not need any customization of completion. The generated servant
+code is also standard and will in most cases not need any customization. If customization is required this will most
+likely be due to special connection handling constraints/requirements like is the case with the CORBA4CCM and AMI4CCM
+ connectors. We will not go into that in more detail here (compare the generated servant code for these connectors to
+  see what is generated differently).
+
+The generated executor code is where in most cases the actual work needs to be done which will most likely be an
+iterative process which may require going back and forth between IDL specifications and code. Regenerating code from
+IDL normally rewrites the complete C++ files. This would be quite bothersome in this case as the executor code gets
+developed piece by piece. Luckily RIDL implements regeneration support for executor files which is enabled by default
+. This adds comment markers to the generated C++11 code based on the IDL specifications the code is generated from
+which allows RIDL to retain customized code when regenerating.
+The regeneration markers look like:
+
+[source,c++]
+----
+  //@@{__RIDL_REGEN_MARKER__} - BEGIN : EFC_FooConnector_Impl::request_handler_exec_i[ctor]
+  request_handler_exec_i::request_handler_exec_i (
+    IDL::traits< ::EFC::CCM_FooConnector_Context>::ref_type context)
+    : context_ (std::move (context))
+  {
+  }
+  //@@{__RIDL_REGEN_MARKER__} - END : EFC_FooConnector_Impl::request_handler_exec_i[ctor]
+
+  request_handler_exec_i::~request_handler_exec_i ()
+  {
+    //@@{__RIDL_REGEN_MARKER__} - BEGIN : EFC_FooConnector_Impl::request_handler_exec_i[dtor]
+    // Your code here
+    //@@{__RIDL_REGEN_MARKER__} - END : EFC_FooConnector_Impl::request_handler_exec_i[dtor]
+  }
+----
+
+Please note that markers are matched based on IDL identifiers (file name, module name, class name, method/attribute
+name) so as long as the same IDL item retains the same name the custom code sections will be retained. Changing
+return types, argument lists or modifiers will not interfere. Removing or renaming an item however may lead to loss
+of code blocks (which may or may not be what is expected). In these cases manually updating the markers before
+regeneration (or creating backups) might be required.
+
+=== Filling in the blanks
+
+==== Standard framework methods
+
+==== Lifecycle methods
+
+==== Facet executors
+
+== Interaction patterns and templates
+
+=== IDL templated modules
+
+=== Templated connector implementation
+
+== Automated connector generation
+
+Short introduction to RIDL CCMX11 facets.
