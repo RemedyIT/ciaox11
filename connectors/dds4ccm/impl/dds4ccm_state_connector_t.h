@@ -138,11 +138,10 @@ private:
    * DDS_Update observable
    */
   //@{
-  typedef DDS_Update_Port_T <
+  using Observable_type = DDS_Update_Port_T <
       typename CCM_TYPE::observable_traits,
       TOPIC_TYPE,
-      TOPIC_SEQ_TYPE>
-    Observable_type;
+      TOPIC_SEQ_TYPE>;
   std::unique_ptr<Observable_type> observable_ {};
   Observable_type *observable ();
   //@}
@@ -151,11 +150,10 @@ private:
    * DDS_Read passive_observer
    */
   //@{
-  typedef DDS_Read_Port_T <
+  using PassiveObserver_type = DDS_Read_Port_T <
       typename CCM_TYPE::passive_observer_traits,
       TOPIC_TYPE,
-      TOPIC_SEQ_TYPE>
-    PassiveObserver_type;
+      TOPIC_SEQ_TYPE>;
     std::unique_ptr<PassiveObserver_type> passive_observer_ {};
     PassiveObserver_type *passive_observer ();
   //@}
@@ -164,11 +162,10 @@ private:
    * DDS_Get pull_observer
    */
   //@{
-  typedef DDS_Get_Port_T <
+  using PullObserver_type = DDS_Get_Port_T <
       typename CCM_TYPE::pull_observer_traits,
       TOPIC_TYPE,
-      TOPIC_SEQ_TYPE>
-    PullObserver_type;
+      TOPIC_SEQ_TYPE>;
   std::unique_ptr<PullObserver_type> pull_observer_ {};
   PullObserver_type *pull_observer ();
   //@}
@@ -177,12 +174,11 @@ private:
    * DDS_Listen push_consumer
    */
   //@{
-  typedef DDS_Listen_Port_T <
+  using PushObserver_type = DDS_Listen_Port_T <
       typename CCM_TYPE::push_observer_traits,
       TOPIC_TYPE,
       TOPIC_SEQ_TYPE,
-      CIAOX11::DDS4CCM::DDS4CCM_TAKE>
-    PushObserver_type;
+      CIAOX11::DDS4CCM::DDS4CCM_TAKE>;
   std::unique_ptr<PushObserver_type> push_observer_ {};
   PushObserver_type *push_observer ();
   //@}
@@ -192,12 +188,11 @@ private:
    * DDS_StateListen push_state_observer
    */
   //@{
-  typedef DDS_State_Listen_Port_T <
+  using PushStateObserver_type = DDS_State_Listen_Port_T <
       typename CCM_TYPE::push_state_observer_traits,
       TOPIC_TYPE,
       TOPIC_SEQ_TYPE,
-      CIAOX11::DDS4CCM::DDS4CCM_READ>
-    PushStateObserver_type;
+      CIAOX11::DDS4CCM::DDS4CCM_READ>;
   std::unique_ptr<PushStateObserver_type> push_state_observer_ {};
   PushStateObserver_type *push_state_observer ();
   //@}
@@ -214,10 +209,8 @@ private:
   void do_ccm_remove () override;
   //@}
 
-  typedef DDS_LateBinded_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>
-    LateBindedConnector;
-  typedef DDS_TopicBase_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>
-    TopicBaseConnector;
+  using LateBindedConnector = DDS_LateBinded_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>;
+  using TopicBaseConnector = DDS_TopicBase_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>;
 
   DDS_State_Connector_T(const DDS_State_Connector_T&) = delete;
   DDS_State_Connector_T(DDS_State_Connector_T&&) = delete;

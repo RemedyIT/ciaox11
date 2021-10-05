@@ -127,7 +127,7 @@ namespace CIAOX11
         }
         else if (mode == ::CCM_DDS::ListenerMode::MANY_BY_MANY)
         {
-          typedef std::vector<uint32_t> Updates;
+          using Updates = std::vector<uint32_t>;
           Updates updates;
 
           uint32_t idx_to_add {};

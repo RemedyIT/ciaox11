@@ -36,13 +36,12 @@ public:
     const std::string &qos_profile) override;
 
 private:
-  typedef DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE> SubscriberBase_type;
+  using SubscriberBase_type = DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>;
 
-  typedef ::CIAOX11::DDS4CCM::Getter_T<
+  using DDS4CCM_Getter_type = ::CIAOX11::DDS4CCM::Getter_T<
       typename CCM_TYPE::fresh_data_type,
       TOPIC_TYPE,
-      TOPIC_SEQ_TYPE>
-    DDS4CCM_Getter_type;
+      TOPIC_SEQ_TYPE>;
 
   /**
    * DDS_Get

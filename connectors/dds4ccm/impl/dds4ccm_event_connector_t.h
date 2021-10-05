@@ -110,11 +110,10 @@ private:
    * DDS_Write supplier
    */
   //@{
-  typedef DDS_Write_Port_T <
+  using Supplier_type = DDS_Write_Port_T <
       typename CCM_TYPE::supplier_traits,
       TOPIC_TYPE,
-      TOPIC_SEQ_TYPE>
-    Supplier_type;
+      TOPIC_SEQ_TYPE>;
   std::unique_ptr<Supplier_type> supplier_ {};
   Supplier_type *supplier ();
   //@}
@@ -123,12 +122,11 @@ private:
    * DDS_Listen push_consumer
    */
   //@{
-  typedef DDS_Listen_Port_T <
+  using PushConsumer_type = DDS_Listen_Port_T <
       typename CCM_TYPE::push_consumer_traits,
       TOPIC_TYPE,
       TOPIC_SEQ_TYPE,
-      CIAOX11::DDS4CCM::DDS4CCM_TAKE>
-    PushConsumer_type;
+      CIAOX11::DDS4CCM::DDS4CCM_TAKE>;
   std::unique_ptr<PushConsumer_type> push_consumer_ {};
   PushConsumer_type *push_consumer ();
   //@}
@@ -137,11 +135,10 @@ private:
    * DDS_Get pull_consumer
    */
   //@{
-  typedef DDS_Get_Port_T <
+  using PullConsumer_type = DDS_Get_Port_T <
       typename CCM_TYPE::pull_consumer_traits,
       TOPIC_TYPE,
-      TOPIC_SEQ_TYPE>
-    PullConsumer_type;
+      TOPIC_SEQ_TYPE>;
   std::unique_ptr<PullConsumer_type> pull_consumer_ {};
   PullConsumer_type *pull_consumer ();
   //@}
@@ -158,16 +155,13 @@ private:
   void do_ccm_remove () override;
   //@}
 
-  typedef DDS_LateBinded_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>
-    LateBindedConnector;
-  typedef DDS_TopicBase_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>
-    TopicBaseConnector;
+  using LateBindedConnector = DDS_LateBinded_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>;
+  using TopicBaseConnector = DDS_TopicBase_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>;
 
   DDS_Event_Connector_T(const DDS_Event_Connector_T&) = delete;
   DDS_Event_Connector_T(DDS_Event_Connector_T&&) = delete;
   DDS_Event_Connector_T& operator=(const DDS_Event_Connector_T&) = delete;
   DDS_Event_Connector_T& operator=(DDS_Event_Connector_T&&) = delete;
-
 };
 
 #include "dds4ccm/impl/dds4ccm_event_connector_t.cpp"

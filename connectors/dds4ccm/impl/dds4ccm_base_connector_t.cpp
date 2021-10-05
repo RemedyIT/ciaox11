@@ -475,8 +475,8 @@ DDS_Base_Connector_T<CCM_TYPE>::activate_topic (
 
   IDL::traits< ::DDS::TopicListener>::ref_type topic_listener;
 
-  typedef typename CCM_TYPE::error_event_strategy_type event_strategy_type;
-  typedef CIAOX11::DDS4CCM::TopicListener_T<event_strategy_type> topic_listener_type;
+  using event_strategy_type = typename CCM_TYPE::error_event_strategy_type;
+  using topic_listener_type = CIAOX11::DDS4CCM::TopicListener_T<event_strategy_type>;
 
   // Even if error_listener is nil, it is possible for some vendors
   // that mask isn't DDS::STATUS_MASK_NONE.
@@ -517,7 +517,7 @@ DDS_Base_Connector_T<CCM_TYPE>::activate_publisher (
 
   IDL::traits< ::DDS::PublisherListener>::ref_type publisher_listener;
 
-  typedef typename CCM_TYPE::error_event_strategy_type event_strategy_type;
+  using event_strategy_type = typename CCM_TYPE::error_event_strategy_type ;
 
   // Even if error_listener is nil, it is possible for some vendors
   // that mask isn't DDS::STATUS_MASK_NONE.
@@ -557,8 +557,8 @@ DDS_Base_Connector_T<CCM_TYPE>::activate_subscriber (
 
   IDL::traits< ::DDS::SubscriberListener>::ref_type subscriber_listener;
 
-  typedef typename CCM_TYPE::error_event_strategy_type event_strategy_type;
-  typedef CIAOX11::DDS4CCM::SubscriberListener_T<event_strategy_type> subscriber_listener_type;
+  using event_strategy_type = typename CCM_TYPE::error_event_strategy_type;
+  using subscriber_listener_type = CIAOX11::DDS4CCM::SubscriberListener_T<event_strategy_type>;
 
   // Even if error_listener is nil, it is possible for some vendors
   // that mask isn't DDS::STATUS_MASK_NONE.

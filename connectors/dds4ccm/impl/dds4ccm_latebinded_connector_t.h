@@ -52,14 +52,12 @@ public:
   virtual void do_ccm_remove () = 0;
 
 private:
-  typedef DDS_TopicBase_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>
-    TopicBaseConnector;
+  using TopicBaseConnector = DDS_TopicBase_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>;
 
   DDS_LateBinded_Connector_T(const DDS_LateBinded_Connector_T&) = delete;
   DDS_LateBinded_Connector_T(DDS_LateBinded_Connector_T&&) = delete;
   DDS_LateBinded_Connector_T& operator=(const DDS_LateBinded_Connector_T&) = delete;
   DDS_LateBinded_Connector_T& operator=(DDS_LateBinded_Connector_T&&) = delete;
-
 };
 
 #include "dds4ccm/impl/dds4ccm_latebinded_connector_t.cpp"

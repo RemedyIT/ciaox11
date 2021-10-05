@@ -226,7 +226,7 @@ namespace CIAOX11
       ConditionManager& operator=(ConditionManager&&) = delete;
     };
 
-    typedef std::shared_ptr<ConditionManager> SharedConditionManager;
+    using SharedConditionManager = std::shared_ptr<ConditionManager>;
   }
 }
 
