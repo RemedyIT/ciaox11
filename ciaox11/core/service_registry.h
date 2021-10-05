@@ -19,12 +19,14 @@
 
 namespace CIAOX11
 {
+  /// Service registry administration. Each service is registered
+  /// with a unique name
   class CIAOX11_CORE_Export Service_Registry_i final :
     public IDL::traits <CIAOX11::Service_Registry>::base_type
   {
   public:
     Service_Registry_i () = default;
-    virtual ~Service_Registry_i () = default;
+    ~Service_Registry_i () override = default;
 
     /// @copydoc CIAOX11::Service_Registry::install_service
     void

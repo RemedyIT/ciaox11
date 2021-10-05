@@ -26,46 +26,49 @@ namespace CIAOX11
   public:
     Container (std::string name);
 
-    virtual ~Container ();
+    virtual ~Container () = default;
 
     IDL::traits<CIAOX11::Service_Registry>::ref_type
     the_service_registry () { return this->service_registry_; }
 
-    std::string
-    the_name() { return this->name_; }
+    /// Retrieve the name of this container
+    const std::string& the_name() { return this->name_; }
 
-    /// Install component instance.
+    /// Install component instance with the provided @a name and
+    /// the @a component reference to the executor locator
     virtual bool
     install_component (
         const std::string& name,
         IDL::traits<CIAOX11::ExecutorLocator>::ref_type component) = 0;
 
-    /// Get component instance.
-    virtual IDL::traits<CIAOX11::ExecutorLocator>::ref_type
-    get_component (
-        const std::string& name) = 0;
-
-    /// Uninstall component instance.
+    /// Uninstall component instance
+    /// Called by deployment handler to uninstall the
+    /// component with the provided name
     virtual bool
     uninstall_component (const std::string& name) = 0;
 
-    /// Activate component instance.
+    /// Get component instance with the requested name
+    virtual IDL::traits<CIAOX11::ExecutorLocator>::ref_type
+    get_component (const std::string& name) = 0;
+
+    /// Activate component instance with the provided @a name
     virtual bool
     activate_component (const std::string& name) = 0;
 
-    /// Passivate component instance.
+    /// Passivate component instance with the provided @a name
     virtual bool
     passivate_component (const std::string& name) = 0;
 
-    /// Configured component instance.
+    /// Configured component instance with the provided @a name
     virtual bool
     configured_component (const std::string& name) = 0;
 
   protected:
     /// Name of this container
-    std::string name_;
+    std::string const name_;
 
-    /// Service registry for this container
+    /// Service registry for this container, contains the services
+    /// registered in this container
     IDL::traits<CIAOX11::Service_Registry>::ref_type service_registry_;
 
     Container () = delete;

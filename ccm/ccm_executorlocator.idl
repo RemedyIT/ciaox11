@@ -41,7 +41,7 @@ module CIAOX11
 
     /// Connect a component port using the provided
     /// local executor reference (can be nil)
-    ////and/or provided configuration.
+    /// and/or provided configuration.
     /// Returns false if connecting failed.
     boolean connect (in Components::FeatureName name,
                      in Object local_executor,
