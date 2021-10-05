@@ -4,7 +4,7 @@ include::_{backend}_settings.adoc[opts=optional]
 
 == Code generation
 
-Consider the following link:{code_root}/ciaox11/base/starter.idl[data IDL]:
+Consider the following link:{code_root}/ciaox11/executor_starter/base/starter.idl[data IDL]:
 
 [source,idl]
 .starter.idl
@@ -47,7 +47,7 @@ module Hello
 -----------------------------------------------------
 
 And the following
-link:{code_root}/ciaox11/component/starter_component.idl[component definition]:
+link:{code_root}/ciaox11/executor_starter/component/starter_component.idl[component definition]:
 
 [source,idl]
 .starter_component.idl
@@ -90,9 +90,9 @@ Where:
 The above command will generate two files with `_exec` as postfix.
 
 The component executor header can be found
-link:{code_root}/ciaox11/component/starter_component_exec.h[here]. The
+link:{code_root}/ciaox11/executor_starter/component/starter_component_exec.h[here]. The
 component executor source can be found
-link:{code_root}/ciaox11/component/starter_component_exec.cpp[here].
+link:{code_root}/ciaox11/executor_starter/component/starter_component_exec.cpp[here].
 
 In general, the starter code includes:
 
