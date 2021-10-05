@@ -221,14 +221,8 @@ namespace CIAOX11
     if (!this->orb_)
     {
       CIAOX11_LOG_ERROR ("ReferenceLookup_i::ReferenceLookup_i - Unable to locate ORB");
-      throw ::Deployment::StartError ("ReferenceLookup_i",
-                                      "Unable to locate ORB");
+      throw ::Deployment::StartError ("ReferenceLookup_i", "Unable to locate ORB");
     }
-  }
-
-  /// Implementation skeleton destructor
-  ReferenceLookup_i::~ReferenceLookup_i ()
-  {
   }
 
   void

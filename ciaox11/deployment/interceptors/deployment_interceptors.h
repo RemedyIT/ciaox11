@@ -25,7 +25,7 @@ namespace CIAOX11
     StoreReferences_i ();
 
     /// Destructor
-    virtual ~StoreReferences_i () = default;
+    ~StoreReferences_i () override = default;
 
     void post_install (const ::Deployment::DeploymentPlan & plan,
                        uint32_t index,
@@ -51,7 +51,7 @@ namespace CIAOX11
     ReferenceLookup_i ();
 
     /// Destructor
-    virtual ~ReferenceLookup_i ();
+    ~ReferenceLookup_i () override = default;
 
     void pre_connect (::Deployment::DeploymentPlan & plan,
                       uint32_t connection_index,
