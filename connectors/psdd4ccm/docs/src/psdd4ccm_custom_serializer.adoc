@@ -267,7 +267,7 @@ namespace Test
       CCM_Serializer () = default;
 #endif /* _MSC_VER < 1920 */
       /// Destructor
-      virtual ~CCM_Serializer () = default;
+      ~CCM_Serializer () override = default;
 
       /// Returns a strong client reference for the local object you are calling
       IDL::traits< ::Test::TopicInterface::CCM_Serializer>::ref_type _this ();
@@ -308,7 +308,7 @@ namespace Emitter
     {
     public:
       Custom_ZMQ_Serializer () = default;
-      virtual ~Custom_ZMQ_Serializer () = default;
+      ~Custom_ZMQ_Serializer () override = default;
 
       /// @copydoc topicPS.idl::LoRa::Topic::Serializer::setup_pack
       bool
