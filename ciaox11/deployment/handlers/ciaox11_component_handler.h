@@ -30,7 +30,7 @@ namespace CIAOX11
       : connection_handler_ (std::move (ch)) {}
 
     /// Destructor
-    virtual ~Component_Handler () = default;
+    ~Component_Handler () override = default;
 
     CORBA::StringSeq dependencies () override;
 

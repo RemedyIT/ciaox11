@@ -29,7 +29,7 @@ namespace CIAOX11
 
         CORBA::Any cvalue;
 
-        // extract provided peer endpoint reference
+        // Extract provided peer endpoint reference
         if (!Config::Utility::find_config_value (cfgval, CIAOX11::PEER_ENDPOINT_REFERENCE, cvalue))
         {
           CIAOX11_LOG_ERROR ("CORBA::Utility::get_provider_reference - "
@@ -44,7 +44,7 @@ namespace CIAOX11
           return {};
         }
 
-        // determine peer endpoint type
+        // Determine peer endpoint type
         if (!Config::Utility::find_config_value (cfgval, CIAOX11::PEER_ENDPOINT_TYPE, cvalue))
         {
           CIAOX11_LOG_ERROR ("CORBA::Utility::get_provider_reference - "

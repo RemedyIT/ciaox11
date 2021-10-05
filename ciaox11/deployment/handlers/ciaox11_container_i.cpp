@@ -35,10 +35,6 @@ namespace CIAOX11
     this->service_registry_->install_service (CIAOX11::SVCID_ORB, this->orb_);
   }
 
-  Container_i::~Container_i ()
-  {
-  }
-
   void
   Container_i::fini ()
   {

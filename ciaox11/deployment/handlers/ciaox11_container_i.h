@@ -26,7 +26,7 @@ namespace CIAOX11
     Container_i (std::string name,
                  IDL::traits<CORBA::ORB>::ref_type orb);
 
-    virtual ~Container_i ();
+    ~Container_i () override = default;
 
     virtual void fini ();
 

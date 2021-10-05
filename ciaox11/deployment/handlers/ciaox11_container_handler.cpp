@@ -77,8 +77,8 @@ namespace CIAOX11
 
   void
   Container_Handler::install_instance (const Deployment::DeploymentPlan &plan,
-                                         uint32_t instanceRef,
-                                         CORBA::Any& instance_reference)
+                                       uint32_t instanceRef,
+                                       CORBA::Any& instance_reference)
   {
     const ::Deployment::InstanceDeploymentDescription &idd (plan.instance()[instanceRef]);
 
