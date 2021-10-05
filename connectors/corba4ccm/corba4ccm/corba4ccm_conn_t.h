@@ -20,14 +20,13 @@ namespace CCM_CORBA
   {
   public:
     CORBA_Connector_T () = default;
-    virtual ~CORBA_Connector_T () = default;
+    ~CORBA_Connector_T () override = default;
 
     /** @name Component port operations. */
     //@{
     /// Factory method and getter for the srr_facet facet
     /// @return existing instance of facet if one exists, else creates one
-    typename IDL::traits<INTERFACE_TYPE>::ref_type
-    get_srr_facet () override;
+    typename IDL::traits<INTERFACE_TYPE>::ref_type get_srr_facet () override;
     //@}
 
     /** @name Session component operations */
