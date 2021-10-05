@@ -20,8 +20,8 @@ namespace DDSX11
   template <typename DATA_TYPE, typename DDS_DATA_TYPE = DATA_TYPE>
   struct common_traits
   {
-    typedef DATA_TYPE value_type;
-    typedef DDS_DATA_TYPE dds_value_type;
+    using value_type = DATA_TYPE ;
+    using dds_value_type = DDS_DATA_TYPE;
   };
 
   template <typename DATA_TYPE, typename DDS_DATA_TYPE = DATA_TYPE>

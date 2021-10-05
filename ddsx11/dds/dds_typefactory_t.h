@@ -23,11 +23,10 @@ namespace DDSX11
     IDL::traits< ::DDS::DataWriter>::ref_type
     create_datawriter (DDS_Native::DDS::DataWriter *dw) override
     {
-      typedef DDSX11::DataWriter_T<
+      using DataWriter_type = DDSX11::DataWriter_T<
           TOPIC_TYPE,
           NATIVE_DATAWRITER_TYPE,
-          typename ::DDS::traits<TOPIC_TYPE>::datawriter_type>
-        DataWriter_type;
+          typename ::DDS::traits<TOPIC_TYPE>::datawriter_type>;
       auto proxy = TAOX11_CORBA::make_reference<DataWriter_type>(dw);
       return proxy;
     }
@@ -35,13 +34,12 @@ namespace DDSX11
     IDL::traits< ::DDS::DataReader>::ref_type
     create_datareader (DDS_Native::DDS::DataReader *dr) override
     {
-      typedef DDSX11::DataReader_T<
+      using DataReader_type = DDSX11::DataReader_T<
           NATIVE_DATAREADER_TYPE,
           typename ::DDS::traits<TOPIC_TYPE>::datareader_type,
           TOPIC_TYPE,
           TOPIC_SEQ_TYPE,
-          NATIVE_SEQ_TYPE>
-        DataReader_type;
+          NATIVE_SEQ_TYPE>;
       auto proxy = TAOX11_CORBA::make_reference<DataReader_type> (dr);
       return proxy;
     }
