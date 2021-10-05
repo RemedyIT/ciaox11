@@ -25,7 +25,7 @@ namespace CIAOX11
     {
     public:
       explicit Reader_T (IDL::traits<CORBA::Object>::weak_ref_type component);
-      virtual ~Reader_T () = default;
+      ~Reader_T () override = default;
 
       void
       read_last (

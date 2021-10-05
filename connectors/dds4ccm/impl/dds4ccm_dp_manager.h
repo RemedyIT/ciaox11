@@ -37,7 +37,6 @@ namespace CIAOX11
     {
     private:
       DomainParticipantManager ();
-
       ~DomainParticipantManager ();
 
     public:

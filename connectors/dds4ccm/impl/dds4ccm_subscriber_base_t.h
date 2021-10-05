@@ -31,14 +31,11 @@ public:
    * DDS_Subscriber_Base_T operations
    */
   //@{
-  typename IDL::traits<typename CCM_TYPE::data_type>::ref_type
-  get_data ();
+  typename IDL::traits<typename CCM_TYPE::data_type>::ref_type get_data ();
 
-  typename IDL::traits<typename CCM_TYPE::dds_entity_type>::ref_type
-  get_dds_entity ();
+  typename IDL::traits<typename CCM_TYPE::dds_entity_type>::ref_type get_dds_entity ();
 
-  typename IDL::traits<typename CCM_TYPE::filter_config_type>::ref_type
-  get_filter_config ();
+  typename IDL::traits<typename CCM_TYPE::filter_config_type>::ref_type get_filter_config ();
 
   CCM_DDS::QueryFilter filter ();
 
@@ -68,18 +65,16 @@ public:
 
   virtual void passivate ();
 
-  virtual void remove (
-    IDL::traits< ::DDS::Subscriber>::ref_type subscriber);
+  virtual void remove (IDL::traits< ::DDS::Subscriber>::ref_type subscriber);
   //@}
 
 
 protected:
-  typedef ::CIAOX11::DDS4CCM::Reader_T<
+  using DDS4CCM_Reader_type = ::CIAOX11::DDS4CCM::Reader_T<
       typename CCM_TYPE::data_type,
       TOPIC_TYPE,
-      TOPIC_SEQ_TYPE>
-    DDS4CCM_Reader_type;
-  typedef CIAOX11::DDS4CCM::CCM_DataReader CCM_DataReader_type;
+      TOPIC_SEQ_TYPE>;
+  using CCM_DataReader_type = CIAOX11::DDS4CCM::CCM_DataReader ;
 
   /**
    * DDS_Subscriber_Base_T protected members

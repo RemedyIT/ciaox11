@@ -18,7 +18,7 @@ class DDS_TopicBase_Connector_T
 {
 public:
   DDS_TopicBase_Connector_T () = default;
-  virtual ~DDS_TopicBase_Connector_T () = default;
+  ~DDS_TopicBase_Connector_T () override = default;
 
   /**
    * @name attributes of DDS4CCM TopicBase

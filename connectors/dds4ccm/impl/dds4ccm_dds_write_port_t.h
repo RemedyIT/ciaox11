@@ -19,7 +19,7 @@ class DDS_Write_Port_T
 {
 public:
   explicit DDS_Write_Port_T (IDL::traits<CORBA::Object>::ref_type component);
-  ~DDS_Write_Port_T () = default;
+  virtual ~DDS_Write_Port_T () = default;
 
   /**
    * @name DDS_Write
@@ -39,13 +39,11 @@ public:
   void remove (IDL::traits< ::DDS::Publisher>::ref_type publisher);
 
 private:
-  typedef ::CIAOX11::DDS4CCM::Writer_T<
+  using DDS4CCM_Writer_type = ::CIAOX11::DDS4CCM::Writer_T<
     typename CCM_TYPE::data_type,
     TOPIC_TYPE,
-    TOPIC_SEQ_TYPE>
-      DDS4CCM_Writer_type;
-
-  typedef ::CIAOX11::DDS4CCM::CCM_DataWriter CCM_DataWriter_type;
+    TOPIC_SEQ_TYPE>;
+  using CCM_DataWriter_type = ::CIAOX11::DDS4CCM::CCM_DataWriter ;
 
   IDL::traits<CORBA::Object>::weak_ref_type component_;
 

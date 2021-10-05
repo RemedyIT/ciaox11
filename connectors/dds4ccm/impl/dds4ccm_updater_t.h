@@ -22,15 +22,14 @@ namespace CIAOX11
     {
     public:
       explicit Updater_T (IDL::traits<CORBA::Object>::weak_ref_type component);
-      virtual ~Updater_T () = default;
+      ~Updater_T () override = default;
 
       /**
        * @name updater operations
        * Spec defined Updater operations.
        */
       //@{
-      void
-      create_one (const TOPIC_TYPE& datum) override;
+      void create_one (const TOPIC_TYPE& datum) override;
 
       void
       update_one (
@@ -42,17 +41,11 @@ namespace CIAOX11
         const TOPIC_TYPE& datum,
         const ::DDS::InstanceHandle_t& instance_handle) override;
 
-      void
-      create_many (
-        const TOPIC_SEQ_TYPE& data) override;
+      void create_many (const TOPIC_SEQ_TYPE& data) override;
 
-      void
-      update_many (
-        const TOPIC_SEQ_TYPE& data) override;
+      void update_many (const TOPIC_SEQ_TYPE& data) override;
 
-      void
-      delete_many (
-        const TOPIC_SEQ_TYPE& data) override;
+      void delete_many (const TOPIC_SEQ_TYPE& data) override;
       //@}
 
       /**
@@ -60,8 +53,7 @@ namespace CIAOX11
        * Getter for is_global_scope
        */
       //@{
-      bool
-      is_global_scope () override;
+      bool is_global_scope () override;
       //@}
 
       /**
@@ -69,12 +61,9 @@ namespace CIAOX11
        * Accessors for is_coherent_write
        */
       //@{
-      bool
-      is_coherent_write () override;
+      bool is_coherent_write () override;
 
-      void
-      is_coherent_write (
-        bool value) override;
+      void is_coherent_write (bool value) override;
       //@}
 
     private:
@@ -107,13 +96,9 @@ namespace CIAOX11
         const TOPIC_TYPE& an_instance,
         const ::DDS::InstanceHandle_t& instance_handle);
 
-      void
-      check_already_created (
-        const TOPIC_SEQ_TYPE& data);
+      void check_already_created (const TOPIC_SEQ_TYPE& data);
 
-      void
-      check_existence (
-        const TOPIC_SEQ_TYPE& data);
+      void check_existence (const TOPIC_SEQ_TYPE& data);
       //@}
 
       Updater_T() = delete;

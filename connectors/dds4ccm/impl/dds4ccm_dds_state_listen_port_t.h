@@ -31,7 +31,7 @@ class DDS_State_Listen_Port_T
 {
 public:
   explicit DDS_State_Listen_Port_T (IDL::traits<CORBA::Object>::ref_type component);
-  virtual ~DDS_State_Listen_Port_T () = default;
+  ~DDS_State_Listen_Port_T () override = default;
 
   /**
    * @name DDS_StateListen

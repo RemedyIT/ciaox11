@@ -26,11 +26,9 @@ namespace CIAOX11
       CCM_DDS_ContentFilterSetting_i () = default;
 
       /// Destructor
-      virtual ~CCM_DDS_ContentFilterSetting_i () = default;
+      ~CCM_DDS_ContentFilterSetting_i () override = default;
 
-      void
-      set_filter_parameters (
-        const ::DDS::StringSeq &parameters) override;
+      void set_filter_parameters (const ::DDS::StringSeq &parameters) override;
 
       CCM_DDS::QueryFilter filter ();
 

@@ -31,15 +31,14 @@ class DDS_Listen_Port_T
 {
 public:
   explicit DDS_Listen_Port_T (IDL::traits<CORBA::Object>::ref_type component);
-  virtual ~DDS_Listen_Port_T () = default;
+  ~DDS_Listen_Port_T () override = default;
 
   /**
    * @name DDS_Listen
    * DDS_Listen operations
    */
   //@{
-  IDL::traits< CCM_DDS::CCM_DataListenerControl>::ref_type
-  get_data_control ();
+  IDL::traits< CCM_DDS::CCM_DataListenerControl>::ref_type get_data_control ();
   //@}
 
   void

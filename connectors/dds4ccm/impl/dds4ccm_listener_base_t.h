@@ -26,11 +26,9 @@ namespace CIAOX11
     class ListenerBase_T
       : public PortStatusListener_T<typename CCM_TYPE::event_strategy_type>
     {
-    typedef ListenerBase_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>
-      ListenerBase_type;
+    using ListenerBase_type = ListenerBase_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE> ;
 
-    typedef typename CCM_TYPE::event_strategy_type
-        EventStrategy_type;
+    using EventStrategy_type = typename CCM_TYPE::event_strategy_type;
 
     public:
       /// Constructor
@@ -40,7 +38,7 @@ namespace CIAOX11
         SharedConditionManager condition_manager);
 
       /// Destructor
-      virtual ~ListenerBase_T () = default;
+      virtual ~ListenerBase_T () override = default;
 
       /// Implements the thread switch
       void

@@ -23,7 +23,7 @@ class DDS_State_Connector_T
 {
 public:
   DDS_State_Connector_T () = default;
-  virtual ~DDS_State_Connector_T ();
+  ~DDS_State_Connector_T () override;
 
   /**
    * @name DDS_Update

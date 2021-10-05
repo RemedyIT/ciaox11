@@ -17,7 +17,7 @@ class DDS_Update_Port_T
 {
 public:
   explicit DDS_Update_Port_T (IDL::traits<CORBA::Object>::ref_type component);
-  ~DDS_Update_Port_T () = default;
+  virtual ~DDS_Update_Port_T () = default;
 
   /**
    * @name DDS_Update

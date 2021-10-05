@@ -36,7 +36,7 @@ namespace CIAOX11
         SharedConditionManager condition_manager);
 
       /// Destructor
-      virtual ~DataReaderListenerBase_T () = default;
+      ~DataReaderListenerBase_T () override = default;
 
       /// Publishes data to the user defined facet. Invokes on_one_data of on_many_data
       /// based on what's the end user configured in the DataListenerControl.

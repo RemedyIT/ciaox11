@@ -36,7 +36,7 @@ namespace CIAOX11
         SharedConditionManager condition_manager);
 
       /// Destructor
-      virtual ~DataReaderStateListenerBase_T () = default;
+      ~DataReaderStateListenerBase_T () override = default;
 
       void
       on_data_available_i (

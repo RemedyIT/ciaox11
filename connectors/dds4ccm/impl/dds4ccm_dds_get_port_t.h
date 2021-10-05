@@ -19,15 +19,14 @@ class DDS_Get_Port_T
 {
 public:
   explicit DDS_Get_Port_T (IDL::traits<CORBA::Object>::ref_type component);
-  virtual ~DDS_Get_Port_T () = default;
+  ~DDS_Get_Port_T () override = default;
 
   /**
    * @name DDS_Get
    * DDS_Get operations
    */
   //@{
-  typename IDL::traits<typename CCM_TYPE::fresh_data_type>::ref_type
-  get_fresh_data ();
+  typename IDL::traits<typename CCM_TYPE::fresh_data_type>::ref_type get_fresh_data ();
   //@}
 
   void

@@ -19,7 +19,7 @@ namespace CIAOX11
   {
     template <typename BASE_TYPE, typename TOPIC_TYPE>
     class InstanceHandleManager_T
-      : public virtual FacetBase< BASE_TYPE >
+      : public virtual FacetBase<BASE_TYPE>
     {
     public:
       /// Constructor
@@ -27,23 +27,18 @@ namespace CIAOX11
         IDL::traits<CORBA::Object>::weak_ref_type component);
 
       /// Destructor
-      virtual ~InstanceHandleManager_T () = default;
+      ~InstanceHandleManager_T () override = default;
 
-      ::DDS::InstanceHandle_t
-      register_instance (
-        const TOPIC_TYPE& datum) override;
+      ::DDS::InstanceHandle_t register_instance (const TOPIC_TYPE& datum) override;
 
       void
       unregister_instance (
         const TOPIC_TYPE& datum,
         const ::DDS::InstanceHandle_t& instance_handle) override;
 
-      void
-      set_dds_writer (
-        IDL::traits< ::DDS::DataWriter>::ref_type dds_writer);
+      void set_dds_writer (IDL::traits< ::DDS::DataWriter>::ref_type dds_writer);
 
-      IDL::traits< ::DDS::DataWriter>::ref_type
-      get_dds_writer ();
+      IDL::traits< ::DDS::DataWriter>::ref_type get_dds_writer ();
 
     protected:
       typename ::DDS::traits<TOPIC_TYPE>::typed_datawriter_ref_type dds_writer_ {};
