@@ -114,41 +114,32 @@ module EFC
 This combination of IDL definitions specifies a connector FooConnector that is supposed to provide a facet for the
 `EFC::FooRequest` interface and a receptacle for the `EFC::FooReply` interface with the intention that _business components_ could connect and use the `request_handler` port to submit requests and connect the `reply_listener` port to listen for replies to the submitted requests.
 
-Next is the implemention of the C++ code.
+Next is the implemention of the {cxx11} code.
 
 === Creating a starting point
 
-To start the C++ code implementation the generic code generation for a component executor (and executor locator) can be used.
+To start the {cxx11} code implementation the generic code generation for a component executor (and executor locator) can be used.
 As said before, technically there is no difference between connectors and component in *AXCIOMA* and therefor the standard code generated for components will do fine as startup skeleton code for implementing the connector.
 
 The generated connector starter code will depend on generated stub and LEM (Local Executor Mapping) code for the connector
-link:{code_root}/ciaox11/connectors/idl/efc_interface.idl[IDL interface definitions] for which you can find the
-example project link:{code_root}/ciaox11/connectors/idl/efc_connector_stub.mpc[here]. The make files generated from
-this project will generate the required stub and LEM code and build the `efc_connector_stub` code.
+link:{code_root}/ciaox11/connectors/idl/efc_interface.idl[IDL interface definitions] for which you can find the example project link:{code_root}/ciaox11/connectors/idl/efc_connector_stub.mpc[here].
+The make files generated from this project will generate the required stub and LEM code and build the `efc_connector_stub` code.
 
-The example project for creating the (startup) connector implementation can be found link:{code_root}/ciaox11/connectors/impl/efc_connector_impl.mpc[here]. The make files generated from this project
-will generate the required stub and LEM code for the connector, servant (or executor locator) and executor code as
-well as build 3 libraries:
+The example project for creating the (startup) connector implementation can be found link:{code_root}/ciaox11/connectors/impl/efc_connector_impl.mpc[here].
+The make files generated from this project will generate the required stub and LEM code for the connector, servant (or executor locator) and executor code as well as build 3 libraries:
 
 . `efc_connector_impl_stub` for the stub and LEM code;
 . `efc_connector_impl_svnt` for the servant (or executor locator) code and
 . `efc_connector_impl_exec` for the executor code.
 
-The first the project is executed RIDL will generate an executor code skeleton which only implements the minimal
+The first time the project is executed RIDL will generate an executor code skeleton which only implements the minimal
 required logic to allow *AXCIOMA* framework interaction so the code can be compiled, linked and deployed.
 
-The generated stub and LEM code is standard and will not need any customization of completion. The generated servant
-code is also standard and will in most cases not need any customization. If customization is required this will most
-likely be due to special connection handling constraints/requirements like is the case with the CORBA4CCM and AMI4CCM
- connectors. We will not go into that in more detail here (compare the generated servant code for these connectors to
-  see what is generated differently).
+The generated stub and LEM code is standard and will not need any customization of completion. The generated servant code is also standard but might need customization for special configuration or connection handling constraints/requirements (like is the case with the CORBA4CCM and AMI4CCM connectors).
 
-The generated executor code is where in most cases the actual work needs to be done which will most likely be an
-iterative process which may require going back and forth between IDL specifications and code. Regenerating code from
-IDL normally rewrites the complete C++ files. This would be quite bothersome in this case as the executor code gets
-developed piece by piece. Luckily RIDL implements regeneration support for executor files which is enabled by default
-. This adds comment markers to the generated C++11 code based on the IDL specifications the code is generated from
-which allows RIDL to retain customized code when regenerating.
+The generated executor code is where in most cases the most work needs to be done which will likely be an iterative process which may require going back and forth between IDL specifications and code.
+Regenerating code from IDL normally rewrites the complete {cxx11} files. This would be quite bothersome in this case as
+the executor code gets developed piece by piece. Luckily RIDL implements regeneration support for executor files which is enabled by default. This adds comment markers to the generated {cxx11} code based on the IDL specifications the code is generated from which allows RIDL to retain customized code when regenerating.
 The regeneration markers look like:
 
 [source,c++]
@@ -169,19 +160,298 @@ The regeneration markers look like:
   }
 ----
 
-Please note that markers are matched based on IDL identifiers (file name, module name, class name, method/attribute
-name) so as long as the same IDL item retains the same name the custom code sections will be retained. Changing
-return types, argument lists or modifiers will not interfere. Removing or renaming an item however may lead to loss
-of code blocks (which may or may not be what is expected). In these cases manually updating the markers before
-regeneration (or creating backups) might be required.
+Please note that markers are matched based on IDL identifiers (file name, module name, class name, method/attribute name) so as long as the same IDL item retains the same name the custom code sections will be retained.
+Changing return types, argument lists or modifiers will not interfere. Removing or renaming an item however may lead
+to loss of code blocks (which may or may not be what is expected). In these cases manually updating the markers
+before regeneration (or creating backups) might be required.
 
 === Filling in the blanks
 
+Now that a base code template has been generated it is time to fill in the blanks which can be grouped in 4 major
+categories:
+
+. Standard framework methods which are the methods required by the framework for component instance installation,
+configuration and connection handling;
+. CCM lifecycle methods which are the methods which control the component activation and de-activation sequences
+accordding to the (Lw)CMM standard;
+. Facet executor implementations for the facet interface definitions specified in the connector IDL;
+. Any further customization of the generated classes specific to the intended connector implementation.
+
 ==== Standard framework methods
+
+The executor locator (which is the *AXCIOMA* version of the CCM servant) implements the methods for integration
+ with the *AXCIOMA* framework and is generated in pass:[*]_svnt.{cpp,h} files (a leftover from the CCM ancestry). +
+The executor locator code generated for the example connector can be found
+link:{code_root}/ciaox11/connectors/impl/efc_connector_svnt.h[here] and
+link:{code_root}/ciaox11/connectors/impl/efc_connector_svnt.cpp[here].
+
+*AXCIOMA* generates implemented, functional session context and executor locator classes in these files.
+
+===== Session context
+
+The session context class holds session variables like the service registry reference (an *AXCIOMA* extension) and
+the deployment instance id for the component instance (as well as their access methods) and provides methods for
+setting or removing receptacle connections and retrieving receptacle configurations.
+
+[source,c++]
+.Example session context class
+----
+  /**
+   * Context implementation class for the ::EFC::CCM_FooConnector
+   * component.
+   */
+  class FooConnector_Context final
+    : public IDL::traits< ::EFC::CCM_FooConnector_Context>::base_type
+  {
+  public:
+    /**
+     * Constructor for the context.
+     * @param svcreg The ServiceRegistry for this component
+     * @param ins_name The name of the component instance as mentioned in the deployment plan.
+     */
+    FooConnector_Context (IDL::traits<CIAOX11::Service_Registry>::ref_type svcreg, std::string ins_name);
+
+    /// Destructor
+    ~FooConnector_Context () override = default;
+
+    /// Retrieve the service registry
+    IDL::traits<CIAOX11::Service_Registry>::ref_type the_service_registry () override;
+
+    /// @name Accessors for all receptacles
+    //@{
+    /// Get the reply_listener receptacle
+    IDL::traits< ::EFC::FooListener>::ref_type get_connection_reply_listener () override;
+    //@}
+    // generated from ccmx11/templates/svnt/hdr/connector_context_extra_receptacles
+
+    /// @name Configuration accessors for all receptacles
+    //@{
+    /// Get the reply_listener receptacle configuration
+    ::Components::ConfigValues reply_listener_configuration () override;
+    //@}
+
+    friend class FooConnector_ExecutorLocator;
+
+    /// readonly attribute which holds the instance name of the
+    /// component. This instance name is supplied to the servant factory
+    /// method by the deployment tools and represents the name of the
+    /// component in the deployment plan.
+    std::string instance_id () override;
+
+  private:
+    // generated from ccmx11/templates/svnt/hdr/context_set_connection
+    /// Connect method to set the connection for receptacle with name @a name.
+    bool set_connection (const std::string& name,
+                         IDL::traits<CORBA::Object>::ref_type port);
+
+    // generated from ccmx11/templates/svnt/hdr/context_reset_connection
+    /// Disconnect method to reset the connection for receptacle with name @a name
+    bool reset_connection (const std::string& name);
+
+    /// The ServiceRegistry for this component
+    IDL::traits<CIAOX11::Service_Registry>::ref_type service_registry_ {};
+    /// The instance name of the component
+    std::string const instance_id_ {};
+
+    /// @name Member variables for storing all receptacles
+    //@{
+    /// Member variable for storing a reference for the reply_listener receptacle
+    IDL::traits< ::EFC::FooListener>::ref_type reply_listener_{};
+    //@}
+
+    //@{
+    /** Illegal to be called. Deleted explicitly to let the compiler detect any violation */
+    FooConnector_Context () = delete;
+    FooConnector_Context (const FooConnector_Context&) = delete;
+    FooConnector_Context (FooConnector_Context&&) = delete;
+    FooConnector_Context& operator= (const FooConnector_Context&) = delete;
+    FooConnector_Context& operator= (FooConnector_Context&&) = delete;
+    //@}
+  };
+----
+
+The main customization points here are the private `set_connection` and `reset_connection` methods as well as the
+public `pass:[*]_configuration` methods generated for every declared receptacle of the connector.
+
+set_connection::
+This method is called by the executor locator whenever a the framework sets up a deployment connection for a connector
+receptacle at deployment startup.
+reset_connection::
+This method is called by the executor locator whenever a the framework removes a deployment connection for a connector
+receptacle at deployment shutdown.
+pass:[*]_configuration::
+This method can be used to return any receptacle specific configuration when required by the connector implementation
+. By default this returns an empty container. This is an advanced option not in use by any connector
+implementation currently available.
+
+The default implementations for these methods would normally suffice. Only in rare cases would customization be
+needed (review the generated connectors for AMI4CCM for an example of customization).
+
+===== Executor locator
+
+The executor locator class provides access to the connector session context and the connector executor and provides
+the callbacks for the framework to handle connector configuration and connection handling.
+
+[source,c++]
+.Example executor locator class
+----
+  /**
+   * ExecutorLocator for the FooConnector component. This
+   * gives access to all middleware generated pieces that are used
+   * by the CCM infrastructure
+   */
+  class FooConnector_ExecutorLocator final
+    : public IDL::traits<CIAOX11::ExecutorLocator>::base_type
+  {
+  public:
+    /**
+    * Constructor
+    * @param component_executor The user implemented executor
+    * @param component_context The context that is passed to the executor
+    */
+    FooConnector_ExecutorLocator (
+      IDL::traits<::EFC::CCM_FooConnector>::ref_type component_executor,
+      IDL::traits<FooConnector_Context>::ref_type component_context);
+
+    /// Destructor
+    ~FooConnector_ExecutorLocator () override = default;
+
+    /**
+     * Configure the component
+     */
+    void configure (::Components::ConfigValues& config) override;
+
+    /**
+     * Connect a component port.
+     * @retval true Connecting the port has succeeded
+     * @retval false Connecting the port has failed
+     */
+    bool connect (const ::Components::FeatureName& name,
+                  IDL::traits<CORBA::Object>::ref_type connection,
+                  const std::string& conn_name,
+                  const ::Components::ConfigValues& config) override;
+
+    /**
+     * Disconnect a component port.
+     * @retval true Disconnecting the port has succeeded
+     * @retval false Disconnecting the port has failed
+     */
+    bool disconnect (const ::Components::FeatureName& name,
+                     const std::string& conn_name) override;
+
+    /**
+     * Obtain the component executor.
+     */
+    IDL::traits<CORBA::Object>::ref_type obtain_executor () override;
+
+    /**
+     * Obtain a facet executor for the given @a name using the the given @a config.
+     * If there is no facet executor returned by the component executor we just
+     * return nullptr. If we have to get an executor for an invalid facet
+     * name we throw an InvalidName() exception
+     */
+    IDL::traits<CORBA::Object>::ref_type obtain_facet_executor (
+                          const ::Components::FeatureName& name,
+                          ::Components::ConfigValues& config) override;
+
+  private:
+    /// Reference to the user implemented executor
+    IDL::traits<::EFC::CCM_FooConnector>::ref_type component_executor_;
+
+    /// The context for this component
+    IDL::traits<FooConnector_Context>::ref_type component_context_;
+
+    /** @name Illegal to be called. Deleted explicitly to let the compiler detect any violation */
+    //@{
+    FooConnector_ExecutorLocator () = delete;
+    FooConnector_ExecutorLocator (const FooConnector_ExecutorLocator&) = delete;
+    FooConnector_ExecutorLocator (FooConnector_ExecutorLocator&&) = delete;
+    FooConnector_ExecutorLocator& operator= (const FooConnector_ExecutorLocator&) = delete;
+    FooConnector_ExecutorLocator& operator= (FooConnector_ExecutorLocator&&) = delete;
+    //@}
+  };
+----
+
+The customization points are the `configure`, `connect` and `disconnect` methods.
+
+configure::
+This method is called by the framework to configure a component instance.
+parameters:::
+* `::Components::ConfigValues& config` would be the list of collected deployment properties for the component instance
+
++
+On calling this method the framework passes a reference to a list in which all deployment properties for a
+component instance (collected from the deployment plan) have been collected from the deployment plan. The executor
+locator is allowed update the list which is later on used to initialize the configuration list for setting up
+connections for the component instance (see below).
+connect::
+This method is called by the framework to set up deployment connections for a component instance.
+parameters:::
+* `const ::Components::FeatureName& name` would normally be the name of a receptacle to connect
+* `IDL::traits<CORBA::Object>::ref_type connection` would be the local (facet) reference to connect to
+* `const std::string& conn_name` would be the name of the deployment connection being set up
+* `const ::Components::ConfigValues& config` would be the collected configuration values for the connection
+returns:::
+`*true*` if the connection was successfully set up, `*false*` otherwise
+
++
+The framework will always set up collocated connections (connections for collocated component instances) by
+connecting a receptacle (identified by `name`) to a local facet (`connection` reference).
+Non-local connections (connection to a non-collocated component or external reference) should normally be specified
+in the deployment plan such that the framework will also call `connect` for a receptacle (`name`) passing the non-local (facet) reference as one of the items in the `config` list.
+It is however possible to specify a deployment connection for a facet to an external (receptacle) reference. This is
+considered non-standard by *AXCIOMA* and is currently not supported by any currently available connector or
+component implementation although the framework will set up and execute a all to the `connect` method of the executor
+ locator for the component implementing the facet. +
+ +
+The provided configuration list is initialized with the configuration list returned from the `configure` call with
+the possible addition of the following items:
+[cols="4,1,3"]
+|===
+|Property ID |Type |Description
+
+|nl.remedy.it.CIAOX11.Config.PeerEndpointType
+|`uint32_t`
+|Type value specifying the type of peer endpoint specified in the deployment plan: internal endpoint, external
+endpoint or external reference +
+(_this property will always be present with assigned value_)
+
+|nl.remedy.it.CIAOX11.Config.PeerEndpointPort
+|`std::string`
+|The name of the internal or external endpoint specified in the deployment plan.
+
+|nl.remedy.it.CIAOX11.Config.PeerEndpointReference
+|`IDL::traits<CORBA::Object>::ref_type`
+|The reference of a non-collocated internal endpoint (if any) or an external reference
+|===
+[none]
+* The described properties are optional unless indicated otherwise and when present can contain `null` values.
+The value for each `ConfigValue` item in the configuration list is contained in an `CORBA::Any`
+instance.
+
+//- KEEP THIS; breaks list above
+
+disconnect::
+This method is called by the framework to remove deployment connections for a component instance.
+parameters:::
+* `const ::Components::FeatureName& name` would normally be the name of a receptacle to disconnect
+* `const std::string& conn_name` would be the name of the deployment connection being set up
+returns:::
+`*true*` if the connection was successfully removed, `*false*` otherwise
+
++
+Here also the normal procedure would be for the framework calling `disconnect` for receptacles. Calls to disconnect
+facets could happen but are currently not supported by any currently available connector or component implementation.
+
+The default implementations for these methods would normally suffice.
 
 ==== Lifecycle methods
 
+Standard executor methods.
+
 ==== Facet executors
+
+==== Further customization
 
 == Interaction patterns and templates
 
