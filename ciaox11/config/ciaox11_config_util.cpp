@@ -15,6 +15,7 @@ namespace CIAOX11
   {
     namespace Utility
     {
+      /// Internal helper method to find the config value
       static bool _find_config_value(const Components::ConfigValues& cfgval,
                                      const Components::FeatureName& name,
                                      const Components::ConfigValue* &value)
@@ -23,7 +24,7 @@ namespace CIAOX11
         {
           if (cv.name () == name)
           {
-            value = &cv;
+            value = std::addressof(cv);
             return true;
           }
         }

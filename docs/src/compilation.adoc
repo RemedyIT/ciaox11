@@ -378,7 +378,7 @@ g++ -std=c++11 -Wno-deprecated -fvisibility=hidden -fvisibility-inlines-hidden -
 
 At last the component code can be compiled. Business components should
 not have any relation to the implementation of the patterns, only to the
-pattern sources and libaries themselves!
+pattern sources and libraries themselves!
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 g++ -std=c++11 -Wno-deprecated -fvisibility=hidden -fvisibility-inlines-hidden -Wnon-virtual-dtor -O3 -ggdb -m64 -pthread -fno-strict-aliasing -Wall -W -Wpointer-arith -pipe -D_GNU_SOURCE -D__ACE_INLINE__ -I$ACE_ROOT -I$TAO_ROOT -I$TAOX11_ROOT -I. -I.. -I../base -I../base/generated_code -Igenerated_code -I../../../../.. -I../../../../../ccm -DFOO_SENDER_LEM_STUB_BUILD_DLL -DFOO_SENDER_EXEC_BUILD_DLL -DFOO_SENDER_SVNT_BUILD_DLL  -c -fPIC -o .shobj/foo_senderEC.o foo_senderEC.cpp

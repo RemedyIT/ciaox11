@@ -26,7 +26,7 @@ namespace CIAOX11
         typename IDL::traits<LISTENER>::ref_type drl,
         IDL::traits< ::DDS::DataReader>::ref_type dr,
         typename IDL::traits<DATA_LISTENER>::weak_ref_type dl);
-      virtual ~DataReaderContextSwitch_T () = default;
+      ~DataReaderContextSwitch_T () override = default;
 
       int handle_exception (ACE_HANDLE fc = ACE_INVALID_HANDLE) override;
 

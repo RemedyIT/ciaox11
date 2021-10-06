@@ -22,20 +22,16 @@ namespace CIAOX11
       return std::addressof(instance_);
     }
 
-    CIAOX11_Test_Log_Msg* CIAOX11_Test_Log_Msg::getInstance()
-    {
-      static CIAOX11_Test_Log_Msg instance_;
-
-      return std::addressof(instance_);
-    }
-
     CIAOX11_Log_Msg::CIAOX11_Log_Msg()
       : x11_logger::Log_Module ("CIAOX11")
     {
     }
 
-    CIAOX11_Log_Msg::~CIAOX11_Log_Msg()
+    CIAOX11_Test_Log_Msg* CIAOX11_Test_Log_Msg::getInstance()
     {
+      static CIAOX11_Test_Log_Msg instance_;
+
+      return std::addressof(instance_);
     }
 
     CIAOX11_Test_Log_Msg::CIAOX11_Test_Log_Msg()
@@ -45,11 +41,6 @@ namespace CIAOX11
                                 x11_logger::X11_Verbose::V_TIME)
     {
     }
-
-    CIAOX11_Test_Log_Msg::~CIAOX11_Test_Log_Msg()
-    {
-    }
-
   } // namespace ciaox11_logger
 
 #endif

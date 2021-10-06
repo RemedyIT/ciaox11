@@ -515,8 +515,7 @@ DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::do_ccm_activate ()
 
   if (this->passive_observer_)
   {
-    typedef typename CCM_TYPE::passive_observer_traits::event_strategy_type
-        event_strategy_type;
+    using event_strategy_type = typename CCM_TYPE::passive_observer_traits::event_strategy_type;
 
     this->passive_observer_->activate (
       event_strategy_type (this->context ()),
@@ -525,8 +524,7 @@ DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::do_ccm_activate ()
 
   if (this->pull_observer_)
   {
-    typedef typename CCM_TYPE::pull_observer_traits::event_strategy_type
-        event_strategy_type;
+    using event_strategy_type = typename CCM_TYPE::pull_observer_traits::event_strategy_type;
 
     this->pull_observer_->activate (
       event_strategy_type (this->context ()),
@@ -535,8 +533,7 @@ DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::do_ccm_activate ()
 
   if (this->push_observer_)
   {
-    typedef typename CCM_TYPE::push_observer_traits::event_strategy_type
-        event_strategy_type;
+    using event_strategy_type = typename CCM_TYPE::push_observer_traits::event_strategy_type;
 
     this->push_observer_->activate (
       event_strategy_type (this->context ()),
@@ -546,8 +543,7 @@ DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::do_ccm_activate ()
 
   if (this->push_state_observer_)
   {
-    typedef typename CCM_TYPE::push_state_observer_traits::event_strategy_type
-        event_strategy_type;
+    using event_strategy_type = typename CCM_TYPE::push_state_observer_traits::event_strategy_type;
 
     this->push_state_observer_->activate (
       event_strategy_type (this->context ()),

@@ -37,7 +37,6 @@ namespace CIAOX11
     {
     private:
       DomainParticipantManager ();
-
       ~DomainParticipantManager ();
 
     public:
@@ -93,14 +92,14 @@ namespace CIAOX11
 
       /// Key type, we store a domain participant for the unique combination of
       /// QoS profile and Domain Id
-      typedef std::pair<std::string, ::DDS::DomainId_t> IdQosProfile;
+      using IdQosProfile = std::pair<std::string, ::DDS::DomainId_t>;
       /// A domain participant can be used multiple times, so keep a ref count how many times
       /// it is used
-      typedef std::pair<IDL::traits< ::DDS::DomainParticipant>::ref_type, uint32_t> DomainParticipantRefcount;
-      typedef std::map<IdQosProfile, DomainParticipantRefcount> DomainParticipants;
+      using DomainParticipantRefcount = std::pair<IDL::traits< ::DDS::DomainParticipant>::ref_type, uint32_t>;
+      using DomainParticipants = std::map<IdQosProfile, DomainParticipantRefcount>;
       DomainParticipants dps_;
 
-      typedef DomainParticipants::iterator DomainParticipants_iterator;
+      using DomainParticipants_iterator = DomainParticipants::iterator;
 
       DomainParticipantManager(const DomainParticipantManager&) = delete;
       DomainParticipantManager(DomainParticipantManager&&) = delete;

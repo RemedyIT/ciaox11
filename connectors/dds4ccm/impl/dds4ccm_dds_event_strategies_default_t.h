@@ -421,7 +421,7 @@ namespace CIAOX11
           typename IDL::traits<LISTENER>::ref_type drl,
           IDL::traits< ::DDS::DataReader>::ref_type dr)
       {
-        typedef DataReaderContextSwitch_T<LISTENER, DATA_LISTENER> DataReaderHandler_type;
+        using DataReaderHandler_type = DataReaderContextSwitch_T<LISTENER, DATA_LISTENER>;
 
 #if (CIAOX11_DDS4CCM_CONTEXT_SWITCH == 1)
         if (this->reactor_)

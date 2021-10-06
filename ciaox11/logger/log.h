@@ -40,7 +40,7 @@ namespace CIAOX11
       : public x11_logger::Log_Module
     {
     public:
-      virtual ~CIAOX11_Log_Msg();
+      ~CIAOX11_Log_Msg() override = default;
 
       static CIAOX11_Log_Msg* getInstance();
 
@@ -52,10 +52,10 @@ namespace CIAOX11
 
 
     class CIAOX11_Logger_Export CIAOX11_Test_Log_Msg
-    : public x11_logger::Log_Module
+      : public x11_logger::Log_Module
     {
     public:
-      virtual ~CIAOX11_Test_Log_Msg ();
+      ~CIAOX11_Test_Log_Msg () override = default;
 
       using log_type = x11_logger::Log_Type_T<CIAOX11_Test_Log_Msg>;
 

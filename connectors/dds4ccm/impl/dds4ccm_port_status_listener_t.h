@@ -22,11 +22,10 @@ namespace CIAOX11
     {
     public:
       /// Constructor
-      explicit PortStatusListener_T (
-        const EVT_STRATEGY& evs);
+      explicit PortStatusListener_T (const EVT_STRATEGY& evs);
 
       /// Destructor
-      virtual ~PortStatusListener_T () = default;
+      ~PortStatusListener_T () override = default;
 
       using uses_context_switch = typename EVT_STRATEGY::uses_context_switch;
       static constexpr const char* context_switch_type = EVT_STRATEGY::context_switch_type;

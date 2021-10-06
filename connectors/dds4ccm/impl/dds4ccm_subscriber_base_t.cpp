@@ -157,8 +157,7 @@ DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::activate (
 {
   DDS4CCM_LOG_TRACE ("DDS_Subscriber_Base_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::activate");
 
-  typedef ::CIAOX11::DDS4CCM::PortStatusListener_T<typename CCM_TYPE::event_strategy_type>
-    PortStatusListener_type;
+  using PortStatusListener_type = ::CIAOX11::DDS4CCM::PortStatusListener_T<typename CCM_TYPE::event_strategy_type>;
 
   ::DDS::StatusMask const mask =
       PortStatusListener_type::get_mask (status);

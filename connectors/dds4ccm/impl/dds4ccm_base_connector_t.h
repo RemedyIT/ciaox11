@@ -29,7 +29,7 @@ public:
    * systems don't interfere with each other.
    */
   DDS_Base_Connector_T ();
-  virtual ~DDS_Base_Connector_T ();
+  ~DDS_Base_Connector_T () override;
 
   /**
    * @name domain_id

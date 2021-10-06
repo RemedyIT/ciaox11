@@ -27,7 +27,7 @@ namespace CIAOX11
 
       // using {} since using 'default' will cause an error with message:
       // internal compiler error: in use_thunk, at cp/method.c:338
-      virtual ~FacetBase ();
+      ~FacetBase () override;
 
       /**
        * Return the reference to the component which manages the facet.
@@ -36,8 +36,7 @@ namespace CIAOX11
        * throw an exception.
        * @return The component which manages the facet
        */
-      IDL::traits<CORBA::Object>::ref_type
-      _get_component () override;
+      IDL::traits<CORBA::Object>::ref_type _get_component () override;
 
     private:
       /**

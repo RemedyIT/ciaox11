@@ -39,7 +39,6 @@ namespace CIAOX11
       try
         {
           CosNaming::Name cos_name;
-
           Name_Utilities::build_name (name, cos_name);
 
           if (name.empty ())
@@ -83,7 +82,6 @@ namespace CIAOX11
         }
 
       CosNaming::Name newname;
-
 
       for (CosNaming::Name::size_type i = 0;
            i < (name.size () - 1); ++i)

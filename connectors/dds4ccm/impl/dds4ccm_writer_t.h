@@ -22,27 +22,23 @@ namespace CIAOX11
     {
     public:
       explicit Writer_T (IDL::traits<CORBA::Object>::weak_ref_type component);
-      virtual ~Writer_T () = default;
+      ~Writer_T () override = default;
 
       void
       write_one (
         const TOPIC_TYPE &an_instance,
         const ::DDS::InstanceHandle_t& instance_handle) override;
 
-      void
-      write_many (
-        const TOPIC_SEQ_TYPE& instances) override;
+      void write_many (const TOPIC_SEQ_TYPE& instances) override;
 
       /**
        * @name is_coherent_write
        * Accessors for is_coherent_write
        */
       //@{
-      bool
-      is_coherent_write () override;
+      bool is_coherent_write () override;
 
-      void
-      is_coherent_write (bool value) override;
+      void is_coherent_write (bool value) override;
       //@}
 
     private:

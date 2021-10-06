@@ -12,11 +12,8 @@
 namespace CIAOX11
 {
     Container::Container (std::string name)
-     : name_ (name)
+     : name_ (std::move(name))
     {
       this->service_registry_ = CORBA::make_reference<CIAOX11::Service_Registry_i> ();
     }
-
-    Container::~Container ()
-    {}
 }

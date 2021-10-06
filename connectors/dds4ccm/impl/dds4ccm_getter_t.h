@@ -41,7 +41,7 @@ namespace CIAOX11
       explicit Getter_T (IDL::traits<CORBA::Object>::weak_ref_type component);
 
       /// Destructor
-      virtual ~Getter_T () = default;
+      ~Getter_T () override = default;
 
       /**
         *  Spec : get_many returns all the available samples

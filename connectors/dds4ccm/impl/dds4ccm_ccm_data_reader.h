@@ -27,7 +27,7 @@ namespace CIAOX11
       explicit CCM_DataReader (IDL::traits<CORBA::Object>::weak_ref_type component);
 
       /// Destructor
-      virtual ~CCM_DataReader () = default;
+      ~CCM_DataReader () override = default;
 
       /**
        * IDL defined wrapper methods.

@@ -53,7 +53,7 @@ namespace CIAOX11_TT_TimedTrigger_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : CIAOX11_TT_TimedTrigger_Impl::tt_scheduler_exec_i[ctor]
 
     /// Destructor
-    virtual ~tt_scheduler_exec_i ();
+    ~tt_scheduler_exec_i () override;
 
     /** @name Operations from ::CCM_TT::CCM_TT_Scheduler */
     //@{
@@ -86,7 +86,7 @@ namespace CIAOX11_TT_TimedTrigger_Impl
     void deactivate ()
     { this->deactivated_ = true; }
 
-    bool deactivated ()
+    bool deactivated () const
     { return this->deactivated_; }
     //@@{__RIDL_REGEN_MARKER__} - END : CIAOX11_TT_TimedTrigger_Impl::tt_scheduler_exec_i[user_public_ops]
     //@}

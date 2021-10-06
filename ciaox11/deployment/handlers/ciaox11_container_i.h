@@ -26,8 +26,11 @@ namespace CIAOX11
     Container_i (std::string name,
                  IDL::traits<CORBA::ORB>::ref_type orb);
 
-    virtual ~Container_i ();
+    ~Container_i () override = default;
 
+    /// Cleanup all resources related to this container
+    /// @todo Check whether we can move this method to the base and override
+    /// it in all containers
     virtual void fini ();
 
     /// @copydoc CIAOX11::Container::install_component
@@ -53,9 +56,6 @@ namespace CIAOX11
     bool configured_component (const std::string& name) override;
 
   private:
-    /// Reference to the ORB
-    IDL::traits<CORBA::ORB>::ref_type orb_;
-
     /// Map storing for the executor locator for each component
     using ExecutorLocatorMap = std::map<std::string, IDL::traits<CIAOX11::ExecutorLocator>::ref_type>;
     ExecutorLocatorMap executor_locator_map_;

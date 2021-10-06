@@ -59,7 +59,7 @@ namespace DDSX11
   class native_entity_traits
   {
   public:
-    typedef DDSX11_IMPL_TYPE proxy_impl_type;
+    using proxy_impl_type = DDSX11_IMPL_TYPE;
     /**
       * @brief Narrows a native DDS entity to its proxy implementation.
       * @param from The native DDS pointer

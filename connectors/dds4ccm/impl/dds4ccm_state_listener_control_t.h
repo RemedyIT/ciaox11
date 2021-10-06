@@ -17,8 +17,8 @@ class CCM_DDS_StateListenerControl_T
   : public virtual CCM_DDS_DataListenerControl_T<BASE_TYPE>
 {
 public:
-  CCM_DDS_StateListenerControl_T (IDL::traits<CORBA::Object>::weak_ref_type component);
-  virtual ~CCM_DDS_StateListenerControl_T () = default;
+  explicit CCM_DDS_StateListenerControl_T (IDL::traits<CORBA::Object>::weak_ref_type component);
+  ~CCM_DDS_StateListenerControl_T () override = default;
 
   /// Get the is_filter_interpreted
   bool is_filter_interpreted () override;

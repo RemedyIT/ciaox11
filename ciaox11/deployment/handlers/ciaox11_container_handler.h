@@ -29,7 +29,7 @@ namespace CIAOX11
     Container_Handler () = default;
 
     // Destructor
-    virtual ~Container_Handler () = default;
+    ~Container_Handler () override = default;
 
     std::string instance_type () override;
 
@@ -76,13 +76,9 @@ namespace CIAOX11
         Components::ConfigValues&& config,
         std::shared_ptr<CIAOX11::Container> container);
 
-    void
-    remove_container (
-        const std::string &id);
+    void remove_container (const std::string &id);
 
-    std::shared_ptr<CIAOX11::Container>
-    fetch_container (
-        const std::string& id);
+    std::shared_ptr<CIAOX11::Container> fetch_container (const std::string& id);
 
     IDL::traits<CORBA::ORB>::ref_type orb_;
     IDL::traits<PortableServer::POA>::ref_type poa_;

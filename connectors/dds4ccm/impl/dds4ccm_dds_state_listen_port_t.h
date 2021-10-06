@@ -31,7 +31,7 @@ class DDS_State_Listen_Port_T
 {
 public:
   explicit DDS_State_Listen_Port_T (IDL::traits<CORBA::Object>::ref_type component);
-  virtual ~DDS_State_Listen_Port_T () = default;
+  ~DDS_State_Listen_Port_T () override = default;
 
   /**
    * @name DDS_StateListen
@@ -49,14 +49,10 @@ public:
     IDL::traits< CCM_DDS::PortStatusListener>::ref_type status);
 
 private:
-  typedef ::CIAOX11::DDS4CCM::ListenerBase_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>
-    ListenerBase_type;
-  typedef ::CIAOX11::DDS4CCM::DataReaderStateListener_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE, LRT>
-    DataReaderStateListener_type;
-  typedef CCM_DDS_StateListenerControl_T< ::CCM_DDS::CCM_StateListenerControl >
-    StateListenerControl_type;
-  typedef DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>
-    SubscriberBase_type;
+  using ListenerBase_type = ::CIAOX11::DDS4CCM::ListenerBase_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>;
+  using DataReaderStateListener_type = ::CIAOX11::DDS4CCM::DataReaderStateListener_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE, LRT>;
+  using StateListenerControl_type = CCM_DDS_StateListenerControl_T< ::CCM_DDS::CCM_StateListenerControl >;
+  using SubscriberBase_type = DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>;
 
   /**
    * DDS_Listen

@@ -29,7 +29,7 @@ public:
     IDL::traits<CORBA::Object>::weak_ref_type component);
 
   /// Destructor
-  virtual ~CCM_DDS_DataListenerControl_T () = default;
+  ~CCM_DDS_DataListenerControl_T () override = default;
 
   /// Get the listener mode
   ::CCM_DDS::ListenerMode mode () override;

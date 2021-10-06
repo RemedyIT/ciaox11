@@ -17,12 +17,11 @@ namespace CIAOX11
   Container_i::Container_i (
     std::string name,
     IDL::traits<CORBA::ORB>::ref_type orb)
-    : Container (std::move (name)),
-      orb_ (std::move (orb))
+    : Container (std::move (name))
   {
-    if (!this->orb_)
+    if (!orb)
     {
-      // this should never happen
+      // This should never happen, we require an ORB
       CIAOX11_LOG_ERROR ("Container_i::Container - " <<
                          "Missing orb for container <" << this->name_ << ">");
     }
@@ -32,11 +31,7 @@ namespace CIAOX11
     // Install our ORB into the service registry, this
     // can be used for retrieval of the POA, Reactor, or
     // anything else that is CORBA related
-    this->service_registry_->install_service (CIAOX11::SVCID_ORB, this->orb_);
-  }
-
-  Container_i::~Container_i ()
-  {
+    this->service_registry_->install_service (CIAOX11::SVCID_ORB, orb);
   }
 
   void
@@ -48,8 +43,6 @@ namespace CIAOX11
       this->service_registry_->uninstall_service (CIAOX11::SVCID_ORB);
       this->service_registry_ = nullptr;
     }
-
-    this->orb_ = nullptr;
   }
 
   bool
@@ -149,7 +142,7 @@ namespace CIAOX11
     {
       IDL::traits<CORBA::Object>::ref_type executor = comp->obtain_executor ();
       IDL::traits<Components::SessionComponent>::ref_type session_executor =
-            IDL::traits<Components::SessionComponent>::narrow (executor);
+        IDL::traits<Components::SessionComponent>::narrow (executor);
 
       if (session_executor)
       {
@@ -174,7 +167,7 @@ namespace CIAOX11
     {
       IDL::traits<CORBA::Object>::ref_type executor = comp->obtain_executor ();
       IDL::traits<Components::SessionComponent>::ref_type session_executor =
-            IDL::traits<Components::SessionComponent>::narrow (executor);
+        IDL::traits<Components::SessionComponent>::narrow (executor);
 
       if (session_executor)
       {
@@ -201,7 +194,7 @@ namespace CIAOX11
     {
       IDL::traits<CORBA::Object>::ref_type executor = comp->obtain_executor ();
       IDL::traits<Components::SessionComponent>::ref_type session_executor =
-            IDL::traits<Components::SessionComponent>::narrow (executor);
+        IDL::traits<Components::SessionComponent>::narrow (executor);
 
       if (session_executor)
       {

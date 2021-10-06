@@ -11,17 +11,6 @@
 #include "dds4ccm/impl/dds4ccm_utils.h"
 
 template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
-DDS_LateBinded_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::DDS_LateBinded_Connector_T ()
-  : TopicBaseConnector ()
-{
-}
-
-template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
-DDS_LateBinded_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::~DDS_LateBinded_Connector_T ()
-{
-}
-
-template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 void
 DDS_LateBinded_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::topic_name (
   const std::string &topic_name)

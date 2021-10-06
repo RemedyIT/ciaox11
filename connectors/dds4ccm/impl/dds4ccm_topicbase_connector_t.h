@@ -18,7 +18,7 @@ class DDS_TopicBase_Connector_T
 {
 public:
   DDS_TopicBase_Connector_T () = default;
-  virtual ~DDS_TopicBase_Connector_T () = default;
+  ~DDS_TopicBase_Connector_T () override = default;
 
   /**
    * @name attributes of DDS4CCM TopicBase
@@ -89,7 +89,7 @@ protected:
   IDL::traits< ::DDS::Publisher>::ref_type publisher ();
   IDL::traits< ::DDS::Subscriber>::ref_type subscriber ();
 
-  typedef DDS_Base_Connector_T<CCM_TYPE> BaseConnector;
+  using BaseConnector = DDS_Base_Connector_T<CCM_TYPE>;
 
   IDL::traits< ::DDS::Publisher>::ref_type publisher_;
   IDL::traits< ::DDS::Subscriber>::ref_type subscriber_;

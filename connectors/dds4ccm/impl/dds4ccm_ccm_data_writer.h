@@ -27,7 +27,7 @@ namespace CIAOX11
       explicit CCM_DataWriter (IDL::traits<CORBA::Object>::weak_ref_type component);
 
       /// Destructor
-      virtual ~CCM_DataWriter () = default;
+      ~CCM_DataWriter () override = default;
 
       ::DDS::ReturnCode_t
       enable () override;

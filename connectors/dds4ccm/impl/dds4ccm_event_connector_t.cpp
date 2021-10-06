@@ -306,8 +306,7 @@ DDS_Event_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::do_ccm_activate ()
 
   if (this->push_consumer_)
   {
-    typedef typename CCM_TYPE::push_consumer_traits::event_strategy_type
-        event_strategy_type;
+    using event_strategy_type = typename CCM_TYPE::push_consumer_traits::event_strategy_type;
 
     this->push_consumer_->activate (
       event_strategy_type (this->context ()),
@@ -317,8 +316,7 @@ DDS_Event_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::do_ccm_activate ()
 
   if (this->pull_consumer_)
   {
-    typedef typename CCM_TYPE::pull_consumer_traits::event_strategy_type
-        event_strategy_type;
+    using event_strategy_type = typename CCM_TYPE::pull_consumer_traits::event_strategy_type;
 
     this->pull_consumer_->activate (
       event_strategy_type (this->context ()),
