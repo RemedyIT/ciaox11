@@ -131,16 +131,18 @@ link:{code_root}/ciaox11/connectors/idl/efc_interface.idl[IDL interface definiti
 The make files generated from this project will generate the required stub and LEM code and build the `efc_connector_stub` code.
 
 The example project for creating the (startup) connector implementation can be found link:{code_root}/ciaox11/connectors/impl/efc_connector_impl.mpc[here].
-The make files generated from this project will generate the required stub and LEM code for the connector, servant (or executor locator) and executor code as well as build 3 libraries:
+The make files generated from this project will generate the required stub and LEM code for the connector, executor
+locator and executor code as well as build 3 libraries:
 
 . `efc_connector_impl_stub` for the stub and LEM code;
-. `efc_connector_impl_svnt` for the servant (or executor locator) code and
+. `efc_connector_impl_svnt` for the executor locator (servant in original CCM) code and
 . `efc_connector_impl_exec` for the executor code.
 
 The first time the project is executed RIDL will generate an executor code skeleton which only implements the minimal
 required logic to allow *AXCIOMA* framework interaction so the code can be compiled, linked and deployed.
 
-The generated stub and LEM code is standard and will not need any customization of completion. The generated servant code is also standard but might need customization for special configuration or connection handling constraints/requirements (like is the case with the CORBA4CCM and AMI4CCM connectors).
+The generated stub and LEM code is standard and will not need any customization of completion. The generated executor
+ locator code is also standard but might need customization for special configuration or connection handling constraints/requirements (like is the case with the CORBA4CCM and AMI4CCM connectors).
 
 The generated executor code is where in most cases the most work needs to be done which will likely be an iterative process which may require going back and forth between IDL specifications and code.
 Regenerating code from IDL normally rewrites the complete {cxx11} files. This would be quite bothersome in this case as
@@ -184,9 +186,9 @@ according to the (Lw)CMM standard;
 
 ==== Installation methods
 
-The executor locator (which is the *AXCIOMA* version of the CCM servant) implements the methods required for
-installation of component instances within the *AXCIOMA* framework and is generated in pass:[*_]svnt.{cpp,h} files (a
-leftover from the CCM ancestry). +
+The executor locator (which is the *AXCIOMA* version of what used to be the servant in CCM) implements the methods
+required for installation of component instances within the *AXCIOMA* framework and is generated in pass:[*_]svnt
+.{cpp,h} files (a leftover from the CCM ancestry). +
 The executor locator code generated for the example connector can be found
 link:{code_root}/ciaox11/connectors/impl/efc_connector_svnt.h[here] and
 link:{code_root}/ciaox11/connectors/impl/efc_connector_svnt.cpp[here]. +
@@ -506,7 +508,7 @@ returns:::
 
 obtain_facet_executor::
 This method is called by the framework to retrieve a facet executor instance for the component instance (which would
-actually be managed by the component executor instance mannaged by the executor locator) when setting up the
+actually be managed by the component executor instance managed by the executor locator) when setting up the
 local connection to a (local) receptacle.
 parameters:::
 * `const ::Components::FeatureName& name` the name of the facet (defined in IDL) for which to retrieve the executor
