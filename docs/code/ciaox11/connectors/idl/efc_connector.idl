@@ -14,9 +14,11 @@ module EFC
 {
    connector FooConnector
    {
+      attribute string service_specification;
+
       provides FooHandler request_handler;
       uses FooListener reply_listener;
    };
-};
+}; /* module EFC */
 
 #endif /* __EFC_CONNECTOR_IDL__ */

@@ -99,6 +99,18 @@ namespace EFC_FooConnector_Impl
     IDL::traits< ::EFC::CCM_FooHandler>::ref_type get_request_handler () override;
     //@}
 
+    /** @name Supported attributes. */
+    //@{
+
+    /// Attribute service_specification
+
+    std::string
+    service_specification () override;
+
+    void
+    service_specification (const std::string& service_specification) override;
+    //@}
+
     /** @name Session component operations */
     //@{
 
@@ -129,6 +141,12 @@ namespace EFC_FooConnector_Impl
   private:
     /// Context for component instance.
     IDL::traits< ::EFC::CCM_FooConnector_Context>::ref_type context_;
+
+    /** @name Component attributes. */
+    //@{
+    /// Class member storing value of service_specification attribute
+    std::string service_specification_{};
+    //@}
 
     /** @name Component facets. */
     //@{

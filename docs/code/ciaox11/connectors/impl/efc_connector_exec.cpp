@@ -127,6 +127,24 @@ namespace EFC_FooConnector_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : EFC_FooConnector_Impl::FooConnector_exec_i[get_request_handler]
   }
 
+
+  std::string
+  FooConnector_exec_i::service_specification ()
+  {
+    //@@{__RIDL_REGEN_MARKER__} - BEGIN : EFC_FooConnector_Impl::FooConnector_exec_i::service_specification[getter]
+    return this->service_specification_;
+    //@@{__RIDL_REGEN_MARKER__} - END : EFC_FooConnector_Impl::FooConnector_exec_i::service_specification[getter]
+  }
+
+  void
+  FooConnector_exec_i::service_specification (
+      const std::string& service_specification)
+  {
+    //@@{__RIDL_REGEN_MARKER__} - BEGIN : EFC_FooConnector_Impl::FooConnector_exec_i::service_specification[setter]
+    this->service_specification_ = service_specification;
+    //@@{__RIDL_REGEN_MARKER__} - END : EFC_FooConnector_Impl::FooConnector_exec_i::service_specification[setter]
+  }
+
   /// Operations from Components::SessionComponent
   void
   FooConnector_exec_i::set_session_context (
