@@ -280,7 +280,7 @@ setting or removing receptacle connections and retrieving receptacle configurati
 ====== Method descriptions
 
 The main customization points here are the private `set_connection` and `reset_connection` methods as well as the
-public `pass:[*]_configuration` methods generated for every declared receptacle of the connector.
+public `pass:[*_]configuration` methods generated for every declared receptacle of the connector.
 
 set_connection::
 This method is called by the executor locator whenever a the framework sets up a deployment connection for a connector
@@ -288,7 +288,7 @@ receptacle at deployment startup.
 reset_connection::
 This method is called by the executor locator whenever a the framework removes a deployment connection for a connector
 receptacle at deployment shutdown.
-pass:[*]_configuration::
+pass:[*_]configuration::
 This method can be used to return any receptacle specific configuration when required by the connector implementation
 . By default this returns an empty container. This is an advanced option not in use by any connector
 implementation currently available.
@@ -532,6 +532,9 @@ link:{code_root}/ciaox11/connectors/impl/efc_connector_exec.cpp[here]. +
 
 ===== Component executor
 
+The component executor class implements the actual connector logic (which is triggered through the life cycle methods)
+ in combination with any facet executors (for which the component executor implements factory methods).
+
 ====== Factory method
 
 This method provides the entry point for the *AXCIOMA* framework (configured through the deployment plan) to create
@@ -656,15 +659,116 @@ scheme) the default generated implementation for this method should be customize
   };
 ----
 
+====== Method descriptions
+
+set_session_context::
+This method is called by the executor locator to pass on the session context instance to the component executor.
+
+configuration_complete::
+This method is called by the framework after the deployed component (and connector) instances have been configured and
+connected.
+
+ccm_activate::
+This method is called by the framework to activate the deployed component (and connector) instances after these have
+completed configuration.
+
+ccm_passivate::
+This method is called by the framework to deactivate the deployed component (and connector) instances.
+
+ccm_remove::
+This method is called by the framework to notify the deactivated deployed component (and connector) instances of
+imminent removal (deletion).
+
+//-
+
+In addition to these standard life cycle methods the connector executor class will have accessor methods (and member
+variables) generated for any attributes defined as well as factory methods (and member variables) for facet executors.
+
 ==== Facet executors
+
+===== Example facet
+
+====== Factory method
+
+[source,c++]
+.Example facet executor factory method declaration
+----
+    /// Factory method and getter for the request_handler facet
+    /// @return existing instance of facet if one exists, else creates one
+    IDL::traits< ::EFC::CCM_FooHandler>::ref_type get_request_handler () override;
+----
+
+====== Class declaration
+
+[source,c++]
+.Example facet executor class declaration
+----
+  /// Executor implementation class for request_handler facet
+  class request_handler_exec_i final
+    : public IDL::traits< ::EFC::CCM_FooHandler>::base_type
+  {
+  public:
+    //@@{__RIDL_REGEN_MARKER__} - BEGIN : EFC_FooConnector_Impl::request_handler_exec_i[ctor]
+    /// Constructor
+    /// @param[in] context Component context
+    request_handler_exec_i (
+        IDL::traits< ::EFC::CCM_FooConnector_Context>::ref_type context);
+    //@@{__RIDL_REGEN_MARKER__} - END : EFC_FooConnector_Impl::request_handler_exec_i[ctor]
+
+    /// Destructor
+    ~request_handler_exec_i () override;
+
+    /** @name Operations from ::EFC::CCM_FooHandler */
+    //@{
+
+    bool
+    submit (
+        const ::EFC::FooRequest& request) override;
+    //@}
+
+    /** @name User defined public operations. */
+    //@{
+    //@@{__RIDL_REGEN_MARKER__} - BEGIN : EFC_FooConnector_Impl::request_handler_exec_i[user_public_ops]
+    // Your code here
+    //@@{__RIDL_REGEN_MARKER__} - END : EFC_FooConnector_Impl::request_handler_exec_i[user_public_ops]
+    //@}
+
+  private:
+    /// Context for component instance. Used for all middleware communication.
+    IDL::traits< ::EFC::CCM_FooConnector_Context>::ref_type context_;
+
+    /** @name User defined members. */
+    //@{
+    //@@{__RIDL_REGEN_MARKER__} - BEGIN : EFC_FooConnector_Impl::request_handler_exec_i[user_members]
+    // Your code here
+    //@@{__RIDL_REGEN_MARKER__} - END : EFC_FooConnector_Impl::request_handler_exec_i[user_members]
+    //@}
+
+    /** @name User defined private operations. */
+    //@{
+    //@@{__RIDL_REGEN_MARKER__} - BEGIN : EFC_FooConnector_Impl::request_handler_exec_i[user_private_ops]
+    // Your code here
+    //@@{__RIDL_REGEN_MARKER__} - END : EFC_FooConnector_Impl::request_handler_exec_i[user_private_ops]
+    //@}
+  };
+----
+
+====== Method descriptions
+
+submit::
+The implementation for this method should be customized to provide the intended functionality.
+
+//-
 
 ==== Further customization
 
-== Interaction patterns and templates
+Component executors and facet executors can be extended with user defined methods and member variables as needed to
+implement the intended functionality which can be called (directly or indirectly) from any of the standard methods.
 
-=== IDL templated modules
+Executor implementations could also define additional (support) classes to provide the implementation either directly
+ in the pass:[*_]exec.{h,cpp} files or in separate files.
 
-=== Templated connector implementation
+== Interaction patterns and templated connectors
 
 == Automated connector generation
 
