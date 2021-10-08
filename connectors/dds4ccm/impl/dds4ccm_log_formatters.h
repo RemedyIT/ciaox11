@@ -46,8 +46,7 @@ namespace DDS
   inline OS&
   operator << (OS& os, __DDS_Writer < ::CCM_DDS::ReadInfo > const &w)
   {
-    IDL::traits< ::CCM_DDS::ReadInfo>::write_on<ostream_type, read_info_formatter_os<ostream_type>>
-        (os, w.dds_writer_);
+    IDL::traits< ::CCM_DDS::ReadInfo>::write_on<ostream_type, read_info_formatter_os<ostream_type>> (os, w.dds_writer_);
     return os;
   }
 
@@ -67,8 +66,7 @@ namespace DDS
     os << "CCM_DDS::ReadInfoSeq{";
     for (::CCM_DDS::ReadInfo const &ri : w.dds_writer_)
     {
-      IDL::traits< ::CCM_DDS::ReadInfo>::write_on<ostream_type, read_info_formatter_os<ostream_type>>
-        (os, ri);
+      IDL::traits< ::CCM_DDS::ReadInfo>::write_on<ostream_type, read_info_formatter_os<ostream_type>> (os, ri);
       if (++i != w.dds_writer_.size ())
         os << ",";
     }
@@ -88,8 +86,7 @@ namespace DDS
   inline OS&
   operator << (OS& os, __DDS_Writer< ::CCM_DDS::AccessStatus > const &w)
   {
-    IDL::traits< ::CCM_DDS::AccessStatus>::write_on<ostream_type>
-      (os, w.dds_writer_);
+    IDL::traits< ::CCM_DDS::AccessStatus>::write_on<ostream_type> (os, w.dds_writer_);
     return os;
   }
 
@@ -105,8 +102,7 @@ namespace DDS
   inline OS&
   operator << (OS& os, __DDS_Writer< ::CCM_DDS::InstanceStatus > const &w)
   {
-    IDL::traits< ::CCM_DDS::InstanceStatus>::write_on<ostream_type>
-      (os, w.dds_writer_);
+    IDL::traits< ::CCM_DDS::InstanceStatus>::write_on<ostream_type> (os, w.dds_writer_);
     return os;
   }
 

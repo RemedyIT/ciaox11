@@ -36,15 +36,13 @@ namespace CIAOX11
   }
 
   std::shared_ptr<CIAOX11::Container>
-  Component_Handler::fetch_component_container (
-      const std::string& id)
+  Component_Handler::fetch_component_container (const std::string& id)
   {
     return DEPLOYMENT_STATE->fetch_component_container (id);
   }
 
   void
-  Component_Handler::unregister_component (
-      const std::string& id)
+  Component_Handler::unregister_component (const std::string& id)
   {
     DEPLOYMENT_STATE->unregister_component (id);
   }
@@ -67,7 +65,6 @@ namespace CIAOX11
   {
     return DAnCEX11::CCM_COMPONENT;
   }
-
 
   void
   Component_Handler::prepare_install (

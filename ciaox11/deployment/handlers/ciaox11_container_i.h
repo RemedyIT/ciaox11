@@ -23,8 +23,8 @@ namespace CIAOX11
   class CIAOX11_Deployment_Handler_Export Container_i : public Container
   {
   public:
-    Container_i (std::string name,
-                 IDL::traits<CORBA::ORB>::ref_type orb);
+    explicit Container_i (std::string name,
+                          IDL::traits<CORBA::ORB>::ref_type orb);
 
     ~Container_i () override = default;
 

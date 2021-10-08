@@ -26,7 +26,7 @@ namespace CIAOX11
   {
   public:
     /// Constructor
-    Component_Handler (std::unique_ptr<Connection_Handler>&& ch)
+    explicit Component_Handler (std::unique_ptr<Connection_Handler>&& ch)
       : connection_handler_ (std::move (ch)) {}
 
     /// Destructor
@@ -102,12 +102,10 @@ namespace CIAOX11
         const std::string& container_id);
 
     std::shared_ptr<CIAOX11::Container>
-    fetch_component_container (
-        const std::string& id);
+    fetch_component_container (const std::string& id);
 
     void
-    unregister_component (
-        const std::string& id);
+    unregister_component (const std::string& id);
   };
 }
 

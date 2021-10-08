@@ -26,13 +26,13 @@
 namespace CIAOX11
 {
   /// CIAOX11 specific deployment properties
-  const std::string COMPONENT_HOME = "nl.remedy.it.CIAOX11.ComponentHomeId";
-  const std::string CONTAINER_ID = "nl.remedy.it.CIAOX11.ContainerId";
+  std::string const COMPONENT_HOME = "nl.remedy.it.CIAOX11.ComponentHomeId";
+  std::string const CONTAINER_ID = "nl.remedy.it.CIAOX11.ContainerId";
 
   class CIAOX11_Deployment_Handler_Export Deployment_Common final
   {
   public:
-    // Temporary hack until Martin's artifact installation work can
+    // Temporary solution until Martin's artifact installation work can
     // be implemented.
     static std::string get_implementation (const std::string& name,
                                            const ::Deployment::MonolithicDeploymentDescription &mdd,
@@ -45,6 +45,7 @@ namespace CIAOX11
                                    const std::string& name,
                                    CORBA::Any& value);
 
+    /// Retrieve the ccm object for the requested component
     static IDL::traits<Components::CCMObject>::ref_type
     get_ccm_object (const std::string& name);
 
@@ -60,8 +61,7 @@ namespace CIAOX11
     // Helper methods for get_ccm_object.
     // Find the given poa in the given rootpoa
     static IDL::traits<PortableServer::POA>::ref_type
-    find_poa (IDL::traits<PortableServer::POA>::ref_type root,
-      const std::string &name);
+    find_poa (IDL::traits<PortableServer::POA>::ref_type root, const std::string &name);
 
     // Try to find the given servant id in the given poa.
     static IDL::traits<CORBA::Object>::ref_type
