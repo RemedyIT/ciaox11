@@ -279,6 +279,12 @@ setting or removing receptacle connections and retrieving receptacle configurati
   };
 ----
 
+****
+IMPORTANT: The generated method signatures of these standard methods should *never* be changed as this is a fixed
+requirement of
+the framework API.
+****
+
 ====== Method descriptions
 
 The main customization points here are the private `set_connection` and `reset_connection` methods as well as the
@@ -291,8 +297,8 @@ reset_connection::
 This method is called by the executor locator whenever a the framework removes a deployment connection for a connector
 receptacle at deployment shutdown.
 pass:[*_]configuration::
-This method can be used to return any receptacle specific configuration when required by the connector implementation
-. By default this returns an empty container. This is an advanced option not in use by any connector
+This method can be used to return any receptacle specific configuration when required by the connector implementation.
+By default this returns an empty container. This is an advanced option not in use by any connector
 implementation currently available.
 
 The default implementations for these methods would normally suffice. Only in rare cases would customization be
@@ -328,8 +334,11 @@ create_EFC_FooConnector_Servant (
   IDL::traits<CIAOX11::ExecutorLocator>::ref_type& executor_locator);
 ----
 
-The generated method signature should *never* be changed as this is a fixed requirement of the framework API. +
+****
+IMPORTANT: The generated method signature should *never* be changed as this is a fixed requirement of the framework
+API. +
 The default generated implementation for this method should normally suffice.
+****
 
 ====== Class declaration
 
@@ -422,6 +431,12 @@ The default generated implementation for this method should normally suffice.
     //@}
   };
 ----
+
+****
+IMPORTANT: The generated method signatures of these standard methods should *never* be changed as this is a fixed
+requirement of
+the framework API.
+****
 
 ====== Method descriptions
 
@@ -553,7 +568,11 @@ create_EFC_FooConnector_Impl (
 //@@{__RIDL_REGEN_MARKER__} - END : EFC_FooConnector_Impl[factory]
 ----
 
-The generated method signature should *never* be changed as this is a fixed requirement of the framework API. +
+****
+IMPORTANT: The generated method signature should *never* be changed as this is a fixed requirement of the framework
+API. +
+****
+
 In case the connector executor construction is customized (adding constructor arguments, changing the allocation
 scheme) the default generated implementation for this method should be customized otherwise it should suffice.
 
@@ -661,10 +680,26 @@ scheme) the default generated implementation for this method should be customize
   };
 ----
 
+****
+IMPORTANT: The generated method signatures of these standard methods should *never* be changed as this is a fixed
+requirement of
+the framework API. +
+****
+
+****
+NOTE: In principle the rule here to keep in mind is; do not customize any part of the generated code that is not
+bracketed by regeneration markers.
+****
+
 ====== Method descriptions
 
 set_session_context::
 This method is called by the executor locator to pass on the session context instance to the component executor.
+parameters:::
+`IDL::traits<Components::SessionContext>::ref_type ctx` reference to the session context instance
+
++
+This method should normally not need to be customized.
 
 configuration_complete::
 This method is called by the framework after the deployed component (and connector) instances have been configured and
@@ -681,16 +716,31 @@ ccm_remove::
 This method is called by the framework to notify the deactivated deployed component (and connector) instances of
 imminent removal (deletion).
 
-//-
+By default the generated life cycle methods `configuration_complete`, `ccm_activate`, `ccm_deactivate` and
+`ccm_remove` will have an empty implementation. +
+These methods are main customization points to add connector implementation specific initialization or clean up code.
 
 In addition to these standard life cycle methods the connector executor class will have accessor methods (and member
-variables) generated for any attributes defined as well as factory methods (and member variables) for facet executors.
+variables) generated for any attributes (see the example `service_specification` methods) defined as well as factory
+methods (and member variables) for facet executors (see the example `get_request_handler` method). +
+These methods should normally not need to be customized.
 
 ==== Facet executors
 
+Facet executors are local interface implementations of the base stub interfaces generated for the IDL defined
+interfaces of the ports that the connector `provides`.
+
+*AXCIOMA* will generate a default implementation for each defined facet of the connector with a corresponding factory
+ method in the component executor class.
+
 ===== Example facet
 
+The example connector defines a single facet for the local `EFC::FooHandler` interface for which *AXCIOMA* generates an
+implementation in the pass:[*_]exec.{h,cpp} files.
+
 ====== Factory method
+
+The following factory method is generated in the component executor class.
 
 [source,c++]
 .Example facet executor factory method declaration
@@ -699,6 +749,14 @@ variables) generated for any attributes defined as well as factory methods (and 
     /// @return existing instance of facet if one exists, else creates one
     IDL::traits< ::EFC::CCM_FooHandler>::ref_type get_request_handler () override;
 ----
+
+****
+IMPORTANT: The generated method signature should *never* be changed as this is a fixed requirement of the framework
+API. +
+****
+
+It is possible to customize the constructor for the generated facet executor class in which case it becomes necessary
+ to customize the generated implementation for this factory method accordingly.
 
 ====== Class declaration
 
@@ -755,22 +813,40 @@ variables) generated for any attributes defined as well as factory methods (and 
   };
 ----
 
+It is allowed to customize everything about this implementation class except for 2 requirements:
+
+. a facet executor implementation *MUST* be provided through the generated factory method and
+. the facet executor implementation *MUST* be derived from base stub class for the facet interface (`IDL::traits<
+::EFC::CCM_FooHandler>::base_type` in this case).
+
 ====== Method descriptions
 
 submit::
-The implementation for this method should be customized to provide the intended functionality.
+The implementation for this method should be customized to provide the intended functionality of submitting requests
+for processing.
 
 //-
 
 ==== Further customization
 
-Component executors and facet executors can be extended with user defined methods and member variables as needed to
-implement the intended functionality which can be called (directly or indirectly) from any of the standard methods.
+Component executors and facet executors can be extended with user defined methods and member variables (see the
+`pass:[[]user_pass:[*]]` named regeneration markers in the generated code) as needed to implement the intended
+functionality which can be called (directly or indirectly) from any of the standard methods.
 
 Executor implementations could also define additional (support) classes to provide the implementation either directly
- in the pass:[*_]exec.{h,cpp} files or in separate files.
+ in the pass:[*_]exec.{h,cpp} files or in separate files (there are sections bracketed with regeneration markers for
+ this as well).
 
 == Interaction patterns and templated connectors
+
+It possible that a newly created connector implementation is recognized as a repeatable interaction pattern which
+could be needed for a variation of IDL defined types (such as the standard CORBA4CCM, AMI4CCM, DDS4CCM and PSDD4CCM
+connectors). +
+In such cases *AXCIOMA* offers a number of options to make repeated implementation of these connectors easier to do.
+
+=== IDL templated modules
+
+=== Templated connector implementation
 
 == Automated connector generation
 
