@@ -26,7 +26,7 @@ namespace CIAOX11
   class CIAOX11_CORE_Export Container
   {
   public:
-    Container (std::string name);
+    explicit Container (std::string name);
 
     virtual ~Container () = default;
 
@@ -34,7 +34,7 @@ namespace CIAOX11
     the_service_registry () { return this->service_registry_; }
 
     /// Retrieve the name of this container
-    const std::string& the_name() { return this->name_; }
+    const std::string& the_name() const { return this->name_; }
 
     /// Install component instance with the provided @a name and
     /// the @a component reference to the executor locator

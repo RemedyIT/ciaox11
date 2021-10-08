@@ -84,12 +84,9 @@ namespace CIAOX11
         * Accessors for max_delivered_data
         */
       //@{
-      ::CCM_DDS::DataNumber_t
-      max_delivered_data () override;
+      ::CCM_DDS::DataNumber_t max_delivered_data () override;
 
-      void
-      max_delivered_data (
-        ::CCM_DDS::DataNumber_t max_delivered_data) override;
+      void max_delivered_data (::CCM_DDS::DataNumber_t max_delivered_data) override;
       //@}
 
       /**
@@ -100,8 +97,7 @@ namespace CIAOX11
         IDL::traits< ::DDS::DataReader>::ref_type reader,
         SharedConditionManager condition_manager);
 
-      IDL::traits< ::DDS::DataReader>::ref_type
-      get_dds_reader ();
+      IDL::traits< ::DDS::DataReader>::ref_type get_dds_reader ();
 
     private:
       typename ::DDS::traits<TOPIC_TYPE>::typed_datareader_ref_type dds_reader_ {};

@@ -31,7 +31,7 @@ namespace CIAOX11
     // Install our ORB into the service registry, this
     // can be used for retrieval of the POA, Reactor, or
     // anything else that is CORBA related
-    this->service_registry_->install_service (CIAOX11::SVCID_ORB, orb);
+    this->service_registry_->install_service (CIAOX11::SVCID_ORB, std::move(orb));
   }
 
   void
@@ -63,7 +63,7 @@ namespace CIAOX11
 
     /// Insert the executor locator into the map
     std::pair<ExecutorLocatorMap::iterator,bool> ret =
-      this->executor_locator_map_.insert (ExecutorLocatorMap::value_type(name, component));
+      this->executor_locator_map_.insert (ExecutorLocatorMap::value_type(name, std::move(component)));
     if (!ret.second)
     {
       CIAOX11_LOG_ERROR ("Container_i::install_component - " <<
@@ -77,8 +77,7 @@ namespace CIAOX11
   }
 
   IDL::traits<CIAOX11::ExecutorLocator>::ref_type
-  Container_i::get_component (
-      const std::string& name)
+  Container_i::get_component (const std::string& name)
   {
     CIAOX11_LOG_DEBUG ("Container_i::get_component - " <<
                        "Get component <" << name << ">");
@@ -99,8 +98,7 @@ namespace CIAOX11
   }
 
   bool
-  Container_i::uninstall_component (
-    const std::string& name)
+  Container_i::uninstall_component (const std::string& name)
   {
     CIAOX11_LOG_DEBUG ("Container_i::uninstall_component - " <<
                        "Uninstall component <" << name << ">");
@@ -131,8 +129,7 @@ namespace CIAOX11
   }
 
   bool
-  Container_i::activate_component (
-    const std::string& name)
+  Container_i::activate_component (const std::string& name)
   {
     CIAOX11_LOG_DEBUG ("Container_i::activate_component - " <<
                        "Activate component <" << name << ">");

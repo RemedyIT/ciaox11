@@ -24,8 +24,7 @@ namespace CIAOX11
       ::Deployment::ArtifactDeploymentDescription const &artifact = plan.artifact ()[artix];
       if (artifact.name () == name)
       {
-        if (artifact.location ().size () >= 1 &&
-            !artifact.location ()[0].empty ())
+        if (artifact.location ().size () >= 1 && !artifact.location ()[0].empty ())
         {
           return artifact.location ()[0];
         }
@@ -33,8 +32,7 @@ namespace CIAOX11
         {
           CIAOX11_LOG_ERROR ("Deployment_Common::get_implementation - "
             "No validation location for artifact <" << name << ">");
-          throw ::Deployment::PlanError (name,
-                                         "No valid location field\n");
+          throw ::Deployment::PlanError (name, "No valid location field\n");
         }
       }
     }
