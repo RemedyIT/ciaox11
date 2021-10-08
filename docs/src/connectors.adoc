@@ -67,8 +67,10 @@ As *AXCIOMA* (and LwCCM) is IDL based technology this should be done using IDL d
 As an example consider the following link:{code_root}/ciaox11/connectors/idl/efc_interface.idl[IDL interface
 definitions].
 
-[source,IDL]
 .Interface definitions for FooConnector
+[%collapsible%open]
+====
+[source,IDL]
 ----
 module EFC
 {
@@ -95,11 +97,14 @@ module EFC
    };
 }; /* module EFC */
 ----
+====
 
 For which we create a link:{code_root}/ciaox11/connectors/idl/efc_connector.idl[connector IDL definition] as follows.
 
-[source,IDL]
 .Connector definition for FooConnector
+[%collapsible%open]
+====
+[source,IDL]
 ----
 module EFC
 {
@@ -112,6 +117,7 @@ module EFC
    };
 }; /* module EFC */
 ----
+====
 
 This combination of IDL definitions specifies a connector FooConnector that is supposed to provide a facet for the
 `EFC::FooRequest` interface and a receptacle for the `EFC::FooReply` interface with the intention that _business
@@ -202,8 +208,10 @@ setting or removing receptacle connections and retrieving receptacle configurati
 
 ====== Class declaration
 
-[source,c++]
 .Example session context class
+[%collapsible%open]
+====
+[source,c++]
 ----
   /**
    * Context implementation class for the ::EFC::CCM_FooConnector
@@ -278,6 +286,7 @@ setting or removing receptacle connections and retrieving receptacle configurati
     //@}
   };
 ----
+====
 
 ****
 IMPORTANT: The generated method signatures of these standard methods should *never* be changed as this is a fixed
@@ -314,8 +323,10 @@ the callbacks for the framework to handle connector configuration and connection
 This method provides the entry point for the *AXCIOMA* framework (configured through the deployment plan) to create
 an installable instance of the executor locator for a deployed connector instance.
 
-[source,c++]
 .Example executor locator factory method declaration
+[%collapsible%open]
+====
+[source,c++]
 ----
 /**
  * Factory method to create an executor locator for a
@@ -333,6 +344,7 @@ create_EFC_FooConnector_Servant (
   const std::string& ins_name,
   IDL::traits<CIAOX11::ExecutorLocator>::ref_type& executor_locator);
 ----
+====
 
 ****
 IMPORTANT: The generated method signature should *never* be changed as this is a fixed requirement of the framework
@@ -342,8 +354,10 @@ The default generated implementation for this method should normally suffice.
 
 ====== Class declaration
 
-[source,c++]
 .Example executor locator class
+[%collapsible%open]
+====
+[source,c++]
 ----
   /**
    * ExecutorLocator for the FooConnector component. This
@@ -431,6 +445,7 @@ The default generated implementation for this method should normally suffice.
     //@}
   };
 ----
+====
 
 ****
 IMPORTANT: The generated method signatures of these standard methods should *never* be changed as this is a fixed
@@ -558,8 +573,10 @@ This method provides the entry point for the *AXCIOMA* framework (configured thr
 an instance of the connector executor for a deployed connector instance to provide to the executor locator factory
 method.
 
-[source,c++]
 .Example connector executor factory method declaration
+[%collapsible%open]
+====
+[source,c++]
 ----
 //@@{__RIDL_REGEN_MARKER__} - BEGIN : EFC_FooConnector_Impl[factory]
 extern "C" EFCC_CONN_EXEC_Export  void
@@ -567,6 +584,7 @@ create_EFC_FooConnector_Impl (
   IDL::traits<Components::EnterpriseComponent>::ref_type& component);
 //@@{__RIDL_REGEN_MARKER__} - END : EFC_FooConnector_Impl[factory]
 ----
+====
 
 ****
 IMPORTANT: The generated method signature should *never* be changed as this is a fixed requirement of the framework
@@ -578,8 +596,10 @@ scheme) the default generated implementation for this method should be customize
 
 ====== Class declaration
 
-[source,c++]
 .Example connector executor class
+[%collapsible%open]
+====
+[source,c++]
 ----
   /// Component Executor Implementation Class : FooConnector_exec_i
   class FooConnector_exec_i final
@@ -679,6 +699,7 @@ scheme) the default generated implementation for this method should be customize
     //@}
   };
 ----
+====
 
 ****
 IMPORTANT: The generated method signatures of these standard methods should *never* be changed as this is a fixed
@@ -742,13 +763,16 @@ implementation in the pass:[*_]exec.{h,cpp} files.
 
 The following factory method is generated in the component executor class.
 
-[source,c++]
 .Example facet executor factory method declaration
+[%collapsible%open]
+====
+[source,c++]
 ----
     /// Factory method and getter for the request_handler facet
     /// @return existing instance of facet if one exists, else creates one
     IDL::traits< ::EFC::CCM_FooHandler>::ref_type get_request_handler () override;
 ----
+====
 
 ****
 IMPORTANT: The generated method signature should *never* be changed as this is a fixed requirement of the framework
@@ -760,8 +784,10 @@ It is possible to customize the constructor for the generated facet executor cla
 
 ====== Class declaration
 
-[source,c++]
 .Example facet executor class declaration
+[%collapsible%open]
+====
+[source,c++]
 ----
   /// Executor implementation class for request_handler facet
   class request_handler_exec_i final
@@ -812,6 +838,7 @@ It is possible to customize the constructor for the generated facet executor cla
     //@}
   };
 ----
+====
 
 It is allowed to customize everything about this implementation class except for 2 requirements:
 
