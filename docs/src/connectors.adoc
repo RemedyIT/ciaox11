@@ -93,7 +93,7 @@ module EFC
 
    local interface FooListener
    {
-      void reply(in FooReply reply);
+      void accept(in FooReply reply);
    };
 }; /* module EFC */
 ----
@@ -866,14 +866,119 @@ Executor implementations could also define additional (support) classes to provi
 
 == Interaction patterns and templated connectors
 
-It possible that a newly created connector implementation is recognized as a repeatable interaction pattern which
+It is possible that a newly created connector implementation is recognized as a repeatable interaction pattern which
 could be needed for a variation of IDL defined types (such as the standard CORBA4CCM, AMI4CCM, DDS4CCM and PSDD4CCM
 connectors). +
 In such cases *AXCIOMA* offers a number of options to make repeated implementation of these connectors easier to do.
 
+The next paragraphs prorvide a short introduction of these options but for a more detailed discussion of these
+options there is documentation available xref:templated_connectors.adoc[here].
+
 === IDL templated modules
 
+First of all there is the option of using templated modules in the IDL definition of the connector.
+
+As an example consider the following link:{code_root}/ciaox11/connectors-templated/idl/efc_interface.idl[templated IDL
+interface definitions].
+
+.Templated interface definitions for FooConnector
+[%collapsible%open]
+====
+[source,IDL]
+----
+module EFC_T<typename DATA_IN, typename DATA_OUT>
+{
+   struct FooRequest
+   {
+      string request_id;
+      DATA_IN request_data;
+   };
+
+   struct FooReply
+   {
+      string request_id;
+      DATA_IN reply_data;
+   };
+
+   local interface FooHandler
+   {
+      boolean submit(in FooRequest request);
+   };
+
+   local interface FooListener
+   {
+      void accept(in FooReply reply);
+   };
+}; /* module EFC_T */
+----
+====
+
+And the link:{code_root}/ciaox11/connectors-templated/idl/efc_data.idl[IDL data definitions].
+
+.Data IDL definitions
+[%collapsible%open]
+====
+[source,IDL]
+----
+module EFC
+{
+  typedef sequence<octet> RawData;
+
+   struct FooRequestData
+   {
+      string request_command;
+      RawData request_data;
+   };
+
+   struct Tuple
+   {
+      string name;
+      string value;
+   };
+
+   typedef sequence<Tuple> FooReplyData;
+
+}; /* module EFC */
+----
+====
+
+For which we create a link:{code_root}/ciaox11/connectors-templated/idl/efc_connector.idl[connector IDL definition] as
+follows.
+
+.Connector definition for FooConnector
+[%collapsible%open]
+====
+[source,IDL]
+----
+module EFC
+{
+   module EFC_T<EFC::FooRequestData, EFC::FooReplyData> Intf;
+
+   connector FooConnector
+   {
+      attribute string service_specification;
+
+      provides Intf::FooHandler request_handler;
+      uses Intf::FooListener reply_listener;
+   };
+}; /* module EFC */
+----
+====
+
+Using the IDL templated module definitions in link:{code_root}/ciaox11/connectors-templated/idl/efc_interfac.idl[efc_interface.idl] a FooConnector type for a wide range of Foo request/reply data types can be defined with
+minimal effort.
+
+Most of the component executor code after an initial implementation can simply be copied. Of course the {cxx11}
+implementation still needs to be adapted for every set of data types used which will require more or less effort
+depending on the degree of similarity of the data types.
+
 === Templated connector implementation
+
+For the cases where the component executor implementation would follow a fairly constant, predictable pattern
+depending on the actual request/reply datatypes *AXCIOMA* offers an additional option for using {cxx} templates for
+implementation of the component executor in combination with the IDL templated module approach.
+
+For more details about this option see the xref:templated_connectors.adoc[templated_connectors] document.
 
 == Automated connector generation
 

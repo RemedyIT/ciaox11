@@ -1,0 +1,27 @@
+/**
+ * @file    efc_connector.idl
+ * @author  Martin Corino
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ */
+
+#ifndef __EFC_CONNECTOR_IDL__
+#define __EFC_CONNECTOR_IDL__
+
+#include "efc_interface.idl"
+#include "efc_data.idl"
+
+module EFC
+{
+   module EFC_T<EFC::FooRequestData, EFC::FooReplyData> Intf;
+
+   connector FooConnector
+   {
+      attribute string service_specification;
+
+      provides Intf::FooHandler request_handler;
+      uses Intf::FooListener reply_listener;
+   };
+}; /* module EFC */
+
+#endif /* __EFC_CONNECTOR_IDL__ */

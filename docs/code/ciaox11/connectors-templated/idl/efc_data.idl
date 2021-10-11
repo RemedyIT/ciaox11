@@ -1,0 +1,31 @@
+/**
+ * @file    efc_data.idl
+ * @author  Martin Corino
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ */
+
+#ifndef __EFC_DATA_IDL__
+#define __EFC_DATA_IDL__
+
+module EFC
+{
+  typedef sequence<octet> RawData;
+
+   struct FooRequestData
+   {
+      string request_command;
+      RawData request_data;
+   };
+
+   struct Tuple
+   {
+      string name;
+      string value;
+   };
+
+   typedef sequence<Tuple> FooReplyData;
+
+}; /* module EFC */
+
+#endif /* __EFC_DATA_IDL__ */
