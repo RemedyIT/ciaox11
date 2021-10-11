@@ -2,7 +2,7 @@
  * @file    ccm_cookie.idl
  * @author  Johnny Willemsen
  *
- * @brief   Compliant with OMG 06-04-01 Section 6.5.2.4
+ * @brief   Compliant with OMG formal/2021-02-04 Section 6.6.2.4
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
  */

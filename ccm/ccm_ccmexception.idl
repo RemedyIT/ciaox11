@@ -2,7 +2,7 @@
  * @file    ccm_ccmexception.idl
  * @author  Johnny Willemsen
  *
- * @brief   Compliant to OMG 06-04-01, section 9.3.3.2
+ * @brief   Compliant to OMG formal/2021-02-04, section 10.4.3.3
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
  */

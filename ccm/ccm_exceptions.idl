@@ -2,7 +2,7 @@
  * @file    ccm_exceptions.idl
  * @author  Johnny Willemsen
  *
- * @brief   Based on OMG 06-04-01 Section 6.7.6
+ * @brief   Based on OMG formal/2021-02-04 Section 6.8.6
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
  */

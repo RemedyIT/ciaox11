@@ -2,7 +2,7 @@
  * @file    ccm_executorlocator.idl
  * @author  Johnny Willemsen
  *
- * @brief   Compliant with OMG 06-04-01 Section 8.3.2
+ * @brief   Compliant with OMG formal/2021-02-04 Section 6.5.3.3
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
  */
