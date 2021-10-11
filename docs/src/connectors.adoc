@@ -968,6 +968,9 @@ module EFC
 Using the IDL templated module definitions in link:{code_root}/ciaox11/connectors-templated/idl/efc_interfac.idl[efc_interface.idl] a FooConnector type for a wide range of Foo request/reply data types can be defined with
 minimal effort.
 
+For more details concerning the IDL templated modules feature see the https://www.omg.org/spec/IDL/3.5[OMG IDL 3+]
+standard specification.
+
 Most of the component executor code after an initial implementation can simply be copied. Of course the {cxx11}
 implementation still needs to be adapted for every set of data types used which will require more or less effort
 depending on the degree of similarity of the data types.
@@ -982,4 +985,12 @@ For more details about this option see the xref:templated_connectors.adoc[templa
 
 == Automated connector generation
 
-Short introduction to RIDL CCMX11 facets.
+For those cases where the repeated component executor implementation would not (completely) follow a predictable
+pattern *AXCIOMA* also provides the possibility to extend the RIDL compiler backend with extensions (facets) to
+generate all or part of a specific connector implementation.
+
+Going into detail about that option is outside the scope of this documentation but examples can be found for the
+standard CORBA4CCM, AMI4CCM, DDS4CCM and PSDD4CCM connectors. The first two using IDL templated modules without {cxx}
+templates but instead fully generated connector implementations. The last two using both IDL templated modules as
+well as {cxx} templates for the component executor implementation in addtion to generation of type support code to
+complement the templated implementation.
