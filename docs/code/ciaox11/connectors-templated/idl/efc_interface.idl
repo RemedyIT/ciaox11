@@ -19,7 +19,7 @@ module EFC_T<typename DATA_IN, typename DATA_OUT>
    struct FooReply
    {
       string request_id;
-      DATA_IN reply_data;
+      DATA_OUT reply_data;
    };
 
    local interface FooHandler
