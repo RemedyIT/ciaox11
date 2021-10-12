@@ -22,12 +22,10 @@ namespace CIAOX11
      * @brief Guard class which calls begin_coherent_changes() on
      *        construction and end_coherent_changes() at destruction
      */
-    class DDS4CCM_IMPL_Export Coherent_Changes_Guard
+    class DDS4CCM_IMPL_Export Coherent_Changes_Guard final
     {
     public:
-      Coherent_Changes_Guard (
-        IDL::traits< ::DDS::Publisher>::ref_type publisher,
-        bool coherent_write);
+      Coherent_Changes_Guard (IDL::traits< ::DDS::Publisher>::ref_type publisher, bool coherent_write);
       ~Coherent_Changes_Guard ();
 
     private:
