@@ -49,7 +49,7 @@ module Test
 
 Using the PSDD4CCM backend of the RIDL compiler it is than possible to fully generate
 the implementation of a PSDD4CCM connector based on this IDL definition.
-A PSDD4CMM connector defined and implemented in this way will provide interfaces
+A PSDD4CCM connector defined and implemented in this way will provide interfaces
 compliant with the specification described <<psdd4ccm_design.adoc#,here>>.
 
 Please see <<psdd4ccm_details.adoc#,here>> for a more in-depth description of developing
