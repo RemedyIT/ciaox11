@@ -79,11 +79,6 @@ namespace DDSX11
         << IDL::traits< ::DDS::DataWriterQos>::write (qos)
         << ">");
 
-      DDSX11_IMPL_LOG_DEBUG ("OpenDDS_Publisher_proxy::create_datawriter_with_profile - "
-        << "Retrieved XML DataWriterQos <"
-        << IDL::traits< ::DDS::DataWriterQos>::write (qos)
-        << ">");
-
       return this->create_datawriter (std::move(a_topic), qos, std::move(a_listener), mask);
     }
   }
