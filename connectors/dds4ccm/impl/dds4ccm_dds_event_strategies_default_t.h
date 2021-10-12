@@ -5,9 +5,9 @@
  *
  * @brief   Implements the default event handling strategy from DDS to DDS4CCM
  *
- *          The class members (listener and datareader/datawriter) are passed
- *          as weak references. We don't want to influence the life cycle of
- *          entities here.
+ * The class members (listener and datareader/datawriter) are passed
+ * as weak references. We don't want to influence the life cycle of
+ * entities here.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
  */
@@ -92,7 +92,7 @@ namespace CIAOX11
       }
       DefaultErrorEventStrategy_T (DefaultErrorEventStrategy_T&&) = default;
       DefaultErrorEventStrategy_T (const DefaultErrorEventStrategy_T&) = default;
-      virtual ~DefaultErrorEventStrategy_T () = default;
+      ~DefaultErrorEventStrategy_T () override = default;
 
       // on_unexpected_status
       void

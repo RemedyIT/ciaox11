@@ -68,7 +68,6 @@ public:
   virtual void remove (IDL::traits< ::DDS::Subscriber>::ref_type subscriber);
   //@}
 
-
 protected:
   using DDS4CCM_Reader_type = ::CIAOX11::DDS4CCM::Reader_T<
       typename CCM_TYPE::data_type,
