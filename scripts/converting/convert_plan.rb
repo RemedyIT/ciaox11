@@ -174,7 +174,7 @@ end
 options = {:cdp_plan_in => nil, :cdp_plan_out => nil, :logging => false}
 
 script_name = File.basename($0, '.*')
-if not script_name =~ /convert_plan/
+if !(script_name =~ /convert_plan/)
   script_name = 'ruby ' + $0
 end
 parser = OptionParser.new do|opts|
