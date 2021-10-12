@@ -180,7 +180,7 @@ private:
    */
   //@{
   ::DDS::DomainId_t domain_id_ {};
-  std::string       qos_profile_ {};
+  std::string qos_profile_ {};
   //@}
 
   /**

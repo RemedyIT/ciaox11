@@ -86,8 +86,7 @@ namespace CIAOX11
       //@{
       ::CCM_DDS::DataNumber_t max_delivered_data () override;
 
-      void
-      max_delivered_data (::CCM_DDS::DataNumber_t max_delivered_data) override;
+      void max_delivered_data (::CCM_DDS::DataNumber_t max_delivered_data) override;
       //@}
 
       /**
