@@ -32,6 +32,7 @@ namespace CIAOX11
         IDL::traits< ::DDS::Topic>::ref_type the_topic,
         const ::DDS::InconsistentTopicStatus & status) override;
 
+      /// Helper method to determine which DDS mask we have to use
       static ::DDS::StatusMask get_mask (
         IDL::traits< CCM_DDS::ConnectorStatusListener>::ref_type error_listener);
 

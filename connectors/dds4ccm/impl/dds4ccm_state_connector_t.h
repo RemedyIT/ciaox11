@@ -17,6 +17,16 @@
 #include "dds4ccm/impl/dds4ccm_dds_listen_port_t.h"
 #include "dds4ccm/impl/dds4ccm_dds_state_listen_port_t.h"
 
+/**
+ * @name DDS_State_Connector_T
+ *
+ * @brief DDS4CCM State Connector Implementation
+ *
+ * Template variables:
+ * @tparam CCM_TYPE DDS4CCM traits
+ * @tparam TOPIC_TYPE => Vendor specific Topic Type.
+ * @tparam TOPIC_SEQ_TYPE => Vendor specific sequence of Topic Types.
+ */
 template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 class DDS_State_Connector_T
   : public virtual DDS_LateBinded_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>
@@ -33,8 +43,7 @@ public:
   typename IDL::traits<typename CCM_TYPE::observable_traits::data_type>::ref_type
   get_observable_data () override;
 
-  IDL::traits< ::DDS::CCM_DataWriter>::ref_type
-  get_observable_dds_entity () override;
+  IDL::traits< ::DDS::CCM_DataWriter>::ref_type get_observable_dds_entity () override;
   //@}
 
   /**
@@ -53,8 +62,7 @@ public:
 
   ::CCM_DDS::QueryFilter passive_observer_filter () override;
 
-  void passive_observer_filter (
-    const ::CCM_DDS::QueryFilter &filter) override;
+  void passive_observer_filter (const ::CCM_DDS::QueryFilter &filter) override;
   //@}
 
   /**
@@ -74,12 +82,9 @@ public:
   IDL::traits< CCM_DDS::CCM_ContentFilterSetting>::ref_type
   get_pull_observer_filter_config () override;
 
-  CCM_DDS::QueryFilter
-  pull_observer_filter () override;
+  CCM_DDS::QueryFilter pull_observer_filter () override;
 
-  void
-  pull_observer_filter (
-    const CCM_DDS::QueryFilter &filter) override;
+  void pull_observer_filter (const CCM_DDS::QueryFilter &filter) override;
   //@}
 
   /**
@@ -99,12 +104,9 @@ public:
   IDL::traits< CCM_DDS::CCM_ContentFilterSetting>::ref_type
   get_push_observer_filter_config () override;
 
-  ::CCM_DDS::QueryFilter
-  push_observer_filter () override;
+  ::CCM_DDS::QueryFilter push_observer_filter () override;
 
-  void
-  push_observer_filter (
-    const ::CCM_DDS::QueryFilter & filter) override;
+  void push_observer_filter (const ::CCM_DDS::QueryFilter & filter) override;
   //@}
 
   /**

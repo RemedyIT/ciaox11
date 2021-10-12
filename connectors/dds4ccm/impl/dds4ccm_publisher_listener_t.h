@@ -50,6 +50,7 @@ namespace CIAOX11
         IDL::traits< ::DDS::DataWriter>::ref_type the_Writer,
         const ::DDS::PublicationMatchedStatus & status) override;
 
+      /// Helper method to determine which DDS mask we have to use
       static ::DDS::StatusMask get_mask (
         IDL::traits< CCM_DDS::ConnectorStatusListener>::ref_type error_listener);
 

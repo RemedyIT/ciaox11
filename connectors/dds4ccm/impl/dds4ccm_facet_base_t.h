@@ -18,9 +18,12 @@ namespace CIAOX11
 {
   namespace DDS4CCM
   {
+    /**
+     * Base for all facet implementations for DDS4CCM. Stores the component
+     * reference this facet belongs to.
+     */
     template<typename BASE_TYPE>
-    class FacetBase
-      : public virtual ::IDL::traits< BASE_TYPE>::base_type
+    class FacetBase : public virtual ::IDL::traits< BASE_TYPE>::base_type
     {
     public:
       explicit FacetBase (IDL::traits<CORBA::Object>::weak_ref_type component);

@@ -63,6 +63,7 @@ namespace CIAOX11
         IDL::traits< ::DDS::DataReader>::ref_type ,
         const ::DDS::SubscriptionMatchedStatus & ) override;
 
+      /// Helper method to determine which DDS mask we have to use
       static ::DDS::StatusMask get_mask (
         IDL::traits< CCM_DDS::PortStatusListener>::ref_type psl);
 
