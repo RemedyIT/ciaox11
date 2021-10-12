@@ -131,7 +131,7 @@ module CIAOX11_Plan_Converter
         #nothing shouldn't happen
       end
     end
-    file_tmp.close!()
+    file_tmp.close!
   end
 
   def self.check_input_file_name (filename)

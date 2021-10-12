@@ -44,7 +44,7 @@ module BRIX11
       def run(argv)
         argv ||= []
         # Load recipe_files, make recipes,
-        project = AxciomaPC::Project.load_project()
+        project = AxciomaPC::Project.load_project
 
         if options[:verbose] > 5
           project.dump
@@ -56,7 +56,7 @@ module BRIX11
         end
 
         #make the  mpcfiles
-        project.prepare()
+        project.prepare
 
         if options[:verbose] > 5
           project.dump
