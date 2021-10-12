@@ -332,7 +332,7 @@ namespace CIAOX11
       DefaultPortStatusEventStrategyBase (const DefaultPortStatusEventStrategyBase&) = default;
       DefaultPortStatusEventStrategyBase (DefaultPortStatusEventStrategyBase&&) = default;
     public:
-      virtual ~DefaultPortStatusEventStrategyBase () = default;
+      ~DefaultPortStatusEventStrategyBase () override = default;
 
       // on_requested_deadline_missed
       void
@@ -413,7 +413,7 @@ namespace CIAOX11
       DefaultDataEventStrategyBase_T (const DefaultDataEventStrategyBase_T&) = default;
       DefaultDataEventStrategyBase_T (DefaultDataEventStrategyBase_T&&) = default;
     public:
-      virtual ~DefaultDataEventStrategyBase_T () = default;
+      ~DefaultDataEventStrategyBase_T () override = default;
 
       // on_data_available
       template <typename LISTENER>
@@ -467,7 +467,7 @@ namespace CIAOX11
       {}
       DefaultPushConsumerEventStrategy_T (const DefaultPushConsumerEventStrategy_T&) = default;
       DefaultPushConsumerEventStrategy_T (DefaultPushConsumerEventStrategy_T&&) = default;
-      virtual ~DefaultPushConsumerEventStrategy_T () = default;
+      ~DefaultPushConsumerEventStrategy_T () override = default;
     private:
       DefaultPushConsumerEventStrategy_T () = delete;
       DefaultPushConsumerEventStrategy_T& operator=(const DefaultPushConsumerEventStrategy_T&) = delete;
@@ -487,7 +487,7 @@ namespace CIAOX11
       {}
       DefaultPullConsumerEventStrategy_T (const DefaultPullConsumerEventStrategy_T&) = default;
       DefaultPullConsumerEventStrategy_T (DefaultPullConsumerEventStrategy_T&&) = default;
-      virtual ~DefaultPullConsumerEventStrategy_T () = default;
+      ~DefaultPullConsumerEventStrategy_T () override = default;
     private:
       DefaultPullConsumerEventStrategy_T () = delete;
       DefaultPullConsumerEventStrategy_T& operator=(const DefaultPullConsumerEventStrategy_T&) = delete;
@@ -507,7 +507,7 @@ namespace CIAOX11
       {}
       DefaultPassiveObserverEventStrategy_T (const DefaultPassiveObserverEventStrategy_T&) = default;
       DefaultPassiveObserverEventStrategy_T (DefaultPassiveObserverEventStrategy_T&&) = default;
-      virtual ~DefaultPassiveObserverEventStrategy_T () = default;
+      ~DefaultPassiveObserverEventStrategy_T () override = default;
     private:
       DefaultPassiveObserverEventStrategy_T () = delete;
       DefaultPassiveObserverEventStrategy_T& operator=(const DefaultPassiveObserverEventStrategy_T&) = delete;
@@ -527,7 +527,7 @@ namespace CIAOX11
       {}
       DefaultPullObserverEventStrategy_T (const DefaultPullObserverEventStrategy_T&) = default;
       DefaultPullObserverEventStrategy_T (DefaultPullObserverEventStrategy_T&&) = default;
-      virtual ~DefaultPullObserverEventStrategy_T ()  = default;
+      ~DefaultPullObserverEventStrategy_T () override = default;
     private:
       DefaultPullObserverEventStrategy_T () = delete;
       DefaultPullObserverEventStrategy_T& operator=(const DefaultPullObserverEventStrategy_T&) = delete;
@@ -550,7 +550,7 @@ namespace CIAOX11
       {}
       DefaultPushObserverEventStrategy_T (const DefaultPushObserverEventStrategy_T&) = default;
       DefaultPushObserverEventStrategy_T (DefaultPushObserverEventStrategy_T&&) = default;
-      virtual ~DefaultPushObserverEventStrategy_T () = default;
+      ~DefaultPushObserverEventStrategy_T () override = default;
     private:
       DefaultPushObserverEventStrategy_T () = delete;
       DefaultPushObserverEventStrategy_T& operator=(const DefaultPushObserverEventStrategy_T&) = delete;
@@ -573,7 +573,7 @@ namespace CIAOX11
       {}
       DefaultPushStateObserverEventStrategy_T (const DefaultPushStateObserverEventStrategy_T&) = default;
       DefaultPushStateObserverEventStrategy_T (DefaultPushStateObserverEventStrategy_T&&) = default;
-      virtual ~DefaultPushStateObserverEventStrategy_T () = default;
+      ~DefaultPushStateObserverEventStrategy_T () override = default;
     private:
       DefaultPushStateObserverEventStrategy_T () = delete;
       DefaultPushStateObserverEventStrategy_T& operator=(const DefaultPushStateObserverEventStrategy_T&) = delete;

@@ -38,7 +38,7 @@ namespace CIAOX11
         SharedConditionManager condition_manager);
 
       /// Destructor
-      virtual ~ListenerBase_T () override = default;
+      ~ListenerBase_T () override = default;
 
       /// Implements the thread switch
       void
