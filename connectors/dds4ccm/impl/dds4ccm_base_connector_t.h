@@ -14,6 +14,10 @@
 
 #include "dds4ccm_sample_info.h"
 
+/**
+ * Implementation of the DDS4CCM base connector which
+ * contains several helper methods and attributes
+ */
 template <typename CCM_TYPE>
 class DDS_Base_Connector_T
   : public virtual CCM_TYPE::base_type
@@ -74,7 +78,6 @@ protected:
    *
    * These methods will create the DDS4CCM Entities (and therefor the DDS
    * entities in DDS itself), like DomainParticipant, Topic, Subscriber and Publisher
-   *
    */
   //@{
   IDL::traits< ::DDS::DomainParticipant>::ref_type
