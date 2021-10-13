@@ -24,12 +24,11 @@
  * If the user doesn't explicitly choose a value we will default to 1
  */
 #if !defined (CIAOX11_DDS4CCM_CONTEXT_SWITCH)
-#  define CIAOX11_DDS4CCM_CONTEXT_SWITCH 1
-#  define ACE_HAS_REACTOR_NOTIFICATION_QUEUE
+# define CIAOX11_DDS4CCM_CONTEXT_SWITCH 1
 #endif /* CIAOX11_DDS4CCM_CONTEXT_SWITCH */
 
 #if (CIAOX11_DDS4CCM_CONTEXT_SWITCH == 1) && !defined (ACE_HAS_REACTOR_NOTIFICATION_QUEUE)
-#  error For using the DDS4CCM context switch ACE_HAS_REACTOR_NOTIFICATION_QUEUE must be defined
+# error For using the DDS4CCM context switch ACE_HAS_REACTOR_NOTIFICATION_QUEUE must be defined
 #endif
 
 /**
