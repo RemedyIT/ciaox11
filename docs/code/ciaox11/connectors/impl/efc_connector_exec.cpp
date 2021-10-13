@@ -1,5 +1,8 @@
-/*
- * Your header here.
+/**
+ * @file    efc_connector_exec.cpp
+ * @author  Martin Corino
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
  */
 //@@{__RIDL_REGEN_MARKER__} - HEADER_END : efc_connector_impl.cpp[Header]
 

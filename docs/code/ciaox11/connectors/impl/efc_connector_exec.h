@@ -1,6 +1,9 @@
-  /*
-   * Your header here.
-   */
+/**
+ * @file    efc_connector_exec.h
+ * @author  Martin Corino
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ */
 #ifndef __RIDL_EFC_CONNECTOR_EXEC_H_IDJIDJIF_INCLUDED__
 #define __RIDL_EFC_CONNECTOR_EXEC_H_IDJIDJIF_INCLUDED__
 
