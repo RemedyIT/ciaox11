@@ -47,7 +47,8 @@ For _business components_ this is to implement business logic without any direct
 By default therefor the generated implementation for the standard framework methods of _business components_ will only allow local connections to collocated component instances. +
 On the other hand, _connector components_ are intended to implement technology specific logic to allow interaction with said technology (communication middleware, system components, special processing libraries ...) by way of the ports provided.
 The (possibly generated) implementation of the standard framework methods of _connector components_ will therefor commonly allow local connections to collocated components instances (_business components_ most likely) to allow access to the supported functionality.
-In the specific cases like the CORBA4CCM connectors the implementation will also allow remote connections as a way to connect two _connector fragments_ (or one fragment and an external service). +
+In specific cases like the CORBA4CCM connectors the implementation will also allow remote connections (CORBA based
+for CORBA4CCM connectors) as a way to connect two _connector fragments_ (or one fragment and an external service). +
 These differences do not result in structural differences needing special deployment options but they will have runtime consequences preventing certain deployment configurations.
 In the case of _business components_ implementing receptacles for an interface _Foo_ for example it will not be possible to execute a deployment where the receptacle for _Foo_ is directly connected through a remote interface reference for a facet (or external CORBA servant) for _Foo_.
 The CORBA4CCM connector generated for the _Foo_ interface however does allow that deployment connection setup as the code generated in this case provides for resolving remote object references.
@@ -56,8 +57,9 @@ For simplicity the remainder of this document will use the term 'connector' to r
 
 == Creating a new connector
 
-The creation of any new connector (type), whether the intention is to have a generated connector in the end or not, starts with creating a "statically" defined and manually defined implementation (which could become the final implementation or a proof of concept).
-In case of a connector type with a single, fixed implementation like the TT4CCM connector this is the way the only step to take but in the case of connector types with variant implementations dependent of user defined IDL types this is just the first step to work out the general design and implementation.
+The creation of any new connector (type), whether the intention is to have a generated connector in the end or not, starts with creating a "statically" and manually defined implementation (which could become the final implementation or a proof of concept).
+In case of a connector type with a single, fixed implementation like the TT4CCM connector this way is the only step
+ to take but in the case of connector types with variant implementations dependent of user defined IDL types this is just the first step to work out the general design and implementation.
 
 === Define a connector interface
 
@@ -186,7 +188,7 @@ categories:
 . Component installation methods which are the methods required by the framework for component instance installation,
  configuration and connection handling;
 . CCM lifecycle methods which are the methods which control the component activation and de-activation operations
-according to the (Lw)CMM standard;
+according to the (Lw)CCM standard;
 . Facet executor implementations for the facet interface definitions specified in the connector IDL;
 . Any further customization of the generated classes specific to the intended connector implementation.
 
