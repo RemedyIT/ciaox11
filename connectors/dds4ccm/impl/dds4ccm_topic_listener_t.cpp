@@ -32,8 +32,7 @@ namespace CIAOX11
       DDS4CCM_LOG_DEBUG ("TopicListener_T::on_inconsistent_topic - "
         << IDL::traits< ::DDS::InconsistentTopicStatus>::write (status));
 
-      this->evs_.handle_inconsistent_topic_event (
-          the_topic, status);
+      this->evs_.handle_inconsistent_topic_event (the_topic, status);
     }
 
     template <typename EVT_STRATEGY>

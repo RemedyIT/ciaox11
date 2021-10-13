@@ -18,15 +18,13 @@ namespace CIAOX11
     ::CCM_DDS::QueryFilter
     CCM_DDS_ContentFilterSetting_i::filter ()
     {
-      DDS4CCM_LOG_TRACE (
-        "CCM_DDS_ContentFilterSetting_i::filter");
+      DDS4CCM_LOG_TRACE ("CCM_DDS_ContentFilterSetting_i::filter");
 
       return this->filter_;
     }
 
     void
-    CCM_DDS_ContentFilterSetting_i::filter (
-      const ::CCM_DDS::QueryFilter & filter)
+    CCM_DDS_ContentFilterSetting_i::filter (const ::CCM_DDS::QueryFilter & filter)
     {
       DDS4CCM_LOG_TRACE ("CCM_DDS_ContentFilterSetting_i::filter");
 
@@ -40,8 +38,7 @@ namespace CIAOX11
       IDL::traits< ::DDS::Topic>::ref_type topic,
       IDL::traits< ::DDS::Subscriber>::ref_type subscriber)
     {
-      DDS4CCM_LOG_TRACE (
-        "CCM_DDS_ContentFilterSetting_i::create_contentfilteredtopic");
+      DDS4CCM_LOG_TRACE ("CCM_DDS_ContentFilterSetting_i::create_contentfilteredtopic");
 
       IDL::traits< ::DDS::DomainParticipant>::ref_type dp =
         subscriber->get_participant ();
@@ -136,8 +133,8 @@ namespace CIAOX11
         throw CCM_DDS::InternalError (::DDS::RETCODE_BAD_PARAMETER, 0);
       }
 
-      ::DDS::ReturnCode_t const retcode =
-        this->cft_->set_expression_parameters (parameters);
+      ::DDS::ReturnCode_t const retcode = this->cft_->set_expression_parameters (parameters);
+
       if (retcode == ::DDS::RETCODE_OK)
       {
         DDS4CCM_LOG_DEBUG ("CCM_DDS_ContentFilterSetting_i::set_filter_parameters: "

@@ -24,7 +24,6 @@
  * @tparam CCM_TYPE DDS4CCM traits
  * @tparam TOPIC_TYPE => Vendor specific Topic Type.
  * @tparam TOPIC_SEQ_TYPE => Vendor specific sequence of Topic Types.
- *
  */
 template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 class DDS_Event_Connector_T

@@ -62,7 +62,7 @@ namespace CIAOX11
       ::DDS::ViewStateMask view_states,
       ::DDS::InstanceStateMask instance_states,
       const std::string &query_expression,
-      const ::DDS::StringSeq & query_parameters)
+      const ::DDS::StringSeq &query_parameters)
     {
       return this->dds_entity_->create_querycondition (sample_states,
                                                         view_states,

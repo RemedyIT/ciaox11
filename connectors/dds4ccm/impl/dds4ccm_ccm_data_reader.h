@@ -19,6 +19,10 @@ namespace CIAOX11
 {
   namespace DDS4CCM
   {
+    /**
+     * DataReader implementation which is the proxy to DDSX11 at the moment
+     * the user code directly wants to use DDS
+     */
     class DDS4CCM_IMPL_Export CCM_DataReader
       : public virtual FacetBase< ::DDS::CCM_DataReader>
     {
@@ -44,79 +48,70 @@ namespace CIAOX11
 
       IDL::traits< ::DDS::ReadCondition>::ref_type
       create_readcondition (
-        ::DDS::SampleStateMask,
-        ::DDS::ViewStateMask,
-        ::DDS::InstanceStateMask) override;
+        ::DDS::SampleStateMask sample_states,
+        ::DDS::ViewStateMask view_states,
+        ::DDS::InstanceStateMask instance_states) override;
 
       IDL::traits< ::DDS::QueryCondition>::ref_type
       create_querycondition (
-        ::DDS::SampleStateMask,
-        ::DDS::ViewStateMask,
-        ::DDS::InstanceStateMask,
-        const std::string & ,
-        const ::DDS::StringSeq & ) override;
+        ::DDS::SampleStateMask sample_states,
+        ::DDS::ViewStateMask view_states,
+        ::DDS::InstanceStateMask instance_states,
+        const std::string &query_expression,
+        const ::DDS::StringSeq &query_parameters) override;
 
       ::DDS::ReturnCode_t
-      delete_readcondition (IDL::traits< ::DDS::ReadCondition>::ref_type) override;
+      delete_readcondition (IDL::traits< ::DDS::ReadCondition>::ref_type a_condition) override;
 
       ::DDS::ReturnCode_t
       delete_contained_entities () override;
 
       ::DDS::ReturnCode_t
-      set_qos (const ::DDS::DataReaderQos & ) override;
+      set_qos (const ::DDS::DataReaderQos &qos) override;
 
       ::DDS::ReturnCode_t
-      get_qos (::DDS::DataReaderQos & ) override;
+      get_qos (::DDS::DataReaderQos &qos) override;
 
       ::DDS::ReturnCode_t
       set_listener (
-        IDL::traits< ::DDS::DataReaderListener>::ref_type,
-        ::DDS::StatusMask) override;
+        IDL::traits< ::DDS::DataReaderListener>::ref_type a_listener,
+        ::DDS::StatusMask mask) override;
 
-      IDL::traits< ::DDS::DataReaderListener>::ref_type
-      get_listener () override;
+      IDL::traits< ::DDS::DataReaderListener>::ref_type get_listener () override;
 
-      IDL::traits< ::DDS::TopicDescription>::ref_type
-      get_topicdescription () override;
+      IDL::traits< ::DDS::TopicDescription>::ref_type get_topicdescription () override;
 
-      IDL::traits< ::DDS::Subscriber>::ref_type
-      get_subscriber () override;
+      IDL::traits< ::DDS::Subscriber>::ref_type get_subscriber () override;
 
       ::DDS::ReturnCode_t
-      get_sample_rejected_status (
-        ::DDS::SampleRejectedStatus & ) override;
+      get_sample_rejected_status (::DDS::SampleRejectedStatus &status) override;
 
       ::DDS::ReturnCode_t
-      get_liveliness_changed_status (
-        ::DDS::LivelinessChangedStatus & ) override;
+      get_liveliness_changed_status (::DDS::LivelinessChangedStatus &status) override;
 
       ::DDS::ReturnCode_t
-      get_requested_deadline_missed_status (
-        ::DDS::RequestedDeadlineMissedStatus & ) override;
+      get_requested_deadline_missed_status (::DDS::RequestedDeadlineMissedStatus &status) override;
 
       ::DDS::ReturnCode_t
-      get_requested_incompatible_qos_status (
-        ::DDS::RequestedIncompatibleQosStatus &  ) override;
+      get_requested_incompatible_qos_status (::DDS::RequestedIncompatibleQosStatus &status) override;
 
       ::DDS::ReturnCode_t
-      get_subscription_matched_status (
-        ::DDS::SubscriptionMatchedStatus & ) override;
+      get_subscription_matched_status (::DDS::SubscriptionMatchedStatus &status) override;
 
       ::DDS::ReturnCode_t
-      get_sample_lost_status (
-        ::DDS::SampleLostStatus & ) override;
+      get_sample_lost_status (::DDS::SampleLostStatus &status) override;
 
       ::DDS::ReturnCode_t
       wait_for_historical_data (
-        const ::DDS::Duration_t & ) override;
+        const ::DDS::Duration_t &max_wait) override;
 
       ::DDS::ReturnCode_t
       get_matched_publications (
-        ::DDS::InstanceHandleSeq & ) override;
+        ::DDS::InstanceHandleSeq &publication_handles) override;
 
       ::DDS::ReturnCode_t
-      get_matched_publication_data (::DDS::PublicationBuiltinTopicData & ,
-        const ::DDS::InstanceHandle_t&) override;
+      get_matched_publication_data (::DDS::PublicationBuiltinTopicData &publication_data,
+        const ::DDS::InstanceHandle_t&publication_handle) override;
       //@}
 
       /**

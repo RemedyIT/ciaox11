@@ -27,23 +27,18 @@ DDS_Listen_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE, LRT>::activate (
 {
   DDS4CCM_LOG_TRACE ("DDS_Listen_Port_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::activate");
 
-  ::DDS::StatusMask const mask =
-    DataReaderListener_type::get_mask (listener, status);
+  ::DDS::StatusMask const mask = DataReaderListener_type::get_mask (listener, status);
 
   if (mask != ::DDS::STATUS_MASK_NONE)
   {
-    if (!this->listener_)
-    {
-      this->listener_ =
-        CORBA::make_reference<DataReaderListener_type>(
-          evs,
-          this->data_control_,
-          this->condition_manager_);
-    }
-    IDL::traits< ::DDS::DataReader>::ref_type dr =
-      this->dds4ccm_reader_->get_dds_reader ();
+    IDL::traits< ::DDS::DataReader>::ref_type dr = this->dds4ccm_reader_->get_dds_reader ();
     if (dr)
     {
+      if (!this->listener_)
+      {
+        this->listener_ = CORBA::make_reference<DataReaderListener_type>(evs, this->data_control_, this->condition_manager_);
+      }
+
       ::DDS::ReturnCode_t const retcode = dr->set_listener (this->listener_, mask);
 
       if (retcode != ::DDS::RETCODE_OK)

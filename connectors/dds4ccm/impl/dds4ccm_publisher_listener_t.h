@@ -25,7 +25,7 @@ namespace CIAOX11
       explicit PublisherListener_T (const EVT_STRATEGY &evs);
 
       /// Destructor
-      virtual ~PublisherListener_T () override = default;
+      ~PublisherListener_T () override = default;
 
       using uses_context_switch = typename EVT_STRATEGY::uses_context_switch;
       static constexpr const char* context_switch_type = EVT_STRATEGY::context_switch_type;
@@ -50,6 +50,7 @@ namespace CIAOX11
         IDL::traits< ::DDS::DataWriter>::ref_type the_Writer,
         const ::DDS::PublicationMatchedStatus & status) override;
 
+      /// Helper method to determine which DDS mask we have to use
       static ::DDS::StatusMask get_mask (
         IDL::traits< CCM_DDS::ConnectorStatusListener>::ref_type error_listener);
 

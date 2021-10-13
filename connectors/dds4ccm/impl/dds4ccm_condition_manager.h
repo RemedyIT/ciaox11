@@ -132,29 +132,25 @@ namespace CIAOX11
         * detached from the waitset first) and the initial read condition will
         * created (see init_readcondition()).
         */
-      void query
-        (const CCM_DDS::QueryFilter &filter);
+      void query (const CCM_DDS::QueryFilter &filter);
 
       /**
         * Sets the internal datareader.
         * Applies to Getter, Reader and Listener
         */
-      void set_dds_entity (
-        IDL::traits< ::DDS::DataReader>::ref_type dr);
+      void set_dds_entity (IDL::traits< ::DDS::DataReader>::ref_type dr);
 
       /**
         * Retrieves the internal datareader.
         */
-      IDL::traits< ::DDS::DataReader>::ref_type
-      get_dds_entity ();
+      IDL::traits< ::DDS::DataReader>::ref_type get_dds_entity ();
 
       /**
         * Detaches conditions from the waitset and
         * removes all conditions by calling
         * delete_readcondition on the DataReader.
         */
-      void
-      passivate ();
+      void passivate ();
 
     private:
       IDL::traits< ::DDS::DataReader>::ref_type dr_ {};

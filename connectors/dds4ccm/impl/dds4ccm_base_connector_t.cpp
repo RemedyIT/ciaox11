@@ -104,8 +104,7 @@ DDS_Base_Connector_T<CCM_TYPE>::qos_profile ()
 
 template <typename CCM_TYPE>
 void
-DDS_Base_Connector_T<CCM_TYPE>::qos_profile (
-  const std::string &qos_profile)
+DDS_Base_Connector_T<CCM_TYPE>::qos_profile (const std::string &qos_profile)
 {
   DDS4CCM_LOG_TRACE ("DDS_Base_Connector_T<CCM_TYPE>::qos_profile");
 

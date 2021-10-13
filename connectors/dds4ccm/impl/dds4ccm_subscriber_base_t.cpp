@@ -159,25 +159,21 @@ DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::activate (
 
   using PortStatusListener_type = ::CIAOX11::DDS4CCM::PortStatusListener_T<typename CCM_TYPE::event_strategy_type>;
 
-  ::DDS::StatusMask const mask =
-      PortStatusListener_type::get_mask (status);
+  ::DDS::StatusMask const mask = PortStatusListener_type::get_mask (status);
 
   // Add the listener to the datareader (if needed)
   if (mask != ::DDS::STATUS_MASK_NONE)
   {
-    if (!this->listener_)
-    {
-      this->listener_ =
-        DDS::make_reference< PortStatusListener_type > (
-          evs);
-    }
-
     IDL::traits< ::DDS::DataReader>::ref_type dr = this->dds4ccm_reader_->get_dds_reader ();
 
     if (dr)
     {
-      ::DDS::ReturnCode_t const retcode =
-        dr->set_listener (this->listener_, mask);
+      if (!this->listener_)
+      {
+        this->listener_ = DDS::make_reference<PortStatusListener_type > (evs);
+      }
+
+      ::DDS::ReturnCode_t const retcode = dr->set_listener (this->listener_, mask);
 
       if (retcode != ::DDS::RETCODE_OK)
       {

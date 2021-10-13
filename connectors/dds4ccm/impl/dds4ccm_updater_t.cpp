@@ -36,8 +36,7 @@ namespace CIAOX11
     {
       DDS4CCM_LOG_TRACE ("Updater_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::create_i");
 
-      ::DDS::InstanceHandle_t const hnd =
-        this->dds_writer_->register_instance (datum);
+      ::DDS::InstanceHandle_t const hnd = this->dds_writer_->register_instance (datum);
       if (hnd == ::DDS::HANDLE_NIL)
       {
         DDS4CCM_LOG_ERROR ("Updater_T<"
@@ -60,8 +59,7 @@ namespace CIAOX11
     {
       DDS4CCM_LOG_TRACE ("Updater_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::update_i");
 
-      ::DDS::ReturnCode_t const retcode  =
-          this->dds_writer_->write (an_instance, instance_handle);
+      ::DDS::ReturnCode_t const retcode  = this->dds_writer_->write (an_instance, instance_handle);
       if (retcode != ::DDS::RETCODE_OK)
       {
         DDS4CCM_LOG_ERROR ("Updater_T<"
@@ -133,9 +131,8 @@ namespace CIAOX11
       else
       {
         // Check explicitly if the instance handle matches the instance, this
-        // is not checked by, for instance, RTI DDS
-        ::DDS::InstanceHandle_t const instance_handle_l =
-            this->dds_writer_->lookup_instance (an_instance);
+        // is not checked by, for instance, RTI Connext DDS
+        ::DDS::InstanceHandle_t const instance_handle_l = this->dds_writer_->lookup_instance (an_instance);
 
         if (hnd != instance_handle_l)
         {
@@ -169,8 +166,7 @@ namespace CIAOX11
       {
         if (this->dds_writer_->lookup_instance (tt) != ::DDS::HANDLE_NIL)
         {
-          exception.indexes ().push_back (
-              ACE_Utils::truncate_cast< ::CCM_DDS::DataNumber_t> (index));
+          exception.indexes ().push_back (ACE_Utils::truncate_cast< ::CCM_DDS::DataNumber_t> (index));
         }
         ++index;
       }
@@ -183,8 +179,7 @@ namespace CIAOX11
 
     template <typename UPDATER_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
     void
-    Updater_T<UPDATER_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::check_existence (
-        const TOPIC_SEQ_TYPE& data)
+    Updater_T<UPDATER_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::check_existence (const TOPIC_SEQ_TYPE& data)
     {
       DDS4CCM_LOG_TRACE ("Updater_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::check_existence");
 
@@ -195,8 +190,7 @@ namespace CIAOX11
       {
         if (this->dds_writer_->lookup_instance (tt) == ::DDS::HANDLE_NIL)
         {
-          exception.indexes ().push_back (
-              ACE_Utils::truncate_cast< ::CCM_DDS::DataNumber_t> (index));
+          exception.indexes ().push_back (ACE_Utils::truncate_cast< ::CCM_DDS::DataNumber_t> (index));
         }
         ++index;
       }
@@ -271,8 +265,7 @@ namespace CIAOX11
       // Might throw a CCM_DDS::AlreadyCreated exception
       this->check_already_created (data);
 
-      IDL::traits< ::DDS::Publisher>::ref_type pub =
-        this->dds_writer_->get_publisher ();
+      IDL::traits< ::DDS::Publisher>::ref_type pub = this->dds_writer_->get_publisher ();
       if (!pub)
       {
         DDS4CCM_LOG_ERROR ("Updater_T<"
@@ -280,10 +273,8 @@ namespace CIAOX11
           << ">::update_many - Publisher on DataWriter seems to be NIL.");
         throw CCM_DDS::InternalError (::DDS::RETCODE_ERROR, 0);
       }
-      Coherent_Changes_Guard guard (
-        pub,
-        this->is_coherent_write_);
 
+      Coherent_Changes_Guard guard (pub, this->is_coherent_write_);
       typename TOPIC_SEQ_TYPE::size_type index = 0;
       for (const TOPIC_TYPE& tt : data)
       {

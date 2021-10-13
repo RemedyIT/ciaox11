@@ -31,18 +31,14 @@ DDS_State_Listen_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE, LRT>::activate (
 
   if (mask != ::DDS::STATUS_MASK_NONE)
   {
-    if (!this->listener_)
-    {
-      this->listener_ =
-        CORBA::make_reference<DataReaderStateListener_type>(
-          evs,
-          this->data_control_,
-          this->condition_manager_);
-    }
-    IDL::traits< ::DDS::DataReader>::ref_type dr =
-      this->dds4ccm_reader_->get_dds_reader ();
+    IDL::traits< ::DDS::DataReader>::ref_type dr = this->dds4ccm_reader_->get_dds_reader ();
     if (dr)
     {
+      if (!this->listener_)
+      {
+        this->listener_ = CORBA::make_reference<DataReaderStateListener_type>(evs, this->data_control_, this->condition_manager_);
+      }
+
       ::DDS::ReturnCode_t const retcode = dr->set_listener (this->listener_, mask);
 
       if (retcode != ::DDS::RETCODE_OK)

@@ -5,6 +5,9 @@
  *
  * @brief   Provides the context switch between DDS and DDS4CCM
  *
+ * Contains all helper classes to force a thread switch between DDS
+ * and DDS4CCM by going through the ACE reactor
+ *
  * @copyright Copyright (c) Remedy IT Expertise BV
  */
 #ifndef DDS4CCM_CONTEXT_SWITCH_HANDLERS_T_H_
