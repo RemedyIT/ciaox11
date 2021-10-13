@@ -56,7 +56,7 @@ module IDL
 
       def enter_module(node)
         super
-        println()
+        println
         printiln('// generated from AmiConnectorConnIDLWriter#enter_module')
         printiln('module ' + node.cxxname)
         printiln('{')
@@ -65,7 +65,7 @@ module IDL
 
       def leave_module(node)
         dec_nest
-        println()
+        println
         printiln("}; // module #{node.cxxname}")
         super
       end
@@ -115,7 +115,7 @@ module IDL
 
       def enter_module(node)
         super
-        println()
+        println
         printiln('// generated from AmiConnectorIDLWriter#enter_module')
         printiln('module ' + node.cxxname)
         printiln('{')
@@ -124,7 +124,7 @@ module IDL
 
       def leave_module(node)
         dec_nest
-        println()
+        println
         printiln("}; // module #{node.cxxname}")
         super
       end

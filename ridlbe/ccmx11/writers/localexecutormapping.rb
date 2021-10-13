@@ -167,7 +167,7 @@ module IDL
       def enter_module(node)
         super
         if module_needs_lem_code?(node)
-          println()
+          println
           printiln('// generated from LemExecutorIDLWriter#enter_module')
           printiln('module ' + node.unescaped_name)
           printiln('{')
@@ -178,7 +178,7 @@ module IDL
       def leave_module(node)
         if module_needs_lem_code?(node)
           dec_nest
-          println()
+          println
           printiln("}; // module #{node.unescaped_name}")
           super
         end

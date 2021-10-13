@@ -117,7 +117,7 @@ module IDL
         def mark_namespace_end(node)
           if @current_module >= 0 && @module_stack[@current_module] == node
             dec_nest
-            println()
+            println
             printiln("}; // module #{node.unescaped_name}")
             @current_module -= 1
           end
@@ -126,7 +126,7 @@ module IDL
 
         def check_dds_native_namespace
           unless @dds_native_module
-            println()
+            println
             printiln('module DDS_Native')
             printiln('{')
             inc_nest
@@ -137,7 +137,7 @@ module IDL
         def check_dds_native_namespace_end
           if @dds_native_module
             dec_nest
-            println()
+            println
             printiln('}; // module DDS_Native')
             @dds_native_module = false
           end
