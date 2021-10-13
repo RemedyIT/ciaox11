@@ -1,4 +1,4 @@
-include::_{backend}_settings.adoc[]
+include::_{backend}_settings.adoc[opts=optional]
 
 = Getting started with AXCIOMA
 
@@ -14,21 +14,21 @@ component technology enabling the _Industrial Internet of Things_.
 The *AXCIOMA* release package is made up of a number of distinct
 software products as follows:
 
-* <<ciaox11.adoc#,CIAOX11>> provides the basic
+* xref:ciaox11.adoc#[CIAOX11] provides the basic
 Lightweight CCM (LwCCM) framework needed to build and execute
 components. The following optional features products are included
 providing support for:
-** <<{xref_docs_root}/corba4ccm/corba4ccm.adoc#,CORBA4CCM>> delivering synchronous _Request/Reply_ interaction
-** <<{xref_docs_root}/ami4ccm/ami4ccm.adoc#,AMI4CCM>> delivering asynchronous _Request/Reply_ interaction
-** <<{xref_docs_root}/dds4ccm/dds4ccm.adoc#,DDS4CCM>> delivering _State and Event_ interaction
-** <<{xref_docs_root}/psdd4ccm/psdd4ccm.adoc#,PSDD4CCM>> delivering _Publish and Subscribe Data Distribution_ interaction
-** <<{xref_docs_root}/tt4ccm/tt4ccm.adoc#,TT4CCM>> delivering _Timed Trigger_ interaction
+** xref:{xref_docs_root}/corba4ccm/corba4ccm.adoc#[CORBA4CCM] delivering synchronous _Request/Reply_ interaction
+** xref:{xref_docs_root}/ami4ccm/ami4ccm.adoc#[AMI4CCM] delivering asynchronous _Request/Reply_ interaction
+** xref:{xref_docs_root}/dds4ccm/dds4ccm.adoc#[DDS4CCM] delivering _State and Event_ interaction
+** xref:{xref_docs_root}/psdd4ccm/psdd4ccm.adoc#[PSDD4CCM] delivering _Publish and Subscribe Data Distribution_ interaction
+** xref:{xref_docs_root}/tt4ccm/tt4ccm.adoc#[TT4CCM] delivering _Timed Trigger_ interaction
 include::{ciaox11_src_root}/exf/docs/src/getting_started.asc[opts=optional]
-* <<{xref_docs_root}/ddsx11/ddsx11.adoc#,DDSX11>> provides the
+* xref:{xref_docs_root}/ddsx11/ddsx11.adoc#[DDSX11] provides the
 IDL to {cxx11} support for DDS
-* <<{xref_docs_root}/dancex11/dancex11.adoc#,DnCX11>> provides the runtime
+* xref:{xref_docs_root}/dancex11/dancex11.adoc#[DnCX11] provides the runtime
 deployment tooling required to deploy LwCCM components
-* <<{xref_docs_root}/taox11/getting_started.adoc#,TAOX11>> provides the support for
+* xref:{xref_docs_root}/taox11/getting_started.adoc#[TAOX11] provides the support for
 the IDL2{cxx11} type system as well as providing the communication
 middleware (CORBA) for the DnCX11 deployment tooling and the CORBA4CCM
 implementation of the _Request/Reply_ interaction support in CIAOX11
@@ -194,7 +194,7 @@ prerequisites:
 ==== Windows
 
 See the
-<<{xref_docs_root}/taox11/windows_instructions.adoc#,Development on Windows>>
+xref:{xref_docs_root}/taox11/windows_instructions.adoc#[Development on Windows]
 information for more details on the *AXCIOMA* prerequisites, compilation, and
 setting up a development environment for *AXCIOMA*.
 
@@ -202,7 +202,7 @@ setting up a development environment for *AXCIOMA*.
 
 For the prerequisites, configuration and building of AXCIOMA on crossbuild targets like embedded Linux
 or Android read our
-<<{xref_docs_root}/taox11/cross_building.adoc#,Cross Building>> instructions.
+xref:{xref_docs_root}/taox11/cross_building.adoc#[Cross Building] instructions.
 
 === Directory structure
 
@@ -258,7 +258,7 @@ There are basically two ways to develop your application with *AXCIOMA*:
 
 === BRIX11
 
-<<{xref_docs_root}/brix11/brix11.adoc#,BRIX11>> is a toolset provided to
+xref:{xref_docs_root}/brix11/brix11.adoc#[BRIX11] is a toolset provided to
 help you start up your *AXCIOMA* development and to simplify
 building and running your *AXCIOMA* applications.
 
@@ -279,7 +279,7 @@ to add the path to the `bin` directory to the `PATH` so you can execute
 `brix11` from anywhere).
 
 More information about the BRIX11 toolset can be found
-<<{xref_docs_root}/brix11/brix11.adoc#,here>>.
+xref:{xref_docs_root}/brix11/brix11.adoc#[here].
 
 Using BRIX11 there are now two ways of controlling buildsteps for your
 project:
@@ -372,7 +372,7 @@ libraries containing pass:[C++] symbols are build for debug.
 AXCIOMA for MS or Intel pass:[C++] on Windows ships with a full set of debug libraries and executables for that purpose. Executing
 a deployment using the debug versions of the deployment tools will make sure that both for framework libraries as well as
 for user component libraries the debug versions are preferred above release libraries when (dynamically) loading them.
-With <<{parent_dir}/brix11/brix11.adoc#,BRIX11>> deploying an application/test for debug can be specified by
+With xref:{parent_dir}/brix11/brix11.adoc#[BRIX11] deploying an application/test for debug can be specified by
 adding the `--debug` or `--release` (default) switch to the `run test` command.
 
 These considerations do not apply for the MinGW-w64 compiler toolset as these use an entirely different way of exporting pass:[C++]

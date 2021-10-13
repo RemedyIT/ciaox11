@@ -1,4 +1,4 @@
-include::_{backend}_settings.adoc[]
+include::_{backend}_settings.adoc[opts=optional]
 
 = Manually compile *AXCIOMA* applications
 
@@ -21,9 +21,9 @@ application.
 This is the implied IDL (generated from the data IDL or created
 manually), that provides the interfaces for a specific interaction
 pattern
-** <<{xref_docs_root}/corba4ccm/corba4ccm.adoc#,synchronous request/reply>>
-** <<{xref_docs_root}/ami4ccm/ami4ccm.adoc#,asynchronous request/reply>>
-** <<{xref_docs_root}/dds4ccm/dds4ccm.adoc#,state/event>>
+** xref:{xref_docs_root}/corba4ccm/corba4ccm.adoc#[synchronous request/reply]
+** xref:{xref_docs_root}/ami4ccm/ami4ccm.adoc#[asynchronous request/reply]
+** xref:{xref_docs_root}/dds4ccm/dds4ccm.adoc#[state/event]
 include::{ciaox11_src_root}/connectors/psdd4ccm/docs/src/compilation.asc[tag=pattern1]
 
 .  The "connector" IDL +
@@ -107,9 +107,9 @@ The result of the above mentioned command line is as follows:
 
 This is the implied IDL that should be used for a certain pattern
 
-* <<{xref_docs_root}/corba4ccm/corba4ccm.adoc#,synchronous request/reply>>
-* <<{xref_docs_root}/ami4ccm/ami4ccm.adoc#,asynchronous request/reply>>
-* <<{xref_docs_root}/dds4ccm/dds4ccm.adoc#,state/event>>
+* xref:{xref_docs_root}/corba4ccm/corba4ccm.adoc#[synchronous request/reply]
+* xref:{xref_docs_root}/ami4ccm/ami4ccm.adoc#[asynchronous request/reply]
+* xref:{xref_docs_root}/dds4ccm/dds4ccm.adoc#[state/event]
 include::{ciaox11_src_root}/connectors/psdd4ccm/docs/src/compilation.asc[tag=pattern2]
 
 

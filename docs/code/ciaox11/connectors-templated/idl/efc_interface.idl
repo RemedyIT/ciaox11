@@ -1,0 +1,36 @@
+/**
+ * @file    efc_interface.idl
+ * @author  Martin Corino
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ */
+
+#ifndef __EFC_INTERFACE_IDL__
+#define __EFC_INTERFACE_IDL__
+
+module EFC_T<typename DATA_IN, typename DATA_OUT>
+{
+   struct FooRequest
+   {
+      string request_id;
+      DATA_IN request_data;
+   };
+
+   struct FooReply
+   {
+      string request_id;
+      DATA_OUT reply_data;
+   };
+
+   local interface FooHandler
+   {
+      boolean submit(in FooRequest request);
+   };
+
+   local interface FooListener
+   {
+      void accept(in FooReply reply);
+   };
+}; /* module EFC_T */
+
+#endif /* __EFC_INTERFACE_IDL__ */

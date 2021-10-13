@@ -1,4 +1,4 @@
-include::_{backend}_settings.adoc[]
+include::_{backend}_settings.adoc[opts=optional]
 
 = LwCCM compliance of CIAOX11
 
@@ -37,7 +37,7 @@ user written component executors is all based on local IDL interfaces
 
 At the moment a component wants to provide a remote accessible facet it
 has to be deployed together with a collocated
-<<{xref_docs_root}/corba4ccm/corba4ccm.adoc#,CORBA4CCM connector>>. The
+xref:{xref_docs_root}/corba4ccm/corba4ccm.adoc#[CORBA4CCM connector]. The
 CORBA4CCM connector provides the CORBA servant which implements the
 provide_facet operation. This operation is used by the deployment tools
 to retrieve the CORBA facet servant. At the moment a component isn't

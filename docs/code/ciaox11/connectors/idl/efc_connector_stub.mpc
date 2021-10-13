@@ -1,0 +1,47 @@
+project (*idl_gen) : ciaox11_idldefaults {
+  custom_only = 1
+  idlflags += -Wb,stub_export_macro=EFCC_STUB_Export \
+              -Wb,stub_export_include=efcc_stub_export.h \
+              -Scdr -Scp
+
+  IDL_Files {
+    idlflags += -Gxhst -Glem
+    efc_interface.idl
+  }
+}
+
+project (*lem_gen) : ciaox11_idldefaults {
+  custom_only = 1
+  after += *idl_gen
+  idlflags += -Wb,stub_export_macro=EFCC_LEM_STUB_Export \
+              -Wb,stub_export_include=efcc_lem_stub_export.h \
+              -Scp -Scdr
+
+  IDL_Files {
+     idlflags += -Gxhst
+     efc_interfaceE.idl
+  }
+}
+
+project (*) : install, \
+                   ciaox11_ccm_stub, \
+                   ciaox11_ccm_session_stub, \
+                   ciaox11_output, \
+                   taox11_core_anytypecode {
+  after += *lem_gen
+  libout = ../lib
+  dynamicflags += EFC_STUB_BUILD_DLL \
+                  EFC_LEM_STUB_BUILD_DLL
+
+  Header_Files {
+    efc_stub_export.h
+    efc_interfaceC.h
+    efc_lem_stub_export.h
+    efc_interfaceEC.h
+  }
+
+  Source_Files {
+    efc_interfaceC.cpp
+    efc_interfaceEC.cpp
+  }
+}

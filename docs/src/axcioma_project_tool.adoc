@@ -1,4 +1,4 @@
-include::_{backend}_settings.adoc[]
+include::_{backend}_settings.adoc[opts=optional]
 
 = APC
 :linkattrs:
@@ -80,7 +80,7 @@ Use the `-h` option available for each command to get detailed usage information
 The `brix11` command executable can be found in the `bin` directory of the package root
 (typically `taox11_<version>/bin`). If you want to use `brix11` without
 having to specify the full path you could add the `bin` directory to
-your path (see <<{parent_dir}/brix11/brix11.adoc#,here>> for more information about BRIX11 in general).
+your path (see xref:{xref_docs_root}/brix11/brix11.adoc#[here] for more information about BRIX11 in general).
 
 
 === APC prepare
@@ -424,7 +424,7 @@ rcp.idl <<<Value type declarations,pathlist>>>
 ----
 component 'my_component' do \|comp\|
   # ...
-  comp.idl 'shapes_sender_comp.idl'
+  comp.idl 'shapes_sender_comp.idl'
   # ...
 end
 ----
@@ -442,7 +442,7 @@ rcp.export_name <<<Value type declarations,string>>>
 ----
 component 'my_component' do \|comp\|
   # ...
-  comp.export_name 'my_export_sender'
+  comp.export_name 'my_export_sender'
   # ...
 end
 ----
@@ -460,7 +460,7 @@ rcp.shared_name <<<Value type declarations,string>>>
 ----
 component 'my_component' do \|comp\|
   # ...
-  comp.shared_name 'my_sender'
+  comp.shared_name 'my_sender'
   # ...
 end
 ----
@@ -479,7 +479,7 @@ rcp.combined_lib <boolean>
 ----
 component 'my_component' do \|comp\|
   # ...
-  comp.combined_lib true
+  comp.combined_lib true
   # ...
 end
 ----
@@ -499,7 +499,7 @@ rcp.includes <<<Value type declarations,pathlist>>>
 ----
 component 'my_component' do \|comp\|
   # ...
-  comp.includes '../test', '$(ACE_ROOT)/protocols'
+  comp.includes '../test', '$(ACE_ROOT)/protocols'
   # ...
 end
 ----
@@ -537,7 +537,7 @@ rcp.gen_dir <<<Value type declarations,string>>>
 ----
 component 'my_component' do \|comp\|
   # ...
-  comp.gen_dir 'build'
+  comp.gen_dir 'build'
   # ...
 end
 ----
@@ -570,16 +570,16 @@ executor library. Allows to add or remove strings. By default the list
 can contain any number of, optional, system defined base project names.
 Can be declared multiple times.
 Syntax::
-rcp.base_projects += <<<Value type declarations,stringlist>>> +
+rcp.base_projects += <<<Value type declarations,stringlist>>> +
 *or* +
-rcp.base_projects -= <<<Value type declarations,stringlist>>>
+rcp.base_projects -= <<<Value type declarations,stringlist>>>
 
 [source, ruby]
 .example
 ----
 component 'my_component' do \|comp\|
   # ...
-  comp.base_projects += 'taox11_anytypecode'
+  comp.base_projects += 'taox11_anytypecode'
   comp.base_projects -= 'ciaox11_logger'
   # ...
 end
@@ -619,7 +619,7 @@ rcp.libs <<<Value type declarations,stringlist>>>
 ----
 component 'my_component' do \|comp\|
   # ...
-  comp.libs %w{ ACE_INet MyLib}
+  comp.libs %w{ ACE_INet MyLib}
   # ...
 end
 ----
@@ -655,8 +655,8 @@ rcp.define <<<Value type declarations,string>>> do <component interface spec> en
 ----
 component 'my_component' do \|comp\|
   # ...
-  comp.define 'Module::Sender' do \|intf\|
-    # ...
+  comp.define 'Module::Sender' do \|intf\|
+    # ...
   end
   # ...
 end
@@ -683,20 +683,20 @@ Properties::
 Description::
 Defines a port
 Syntax::
-intf.port <<<Value type declarations,string>>> do \|port\| +
-  <port spec> +
+intf.port <<<Value type declarations,string>>> do \|port\| +
+  <port spec> +
 end +
 +
 _or in condensed form:_ +
 +
-intf.port <<<Value type declarations,string>>>, <port spec>
+intf.port <<<Value type declarations,string>>>, <port spec>
 
 [source, ruby]
 .example, block form
 ----
-comp.define 'Module::Sender' do \|intf\|
-  intf.port 'run_my_foo' do \|port\|
-    port.uses 'Hello::MyFoo'
+comp.define 'Module::Sender' do \|intf\|
+  intf.port 'run_my_foo' do \|port\|
+    port.uses 'Hello::MyFoo'
   end
 end
 ----
@@ -704,8 +704,8 @@ end
 [source, ruby]
 .example, condensed form
 ----
-comp.define 'Module::Sender' do \|intf\|
-  intf.port 'run_my_foo', uses: 'Hello::MyFoo
+comp.define 'Module::Sender' do \|intf\|
+  intf.port 'run_my_foo', uses: 'Hello::MyFoo
 end
 ----
 
@@ -714,21 +714,21 @@ end
 Description::
 Defines a attribute
 Syntax::
-intf.attribute <<<Value type declarations,string>>> do \|att\| +
-  <attribute spec> +
+intf.attribute <<<Value type declarations,string>>> do \|att\| +
+  <attribute spec> +
 end +
 +
 _or in condensed form:_ +
 +
-intf.attribute <<<Value type declarations,string>>>, <attribute spec>
+intf.attribute <<<Value type declarations,string>>>, <attribute spec>
 
 [source, ruby]
 .example, block form
 ----
-comp.define 'Module::Sender' do \|intf\|
-  intf.attribute 'my_attrib' do \|att\|
-    att.type 'short'
-    att.readonly true
+comp.define 'Module::Sender' do \|intf\|
+  intf.attribute 'my_attrib' do \|att\|
+    att.type 'short'
+    att.readonly true
   end
 end
 ----
@@ -736,8 +736,8 @@ end
 [source, ruby]
 .example, condensed form
 ----
-comp.define 'Module::Sender' do \|intf\|
-  intf.attribute 'my_attrib', type: 'short', readonly: true
+comp.define 'Module::Sender' do \|intf\|
+  intf.attribute 'my_attrib', type: 'short', readonly: true
 end
 ----
 
@@ -783,15 +783,15 @@ port.uses <<<Value type declarations,string>>>, multiple: true +
 +
 _or in condensed form:_ +
 +
-intf.port <<<Value type declarations,string>>>, uses: <<<Value type declarations,string>>> +
+intf.port <<<Value type declarations,string>>>, uses: <<<Value type declarations,string>>> +
 _or_ +
-intf.port <<<Value type declarations,string>>>, uses: [<<<Value type declarations,string>>>, multiple: true]
+intf.port <<<Value type declarations,string>>>, uses: [<<<Value type declarations,string>>>, multiple: true]
 
 [source, ruby]
 .example, block form
 ----
-comp.define 'Module::Sender' do \|intf\|
-  intf.port 'my_port' do \|port\|
+comp.define 'Module::Sender' do \|intf\|
+  intf.port 'my_port' do \|port\|
     port.uses 'Hello::MyFoo'
   end
 end
@@ -800,8 +800,8 @@ end
 [source, ruby]
 .multiplex example, block form
 ----
-comp.define 'Module::Sender' do \|intf\|
-  intf.port 'my_port' do \|port\|
+comp.define 'Module::Sender' do \|intf\|
+  intf.port 'my_port' do \|port\|
     port.uses 'Hello::MyFoo', multiple: true
   end
 end
@@ -810,16 +810,16 @@ end
 [source, ruby]
 .example, condensed form
 ----
-comp.define 'Module::Sender' do \|intf\|
-  intf.port 'my_port', uses: 'Hello::MyFoo'
+comp.define 'Module::Sender' do \|intf\|
+  intf.port 'my_port', uses: 'Hello::MyFoo'
 end
 ----
 
 [source, ruby]
 .multiplex example, condensed form
 ----
-comp.define 'Module::Sender' do \|intf\|
-  intf.port 'my_port', uses: ['Hello::MyFoo', multiple: true]
+comp.define 'Module::Sender' do \|intf\|
+  intf.port 'my_port', uses: ['Hello::MyFoo', multiple: true]
 end
 ----
 
@@ -836,13 +836,13 @@ port.provides <<<Value type declarations,string>>> +
 +
 _or in condensed form:_ +
 +
-intf.port <<<Value type declarations,string>>>, provides: <<<Value type declarations,string>>>
+intf.port <<<Value type declarations,string>>>, provides: <<<Value type declarations,string>>>
 
 [source, ruby]
 .example, block form
 ----
-comp.define 'Module::Receiver' do \|intf\|
-  intf.port 'my_port' do \|port\|
+comp.define 'Module::Receiver' do \|intf\|
+  intf.port 'my_port' do \|port\|
     port.provides 'Hello::MyFoo'
   end
 end
@@ -851,8 +851,8 @@ end
 [source, ruby]
 .example, condensed form
 ----
-comp.define 'Module::Receiver' do \|intf\|
-  intf.port 'my_port', provides: 'Hello::MyFoo'
+comp.define 'Module::Receiver' do \|intf\|
+  intf.port 'my_port', provides: 'Hello::MyFoo'
 end
 ----
 
@@ -871,15 +871,15 @@ port.sends <<<Value type declarations,string>>>, multiple: true +
 +
 _or in condensed form:_ +
 +
-intf.port <<<Value type declarations,string>>>, sends: <<<Value type declarations,string>>> +
+intf.port <<<Value type declarations,string>>>, sends: <<<Value type declarations,string>>> +
 _or_ +
-intf.port <<<Value type declarations,string>>>, sends: [<<<Value type declarations,string>>>, multiple: true]
+intf.port <<<Value type declarations,string>>>, sends: [<<<Value type declarations,string>>>, multiple: true]
 
 [source, ruby]
 .example, block form
 ----
-comp.define 'Module::Sender' do \|intf\|
-  intf.port 'my_port' do \|port\|
+comp.define 'Module::Sender' do \|intf\|
+  intf.port 'my_port' do \|port\|
     port.sends 'Hello::MyFoo'
   end
 end
@@ -888,8 +888,8 @@ end
 [source, ruby]
 .multiplex example, block form
 ----
-comp.define 'Module::Sender' do \|intf\|
-  intf.port 'my_port' do \|port\|
+comp.define 'Module::Sender' do \|intf\|
+  intf.port 'my_port' do \|port\|
     port.sends 'Hello::MyFoo', multiple: true
   end
 end
@@ -898,16 +898,16 @@ end
 [source, ruby]
 .example, condensed form
 ----
-comp.define 'Module::Sender' do \|intf\|
-  intf.port 'my_port', sends: 'Hello::MyFoo'
+comp.define 'Module::Sender' do \|intf\|
+  intf.port 'my_port', sends: 'Hello::MyFoo'
 end
 ----
 
 [source, ruby]
 .multiplex example, condensed form
 ----
-comp.define 'Module::Sender' do \|intf\|
-  intf.port 'my_port', sends: ['Hello::MyFoo', multiple: true]
+comp.define 'Module::Sender' do \|intf\|
+  intf.port 'my_port', sends: ['Hello::MyFoo', multiple: true]
 end
 ----
 
@@ -924,13 +924,13 @@ port.writes <<<Value type declarations,string>>> +
 +
 _or in condensed form:_ +
 +
-intf.port <<<Value type declarations,string>>>, writes: <<<Value type declarations,string>>>
+intf.port <<<Value type declarations,string>>>, writes: <<<Value type declarations,string>>>
 
 [source, ruby]
 .example, block form
 ----
-comp.define 'Module::Sender' do \|intf\|
-  intf.port 'my_port' do \|port\|
+comp.define 'Module::Sender' do \|intf\|
+  intf.port 'my_port' do \|port\|
     port.writes 'Test::Shape'
   end
 end
@@ -939,8 +939,8 @@ end
 [source, ruby]
 .example, condensed form
 ----
-comp.define 'Module::Sender' do \|intf\|
-  intf.port 'my_port', writes: 'Test::Shape'
+comp.define 'Module::Sender' do \|intf\|
+  intf.port 'my_port', writes: 'Test::Shape'
 end
 ----
 
@@ -957,13 +957,13 @@ port.updates <<<Value type declarations,string>>> +
 +
 _or in condensed form:_ +
 +
-intf.port <<<Value type declarations,string>>>, updates: <<<Value type declarations,string>>>
+intf.port <<<Value type declarations,string>>>, updates: <<<Value type declarations,string>>>
 
 [source, ruby]
 .example, block form
 ----
-comp.define 'Module::Sender' do \|intf\|
-  intf.port 'my_port' do \|port\|
+comp.define 'Module::Sender' do \|intf\|
+  intf.port 'my_port' do \|port\|
     port.updates 'Test::Shape'
   end
 end
@@ -972,8 +972,8 @@ end
 [source, ruby]
 .example, condensed form
 ----
-comp.define 'Module::Sender' do \|intf\|
-  intf.port 'my_port', updates: 'Test::Shape'
+comp.define 'Module::Sender' do \|intf\|
+  intf.port 'my_port', updates: 'Test::Shape'
 end
 ----
 
@@ -990,13 +990,13 @@ port.reads <<<Value type declarations,string>>> +
 +
 _or in condensed form:_ +
 +
-intf.port <<<Value type declarations,string>>>, reads: <<<Value type declarations,string>>>
+intf.port <<<Value type declarations,string>>>, reads: <<<Value type declarations,string>>>
 
 [source, ruby]
 .example, block form
 ----
-comp.define 'Module::Receiver' do \|intf\|
-  intf.port 'my_port' do \|port\|
+comp.define 'Module::Receiver' do \|intf\|
+  intf.port 'my_port' do \|port\|
     port.reads 'Test::Shape'
   end
 end
@@ -1005,8 +1005,8 @@ end
 [source, ruby]
 .example, condensed form
 ----
-comp.define 'Module::Receiver' do \|intf\|
-  intf.port 'my_port', reads: 'Test::Shape'
+comp.define 'Module::Receiver' do \|intf\|
+  intf.port 'my_port', reads: 'Test::Shape'
 end
 ----
 
@@ -1023,13 +1023,13 @@ port.gets <<<Value type declarations,string>>> +
 +
 _or in condensed form:_ +
 +
-intf.port <<<Value type declarations,string>>>, gets: <<<Value type declarations,string>>>
+intf.port <<<Value type declarations,string>>>, gets: <<<Value type declarations,string>>>
 
 [source, ruby]
 .example, block form
 ----
-comp.define 'Module::Receiver' do \|intf\|
-  intf.port 'my_port' do \|port\|
+comp.define 'Module::Receiver' do \|intf\|
+  intf.port 'my_port' do \|port\|
     port.gets 'Test::Shape'
   end
 end
@@ -1038,8 +1038,8 @@ end
 [source, ruby]
 .example, condensed form
 ----
-comp.define 'Module::Receiver' do \|intf\|
-  intf.port 'my_port', gets: 'Test::Shape'
+comp.define 'Module::Receiver' do \|intf\|
+  intf.port 'my_port', gets: 'Test::Shape'
 end
 ----
 
@@ -1056,13 +1056,13 @@ port.monitors <<<Value type declarations,string>>> +
 +
 _or in condensed form:_ +
 +
-intf.port <<<Value type declarations,string>>>, monitors: <<<Value type declarations,string>>>
+intf.port <<<Value type declarations,string>>>, monitors: <<<Value type declarations,string>>>
 
 [source, ruby]
 .example, block form
 ----
-comp.define 'Module::Receiver' do \|intf\|
-  intf.port 'my_port' do \|port\|
+comp.define 'Module::Receiver' do \|intf\|
+  intf.port 'my_port' do \|port\|
     port.monitors 'Test::Shape'
   end
 end
@@ -1071,8 +1071,8 @@ end
 [source, ruby]
 .example, condensed form
 ----
-comp.define 'Module::Receiver' do \|intf\|
-  intf.port 'my_port', monitors: 'Test::Shape'
+comp.define 'Module::Receiver' do \|intf\|
+  intf.port 'my_port', monitors: 'Test::Shape'
 end
 ----
 
@@ -1089,13 +1089,13 @@ port.observes <<<Value type declarations,string>>> +
 +
 _or in condensed form:_ +
 +
-intf.port <<<Value type declarations,string>>>, observes: <<<Value type declarations,string>>>
+intf.port <<<Value type declarations,string>>>, observes: <<<Value type declarations,string>>>
 
 [source, ruby]
 .example, block form
 ----
-comp.define 'Module::Receiver' do \|intf\|
-  intf.port 'my_port' do \|port\|
+comp.define 'Module::Receiver' do \|intf\|
+  intf.port 'my_port' do \|port\|
     port.observes 'Test::Shape'
   end
 end
@@ -1104,8 +1104,8 @@ end
 [source, ruby]
 .example, condensed form
 ----
-comp.define 'Module::Receiver' do \|intf\|
-  intf.port 'my_port', observes: 'Test::Shape'
+comp.define 'Module::Receiver' do \|intf\|
+  intf.port 'my_port', observes: 'Test::Shape'
 end
 ----
 
@@ -1120,13 +1120,13 @@ port.timed_trigger +
 +
 _or in condensed form:_ +
 +
-intf.port <<<Value type declarations,string>>>, :timed_trigger
+intf.port <<<Value type declarations,string>>>, :timed_trigger
 
 [source, ruby]
 .example, block form
 ----
-comp.define 'Module::Sender' do \|intf\|
-  intf.port 'my_port' do \|port\|
+comp.define 'Module::Sender' do \|intf\|
+  intf.port 'my_port' do \|port\|
     port.timed_trigger
   end
 end
@@ -1135,8 +1135,8 @@ end
 [source, ruby]
 .example, condensed form
 ----
-comp.define 'Module::Sender' do \|intf\|
-  intf.port 'my_port', :timed_trigger
+comp.define 'Module::Sender' do \|intf\|
+  intf.port 'my_port', :timed_trigger
 end
 ----
 
@@ -1174,13 +1174,13 @@ att.type <<<Value type declarations,string>>> +
 +
 _or in condensed form:_ +
 +
-intf.attribute <<<Value type declarations,string>>>, type: <<<Value type declarations,string>>>
+intf.attribute <<<Value type declarations,string>>>, type: <<<Value type declarations,string>>>
 
 [source, ruby]
 .example, block form
 ----
-comp.define 'Module::Sender' do \|intf\|
-  intf.attribute 'my_attrib' do \|att\|
+comp.define 'Module::Sender' do \|intf\|
+  intf.attribute 'my_attrib' do \|att\|
     att.type 'short'
   end
 end
@@ -1189,8 +1189,8 @@ end
 [source, ruby]
 .example, condensed form
 ----
-comp.define 'Module::Sender' do \|intf\|
-  intf.attribute 'my_attrib', type: 'short'
+comp.define 'Module::Sender' do \|intf\|
+  intf.attribute 'my_attrib', type: 'short'
 end
 ----
 
@@ -1204,13 +1204,13 @@ port.readonly <boolean> +
 +
 _or in condensed form:_ +
 +
-intf.attribute <<<Value type declarations,string>>>, type: <<<Value type declarations,string>>>, readonly: true
+intf.attribute <<<Value type declarations,string>>>, type: <<<Value type declarations,string>>>, readonly: true
 
 [source, ruby]
 .example, block form
 ----
-comp.define 'Module::Sender' do \|intf\|
-  intf.attribute 'my_attrib' do \|att\|
+comp.define 'Module::Sender' do \|intf\|
+  intf.attribute 'my_attrib' do \|att\|
     att.type 'short'
     att.readonly true
   end
@@ -1220,8 +1220,8 @@ end
 [source, ruby]
 .example, condensed form
 ----
-comp.define 'Module::Sender' do \|intf\|
-  intf.attribute 'my_attrib', type: 'short', readonly: true
+comp.define 'Module::Sender' do \|intf\|
+  intf.attribute 'my_attrib', type: 'short', readonly: true
 end
 ----
 
@@ -1293,7 +1293,7 @@ rcp.idl <<<Value type declarations,pathlist>>>
 ----
 connector 'my_conn' do \|conn\|
   # ...
-  conn.idl %w\{ shapes_shapetype_msg.idl }
+  conn.idl %w\{ shapes_shapetype_msg.idl }
   # ...
 end
 ----
@@ -1315,7 +1315,7 @@ rcp.idl_includes <<<Value type declarations,pathlist>>>
 ----
 connector 'my_conn' do \|conn\|
   # ...
-  conn.idl %w\{ shapes_shapetype_msg.idl }
+  conn.idl %w\{ shapes_shapetype_msg.idl }
   conn.idl_includes %w{../data}
   # ...
 end
@@ -1339,7 +1339,7 @@ include::{ciaox11_src_root}/connectors/psdd4ccm/docs/src/axcioma_project_tool.as
 ----
 connector 'my_conn' do \|conn\|
   # ...
-  conn.port_type :ami4ccm
+  conn.port_type :ami4ccm
   # ...
 end
 ----
@@ -1357,7 +1357,7 @@ rcp.export_name <<<Value type declarations,string>>>
 ----
 connector 'my_conn' do \|conn\|
   # ...
-  conn.export_name 'my_myfoo'
+  conn.export_name 'my_myfoo'
   # ...
 end
 ----
@@ -1375,7 +1375,7 @@ rcp.shared_name <<<Value type declarations,string>>>
 ----
 connector 'my_conn' do \|conn\|
   # ...
-  conn.shared_name 'my_conn'
+  conn.shared_name 'my_conn'
   # ...
 end
 ----
@@ -1393,7 +1393,7 @@ rcp.gen_dir <<<Value type declarations,string>>>
 ----
 connector 'my_conn' do \|conn\|
   # ...
-  conn.gen_dir 'conn_dir_build'
+  conn.gen_dir 'conn_dir_build'
   # ...
 end
 ----
@@ -1434,8 +1434,8 @@ port.interface <<<Value type declarations,string>>>
 ----
 connector 'my_conn' do \|conn\|
   # ...
-  conn.port_type :corba4ccm do \|tp\|
-    tp.interface  'Hello::Foo'
+  conn.port_type :corba4ccm do \|tp\|
+    tp.interface  'Hello::Foo'
   end
   # ...
 end
@@ -1476,8 +1476,8 @@ port.topic <<<Value type declarations,string>>>
 ----
 connector 'my_conn' do \|conn\|
   # ...
-  conn.port_type :dds4ccm do \|tp\|
-    tp.topic  'Hello::ShapeType'
+  conn.port_type :dds4ccm do \|tp\|
+    tp.topic  'Hello::ShapeType'
   end
   # ...
 end
@@ -1515,8 +1515,8 @@ port.middleware <<<Value type declarations,stringlist>>> \| <<<Value type declar
 ----
 connector 'my_conn' do \|conn\|
   # ...
-  conn.port_type :dds4ccm do \|tp\|
-    tp.topic  'Hello::ShapeType'
+  conn.port_type :dds4ccm do \|tp\|
+    tp.topic  'Hello::ShapeType'
     tp.middleware :ndds  # currently default and only vendor
   end
   # ...
@@ -1537,8 +1537,8 @@ port.topic <<<Value type declarations,string>>>
 ----
 connector 'my_conn' do \|conn\|
   # ...
-  conn.port_type :dd4ccm do \|tp\|
-    tp.topic  'Hello::ShapeType'
+  conn.port_type :dd4ccm do \|tp\|
+    tp.topic  'Hello::ShapeType'
     tp.topic_namespace 'Test'
   end
   # ...
@@ -1559,8 +1559,8 @@ port.topic <<<Value type declarations,string>>>
 ----
 connector 'my_conn' do \|conn\|
   # ...
-  conn.port_type :dds4ccm do \|tp\|
-    tp.topic  'Hello::ShapeType'
+  conn.port_type :dds4ccm do \|tp\|
+    tp.topic  'Hello::ShapeType'
     tp.topic_sequence_suffix '_seq_t'
   end
   # ...
@@ -1580,8 +1580,8 @@ port.topic <<<Value type declarations,string>>>
 ----
 connector 'my_conn' do \|conn\|
   # ...
-  conn.port_type :dd4ccm do \|tp\|
-    tp.topic  'Hello::ShapeType'
+  conn.port_type :dd4ccm do \|tp\|
+    tp.topic  'Hello::ShapeType'
     tp.topic_sequence 'Shape_seq_t'
   end
   # ...
@@ -1602,8 +1602,8 @@ port.topic <<<Value type declarations,string>>>
 ----
 connector 'my_conn' do \|conn\|
   # ...
-  conn.port_type :dds4ccm do \|tp\|
-    tp.topic  'Hello::ShapeType'
+  conn.port_type :dds4ccm do \|tp\|
+    tp.topic  'Hello::ShapeType'
     tp.topic_interface_suffix '_interface'
   end
   # ...
@@ -1626,8 +1626,8 @@ port.topic <<<Value type declarations,string>>>
 ----
 connector 'my_conn' do \|conn\|
   # ...
-  conn.port_type :dd4ccm do \|tp\|
-    tp.topic  'Hello::ShapeType'
+  conn.port_type :dd4ccm do \|tp\|
+    tp.topic  'Hello::ShapeType'
     tp.topic_interface 'IShape'
   end
   # ...
@@ -1648,8 +1648,8 @@ port.disable_context_switch
 ----
 connector 'my_conn' do \|conn\|
   # ...
-  conn.port_type :dd4ccm do \|tp\|
-    tp.topic  'Hello::ShapeType'
+  conn.port_type :dd4ccm do \|tp\|
+    tp.topic  'Hello::ShapeType'
     tp.disable_context_switch
   end
   # ...
@@ -1714,7 +1714,7 @@ rcp.idl <<<Value type declarations,pathlist>>>
 .example
 ----
 base 'my_data' do \|dat\|
-  dat.idl %w{ shapes_sender_comp.idl }
+  dat.idl %w{ shapes_sender_comp.idl }
 end
 ----
 
@@ -1732,7 +1732,7 @@ rcp.includes <<<Value type declarations,pathlist>>>
 .example
 ----
 base 'my_data' do \|dat\|
-  dat.includes %w{../test $(ACE_ROOT)/protocols}
+  dat.includes %w{../test $(ACE_ROOT)/protocols}
 end
 ----
 
@@ -1766,7 +1766,7 @@ rcp.gen_dir <<<Value type declarations,string>>>
 .example
 ----
 base 'my_data' do \|dat\|
-  dat.gen_dir 'build'
+  dat.gen_dir 'build'
 end
 ----
 
@@ -1782,7 +1782,7 @@ rcp.export_name <<<Value type declarations,string>>>
 .example
 ----
 base 'my_data' do \|dat\|
-  dat.export_name 'my_base'
+  dat.export_name 'my_base'
 end
 ----
 
@@ -1798,7 +1798,7 @@ rcp.shared_name <<<Value type declarations,string>>>
 .example
 ----
 base 'my_data' do \|dat\|
-  dat.shared_name 'my_base_lib'
+  dat.shared_name 'my_base_lib'
 end
 ----
 
@@ -1982,7 +1982,7 @@ AXCIOMA is distributed with several tutorials and examples using APC as listed h
 * `$CIAOX11_ROOT/connectors/tt4ccm/examples/apc/` contains Timed Trigger APC example projects
 * `$CIAOX11_ROOT/connectors/ami4ccm/examples/apc/` contains AMI4CCM APC example projects
 * `$CIAOX11_ROOT/connectors/dds4ccm/examples/apc/shapes_asm` contains a specific DDS4CCM APC
-  project example for which a specific <<../dds4ccm/dds4ccm_shapes_example#,tutorial>> is available
+  project example for which a specific xref:{xref_docs_root}/dds4ccm/dds4ccm_shapes_example.adoc#[tutorial] is available
 
 .regression tests using APC
 [square]

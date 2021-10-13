@@ -1,4 +1,4 @@
-include::_{backend}_settings.adoc[]
+include::_{backend}_settings.adoc[opts=optional]
 
 = The AXCIOMA RIDL Compiler
 
@@ -38,7 +38,7 @@ ridlc -h
 --------
 
 The common options are described in the
-<<{xref_docs_root}/taox11/ridlc.adoc#,TAOX11 RIDLC documentation>>
+xref:{xref_docs_root}/taox11/ridlc.adoc#[TAOX11 RIDLC documentation]
 
 == Core AXCIOMA Options
 
