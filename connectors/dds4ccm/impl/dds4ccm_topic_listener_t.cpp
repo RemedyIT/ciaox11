@@ -14,8 +14,7 @@ namespace CIAOX11
   namespace DDS4CCM
   {
     template <typename EVT_STRATEGY>
-    TopicListener_T<EVT_STRATEGY>::TopicListener_T (
-      const EVT_STRATEGY &evs)
+    TopicListener_T<EVT_STRATEGY>::TopicListener_T (const EVT_STRATEGY &evs)
       : evs_ (evs)
     {
       DDS4CCM_LOG_TRACE("TopicListener_T::TopicListener_T");

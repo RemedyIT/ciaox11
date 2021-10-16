@@ -37,7 +37,6 @@ namespace CIAOX11
        */
       //@{
       bool is_coherent_write () override;
-
       void is_coherent_write (bool value) override;
       //@}
 

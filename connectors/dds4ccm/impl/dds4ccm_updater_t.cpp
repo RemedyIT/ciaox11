@@ -343,8 +343,7 @@ namespace CIAOX11
 
     template <typename UPDATER_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
     void
-    Updater_T<UPDATER_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::is_coherent_write (
-      bool value)
+    Updater_T<UPDATER_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::is_coherent_write (bool value)
     {
       this->is_coherent_write_ = value;
     }
