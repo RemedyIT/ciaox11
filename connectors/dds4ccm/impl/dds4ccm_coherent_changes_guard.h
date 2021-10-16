@@ -20,7 +20,8 @@ namespace CIAOX11
     /**
      * @name Coherent_Changes_Guard
      * @brief Guard class which calls begin_coherent_changes() on
-     *        construction and end_coherent_changes() at destruction
+     * construction and end_coherent_changes() at destruction. Make sure
+     * we always and our coherent changes.
      */
     class DDS4CCM_IMPL_Export Coherent_Changes_Guard final
     {

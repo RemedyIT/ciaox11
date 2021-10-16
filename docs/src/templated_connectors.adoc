@@ -5,10 +5,10 @@ include::_{backend}_settings.adoc[opts=optional]
 For AXCIOMA we have an advanced feature to implement templated
 connectors using {cxx11}. This saves a lot of code
 generation and complexity. This feature is used by our
-DDS4CCM implementation but can also be used to user defined
+DDS4CCM and PSDD4CCM implementations but can also be used to user defined
 templated connectors.
 
-== Example
+== Example connector
 
 As example we have the `factory_connector` as defined as:
 
@@ -47,6 +47,8 @@ adding a `axcioma impl` pragma as below to the IDL file defining the
 #pragma axcioma impl "foo_connector_t.h"
 ----------------------------------------
 
+== Connector implementation
+
 In `foo_connector_t.h` the implementation of
 `factory_connector_T` as {cpp} template is provided. This template has the name of
 the connector type in IDL with `_T` as postfix. This {cpp} template has
@@ -84,6 +86,8 @@ that implements all the mandatory LwCCM lifecycle operations
 (`set_session_context, configuration_complete, ccm_remove, ccm_activate, and ccm_passivate`).
 For simplicity a default constructor and destructor are declared.
 
+== Connector traits
+
 Each LwCCM executor has to be derived from a base type but that type is now known until
 the moment this templated module is compiled. The same is valid for the Context class
 that caches all receptacle references this connector uses. To enable template meta
@@ -103,6 +107,8 @@ factory_connector the `CCM_TYPE` trait contains an additional
 `bar_type` which can be used when implementing the factory_connector_T
 template.
 
+== IDL traits
+
 It is well possible that at implementation time it is unknown whether a
 certain template argument of the {cpp} template will be a basic type or a
 complex type. As basic types used as input argument are passed by value and
@@ -113,6 +119,8 @@ will always translate to the correct `in` type based on the concrete type of `T`
 Similarly `IDL::traits<T>::out_type`, and `IDL::traits<T>::inout_type` should be
 used. See the https://www.omg.org/spec/CPP11[IDL to {cxx11}] Language
 Mapping specification for a complete overview of all available IDL traits.
+
+== Templated connector usage
 
 Now the templated connector has been implemented any user can create an
 instantiation of the templated module. The following IDL could for example be used

@@ -40,8 +40,8 @@ namespace CIAOX11
     {
       DDS4CCM_LOG_TRACE ("CCM_DDS_ContentFilterSetting_i::create_contentfilteredtopic");
 
-      IDL::traits< ::DDS::DomainParticipant>::ref_type dp =
-        subscriber->get_participant ();
+      IDL::traits< ::DDS::DomainParticipant>::ref_type dp = subscriber->get_participant ();
+
       if (!dp)
       {
         DDS4CCM_LOG_ERROR (
@@ -90,8 +90,7 @@ namespace CIAOX11
       DDS4CCM_LOG_TRACE (
         "CCM_DDS_ContentFilterSetting_i::delete_contentfilteredtopic");
 
-      IDL::traits< ::DDS::DomainParticipant>::ref_type dp =
-        subscriber->get_participant ();
+      IDL::traits< ::DDS::DomainParticipant>::ref_type dp = subscriber->get_participant ();
 
       if (dp && this->cft_)
       {

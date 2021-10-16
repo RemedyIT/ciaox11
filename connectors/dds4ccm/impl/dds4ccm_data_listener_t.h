@@ -72,7 +72,7 @@ namespace CIAOX11
           evs, std::move(control), condition_manager)
       {
       }
-      ~DataReaderListener_T () = default;
+      ~DataReaderListener_T () override = default;
 
     private:
       /// Helper method to take data from DDS

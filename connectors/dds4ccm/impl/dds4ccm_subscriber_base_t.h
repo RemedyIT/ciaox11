@@ -3,9 +3,6 @@
  * @file    dds4ccm_subscriber_base_t.h
  * @author  Marcel Smit
  *
- * @brief   Base class for the subscribing side of the DDS4CCM connector.
- *          Manages the type specific DataReader
- *
  * @copyright Copyright (c) Remedy IT Expertise BV
  */
 #ifndef DDS4CCM_SUBSCRIBER_BASE_T_H_
@@ -19,6 +16,10 @@
 #include "dds4ccm/impl/dds4ccm_conf.h"
 #include "dds4ccm_port_status_listener_t.h"
 
+/**
+ * Base class for the subscribing side of the DDS4CCM connector.
+ * Manages the type specific DataReader
+ */
 template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 class DDS_Subscriber_Base_T
 {
@@ -37,6 +38,7 @@ public:
 
   typename IDL::traits<typename CCM_TYPE::filter_config_type>::ref_type get_filter_config ();
 
+  /// Getter for the set filter
   CCM_DDS::QueryFilter filter ();
 
   /**

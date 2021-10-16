@@ -21,7 +21,7 @@
 
 template <typename BASE_TYPE>
 class CCM_DDS_DataListenerControl_T
-  : public virtual CIAOX11::DDS4CCM::FacetBase< BASE_TYPE >
+  : public virtual CIAOX11::DDS4CCM::FacetBase<BASE_TYPE>
 {
 public:
   /// Constructor

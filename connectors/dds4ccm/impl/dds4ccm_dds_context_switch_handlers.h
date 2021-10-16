@@ -5,9 +5,9 @@
  *
  * @brief   Provides the context switch between DDS and DDS4CCM
  *
- *          The class members (listener and datareader/datawriter) are stored
- *          as weak references. We don't want to influence the life cycle of
- *          entities here.
+ * The class members (listener and datareader/datawriter) are stored
+ * as weak references. We don't want to influence the life cycle of
+ * entities here.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
  */
@@ -49,7 +49,7 @@ namespace CIAOX11
     private:
       IDL::traits< ::CCM_DDS::ConnectorStatusListener>::weak_ref_type csl_;
       IDL::traits< ::DDS::Entity>::weak_ref_type entity_;
-      ::DDS::StatusKind status_kind_;
+      ::DDS::StatusKind const status_kind_;
 
       OnUnexpectedStatusHandler() = delete;
       OnUnexpectedStatusHandler(const OnUnexpectedStatusHandler&) = delete;

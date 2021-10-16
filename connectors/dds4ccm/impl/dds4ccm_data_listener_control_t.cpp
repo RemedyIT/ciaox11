@@ -8,7 +8,6 @@
  * @copyright Copyright (c) Remedy IT Expertise BV
  */
 
-
 template <typename BASE_TYPE>
 CCM_DDS_DataListenerControl_T<BASE_TYPE>::CCM_DDS_DataListenerControl_T (
   IDL::traits<CORBA::Object>::weak_ref_type component)

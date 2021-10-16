@@ -42,20 +42,16 @@ namespace CIAOX11
       ~ConditionManager () = default;
 
       /// Returns the read condition in general
-      IDL::traits< ::DDS::ReadCondition>::ref_type
-      read_condition ();
+      IDL::traits< ::DDS::ReadCondition>::ref_type read_condition ();
 
       /// Returns the query condition for the getter
-      IDL::traits< ::DDS::QueryCondition>::ref_type
-      query_condition_getter ();
+      IDL::traits< ::DDS::QueryCondition>::ref_type query_condition_getter ();
 
       /// Returns the query condition for the reader
-      IDL::traits< ::DDS::QueryCondition>::ref_type
-      query_condition_reader ();
+      IDL::traits< ::DDS::QueryCondition>::ref_type query_condition_reader ();
 
       /// Returns the query condition for the listener
-      IDL::traits< ::DDS::QueryCondition>::ref_type
-      query_condition_listener ();
+      IDL::traits< ::DDS::QueryCondition>::ref_type query_condition_listener ();
 
       /**
         * Used in the Reader in order to check whether the
@@ -84,16 +80,14 @@ namespace CIAOX11
         * It will also initialize the waitset and attaches the
         * read_condition to the waitset.
         */
-      void
-      init_read_condition ();
+      void init_read_condition ();
 
       /**
         * Getter functionality, waits for the attached conditions.
         * Only returns true when one of the getter conditions has
         * been triggered and we have data
         */
-      bool
-      wait (const ::DDS::Duration_t &time_out);
+      bool wait (const ::DDS::Duration_t &time_out);
 
       /**
         * Returns the internal filter. This is the DDS4CCM QueryFilter
@@ -102,8 +96,7 @@ namespace CIAOX11
         * If the QueryFilter hasn't been initialized, a ::CCM_DDS::InternalError
         * exception with error code ::DDS::RETCODE_ERROR is thrown.
         */
-      CCM_DDS::QueryFilter
-      query ();
+      CCM_DDS::QueryFilter query ();
 
       /**
         * Sets the DDS4CCM query filter.

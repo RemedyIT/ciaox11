@@ -28,7 +28,7 @@ CIAOX11 based application, CIAOX11 also implements the following
 optimizations:
 
 -  When using component/connector inheritance the generated LwCCM
-servants are not using implementation inheritance which greatly
+executor locators are not using implementation inheritance which greatly
 simplifies the generated code
 -  Interaction between the container, installation handlers, and the
 user written component executors is all based on local IDL interfaces
