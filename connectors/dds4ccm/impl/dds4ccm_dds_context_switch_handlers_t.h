@@ -6,7 +6,9 @@
  * @brief   Provides the context switch between DDS and DDS4CCM
  *
  * Contains all helper classes to force a thread switch between DDS
- * and DDS4CCM by going through the ACE reactor
+ * and DDS4CCM by going through the ACE reactor. This is less
+ * optimal as the ExF support which is an extension currently
+ * not part of the open source AXCIOMA version
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
  */

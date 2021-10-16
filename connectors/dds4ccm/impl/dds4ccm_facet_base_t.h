@@ -23,7 +23,7 @@ namespace CIAOX11
      * reference this facet belongs to.
      */
     template<typename BASE_TYPE>
-    class FacetBase : public virtual ::IDL::traits< BASE_TYPE>::base_type
+    class FacetBase : public virtual ::IDL::traits<BASE_TYPE>::base_type
     {
     public:
       explicit FacetBase (IDL::traits<CORBA::Object>::weak_ref_type component);

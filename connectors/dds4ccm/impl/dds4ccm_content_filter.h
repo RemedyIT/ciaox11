@@ -39,8 +39,8 @@ namespace CIAOX11
         IDL::traits< ::DDS::Topic>::ref_type topic,
         IDL::traits< ::DDS::Subscriber>::ref_type subscriber);
 
-      void delete_contentfilteredtopic (
-        IDL::traits< ::DDS::Subscriber>::ref_type subscriber);
+      void delete_contentfilteredtopic (IDL::traits< ::DDS::Subscriber>::ref_type subscriber);
+
     private:
       CCM_DDS::QueryFilter filter_ {};
       IDL::traits< ::DDS::ContentFilteredTopic>::ref_type cft_ {};

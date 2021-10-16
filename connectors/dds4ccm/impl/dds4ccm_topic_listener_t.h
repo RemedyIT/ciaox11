@@ -3,7 +3,7 @@
  * @file    dds4ccm_topic_listener_t.h
  * @author  Marcel Smit, Martin Corino
  *
- * @brief   TopicListener for DDS4CCM4CIAOX11
+ * @brief   TopicListener for DDS4CCM CIAOX11
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
  */

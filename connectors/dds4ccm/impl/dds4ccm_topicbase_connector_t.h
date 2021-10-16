@@ -47,7 +47,7 @@ public:
 
   /**
    * @name type registration
-   * Overriden from the base connector
+   * Overridden from the base connector
    * For users to register/unregister their type.
    */
   //@{

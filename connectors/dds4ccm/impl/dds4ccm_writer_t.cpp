@@ -79,9 +79,7 @@ namespace CIAOX11
         throw CCM_DDS::InternalError (::DDS::RETCODE_ERROR, 0);
       }
 
-      Coherent_Changes_Guard guard (
-        pub,
-        this->is_coherent_write_);
+      Coherent_Changes_Guard guard (pub, this->is_coherent_write_);
 
       DDS4CCM_LOG_DEBUG ("Writer_T<"
         << ::DDS::traits<TOPIC_TYPE>::get_type_name()
@@ -107,8 +105,7 @@ namespace CIAOX11
 
     template <typename WRITER_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
     void
-    Writer_T<WRITER_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::is_coherent_write (
-      bool value)
+    Writer_T<WRITER_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::is_coherent_write (bool value)
     {
       this->is_coherent_write_ = value;
     }

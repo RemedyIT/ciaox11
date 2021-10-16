@@ -57,7 +57,7 @@ CIAO as LwCCM implementation has support for Any and Typecodes enabled
 by default. For any user written IDL the TAO_IDL compiler will generate
 full support for Any and Typecode. This has the advantage that a
 user can use Any/Typecode support whenever needed, but it does lead to a
-major footprint increase. CIAOX11 doesn't enable Any and Typecode
+significant footprint increase. CIAOX11 doesn't enable Any and Typecode
 support for user IDL by default. Only when you want to use an IDL type
 for a component/connector attribute you have to enable the Any and
 Typecode support when compiling your IDL file. This can be done by
