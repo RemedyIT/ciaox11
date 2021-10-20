@@ -67,6 +67,8 @@ module BRIX11
             'dds4ccm'   => ['${CIAOX11_ROOT}/connectors/dds4ccm/docs']
           })
         Common::GenerateDocumentation::OPTIONS[:adoc_attribs]['ciaox11_src_root'] = Exec.get_run_environment('CIAOX11_ROOT')
+
+        Common::GenerateDocumentation::OPTIONS[:doxygen_config] = '${CIAOX11_ROOT}/etc/ciaox11.doxygen'
       end
 
     end # Collection.configure
