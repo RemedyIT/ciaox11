@@ -6,13 +6,18 @@ include::_{backend}_settings.adoc[]
 
 DDSX11 provides the IDL to {cxx11} DDS language mapping for the
 https://www.omg.org/spec/DDS[OMG DDS standard]. DDSX11
-integrates a DDS vendor provided API in a generic C++11 wrapper and in addition provides
+integrates a DDS vendor provided C++ API in a generic C++11 wrapper and in addition provides
 access to DDS vendor specific extensions.
+
+Care should be taken when using the DDS vendor specific extensions because that will
+make it harder to use a different DDS vendor at some point in the future.
 
 DDSX11 can be used to
 implement DDS applications using the IDL to {cxx11} language
 mapping. See the link:{docs_root}/../../ciaox11/ddsx11/examples/shapes[DDSX11 Shapes example]
 for an example DDSX11 Shapes sender and receiver console application.
+
+DDSX11 is used within the DDS4CCM implementation which is also part of ciaox11.
 
 == Code generation
 
@@ -44,6 +49,7 @@ The IDL to {cxx11} language mapping provides a set of IDL traits which are
 available for each IDL defined type. These traits enable template meta
 programming but also remove the need to remember all naming
 rules for all implied types.
+
 DDSX11 provides an additional set of DDS traits which are available for
 each IDL defined topic type. These traits give access to all implied and
 standard DDS generated interfaces. The following table gives an overview
@@ -237,7 +243,7 @@ interface and a trait to use a base for implementing a listener
 
 
 Before a topic can be created a type has to be registered with DDSX11.
-Given an IDL type `foo` this can be done using the
+Given an IDL type `foo` this must be done using the
 `DDS::traits<foo>::register_type` operation.
 
 == DDS vendor support

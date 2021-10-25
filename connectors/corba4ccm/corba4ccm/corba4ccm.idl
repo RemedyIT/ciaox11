@@ -12,6 +12,8 @@
 
 module CCM_CORBA
 {
+  /// CORBA POA name that is used by CORBA4CCM. CORBA4CCM needs
+  /// its own POA with the ability to assign user ids
   const string CORBA4CCM_POA_ID = "CORBA4CCM_POA";
 
   /**

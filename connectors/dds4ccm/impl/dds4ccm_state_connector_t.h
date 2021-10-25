@@ -185,7 +185,6 @@ private:
   PushObserver_type *push_observer ();
   //@}
 
-
   /**
    * DDS_StateListen push_state_observer
    */

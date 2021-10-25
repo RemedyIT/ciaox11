@@ -115,7 +115,7 @@ namespace CIAOX11
       {
       }
 
-      ~DataReaderListener_T () = default;
+      ~DataReaderListener_T () override = default;
 
     private:
       /// Helper method to read data from DDS

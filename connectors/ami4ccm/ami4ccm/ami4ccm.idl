@@ -45,6 +45,7 @@ module CCM_AMI
     };
   };
 
+  /// CORBA POA name that is used by AMI4CCM
   const string AMIPOA_ID = "AMIPOA";
 };
 
