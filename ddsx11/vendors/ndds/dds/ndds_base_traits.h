@@ -369,9 +369,9 @@ namespace DDSX11
     return to;
   }
 
-  template <typename DDS_SEQ = typename std::conditional<sizeof(DDS_LongLong)==sizeof(int64_t), int64_t, void>::type>
-  inline DDS_LongLongSeq&
-  fixedsize_sequence_to_dds (DDS_LongLongSeq& to, const DDS_SEQ& from)
+  template <typename DDS_NATIVE_SEQ, typename DDS_SEQ>
+  inline DDS_NATIVE_SEQ&
+  int64_sequence_to_dds (DDS_NATIVE_SEQ& to, const DDS_SEQ& from)
   {
     if (!to.from_array(reinterpret_cast<const DDS_LongLong*> (from.data ()), ACE_Utils::truncate_cast<DDS_Native::DDS::sequence_size_type> (from.size ())))
     {
@@ -380,9 +380,9 @@ namespace DDSX11
     return to;
   }
 
-  template <typename DDS_SEQ = typename std::conditional<sizeof(DDS_UnsignedLongLong)==sizeof(int64_t), int64_t, void>::type>
-  inline DDS_UnsignedLongLongSeq&
-  fixedsize_sequence_to_dds (DDS_UnsignedLongLongSeq& to, const DDS_SEQ& from)
+  template <typename DDS_NATIVE_SEQ, typename DDS_SEQ>
+  inline DDS_NATIVE_SEQ&
+  uint64_sequence_to_dds (DDS_NATIVE_SEQ& to, const DDS_SEQ& from)
   {
     if (!to.from_array(reinterpret_cast<const DDS_UnsignedLongLong*> (from.data ()), ACE_Utils::truncate_cast<DDS_Native::DDS::sequence_size_type> (from.size ())))
     {
@@ -427,21 +427,21 @@ namespace DDSX11
     return to;
   }
 
-  template <typename DDS_SEQ = typename std::conditional<sizeof(DDS_LongLong)==sizeof(int64_t), int64_t, void>::type>
+  template <typename DDS_SEQ, typename DDS_NATIVE_SEQ>
   inline DDS_SEQ&
-  fixedsize_sequence_from_dds (DDS_SEQ& to, const DDS_LongLongSeq& from)
+  int64_sequence_from_dds (DDS_SEQ& to, const DDS_NATIVE_SEQ& from)
   {
     to.resize (from.length ());
-    const_cast<DDS_LongLongSeq&> (from).to_array (reinterpret_cast<DDS_LongLong*> (to.data ()), ACE_Utils::truncate_cast<DDS_Native::DDS::sequence_size_type> (to.size ()));
+    const_cast<DDS_NATIVE_SEQ&> (from).to_array (reinterpret_cast<DDS_LongLong*> (to.data ()), ACE_Utils::truncate_cast<DDS_Native::DDS::sequence_size_type> (to.size ()));
     return to;
   }
 
-  template <typename DDS_SEQ = typename std::conditional<sizeof(DDS_UnsignedLongLong)==sizeof(int64_t), int64_t, void>::type>
+  template <typename DDS_SEQ, typename DDS_NATIVE_SEQ>
   inline DDS_SEQ&
-  fixedsize_sequence_from_dds (DDS_SEQ& to, const DDS_UnsignedLongLongSeq& from)
+  uint64_sequence_from_dds (DDS_SEQ& to, const DDS_NATIVE_SEQ& from)
   {
     to.resize (from.length ());
-    const_cast<DDS_UnsignedLongLongSeq&> (from).to_array (reinterpret_cast<DDS_UnsignedLongLong*> (to.data ()), ACE_Utils::truncate_cast<DDS_Native::DDS::sequence_size_type> (to.size ()));
+    const_cast<DDS_NATIVE_SEQ&> (from).to_array (reinterpret_cast<DDS_UnsignedLongLong*> (to.data ()), ACE_Utils::truncate_cast<DDS_Native::DDS::sequence_size_type> (to.size ()));
     return to;
   }
 

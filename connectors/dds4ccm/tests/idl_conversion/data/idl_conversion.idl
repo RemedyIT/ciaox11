@@ -28,8 +28,10 @@ module Example {
   typedef sequence<boolean> B17;
   typedef sequence<boolean, 15> B18;
 
-  typedef sequence<unsigned long long> B19_1;
-  typedef sequence<unsigned long long, 10> B19_2;
+  typedef unsigned long long ULL_T;
+
+  typedef sequence<ULL_T> B19_1;
+  typedef sequence<ULL_T, 10> B19_2;
   typedef sequence<long long> B19_3;
   typedef sequence<long long, 10> B19_4;
 

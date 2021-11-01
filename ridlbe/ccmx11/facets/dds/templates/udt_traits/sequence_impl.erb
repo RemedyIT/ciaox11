@@ -10,6 +10,10 @@ namespace DDSX11
     return DDSX11::bounded_string_sequence_to_dds(to, from);
 %elsif is_string_type?
     return DDSX11::string_sequence_to_dds(to, from);
+%elsif is_ulonglong_type?
+    return DDSX11::uint64_sequence_to_dds(to, from);
+%elsif is_longlong_type?
+    return DDSX11::int64_sequence_to_dds(to, from);
 %elsif is_integer_type? || is_char_type? || is_float_type?
     return DDSX11::fixedsize_sequence_to_dds(to, from);
 %else
@@ -27,6 +31,10 @@ namespace DDSX11
     return DDSX11::bounded_string_sequence_from_dds(to, from);
 %elsif is_boolean_type?
     return DDSX11::boolean_sequence_from_dds(to, from);
+%elsif is_ulonglong_type?
+    return DDSX11::uint64_sequence_from_dds(to, from);
+%elsif is_longlong_type?
+    return DDSX11::int64_sequence_from_dds(to, from);
 %elsif is_integer_type? || is_char_type? || is_float_type?
     return DDSX11::fixedsize_sequence_from_dds(to, from);
 %else
