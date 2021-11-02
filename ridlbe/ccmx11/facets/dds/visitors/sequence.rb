@@ -32,6 +32,14 @@ module IDL
         ::IDL::Type::Integer === self._resolved_idltype.basetype.resolved_type
       end
 
+      def is_longlong_type?
+        ::IDL::Type::LongLong === self._resolved_idltype.basetype.resolved_type
+      end
+
+      def is_ulonglong_type?
+        ::IDL::Type::ULongLong === self._resolved_idltype.basetype.resolved_type
+      end
+
       def is_float_type?
         ::IDL::Type::Float === self._resolved_idltype.basetype.resolved_type
       end
