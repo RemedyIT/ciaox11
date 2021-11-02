@@ -334,6 +334,20 @@ namespace DDSX11
 
   template <typename DDS_NATIVE_SEQ, typename DDS_SEQ>
   inline DDS_NATIVE_SEQ&
+  int64_sequence_to_dds (DDS_NATIVE_SEQ& to, const DDS_SEQ& from)
+  {
+    return sequence_to_dds (to, from);
+  }
+
+  template <typename DDS_NATIVE_SEQ, typename DDS_SEQ>
+  inline DDS_NATIVE_SEQ&
+  uint64_sequence_to_dds (DDS_NATIVE_SEQ& to, const DDS_SEQ& from)
+  {
+    return sequence_to_dds (to, from);
+  }
+
+  template <typename DDS_NATIVE_SEQ, typename DDS_SEQ>
+  inline DDS_NATIVE_SEQ&
   string_sequence_to_dds (DDS_NATIVE_SEQ& to, const DDS_SEQ& from)
   {
     to.length (ACE_Utils::truncate_cast<DDS_Native::DDS::sequence_size_type> (from.size ()));
@@ -377,6 +391,20 @@ namespace DDSX11
   template <typename DDS_SEQ, typename DDS_NATIVE_SEQ>
   inline DDS_SEQ&
   fixedsize_sequence_from_dds (DDS_SEQ& to, const DDS_NATIVE_SEQ& from)
+  {
+    return sequence_from_dds (to, from);
+  }
+
+  template <typename DDS_SEQ, typename DDS_NATIVE_SEQ>
+  inline DDS_SEQ&
+  int64_sequence_from_dds (DDS_SEQ& to, const DDS_NATIVE_SEQ& from)
+  {
+    return sequence_from_dds (to, from);
+  }
+
+  template <typename DDS_SEQ, typename DDS_NATIVE_SEQ>
+  inline DDS_SEQ&
+  uint64_sequence_from_dds (DDS_SEQ& to, const DDS_NATIVE_SEQ& from)
   {
     return sequence_from_dds (to, from);
   }
