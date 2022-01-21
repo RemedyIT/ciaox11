@@ -524,7 +524,7 @@ namespace Getter_Test_Receiver_Impl
         << "Start getting data from DDS: timeout: "
         << ::DDS::dds_write (getter->time_out ()) << " s."
         << std::endl;
-      CommonTestMessage gettertest_info;;
+      CommonTestMessage gettertest_info;
       CCM_DDS::ReadInfo readinfo;
       if (getter->get_one (gettertest_info, readinfo))
       {
