@@ -106,7 +106,6 @@ namespace DDSX11
             << "Error: Unable to shutdown TheServiceParticipant <"
             << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
             << ">");
-          return retcode;
         }
       else
         {
