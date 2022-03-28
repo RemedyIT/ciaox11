@@ -97,13 +97,27 @@ namespace DDSX11
     {
       DDSX11_IMPL_LOG_DEBUG ("OpenDDS_DomainParticipantFactory_proxy::finalize_instance - Finalizing OpenDDS");
 
-      TheServiceParticipant->shutdown ();
+      ::DDS::ReturnCode_t const retcode =
+        ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (TheServiceParticipant->shutdown ());
 
-      DDS_ProxyEntityManager::finalize ();
+      if (retcode != ::DDS::RETCODE_OK)
+        {
+          DDSX11_IMPL_LOG_ERROR ("OpenDDS_DomainParticipantFactory_proxy::finalize_instance - "
+            << "Error: Unable to shutdown TheServiceParticipant <"
+            << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+            << ">");
+        }
+      else
+        {
+          DDSX11_IMPL_LOG_DEBUG ("OpenDDS_DomainParticipantFactory_proxy::finalize_instance - "
+            << "Shutdown TheServiceParticipant");
 
-      this->clear_native_entity ();
+          this->clear_native_entity ();
 
-      return ::DDS::RETCODE_OK;
+          DDS_ProxyEntityManager::finalize ();
+        }
+
+      return retcode;
     }
 
     ::DDS::ReturnCode_t
