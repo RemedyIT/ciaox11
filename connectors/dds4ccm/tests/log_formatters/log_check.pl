@@ -13,7 +13,7 @@ eval '(exit $?0)' && eval 'exec perl -S $0 ${1+"$@"}'
 $status = 0;
 
 $found = 0;
-$expected = 6;
+$expected = 7;
 
 # Check the instance handle, returns 1 in case of ok, 0 in case of a failure
 sub check_instance_handle
@@ -70,6 +70,17 @@ while (my $line = <FILE>)
         else
         {
             print "ERROR: Error in InstanceStatus logging detected\n";
+        }
+    }
+    elsif ($line =~ "Logging ListenerMode")
+    {
+        if ($line =~ "NOT_ENABLED")
+        {
+            $found=$found+1;
+        }
+        else
+        {
+            print "ERROR: Error in ListenerMode logging detected\n";
         }
     }
     elsif ($line =~ "Logging ReadInfoSeq")

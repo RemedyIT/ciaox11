@@ -19,11 +19,9 @@
 template <typename OS>
 struct read_info_formatter_os
 {
-  read_info_formatter_os () {}
+  read_info_formatter_os () = default;
 
-  inline OS& operator ()(
-      OS& os_,
-      const ::CCM_DDS::ReadInfo& val_)
+  inline OS& operator ()(OS& os_, const ::CCM_DDS::ReadInfo& val_)
   {
     os_ << "CCM_DDS::ReadInfo{instance_handle=" << ::DDS::dds_write (val_.instance_handle ())
       << ",source_timestamp="
@@ -44,15 +42,15 @@ namespace DDS
    */
   template <typename OS>
   inline OS&
-  operator << (OS& os, __DDS_Writer < ::CCM_DDS::ReadInfo > const &w)
+  operator << (OS& os, __DDS_Writer < ::CCM_DDS::ReadInfo> const &w)
   {
     IDL::traits< ::CCM_DDS::ReadInfo>::write_on<ostream_type, read_info_formatter_os<ostream_type>> (os, w.dds_writer_);
     return os;
   }
 
-  inline __DDS_Writer < ::CCM_DDS::ReadInfo > dds_write (::CCM_DDS::ReadInfo const &ri)
+  inline __DDS_Writer < ::CCM_DDS::ReadInfo> dds_write (::CCM_DDS::ReadInfo const &ri)
   {
-    return __DDS_Writer < ::CCM_DDS::ReadInfo > (ri);
+    return __DDS_Writer < ::CCM_DDS::ReadInfo> (ri);
   }
 
   /**
@@ -60,7 +58,7 @@ namespace DDS
    */
   template <typename OS>
   inline OS&
-  operator << (OS& os, __DDS_Writer < ::CCM_DDS::ReadInfoSeq > const &w)
+  operator << (OS& os, __DDS_Writer < ::CCM_DDS::ReadInfoSeq> const &w)
   {
     ::CCM_DDS::ReadInfoSeq::size_type i = 0;
     os << "CCM_DDS::ReadInfoSeq{";
@@ -74,9 +72,9 @@ namespace DDS
     return os;
   }
 
-  inline __DDS_Writer < ::CCM_DDS::ReadInfoSeq > dds_write (::CCM_DDS::ReadInfoSeq const &ri_seq)
+  inline __DDS_Writer < ::CCM_DDS::ReadInfoSeq> dds_write (::CCM_DDS::ReadInfoSeq const &ri_seq)
   {
-    return __DDS_Writer < ::CCM_DDS::ReadInfoSeq > (ri_seq);
+    return __DDS_Writer < ::CCM_DDS::ReadInfoSeq> (ri_seq);
   }
 
   /**
@@ -84,15 +82,15 @@ namespace DDS
    */
   template <typename OS>
   inline OS&
-  operator << (OS& os, __DDS_Writer< ::CCM_DDS::AccessStatus > const &w)
+  operator << (OS& os, __DDS_Writer< ::CCM_DDS::AccessStatus> const &w)
   {
     IDL::traits< ::CCM_DDS::AccessStatus>::write_on<ostream_type> (os, w.dds_writer_);
     return os;
   }
 
-  inline __DDS_Writer< ::CCM_DDS::AccessStatus > dds_write (::CCM_DDS::AccessStatus const &as)
+  inline __DDS_Writer< ::CCM_DDS::AccessStatus> dds_write (::CCM_DDS::AccessStatus const &as)
   {
-    return __DDS_Writer< ::CCM_DDS::AccessStatus > (as);
+    return __DDS_Writer< ::CCM_DDS::AccessStatus> (as);
   }
 
   /**
@@ -100,18 +98,32 @@ namespace DDS
    */
   template <typename OS>
   inline OS&
-  operator << (OS& os, __DDS_Writer< ::CCM_DDS::InstanceStatus > const &w)
+  operator << (OS& os, __DDS_Writer< ::CCM_DDS::InstanceStatus> const &w)
   {
     IDL::traits< ::CCM_DDS::InstanceStatus>::write_on<ostream_type> (os, w.dds_writer_);
     return os;
   }
 
-  inline __DDS_Writer< ::CCM_DDS::InstanceStatus > dds_write (::CCM_DDS::InstanceStatus const &as)
+  inline __DDS_Writer< ::CCM_DDS::InstanceStatus> dds_write (::CCM_DDS::InstanceStatus const &as)
   {
-    return __DDS_Writer< ::CCM_DDS::InstanceStatus > (as);
+    return __DDS_Writer< ::CCM_DDS::InstanceStatus> (as);
   }
 
-}
+  /**
+   * Writer for ::CCM_DDS::ListenerMode
+   */
+  template <typename OS>
+  inline OS&
+  operator << (OS& os, __DDS_Writer< ::CCM_DDS::ListenerMode> const &w)
+  {
+    IDL::traits< ::CCM_DDS::ListenerMode>::write_on<ostream_type> (os, w.dds_writer_);
+    return os;
+  }
 
+  inline __DDS_Writer< ::CCM_DDS::ListenerMode> dds_write (::CCM_DDS::ListenerMode const &as)
+  {
+    return __DDS_Writer< ::CCM_DDS::ListenerMode> (as);
+  }
+}
 
 #endif /* DDS4CCM_LOG_FORMATTERS_H_ */
