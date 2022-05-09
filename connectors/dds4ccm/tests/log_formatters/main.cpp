@@ -22,6 +22,10 @@ int main (int , char **)
   DDS4CCM_TEST_DEBUG << "Logging InstanceStatus : " << DDS::dds_write (instance_status) << std::endl;
   ostr << "Logging InstanceStatus : " << DDS::dds_write (instance_status) << std::endl;
 
+  CCM_DDS::ListenerMode const listener_mode = CCM_DDS::ListenerMode::NOT_ENABLED;
+  DDS4CCM_TEST_DEBUG << "Logging ListenerMode : " << DDS::dds_write (listener_mode) << std::endl;
+  ostr << "Logging ListenerMode : " << DDS::dds_write (listener_mode) << std::endl;
+
 #if defined DDSX11_NDDS
   DDS::InstanceHandle_t const instance_handle ({{0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15}}, 16, true);
 #else
