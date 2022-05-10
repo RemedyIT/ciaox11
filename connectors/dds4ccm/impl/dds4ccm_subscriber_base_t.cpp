@@ -244,7 +244,6 @@ DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::remove (
   }
   this->condition_manager_->set_dds_entity (nullptr);
 
-
   IDL::traits< ::DDS::DataReader>::ref_type dr =
     this->dds4ccm_reader_->get_dds_reader ();
 
@@ -259,8 +258,7 @@ DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::remove (
       << " from subscriber "
       << IDL::traits<DDS::Entity>::write<entity_formatter> (subscriber));
 
-    ::DDS::ReturnCode_t const retcode =
-      subscriber->delete_datareader (dr);
+    ::DDS::ReturnCode_t const retcode = subscriber->delete_datareader (dr);
 
     if (retcode != ::DDS::RETCODE_OK)
     {

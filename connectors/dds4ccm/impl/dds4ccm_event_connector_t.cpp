@@ -291,8 +291,6 @@ DDS_Event_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::do_configuration_co
   }
 }
 
-
-
 template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 void
 DDS_Event_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::do_ccm_activate ()
@@ -303,7 +301,6 @@ DDS_Event_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::do_ccm_activate ()
 
   // Activate the basic ports which are connected.
   // No need to explicitly activate the Writer basic port.
-
   if (this->push_consumer_)
   {
     using event_strategy_type = typename CCM_TYPE::push_consumer_traits::event_strategy_type;
@@ -331,7 +328,6 @@ DDS_Event_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::ccm_passivate ()
   DDS4CCM_LOG_TRACE ("DDS_Event_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::ccm_passivate");
 
   // No need to explicitly passivate the Writer basic port.
-
   try
   {
     // It could be that no topic name was set or that the topic name was
@@ -356,7 +352,6 @@ DDS_Event_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::ccm_passivate ()
   }
   catch_dds4ccm_lifecycle_ex(ex, "DDS_Event_Connector_T::ccm_passivate")
 }
-
 
 template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 void
@@ -393,4 +388,3 @@ DDS_Event_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::do_ccm_remove ()
   }
   catch_dds4ccm_lifecycle_ex(ex, "DDS_Event_Connector_T::do_ccm_remove")
 }
-
