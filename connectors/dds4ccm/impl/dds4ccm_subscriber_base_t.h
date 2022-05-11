@@ -63,7 +63,7 @@ public:
   virtual void
   activate (
     const typename CCM_TYPE::event_strategy_type &evs,
-    IDL::traits< CCM_DDS::PortStatusListener>::ref_type status);
+    IDL::traits<CCM_DDS::PortStatusListener>::ref_type status);
 
   virtual void passivate ();
 

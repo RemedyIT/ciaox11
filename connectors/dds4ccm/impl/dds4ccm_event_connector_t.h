@@ -62,12 +62,9 @@ public:
   IDL::traits< CCM_DDS::CCM_ContentFilterSetting>::ref_type
   get_pull_consumer_filter_config () override;
 
-  CCM_DDS::QueryFilter
-  pull_consumer_filter () override;
+  CCM_DDS::QueryFilter pull_consumer_filter () override;
 
-  void
-  pull_consumer_filter (
-    const CCM_DDS::QueryFilter &filter) override;
+  void pull_consumer_filter (const CCM_DDS::QueryFilter &filter) override;
   //@}
 
   /**
@@ -87,12 +84,10 @@ public:
   IDL::traits< CCM_DDS::CCM_ContentFilterSetting>::ref_type
   get_push_consumer_filter_config () override;
 
-  ::CCM_DDS::QueryFilter
-  push_consumer_filter () override;
+  ::CCM_DDS::QueryFilter push_consumer_filter () override;
 
   void
-  push_consumer_filter (
-    const ::CCM_DDS::QueryFilter & filter) override;
+  push_consumer_filter (const ::CCM_DDS::QueryFilter & filter) override;
   //@}
 
   /**
