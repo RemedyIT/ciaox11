@@ -107,8 +107,8 @@ module AxciomaPC
             # Attention: export headers aren't removed with a make clean, so in the case a user has put a export header himself in
             # the gen dir , this file will be removed also
             # solution: adapt mpc to remove generated export headers also.
-            files = Dir.entries(gen_dir_path)
-            if files.select {|ff| ff !~ /export.h/ && ff != '.' && ff != '..'  }.empty?
+            if Dir.empty?(gen_dir_path) ||
+                Dir.entries(gen_dir_path).all? {|ff| ff.match?(/((export\.h)|(\.\.?))\Z/) }
               # empty or no other then export file, so remove
               FileUtils.remove_dir(gen_dir_path)
             end
