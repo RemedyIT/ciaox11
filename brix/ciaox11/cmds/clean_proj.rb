@@ -65,7 +65,7 @@ module BRIX11
 
         # lib dir, difficult to remove, maybe it already exists before making the project and maybe it contains user libs
         # but we always remove it if it is empty
-        if Dir.exist?(project.libout) && Dir.entries(project.libout).sort == ["..", "."].sort
+        if Dir.empty?(project.libout)
           FileUtils.remove_dir(project.libout)
         end
 
