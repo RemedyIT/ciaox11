@@ -18,6 +18,11 @@ module DDS {
   // For StringSeq AnyTypecode support has to be generated because it is in the
   // DDS4CCM IDL as attribute
   typedef sequence<string> StringSeq;
+
+  struct Time_t {
+      long sec;
+      unsigned long nanosec;
+  };
 };
 
 #endif /* NDDS_DCPS_TYPES_IDL_ */
