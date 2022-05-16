@@ -42,7 +42,6 @@ namespace Hello_MyBaseEvent_Impl
     : public IDL::traits< ::Hello::CCM_MyFoo>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_MyBaseEvent_Impl::supplier_foo_uses_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -51,7 +50,7 @@ namespace Hello_MyBaseEvent_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_MyBaseEvent_Impl::supplier_foo_uses_exec_i[ctor]
 
     /// Destructor
-    virtual ~supplier_foo_uses_exec_i ();
+    ~supplier_foo_uses_exec_i () override;
 
     /** @name Operations from ::Hello::CCM_MyFoo */
     //@{
@@ -63,12 +62,8 @@ namespace Hello_MyBaseEvent_Impl
 
     /** @name Attributes from ::Hello::CCM_MyFoo */
     //@{
-
-    int16_t
-    interface_attrib () override;
-
-    void
-    interface_attrib (int16_t interface_attrib) override;
+    int16_t interface_attrib () override;
+    void interface_attrib (int16_t interface_attrib) override;
     //@}
 
     /** @name User defined public operations. */
@@ -115,7 +110,7 @@ namespace Hello_MyBaseEvent_Impl
     MyBaseEvent_exec_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_MyBaseEvent_Impl::MyBaseEvent_exec_i[ctor]
     /// Destructor
-    virtual ~MyBaseEvent_exec_i ();
+    ~MyBaseEvent_exec_i () override;
 
     /** @name Component port operations. */
     //@{

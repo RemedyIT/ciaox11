@@ -57,28 +57,16 @@ namespace Test_Receiver_Impl
     //@{
 
     /// Attribute count
-
-    uint32_t
-    count () override;
-
-    void
-    count (uint32_t count) override;
+    uint32_t count () override;
+    void count (uint32_t count) override;
 
     /// Attribute delay
-
-    uint32_t
-    delay () override;
-
-    void
-    delay (uint32_t delay) override;
+    uint32_t delay () override;
+    void delay (uint32_t delay) override;
 
     /// Attribute interval
-
-    uint32_t
-    interval () override;
-
-    void
-    interval (uint32_t interval) override;
+    uint32_t interval () override;
+    void interval (uint32_t interval) override;
     //@}
 
     /** @name Session component operations */

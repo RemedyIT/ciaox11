@@ -169,20 +169,12 @@ namespace CSL_Test_Sender_Impl
     //@{
 
     /// Attribute csl_assignment
-
-    std::string
-    csl_assignment () override;
-
-    void
-    csl_assignment (const std::string& csl_assignment) override;
+    std::string csl_assignment () override;
+    void csl_assignment (const std::string& csl_assignment) override;
 
     /// Attribute samples_to_write
-
-    uint32_t
-    samples_to_write () override;
-
-    void
-    samples_to_write (uint32_t samples_to_write) override;
+    uint32_t samples_to_write () override;
+    void samples_to_write (uint32_t samples_to_write) override;
     //@}
 
     /** @name Session component operations */

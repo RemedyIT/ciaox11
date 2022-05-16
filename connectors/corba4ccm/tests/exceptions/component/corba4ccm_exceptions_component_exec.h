@@ -46,7 +46,7 @@ namespace Foo_CORBA4CCM_exception_component_Impl
   CORBA4CCM_exception_component_exec_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : Foo_CORBA4CCM_exception_component_Impl::CORBA4CCM_exception_component_exec_i[ctor]
     /// Destructor
-    virtual ~CORBA4CCM_exception_component_exec_i ();
+    ~CORBA4CCM_exception_component_exec_i () override;
 
     /** @name Component port operations. */
     //@{

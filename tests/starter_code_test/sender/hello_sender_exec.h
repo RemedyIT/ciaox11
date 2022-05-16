@@ -47,7 +47,7 @@ namespace Hello_Sender_Impl
     Sender_exec_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Sender_Impl::Sender_exec_i[ctor]
     /// Destructor
-    virtual ~Sender_exec_i ();
+    ~Sender_exec_i () override;
 
     /** @name Component port operations. */
     //@{
@@ -58,20 +58,12 @@ namespace Hello_Sender_Impl
     //@{
 
     /// Attribute ojee
-
-    int16_t
-    ojee () override;
-
-    void
-    ojee (int16_t ojee) override;
+    int16_t ojee () override;
+    void ojee (int16_t ojee) override;
 
     /// Attribute ojeetje
-
-    int16_t
-    ojeetje () override;
-
-    void
-    ojeetje (int16_t ojeetje) override;
+    int16_t ojeetje () override;
+    void ojeetje (int16_t ojeetje) override;
     //@}
 
     /** @name Session component operations */

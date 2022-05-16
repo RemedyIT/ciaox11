@@ -39,7 +39,6 @@ namespace Example_BarProvider_Impl
     : public IDL::traits< ::Example::CCM_Bar>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Example_BarProvider_Impl::do_my_bar_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -48,7 +47,7 @@ namespace Example_BarProvider_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Example_BarProvider_Impl::do_my_bar_exec_i[ctor]
 
     /// Destructor
-    virtual ~do_my_bar_exec_i ();
+    ~do_my_bar_exec_i () override;
 
     /** @name Operations from ::Example::CCM_Bar */
     //@{
@@ -94,7 +93,7 @@ namespace Example_BarProvider_Impl
     BarProvider_exec_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : Example_BarProvider_Impl::BarProvider_exec_i[ctor]
     /// Destructor
-    virtual ~BarProvider_exec_i ();
+    ~BarProvider_exec_i () override;
 
     /** @name Component port operations. */
     //@{

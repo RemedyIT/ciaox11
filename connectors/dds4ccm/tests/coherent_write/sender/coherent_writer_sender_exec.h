@@ -193,20 +193,12 @@ namespace CoherentWriter_Sender_Impl
     //@{
 
     /// Attribute act_as_updater
-
-    bool
-    act_as_updater () override;
-
-    void
-    act_as_updater (bool act_as_updater) override;
+    bool act_as_updater () override;
+    void act_as_updater (bool act_as_updater) override;
 
     /// Attribute iterations
-
-    uint16_t
-    iterations () override;
-
-    void
-    iterations (uint16_t iterations) override;
+    uint16_t iterations () override;
+    void iterations (uint16_t iterations) override;
     //@}
 
     /** @name Session component operations */

@@ -176,12 +176,8 @@ namespace Example_BasicSubscriber_comp_Impl
     //@{
 
     /// Attribute count
-
-    uint32_t
-    count () override;
-
-    void
-    count (uint32_t count) override;
+    uint32_t count () override;
+    void count (uint32_t count) override;
     //@}
 
     /** @name Session component operations */

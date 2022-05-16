@@ -50,12 +50,8 @@ namespace AttrComp_Impl
     //@{
 
     /// Attribute TestBar
-
-    ::Foo::Bar
-    TestBar () override;
-
-    void
-    TestBar (const ::Foo::Bar& TestBar) override;
+    ::Foo::Bar TestBar () override;
+    void TestBar (const ::Foo::Bar& TestBar) override;
     //@}
 
     /** @name Session component operations */

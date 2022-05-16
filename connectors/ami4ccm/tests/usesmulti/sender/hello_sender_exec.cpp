@@ -247,8 +247,7 @@ namespace UsesMulti_Sender_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : UsesMulti_Sender_Impl::AMI4CCM_OneReplyHandler_run_my_um_one_i[foo]
   }
 
-  void
-  AMI4CCM_OneReplyHandler_run_my_um_one_i::foo_excep (
+  void AMI4CCM_OneReplyHandler_run_my_um_one_i::foo_excep (
     IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : UsesMulti_Sender_Impl::AMI4CCM_OneReplyHandler_run_my_um_one_i[foo_excep]

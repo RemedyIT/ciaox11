@@ -47,7 +47,7 @@ namespace Hello_MyBaseEvent_Impl
     MyBaseEvent_exec_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_MyBaseEvent_Impl::MyBaseEvent_exec_i[ctor]
     /// Destructor
-    virtual ~MyBaseEvent_exec_i ();
+    ~MyBaseEvent_exec_i () override;
 
     /** @name Component port operations. */
     //@{
@@ -58,20 +58,12 @@ namespace Hello_MyBaseEvent_Impl
     //@{
 
     /// Attribute consumer_port_attrib
-
-    int16_t
-    consumer_port_attrib () override;
-
-    void
-    consumer_port_attrib (int16_t consumer_port_attrib) override;
+    int16_t consumer_port_attrib () override;
+    void consumer_port_attrib (int16_t consumer_port_attrib) override;
 
     /// Attribute conn_attrib
-
-    int16_t
-    conn_attrib () override;
-
-    void
-    conn_attrib (int16_t conn_attrib) override;
+    int16_t conn_attrib () override;
+    void conn_attrib (int16_t conn_attrib) override;
     //@}
 
     /** @name Session component operations */

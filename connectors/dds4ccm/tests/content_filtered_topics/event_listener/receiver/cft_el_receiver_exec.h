@@ -180,20 +180,12 @@ namespace CFT_EL_Test_Receiver_Impl
     //@{
 
     /// Attribute keys
-
-    uint16_t
-    keys () override;
-
-    void
-    keys (uint16_t keys) override;
+    uint16_t keys () override;
+    void keys (uint16_t keys) override;
 
     /// Attribute iterations
-
-    uint16_t
-    iterations () override;
-
-    void
-    iterations (uint16_t iterations) override;
+    uint16_t iterations () override;
+    void iterations (uint16_t iterations) override;
     //@}
 
     /** @name Session component operations */

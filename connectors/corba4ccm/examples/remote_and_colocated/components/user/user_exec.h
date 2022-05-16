@@ -43,7 +43,7 @@ namespace Example_User_Impl
     User_exec_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : Example_User_Impl::User_exec_i[ctor]
     /// Destructor
-    virtual ~User_exec_i ();
+    ~User_exec_i () override;
 
     /** @name Component port operations. */
     //@{
@@ -54,12 +54,8 @@ namespace Example_User_Impl
     //@{
 
     /// Attribute connection
-
-    std::string
-    connection () override;
-
-    void
-    connection (const std::string& connection) override;
+    std::string connection () override;
+    void connection (const std::string& connection) override;
     //@}
 
     /** @name Session component operations */

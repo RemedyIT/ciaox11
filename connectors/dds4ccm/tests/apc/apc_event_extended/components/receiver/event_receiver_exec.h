@@ -171,20 +171,12 @@ namespace Data_Receiver_Impl
     //@{
 
     /// Attribute iterations
-
-    uint16_t
-    iterations () override;
-
-    void
-    iterations (uint16_t iterations) override;
+    uint16_t iterations () override;
+    void iterations (uint16_t iterations) override;
 
     /// Attribute keys
-
-    uint16_t
-    keys () override;
-
-    void
-    keys (uint16_t keys) override;
+    uint16_t keys () override;
+    void keys (uint16_t keys) override;
     //@}
 
     /** @name Session component operations */

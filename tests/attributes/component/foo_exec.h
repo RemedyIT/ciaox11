@@ -47,26 +47,18 @@ namespace Base_Impl
     Base_exec_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : Base_Impl::Base_exec_i[ctor]
     /// Destructor
-    virtual ~Base_exec_i ();
+    ~Base_exec_i () override;
 
     /** @name Supported attributes. */
     //@{
 
     /// Attribute m_base_pt_base_pt
-
-    int16_t
-    m_base_pt_base_pt () override;
-
-    void
-    m_base_pt_base_pt (int16_t m_base_pt_base_pt) override;
+    int16_t m_base_pt_base_pt () override;
+    void m_base_pt_base_pt (int16_t m_base_pt_base_pt) override;
 
     /// Attribute attr_base
-
-    int16_t
-    attr_base () override;
-
-    void
-    attr_base (int16_t attr_base) override;
+    int16_t attr_base () override;
+    void attr_base (int16_t attr_base) override;
     //@}
 
     /** @name Session component operations */
@@ -163,7 +155,7 @@ namespace Foo_Impl
     Foo_exec_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : Foo_Impl::Foo_exec_i[ctor]
     /// Destructor
-    virtual ~Foo_exec_i ();
+    ~Foo_exec_i () override;
 
     /** @name Component port operations. */
     //@{
@@ -174,638 +166,322 @@ namespace Foo_Impl
     //@{
 
     /// Attribute m_base_pt_base_pt
-
-    int16_t
-    m_base_pt_base_pt () override;
-
-    void
-    m_base_pt_base_pt (int16_t m_base_pt_base_pt) override;
+    int16_t m_base_pt_base_pt () override;
+    void m_base_pt_base_pt (int16_t m_base_pt_base_pt) override;
 
     /// Attribute attr_base
-
-    int16_t
-    attr_base () override;
-
-    void
-    attr_base (int16_t attr_base) override;
+    int16_t attr_base () override;
+    void attr_base (int16_t attr_base) override;
 
     /// Attribute m_foo_pt_foo_pt
-
-    int16_t
-    m_foo_pt_foo_pt () override;
-
-    void
-    m_foo_pt_foo_pt (int16_t m_foo_pt_foo_pt) override;
+    int16_t m_foo_pt_foo_pt () override;
+    void m_foo_pt_foo_pt (int16_t m_foo_pt_foo_pt) override;
 
     /// Attribute the_byte_get_set_raise
-
-    uint8_t
-    the_byte_get_set_raise () override;
-
-    void
-    the_byte_get_set_raise (uint8_t the_byte_get_set_raise) override;
+    uint8_t the_byte_get_set_raise () override;
+    void the_byte_get_set_raise (uint8_t the_byte_get_set_raise) override;
 
     /// Attribute the_byte_set_raise
-
-    uint8_t
-    the_byte_set_raise () override;
-
-    void
-    the_byte_set_raise (uint8_t the_byte_set_raise) override;
+    uint8_t the_byte_set_raise () override;
+    void the_byte_set_raise (uint8_t the_byte_set_raise) override;
 
     /// Attribute the_byte_get_raise
-
-    uint8_t
-    the_byte_get_raise () override;
-
-    void
-    the_byte_get_raise (uint8_t the_byte_get_raise) override;
+    uint8_t the_byte_get_raise () override;
+    void the_byte_get_raise (uint8_t the_byte_get_raise) override;
 
     /// Attribute readonly_short_raise
-
-    int16_t
-    readonly_short_raise () override;
+    int16_t readonly_short_raise () override;
 
     /// Attribute readonly_short
-
-    int16_t
-    readonly_short () override;
+    int16_t readonly_short () override;
 
     /// Attribute my_char
-
-    char
-    my_char () override;
-
-    void
-    my_char (char my_char) override;
+    char my_char () override;
+    void my_char (char my_char) override;
 
     /// Attribute my_octet
-
-    uint8_t
-    my_octet () override;
-
-    void
-    my_octet (uint8_t my_octet) override;
+    uint8_t my_octet () override;
+    void my_octet (uint8_t my_octet) override;
 
     /// Attribute my_boolean
-
-    bool
-    my_boolean () override;
-
-    void
-    my_boolean (bool my_boolean) override;
+    bool my_boolean () override;
+    void my_boolean (bool my_boolean) override;
 
     /// Attribute my_short
-
-    int16_t
-    my_short () override;
-
-    void
-    my_short (int16_t my_short) override;
+    int16_t my_short () override;
+    void my_short (int16_t my_short) override;
 
     /// Attribute my_long
-
-    int32_t
-    my_long () override;
-
-    void
-    my_long (int32_t my_long) override;
+    int32_t my_long () override;
+    void my_long (int32_t my_long) override;
 
     /// Attribute my_float
-
-    float
-    my_float () override;
-
-    void
-    my_float (float my_float) override;
+    float my_float () override;
+    void my_float (float my_float) override;
 
     /// Attribute my_double
-
-    double
-    my_double () override;
-
-    void
-    my_double (double my_double) override;
+    double my_double () override;
+    void my_double (double my_double) override;
 
     /// Attribute my_ulong
-
-    uint32_t
-    my_ulong () override;
-
-    void
-    my_ulong (uint32_t my_ulong) override;
+    uint32_t my_ulong () override;
+    void my_ulong (uint32_t my_ulong) override;
 
     /// Attribute my_longlong
-
-    int64_t
-    my_longlong () override;
-
-    void
-    my_longlong (int64_t my_longlong) override;
+    int64_t my_longlong () override;
+    void my_longlong (int64_t my_longlong) override;
 
     /// Attribute my_ulonglong
-
-    uint64_t
-    my_ulonglong () override;
-
-    void
-    my_ulonglong (uint64_t my_ulonglong) override;
+    uint64_t my_ulonglong () override;
+    void my_ulonglong (uint64_t my_ulonglong) override;
 
     /// Attribute my_default_char
-
-    char
-    my_default_char () override;
-
-    void
-    my_default_char (char my_default_char) override;
+    char my_default_char () override;
+    void my_default_char (char my_default_char) override;
 
     /// Attribute my_default_octet
-
-    uint8_t
-    my_default_octet () override;
-
-    void
-    my_default_octet (uint8_t my_default_octet) override;
+    uint8_t my_default_octet () override;
+    void my_default_octet (uint8_t my_default_octet) override;
 
     /// Attribute my_default_boolean
-
-    bool
-    my_default_boolean () override;
-
-    void
-    my_default_boolean (bool my_default_boolean) override;
+    bool my_default_boolean () override;
+    void my_default_boolean (bool my_default_boolean) override;
 
     /// Attribute my_default_short
-
-    int16_t
-    my_default_short () override;
-
-    void
-    my_default_short (int16_t my_default_short) override;
+    int16_t my_default_short () override;
+    void my_default_short (int16_t my_default_short) override;
 
     /// Attribute my_default_long
-
-    int32_t
-    my_default_long () override;
-
-    void
-    my_default_long (int32_t my_default_long) override;
+    int32_t my_default_long () override;
+    void my_default_long (int32_t my_default_long) override;
 
     /// Attribute my_default_float
-
-    float
-    my_default_float () override;
-
-    void
-    my_default_float (float my_default_float) override;
+    float my_default_float () override;
+    void my_default_float (float my_default_float) override;
 
     /// Attribute my_default_double
-
-    double
-    my_default_double () override;
-
-    void
-    my_default_double (double my_default_double) override;
+    double my_default_double () override;
+    void my_default_double (double my_default_double) override;
 
     /// Attribute my_default_ulong
-
-    uint32_t
-    my_default_ulong () override;
-
-    void
-    my_default_ulong (uint32_t my_default_ulong) override;
+    uint32_t my_default_ulong () override;
+    void my_default_ulong (uint32_t my_default_ulong) override;
 
     /// Attribute my_default_longlong
-
-    int64_t
-    my_default_longlong () override;
-
-    void
-    my_default_longlong (int64_t my_default_longlong) override;
+    int64_t my_default_longlong () override;
+    void my_default_longlong (int64_t my_default_longlong) override;
 
     /// Attribute my_default_ulonglong
-
-    uint64_t
-    my_default_ulonglong () override;
-
-    void
-    my_default_ulonglong (uint64_t my_default_ulonglong) override;
+    uint64_t my_default_ulonglong () override;
+    void my_default_ulonglong (uint64_t my_default_ulonglong) override;
 
     /// Attribute my_longdouble
-
-    long double
-    my_longdouble () override;
-
-    void
-    my_longdouble (long double my_longdouble) override;
+    long double my_longdouble () override;
+    void my_longdouble (long double my_longdouble) override;
 
     /// Attribute my_default_longdouble
-
-    long double
-    my_default_longdouble () override;
-
-    void
-    my_default_longdouble (long double my_default_longdouble) override;
+    long double my_default_longdouble () override;
+    void my_default_longdouble (long double my_default_longdouble) override;
 
     /// Attribute my_bounded_string
-
-    ::bounded_string
-    my_bounded_string () override;
-
-    void
-    my_bounded_string (const ::bounded_string& my_bounded_string) override;
+    ::bounded_string my_bounded_string () override;
+    void my_bounded_string (const ::bounded_string& my_bounded_string) override;
 
     /// Attribute my_variable_string
-
-    std::string
-    my_variable_string () override;
-
-    void
-    my_variable_string (const std::string& my_variable_string) override;
+    std::string my_variable_string () override;
+    void my_variable_string (const std::string& my_variable_string) override;
 
     /// Attribute my_default_variable_string
-
-    std::string
-    my_default_variable_string () override;
-
-    void
-    my_default_variable_string (const std::string& my_default_variable_string) override;
+    std::string my_default_variable_string () override;
+    void my_default_variable_string (const std::string& my_default_variable_string) override;
 
     /// Attribute my_bounded_wstring
-
-    ::bounded_wstring
-    my_bounded_wstring () override;
-
-    void
-    my_bounded_wstring (const ::bounded_wstring& my_bounded_wstring) override;
+    ::bounded_wstring my_bounded_wstring () override;
+    void my_bounded_wstring (const ::bounded_wstring& my_bounded_wstring) override;
 
     /// Attribute my_variable_wstring
-
-    std::wstring
-    my_variable_wstring () override;
-
-    void
-    my_variable_wstring (const std::wstring& my_variable_wstring) override;
+    std::wstring my_variable_wstring () override;
+    void my_variable_wstring (const std::wstring& my_variable_wstring) override;
 
     /// Attribute my_long_array
-
-    ::long_array
-    my_long_array () override;
-
-    void
-    my_long_array (const ::long_array& my_long_array) override;
+    ::long_array my_long_array () override;
+    void my_long_array (const ::long_array& my_long_array) override;
 
     /// Attribute my_ulong_array
-
-    ::ulong_array
-    my_ulong_array () override;
-
-    void
-    my_ulong_array (const ::ulong_array& my_ulong_array) override;
+    ::ulong_array my_ulong_array () override;
+    void my_ulong_array (const ::ulong_array& my_ulong_array) override;
 
     /// Attribute my_longlong_array
-
-    ::longlong_array
-    my_longlong_array () override;
-
-    void
-    my_longlong_array (const ::longlong_array& my_longlong_array) override;
+    ::longlong_array my_longlong_array () override;
+    void my_longlong_array (const ::longlong_array& my_longlong_array) override;
 
     /// Attribute my_ulonglong_array
-
-    ::ulonglong_array
-    my_ulonglong_array () override;
-
-    void
-    my_ulonglong_array (const ::ulonglong_array& my_ulonglong_array) override;
+    ::ulonglong_array my_ulonglong_array () override;
+    void my_ulonglong_array (const ::ulonglong_array& my_ulonglong_array) override;
 
     /// Attribute my_short_array
-
-    ::short_array
-    my_short_array () override;
-
-    void
-    my_short_array (const ::short_array& my_short_array) override;
+    ::short_array my_short_array () override;
+    void my_short_array (const ::short_array& my_short_array) override;
 
     /// Attribute my_ushort_array
-
-    ::ushort_array
-    my_ushort_array () override;
-
-    void
-    my_ushort_array (const ::ushort_array& my_ushort_array) override;
+    ::ushort_array my_ushort_array () override;
+    void my_ushort_array (const ::ushort_array& my_ushort_array) override;
 
     /// Attribute my_string_array
-
-    ::string_array
-    my_string_array () override;
-
-    void
-    my_string_array (const ::string_array& my_string_array) override;
+    ::string_array my_string_array () override;
+    void my_string_array (const ::string_array& my_string_array) override;
 
     /// Attribute my_wstring_array
-
-    ::wstring_array
-    my_wstring_array () override;
-
-    void
-    my_wstring_array (const ::wstring_array& my_wstring_array) override;
+    ::wstring_array my_wstring_array () override;
+    void my_wstring_array (const ::wstring_array& my_wstring_array) override;
 
     /// Attribute my_char_array
-
-    ::char_array
-    my_char_array () override;
-
-    void
-    my_char_array (const ::char_array& my_char_array) override;
+    ::char_array my_char_array () override;
+    void my_char_array (const ::char_array& my_char_array) override;
 
     /// Attribute my_wchar_array
-
-    ::wchar_array
-    my_wchar_array () override;
-
-    void
-    my_wchar_array (const ::wchar_array& my_wchar_array) override;
+    ::wchar_array my_wchar_array () override;
+    void my_wchar_array (const ::wchar_array& my_wchar_array) override;
 
     /// Attribute my_double_array
-
-    ::double_array
-    my_double_array () override;
-
-    void
-    my_double_array (const ::double_array& my_double_array) override;
+    ::double_array my_double_array () override;
+    void my_double_array (const ::double_array& my_double_array) override;
 
     /// Attribute my_longdouble_array
-
-    ::longdouble_array
-    my_longdouble_array () override;
-
-    void
-    my_longdouble_array (const ::longdouble_array& my_longdouble_array) override;
+    ::longdouble_array my_longdouble_array () override;
+    void my_longdouble_array (const ::longdouble_array& my_longdouble_array) override;
 
     /// Attribute my_float_array
-
-    ::float_array
-    my_float_array () override;
-
-    void
-    my_float_array (const ::float_array& my_float_array) override;
+    ::float_array my_float_array () override;
+    void my_float_array (const ::float_array& my_float_array) override;
 
     /// Attribute my_boolean_array
-
-    ::boolean_array
-    my_boolean_array () override;
-
-    void
-    my_boolean_array (const ::boolean_array& my_boolean_array) override;
+    ::boolean_array my_boolean_array () override;
+    void my_boolean_array (const ::boolean_array& my_boolean_array) override;
 
     /// Attribute my_octet_array
-
-    ::octet_array
-    my_octet_array () override;
-
-    void
-    my_octet_array (const ::octet_array& my_octet_array) override;
+    ::octet_array my_octet_array () override;
+    void my_octet_array (const ::octet_array& my_octet_array) override;
 
     /// Attribute my_multi_dimensional_short_array
-
-    ::multi_dimensional_short_array
-    my_multi_dimensional_short_array () override;
-
-    void
-    my_multi_dimensional_short_array (const ::multi_dimensional_short_array& my_multi_dimensional_short_array) override;
+    ::multi_dimensional_short_array my_multi_dimensional_short_array () override;
+    void my_multi_dimensional_short_array (const ::multi_dimensional_short_array& my_multi_dimensional_short_array) override;
 
     /// Attribute my_short_sequence
-
-    ::short_sequence
-    my_short_sequence () override;
-
-    void
-    my_short_sequence (const ::short_sequence& my_short_sequence) override;
+    ::short_sequence my_short_sequence () override;
+    void my_short_sequence (const ::short_sequence& my_short_sequence) override;
 
     /// Attribute my_empty_sequence
-
-    ::short_sequence
-    my_empty_sequence () override;
-
-    void
-    my_empty_sequence (const ::short_sequence& my_empty_sequence) override;
+    ::short_sequence my_empty_sequence () override;
+    void my_empty_sequence (const ::short_sequence& my_empty_sequence) override;
 
     /// Attribute my_long_sequence
-
-    ::long_sequence
-    my_long_sequence () override;
-
-    void
-    my_long_sequence (const ::long_sequence& my_long_sequence) override;
+    ::long_sequence my_long_sequence () override;
+    void my_long_sequence (const ::long_sequence& my_long_sequence) override;
 
     /// Attribute my_float_sequence
-
-    ::float_sequence
-    my_float_sequence () override;
-
-    void
-    my_float_sequence (const ::float_sequence& my_float_sequence) override;
+    ::float_sequence my_float_sequence () override;
+    void my_float_sequence (const ::float_sequence& my_float_sequence) override;
 
     /// Attribute my_double_sequence
-
-    ::double_sequence
-    my_double_sequence () override;
-
-    void
-    my_double_sequence (const ::double_sequence& my_double_sequence) override;
+    ::double_sequence my_double_sequence () override;
+    void my_double_sequence (const ::double_sequence& my_double_sequence) override;
 
     /// Attribute my_string_sequence
-
-    ::string_sequence
-    my_string_sequence () override;
-
-    void
-    my_string_sequence (const ::string_sequence& my_string_sequence) override;
+    ::string_sequence my_string_sequence () override;
+    void my_string_sequence (const ::string_sequence& my_string_sequence) override;
 
     /// Attribute my_string_sequence_2
-
-    ::string_sequence2
-    my_string_sequence_2 () override;
-
-    void
-    my_string_sequence_2 (const ::string_sequence2& my_string_sequence_2) override;
+    ::string_sequence2 my_string_sequence_2 () override;
+    void my_string_sequence_2 (const ::string_sequence2& my_string_sequence_2) override;
 
     /// Attribute my_array_sequence
-
-    ::array_sequence
-    my_array_sequence () override;
-
-    void
-    my_array_sequence (const ::array_sequence& my_array_sequence) override;
+    ::array_sequence my_array_sequence () override;
+    void my_array_sequence (const ::array_sequence& my_array_sequence) override;
 
     /// Attribute my_bar_struct
-
-    ::Bar
-    my_bar_struct () override;
-
-    void
-    my_bar_struct (const ::Bar& my_bar_struct) override;
+    ::Bar my_bar_struct () override;
+    void my_bar_struct (const ::Bar& my_bar_struct) override;
 
     /// Attribute my_default_bar_struct
-
-    ::Bar
-    my_default_bar_struct () override;
-
-    void
-    my_default_bar_struct (const ::Bar& my_default_bar_struct) override;
+    ::Bar my_default_bar_struct () override;
+    void my_default_bar_struct (const ::Bar& my_default_bar_struct) override;
 
     /// Attribute my_bar_array
-
-    ::BarArray
-    my_bar_array () override;
-
-    void
-    my_bar_array (const ::BarArray& my_bar_array) override;
+    ::BarArray my_bar_array () override;
+    void my_bar_array (const ::BarArray& my_bar_array) override;
 
     /// Attribute my_bar_array_2
-
-    ::BarArray2
-    my_bar_array_2 () override;
-
-    void
-    my_bar_array_2 (const ::BarArray2& my_bar_array_2) override;
+    ::BarArray2 my_bar_array_2 () override;
+    void my_bar_array_2 (const ::BarArray2& my_bar_array_2) override;
 
     /// Attribute my_sequence_array
-
-    ::SequenceArray
-    my_sequence_array () override;
-
-    void
-    my_sequence_array (const ::SequenceArray& my_sequence_array) override;
+    ::SequenceArray my_sequence_array () override;
+    void my_sequence_array (const ::SequenceArray& my_sequence_array) override;
 
     /// Attribute my_bar_struct_array
-
-    ::BarStruct
-    my_bar_struct_array () override;
-
-    void
-    my_bar_struct_array (const ::BarStruct& my_bar_struct_array) override;
+    ::BarStruct my_bar_struct_array () override;
+    void my_bar_struct_array (const ::BarStruct& my_bar_struct_array) override;
 
     /// Attribute my_baz_struct
-
-    ::Baz
-    my_baz_struct () override;
-
-    void
-    my_baz_struct (const ::Baz& my_baz_struct) override;
+    ::Baz my_baz_struct () override;
+    void my_baz_struct (const ::Baz& my_baz_struct) override;
 
     /// Attribute my_data_union
-
-    ::Data
-    my_data_union () override;
-
-    void
-    my_data_union (const ::Data& my_data_union) override;
+    ::Data my_data_union () override;
+    void my_data_union (const ::Data& my_data_union) override;
 
     /// Attribute my_var_data_union
-
-    ::Data2
-    my_var_data_union () override;
-
-    void
-    my_var_data_union (const ::Data2& my_var_data_union) override;
+    ::Data2 my_var_data_union () override;
+    void my_var_data_union (const ::Data2& my_var_data_union) override;
 
     /// Attribute my_struct_struct
-
-    ::StructModule::StructStruct
-    my_struct_struct () override;
-
-    void
-    my_struct_struct (const ::StructModule::StructStruct& my_struct_struct) override;
+    ::StructModule::StructStruct my_struct_struct () override;
+    void my_struct_struct (const ::StructModule::StructStruct& my_struct_struct) override;
 
     /// Attribute my_sequence_bounded_string
-
-    ::sequence_bounded_string
-    my_sequence_bounded_string () override;
-
-    void
-    my_sequence_bounded_string (const ::sequence_bounded_string& my_sequence_bounded_string) override;
+    ::sequence_bounded_string my_sequence_bounded_string () override;
+    void my_sequence_bounded_string (const ::sequence_bounded_string& my_sequence_bounded_string) override;
 
     /// Attribute my_sequence_bounded_wstring
-
-    ::sequence_bounded_wstring
-    my_sequence_bounded_wstring () override;
-
-    void
-    my_sequence_bounded_wstring (const ::sequence_bounded_wstring& my_sequence_bounded_wstring) override;
+    ::sequence_bounded_wstring my_sequence_bounded_wstring () override;
+    void my_sequence_bounded_wstring (const ::sequence_bounded_wstring& my_sequence_bounded_wstring) override;
 
     /// Attribute my_bounded_sequence_bounded_string
-
-    ::bounded_sequence_bounded_string
-    my_bounded_sequence_bounded_string () override;
-
-    void
-    my_bounded_sequence_bounded_string (const ::bounded_sequence_bounded_string& my_bounded_sequence_bounded_string) override;
+    ::bounded_sequence_bounded_string my_bounded_sequence_bounded_string () override;
+    void my_bounded_sequence_bounded_string (const ::bounded_sequence_bounded_string& my_bounded_sequence_bounded_string) override;
 
     /// Attribute my_bounded_sequence_bounded_wstring
-
-    ::bounded_sequence_bounded_wstring
-    my_bounded_sequence_bounded_wstring () override;
-
-    void
-    my_bounded_sequence_bounded_wstring (const ::bounded_sequence_bounded_wstring& my_bounded_sequence_bounded_wstring) override;
+    ::bounded_sequence_bounded_wstring my_bounded_sequence_bounded_wstring () override;
+    void my_bounded_sequence_bounded_wstring (const ::bounded_sequence_bounded_wstring& my_bounded_sequence_bounded_wstring) override;
 
     /// Attribute my_bounded_string_array
-
-    ::bounded_string_array
-    my_bounded_string_array () override;
-
-    void
-    my_bounded_string_array (const ::bounded_string_array& my_bounded_string_array) override;
+    ::bounded_string_array my_bounded_string_array () override;
+    void my_bounded_string_array (const ::bounded_string_array& my_bounded_string_array) override;
 
     /// Attribute my_bounded_wstring_array
-
-    ::bounded_wstring_array
-    my_bounded_wstring_array () override;
-
-    void
-    my_bounded_wstring_array (const ::bounded_wstring_array& my_bounded_wstring_array) override;
+    ::bounded_wstring_array my_bounded_wstring_array () override;
+    void my_bounded_wstring_array (const ::bounded_wstring_array& my_bounded_wstring_array) override;
 
     /// Attribute my_data_type
-
-    ::DataType
-    my_data_type () override;
-
-    void
-    my_data_type (::DataType my_data_type) override;
+    ::DataType my_data_type () override;
+    void my_data_type (::DataType my_data_type) override;
 
     /// Attribute my_data_type_type
-
-    ::data_type_type
-    my_data_type_type () override;
-
-    void
-    my_data_type_type (::data_type_type my_data_type_type) override;
+    ::data_type_type my_data_type_type () override;
+    void my_data_type_type (::data_type_type my_data_type_type) override;
 
     /// Attribute my_any
-
-    CORBA::Any
-    my_any () override;
-
-    void
-    my_any (const CORBA::Any& my_any) override;
+    CORBA::Any my_any () override;
+    void my_any (const CORBA::Any& my_any) override;
 
     /// Attribute my_any_type
-
-    ::any_type
-    my_any_type () override;
-
-    void
-    my_any_type (const ::any_type& my_any_type) override;
+    ::any_type my_any_type () override;
+    void my_any_type (const ::any_type& my_any_type) override;
 
     /// Attribute my_foo_interface
-
-    IDL::traits< ::MyFoo>::ref_type
-    my_foo_interface () override;
-
-    void
-    my_foo_interface (IDL::traits< ::MyFoo>::ref_type my_foo_interface) override;
+    IDL::traits< ::MyFoo>::ref_type my_foo_interface () override;
+    void my_foo_interface (IDL::traits< ::MyFoo>::ref_type my_foo_interface) override;
     //@}
 
     /** @name Session component operations */

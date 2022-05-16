@@ -254,44 +254,24 @@ namespace Test_Sender_Impl
     //@{
 
     /// Attribute rate
-
-    uint32_t
-    rate () override;
-
-    void
-    rate (uint32_t rate) override;
+    uint32_t rate () override;
+    void rate (uint32_t rate) override;
 
     /// Attribute samples
-
-    uint32_t
-    samples () override;
-
-    void
-    samples (uint32_t samples) override;
+    uint32_t samples () override;
+    void samples (uint32_t samples) override;
 
     /// Attribute iterations
-
-    uint32_t
-    iterations () override;
-
-    void
-    iterations (uint32_t iterations) override;
+    uint32_t iterations () override;
+    void iterations (uint32_t iterations) override;
 
     /// Attribute uses_context_switch
-
-    bool
-    uses_context_switch () override;
-
-    void
-    uses_context_switch (bool uses_context_switch) override;
+    bool uses_context_switch () override;
+    void uses_context_switch (bool uses_context_switch) override;
 
     /// Attribute context_switch_type
-
-    std::string
-    context_switch_type () override;
-
-    void
-    context_switch_type (const std::string& context_switch_type) override;
+    std::string context_switch_type () override;
+    void context_switch_type (const std::string& context_switch_type) override;
     //@}
 
     /** @name Session component operations */

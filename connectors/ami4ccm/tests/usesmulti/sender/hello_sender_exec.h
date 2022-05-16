@@ -73,7 +73,7 @@ namespace UsesMulti_Sender_Impl
     Sender_exec_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : UsesMulti_Sender_Impl::Sender_exec_i[ctor]
     /// Destructor
-    virtual ~Sender_exec_i ();
+    ~Sender_exec_i () override;
 
     /** @name Component port operations. */
     //@{
@@ -150,13 +150,11 @@ namespace UsesMulti_Sender_Impl
 
     virtual ~AMI4CCM_OneReplyHandler_run_my_um_one_i ();
 
-    void
-    foo (
+    void foo (
         int32_t ami_return_val,
         const std::string& answer) override;
 
-    void
-    foo_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+    void foo_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
 
     /** @name User defined public operations. */
     //@{

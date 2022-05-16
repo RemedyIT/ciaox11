@@ -42,7 +42,6 @@ namespace InterReturnT_Receiver_Impl
     : public IDL::traits< ::InterReturnT::CCM_MyFoo>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : InterReturnT_Receiver_Impl::do_my_foo_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -51,7 +50,7 @@ namespace InterReturnT_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : InterReturnT_Receiver_Impl::do_my_foo_exec_i[ctor]
 
     /// Destructor
-    virtual ~do_my_foo_exec_i ();
+    ~do_my_foo_exec_i () override;
 
     /** @name Operations from ::InterReturnT::CCM_MyFoo */
     //@{
@@ -141,7 +140,7 @@ namespace InterReturnT_Receiver_Impl
     Receiver_exec_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : InterReturnT_Receiver_Impl::Receiver_exec_i[ctor]
     /// Destructor
-    virtual ~Receiver_exec_i ();
+    ~Receiver_exec_i () override;
 
     /** @name Component port operations. */
     //@{
