@@ -26,10 +26,13 @@ module IDL_Conversion_Test
     /// Test that the following DDS4CCM defined types can be used as
     /// attribute, which required they have AnyTypeCode support
     /// enabled
+    attribute CCM_DDS::DataNumber_t data_number;
+    attribute CCM_DDS::DataNumberSeq data_number_seq;
     attribute CCM_DDS::ListenerMode listener_mode;
     attribute CCM_DDS::AccessStatus accesss_status;
     attribute CCM_DDS::InstanceStatus instance_status;
     attribute CCM_DDS::ReadInfo read_info;
+    attribute CCM_DDS::ReadInfoSeq read_info_seq;
   };
 };
 
