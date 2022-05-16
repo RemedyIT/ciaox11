@@ -13,7 +13,7 @@ project (ciaox11_dds4ccm_idl_gen) : install, \
   }
 
   IDL_Files {
-    idlflags += -Gxhst -Glem
+    idlflags -= -Gxhst -Gxhsk -Gsv -Glem
     idlflags -= -St -Sa -Scdr -Scp
     dds4ccm_types.idl
   }
