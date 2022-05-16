@@ -62,18 +62,10 @@ namespace Test_Receiver_Impl
 
     /** @name Attributes from ::Test::Hello::CCM_Listener */
     //@{
-
-    ::CCM_PSDD::ListenerMode
-    listen_mode () override;
-
-    void
-    listen_mode (::CCM_PSDD::ListenerMode listen_mode) override;
-
-    ::CCM_PSDD::DataCount_t
-    max_data () override;
-
-    void
-    max_data (::CCM_PSDD::DataCount_t max_data) override;
+    ::CCM_PSDD::ListenerMode listen_mode () override;
+    void listen_mode (::CCM_PSDD::ListenerMode listen_mode) override;
+    ::CCM_PSDD::DataCount_t max_data () override;
+    void max_data (::CCM_PSDD::DataCount_t max_data) override;
     //@}
 
     /** @name User defined public operations. */
@@ -136,18 +128,10 @@ namespace Test_Receiver_Impl
 
     /** @name Attributes from ::Test::Msg::CCM_Listener */
     //@{
-
-    ::CCM_PSDD::ListenerMode
-    listen_mode () override;
-
-    void
-    listen_mode (::CCM_PSDD::ListenerMode listen_mode) override;
-
-    ::CCM_PSDD::DataCount_t
-    max_data () override;
-
-    void
-    max_data (::CCM_PSDD::DataCount_t max_data) override;
+    ::CCM_PSDD::ListenerMode listen_mode () override;
+    void listen_mode (::CCM_PSDD::ListenerMode listen_mode) override;
+    ::CCM_PSDD::DataCount_t max_data () override;
+    void max_data (::CCM_PSDD::DataCount_t max_data) override;
     //@}
 
     /** @name User defined public operations. */
@@ -211,44 +195,24 @@ namespace Test_Receiver_Impl
     //@{
 
     /// Attribute mode
-
-    std::string
-    mode () override;
-
-    void
-    mode (const std::string& mode) override;
+    std::string mode () override;
+    void mode (const std::string& mode) override;
 
     /// Attribute subscription
-
-    std::string
-    subscription () override;
-
-    void
-    subscription (const std::string& subscription) override;
+    std::string subscription () override;
+    void subscription (const std::string& subscription) override;
 
     /// Attribute count
-
-    uint32_t
-    count () override;
-
-    void
-    count (uint32_t count) override;
+    uint32_t count () override;
+    void count (uint32_t count) override;
 
     /// Attribute delay
-
-    uint32_t
-    delay () override;
-
-    void
-    delay (uint32_t delay) override;
+    uint32_t delay () override;
+    void delay (uint32_t delay) override;
 
     /// Attribute interval
-
-    uint32_t
-    interval () override;
-
-    void
-    interval (uint32_t interval) override;
+    uint32_t interval () override;
+    void interval (uint32_t interval) override;
     //@}
 
     /** @name Session component operations */

@@ -62,12 +62,8 @@ namespace Hello_MyBaseEvent_Impl
 
     /** @name Attributes from ::Hello::CCM_MyFoo */
     //@{
-
-    int16_t
-    interface_attrib () override;
-
-    void
-    interface_attrib (int16_t interface_attrib) override;
+    int16_t interface_attrib () override;
+    void interface_attrib (int16_t interface_attrib) override;
     //@}
 
     /** @name User defined public operations. */

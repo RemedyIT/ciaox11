@@ -41,7 +41,6 @@ namespace Interceptor_Interceptor_Receiver_Impl
     : public IDL::traits< ::Interceptor::CCM_Foo>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Interceptor_Interceptor_Receiver_Impl::prov_my_foo_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -50,7 +49,7 @@ namespace Interceptor_Interceptor_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Interceptor_Interceptor_Receiver_Impl::prov_my_foo_exec_i[ctor]
 
     /// Destructor
-    virtual ~prov_my_foo_exec_i ();
+    ~prov_my_foo_exec_i () override;
 
     /** @name Operations from ::Interceptor::CCM_Foo */
     //@{
@@ -97,7 +96,7 @@ namespace Interceptor_Interceptor_Receiver_Impl
     Interceptor_Receiver_exec_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : Interceptor_Interceptor_Receiver_Impl::Interceptor_Receiver_exec_i[ctor]
     /// Destructor
-    virtual ~Interceptor_Receiver_exec_i ();
+    ~Interceptor_Receiver_exec_i () override;
 
     /** @name Component port operations. */
     //@{

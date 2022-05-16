@@ -75,15 +75,9 @@ namespace Hello_Sender_Impl
 
     /** @name Attributes from ::Hello::CCM_MyFoo */
     //@{
-
-    int16_t
-    rw_attrib () override;
-
-    void
-    rw_attrib (int16_t rw_attrib) override;
-
-    int16_t
-    ro_attrib () override;
+    int16_t rw_attrib () override;
+    void rw_attrib (int16_t rw_attrib) override;
+    int16_t ro_attrib () override;
     //@}
 
     /** @name User defined public operations. */
@@ -196,33 +190,19 @@ namespace Hello_Sender_Impl
     //@{
 
     /// Attribute my_sen_attrib
-
-    int32_t
-    my_sen_attrib () override;
-
-    void
-    my_sen_attrib (int32_t my_sen_attrib) override;
+    int32_t my_sen_attrib () override;
+    void my_sen_attrib (int32_t my_sen_attrib) override;
 
     /// Attribute my_sen_attrib2
-
-    int16_t
-    my_sen_attrib2 () override;
+    int16_t my_sen_attrib2 () override;
 
     /// Attribute Test
-
-    ::Bar
-    Test () override;
-
-    void
-    Test (const ::Bar& Test) override;
+    ::Bar Test () override;
+    void Test (const ::Bar& Test) override;
 
     /// Attribute TestBar
-
-    ::Foo::Bar
-    TestBar () override;
-
-    void
-    TestBar (const ::Foo::Bar& TestBar) override;
+    ::Foo::Bar TestBar () override;
+    void TestBar (const ::Foo::Bar& TestBar) override;
     //@}
 
     /** @name Session component operations */

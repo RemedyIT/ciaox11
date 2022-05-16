@@ -62,18 +62,10 @@ namespace Test_Receiver_Impl
 
     /** @name Attributes from ::Test::LatencyDataConnector::CCM_Listener */
     //@{
-
-    ::CCM_PSDD::ListenerMode
-    listen_mode () override;
-
-    void
-    listen_mode (::CCM_PSDD::ListenerMode listen_mode) override;
-
-    ::CCM_PSDD::DataCount_t
-    max_data () override;
-
-    void
-    max_data (::CCM_PSDD::DataCount_t max_data) override;
+    ::CCM_PSDD::ListenerMode listen_mode () override;
+    void listen_mode (::CCM_PSDD::ListenerMode listen_mode) override;
+    ::CCM_PSDD::DataCount_t max_data () override;
+    void max_data (::CCM_PSDD::DataCount_t max_data) override;
     //@}
 
     /** @name User defined public operations. */

@@ -302,8 +302,7 @@ namespace InterInArgsT_Sender_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : InterInArgsT_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[foo]
   }
 
-  void
-  AMI4CCM_MyFooReplyHandler_run_my_foo_i::foo_excep (
+  void AMI4CCM_MyFooReplyHandler_run_my_foo_i::foo_excep (
     IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : InterInArgsT_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[foo_excep]
@@ -335,8 +334,7 @@ namespace InterInArgsT_Sender_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : InterInArgsT_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[var_ins]
   }
 
-  void
-  AMI4CCM_MyFooReplyHandler_run_my_foo_i::var_ins_excep (
+  void AMI4CCM_MyFooReplyHandler_run_my_foo_i::var_ins_excep (
     IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : InterInArgsT_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[var_ins_excep]
@@ -355,8 +353,7 @@ namespace InterInArgsT_Sender_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : InterInArgsT_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[var_div_ins]
   }
 
-  void
-  AMI4CCM_MyFooReplyHandler_run_my_foo_i::var_div_ins_excep (
+  void AMI4CCM_MyFooReplyHandler_run_my_foo_i::var_div_ins_excep (
     IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : InterInArgsT_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[var_div_ins_excep]
@@ -376,8 +373,7 @@ namespace InterInArgsT_Sender_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : InterInArgsT_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[var_div2_ins]
   }
 
-  void
-  AMI4CCM_MyFooReplyHandler_run_my_foo_i::var_div2_ins_excep (
+  void AMI4CCM_MyFooReplyHandler_run_my_foo_i::var_div2_ins_excep (
     IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : InterInArgsT_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[var_div2_ins_excep]
@@ -397,8 +393,7 @@ namespace InterInArgsT_Sender_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : InterInArgsT_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[enum_in]
   }
 
-  void
-  AMI4CCM_MyFooReplyHandler_run_my_foo_i::enum_in_excep (
+  void AMI4CCM_MyFooReplyHandler_run_my_foo_i::enum_in_excep (
     IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : InterInArgsT_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[enum_in_excep]

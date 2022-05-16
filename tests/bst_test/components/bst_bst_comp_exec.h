@@ -47,7 +47,7 @@ namespace BST_BST_comp_Impl
     BST_comp_exec_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : BST_BST_comp_Impl::BST_comp_exec_i[ctor]
     /// Destructor
-    virtual ~BST_comp_exec_i ();
+    ~BST_comp_exec_i () override;
 
     /** @name Component port operations. */
     //@{
@@ -58,28 +58,16 @@ namespace BST_BST_comp_Impl
     //@{
 
     /// Attribute MyBoundedString
-
-    ::BST::MyBoundedStringType
-    MyBoundedString () override;
-
-    void
-    MyBoundedString (const ::BST::MyBoundedStringType& MyBoundedString) override;
+    ::BST::MyBoundedStringType MyBoundedString () override;
+    void MyBoundedString (const ::BST::MyBoundedStringType& MyBoundedString) override;
 
     /// Attribute MyUnboundedString
-
-    ::BST::MyStringTypedef
-    MyUnboundedString () override;
-
-    void
-    MyUnboundedString (const ::BST::MyStringTypedef& MyUnboundedString) override;
+    ::BST::MyStringTypedef MyUnboundedString () override;
+    void MyUnboundedString (const ::BST::MyStringTypedef& MyUnboundedString) override;
 
     /// Attribute MyStruct
-
-    ::BST::MyStructType
-    MyStruct () override;
-
-    void
-    MyStruct (const ::BST::MyStructType& MyStruct) override;
+    ::BST::MyStructType MyStruct () override;
+    void MyStruct (const ::BST::MyStructType& MyStruct) override;
     //@}
 
     /** @name Session component operations */

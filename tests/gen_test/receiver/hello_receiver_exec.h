@@ -62,12 +62,8 @@ namespace Hello_Receiver_Impl
 
     /** @name Attributes from ::Hello::CCM_MyFoo */
     //@{
-
-    int16_t
-    interface_attrib () override;
-
-    void
-    interface_attrib (int16_t interface_attrib) override;
+    int16_t interface_attrib () override;
+    void interface_attrib (int16_t interface_attrib) override;
     //@}
 
     /** @name User defined public operations. */
@@ -127,12 +123,8 @@ namespace Hello_Receiver_Impl
 
     /** @name Attributes from ::Hello::CCM_MyBar */
     //@{
-
-    int16_t
-    bar_attrib () override;
-
-    void
-    bar_attrib (int16_t bar_attrib) override;
+    int16_t bar_attrib () override;
+    void bar_attrib (int16_t bar_attrib) override;
     //@}
 
     /** @name User defined public operations. */
@@ -194,12 +186,8 @@ namespace Hello_Receiver_Impl
     //@{
 
     /// Attribute test_topic
-
-    ::Hello::TestTopic
-    test_topic () override;
-
-    void
-    test_topic (const ::Hello::TestTopic& test_topic) override;
+    ::Hello::TestTopic test_topic () override;
+    void test_topic (const ::Hello::TestTopic& test_topic) override;
     //@}
 
     /** @name Session component operations */

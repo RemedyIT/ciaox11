@@ -81,7 +81,7 @@ namespace InterInOutT_Sender_Impl
     Sender_exec_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : InterInOutT_Sender_Impl::Sender_exec_i[ctor]
     /// Destructor
-    virtual ~Sender_exec_i ();
+    ~Sender_exec_i () override;
 
     /** @name Component port operations. */
     //@{
@@ -158,45 +158,35 @@ namespace InterInOutT_Sender_Impl
 
     virtual ~AMI4CCM_MyFooReplyHandler_run_my_foo_i ();
 
-    void
-    foo (
+    void foo (
         int32_t ami_return_val,
         int32_t cmd,
         const std::string& answer) override;
 
-    void
-    foo_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
-    void
-    var_ins (
+    void foo_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+    void var_ins (
         const std::string& answer,
         double cmd) override;
 
-    void
-    var_ins_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
-    void
-    var_div_ins (
+    void var_ins_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+    void var_div_ins (
         const ::InterInOutT::TestTopic& test_topic,
         const ::InterInOutT::TopicString& topic_str,
         const ::InterInOutT::TestArray& topic_arr,
         const std::string& answer) override;
 
-    void
-    var_div_ins_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
-    void
-    var_div2_ins (
+    void var_div_ins_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+    void var_div2_ins (
         const ::InterInOutT::X_Union& topic_union,
         const ::InterInOutT::test_seq& seq,
         const std::string& answer) override;
 
-    void
-    var_div2_ins_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
-    void
-    enum_in (
+    void var_div2_ins_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+    void enum_in (
         const std::string& answer,
         ::InterInOutT::test_enum in_test) override;
 
-    void
-    enum_in_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+    void enum_in_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
 
     /** @name User defined public operations. */
     //@{

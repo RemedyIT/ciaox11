@@ -151,13 +151,11 @@ namespace UsesMulti_Sender_Impl
 
     virtual ~AMI4CCM_OneReplyHandler_run_my_um_one_i ();
 
-    void
-    foo (
+    void foo (
         int32_t ami_return_val,
         const std::string& answer) override;
 
-    void
-    foo_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+    void foo_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
 
     /** @name User defined public operations. */
     //@{

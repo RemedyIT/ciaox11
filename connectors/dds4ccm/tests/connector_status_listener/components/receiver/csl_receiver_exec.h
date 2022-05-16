@@ -225,20 +225,12 @@ namespace CSL_Test_Receiver_Impl
     //@{
 
     /// Attribute csl_assignment
-
-    std::string
-    csl_assignment () override;
-
-    void
-    csl_assignment (const std::string& csl_assignment) override;
+    std::string csl_assignment () override;
+    void csl_assignment (const std::string& csl_assignment) override;
 
     /// Attribute samples_to_receive
-
-    uint32_t
-    samples_to_receive () override;
-
-    void
-    samples_to_receive (uint32_t samples_to_receive) override;
+    uint32_t samples_to_receive () override;
+    void samples_to_receive (uint32_t samples_to_receive) override;
     //@}
 
     /** @name Session component operations */

@@ -133,28 +133,16 @@ namespace Data_Sender_Impl
     //@{
 
     /// Attribute rate
-
-    uint16_t
-    rate () override;
-
-    void
-    rate (uint16_t rate) override;
+    uint16_t rate () override;
+    void rate (uint16_t rate) override;
 
     /// Attribute iterations
-
-    uint16_t
-    iterations () override;
-
-    void
-    iterations (uint16_t iterations) override;
+    uint16_t iterations () override;
+    void iterations (uint16_t iterations) override;
 
     /// Attribute keys
-
-    uint16_t
-    keys () override;
-
-    void
-    keys (uint16_t keys) override;
+    uint16_t keys () override;
+    void keys (uint16_t keys) override;
     //@}
 
     /** @name Session component operations */

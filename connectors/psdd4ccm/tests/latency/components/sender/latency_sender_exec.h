@@ -62,18 +62,10 @@ namespace Test_Sender_Impl
 
     /** @name Attributes from ::Test::LatencyDataConnector::CCM_Listener */
     //@{
-
-    ::CCM_PSDD::ListenerMode
-    listen_mode () override;
-
-    void
-    listen_mode (::CCM_PSDD::ListenerMode listen_mode) override;
-
-    ::CCM_PSDD::DataCount_t
-    max_data () override;
-
-    void
-    max_data (::CCM_PSDD::DataCount_t max_data) override;
+    ::CCM_PSDD::ListenerMode listen_mode () override;
+    void listen_mode (::CCM_PSDD::ListenerMode listen_mode) override;
+    ::CCM_PSDD::DataCount_t max_data () override;
+    void max_data (::CCM_PSDD::DataCount_t max_data) override;
     //@}
 
     /** @name User defined public operations. */
@@ -134,52 +126,28 @@ namespace Test_Sender_Impl
     //@{
 
     /// Attribute rate
-
-    uint32_t
-    rate () override;
-
-    void
-    rate (uint32_t rate) override;
+    uint32_t rate () override;
+    void rate (uint32_t rate) override;
 
     /// Attribute samples
-
-    uint32_t
-    samples () override;
-
-    void
-    samples (uint32_t samples) override;
+    uint32_t samples () override;
+    void samples (uint32_t samples) override;
 
     /// Attribute sample_size
-
-    uint32_t
-    sample_size () override;
-
-    void
-    sample_size (uint32_t sample_size) override;
+    uint32_t sample_size () override;
+    void sample_size (uint32_t sample_size) override;
 
     /// Attribute iterations
-
-    uint32_t
-    iterations () override;
-
-    void
-    iterations (uint32_t iterations) override;
+    uint32_t iterations () override;
+    void iterations (uint32_t iterations) override;
 
     /// Attribute uses_context_switch
-
-    bool
-    uses_context_switch () override;
-
-    void
-    uses_context_switch (bool uses_context_switch) override;
+    bool uses_context_switch () override;
+    void uses_context_switch (bool uses_context_switch) override;
 
     /// Attribute context_switch_type
-
-    std::string
-    context_switch_type () override;
-
-    void
-    context_switch_type (const std::string& context_switch_type) override;
+    std::string context_switch_type () override;
+    void context_switch_type (const std::string& context_switch_type) override;
     //@}
 
     /** @name Session component operations */
