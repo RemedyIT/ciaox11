@@ -1,8 +1,4 @@
-
-<%= implementation_return_type %>
-<%= cxxname %> () override;
+<%= implementation_return_type %> <%= cxxname %> () override;
 % unless is_readonly?
-
-void
-<%= cxxname %> (<%= implementation_in_type %> <%= cxxname %>) override;
+void <%= cxxname %> (<%= implementation_in_type %> <%= cxxname %>) override;
 % end
