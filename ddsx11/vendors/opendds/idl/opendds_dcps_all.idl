@@ -34,11 +34,6 @@ module DDS {
       unsigned long nanosec;
   };
 
-  struct Time_t {
-      long sec;
-      unsigned long nanosec;
-  };
-
   typedef sequence<InstanceHandle_t> InstanceHandleSeq;
 
   // ----------------------------------------------------------------------
