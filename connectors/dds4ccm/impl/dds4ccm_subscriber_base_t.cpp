@@ -83,7 +83,7 @@ DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::configuration_compl
     }
     else
     {
-      // To create a datareader, the qos should be passed. In order o pass a
+      // To create a datareader, the qos should be passed. In order to pass a
       // valid qos we first retrieve it from DDS itself.
       ::DDS::DataReaderQos drqos;
       ::DDS::ReturnCode_t const retcode =
@@ -170,7 +170,7 @@ DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::activate (
     {
       if (!this->listener_)
       {
-        this->listener_ = DDS::make_reference<PortStatusListener_type > (evs);
+        this->listener_ = DDS::make_reference<PortStatusListener_type> (evs);
       }
 
       ::DDS::ReturnCode_t const retcode = dr->set_listener (this->listener_, mask);

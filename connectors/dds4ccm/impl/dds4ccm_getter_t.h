@@ -34,7 +34,7 @@ namespace CIAOX11
     */
     template <typename GETTER_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
     class Getter_T
-      : public virtual FacetBase< GETTER_TYPE >
+      : public virtual FacetBase<GETTER_TYPE>
     {
     public:
       /// Constructor

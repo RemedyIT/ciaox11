@@ -49,7 +49,7 @@ public:
 
 private:
   using DataReaderListener_type = ::CIAOX11::DDS4CCM::DataReaderListener_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE, LRT>;
-  using DataListenerControl_type = CCM_DDS_DataListenerControl_T< ::CCM_DDS::CCM_DataListenerControl >;
+  using DataListenerControl_type = CCM_DDS_DataListenerControl_T< ::CCM_DDS::CCM_DataListenerControl>;
   using SubscriberBase_type = DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>;
 
   /**

@@ -155,7 +155,7 @@ DDS_Update_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_data ()
 
   if (!this->dds4ccm_updater_)
   {
-    this->dds4ccm_updater_ = CORBA::make_reference< DDS4CCM_Updater_type > (this->component_);
+    this->dds4ccm_updater_ = CORBA::make_reference< DDS4CCM_Updater_type> (this->component_);
   }
 
   return this->dds4ccm_updater_;
@@ -169,7 +169,7 @@ DDS_Update_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_dds_entity ()
 
   if (!this->ccm_data_writer_)
   {
-    this->ccm_data_writer_ = CORBA::make_reference< CCM_DataWriter_type > (this->component_);
+    this->ccm_data_writer_ = CORBA::make_reference< CCM_DataWriter_type> (this->component_);
   }
 
   return this->ccm_data_writer_;
