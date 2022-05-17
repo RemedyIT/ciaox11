@@ -42,7 +42,6 @@ namespace Hello_Receiver_Impl
     : public IDL::traits< ::Hello::CCM_MyFoo>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::rec_listen_port_foo_prov_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -51,7 +50,7 @@ namespace Hello_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::rec_listen_port_foo_prov_exec_i[ctor]
 
     /// Destructor
-    virtual ~rec_listen_port_foo_prov_exec_i ();
+    ~rec_listen_port_foo_prov_exec_i () override;
 
     /** @name Operations from ::Hello::CCM_MyFoo */
     //@{
@@ -63,12 +62,8 @@ namespace Hello_Receiver_Impl
 
     /** @name Attributes from ::Hello::CCM_MyFoo */
     //@{
-
-    int16_t
-    interface_attrib () override;
-
-    void
-    interface_attrib (int16_t interface_attrib) override;
+    int16_t interface_attrib () override;
+    void interface_attrib (int16_t interface_attrib) override;
     //@}
 
     /** @name User defined public operations. */
@@ -108,7 +103,6 @@ namespace Hello_Receiver_Impl
     : public IDL::traits< ::Hello::CCM_MyBar>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::rec_listen_port_bar_prov_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -117,7 +111,7 @@ namespace Hello_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::rec_listen_port_bar_prov_exec_i[ctor]
 
     /// Destructor
-    virtual ~rec_listen_port_bar_prov_exec_i ();
+    ~rec_listen_port_bar_prov_exec_i () override;
 
     /** @name Operations from ::Hello::CCM_MyBar */
     //@{
@@ -129,12 +123,8 @@ namespace Hello_Receiver_Impl
 
     /** @name Attributes from ::Hello::CCM_MyBar */
     //@{
-
-    int16_t
-    bar_attrib () override;
-
-    void
-    bar_attrib (int16_t bar_attrib) override;
+    int16_t bar_attrib () override;
+    void bar_attrib (int16_t bar_attrib) override;
     //@}
 
     /** @name User defined public operations. */
@@ -179,7 +169,7 @@ namespace Hello_Receiver_Impl
     Receiver_exec_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::Receiver_exec_i[ctor]
     /// Destructor
-    virtual ~Receiver_exec_i ();
+    ~Receiver_exec_i () override;
 
     /** @name Component port operations. */
     //@{
@@ -196,12 +186,8 @@ namespace Hello_Receiver_Impl
     //@{
 
     /// Attribute test_topic
-
-    ::Hello::TestTopic
-    test_topic () override;
-
-    void
-    test_topic (const ::Hello::TestTopic& test_topic) override;
+    ::Hello::TestTopic test_topic () override;
+    void test_topic (const ::Hello::TestTopic& test_topic) override;
     //@}
 
     /** @name Session component operations */

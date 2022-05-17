@@ -416,8 +416,7 @@ namespace InterMulti_Sender_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : InterMulti_Sender_Impl::AMI4CCM_OneReplyHandler_run_my_one_i[foo]
   }
 
-  void
-  AMI4CCM_OneReplyHandler_run_my_one_i::foo_excep (
+  void AMI4CCM_OneReplyHandler_run_my_one_i::foo_excep (
     IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : InterMulti_Sender_Impl::AMI4CCM_OneReplyHandler_run_my_one_i[foo_excep]
@@ -464,8 +463,7 @@ namespace InterMulti_Sender_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : InterMulti_Sender_Impl::AMI4CCM_TwoReplyHandler_run_my_two_i[bar]
   }
 
-  void
-  AMI4CCM_TwoReplyHandler_run_my_two_i::bar_excep (
+  void AMI4CCM_TwoReplyHandler_run_my_two_i::bar_excep (
     IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : InterMulti_Sender_Impl::AMI4CCM_TwoReplyHandler_run_my_two_i[bar_excep]
@@ -512,8 +510,7 @@ namespace InterMulti_Sender_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : InterMulti_Sender_Impl::AMI4CCM_ThreeReplyHandler_run_my_three_i[plus]
   }
 
-  void
-  AMI4CCM_ThreeReplyHandler_run_my_three_i::plus_excep (
+  void AMI4CCM_ThreeReplyHandler_run_my_three_i::plus_excep (
     IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : InterMulti_Sender_Impl::AMI4CCM_ThreeReplyHandler_run_my_three_i[plus_excep]
@@ -536,8 +533,7 @@ namespace InterMulti_Sender_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : InterMulti_Sender_Impl::AMI4CCM_ThreeReplyHandler_run_my_three_i[foo]
   }
 
-  void
-  AMI4CCM_ThreeReplyHandler_run_my_three_i::foo_excep (
+  void AMI4CCM_ThreeReplyHandler_run_my_three_i::foo_excep (
     IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : InterMulti_Sender_Impl::AMI4CCM_ThreeReplyHandler_run_my_three_i[foo_excep]
@@ -558,8 +554,7 @@ namespace InterMulti_Sender_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : InterMulti_Sender_Impl::AMI4CCM_ThreeReplyHandler_run_my_three_i[bar]
   }
 
-  void
-  AMI4CCM_ThreeReplyHandler_run_my_three_i::bar_excep (
+  void AMI4CCM_ThreeReplyHandler_run_my_three_i::bar_excep (
     IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : InterMulti_Sender_Impl::AMI4CCM_ThreeReplyHandler_run_my_three_i[bar_excep]

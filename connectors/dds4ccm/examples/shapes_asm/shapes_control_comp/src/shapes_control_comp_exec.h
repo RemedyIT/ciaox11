@@ -58,44 +58,24 @@ namespace Shapes_Control_comp_Impl
     //@{
 
     /// Attribute rate
-
-    uint32_t
-    rate () override;
-
-    void
-    rate (uint32_t rate) override;
+    uint32_t rate () override;
+    void rate (uint32_t rate) override;
 
     /// Attribute max_x
-
-    uint16_t
-    max_x () override;
-
-    void
-    max_x (uint16_t max_x) override;
+    uint16_t max_x () override;
+    void max_x (uint16_t max_x) override;
 
     /// Attribute max_y
-
-    uint16_t
-    max_y () override;
-
-    void
-    max_y (uint16_t max_y) override;
+    uint16_t max_y () override;
+    void max_y (uint16_t max_y) override;
 
     /// Attribute max_size
-
-    uint16_t
-    max_size () override;
-
-    void
-    max_size (uint16_t max_size) override;
+    uint16_t max_size () override;
+    void max_size (uint16_t max_size) override;
 
     /// Attribute resize_shape
-
-    bool
-    resize_shape () override;
-
-    void
-    resize_shape (bool resize_shape) override;
+    bool resize_shape () override;
+    void resize_shape (bool resize_shape) override;
     //@}
 
     /** @name Session component operations */

@@ -39,7 +39,6 @@ namespace Example_FooProvider_Impl
     : public IDL::traits< ::Example::CCM_Foo>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Example_FooProvider_Impl::do_my_foo_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -48,7 +47,7 @@ namespace Example_FooProvider_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Example_FooProvider_Impl::do_my_foo_exec_i[ctor]
 
     /// Destructor
-    virtual ~do_my_foo_exec_i ();
+    ~do_my_foo_exec_i () override;
 
     /** @name Operations from ::Example::CCM_Foo */
     //@{
@@ -94,7 +93,7 @@ namespace Example_FooProvider_Impl
     FooProvider_exec_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : Example_FooProvider_Impl::FooProvider_exec_i[ctor]
     /// Destructor
-    virtual ~FooProvider_exec_i ();
+    ~FooProvider_exec_i () override;
 
     /** @name Component port operations. */
     //@{

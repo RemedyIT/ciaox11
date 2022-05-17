@@ -42,7 +42,6 @@ namespace Foo_Impl
     : public IDL::traits< CCM_MyFoo>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Foo_Impl::my_foo_prov_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -51,23 +50,15 @@ namespace Foo_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Foo_Impl::my_foo_prov_exec_i[ctor]
 
     /// Destructor
-    virtual ~my_foo_prov_exec_i ();
+    ~my_foo_prov_exec_i () override;
 
 
     /** @name Attributes from CCM_MyFoo */
     //@{
-
-    int16_t
-    _cxx_short () override;
-
-    void
-    _cxx_short (int16_t _cxx_short) override;
-
-    int16_t
-    _cxx_while () override;
-
-    void
-    _cxx_while (int16_t _cxx_while) override;
+    int16_t _cxx_short () override;
+    void _cxx_short (int16_t _cxx_short) override;
+    int16_t _cxx_while () override;
+    void _cxx_while (int16_t _cxx_while) override;
     //@}
 
     /** @name User defined public operations. */
@@ -114,7 +105,7 @@ namespace Foo_Impl
     Foo_exec_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : Foo_Impl::Foo_exec_i[ctor]
     /// Destructor
-    virtual ~Foo_exec_i ();
+    ~Foo_exec_i () override;
 
     /** @name Component port operations. */
     //@{
@@ -128,84 +119,44 @@ namespace Foo_Impl
     //@{
 
     /// Attribute m_foo_pt_component
-
-    int16_t
-    m_foo_pt_component () override;
-
-    void
-    m_foo_pt_component (int16_t m_foo_pt_component) override;
+    int16_t m_foo_pt_component () override;
+    void m_foo_pt_component (int16_t m_foo_pt_component) override;
 
     /// Attribute m_foo_pt_virtual
-
-    int16_t
-    m_foo_pt_virtual () override;
-
-    void
-    m_foo_pt_virtual (int16_t m_foo_pt_virtual) override;
+    int16_t m_foo_pt_virtual () override;
+    void m_foo_pt_virtual (int16_t m_foo_pt_virtual) override;
 
     /// Attribute _cxx_and
-
-    int16_t
-    _cxx_and () override;
-
-    void
-    _cxx_and (int16_t _cxx_and) override;
+    int16_t _cxx_and () override;
+    void _cxx_and (int16_t _cxx_and) override;
 
     /// Attribute _cxx_auto
-
-    int16_t
-    _cxx_auto () override;
-
-    void
-    _cxx_auto (int16_t _cxx_auto) override;
+    int16_t _cxx_auto () override;
+    void _cxx_auto (int16_t _cxx_auto) override;
 
     /// Attribute _cxx_int16_t
-
-    int16_t
-    _cxx_int16_t () override;
-
-    void
-    _cxx_int16_t (int16_t _cxx_int16_t) override;
+    int16_t _cxx_int16_t () override;
+    void _cxx_int16_t (int16_t _cxx_int16_t) override;
 
     /// Attribute port
-
-    int16_t
-    port () override;
-
-    void
-    port (int16_t port) override;
+    int16_t port () override;
+    void port (int16_t port) override;
 
     /// Attribute mirrorport
-
-    int16_t
-    mirrorport () override;
-
-    void
-    mirrorport (int16_t mirrorport) override;
+    int16_t mirrorport () override;
+    void mirrorport (int16_t mirrorport) override;
 
     /// Attribute interface
-
-    int16_t
-    interface () override;
-
-    void
-    interface (int16_t interface) override;
+    int16_t interface () override;
+    void interface (int16_t interface) override;
 
     /// Attribute abstract
-
-    int16_t
-    abstract () override;
-
-    void
-    abstract (int16_t abstract) override;
+    int16_t abstract () override;
+    void abstract (int16_t abstract) override;
 
     /// Attribute override
-
-    ::Bar
-    override () override;
-
-    void
-    override (const ::Bar& override) override;
+    ::Bar override () override;
+    void override (const ::Bar& override) override;
     //@}
 
     /** @name Session component operations */

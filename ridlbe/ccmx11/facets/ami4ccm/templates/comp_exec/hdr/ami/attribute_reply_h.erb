@@ -1,12 +1,8 @@
 
-void
-get_<%= name %>(<%= scoped_cxx_return_type %> _<%= cxxname %>) override;
-void
-get_<%= name %>_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+void get_<%= name %>(<%= scoped_cxx_return_type %> _<%= cxxname %>) override;
+void get_<%= name %>_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
 % unless is_readonly?
 
-void
-set_<%= name %>() override;
-void
-set_<%= name %>_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+void set_<%= name %>() override;
+void set_<%= name %>_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
 % end

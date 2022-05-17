@@ -107,57 +107,31 @@ namespace AnotherComp_Impl
     //@{
 
     /// Attribute my_sen_attrib
-
-    int32_t
-    my_sen_attrib () override;
-
-    void
-    my_sen_attrib (int32_t my_sen_attrib) override;
+    int32_t my_sen_attrib () override;
+    void my_sen_attrib (int32_t my_sen_attrib) override;
 
     /// Attribute TestBar
-
-    ::Foo::Bar
-    TestBar () override;
-
-    void
-    TestBar (const ::Foo::Bar& TestBar) override;
+    ::Foo::Bar TestBar () override;
+    void TestBar (const ::Foo::Bar& TestBar) override;
 
     /// Attribute my_sen_attrib_2
-
-    int32_t
-    my_sen_attrib_2 () override;
+    int32_t my_sen_attrib_2 () override;
 
     /// Attribute my_sen_attrib_3
-
-    int32_t
-    my_sen_attrib_3 () override;
-
-    void
-    my_sen_attrib_3 (int32_t my_sen_attrib_3) override;
+    int32_t my_sen_attrib_3 () override;
+    void my_sen_attrib_3 (int32_t my_sen_attrib_3) override;
 
     /// Attribute TestBar_2
-
-    ::Foo::Bar
-    TestBar_2 () override;
-
-    void
-    TestBar_2 (const ::Foo::Bar& TestBar_2) override;
+    ::Foo::Bar TestBar_2 () override;
+    void TestBar_2 (const ::Foo::Bar& TestBar_2) override;
 
     /// Attribute TestBarBar
-
-    ::Foo::Bar_in_Bar
-    TestBarBar () override;
-
-    void
-    TestBarBar (const ::Foo::Bar_in_Bar& TestBarBar) override;
+    ::Foo::Bar_in_Bar TestBarBar () override;
+    void TestBarBar (const ::Foo::Bar_in_Bar& TestBarBar) override;
 
     /// Attribute TestBarNestedBar
-
-    ::Foo::Bar_with_nested_bar
-    TestBarNestedBar () override;
-
-    void
-    TestBarNestedBar (const ::Foo::Bar_with_nested_bar& TestBarNestedBar) override;
+    ::Foo::Bar_with_nested_bar TestBarNestedBar () override;
+    void TestBarNestedBar (const ::Foo::Bar_with_nested_bar& TestBarNestedBar) override;
     //@}
 
     /** @name Session component operations */

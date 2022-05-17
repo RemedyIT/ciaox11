@@ -64,15 +64,9 @@ namespace Hello_Receiver_Impl
 
     /** @name Attributes from ::Hello::CCM_MyFoo */
     //@{
-
-    int16_t
-    rw_attrib () override;
-
-    void
-    rw_attrib (int16_t rw_attrib) override;
-
-    int16_t
-    ro_attrib () override;
+    int16_t rw_attrib () override;
+    void rw_attrib (int16_t rw_attrib) override;
+    int16_t ro_attrib () override;
     //@}
 
     /** @name User defined public operations. */
@@ -139,15 +133,9 @@ namespace Hello_Receiver_Impl
 
     /** @name Attributes from ::Hello::CCM_MyFoo */
     //@{
-
-    int16_t
-    rw_attrib () override;
-
-    void
-    rw_attrib (int16_t rw_attrib) override;
-
-    int16_t
-    ro_attrib () override;
+    int16_t rw_attrib () override;
+    void rw_attrib (int16_t rw_attrib) override;
+    int16_t ro_attrib () override;
     //@}
 
     /** @name User defined public operations. */
@@ -262,9 +250,7 @@ namespace Hello_Receiver_Impl
     //@{
 
     /// Attribute my_rec_attrib_bar
-
-    ::Foo::Bar_in_Bar
-    my_rec_attrib_bar () override;
+    ::Foo::Bar_in_Bar my_rec_attrib_bar () override;
     //@}
 
     /** @name Session component operations */

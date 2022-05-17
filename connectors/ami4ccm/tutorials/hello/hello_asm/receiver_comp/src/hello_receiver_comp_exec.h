@@ -66,15 +66,9 @@ namespace Hello_Receiver_comp_Impl
 
     /** @name Attributes from ::Hello::CCM_MyFoo_obj */
     //@{
-
-    int16_t
-    rw_attrib () override;
-
-    void
-    rw_attrib (int16_t rw_attrib) override;
-
-    int16_t
-    ro_attrib () override;
+    int16_t rw_attrib () override;
+    void rw_attrib (int16_t rw_attrib) override;
+    int16_t ro_attrib () override;
     //@}
 
     /** @name User defined public operations. */

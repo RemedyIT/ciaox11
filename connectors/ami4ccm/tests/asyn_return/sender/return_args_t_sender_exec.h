@@ -73,7 +73,7 @@ namespace InterReturnT_Sender_Impl
     Sender_exec_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : InterReturnT_Sender_Impl::Sender_exec_i[ctor]
     /// Destructor
-    virtual ~Sender_exec_i ();
+    ~Sender_exec_i () override;
 
     /** @name Component port operations. */
     //@{
@@ -150,69 +150,53 @@ namespace InterReturnT_Sender_Impl
 
     virtual ~AMI4CCM_MyFooReplyHandler_run_my_foo_i ();
 
-    void
-    ret_void (
+    void ret_void (
         const std::string& answer,
         int32_t l_cmd) override;
 
-    void
-    ret_void_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
-    void
-    ret_long (
+    void ret_void_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+    void ret_long (
         int32_t ami_return_val,
         const std::string& answer,
         int32_t l_cmd) override;
 
-    void
-    ret_long_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
-    void
-    ret_double (
+    void ret_long_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+    void ret_double (
         double ami_return_val,
         const std::string& answer,
         int32_t l_cmd) override;
 
-    void
-    ret_double_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
-    void
-    ret_struct (
+    void ret_double_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+    void ret_struct (
         const ::InterReturnT::TestStruct& ami_return_val,
         const std::string& answer,
         int32_t l_cmd) override;
 
-    void
-    ret_struct_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
-    void
-    ret_array (
+    void ret_struct_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+    void ret_array (
         const ::InterReturnT::TestArray& ami_return_val,
         const std::string& answer,
         int32_t l_cmd) override;
 
-    void
-    ret_array_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
-    void
-    ret_seq (
+    void ret_array_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+    void ret_seq (
         const ::InterReturnT::TestSeq& ami_return_val,
         const std::string& answer,
         int32_t l_cmd) override;
 
-    void
-    ret_seq_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
-    void
-    ret_union (
+    void ret_seq_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+    void ret_union (
         const ::InterReturnT::X_Union& ami_return_val,
         const std::string& answer,
         int32_t l_cmd) override;
 
-    void
-    ret_union_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
-    void
-    ret_enum (
+    void ret_union_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+    void ret_enum (
         ::InterReturnT::test_enum ami_return_val,
         const std::string& answer,
         int32_t l_cmd) override;
 
-    void
-    ret_enum_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+    void ret_enum_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
 
     /** @name User defined public operations. */
     //@{

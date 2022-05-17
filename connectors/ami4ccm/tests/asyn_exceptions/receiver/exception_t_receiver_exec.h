@@ -42,7 +42,6 @@ namespace ExceptionT_Receiver_Impl
     : public IDL::traits< ::ExceptionT::CCM_MyFoo>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : ExceptionT_Receiver_Impl::do_my_foo_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -51,7 +50,7 @@ namespace ExceptionT_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : ExceptionT_Receiver_Impl::do_my_foo_exec_i[ctor]
 
     /// Destructor
-    virtual ~do_my_foo_exec_i ();
+    ~do_my_foo_exec_i () override;
 
     /** @name Operations from ::ExceptionT::CCM_MyFoo */
     //@{
@@ -67,36 +66,16 @@ namespace ExceptionT_Receiver_Impl
 
     /** @name Attributes from ::ExceptionT::CCM_MyFoo */
     //@{
-
-    int16_t
-    rw_attrib_g_s () override;
-
-    void
-    rw_attrib_g_s (int16_t rw_attrib_g_s) override;
-
-    int16_t
-    rw_attrib () override;
-
-    void
-    rw_attrib (int16_t rw_attrib) override;
-
-    int16_t
-    rw_attrib_g () override;
-
-    void
-    rw_attrib_g (int16_t rw_attrib_g) override;
-
-    int16_t
-    rw_attrib_s () override;
-
-    void
-    rw_attrib_s (int16_t rw_attrib_s) override;
-
-    int16_t
-    ro_attrib_r () override;
-
-    int16_t
-    ro_attrib () override;
+    int16_t rw_attrib_g_s () override;
+    void rw_attrib_g_s (int16_t rw_attrib_g_s) override;
+    int16_t rw_attrib () override;
+    void rw_attrib (int16_t rw_attrib) override;
+    int16_t rw_attrib_g () override;
+    void rw_attrib_g (int16_t rw_attrib_g) override;
+    int16_t rw_attrib_s () override;
+    void rw_attrib_s (int16_t rw_attrib_s) override;
+    int16_t ro_attrib_r () override;
+    int16_t ro_attrib () override;
     //@}
 
     /** @name User defined public operations. */
@@ -151,7 +130,7 @@ namespace ExceptionT_Receiver_Impl
     Receiver_exec_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : ExceptionT_Receiver_Impl::Receiver_exec_i[ctor]
     /// Destructor
-    virtual ~Receiver_exec_i ();
+    ~Receiver_exec_i () override;
 
     /** @name Component port operations. */
     //@{

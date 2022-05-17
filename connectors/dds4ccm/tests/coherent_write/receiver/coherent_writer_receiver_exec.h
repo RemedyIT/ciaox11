@@ -173,12 +173,8 @@ namespace CoherentWriter_Receiver_Impl
     //@{
 
     /// Attribute nr_runs
-
-    uint16_t
-    nr_runs () override;
-
-    void
-    nr_runs (uint16_t nr_runs) override;
+    uint16_t nr_runs () override;
+    void nr_runs (uint16_t nr_runs) override;
     //@}
 
     /** @name Session component operations */

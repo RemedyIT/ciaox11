@@ -57,28 +57,16 @@ namespace Test_Sender_Impl
     //@{
 
     /// Attribute mode
-
-    std::string
-    mode () override;
-
-    void
-    mode (const std::string& mode) override;
+    std::string mode () override;
+    void mode (const std::string& mode) override;
 
     /// Attribute count
-
-    uint32_t
-    count () override;
-
-    void
-    count (uint32_t count) override;
+    uint32_t count () override;
+    void count (uint32_t count) override;
 
     /// Attribute delay
-
-    uint32_t
-    delay () override;
-
-    void
-    delay (uint32_t delay) override;
+    uint32_t delay () override;
+    void delay (uint32_t delay) override;
     //@}
 
     /** @name Session component operations */

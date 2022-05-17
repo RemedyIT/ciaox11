@@ -234,12 +234,8 @@ namespace GetComponentComponent_Impl
     //@{
 
     /// Attribute act_as_sender
-
-    bool
-    act_as_sender () override;
-
-    void
-    act_as_sender (bool act_as_sender) override;
+    bool act_as_sender () override;
+    void act_as_sender (bool act_as_sender) override;
     //@}
 
     /** @name Session component operations */

@@ -64,15 +64,9 @@ namespace Hello_Receiver_Impl
 
     /** @name Attributes from ::Hello::Nested::CCM_MyFoo */
     //@{
-
-    int16_t
-    rw_attrib () override;
-
-    void
-    rw_attrib (int16_t rw_attrib) override;
-
-    int16_t
-    ro_attrib () override;
+    int16_t rw_attrib () override;
+    void rw_attrib (int16_t rw_attrib) override;
+    int16_t ro_attrib () override;
     //@}
 
     /** @name User defined public operations. */

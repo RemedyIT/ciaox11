@@ -42,7 +42,6 @@ namespace InterMulti_Receiver_Impl
     : public IDL::traits< ::InterMulti::CCM_One>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : InterMulti_Receiver_Impl::do_my_one_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -51,7 +50,7 @@ namespace InterMulti_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : InterMulti_Receiver_Impl::do_my_one_exec_i[ctor]
 
     /// Destructor
-    virtual ~do_my_one_exec_i ();
+    ~do_my_one_exec_i () override;
 
     /** @name Operations from ::InterMulti::CCM_One */
     //@{
@@ -94,7 +93,6 @@ namespace InterMulti_Receiver_Impl
     : public IDL::traits< ::InterMulti::CCM_Two>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : InterMulti_Receiver_Impl::do_my_two_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -103,7 +101,7 @@ namespace InterMulti_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : InterMulti_Receiver_Impl::do_my_two_exec_i[ctor]
 
     /// Destructor
-    virtual ~do_my_two_exec_i ();
+    ~do_my_two_exec_i () override;
 
     /** @name Operations from ::InterMulti::CCM_Two */
     //@{
@@ -145,7 +143,6 @@ namespace InterMulti_Receiver_Impl
     : public IDL::traits< ::InterMulti::CCM_Three>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : InterMulti_Receiver_Impl::do_my_three_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -154,7 +151,7 @@ namespace InterMulti_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : InterMulti_Receiver_Impl::do_my_three_exec_i[ctor]
 
     /// Destructor
-    virtual ~do_my_three_exec_i ();
+    ~do_my_three_exec_i () override;
 
     /** @name Operations from ::InterMulti::CCM_Three */
     //@{
@@ -212,7 +209,7 @@ namespace InterMulti_Receiver_Impl
     Receiver_exec_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : InterMulti_Receiver_Impl::Receiver_exec_i[ctor]
     /// Destructor
-    virtual ~Receiver_exec_i ();
+    ~Receiver_exec_i () override;
 
     /** @name Component port operations. */
     //@{

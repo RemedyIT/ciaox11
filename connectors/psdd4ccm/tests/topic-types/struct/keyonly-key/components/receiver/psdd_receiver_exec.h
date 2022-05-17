@@ -57,44 +57,24 @@ namespace Test_Receiver_Impl
     //@{
 
     /// Attribute filter
-
-    bool
-    filter () override;
-
-    void
-    filter (bool filter) override;
+    bool filter () override;
+    void filter (bool filter) override;
 
     /// Attribute partial_key
-
-    bool
-    partial_key () override;
-
-    void
-    partial_key (bool partial_key) override;
+    bool partial_key () override;
+    void partial_key (bool partial_key) override;
 
     /// Attribute count
-
-    uint32_t
-    count () override;
-
-    void
-    count (uint32_t count) override;
+    uint32_t count () override;
+    void count (uint32_t count) override;
 
     /// Attribute delay
-
-    uint32_t
-    delay () override;
-
-    void
-    delay (uint32_t delay) override;
+    uint32_t delay () override;
+    void delay (uint32_t delay) override;
 
     /// Attribute interval
-
-    uint32_t
-    interval () override;
-
-    void
-    interval (uint32_t interval) override;
+    uint32_t interval () override;
+    void interval (uint32_t interval) override;
     //@}
 
     /** @name Session component operations */

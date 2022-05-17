@@ -10,8 +10,7 @@
 % nest(2) { write_regen_section(_regen_marker+'['+_regen_value+']',  default_content: _implementation) }
   }
 
-  void
-  <%= port.ami4ccm_rh_executor %>::get_<%= attribute.name %>_excep (
+  void <%= port.ami4ccm_rh_executor %>::get_<%= attribute.name %>_excep (
     IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder)
   {
 % _regen_value = "get_#{attribute.name}_excep"
@@ -31,8 +30,7 @@
 % nest(2) { write_regen_section(_regen_marker+'['+_regen_value+']',  default_content: _implementation) }
   }
 
-  void
-  <%= port.ami4ccm_rh_executor %>::set_<%= attribute.name %>_excep (
+  void <%= port.ami4ccm_rh_executor %>::set_<%= attribute.name %>_excep (
     IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder)
   {
 % _regen_value = "set_#{attribute.name}_excep"

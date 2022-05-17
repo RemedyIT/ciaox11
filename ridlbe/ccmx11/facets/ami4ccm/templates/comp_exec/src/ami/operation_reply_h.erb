@@ -18,8 +18,7 @@
 % nest(2) { write_regen_section(_regen_marker+'['+_regen_value+']',  default_content: _implementation) }
   }
 
-  void
-  <%= port.ami4ccm_rh_executor %>::<%= operation.name %>_excep (
+  void <%= port.ami4ccm_rh_executor %>::<%= operation.name %>_excep (
     IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder)
   {
 % _regen_value = "#{operation.name}_excep"

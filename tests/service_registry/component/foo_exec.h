@@ -47,7 +47,7 @@ namespace Foo_Impl
     Foo_exec_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : Foo_Impl::Foo_exec_i[ctor]
     /// Destructor
-    virtual ~Foo_exec_i ();
+    ~Foo_exec_i () override;
 
     /** @name Session component operations */
     //@{

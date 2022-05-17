@@ -1,6 +1,5 @@
 % _args = out_arguments.dup
-void
-<%= cxxname %> (<% if !has_return? && _args.empty? %>) override;<% end %>
+void <%= cxxname %> (<% if !has_return? && _args.empty? %>) override;<% end %>
 % if has_return?
     <%= scoped_cxx_in_type %> ami_return_val<%= _args.empty? ? ') override;' : ',' %>
 % end
@@ -9,5 +8,4 @@ void
     <%= _arg.cxx_in_type %> <%= _arg.cxxname %><%= _args.empty? ? ') override;' : ',' %>
 % end
 
-void
-<%= name %>_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+void <%= name %>_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
