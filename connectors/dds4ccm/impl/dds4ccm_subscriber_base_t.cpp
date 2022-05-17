@@ -170,7 +170,7 @@ DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::activate (
     {
       if (!this->listener_)
       {
-        this->listener_ = DDS::make_reference<PortStatusListener_type > (evs);
+        this->listener_ = DDS::make_reference<PortStatusListener_type> (evs);
       }
 
       ::DDS::ReturnCode_t const retcode = dr->set_listener (this->listener_, mask);

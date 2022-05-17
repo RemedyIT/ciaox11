@@ -153,7 +153,7 @@ DDS_Write_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_data ()
 
   if (!this->dds4ccm_writer_)
   {
-    this->dds4ccm_writer_ = CORBA::make_reference< DDS4CCM_Writer_type > (this->component_);
+    this->dds4ccm_writer_ = CORBA::make_reference< DDS4CCM_Writer_type> (this->component_);
   }
 
   return this->dds4ccm_writer_;
@@ -167,7 +167,7 @@ DDS_Write_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_dds_entity ()
 
   if (!this->ccm_data_writer_)
   {
-    this->ccm_data_writer_ = CORBA::make_reference< CCM_DataWriter_type > (this->component_);
+    this->ccm_data_writer_ = CORBA::make_reference< CCM_DataWriter_type> (this->component_);
   }
 
   return this->ccm_data_writer_;

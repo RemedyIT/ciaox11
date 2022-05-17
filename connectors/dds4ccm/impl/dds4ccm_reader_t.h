@@ -21,7 +21,7 @@ namespace CIAOX11
   {
     template <typename READER_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
     class Reader_T
-      : public virtual FacetBase< READER_TYPE >
+      : public virtual FacetBase<READER_TYPE>
     {
     public:
       explicit Reader_T (IDL::traits<CORBA::Object>::weak_ref_type component);

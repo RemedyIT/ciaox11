@@ -44,8 +44,8 @@ public:
   void max_delivered_data (::CCM_DDS::DataNumber_t max_delivered_data) override;
 
 private:
-  std::atomic< ::CCM_DDS::ListenerMode > mode_ {::CCM_DDS::ListenerMode::NOT_ENABLED};
-  std::atomic< ::CCM_DDS::DataNumber_t > max_delivered_data_ {0};
+  std::atomic< ::CCM_DDS::ListenerMode> mode_ {::CCM_DDS::ListenerMode::NOT_ENABLED};
+  std::atomic< ::CCM_DDS::DataNumber_t> max_delivered_data_ {0};
 
   CCM_DDS_DataListenerControl_T() = delete;
   CCM_DDS_DataListenerControl_T(const CCM_DDS_DataListenerControl_T&) = delete;

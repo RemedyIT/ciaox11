@@ -19,7 +19,7 @@ namespace DDS4CCM
   struct traits {};
 
   template<>
-  struct traits< ::DDS::SampleInfo >
+  struct traits< ::DDS::SampleInfo>
   {
     struct to_readinfo
     {
