@@ -24,7 +24,7 @@ Test for the Query attribute on the Reader interface (query_attrib directory)
 
 **** Event ****
 Tests the query attribute on the Reader interface of the DDS_Get basic port
-and Reader interface of DDS_Listen basic port. The latter is choosen because
+and Reader interface of DDS_Listen basic port. The latter is chosen because
 the DDS4CCM Event connector has no DDS_Read basic port.
 
 **** State ****
@@ -46,7 +46,7 @@ Test for the Filter attribute on the DDS4CCM basic ports (filter_attrib director
 
 **** Event ****
 Tests the filter attribute on de DDS_Get basic port and Reader interface of
-DDS_Listen basic port. The latter is choosen because the DDS4CCM connector
+DDS_Listen basic port. The latter is chosen because the DDS4CCM connector
 has no DDS_Read basic port.
 
 **** State ****
