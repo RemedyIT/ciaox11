@@ -53,10 +53,11 @@ namespace CIAOX11
       // Determine the name of the ContentFilteredTopic
       // A ContentFilteredTopic cannot have the same name as another Content-
       // FilteredTopic in the same DomainParticipant. Since a domain participant
-      // can be shared, the name should be unique.
+      // can be shared, the name should be unique. The topic name is used
+      // as prefix so that our users can use the topic name as wildcard
       // Using stringstream to avoid compiler issues.
-      std::stringstream name;
-      name << "DDS4CCMX11_CFT_" << this;
+      std::stringstream name;;
+      name << topic->get_name () << "_DDS4CCMX11_CFT_" << this;
 
       this->cft_ =
         dp->create_contentfilteredtopic (
