@@ -1,0 +1,54 @@
+/**
+ * @file    dds4ccm_types.idl
+ * @author  Johnny Willemsen
+ *
+ * The types defined by the DDS4CCM standard for which we need to generate
+ * also AnyTypeCode support
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ */
+#ifndef DDS4CCM_TYPES_IDL_
+#define DDS4CCM_TYPES_IDL_
+
+#include "connectors/dds4ccm/idl/dds_rtf2_dcps.idl"
+
+module CCM_DDS
+{
+  typedef unsigned long DataNumber_t;   // count or index of data
+  typedef sequence<DataNumber_t> DataNumberSeq;
+  const DataNumber_t UNLIMITED = 0;
+
+  enum AccessStatus {
+    FRESH_INFO,
+    ALREADY_SEEN
+  };
+
+  enum InstanceStatus {
+    /// This is the first time that the component sees that instance (the instance is then existing for the component)
+    INSTANCE_CREATED,
+    /// An existing instance reenters the filter after having been filtered out
+    INSTANCE_FILTERED_IN,
+    /// An existing instance is modified and stays within the filter
+    INSTANCE_UPDATED,
+    /// An existing instance just stopped passing the filter
+    INSTANCE_FILTERED_OUT,
+    /// An instance just stopped existing
+    INSTANCE_DELETED
+  };
+
+  struct ReadInfo {
+    DDS::InstanceHandle_t instance_handle;
+    DDS::Time_t source_timestamp;
+    AccessStatus access_status;
+    InstanceStatus instance_status;
+  };
+  typedef sequence<ReadInfo> ReadInfoSeq;
+
+  enum ListenerMode {
+    NOT_ENABLED,
+    ONE_BY_ONE,
+    MANY_BY_MANY
+  };
+};
+
+#endif /* DDS4CCM_TYPES_IDL_ */

@@ -137,20 +137,40 @@ namespace IDL_Conversion_Test_Sender_Impl
     //@{
 
     /// Attribute rate
-
-    uint16_t
-    rate () override;
-
-    void
-    rate (uint16_t rate) override;
+    uint16_t rate () override;
+    void rate (uint16_t rate) override;
 
     /// Attribute iterations
+    uint16_t iterations () override;
+    void iterations (uint16_t iterations) override;
 
-    uint16_t
-    iterations () override;
+    /// Attribute data_number
+    ::CCM_DDS::DataNumber_t data_number () override;
+    void data_number (::CCM_DDS::DataNumber_t data_number) override;
 
-    void
-    iterations (uint16_t iterations) override;
+    /// Attribute data_number_seq
+    ::CCM_DDS::DataNumberSeq data_number_seq () override;
+    void data_number_seq (const ::CCM_DDS::DataNumberSeq& data_number_seq) override;
+
+    /// Attribute listener_mode
+    ::CCM_DDS::ListenerMode listener_mode () override;
+    void listener_mode (::CCM_DDS::ListenerMode listener_mode) override;
+
+    /// Attribute accesss_status
+    ::CCM_DDS::AccessStatus accesss_status () override;
+    void accesss_status (::CCM_DDS::AccessStatus accesss_status) override;
+
+    /// Attribute instance_status
+    ::CCM_DDS::InstanceStatus instance_status () override;
+    void instance_status (::CCM_DDS::InstanceStatus instance_status) override;
+
+    /// Attribute read_info
+    ::CCM_DDS::ReadInfo read_info () override;
+    void read_info (const ::CCM_DDS::ReadInfo& read_info) override;
+
+    /// Attribute read_info_seq
+    ::CCM_DDS::ReadInfoSeq read_info_seq () override;
+    void read_info_seq (const ::CCM_DDS::ReadInfoSeq& read_info_seq) override;
     //@}
 
     /** @name Session component operations */
@@ -192,6 +212,20 @@ namespace IDL_Conversion_Test_Sender_Impl
     uint16_t rate_{};
     /// Class member storing value of iterations attribute
     uint16_t iterations_{};
+    /// Class member storing value of data_number attribute
+    ::CCM_DDS::DataNumber_t data_number_{};
+    /// Class member storing value of data_number_seq attribute
+    ::CCM_DDS::DataNumberSeq data_number_seq_{};
+    /// Class member storing value of listener_mode attribute
+    ::CCM_DDS::ListenerMode listener_mode_{};
+    /// Class member storing value of accesss_status attribute
+    ::CCM_DDS::AccessStatus accesss_status_{};
+    /// Class member storing value of instance_status attribute
+    ::CCM_DDS::InstanceStatus instance_status_{};
+    /// Class member storing value of read_info attribute
+    ::CCM_DDS::ReadInfo read_info_{};
+    /// Class member storing value of read_info_seq attribute
+    ::CCM_DDS::ReadInfoSeq read_info_seq_{};
     //@}
 
     /** @name Component facets. */

@@ -4,9 +4,7 @@ project (ddsx11_opendds_types_idl_gen) : install, \
                                        ddsx11_opendds_conversion_traits {
   custom_only = 1
   idlflags += -Wb,stub_export_macro=DDSX11_OPENDDS_STUB_Export \
-              -Wb,stub_export_include=idl/ddsx11_opendds_stub_export.h \
-  // Do not suppress cdr streaming since anytypecode needs it..
-  // TODO CHECK
+              -Wb,stub_export_include=idl/ddsx11_opendds_stub_export.h
   idlflags -= -Scdr
 
   IDL_Files {
@@ -42,7 +40,8 @@ project (ddsx11_opendds_instancehandle_idl_gen) : install, \
   custom_only = 1
   idlflags += -Wb,stub_export_macro=DDSX11_OPENDDS_STUB_Export \
               -Wb,stub_export_include=idl/ddsx11_opendds_stub_export.h \
-              -Wb,post_include=idl/opendds_dcps_instance_handle.h -Scp
+              -Wb,post_include=idl/opendds_dcps_instance_handle.h
+  idlflags -= -Sa -St -Scdr
 
   IDL_Files {
     opendds_dcps_instance_handle.idl

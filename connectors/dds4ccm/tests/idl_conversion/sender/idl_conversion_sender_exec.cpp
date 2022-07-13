@@ -639,6 +639,125 @@ namespace IDL_Conversion_Test_Sender_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : IDL_Conversion_Test_Sender_Impl::Sender_exec_i::iterations[setter]
   }
 
+  ::CCM_DDS::DataNumber_t
+  Sender_exec_i::data_number ()
+  {
+    //@@{__RIDL_REGEN_MARKER__} - BEGIN : IDL_Conversion_Test_Sender_Impl::Sender_exec_i::data_number[getter]
+    return this->data_number_;
+    //@@{__RIDL_REGEN_MARKER__} - END : IDL_Conversion_Test_Sender_Impl::Sender_exec_i::data_number[getter]
+  }
+
+  void
+  Sender_exec_i::data_number (
+      ::CCM_DDS::DataNumber_t data_number)
+  {
+    //@@{__RIDL_REGEN_MARKER__} - BEGIN : IDL_Conversion_Test_Sender_Impl::Sender_exec_i::data_number[setter]
+    this->data_number_ = data_number;
+    //@@{__RIDL_REGEN_MARKER__} - END : IDL_Conversion_Test_Sender_Impl::Sender_exec_i::data_number[setter]
+  }
+
+  ::CCM_DDS::DataNumberSeq
+  Sender_exec_i::data_number_seq ()
+  {
+    //@@{__RIDL_REGEN_MARKER__} - BEGIN : IDL_Conversion_Test_Sender_Impl::Sender_exec_i::data_number_seq[getter]
+    return this->data_number_seq_;
+    //@@{__RIDL_REGEN_MARKER__} - END : IDL_Conversion_Test_Sender_Impl::Sender_exec_i::data_number_seq[getter]
+  }
+
+  void
+  Sender_exec_i::data_number_seq (
+      const ::CCM_DDS::DataNumberSeq& data_number_seq)
+  {
+    //@@{__RIDL_REGEN_MARKER__} - BEGIN : IDL_Conversion_Test_Sender_Impl::Sender_exec_i::data_number_seq[setter]
+    this->data_number_seq_ = data_number_seq;
+    //@@{__RIDL_REGEN_MARKER__} - END : IDL_Conversion_Test_Sender_Impl::Sender_exec_i::data_number_seq[setter]
+  }
+
+  ::CCM_DDS::ListenerMode
+  Sender_exec_i::listener_mode ()
+  {
+    //@@{__RIDL_REGEN_MARKER__} - BEGIN : IDL_Conversion_Test_Sender_Impl::Sender_exec_i::listener_mode[getter]
+    return this->listener_mode_;
+    //@@{__RIDL_REGEN_MARKER__} - END : IDL_Conversion_Test_Sender_Impl::Sender_exec_i::listener_mode[getter]
+  }
+
+  void
+  Sender_exec_i::listener_mode (
+      ::CCM_DDS::ListenerMode listener_mode)
+  {
+    //@@{__RIDL_REGEN_MARKER__} - BEGIN : IDL_Conversion_Test_Sender_Impl::Sender_exec_i::listener_mode[setter]
+    this->listener_mode_ = listener_mode;
+    //@@{__RIDL_REGEN_MARKER__} - END : IDL_Conversion_Test_Sender_Impl::Sender_exec_i::listener_mode[setter]
+  }
+
+  ::CCM_DDS::AccessStatus
+  Sender_exec_i::accesss_status ()
+  {
+    //@@{__RIDL_REGEN_MARKER__} - BEGIN : IDL_Conversion_Test_Sender_Impl::Sender_exec_i::accesss_status[getter]
+    return this->accesss_status_;
+    //@@{__RIDL_REGEN_MARKER__} - END : IDL_Conversion_Test_Sender_Impl::Sender_exec_i::accesss_status[getter]
+  }
+
+  void
+  Sender_exec_i::accesss_status (
+      ::CCM_DDS::AccessStatus accesss_status)
+  {
+    //@@{__RIDL_REGEN_MARKER__} - BEGIN : IDL_Conversion_Test_Sender_Impl::Sender_exec_i::accesss_status[setter]
+    this->accesss_status_ = accesss_status;
+    //@@{__RIDL_REGEN_MARKER__} - END : IDL_Conversion_Test_Sender_Impl::Sender_exec_i::accesss_status[setter]
+  }
+
+  ::CCM_DDS::InstanceStatus
+  Sender_exec_i::instance_status ()
+  {
+    //@@{__RIDL_REGEN_MARKER__} - BEGIN : IDL_Conversion_Test_Sender_Impl::Sender_exec_i::instance_status[getter]
+    return this->instance_status_;
+    //@@{__RIDL_REGEN_MARKER__} - END : IDL_Conversion_Test_Sender_Impl::Sender_exec_i::instance_status[getter]
+  }
+
+  void
+  Sender_exec_i::instance_status (
+      ::CCM_DDS::InstanceStatus instance_status)
+  {
+    //@@{__RIDL_REGEN_MARKER__} - BEGIN : IDL_Conversion_Test_Sender_Impl::Sender_exec_i::instance_status[setter]
+    this->instance_status_ = instance_status;
+    //@@{__RIDL_REGEN_MARKER__} - END : IDL_Conversion_Test_Sender_Impl::Sender_exec_i::instance_status[setter]
+  }
+
+  ::CCM_DDS::ReadInfo
+  Sender_exec_i::read_info ()
+  {
+    //@@{__RIDL_REGEN_MARKER__} - BEGIN : IDL_Conversion_Test_Sender_Impl::Sender_exec_i::read_info[getter]
+    return this->read_info_;
+    //@@{__RIDL_REGEN_MARKER__} - END : IDL_Conversion_Test_Sender_Impl::Sender_exec_i::read_info[getter]
+  }
+
+  void
+  Sender_exec_i::read_info (
+      const ::CCM_DDS::ReadInfo& read_info)
+  {
+    //@@{__RIDL_REGEN_MARKER__} - BEGIN : IDL_Conversion_Test_Sender_Impl::Sender_exec_i::read_info[setter]
+    this->read_info_ = read_info;
+    //@@{__RIDL_REGEN_MARKER__} - END : IDL_Conversion_Test_Sender_Impl::Sender_exec_i::read_info[setter]
+  }
+
+  ::CCM_DDS::ReadInfoSeq
+  Sender_exec_i::read_info_seq ()
+  {
+    //@@{__RIDL_REGEN_MARKER__} - BEGIN : IDL_Conversion_Test_Sender_Impl::Sender_exec_i::read_info_seq[getter]
+    return this->read_info_seq_;
+    //@@{__RIDL_REGEN_MARKER__} - END : IDL_Conversion_Test_Sender_Impl::Sender_exec_i::read_info_seq[getter]
+  }
+
+  void
+  Sender_exec_i::read_info_seq (
+      const ::CCM_DDS::ReadInfoSeq& read_info_seq)
+  {
+    //@@{__RIDL_REGEN_MARKER__} - BEGIN : IDL_Conversion_Test_Sender_Impl::Sender_exec_i::read_info_seq[setter]
+    this->read_info_seq_ = read_info_seq;
+    //@@{__RIDL_REGEN_MARKER__} - END : IDL_Conversion_Test_Sender_Impl::Sender_exec_i::read_info_seq[setter]
+  }
+
   /// Operations from Components::SessionComponent
   void
   Sender_exec_i::set_session_context (

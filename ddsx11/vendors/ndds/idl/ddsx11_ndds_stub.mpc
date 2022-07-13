@@ -6,8 +6,6 @@ project (ddsx11_ndds_types_idl_gen) : install, \
   custom_only = 1
   idlflags += -Wb,stub_export_macro=DDSX11_NDDS_STUB_Export \
               -Wb,stub_export_include=ddsx11_ndds_stub_export.h
-  // Do not suppress cdr streaming since anytypecode needs it..
-  // TODO CHECK
   idlflags -= -Scdr
 
   IDL_Files {
@@ -43,7 +41,8 @@ project (ddsx11_ndds_instancehandle_idl_gen) : install, \
   custom_only = 1
   idlflags += -Wb,stub_export_macro=DDSX11_NDDS_STUB_Export \
               -Wb,stub_export_include=ddsx11_ndds_stub_export.h \
-              -Wb,post_include=idl/ndds_dcps_instance_handle.h -Scp
+              -Wb,post_include=idl/ndds_dcps_instance_handle.h
+  idlflags -= -Sa -St -Scdr
 
   IDL_Files {
     ndds_dcps_instance_handle.idl

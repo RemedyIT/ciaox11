@@ -16,4 +16,3 @@ module DDS {
 };
 
 #endif /* OPENDDS_DCPS_INSTANCE_HANDLE_IDL_ */
-
