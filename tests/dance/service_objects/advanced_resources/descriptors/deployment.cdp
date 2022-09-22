@@ -1,0 +1,124 @@
+<!--
+ * @file   deployment.cdp
+ * @author Martin Corino
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+-->
+<Deployment:DeploymentPlan
+ xmlns:Deployment="http://www.omg.org/Deployment"
+ xmlns:xmi="http://www.omg.org/XMI"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://www.omg.org/Deployment Deployment.xsd">
+  <label>LocalityManager_Process_Name</label>
+  <UUID>LocalityManager_Process_Name</UUID>
+
+  <implementation xmi:id="LocalityManagerImpl">
+    <name>CompSvr</name>
+    <source />
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.ImplementationType</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>nl.remedy.it.DnCX11.LocalityManager</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Locality.ConfigFile</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>advanced_resources.localityconfig</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="Foo_TestComponent.Impl">
+    <name>Foo_TestComponent</name>
+    <source/>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_Foo_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>test_component_exec</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_Foo_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>test_component_exec</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <instance xmi:id="Foo_TestComponent.Instance_1">
+    <name>Foo_TestComponent.Instance</name>
+    <node>LocalityOne</node>
+    <source/>
+    <implementation xmi:idref="Foo_TestComponent.Impl"/>
+
+    <configProperty>
+      <name>nl.remedy.it.DnCX11.InstanceIOR</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>FooImpl.ior</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <instance xmi:id="LocalityManager.Instance">
+    <name>LocalityInstance</name>
+    <node>LocalityOne</node>
+    <source />
+    <implementation xmi:idref="LocalityManagerImpl" />
+  </instance>
+
+  <localityConstraint>
+    <constraint>SameProcess</constraint>
+    <constrainedInstance xmi:idref="Foo_TestComponent.Instance_1"/>
+    <constrainedInstance xmi:idref="LocalityManager.Instance"/>
+  </localityConstraint>
+  
+</Deployment:DeploymentPlan>
+

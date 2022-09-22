@@ -1,0 +1,19 @@
+/**
+ * @file    foo.idl
+ * @author  Martin Corino
+ *
+ * @brief   DAnCEX11 ORB advanced_resources test
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ */
+
+#ifndef FOO_IDL_
+#define FOO_IDL_
+
+#include <Components.idl>
+
+component Foo
+{
+};
+
+#endif /* FOO_IDL_ */

@@ -41,6 +41,8 @@ tests/dance/interceptors/descriptors/run_test.pl: CORBA4CCM
 tests/dance/interceptors/descriptors/run_test.pl -fmt cdp: CORBA4CCM
 tests/dance/staged/descriptors/run_test.pl: CORBA4CCM
 tests/dance/staged/descriptors/run_test.pl -fmt cdp: CORBA4CCM
+tests/dance/service_objects/advanced_resources/descriptors/run_test.pl deployment.config:
+tests/dance/service_objects/advanced_resources/descriptors/run_test.pl deployment.cdp:
 tests/external/servant/descriptors/run_test.pl: CORBA4CCM
 tests/external/servant/descriptors/run_test.pl -fmt cdp: CORBA4CCM
 tests/gen_test/descriptors/run_test.pl: CORBA4CCM
