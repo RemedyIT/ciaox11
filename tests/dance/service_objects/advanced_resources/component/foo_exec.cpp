@@ -9,7 +9,7 @@
  */
 //@@{__RIDL_REGEN_MARKER__} - HEADER_END : foo_impl.cpp[Header]
 
-#include "../../../service_objects/advanced_resources/component/foo_exec.h"
+#include "foo_exec.h"
 
 #include "ciaox11/testlib/ciaox11_testlog.h"
 #include "dancex11/core/dancex11_deployment_state.h"
