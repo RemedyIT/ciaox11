@@ -119,6 +119,5 @@
     <constrainedInstance xmi:idref="Foo_TestComponent.Instance_1"/>
     <constrainedInstance xmi:idref="LocalityManager.Instance"/>
   </localityConstraint>
-  
 </Deployment:DeploymentPlan>
 
