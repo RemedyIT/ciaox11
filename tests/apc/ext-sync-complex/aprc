@@ -1,0 +1,2 @@
+
+prj.idl_includes %w{ data1 data2 data3 data4}

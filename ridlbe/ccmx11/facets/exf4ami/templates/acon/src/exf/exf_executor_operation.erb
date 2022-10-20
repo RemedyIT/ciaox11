@@ -1,0 +1,141 @@
+
+  // generated from <%= ridl_template_path %>
+
+% _args = operation.arguments.dup
+% if operation.is_void?
+%     _arg_string = ""
+%     _arg_string_empty = 1
+%     _void_op_ = 1
+% else
+%     _arg_string = "#{operation.scoped_cxx_in_type} ami_return_val"
+%     _arg_string_empty = 0
+%     _void_op = 0
+% end
+% _op_start ="          "
+% first = 0
+% first = 1
+% while !_args.empty?
+%   _arg = _args.shift
+%   if (_arg.direction == :out) || (_arg.direction == :inout)
+%     if _arg_string_empty == 1
+%      end_line = ""
+%     else
+%       end_line = ",\n"
+%       end_line << _op_start
+%     end
+%     _arg_string << end_line
+%     _arg_string << "#{_arg.scoped_cxx_in_type} #{_arg.cxxname},"
+%     _arg_string_empty = 0
+%   end
+% end
+  class <%= operation.cxxname %>_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Executor final
+  :  public AMI_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Executor
+  {
+  public:
+    <%= operation.cxxname %>_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Executor (
+          std::string event_id,
+          IDL::traits<<%= receptacle_port.interface_type.scoped_enclosure_cxxname %>::<%= receptacle_port.interface_type.ami4ccm_ReplyHandler %>>::ref_type callback,
+% if  _arg_string_empty == 0
+          <%= _arg_string %>
+% end
+          CIAOX11::ExF::Deadline dead_line,
+          CIAOX11::ExF::Priority priority)
+    : AMI_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Executor(std::move(event_id), std::move(callback), std::move(dead_line), std::move (priority))
+% if _void_op
+    , ami_return_val_(ami_return_val)
+% end
+%   operation.arguments.each do |_arg|
+%       unless _arg.direction == :in
+%         if first == 0
+    <%= _arg.cxxname %>_(<%= _arg.cxxname %>)
+%         first = 1
+%         else
+    , <%= _arg.cxxname %>_(<%= _arg.cxxname %>)
+%         end
+%       end
+%   end
+    {}
+
+    ~<%= operation.cxxname %>_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Executor () = default;
+
+    void
+    execute_i () noexcept(true) override
+    {
+      this->callback_-><%= operation.cxxname %> (
+% if !operation.is_void?
+        this->ami_return_val_
+% first = 1
+% else
+% first = 0
+% end
+%   operation.arguments.each do |_arg|
+%       unless _arg.direction == :in
+%         if first == 0
+        this-><%= _arg.cxxname %>_
+%         first = 1
+%         else
+        , this-><%= _arg.cxxname %>_
+%         end
+%       end
+%     end
+       );
+    }
+
+  private:
+% _args = operation.arguments.dup
+% if !operation.is_void?
+    <%= operation.scoped_cxx_arg_type %> ami_return_val_;
+% end
+% while !_args.empty?
+%   _arg = _args.shift
+%   if (_arg.direction == :out) || (_arg.direction == :inout)
+    <%= _arg.scoped_cxx_arg_type%> <%=_arg.cxxname%>_;
+%     _arg_string_empty = 0
+%   end
+% end
+
+    /** @name Illegal to be called. Deleted explicitly to let the compiler detect any violation */
+    //@{
+    <%= operation.cxxname %>_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Executor() = delete;
+    <%= operation.cxxname %>_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Executor(const <%= operation.cxxname %>_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Executor&) = delete;
+    <%= operation.cxxname %>_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Executor(<%= operation.cxxname %>_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Executor&&) = delete;
+    <%= operation.cxxname %>_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Executor& operator=(const <%= operation.cxxname %>_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Executor&) = delete;
+    <%= operation.cxxname %>_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Executor& operator=(<%= operation.cxxname %>_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Executor&&) = delete;
+    //@}
+  };
+
+  class <%= operation.cxxname %>_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Excep_Executor final
+  :  public AMI_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Executor
+
+  {
+  public:
+    <%= operation.cxxname %>_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Excep_Executor (
+          std::string event_id,
+          IDL::traits<<%= receptacle_port.interface_type.scoped_enclosure_cxxname %>::<%= receptacle_port.interface_type.ami4ccm_ReplyHandler %>>::ref_type callback,
+          IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder,
+          CIAOX11::ExF::Deadline dead_line,
+          CIAOX11::ExF::Priority priority)
+    : AMI_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Executor(std::move (event_id), std::move(callback), dead_line, priority),
+      excep_holder_(std::move (excep_holder))
+    {}
+
+    ~<%= operation.cxxname %>_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Excep_Executor () = default;
+
+    void
+    execute_i () noexcept(true) override
+    {
+      this->callback_-><%= operation.cxxname %>_excep (this->excep_holder_);
+    }
+
+  private:
+    IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder_;
+
+    /** @name Illegal to be called. Deleted explicitly to let the compiler detect any violation */
+    //@{
+    <%= operation.cxxname %>_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Excep_Executor () = delete;
+    <%= operation.cxxname %>_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Excep_Executor(const <%= operation.cxxname %>_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Excep_Executor&) = delete;
+    <%= operation.cxxname %>_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Excep_Executor(<%= operation.cxxname %>_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Excep_Executor&&) = delete;
+    <%= operation.cxxname %>_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Excep_Executor& operator=(const <%= operation.cxxname %>_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Excep_Executor&) = delete;
+    <%= operation.cxxname %>_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Excep_Executor& operator=(<%= operation.cxxname %>_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Excep_Executor&&) = delete;
+    //@}
+  };

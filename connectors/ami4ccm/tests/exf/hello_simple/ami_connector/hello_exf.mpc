@@ -1,0 +1,66 @@
+// AMI4CCM specific projects
+
+// The local executor mapping of the A.idl is only used in the AMI4CCM connector
+// implementation. Since the AE.idl will not be generated for the pattern specific
+// stub (see ../base/hello_exf.mpc) it should be created here.
+project(*ami4ccm_lem_gen) : ciaox11_test_base_lem_idl, ciaox11_ami4ccm {
+  custom_only = 1
+  after += hello_exf_ami4ccm_aidl_gen
+
+  idlflags += -Wb,base_export_macro=HELLO \
+              -Wb,base_export_include=hello
+
+  IDL_Files {
+    gendir=generated_code
+    ../base/generated_code/helloA.idl
+  }
+}
+
+// Generates the rest of the files needed for the implementation
+// of the AMI4CCM connector.
+project(*ami4ccm_idl_gen) : ciaox11_exf_idl, ciaox11_test_ami4ccm_conn_all_idl {
+  custom_only = 1
+  after += hello_exf_lem_gen *ami4ccm_lem_gen
+
+  idlflags += -Wb,base_export_macro=HELLO \
+              -Wb,base_export_include=hello
+
+  IDL_Files {
+    gendir=generated_code
+    ../base/hello.idl
+  }
+}
+
+project(*ami4ccm_conn) : ciaox11_test_base_stub, ciaox11_executor, ciaox11_ami4ccm_impl, ciaox11_exf_core {
+  after += hello_exf_ami4ccm_stub hello_exf_stub hello_exf_lem_stub *ami4ccm_idl_gen
+  libs  += hello_exf_ami4ccm_stub hello_exf_stub hello_exf_lem_stub
+
+  dynamicflags += HELLO_AMIC_BUILD_DLL \
+                  HELLO_LEM_STUB_BUILD_DLL \
+                  HELLO_LEM_STUB_AMI_CONN_BUILD_DLL \
+                  HELLO_AMI4CCM_CONN_BUILD_DLL \
+                  HELLO_AMI4CCM_SVNT_BUILD_DLL
+
+  Source_Files {
+    generated_code/helloAmiC.cpp
+    generated_code/helloAEC.cpp
+    generated_code/helloA_connEC.cpp
+    generated_code/helloA_conn_exec.cpp
+    generated_code/helloA_conn_svnt.cpp
+  }
+
+  Header_Files {
+    generated_code/helloAmiC.h
+    generated_code/helloAEC.h
+    generated_code/helloA_connEC.h
+    generated_code/helloA_conn_exec.h
+    generated_code/helloA_conn_svnt.h
+
+    generated_code/hello_amic_export.h
+    generated_code/hello_ami4ccm_lem_stub_export.h
+    generated_code/hello_lem_stub_ami_conc_export.h
+    generated_code/hello_ami4ccm_conn_export.h
+    generated_code/hello_ami4ccm_svnt_export.h
+  }
+}
+

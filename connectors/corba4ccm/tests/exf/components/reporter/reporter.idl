@@ -1,0 +1,26 @@
+/**
+ * @file    reporter.idl
+ * @author  Martin Corino
+ *
+ * @brief   Reporter
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef EXF_REPORTER_IDL_
+#define EXF_REPORTER_IDL_
+
+#include <Components.idl>
+
+#include "presenter.idl"
+
+module App
+{
+  component Reporter
+  {
+    provides API::Presenter do_presenter;
+  };
+};
+
+#endif /* EXF_MONITOR_IDL_ */

@@ -1,0 +1,26 @@
+/**
+ * @file    environment.idl
+ * @author  Martin Corino
+ *
+ * @brief   Environment data
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef EXF_ENVIRONMENT_IDL_
+#define EXF_ENVIRONMENT_IDL_
+
+module Data
+{
+  struct Environment
+  {
+    string location;
+    long long timestamp;
+    double temperature;
+    double pressure;
+    double humidity;
+  };
+};
+
+#endif /* EXF_ENVIRONMENT_IDL_ */

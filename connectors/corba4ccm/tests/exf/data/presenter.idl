@@ -1,0 +1,22 @@
+/**
+ * @file    presenter.idl
+ * @author  Martin Corino
+ *
+ * @brief   Presenter interface
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef EXF_PRESENTER_IDL_
+#define EXF_PRESENTER_IDL_
+
+module API
+{
+  interface Presenter
+  {
+    void present_info (in string info);
+  };
+};
+
+#endif /* EXF_PRESENTER_IDL_ */

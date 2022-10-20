@@ -1,0 +1,24 @@
+/**
+ * @file    hello1.idl
+ * @author  Marijke Hengstmengel
+ *
+ * @brief   Data interfaces for minimal sync manual example
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef HELLO1_IDL_
+#define HELLO1_IDL_
+
+module Hello
+{
+
+  // Sender/Receiver interface
+  interface A
+  {
+    long op_A (in long in_l);
+  };
+};
+
+#endif /* HELLO_IDL_ */

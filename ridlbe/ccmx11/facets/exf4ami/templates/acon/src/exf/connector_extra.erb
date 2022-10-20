@@ -1,0 +1,91 @@
+  // generated from <%= ridl_template_path %>
+% ports.each do |_p|
+%  if (_p.port_type == :receptacle && (_p.cxxname.include? 'ami4ccm_uses'))
+  class AMI_<%= _p.interface_type.scoped_cxxname.identify %>_Executor
+  :  public ExF::Executor
+  {
+  public:
+    AMI_<%= _p.interface_type.scoped_cxxname.identify %>_Executor (
+      std::string event_id,
+      IDL::traits<<%= _p.interface_type.scoped_enclosure_cxxname %>::<%= _p.interface_type.ami4ccm_ReplyHandler %>>::ref_type callback,
+      CIAOX11::ExF::Deadline dead_line,
+      CIAOX11::ExF::Priority priority)
+      : CIAOX11::ExF::Executor (std::move (priority), std::move (dead_line)),
+        event_id_(std::move(event_id)),
+        callback_(std::move(callback))
+    {}
+
+    ~AMI_<%= _p.interface_type.scoped_cxxname.identify %>_Executor () = default;
+
+    void
+    execute () noexcept(true) override
+    {
+      try
+      {
+        this->execute_i();
+      }
+      catch (const CORBA::Exception& ex)
+      {
+        CIAOX11_LOG_ERROR ("AMI_<%= _p.interface_type.scoped_cxxname.identify %>_Executor::execute caught exception: " << ex);
+      }
+      catch (...)
+      {
+        CIAOX11_LOG_ERROR ("AMI_<%= _p.interface_type.scoped_cxxname.identify %>_Executor::execute caught unknown C++ exception.");
+      }
+    }
+
+    void
+    finish () noexcept(true) override
+    {
+    }
+
+    void
+    cancel (CIAOX11::ExF::CancellationType ctype) noexcept(true) override
+    {
+      switch (ctype)
+      {
+        case CIAOX11::ExF::CancellationType::CT_SHUTDOWN:
+        {
+          CIAOX11_LOG_INFO ("AMI_<%= _p.interface_type.scoped_cxxname.identify %>_Executor::cancel received CT_SHUTDOWN for event_id: " << this->event_id_);
+          break;
+        }
+        case CIAOX11::ExF::CancellationType::CT_TIMEOUT:
+        {
+          CIAOX11_LOG_INFO ("AMI_<%= _p.interface_type.scoped_cxxname.identify %>_Executor::cancel received CT_TIMEOUT for event_id: " << this->event_id_);
+          break;
+        }
+      }
+    }
+
+    const std::string& event_id () const noexcept(true) override
+    { return event_id_; }
+
+  protected:
+    virtual void execute_i () = 0;
+
+    AMI_<%= _p.interface_type.scoped_cxxname.identify %>_Executor () = delete;
+    AMI_<%= _p.interface_type.scoped_cxxname.identify %>_Executor(const AMI_<%= _p.interface_type.scoped_cxxname.identify %>_Executor&) = delete;
+    AMI_<%= _p.interface_type.scoped_cxxname.identify %>_Executor(AMI_<%= _p.interface_type.scoped_cxxname.identify %>_Executor&&) = delete;
+    AMI_<%= _p.interface_type.scoped_cxxname.identify %>_Executor& operator=(const AMI_<%= _p.interface_type.scoped_cxxname.identify %>_Executor&) = delete;
+    AMI_<%= _p.interface_type.scoped_cxxname.identify %>_Executor& operator=(AMI_<%= _p.interface_type.scoped_cxxname.identify %>_Executor&&) = delete;
+
+    std::string const event_id_;
+    IDL::traits< <%= _p.interface_type.scoped_enclosure_cxxname %>::<%= _p.interface_type.ami4ccm_ReplyHandler %>>::ref_type callback_;
+  };
+
+  /// Operations and attributes from AMI_<%= _p.interface_type.scoped_cxxname.identify %>_Executor
+//@{
+% props = {}
+% props[:receptacle_port] = ports.find {|p| (p.port_type == :receptacle && (p.cxxname.include? 'ami4ccm_uses'))}
+%  _p.interface_type.all_operations.each do |_op|
+%   props[:operation] = _op
+%   visit_template('exf_executor_operation', props)
+%  end
+
+% props.delete(:operation)
+%  _p.interface_type.all_attributes.each do |_att|
+%   props[:attribute] = _att
+%   visit_template('exf_executor_attribute', props)
+%  end
+% end
+%end

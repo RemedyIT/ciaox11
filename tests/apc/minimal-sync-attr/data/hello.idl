@@ -1,0 +1,62 @@
+/**
+ * @file    hello.idl
+ * @author  Martin Corino
+ *
+ * @brief   Data and interfaces for minimal sync attrib example
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef HELLO_IDL_
+#define HELLO_IDL_
+
+
+#include "hello2.idl"
+#include "hello4.idl"
+
+module Hello
+{
+
+  typedef sequence<long>foo_seq;
+
+  typedef unsigned long foo_long;
+
+  struct foo_struct {
+    hello4_long foo_long_struct;    //long defined in hello4.idl
+    string      foo_string_struct;
+    long        foo_simple_long_struct;
+  };
+
+  //seq with struct, defined in hello2.idl, with struct defined in hello3.idl
+  typedef sequence<bar_struct>bar_seq;
+
+  typedef sequence<long> inner_seq;
+  typedef sequence<inner_seq> out_seq;
+
+  exception InternalError
+    {
+      long id;
+      string error_string;
+    };
+
+  // Sender/Receiver interface
+  interface MyFoo
+    {
+      long foo (in string in_str, out string answer)
+        raises (InternalError);
+
+      void hello (out long answer)
+        raises (InternalError);
+
+
+      attribute short rw_attrib
+        getraises (InternalError)
+        setraises (InternalError);
+
+      readonly attribute short ro_attrib
+        raises (InternalError);
+    };
+};
+
+#endif /* HELLO_IDL_ */

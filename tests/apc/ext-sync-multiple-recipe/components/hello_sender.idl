@@ -1,0 +1,28 @@
+/**
+ * @file    hello_sender.idl
+ * @author  Marijke Hengstmengel
+ *
+ * @brief   Sender component for minimal sync manual example
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef HELLO_SENDER_IDL_
+#define HELLO_SENDER_IDL_
+
+#include <Components.idl>
+
+#include "hello2.idl"
+#include "hello4.idl"
+#include "hello5.idl"
+
+module Hello
+{
+  component Sender
+  {
+    uses B run_my_B;
+  };
+};
+
+#endif /* HELLO_SENDER_IDL_ */

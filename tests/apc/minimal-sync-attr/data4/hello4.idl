@@ -1,0 +1,22 @@
+/**
+ * @file    hello4.idl
+ * @author  Martin Corino
+ *
+ * @brief   Data for minimal sync attrib example
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef HELLO4_IDL_
+#define HELLO4_IDL_
+
+
+module Hello
+{
+
+  typedef unsigned long hello4_long;
+
+};
+
+#endif /* HELLO4_IDL_ */

@@ -1,0 +1,27 @@
+component 'hello_sender' do |comp|
+  comp.idl %w{ hello_sender.idl }
+
+  #facultative extra source -  and header files to include
+  #comp.sources %w{}
+  #comp.headers %w{}
+
+  #comp.exec_name 'xxx' facultative, name executor file, without postfix '_exec'
+  #default name idl file + postfix exec (in this case: myfoo_comp_exec )
+
+  #prefix sharednames, default component name (in this case: hello_sender)
+  #comp.shared_name 'Hello_simple_s'
+
+  #prefix export headers, default name component
+  #comp.export_name 'hello_sender'
+
+  #gen_dir is default generated_code
+  #comp.gen_dir  :your_dir
+end
+
+
+#mpc name is name component
+#project_name prefix is name component
+#export name is default name component
+#shared name prefix libs is default name component + "_exec", shared name only for executor,
+#shared name for other libs is always name component + a lib kind postfix
+#gen_dir is default generated_code

@@ -1,0 +1,28 @@
+/**
+ * @file    multi_inherit_receiver.idl
+ * @author  Marijke Hengstmengel
+ *
+ * @brief   receiver of ami4ccm test with multiple inheritance
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef INTERMULTI_RECEIVER_IDL
+#define INTERMULTI_RECEIVER_IDL
+
+#include <Components.idl>
+
+#include "multi_inherit.idl"
+
+module InterMulti
+{
+  component Receiver
+  {
+    /// Provides
+    provides One do_my_one;
+    provides Two do_my_two;
+    provides Three do_my_three;
+  };
+};
+#endif

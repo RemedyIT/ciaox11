@@ -1,0 +1,33 @@
+/**
+ * @file    multi_inherit_sender.idl
+ * @author  Marijke Hengstmengel
+ *
+ * @brief   sender of ami4ccm test with multiple inheritance
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef INTERMULTI_SENDER_IDL
+#define INTERMULTI_SENDER_IDL
+
+#include <Components.idl>
+
+#include "multi_inherit.idl"
+
+#pragma ami4ccm receptacle "InterMulti::Sender::run_my_one"
+#pragma ami4ccm receptacle "InterMulti::Sender::run_my_two"
+#pragma ami4ccm receptacle "InterMulti::Sender::run_my_three"
+
+module InterMulti
+{
+  component Sender
+  {
+    /// For synchronous invocation
+    uses One run_my_one;
+    uses Two run_my_two;
+    uses Three run_my_three;
+  };
+};
+
+#endif

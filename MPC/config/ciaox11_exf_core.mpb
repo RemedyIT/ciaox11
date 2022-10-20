@@ -1,0 +1,14 @@
+// --------------------------------------------------------------------
+// ciaox11_exf_core.mpb
+//
+// Author: Martin Corino
+//
+// Copyright (c) Remedy IT Expertise BV
+// Chamber of commerce Rotterdam nr.276339, The Netherlands
+// --------------------------------------------------------------------
+
+project : ciaox11_lib, ciaox11_exf {
+  after    += ciaox11_exf_core_impl
+  libs     += ciaox11_exf_core
+  includes += $(CIAOX11_ROOT)/exf $(CIAOX11_ROOT)/exf/connectors
+}

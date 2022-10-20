@@ -1,0 +1,31 @@
+/**
+ * @file    unkeyed_writer_sender.idl
+ * @author  Marcel Smit
+ *
+ * @brief   Sender component declaration for the Unkeyed Writer test.
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+#ifndef UNKEYED_WRITER_SENDER_IDL_
+#define UNKEYED_WRITER_SENDER_IDL_
+
+#include "unkeyed_writerSE.idl"
+#include <ccm_timed_trigger.idl>
+
+module UnkeyedWriterTest
+{
+  component Sender
+  {
+    port UnkeyedWriterMessageConnector::DDS_Write info_write;
+    provides CCM_DDS::ConnectorStatusListener connector_status;
+
+    uses CCM_TT::TT_Scheduler tt_scheduler;
+
+    attribute unsigned short rate;
+    attribute unsigned short iterations;
+    attribute unsigned short keys;
+  };
+};
+
+#endif /* UNKEYED_WRITER_SENDER_IDL_ */

@@ -1,0 +1,24 @@
+
+connector 'event_conn' do |conn|
+
+  conn.idl %w{ event_record.idl }
+  # prefix of generated export headers (default: recipe name)
+  conn.export_name 'event_connector'
+  # project creator adds '_dds4ccm_conn' after shared name (default: recipe name)
+  conn.shared_name 'event'
+  conn.port_type :dds4ccm do |tp|
+    tp.topic 'Hello::ShapeType'
+    # use default DDS vendor
+    # tp.middleware :ndds
+  end
+  conn.gen_dir 'build'
+  conn.use_exf true
+
+end
+
+# mpc name is name component + '_dds4ccm' for a dds4ccm connector
+# project_name prefix is name component
+# export name is default name component
+# shared name postfix libs is default name component + "_dds4ccm_conn", shared name only for executor,
+# shared name for other libs is always name component + a lib kind postfix
+# gen_dir is default 'generated_code'

@@ -1,0 +1,82 @@
+/// generated from <%= ridl_template_path %>
+void
+<%= interface_type.ami4ccm_reply_handler %>::get_<%= attribute.cxxname %> (
+  <%= attribute.scoped_cxx_return_type %> ami_return_val)
+{
+  // Deactivate our CORBA AMI servant
+  this->deactivate ();
+
+  // Push the reply into ExF
+  CIAOX11::ExF::Executor::ref_type exec =
+    std::make_unique<get_<%= attribute.cxxname %>_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Executor> (
+    "get_<%= attribute.cxxname %>",
+    this->callback_,
+    ami_return_val,
+    this->deadline_,
+    this->priority_);
+
+  this->scheduling_lane_->submit (std::move (exec));
+}
+
+void
+<%= interface_type.ami4ccm_reply_handler %>::get_<%= attribute.cxxname %>_excep (
+  IDL::traits< ::Messaging::ExceptionHolder>::ref_type excep_holder)
+{
+  // Deactivate our CORBA AMI servant
+  this->deactivate ();
+
+  IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type holder =
+    CORBA::make_reference< ::CCM_AMI::ExceptionHolder_i> (std::move (excep_holder));
+
+  // Push the reply into ExF
+  CIAOX11::ExF::Executor::ref_type exec =
+  std::make_unique<get_<%= attribute.cxxname %>_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Excep_Executor> (
+     "get_<%= attribute.cxxname %>_excep",
+     this->callback_,
+     std::move (holder),
+     this->deadline_,
+     this->priority_);
+
+  this->scheduling_lane_->submit (std::move (exec));
+}
+% unless attribute.is_readonly?
+
+void
+<%= interface_type.ami4ccm_reply_handler %>::set_<%= attribute.cxxname %> ()
+{
+  // Deactivate our CORBA AMI servant
+  this->deactivate ();
+
+  // Push the reply into ExF
+  CIAOX11::ExF::Executor::ref_type exec =
+  std::make_unique<set_<%= attribute.cxxname %>_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Executor> (
+    "set_<%= attribute.cxxname %>",
+    this->callback_,
+    this->deadline_,
+    this->priority_);
+
+  this->scheduling_lane_->submit (std::move (exec));
+}
+
+void
+<%= interface_type.ami4ccm_reply_handler %>::set_<%= attribute.cxxname %>_excep (
+  IDL::traits< ::Messaging::ExceptionHolder>::ref_type excep_holder)
+{
+  // Deactivate our CORBA AMI servant
+  this->deactivate ();
+
+  IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type holder =
+      CORBA::make_reference< ::CCM_AMI::ExceptionHolder_i> (std::move (excep_holder));
+
+  // Push the reply into ExF
+  CIAOX11::ExF::Executor::ref_type exec =
+    std::make_unique<set_<%= attribute.cxxname %>_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Excep_Executor> (
+      "set_<%= attribute.cxxname %>_excep",
+      this->callback_,
+      std::move (holder),
+      this->deadline_,
+      this->priority_);
+
+  this->scheduling_lane_->submit (std::move (exec));
+}
+% end

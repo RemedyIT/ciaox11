@@ -1,0 +1,82 @@
+project(*comp_gen) : ciaox11_idldefaults, ciaox11_tt4ccm {
+  custom_only = 1
+  after += recorder_interface_lem_gen
+  idlflags += \
+      -o build \
+      -Gcomp -Scc -Scp \
+      -Gex -oI . \
+      -Gxhex -Gxhsv \
+      -Wb,base_export_macro=EXFTEST_GENERATOR \
+      -Wb,base_export_include=exftest_generator \
+      -I../../data -I../../interfaces/recorder/build
+
+  specific {
+    precious_files += _exec.h\Z _exec.cpp\Z
+  }
+
+  IDL_Files {
+    gendir=build
+    generator.idl
+  }
+}
+
+project(*comp_lem) : ciaox11_ccm_session_stub, ciaox11_tt4ccm_stub {
+  after += recorder_interface_lem_stub *comp_gen
+
+  libs += exftest_data_stub exftest_record_stub recorder_interface
+
+  libout = ../../lib
+  libpaths += ../../lib
+  includes += . ../../data/build ../../interfaces/recorder/build build
+  sharedname = exftest_generator_lem
+  dynamicflags += EXFTEST_GENERATOR_LEM_STUB_BUILD_DLL
+
+  Source_Files {
+    build/generatorEC.cpp
+  }
+
+  Header_Files {
+    build/generatorEC.h
+    build/exftest_generator_lem_stub_export.h
+  }
+}
+
+project(*comp_svnt) : ciaox11_ccm_session_stub, ciaox11_tt4ccm_stub {
+  after += *comp_lem
+
+  libs += exftest_data_stub exftest_record_stub recorder_interface exftest_generator_lem
+
+  libout = ../../lib
+  libpaths += ../../lib
+  includes += . ../../data/build ../../interfaces/recorder/build build
+  sharedname = exftest_generator_svnt
+  dynamicflags += EXFTEST_GENERATOR_SVNT_BUILD_DLL
+
+  Source_Files {
+    build/generator_svnt.cpp
+  }
+
+  Header_Files {
+    build/generator_svnt.h
+    build/exftest_generator_svnt_export.h
+  }
+}
+
+project(*exec) : ciaox11_executor, ciaox11_logger, ciaox11_tt4ccm_stub {
+  after += *comp_lem
+  libs  += exftest_data_stub exftest_record_stub recorder_interface exftest_generator_lem
+
+  libout = ../../lib
+  libpaths += ../../lib
+  includes += . ../../data/build ../../interfaces/recorder/build build
+  dynamicflags += EXFTEST_GENERATOR_EXEC_BUILD_DLL
+
+  Source_Files {
+    generator_exec.cpp
+  }
+
+  Header_Files {
+    generator_exec.h
+    build/exftest_generator_exec_export.h
+  }
+}

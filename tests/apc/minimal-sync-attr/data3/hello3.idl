@@ -1,0 +1,24 @@
+/**
+ * @file    hello3.idl
+ * @author  Martin Corino
+ *
+ * @brief   Data for minimal sync attrib example
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef HELLO3_IDL_
+#define HELLO3_IDL_
+
+
+
+module Hello
+{
+  struct hello3_struct {
+    long foo_long_struct;
+  };
+
+};
+
+#endif /* HELLO3_IDL_ */

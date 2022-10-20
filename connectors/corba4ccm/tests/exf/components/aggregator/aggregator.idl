@@ -1,0 +1,31 @@
+/**
+ * @file    aggregator.idl
+ * @author  Martin Corino
+ *
+ * @brief   Data aggregator
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ * Chamber of commerce Rotterdam nr.276339, The Netherlands
+ */
+
+#ifndef EXF_AGGREGATOR_IDL_
+#define EXF_AGGREGATOR_IDL_
+
+#include <Components.idl>
+
+#include "recorder.idl"
+#include "collector.idl"
+
+module App
+{
+  component Aggregator
+  {
+    provides API::Recorder do_recorder;
+    provides API::Collector do_collector;
+
+    attribute unsigned long record_delay;
+    attribute unsigned long collect_delay;
+  };
+};
+
+#endif /* EXF_AGGREGATOR_IDL_ */

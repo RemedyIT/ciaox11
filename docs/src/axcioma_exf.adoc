@@ -1,0 +1,391 @@
+include::_{backend}_settings.adoc[]
+
+= ExF
+
+This document describes the features of the *AXCIOMA* Execution Framework (ExF).
+
+== Introduction
+
+The *AXCIOMA* Execution Framework (ExF) provides developers full concurrency control for component based applications.
+
+*AXCIOMA* ExF decouples middleware event generation/reception and component event handling in such a way that the
+component developer is guaranteed to be safe from threading and code re-entrancy issues without losing the ability
+to fully use multithreaded architectures to scale applications.
+
+*AXCIOMA* ExF will capture and encapsulate events for any interaction pattern or connector implementation (synchronous
+requests, asynchronous replies, state and/or data events, or custom connectors) allowing them to be asynchronously
+scheduled and subsequently handled in a serialized manner.
+
+*AXCIOMA* ExF implements this support without requiring any changes to the implementation of (existing) business
+components. All required changes are encapsulated in connector instances for which *AXCIOMA* provides full
+automatic generation for all standard interaction patterns like it does for regular (non-ExF) connector implementations.
+
+*AXCIOMA* ExF can be configured at the locality, container, and component level to allow the developer fine-grained control
+of the execution environment for his component instances.
+Flexible configuration of the priority based scheduler (queuing policy) and dispatcher (exclusive/non-exclusive/grouped,
+single threaded, or static/dynamic threadpools) provides full scalability options.
+
+ExF is implemented as an optional, configurable extension of the *AXCIOMA* DnCX11 deployment framework in
+combination with a configurable extension of the code generation framework for connector implementations.
+
+ExF deployment does not alter the user component API and or generation in any way. In fact, user components implemented
+for non-ExF deployments can be deployed in ExF containers without any change (even recompilation is not necessary).
+Deployment of components built for ExF deployment may run into trouble in non-ExF deployments as these components tend
+to rely on the pure single threaded, non-reentrant execution supplied by ExF but not guaranteed in non-ExF deployments.
+ExF allows activation for ExF execution support on a per container basis creating the possibility of mixed locality
+environments.
+
+Optionally ExF also supports deadline monitoring of scheduled events to prevent uncontrolled lock-ups in heavy load
+conditions and provide easier fault detection.
+
+== Overview
+
+=== Background
+
+In the default *AXCIOMA* distribution the connection between connector instances and components will be a direct local
+calling connection for each port interface resulting in the most optimal execution sequence from event
+generation/reception to the handling of the event.
+
+This connection scheme is depicted in the following figure.
+
+.Default local connection scheme
+image:{images_root}/ciaox11-exf-01.png[image]
+
+In this scheme the component provides an interface reference of it's facet executor to the receptacle of the connector.
+When receiving (or generating) an event the connector will now be able to directly call the component's executor through
+the provided reference allowing the most optimal execution sequence.
+
+Potentially however this connection and execution scheme provides the developer with serious concurrency challenges as the
+component now has no control over the execution context in which it's code is called as it is the connector code that
+determines that execution context.
+
+While the currently available default (non-ExF) *AXCIOMA* connector implementations (CORBA4CCM, AMI4CCM, TT4CCM, DDS4CCM and PSDD4CCM) will
+by default run single threaded (in the default single threaded locality runtime environment) this may prove difficult
+to maintain for future versions of these or other implementations.
+As *AXCIOMA* is intended to provide a middleware agnostic development environment explicitly allowing for the introduction
+of alternate connector implementations it would (repeatedly)  provide considerable development challenges to maintain
+a predictable execution context for component developers without a solution that is independent of the underlying connector
+implementations.
+Furthermore, the requirement to keep the event handling single threaded by having only a single thread to receive or
+generate events would provide a serious constraint diminishing scalability options.
+
+Apart from concurrency issues there is also the risk of re-entrancy in certain middleware implementations
+like TAOX11. It's thread reuse features are powerful latency boosters but may cause unexpected challenges for component
+developers.
+
+*AXCIOMA* ExF provides a solution to these challenges by decoupling the direct local connection between connector and
+component instance and providing an execution framework offering controlled asynchronous, priority based event handling.
+
+=== Implementation
+
+*AXCIOMA* ExF provides a solution for concurrency challenges by implementing an execution framework that places _scheduling
+lanes_ between the connector and the component instances as schematically depicted in the following figure.
+
+.ExF connection scheme
+image:{images_root}/ciaox11-exf-02.png[image]
+
+The _scheduling lane_ decouples the connector's execution context from the component's execution context through a
+configurable event queue and _dispatcher_.
+
+With ExF after event reception/generation the connector will submit the event, properly encapsulated, to the _scheduling
+lane_ configured for the component (!) from where the event is entered into the scheduling queue of the _dispatcher_.
+The _dispatcher_, which executes in a configurable execution context (single or multi threaded), retrieves
+events from the queue and dispatches these to the connected (to the scheduling lane) component instances sequentially
+per component instance (i.e. any component instance will only ever get a single event at a time to handle).
+
+This execution sequence is depicted in the following figure.
+
+.ExF scheduling lane
+image:{images_root}/ciaox11-exf-03.png[image]
+
+Although these figures show a completely different, more complex, organization of components and code than with the
+standard (non-ExF) connections in *AXCIOMA* this has zero consequences for component developers (except in allowing
+more simplified code as threadsafety and NRE execution are guaranteed).
+
+All changes in code are either in the, interaction pattern independent, ExF framework components or in the, fully
+generated, connector implementations. In the end the execution of the component code handling the event will happen
+in the exact same way as in a setup without ExF using the unaltered component interfaces.
+Binary (compiled) component artifacts can in fact be deployed in environments utilizing regular or ExF enhanced
+containers without the need for recompilation.
+
+The deployment plan is also not affected by ExF. The ExF core modules loaded (configured) into the DnCX11 framework
+handle this additional connection setup automatically. The deployment plan will still only
+specify a connection between a port of the (ExF capable) connector instance and the component instance.
+
+The priorities of each event scheduled for a single component instance, port or event/request id can be configured in
+the deployment plan. By default all scheduled events will have the same priority defined.
+In addition the queuing policy of the dispatch queue for a component instance can be configured and set to FIFO
+(default) or LIFO.
+Optionally each event scheduled for a single component instance, port or event/request id can additionally be
+configured with a user defined deadline time and type (_NONE_, _EXPIRE_, _SOFT_, _HARD_) in the deployment plan. Monitoring
+support for these deadlines requires a container configured for ExF scheduling as well as ExF deadline monitoring.
+
+When ExF deadline monitoring support is configured *and* the event has been configured with a deadline type and time
+the _scheduling lane_ will register the event with the ExF _deadline monitor_ before entering the event into the
+dispatch queue. After the event has been handled by the component instance the dispatcher will deregister the event
+from the ExF _deadline monitor_ again.
+
+This process is depicted here.
+
+.ExF deadline monitor
+image:{images_root}/ciaox11-exf-04.png[image]
+
+In case the deadline expires in between the moment the event is registered for deadline monitoring and the moment the
+dispatcher deregisters the event from deadline monitoring, the ExF deadline monitor will log an appropriate (error)
+message and cancel the event. Canceling will send an appropriate (error) reply as required by the connector
+implementation and unlock any waiting peers (if applicable).
+
+Canceling an event does not interrupt the component instance if it already started handling the event but it does
+prevent any results from handling the event to be returned. In case an event was canceled before the component
+instance started handling the event (either still queued or being dispatched) this will effectively prevent the
+event from ever being handled ('seen') by the component instance.
+
+==== Scheduling Lanes
+
+Scheduling lanes accept (encapsulated) middleware events intended for specific component instances and route these to
+their associated dispatcher through the dispatch queue.
+
+Scheduling lanes can be opened in both Exclusive and Non-exclusive mode.
+Exclusive Scheduling lanes will accept events for a single component instance (all ports of that component instance)
+while Non-exclusive Scheduling lanes will accept events for multiple component instances.
+
+Non-exclusive lanes can either be non-discriminative (for the default scheduling lane of an ExF enabled container) or
+discriminative for user defined groups of component instances. These are the 'grouped' scheduling lanes.
+
+==== Dispatchers
+
+Dispatchers dequeue scheduled events and route these to their targeted component instances.
+
+Dispatchers can operate in various threading contexts depending on their associated Scheduling lane.
+Exclusive Scheduling lanes are always associated with a _private_ Dispatcher operating single threaded.
+Non-exclusive Scheduling lanes are associated with a _shared_ Dispatcher which can be configured for single threaded
+(default), static threadpool (fixed thread count) or dynamic threadpool (minimum and maximum threadcount) operation.
+With multi threaded operation (static or dynamic) the Dispatcher will run multiple threads simultaneously dequeuing
+and routing scheduled events. Each component instance associated with the Dispatcher through the Non-exclusive
+Scheduling Lane will however be guaranteed to only be offered a single event to handle at anyone time (i.e. each
+thread will always dispatch events for a different component instance as another thread at that time).
+
+=== Deployment options
+
+*AXCIOMA* provides multiple deployment configuration options to control ExF Scheduling.
+
+Configuration per Locality:: Each deployed Locality can be separately configured with ExF scheduling and, optionally,
+ExF deadline monitoring support. Of course activation of ExF support as a default is also possible.
+
+Configuration per Container:: Each deployed component instance Container in an ExF enabled Locality (*AXCIOMA* allows
+deployment of multiple Container instances per Locality) can be separately configured either for ExF support (default
+in an ExF enabled Locality) or for direct execution (no ExF scheduling).
+
+Configuration per Component:: Each ExF enabled Container will allow Component instances to open non-exclusive
+Scheduling Lanes onto a Shared Dispatcher. This is the default behavior if not configured differently. +
+Each ExF enabled Container will allow Component instances to open exclusive Scheduling Lanes onto a private Dispatcher. +
+Each ExF enabled Container will allow Component instances to open grouped Scheduling Lanes onto a (shared) group Dispatcher
+specifying a user defined group id. +
+This can be configured separately for each Component instance.
+
+Configuration per Dispatcher:: The (default) shared Dispatcher can be configured for single threaded (default), static
+threadpool (fixed thread count) or dynamic threadpool (minimum and maximum threadcount) operation. This can be
+configured separately for each ExF enabled Container instance. +
+Private Dispatchers always operate single threaded. +
+Group Dispatchers can be configured for single threaded (default), static threadpool (fixed thread count) or dynamic
+threadpool (minimum and maximum threadcount) operation.
+
+In addition to this *AXCIOMA* ExF allows for Priority and Deadline settings to be configured per Component class
+and/or instance at component (all ports), port (all events for a port) and/or event level.
+
+== ExF in Practice
+
+Here we will describe what consequences (if any) are involved for a developer for creating and deploying applications
+that make use of *AXCIOMA* ExF.
+
+In addition to the information provided below you can (and should) also check out the various ExF specific examples
+and tests included in the *AXCIOMA* distribution package.
+
+=== Developing with ExF
+
+Developing with ExF support in *AXCIOMA* means ... surprisingly little!
+
+As stated before, ExF has *no* consequences for component developers. There are *no* changes to interfaces or protocols
+and *no* special conditions to take notice of. If anything, ExF simplifies component development as single threaded, NRE
+execution is *guaranteed* whatever environment the component is deployed with.
+
+The single requirement for deploying a component in an ExF enabled environment is to deploy with ExF enabled connectors.
+
+Since ExF enabled connectors for any of the standard interaction pattern implementations (sync/async request/reply,
+state/event and timed trigger) in *AXCIOMA* can be fully generated as is the case with the regular (non-ExF) connectors,
+this requirement is not very strenuous either.
+
+Instructions for generating ExF enabled connectors for the standard interaction pattern implementations can be found
+<<axcioma_exf_connectors#,here>>.
+For the timed trigger connector the standard ExF enabled implementation is included with every *AXCIOMA* distribution
+package. No additional development is needed here, selecting the appropriate connector libraries for deployment suffices.
+
+=== Deploying with ExF
+
+Deploying with ExF support is basically also fairly simple.
+
+The first step is to setup Localities with ExF support by providing the Locality Deployment Handler with a tailored
+configuration specifying the ExF core components to load.
+Documentation concerning the options for the Locality Deployment Handler can be found <<{xref_docs_root}/dancex11/deployment-tools#,here>>
+and documentation describing the DnCX11 tool configuration files and the various (core) plugin components can be found
+<<{xref_docs_root}/dancex11/dncx11-config#,here>>.
+
+Compared to a regular (non-ExF) deployments the Locality configuration needs to be updated with two additional plugins
+and two alternate plugins.
+
+The two addtions are:
+
+- the ExF Scheduler service (see <<{xref_docs_root}/dancex11/dncx11-config#_ciaox11_exf_scheduler_service,here>> for details)
+- the ExF Deadline Monitor service (see <<{xref_docs_root}/dancex11/dncx11-config#_ciaox11_exf_deadline_monitor_service,here>> for details)
+
+The two alternate plugins are:
+
+- the ExF Container installation handler in place of the regular Container installation handler
+(see <<{xref_docs_root}/dancex11/dncx11-config#_ciaox11_exf_container_installation_handler,here>> for details)
+- the ExF Component installation handler in place of the regular Component installation handler
+(see <<{xref_docs_root}/dancex11/dncx11-config#_ciaox11_exf_component_installation_handler,here>> for details)
+
+*AXCIOMA* ships with a tailored configuration file in the <AXCIOMA_ROOT>/dancex11/bin folder.
+Check out the <<{xref_docs_root}/dancex11/deployment-tools#,deployment tool documentation>> on how to direct the
+Locality Deployment handler to load this configuration file or the
+<<{xref_docs_root}/dancex11/dncx11-config#_configuring_the_locality_manager,Locality Manager configuration>> options
+to see how to configure this through the deployment plan.
+
+For a default ExF enabled deployment this is all that is required. In those cases there is no need to make any other
+changes to the deployment plans.
+
+*AXCIOMA* however, provides various options for extended and more detailed control of ExF enabled deployments.
+
+==== Concurrency control
+
+*AXCIOMA* ExF defines a number of optional deployment plan configuration properties intended to allow the user control
+over the concurrency context for deployed ExF enabled containers.
+
+The configuration properties for controlling container specific settings for ExF are described
+<<{xref_docs_root}/dancex11/dncx11-config#_ciaox11_exf_container_installation_handler,here>>.
+
+In addition configuration properties can be specified in deployment implementation (as _execParameter_ settings) and
+instance (as _configProperty_ settings) records for components in the deployment plan. When set for implementation
+records the settings will apply to all instances for that implementation (see the DnCX11 documentation regarding
+deployment plans <<{xref_docs_root}/dancex11/deployment-planning.html#_the_plan,here>> for more information about
+the various deployment plan records).
+
+The following properties are available.
+
+[width="100%",cols="<34%a,<10%a,<55%a",options="header",]
+|=======================================================================
+|Property ID |Type |Description
+|nl.remedy.it.Axcioma.ExF.SchedulingLane.Dispatch.Policy| string
+|Specifies the dispatch policy for the Scheduler attached to the scheduling lane for a component instance. Currently supports
+3 options:
+
+* "EXCLUSIVE" : configures an exclusive Scheduler for a component instance
+* "GROUPED" : configures a shared Scheduler for a used defined group of component instances
+* _unset_ (or any unmatched value) : configures to use the default non-exclusive Scheduler
+
+|nl.remedy.it.Axcioma.ExF.SchedulingLane.Group |string
+|Specifies a user defined group ID for a _GROUPED_ Scheduler
+
+|nl.remedy.it.Axcioma.ExF.SchedulingLane.Thread.Policy |string
+|Specifies the Dispatcher threading policy for a shared (_GROUPED_) Scheduler. Currently supports 3 values:
+
+* "Single" : configures a single threaded Dispatcher (default)
+* "Multi" : configures a multi threaded Dispatcher with a static thread pool
+* "Dynamic" : configures a multi threaded Dispatcher with a dynamic thread pool
+
+This property will only have effect for _GROUPED_ schedulers as _EXCLUSIVE_ schedulers will *always* operate in
+a single threaded context and the default non-exclusive Scheduler can only be configured with the container instance.
+
+|nl.remedy.it.Axcioma.ExF.SchedulingLane.Thread.Count |uint16
+|Specifies the size of the thread pool in case of _Multi_ or _Dynamic_ thread policy.
+Specifies the fixed size of the static thread pool for _Multi_ policy and the minimum size for _Dynamic_ policy
+(default is 1).
+
+|nl.remedy.it.Axcioma.ExF.SchedulingLane.Thread.MaxCount |uint16
+|Specifies the maximum size of the thread pool in case of _Dynamic_ thread policy (default is minimum size).
+
+|nl.remedy.it.Axcioma.ExF.SchedulingLane.Queue.Policy |string
+|Specifies the queuing policy for a _GROUPED_ or _EXCLUSIVE_ Scheduler. Currently supports 2 values:
+
+* "FIFO" (default)
+* "LIFO"
+|=======================================================================
+
+These properties can be configured on the deployment records for either the connectors or the user components
+involved in a local connection but to achieve the most easily predictable behavior the advice is to configure
+on the user component deployment records.
+
+Care must be taken when interpreting the result of configuring on both connectors and components involved in a
+local connection as the standard AXCIOMA connection handler will always overrule settings from the _user_ side
+of the connection with settings from the _providing_ side of the connection.
+As the role of connector and user component differs depending on the interaction pattern being implemented so
+does the way in which the settings of connectors and user components interact.
+
+==== Deadline and priority control
+
+*AXCIOMA* ExF also defines a number of optional deployment plan configuration properties intended to allow the user
+control over queuing priority and deadlines for events dispatched through ExF.
+
+These configuration properties can be specified in deployment implementation (as _execParameter_ settings) and
+instance (as _configProperty_ settings) records for components in the deployment plan. When set for implementation
+records the settings will apply to all instances for that implementation (see the DnCX11 documentation regarding
+deployment plans <<{xref_docs_root}/dancex11/deployment-planning.html#_the_plan,here>> for more information about
+the various deployment plan records).
+
+The following properties are available.
+
+[width="100%",cols="<34%a,<10%a,<55%a",options="header",]
+|=======================================================================
+|Property ID |Type |Description
+|nl.remedy.it.Axcioma.ExF.Priority| uint16
+|Specifies the queuing priority for ExF scheduled events. A numeric value from 0 (lowest) - max(uint16).
+
+|nl.remedy.it.Axcioma.ExF.Deadline.Type |string
+|Specifies the deadline type for an ExF scheduled event. Currently supports 3 values:
+
+* "EXPIRE" : no-fault deadline type; will cancel dispatching if not yet dispatched
+* "SOFT" : fault reporting deadline; will cancel dispatching if not yet dispatched; does not attempt to cancel dispatched events
+* "HARD" : fault reporting deadline; will cancel dispatching if not yet dispatched; will attempt to cancel dispatched events if possible
+
+_Current implementations of AXCIOMA ExF do not implement HARD deadline event execution cancellation yet. Except
+for reporting purposes HARD deadlines therefor function effectively as SOFT deadlines._
+
+|nl.remedy.it.Axcioma.ExF.Deadline.Time |string
+|Specifies the deadline time for an ExF scheduled event. Deadline time strings should be formatted as "999999999tt"
+where:
+
+* '9' is a placeholder for a digit 0-9
+* 'tt' is a placeholder for the following possible time units:
+** 'ns' == nanoseconds
+** 'us' == microseconds
+** 'ms' == milliseconds
+** 's' == seconds
+** 'm' == minutes
+** 'h' == hours
+
+The valid range for the time values is 0 - max(uint32).
+|=======================================================================
+
+These properties can be decorated with ids relating to the component's connection to provide for more granularity in
+configuration. The format for decoration is:
+
+<property ID> ['.' <port ID>] ['.' <event ID>]
+
+The _event ID_'s will match operation names of the interfaces of the port involved in a connection.
+
+Undecorated properties will provide defaults for *all* ExF dispatched events for a component.
+
+Properties decorated with a _port ID_ but no _event ID_ will provide defaults for *all* ExF dispatched events
+for a specific connection for a component overriding undecorated defaults.
+
+Properties decorated with an _event ID_ but no _port ID_ will provide defaults for a specific ExF dispatched event
+for *all* connections for a component overriding undecorated or port specific defaults.
+
+Properties decorated with a _port ID_ and an _event ID_ will provide settings for a specific ExF dispatched event
+for a specific connection for a component.
+
+The _port ID_ is evaluated in the context of the component (or connector) instance for which the property is
+configured.
+
+With regard to the interaction between component and connector settings the same rules apply as described for the
+ExF concurrency settings.

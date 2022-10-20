@@ -1,0 +1,20 @@
+
+connector 'hello_ami' do |conn|
+
+  conn.idl %w{ hello.idl }
+  #prefix of generated export headers:
+  conn.export_name 'hello'
+  #project creator add after shared name _ami4ccma_conn
+  conn.shared_name 'hello'
+  conn.port_type :ami4ccm
+  conn.gen_dir  :conn_dir_build
+  conn.use_exf true
+
+end
+
+#mpc name is name component + '_ami4ccm_conn' for a corba4ccm connector
+#project_name prefix is name component
+#export name is default name component
+#shared name prefix libs is default name component + "_ami4ccm_conn", shared name only for executor,
+#shared name for other libs is always name component + a lib kind postfix
+#gen_dir is default 'generated_code'

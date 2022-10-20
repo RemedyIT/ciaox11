@@ -1,0 +1,158 @@
+// Generate and compile the stub libraries.
+project(*data_idl_gen) : ciaox11_idldefaults {
+  custom_only = 1
+  idlflags += \
+    -Gxhst \
+    -o build \
+    -Wb,base_export_macro=EXFTEST_DATA \
+    -Wb,base_export_include=exftest_data
+
+  IDL_Files {
+    gendir=build
+    environment.idl
+    record.idl
+    result.idl
+  }
+}
+
+project(*data_stub) : taox11_lib {
+  after += *data_idl_gen
+  sharedname = exftest_data_stub
+
+  libout = ../lib
+  libpaths += ../lib
+  includes += . build
+  dynamicflags += EXFTEST_DATA_STUB_BUILD_DLL
+
+  Source_Files {
+    build/environmentC.cpp
+    build/recordC.cpp
+    build/resultC.cpp
+  }
+
+  Header_Files {
+    build/environmentC.h
+    build/recordC.h
+    build/resultC.h
+    build/exftest_data_stub_export.h
+  }
+}
+
+project(*record_idl_gen) : ciaox11_idldefaults {
+  custom_only = 1
+  idlflags += \
+    -Gxhst \
+    -o build \
+    -Wb,base_export_macro=EXFTEST_RECORD \
+    -Wb,base_export_include=exftest_record
+
+  IDL_Files {
+    gendir=build
+    recorder.idl
+  }
+}
+
+project(*record_stub) : taox11_lib {
+  after += *record_idl_gen *data_stub
+  sharedname = exftest_record_stub
+  libs += exftest_data_stub
+
+  libout = ../lib
+  libpaths += ../lib
+  includes += . build
+  dynamicflags += EXFTEST_RECORD_STUB_BUILD_DLL
+
+  Source_Files {
+    build/recorderC.cpp
+  }
+
+  Header_Files {
+    build/recorderC.h
+    build/exftest_record_stub_export.h
+  }
+}
+
+project(*collect_idl_gen) : ciaox11_idldefaults {
+  custom_only = 1
+  idlflags += \
+    -Gxhst \
+    -o build \
+    -Wb,base_export_macro=EXFTEST_COLLECT \
+    -Wb,base_export_include=exftest_collect
+
+  IDL_Files {
+    gendir=build
+    collector.idl
+  }
+}
+
+project(*collect_stub) : taox11_lib {
+  after += *collect_idl_gen *data_stub
+  sharedname = exftest_collect_stub
+  libs += exftest_data_stub
+
+  libout = ../lib
+  libpaths += ../lib
+  includes += . build
+  dynamicflags += EXFTEST_COLLECT_STUB_BUILD_DLL
+
+  Source_Files {
+    build/collectorC.cpp
+  }
+
+  Header_Files {
+    build/collectorC.h
+    build/exftest_collect_stub_export.h
+  }
+}
+
+project(*present_idl_gen) : ciaox11_idldefaults {
+  custom_only = 1
+  idlflags += \
+    -Gxhst \
+    -o build \
+    -Wb,base_export_macro=EXFTEST_PRESENT \
+    -Wb,base_export_include=exftest_present
+
+  IDL_Files {
+    gendir=build
+    presenter.idl
+  }
+}
+
+project(*present_stub) : taox11_lib {
+  after += *present_idl_gen
+  sharedname = exftest_present_stub
+
+  libout = ../lib
+  libpaths += ../lib
+  includes += . build
+  dynamicflags += EXFTEST_PRESENT_STUB_BUILD_DLL
+
+  Source_Files {
+    build/presenterC.cpp
+  }
+
+  Header_Files {
+    build/presenterC.h
+    build/exftest_present_stub_export.h
+  }
+}
+
+// Generate common (empty) skeleton includes
+project(*data_skel_gen) : ciaox11_idldefaults {
+  custom_only = 1
+
+  idlflags += \
+      -o build \
+      -Scc -Sch -Scp
+  idlflags -= \
+      -Ssh
+
+  IDL_Files {
+    gendir=build
+    environment.idl
+    record.idl
+    result.idl
+  }
+}

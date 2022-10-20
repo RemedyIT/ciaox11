@@ -1,0 +1,15 @@
+// --------------------------------------------------------------------
+// ciaox11_exf.mpb
+//
+// Author: Martin Corino
+//
+// Copyright (c) Remedy IT Expertise BV
+// Chamber of commerce Rotterdam nr.276339, The Netherlands
+// --------------------------------------------------------------------
+
+feature(exf4ccm) {
+}
+
+feature(!exf4ccm) {
+  requires += dummy_label
+}
