@@ -21,6 +21,7 @@
 #include <vector>
 #include <map>
 #include <set>
+#include <random>
 //@@{__RIDL_REGEN_MARKER__} - END : aggregator_impl.h[user_includes]
 
 //@@{__RIDL_REGEN_MARKER__} - BEGIN : aggregator_impl.h[user_global_decl]
@@ -149,7 +150,9 @@ namespace App_Aggregator_Impl
     TLocationSet &locations_;
     TEnvironmentMap& env_history_;
     TRecordMap& record_history_;
-    uint32_t delay_;
+    bool delay_ {};
+    std::default_random_engine dre_;
+    std::uniform_int_distribution<uint32_t> uniform_dist_;
     //@@{__RIDL_REGEN_MARKER__} - END : App_Aggregator_Impl::do_collector_exec_i[user_members]
     //@}
 

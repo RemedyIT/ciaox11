@@ -100,16 +100,18 @@ namespace App_Aggregator_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : App_Aggregator_Impl::do_collector_exec_i[ctor]
   do_collector_exec_i::do_collector_exec_i (
-      IDL::traits< ::App::CCM_Aggregator_Context>::ref_type context,
-      TLocationSet& locations,
-      TEnvironmentMap& env_hist,
-      TRecordMap& record_hist,
-      uint32_t delay)
-      : context_ (std::move(context))
-      , locations_ (locations)
-      , env_history_ (env_hist)
-      , record_history_ (record_hist)
-      , delay_ (delay)
+    IDL::traits< ::App::CCM_Aggregator_Context>::ref_type context,
+	TLocationSet& locations,
+	TEnvironmentMap& env_hist,
+	TRecordMap& record_hist,
+	uint32_t delay)
+	: context_ (std::move(context))
+	, locations_ (locations)
+	, env_history_ (env_hist)
+	, record_history_ (record_hist)
+	, delay_ (delay > 0)
+	, dre_ (std::random_device ()())
+	, uniform_dist_ (delay / 10, delay)
   {
   }
   //@@{__RIDL_REGEN_MARKER__} - END : App_Aggregator_Impl::do_collector_exec_i[ctor]
@@ -141,8 +143,11 @@ namespace App_Aggregator_Impl
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : App_Aggregator_Impl::do_collector_exec_i::get_result[_result_data]
     CIAOX11_TEST_DEBUG << "do_collector_exec_i::get_result" << std::endl;
     if (this->delay_)
-      // simulate more lengthy aggregation
-      std::this_thread::sleep_for (std::chrono::milliseconds (this->delay_));
+    {
+      // simulate more lengthy aggregation (variable)
+      uint32_t cur_delay = this->uniform_dist_ (this->dre_);
+      std::this_thread::sleep_for (std::chrono::milliseconds (cur_delay));
+    }
 
     for (const std::string& loc : this->locations_)
     {
@@ -209,6 +214,8 @@ namespace App_Aggregator_Impl
   void Aggregator_exec_i::ccm_activate ()
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : App_Aggregator_Impl::Aggregator_exec_i[ccm_activate]
+	CIAOX11_TEST_INFO << "App::Aggregator(" << this << "): record_delay=" << this->record_delay_
+											<< ", collect_delay=" << (this->collect_delay_/10) << "-" << this->collect_delay_ << std::endl;
     CIAOX11_TEST_INFO << "App::Aggregator(" << this << "): activated component." << std::endl;
     //@@{__RIDL_REGEN_MARKER__} - END : App_Aggregator_Impl::Aggregator_exec_i[ccm_activate]
   }
