@@ -223,15 +223,6 @@ namespace App_Aggregator_Impl
   void Aggregator_exec_i::ccm_passivate ()
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : App_Aggregator_Impl::Aggregator_exec_i[ccm_passivate]
-    if (this->get_do_recorder ())
-    {
-      IDL::traits<do_recorder_exec_i>::ref_type recorder_exec =
-          IDL::traits<do_recorder_exec_i>::narrow (this->do_recorder_);
-      CIAOX11_TEST_INFO << "App::Aggregator(" << this << "): "
-                        << "captured " << recorder_exec->environment_count () << " Environment messages"
-                        << " and " << recorder_exec->record_count () << " Record messages" << std::endl;
-
-    }
     CIAOX11_TEST_INFO << "App::Aggregator(" << this << "): passivated component." << std::endl;
     //@@{__RIDL_REGEN_MARKER__} - END : App_Aggregator_Impl::Aggregator_exec_i[ccm_passivate]
   }
@@ -239,7 +230,15 @@ namespace App_Aggregator_Impl
   void Aggregator_exec_i::ccm_remove ()
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : App_Aggregator_Impl::Aggregator_exec_i[ccm_remove]
-    // Your code here
+	if (this->get_do_recorder ())
+	{
+	  IDL::traits<do_recorder_exec_i>::ref_type recorder_exec =
+		  IDL::traits<do_recorder_exec_i>::narrow (this->do_recorder_);
+	  CIAOX11_TEST_INFO << "App::Aggregator(" << this << "): "
+						<< "captured " << recorder_exec->environment_count () << " Environment messages"
+						<< " and " << recorder_exec->record_count () << " Record messages" << std::endl;
+
+	}
     //@@{__RIDL_REGEN_MARKER__} - END : App_Aggregator_Impl::Aggregator_exec_i[ccm_remove]
   }
 

@@ -48,12 +48,16 @@ namespace App_Generator_Impl
     void passivate ()
     { this->passivated_ = true; }
 
+    uint32_t message_count () const
+    { return this->message_count_; }
+
   private:
     std::string location_;
     bool passivated_ {};
     IDL::traits< ::App::CCM_Generator_Context>::ref_type context_;
     std::default_random_engine dre_;
     std::uniform_int_distribution<int> uniform_dist_;
+    uint32_t message_count_ {};
   };
 
   void
@@ -84,6 +88,7 @@ namespace App_Generator_Impl
     try
     {
       this->context_->get_connection_my_recorder ()->submit_record_data (data);
+      this->message_count_++;
     }
     catch (const CORBA::TRANSIENT&)
     {
@@ -159,7 +164,9 @@ namespace App_Generator_Impl
     {
       this->tm_gen_->cancel ();
 
-      CIAOX11_TEST_INFO << "App::Generator(" << this->location_ << "): " << this->tm_gen_->rounds () << " messages sent" << std::endl;
+      CIAOX11_TEST_INFO << "App::Generator(" << this->location_ << "): "
+    		  	  	    << IDL::traits<TT_Generator>::narrow (this->th_gen_)->message_count ()
+						<< " messages sent" << std::endl;
     }
 
     CIAOX11_TEST_INFO << "App::Generator(" << this->location_ << "): passivated component." << std::endl;
