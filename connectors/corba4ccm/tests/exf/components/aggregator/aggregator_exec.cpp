@@ -69,10 +69,11 @@ namespace App_Aggregator_Impl
       const ::Data::Environment& envdata)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : App_Aggregator_Impl::do_recorder_exec_i::submit_environment_data[_envdata]
-    CIAOX11_TEST_DEBUG << "do_recorder_exec_i::submit_environment_data" << std::endl;
+    CIAOX11_TEST_DEBUG << "> do_recorder_exec_i::submit_environment_data" << std::endl;
     this->locations_.insert (envdata.location ());
     this->env_history_[envdata.location ()].push_back (envdata);
     this->env_count_++;
+    CIAOX11_TEST_DEBUG << "< do_recorder_exec_i::submit_environment_data" << std::endl;
     //@@{__RIDL_REGEN_MARKER__} - END : App_Aggregator_Impl::do_recorder_exec_i::submit_environment_data[_envdata]
   }
 
@@ -81,7 +82,7 @@ namespace App_Aggregator_Impl
       const ::Data::Record& recdata)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : App_Aggregator_Impl::do_recorder_exec_i::submit_record_data[_recdata]
-    CIAOX11_TEST_DEBUG << "do_recorder_exec_i::submit_record_data" << std::endl;
+    CIAOX11_TEST_DEBUG << "> do_recorder_exec_i::submit_record_data" << std::endl;
     this->locations_.insert (recdata.location ());
     this->record_history_[recdata.location ()].push_back (recdata);
     this->record_count_++;
@@ -91,6 +92,7 @@ namespace App_Aggregator_Impl
       CIAOX11_TEST_DEBUG << "do_recorder_exec_i::submit_record_data - delay=" << this->delay_  << std::endl;
       std::this_thread::sleep_for (std::chrono::milliseconds (this->delay_));
     }
+    CIAOX11_TEST_DEBUG << "< do_recorder_exec_i::submit_record_data" << std::endl;
 
     //@@{__RIDL_REGEN_MARKER__} - END : App_Aggregator_Impl::do_recorder_exec_i::submit_record_data[_recdata]
   }
@@ -141,7 +143,7 @@ namespace App_Aggregator_Impl
       ::Data::ResultList& result_data)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : App_Aggregator_Impl::do_collector_exec_i::get_result[_result_data]
-    CIAOX11_TEST_DEBUG << "do_collector_exec_i::get_result" << std::endl;
+    CIAOX11_TEST_DEBUG << "> do_collector_exec_i::get_result" << std::endl;
     if (this->delay_)
     {
       // simulate more lengthy aggregation (variable)
@@ -174,6 +176,7 @@ namespace App_Aggregator_Impl
     this->locations_.clear ();
     this->env_history_.clear ();
     this->record_history_.clear ();
+    CIAOX11_TEST_DEBUG << "< do_collector_exec_i::get_result" << std::endl;
     //@@{__RIDL_REGEN_MARKER__} - END : App_Aggregator_Impl::do_collector_exec_i::get_result[_result_data]
   }
 

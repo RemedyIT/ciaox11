@@ -60,7 +60,7 @@ namespace App_Analyzer_Impl
       const ::CCM_TT::TT_Duration& time,
       uint32_t round)
   {
-    CIAOX11_TEST_DEBUG << "TT_Analyzer::on_trigger - timer[" << timer->id ()
+    CIAOX11_TEST_DEBUG << "> TT_Analyzer::on_trigger - timer[" << timer->id ()
                        << "] @ " << time.sec () << "."
                        << std::right << std::setfill('0') << std::setw(9)
                        << time.nanosec ()
@@ -141,6 +141,11 @@ namespace App_Analyzer_Impl
     {
       CIAOX11_TEST_ERROR << "App::Analyzer: caught exception from present_info [" << ex << "]" << std::endl;
     }
+    CIAOX11_TEST_DEBUG << "< TT_Analyzer::on_trigger - timer[" << timer->id ()
+                       << "] @ " << time.sec () << "."
+                       << std::right << std::setfill('0') << std::setw(9)
+                       << time.nanosec ()
+                       << " #" << round << std::endl;
   }
   //@@{__RIDL_REGEN_MARKER__} - END : App_Analyzer_Impl[user_namespace_impl]
 
