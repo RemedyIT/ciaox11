@@ -4,8 +4,8 @@
  xmlns:xmi="http://www.omg.org/XMI"
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:schemaLocation="http://www.omg.org/Deployment Deployment.xsd">
-  <label>ExF Plan ExF And Non-ExF Container</label>
-  <UUID>ExF_Plan_ExF_And_Non_ExF_Container</UUID>
+  <label>ExF Plan Colocated</label>
+  <UUID>ExF_Plan_Colocated</UUID>
 	
   <!-- 
    #=====================================================
@@ -24,22 +24,6 @@
         </type>
         <value>
           <string>nl.remedy.it.DnCX11.LocalityManager</string>
-        </value>
-      </value>
-    </execParameter>
-  </implementation>
-
-  <implementation xmi:id="TestContainer">
-    <name>TestContainer</name>
-    <source />
-    <execParameter>
-      <name>nl.remedy.it.DnCX11.ImplementationType</name>
-      <value>
-        <type>
-          <kind>tk_string</kind>
-        </type>
-        <value>
-          <string>nl.remedy.it.CCM.Container</string>
         </value>
       </value>
     </execParameter>
@@ -89,6 +73,55 @@
         </type>
         <value>
           <string>ciaox11_tt4ccm_conn</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+  
+  <implementation xmi:id="TestExFTTProvider">
+    <name>TestExFTTProvider</name>
+    <source/>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_CIAOX11_TT_TimedTrigger_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>ciaox11_tt4ccm_exf_conn</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_CIAOX11_TT_TimedTrigger_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>ciaox11_tt4ccm_exf_conn</string>
         </value>
       </value>
     </execParameter>
@@ -334,104 +367,6 @@
         </type>
         <value>
           <string>exftest_aggregator_svnt</string>
-        </value>
-      </value>
-    </execParameter>
-  </implementation>
-  
-  <implementation xmi:id="API_CollectorConnector">
-    <name>API_CollectorConnector</name>
-    <source/>
-    <execParameter>
-      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
-      <value>
-        <type>
-          <kind>tk_string</kind>
-        </type>
-        <value>
-          <string>create_API_Collector_SRR_CORBA_Connector_Impl</string>
-        </value>
-      </value>
-    </execParameter>
-    <execParameter>
-      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
-      <value>
-        <type>
-          <kind>tk_string</kind>
-        </type>
-        <value>
-          <string>collector_conn</string>
-        </value>
-      </value>
-    </execParameter>
-    <execParameter>
-      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
-      <value>
-        <type>
-          <kind>tk_string</kind>
-        </type>
-        <value>
-          <string>create_API_Collector_SRR_CORBA_Connector_Servant</string>
-        </value>
-      </value>
-    </execParameter>
-    <execParameter>
-      <name>nl.remedy.it.DnCX11.Servant.Artifact</name>
-      <value>
-        <type>
-          <kind>tk_string</kind>
-        </type>
-        <value>
-          <string>collector_conn</string>
-        </value>
-      </value>
-    </execParameter>
-  </implementation>
-  
-  <implementation xmi:id="API_ExFCollectorConnector">
-    <name>API_ExFCollectorConnector</name>
-    <source/>
-    <execParameter>
-      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
-      <value>
-        <type>
-          <kind>tk_string</kind>
-        </type>
-        <value>
-          <string>create_API_Collector_SRR_CORBA_Connector_Impl</string>
-        </value>
-      </value>
-    </execParameter>
-    <execParameter>
-      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
-      <value>
-        <type>
-          <kind>tk_string</kind>
-        </type>
-        <value>
-          <string>collector_exfconn</string>
-        </value>
-      </value>
-    </execParameter>
-    <execParameter>
-      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
-      <value>
-        <type>
-          <kind>tk_string</kind>
-        </type>
-        <value>
-          <string>create_API_Collector_SRR_CORBA_Connector_Servant</string>
-        </value>
-      </value>
-    </execParameter>
-    <execParameter>
-      <name>nl.remedy.it.DnCX11.Servant.Artifact</name>
-      <value>
-        <type>
-          <kind>tk_string</kind>
-        </type>
-        <value>
-          <string>collector_exfconn</string>
         </value>
       </value>
     </execParameter>
@@ -756,29 +691,22 @@
     </configProperty>
   </instance>
 
-  <instance xmi:id="NonExfContainerInst">
-    <name>NonExfContainerInst</name>
-    <node>ProcessorNode</node>
-    <source />
-    <implementation xmi:idref="TestContainer" />
-    <configProperty>
-      <name>nl.remedy.it.Axcioma.ExF.Scheduler.CREATE</name>
-      <value>
-        <type>
-          <kind>tk_boolean</kind>
-        </type>
-        <value>
-          <boolean>false</boolean>
-        </value>
-      </value>
-    </configProperty>
-  </instance>
-
   <instance xmi:id="App_AggregatorComponentInst">
     <name>App_AggregatorComponentInst</name>
     <node>ProcessorNode</node>
     <source/>
     <implementation xmi:idref="App_AggregatorComponent"/>
+    <configProperty>
+      <name>nl.remedy.it.Axcioma.ExF.SchedulingLane.Dispatch.Policy</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>EXCLUSIVE</string>
+        </value>
+      </value>
+    </configProperty>
   </instance>
 
   <instance xmi:id="API_AggregatorRecorderConnectorInst">
@@ -788,47 +716,19 @@
     <implementation xmi:idref="API_ExFRecorderConnector"/>
   </instance>
 
-  <instance xmi:id="API_AggregatorCollectorConnectorInst">
-    <name>API_AggregatorCollectorConnectorInst</name>
-    <node>ProcessorNode</node>
-    <source/>
-    <implementation xmi:idref="API_ExFCollectorConnector"/>
-  </instance>
-
+  <!-- 
+   # In this case we directly connect to the Aggregator(s) as we're using a non-exclusive, single threaded 
+   # scheduling lane (default) in this locality/container and using (ExF) connectors can likely cause deadlocks 
+   # in this colocated context (as the Analyzer is holding the ExF thread and will wait for any request to the
+   # Aggregator to return which it cannot as the Aggregator needs the very thread the Analyzer is holding).
+   # NOTE: using this setup the Aggregator will service any request from the Analyzer in the same thread
+   #       context as the Analyzer is executing in.
+   -->
   <instance xmi:id="App_AnalyzerComponentInst">
     <name>App_AnalyzerComponentInst</name>
     <node>ProcessorNode</node>
     <source/>
     <implementation xmi:idref="App_AnalyzerComponent"/>
-    <configProperty>
-      <name>nl.remedy.it.CIAOX11.ContainerId</name>
-      <value>
-        <type>
-          <kind>tk_string</kind>
-        </type>
-        <value>
-          <string>NonExfContainerInst</string>
-        </value>
-      </value>
-    </configProperty>
-  </instance>
-
-  <instance xmi:id="API_AnalyzerCollectorConnectorInst">
-    <name>API_AnalyzerCollectorConnectorInst</name>
-    <node>ProcessorNode</node>
-    <source/>
-    <implementation xmi:idref="API_CollectorConnector"/>
-    <configProperty>
-      <name>nl.remedy.it.CIAOX11.ContainerId</name>
-      <value>
-        <type>
-          <kind>tk_string</kind>
-        </type>
-        <value>
-          <string>NonExfContainerInst</string>
-        </value>
-      </value>
-    </configProperty>
   </instance>
 
   <instance xmi:id="API_AnalyzerPresenterConnectorInst">
@@ -836,35 +736,13 @@
     <node>ProcessorNode</node>
     <source/>
     <implementation xmi:idref="API_PresenterConnector"/>
-    <configProperty>
-      <name>nl.remedy.it.CIAOX11.ContainerId</name>
-      <value>
-        <type>
-          <kind>tk_string</kind>
-        </type>
-        <value>
-          <string>NonExfContainerInst</string>
-        </value>
-      </value>
-    </configProperty>
   </instance>
 
   <instance xmi:id="AnalyzerTTProviderInst">
     <name>AnalyzerTTProviderInst</name>
     <node>ProcessorNode</node>
     <source/>
-    <implementation xmi:idref="TestTTProvider"/>
-    <configProperty>
-      <name>nl.remedy.it.CIAOX11.ContainerId</name>
-      <value>
-        <type>
-          <kind>tk_string</kind>
-        </type>
-        <value>
-          <string>NonExfContainerInst</string>
-        </value>
-      </value>
-    </configProperty>
+    <implementation xmi:idref="TestExFTTProvider"/>
   </instance>
 	
   <!-- 
@@ -1087,24 +965,11 @@
     </internalEndpoint>
   </connection>
 
+  <!--
+   # Directly connect the Analyzer to an Aggregator 
+   -->
   <connection>
-    <name>aggregator_collector_connection</name>
-    <internalEndpoint>
-      <portName>srr_receptacle</portName>
-      <provider>false</provider>
-      <kind>SimplexReceptacle</kind>
-      <instance xmi:idref="API_AggregatorCollectorConnectorInst" />
-    </internalEndpoint>
-    <internalEndpoint>
-      <portName>do_collector</portName>
-      <provider>true</provider>
-      <kind>Facet</kind>
-      <instance xmi:idref="App_AggregatorComponentInst" />
-    </internalEndpoint>
-  </connection>
-
-  <connection>
-    <name>analyzer_collector_connection</name>
+    <name>analyzer_aggregator_connection</name>
     <internalEndpoint>
       <portName>my_collectors</portName>
       <provider>false</provider>
@@ -1112,26 +977,10 @@
       <instance xmi:idref="App_AnalyzerComponentInst" />
     </internalEndpoint>
     <internalEndpoint>
-      <portName>srr_facet</portName>
+      <portName>do_collector</portName>
       <provider>true</provider>
       <kind>Facet</kind>
-      <instance xmi:idref="API_AnalyzerCollectorConnectorInst" />
-    </internalEndpoint>
-  </connection>
-
-  <connection>
-    <name>analyzer_aggregator_collector_connection</name>
-    <internalEndpoint>
-      <portName>srr_receptacle</portName>
-      <provider>false</provider>
-      <kind>SimplexReceptacle</kind>
-      <instance xmi:idref="API_AnalyzerCollectorConnectorInst" />
-    </internalEndpoint>
-    <internalEndpoint>
-      <portName>srr_facet</portName>
-      <provider>true</provider>
-      <kind>Facet</kind>
-      <instance xmi:idref="API_AggregatorCollectorConnectorInst" />
+      <instance xmi:idref="App_AggregatorComponentInst" />
     </internalEndpoint>
   </connection>
 
@@ -1200,18 +1049,15 @@
   </connection>
 
   <!--
-   # locality constraints to ensure a single locality on Processor node 
+   # locality constraints to ensure single locality on Processor node 
    -->
 
   <localityConstraint>
     <constraint>SameProcess</constraint>
     <constrainedInstance xmi:idref="AggregatorLocalityInst"/>
-    <constrainedInstance xmi:idref="NonExfContainerInst"/>
     <constrainedInstance xmi:idref="App_AggregatorComponentInst"/>
     <constrainedInstance xmi:idref="API_AggregatorRecorderConnectorInst"/>
-    <constrainedInstance xmi:idref="API_AggregatorCollectorConnectorInst"/>
     <constrainedInstance xmi:idref="App_AnalyzerComponentInst"/>
-    <constrainedInstance xmi:idref="API_AnalyzerCollectorConnectorInst"/>
     <constrainedInstance xmi:idref="API_AnalyzerPresenterConnectorInst"/>
     <constrainedInstance xmi:idref="AnalyzerTTProviderInst"/>
   </localityConstraint>

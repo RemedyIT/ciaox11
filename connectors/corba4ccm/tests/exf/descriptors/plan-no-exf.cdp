@@ -4,8 +4,8 @@
  xmlns:xmi="http://www.omg.org/XMI"
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:schemaLocation="http://www.omg.org/Deployment Deployment.xsd">
-  <label>ExF Plan Deadlines And Delays</label>
-  <UUID>ExF_Plan_Deadlines_And_Delays</UUID>
+  <label>ExF Plan No ExF</label>
+  <UUID>ExF_Plan_No_Exf</UUID>
 	
   <!-- 
    #=====================================================
@@ -853,7 +853,7 @@
   </connection>
 
   <!--
-   # locality constraints to force two localities on Processor node 
+   # locality constraints to ensure two localities on Processor node 
    -->
 
   <localityConstraint>

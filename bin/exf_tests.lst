@@ -15,7 +15,26 @@ exf/connectors/dds4ccm/tests/exf/unkeyed_writer/descriptors/run_test.pl plan_ope
 exf/connectors/dds4ccm/tests/exf/unkeyed_writer/descriptors/run_test.pl plan_ndds.cdp: DDS4CCM_EVENT EXF4CCM NDDS
 exf/connectors/dds4ccm/tests/exf/unkeyed_writer/descriptors/run_test.pl plan_opendds.cdp: DDS4CCM_EVENT EXF4CCM OPENDDS
 exf/connectors/ami4ccm/tests/exf/hello_simple/descriptors/run_test.pl : AMI4CCM CORBA4CCM EXF4CCM
-exf/connectors/corba4ccm/tests/exf/descriptors/run_test.pl: CORBA4CCM EXF4CCM
+exf/connectors/corba4ccm/tests/exf/descriptors/run_test.pl plan.config: CORBA4CCM EXF4CCM
+exf/connectors/corba4ccm/tests/exf/descriptors/run_test.pl plan-no-exf.config: CORBA4CCM EXF4CCM
+exf/connectors/corba4ccm/tests/exf/descriptors/run_test.pl plan-full-exf.config: CORBA4CCM EXF4CCM
+exf/connectors/corba4ccm/tests/exf/descriptors/run_test.pl plan-exf-and-non-exf-container.config: CORBA4CCM EXF4CCM
+exf/connectors/corba4ccm/tests/exf/descriptors/run_test.pl plan-deadines-and-delays.config: CORBA4CCM EXF4CCM
+exf/connectors/corba4ccm/tests/exf/descriptors/run_test.pl plan-coloc-mt-lane.config: CORBA4CCM EXF4CCM
+exf/connectors/corba4ccm/tests/exf/descriptors/run_test.pl plan-coloc-exclusive-lane.config: CORBA4CCM EXF4CCM
+exf/connectors/corba4ccm/tests/exf/descriptors/run_test.pl plan-coloc-dynmt-lane.config: CORBA4CCM EXF4CCM
+exf/connectors/corba4ccm/tests/exf/descriptors/run_test.pl plan-colocated.config: CORBA4CCM EXF4CCM
+exf/connectors/corba4ccm/tests/exf/descriptors/run_test.pl plan-2-aggregators.config: CORBA4CCM EXF4CCM
+exf/connectors/corba4ccm/tests/exf/descriptors/run_test.pl plan.cdp: CORBA4CCM EXF4CCM
+exf/connectors/corba4ccm/tests/exf/descriptors/run_test.pl plan-no-exf.cdp: CORBA4CCM EXF4CCM
+exf/connectors/corba4ccm/tests/exf/descriptors/run_test.pl plan-full-exf.cdp: CORBA4CCM EXF4CCM
+exf/connectors/corba4ccm/tests/exf/descriptors/run_test.pl plan-exf-and-non-exf-container.cdp: CORBA4CCM EXF4CCM
+exf/connectors/corba4ccm/tests/exf/descriptors/run_test.pl plan-deadines-and-delays.cdp: CORBA4CCM EXF4CCM
+exf/connectors/corba4ccm/tests/exf/descriptors/run_test.pl plan-coloc-mt-lane.cdp: CORBA4CCM EXF4CCM
+exf/connectors/corba4ccm/tests/exf/descriptors/run_test.pl plan-coloc-exclusive-lane.cdp: CORBA4CCM EXF4CCM
+exf/connectors/corba4ccm/tests/exf/descriptors/run_test.pl plan-coloc-dynmt-lane.cdp: CORBA4CCM EXF4CCM
+exf/connectors/corba4ccm/tests/exf/descriptors/run_test.pl plan-colocated.cdp: CORBA4CCM EXF4CCM
+exf/connectors/corba4ccm/tests/exf/descriptors/run_test.pl plan-2-aggregators.cdp: CORBA4CCM EXF4CCM
 exf/connectors/tt4ccm/tests/exf/descriptors/run_test.pl: EXF4CCM
 exf/connectors/tt4ccm/tests/exf_reactor_combi/descriptors/run_test.pl: EXF4CCM
 exf/connectors/psdd4ccm/examples/hello/descriptors/run_test.pl plan_exf_mqtt_read.config: PSDD4CCM PSDD4CCM_MQTT EXF4CCM

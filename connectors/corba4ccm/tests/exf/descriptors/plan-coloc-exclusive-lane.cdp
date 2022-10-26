@@ -4,8 +4,8 @@
  xmlns:xmi="http://www.omg.org/XMI"
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:schemaLocation="http://www.omg.org/Deployment Deployment.xsd">
-  <label>ExF Plan ExF And Non-ExF Container</label>
-  <UUID>ExF_Plan_ExF_And_Non_ExF_Container</UUID>
+  <label>ExF Plan Coloc Exclusive Lane</label>
+  <UUID>ExF_Plan_Coloc_Exclusive_Lane</UUID>
 	
   <!-- 
    #=====================================================
@@ -24,22 +24,6 @@
         </type>
         <value>
           <string>nl.remedy.it.DnCX11.LocalityManager</string>
-        </value>
-      </value>
-    </execParameter>
-  </implementation>
-
-  <implementation xmi:id="TestContainer">
-    <name>TestContainer</name>
-    <source />
-    <execParameter>
-      <name>nl.remedy.it.DnCX11.ImplementationType</name>
-      <value>
-        <type>
-          <kind>tk_string</kind>
-        </type>
-        <value>
-          <string>nl.remedy.it.CCM.Container</string>
         </value>
       </value>
     </execParameter>
@@ -89,6 +73,55 @@
         </type>
         <value>
           <string>ciaox11_tt4ccm_conn</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+  
+  <implementation xmi:id="TestExFTTProvider">
+    <name>TestExFTTProvider</name>
+    <source/>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_CIAOX11_TT_TimedTrigger_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>ciaox11_tt4ccm_exf_conn</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_CIAOX11_TT_TimedTrigger_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>ciaox11_tt4ccm_exf_conn</string>
         </value>
       </value>
     </execParameter>
@@ -756,29 +789,22 @@
     </configProperty>
   </instance>
 
-  <instance xmi:id="NonExfContainerInst">
-    <name>NonExfContainerInst</name>
-    <node>ProcessorNode</node>
-    <source />
-    <implementation xmi:idref="TestContainer" />
-    <configProperty>
-      <name>nl.remedy.it.Axcioma.ExF.Scheduler.CREATE</name>
-      <value>
-        <type>
-          <kind>tk_boolean</kind>
-        </type>
-        <value>
-          <boolean>false</boolean>
-        </value>
-      </value>
-    </configProperty>
-  </instance>
-
   <instance xmi:id="App_AggregatorComponentInst">
     <name>App_AggregatorComponentInst</name>
     <node>ProcessorNode</node>
     <source/>
     <implementation xmi:idref="App_AggregatorComponent"/>
+    <configProperty>
+      <name>nl.remedy.it.Axcioma.ExF.SchedulingLane.Dispatch.Policy</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>EXCLUSIVE</string>
+        </value>
+      </value>
+    </configProperty>
   </instance>
 
   <instance xmi:id="API_AggregatorRecorderConnectorInst">
@@ -795,40 +821,26 @@
     <implementation xmi:idref="API_ExFCollectorConnector"/>
   </instance>
 
+  <!-- 
+   # This is another possibility to connect Aggregator(s) over ExF lanes in this colocated case as we're using an exclusive 
+   # scheduling lane for the Aggregator component separate from the default lane used by the Analyzer. As each lane manages
+   # one or more threads this allows an Aggregator request received from a waiting Analyzer to be processed on a different 
+   # thread avoiding deadlocks.
+   # This setup has more overhead than the direct colocated connections and the multi threaded lane option but allows for even 
+   # more flexibility in the implementation of the Aggregator component.  
+   -->
   <instance xmi:id="App_AnalyzerComponentInst">
     <name>App_AnalyzerComponentInst</name>
     <node>ProcessorNode</node>
     <source/>
     <implementation xmi:idref="App_AnalyzerComponent"/>
-    <configProperty>
-      <name>nl.remedy.it.CIAOX11.ContainerId</name>
-      <value>
-        <type>
-          <kind>tk_string</kind>
-        </type>
-        <value>
-          <string>NonExfContainerInst</string>
-        </value>
-      </value>
-    </configProperty>
   </instance>
 
   <instance xmi:id="API_AnalyzerCollectorConnectorInst">
     <name>API_AnalyzerCollectorConnectorInst</name>
     <node>ProcessorNode</node>
     <source/>
-    <implementation xmi:idref="API_CollectorConnector"/>
-    <configProperty>
-      <name>nl.remedy.it.CIAOX11.ContainerId</name>
-      <value>
-        <type>
-          <kind>tk_string</kind>
-        </type>
-        <value>
-          <string>NonExfContainerInst</string>
-        </value>
-      </value>
-    </configProperty>
+    <implementation xmi:idref="API_ExFCollectorConnector"/>
   </instance>
 
   <instance xmi:id="API_AnalyzerPresenterConnectorInst">
@@ -836,35 +848,13 @@
     <node>ProcessorNode</node>
     <source/>
     <implementation xmi:idref="API_PresenterConnector"/>
-    <configProperty>
-      <name>nl.remedy.it.CIAOX11.ContainerId</name>
-      <value>
-        <type>
-          <kind>tk_string</kind>
-        </type>
-        <value>
-          <string>NonExfContainerInst</string>
-        </value>
-      </value>
-    </configProperty>
   </instance>
 
   <instance xmi:id="AnalyzerTTProviderInst">
     <name>AnalyzerTTProviderInst</name>
     <node>ProcessorNode</node>
     <source/>
-    <implementation xmi:idref="TestTTProvider"/>
-    <configProperty>
-      <name>nl.remedy.it.CIAOX11.ContainerId</name>
-      <value>
-        <type>
-          <kind>tk_string</kind>
-        </type>
-        <value>
-          <string>NonExfContainerInst</string>
-        </value>
-      </value>
-    </configProperty>
+    <implementation xmi:idref="TestExFTTProvider"/>
   </instance>
 	
   <!-- 
@@ -1200,13 +1190,12 @@
   </connection>
 
   <!--
-   # locality constraints to ensure a single locality on Processor node 
+   # locality constraints to ensure single locality on Processor node 
    -->
 
   <localityConstraint>
     <constraint>SameProcess</constraint>
     <constrainedInstance xmi:idref="AggregatorLocalityInst"/>
-    <constrainedInstance xmi:idref="NonExfContainerInst"/>
     <constrainedInstance xmi:idref="App_AggregatorComponentInst"/>
     <constrainedInstance xmi:idref="API_AggregatorRecorderConnectorInst"/>
     <constrainedInstance xmi:idref="API_AggregatorCollectorConnectorInst"/>

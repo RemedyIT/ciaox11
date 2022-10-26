@@ -4,8 +4,8 @@
  xmlns:xmi="http://www.omg.org/XMI"
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:schemaLocation="http://www.omg.org/Deployment Deployment.xsd">
-  <label>ExF Plan ExF And Non-ExF Container</label>
-  <UUID>ExF_Plan_ExF_And_Non_ExF_Container</UUID>
+  <label>ExF Plan 2 Aggregators</label>
+  <UUID>ExF_Plan_2_Aggregators</UUID>
 	
   <!-- 
    #=====================================================
@@ -24,22 +24,6 @@
         </type>
         <value>
           <string>nl.remedy.it.DnCX11.LocalityManager</string>
-        </value>
-      </value>
-    </execParameter>
-  </implementation>
-
-  <implementation xmi:id="TestContainer">
-    <name>TestContainer</name>
-    <source />
-    <execParameter>
-      <name>nl.remedy.it.DnCX11.ImplementationType</name>
-      <value>
-        <type>
-          <kind>tk_string</kind>
-        </type>
-        <value>
-          <string>nl.remedy.it.CCM.Container</string>
         </value>
       </value>
     </execParameter>
@@ -682,8 +666,15 @@
     </configProperty>
   </instance>
 
-  <instance xmi:id="API_GeneratorRecorderConnectorInst">
-    <name>API_GeneratorRecorderConnectorInst</name>
+  <instance xmi:id="API_GeneratorRecorderConnectorInst1">
+    <name>API_GeneratorRecorderConnectorInst1</name>
+    <node>GeneratorNode</node>
+    <source/>
+    <implementation xmi:idref="API_RecorderConnector"/>
+  </instance>
+
+  <instance xmi:id="API_GeneratorRecorderConnectorInst2">
+    <name>API_GeneratorRecorderConnectorInst2</name>
     <node>GeneratorNode</node>
     <source/>
     <implementation xmi:idref="API_RecorderConnector"/>
@@ -725,8 +716,15 @@
     </configProperty>
   </instance>
 
-  <instance xmi:id="API_MonitorRecorderConnectorInst">
-    <name>API_MonitorRecorderConnectorInst</name>
+  <instance xmi:id="API_MonitorRecorderConnectorInst1">
+    <name>API_MonitorRecorderConnectorInst1</name>
+    <node>GeneratorNode</node>
+    <source/>
+    <implementation xmi:idref="API_RecorderConnector"/>
+  </instance>
+
+  <instance xmi:id="API_MonitorRecorderConnectorInst2">
+    <name>API_MonitorRecorderConnectorInst2</name>
     <node>GeneratorNode</node>
     <source/>
     <implementation xmi:idref="API_RecorderConnector"/>
@@ -756,40 +754,87 @@
     </configProperty>
   </instance>
 
-  <instance xmi:id="NonExfContainerInst">
-    <name>NonExfContainerInst</name>
+  <instance xmi:id="App_AggregatorComponentInst1">
+    <name>App_AggregatorComponentInst1</name>
     <node>ProcessorNode</node>
-    <source />
-    <implementation xmi:idref="TestContainer" />
+    <source/>
+    <implementation xmi:idref="App_AggregatorComponent"/>
     <configProperty>
-      <name>nl.remedy.it.Axcioma.ExF.Scheduler.CREATE</name>
+      <name>nl.remedy.it.Axcioma.ExF.SchedulingLane.Dispatch.Policy</name>
       <value>
         <type>
-          <kind>tk_boolean</kind>
+          <kind>tk_string</kind>
         </type>
         <value>
-          <boolean>false</boolean>
+          <string>GROUPED</string>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>nl.remedy.it.Axcioma.ExF.SchedulingLane.Group</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Aggregators</string>
         </value>
       </value>
     </configProperty>
   </instance>
 
-  <instance xmi:id="App_AggregatorComponentInst">
-    <name>App_AggregatorComponentInst</name>
-    <node>ProcessorNode</node>
-    <source/>
-    <implementation xmi:idref="App_AggregatorComponent"/>
-  </instance>
-
-  <instance xmi:id="API_AggregatorRecorderConnectorInst">
-    <name>API_AggregatorRecorderConnectorInst</name>
+  <instance xmi:id="API_AggregatorRecorderConnectorInst1">
+    <name>API_AggregatorRecorderConnectorInst1</name>
     <node>ProcessorNode</node>
     <source/>
     <implementation xmi:idref="API_ExFRecorderConnector"/>
   </instance>
 
-  <instance xmi:id="API_AggregatorCollectorConnectorInst">
-    <name>API_AggregatorCollectorConnectorInst</name>
+  <instance xmi:id="API_AggregatorCollectorConnectorInst1">
+    <name>API_AggregatorCollectorConnectorInst1</name>
+    <node>ProcessorNode</node>
+    <source/>
+    <implementation xmi:idref="API_ExFCollectorConnector"/>
+  </instance>
+
+  <instance xmi:id="App_AggregatorComponentInst2">
+    <name>App_AggregatorComponentInst2</name>
+    <node>ProcessorNode</node>
+    <source/>
+    <implementation xmi:idref="App_AggregatorComponent"/>
+    <configProperty>
+      <name>nl.remedy.it.Axcioma.ExF.SchedulingLane.Dispatch.Policy</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>GROUPED</string>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>nl.remedy.it.Axcioma.ExF.SchedulingLane.Group</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>Aggregators</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <instance xmi:id="API_AggregatorRecorderConnectorInst2">
+    <name>API_AggregatorRecorderConnectorInst2</name>
+    <node>ProcessorNode</node>
+    <source/>
+    <implementation xmi:idref="API_ExFRecorderConnector"/>
+  </instance>
+
+  <instance xmi:id="API_AggregatorCollectorConnectorInst2">
+    <name>API_AggregatorCollectorConnectorInst2</name>
     <node>ProcessorNode</node>
     <source/>
     <implementation xmi:idref="API_ExFCollectorConnector"/>
@@ -800,35 +845,20 @@
     <node>ProcessorNode</node>
     <source/>
     <implementation xmi:idref="App_AnalyzerComponent"/>
-    <configProperty>
-      <name>nl.remedy.it.CIAOX11.ContainerId</name>
-      <value>
-        <type>
-          <kind>tk_string</kind>
-        </type>
-        <value>
-          <string>NonExfContainerInst</string>
-        </value>
-      </value>
-    </configProperty>
   </instance>
 
-  <instance xmi:id="API_AnalyzerCollectorConnectorInst">
-    <name>API_AnalyzerCollectorConnectorInst</name>
+  <instance xmi:id="API_AnalyzerCollectorConnectorInst1">
+    <name>API_AnalyzerCollectorConnectorInst1</name>
     <node>ProcessorNode</node>
     <source/>
     <implementation xmi:idref="API_CollectorConnector"/>
-    <configProperty>
-      <name>nl.remedy.it.CIAOX11.ContainerId</name>
-      <value>
-        <type>
-          <kind>tk_string</kind>
-        </type>
-        <value>
-          <string>NonExfContainerInst</string>
-        </value>
-      </value>
-    </configProperty>
+  </instance>
+
+  <instance xmi:id="API_AnalyzerCollectorConnectorInst2">
+    <name>API_AnalyzerCollectorConnectorInst2</name>
+    <node>ProcessorNode</node>
+    <source/>
+    <implementation xmi:idref="API_CollectorConnector"/>
   </instance>
 
   <instance xmi:id="API_AnalyzerPresenterConnectorInst">
@@ -836,17 +866,6 @@
     <node>ProcessorNode</node>
     <source/>
     <implementation xmi:idref="API_PresenterConnector"/>
-    <configProperty>
-      <name>nl.remedy.it.CIAOX11.ContainerId</name>
-      <value>
-        <type>
-          <kind>tk_string</kind>
-        </type>
-        <value>
-          <string>NonExfContainerInst</string>
-        </value>
-      </value>
-    </configProperty>
   </instance>
 
   <instance xmi:id="AnalyzerTTProviderInst">
@@ -854,17 +873,6 @@
     <node>ProcessorNode</node>
     <source/>
     <implementation xmi:idref="TestTTProvider"/>
-    <configProperty>
-      <name>nl.remedy.it.CIAOX11.ContainerId</name>
-      <value>
-        <type>
-          <kind>tk_string</kind>
-        </type>
-        <value>
-          <string>NonExfContainerInst</string>
-        </value>
-      </value>
-    </configProperty>
   </instance>
 	
   <!-- 
@@ -987,7 +995,7 @@
       <portName>srr_facet</portName>
       <provider>true</provider>
       <kind>Facet</kind>
-      <instance xmi:idref="API_GeneratorRecorderConnectorInst" />
+      <instance xmi:idref="API_GeneratorRecorderConnectorInst1" />
     </internalEndpoint>
   </connection>
 
@@ -1003,7 +1011,7 @@
       <portName>srr_facet</portName>
       <provider>true</provider>
       <kind>Facet</kind>
-      <instance xmi:idref="API_GeneratorRecorderConnectorInst" />
+      <instance xmi:idref="API_GeneratorRecorderConnectorInst2" />
     </internalEndpoint>
   </connection>
 
@@ -1019,7 +1027,7 @@
       <portName>srr_facet</portName>
       <provider>true</provider>
       <kind>Facet</kind>
-      <instance xmi:idref="API_MonitorRecorderConnectorInst" />
+      <instance xmi:idref="API_MonitorRecorderConnectorInst1" />
     </internalEndpoint>
   </connection>
 
@@ -1035,76 +1043,140 @@
       <portName>srr_facet</portName>
       <provider>true</provider>
       <kind>Facet</kind>
-      <instance xmi:idref="API_MonitorRecorderConnectorInst" />
+      <instance xmi:idref="API_MonitorRecorderConnectorInst2" />
     </internalEndpoint>
   </connection>
 
   <connection>
-    <name>aggregator_recorder_connection</name>
+    <name>aggregator_recorder_connection1</name>
     <internalEndpoint>
       <portName>srr_receptacle</portName>
       <provider>false</provider>
       <kind>SimplexReceptacle</kind>
-      <instance xmi:idref="API_AggregatorRecorderConnectorInst" />
+      <instance xmi:idref="API_AggregatorRecorderConnectorInst1" />
     </internalEndpoint>
     <internalEndpoint>
       <portName>do_recorder</portName>
       <provider>true</provider>
       <kind>Facet</kind>
-      <instance xmi:idref="App_AggregatorComponentInst" />
+      <instance xmi:idref="App_AggregatorComponentInst1" />
     </internalEndpoint>
   </connection>
 
   <connection>
-    <name>aggregator_generator_recorder_connection</name>
+    <name>aggregator_generator_recorder_connection1</name>
     <internalEndpoint>
       <portName>srr_receptacle</portName>
       <provider>false</provider>
       <kind>SimplexReceptacle</kind>
-      <instance xmi:idref="API_GeneratorRecorderConnectorInst" />
+      <instance xmi:idref="API_GeneratorRecorderConnectorInst1" />
     </internalEndpoint>
     <internalEndpoint>
       <portName>srr_facet</portName>
       <provider>true</provider>
       <kind>Facet</kind>
-      <instance xmi:idref="API_AggregatorRecorderConnectorInst" />
+      <instance xmi:idref="API_AggregatorRecorderConnectorInst1" />
     </internalEndpoint>
   </connection>
 
   <connection>
-    <name>aggregator_monitor_recorder_connection</name>
+    <name>aggregator_recorder_connection2</name>
     <internalEndpoint>
       <portName>srr_receptacle</portName>
       <provider>false</provider>
       <kind>SimplexReceptacle</kind>
-      <instance xmi:idref="API_MonitorRecorderConnectorInst" />
+      <instance xmi:idref="API_AggregatorRecorderConnectorInst2" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>do_recorder</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="App_AggregatorComponentInst2" />
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>aggregator_generator_recorder_connection2</name>
+    <internalEndpoint>
+      <portName>srr_receptacle</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="API_GeneratorRecorderConnectorInst2" />
     </internalEndpoint>
     <internalEndpoint>
       <portName>srr_facet</portName>
       <provider>true</provider>
       <kind>Facet</kind>
-      <instance xmi:idref="API_AggregatorRecorderConnectorInst" />
+      <instance xmi:idref="API_AggregatorRecorderConnectorInst2" />
     </internalEndpoint>
   </connection>
 
   <connection>
-    <name>aggregator_collector_connection</name>
+    <name>aggregator_monitor_recorder_connection1</name>
     <internalEndpoint>
       <portName>srr_receptacle</portName>
       <provider>false</provider>
       <kind>SimplexReceptacle</kind>
-      <instance xmi:idref="API_AggregatorCollectorConnectorInst" />
+      <instance xmi:idref="API_MonitorRecorderConnectorInst1" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>srr_facet</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="API_AggregatorRecorderConnectorInst1" />
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>aggregator_monitor_recorder_connection2</name>
+    <internalEndpoint>
+      <portName>srr_receptacle</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="API_MonitorRecorderConnectorInst2" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>srr_facet</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="API_AggregatorRecorderConnectorInst2" />
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>aggregator_collector_connection1</name>
+    <internalEndpoint>
+      <portName>srr_receptacle</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="API_AggregatorCollectorConnectorInst1" />
     </internalEndpoint>
     <internalEndpoint>
       <portName>do_collector</portName>
       <provider>true</provider>
       <kind>Facet</kind>
-      <instance xmi:idref="App_AggregatorComponentInst" />
+      <instance xmi:idref="App_AggregatorComponentInst1" />
     </internalEndpoint>
   </connection>
 
   <connection>
-    <name>analyzer_collector_connection</name>
+    <name>aggregator_collector_connection2</name>
+    <internalEndpoint>
+      <portName>srr_receptacle</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="API_AggregatorCollectorConnectorInst2" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>do_collector</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="App_AggregatorComponentInst2" />
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>analyzer_collector_connection1</name>
     <internalEndpoint>
       <portName>my_collectors</portName>
       <provider>false</provider>
@@ -1115,23 +1187,55 @@
       <portName>srr_facet</portName>
       <provider>true</provider>
       <kind>Facet</kind>
-      <instance xmi:idref="API_AnalyzerCollectorConnectorInst" />
+      <instance xmi:idref="API_AnalyzerCollectorConnectorInst1" />
     </internalEndpoint>
   </connection>
 
   <connection>
-    <name>analyzer_aggregator_collector_connection</name>
+    <name>analyzer_collector_connection2</name>
     <internalEndpoint>
-      <portName>srr_receptacle</portName>
+      <portName>my_collectors</portName>
       <provider>false</provider>
       <kind>SimplexReceptacle</kind>
-      <instance xmi:idref="API_AnalyzerCollectorConnectorInst" />
+      <instance xmi:idref="App_AnalyzerComponentInst" />
     </internalEndpoint>
     <internalEndpoint>
       <portName>srr_facet</portName>
       <provider>true</provider>
       <kind>Facet</kind>
-      <instance xmi:idref="API_AggregatorCollectorConnectorInst" />
+      <instance xmi:idref="API_AnalyzerCollectorConnectorInst2" />
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>analyzer_aggregator_collector_connection1</name>
+    <internalEndpoint>
+      <portName>srr_receptacle</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="API_AnalyzerCollectorConnectorInst1" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>srr_facet</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="API_AggregatorCollectorConnectorInst1" />
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>analyzer_aggregator_collector_connection2</name>
+    <internalEndpoint>
+      <portName>srr_receptacle</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="API_AnalyzerCollectorConnectorInst2" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>srr_facet</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="API_AggregatorCollectorConnectorInst2" />
     </internalEndpoint>
   </connection>
 
@@ -1200,18 +1304,31 @@
   </connection>
 
   <!--
-   # locality constraints to ensure a single locality on Processor node 
+   # locality constraints to ensure two localities on Processor node 
    -->
 
   <localityConstraint>
     <constraint>SameProcess</constraint>
     <constrainedInstance xmi:idref="AggregatorLocalityInst"/>
-    <constrainedInstance xmi:idref="NonExfContainerInst"/>
-    <constrainedInstance xmi:idref="App_AggregatorComponentInst"/>
-    <constrainedInstance xmi:idref="API_AggregatorRecorderConnectorInst"/>
-    <constrainedInstance xmi:idref="API_AggregatorCollectorConnectorInst"/>
+    <constrainedInstance xmi:idref="App_AggregatorComponentInst1"/>
+    <constrainedInstance xmi:idref="API_AggregatorRecorderConnectorInst1"/>
+    <constrainedInstance xmi:idref="API_AggregatorCollectorConnectorInst1"/>
+    <constrainedInstance xmi:idref="App_AggregatorComponentInst2"/>
+    <constrainedInstance xmi:idref="API_AggregatorRecorderConnectorInst2"/>
+    <constrainedInstance xmi:idref="API_AggregatorCollectorConnectorInst2"/>
+  </localityConstraint>
+
+  <localityConstraint>
+    <constraint>DifferentProcess</constraint>
+    <constrainedInstance xmi:idref="AggregatorLocalityInst"/>
     <constrainedInstance xmi:idref="App_AnalyzerComponentInst"/>
-    <constrainedInstance xmi:idref="API_AnalyzerCollectorConnectorInst"/>
+  </localityConstraint>
+
+  <localityConstraint>
+    <constraint>SameProcess</constraint>
+    <constrainedInstance xmi:idref="App_AnalyzerComponentInst"/>
+    <constrainedInstance xmi:idref="API_AnalyzerCollectorConnectorInst1"/>
+    <constrainedInstance xmi:idref="API_AnalyzerCollectorConnectorInst2"/>
     <constrainedInstance xmi:idref="API_AnalyzerPresenterConnectorInst"/>
     <constrainedInstance xmi:idref="AnalyzerTTProviderInst"/>
   </localityConstraint>

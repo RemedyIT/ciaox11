@@ -4,8 +4,8 @@
  xmlns:xmi="http://www.omg.org/XMI"
  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
  xsi:schemaLocation="http://www.omg.org/Deployment Deployment.xsd">
-  <label>ExF Plan ExF And Non-ExF Container</label>
-  <UUID>ExF_Plan_ExF_And_Non_ExF_Container</UUID>
+  <label>ExF Plan</label>
+  <UUID>ExF_Plan</UUID>
 	
   <!-- 
    #=====================================================
@@ -24,22 +24,6 @@
         </type>
         <value>
           <string>nl.remedy.it.DnCX11.LocalityManager</string>
-        </value>
-      </value>
-    </execParameter>
-  </implementation>
-
-  <implementation xmi:id="TestContainer">
-    <name>TestContainer</name>
-    <source />
-    <execParameter>
-      <name>nl.remedy.it.DnCX11.ImplementationType</name>
-      <value>
-        <type>
-          <kind>tk_string</kind>
-        </type>
-        <value>
-          <string>nl.remedy.it.CCM.Container</string>
         </value>
       </value>
     </execParameter>
@@ -756,24 +740,6 @@
     </configProperty>
   </instance>
 
-  <instance xmi:id="NonExfContainerInst">
-    <name>NonExfContainerInst</name>
-    <node>ProcessorNode</node>
-    <source />
-    <implementation xmi:idref="TestContainer" />
-    <configProperty>
-      <name>nl.remedy.it.Axcioma.ExF.Scheduler.CREATE</name>
-      <value>
-        <type>
-          <kind>tk_boolean</kind>
-        </type>
-        <value>
-          <boolean>false</boolean>
-        </value>
-      </value>
-    </configProperty>
-  </instance>
-
   <instance xmi:id="App_AggregatorComponentInst">
     <name>App_AggregatorComponentInst</name>
     <node>ProcessorNode</node>
@@ -800,17 +766,6 @@
     <node>ProcessorNode</node>
     <source/>
     <implementation xmi:idref="App_AnalyzerComponent"/>
-    <configProperty>
-      <name>nl.remedy.it.CIAOX11.ContainerId</name>
-      <value>
-        <type>
-          <kind>tk_string</kind>
-        </type>
-        <value>
-          <string>NonExfContainerInst</string>
-        </value>
-      </value>
-    </configProperty>
   </instance>
 
   <instance xmi:id="API_AnalyzerCollectorConnectorInst">
@@ -818,17 +773,6 @@
     <node>ProcessorNode</node>
     <source/>
     <implementation xmi:idref="API_CollectorConnector"/>
-    <configProperty>
-      <name>nl.remedy.it.CIAOX11.ContainerId</name>
-      <value>
-        <type>
-          <kind>tk_string</kind>
-        </type>
-        <value>
-          <string>NonExfContainerInst</string>
-        </value>
-      </value>
-    </configProperty>
   </instance>
 
   <instance xmi:id="API_AnalyzerPresenterConnectorInst">
@@ -836,17 +780,6 @@
     <node>ProcessorNode</node>
     <source/>
     <implementation xmi:idref="API_PresenterConnector"/>
-    <configProperty>
-      <name>nl.remedy.it.CIAOX11.ContainerId</name>
-      <value>
-        <type>
-          <kind>tk_string</kind>
-        </type>
-        <value>
-          <string>NonExfContainerInst</string>
-        </value>
-      </value>
-    </configProperty>
   </instance>
 
   <instance xmi:id="AnalyzerTTProviderInst">
@@ -854,17 +787,6 @@
     <node>ProcessorNode</node>
     <source/>
     <implementation xmi:idref="TestTTProvider"/>
-    <configProperty>
-      <name>nl.remedy.it.CIAOX11.ContainerId</name>
-      <value>
-        <type>
-          <kind>tk_string</kind>
-        </type>
-        <value>
-          <string>NonExfContainerInst</string>
-        </value>
-      </value>
-    </configProperty>
   </instance>
 	
   <!-- 
@@ -1200,16 +1122,25 @@
   </connection>
 
   <!--
-   # locality constraints to ensure a single locality on Processor node 
+   # locality constraints to ensure two localities on Processor node 
    -->
 
   <localityConstraint>
     <constraint>SameProcess</constraint>
     <constrainedInstance xmi:idref="AggregatorLocalityInst"/>
-    <constrainedInstance xmi:idref="NonExfContainerInst"/>
     <constrainedInstance xmi:idref="App_AggregatorComponentInst"/>
     <constrainedInstance xmi:idref="API_AggregatorRecorderConnectorInst"/>
     <constrainedInstance xmi:idref="API_AggregatorCollectorConnectorInst"/>
+  </localityConstraint>
+
+  <localityConstraint>
+    <constraint>DifferentProcess</constraint>
+    <constrainedInstance xmi:idref="AggregatorLocalityInst"/>
+    <constrainedInstance xmi:idref="App_AnalyzerComponentInst"/>
+  </localityConstraint>
+
+  <localityConstraint>
+    <constraint>SameProcess</constraint>
     <constrainedInstance xmi:idref="App_AnalyzerComponentInst"/>
     <constrainedInstance xmi:idref="API_AnalyzerCollectorConnectorInst"/>
     <constrainedInstance xmi:idref="API_AnalyzerPresenterConnectorInst"/>
