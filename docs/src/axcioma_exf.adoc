@@ -389,3 +389,57 @@ configured.
 
 With regard to the interaction between component and connector settings the same rules apply as described for the
 ExF concurrency settings.
+
+=== Beware: there be dragons
+
+Do not be alarmed. Yes, there are potential 'dragons' but only a few and they are easily circumvented. +
+
+ExF in practice does not so much have restrictions as it has deployment configurations that "will not do".
+As in all software development combining synchronized and single threaded execution the possibility of deadlocks is
+lurking around the corner.
+In case of AXCIOMA this concerns the combination of the CORBA synchronous request-reply (SRR) interaction pattern with single
+threaded NRE ExF dispatching.
+
+Here we will describe the two most common deployment problems that should be avoided.
+
+To be clear; deadlocks are *only* a concern with CORBA SRR. It does not apply to any of the other standard interaction
+patterns as these all use asynchronous event processing.
+
+Colocated deadlocks::
+
+An ExF enabled deployment with two colocated component instances sharing a colocated CORBA SRR connection may
+run into deadlocks under certain conditions when both component instances use ExF enabled connectors and share the
+default non-exclusive single threaded scheduling lane. +
+In this case when one of the component instances was triggered by an outside (or timed triger) event executed through
+the ExF scheduling lane and as part of processing this event would send a (colocated) request to the other component
+instance this would block as the processing of the primary event holds the (single) ExF thread and there is no
+other thread available to dispatch the request to the other component instance. Since a 'normal' CORBA SRR request
+will never time out this constitutes a deadlock. +
+As serious as this sounds it is fairly easy to solve using ExF deployment options among which are:
+- configure more threads for the default non-Exclusive scheduling lane
+- configure a private, exclusive, scheduling lane for at least one of the component instances
+- change the colocated connection not to use connectors but rather connect the two component instances directly
+- use a grouped multithreaded scheduling lane for the two component instances
+- separate the two component instances into different containers of the same locality (technically this breaks the
+  colocation)
+
++
+Setting deadline timings on the colocated requests would also break the deadlocks but his seems a misuse of deadline
+monitoring. +
+Several of these options are showcased in the CORBA4CCM ExF test/example
+link:{docs_root}/../../ciaox11/exf/connectors/corba4ccm/tests/exf/descriptors/README.txt[here].
+
+Recursive deadlocks::
+
+An ExF enabled deployment with multiple remotely connected component instances using CORBA SRR connectors may also run into
+deadlocks when sending a request can result in a recursive calling sequence. +
+With this we mean the situation where component instance A sends a request to component instance B which results (as part
+of processing the request) in a request sent (directly or indirectly through a chain of synchronous requests) to component
+instance A. As that instance is still waiting (holding the ExF thread) and cannot process any other requests this
+constitutes a deadlock. +
+As with the colocated deadlocks this situation is also easily remedied. +
+First of, examine your design. Is this really what you intended? +
+If unavoidable, deadlocks can easily be avoided by changing the setup of the default non-exclusive scheduling lane
+from single threaded to multi threaded. This is a bit "using a hammer to kill a fly" but can be useful if it is not easy
+to predict the systems behaviour. Otherwise selectively using some of the solutions presented with the colocated deadlocks
+will probably also do the trick.
