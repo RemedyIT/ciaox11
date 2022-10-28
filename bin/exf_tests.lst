@@ -19,7 +19,7 @@ exf/connectors/corba4ccm/tests/exf/descriptors/run_test.pl plan.config: CORBA4CC
 exf/connectors/corba4ccm/tests/exf/descriptors/run_test.pl plan-no-exf.config: CORBA4CCM EXF4CCM
 exf/connectors/corba4ccm/tests/exf/descriptors/run_test.pl plan-full-exf.config: CORBA4CCM EXF4CCM
 exf/connectors/corba4ccm/tests/exf/descriptors/run_test.pl plan-exf-and-non-exf-container.config: CORBA4CCM EXF4CCM
-exf/connectors/corba4ccm/tests/exf/descriptors/run_test.pl plan-deadines-and-delays.config: CORBA4CCM EXF4CCM
+exf/connectors/corba4ccm/tests/exf/descriptors/run_test.pl plan-deadlines-and-delays.config: CORBA4CCM EXF4CCM
 exf/connectors/corba4ccm/tests/exf/descriptors/run_test.pl plan-coloc-mt-lane.config: CORBA4CCM EXF4CCM
 exf/connectors/corba4ccm/tests/exf/descriptors/run_test.pl plan-coloc-exclusive-lane.config: CORBA4CCM EXF4CCM
 exf/connectors/corba4ccm/tests/exf/descriptors/run_test.pl plan-coloc-dynmt-lane.config: CORBA4CCM EXF4CCM
@@ -29,7 +29,7 @@ exf/connectors/corba4ccm/tests/exf/descriptors/run_test.pl plan.cdp: CORBA4CCM E
 exf/connectors/corba4ccm/tests/exf/descriptors/run_test.pl plan-no-exf.cdp: CORBA4CCM EXF4CCM
 exf/connectors/corba4ccm/tests/exf/descriptors/run_test.pl plan-full-exf.cdp: CORBA4CCM EXF4CCM
 exf/connectors/corba4ccm/tests/exf/descriptors/run_test.pl plan-exf-and-non-exf-container.cdp: CORBA4CCM EXF4CCM
-exf/connectors/corba4ccm/tests/exf/descriptors/run_test.pl plan-deadines-and-delays.cdp: CORBA4CCM EXF4CCM
+exf/connectors/corba4ccm/tests/exf/descriptors/run_test.pl plan-deadlines-and-delays.cdp: CORBA4CCM EXF4CCM
 exf/connectors/corba4ccm/tests/exf/descriptors/run_test.pl plan-coloc-mt-lane.cdp: CORBA4CCM EXF4CCM
 exf/connectors/corba4ccm/tests/exf/descriptors/run_test.pl plan-coloc-exclusive-lane.cdp: CORBA4CCM EXF4CCM
 exf/connectors/corba4ccm/tests/exf/descriptors/run_test.pl plan-coloc-dynmt-lane.cdp: CORBA4CCM EXF4CCM
