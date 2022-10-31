@@ -119,52 +119,28 @@ namespace Hello_Sender_Impl
     //@{
 
     /// Attribute my_attribute
-
-    ::Hello::foo_seq
-    my_attribute () override;
-
-    void
-    my_attribute (const ::Hello::foo_seq& my_attribute) override;
+    ::Hello::foo_seq my_attribute () override;
+    void my_attribute (const ::Hello::foo_seq& my_attribute) override;
 
     /// Attribute my_attrib2
-
-    ::Hello::foo_long
-    my_attrib2 () override;
-
-    void
-    my_attrib2 (::Hello::foo_long my_attrib2) override;
+    ::Hello::foo_long my_attrib2 () override;
+    void my_attrib2 (::Hello::foo_long my_attrib2) override;
 
     /// Attribute my_attrib3
-
-    ::Hello::bar_seq
-    my_attrib3 () override;
-
-    void
-    my_attrib3 (const ::Hello::bar_seq& my_attrib3) override;
+    ::Hello::bar_seq my_attrib3 () override;
+    void my_attrib3 (const ::Hello::bar_seq& my_attrib3) override;
 
     /// Attribute my_attrib4
-
-    ::Hello::foo_struct
-    my_attrib4 () override;
-
-    void
-    my_attrib4 (const ::Hello::foo_struct& my_attrib4) override;
+    ::Hello::foo_struct my_attrib4 () override;
+    void my_attrib4 (const ::Hello::foo_struct& my_attrib4) override;
 
     /// Attribute my_attrib5
-
-    int32_t
-    my_attrib5 () override;
-
-    void
-    my_attrib5 (int32_t my_attrib5) override;
+    int32_t my_attrib5 () override;
+    void my_attrib5 (int32_t my_attrib5) override;
 
     /// Attribute my_attrib6
-
-    ::Hello::out_seq
-    my_attrib6 () override;
-
-    void
-    my_attrib6 (const ::Hello::out_seq& my_attrib6) override;
+    ::Hello::out_seq my_attrib6 () override;
+    void my_attrib6 (const ::Hello::out_seq& my_attrib6) override;
     //@}
 
     /** @name Session component operations */
