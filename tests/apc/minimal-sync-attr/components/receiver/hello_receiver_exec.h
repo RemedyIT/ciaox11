@@ -65,15 +65,9 @@ namespace Hello_Receiver_Impl
 
     /** @name Attributes from ::Hello::CCM_MyFoo */
     //@{
-
-    int16_t
-    rw_attrib () override;
-
-    void
-    rw_attrib (int16_t rw_attrib) override;
-
-    int16_t
-    ro_attrib () override;
+    int16_t rw_attrib () override;
+    void rw_attrib (int16_t rw_attrib) override;
+    int16_t ro_attrib () override;
     //@}
 
     /** @name User defined public operations. */
@@ -134,28 +128,16 @@ namespace Hello_Receiver_Impl
     //@{
 
     /// Attribute foo_port_r_port_attrib
-
-    int16_t
-    foo_port_r_port_attrib () override;
-
-    void
-    foo_port_r_port_attrib (int16_t foo_port_r_port_attrib) override;
+    int16_t foo_port_r_port_attrib () override;
+    void foo_port_r_port_attrib (int16_t foo_port_r_port_attrib) override;
 
     /// Attribute foo_port_r_port_seq_attrib
-
-    ::Hello::long_seq_r
-    foo_port_r_port_seq_attrib () override;
-
-    void
-    foo_port_r_port_seq_attrib (const ::Hello::long_seq_r& foo_port_r_port_seq_attrib) override;
+    ::Hello::long_seq_r foo_port_r_port_seq_attrib () override;
+    void foo_port_r_port_seq_attrib (const ::Hello::long_seq_r& foo_port_r_port_seq_attrib) override;
 
     /// Attribute rec_struct_attrib
-
-    ::Hello::rec_struct
-    rec_struct_attrib () override;
-
-    void
-    rec_struct_attrib (const ::Hello::rec_struct& rec_struct_attrib) override;
+    ::Hello::rec_struct rec_struct_attrib () override;
+    void rec_struct_attrib (const ::Hello::rec_struct& rec_struct_attrib) override;
     //@}
 
     /** @name Session component operations */
