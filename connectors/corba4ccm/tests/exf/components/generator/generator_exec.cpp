@@ -165,8 +165,8 @@ namespace App_Generator_Impl
       this->tm_gen_->cancel ();
 
       CIAOX11_TEST_INFO << "App::Generator(" << this->location_ << "): "
-    		  	  	    << IDL::traits<TT_Generator>::narrow (this->th_gen_)->message_count ()
-						<< " messages sent" << std::endl;
+                        << IDL::traits<TT_Generator>::narrow (this->th_gen_)->message_count ()
+                        << " messages sent" << std::endl;
     }
 
     CIAOX11_TEST_INFO << "App::Generator(" << this->location_ << "): passivated component." << std::endl;

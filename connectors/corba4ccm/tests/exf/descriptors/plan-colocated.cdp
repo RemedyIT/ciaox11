@@ -6,8 +6,8 @@
  xsi:schemaLocation="http://www.omg.org/Deployment Deployment.xsd">
   <label>ExF Plan Colocated</label>
   <UUID>ExF_Plan_Colocated</UUID>
-	
-  <!-- 
+
+  <!--
    #=====================================================
    # Implementations
    #=====================================================
@@ -28,7 +28,7 @@
       </value>
     </execParameter>
   </implementation>
-  
+
   <implementation xmi:id="TestTTProvider">
     <name>TestTTProvider</name>
     <source/>
@@ -77,7 +77,7 @@
       </value>
     </execParameter>
   </implementation>
-  
+
   <implementation xmi:id="TestExFTTProvider">
     <name>TestExFTTProvider</name>
     <source/>
@@ -126,7 +126,7 @@
       </value>
     </execParameter>
   </implementation>
-  
+
   <implementation xmi:id="App_GeneratorComponent">
     <name>App_GeneratorComponent</name>
     <source/>
@@ -175,7 +175,7 @@
       </value>
     </execParameter>
   </implementation>
-  
+
   <implementation xmi:id="API_RecorderConnector">
     <name>API_RecorderConnector</name>
     <source/>
@@ -224,7 +224,7 @@
       </value>
     </execParameter>
   </implementation>
-  
+
   <implementation xmi:id="API_ExFRecorderConnector">
     <name>API_ExFRecorderConnector</name>
     <source/>
@@ -273,7 +273,7 @@
       </value>
     </execParameter>
   </implementation>
-  
+
   <implementation xmi:id="App_MonitorComponent">
     <name>App_MonitorComponent</name>
     <source/>
@@ -322,7 +322,7 @@
       </value>
     </execParameter>
   </implementation>
-  
+
   <implementation xmi:id="App_AggregatorComponent">
     <name>App_AggregatorComponent</name>
     <source/>
@@ -371,7 +371,7 @@
       </value>
     </execParameter>
   </implementation>
-  
+
   <implementation xmi:id="App_AnalyzerComponent">
     <name>App_AnalyzerComponent</name>
     <source/>
@@ -420,7 +420,7 @@
       </value>
     </execParameter>
   </implementation>
-  
+
   <implementation xmi:id="API_PresenterConnector">
     <name>API_PresenterConnector</name>
     <source/>
@@ -469,7 +469,7 @@
       </value>
     </execParameter>
   </implementation>
-  
+
   <implementation xmi:id="API_ExFPresenterConnector">
     <name>API_ExFPresenterConnector</name>
     <source/>
@@ -518,7 +518,7 @@
       </value>
     </execParameter>
   </implementation>
-  
+
   <implementation xmi:id="App_ReporterComponent">
     <name>App_ReporterComponent</name>
     <source/>
@@ -567,8 +567,8 @@
       </value>
     </execParameter>
   </implementation>
-	
-  <!-- 
+
+  <!--
    #=====================================================
    # Definitions for Generator Node
    #=====================================================
@@ -666,8 +666,8 @@
     <source/>
     <implementation xmi:idref="API_RecorderConnector"/>
   </instance>
-	
-  <!-- 
+
+  <!--
    #=====================================================
    # Definitions for Processor Node
    #=====================================================
@@ -716,9 +716,9 @@
     <implementation xmi:idref="API_ExFRecorderConnector"/>
   </instance>
 
-  <!-- 
-   # In this case we directly connect to the Aggregator(s) as we're using a non-exclusive, single threaded 
-   # scheduling lane (default) in this locality/container and using (ExF) connectors can likely cause deadlocks 
+  <!--
+   # In this case we directly connect to the Aggregator(s) as we're using a non-exclusive, single threaded
+   # scheduling lane (default) in this locality/container and using (ExF) connectors can likely cause deadlocks
    # in this colocated context (as the Analyzer is holding the ExF thread and will wait for any request to the
    # Aggregator to return which it cannot as the Aggregator needs the very thread the Analyzer is holding).
    # NOTE: using this setup the Aggregator will service any request from the Analyzer in the same thread
@@ -744,8 +744,8 @@
     <source/>
     <implementation xmi:idref="TestExFTTProvider"/>
   </instance>
-	
-  <!-- 
+
+  <!--
    #=====================================================
    # Definitions for Reported Node
    #=====================================================
@@ -782,8 +782,8 @@
     <source/>
     <implementation xmi:idref="API_ExFPresenterConnector"/>
   </instance>
-	
-  <!-- 
+
+  <!--
    #=====================================================
    # Connections
    #=====================================================
@@ -966,7 +966,7 @@
   </connection>
 
   <!--
-   # Directly connect the Analyzer to an Aggregator 
+   # Directly connect the Analyzer to an Aggregator
    -->
   <connection>
     <name>analyzer_aggregator_connection</name>
@@ -1049,7 +1049,7 @@
   </connection>
 
   <!--
-   # locality constraints to ensure single locality on Processor node 
+   # locality constraints to ensure single locality on Processor node
    -->
 
   <localityConstraint>

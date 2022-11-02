@@ -6,8 +6,8 @@
  xsi:schemaLocation="http://www.omg.org/Deployment Deployment.xsd">
   <label>ExF Plan Coloc Exclusive Lane</label>
   <UUID>ExF_Plan_Coloc_Exclusive_Lane</UUID>
-	
-  <!-- 
+
+  <!--
    #=====================================================
    # Implementations
    #=====================================================
@@ -28,7 +28,7 @@
       </value>
     </execParameter>
   </implementation>
-  
+
   <implementation xmi:id="TestTTProvider">
     <name>TestTTProvider</name>
     <source/>
@@ -77,7 +77,7 @@
       </value>
     </execParameter>
   </implementation>
-  
+
   <implementation xmi:id="TestExFTTProvider">
     <name>TestExFTTProvider</name>
     <source/>
@@ -126,7 +126,7 @@
       </value>
     </execParameter>
   </implementation>
-  
+
   <implementation xmi:id="App_GeneratorComponent">
     <name>App_GeneratorComponent</name>
     <source/>
@@ -175,7 +175,7 @@
       </value>
     </execParameter>
   </implementation>
-  
+
   <implementation xmi:id="API_RecorderConnector">
     <name>API_RecorderConnector</name>
     <source/>
@@ -224,7 +224,7 @@
       </value>
     </execParameter>
   </implementation>
-  
+
   <implementation xmi:id="API_ExFRecorderConnector">
     <name>API_ExFRecorderConnector</name>
     <source/>
@@ -273,7 +273,7 @@
       </value>
     </execParameter>
   </implementation>
-  
+
   <implementation xmi:id="App_MonitorComponent">
     <name>App_MonitorComponent</name>
     <source/>
@@ -322,7 +322,7 @@
       </value>
     </execParameter>
   </implementation>
-  
+
   <implementation xmi:id="App_AggregatorComponent">
     <name>App_AggregatorComponent</name>
     <source/>
@@ -371,7 +371,7 @@
       </value>
     </execParameter>
   </implementation>
-  
+
   <implementation xmi:id="API_CollectorConnector">
     <name>API_CollectorConnector</name>
     <source/>
@@ -420,7 +420,7 @@
       </value>
     </execParameter>
   </implementation>
-  
+
   <implementation xmi:id="API_ExFCollectorConnector">
     <name>API_ExFCollectorConnector</name>
     <source/>
@@ -469,7 +469,7 @@
       </value>
     </execParameter>
   </implementation>
-  
+
   <implementation xmi:id="App_AnalyzerComponent">
     <name>App_AnalyzerComponent</name>
     <source/>
@@ -518,7 +518,7 @@
       </value>
     </execParameter>
   </implementation>
-  
+
   <implementation xmi:id="API_PresenterConnector">
     <name>API_PresenterConnector</name>
     <source/>
@@ -567,7 +567,7 @@
       </value>
     </execParameter>
   </implementation>
-  
+
   <implementation xmi:id="API_ExFPresenterConnector">
     <name>API_ExFPresenterConnector</name>
     <source/>
@@ -616,7 +616,7 @@
       </value>
     </execParameter>
   </implementation>
-  
+
   <implementation xmi:id="App_ReporterComponent">
     <name>App_ReporterComponent</name>
     <source/>
@@ -665,8 +665,8 @@
       </value>
     </execParameter>
   </implementation>
-	
-  <!-- 
+
+  <!--
    #=====================================================
    # Definitions for Generator Node
    #=====================================================
@@ -764,8 +764,8 @@
     <source/>
     <implementation xmi:idref="API_RecorderConnector"/>
   </instance>
-	
-  <!-- 
+
+  <!--
    #=====================================================
    # Definitions for Processor Node
    #=====================================================
@@ -821,13 +821,13 @@
     <implementation xmi:idref="API_ExFCollectorConnector"/>
   </instance>
 
-  <!-- 
-   # This is another possibility to connect Aggregator(s) over ExF lanes in this colocated case as we're using an exclusive 
+  <!--
+   # This is another possibility to connect Aggregator(s) over ExF lanes in this colocated case as we're using an exclusive
    # scheduling lane for the Aggregator component separate from the default lane used by the Analyzer. As each lane manages
-   # one or more threads this allows an Aggregator request received from a waiting Analyzer to be processed on a different 
+   # one or more threads this allows an Aggregator request received from a waiting Analyzer to be processed on a different
    # thread avoiding deadlocks.
-   # This setup has more overhead than the direct colocated connections and the multi threaded lane option but allows for even 
-   # more flexibility in the implementation of the Aggregator component.  
+   # This setup has more overhead than the direct colocated connections and the multi threaded lane option but allows for even
+   # more flexibility in the implementation of the Aggregator component.
    -->
   <instance xmi:id="App_AnalyzerComponentInst">
     <name>App_AnalyzerComponentInst</name>
@@ -856,8 +856,8 @@
     <source/>
     <implementation xmi:idref="TestExFTTProvider"/>
   </instance>
-	
-  <!-- 
+
+  <!--
    #=====================================================
    # Definitions for Reported Node
    #=====================================================
@@ -894,8 +894,8 @@
     <source/>
     <implementation xmi:idref="API_ExFPresenterConnector"/>
   </instance>
-	
-  <!-- 
+
+  <!--
    #=====================================================
    # Connections
    #=====================================================
@@ -1190,7 +1190,7 @@
   </connection>
 
   <!--
-   # locality constraints to ensure single locality on Processor node 
+   # locality constraints to ensure single locality on Processor node
    -->
 
   <localityConstraint>
