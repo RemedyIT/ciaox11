@@ -6,8 +6,8 @@
  xsi:schemaLocation="http://www.omg.org/Deployment Deployment.xsd">
   <label>ExF Plan ExF And Non-ExF Container</label>
   <UUID>ExF_Plan_ExF_And_Non_ExF_Container</UUID>
-	
-  <!-- 
+
+  <!--
    #=====================================================
    # Implementations
    #=====================================================
@@ -44,7 +44,7 @@
       </value>
     </execParameter>
   </implementation>
-  
+
   <implementation xmi:id="TestTTProvider">
     <name>TestTTProvider</name>
     <source/>
@@ -93,7 +93,7 @@
       </value>
     </execParameter>
   </implementation>
-  
+
   <implementation xmi:id="App_GeneratorComponent">
     <name>App_GeneratorComponent</name>
     <source/>
@@ -142,7 +142,7 @@
       </value>
     </execParameter>
   </implementation>
-  
+
   <implementation xmi:id="API_RecorderConnector">
     <name>API_RecorderConnector</name>
     <source/>
@@ -191,7 +191,7 @@
       </value>
     </execParameter>
   </implementation>
-  
+
   <implementation xmi:id="API_ExFRecorderConnector">
     <name>API_ExFRecorderConnector</name>
     <source/>
@@ -240,7 +240,7 @@
       </value>
     </execParameter>
   </implementation>
-  
+
   <implementation xmi:id="App_MonitorComponent">
     <name>App_MonitorComponent</name>
     <source/>
@@ -289,7 +289,7 @@
       </value>
     </execParameter>
   </implementation>
-  
+
   <implementation xmi:id="App_AggregatorComponent">
     <name>App_AggregatorComponent</name>
     <source/>
@@ -338,7 +338,7 @@
       </value>
     </execParameter>
   </implementation>
-  
+
   <implementation xmi:id="API_CollectorConnector">
     <name>API_CollectorConnector</name>
     <source/>
@@ -387,7 +387,7 @@
       </value>
     </execParameter>
   </implementation>
-  
+
   <implementation xmi:id="API_ExFCollectorConnector">
     <name>API_ExFCollectorConnector</name>
     <source/>
@@ -436,7 +436,7 @@
       </value>
     </execParameter>
   </implementation>
-  
+
   <implementation xmi:id="App_AnalyzerComponent">
     <name>App_AnalyzerComponent</name>
     <source/>
@@ -485,7 +485,7 @@
       </value>
     </execParameter>
   </implementation>
-  
+
   <implementation xmi:id="API_PresenterConnector">
     <name>API_PresenterConnector</name>
     <source/>
@@ -534,7 +534,7 @@
       </value>
     </execParameter>
   </implementation>
-  
+
   <implementation xmi:id="API_ExFPresenterConnector">
     <name>API_ExFPresenterConnector</name>
     <source/>
@@ -583,7 +583,7 @@
       </value>
     </execParameter>
   </implementation>
-  
+
   <implementation xmi:id="App_ReporterComponent">
     <name>App_ReporterComponent</name>
     <source/>
@@ -632,8 +632,8 @@
       </value>
     </execParameter>
   </implementation>
-	
-  <!-- 
+
+  <!--
    #=====================================================
    # Definitions for Generator Node
    #=====================================================
@@ -731,8 +731,8 @@
     <source/>
     <implementation xmi:idref="API_RecorderConnector"/>
   </instance>
-	
-  <!-- 
+
+  <!--
    #=====================================================
    # Definitions for Processor Node
    #=====================================================
@@ -866,8 +866,8 @@
       </value>
     </configProperty>
   </instance>
-	
-  <!-- 
+
+  <!--
    #=====================================================
    # Definitions for Reported Node
    #=====================================================
@@ -904,8 +904,8 @@
     <source/>
     <implementation xmi:idref="API_ExFPresenterConnector"/>
   </instance>
-	
-  <!-- 
+
+  <!--
    #=====================================================
    # Connections
    #=====================================================
@@ -1200,7 +1200,7 @@
   </connection>
 
   <!--
-   # locality constraints to ensure a single locality on Processor node 
+   # locality constraints to ensure a single locality on Processor node
    -->
 
   <localityConstraint>

@@ -103,17 +103,17 @@ namespace App_Aggregator_Impl
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : App_Aggregator_Impl::do_collector_exec_i[ctor]
   do_collector_exec_i::do_collector_exec_i (
     IDL::traits< ::App::CCM_Aggregator_Context>::ref_type context,
-	TLocationSet& locations,
-	TEnvironmentMap& env_hist,
-	TRecordMap& record_hist,
-	uint32_t delay)
-	: context_ (std::move(context))
-	, locations_ (locations)
-	, env_history_ (env_hist)
-	, record_history_ (record_hist)
-	, delay_ (delay > 0)
-	, dre_ (std::random_device ()())
-	, uniform_dist_ (delay / 10, delay)
+    TLocationSet& locations,
+    TEnvironmentMap& env_hist,
+    TRecordMap& record_hist,
+    uint32_t delay)
+    : context_ (std::move(context))
+    , locations_ (locations)
+    , env_history_ (env_hist)
+    , record_history_ (record_hist)
+    , delay_ (delay > 0)
+    , dre_ (std::random_device ()())
+    , uniform_dist_ (delay / 10, delay)
   {
   }
   //@@{__RIDL_REGEN_MARKER__} - END : App_Aggregator_Impl::do_collector_exec_i[ctor]
