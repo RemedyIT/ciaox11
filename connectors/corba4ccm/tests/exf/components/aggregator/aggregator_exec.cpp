@@ -217,8 +217,8 @@ namespace App_Aggregator_Impl
   void Aggregator_exec_i::ccm_activate ()
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : App_Aggregator_Impl::Aggregator_exec_i[ccm_activate]
-	CIAOX11_TEST_INFO << "App::Aggregator(" << this << "): record_delay=" << this->record_delay_
-											<< ", collect_delay=" << (this->collect_delay_/10) << "-" << this->collect_delay_ << std::endl;
+    CIAOX11_TEST_INFO << "App::Aggregator(" << this << "): record_delay=" << this->record_delay_
+                      << ", collect_delay=" << (this->collect_delay_/10) << "-" << this->collect_delay_ << std::endl;
     CIAOX11_TEST_INFO << "App::Aggregator(" << this << "): activated component." << std::endl;
     //@@{__RIDL_REGEN_MARKER__} - END : App_Aggregator_Impl::Aggregator_exec_i[ccm_activate]
   }
@@ -233,22 +233,22 @@ namespace App_Aggregator_Impl
   void Aggregator_exec_i::ccm_remove ()
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : App_Aggregator_Impl::Aggregator_exec_i[ccm_remove]
-	if (this->get_do_recorder ())
-	{
-	  IDL::traits<do_recorder_exec_i>::ref_type recorder_exec =
-		  IDL::traits<do_recorder_exec_i>::narrow (this->do_recorder_);
-	  CIAOX11_TEST_INFO << "App::Aggregator(" << this << "): "
-						<< "captured " << recorder_exec->environment_count () << " Environment messages"
-						<< " and " << recorder_exec->record_count () << " Record messages" << std::endl;
+    if (this->get_do_recorder ())
+    {
+      IDL::traits<do_recorder_exec_i>::ref_type recorder_exec =
+        IDL::traits<do_recorder_exec_i>::narrow (this->do_recorder_);
+      CIAOX11_TEST_INFO << "App::Aggregator(" << this << "): "
+                        << "captured " << recorder_exec->environment_count () << " Environment messages"
+                        << " and " << recorder_exec->record_count () << " Record messages" << std::endl;
 
-	}
+    }
     //@@{__RIDL_REGEN_MARKER__} - END : App_Aggregator_Impl::Aggregator_exec_i[ccm_remove]
   }
 
   IDL::traits< ::API::CCM_Recorder>::ref_type
   Aggregator_exec_i::get_do_recorder ()
   {
-  //@@{__RIDL_REGEN_MARKER__} - BEGIN : App_Aggregator_Impl::Aggregator_exec_i[get_do_recorder]
+    //@@{__RIDL_REGEN_MARKER__} - BEGIN : App_Aggregator_Impl::Aggregator_exec_i[get_do_recorder]
     if (!this->do_recorder_)
     {
       this->do_recorder_ =
@@ -260,13 +260,13 @@ namespace App_Aggregator_Impl
               this->record_delay_);
     }
     return this->do_recorder_;
-  //@@{__RIDL_REGEN_MARKER__} - END : App_Aggregator_Impl::Aggregator_exec_i[get_do_recorder]
+    //@@{__RIDL_REGEN_MARKER__} - END : App_Aggregator_Impl::Aggregator_exec_i[get_do_recorder]
   }
 
   IDL::traits< ::API::CCM_Collector>::ref_type
   Aggregator_exec_i::get_do_collector ()
   {
-  //@@{__RIDL_REGEN_MARKER__} - BEGIN : App_Aggregator_Impl::Aggregator_exec_i[get_do_collector]
+    //@@{__RIDL_REGEN_MARKER__} - BEGIN : App_Aggregator_Impl::Aggregator_exec_i[get_do_collector]
     if (!this->do_collector_)
     {
       this->do_collector_ =
@@ -278,7 +278,7 @@ namespace App_Aggregator_Impl
               this->collect_delay_);
     }
     return this->do_collector_;
-  //@@{__RIDL_REGEN_MARKER__} - END : App_Aggregator_Impl::Aggregator_exec_i[get_do_collector]
+    //@@{__RIDL_REGEN_MARKER__} - END : App_Aggregator_Impl::Aggregator_exec_i[get_do_collector]
   }
 
 
