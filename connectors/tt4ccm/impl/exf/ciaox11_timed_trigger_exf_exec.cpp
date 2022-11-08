@@ -145,8 +145,6 @@ namespace CIAOX11_TT_TimedTrigger_Impl
   {
   }
 
-
-
   /** Session component operations */
   void TimedTrigger_exec_i::configuration_complete ()
   {

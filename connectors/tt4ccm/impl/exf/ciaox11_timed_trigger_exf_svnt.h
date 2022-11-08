@@ -50,17 +50,17 @@ namespace CIAOX11_TT_TimedTrigger_Impl
       std::string ins_name);
 
     /// Destructor
-    virtual ~TimedTrigger_Context ();
+    ~TimedTrigger_Context () override;
 
     /// Retrieve the service registry
-    virtual IDL::traits<CIAOX11::Service_Registry>::ref_type
+    IDL::traits<CIAOX11::Service_Registry>::ref_type
     the_service_registry () override;
 
     /// readonly attribute which holds the instance name of the
     /// component. This instance name is supplied to the servant factory
     /// method by the deployment tools and represents the name of the
     /// component in the deployment plan.
-    virtual std::string
+    std::string
     instance_id () override;
 
   private:
@@ -100,30 +100,30 @@ namespace CIAOX11_TT_TimedTrigger_Impl
     /**
      * Configure the component
      */
-    virtual void configure (::Components::ConfigValues& config) override;
+    void configure (::Components::ConfigValues& config) override;
 
     /**
      * Connect a component port.
      * @retval true Connecting the port has succeeded
      * @retval false Connecting the port has failed
      */
-    virtual bool connect (const ::Components::FeatureName& name,
-                          IDL::traits<CORBA::Object>::ref_type connection,
-                          const std::string& conn_name,
-                          const ::Components::ConfigValues& config) override;
+     bool connect (const ::Components::FeatureName& name,
+                   IDL::traits<CORBA::Object>::ref_type connection,
+                   const std::string& conn_name,
+                   const ::Components::ConfigValues& config) override;
 
     /**
      * Disconnect a component port.
      * @retval true Disonnecting the port has succeeded
      * @retval false Disconnecting the port has failed
      */
-    virtual bool disconnect (const ::Components::FeatureName& name,
-                             const std::string& conn_name) override;
+     bool disconnect (const ::Components::FeatureName& name,
+                      const std::string& conn_name) override;
 
     /**
      * Obtain the component executor.
      */
-    virtual IDL::traits<CORBA::Object>::ref_type obtain_executor () override;
+    IDL::traits<CORBA::Object>::ref_type obtain_executor () override;
 
     /**
      * Obtain a facet executor for the given @a name and the given @a connection using the
@@ -131,7 +131,7 @@ namespace CIAOX11_TT_TimedTrigger_Impl
      * executor we just return nullptr. If we have to get an executor for an invalid
      * facet name we throw an InvalidName() exception
      */
-    virtual IDL::traits<CORBA::Object>::ref_type obtain_facet_executor (
+    IDL::traits<CORBA::Object>::ref_type obtain_facet_executor (
                           const ::Components::FeatureName& name,
                           ::Components::ConfigValues& config) override;
 
