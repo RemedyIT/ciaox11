@@ -72,7 +72,7 @@ namespace CIAOX11_TT_TimedTrigger_Impl
       this->set_id_ ();
     }
 
-    virtual ~tt_timer_i ();
+    ~tt_timer_i () override;
 
     void on_timer (const CCM_TT::TT_Duration& delta_time) noexcept;
 
@@ -150,7 +150,7 @@ namespace CIAOX11_TT_TimedTrigger_Impl
     };
 
     TimerMonitor ();
-    virtual ~TimerMonitor ();
+    ~TimerMonitor () override;
 
     /**
      * Start monitoring
@@ -186,14 +186,14 @@ namespace CIAOX11_TT_TimedTrigger_Impl
     public:
       // = Initialization and termination methods.
       /// Constructor.
-      TTC_Task_Timer_Upcall (void) = default;
+      TTC_Task_Timer_Upcall () = default;
 
       typedef ACE_Timer_Queue_T<TT_QEntry,
                                 TTC_Task_Timer_Upcall,
                                 ACE_SYNCH_RECURSIVE_MUTEX,
                                 EXF_TIME_POLICY> TimerQueue;
       /// Destructor.
-      ~TTC_Task_Timer_Upcall (void) = default;
+      ~TTC_Task_Timer_Upcall () = default;
 
       /// This method is called when a timer is registered.
       int registration (TimerQueue & /*timer_queue*/,

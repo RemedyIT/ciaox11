@@ -40,7 +40,7 @@ namespace CIAOX11_TT_TimedTrigger_Impl
         TimerMonitor::ref_type monitor);
 
     /// Destructor
-    virtual ~tt_scheduler_exec_i ();
+    ~tt_scheduler_exec_i () override;
 
     /** @name Operations from ::CCM_TT::CCM_TT_Scheduler */
     //@{
@@ -91,14 +91,14 @@ namespace CIAOX11_TT_TimedTrigger_Impl
     /// Constructor
     TimedTrigger_exec_i ();
     /// Destructor
-    virtual ~TimedTrigger_exec_i ();
+    ~TimedTrigger_exec_i () override;
 
     /** @name Component port operations. */
     //@{
 
     /// Factory method and getter for the tt_scheduler facet
     /// @return existing instance of facet if one exists, else creates one
-    virtual IDL::traits< ::CCM_TT::CCM_TT_Scheduler>::ref_type get_tt_scheduler () override;
+    IDL::traits< ::CCM_TT::CCM_TT_Scheduler>::ref_type get_tt_scheduler () override;
     //@}
 
     /** @name Session component operations */
