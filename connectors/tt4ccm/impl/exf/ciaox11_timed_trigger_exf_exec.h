@@ -5,7 +5,6 @@
  * @brief   CIAOX11 Timed Trigger connector executors using execution framework and timer queue
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef __RIDL_CIAOX11_TIMED_TRIGGER_EXF_EXEC_H_DFBCCACH_INCLUDED__
 #define __RIDL_CIAOX11_TIMED_TRIGGER_EXF_EXEC_H_DFBCCACH_INCLUDED__

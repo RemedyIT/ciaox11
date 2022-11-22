@@ -5,7 +5,6 @@
  * @brief AXCIOMA deadline monitor implementation.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef CIAOX11_EXF_MONITOR_SVC_IMPL_H
 #define CIAOX11_EXF_MONITOR_SVC_IMPL_H

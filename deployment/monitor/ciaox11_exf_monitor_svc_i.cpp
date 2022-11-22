@@ -5,7 +5,6 @@
  * @brief AXCIOMA deadline monitor implementation.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #include "exf/deployment/monitor/ciaox11_exf_monitor_svc_i.h"

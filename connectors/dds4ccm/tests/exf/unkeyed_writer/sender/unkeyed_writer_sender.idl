@@ -5,7 +5,6 @@
  * @brief   Sender component declaration for the Unkeyed Writer test.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef UNKEYED_WRITER_SENDER_IDL_
 #define UNKEYED_WRITER_SENDER_IDL_

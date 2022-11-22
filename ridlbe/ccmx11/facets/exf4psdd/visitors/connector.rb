@@ -5,7 +5,6 @@
 # @brief   ExF4PSDD extension for connector visitor
 #
 # @copyright Copyright (c) Remedy IT Expertise BV
-# Chamber of commerce Rotterdam nr.276339, The Netherlands
 #----------------------------------------------------------------------
 require 'ridlbe/ccmx11/facets/psdd4ccm/visitors/connector'
 

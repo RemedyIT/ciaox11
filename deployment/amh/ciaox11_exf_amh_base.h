@@ -5,7 +5,6 @@
  * @brief Base class for ExF based AMH request handlers.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef CIAOX11_EXF_AMH_BASE_H
 #define CIAOX11_EXF_AMH_BASE_H

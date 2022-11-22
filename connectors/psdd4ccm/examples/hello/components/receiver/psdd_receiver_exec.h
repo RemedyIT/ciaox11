@@ -6,7 +6,6 @@
  * @brief   PSDD Receiver executor.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef __RIDL_PSDD_RECEIVER_EXEC_H_IHIIFJGA_INCLUDED__
 #define __RIDL_PSDD_RECEIVER_EXEC_H_IHIIFJGA_INCLUDED__

@@ -6,7 +6,6 @@
  * @brief   Receiver component implementation of the unkeyed Writer test.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #ifndef __RIDL_UNKEYED_WRITER_RECEIVER_EXEC_H_EAFEEAID_INCLUDED__

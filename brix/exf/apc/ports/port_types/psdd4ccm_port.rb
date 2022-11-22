@@ -5,7 +5,6 @@
 # @brief   ExF PSDD4CCM port extensions
 #
 # @copyright Copyright (c) Remedy IT Expertise BV
-# Chamber of commerce Rotterdam nr.276339, The Netherlands
 #--------------------------------------------------------------------
 
 module AxciomaPC

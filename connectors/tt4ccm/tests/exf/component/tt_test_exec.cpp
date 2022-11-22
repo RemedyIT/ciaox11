@@ -5,7 +5,6 @@
  * @brief   Timed Trigger connector exf test
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 //@@{__RIDL_REGEN_MARKER__} - HEADER_END : tt_test_impl.cpp[Header]
 
