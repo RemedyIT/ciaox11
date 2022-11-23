@@ -5,7 +5,6 @@
  * @brief Public interface for an AXCIOMA scheduler service.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef CIAOX11_EXF_SCHEDULER_SVC_H
 #define CIAOX11_EXF_SCHEDULER_SVC_H

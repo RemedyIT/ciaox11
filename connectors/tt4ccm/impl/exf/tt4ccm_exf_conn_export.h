@@ -5,7 +5,6 @@
  * @brief Export file for timer connector with EXF.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef __RIDL_TT4CCM_EXF_CONN_EXPORT_H_IBEFHFHA_EXPORT_INCLUDED__
 #define __RIDL_TT4CCM_EXF_CONN_EXPORT_H_IBEFHFHA_EXPORT_INCLUDED__

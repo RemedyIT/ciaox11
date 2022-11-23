@@ -5,7 +5,6 @@
  * @brief AXCIOMA timer-queue implementation.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef CIAOX11_TIMER_QUEUE_IMPL_H
 #define CIAOX11_TIMER_QUEUE_IMPL_H

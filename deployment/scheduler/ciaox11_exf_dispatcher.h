@@ -5,7 +5,6 @@
  * @brief AXCIOMA execution scheduler dispatcher implementation.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef CIAOX11_EXF_DISPATCHER_H
 #define CIAOX11_EXF_DISPATCHER_H

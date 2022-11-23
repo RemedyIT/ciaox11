@@ -5,7 +5,6 @@
 # @brief   PSDD4CCM BRIX11 APC extension loader
 #
 # @copyright Copyright (c) Remedy IT Expertise BV
-# Chamber of commerce Rotterdam nr.276339, The Netherlands
 #--------------------------------------------------------------------
 
 # load all recipe specializations

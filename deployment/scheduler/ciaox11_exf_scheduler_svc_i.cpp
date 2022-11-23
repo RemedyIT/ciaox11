@@ -5,7 +5,6 @@
  * @brief AXCIOMA execution scheduler implementation.
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #include "exf/deployment/scheduler/ciaox11_exf_scheduler_svc_i.h"

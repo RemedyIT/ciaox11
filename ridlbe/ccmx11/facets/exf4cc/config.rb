@@ -5,7 +5,6 @@
 # @brief   RIDL backend facet configuration for ExF for CORBA4CCM
 #
 # @copyright Copyright (c) Remedy IT Expertise BV
-# Chamber of commerce Rotterdam nr.276339, The Netherlands
 #--------------------------------------------------------------------
 
 

@@ -5,7 +5,6 @@
  * @brief Installation handler implementation for ExF containers
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 
 #ifndef CIAOX11_EXF_CONTAINER_HANDLER_H

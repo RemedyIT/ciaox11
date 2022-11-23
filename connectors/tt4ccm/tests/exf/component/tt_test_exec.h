@@ -5,7 +5,6 @@
  * @brief   Timed Trigger connector test
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef __RIDL_TT_TEST_EXEC_H_FGACFICD_INCLUDED__
 #define __RIDL_TT_TEST_EXEC_H_FGACFICD_INCLUDED__

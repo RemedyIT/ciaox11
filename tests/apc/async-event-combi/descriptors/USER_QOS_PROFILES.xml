@@ -4,7 +4,6 @@
   @author    Martin Corino
 
   @copyright Copyright (c) Remedy IT Expertise BV
-  Chamber of commerce Rotterdam nr.276339, The Netherlands
 -->
 <dds xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="rti_dds_qos_profiles.xsd" version="5.2.3">
   <qos_library name="eventdatalibrary">

@@ -6,7 +6,6 @@
  * @brief   CIAOX11 Timed Trigger connector servant using execution framework and timer queue
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
- * Chamber of commerce Rotterdam nr.276339, The Netherlands
  */
 #ifndef __RIDL_CIAOX11_TIMED_TRIGGER_SVNT_H_GAGHGBBI_INCLUDED__
 #define __RIDL_CIAOX11_TIMED_TRIGGER_SVNT_H_GAGHGBBI_INCLUDED__
