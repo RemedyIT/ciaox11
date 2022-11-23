@@ -1,0 +1,29 @@
+/**
+ * @file    analyzer.idl
+ * @author  Martin Corino
+ *
+ * @brief   Data analyzer
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ */
+
+#ifndef EXF_ANALYZER_IDL_
+#define EXF_ANALYZER_IDL_
+
+#include <Components.idl>
+#include <ccm_timed_trigger.idl>
+
+#include "collector.idl"
+#include "presenter.idl"
+
+module App
+{
+  component Analyzer
+  {
+    uses multiple API::Collector my_collectors;
+    uses API::Presenter my_presenter;
+    uses CCM_TT::TT_Scheduler tt_analyzer;
+  };
+};
+
+#endif /* EXF_ANALYZER_IDL_ */

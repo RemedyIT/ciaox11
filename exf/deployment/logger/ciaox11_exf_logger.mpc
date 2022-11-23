@@ -1,0 +1,19 @@
+project(ciaox11_exf_logger) : ciaox11_rules, ciaox11_output, x11_logger {
+  requires     += x11_logging
+  includes     += $(CIAOX11_ROOT)
+  sharedname    = ciaox11_exf_logger
+  dynamicflags  = CIAOX11_EXF_LOGGER_BUILD_DLL
+
+  Source_Files {
+    log.cpp
+  }
+
+  Header_Files {
+    ciaox11_exf_logger_export.h
+    log.h
+  }
+
+  specific {
+    install_dir = ciaox11/deployment/exf/logger
+  }
+}

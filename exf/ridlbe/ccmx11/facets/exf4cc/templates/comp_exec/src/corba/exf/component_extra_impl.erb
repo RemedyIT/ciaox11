@@ -1,0 +1,132 @@
+// generated from <%= ridl_template_path %>
+
+void <%= port_interface.scoped_cxxname.identify %>_servant::_configuration_complete (
+    const ::Components::ConfigValues& config)
+{
+  // check for scheduling lane
+  for (const Components::ConfigValue& cval : config)
+  {
+    if (cval.name () == CIAOX11::ExF::SCHEDULING_LANE_REF)
+    {
+      IDL::traits<CORBA::Object>::ref_type objref {};
+      if (!(cval.value () >>= objref))
+      {
+        throw std::runtime_error ("failed to extract " +
+                                  CIAOX11::ExF::SCHEDULING_LANE_REF +
+                                  " for CORBA connector");
+      }
+      this->scheduling_lane_ =
+          IDL::traits<CIAOX11::ExF::SchedulingLane>::narrow (objref);
+    }
+  }
+
+  if (this->scheduling_lane_)
+  {
+    // Get scheduling settings
+    CIAOX11::ExF::Priority def_prio {};
+    CIAOX11::ExF::Deadline def_deadline {};
+    if (CIAOX11::ExF::Util::get_exf_defaults (
+            config, def_prio, def_deadline))
+    {
+% port_interface.all_operations.each do |_op|
+
+      this-><%= _op.cxxname %>_deadline_ = def_deadline;
+      this-><%= _op.cxxname %>_priority_ = def_prio;
+% end
+% port_interface.all_attributes.each do |_att|
+
+      this->get_<%= _att.cxxname %>_deadline_ = def_deadline;
+      this->get_<%= _att.cxxname %>_priority_ = def_prio;
+%   unless _att.is_readonly?
+
+      this->set_<%= _att.cxxname %>_deadline_ = def_deadline;
+      this->set_<%= _att.cxxname %>_priority_ = def_prio;
+%   end
+% end
+    }
+
+    // check for scheduling properties
+% port_interface.all_operations.each do |_op|
+    CIAOX11::ExF::Util::get_exf_settings (
+        config,
+        "<%= _op.cxxname %>",
+        this-><%= _op.cxxname %>_priority_,
+        this-><%= _op.cxxname %>_deadline_);
+
+% end
+% port_interface.all_attributes.each do |_att|
+    CIAOX11::ExF::Util::get_exf_settings (
+        config,
+        "get_<%= _att.cxxname %>",
+        this->get_<%= _att.cxxname %>_priority_,
+        this->get_<%= _att.cxxname %>_deadline_);
+
+%   unless _att.is_readonly?
+    CIAOX11::ExF::Util::get_exf_settings (
+        config,
+        "set_<%= _att.cxxname %>",
+        this->set_<%= _att.cxxname %>_priority_,
+        this->set_<%= _att.cxxname %>_deadline_);
+
+%   end
+% end
+  }
+}
+% # we need executors for the port interface AND all inherited interfaces with atts and/or ops
+% ([port_interface] + port_interface.bases).each do |_intf|
+%   if (_intf.operation_count + _intf.attribute_count) > 0
+
+class <%= _intf.scoped_cxxname.identify %>_Executor final
+  : public CIAOX11::ExF::Impl::AMH_Executor
+{
+public:
+  <%= _intf.scoped_cxxname.identify %>_Executor (
+      std::string event_id,
+      <%= _intf.scoped_enclosure_cxxname %>::ExF::<%= _intf.skel_cxxname %>_RequestHandlerBase::ref_type&& rh,
+      IDL::traits< ::<%= _intf.scoped_cxxname %>>::ref_type executor,
+      CIAOX11::ExF::Priority prio,
+      CIAOX11::ExF::Deadline dl)
+    : CIAOX11::ExF::Impl::AMH_Executor (std::move (prio), std::move (dl))
+    , event_id_ (std::move (event_id))
+    , rh_ (std::move (rh))
+    , executor_ (std::move (executor))
+  {
+  }
+
+  virtual ~<%= _intf.scoped_cxxname.identify %>_Executor () = default;
+
+  const std::string& event_id () const noexcept(true) override
+  { return event_id_; }
+
+protected:
+  void execute_i () override
+  {
+    this->rh_->execute (this->executor_);
+  }
+
+  void finish_i () override
+  {
+    this->rh_->send_reply ();
+  }
+
+  void send_exception_i (const CORBA::Exception& ex) override
+  {
+    this->rh_->send_exception (ex);
+  }
+
+private:
+  std::string const event_id_;
+  <%= _intf.scoped_enclosure_cxxname %>::ExF::<%= _intf.skel_cxxname %>_RequestHandlerBase::ref_type rh_ {};
+  IDL::traits< ::<%= _intf.scoped_cxxname %>>::ref_type executor_ {};
+
+  /** @name Illegal to be called. Deleted explicitly to let the compiler detect any violation */
+  //@{
+  <%= _intf.scoped_cxxname.identify %>_Executor();
+  <%= _intf.scoped_cxxname.identify %>_Executor(const <%= _intf.scoped_cxxname.identify %>_Executor&) = delete;
+  <%= _intf.scoped_cxxname.identify %>_Executor(<%= _intf.scoped_cxxname.identify %>_Executor&&) = delete;
+  <%= _intf.scoped_cxxname.identify %>_Executor& operator=(const <%= _intf.scoped_cxxname.identify %>_Executor&) = delete;
+  <%= _intf.scoped_cxxname.identify %>_Executor& operator=(<%= _intf.scoped_cxxname.identify %>_Executor&&) = delete;
+  //@}
+};
+%   end
+% end

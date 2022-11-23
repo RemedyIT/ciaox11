@@ -1,0 +1,82 @@
+project(*comp_gen) : ciaox11_idldefaults, ciaox11_tt4ccm {
+  custom_only = 1
+  after += presenter_interface_lem_gen collector_interface_lem_gen
+  idlflags += \
+      -o build \
+      -Gcomp -Scc -Scp \
+      -Gex -oI . \
+      -Gxhex -Gxhsv \
+      -Wb,base_export_macro=EXFTEST_ANALYZER \
+      -Wb,base_export_include=exftest_analyzer \
+      -I../../data -I../../interfaces/presenter/build -I../../interfaces/collector/build
+
+  specific {
+    precious_files += _exec.h\Z _exec.cpp\Z
+  }
+
+  IDL_Files {
+    gendir=build
+    analyzer.idl
+  }
+}
+
+project(*comp_lem) : ciaox11_ccm_session_stub, ciaox11_tt4ccm_stub {
+  after += presenter_interface_lem_stub collector_interface_lem_stub *comp_gen
+
+  libs += exftest_data_stub exftest_present_stub presenter_interface exftest_collect_stub collector_interface
+
+  libout = ../../lib
+  libpaths += ../../lib
+  includes += . ../../data/build ../../interfaces/presenter/build ../../interfaces/collector/build build
+  sharedname = exftest_analyzer_lem
+  dynamicflags += EXFTEST_ANALYZER_LEM_STUB_BUILD_DLL
+
+  Source_Files {
+    build/analyzerEC.cpp
+  }
+
+  Header_Files {
+    build/analyzerEC.h
+    build/exftest_analyzer_lem_stub_export.h
+  }
+}
+
+project(*comp_svnt) : ciaox11_ccm_session_stub, ciaox11_tt4ccm_stub {
+  after += *comp_lem
+
+  libs += exftest_data_stub exftest_present_stub presenter_interface exftest_collect_stub collector_interface exftest_analyzer_lem
+
+  libout = ../../lib
+  libpaths += ../../lib
+  includes += . ../../data/build ../../interfaces/presenter/build ../../interfaces/collector/build build
+  sharedname = exftest_analyzer_svnt
+  dynamicflags += EXFTEST_ANALYZER_SVNT_BUILD_DLL
+
+  Source_Files {
+    build/analyzer_svnt.cpp
+  }
+
+  Header_Files {
+    build/analyzer_svnt.h
+    build/exftest_analyzer_svnt_export.h
+  }
+}
+
+project(*exec) : ciaox11_executor, ciaox11_logger, ciaox11_tt4ccm_stub {
+  after += *comp_lem
+  libs  += exftest_data_stub exftest_present_stub presenter_interface exftest_collect_stub collector_interface exftest_analyzer_lem
+
+  libout = ../../lib
+  libpaths += ../../lib
+  includes += . ../../data/build ../../interfaces/presenter/build ../../interfaces/collector/build build
+  dynamicflags += EXFTEST_ANALYZER_EXEC_BUILD_DLL
+
+  Source_Files {
+    analyzer_exec.cpp
+  }
+
+  Header_Files {
+    analyzer_exec.h
+    build/exftest_analyzer_exec_export.h
+  }
+}

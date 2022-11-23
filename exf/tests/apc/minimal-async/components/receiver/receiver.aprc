@@ -1,0 +1,12 @@
+component 'hello_receiver' do |comp|
+  comp.idl %w{ hello_receiver.idl }
+  #prefix sharednames, default component name (in this case: hello_receiver)
+  #comp.shared_name 'hello_receiver'
+
+  #prefix export headers, default name of component
+  #comp.export_name 'hello_receiver'
+
+  #gen_dir is default 'generated_code'
+  #comp.gen_dir  'something'
+
+end

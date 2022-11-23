@@ -1,0 +1,29 @@
+/**
+ * @file    generator.idl
+ * @author  Martin Corino
+ *
+ * @brief   Data generator
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ */
+
+#ifndef EXF_GENERATOR_IDL_
+#define EXF_GENERATOR_IDL_
+
+#include <Components.idl>
+#include <ccm_timed_trigger.idl>
+
+#include "recorder.idl"
+
+module App
+{
+  component Generator
+  {
+    attribute string location;
+
+    uses API::Recorder my_recorder;
+    uses CCM_TT::TT_Scheduler tt_generator;
+  };
+};
+
+#endif /* EXF_GENERATOR_IDL_ */

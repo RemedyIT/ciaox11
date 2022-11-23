@@ -1,0 +1,31 @@
+
+component 'psdd_receiver' do |comp|
+
+  comp.idl %w{ message.idl }
+
+  comp.define 'Test::Receiver' do |intf|
+    intf.port 'hello_sub' do |port|
+      port.subscribes 'string', listen: 'hello_listen', get: 'hello_read'
+    end
+    intf.port 'msg_sub' do |port|
+      port.subscribes 'Test::Message', :listen => 'msg_listen', :get => 'msg_read'
+    end
+    intf.port 'tt_scheduler', :timed_trigger
+
+    intf.attribute 'mode', type: 'string'
+    intf.attribute 'subscription', type: 'string'
+    intf.attribute 'count', type: 'unsigned long'
+    intf.attribute 'delay', type: 'unsigned long'
+    intf.attribute 'interval', type: 'unsigned long'
+  end
+
+  comp.base_projects += 'ciaox11_psdd4ccm_logger'
+
+  # prefix sharednames, default recipe id (in this case: shapes_receiver_comp)
+
+  # prefix export headers, default recipe id in uppercase
+
+  # gen_dir is default 'generated_code'
+  # comp.gen_dir  'build'
+
+end

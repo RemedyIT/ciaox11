@@ -1,0 +1,27 @@
+/**
+ * @file    hello_sender.idl
+ * @author  Marcel Smit
+ *
+ * @brief   base of sender ami4ccm test
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ */
+
+#ifndef CC_HELLO_SENDER_IDL_
+#define CC_HELLO_SENDER_IDL_
+
+#include <Components.idl>
+
+#include "hello.idl"
+
+#pragma ami4ccm receptacle "Hello::Sender::run_my_foo"
+
+module Hello
+{
+  component Sender
+  {
+    uses MyFoo run_my_foo;
+  };
+};
+
+#endif /* CC_HELLO_SENDER_IDL_ */

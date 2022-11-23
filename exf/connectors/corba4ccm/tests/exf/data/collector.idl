@@ -1,0 +1,23 @@
+/**
+ * @file    collector.idl
+ * @author  Martin Corino
+ *
+ * @brief   Data collector/aggregater interface
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ */
+
+#ifndef EXF_COLLECTOR_IDL_
+#define EXF_COLLECTOR_IDL_
+
+#include "result.idl"
+
+module API
+{
+  interface Collector
+  {
+    void get_result (out Data::ResultList result_data);
+  };
+};
+
+#endif /* EXF_COLLECTOR_IDL_ */

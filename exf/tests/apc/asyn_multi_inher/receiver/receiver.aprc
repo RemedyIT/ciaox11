@@ -1,0 +1,3 @@
+component 'multi_inherit_receiver' do |comp|
+  comp.idl %w{ multi_inherit_receiver.idl }
+end

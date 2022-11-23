@@ -1,0 +1,25 @@
+
+project (ciaox11_exf_monitor_impl) : install, \
+         dancex11_deployment_stub, ciaox11_lib, \
+         ciaox11_output, ciaox11_core, ciaox11_ccm_session_stub, \
+         dancex11_stub, dancex11_state, \
+         ciaox11_exf_logger, taox11_portableserver {
+  after += ciaox11_exf_core_impl
+  libs += ciaox11_exf_core
+  dynamicflags += CIAOX11_EXF_MONITOR_BUILD_DLL
+  sharedname = ciaox11_exf_monitor
+  Source_Files {
+    ciaox11_exf_monitor_i.cpp
+    ciaox11_exf_monitor_svc_i.cpp
+  }
+
+  Header_Files {
+    ciaox11_exf_monitor_i.h
+    ciaox11_exf_monitor_svc_i.h
+    ciaox11_exf_monitor_export.h
+  }
+
+  specific {
+    install_dir = ciaox11/deployment/exf/monitor
+  }
+}

@@ -1,0 +1,29 @@
+/**
+ * @file    hello_sender.idl
+ * @author  Martin Corino
+ *
+ * @brief   Sender component for minimal sync manual example
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ */
+
+#ifndef HELLO_SENDER_IDL_
+#define HELLO_SENDER_IDL_
+
+#include <Components.idl>
+
+#include "hello.idl"
+#include "hello2.idl"
+
+#pragma ami4ccm receptacle "Hello::Sender::run_my_foo"
+
+module Hello
+{
+  component Sender
+  {
+    uses MyFoo run_my_foo;
+    uses Hello::MyFoo2 run_my_foo2;
+  };
+};
+
+#endif /* HELLO_SENDER_IDL_ */

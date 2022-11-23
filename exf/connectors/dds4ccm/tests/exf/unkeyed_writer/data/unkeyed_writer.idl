@@ -1,0 +1,23 @@
+/**
+ * @file    unkeyed_writer.idl
+ * @author  Marcel Smit
+ *
+ * @brief   Base IDL for the unkeyed Writer test.
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ */
+#ifndef UNKEYED_WRITER_IDL_
+#define UNKEYED_WRITER_IDL_
+
+typedef sequence<octet> OctetSeq;
+
+module UnkeyedWriterTest
+{
+  struct UnkeyedWriterMessage {
+    string key;
+    long iteration;
+    ::OctetSeq data;
+  }; //@TopLevel()
+};
+
+#endif /* UNKEYED_WRITER_IDL_ */

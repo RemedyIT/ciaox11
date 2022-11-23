@@ -1,0 +1,6 @@
+
+component 'unkeyed_writer_receiver' do |comp|
+  comp.idl %w{ unkeyed_writer_receiver.idl }
+  comp.includes '$(CIAOX11_ROOT)/connectors'
+  comp.libs 'ciaox11_dds4ccm_logger'
+end

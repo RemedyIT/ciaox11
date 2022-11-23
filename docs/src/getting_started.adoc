@@ -23,7 +23,7 @@ providing support for:
 ** xref:{xref_docs_root}/dds4ccm/dds4ccm.adoc#[DDS4CCM] delivering _State and Event_ interaction
 ** xref:{xref_docs_root}/psdd4ccm/psdd4ccm.adoc#[PSDD4CCM] delivering _Publish and Subscribe Data Distribution_ interaction
 ** xref:{xref_docs_root}/tt4ccm/tt4ccm.adoc#[TT4CCM] delivering _Timed Trigger_ interaction
-include::{ciaox11_src_root}/exf/docs/src/getting_started.asc[opts=optional]
+** xref:{xref_docs_root}/exf/axcioma_exf.adoc#[ExF] delivering the AXCIOMA Execution Framework (ExF)
 * xref:{xref_docs_root}/ddsx11/ddsx11.adoc#[DDSX11] provides the
 IDL to {cxx11} support for DDS
 * xref:{xref_docs_root}/dancex11/dancex11.adoc#[DnCX11] provides the runtime

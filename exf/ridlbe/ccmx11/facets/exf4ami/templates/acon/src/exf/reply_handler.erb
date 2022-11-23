@@ -1,0 +1,37 @@
+// generated from <%= ridl_template_path %>
+<%= interface_type.ami4ccm_reply_handler %>::<%= interface_type.ami4ccm_reply_handler %> (
+  IDL::traits<<%= interface_type.scoped_enclosure_cxxname %>::<%= interface_type.ami4ccm_ReplyHandler %>>::ref_type callback,
+  IDL::traits< ::PortableServer::POA>::ref_type poa,
+  CIAOX11::ExF::Deadline dead_line,
+  CIAOX11::ExF::Priority priority,
+  IDL::traits<CIAOX11::ExF::SchedulingLane>::ref_type scheduling_lane)
+  : callback_(std::move (callback)),
+    poa_(std::move (poa)),
+    deadline_(std::move (dead_line)),
+    priority_(std::move (priority)),
+    scheduling_lane_(std::move (scheduling_lane))
+{
+}
+
+void <%= interface_type.ami4ccm_reply_handler %>::deactivate ()
+{
+  ::PortableServer::ObjectId oid =
+      this->poa_->servant_to_id (this->_lock());
+  this->poa_->deactivate_object (oid);
+}
+
+/// Operations and attributes from <%= interface_type.ami4ccm_reply_handler %>
+//@{
+% props = {}
+% props[:receptacle_port] = component.ports.find {|p| (p.port_type == :receptacle && (p.cxxname.include? 'ami4ccm_uses'))}
+% interface_type.all_operations.each do |_op|
+%   props[:operation] = _op
+%   visit_template('operation_reply_h', props)
+% end
+
+% props.delete(:operation)
+% interface_type.all_attributes.each do |_att|
+%   props[:attribute] = _att
+%   visit_template('attribute_reply_h', props)
+% end
+//@}

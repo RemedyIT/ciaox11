@@ -1,0 +1,16 @@
+
+if defined? BRIX11::CIAOX11::ExF
+
+connector 'unkeyed_writer' do |conn|
+  conn.idl %w{ unkeyed_writer.idl }
+  conn.use_exf true
+
+  conn.port_type :dds4ccm do |tp|
+    tp.topic 'UnkeyedWriterTest::UnkeyedWriterMessage'
+    tp.topic_interface_suffix 'Connector'
+    # use default DDS vendor
+    # tp.middleware :ndds
+  end
+end
+
+end

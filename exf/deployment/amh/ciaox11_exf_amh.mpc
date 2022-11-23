@@ -1,0 +1,20 @@
+
+project(*impl) : install, ciaox11_lib, ciaox11_output, ciaox11_exf_logger, messaging {
+  after += ciaox11_exf_core_impl
+  libs += ciaox11_exf_core
+  dynamicflags += CIAOX11_EXF_AMH_BUILD_DLL
+  sharedname = ciaox11_exf_amh_base
+
+  Source_Files {
+    ciaox11_exf_amh_base.cpp
+    ciaox11_exf_exec_base.cpp
+  }
+  Header_Files {
+    ciaox11_exf_amh_base.h
+    ciaox11_exf_exec_base.h
+    ciaox11_exf_amh_export.h
+  }
+  specific {
+    install_dir = ciaox11/deployment/exf/amh
+  }
+}

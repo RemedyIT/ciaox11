@@ -1,0 +1,89 @@
+project(tt_comp_tester_comp_gen) : ciaox11_idldefaults, ciaox11_tt4ccm {
+  // special section IDL
+  idlflags += -Gcomp \
+              -Gxhex \
+              -Gxhsv \
+              -Scc \
+              -Scp \
+              -Gex \
+              -oI \
+              . \
+              -Wb,base_export_macro=TT_COMP_TESTER \
+              -Wb,base_export_include=tt_comp_tester \
+              -o \
+              generated_code \
+              -I.
+
+  specific {
+    precious_files += _exec.h\Z _exec.cpp\Z
+  }
+
+  IDL_Files {
+    gendir=generated_code
+    tt_test.idl
+  }
+  custom_only = 1
+}
+
+project(tt_comp_tester_comp_lem) : ciaox11_ccm_session_stub, ciaox11_tt4ccm_stub {
+  after += tt_comp_tester_comp_gen
+  //compile section :
+  libout    = ../lib
+  libpaths += ../lib
+  includes += generated_code
+
+  sharedname    = tt_comp_tester_comp_lem
+  dynamicflags += TT_COMP_TESTER_LEM_STUB_BUILD_DLL
+
+  Source_Files {
+    generated_code/tt_testEC.cpp
+  }
+
+  Header_Files {
+    generated_code/tt_testEC.h
+    generated_code/tt_comp_tester_lem_stub_export.h
+  }
+}
+
+project(tt_comp_tester_svnt) : ciaox11_ccm_session_stub, ciaox11_tt4ccm_stub {
+  after += tt_comp_tester_comp_lem
+  //compile section :
+  libs += tt_comp_tester_comp_lem
+  libout    = ../lib
+  libpaths += ../lib
+  includes += generated_code
+
+  sharedname    = tt_comp_tester_svnt
+  dynamicflags += TT_COMP_TESTER_SVNT_BUILD_DLL
+
+  Source_Files {
+    generated_code/tt_test_svnt.cpp
+  }
+
+  Header_Files {
+    generated_code/tt_test_svnt.h
+    generated_code/tt_comp_tester_svnt_export.h
+  }
+}
+
+project(tt_comp_tester_exec) : ciaox11_executor, ciaox11_logger, ciaox11_tt4ccm_stub {
+  after += tt_comp_tester_comp_lem
+  // compile section : exec
+  libs += tt_comp_tester_comp_lem
+  libout    = ../lib
+  libpaths += ../lib
+  includes += generated_code
+
+  sharedname    = tt_comp_tester_exec
+  dynamicflags += TT_COMP_TESTER_EXEC_BUILD_DLL
+
+  Source_Files {
+    tt_test_exec.cpp
+  }
+
+  Header_Files {
+    tt_test_exec.h
+    generated_code/tt_comp_tester_exec_export.h
+  }
+}
+

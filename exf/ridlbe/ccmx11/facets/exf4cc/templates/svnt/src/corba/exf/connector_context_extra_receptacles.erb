@@ -1,0 +1,10 @@
+  // generated from <%= ridl_template_path %>
+% all_ports.each do |_p|
+%   if _p.port_type == :receptacle
+  ::Components::ConfigValues
+  <%= lem_name %>_Context::<%= _p.lem_name %>_configuration ()
+  {
+    return this-><%= _p.lem_name %>_config_;
+  }
+%   end
+% end

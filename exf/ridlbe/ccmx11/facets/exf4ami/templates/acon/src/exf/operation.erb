@@ -1,0 +1,77 @@
+// generated from <%= ridl_template_path %>
+% if operation.cxxname.include? 'sendc'
+%   _args = operation.arguments.dup
+%   _arg = _args.shift
+%   _s = _arg ? (_arg.scoped_stub_arg_type+' '+_arg.cxxname) : ''
+%   _s += (_args.empty? ? ')' : ',')
+% if operation.is_oneway?
+%     _op_start = "void "
+% else
+%     _op_start = "#{operation.scoped_cxx_return_type} "
+% end
+% _derived_scoped_interface = interface_type.scoped_cxxname.sub('AMI4CCM_','')
+% _derived_interface = interface_type.cxxname.sub('AMI4CCM_','')
+<%= _op_start %><%= lem_name %>_exec_i::<%= operation.cxxname %> (
+  <%= _s %>
+% while !_args.empty?
+% _arg = _args.shift
+  <%= _arg.scoped_stub_arg_type %> <%= _arg.cxxname %><%= _args.empty? ? ')' : ',' %>
+% end
+{
+  CORBA::amic_traits<<%= _derived_scoped_interface %>>::replyhandler_ref_type corba_ami_reply_handler;
+
+  // Get the CORBA AMI stub and the CORBA AMI reply handler
+  CORBA::amic_traits<<%= _derived_scoped_interface %>>::ref_type corba_ami_stub =
+    this->get_receptacle_and_handler (ami4ccm_reply_handler,
+                                      corba_ami_reply_handler,
+                                      this-><%=operation.cxxname %>_deadline_,
+                                      this-><%=operation.cxxname %>_priority_);
+
+%   _args = operation.arguments.dup
+%   _arg = _args.shift
+%   _s = (_args.empty? ? ');' : ',')
+  corba_ami_stub-><%= operation.cxxname %> (
+    std::move(corba_ami_reply_handler)<%= _s %>
+% while !_args.empty?
+%   _arg = _args.shift
+    <%= _arg.cxxname %><%= _args.empty? ? ');' : ',' %>
+% end
+}
+
+% else
+%   _args = operation.arguments.dup
+%   _arg = _args.shift
+%   _s = _arg ? (_arg.scoped_stub_arg_type+' '+_arg.cxxname) : ''
+%   _s += (_args.empty? ? ')' : ',')
+% if operation.is_oneway?
+%     _op_start = "void "
+% else
+%     _op_start = "#{operation.scoped_cxx_return_type} "
+% end
+<%= _op_start %><%= lem_name %>_exec_i::<%= operation.cxxname %> (<%= _s %>
+% while !_args.empty?
+%   _arg = _args.shift
+<%= ' ' * (2+_op_start.size) %><%= _arg.scoped_stub_arg_type %> <%= _arg.cxxname %><%= _args.empty? ? ')' : ',' %>
+% end
+{
+  // Pass through to the provider component
+  IDL::traits< <%= interface_type.scoped_cxxname %>>::ref_type receptacle_objref =
+    this->context_->get_connection_<%= receptacle_port.cxxname %> ();
+
+% _pfx = ''
+% unless operation.is_oneway? || operation.is_void?
+  return
+% _pfx = '  '
+% end
+%   _args = operation.arguments.dup
+%   _arg = _args.shift
+%   _s = _arg ? _arg.cxxname : ''
+%   _s += (_args.empty? ? ');' : ',')
+  <%= _pfx %>receptacle_objref-><%= operation.cxxname %> (<%= _s %>
+% while !_args.empty?
+%   _arg = _args.shift
+      <%= _pfx %><%= _arg.cxxname %><%= _args.empty? ? ');' : ',' %>
+% end
+}
+
+% end

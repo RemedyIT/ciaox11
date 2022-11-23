@@ -1,0 +1,26 @@
+/**
+ * @file    hello_receiver.idl
+ * @author  Marijke Hengstmengel
+ *
+ * @brief   Receiver component for minimal sync manual example
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ */
+
+#ifndef HELLO_RECEIVER_IDL_
+#define HELLO_RECEIVER_IDL_
+
+#include <Components.idl>
+
+#include "hello2.idl"
+
+module Hello
+{
+  component Receiver
+  {
+    /// Provides
+    provides B do_my_B;
+  };
+};
+
+#endif /* HELLO_RECEIVER_IDL_ */
