@@ -1,0 +1,38 @@
+/**
+ * @file    base.idl
+ * @author  Martin Corino
+ *
+ * @brief   base of ami4ccm test with multiple inheritance
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ */
+
+#ifndef BASE_INTERMULTI_IDL
+#define BASE_INTERMULTI_IDL
+
+#pragma ami4ccm interface "InterMulti::One"
+#pragma ami4ccm interface "InterMulti::Two"
+#pragma ami4ccm idl "baseA.idl"
+
+module InterMulti
+{
+  exception InternalError
+    {
+      long id;
+      string error_string;
+    };
+
+  // Sender/Receiver interfaces
+  interface One
+    {
+      long foo (in string in_str, in long cmd, out string answer)
+        raises (InternalError);
+    };
+  interface Two
+    {
+      void bar (in long cmd, out string answer)
+        raises (InternalError);
+    };
+};
+
+#endif

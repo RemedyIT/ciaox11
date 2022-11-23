@@ -1,0 +1,14 @@
+
+// generated from <%= ridl_template_path %>
+/// Connect method to set the connection for receptacle with name @a name.
+/// In case of multiplex receptacle uses the unique connection name
+/// @a conn_name as cookie.
+bool set_connection (const std::string& name,
+%   if all_incl_multiple_port?
+                     IDL::traits<CORBA::Object>::ref_type port,
+                     const std::string& conn_name,
+                     const ::Components::ConfigValues& config);
+%   else
+                     IDL::traits<CORBA::Object>::ref_type port,
+                     const ::Components::ConfigValues& config);
+%   end

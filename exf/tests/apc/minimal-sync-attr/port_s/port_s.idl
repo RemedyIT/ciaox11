@@ -1,0 +1,35 @@
+/**
+ * @file    port_s.idl
+ * @author  Marijke Hengstmengel
+ *
+ * @brief   Port data for minimal sync attrib example
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ */
+
+#ifndef PORT_S_IDL_
+#define PORT_S_IDL_
+
+
+
+module Hello
+{
+  struct test_struct_s {
+    long test_long_struct;
+  };
+
+  typedef sequence<test_struct_s>long_seq_s;
+
+  interface PortFooS
+  {
+    long hello (in long answer);
+  };
+
+  porttype portFooPortS
+  {
+    provides PortFooS foo_prov;
+    attribute long_seq_s port_seq_attrib;
+  };
+};
+
+#endif /* PORT_S_IDL_ */

@@ -1,0 +1,8 @@
+// generated from <%= ridl_template_path %>
+void <%= srvproxy_cxxname %>::_dispatch (TAO_ServerRequest & req, TAO_TAO::Portable_Server::Servant_Upcall * servant_upcall)
+{
+  if (nullptr == req.incoming ()) // collocated?
+    this->synchronous_upcall_dispatch (req, servant_upcall, this);
+  else
+    this->asynchronous_upcall_dispatch (req, servant_upcall, this);
+}

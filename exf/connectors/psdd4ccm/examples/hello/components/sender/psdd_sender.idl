@@ -1,0 +1,32 @@
+/**
+ * @file    psdd_sender.idl
+ * @author  Martin Corino
+ *
+ * @brief   Basic test for PSDD4CCM
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ */
+#ifndef PSDD_SENDER_IDL_
+#define PSDD_SENDER_IDL_
+
+#include "stringPS.idl"
+#include "messagePS.idl"
+#include <ccm_timed_trigger.idl>
+
+module Test
+{
+    component Sender
+    {
+        uses Test::Hello::Publisher  hello_pub;
+        uses Test::Msg::Publisher msg_pub;
+
+        uses CCM_TT::TT_Scheduler tt_scheduler;
+
+        attribute string mode;
+        attribute unsigned long count;
+        attribute unsigned long delay; // msec
+    };
+
+};
+
+#endif // PSDD_SENDER_IDL_

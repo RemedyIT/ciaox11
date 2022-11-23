@@ -1,0 +1,37 @@
+/**
+ * @file    async_event_sender.idl
+ * @author  Marijke Hengstmengel
+ *
+ * @brief   Sender component declaration for the manual minimal-event test.
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ */
+#ifndef EVENT_SENDER_IDL_
+#define EVENT_SENDER_IDL_
+
+#include <ccm_timed_trigger.idl>
+
+#include "event_recordSE.idl"
+#include "hello.idl"
+
+#pragma ami4ccm receptacle "Hello::Sender::run_my_foo"
+
+module Hello
+{
+  component Sender
+  {
+    uses MyFoo run_my_foo;
+    uses CCM_TT::TT_Scheduler tt_scheduler;
+
+    port ShapeTypeInterface::DDS_Write info_write;
+    provides CCM_DDS::ConnectorStatusListener connector_status;
+
+    attribute unsigned short rate;
+    attribute unsigned short iterations;
+    attribute unsigned short keys;
+
+
+  };
+};
+
+#endif /* EVENT_SENDER_IDL_ */

@@ -1,0 +1,35 @@
+/**
+ * @file    hello_sender.idl
+ * @author  Martin Corino
+ *
+ * @brief   Sender component for minimal sync manual example
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ */
+
+#ifndef HELLO_SENDER_IDL_
+#define HELLO_SENDER_IDL_
+
+#include <Components.idl>
+
+#include "hello.idl"
+#include "port_s.idl"
+
+module Hello
+{
+  component Sender
+  {
+    uses MyFoo run_my_foo;
+
+    attribute Hello::foo_seq    my_attribute;
+    attribute Hello::foo_long   my_attrib2;
+    attribute Hello::bar_seq    my_attrib3;
+    attribute Hello::foo_struct my_attrib4;
+    attribute long              my_attrib5;
+    attribute out_seq           my_attrib6;
+
+    port portFooPortS foo_port_s;
+  };
+};
+
+#endif /* HELLO_SENDER_IDL_ */

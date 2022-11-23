@@ -1,0 +1,33 @@
+
+// generated from <%= ridl_template_path %>
+void
+<%= port_interface.scoped_cxxname.identify %>_servant::<%= attribute.cxxname %> (
+    <%= attribute.defining_interface.scoped_enclosure_cxxname %>::ExF::<%= attribute.defining_interface.skel_cxxname %>_get_<%= attribute.cxxname %>_RequestHandler::ref_type rh)
+{
+  CIAOX11::ExF::Executor::ref_type exec =
+      std::make_unique<<%= attribute.defining_interface.scoped_cxxname.identify %>_Executor> (
+          "get_<%= attribute.cxxname %>",
+          std::move (rh),
+          this->facet_executor_,
+          this->get_<%= attribute.cxxname %>_priority_,
+          this->get_<%= attribute.cxxname %>_deadline_);
+
+  this->scheduling_lane_->submit (std::move (exec));
+}
+%unless attribute.is_readonly?
+
+void
+<%= port_interface.scoped_cxxname.identify %>_servant::<%= attribute.cxxname %> (
+    <%= attribute.defining_interface.scoped_enclosure_cxxname %>::ExF::<%= attribute.defining_interface.skel_cxxname %>_set_<%= attribute.cxxname %>_RequestHandler::ref_type rh)
+{
+  CIAOX11::ExF::Executor::ref_type exec =
+      std::make_unique<<%= attribute.defining_interface.scoped_cxxname.identify %>_Executor> (
+          "set_<%= attribute.cxxname %>",
+          std::move (rh),
+          this->facet_executor_,
+          this->set_<%= attribute.cxxname %>_priority_,
+          this->set_<%= attribute.cxxname %>_deadline_);
+
+  this->scheduling_lane_->submit (std::move (exec));
+}
+%end

@@ -1,0 +1,572 @@
+<!--
+  @file      plan_ndds.cdp
+  @author    Marcel Smit
+
+  @copyright Copyright (c) Remedy IT Expertise BV
+-->
+
+<Deployment:DeploymentPlan
+   xmlns:Deployment="http://www.omg.org/Deployment"
+   xmlns:xmi="http://www.omg.org/XMI"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+   xsi:schemaLocation="http://www.omg.org/Deployment Deployment.xsd">
+  <label>UnkeyedWriter_Depl_1</label>
+  <UUID>UnkeyedWriter_Depl_1</UUID>
+
+  <implementation xmi:id="CompSvrImpl">
+    <name>CompSvr</name>
+    <source/>
+    <artifact xmi:idref="CompSvrArt"/>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.ImplementationType</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>nl.remedy.it.DnCX11.LocalityManager</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="ReceiverComponentImplementation">
+    <name>ReceiverComponentImplementation</name>
+    <source/>
+    <artifact xmi:idref="Receiver_ExecArtifact" />
+    <execParameter>
+      <!-- entrypoint as exec parameter (see 10.6.1) -->
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_UnkeyedWriterTest_Receiver_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_UnkeyedWriterTest_Receiver_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>unkeyed_writer_receiver_svnt</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>unkeyed_writer_receiver_exec</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <implementation xmi:id="Writer_ConnectorComponentImplementation">
+    <name>Writer_ConnectorComponentImplementation</name>
+    <source/>
+    <artifact xmi:idref="Writer_Connector_ExecArtifact" />
+    <execParameter>
+      <!-- entrypoint as exec parameter (see 10.6.1) -->
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_UnkeyedWriterTest_UnkeyedWriterMessageConnector_DDS_Event_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_UnkeyedWriterTest_UnkeyedWriterMessageConnector_DDS_Event_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>unkeyed_writer_dds_ndds_conn</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>unkeyed_writer_dds_ndds_conn</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+  <implementation xmi:id="SenderComponentImplementation">
+    <name>SenderComponentImplementation</name>
+    <source/>
+    <artifact xmi:idref="Sender_ExecArtifact" />
+    <execParameter>
+      <!-- entrypoint as exec parameter (see 10.6.1) -->
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_UnkeyedWriterTest_Sender_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_UnkeyedWriterTest_Sender_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>unkeyed_writer_sender_svnt</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>unkeyed_writer_sender_exec</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+    <implementation xmi:id="TimeTriggerConnectorImplementation">
+    <name>TimeTriggerConnectorImplementation</name>
+    <source/>
+    <execParameter>
+      <!-- entrypoint as exec parameter (see 10.6.1) -->
+      <name>nl.remedy.it.DnCX11.Executor.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_CIAOX11_TT_TimedTrigger_Impl</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Servant.Factory</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>create_CIAOX11_TT_TimedTrigger_Servant</string>
+        </value>
+      </value>
+    </execParameter>
+    <execParameter>
+      <name>nl.remedy.it.DnCX11.Executor.Artifact</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>ciaox11_tt4ccm_exf_conn</string>
+        </value>
+      </value>
+    </execParameter>
+  </implementation>
+
+  <instance xmi:id="TimeTriggerConnectorInstance">
+    <name>TimeTriggerConnector</name>
+    <node>SenderNode</node>
+    <!-- hostname -->
+    <source/>
+    <implementation xmi:idref="TimeTriggerConnectorImplementation" />
+  </instance>
+
+  <instance xmi:id="ReceiverComponentInstance">
+    <name>ReceiverComponent</name>
+    <node>ReceiverNode</node>
+    <!-- hostname -->
+    <source/>
+    <implementation xmi:idref="ReceiverComponentImplementation" />
+    <configProperty>
+      <name>iterations</name>
+      <value>
+        <type>
+          <kind>tk_ushort</kind>
+        </type>
+        <value>
+          <!-- should be equal to iterations in
+               Sender component -->
+          <ushort>10</ushort>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>keys</name>
+      <value>
+        <type>
+          <kind>tk_ushort</kind>
+        </type>
+        <value>
+          <!-- should be equal to keys in
+               Sender component -->
+          <ushort>5</ushort>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+  <instance xmi:id="SenderConnectorInstance">
+    <name>Writer_ConnectorComponent</name>
+    <node>SenderNode</node>
+    <!-- hostname -->
+    <source/>
+    <implementation xmi:idref="Writer_ConnectorComponentImplementation" />
+    <configProperty>
+      <name>topic_name</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>UnkeyedWriter</string>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+    <name>qos_profile</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>unkeyedwriterlibrary#UnkeyedWriterProfile</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+  <instance xmi:id="ReceiverConnectorInstance">
+    <name>Receiver_ConnectorComponent</name>
+    <node>ReceiverNode</node>
+    <!-- hostname -->
+    <source/>
+    <implementation xmi:idref="Writer_ConnectorComponentImplementation" />
+    <configProperty>
+      <name>topic_name</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>UnkeyedWriter</string>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>qos_profile</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>unkeyedwriterlibrary#UnkeyedWriterProfile</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+  <instance xmi:id="SenderComponentInstance">
+    <name>SenderComponent</name>
+    <node>SenderNode</node>
+    <!-- hostname -->
+    <source/>
+    <implementation xmi:idref="SenderComponentImplementation" />
+    <configProperty>
+      <name>rate</name>
+      <value>
+        <type>
+          <kind>tk_ushort</kind>
+        </type>
+        <value>
+          <ushort>15</ushort>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>keys</name>
+      <value>
+        <type>
+          <kind>tk_ushort</kind>
+        </type>
+        <value>
+          <ushort>5</ushort>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>iterations</name>
+      <value>
+        <type>
+          <kind>tk_ushort</kind>
+        </type>
+        <value>
+          <ushort>10</ushort>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <instance xmi:id="ReceiverLocality">
+    <name>ReceiverComponentServerInstance</name>
+    <node>ReceiverNode</node>
+    <source/>
+    <implementation xmi:idref="CompSvrImpl"/>
+    <configProperty>
+      <name>nl.remedy.it.DnCX11.LocalityManager.ProcessName</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>ReceiverLocality</string>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>nl.remedy.it.DnCX11.Locality.ConfigFile</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>exf-localitymanager.config</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <instance xmi:id="SenderLocality">
+    <name>SenderComponentServerInstance</name>
+    <node>SenderNode</node>
+    <source/>
+    <implementation xmi:idref="CompSvrImpl"/>
+    <configProperty>
+      <name>nl.remedy.it.DnCX11.LocalityManager.ProcessName</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>SenderLocality</string>
+        </value>
+      </value>
+    </configProperty>
+    <configProperty>
+      <name>nl.remedy.it.DnCX11.Locality.ConfigFile</name>
+      <value>
+        <type>
+          <kind>tk_string</kind>
+        </type>
+        <value>
+          <string>exf-localitymanager.config</string>
+        </value>
+      </value>
+    </configProperty>
+  </instance>
+
+  <connection>
+    <name>_reader</name>
+    <internalEndpoint>
+      <portName>info_out_data</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="ReceiverComponentInstance" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>push_consumer_data</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="ReceiverConnectorInstance" />
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>_listener</name>
+    <internalEndpoint>
+      <portName>info_out_data_listener</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="ReceiverComponentInstance" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>push_consumer_data_listener</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="ReceiverConnectorInstance" />
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>_datacontrol</name>
+    <internalEndpoint>
+      <portName>info_out_data_control</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="ReceiverComponentInstance" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>push_consumer_data_control</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="ReceiverConnectorInstance" />
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>writer_connection</name>
+    <internalEndpoint>
+      <portName>info_write_data</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="SenderComponentInstance" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>supplier_data</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="SenderConnectorInstance" />
+    </internalEndpoint>
+  </connection>
+
+  <connection>
+    <name>connector_status_connection</name>
+    <internalEndpoint>
+      <portName>error_listener</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="SenderConnectorInstance" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>connector_status</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="SenderComponentInstance" />
+    </internalEndpoint>
+  </connection>
+  <connection>
+    <name>write_dds_entity</name>
+    <internalEndpoint>
+      <portName>info_write_dds_entity</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="SenderComponentInstance" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>supplier_dds_entity</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="SenderConnectorInstance" />
+    </internalEndpoint>
+   </connection>
+  <connection>
+    <name>timed_trigger_connection</name>
+    <internalEndpoint>
+      <portName>tt_scheduler</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="SenderComponentInstance" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>tt_scheduler</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="TimeTriggerConnectorInstance" />
+    </internalEndpoint>
+  </connection>
+
+  <artifact xmi:id="Sender_ExecArtifact">
+    <name>unkeyed_writer_sender_exec</name>
+    <source/>
+    <node/>
+    <location>unkeyed_writer_sender_exec</location>
+  </artifact>
+  <artifact xmi:id="Writer_Connector_ExecArtifact">
+    <name>unkeyed_writer_dds_ndds_conn</name>
+    <source/>
+    <node/>
+    <location>unkeyed_writer_dds_ndds_conn</location>
+  </artifact>
+  <artifact xmi:id="Receiver_ExecArtifact">
+    <name>unkeyed_writer_receiver_exec</name>
+    <source/>
+    <node/>
+    <location>unkeyed_writer_receiver_exec</location>
+  </artifact>
+  <artifact xmi:id="CompSvrArt">
+    <name>CompoSvrArtifactName</name>
+    <source/>
+    <node/>
+    <location>dancex11_locality_manager</location>
+  </artifact>
+
+  <localityConstraint>
+    <constraint>SameProcess</constraint>
+    <constrainedInstance xmi:idref="ReceiverLocality"/>
+    <constrainedInstance xmi:idref="ReceiverComponentInstance"/>
+    <constrainedInstance xmi:idref="ReceiverConnectorInstance"/>
+  </localityConstraint>
+
+  <localityConstraint>
+    <constraint>SameProcess</constraint>
+    <constrainedInstance xmi:idref="SenderLocality"/>
+    <constrainedInstance xmi:idref="SenderComponentInstance"/>
+    <constrainedInstance xmi:idref="SenderConnectorInstance"/>
+    <constrainedInstance xmi:idref="TimeTriggerConnectorInstance" />
+  </localityConstraint>
+
+</Deployment:DeploymentPlan>

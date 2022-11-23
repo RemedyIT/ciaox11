@@ -1,0 +1,31 @@
+/**
+ * @file    result.idl
+ * @author  Martin Corino
+ *
+ * @brief   Result data
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ */
+
+#ifndef EXF_RESULT_IDL_
+#define EXF_RESULT_IDL_
+
+#include "record.idl"
+
+module Data
+{
+  typedef sequence<Data::Record> RecordList;
+
+  struct Result
+  {
+    string location;
+    double avg_temperature;
+    double avg_pressure;
+    double avg_humidity;
+    RecordList record_history;
+  };
+
+  typedef sequence<Data::Result> ResultList;
+};
+
+#endif /* EXF_RESULT_IDL_ */

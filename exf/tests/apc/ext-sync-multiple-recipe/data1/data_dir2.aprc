@@ -1,0 +1,5 @@
+
+#stub and lem_stub needed for those idl files
+base 'hello_ls' do |dt|
+  dt.idl %w{ hello3.idl hello1.idl}
+end

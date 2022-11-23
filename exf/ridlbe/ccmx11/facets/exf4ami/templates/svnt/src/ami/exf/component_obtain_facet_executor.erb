@@ -1,0 +1,34 @@
+
+// generated from <%= ridl_template_path %>
+IDL::traits<CORBA::Object>::ref_type
+<%= lem_name %>_ExecutorLocator::obtain_facet_executor (
+  const ::Components::FeatureName& name,
+  ::Components::ConfigValues& config)
+{
+% if all_incl_facet_port?
+%   all_ports.each do |_p|
+%     if _p.port_type == :facet
+
+%       if _p.lem_name == 'ami4ccm_port_ami4ccm_provides'
+  if (name == "ami4ccm_port_ami4ccm_provides")
+  {
+    IDL::traits< <%= _p.interface_type.scoped_ccm_name %>>::ref_type comp_executor =
+        this->component_executor_->get_ami4ccm_port_ami4ccm_provides ();
+
+    IDL::traits< ami4ccm_port_ami4ccm_provides_exec_i>::ref_type comp_executor_i =
+        IDL::traits< ami4ccm_port_ami4ccm_provides_exec_i>::narrow (comp_executor);
+    comp_executor_i->set_config(config);
+    return comp_executor;
+  }
+%       else
+  if (name == "<%= _p.lem_name %>")
+  {
+    return this->component_executor_->get_<%= _p.lem_name %> ();
+  }
+%       end
+%     end
+%   end
+% end
+  // no match
+  throw CIAOX11::InvalidName (name);
+}

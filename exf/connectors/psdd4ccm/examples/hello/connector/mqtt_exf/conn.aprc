@@ -1,0 +1,57 @@
+
+if defined?(BRIX11::CIAOX11::ExF) && defined?(BRIX11::CIAOX11::PSDD4CCM_MQTT)
+
+# recipe for psdd4ccm connector with recipe_id 'hello_psdd_mqtt_exf_conn'
+connector 'hello_psdd_mqtt_exf_conn' do |conn|
+
+  # conn.idl %w{ ... }
+
+  # prefix of generated export headers (default: recipe_id)
+  conn.export_name 'hello'
+
+  # For the shared name of the psdd4ccm connector, the project creator adds '_psdd_<middleware>_conn' after
+  # the property 'shared_name' (default: recipe id)
+  conn.shared_name 'hello_exf'
+
+  conn.port_type :psdd4ccm do |tp|
+    tp.topic 'string'
+    tp.topic_namespace 'Test'
+    tp.topic_sequence 'StringSeq_t'
+    tp.topic_interface 'Hello'
+    tp.middleware :mqtt
+  end
+
+  conn.use_exf true
+
+  # gen_dir is default 'generated_code'
+  # conn.gen_dir 'build'
+
+end
+
+# recipe for psdd4ccm connector with recipe_id 'msg_psdd_mqtt_exf_conn'
+connector 'msg_psdd_mqtt_exf_conn' do |conn|
+
+  conn.idl %w{ message.idl }
+
+  # prefix of generated export headers (default: recipe_id)
+  conn.export_name 'msg'
+
+  # For the shared name of the psdd4ccm connector, the project creator adds '_psdd_<middleware>_conn' after
+  # the property 'shared_name' (default: recipe id)
+  conn.shared_name 'msg_exf'
+
+  conn.port_type :psdd4ccm do |tp|
+    tp.topic 'Test::Message'
+    tp.topic_sequence_suffix 'Seq_t'
+    tp.topic_interface 'Msg'
+    tp.middleware 'mqtt'
+  end
+
+  conn.use_exf true
+
+  # gen_dir is default 'generated_code'
+  # conn.gen_dir 'build'
+
+end
+
+end # if defined? BRIX11::CIAOX11::ExF && defined? BRIX11::CIAOX11::PSDD4CCM_MQTT

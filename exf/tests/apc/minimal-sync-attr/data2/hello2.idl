@@ -1,0 +1,23 @@
+/**
+ * @file    hello2.idl
+ * @author  Martin Corino
+ *
+ * @brief   Data  for minimal sync attrib example
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ */
+
+#ifndef HELLO2_IDL_
+#define HELLO2_IDL_
+
+#include "hello3.idl"
+
+module Hello
+{
+  struct bar_struct {
+    hello3_struct bar_long_struct;
+  };
+
+};
+
+#endif /* HELLO2_IDL_ */

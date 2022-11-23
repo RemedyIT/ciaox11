@@ -1,0 +1,75 @@
+  // generated from <%= ridl_template_path %>
+%# There's always one port
+% _p = all_ports[0] if !all_ports.empty?
+% _cc = _p.interface_type.scoped_cxxname.scope_to_cxxname + '_CorbaConnector'
+  typedef CCM_CORBA::CORBA_Connector_T<
+    <%= scoped_ccm_name %>,
+    <%= scoped_ccm_name %>_Context,
+    <%= _p.interface_type.scoped_ccm_name %>,
+    <%= executor_cxx_namespace %>::<%= _p.lem_name %>_exec_i,
+    <%= _p.resolved_cxxtype %>,
+    <%= _p.interface_type.scoped_cxxname.identify %>_servant>
+      <%= _cc %>;
+
+  namespace ExF
+  {
+    class <%= _cc %> final
+      : public <%= executor_cxx_namespace %>::<%= _cc %>
+    {
+    public:
+      typedef <%= executor_cxx_namespace %>::<%= _cc %> base_type;
+
+      <%= _cc %> () = default;
+      virtual ~<%= _cc %> () = default;
+
+      /// @copydoc Components::SessionComponent::configuration_complete
+      void configuration_complete () override;
+
+    private:
+      /** @name Illegal to be called. Deleted explicitly to let the compiler detect any violation */
+      //@{
+      <%= _cc %>(<%= _cc %>&) = delete;
+      <%= _cc %>(<%= _cc %>&&) = delete;
+      <%= _cc %>& operator=(<%= _cc %>&) = delete;
+      <%= _cc %>& operator=(<%= _cc %>&&) = delete;
+      //@}
+    };
+
+    void
+    <%= _cc %>::configuration_complete ()
+    {
+      // first call base
+      this->base_type::configuration_complete ();
+      // now find Facet servant reference
+      IDL::traits<PortableServer::POA>::ref_type poa =
+          CCM_CORBA::get_corba4ccm_POA (this->context_);
+      if (poa)
+      {
+        CORBA::servant_reference<PortableServer::Servant> svt_ref =
+          CCM_CORBA::get_corba4ccm_facet (poa,
+                                          this->context_->instance_id (),
+                                          sync_request_reply_facet);
+
+        CORBA::servant_traits< <%= _p.interface_type.scoped_cxxname.identify %>_servant>::ref_type facet_svt_ref =
+          CORBA::servant_traits< <%= _p.interface_type.scoped_cxxname.identify %>_servant >::narrow (svt_ref);
+        if (facet_svt_ref)
+        {
+          ::Components::ConfigValues facet_config (this->context_->srr_receptacle_configuration ());
+          facet_svt_ref->_configuration_complete (facet_config);
+          return;
+        }
+      }
+
+      throw std::runtime_error (
+          "failed to handle configuration_complete for CORBA connector");
+    }
+  }
+
+} // namespace <%= executor_cxx_namespace %>
+
+extern "C" void
+create_<%= scoped_name.scope_to_cxxname %>_Impl (
+  IDL::traits<Components::EnterpriseComponent>::ref_type& component)
+{
+  component = CORBA::make_reference < <%= executor_cxx_namespace %>::ExF::<%= _cc %>> ();
+}

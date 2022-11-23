@@ -1,0 +1,84 @@
+project(*skel_gen) : ciaox11_idldefaults {
+  after += exf_test_data_data_skel_gen
+  custom_only = 1
+
+  idlflags += \
+      -o build \
+      -Wb,base_export_macro=EXFTEST_RECORD \
+      -Wb,base_export_include=exftest_record \
+      -Scc -Sch -Scp -Gxhsk
+  idlflags -= \
+      -SS -Ssh
+
+  IDL_Files {
+    gendir=build
+    ../../data/recorder.idl
+  }
+}
+
+project(*record_skel) : taox11_lib, taox11_portableserver {
+  after += exf_test_data_record_stub *skel_gen
+  sharedname = exftest_record_skel
+  libs  += exftest_data_stub exftest_record_stub
+
+  libout = ../../lib
+  libpaths += ../../lib
+  includes += . ../../data/build build
+  dynamicflags += EXFTEST_RECORD_SKEL_BUILD_DLL
+
+  Source_Files {
+    build/recorderS.cpp
+  }
+
+  Header_Files {
+    build/recorderS.h
+    build/exftest_record_skel_export.h
+  }
+}
+
+project(*gen) : ciaox11_idldefaults, ciaox11_corba4ccm_idl {
+  custom_only = 1
+
+  after += recorder_interface_lem_gen
+
+  // Suppress the skeleton since this is generated
+  // in a separately
+  idlflags += \
+      -o build \
+      -Wb,base_export_macro=EXFTEST_RECORD \
+      -Wb,base_export_include=exftest_record \
+      -I../../data -I./build -I../../interfaces/recorder/build
+
+  IDL_Files {
+    gendir=build
+    ../../data/recorder.idl
+  }
+}
+
+// Compiles the corba connector itself.
+project(*impl) : ciaox11_executor, ciaox11_corba4ccm_impl {
+  after += *record_skel *gen recorder_interface_lem_stub
+  libs  += exftest_record_skel exftest_data_stub exftest_record_stub recorder_interface
+
+  libout = ../../lib
+  libpaths += ../../lib
+  includes += . ../../data/build ../../interfaces/recorder/build build
+  sharedname = recorder_conn
+  dynamicflags += EXFTEST_RECORD_CC_LEM_STUB_BUILD_DLL \
+                  EXFTEST_RECORD_CC_EXEC_BUILD_DLL \
+                  EXFTEST_RECORD_CC_SVNT_BUILD_DLL
+
+  Source_Files {
+    build/recorder_ccEC.cpp
+    build/recorder_cc_exec.cpp
+    build/recorder_cc_svnt.cpp
+  }
+  Header_Files {
+    build/recorder_ccC.h
+    build/recorder_cc_stub_export.h
+    build/recorder_ccEC.h
+    build/recorder_cc_lem_stub_export.h
+    build/recorder_cc_exec.h
+    build/recorder_cc_svnt.h
+  }
+}

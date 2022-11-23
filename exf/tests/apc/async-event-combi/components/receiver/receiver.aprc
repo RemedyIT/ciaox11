@@ -1,0 +1,10 @@
+
+component 'sync_event_receiver' do |comp|
+
+  comp.idl %w{ sync_event_receiver.idl }
+
+  # gen_dir is default 'generated_code'
+  comp.gen_dir  'build'
+
+end
+

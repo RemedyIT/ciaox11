@@ -1,0 +1,34 @@
+% unless is_local? || is_abstract?
+
+// generated from <%= ridl_template_path %>
+namespace ExF
+{
+%   if has_abstract_base?
+%     unless abstractbase_operations.empty?
+
+  // ++ inherited abstract interface operations
+%       abstractbase_operations.each do |_op|
+%         nest(1) { _op.visit_exf_operation }
+%       end
+%     end
+
+  // -- inherited abstract interface operations
+%     unless abstractbase_attributes.empty?
+
+  // ++ inherited abstract interface attributes
+%       abstractbase_attributes.each do |_att|
+%         nest(1) { _att.visit_exf_attribute }
+%       end
+
+  // -- inherited abstract interface attributes
+%     end
+
+%   end
+%   operations.each do |_op|
+%     nest(1) { _op.visit_exf_operation }
+%   end
+%   attributes.each do |_att|
+%     nest(1) { _att.visit_exf_attribute }
+%   end
+}
+% end

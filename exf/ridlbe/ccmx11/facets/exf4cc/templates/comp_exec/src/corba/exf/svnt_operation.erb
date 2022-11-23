@@ -1,0 +1,16 @@
+
+// generated from <%= ridl_template_path %>
+void
+<%= port_interface.scoped_cxxname.identify %>_servant::<%= operation.cxxname %> (
+    <%= operation.defining_interface.scoped_enclosure_cxxname %>::ExF::<%= operation.defining_interface.skel_cxxname %>_<%= operation.cxxname %>_RequestHandler::ref_type rh)
+{
+  CIAOX11::ExF::Executor::ref_type exec =
+      std::make_unique<<%= operation.defining_interface.scoped_cxxname.identify %>_Executor> (
+          "<%= operation.cxxname %>",
+          std::move (rh),
+          this->facet_executor_,
+          this-><%= operation.cxxname %>_priority_,
+          this-><%= operation.cxxname %>_deadline_);
+
+  this->scheduling_lane_->submit (std::move (exec));
+}

@@ -1,0 +1,13 @@
+// --------------------------------------------------------------------
+// ciaox11_exf_amh.mpb
+//
+// Author: Martin Corino
+//
+// Copyright (c) Remedy IT Expertise BV
+// --------------------------------------------------------------------
+
+project : ciaox11_lib, ciaox11_exf_core, \
+    corba_messaging, tao_messaging {
+  after += ciaox11_exf_amh_impl
+  libs += ciaox11_exf_amh_base
+}

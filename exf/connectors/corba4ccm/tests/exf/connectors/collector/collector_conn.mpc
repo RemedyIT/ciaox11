@@ -1,0 +1,84 @@
+project(*skel_gen) : ciaox11_idldefaults {
+  after += exf_test_data_data_skel_gen
+  custom_only = 1
+
+  idlflags += \
+      -o build \
+      -Wb,base_export_macro=EXFTEST_COLLECT \
+      -Wb,base_export_include=exftest_collect \
+      -Scc -Sch -Scp -Gxhsk
+  idlflags -= \
+      -SS -Ssh
+
+  IDL_Files {
+    gendir=build
+    ../../data/collector.idl
+  }
+}
+
+project(*collect_skel) : taox11_lib, taox11_portableserver {
+  after += exf_test_data_collect_stub *skel_gen
+  sharedname = exftest_collect_skel
+  libs  += exftest_data_stub exftest_collect_stub
+
+  libout = ../../lib
+  libpaths += ../../lib
+  includes += . ../../data/build build
+  dynamicflags += EXFTEST_COLLECT_SKEL_BUILD_DLL
+
+  Source_Files {
+    build/collectorS.cpp
+  }
+
+  Header_Files {
+    build/collectorS.h
+    build/exftest_collect_skel_export.h
+  }
+}
+
+project(*gen) : ciaox11_idldefaults, ciaox11_corba4ccm_idl {
+  custom_only = 1
+
+  after += collector_interface_lem_gen
+
+  // Suppress the skeleton since this is generated
+  // in a separately
+  idlflags += \
+      -o build \
+      -Wb,base_export_macro=EXFTEST_COLLECT \
+      -Wb,base_export_include=exftest_collect \
+      -I../../data -I./build -I../../interfaces/collector/build
+
+  IDL_Files {
+    gendir=build
+    ../../data/collector.idl
+  }
+}
+
+// Compiles the corba connector itself.
+project(*impl) : ciaox11_executor, ciaox11_corba4ccm_impl {
+  after += *collect_skel *gen collector_interface_lem_stub
+  libs  += exftest_collect_skel exftest_data_stub exftest_collect_stub collector_interface
+
+  libout = ../../lib
+  libpaths += ../../lib
+  includes += . ../../data/build ../../interfaces/collector/build build
+  sharedname = collector_conn
+  dynamicflags += EXFTEST_COLLECT_CC_LEM_STUB_BUILD_DLL \
+                  EXFTEST_COLLECT_CC_EXEC_BUILD_DLL \
+                  EXFTEST_COLLECT_CC_SVNT_BUILD_DLL
+
+  Source_Files {
+    build/collector_ccEC.cpp
+    build/collector_cc_exec.cpp
+    build/collector_cc_svnt.cpp
+  }
+  Header_Files {
+    build/collector_ccC.h
+    build/collector_cc_stub_export.h
+    build/collector_ccEC.h
+    build/collector_cc_lem_stub_export.h
+    build/collector_cc_exec.h
+    build/collector_cc_svnt.h
+  }
+}

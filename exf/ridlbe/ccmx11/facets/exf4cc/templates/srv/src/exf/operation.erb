@@ -1,0 +1,27 @@
+% unless is_inherited?
+// generated from <%= ridl_template_path %>
+void <%= interface.scoped_srvproxy_cxxname %>::<%= name %>_skel (
+    TAO_ServerRequest & server_request,
+    TAO::Portable_Server::Servant_Upcall * /*servant_upcall*/,
+    <%= interface.scoped_srvproxy_cxxname %>::skel_type & servant)
+{
+  ExF::<%= interface.skel_cxxname %>_<%= cxxname %>_RequestHandler::ref_type rh_ref {};
+
+  try
+  {
+     rh_ref = std::make_shared<ExF::<%= interface.skel_cxxname %>_<%= cxxname %>_RequestHandler> ();
+  }
+  catch (const std::bad_alloc&)
+  {
+    throw TAO_CORBA::MARSHAL ();
+  }
+
+  rh_ref->init (server_request);
+
+  servant.<%= cxxname %> (rh_ref);
+
+  // Does nothing if not collocated
+  rh_ref->_exf_wait_for_collocated_result ();
+}
+
+% end

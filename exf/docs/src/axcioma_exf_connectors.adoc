@@ -1,0 +1,217 @@
+include::_{backend}_settings.adoc[]
+
+= ExF Connectors
+
+This document describes the basic instructions for building (if applicable) and using ExF enabled connectors for
+any of the supported interaction patterns.
+
+== Standard connectors
+
+=== TT4CCM
+
+Description::
+The *AXCIOMA* Timed Trigger connectors are based on a standard, AXCIOMA defined, IDL interface and prebuilt
+implementations are provided for both ExF and non-ExF enabled deployments.
+See the <<{xref_docs_root}/tt4ccm/tt4ccm_details#,TT4CCM>> documentation for the common details
+regarding the implementation of the timed trigger connectors.
+
+Deployment::
+Servant and executor factory are linked into a single shared module named `ciaox11_tt4ccm_exf_conn`.
+The executor factory method is called `create_CIAOX11_TT_TimedTrigger_Impl`.
+The servant factory method is called `create_CIAOX11_TT_TimedTrigger_Servant`.
+See the <<{xref_docs_root}/tt4ccm/tt4ccm_details#_deployment,TT4CCM>> documentation for the common details
+regarding deploying the timed trigger connectors.
+
+== User defined connectors
+
+=== Development using BRIX11 APC
+
+Using link:{docs_root}/ciaox11/axcioma_project_tool.html[BRIX11 APC] is the preferred way to develop your ExF enabled (or regular) connectors
+since BRIX11 APC handles all specifics and dependencies for code generation and compilation for you based on an
+automatic analysis of your APC recipes and IDL files.
+
+To create ExF enabled connectors only a single additional property, `use_exf`, needs to be specified for
+your regular connector recipes which is described link:{docs_root}/ciaox11/axcioma_project_tool.html#_connector_recipe[here]. With this
+property set the BRIX11 `apc prepare` command will now generate the correct project build files to drive ExF enabled
+connector generation and compilation.
+
+The *AXCIOMA* distribution includes multiple tests and examples of BRIX11 APC based projects for ExF which you can
+inspect for more details.
+
+In case you prefer classic, MPC based development (described in the next section) you could still use BRIX11 APC to
+generate initial MPC example files to use as templates. Using the `-m` switch for the BRIX11 `apc prepare` command
+you direct BRIX11 APC to refrain from removing the auto-generated MPC files after generation of the project build
+files.
+
+=== Classic development
+
+This section describes the requirements for developing ExF enabled user defined connectors using the classic,
+MPC based approach.
+The directives described here only describe the basic requirements. Other requirements to control other aspects
+of code generation (export directives) or compilation (project dependencies) may apply. Check out the tests and
+examples included with the *AXCIOMA* distribution to get more details.
+
+==== CORBA4CCM
+
+Description::
+CORBA4CCM connectors are derived from user defined IDL interface definitions. Connectors are built from
+standardized stub and skeleton code generated from the user defined IDL. See the
+<<{xref_docs_root}/corba4ccm/corba4ccm_details#,CORBA4CCM>> documentation for the common details
+regarding the implementation of the these connectors.
+The implementation of ExF enabled CORBA4CCM connectors requires the generation of tailored skeleton code as well as
+tailored executor and servant code.
+Stub code generation is not affected.
+
+Implementation::
+To implement ExF enabled CORBA4CCM connectors code needs to be generated using the following RIDL switch combinations. +
++
+[width="100%",cols="<20%a,<50%a,<30%a",options="header",]
+|=======================================================================
+|Switches|Description|MPC base project(s)
+
+|`-GExF`
+|This switch added to a commandline for regular skeleton generation will generate ExF enabled skeleton code.
+|`ciaox11_exf_idl`
+
+|`-GExF`
+|This switch added to a commandline for regular CORBA4CCM connector  generation will generate an ExF enabled connector
+executor and servant code.
+|`ciaox11_exf_idl`
+|=======================================================================
++
+Compiling and linking the ExF enabled code requires additional libraries as follows. +
++
+[width="100%",cols="<30%a,<40%a,<30%a",options="header",]
+|=======================================================================
+|Libraries|Description|MPC base project(s)
+
+|`ciaox11_exf_core` +
+`ciaox11_exf_amh_base` +
+`TAO_Messaging` +
+`TAO_PI`
+|Required for compiling and linking ExF enabled skeletons as well as the connector executor
+and servant.
+|`ciaox11_exf_amh`
+|=======================================================================
+
+Deployment::
+Deployment is similar to deployment of regular CORBA4CCM connectors. The only requirement is that the connector and
+the user component it is to be connected to are being deployed in an ExF enabled locality and container. See
+<<axcioma_exf#_deploying_with_exf,here>> for more details.
+
+==== AMI4CCM
+
+Description::
+AMI4CCM connectors are derived from user defined IDL interface definitions. Connectors are built from
+standardized stub code (AMI4CCM connectors do not provide facets) generated from the user defined IDL. See the
+<<{xref_docs_root}/ami4ccm/ami4ccm#,AMI4CCM>> documentation for the common details
+regarding the implementation of the these connectors.
+The implementation of ExF enabled AMI4CCM connectors requires the generation of tailored stub code as well as
+tailored executor and servant code.
+
+Implementation::
+To implement ExF enabled AMI4CCM connectors code needs to be generated using the following RIDL switch combinations. +
++
+[width="100%",cols="<20%a,<50%a,<30%a",options="header",]
+|=======================================================================
+|Switches|Description|MPC base project(s)
+
+|`-GExF`
+|This switch added to a commandline for regular AMI4CCM connector generation will an generate ExF enabled connector
+executor and servant code.
+|`ciaox11_exf_idl`
+|=======================================================================
++
+Compiling and linking the ExF enabled code requires additional libraries as follows. +
++
+[width="100%",cols="<30%a,<40%a,<30%a",options="header",]
+|=======================================================================
+|Libraries|Description|MPC base project(s)
+
+|`ciaox11_exf_core`
+|Required for compiling and linking the ExF enabled connector executor and servant.
+|`ciaox11_exf_core`
+|=======================================================================
+
+Deployment::
+Deployment is similar to deployment of regular AMI4CCM connectors. The only requirement is that the connector and
+the user component it is to be connected to are being deployed in an ExF enabled locality and container. See
+<<axcioma_exf#_deploying_with_exf,here>> for more details.
+
+==== DDS4CCM
+
+Description::
+DDS4CCM connectors are derived from user defined IDL type definitions. Connectors are built from
+standardized stub code generated from the user defined IDL. See the
+<<{xref_docs_root}/dds4ccm/dds4ccm#,DDS4CCM>> documentation for the common details
+regarding the implementation of the these connectors.
+The implementation of ExF enabled DDS4CCM connectors only requires the generation of tailored executor and servant
+code.
+
+Implementation::
+To implement ExF enabled DDS4CCM connectors code needs to be generated using the following RIDL switch combinations. +
++
+[width="100%",cols="<20%a,<50%a,<30%a",options="header",]
+|=======================================================================
+|Switches|Description|MPC base project(s)
+
+|`-GExF`
+|This switch added to a commandline for regular DDS4CCM connector generation will an generate ExF enabled connector
+executor and servant code.
+|`ciaox11_exf_idl`
+|=======================================================================
++
+Compiling and linking the ExF enabled code requires additional libraries as follows. +
++
+[width="100%",cols="<30%a,<40%a,<30%a",options="header",]
+|=======================================================================
+|Libraries|Description|MPC base project(s)
+
+|`ciaox11_exf_core`
+|Required for compiling and linking the ExF enabled connector executor and servant.
+|`ciaox11_exf_core`
+|=======================================================================
+
+Deployment::
+Deployment is similar to deployment of regular DDS4CCM connectors. The only requirement is that the connector and
+the user component it is to be connected to are being deployed in an ExF enabled locality and container. See
+<<axcioma_exf#_deploying_with_exf,here>> for more details.
+
+==== PSDD4CCM
+
+Description::
+PSDD4CCM connectors are derived from user defined IDL type definitions. Connectors are built from
+standardized stub code generated from the user defined IDL. See the
+<<{xref_docs_root}/psdd4ccm/psdd4ccm#,PSDD4CCM>> documentation for the common details
+regarding the implementation of the these connectors.
+The implementation of ExF enabled PSDD4CCM connectors only requires the generation of tailored executor and servant
+code.
+
+Implementation::
+To implement ExF enabled PSDD4CCM connectors code needs to be generated using the following RIDL switch combinations. +
++
+[width="100%",cols="<20%a,<50%a,<30%a",options="header",]
+|=======================================================================
+|Switches|Description|MPC base project(s)
+
+|`-GExF`
+|This switch added to a commandline for regular PSDD4CCM connector generation will an generate ExF enabled connector
+executor and servant code.
+|`ciaox11_exf_idl`
+|=======================================================================
++
+Compiling and linking the ExF enabled code requires additional libraries as follows. +
++
+[width="100%",cols="<30%a,<40%a,<30%a",options="header",]
+|=======================================================================
+|Libraries|Description|MPC base project(s)
+
+|`ciaox11_exf_core`
+|Required for compiling and linking the ExF enabled connector executor and servant.
+|`ciaox11_exf_core`
+|=======================================================================
+
+Deployment::
+Deployment is similar to deployment of regular PSDD4CCM connectors. The only requirement is that the connector and
+the user component it is to be connected to are being deployed in an ExF enabled locality and container. See
+<<axcioma_exf#_deploying_with_exf,here>> for more details.
