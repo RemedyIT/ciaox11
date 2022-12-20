@@ -195,7 +195,7 @@ namespace Hello_Receiver_Impl
          ACE::INet::URLStream urlin = http_url.open (rh);
          if (urlin)
          {
-            CIAOX11_TEST_INFO << "opened URL" << http_url.to_string () << std::endl;
+            CIAOX11_TEST_INFO << "opened URL " << http_url.to_string () << std::endl;
 
             ACE::IOS::CString_OStream sos;
             sos << urlin->rdbuf ();
