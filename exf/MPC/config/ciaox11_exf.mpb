@@ -1,0 +1,14 @@
+// --------------------------------------------------------------------
+// ciaox11_exf.mpb
+//
+// Author: Martin Corino
+//
+// Copyright (c) Remedy IT Expertise BV
+// --------------------------------------------------------------------
+
+feature(exf4ccm) {
+}
+
+feature(!exf4ccm) {
+  requires += dummy_label
+}

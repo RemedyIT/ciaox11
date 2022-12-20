@@ -1,0 +1,19 @@
+
+connector 'multi_inherit_ami' do |conn|
+
+  conn.idl %w{ multi_inherit.idl base.idl }
+  #prefix of generated export headers:
+  conn.export_name 'multi_inherit'
+  #project creator add after shared name _ami4ccma_conn
+  conn.shared_name 'multi_inherit'
+  conn.port_type :ami4ccm
+  conn.use_exf true
+
+end
+
+#mpc name is name component + '_ami4ccm_conn' for a ami4ccm connector
+#project_name prefix is name component
+#export name is default name component
+#shared name prefix libs is default name component + "_ami4ccm_conn", shared name only for executor,
+#shared name for other libs is always name component + a lib kind postfix
+#gen_dir is default 'generated_code'

@@ -1,0 +1,36 @@
+// Generates the lem stub files.
+project(*lem_gen) : ciaox11_idldefaults {
+  custom_only = 1
+
+  idlflags += \
+      -o build \
+      -Glem,gen -Sch -Scc -Scp -Gxhlst \
+      -Wb,base_export_macro=EXFTEST_COLLECT_IF \
+      -Wb,base_export_include=exftest_collect_if
+
+  IDL_Files {
+    gendir=build
+    ../../data/collector.idl
+  }
+}
+
+// lem stub library which is all 'providing' component/connectors need
+project(*lem_stub) : taox11_lib {
+  after += exf_test_data_collect_stub *lem_gen
+  libs  += exftest_data_stub exftest_collect_stub
+
+  libout = ../../lib
+  libpaths += ../../lib
+  includes += . build ../../data/build
+  sharedname = collector_interface
+  dynamicflags += EXFTEST_COLLECT_IF_LEM_STUB_BUILD_DLL
+
+  Source_Files {
+    build/collectorEC.cpp
+  }
+
+  Header_Files {
+    build/collectorEC.h
+    build/exftest_collect_if_lem_stub_export.h
+  }
+}

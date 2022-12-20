@@ -1,0 +1,43 @@
+/**
+ * @file    hello_receiver.idl
+ * @author  Martin Corino
+ *
+ * @brief   Receiver component for minimal sync manual example
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ */
+
+#ifndef HELLO_RECEIVER_IDL_
+#define HELLO_RECEIVER_IDL_
+
+#include <Components.idl>
+
+#include "hello.idl"
+
+module Hello
+{
+  struct State
+  {
+    long count;
+    long last_answer;
+  };
+
+  local interface StateKeeper
+  {
+    void increment_receipt_count ();
+
+    long receipt_count ();
+
+    void set_last_answer (in long answer);
+
+    long last_answer ();
+  };
+
+  component Receiver
+  {
+    /// Provides
+    provides MyFoo do_my_foo;
+  };
+};
+
+#endif /* HELLO_RECEIVER_IDL_ */

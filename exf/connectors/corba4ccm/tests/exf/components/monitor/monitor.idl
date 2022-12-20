@@ -1,0 +1,29 @@
+/**
+ * @file    monitor.idl
+ * @author  Martin Corino
+ *
+ * @brief   Environment monitor
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ */
+
+#ifndef EXF_MONITOR_IDL_
+#define EXF_MONITOR_IDL_
+
+#include <Components.idl>
+#include <ccm_timed_trigger.idl>
+
+#include "recorder.idl"
+
+module App
+{
+  component Monitor
+  {
+    attribute string location;
+
+    uses API::Recorder my_recorder;
+    uses CCM_TT::TT_Scheduler tt_monitor;
+  };
+};
+
+#endif /* EXF_MONITOR_IDL_ */

@@ -1,0 +1,10 @@
+// --------------------------------------------------------------------
+// ciaox11_exf_logger.mpb
+//
+// Author: Martin Corino
+//
+// Copyright (c) Remedy IT Expertise BV
+// --------------------------------------------------------------------
+
+project : ciaox11_rules, ciaox11_exf_logging, x11_logger {
+}

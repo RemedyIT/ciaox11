@@ -1,0 +1,33 @@
+
+// generated from <%= ridl_template_path %>
+class <%= skel_export_macro %><%= interface.skel_cxxname %>_get_<%= cxxname %>_RequestHandler
+  : public <%= interface.skel_cxxname %>_RequestHandlerBase
+{
+public:
+  typedef std::shared_ptr<<%= interface.skel_cxxname %>_get_<%= cxxname %>_RequestHandler> ref_type;
+
+  void init (TAO_ServerRequest&);
+
+  void execute (IDL::traits< ::<%= interface.scoped_cxxname %>>::ref_type&) override;
+
+  void send_reply () override;
+
+  <%= scoped_cxx_member_type %> val_;
+};
+% unless is_readonly?
+
+class <%= skel_export_macro %><%= interface.skel_cxxname %>_set_<%= cxxname %>_RequestHandler
+  : public <%= interface.skel_cxxname %>_RequestHandlerBase
+{
+public:
+  typedef std::shared_ptr<<%= interface.skel_cxxname %>_set_<%= cxxname %>_RequestHandler> ref_type;
+
+  void init (TAO_ServerRequest&);
+
+  void execute (IDL::traits< ::<%= interface.scoped_cxxname %>>::ref_type&) override;
+
+  void send_reply () override;
+
+  <%= scoped_cxx_member_type %> val_;
+};
+% end

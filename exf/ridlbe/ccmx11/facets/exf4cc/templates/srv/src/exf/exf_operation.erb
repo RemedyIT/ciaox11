@@ -1,0 +1,99 @@
+
+// generated from <%= ridl_template_path %>
+void
+<%= interface.skel_cxxname %>_<%= cxxname %>_RequestHandler::init (
+    TAO_ServerRequest& srvreq)
+{
+% unless in_arguments.empty?
+  if (srvreq.incoming () == 0) // in case of a collocated call
+  {
+%   in_arguments.each_with_index do |_arg, _ix|
+    this-><%= _arg.cxxname %> =
+%     case _arg.direction
+%     when :in
+        std::move (PS::get_in_arg< <%= _arg.scoped_cxx_arg_type %>> (
+            srvreq.operation_details (), 0, <%= _ix+1 %>));
+%     when :inout
+        PS::get_inout_arg< <%= _arg.scoped_cxx_arg_type %>> (
+            srvreq.operation_details (), 0, <%= _ix+1 %>);
+%     end
+%   end
+  }
+  else
+  {
+    TAO_InputCDR & _tao_in = *srvreq.incoming ();
+
+    if (!(
+%   _in_args = in_arguments.dup
+%   while !_in_args.empty?
+%     _arg = _in_args.shift
+        (_tao_in >> <%= _arg.cdr_from_fmt % "this->#{_arg.cxxname}" %>)<% unless _in_args.empty? %> &&<% end %>
+%   end
+      ))
+    {
+      throw TAO_CORBA::MARSHAL();
+    }
+  }
+
+% end
+  this->_exf_rh_init_handler (srvreq);
+}
+
+void
+<%= interface.skel_cxxname %>_<%= cxxname %>_RequestHandler::execute (
+    IDL::traits< ::<%= interface.scoped_cxxname %>>::ref_type& executor)
+{
+% unless (is_oneway? || is_void?)
+  this->retval =
+% end
+    executor-><%= cxxname %> (
+% _args = arguments.dup
+% while !_args.empty?
+%   _arg = _args.shift
+          this-><%= _arg.cxxname %><% unless _args.empty? %>,<% end %>
+% end
+          );
+}
+
+void
+<%= interface.skel_cxxname %>_<%= cxxname %>_RequestHandler::send_reply ()
+{
+  this->_exf_rh_init_reply ();
+
+% unless (is_oneway? || is_void?) && out_arguments.empty?
+  if (this->_exf_operation_details ()) // in case of collocated call
+  {
+%   unless is_oneway? || is_void?
+    PS::get_ret_arg< <%= scoped_cxx_arg_type %>> (
+        this->_exf_operation_details (), 0) = std::move (this->retval);
+%   end
+%   out_arguments.each_with_index do |_arg, _ix|
+%     case _arg.direction
+%     when :out
+    PS::get_out_arg< <%= _arg.scoped_cxx_arg_type %>> (
+%     when :inout
+    PS::get_inout_arg< <%= _arg.scoped_cxx_arg_type %>> (
+%     end
+        this->_exf_operation_details (), 0, <%= _ix+1 %>) = std::move (this-><%= _arg.cxxname %>);
+%   end
+  }
+  else
+  {
+    if (!(
+%   _out_args = out_arguments.dup
+%   unless is_oneway? || is_void?
+          (this->_exf_rh_output () << <%= cdr_to_fmt % 'this->retval' %>)<% unless _out_args.empty? %> &&<% end %>
+%   end
+%   while !_out_args.empty?
+%   _arg = _out_args.shift
+          (this->_exf_rh_output () << <%= _arg.cdr_to_fmt % "this->#{_arg.cxxname}" %>)<% unless _out_args.empty? %> &&<% end %>
+%   end
+        ))
+    {
+      throw TAO_CORBA::MARSHAL();
+    }
+  }
+
+% end
+  this->_exf_rh_send_reply ();
+}

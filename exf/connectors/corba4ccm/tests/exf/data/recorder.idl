@@ -1,0 +1,26 @@
+/**
+ * @file    recorder.idl
+ * @author  Martin Corino
+ *
+ * @brief   Data recorder interface
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ */
+
+#ifndef EXF_RECORDER_IDL_
+#define EXF_RECORDER_IDL_
+
+#include "environment.idl"
+#include "record.idl"
+
+module API
+{
+  interface Recorder
+  {
+    oneway void submit_environment_data (in Data::Environment envdata);
+
+    oneway void submit_record_data (in Data::Record recdata);
+  };
+};
+
+#endif /* EXF_RECORDER_IDL_ */

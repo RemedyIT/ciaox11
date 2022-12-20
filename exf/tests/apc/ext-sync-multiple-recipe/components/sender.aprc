@@ -1,0 +1,5 @@
+component 'hello_sender' do |comp|
+  comp.idl %w{ hello_sender.idl }
+
+end
+

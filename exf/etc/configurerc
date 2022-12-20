@@ -1,0 +1,32 @@
+
+# configure setup for ExF
+#
+
+configure :exf4ccm do
+
+  depends_on :ciaox11
+
+  features do
+
+    enable :exf4ccm
+
+  end
+
+  ridl do
+    include '..'
+  end
+
+  brix11 do
+    include '..'
+  end
+
+  mpc do
+    include '$CIAOX11_ROOT/exf/MPC/config'
+
+    mwc_include %w{
+      $(CIAOX11_ROOT)/exf/deployment
+      $(CIAOX11_ROOT)/exf/connectors/tt4ccm/impl
+    }
+  end
+
+end

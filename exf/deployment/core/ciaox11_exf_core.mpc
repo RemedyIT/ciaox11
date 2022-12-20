@@ -1,0 +1,26 @@
+
+project(*impl) : install, ciaox11_ccm_stub, \
+                 ciaox11_output, ciaox11_exf_logger {
+  dynamicflags += CIAOX11_EXF_CORE_BUILD_DLL
+  sharedname = ciaox11_exf_core
+
+  Source_Files {
+    ciaox11_exf_util.cpp
+    ciaox11_monitor.cpp
+    ciaox11_monitor_svc.cpp
+    ciaox11_schedule.cpp
+    ciaox11_scheduler_svc.cpp
+  }
+  Header_Files {
+    ciaox11_exf_util.h
+    ciaox11_monitor.h
+    ciaox11_monitor_svc.h
+    ciaox11_schedule.h
+    ciaox11_scheduler_svc.h
+    ciaox11_task.h
+    ciaox11_exf_core_export.h
+  }
+  specific {
+    install_dir = ciaox11/deployment/exf/core
+  }
+}

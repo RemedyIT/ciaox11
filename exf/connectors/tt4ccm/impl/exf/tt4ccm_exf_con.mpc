@@ -1,0 +1,27 @@
+
+project(ciaox11_tt4ccm_exf_conn) : install, \
+           ciaox11_executor, ciaox11_output, \
+           ciaox11_logger, ciaox11_tt4ccm_stub, ciaox11_exf_amh  \
+{
+  after += tt4ccm_con_stub
+  dynamicflags += TT4CCM_EXF_CONN_BUILD_DLL \
+                  TT4CCM_CONN_STUB_BUILD_DLL
+  libs += tt4ccm_conn_stub
+  libpaths += $(CIAOX11_ROOT)/connectors/tt4ccm/impl
+  includes += $(CIAOX11_ROOT)/connectors/tt4ccm/impl
+
+  Header_Files {
+    tt4ccm_exf_conn_export.h
+    $(CIAOX11_ROOT)/connectors/tt4ccm/impl/tt4ccm_conn_stub_export.h
+    ciaox11_timed_trigger_exf_svnt.h
+    ciaox11_timed_trigger_exf_exec.h
+    ciaox11_timer_queue_i.h
+
+  }
+
+  Source_Files {
+    ciaox11_timed_trigger_exf_svnt.cpp
+    ciaox11_timed_trigger_exf_exec.cpp
+    ciaox11_timer_queue_i.cpp
+  }
+}

@@ -1272,7 +1272,7 @@ which case the default applies.
 * [footnote]#xref:conn-export_name[icon:caret-right[]{nbsp}{nbsp}export_name]#
 * [footnote]#xref:conn-shared_name[icon:caret-right[]{nbsp}{nbsp}shared_name]#
 * [footnote]#xref:conn-gen_dir[icon:caret-right[]{nbsp}{nbsp}gen_dir]#
-include::{ciaox11_src_root}/exf/docs/src/axcioma_project_tool.asc[tag=basicproperties,opts=optional]
+include::{ciaox11_src_root}/exf/docs/src/axcioma_project_tool.asc[tag=basicproperties]
 
 [cols="<2m,<8a",options="header"]
 |=======================================================================
@@ -1398,7 +1398,7 @@ connector 'my_conn' do \|conn\|
 end
 ----
 
-include::{ciaox11_src_root}/exf/docs/src/axcioma_project_tool.asc[tag=exfproperty,opts=optional]
+include::{ciaox11_src_root}/exf/docs/src/axcioma_project_tool.asc[tag=exfproperty]
 
 |=======================================================================
 

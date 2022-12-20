@@ -1,0 +1,14 @@
+// --------------------------------------------------------------------
+// ciaox11_exf_idl.mpb
+//
+// Author: Martin Corino
+//
+// Copyright (c) Remedy IT Expertise BV
+// --------------------------------------------------------------------
+
+project : ciaox11_idldefaults {
+}
+
+feature(exf4ccm) {
+  idlflags += -GExF
+}
