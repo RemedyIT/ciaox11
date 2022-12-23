@@ -17,7 +17,7 @@ $TAO_ROOT = "$ENV{'TAO_ROOT'}";
 $DANCEX11_ROOT = "$ENV{'DANCEX11_ROOT'}";
 $DANCEX11_BIN_FOLDER = $ENV{'DANCEX11_BIN_FOLDER'} || 'bin';
 
-$sleep_time = 5;
+$sleep_time = 2;
 
 $nr_daemon = 2;
 @ports = ( 60001, 60002 );
