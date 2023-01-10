@@ -20,7 +20,7 @@
       typedef <%= executor_cxx_namespace %>::<%= _cc %> base_type;
 
       <%= _cc %> () = default;
-      virtual ~<%= _cc %> () = default;
+      ~<%= _cc %> () override = default;
 
       /// @copydoc Components::SessionComponent::configuration_complete
       void configuration_complete () override;
