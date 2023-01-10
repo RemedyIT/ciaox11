@@ -63,7 +63,7 @@ namespace PSDD
           {
             // initialize associated default value
             <%= _m.scoped_cxxtype %> tmp_val<%= _m.zero_initializer %>;
-            // set union member and associated discriminant when there are multiple legal discriminant values
+            // set union member<% if _m.has_multiple_discriminators? %> and associated discriminant because there are multiple legal discriminant values<% end %>
             datum.<%= _m.cxxname %> (std::move (tmp_val)<% if _m.has_multiple_discriminators? %>, tmp_disc<% end %>);
             return true;
           }
@@ -77,7 +77,7 @@ namespace PSDD
           {
             // initialize associated default value
             <%= _m_def.cxx_member_type %> tmp_val<%= _m_def.zero_initializer %>;
-            // set union member and associated discriminant when there are multiple legal discriminant values
+            // set union member<% if _m_def.has_multiple_discriminators? %> and associated discriminant because there are multiple legal discriminant values<% end %>
             datum.<%= _m_def.cxxname %> (std::move (tmp_val)<% if _m_def.has_multiple_discriminators? %>, tmp_disc<% end %>);
             return true;
           }
@@ -111,7 +111,7 @@ namespace PSDD
             // extract
             if (::PSDD::traits< <%= _m.scoped_cxxtype %>>::extract_data (d, tmp_val, false))
             {
-              // set union member and associated discriminant when there are multiple legal discriminant values
+              // set union member<% if _m.has_multiple_discriminators? %> and associated discriminant because there are multiple legal discriminant values<% end %>
               datum.<%= _m.cxxname %> (std::move (tmp_val)<% if _m.has_multiple_discriminators? %>, tmp_disc<% end %>);
               return true;
             }
@@ -129,7 +129,7 @@ namespace PSDD
             // extract
             if (::PSDD::traits< <%= _m_def.scoped_cxxtype %>>::extract_data (d, tmp_val, false))
             {
-              // set union member and associated discriminant when there are multiple legal discriminant values
+              // set union member<% if _m_def.has_multiple_discriminators? %> and associated discriminant because there are multiple legal discriminant values<% end %>
               datum.<%= _m_def.cxxname %> (std::move (tmp_val)<% if _m_def.has_multiple_discriminators? %>, tmp_disc<% end %>);
               return true;
             }
