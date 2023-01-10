@@ -218,7 +218,7 @@ namespace App_Analyzer_Impl
   void Analyzer_exec_i::ccm_remove ()
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : App_Analyzer_Impl::Analyzer_exec_i[ccm_remove]
-    CIAOX11_TEST_INFO << "App::Analyzer: removing  component." << std::endl;
+    CIAOX11_TEST_INFO << "App::Analyzer: removing component." << std::endl;
     //@@{__RIDL_REGEN_MARKER__} - END : App_Analyzer_Impl::Analyzer_exec_i[ccm_remove]
   }
 

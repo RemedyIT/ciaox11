@@ -18,7 +18,7 @@ $DANCEX11_ROOT = "$ENV{'DANCEX11_ROOT'}";
 $DANCEX11_BIN_FOLDER = $ENV{'DANCEX11_BIN_FOLDER'} || 'bin';
 $CIAOX11_TEST_LOG_MASK = $ENV{'CIAOX11_TEST_LOG_MASK'} || 'INFO|WARNING|ALL_ERROR';
 
-$sleep_time = 30;
+$sleep_time = 15;
 
 $nr_daemon = 2;
 @ports = ( 60001, 60002 );
