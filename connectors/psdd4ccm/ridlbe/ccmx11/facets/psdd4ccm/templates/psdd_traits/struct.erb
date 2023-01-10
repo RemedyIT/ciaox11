@@ -19,14 +19,14 @@ namespace PSDD
 % if has_key?
 %   _prefix = 'return'
 %   key_members.each do |_m|
-      <%= _prefix %> ::PSDD::traits< <%= _m.scoped_cxxtype %>>::append_key (d, datum.<%= _m.cxxname %> ())
+      <%= _prefix %> ::PSDD::traits<<%= _m.scoped_cxxtype %>>::append_key (d, datum.<%= _m.cxxname %> ())
 %     _prefix = '      &&'
 %   end
           ;
 % else
 %   _prefix = 'return'
 %   members.each do |_m|
-      <%= _prefix %> ::PSDD::traits< <%= _m.scoped_cxxtype %>>::append_key (d, datum.<%= _m.cxxname %> ())
+      <%= _prefix %> ::PSDD::traits<<%= _m.scoped_cxxtype %>>::append_key (d, datum.<%= _m.cxxname %> ())
 %     _prefix = '      &&'
 %   end
           ;
@@ -45,7 +45,7 @@ namespace PSDD
 %   _prefix = 'return'
 %   members.each do |_m|
 %     unless _m.is_key_only?
-        <%= _prefix %> ::PSDD::traits< <%= _m.scoped_cxxtype %>>::append_data (d, datum.<%= _m.cxxname %> (), <%= _m.is_key? %>)
+        <%= _prefix %> ::PSDD::traits<<%= _m.scoped_cxxtype %>>::append_data (d, datum.<%= _m.cxxname %> (), <%= _m.is_key? %>)
 %       _prefix = '      &&'
 %     end
 %   end
@@ -55,7 +55,7 @@ namespace PSDD
       {
 %   _prefix = 'return'
 %   members.each do |_m|
-        <%= _prefix %> ::PSDD::traits< <%= _m.scoped_cxxtype %>>::append_data (d, datum.<%= _m.cxxname %> (), false)
+        <%= _prefix %> ::PSDD::traits<<%= _m.scoped_cxxtype %>>::append_data (d, datum.<%= _m.cxxname %> (), false)
 %     _prefix = '      &&'
 %   end
             ;
@@ -65,7 +65,7 @@ namespace PSDD
       {
 %   _prefix = 'return'
 %   members.each do |_m|
-        <%= _prefix %> ::PSDD::traits< <%= _m.scoped_cxxtype %>>::append_data (d, datum.<%= _m.cxxname %> (), false)
+        <%= _prefix %> ::PSDD::traits<<%= _m.scoped_cxxtype %>>::append_data (d, datum.<%= _m.cxxname %> (), false)
 %     _prefix = '      &&'
 %   end
             ;
@@ -82,14 +82,14 @@ namespace PSDD
 % if has_key?
 %   _prefix = 'return'
 %   key_members.each do |_m|
-      <%= _prefix %> ::PSDD::traits< <%= _m.scoped_cxxtype %>>::extract_key (d, datum.<%= _m.cxxname %> ())
+      <%= _prefix %> ::PSDD::traits<<%= _m.scoped_cxxtype %>>::extract_key (d, datum.<%= _m.cxxname %> ())
 %     _prefix = '      &&'
 %   end
           ;
 % else
 %   _prefix = 'return'
 %   members.each do |_m|
-      <%= _prefix %> ::PSDD::traits< <%= _m.scoped_cxxtype %>>::extract_key (d, datum.<%= _m.cxxname %> ())
+      <%= _prefix %> ::PSDD::traits<<%= _m.scoped_cxxtype %>>::extract_key (d, datum.<%= _m.cxxname %> ())
 %     _prefix = '      &&'
 %   end
           ;
@@ -108,7 +108,7 @@ namespace PSDD
 %   _prefix = 'return'
 %   members.each do |_m|
 %     unless _m.is_key_only?
-        <%= _prefix %> ::PSDD::traits< <%= _m.scoped_cxxtype %>>::extract_data (d, datum.<%= _m.cxxname %> (), <%= _m.is_key? %>)
+        <%= _prefix %> ::PSDD::traits<<%= _m.scoped_cxxtype %>>::extract_data (d, datum.<%= _m.cxxname %> (), <%= _m.is_key? %>)
 %       _prefix = '      &&'
 %     end
 %   end
@@ -118,7 +118,7 @@ namespace PSDD
       {
 %   _prefix = 'return'
 %   members.each do |_m|
-        <%= _prefix %> ::PSDD::traits< <%= _m.scoped_cxxtype %>>::extract_data (d, datum.<%= _m.cxxname %> (), false)
+        <%= _prefix %> ::PSDD::traits<<%= _m.scoped_cxxtype %>>::extract_data (d, datum.<%= _m.cxxname %> (), false)
 %     _prefix = '      &&'
 %   end
             ;
@@ -128,7 +128,7 @@ namespace PSDD
       {
 %   _prefix = 'return'
 %   members.each do |_m|
-        <%= _prefix %> ::PSDD::traits< <%= _m.scoped_cxxtype %>>::extract_data (d, datum.<%= _m.cxxname %> (), false)
+        <%= _prefix %> ::PSDD::traits<<%= _m.scoped_cxxtype %>>::extract_data (d, datum.<%= _m.cxxname %> (), false)
 %     _prefix = '      &&'
 %   end
             ;
