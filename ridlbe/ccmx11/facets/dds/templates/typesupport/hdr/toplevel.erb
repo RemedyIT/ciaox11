@@ -9,7 +9,7 @@
 namespace DDS
 {
   template<>
-  struct traits< <%= scoped_cxxtype %>>
+  struct traits<<%= scoped_cxxtype %>>
     : public DDSX11::dds_entities_types
   {
     /**
@@ -21,10 +21,10 @@ namespace DDS
     using datawriter_type = <%= scoped_implied_idl_prefix %>DataWriter;
     using datareader_type = <%= scoped_implied_idl_prefix %>DataReader;
 
-    using typed_datawriter_ref_type = IDL::traits< <%= scoped_implied_idl_prefix %>DataWriter>::ref_type;
-    using typed_datareader_ref_type = IDL::traits< <%= scoped_implied_idl_prefix %>DataReader>::ref_type;
-    using typed_datawriter_weak_ref_type = IDL::traits< <%= scoped_implied_idl_prefix %>DataWriter>::weak_ref_type;
-    using typed_datareader_weak_ref_type = IDL::traits< <%= scoped_implied_idl_prefix %>DataReader>::weak_ref_type;
+    using typed_datawriter_ref_type = IDL::traits<<%= scoped_implied_idl_prefix %>DataWriter>::ref_type;
+    using typed_datareader_ref_type = IDL::traits<<%= scoped_implied_idl_prefix %>DataReader>::ref_type;
+    using typed_datawriter_weak_ref_type = IDL::traits<<%= scoped_implied_idl_prefix %>DataWriter>::weak_ref_type;
+    using typed_datareader_weak_ref_type = IDL::traits<<%= scoped_implied_idl_prefix %>DataReader>::weak_ref_type;
     //@}
 
     static typed_datawriter_ref_type

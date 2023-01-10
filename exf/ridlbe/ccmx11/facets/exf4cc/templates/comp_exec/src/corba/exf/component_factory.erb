@@ -50,8 +50,8 @@
                                           this->context_->instance_id (),
                                           sync_request_reply_facet);
 
-        CORBA::servant_traits< <%= _p.interface_type.scoped_cxxname.identify %>_servant>::ref_type facet_svt_ref =
-          CORBA::servant_traits< <%= _p.interface_type.scoped_cxxname.identify %>_servant >::narrow (svt_ref);
+        CORBA::servant_traits<<%= _p.interface_type.scoped_cxxname.identify %>_servant>::ref_type facet_svt_ref =
+          CORBA::servant_traits<<%= _p.interface_type.scoped_cxxname.identify %>_servant >::narrow (svt_ref);
         if (facet_svt_ref)
         {
           ::Components::ConfigValues facet_config (this->context_->srr_receptacle_configuration ());
@@ -71,5 +71,5 @@ extern "C" void
 create_<%= scoped_name.scope_to_cxxname %>_Impl (
   IDL::traits<Components::EnterpriseComponent>::ref_type& component)
 {
-  component = CORBA::make_reference < <%= executor_cxx_namespace %>::ExF::<%= _cc %>> ();
+  component = CORBA::make_reference <<%= executor_cxx_namespace %>::ExF::<%= _cc %>> ();
 }

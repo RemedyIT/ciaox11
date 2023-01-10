@@ -14,7 +14,7 @@ namespace <%= executor_cxx_namespace %>
 
   /// Component Executor Implementation Class : <%= lem_name %>_exec_i
   class <%= lem_name %>_exec_i final
-    : public virtual IDL::traits< <%= scoped_ccm_name %>>::base_type
+    : public virtual IDL::traits<<%= scoped_ccm_name %>>::base_type
   {
   public:
 % visit_component_constructor
@@ -86,7 +86,7 @@ namespace <%= executor_cxx_namespace %>
 
   private:
     /// Context for component instance.
-    IDL::traits< <%= scoped_ccm_name %>_Context>::ref_type context_;
+    IDL::traits<<%= scoped_ccm_name %>_Context>::ref_type context_;
 % if all_attributes.size > 0
 
     /** @name Component attributes. */

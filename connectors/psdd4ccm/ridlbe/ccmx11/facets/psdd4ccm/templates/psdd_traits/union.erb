@@ -3,8 +3,8 @@
 namespace PSDD
 {
   template <>
-  struct traits< <%= scoped_cxxtype %>>
-    : public common_traits< <%= scoped_cxxtype %>>
+  struct traits<<%= scoped_cxxtype %>>
+    : public common_traits<<%= scoped_cxxtype %>>
   {
     static std::string get_type_name () { return "<%= scoped_cxxname %>"; }
 

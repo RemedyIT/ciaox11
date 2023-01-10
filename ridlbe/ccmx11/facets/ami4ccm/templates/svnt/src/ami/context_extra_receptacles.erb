@@ -11,7 +11,7 @@
     std::lock_guard<std::mutex> lock (this->context_tbl_lock_);
     <%= scoped_ccm_name %>::sendc_<%= _p.lem_name %>Connections retv;
     retv.reserve (this->sendc_<%= _p.lem_name %>_context_tbl_.size());
-    using conn_type = IDL::traits< <%= scoped_ccm_name %>::sendc_<%= _p.lem_name %>Connections>::element_traits::value_type;
+    using conn_type = IDL::traits<<%= scoped_ccm_name %>::sendc_<%= _p.lem_name %>Connections>::element_traits::value_type;
 
     for (const auto& elem : this->sendc_<%= _p.lem_name %>_context_tbl_)
     {

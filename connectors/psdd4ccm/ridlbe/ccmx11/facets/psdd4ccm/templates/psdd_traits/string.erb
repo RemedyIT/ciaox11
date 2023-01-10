@@ -9,8 +9,8 @@
 namespace PSDD
 {
   template <>
-  struct traits< <%= scoped_cxxtype %>>
-    : public common_traits< <%= scoped_cxxtype %>>
+  struct traits<<%= scoped_cxxtype %>>
+    : public common_traits<<%= scoped_cxxtype %>>
 % if is_wstring?
     , public wstring_packing<<%= bound %>>
 % else
