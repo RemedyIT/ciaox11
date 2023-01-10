@@ -28,13 +28,13 @@ namespace DDS
     //@}
 
     static typed_datawriter_ref_type
-    narrow (IDL::traits< ::DDS::DataWriter>::ref_type dw)
+    narrow (IDL::traits<::DDS::DataWriter>::ref_type dw)
     {
       return IDL::traits<datawriter_type>::narrow (std::move(dw));
     }
 
     static typed_datareader_ref_type
-    narrow (IDL::traits< ::DDS::DataReader>::ref_type dr)
+    narrow (IDL::traits<::DDS::DataReader>::ref_type dr)
     {
       return IDL::traits<datareader_type>::narrow (std::move(dr));
     }
@@ -49,7 +49,7 @@ namespace DDS
     /// Register the type as @a type_name to @a participant
     static ::DDS::ReturnCode_t
     register_type (
-      IDL::traits< ::DDS::DomainParticipant>::ref_type participant,
+      IDL::traits<::DDS::DomainParticipant>::ref_type participant,
       const std::string &type_name)
     {
       return <%= cxxtype %>Factory::register_type (std::move(participant), type_name);
@@ -58,7 +58,7 @@ namespace DDS
     /// Unregister the type as @a type_name from @a participant
     static ::DDS::ReturnCode_t
     unregister_type (
-      IDL::traits< ::DDS::DomainParticipant>::ref_type participant,
+      IDL::traits<::DDS::DomainParticipant>::ref_type participant,
       const std::string &type_name)
     {
       return <%= cxxtype %>Factory::unregister_type (std::move(participant), type_name);

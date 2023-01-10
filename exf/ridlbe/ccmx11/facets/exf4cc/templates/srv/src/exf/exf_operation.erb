@@ -41,7 +41,7 @@ void
 
 void
 <%= interface.skel_cxxname %>_<%= cxxname %>_RequestHandler::execute (
-    IDL::traits< ::<%= interface.scoped_cxxname %>>::ref_type& executor)
+    IDL::traits<::<%= interface.scoped_cxxname %>>::ref_type& executor)
 {
 % unless (is_oneway? || is_void?)
   this->retval =

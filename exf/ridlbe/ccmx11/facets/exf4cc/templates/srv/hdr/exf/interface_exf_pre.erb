@@ -9,12 +9,9 @@ namespace ExF
   public:
     typedef std::shared_ptr<<%= skel_cxxname %>_RequestHandlerBase> ref_type;
 
-    virtual
-    void execute (
-        IDL::traits< ::<%= scoped_cxxname %>>::ref_type&) = 0;
+    virtual void execute (IDL::traits<::<%= scoped_cxxname %>>::ref_type&) = 0;
 
-    virtual
-    void send_reply () = 0;
+    virtual void send_reply () = 0;
   };
 %   if has_abstract_base?
 %     unless abstractbase_operations.empty?

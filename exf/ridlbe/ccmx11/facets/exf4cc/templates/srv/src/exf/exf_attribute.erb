@@ -9,10 +9,9 @@ void
 
 void
 <%= interface.skel_cxxname %>_get_<%= cxxname %>_RequestHandler::execute (
-    IDL::traits< ::<%= interface.scoped_cxxname %>>::ref_type& executor)
+    IDL::traits<::<%= interface.scoped_cxxname %>>::ref_type& executor)
 {
-  this->val_ =
-    executor-><%= cxxname %> ();
+  this->val_ = executor-><%= cxxname %> ();
 }
 
 void
@@ -64,7 +63,7 @@ void
 
 void
 <%= interface.skel_cxxname %>_set_<%= cxxname %>_RequestHandler::execute (
-    IDL::traits< ::<%= interface.scoped_cxxname %>>::ref_type& executor)
+    IDL::traits<::<%= interface.scoped_cxxname %>>::ref_type& executor)
 {
   executor-><%= cxxname %> (this->val_);
 }

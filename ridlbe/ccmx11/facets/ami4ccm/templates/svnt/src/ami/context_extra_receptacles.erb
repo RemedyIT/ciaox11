@@ -22,7 +22,7 @@
   }
 
 %        else
-  IDL::traits< ::<%= _p.interface_type.scoped_ami4ccm_name %>>::ref_type
+  IDL::traits<::<%= _p.interface_type.scoped_ami4ccm_name %>>::ref_type
   <%= lem_name %>_Context::get_connection_sendc_<%= _p.lem_name %> ()
   {
     return this->sendc_<%= _p.cxxname %>_;

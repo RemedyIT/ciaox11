@@ -47,13 +47,13 @@
 }
 
   void <%= interface_type.ami4ccm_reply_handler %>::<%= operation.cxxname %>_excep (
-  IDL::traits< ::Messaging::ExceptionHolder>::ref_type excep_holder)
+  IDL::traits<::Messaging::ExceptionHolder>::ref_type excep_holder)
   {
     // Deactivate our CORBA AMI servant
     this->deactivate ();
 
-   IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type holder =
-      CORBA::make_reference< ::CCM_AMI::ExceptionHolder_i> (std::move (excep_holder));
+   IDL::traits<::CCM_AMI::ExceptionHolder>::ref_type holder =
+      CORBA::make_reference<::CCM_AMI::ExceptionHolder_i> (std::move (excep_holder));
 
     // Push the reply into ExF
     CIAOX11::ExF::Executor::ref_type exec =
