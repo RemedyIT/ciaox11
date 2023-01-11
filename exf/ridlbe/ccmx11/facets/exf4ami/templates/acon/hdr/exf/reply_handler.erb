@@ -11,13 +11,13 @@ public:
   /// a CORBA AMI reply handler
   <%= interface_type.ami4ccm_reply_handler %> (
     IDL::traits<<%= interface_type.scoped_enclosure_cxxname %>::<%= interface_type.ami4ccm_ReplyHandler %>>::ref_type callback,
-    IDL::traits< ::PortableServer::POA>::ref_type poa,
+    IDL::traits<::PortableServer::POA>::ref_type poa,
     CIAOX11::ExF::Deadline dead_line,
     CIAOX11::ExF::Priority priority,
     IDL::traits<CIAOX11::ExF::SchedulingLane>::ref_type scheduling_lane);
 
   /// Destructor
-  virtual ~ <%= interface_type.ami4ccm_reply_handler %> () = default;
+  ~<%= interface_type.ami4ccm_reply_handler %> () override = default;
 % if interface_type.all_operations.size > 0
 
   /// @name Operations from <%= interface_type.ami4ccm_ReplyHandler %>
@@ -40,11 +40,11 @@ public:
 private:
   /// User provided callback reference which we invoke when the
   /// CORBA AMI reply has been received
-  IDL::traits< <%= interface_type.scoped_enclosure_cxxname %>::<%= interface_type.ami4ccm_ReplyHandler %>>::ref_type callback_;
+  IDL::traits<<%= interface_type.scoped_enclosure_cxxname %>::<%= interface_type.ami4ccm_ReplyHandler %>>::ref_type callback_;
 
   /// POA which we have to use to deactivate ourself when the
   /// reply has been received
-  IDL::traits< ::PortableServer::POA>::ref_type poa_;
+  IDL::traits<::PortableServer::POA>::ref_type poa_;
 
   /// Member variables for ExF configuration
   CIAOX11::ExF::Deadline deadline_ {};

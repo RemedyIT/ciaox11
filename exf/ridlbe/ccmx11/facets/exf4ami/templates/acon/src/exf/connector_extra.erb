@@ -15,7 +15,7 @@
         callback_(std::move(callback))
     {}
 
-    ~AMI_<%= _p.interface_type.scoped_cxxname.identify %>_Executor () = default;
+    ~AMI_<%= _p.interface_type.scoped_cxxname.identify %>_Executor () override = default;
 
     void
     execute () noexcept(true) override
@@ -70,7 +70,7 @@
     AMI_<%= _p.interface_type.scoped_cxxname.identify %>_Executor& operator=(AMI_<%= _p.interface_type.scoped_cxxname.identify %>_Executor&&) = delete;
 
     std::string const event_id_;
-    IDL::traits< <%= _p.interface_type.scoped_enclosure_cxxname %>::<%= _p.interface_type.ami4ccm_ReplyHandler %>>::ref_type callback_;
+    IDL::traits<<%= _p.interface_type.scoped_enclosure_cxxname %>::<%= _p.interface_type.ami4ccm_ReplyHandler %>>::ref_type callback_;
   };
 
   /// Operations and attributes from AMI_<%= _p.interface_type.scoped_cxxname.identify %>_Executor

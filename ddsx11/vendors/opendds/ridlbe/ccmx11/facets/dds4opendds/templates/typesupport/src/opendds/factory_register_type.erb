@@ -30,7 +30,7 @@ if (DDSX11::DDS_TypeSupport_i::register_type (participant, type_name, std::move(
   {
     return ::DDS::RETCODE_ERROR;
   }
-  return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
+  return ::DDSX11::traits<::DDS::ReturnCode_t>::retn (
     ts->register_type(DDSX11::domain_participant_trait::native (participant),
     ::DDSX11::traits<std::string>::in (type_name)));
 }

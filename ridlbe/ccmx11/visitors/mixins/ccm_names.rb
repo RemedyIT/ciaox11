@@ -34,7 +34,7 @@ module IDL
       end
 
       def scoped_ccm_name_in_type
-        'IDL::traits< ' + scoped_ccm_name + '>::ref_type'
+        'IDL::traits<' + scoped_ccm_name + '>::ref_type'
       end
 
       def scoped_ccm_name_return_type
@@ -42,7 +42,7 @@ module IDL
       end
 
       def scoped_ccm_name_member_type
-        'IDL::traits< ' + scoped_ccm_name + '>::ref_type'
+        'IDL::traits<' + scoped_ccm_name + '>::ref_type'
       end
 
       def scoped_ccm_type

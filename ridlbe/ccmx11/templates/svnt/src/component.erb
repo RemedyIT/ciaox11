@@ -5,7 +5,7 @@ namespace <%= executor_cxx_namespace %>
 % nest { visit_component_pre }
 
   <%= lem_name %>_ExecutorLocator::<%= lem_name %>_ExecutorLocator (
-      IDL::traits< <%= scoped_ccm_name %>>::ref_type component_executor,
+      IDL::traits<<%= scoped_ccm_name %>>::ref_type component_executor,
       IDL::traits<<%= lem_name %>_Context>::ref_type component_context) :
         component_executor_ (std::move (component_executor)),
         component_context_ (std::move (component_context))
@@ -98,7 +98,7 @@ namespace <%= executor_cxx_namespace %>
   {
   }
 
-  IDL::traits< ::CIAOX11::Service_Registry>::ref_type
+  IDL::traits<::CIAOX11::Service_Registry>::ref_type
   <%= lem_name %>_Context::the_service_registry ()
   {
     return this->service_registry_;
@@ -114,7 +114,7 @@ namespace <%= executor_cxx_namespace %>
     std::lock_guard<std::mutex> lock (this->context_tbl_lock_);
     <%= scoped_ccm_name %>::<%= _p.lem_name %>Connections retv;
     retv.reserve (this-><%= _p.lem_name %>_context_tbl_.size());
-    using conn_type = IDL::traits< <%= scoped_ccm_name %>::<%= _p.lem_name %>Connections>::element_traits::value_type;
+    using conn_type = IDL::traits<<%= scoped_ccm_name %>::<%= _p.lem_name %>Connections>::element_traits::value_type;
 
     for (const auto& elem : this-><%= _p.lem_name %>_context_tbl_)
     {
@@ -153,8 +153,8 @@ create_<%= scoped_name.scope_to_cxxname %>_Servant (
   const std::string& ins_name,
   IDL::traits<CIAOX11::ExecutorLocator>::ref_type& executor_locator)
 {
-  IDL::traits< <%= scoped_ccm_name %>>::ref_type component_executor =
-    IDL::traits< <%= scoped_ccm_name %>>::narrow (std::move(p));
+  IDL::traits<<%= scoped_ccm_name %>>::ref_type component_executor =
+    IDL::traits<<%= scoped_ccm_name %>>::narrow (std::move(p));
 
   if (component_executor)
   {

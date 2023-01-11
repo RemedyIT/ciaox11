@@ -112,7 +112,7 @@
     <%= operation.cxxname %>_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Excep_Executor (
           std::string event_id,
           IDL::traits<<%= receptacle_port.interface_type.scoped_enclosure_cxxname %>::<%= receptacle_port.interface_type.ami4ccm_ReplyHandler %>>::ref_type callback,
-          IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder,
+          IDL::traits<::CCM_AMI::ExceptionHolder>::ref_type excep_holder,
           CIAOX11::ExF::Deadline dead_line,
           CIAOX11::ExF::Priority priority)
     : AMI_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Executor(std::move (event_id), std::move(callback), dead_line, priority),
@@ -128,7 +128,7 @@
     }
 
   private:
-    IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder_;
+    IDL::traits<::CCM_AMI::ExceptionHolder>::ref_type excep_holder_;
 
     /** @name Illegal to be called. Deleted explicitly to let the compiler detect any violation */
     //@{

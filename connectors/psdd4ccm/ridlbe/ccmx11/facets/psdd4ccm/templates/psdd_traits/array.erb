@@ -9,11 +9,11 @@
 namespace PSDD
 {
   template <>
-  struct traits< <%= scoped_cxxtype %>>
-    : public common_traits< <%= scoped_cxxtype %>>
-    , public array_packing< <%= cxxdim_sizes.size-1 %>U,
-                            <%= scoped_cxxtype %>::value_type,
-                            <%= cxxdim_sizes.first %>>
+  struct traits<<%= scoped_cxxtype %>>
+    : public common_traits<<%= scoped_cxxtype %>>
+    , public array_packing<<%= cxxdim_sizes.size-1 %>U,
+                           <%= scoped_cxxtype %>::value_type,
+                           <%= cxxdim_sizes.first %>>
   {
     static std::string get_type_name () { return "<%= scoped_cxxname %>"; }
 

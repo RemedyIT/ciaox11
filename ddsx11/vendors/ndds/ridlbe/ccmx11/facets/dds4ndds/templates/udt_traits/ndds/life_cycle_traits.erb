@@ -25,7 +25,7 @@
 %   _iter="iter_#{_arr_iter}"
 %   _dimensions = _dimensions + "[#{_iter}]"
 %   inc_nest
-  for (<%= scoped_cxxtype %>::size_type <%= _iter %> {}; <%= _iter %> < <%= cxxdim_sizes[_arr_iter] %>; ++<%= _iter %>)
+  for (<%= scoped_cxxtype %>::size_type <%= _iter %> {}; <%= _iter %> <<%= cxxdim_sizes[_arr_iter] %>; ++<%= _iter %>)
   {
 %   _arr_iter = _arr_iter + 1
 %  end

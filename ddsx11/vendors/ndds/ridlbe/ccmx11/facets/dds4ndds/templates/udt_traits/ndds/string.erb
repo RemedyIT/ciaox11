@@ -16,9 +16,9 @@ namespace DDSX11
     char* &to, const <%= scoped_cxxtype %> &from)
   {
     // Always allocate a buffer of max bound
-    if (to == nullptr) to = DDS_String_alloc (IDL::traits< <%= scoped_cxxtype %>>::bound::value);
+    if (to == nullptr) to = DDS_String_alloc (IDL::traits<<%= scoped_cxxtype %>>::bound::value);
     // NDDS initialization should have pre-allocated a buffer of the right size
-    std::strncpy (to, from.c_str (), IDL::traits< <%= scoped_cxxtype %>>::bound::value);
+    std::strncpy (to, from.c_str (), IDL::traits<<%= scoped_cxxtype %>>::bound::value);
     return to;
   }
 
@@ -33,11 +33,11 @@ namespace DDSX11
   }
 
   template <>
-  struct traits< <%= scoped_cxxtype %>>
-    : public common_traits< <%= scoped_cxxtype %>, char*>
-    , public convert_in< <%= scoped_cxxtype %>, char*>
-    , public convert_out_by_ref< <%= scoped_cxxtype %>, char*>
-    , public convert_retn< <%= scoped_cxxtype %>, char*>
+  struct traits<<%= scoped_cxxtype %>>
+    : public common_traits<<%= scoped_cxxtype %>, char*>
+    , public convert_in<<%= scoped_cxxtype %>, char*>
+    , public convert_out_by_ref<<%= scoped_cxxtype %>, char*>
+    , public convert_retn<<%= scoped_cxxtype %>, char*>
   {
   };
 } // DDSX11

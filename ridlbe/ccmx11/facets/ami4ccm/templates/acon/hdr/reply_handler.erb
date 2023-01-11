@@ -11,7 +11,7 @@ public:
   /// a CORBA AMI reply handler
   <%= interface_type.ami4ccm_reply_handler %> (
     IDL::traits<<%= interface_type.scoped_enclosure_cxxname %>::<%= interface_type.ami4ccm_ReplyHandler %>>::ref_type callback,
-    IDL::traits< ::PortableServer::POA>::ref_type poa);
+    IDL::traits<::PortableServer::POA>::ref_type poa);
 
   /// Destructor
   ~<%= interface_type.ami4ccm_reply_handler %> () override = default;
@@ -41,7 +41,7 @@ private:
 
   /// POA which we have to use to deactivate ourself when the
   /// reply has been received
-  IDL::traits< ::PortableServer::POA>::ref_type poa_;
+  IDL::traits<::PortableServer::POA>::ref_type poa_;
 
   /// Helper method to active ourselves from the AMI POA
   void deactivate ();

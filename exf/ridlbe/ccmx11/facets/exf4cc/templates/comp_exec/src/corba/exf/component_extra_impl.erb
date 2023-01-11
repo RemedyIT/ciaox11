@@ -83,7 +83,7 @@ public:
   <%= _intf.scoped_cxxname.identify %>_Executor (
       std::string event_id,
       <%= _intf.scoped_enclosure_cxxname %>::ExF::<%= _intf.skel_cxxname %>_RequestHandlerBase::ref_type&& rh,
-      IDL::traits< ::<%= _intf.scoped_cxxname %>>::ref_type executor,
+      IDL::traits<::<%= _intf.scoped_cxxname %>>::ref_type executor,
       CIAOX11::ExF::Priority prio,
       CIAOX11::ExF::Deadline dl)
     : CIAOX11::ExF::Impl::AMH_Executor (std::move (prio), std::move (dl))
@@ -93,7 +93,7 @@ public:
   {
   }
 
-  virtual ~<%= _intf.scoped_cxxname.identify %>_Executor () = default;
+  ~<%= _intf.scoped_cxxname.identify %>_Executor () override = default;
 
   const std::string& event_id () const noexcept(true) override
   { return event_id_; }
@@ -117,7 +117,7 @@ protected:
 private:
   std::string const event_id_;
   <%= _intf.scoped_enclosure_cxxname %>::ExF::<%= _intf.skel_cxxname %>_RequestHandlerBase::ref_type rh_ {};
-  IDL::traits< ::<%= _intf.scoped_cxxname %>>::ref_type executor_ {};
+  IDL::traits<::<%= _intf.scoped_cxxname %>>::ref_type executor_ {};
 
   /** @name Illegal to be called. Deleted explicitly to let the compiler detect any violation */
   //@{

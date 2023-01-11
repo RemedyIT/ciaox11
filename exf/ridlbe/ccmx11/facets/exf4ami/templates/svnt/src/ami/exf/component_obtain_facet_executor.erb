@@ -12,11 +12,11 @@ IDL::traits<CORBA::Object>::ref_type
 %       if _p.lem_name == 'ami4ccm_port_ami4ccm_provides'
   if (name == "ami4ccm_port_ami4ccm_provides")
   {
-    IDL::traits< <%= _p.interface_type.scoped_ccm_name %>>::ref_type comp_executor =
+    IDL::traits<<%= _p.interface_type.scoped_ccm_name %>>::ref_type comp_executor =
         this->component_executor_->get_ami4ccm_port_ami4ccm_provides ();
 
-    IDL::traits< ami4ccm_port_ami4ccm_provides_exec_i>::ref_type comp_executor_i =
-        IDL::traits< ami4ccm_port_ami4ccm_provides_exec_i>::narrow (comp_executor);
+    IDL::traits<ami4ccm_port_ami4ccm_provides_exec_i>::ref_type comp_executor_i =
+        IDL::traits<ami4ccm_port_ami4ccm_provides_exec_i>::narrow (comp_executor);
     comp_executor_i->set_config(config);
     return comp_executor;
   }

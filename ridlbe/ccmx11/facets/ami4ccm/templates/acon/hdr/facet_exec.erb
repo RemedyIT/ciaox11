@@ -2,13 +2,13 @@
 // generated from <%= ridl_template_path %>
 /// Executor implementation class for <%= lem_name %> facet
 class <%= lem_name %>_exec_i final
-  : public IDL::traits< <%= interface_type.scoped_ccm_name %>>::base_type
+  : public IDL::traits<<%= interface_type.scoped_ccm_name %>>::base_type
 {
 public:
   /// Constructor
   /// @param[in] context Component context
   explicit <%= lem_name %>_exec_i (
-     IDL::traits< <%= component.scoped_ccm_name %>_Context>::ref_type context);
+     IDL::traits<<%= component.scoped_ccm_name %>_Context>::ref_type context);
 
   /// Destructor
   ~<%= lem_name %>_exec_i () override = default;
@@ -32,7 +32,7 @@ public:
 %end
 private:
   /// Context for component instance. Used for all middleware communication.
-  IDL::traits< <%= component.scoped_ccm_name %>_Context>::ref_type context_;
+  IDL::traits<<%= component.scoped_ccm_name %>_Context>::ref_type context_;
 % if !cxxname.include? 'sync'
 % _derived_scoped_interface = interface_type.scoped_cxxname.sub('AMI4CCM_','')
 % _reply_handler_interface = interface_type.ami4ccm_ReplyHandler.sub('AMI4CCM_','')
@@ -43,7 +43,7 @@ private:
   /// Helper method to retrieve the CORBA AMI stub and CORBA AMI reply handler
   CORBA::amic_traits<<%= _derived_scoped_interface %>>::ref_type
   get_receptacle_and_handler (
-    const IDL::traits< <%= interface_type.scoped_enclosure_cxxname %>::<%= _reply_handler_interface %>>::ref_type& ami4ccm_reply_handler,
+    const IDL::traits<<%= interface_type.scoped_enclosure_cxxname %>::<%= _reply_handler_interface %>>::ref_type& ami4ccm_reply_handler,
     CORBA::amic_traits<<%= _derived_scoped_interface %>>::replyhandler_ref_type& reply_handler);
 
 % end

@@ -13,7 +13,7 @@ namespace DDSX11
   /// Conversion of <%= scoped_seq_cxxtype %> to DDS
   template<>
   inline <%= native_scoped_seq_cxxtype %>&
-  to_dds< <%= native_scoped_seq_cxxtype %>, <%= scoped_seq_cxxtype %>> (
+  to_dds<<%= native_scoped_seq_cxxtype %>, <%= scoped_seq_cxxtype %>> (
     <%= native_scoped_seq_cxxtype %> &to, const <%= scoped_seq_cxxtype %> &from)
   {
     return DDSX11::sequence_to_dds(to, from);
@@ -22,7 +22,7 @@ namespace DDSX11
   /// Conversion traits for <%= scoped_seq_cxxtype %> from DDS
   template<>
   inline <%= scoped_seq_cxxtype %>&
-  from_dds< <%= native_scoped_seq_cxxtype %>, <%= scoped_seq_cxxtype %>> (
+  from_dds<<%= native_scoped_seq_cxxtype %>, <%= scoped_seq_cxxtype %>> (
     <%= scoped_seq_cxxtype %> &to, const <%= native_scoped_seq_cxxtype %> &from)
   {
     return DDSX11::sequence_from_dds(to, from);
@@ -30,11 +30,11 @@ namespace DDSX11
 #endif /* _ALIAS_<%= ddsx11_alias_md5 %>_UDT_TRAITS_DECL_ */
 
   template<>
-  struct traits< <%= scoped_seq_cxxtype %>>
-    : public common_traits< <%= scoped_seq_cxxtype %>, <%= native_scoped_seq_cxxtype %>>
-    , public convert_in< <%= scoped_seq_cxxtype %>, <%= native_scoped_seq_cxxtype %>>
-    , public convert_out_by_ref< <%= scoped_seq_cxxtype %>, <%= native_scoped_seq_cxxtype %>>
-    , public convert_retn< <%= scoped_seq_cxxtype %>, <%= native_scoped_seq_cxxtype %>>
+  struct traits<<%= scoped_seq_cxxtype %>>
+    : public common_traits<<%= scoped_seq_cxxtype %>, <%= native_scoped_seq_cxxtype %>>
+    , public convert_in<<%= scoped_seq_cxxtype %>, <%= native_scoped_seq_cxxtype %>>
+    , public convert_out_by_ref<<%= scoped_seq_cxxtype %>, <%= native_scoped_seq_cxxtype %>>
+    , public convert_retn<<%= scoped_seq_cxxtype %>, <%= native_scoped_seq_cxxtype %>>
   {
   };
 } /* DDSX11 */

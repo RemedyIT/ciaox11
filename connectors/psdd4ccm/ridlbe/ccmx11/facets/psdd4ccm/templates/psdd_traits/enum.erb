@@ -3,8 +3,8 @@
 namespace PSDD
 {
   template <>
-  struct traits< <%= scoped_cxxtype %>>
-    : public common_traits< <%= scoped_cxxtype %>>
+  struct traits<<%= scoped_cxxtype %>>
+    : public common_traits<<%= scoped_cxxtype %>>
   {
     static std::string get_type_name () { return "<%= scoped_cxxname %>"; }
 
@@ -36,7 +36,7 @@ namespace PSDD
       uint32_t ev {};
       if (::PSDD::traits<uint32_t>::extract_key (d, ev))
       {
-        datum = static_cast< <%= scoped_cxxtype %>> (ev);
+        datum = static_cast<<%= scoped_cxxtype %>> (ev);
         return true;
       }
       return false;
@@ -54,7 +54,7 @@ namespace PSDD
       uint32_t ev {};
       if (::PSDD::traits<uint32_t>::extract_data (d, ev, false))
       {
-        datum = static_cast< <%= scoped_cxxtype %>> (ev);
+        datum = static_cast<<%= scoped_cxxtype %>> (ev);
         return true;
       }
       return false;

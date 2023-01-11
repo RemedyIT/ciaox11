@@ -8,7 +8,7 @@ public:
 
   void init (TAO_ServerRequest&);
 
-  void execute (IDL::traits< ::<%= interface.scoped_cxxname %>>::ref_type&) override;
+  void execute (IDL::traits<::<%= interface.scoped_cxxname %>>::ref_type&) override;
 
   void send_reply () override;
 
