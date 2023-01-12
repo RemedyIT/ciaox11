@@ -15,7 +15,7 @@ of features and capabilities.
 
 CIAOX11 has the following major features:
 
-.  Compliant with the IDL to {cxx11} v1.3 language mapping
+.  Compliant with the IDL to {cxx11} v1.4 language mapping
 .  Support for request/reply based interaction support
 .  Support for event and state based interaction support
 .  All local interfaces for its core infrastructure
