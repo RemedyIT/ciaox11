@@ -2,15 +2,10 @@
   // generated from <%= ridl_template_path %>
 % if all_incl_receptacle_port?
 %   if all_incl_multiple_port?
-  return this->component_context_->set_connection (name,
-                                                   std::move(connection),
-                                                   conn_name,
-                                                   config);
+  return this->component_context_->set_connection (name, std::move(connection), conn_name, config);
 %   else
   X11_UNUSED_ARG(conn_name);
-  return this->component_context_->set_connection (name,
-                                                   std::move(connection),
-                                                   config);
+  return this->component_context_->set_connection (name, std::move(connection), config);
 %   end
 % else
   X11_UNUSED_ARG(name);
