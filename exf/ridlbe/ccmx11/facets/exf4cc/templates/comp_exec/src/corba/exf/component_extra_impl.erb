@@ -93,7 +93,7 @@ public:
   {
   }
 
-  virtual ~<%= _intf.scoped_cxxname.identify %>_Executor () = default;
+  ~<%= _intf.scoped_cxxname.identify %>_Executor () override = default;
 
   const std::string& event_id () const noexcept(true) override
   { return event_id_; }

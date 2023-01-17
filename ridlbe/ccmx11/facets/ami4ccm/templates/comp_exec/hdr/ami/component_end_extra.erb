@@ -11,7 +11,7 @@
     <%= _p.ami4ccm_rh_executor %> ();
 % end
 
-    virtual ~<%= _p.ami4ccm_rh_executor %> ();
+    ~<%= _p.ami4ccm_rh_executor %> () override;
 
 % if _p.interface_type.all_operations.size > 0
 %   _p.interface_type.all_operations.each do |_op|

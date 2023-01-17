@@ -17,7 +17,7 @@ public:
     IDL::traits<CIAOX11::ExF::SchedulingLane>::ref_type scheduling_lane);
 
   /// Destructor
-  virtual ~ <%= interface_type.ami4ccm_reply_handler %> () = default;
+  ~<%= interface_type.ami4ccm_reply_handler %> () override = default;
 % if interface_type.all_operations.size > 0
 
   /// @name Operations from <%= interface_type.ami4ccm_ReplyHandler %>
