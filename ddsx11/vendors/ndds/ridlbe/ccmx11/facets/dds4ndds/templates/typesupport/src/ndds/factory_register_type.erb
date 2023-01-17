@@ -25,7 +25,7 @@ if (DDSX11::DDS_TypeSupport_i::register_type (participant, type_name, std::move(
   {
     // First time registration to DDSX11 so we have to register it also
     // to the DDS vendor
-    return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
+    return ::DDSX11::traits<::DDS::ReturnCode_t>::retn (
       <%= native_scoped_name_prefix %>TypeSupport::register_type (
         DDSX11::domain_participant_trait::native (participant),
         ::DDSX11::traits<std::string>::in (type_name)));

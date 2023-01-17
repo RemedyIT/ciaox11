@@ -70,7 +70,7 @@ namespace <%= executor_cxx_namespace %>
 % write_regen_section(_regen_marker+"[get_#{_p.lem_name}]", indent: 1) do
     if (!this-><%= _p.cxxname %>_)
     {
-      this-><%= _p.cxxname %>_ = IDL::traits< <%= _p.interface_type.scoped_ccm_name %>>::make_reference <<%= _p.lem_name %>_exec_i> (this->context_);
+      this-><%= _p.cxxname %>_ = IDL::traits<<%= _p.interface_type.scoped_ccm_name %>>::make_reference <<%= _p.lem_name %>_exec_i> (this->context_);
     }
     return this-><%= _p.cxxname %>_;
 % end
@@ -92,7 +92,7 @@ namespace <%= executor_cxx_namespace %>
     // Setting the context of this component.
 % _implementation = []
 % _nest = "\n    "
-% _implementation.push("this->context_ = IDL::traits< #{scoped_ccm_name}_Context>::narrow (std::move(ctx));")
+% _implementation.push("this->context_ = IDL::traits<#{scoped_ccm_name}_Context>::narrow (std::move(ctx));")
 % nest(2) { write_regen_section(_regen_marker+'[set_session_context]', default_content: _implementation) }
   }
 
@@ -107,6 +107,6 @@ extern "C" void
 create_<%= scoped_name.scope_to_cxxname %>_Impl (
   IDL::traits<Components::EnterpriseComponent>::ref_type& component)
 {
-  component = IDL::traits< <%= scoped_ccm_name %>>::make_reference <<%= executor_cxx_namespace %>::<%= lem_name %>_exec_i> ();
+  component = IDL::traits<<%= scoped_ccm_name %>>::make_reference <<%= executor_cxx_namespace %>::<%= lem_name %>_exec_i> ();
 }
 % end

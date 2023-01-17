@@ -1,7 +1,7 @@
 
 // generated from <%= ridl_template_path %>
 <%= lem_name %>_exec_i::<%= lem_name %>_exec_i (
-  IDL::traits< <%= component.scoped_ccm_name %>_Context>::ref_type context)
+  IDL::traits<<%= component.scoped_ccm_name %>_Context>::ref_type context)
     : context_ (std::move (context))
 {
 %if !cxxname.include? 'sync'
@@ -85,13 +85,13 @@ void
 % _reply_handler_interface = interface_type.ami4ccm_ReplyHandler.sub('AMI4CCM_','')
 CORBA::amic_traits<<%= _derived_scoped_interface %>>::ref_type
 <%= lem_name %>_exec_i::get_receptacle_and_handler (
-  const IDL::traits< <%= interface_type.scoped_enclosure_cxxname %>::<%= _reply_handler_interface %>>::ref_type& ami4ccm_reply_handler,
+  const IDL::traits<<%= interface_type.scoped_enclosure_cxxname %>::<%= _reply_handler_interface %>>::ref_type& ami4ccm_reply_handler,
   CORBA::amic_traits<<%= _derived_scoped_interface %>>::replyhandler_ref_type& reply_handler,
   CIAOX11::ExF::Deadline dead_line,
   CIAOX11::ExF::Priority priority)
 {
   // Get the receptacle pointing to the provider component
-  IDL::traits< <%= _derived_scoped_interface %>>::ref_type receptacle_obj =
+  IDL::traits<<%= _derived_scoped_interface %>>::ref_type receptacle_obj =
     this->context_->get_connection_ami4ccm_port_ami4ccm_uses ();
 
   // Narrow it to the CORBA AMI receptacle

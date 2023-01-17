@@ -4,14 +4,14 @@
 % _regen_marker = "#{executor_cxx_namespace}::#{_p.ami4ccm_rh_executor}"
   /// AMI4CCM reply handler implementation class
   class <%= _p.ami4ccm_rh_executor %> final
-    :public IDL::traits< <%= _p.interface_type.scoped_enclosure_cxxname %>::AMI4CCM_<%= _p.interface_type.cxxname %>ReplyHandler>::base_type
+    :public IDL::traits<<%= _p.interface_type.scoped_enclosure_cxxname %>::AMI4CCM_<%= _p.interface_type.cxxname %>ReplyHandler>::base_type
   {
   public:
 % write_regen_section(_regen_marker+'[ctor]', indent: 2) do
     <%= _p.ami4ccm_rh_executor %> ();
 % end
 
-    virtual ~<%= _p.ami4ccm_rh_executor %> ();
+    ~<%= _p.ami4ccm_rh_executor %> () override;
 
 % if _p.interface_type.all_operations.size > 0
 %   _p.interface_type.all_operations.each do |_op|

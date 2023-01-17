@@ -20,7 +20,7 @@ namespace <%= executor_cxx_namespace %>
     IDL::traits<Components::SessionContext>::ref_type ctx)
   {
     // Setting the context of this component.
-    this->context_ = IDL::traits< <%= scoped_ccm_name %>_Context>::narrow (std::move (ctx));
+    this->context_ = IDL::traits<<%= scoped_ccm_name %>_Context>::narrow (std::move (ctx));
   }
 
   void <%= cxxname %>_conn_i::configuration_complete ()
@@ -44,5 +44,5 @@ extern "C" void
 create_<%= scoped_name.scope_to_cxxname %>_Impl (
   IDL::traits<Components::EnterpriseComponent>::ref_type& component)
 {
-  component = CORBA::make_reference < <%= executor_cxx_namespace %>::<%= lem_name %>_conn_i > ();
+  component = CORBA::make_reference <<%= executor_cxx_namespace %>::<%= lem_name %>_conn_i > ();
 }

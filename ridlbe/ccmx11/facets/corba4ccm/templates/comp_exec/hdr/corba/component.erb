@@ -25,8 +25,8 @@ namespace <%= executor_cxx_namespace %>
     */
     explicit <%= _i.scoped_cxxname.identify %>_servant (<%= _i.scoped_cxx_in_type %> facet_executor);
 
-    /// Virtual destructor
-    virtual ~<%= _i.scoped_cxxname.identify %>_servant () = default;
+    /// Destructor
+    ~<%= _i.scoped_cxxname.identify %>_servant () override = default;
 %if _i.all_operations.size > 0
 
     /// @name Operations from <%= _i.scoped_cxxname %>

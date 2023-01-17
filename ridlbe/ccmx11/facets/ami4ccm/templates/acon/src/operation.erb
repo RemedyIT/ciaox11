@@ -52,7 +52,7 @@
 % end
 {
   // Pass through to the provider component
-  IDL::traits< <%= interface_type.scoped_cxxname %>>::ref_type receptacle_objref =
+  IDL::traits<<%= interface_type.scoped_cxxname %>>::ref_type receptacle_objref =
     this->context_->get_connection_<%= receptacle_port.cxxname %> ();
 
 % _pfx = ''

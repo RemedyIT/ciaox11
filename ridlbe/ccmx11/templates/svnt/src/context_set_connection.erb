@@ -21,7 +21,7 @@ bool
 %       end
   {
 %       if _p.is_multiple?
-    IDL::traits< <%= _p.interface_type.scoped_cxxname %>>::ref_type c_ = IDL::traits< <%= _p.interface_type.scoped_cxxname %>>::narrow (connection);
+    IDL::traits<<%= _p.interface_type.scoped_cxxname %>>::ref_type c_ = IDL::traits<<%= _p.interface_type.scoped_cxxname %>>::narrow (connection);
 
     {
       std::lock_guard<std::mutex> lock (this->context_tbl_lock_);
