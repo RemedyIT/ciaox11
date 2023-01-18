@@ -347,6 +347,7 @@ module IDL
       optional_template :context_extra_connect
       optional_template :context_extra_disconnect
       optional_template :context_extra_receptacles
+      optional_template :context_port_reset_connection
       #corba facet svnt
       optional_template :component_pre
       optional_template :component_extra_member
