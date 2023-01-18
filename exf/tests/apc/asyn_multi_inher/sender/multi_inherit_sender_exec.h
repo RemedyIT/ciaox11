@@ -98,7 +98,7 @@ namespace InterMulti_Sender_Impl
 
   /// Component Executor Implementation Class : Sender_exec_i
   class Sender_exec_i final
-    : public virtual IDL::traits< ::InterMulti::CCM_Sender>::base_type
+    : public virtual IDL::traits<::InterMulti::CCM_Sender>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : InterMulti_Sender_Impl::Sender_exec_i[ctor]
@@ -142,7 +142,7 @@ namespace InterMulti_Sender_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::InterMulti::CCM_Sender_Context>::ref_type context_;
+    IDL::traits<::InterMulti::CCM_Sender_Context>::ref_type context_;
 
     /** @name Component facets. */
     //@{
@@ -177,14 +177,14 @@ namespace InterMulti_Sender_Impl
   };
   /// AMI4CCM reply handler implementation class
   class AMI4CCM_OneReplyHandler_run_my_one_i final
-    :public IDL::traits< InterMulti::AMI4CCM_OneReplyHandler>::base_type
+    :public IDL::traits<InterMulti::AMI4CCM_OneReplyHandler>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : InterMulti_Sender_Impl::AMI4CCM_OneReplyHandler_run_my_one_i[ctor]
     AMI4CCM_OneReplyHandler_run_my_one_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : InterMulti_Sender_Impl::AMI4CCM_OneReplyHandler_run_my_one_i[ctor]
 
-    virtual ~AMI4CCM_OneReplyHandler_run_my_one_i ();
+    ~AMI4CCM_OneReplyHandler_run_my_one_i () override;
 
     void foo (
         int32_t ami_return_val,
@@ -215,14 +215,14 @@ namespace InterMulti_Sender_Impl
   };
   /// AMI4CCM reply handler implementation class
   class AMI4CCM_TwoReplyHandler_run_my_two_i final
-    :public IDL::traits< InterMulti::AMI4CCM_TwoReplyHandler>::base_type
+    :public IDL::traits<InterMulti::AMI4CCM_TwoReplyHandler>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : InterMulti_Sender_Impl::AMI4CCM_TwoReplyHandler_run_my_two_i[ctor]
     AMI4CCM_TwoReplyHandler_run_my_two_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : InterMulti_Sender_Impl::AMI4CCM_TwoReplyHandler_run_my_two_i[ctor]
 
-    virtual ~AMI4CCM_TwoReplyHandler_run_my_two_i ();
+    ~AMI4CCM_TwoReplyHandler_run_my_two_i () override;
 
     void bar (
         const std::string& answer) override;
@@ -252,14 +252,14 @@ namespace InterMulti_Sender_Impl
   };
   /// AMI4CCM reply handler implementation class
   class AMI4CCM_ThreeReplyHandler_run_my_three_i final
-    :public IDL::traits< InterMulti::AMI4CCM_ThreeReplyHandler>::base_type
+    :public IDL::traits<InterMulti::AMI4CCM_ThreeReplyHandler>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : InterMulti_Sender_Impl::AMI4CCM_ThreeReplyHandler_run_my_three_i[ctor]
     AMI4CCM_ThreeReplyHandler_run_my_three_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : InterMulti_Sender_Impl::AMI4CCM_ThreeReplyHandler_run_my_three_i[ctor]
 
-    virtual ~AMI4CCM_ThreeReplyHandler_run_my_three_i ();
+    ~AMI4CCM_ThreeReplyHandler_run_my_three_i () override;
 
     void plus (
         const std::string& answer) override;

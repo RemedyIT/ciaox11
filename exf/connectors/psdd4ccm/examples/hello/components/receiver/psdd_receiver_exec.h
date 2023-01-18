@@ -38,7 +38,7 @@ namespace Test_Receiver_Impl
 
   /// Executor implementation class for hello_listen facet
   class hello_listen_exec_i final
-    : public IDL::traits< ::Test::Hello::CCM_Listener>::base_type
+    : public IDL::traits<::Test::Hello::CCM_Listener>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Receiver_Impl::hello_listen_exec_i[ctor]
@@ -77,7 +77,7 @@ namespace Test_Receiver_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::Test::CCM_Receiver_Context>::ref_type context_;
+    IDL::traits<::Test::CCM_Receiver_Context>::ref_type context_;
 
     /** @name Members to store attribute values from ::Test::Hello::CCM_Listener */
     //@{
@@ -104,7 +104,7 @@ namespace Test_Receiver_Impl
 
   /// Executor implementation class for msg_listen facet
   class msg_listen_exec_i final
-    : public IDL::traits< ::Test::Msg::CCM_Listener>::base_type
+    : public IDL::traits<::Test::Msg::CCM_Listener>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Receiver_Impl::msg_listen_exec_i[ctor]
@@ -143,7 +143,7 @@ namespace Test_Receiver_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::Test::CCM_Receiver_Context>::ref_type context_;
+    IDL::traits<::Test::CCM_Receiver_Context>::ref_type context_;
 
     /** @name Members to store attribute values from ::Test::Msg::CCM_Listener */
     //@{
@@ -170,7 +170,7 @@ namespace Test_Receiver_Impl
 
   /// Component Executor Implementation Class : Receiver_exec_i
   class Receiver_exec_i final
-    : public virtual IDL::traits< ::Test::CCM_Receiver>::base_type
+    : public virtual IDL::traits<::Test::CCM_Receiver>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Receiver_Impl::Receiver_exec_i[ctor]
@@ -185,10 +185,10 @@ namespace Test_Receiver_Impl
 
     /// Factory method and getter for the hello_listen facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< ::Test::Hello::CCM_Listener>::ref_type get_hello_listen () override;
+    IDL::traits<::Test::Hello::CCM_Listener>::ref_type get_hello_listen () override;
     /// Factory method and getter for the msg_listen facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< ::Test::Msg::CCM_Listener>::ref_type get_msg_listen () override;
+    IDL::traits<::Test::Msg::CCM_Listener>::ref_type get_msg_listen () override;
     //@}
 
     /** @name Supported attributes. */
@@ -248,7 +248,7 @@ namespace Test_Receiver_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::Test::CCM_Receiver_Context>::ref_type context_;
+    IDL::traits<::Test::CCM_Receiver_Context>::ref_type context_;
 
     /** @name Component attributes. */
     //@{
@@ -266,8 +266,8 @@ namespace Test_Receiver_Impl
 
     /** @name Component facets. */
     //@{
-    IDL::traits< ::Test::Hello::CCM_Listener>::ref_type hello_listen_;
-    IDL::traits< ::Test::Msg::CCM_Listener>::ref_type msg_listen_;
+    IDL::traits<::Test::Hello::CCM_Listener>::ref_type hello_listen_;
+    IDL::traits<::Test::Msg::CCM_Listener>::ref_type msg_listen_;
     //@}
 
     /** @name User defined members. */
