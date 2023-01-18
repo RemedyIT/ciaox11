@@ -23,7 +23,7 @@ namespace CIAOX11
       public:
         SchedulingLane (ExF::Impl::Dispatcher::gate_ref gate)
           : gate_ (gate) {}
-        virtual ~SchedulingLane ();
+        ~SchedulingLane () override;
 
         virtual ExF::Count trafic_count ()
         { return this->gate_->queued_count (); }

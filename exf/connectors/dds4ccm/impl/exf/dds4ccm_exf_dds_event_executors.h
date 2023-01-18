@@ -42,7 +42,7 @@ namespace CIAOX11
           , listener_ (std::move (lsn))
           , event_id_ (std::move (evtid))
         {}
-        virtual ~DDSExecutorBase () = default;
+        ~DDSExecutorBase () override = default;
 
         void execute () noexcept(true) override
         {
@@ -105,7 +105,7 @@ namespace CIAOX11
           , entity_ (entity)
           , status_kind_ (status_kind)
         {}
-        virtual ~UnexpectedStatusExecutor () = default;
+        ~UnexpectedStatusExecutor () override = default;
 
       protected:
         virtual void execute_i (IDL::traits<CCM_DDS::ConnectorStatusListener>::ref_type listener)
@@ -144,7 +144,7 @@ namespace CIAOX11
           , dr_ (dr)
           , status_ (status)
         {}
-        virtual ~RequestedIncompatibleQosExecutor () = default;
+        ~RequestedIncompatibleQosExecutor () override = default;
 
       protected:
         virtual void execute_i (IDL::traits<CCM_DDS::ConnectorStatusListener>::ref_type listener)
@@ -183,7 +183,7 @@ namespace CIAOX11
           , dr_ (dr)
           , status_ (status)
         {}
-        virtual ~SampleRejectedExecutor () = default;
+        ~SampleRejectedExecutor () override = default;
 
       protected:
         virtual void execute_i (IDL::traits<CCM_DDS::ConnectorStatusListener>::ref_type listener)
@@ -222,7 +222,7 @@ namespace CIAOX11
           , tp_ (tp)
           , status_ (status)
         {}
-        virtual ~InconsistentTopicExecutor () = default;
+        ~InconsistentTopicExecutor () override = default;
 
       protected:
         virtual void execute_i (IDL::traits<CCM_DDS::ConnectorStatusListener>::ref_type listener)
@@ -261,7 +261,7 @@ namespace CIAOX11
           , dw_ (dw)
           , status_ (status)
         {}
-        virtual ~OfferedDeadlineMissedExecutor () = default;
+        ~OfferedDeadlineMissedExecutor () override = default;
 
       protected:
         virtual void execute_i (IDL::traits<CCM_DDS::ConnectorStatusListener>::ref_type listener)
@@ -300,7 +300,7 @@ namespace CIAOX11
           , dw_ (dw)
           , status_ (status)
         {}
-        virtual ~OfferedIncompatibleQoSExecutor () = default;
+        ~OfferedIncompatibleQoSExecutor () override = default;
 
       protected:
         virtual void execute_i (IDL::traits<CCM_DDS::ConnectorStatusListener>::ref_type listener)
@@ -339,7 +339,7 @@ namespace CIAOX11
           , dr_ (dr)
           , status_ (status)
         {}
-        virtual ~RequestedDeadlineMissedExecutor () = default;
+        ~RequestedDeadlineMissedExecutor () override = default;
 
       protected:
         virtual void execute_i (IDL::traits<CCM_DDS::PortStatusListener>::ref_type listener)
@@ -378,7 +378,7 @@ namespace CIAOX11
           , dr_ (dr)
           , status_ (status)
         {}
-        virtual ~SampleLostExecutor () = default;
+        ~SampleLostExecutor () override = default;
 
       protected:
         virtual void execute_i (IDL::traits<CCM_DDS::PortStatusListener>::ref_type listener)
@@ -418,7 +418,7 @@ namespace CIAOX11
           , drl_ (std::move(drl))
           , dr_ (std::move(dr))
         {}
-        virtual ~DataReaderExecutor_T () = default;
+        ~DataReaderExecutor_T () override = default;
 
       protected:
         virtual void execute_i (typename IDL::traits<DATA_LISTENER>::ref_type listener)

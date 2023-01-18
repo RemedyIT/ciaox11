@@ -42,7 +42,7 @@ namespace CIAOX11
        : sem_ (sem) {}
       LifecycleExecutor (std::shared_ptr<LifecycleSemaphore> sem, ExF::Priority prio, ExF::Deadline dltm)
        : Executor (prio, dltm), sem_ (sem) {}
-      virtual ~LifecycleExecutor () {}
+      ~LifecycleExecutor () override = default;
 
       virtual void execute () noexcept(true);
 

@@ -133,7 +133,7 @@ namespace UnkeyedWriterTest_Receiver_Impl
 
   void
   info_out_status_exec_i::on_requested_deadline_missed (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::RequestedDeadlineMissedStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : UnkeyedWriterTest_Receiver_Impl::info_out_status_exec_i::on_requested_deadline_missed[_the_reader_status]
@@ -144,7 +144,7 @@ namespace UnkeyedWriterTest_Receiver_Impl
 
   void
   info_out_status_exec_i::on_sample_lost (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::SampleLostStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : UnkeyedWriterTest_Receiver_Impl::info_out_status_exec_i::on_sample_lost[_the_reader_status]

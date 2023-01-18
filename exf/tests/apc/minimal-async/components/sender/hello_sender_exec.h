@@ -141,7 +141,7 @@ namespace Hello_Sender_Impl
     AMI4CCM_MyFooReplyHandler_run_my_foo_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[ctor]
 
-    virtual ~AMI4CCM_MyFooReplyHandler_run_my_foo_i ();
+    ~AMI4CCM_MyFooReplyHandler_run_my_foo_i () override;
 
     void foo (
         int32_t ami_return_val,
