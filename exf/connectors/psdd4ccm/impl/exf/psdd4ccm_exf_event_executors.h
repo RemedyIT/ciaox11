@@ -40,7 +40,7 @@ namespace CIAOX11
           , dh_ (dh.weak_reference ())
           , dl_ (std::move (dl))
         {}
-        virtual ~PSDDDataListenerExecutor () = default;
+        ~PSDDDataListenerExecutor () override = default;
 
         void execute () noexcept(true) override
         {

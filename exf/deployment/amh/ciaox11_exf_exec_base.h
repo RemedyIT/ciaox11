@@ -26,7 +26,7 @@ namespace CIAOX11
       public:
         AMH_Executor (ExF::Priority prio, ExF::Deadline dltm)
           : Executor (prio, dltm) {}
-        virtual ~AMH_Executor () = default;
+        ~AMH_Executor () override = default;
 
         void execute () noexcept(true) override;
 

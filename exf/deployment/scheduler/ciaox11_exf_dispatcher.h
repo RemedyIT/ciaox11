@@ -131,7 +131,7 @@ namespace CIAOX11
                       this->executor_->deadline ().deadline_type_;
             }
           }
-          virtual ~DispatchTask () {}
+          ~DispatchTask () override = default;
 
           virtual const ExF::Deadline& deadline () const noexcept(true);
 
