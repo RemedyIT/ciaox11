@@ -27,7 +27,7 @@ namespace CIAOX11
       Container (std::string name,
                  IDL::traits<CORBA::ORB>::ref_type orb,
                  ExF::Scheduler::ref_type sched);
-      virtual ~Container ();
+      ~Container () override;
 
       void fini () override;
 

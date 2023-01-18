@@ -218,7 +218,7 @@ namespace CIAOX11
       : public ::CORBA::LocalObject
     {
     public:
-      virtual ~SchedulingLane ();
+      ~SchedulingLane () override ;
 
       virtual ExF::Count trafic_count () = 0;
 

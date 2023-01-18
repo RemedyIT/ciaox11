@@ -28,7 +28,7 @@ namespace CIAOX11
       Container_Handler () = default;
 
       // Destructor
-      virtual ~Container_Handler ();
+      ~Container_Handler () override;
 
       void install_instance (const ::Deployment::DeploymentPlan & plan,
                              uint32_t instanceRef,

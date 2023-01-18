@@ -436,7 +436,7 @@ namespace CIAOX11
         , sample_lost_priority_ (pses.sample_lost_priority_)
         {}
       public:
-        virtual ~PortStatusEventStrategyBase () = default;
+        ~PortStatusEventStrategyBase () override = default;
 
         // on_requested_deadline_missed
         void
@@ -621,7 +621,7 @@ namespace CIAOX11
           : DataEventStrategyBase_T<
               typename CCM_TYPE::push_consumer_traits::data_listener_type> (pces)
         {}
-        virtual ~PushConsumerEventStrategy_T () = default;
+        ~PushConsumerEventStrategy_T () override = default;
       };
 
       template <typename CCM_TYPE>
@@ -638,7 +638,7 @@ namespace CIAOX11
         PullConsumerEventStrategy_T (const PullConsumerEventStrategy_T& pces)
           : PortStatusEventStrategyBase (pces)
         {}
-        virtual ~PullConsumerEventStrategy_T () = default;
+        ~PullConsumerEventStrategy_T () override = default;
       };
 
       template <typename CCM_TYPE>
@@ -655,7 +655,7 @@ namespace CIAOX11
         PassiveObserverEventStrategy_T (const PassiveObserverEventStrategy_T& poes)
           : PortStatusEventStrategyBase (poes)
         {}
-        virtual ~PassiveObserverEventStrategy_T () = default;
+        ~PassiveObserverEventStrategy_T () override = default;
       };
 
       template <typename CCM_TYPE>
@@ -672,7 +672,7 @@ namespace CIAOX11
         PullObserverEventStrategy_T (const PullObserverEventStrategy_T& poes)
           : PortStatusEventStrategyBase (poes)
         {}
-        virtual ~PullObserverEventStrategy_T () = default;
+        ~PullObserverEventStrategy_T () override = default;
       };
 
       template <typename CCM_TYPE>
@@ -694,7 +694,7 @@ namespace CIAOX11
           : DataEventStrategyBase_T<
               typename CCM_TYPE::push_observer_traits::data_listener_type> (poes)
         {}
-        virtual ~PushObserverEventStrategy_T () = default;
+        ~PushObserverEventStrategy_T () override = default;
       };
 
       template <typename CCM_TYPE>
@@ -716,7 +716,7 @@ namespace CIAOX11
           : DataEventStrategyBase_T<
               typename CCM_TYPE::push_state_observer_traits::data_listener_type> (psoes)
         {}
-        virtual ~PushStateObserverEventStrategy_T () = default;
+        ~PushStateObserverEventStrategy_T () override = default;
       };
 
     } /* namespace ExF */

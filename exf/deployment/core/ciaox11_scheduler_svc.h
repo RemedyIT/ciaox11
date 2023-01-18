@@ -28,7 +28,7 @@ namespace CIAOX11
     {
     public:
       /// The destructor
-      virtual ~SchedulerSvc ();
+      ~SchedulerSvc () override;
 
       /**
        * Create and return the reference to a monitor instance.
