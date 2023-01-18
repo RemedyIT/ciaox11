@@ -132,11 +132,11 @@ namespace <%= executor_cxx_namespace %>
 %       end
 %     end
 %   end
-%   visit_context_extra_receptacles
+% nest (1) { visit_context_extra_receptacles }
 
-%   visit_context_set_connection
+% nest (1) { visit_context_set_connection }
 
-%   visit_context_reset_connection
+% nest (1) { visit_context_reset_connection }
 
 % end
   std::string

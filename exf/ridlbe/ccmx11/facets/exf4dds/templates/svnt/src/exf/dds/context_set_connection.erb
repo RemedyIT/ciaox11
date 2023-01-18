@@ -1,48 +1,48 @@
 
-  // generated from <%= ridl_template_path %>
-  bool
-  <%= lem_name %>_Context::set_connection (
-    const std::string& name,
+// generated from <%= ridl_template_path %>
+bool
+<%= lem_name %>_Context::set_connection (
+  const std::string& name,
 %   if all_incl_multiple_port?
-    IDL::traits<CORBA::Object>::ref_type connection,
-    const std::string& conn_name,
-    const ::Components::ConfigValues& config)
+  IDL::traits<CORBA::Object>::ref_type connection,
+  const std::string& conn_name,
+  const ::Components::ConfigValues& config)
 %   else
-    IDL::traits<CORBA::Object>::ref_type connection,
-    const ::Components::ConfigValues& config)
+  IDL::traits<CORBA::Object>::ref_type connection,
+  const ::Components::ConfigValues& config)
 %   end
-  {
+{
 %   nr_ports = 0
 %   all_ports.each do |_p|
 %     if _p.port_type == :receptacle
 %       nr_ports +=1
 %       if nr_ports == 1
-    if (name == "<%= _p.lem_name %>")
+  if (name == "<%= _p.lem_name %>")
 %       else
-    else if (name == "<%= _p.lem_name %>")
+  else if (name == "<%= _p.lem_name %>")
 %       end
-    {
+  {
 %       if _p.is_multiple?
-      IDL::traits<<%= _p.interface_type.scoped_cxxname %>>::ref_type c_ = IDL::traits<<%= _p.interface_type.scoped_cxxname %>>::narrow (std::move(connection));
+    IDL::traits<<%= _p.interface_type.scoped_cxxname %>>::ref_type c_ = IDL::traits<<%= _p.interface_type.scoped_cxxname %>>::narrow (std::move(connection));
 
-      {
-        std::lock_guard<std::mutex> lock (this->context_tbl_lock_);
+    {
+      std::lock_guard<std::mutex> lock (this->context_tbl_lock_);
 
-        this-><%= _p.lem_name %>_context_tbl_.insert (
-          <%= _p.interface_type.scoped_cxxname.upcase.identify %>_CONTEXT_TABLE::value_type (conn_name, std::move(c_)));
-      }
-%       else
-      this-><%= _p.cxxname %>_ = IDL::traits<<%= _p.interface_type.scoped_cxxname %>>::narrow (std::move(connection));
-%       end
-      // copy all (applicable) configuration values for this connection
-      this-><%= _p.lem_name %>_config_ = config;
+      this-><%= _p.lem_name %>_context_tbl_.insert (
+        <%= _p.interface_type.scoped_cxxname.upcase.identify %>_CONTEXT_TABLE::value_type (conn_name, std::move(c_)));
     }
+%       else
+    this-><%= _p.cxxname %>_ = IDL::traits<<%= _p.interface_type.scoped_cxxname %>>::narrow (std::move(connection));
+%       end
+    // copy all (applicable) configuration values for this connection
+    this-><%= _p.lem_name %>_config_ = config;
+  }
 %     end
 %   end
 %   visit_context_extra_connect
-    else
-    {
-      return false;
-    }
-    return true;
+  else
+  {
+    return false;
   }
+  return true;
+}

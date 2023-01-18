@@ -1,7 +1,6 @@
 % if all_incl_receptacle_port?
 %   if all_incl_multiple_port?
-  return this->component_context_->reset_connection (name,
-                                                     conn_name);
+  return this->component_context_->reset_connection (name, conn_name);
 %   else
   X11_UNUSED_ARG(conn_name);
   return this->component_context_->reset_connection (name);
