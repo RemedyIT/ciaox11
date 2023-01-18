@@ -1,11 +1,11 @@
-    // generated from <%= ridl_template_path %>
+// generated from <%= ridl_template_path %>
 
-    /// @name Configuration accessors for all receptacles
-    //@{
+/// @name Configuration accessors for all receptacles
+//@{
 %   all_ports.each do |_p|
 %     if _p.port_type == :receptacle
-    /// Get the <%= _p.lem_name %> receptacle configuration
-    ::Components::ConfigValues <%= _p.lem_name %>_configuration () override;
+/// Get the <%= _p.lem_name %> receptacle configuration
+::Components::ConfigValues <%= _p.lem_name %>_configuration () override;
 %     end
 %   end
-    //@}
+//@}
