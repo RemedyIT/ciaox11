@@ -1,4 +1,4 @@
-% visit_init_connect
+% visit_component_init_connect
   // generated from <%= ridl_template_path %>
 % if all_incl_receptacle_port?
   X11_UNUSED_ARG(conn_name);
@@ -7,5 +7,6 @@
   X11_UNUSED_ARG(name);
   X11_UNUSED_ARG(connection);
   X11_UNUSED_ARG(conn_name);
+  X11_UNUSED_ARG(config);
   return false;
 % end

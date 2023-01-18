@@ -3,13 +3,13 @@
 bool
 <%= lem_name %>_Context::set_connection (
   const std::string& name,
-%   if all_incl_multiple_port?
   IDL::traits<CORBA::Object>::ref_type connection,
-  const std::string& conn_name)
-%   else
-  IDL::traits<CORBA::Object>::ref_type connection)
+%   if all_incl_multiple_port?
+  const std::string& conn_name,
 %   end
+  const ::Components::ConfigValues& config)
 {
+  X11_UNUSED_ARG(config);
 %   nr_ports = 0
 %   all_ports.each do |_p|
 %     if _p.port_type == :receptacle
