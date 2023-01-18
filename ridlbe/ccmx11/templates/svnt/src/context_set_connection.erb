@@ -21,13 +21,10 @@ bool
 %       end
   {
 %       if _p.is_multiple?
-    IDL::traits<<%= _p.interface_type.scoped_cxxname %>>::ref_type c_ = IDL::traits<<%= _p.interface_type.scoped_cxxname %>>::narrow (connection);
-
+    IDL::traits<<%= _p.interface_type.scoped_cxxname %>>::ref_type c_ = IDL::traits<<%= _p.interface_type.scoped_cxxname %>>::narrow (std::move(connection));
     {
       std::lock_guard<std::mutex> lock (this->context_tbl_lock_);
-
-      this-><%= _p.lem_name %>_context_tbl_.insert (
-        <%= _p.interface_type.scoped_cxxname.upcase.identify %>_CONTEXT_TABLE::value_type (conn_name, std::move(c_)));
+      this-><%= _p.lem_name %>_context_tbl_.insert (<%= _p.interface_type.scoped_cxxname.upcase.identify %>_CONTEXT_TABLE::value_type (conn_name, std::move(c_)));
     }
 %       else
     this-><%= _p.cxxname %>_ = IDL::traits<<%= _p.interface_type.scoped_cxxname %>>::narrow (std::move(connection));
