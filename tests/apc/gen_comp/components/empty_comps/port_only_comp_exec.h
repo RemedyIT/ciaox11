@@ -36,7 +36,7 @@ namespace PortComp_Impl
 
   /// Executor implementation class for run_my_bar_foo_prov facet
   class run_my_bar_foo_prov_exec_i final
-    : public IDL::traits< ::Foo::CCM_MyFoo>::base_type
+    : public IDL::traits<::Foo::CCM_MyFoo>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : PortComp_Impl::run_my_bar_foo_prov_exec_i[ctor]
@@ -66,7 +66,7 @@ namespace PortComp_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< CCM_PortComp_Context>::ref_type context_;
+    IDL::traits<CCM_PortComp_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -85,7 +85,7 @@ namespace PortComp_Impl
 
   /// Component Executor Implementation Class : PortComp_exec_i
   class PortComp_exec_i final
-    : public virtual IDL::traits< CCM_PortComp>::base_type
+    : public virtual IDL::traits<CCM_PortComp>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : PortComp_Impl::PortComp_exec_i[ctor]
@@ -100,7 +100,7 @@ namespace PortComp_Impl
 
     /// Factory method and getter for the run_my_bar_foo_prov facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< ::Foo::CCM_MyFoo>::ref_type get_run_my_bar_foo_prov () override;
+    IDL::traits<::Foo::CCM_MyFoo>::ref_type get_run_my_bar_foo_prov () override;
     //@}
 
     /** @name Session component operations */
@@ -132,11 +132,11 @@ namespace PortComp_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< CCM_PortComp_Context>::ref_type context_;
+    IDL::traits<CCM_PortComp_Context>::ref_type context_;
 
     /** @name Component facets. */
     //@{
-    IDL::traits< ::Foo::CCM_MyFoo>::ref_type run_my_bar_foo_prov_;
+    IDL::traits<::Foo::CCM_MyFoo>::ref_type run_my_bar_foo_prov_;
     //@}
 
     /** @name User defined members. */

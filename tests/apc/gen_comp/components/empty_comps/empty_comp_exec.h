@@ -36,7 +36,7 @@ namespace EmptyComp_Impl
 
   /// Component Executor Implementation Class : EmptyComp_exec_i
   class EmptyComp_exec_i final
-    : public virtual IDL::traits< CCM_EmptyComp>::base_type
+    : public virtual IDL::traits<CCM_EmptyComp>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : EmptyComp_Impl::EmptyComp_exec_i[ctor]
@@ -75,7 +75,7 @@ namespace EmptyComp_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< CCM_EmptyComp_Context>::ref_type context_;
+    IDL::traits<CCM_EmptyComp_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{

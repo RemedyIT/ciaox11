@@ -36,7 +36,7 @@ namespace AttrComp_Impl
 
   /// Component Executor Implementation Class : AttrComp_exec_i
   class AttrComp_exec_i final
-    : public virtual IDL::traits< CCM_AttrComp>::base_type
+    : public virtual IDL::traits<CCM_AttrComp>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : AttrComp_Impl::AttrComp_exec_i[ctor]
@@ -83,7 +83,7 @@ namespace AttrComp_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< CCM_AttrComp_Context>::ref_type context_;
+    IDL::traits<CCM_AttrComp_Context>::ref_type context_;
 
     /** @name Component attributes. */
     //@{
