@@ -112,7 +112,7 @@ namespace CIAOX11
           , data_available_priority_ (dpces.data_available_priority_)
         {}
 
-        virtual ~PushConsumerEventStrategy_T () = default;
+        ~PushConsumerEventStrategy_T () override = default;
 
         PushConsumerEventStrategy_T& operator =(
             const PushConsumerEventStrategy_T& dpces)

@@ -184,7 +184,7 @@ namespace InterMulti_Sender_Impl
     AMI4CCM_OneReplyHandler_run_my_one_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : InterMulti_Sender_Impl::AMI4CCM_OneReplyHandler_run_my_one_i[ctor]
 
-    virtual ~AMI4CCM_OneReplyHandler_run_my_one_i ();
+    ~AMI4CCM_OneReplyHandler_run_my_one_i () override;
 
     void foo (
         int32_t ami_return_val,
@@ -222,7 +222,7 @@ namespace InterMulti_Sender_Impl
     AMI4CCM_TwoReplyHandler_run_my_two_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : InterMulti_Sender_Impl::AMI4CCM_TwoReplyHandler_run_my_two_i[ctor]
 
-    virtual ~AMI4CCM_TwoReplyHandler_run_my_two_i ();
+    ~AMI4CCM_TwoReplyHandler_run_my_two_i () override;
 
     void bar (
         const std::string& answer) override;
@@ -259,7 +259,7 @@ namespace InterMulti_Sender_Impl
     AMI4CCM_ThreeReplyHandler_run_my_three_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : InterMulti_Sender_Impl::AMI4CCM_ThreeReplyHandler_run_my_three_i[ctor]
 
-    virtual ~AMI4CCM_ThreeReplyHandler_run_my_three_i ();
+    ~AMI4CCM_ThreeReplyHandler_run_my_three_i () override;
 
     void plus (
         const std::string& answer) override;

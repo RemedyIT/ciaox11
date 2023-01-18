@@ -36,7 +36,7 @@ namespace CIAOX11
         : CIAOX11::Component_Handler (std::move (ch)) {}
 
       /// Destructor
-      virtual ~Component_Handler ();
+      ~Component_Handler () override;
 
       void install_instance (const ::Deployment::DeploymentPlan & plan,
                              uint32_t instanceRef,

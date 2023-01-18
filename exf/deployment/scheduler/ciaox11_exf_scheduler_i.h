@@ -31,7 +31,7 @@ namespace CIAOX11
       {
       public:
         Scheduler (const Components::ConfigValues& cfg);
-        virtual ~Scheduler ();
+        ~Scheduler () override;
 
         ExF::SchedulerResult open_scheduling_lane (
             std::string instance_id,

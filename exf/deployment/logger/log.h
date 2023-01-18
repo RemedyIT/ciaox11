@@ -42,7 +42,7 @@ namespace CIAOX11
     {
     public:
       CIAOX11_EXF_Log_Msg();
-      virtual ~CIAOX11_EXF_Log_Msg();
+       ~CIAOX11_EXF_Log_Msg() override;
 
       static CIAOX11_EXF_Log_Msg* getInstance();
 
