@@ -174,7 +174,7 @@ namespace Hello_Sender_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Sender_Impl::Sender_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::Hello::CCM_PortFooS>::ref_type
+  IDL::traits<::Hello::CCM_PortFooS>::ref_type
   Sender_exec_i::get_foo_port_s_foo_prov ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl::Sender_exec_i[get_foo_port_s_foo_prov]

@@ -36,7 +36,7 @@ namespace AnotherComp_Impl
 
   /// Executor implementation class for run_my_bar_foo_prov facet
   class run_my_bar_foo_prov_exec_i final
-    : public IDL::traits< ::Foo::CCM_MyFoo>::base_type
+    : public IDL::traits<::Foo::CCM_MyFoo>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : AnotherComp_Impl::run_my_bar_foo_prov_exec_i[ctor]
@@ -66,7 +66,7 @@ namespace AnotherComp_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< CCM_AnotherComp_Context>::ref_type context_;
+    IDL::traits<CCM_AnotherComp_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -85,7 +85,7 @@ namespace AnotherComp_Impl
 
   /// Component Executor Implementation Class : AnotherComp_exec_i
   class AnotherComp_exec_i final
-    : public virtual IDL::traits< CCM_AnotherComp>::base_type
+    : public virtual IDL::traits<CCM_AnotherComp>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : AnotherComp_Impl::AnotherComp_exec_i[ctor]
@@ -100,7 +100,7 @@ namespace AnotherComp_Impl
 
     /// Factory method and getter for the run_my_bar_foo_prov facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< ::Foo::CCM_MyFoo>::ref_type get_run_my_bar_foo_prov () override;
+    IDL::traits<::Foo::CCM_MyFoo>::ref_type get_run_my_bar_foo_prov () override;
     //@}
 
     /** @name Supported attributes. */
@@ -163,7 +163,7 @@ namespace AnotherComp_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< CCM_AnotherComp_Context>::ref_type context_;
+    IDL::traits<CCM_AnotherComp_Context>::ref_type context_;
 
     /** @name Component attributes. */
     //@{
@@ -185,7 +185,7 @@ namespace AnotherComp_Impl
 
     /** @name Component facets. */
     //@{
-    IDL::traits< ::Foo::CCM_MyFoo>::ref_type run_my_bar_foo_prov_;
+    IDL::traits<::Foo::CCM_MyFoo>::ref_type run_my_bar_foo_prov_;
     //@}
 
     /** @name User defined members. */
