@@ -3,14 +3,11 @@
 bool
 <%= lem_name %>_Context::set_connection (
   const std::string& name,
+  IDL::traits<CORBA::Object>::ref_type connection,
 %   if all_incl_multiple_port?
-  IDL::traits<CORBA::Object>::ref_type connection,
   const std::string& conn_name,
-  const ::Components::ConfigValues& config)
-%   else
-  IDL::traits<CORBA::Object>::ref_type connection,
-  const ::Components::ConfigValues& config)
 %   end
+  const ::Components::ConfigValues& config)
 {
 %   nr_ports = 0
 %   all_ports.each do |_p|
@@ -39,7 +36,7 @@ bool
   }
 %     end
 %   end
-%   visit_context_extra_connect
+% nest (1) { visit_context_extra_connect }
   else
   {
     return false;

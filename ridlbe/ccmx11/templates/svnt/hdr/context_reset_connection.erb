@@ -3,9 +3,4 @@
 %   if all_incl_multiple_port?
 /// and connection name @a conn_name
 %   end
-%   if all_incl_multiple_port?
-bool reset_connection (const std::string& name,
-                       const std::string& conn_name);
-%   else
-bool reset_connection (const std::string& name);
-%   end
+bool reset_connection (const std::string& name<% if all_incl_multiple_port? %>, const std::string& conn_name<% end %>);

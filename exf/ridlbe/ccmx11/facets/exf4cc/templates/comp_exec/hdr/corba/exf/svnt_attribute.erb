@@ -2,11 +2,9 @@
 // generated from <%= ridl_template_path %>
 /// @copydoc <%= doc_scoped_name %>
 void
-<%= cxxname %> (
-    <%= defining_interface.scoped_enclosure_cxxname %>::ExF::<%= defining_interface.skel_cxxname %>_get_<%= cxxname %>_RequestHandler::ref_type) override;
+<%= cxxname %> (<%= defining_interface.scoped_enclosure_cxxname %>::ExF::<%= defining_interface.skel_cxxname %>_get_<%= cxxname %>_RequestHandler::ref_type) override;
 % unless is_readonly?
 /// @copydoc <%= doc_scoped_name %>
 void
-<%= cxxname %> (
-    <%= defining_interface.scoped_enclosure_cxxname %>::ExF::<%= defining_interface.skel_cxxname %>_set_<%= cxxname %>_RequestHandler::ref_type) override;
+<%= cxxname %> (<%= defining_interface.scoped_enclosure_cxxname %>::ExF::<%= defining_interface.skel_cxxname %>_set_<%= cxxname %>_RequestHandler::ref_type) override;
 % end
