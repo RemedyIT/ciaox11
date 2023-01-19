@@ -66,7 +66,7 @@ namespace UsesMulti_Sender_Impl
 
   /// Component Executor Implementation Class : Sender_exec_i
   class Sender_exec_i final
-    : public virtual IDL::traits< ::UsesMulti::CCM_Sender>::base_type
+    : public virtual IDL::traits<::UsesMulti::CCM_Sender>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : UsesMulti_Sender_Impl::Sender_exec_i[ctor]
@@ -110,7 +110,7 @@ namespace UsesMulti_Sender_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::UsesMulti::CCM_Sender_Context>::ref_type context_;
+    IDL::traits<::UsesMulti::CCM_Sender_Context>::ref_type context_;
 
     /** @name Component facets. */
     //@{
@@ -142,14 +142,14 @@ namespace UsesMulti_Sender_Impl
   };
   /// AMI4CCM reply handler implementation class
   class AMI4CCM_OneReplyHandler_run_my_um_one_i final
-    :public IDL::traits< UsesMulti::AMI4CCM_OneReplyHandler>::base_type
+    :public IDL::traits<UsesMulti::AMI4CCM_OneReplyHandler>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : UsesMulti_Sender_Impl::AMI4CCM_OneReplyHandler_run_my_um_one_i[ctor]
     AMI4CCM_OneReplyHandler_run_my_um_one_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : UsesMulti_Sender_Impl::AMI4CCM_OneReplyHandler_run_my_um_one_i[ctor]
 
-    virtual ~AMI4CCM_OneReplyHandler_run_my_um_one_i ();
+    ~AMI4CCM_OneReplyHandler_run_my_um_one_i () override;
 
     void foo (
         int32_t ami_return_val,

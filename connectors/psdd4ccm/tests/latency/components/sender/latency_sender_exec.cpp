@@ -647,7 +647,7 @@ namespace Test_Sender_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Test_Sender_Impl::Sender_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::Test::LatencyDataConnector::CCM_Listener>::ref_type
+  IDL::traits<::Test::LatencyDataConnector::CCM_Listener>::ref_type
   Sender_exec_i::get_info_recv ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::Sender_exec_i[get_info_recv]

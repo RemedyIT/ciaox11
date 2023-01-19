@@ -59,7 +59,7 @@ namespace Hello_Sender_Impl
 
   /// Component Executor Implementation Class : Sender_exec_i
   class Sender_exec_i final
-    : public virtual IDL::traits< ::Hello::CCM_Sender>::base_type
+    : public virtual IDL::traits<::Hello::CCM_Sender>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl::Sender_exec_i[ctor]
@@ -103,7 +103,7 @@ namespace Hello_Sender_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::Hello::CCM_Sender_Context>::ref_type context_;
+    IDL::traits<::Hello::CCM_Sender_Context>::ref_type context_;
 
     /** @name Component facets. */
     //@{
@@ -134,14 +134,14 @@ namespace Hello_Sender_Impl
   };
   /// AMI4CCM reply handler implementation class
   class AMI4CCM_MyFooReplyHandler_run_my_foo_i final
-    :public IDL::traits< Hello::AMI4CCM_MyFooReplyHandler>::base_type
+    :public IDL::traits<Hello::AMI4CCM_MyFooReplyHandler>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[ctor]
     AMI4CCM_MyFooReplyHandler_run_my_foo_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[ctor]
 
-    virtual ~AMI4CCM_MyFooReplyHandler_run_my_foo_i ();
+    ~AMI4CCM_MyFooReplyHandler_run_my_foo_i () override;
 
     void foo (
         int32_t ami_return_val,

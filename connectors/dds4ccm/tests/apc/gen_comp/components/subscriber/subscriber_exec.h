@@ -36,7 +36,7 @@ namespace subscriber_comp_Impl
 
   /// Executor implementation class for info_out_data_listener facet
   class info_out_data_listener_exec_i final
-    : public IDL::traits< ::ShapeTypeInterface::CCM_Listener>::base_type
+    : public IDL::traits<::ShapeTypeInterface::CCM_Listener>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::info_out_data_listener_exec_i[ctor]
@@ -72,7 +72,7 @@ namespace subscriber_comp_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< CCM_subscriber_comp_Context>::ref_type context_;
+    IDL::traits<CCM_subscriber_comp_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -91,7 +91,7 @@ namespace subscriber_comp_Impl
 
   /// Executor implementation class for info_out_status facet
   class info_out_status_exec_i final
-    : public IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::base_type
+    : public IDL::traits<::CCM_DDS::CCM_PortStatusListener>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::info_out_status_exec_i[ctor]
@@ -109,12 +109,12 @@ namespace subscriber_comp_Impl
 
     void
     on_requested_deadline_missed (
-        IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+        IDL::traits<::DDS::DataReader>::ref_type the_reader,
         const ::DDS::RequestedDeadlineMissedStatus& status) override;
 
     void
     on_sample_lost (
-        IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+        IDL::traits<::DDS::DataReader>::ref_type the_reader,
         const ::DDS::SampleLostStatus& status) override;
     //@}
 
@@ -127,7 +127,7 @@ namespace subscriber_comp_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< CCM_subscriber_comp_Context>::ref_type context_;
+    IDL::traits<CCM_subscriber_comp_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -146,7 +146,7 @@ namespace subscriber_comp_Impl
 
   /// Executor implementation class for info_read_status facet
   class info_read_status_exec_i final
-    : public IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::base_type
+    : public IDL::traits<::CCM_DDS::CCM_PortStatusListener>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::info_read_status_exec_i[ctor]
@@ -164,12 +164,12 @@ namespace subscriber_comp_Impl
 
     void
     on_requested_deadline_missed (
-        IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+        IDL::traits<::DDS::DataReader>::ref_type the_reader,
         const ::DDS::RequestedDeadlineMissedStatus& status) override;
 
     void
     on_sample_lost (
-        IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+        IDL::traits<::DDS::DataReader>::ref_type the_reader,
         const ::DDS::SampleLostStatus& status) override;
     //@}
 
@@ -182,7 +182,7 @@ namespace subscriber_comp_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< CCM_subscriber_comp_Context>::ref_type context_;
+    IDL::traits<CCM_subscriber_comp_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -201,7 +201,7 @@ namespace subscriber_comp_Impl
 
   /// Executor implementation class for info_get_status facet
   class info_get_status_exec_i final
-    : public IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::base_type
+    : public IDL::traits<::CCM_DDS::CCM_PortStatusListener>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::info_get_status_exec_i[ctor]
@@ -219,12 +219,12 @@ namespace subscriber_comp_Impl
 
     void
     on_requested_deadline_missed (
-        IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+        IDL::traits<::DDS::DataReader>::ref_type the_reader,
         const ::DDS::RequestedDeadlineMissedStatus& status) override;
 
     void
     on_sample_lost (
-        IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+        IDL::traits<::DDS::DataReader>::ref_type the_reader,
         const ::DDS::SampleLostStatus& status) override;
     //@}
 
@@ -237,7 +237,7 @@ namespace subscriber_comp_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< CCM_subscriber_comp_Context>::ref_type context_;
+    IDL::traits<CCM_subscriber_comp_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -256,7 +256,7 @@ namespace subscriber_comp_Impl
 
   /// Executor implementation class for info_state_data_listener facet
   class info_state_data_listener_exec_i final
-    : public IDL::traits< ::ShapeTypeInterface::CCM_StateListener>::base_type
+    : public IDL::traits<::ShapeTypeInterface::CCM_StateListener>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::info_state_data_listener_exec_i[ctor]
@@ -302,7 +302,7 @@ namespace subscriber_comp_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< CCM_subscriber_comp_Context>::ref_type context_;
+    IDL::traits<CCM_subscriber_comp_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -321,7 +321,7 @@ namespace subscriber_comp_Impl
 
   /// Executor implementation class for info_state_status facet
   class info_state_status_exec_i final
-    : public IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::base_type
+    : public IDL::traits<::CCM_DDS::CCM_PortStatusListener>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::info_state_status_exec_i[ctor]
@@ -339,12 +339,12 @@ namespace subscriber_comp_Impl
 
     void
     on_requested_deadline_missed (
-        IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+        IDL::traits<::DDS::DataReader>::ref_type the_reader,
         const ::DDS::RequestedDeadlineMissedStatus& status) override;
 
     void
     on_sample_lost (
-        IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+        IDL::traits<::DDS::DataReader>::ref_type the_reader,
         const ::DDS::SampleLostStatus& status) override;
     //@}
 
@@ -357,7 +357,7 @@ namespace subscriber_comp_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< CCM_subscriber_comp_Context>::ref_type context_;
+    IDL::traits<CCM_subscriber_comp_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -376,7 +376,7 @@ namespace subscriber_comp_Impl
 
   /// Component Executor Implementation Class : subscriber_comp_exec_i
   class subscriber_comp_exec_i final
-    : public virtual IDL::traits< CCM_subscriber_comp>::base_type
+    : public virtual IDL::traits<CCM_subscriber_comp>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::subscriber_comp_exec_i[ctor]
@@ -391,22 +391,22 @@ namespace subscriber_comp_Impl
 
     /// Factory method and getter for the info_out_data_listener facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< ::ShapeTypeInterface::CCM_Listener>::ref_type get_info_out_data_listener () override;
+    IDL::traits<::ShapeTypeInterface::CCM_Listener>::ref_type get_info_out_data_listener () override;
     /// Factory method and getter for the info_out_status facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type get_info_out_status () override;
+    IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type get_info_out_status () override;
     /// Factory method and getter for the info_read_status facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type get_info_read_status () override;
+    IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type get_info_read_status () override;
     /// Factory method and getter for the info_get_status facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type get_info_get_status () override;
+    IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type get_info_get_status () override;
     /// Factory method and getter for the info_state_data_listener facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< ::ShapeTypeInterface::CCM_StateListener>::ref_type get_info_state_data_listener () override;
+    IDL::traits<::ShapeTypeInterface::CCM_StateListener>::ref_type get_info_state_data_listener () override;
     /// Factory method and getter for the info_state_status facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type get_info_state_status () override;
+    IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type get_info_state_status () override;
     //@}
 
     /** @name Session component operations */
@@ -438,7 +438,7 @@ namespace subscriber_comp_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< CCM_subscriber_comp_Context>::ref_type context_;
+    IDL::traits<CCM_subscriber_comp_Context>::ref_type context_;
 
     /** @name Component attributes. */
     //@{
@@ -446,12 +446,12 @@ namespace subscriber_comp_Impl
 
     /** @name Component facets. */
     //@{
-    IDL::traits< ::ShapeTypeInterface::CCM_Listener>::ref_type info_out_data_listener_;
-    IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type info_out_status_;
-    IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type info_read_status_;
-    IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type info_get_status_;
-    IDL::traits< ::ShapeTypeInterface::CCM_StateListener>::ref_type info_state_data_listener_;
-    IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type info_state_status_;
+    IDL::traits<::ShapeTypeInterface::CCM_Listener>::ref_type info_out_data_listener_;
+    IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type info_out_status_;
+    IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type info_read_status_;
+    IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type info_get_status_;
+    IDL::traits<::ShapeTypeInterface::CCM_StateListener>::ref_type info_state_data_listener_;
+    IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type info_state_status_;
     //@}
 
     /** @name User defined members. */
