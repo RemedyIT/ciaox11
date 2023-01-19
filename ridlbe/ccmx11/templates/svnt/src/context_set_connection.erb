@@ -29,6 +29,7 @@ bool
 %       else
     this-><%= _p.cxxname %>_ = IDL::traits<<%= _p.interface_type.scoped_cxxname %>>::narrow (std::move(connection));
 %       end
+% nest (2) { visit_template('context_port_set_connection', {:port => _p}) }
   }
 %     end
 %   end

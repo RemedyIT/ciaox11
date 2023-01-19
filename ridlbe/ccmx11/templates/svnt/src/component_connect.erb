@@ -1,14 +1,14 @@
 % visit_component_init_connect
-  // generated from <%= ridl_template_path %>
+// generated from <%= ridl_template_path %>
 % if all_incl_receptacle_port?
 %   unless all_incl_multiple_port?
-  X11_UNUSED_ARG(conn_name);
+X11_UNUSED_ARG(conn_name);
 %   end
-  return this->component_context_->set_connection (name, std::move(connection)<% if all_incl_multiple_port? %>, conn_name<% end %>, config);
+return this->component_context_->set_connection (name, std::move(connection)<% if all_incl_multiple_port? %>, conn_name<% end %>, config);
 % else
-  X11_UNUSED_ARG(name);
-  X11_UNUSED_ARG(connection);
-  X11_UNUSED_ARG(conn_name);
-  X11_UNUSED_ARG(config);
-  return false;
+X11_UNUSED_ARG(name);
+X11_UNUSED_ARG(connection);
+X11_UNUSED_ARG(conn_name);
+X11_UNUSED_ARG(config);
+return false;
 % end

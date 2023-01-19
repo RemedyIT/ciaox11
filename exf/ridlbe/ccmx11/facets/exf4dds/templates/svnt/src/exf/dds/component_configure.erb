@@ -1,7 +1,7 @@
 % visit_super
-  // generated from <%= ridl_template_path %>
-  // Mark connector as having no scheduling lane itself
-  bool flag { true };
-  CORBA::Any val;
-  val <<= flag;
-  config.push_back (Components::ConfigValue (CIAOX11::ExF::NO_SCHEDULING_LANE, val));
+// generated from <%= ridl_template_path %>
+// Mark connector as having no scheduling lane itself
+bool flag { true };
+CORBA::Any val;
+val <<= flag;
+config.push_back (Components::ConfigValue (CIAOX11::ExF::NO_SCHEDULING_LANE, val));

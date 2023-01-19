@@ -19,19 +19,19 @@ namespace <%= executor_cxx_namespace %>
       const std::string& conn_name,
       const ::Components::ConfigValues& config)
   {
-% nest { visit_connect }
+% nest (2) { visit_connect }
   }
 
   bool
   <%= lem_name %>_ExecutorLocator::disconnect (const ::Components::FeatureName& name, const std::string& conn_name)
   {
-% nest { visit_disconnect }
+% nest (2) { visit_disconnect }
   }
 
   void
   <%= lem_name %>_ExecutorLocator::configure (::Components::ConfigValues& config)
   {
-% nest { visit_configure }
+% nest (2) { visit_configure }
   }
 
 % if any_mutable_attributes_incl_mirror_port?

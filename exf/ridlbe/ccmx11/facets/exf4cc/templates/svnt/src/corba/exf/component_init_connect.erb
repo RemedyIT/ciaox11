@@ -1,15 +1,14 @@
-  // generated from <%= ridl_template_path %>
 % if all_incl_receptacle_port?
-
-  // prefer remote/colocated reference connection; use local exec ref only when necessary
-  IDL::traits<CORBA::Object>::ref_type objref = CIAOX11::Corba::Utility::get_provider_reference (config);
-  if (objref)
-  {
-    connection = std::move(objref);
-  }
-  else if (!connection)
-  {
-    return false;
-  }
+// generated from <%= ridl_template_path %>
+// prefer remote/colocated reference connection; use local exec ref only when necessary
+IDL::traits<CORBA::Object>::ref_type objref = CIAOX11::Corba::Utility::get_provider_reference (config);
+if (objref)
+{
+  connection = std::move(objref);
+}
+else if (!connection)
+{
+  return false;
+}
 
 % end
