@@ -22,7 +22,6 @@ bool
 %       if _p.is_multiple?
     {
       std::lock_guard<std::mutex> lock (this->context_tbl_lock_);
-
       this-><%= _p.lem_name %>_context_tbl_.erase(conn_name);
     }
 %       else
@@ -31,7 +30,7 @@ bool
   }
 %     end
 %   end
-%   visit_context_extra_disconnect
+% nest (1) { visit_context_extra_disconnect }
   else
   {
     return false;
