@@ -1,10 +1,10 @@
 // generated from <%= ridl_template_path %>
-typedef DDSX11::DDS_TypeFactory_T <
+using DDS_type_factory_type = DDSX11::DDS_TypeFactory_T <
   <%= scoped_cxxtype %>,
   <%= scoped_seq_cxxtype %>,
   <%= native_scoped_seq_cxxtype %>,
   <%= native_scoped_name_prefix %>DataReader,
-  <%= native_scoped_name_prefix %>DataWriter> DDS_type_factory_type;
+  <%= native_scoped_name_prefix %>DataWriter>;
 
 std::shared_ptr<DDS_type_factory_type> factory {};
 
