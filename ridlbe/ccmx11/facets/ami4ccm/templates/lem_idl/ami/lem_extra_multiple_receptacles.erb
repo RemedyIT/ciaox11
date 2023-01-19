@@ -5,7 +5,7 @@
     <%= port.interface_type.scoped_ami4ccm_name %> objref;
     Components::Cookie ck;
   };
-  using sendc_<%= port.lem_name %>Connections = sequence<sendc_<%= port.lem_name %>Connection>;
+  typedef sequence<sendc_<%= port.lem_name %>Connection> sendc_<%= port.lem_name %>Connections;
 
 % end
 %end
