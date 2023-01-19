@@ -49,7 +49,7 @@ namespace UnkeyedWriterTest_Sender_Impl
 
   /// Executor implementation class for connector_status facet
   class connector_status_exec_i final
-    : public IDL::traits< ::CCM_DDS::CCM_ConnectorStatusListener>::base_type
+    : public IDL::traits<::CCM_DDS::CCM_ConnectorStatusListener>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : UnkeyedWriterTest_Sender_Impl::connector_status_exec_i[ctor]
@@ -68,32 +68,32 @@ namespace UnkeyedWriterTest_Sender_Impl
 
     void
     on_inconsistent_topic (
-        IDL::traits< ::DDS::Topic>::ref_type the_topic,
+        IDL::traits<::DDS::Topic>::ref_type the_topic,
         const ::DDS::InconsistentTopicStatus& status) override;
 
     void
     on_requested_incompatible_qos (
-        IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+        IDL::traits<::DDS::DataReader>::ref_type the_reader,
         const ::DDS::RequestedIncompatibleQosStatus& status) override;
 
     void
     on_sample_rejected (
-        IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+        IDL::traits<::DDS::DataReader>::ref_type the_reader,
         const ::DDS::SampleRejectedStatus& status) override;
 
     void
     on_offered_deadline_missed (
-        IDL::traits< ::DDS::DataWriter>::ref_type the_writer,
+        IDL::traits<::DDS::DataWriter>::ref_type the_writer,
         const ::DDS::OfferedDeadlineMissedStatus& status) override;
 
     void
     on_offered_incompatible_qos (
-        IDL::traits< ::DDS::DataWriter>::ref_type the_writer,
+        IDL::traits<::DDS::DataWriter>::ref_type the_writer,
         const ::DDS::OfferedIncompatibleQosStatus& status) override;
 
     void
     on_unexpected_status (
-        IDL::traits< ::DDS::Entity>::ref_type the_entity,
+        IDL::traits<::DDS::Entity>::ref_type the_entity,
         ::DDS::StatusKind status_kind) override;
     //@}
 
@@ -106,7 +106,7 @@ namespace UnkeyedWriterTest_Sender_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::UnkeyedWriterTest::CCM_Sender_Context>::ref_type context_;
+    IDL::traits<::UnkeyedWriterTest::CCM_Sender_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -126,7 +126,7 @@ namespace UnkeyedWriterTest_Sender_Impl
 
   /// Component Executor Implementation Class : Sender_exec_i
   class Sender_exec_i final
-    : public virtual IDL::traits< ::UnkeyedWriterTest::CCM_Sender>::base_type
+    : public virtual IDL::traits<::UnkeyedWriterTest::CCM_Sender>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : UnkeyedWriterTest_Sender_Impl::Sender_exec_i[ctor]
@@ -141,35 +141,23 @@ namespace UnkeyedWriterTest_Sender_Impl
 
     /// Factory method and getter for the connector_status facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< ::CCM_DDS::CCM_ConnectorStatusListener>::ref_type get_connector_status () override;
+    IDL::traits<::CCM_DDS::CCM_ConnectorStatusListener>::ref_type get_connector_status () override;
     //@}
 
     /** @name Supported attributes. */
     //@{
 
     /// Attribute rate
-
-    uint16_t
-    rate () override;
-
-    void
-    rate (uint16_t rate) override;
+    uint16_t rate () override;
+    void rate (uint16_t rate) override;
 
     /// Attribute iterations
-
-    uint16_t
-    iterations () override;
-
-    void
-    iterations (uint16_t iterations) override;
+    uint16_t iterations () override;
+    void iterations (uint16_t iterations) override;
 
     /// Attribute keys
-
-    uint16_t
-    keys () override;
-
-    void
-    keys (uint16_t keys) override;
+    uint16_t keys () override;
+    void keys (uint16_t keys) override;
     //@}
 
     /** @name Session component operations */
@@ -207,7 +195,7 @@ namespace UnkeyedWriterTest_Sender_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::UnkeyedWriterTest::CCM_Sender_Context>::ref_type context_;
+    IDL::traits<::UnkeyedWriterTest::CCM_Sender_Context>::ref_type context_;
 
     /** @name Component attributes. */
     //@{
@@ -221,7 +209,7 @@ namespace UnkeyedWriterTest_Sender_Impl
 
     /** @name Component facets. */
     //@{
-    IDL::traits< ::CCM_DDS::CCM_ConnectorStatusListener>::ref_type connector_status_;
+    IDL::traits<::CCM_DDS::CCM_ConnectorStatusListener>::ref_type connector_status_;
     //@}
 
     /** @name User defined members. */

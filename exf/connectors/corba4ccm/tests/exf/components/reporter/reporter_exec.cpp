@@ -118,7 +118,7 @@ namespace App_Reporter_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : App_Reporter_Impl::Reporter_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::API::CCM_Presenter>::ref_type
+  IDL::traits<::API::CCM_Presenter>::ref_type
   Reporter_exec_i::get_do_presenter ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : App_Reporter_Impl::Reporter_exec_i[get_do_presenter]

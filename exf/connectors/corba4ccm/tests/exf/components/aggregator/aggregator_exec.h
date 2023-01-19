@@ -44,7 +44,7 @@ namespace App_Aggregator_Impl
 
   /// Executor implementation class for do_recorder facet
   class do_recorder_exec_i final
-    : public IDL::traits< ::API::CCM_Recorder>::base_type
+    : public IDL::traits<::API::CCM_Recorder>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : App_Aggregator_Impl::do_recorder_exec_i[ctor]
@@ -83,7 +83,7 @@ namespace App_Aggregator_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::App::CCM_Aggregator_Context>::ref_type context_;
+    IDL::traits<::App::CCM_Aggregator_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -107,7 +107,7 @@ namespace App_Aggregator_Impl
 
   /// Executor implementation class for do_collector facet
   class do_collector_exec_i final
-    : public IDL::traits< ::API::CCM_Collector>::base_type
+    : public IDL::traits<::API::CCM_Collector>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : App_Aggregator_Impl::do_collector_exec_i[ctor]
@@ -141,7 +141,7 @@ namespace App_Aggregator_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::App::CCM_Aggregator_Context>::ref_type context_;
+    IDL::traits<::App::CCM_Aggregator_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -165,7 +165,7 @@ namespace App_Aggregator_Impl
 
   /// Component Executor Implementation Class : Aggregator_exec_i
   class Aggregator_exec_i final
-    : public virtual IDL::traits< ::App::CCM_Aggregator>::base_type
+    : public virtual IDL::traits<::App::CCM_Aggregator>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : App_Aggregator_Impl::Aggregator_exec_i[ctor]
@@ -180,10 +180,10 @@ namespace App_Aggregator_Impl
 
     /// Factory method and getter for the do_recorder facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< ::API::CCM_Recorder>::ref_type get_do_recorder () override;
+    IDL::traits<::API::CCM_Recorder>::ref_type get_do_recorder () override;
     /// Factory method and getter for the do_collector facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< ::API::CCM_Collector>::ref_type get_do_collector () override;
+    IDL::traits<::API::CCM_Collector>::ref_type get_do_collector () override;
     //@}
 
     /** @name Supported attributes. */
@@ -227,7 +227,7 @@ namespace App_Aggregator_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::App::CCM_Aggregator_Context>::ref_type context_;
+    IDL::traits<::App::CCM_Aggregator_Context>::ref_type context_;
 
     /** @name Component attributes. */
     //@{
@@ -239,8 +239,8 @@ namespace App_Aggregator_Impl
 
     /** @name Component facets. */
     //@{
-    IDL::traits< ::API::CCM_Recorder>::ref_type do_recorder_;
-    IDL::traits< ::API::CCM_Collector>::ref_type do_collector_;
+    IDL::traits<::API::CCM_Recorder>::ref_type do_recorder_;
+    IDL::traits<::API::CCM_Collector>::ref_type do_collector_;
     //@}
 
     /** @name User defined members. */

@@ -47,7 +47,7 @@ namespace Hello_Sender_Impl
 
   /// Executor implementation class for run_my_foo_prov facet
   class run_my_foo_prov_exec_i final
-    : public IDL::traits< ::Hello::CCM_MyFoo>::base_type
+    : public IDL::traits<::Hello::CCM_MyFoo>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl::run_my_foo_prov_exec_i[ctor]
@@ -89,7 +89,7 @@ namespace Hello_Sender_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::Hello::CCM_Sender_Context>::ref_type context_;
+    IDL::traits<::Hello::CCM_Sender_Context>::ref_type context_;
 
     /** @name Members to store attribute values from ::Hello::CCM_MyFoo */
     //@{
@@ -116,7 +116,7 @@ namespace Hello_Sender_Impl
 
   /// Executor implementation class for run_my_bar_foo_prov facet
   class run_my_bar_foo_prov_exec_i final
-    : public IDL::traits< ::Foo::CCM_MyFoo>::base_type
+    : public IDL::traits<::Foo::CCM_MyFoo>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl::run_my_bar_foo_prov_exec_i[ctor]
@@ -146,7 +146,7 @@ namespace Hello_Sender_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::Hello::CCM_Sender_Context>::ref_type context_;
+    IDL::traits<::Hello::CCM_Sender_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -165,7 +165,7 @@ namespace Hello_Sender_Impl
 
   /// Component Executor Implementation Class : Sender_exec_i
   class Sender_exec_i final
-    : public virtual IDL::traits< ::Hello::CCM_Sender>::base_type
+    : public virtual IDL::traits<::Hello::CCM_Sender>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl::Sender_exec_i[ctor]
@@ -180,10 +180,10 @@ namespace Hello_Sender_Impl
 
     /// Factory method and getter for the run_my_foo_prov facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< ::Hello::CCM_MyFoo>::ref_type get_run_my_foo_prov () override;
+    IDL::traits<::Hello::CCM_MyFoo>::ref_type get_run_my_foo_prov () override;
     /// Factory method and getter for the run_my_bar_foo_prov facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< ::Foo::CCM_MyFoo>::ref_type get_run_my_bar_foo_prov () override;
+    IDL::traits<::Foo::CCM_MyFoo>::ref_type get_run_my_bar_foo_prov () override;
     //@}
 
     /** @name Supported attributes. */
@@ -234,7 +234,7 @@ namespace Hello_Sender_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::Hello::CCM_Sender_Context>::ref_type context_;
+    IDL::traits<::Hello::CCM_Sender_Context>::ref_type context_;
 
     /** @name Component attributes. */
     //@{
@@ -250,8 +250,8 @@ namespace Hello_Sender_Impl
 
     /** @name Component facets. */
     //@{
-    IDL::traits< ::Hello::CCM_MyFoo>::ref_type run_my_foo_prov_;
-    IDL::traits< ::Foo::CCM_MyFoo>::ref_type run_my_bar_foo_prov_;
+    IDL::traits<::Hello::CCM_MyFoo>::ref_type run_my_foo_prov_;
+    IDL::traits<::Foo::CCM_MyFoo>::ref_type run_my_bar_foo_prov_;
     //@}
 
     /** @name User defined members. */

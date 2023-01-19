@@ -36,7 +36,7 @@ namespace App_Reporter_Impl
 
   /// Executor implementation class for do_presenter facet
   class do_presenter_exec_i final
-    : public IDL::traits< ::API::CCM_Presenter>::base_type
+    : public IDL::traits<::API::CCM_Presenter>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : App_Reporter_Impl::do_presenter_exec_i[ctor]
@@ -66,7 +66,7 @@ namespace App_Reporter_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::App::CCM_Reporter_Context>::ref_type context_;
+    IDL::traits<::App::CCM_Reporter_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -85,7 +85,7 @@ namespace App_Reporter_Impl
 
   /// Component Executor Implementation Class : Reporter_exec_i
   class Reporter_exec_i final
-    : public virtual IDL::traits< ::App::CCM_Reporter>::base_type
+    : public virtual IDL::traits<::App::CCM_Reporter>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : App_Reporter_Impl::Reporter_exec_i[ctor]
@@ -100,7 +100,7 @@ namespace App_Reporter_Impl
 
     /// Factory method and getter for the do_presenter facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< ::API::CCM_Presenter>::ref_type get_do_presenter () override;
+    IDL::traits<::API::CCM_Presenter>::ref_type get_do_presenter () override;
     //@}
 
     /** @name Session component operations */
@@ -132,11 +132,11 @@ namespace App_Reporter_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::App::CCM_Reporter_Context>::ref_type context_;
+    IDL::traits<::App::CCM_Reporter_Context>::ref_type context_;
 
     /** @name Component facets. */
     //@{
-    IDL::traits< ::API::CCM_Presenter>::ref_type do_presenter_;
+    IDL::traits<::API::CCM_Presenter>::ref_type do_presenter_;
     //@}
 
     /** @name User defined members. */
