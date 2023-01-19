@@ -38,7 +38,7 @@ namespace Test_Receiver_Impl
 
   /// Executor implementation class for info_out facet
   class info_out_exec_i final
-    : public IDL::traits< ::Test::LatencyDataConnector::CCM_Listener>::base_type
+    : public IDL::traits<::Test::LatencyDataConnector::CCM_Listener>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Receiver_Impl::info_out_exec_i[ctor]
@@ -77,7 +77,7 @@ namespace Test_Receiver_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::Test::CCM_Receiver_Context>::ref_type context_;
+    IDL::traits<::Test::CCM_Receiver_Context>::ref_type context_;
 
     /** @name Members to store attribute values from ::Test::LatencyDataConnector::CCM_Listener */
     //@{
@@ -104,7 +104,7 @@ namespace Test_Receiver_Impl
 
   /// Component Executor Implementation Class : Receiver_exec_i
   class Receiver_exec_i final
-    : public virtual IDL::traits< ::Test::CCM_Receiver>::base_type
+    : public virtual IDL::traits<::Test::CCM_Receiver>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Receiver_Impl::Receiver_exec_i[ctor]
@@ -119,7 +119,7 @@ namespace Test_Receiver_Impl
 
     /// Factory method and getter for the info_out facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< ::Test::LatencyDataConnector::CCM_Listener>::ref_type get_info_out () override;
+    IDL::traits<::Test::LatencyDataConnector::CCM_Listener>::ref_type get_info_out () override;
     //@}
 
     /** @name Session component operations */
@@ -151,11 +151,11 @@ namespace Test_Receiver_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::Test::CCM_Receiver_Context>::ref_type context_;
+    IDL::traits<::Test::CCM_Receiver_Context>::ref_type context_;
 
     /** @name Component facets. */
     //@{
-    IDL::traits< ::Test::LatencyDataConnector::CCM_Listener>::ref_type info_out_;
+    IDL::traits<::Test::LatencyDataConnector::CCM_Listener>::ref_type info_out_;
     //@}
 
     /** @name User defined members. */
