@@ -206,7 +206,7 @@ namespace UsesSM_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : UsesSM_Receiver_Impl::Receiver_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::UsesSM::CCM_One>::ref_type
+  IDL::traits<::UsesSM::CCM_One>::ref_type
   Receiver_exec_i::get_do_my_one ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : UsesSM_Receiver_Impl::Receiver_exec_i[get_do_my_one]
@@ -218,7 +218,7 @@ namespace UsesSM_Receiver_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : UsesSM_Receiver_Impl::Receiver_exec_i[get_do_my_one]
   }
 
-  IDL::traits< ::UsesSM::CCM_Two>::ref_type
+  IDL::traits<::UsesSM::CCM_Two>::ref_type
   Receiver_exec_i::get_do_my_two ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : UsesSM_Receiver_Impl::Receiver_exec_i[get_do_my_two]

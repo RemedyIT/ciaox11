@@ -36,7 +36,7 @@ namespace App_Generator_Impl
 
   /// Component Executor Implementation Class : Generator_exec_i
   class Generator_exec_i final
-    : public virtual IDL::traits< ::App::CCM_Generator>::base_type
+    : public virtual IDL::traits<::App::CCM_Generator>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : App_Generator_Impl::Generator_exec_i[ctor]
@@ -88,7 +88,7 @@ namespace App_Generator_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::App::CCM_Generator_Context>::ref_type context_;
+    IDL::traits<::App::CCM_Generator_Context>::ref_type context_;
 
     /** @name Component attributes. */
     //@{

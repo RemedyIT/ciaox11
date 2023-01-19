@@ -65,7 +65,7 @@ namespace UsesSM_Sender_Impl
 
   /// Component Executor Implementation Class : Sender_exec_i
   class Sender_exec_i final
-    : public virtual IDL::traits< ::UsesSM::CCM_Sender>::base_type
+    : public virtual IDL::traits<::UsesSM::CCM_Sender>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : UsesSM_Sender_Impl::Sender_exec_i[ctor]
@@ -109,7 +109,7 @@ namespace UsesSM_Sender_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::UsesSM::CCM_Sender_Context>::ref_type context_;
+    IDL::traits<::UsesSM::CCM_Sender_Context>::ref_type context_;
 
     /** @name Component facets. */
     //@{
@@ -141,14 +141,14 @@ namespace UsesSM_Sender_Impl
   };
   /// AMI4CCM reply handler implementation class
   class AMI4CCM_OneReplyHandler_m_run_my_one_i final
-    :public IDL::traits< UsesSM::AMI4CCM_OneReplyHandler>::base_type
+    :public IDL::traits<UsesSM::AMI4CCM_OneReplyHandler>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : UsesSM_Sender_Impl::AMI4CCM_OneReplyHandler_m_run_my_one_i[ctor]
     AMI4CCM_OneReplyHandler_m_run_my_one_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : UsesSM_Sender_Impl::AMI4CCM_OneReplyHandler_m_run_my_one_i[ctor]
 
-    virtual ~AMI4CCM_OneReplyHandler_m_run_my_one_i ();
+    ~AMI4CCM_OneReplyHandler_m_run_my_one_i () override;
 
     void foo (
         int32_t ami_return_val,
@@ -178,14 +178,14 @@ namespace UsesSM_Sender_Impl
   };
   /// AMI4CCM reply handler implementation class
   class AMI4CCM_TwoReplyHandler_s_run_my_two_i final
-    :public IDL::traits< UsesSM::AMI4CCM_TwoReplyHandler>::base_type
+    :public IDL::traits<UsesSM::AMI4CCM_TwoReplyHandler>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : UsesSM_Sender_Impl::AMI4CCM_TwoReplyHandler_s_run_my_two_i[ctor]
     AMI4CCM_TwoReplyHandler_s_run_my_two_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : UsesSM_Sender_Impl::AMI4CCM_TwoReplyHandler_s_run_my_two_i[ctor]
 
-    virtual ~AMI4CCM_TwoReplyHandler_s_run_my_two_i ();
+    ~AMI4CCM_TwoReplyHandler_s_run_my_two_i () override;
 
     void bar (
         const std::string& answer) override;

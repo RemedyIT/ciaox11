@@ -109,7 +109,7 @@ namespace subscriber_comp_Impl
 
   void
   info_out_status_exec_i::on_requested_deadline_missed (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::RequestedDeadlineMissedStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::info_out_status_exec_i::on_requested_deadline_missed[_the_reader_status]
@@ -120,7 +120,7 @@ namespace subscriber_comp_Impl
 
   void
   info_out_status_exec_i::on_sample_lost (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::SampleLostStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::info_out_status_exec_i::on_sample_lost[_the_reader_status]
@@ -162,7 +162,7 @@ namespace subscriber_comp_Impl
 
   void
   info_read_status_exec_i::on_requested_deadline_missed (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::RequestedDeadlineMissedStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::info_read_status_exec_i::on_requested_deadline_missed[_the_reader_status]
@@ -173,7 +173,7 @@ namespace subscriber_comp_Impl
 
   void
   info_read_status_exec_i::on_sample_lost (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::SampleLostStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::info_read_status_exec_i::on_sample_lost[_the_reader_status]
@@ -215,7 +215,7 @@ namespace subscriber_comp_Impl
 
   void
   info_get_status_exec_i::on_requested_deadline_missed (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::RequestedDeadlineMissedStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::info_get_status_exec_i::on_requested_deadline_missed[_the_reader_status]
@@ -226,7 +226,7 @@ namespace subscriber_comp_Impl
 
   void
   info_get_status_exec_i::on_sample_lost (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::SampleLostStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::info_get_status_exec_i::on_sample_lost[_the_reader_status]
@@ -343,7 +343,7 @@ namespace subscriber_comp_Impl
 
   void
   info_state_status_exec_i::on_requested_deadline_missed (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::RequestedDeadlineMissedStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::info_state_status_exec_i::on_requested_deadline_missed[_the_reader_status]
@@ -354,7 +354,7 @@ namespace subscriber_comp_Impl
 
   void
   info_state_status_exec_i::on_sample_lost (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::SampleLostStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::info_state_status_exec_i::on_sample_lost[_the_reader_status]
@@ -449,7 +449,7 @@ namespace subscriber_comp_Impl
 
   void
   info_out_2_status_exec_i::on_requested_deadline_missed (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::RequestedDeadlineMissedStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::info_out_2_status_exec_i::on_requested_deadline_missed[_the_reader_status]
@@ -460,7 +460,7 @@ namespace subscriber_comp_Impl
 
   void
   info_out_2_status_exec_i::on_sample_lost (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::SampleLostStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::info_out_2_status_exec_i::on_sample_lost[_the_reader_status]
@@ -502,7 +502,7 @@ namespace subscriber_comp_Impl
 
   void
   info_read_2_status_exec_i::on_requested_deadline_missed (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::RequestedDeadlineMissedStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::info_read_2_status_exec_i::on_requested_deadline_missed[_the_reader_status]
@@ -513,7 +513,7 @@ namespace subscriber_comp_Impl
 
   void
   info_read_2_status_exec_i::on_sample_lost (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::SampleLostStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::info_read_2_status_exec_i::on_sample_lost[_the_reader_status]
@@ -555,7 +555,7 @@ namespace subscriber_comp_Impl
 
   void
   info_get_2_status_exec_i::on_requested_deadline_missed (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::RequestedDeadlineMissedStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::info_get_2_status_exec_i::on_requested_deadline_missed[_the_reader_status]
@@ -566,7 +566,7 @@ namespace subscriber_comp_Impl
 
   void
   info_get_2_status_exec_i::on_sample_lost (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::SampleLostStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::info_get_2_status_exec_i::on_sample_lost[_the_reader_status]
@@ -683,7 +683,7 @@ namespace subscriber_comp_Impl
 
   void
   info_state_2_status_exec_i::on_requested_deadline_missed (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::RequestedDeadlineMissedStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::info_state_2_status_exec_i::on_requested_deadline_missed[_the_reader_status]
@@ -694,7 +694,7 @@ namespace subscriber_comp_Impl
 
   void
   info_state_2_status_exec_i::on_sample_lost (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::SampleLostStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::info_state_2_status_exec_i::on_sample_lost[_the_reader_status]
@@ -757,7 +757,7 @@ namespace subscriber_comp_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : subscriber_comp_Impl::subscriber_comp_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::ShapeTypeInterface::CCM_Listener>::ref_type
+  IDL::traits<::ShapeTypeInterface::CCM_Listener>::ref_type
   subscriber_comp_exec_i::get_info_out_data_listener ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::subscriber_comp_exec_i[get_info_out_data_listener]
@@ -769,7 +769,7 @@ namespace subscriber_comp_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : subscriber_comp_Impl::subscriber_comp_exec_i[get_info_out_data_listener]
   }
 
-  IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type
+  IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type
   subscriber_comp_exec_i::get_info_out_status ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::subscriber_comp_exec_i[get_info_out_status]
@@ -781,7 +781,7 @@ namespace subscriber_comp_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : subscriber_comp_Impl::subscriber_comp_exec_i[get_info_out_status]
   }
 
-  IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type
+  IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type
   subscriber_comp_exec_i::get_info_read_status ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::subscriber_comp_exec_i[get_info_read_status]
@@ -793,7 +793,7 @@ namespace subscriber_comp_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : subscriber_comp_Impl::subscriber_comp_exec_i[get_info_read_status]
   }
 
-  IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type
+  IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type
   subscriber_comp_exec_i::get_info_get_status ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::subscriber_comp_exec_i[get_info_get_status]
@@ -805,7 +805,7 @@ namespace subscriber_comp_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : subscriber_comp_Impl::subscriber_comp_exec_i[get_info_get_status]
   }
 
-  IDL::traits< ::ShapeTypeInterface::CCM_StateListener>::ref_type
+  IDL::traits<::ShapeTypeInterface::CCM_StateListener>::ref_type
   subscriber_comp_exec_i::get_info_state_data_listener ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::subscriber_comp_exec_i[get_info_state_data_listener]
@@ -817,7 +817,7 @@ namespace subscriber_comp_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : subscriber_comp_Impl::subscriber_comp_exec_i[get_info_state_data_listener]
   }
 
-  IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type
+  IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type
   subscriber_comp_exec_i::get_info_state_status ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::subscriber_comp_exec_i[get_info_state_status]
@@ -829,7 +829,7 @@ namespace subscriber_comp_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : subscriber_comp_Impl::subscriber_comp_exec_i[get_info_state_status]
   }
 
-  IDL::traits< ::ShapeTypeInterface::CCM_Listener>::ref_type
+  IDL::traits<::ShapeTypeInterface::CCM_Listener>::ref_type
   subscriber_comp_exec_i::get_info_out_2_data_listener ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::subscriber_comp_exec_i[get_info_out_2_data_listener]
@@ -841,7 +841,7 @@ namespace subscriber_comp_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : subscriber_comp_Impl::subscriber_comp_exec_i[get_info_out_2_data_listener]
   }
 
-  IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type
+  IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type
   subscriber_comp_exec_i::get_info_out_2_status ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::subscriber_comp_exec_i[get_info_out_2_status]
@@ -853,7 +853,7 @@ namespace subscriber_comp_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : subscriber_comp_Impl::subscriber_comp_exec_i[get_info_out_2_status]
   }
 
-  IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type
+  IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type
   subscriber_comp_exec_i::get_info_read_2_status ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::subscriber_comp_exec_i[get_info_read_2_status]
@@ -865,7 +865,7 @@ namespace subscriber_comp_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : subscriber_comp_Impl::subscriber_comp_exec_i[get_info_read_2_status]
   }
 
-  IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type
+  IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type
   subscriber_comp_exec_i::get_info_get_2_status ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::subscriber_comp_exec_i[get_info_get_2_status]
@@ -877,7 +877,7 @@ namespace subscriber_comp_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : subscriber_comp_Impl::subscriber_comp_exec_i[get_info_get_2_status]
   }
 
-  IDL::traits< ::ShapeTypeInterface::CCM_StateListener>::ref_type
+  IDL::traits<::ShapeTypeInterface::CCM_StateListener>::ref_type
   subscriber_comp_exec_i::get_info_state_2_data_listener ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::subscriber_comp_exec_i[get_info_state_2_data_listener]
@@ -889,7 +889,7 @@ namespace subscriber_comp_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : subscriber_comp_Impl::subscriber_comp_exec_i[get_info_state_2_data_listener]
   }
 
-  IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type
+  IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type
   subscriber_comp_exec_i::get_info_state_2_status ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::subscriber_comp_exec_i[get_info_state_2_status]

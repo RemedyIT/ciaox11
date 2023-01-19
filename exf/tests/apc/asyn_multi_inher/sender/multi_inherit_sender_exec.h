@@ -98,7 +98,7 @@ namespace InterMulti_Sender_Impl
 
   /// Component Executor Implementation Class : Sender_exec_i
   class Sender_exec_i final
-    : public virtual IDL::traits< ::InterMulti::CCM_Sender>::base_type
+    : public virtual IDL::traits<::InterMulti::CCM_Sender>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : InterMulti_Sender_Impl::Sender_exec_i[ctor]
@@ -142,7 +142,7 @@ namespace InterMulti_Sender_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::InterMulti::CCM_Sender_Context>::ref_type context_;
+    IDL::traits<::InterMulti::CCM_Sender_Context>::ref_type context_;
 
     /** @name Component facets. */
     //@{
@@ -177,7 +177,7 @@ namespace InterMulti_Sender_Impl
   };
   /// AMI4CCM reply handler implementation class
   class AMI4CCM_OneReplyHandler_run_my_one_i final
-    :public IDL::traits< InterMulti::AMI4CCM_OneReplyHandler>::base_type
+    :public IDL::traits<InterMulti::AMI4CCM_OneReplyHandler>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : InterMulti_Sender_Impl::AMI4CCM_OneReplyHandler_run_my_one_i[ctor]
@@ -215,7 +215,7 @@ namespace InterMulti_Sender_Impl
   };
   /// AMI4CCM reply handler implementation class
   class AMI4CCM_TwoReplyHandler_run_my_two_i final
-    :public IDL::traits< InterMulti::AMI4CCM_TwoReplyHandler>::base_type
+    :public IDL::traits<InterMulti::AMI4CCM_TwoReplyHandler>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : InterMulti_Sender_Impl::AMI4CCM_TwoReplyHandler_run_my_two_i[ctor]
@@ -252,7 +252,7 @@ namespace InterMulti_Sender_Impl
   };
   /// AMI4CCM reply handler implementation class
   class AMI4CCM_ThreeReplyHandler_run_my_three_i final
-    :public IDL::traits< InterMulti::AMI4CCM_ThreeReplyHandler>::base_type
+    :public IDL::traits<InterMulti::AMI4CCM_ThreeReplyHandler>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : InterMulti_Sender_Impl::AMI4CCM_ThreeReplyHandler_run_my_three_i[ctor]
