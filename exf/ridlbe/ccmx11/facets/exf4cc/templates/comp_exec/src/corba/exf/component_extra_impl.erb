@@ -1,5 +1,4 @@
 // generated from <%= ridl_template_path %>
-
 void <%= port_interface.scoped_cxxname.identify %>_servant::_configuration_complete (
     const ::Components::ConfigValues& config)
 {
@@ -15,8 +14,7 @@ void <%= port_interface.scoped_cxxname.identify %>_servant::_configuration_compl
                                   CIAOX11::ExF::SCHEDULING_LANE_REF +
                                   " for CORBA connector");
       }
-      this->scheduling_lane_ =
-          IDL::traits<CIAOX11::ExF::SchedulingLane>::narrow (objref);
+      this->scheduling_lane_ = IDL::traits<CIAOX11::ExF::SchedulingLane>::narrow (objref);
     }
   }
 
@@ -25,20 +23,16 @@ void <%= port_interface.scoped_cxxname.identify %>_servant::_configuration_compl
     // Get scheduling settings
     CIAOX11::ExF::Priority def_prio {};
     CIAOX11::ExF::Deadline def_deadline {};
-    if (CIAOX11::ExF::Util::get_exf_defaults (
-            config, def_prio, def_deadline))
+    if (CIAOX11::ExF::Util::get_exf_defaults (config, def_prio, def_deadline))
     {
 % port_interface.all_operations.each do |_op|
-
       this-><%= _op.cxxname %>_deadline_ = def_deadline;
       this-><%= _op.cxxname %>_priority_ = def_prio;
 % end
 % port_interface.all_attributes.each do |_att|
-
       this->get_<%= _att.cxxname %>_deadline_ = def_deadline;
       this->get_<%= _att.cxxname %>_priority_ = def_prio;
 %   unless _att.is_readonly?
-
       this->set_<%= _att.cxxname %>_deadline_ = def_deadline;
       this->set_<%= _att.cxxname %>_priority_ = def_prio;
 %   end
