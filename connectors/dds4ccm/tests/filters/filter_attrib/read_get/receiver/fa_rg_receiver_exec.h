@@ -38,7 +38,7 @@ namespace FA_Read_Get_Test_Receiver_Impl
 
   /// Executor implementation class for get_port_status facet
   class get_port_status_exec_i final
-    : public IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::base_type
+    : public IDL::traits<::CCM_DDS::CCM_PortStatusListener>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : FA_Read_Get_Test_Receiver_Impl::get_port_status_exec_i[ctor]
@@ -56,12 +56,12 @@ namespace FA_Read_Get_Test_Receiver_Impl
 
     void
     on_requested_deadline_missed (
-        IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+        IDL::traits<::DDS::DataReader>::ref_type the_reader,
         const ::DDS::RequestedDeadlineMissedStatus& status) override;
 
     void
     on_sample_lost (
-        IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+        IDL::traits<::DDS::DataReader>::ref_type the_reader,
         const ::DDS::SampleLostStatus& status) override;
     //@}
 
@@ -74,7 +74,7 @@ namespace FA_Read_Get_Test_Receiver_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::FA_Read_Get_Test::CCM_Receiver_Context>::ref_type context_;
+    IDL::traits<::FA_Read_Get_Test::CCM_Receiver_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -93,7 +93,7 @@ namespace FA_Read_Get_Test_Receiver_Impl
 
   /// Executor implementation class for listen_port_data_listener facet
   class listen_port_data_listener_exec_i final
-    : public IDL::traits< ::CommonTestConnector::CCM_Listener>::base_type
+    : public IDL::traits<::CommonTestConnector::CCM_Listener>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : FA_Read_Get_Test_Receiver_Impl::listen_port_data_listener_exec_i[ctor]
@@ -129,7 +129,7 @@ namespace FA_Read_Get_Test_Receiver_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::FA_Read_Get_Test::CCM_Receiver_Context>::ref_type context_;
+    IDL::traits<::FA_Read_Get_Test::CCM_Receiver_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -148,7 +148,7 @@ namespace FA_Read_Get_Test_Receiver_Impl
 
   /// Executor implementation class for listen_port_status facet
   class listen_port_status_exec_i final
-    : public IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::base_type
+    : public IDL::traits<::CCM_DDS::CCM_PortStatusListener>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : FA_Read_Get_Test_Receiver_Impl::listen_port_status_exec_i[ctor]
@@ -166,12 +166,12 @@ namespace FA_Read_Get_Test_Receiver_Impl
 
     void
     on_requested_deadline_missed (
-        IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+        IDL::traits<::DDS::DataReader>::ref_type the_reader,
         const ::DDS::RequestedDeadlineMissedStatus& status) override;
 
     void
     on_sample_lost (
-        IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+        IDL::traits<::DDS::DataReader>::ref_type the_reader,
         const ::DDS::SampleLostStatus& status) override;
     //@}
 
@@ -184,7 +184,7 @@ namespace FA_Read_Get_Test_Receiver_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::FA_Read_Get_Test::CCM_Receiver_Context>::ref_type context_;
+    IDL::traits<::FA_Read_Get_Test::CCM_Receiver_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -242,7 +242,7 @@ namespace FA_Read_Get_Test_Receiver_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::FA_Read_Get_Test::CCM_Receiver_Context>::ref_type context_;
+    IDL::traits<::FA_Read_Get_Test::CCM_Receiver_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -261,7 +261,7 @@ namespace FA_Read_Get_Test_Receiver_Impl
 
   /// Component Executor Implementation Class : Receiver_exec_i
   class Receiver_exec_i final
-    : public virtual IDL::traits< ::FA_Read_Get_Test::CCM_Receiver>::base_type
+    : public virtual IDL::traits<::FA_Read_Get_Test::CCM_Receiver>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : FA_Read_Get_Test_Receiver_Impl::Receiver_exec_i[ctor]
@@ -276,13 +276,13 @@ namespace FA_Read_Get_Test_Receiver_Impl
 
     /// Factory method and getter for the get_port_status facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type get_get_port_status () override;
+    IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type get_get_port_status () override;
     /// Factory method and getter for the listen_port_data_listener facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< ::CommonTestConnector::CCM_Listener>::ref_type get_listen_port_data_listener () override;
+    IDL::traits<::CommonTestConnector::CCM_Listener>::ref_type get_listen_port_data_listener () override;
     /// Factory method and getter for the listen_port_status facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type get_listen_port_status () override;
+    IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type get_listen_port_status () override;
     /// Factory method and getter for the start_reading facet
     /// @return existing instance of facet if one exists, else creates one
     IDL::traits< CCM_ReaderStarter>::ref_type get_start_reading () override;
@@ -319,7 +319,7 @@ namespace FA_Read_Get_Test_Receiver_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::FA_Read_Get_Test::CCM_Receiver_Context>::ref_type context_;
+    IDL::traits<::FA_Read_Get_Test::CCM_Receiver_Context>::ref_type context_;
 
     /** @name Component attributes. */
     //@{
@@ -327,9 +327,9 @@ namespace FA_Read_Get_Test_Receiver_Impl
 
     /** @name Component facets. */
     //@{
-    IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type get_port_status_;
-    IDL::traits< ::CommonTestConnector::CCM_Listener>::ref_type listen_port_data_listener_;
-    IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type listen_port_status_;
+    IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type get_port_status_;
+    IDL::traits<::CommonTestConnector::CCM_Listener>::ref_type listen_port_data_listener_;
+    IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type listen_port_status_;
     IDL::traits< CCM_ReaderStarter>::ref_type start_reading_;
     //@}
 

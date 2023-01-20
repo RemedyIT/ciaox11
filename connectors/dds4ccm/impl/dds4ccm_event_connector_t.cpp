@@ -100,7 +100,7 @@ DDS_Event_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_pull_consumer_f
 }
 
 template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
-IDL::traits< ::DDS::CCM_DataReader>::ref_type
+IDL::traits<::DDS::CCM_DataReader>::ref_type
 DDS_Event_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_pull_consumer_dds_entity ()
 {
   DDS4CCM_LOG_TRACE ("DDS_Event_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::get_pull_consumer_dds_entity");
@@ -165,7 +165,7 @@ DDS_Event_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_push_consumer_d
 }
 
 template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
-IDL::traits< ::DDS::CCM_DataReader>::ref_type
+IDL::traits<::DDS::CCM_DataReader>::ref_type
 DDS_Event_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_push_consumer_dds_entity ()
 {
   DDS4CCM_LOG_TRACE ("DDS_Event_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::get_push_consumer_dds_entity");

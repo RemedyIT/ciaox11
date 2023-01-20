@@ -19,10 +19,6 @@ namespace CIAOX11
 {
   namespace ExF
   {
-    Container_Handler::~Container_Handler ()
-    {
-    }
-
     void
     Container_Handler::close ()
     {

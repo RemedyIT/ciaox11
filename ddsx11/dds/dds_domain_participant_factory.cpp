@@ -26,11 +26,11 @@ namespace DDSX11
     DDSX11_LOG_TRACE ("DDS_DomainParticipantFactory_proxy::DDS_DomainParticipantFactory_proxy");
   }
 
-  IDL::traits< ::DDS::DomainParticipant>::ref_type
+  IDL::traits<::DDS::DomainParticipant>::ref_type
   DDS_DomainParticipantFactory_proxy::create_participant (
     ::DDS::DomainId_t domain_id,
     const ::DDS::DomainParticipantQos & qos,
-    IDL::traits< ::DDS::DomainParticipantListener>::ref_type a_listener,
+    IDL::traits<::DDS::DomainParticipantListener>::ref_type a_listener,
     ::DDS::StatusMask mask)
   {
     DDSX11_LOG_TRACE ("DDS_DomainParticipantFactory_proxy::create_participant");
@@ -47,7 +47,7 @@ namespace DDSX11
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipantFactory_proxy::create_participant - "
           << "Error: Unable to retrieve default participant QoS <"
-          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+          << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">");
         return {};
       }
@@ -56,7 +56,7 @@ namespace DDSX11
 
     DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipantFactory_proxy::create_participant - "
       << "Using DomainParticipantQos <"
-      << IDL::traits< ::DDS::DomainParticipantQos>::write (::DDSX11::traits< ::DDS::DomainParticipantQos>::retn (qos_in))
+      << IDL::traits<::DDS::DomainParticipantQos>::write (::DDSX11::traits< ::DDS::DomainParticipantQos>::retn (qos_in))
       << ">");
 
     // Use a guard which will make sure we destroy it the listener when we fail
@@ -91,7 +91,7 @@ namespace DDSX11
     // of scope.
     listener_guard.release ();
 
-    IDL::traits< ::DDS::DomainParticipant>::ref_type domain_participant =
+    IDL::traits<::DDS::DomainParticipant>::ref_type domain_participant =
       VendorUtils::create_domain_participant_proxy (dds_dp);
 
     if (domain_participant)
@@ -123,11 +123,11 @@ namespace DDSX11
 
   ::DDS::ReturnCode_t
   DDS_DomainParticipantFactory_proxy::delete_participant (
-    IDL::traits< ::DDS::DomainParticipant>::ref_type a_participant)
+    IDL::traits<::DDS::DomainParticipant>::ref_type a_participant)
   {
     DDSX11_LOG_TRACE ("DDS_DomainParticipantFactory_proxy::delete_participant");
 
-    IDL::traits< ::DDSX11::DDS_DomainParticipant_proxy>::ref_type proxy =
+    IDL::traits<::DDSX11::DDS_DomainParticipant_proxy>::ref_type proxy =
       domain_participant_trait::proxy (a_participant);
     if (!proxy)
       {
@@ -167,7 +167,7 @@ namespace DDSX11
 
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipantFactory_proxy::delete_participant - "
           << "delete_participant returned non-ok error <"
-          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+          << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">");
       }
     else
@@ -187,11 +187,11 @@ namespace DDSX11
   }
 
 
-  IDL::traits< ::DDS::DomainParticipant>::ref_type
+  IDL::traits<::DDS::DomainParticipant>::ref_type
   DDS_DomainParticipantFactory_proxy::lookup_participant (
     ::DDS::DomainId_t domain_id)
   {
-    IDL::traits< ::DDS::DomainParticipant>::ref_type retval;
+    IDL::traits<::DDS::DomainParticipant>::ref_type retval;
     DDS_Native::DDS::DomainParticipant_var dp =
       this->native_entity ()->lookup_participant (domain_id);
 
@@ -235,7 +235,7 @@ namespace DDSX11
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipantFactory_proxy::set_default_participant_qos - "
           << "Error: Unable to retrieve default participant QoS <"
-          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+          << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">");
         return retcode;
       }
@@ -244,7 +244,7 @@ namespace DDSX11
 
     DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipantFactory_proxy::set_default_participant_qos - "
       << "Setting DomainParticipantQos <"
-      << IDL::traits< ::DDS::DomainParticipantQos>::write (::DDSX11::traits< ::DDS::DomainParticipantQos>::retn (qos_in))
+      << IDL::traits<::DDS::DomainParticipantQos>::write (::DDSX11::traits< ::DDS::DomainParticipantQos>::retn (qos_in))
       << ">");
 
     return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
@@ -278,7 +278,7 @@ namespace DDSX11
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::set_qos - "
           << "Error: Unable to retrieve domain participant factory QoS <"
-          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+          << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">");
         return retcode;
       }
@@ -287,7 +287,7 @@ namespace DDSX11
 
     DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipantFactory_proxy::set_qos - "
       << "Setting DomainParticipantQos <"
-      << IDL::traits< ::DDS::DomainParticipantFactoryQos>::write (::DDSX11::traits< ::DDS::DomainParticipantFactoryQos>::retn (qos_in))
+      << IDL::traits<::DDS::DomainParticipantFactoryQos>::write (::DDSX11::traits< ::DDS::DomainParticipantFactoryQos>::retn (qos_in))
       << ">");
 
     return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (

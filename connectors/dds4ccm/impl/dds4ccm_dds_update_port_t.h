@@ -30,11 +30,11 @@ public:
 
   void
   configuration_complete (
-    IDL::traits< ::DDS::Topic>::ref_type topic,
-    IDL::traits< ::DDS::Publisher>::ref_type publisher,
+    IDL::traits<::DDS::Topic>::ref_type topic,
+    IDL::traits<::DDS::Publisher>::ref_type publisher,
     const std::string &qos_profile);
 
-  void remove (IDL::traits< ::DDS::Publisher>::ref_type publisher);
+  void remove (IDL::traits<::DDS::Publisher>::ref_type publisher);
 
 private:
   using DDS4CCM_Updater_type = ::CIAOX11::DDS4CCM::Updater_T<
@@ -51,7 +51,7 @@ private:
   //@{
   typename IDL::traits< DDS4CCM_Updater_type>::ref_type dds4ccm_updater_ {};
   typename IDL::traits< CCM_DataWriter_type>::ref_type ccm_data_writer_ {};
-  IDL::traits< ::DDS::DataWriter>::ref_type data_writer_ {};
+  IDL::traits<::DDS::DataWriter>::ref_type data_writer_ {};
   //@}
 
   DDS_Update_Port_T() = delete;

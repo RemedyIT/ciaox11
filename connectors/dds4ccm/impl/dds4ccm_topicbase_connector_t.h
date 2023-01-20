@@ -52,11 +52,11 @@ public:
    */
   //@{
   void register_type (
-    IDL::traits< ::DDS::DomainParticipant>::ref_type participant,
+    IDL::traits<::DDS::DomainParticipant>::ref_type participant,
     const std::string &typesupport_name) override;
 
   void unregister_type (
-    IDL::traits< ::DDS::DomainParticipant>::ref_type participant,
+    IDL::traits<::DDS::DomainParticipant>::ref_type participant,
     const std::string &typesupport_name) override;
   //@}
 
@@ -84,28 +84,28 @@ protected:
    * Getters for the DDS entities. Will init the
    * entities if not already initialized.
    */
-  IDL::traits< ::DDS::DomainParticipant>::ref_type domain_participant ();
-  IDL::traits< ::DDS::Topic>::ref_type topic ();
-  IDL::traits< ::DDS::Publisher>::ref_type publisher ();
-  IDL::traits< ::DDS::Subscriber>::ref_type subscriber ();
+  IDL::traits<::DDS::DomainParticipant>::ref_type domain_participant ();
+  IDL::traits<::DDS::Topic>::ref_type topic ();
+  IDL::traits<::DDS::Publisher>::ref_type publisher ();
+  IDL::traits<::DDS::Subscriber>::ref_type subscriber ();
 
   using BaseConnector = DDS_Base_Connector_T<CCM_TYPE>;
 
-  IDL::traits< ::DDS::Publisher>::ref_type publisher_;
-  IDL::traits< ::DDS::Subscriber>::ref_type subscriber_;
+  IDL::traits<::DDS::Publisher>::ref_type publisher_;
+  IDL::traits<::DDS::Subscriber>::ref_type subscriber_;
 
 private:
   std::string topic_name_;
   std::string type_name_;
 
-  IDL::traits< ::DDS::DomainParticipant>::ref_type domain_participant_;
+  IDL::traits<::DDS::DomainParticipant>::ref_type domain_participant_;
 
-  IDL::traits< ::DDS::Topic>::ref_type topic_;
-  IDL::traits< ::DDS::TopicListener>::ref_type topic_listener_;
+  IDL::traits<::DDS::Topic>::ref_type topic_;
+  IDL::traits<::DDS::TopicListener>::ref_type topic_listener_;
 
-  IDL::traits< ::DDS::PublisherListener>::ref_type publisher_listener_;
+  IDL::traits<::DDS::PublisherListener>::ref_type publisher_listener_;
 
-  IDL::traits< ::DDS::SubscriberListener>::ref_type subscriber_listener_;
+  IDL::traits<::DDS::SubscriberListener>::ref_type subscriber_listener_;
 
   /// Indicates whether a topic is late binded.
   bool late_binding_ { false };

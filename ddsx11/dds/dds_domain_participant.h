@@ -26,7 +26,7 @@ namespace DDS_Native {
 namespace DDSX11
 {
   class DDSX11_IMPL_Export DDS_DomainParticipant_proxy
-    : public virtual IDL::traits< ::DDS::DomainParticipant>::base_type
+    : public virtual IDL::traits<::DDS::DomainParticipant>::base_type
     , public virtual NativeEntityBase_T<DDS_Native::DDS::DomainParticipant>
   {
   public:
@@ -36,62 +36,62 @@ namespace DDSX11
     /// Destructor
     ~DDS_DomainParticipant_proxy () override = default;
 
-    IDL::traits< ::DDS::Publisher>::ref_type
+    IDL::traits<::DDS::Publisher>::ref_type
     create_publisher (
       const ::DDS::PublisherQos & qos,
-      IDL::traits< ::DDS::PublisherListener>::ref_type a_listener,
+      IDL::traits<::DDS::PublisherListener>::ref_type a_listener,
       ::DDS::StatusMask mask) override;
 
     ::DDS::ReturnCode_t
     delete_publisher (
-      IDL::traits< ::DDS::Publisher>::ref_type p) override;
+      IDL::traits<::DDS::Publisher>::ref_type p) override;
 
-    IDL::traits< ::DDS::Subscriber>::ref_type
+    IDL::traits<::DDS::Subscriber>::ref_type
     create_subscriber (
       const ::DDS::SubscriberQos & qos,
-      IDL::traits< ::DDS::SubscriberListener>::ref_type a_listener,
+      IDL::traits<::DDS::SubscriberListener>::ref_type a_listener,
       ::DDS::StatusMask mask) override;
 
     ::DDS::ReturnCode_t
     delete_subscriber (
-      IDL::traits< ::DDS::Subscriber>::ref_type s) override;
+      IDL::traits<::DDS::Subscriber>::ref_type s) override;
 
-    IDL::traits< ::DDS::Subscriber>::ref_type
+    IDL::traits<::DDS::Subscriber>::ref_type
     get_builtin_subscriber () override;
 
-    IDL::traits< ::DDS::Topic>::ref_type
+    IDL::traits<::DDS::Topic>::ref_type
     create_topic (
       const std::string &impl_name,
       const std::string &type_name,
       const ::DDS::TopicQos &qos,
-      IDL::traits< ::DDS::TopicListener>::ref_type a_listener,
+      IDL::traits<::DDS::TopicListener>::ref_type a_listener,
       ::DDS::StatusMask mask) override;
 
     ::DDS::ReturnCode_t
     delete_topic (
-      IDL::traits< ::DDS::Topic>::ref_type a_topic) override;
+      IDL::traits<::DDS::Topic>::ref_type a_topic) override;
 
-    IDL::traits< ::DDS::Topic>::ref_type
+    IDL::traits<::DDS::Topic>::ref_type
     find_topic (
       const std::string &impl_name,
       const ::DDS::Duration_t & timeout) override;
 
-    IDL::traits< ::DDS::TopicDescription>::ref_type
+    IDL::traits<::DDS::TopicDescription>::ref_type
     lookup_topicdescription (
       const std::string &name) override;
 
-    IDL::traits< ::DDS::ContentFilteredTopic>::ref_type
+    IDL::traits<::DDS::ContentFilteredTopic>::ref_type
     create_contentfilteredtopic (
       const std::string &name,
-      IDL::traits< ::DDS::Topic>::ref_type related_topic,
+      IDL::traits<::DDS::Topic>::ref_type related_topic,
       const std::string &filter_expression,
       const ::DDS::StringSeq & expression_parameters) override;
 
     ::DDS::ReturnCode_t
     delete_contentfilteredtopic (
-      IDL::traits< ::DDS::ContentFilteredTopic>::ref_type a_contentfilteredtopic) override;
+      IDL::traits<::DDS::ContentFilteredTopic>::ref_type a_contentfilteredtopic) override;
 
-    IDL::traits< ::DDS::MultiTopic>::ref_type
+    IDL::traits<::DDS::MultiTopic>::ref_type
     create_multitopic (
       const std::string &name,
       const std::string &type_name,
@@ -100,7 +100,7 @@ namespace DDSX11
 
     ::DDS::ReturnCode_t
     delete_multitopic (
-      IDL::traits< ::DDS::MultiTopic>::ref_type a_multitopic) override;
+      IDL::traits<::DDS::MultiTopic>::ref_type a_multitopic) override;
 
     ::DDS::ReturnCode_t
     delete_contained_entities () override;
@@ -115,10 +115,10 @@ namespace DDSX11
 
     ::DDS::ReturnCode_t
     set_listener (
-      IDL::traits< ::DDS::DomainParticipantListener>::ref_type a_listener,
+      IDL::traits<::DDS::DomainParticipantListener>::ref_type a_listener,
       ::DDS::StatusMask mask) override;
 
-    IDL::traits< ::DDS::DomainParticipantListener>::ref_type
+    IDL::traits<::DDS::DomainParticipantListener>::ref_type
     get_listener () override;
 
     ::DDS::ReturnCode_t
@@ -196,7 +196,7 @@ namespace DDSX11
     ::DDS::ReturnCode_t
     enable () override;
 
-    IDL::traits< ::DDS::StatusCondition>::ref_type
+    IDL::traits<::DDS::StatusCondition>::ref_type
     get_statuscondition () override;
 
     ::DDS::StatusMask
@@ -216,7 +216,7 @@ namespace DDSX11
     /// can be retrieved by the user but this doesn't need to be deleted
     /// by the user, it is deleted automatically when the domain participant
     /// is deleted
-    IDL::traits< ::DDS::Subscriber>::ref_type builtin_subscriber_ {};
+    IDL::traits<::DDS::Subscriber>::ref_type builtin_subscriber_ {};
   };
 
   using domain_participant_trait = entity_traits< ::DDS::DomainParticipant, DDS_DomainParticipant_proxy, DDS_Native::DDS::DomainParticipant>;

@@ -30,7 +30,7 @@ namespace DDS4CCM_TEST_UTILS
 
     void
     on_trigger (
-        IDL::traits< ::CCM_TT::TT_Timer>::ref_type,
+        IDL::traits<::CCM_TT::TT_Timer>::ref_type,
         const ::CCM_TT::TT_Duration&,
         uint32_t) override
     {

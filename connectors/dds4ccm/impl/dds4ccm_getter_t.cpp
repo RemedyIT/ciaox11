@@ -32,7 +32,7 @@ namespace CIAOX11
     {
       DDS4CCM_LOG_TRACE ("Getter_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::get");
 
-      IDL::traits< ::DDS::ReadCondition>::ref_type rc =
+      IDL::traits<::DDS::ReadCondition>::ref_type rc =
         this->condition_manager_->read_condition ();
       if (rc)
       {
@@ -43,7 +43,7 @@ namespace CIAOX11
       {
         // A filter has been set. Use the appropriate query condition
         // to read data from DDS.
-        IDL::traits< ::DDS::QueryCondition>::ref_type qc =
+        IDL::traits<::DDS::QueryCondition>::ref_type qc =
           this->condition_manager_->query_condition_getter ();
         if (!qc)
         {
@@ -62,7 +62,7 @@ namespace CIAOX11
       TOPIC_SEQ_TYPE & data,
       ::DDS::SampleInfoSeq & sample_info,
       uint32_t max_samples,
-      IDL::traits< ::DDS::QueryCondition>::ref_type qc)
+      IDL::traits<::DDS::QueryCondition>::ref_type qc)
     {
       DDS4CCM_LOG_TRACE ("Getter_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::get(w_condition)");
 
@@ -83,7 +83,7 @@ namespace CIAOX11
       TOPIC_SEQ_TYPE & data,
       ::DDS::SampleInfoSeq & sample_info,
       uint32_t max_samples,
-      IDL::traits< ::DDS::ReadCondition>::ref_type rd)
+      IDL::traits<::DDS::ReadCondition>::ref_type rd)
     {
       DDS4CCM_LOG_TRACE ("Getter_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::get");
 
@@ -164,7 +164,7 @@ namespace CIAOX11
         DDS4CCM_LOG_ERROR ("Getter_T<"
           << ::DDS::traits<TOPIC_TYPE>::get_type_name()
           << ">::get_many - Error while reading from DDS: <"
-          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+          << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">.");
 
         ::DDS::ReturnCode_t const retcode_returnloan =
@@ -174,7 +174,7 @@ namespace CIAOX11
           DDS4CCM_LOG_ERROR ("Getter_T<"
             << ::DDS::traits<TOPIC_TYPE>::get_type_name()
             << ">::get_many - Error returning loan to DDS - <"
-            << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode_returnloan)
+            << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode_returnloan)
             << ">.");
         }
         throw ::CCM_DDS::InternalError (retcode, 1);
@@ -187,7 +187,7 @@ namespace CIAOX11
         DDS4CCM_LOG_ERROR ("Getter_T<"
           << ::DDS::traits<TOPIC_TYPE>::get_type_name()
           << ">::get_many - Error returning loan to DDS - <"
-          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode_returnloan)
+          << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode_returnloan)
           << ">.");
 
         throw ::CCM_DDS::InternalError (retcode_returnloan, 1);
@@ -231,7 +231,7 @@ namespace CIAOX11
     template <typename GETTER_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
     void
     Getter_T<GETTER_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::set_dds_reader (
-      IDL::traits< ::DDS::DataReader>::ref_type dr,
+      IDL::traits<::DDS::DataReader>::ref_type dr,
       SharedConditionManager condition_manager)
     {
       DDS4CCM_LOG_TRACE ("Getter_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::set_dds_reader");
@@ -247,7 +247,7 @@ namespace CIAOX11
     }
 
     template <typename GETTER_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
-    IDL::traits< ::DDS::DataReader>::ref_type
+    IDL::traits<::DDS::DataReader>::ref_type
     Getter_T<GETTER_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_dds_reader ()
     {
       return this->dds_reader_;
@@ -283,7 +283,7 @@ namespace CIAOX11
           DDS4CCM_LOG_DEBUG ("Getter_T<"
             << ::DDS::traits<TOPIC_TYPE>::get_type_name()
             << ">::get_one - DDS returned <"
-            << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+            << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
             << ">. No data available in DDS.");
           return false;
         }
@@ -293,7 +293,7 @@ namespace CIAOX11
           DDS4CCM_LOG_ERROR ("Getter_T<"
             << ::DDS::traits<TOPIC_TYPE>::get_type_name()
             << ">::get_one - Error while reading from DDS <"
-            << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+            << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
             << ">.");
 
           ::DDS::ReturnCode_t const retcode_returnloan =
@@ -303,7 +303,7 @@ namespace CIAOX11
               DDS4CCM_LOG_ERROR ("Getter_T<"
                 << ::DDS::traits<TOPIC_TYPE>::get_type_name()
                 << ">::get_one - Error returning loan to DDS - <"
-                << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode_returnloan)
+                << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode_returnloan)
                 << ">.");
             }
 
@@ -336,7 +336,7 @@ namespace CIAOX11
           DDS4CCM_LOG_ERROR ("Getter_T<"
             << ::DDS::traits<TOPIC_TYPE>::get_type_name()
             << ">::get_one - Error returning loan to DDS - <"
-            << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode_returnloan)
+            << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode_returnloan)
             << ">.");
 
           throw ::CCM_DDS::InternalError (retcode_returnloan, 1);

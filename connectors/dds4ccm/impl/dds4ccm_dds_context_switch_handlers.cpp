@@ -26,8 +26,8 @@ namespace CIAOX11
     // On_Unexpected_Status_Handler
     //============================================================
     OnUnexpectedStatusHandler::OnUnexpectedStatusHandler (
-      IDL::traits< ::CCM_DDS::ConnectorStatusListener>::weak_ref_type csl,
-      IDL::traits< ::DDS::Entity>::ref_type entity,
+      IDL::traits<::CCM_DDS::ConnectorStatusListener>::weak_ref_type csl,
+      IDL::traits<::DDS::Entity>::ref_type entity,
       ::DDS::StatusKind status_kind)
       : csl_ (std::move (csl))
       , entity_ (entity.weak_reference ())
@@ -48,8 +48,8 @@ namespace CIAOX11
 
     void
     OnUnexpectedStatusHandler::handle_event (
-        IDL::traits< ::CCM_DDS::ConnectorStatusListener>::ref_type csl,
-        IDL::traits< ::DDS::Entity>::ref_type entity,
+        IDL::traits<::CCM_DDS::ConnectorStatusListener>::ref_type csl,
+        IDL::traits<::DDS::Entity>::ref_type entity,
         ::DDS::StatusKind status_kind)
     {
       try
@@ -73,8 +73,8 @@ namespace CIAOX11
     // OnRequestedIncompatibleQosHandler
     //============================================================
     OnRequestedIncompatibleQosHandler::OnRequestedIncompatibleQosHandler (
-      IDL::traits< ::CCM_DDS::ConnectorStatusListener>::weak_ref_type csl,
-      IDL::traits< ::DDS::DataReader>::ref_type dr,
+      IDL::traits<::CCM_DDS::ConnectorStatusListener>::weak_ref_type csl,
+      IDL::traits<::DDS::DataReader>::ref_type dr,
       const ::DDS::RequestedIncompatibleQosStatus &status)
       : csl_ (std::move (csl))
       , dr_ (dr.weak_reference ())
@@ -91,8 +91,8 @@ namespace CIAOX11
 
     void
     OnRequestedIncompatibleQosHandler::handle_event (
-        IDL::traits< ::CCM_DDS::ConnectorStatusListener>::ref_type csl,
-        IDL::traits< ::DDS::DataReader>::ref_type dr,
+        IDL::traits<::CCM_DDS::ConnectorStatusListener>::ref_type csl,
+        IDL::traits<::DDS::DataReader>::ref_type dr,
         const ::DDS::RequestedIncompatibleQosStatus &status)
     {
       try
@@ -116,8 +116,8 @@ namespace CIAOX11
     // OnSampleRejectedHandler
     //============================================================
     OnSampleRejectedHandler::OnSampleRejectedHandler (
-      IDL::traits< ::CCM_DDS::ConnectorStatusListener>::weak_ref_type csl,
-      IDL::traits< ::DDS::DataReader>::ref_type dr,
+      IDL::traits<::CCM_DDS::ConnectorStatusListener>::weak_ref_type csl,
+      IDL::traits<::DDS::DataReader>::ref_type dr,
       const ::DDS::SampleRejectedStatus &status)
       : csl_ (std::move (csl))
       , dr_ (dr.weak_reference ())
@@ -134,8 +134,8 @@ namespace CIAOX11
 
     void
     OnSampleRejectedHandler::handle_event (
-        IDL::traits< ::CCM_DDS::ConnectorStatusListener>::ref_type csl,
-        IDL::traits< ::DDS::DataReader>::ref_type dr,
+        IDL::traits<::CCM_DDS::ConnectorStatusListener>::ref_type csl,
+        IDL::traits<::DDS::DataReader>::ref_type dr,
         const ::DDS::SampleRejectedStatus &status)
     {
       try
@@ -159,8 +159,8 @@ namespace CIAOX11
     // OnInconsistentTopicHandler
     //============================================================
     OnInconsistentTopicHandler::OnInconsistentTopicHandler (
-      IDL::traits< ::CCM_DDS::ConnectorStatusListener>::weak_ref_type csl,
-      IDL::traits< ::DDS::Topic>::ref_type tp,
+      IDL::traits<::CCM_DDS::ConnectorStatusListener>::weak_ref_type csl,
+      IDL::traits<::DDS::Topic>::ref_type tp,
       const ::DDS::InconsistentTopicStatus &status)
       : csl_ (std::move (csl))
       , tp_ (tp.weak_reference ())
@@ -177,8 +177,8 @@ namespace CIAOX11
 
     void
     OnInconsistentTopicHandler::handle_event (
-        IDL::traits< ::CCM_DDS::ConnectorStatusListener>::ref_type csl,
-        IDL::traits< ::DDS::Topic>::ref_type tp,
+        IDL::traits<::CCM_DDS::ConnectorStatusListener>::ref_type csl,
+        IDL::traits<::DDS::Topic>::ref_type tp,
         const ::DDS::InconsistentTopicStatus &status)
     {
       try
@@ -202,8 +202,8 @@ namespace CIAOX11
     // OnOfferedDeadlineMissedHandler
     //============================================================
     OnOfferedDeadlineMissedHandler::OnOfferedDeadlineMissedHandler (
-      IDL::traits< ::CCM_DDS::ConnectorStatusListener>::weak_ref_type csl,
-      IDL::traits< ::DDS::DataWriter>::ref_type dw,
+      IDL::traits<::CCM_DDS::ConnectorStatusListener>::weak_ref_type csl,
+      IDL::traits<::DDS::DataWriter>::ref_type dw,
       const ::DDS::OfferedDeadlineMissedStatus &status)
       : csl_ (std::move (csl))
       , dw_ (dw.weak_reference ())
@@ -220,8 +220,8 @@ namespace CIAOX11
 
     void
     OnOfferedDeadlineMissedHandler::handle_event (
-        IDL::traits< ::CCM_DDS::ConnectorStatusListener>::ref_type csl,
-        IDL::traits< ::DDS::DataWriter>::ref_type dw,
+        IDL::traits<::CCM_DDS::ConnectorStatusListener>::ref_type csl,
+        IDL::traits<::DDS::DataWriter>::ref_type dw,
         const ::DDS::OfferedDeadlineMissedStatus &status)
     {
       try
@@ -245,8 +245,8 @@ namespace CIAOX11
     // OnOfferedIncompatibleQoSHandler
     //============================================================
     OnOfferedIncompatibleQoSHandler::OnOfferedIncompatibleQoSHandler (
-      IDL::traits< ::CCM_DDS::ConnectorStatusListener>::weak_ref_type csl,
-      IDL::traits< ::DDS::DataWriter>::ref_type dw,
+      IDL::traits<::CCM_DDS::ConnectorStatusListener>::weak_ref_type csl,
+      IDL::traits<::DDS::DataWriter>::ref_type dw,
       const ::DDS::OfferedIncompatibleQosStatus &status)
       : csl_ (std::move (csl))
       , dw_ (dw.weak_reference ())
@@ -263,8 +263,8 @@ namespace CIAOX11
 
     void
     OnOfferedIncompatibleQoSHandler::handle_event (
-        IDL::traits< ::CCM_DDS::ConnectorStatusListener>::ref_type csl,
-        IDL::traits< ::DDS::DataWriter>::ref_type dw,
+        IDL::traits<::CCM_DDS::ConnectorStatusListener>::ref_type csl,
+        IDL::traits<::DDS::DataWriter>::ref_type dw,
         const ::DDS::OfferedIncompatibleQosStatus &status)
     {
       try
@@ -288,8 +288,8 @@ namespace CIAOX11
     // OnRequestedDeadlineMissedHandler
     //============================================================
     OnRequestedDeadlineMissedHandler::OnRequestedDeadlineMissedHandler (
-      IDL::traits< ::CCM_DDS::PortStatusListener>::weak_ref_type psl,
-      IDL::traits< ::DDS::DataReader>::ref_type dr,
+      IDL::traits<::CCM_DDS::PortStatusListener>::weak_ref_type psl,
+      IDL::traits<::DDS::DataReader>::ref_type dr,
       const ::DDS::RequestedDeadlineMissedStatus & status)
       : psl_ (std::move (psl))
       , dr_ (dr.weak_reference ())
@@ -306,8 +306,8 @@ namespace CIAOX11
 
     void
     OnRequestedDeadlineMissedHandler::handle_event (
-        IDL::traits< ::CCM_DDS::PortStatusListener>::ref_type psl,
-        IDL::traits< ::DDS::DataReader>::ref_type dr,
+        IDL::traits<::CCM_DDS::PortStatusListener>::ref_type psl,
+        IDL::traits<::DDS::DataReader>::ref_type dr,
         const ::DDS::RequestedDeadlineMissedStatus &status)
     {
       try
@@ -331,8 +331,8 @@ namespace CIAOX11
     // OnSampleLostHandler
     //============================================================
     OnSampleLostHandler::OnSampleLostHandler (
-      IDL::traits< ::CCM_DDS::PortStatusListener>::weak_ref_type psl,
-      IDL::traits< ::DDS::DataReader>::ref_type dr,
+      IDL::traits<::CCM_DDS::PortStatusListener>::weak_ref_type psl,
+      IDL::traits<::DDS::DataReader>::ref_type dr,
       const ::DDS::SampleLostStatus & status)
       : psl_ (std::move (psl))
       , dr_ (dr.weak_reference ())
@@ -349,8 +349,8 @@ namespace CIAOX11
 
     void
     OnSampleLostHandler::handle_event (
-        IDL::traits< ::CCM_DDS::PortStatusListener>::ref_type psl,
-        IDL::traits< ::DDS::DataReader>::ref_type dr,
+        IDL::traits<::CCM_DDS::PortStatusListener>::ref_type psl,
+        IDL::traits<::DDS::DataReader>::ref_type dr,
         const ::DDS::SampleLostStatus &status)
     {
       try

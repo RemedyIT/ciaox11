@@ -43,7 +43,7 @@ namespace App_Reporter_Impl
     /// Constructor
     /// @param[in] context Component context
     do_presenter_exec_i (
-        IDL::traits< ::App::CCM_Reporter_Context>::ref_type context);
+        IDL::traits<::App::CCM_Reporter_Context>::ref_type context);
     //@@{__RIDL_REGEN_MARKER__} - END : App_Reporter_Impl::do_presenter_exec_i[ctor]
 
     /// Destructor

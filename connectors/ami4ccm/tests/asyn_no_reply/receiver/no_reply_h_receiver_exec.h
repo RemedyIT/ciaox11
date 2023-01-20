@@ -38,7 +38,7 @@ namespace NoReplyH_Receiver_Impl
 
   /// Executor implementation class for do_my_foo facet
   class do_my_foo_exec_i final
-    : public IDL::traits< ::NoReplyH::CCM_MyFoo>::base_type
+    : public IDL::traits<::NoReplyH::CCM_MyFoo>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : NoReplyH_Receiver_Impl::do_my_foo_exec_i[ctor]
@@ -80,7 +80,7 @@ namespace NoReplyH_Receiver_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::NoReplyH::CCM_Receiver_Context>::ref_type context_;
+    IDL::traits<::NoReplyH::CCM_Receiver_Context>::ref_type context_;
 
     /** @name Members to store attribute values from ::NoReplyH::CCM_MyFoo */
     //@{
@@ -107,7 +107,7 @@ namespace NoReplyH_Receiver_Impl
 
   /// Component Executor Implementation Class : Receiver_exec_i
   class Receiver_exec_i final
-    : public virtual IDL::traits< ::NoReplyH::CCM_Receiver>::base_type
+    : public virtual IDL::traits<::NoReplyH::CCM_Receiver>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : NoReplyH_Receiver_Impl::Receiver_exec_i[ctor]
@@ -122,7 +122,7 @@ namespace NoReplyH_Receiver_Impl
 
     /// Factory method and getter for the do_my_foo facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< ::NoReplyH::CCM_MyFoo>::ref_type get_do_my_foo () override;
+    IDL::traits<::NoReplyH::CCM_MyFoo>::ref_type get_do_my_foo () override;
     //@}
 
     /** @name Session component operations */
@@ -154,11 +154,11 @@ namespace NoReplyH_Receiver_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::NoReplyH::CCM_Receiver_Context>::ref_type context_;
+    IDL::traits<::NoReplyH::CCM_Receiver_Context>::ref_type context_;
 
     /** @name Component facets. */
     //@{
-    IDL::traits< ::NoReplyH::CCM_MyFoo>::ref_type do_my_foo_;
+    IDL::traits<::NoReplyH::CCM_MyFoo>::ref_type do_my_foo_;
     //@}
 
     /** @name User defined members. */

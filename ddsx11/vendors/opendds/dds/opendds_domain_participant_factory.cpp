@@ -32,11 +32,11 @@ namespace DDSX11
       DDSX11_LOG_TRACE ("OpenDDS_DomainParticipantFactory_proxy::OpenDDS_DomainParticipantFactory_proxy");
     }
 
-    IDL::traits< ::DDS::DomainParticipant>::ref_type
+    IDL::traits<::DDS::DomainParticipant>::ref_type
     OpenDDS_DomainParticipantFactory_proxy::create_participant_with_profile (
       ::DDS::DomainId_t domain_id,
       const std::string &qos_profile,
-      IDL::traits< ::DDS::DomainParticipantListener>::ref_type a_listener,
+      IDL::traits<::DDS::DomainParticipantListener>::ref_type a_listener,
       ::DDS::StatusMask mask)
     {
       DDSX11_LOG_TRACE (
@@ -61,7 +61,7 @@ namespace DDSX11
             << "Error: Unable to load the XML for <"
             << qos_profile
             << "> init returns <"
-            << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+            << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
             << ">");
           return {};
         }
@@ -72,21 +72,21 @@ namespace DDSX11
         {
           DDSX11_IMPL_LOG_ERROR ("OpenDDS_DomainParticipantFactory_proxy::create_participant_with_profile - "
             << "Error: Unable to retrieve the default DomainParticipantQos <"
-            << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+            << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
             << ">");
           return {};
         }
 
       DDSX11_IMPL_LOG_DEBUG ("OpenDDS_DomainParticipantFactory_proxy::create_participant_with_profile - "
         << "Retrieved default DomainParticipantQos <"
-        << IDL::traits< ::DDS::DomainParticipantQos>::write (qos)
+        << IDL::traits<::DDS::DomainParticipantQos>::write (qos)
         << ">");
 
       xml_loader.get_participant_qos (::DDSX11::traits< ::DDS::DomainParticipantQos>::inout (qos), ::DDSX11::traits<std::string>::in (qos_profile));
 
       DDSX11_IMPL_LOG_DEBUG ("OpenDDS_DomainParticipantFactory_proxy::create_participant_with_profile - "
         << "Retrieved XML DomainParticipantQos <"
-        << IDL::traits< ::DDS::DomainParticipantQos>::write (qos)
+        << IDL::traits<::DDS::DomainParticipantQos>::write (qos)
         << ">");
 
       return this->create_participant (domain_id, qos, std::move(a_listener), mask);
@@ -104,7 +104,7 @@ namespace DDSX11
         {
           DDSX11_IMPL_LOG_ERROR ("OpenDDS_DomainParticipantFactory_proxy::finalize_instance - "
             << "Error: Unable to shutdown TheServiceParticipant <"
-            << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+            << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
             << ">");
         }
       else
@@ -138,7 +138,7 @@ namespace DDSX11
             << "Error: Unable to load the XML for <"
             << qos_profile
             << "> init returns <"
-            << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+            << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
             << ">");
           return retcode;
         }
@@ -149,21 +149,21 @@ namespace DDSX11
         {
           DDSX11_IMPL_LOG_ERROR ("OpenDDS_DomainParticipantFactory_proxy::set_default_participant_qos_with_profile - "
             << "Error: Unable to retrieve the default DomainParticipantQos <"
-            << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+            << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
             << ">");
           return retcode;
         }
 
       DDSX11_IMPL_LOG_DEBUG ("OpenDDS_DomainParticipantFactory_proxy::set_default_participant_qos_with_profile - "
         << "Retrieved default DomainParticipantQos <"
-        << IDL::traits< ::DDS::DomainParticipantQos>::write (qos)
+        << IDL::traits<::DDS::DomainParticipantQos>::write (qos)
         << ">");
 
       xml_loader.get_participant_qos (::DDSX11::traits< ::DDS::DomainParticipantQos>::inout (qos), ::DDSX11::traits<std::string>::in (qos_profile));
 
       DDSX11_IMPL_LOG_DEBUG ("OpenDDS_DomainParticipantFactory_proxy::set_default_participant_qos_with_profile - "
         << "Retrieved XML DomainParticipantQos <"
-        << IDL::traits< ::DDS::DomainParticipantQos>::write (qos)
+        << IDL::traits<::DDS::DomainParticipantQos>::write (qos)
         << ">");
 
       return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (

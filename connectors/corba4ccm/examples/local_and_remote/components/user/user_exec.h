@@ -35,7 +35,7 @@ namespace Example_User_Impl
 
   /// Component Executor Implementation Class : User_exec_i
   class User_exec_i final
-    : public virtual IDL::traits< ::Example::CCM_User>::base_type
+    : public virtual IDL::traits<::Example::CCM_User>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Example_User_Impl::User_exec_i[ctor]
@@ -87,7 +87,7 @@ namespace Example_User_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::Example::CCM_User_Context>::ref_type context_;
+    IDL::traits<::Example::CCM_User_Context>::ref_type context_;
 
     /** @name Component attributes. */
     //@{

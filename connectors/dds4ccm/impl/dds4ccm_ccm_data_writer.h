@@ -35,7 +35,7 @@ namespace CIAOX11
 
       ::DDS::ReturnCode_t enable () override;
 
-      IDL::traits< ::DDS::StatusCondition>::ref_type get_statuscondition () override;
+      IDL::traits<::DDS::StatusCondition>::ref_type get_statuscondition () override;
 
       ::DDS::StatusMask get_status_changes () override;
 
@@ -47,14 +47,14 @@ namespace CIAOX11
 
       ::DDS::ReturnCode_t
       set_listener (
-        IDL::traits< ::DDS::DataWriterListener>::ref_type listener,
+        IDL::traits<::DDS::DataWriterListener>::ref_type listener,
         ::DDS::StatusMask mask) override;
 
-      IDL::traits< ::DDS::DataWriterListener>::ref_type get_listener () override;
+      IDL::traits<::DDS::DataWriterListener>::ref_type get_listener () override;
 
-      IDL::traits< ::DDS::Topic>::ref_type get_topic () override;
+      IDL::traits<::DDS::Topic>::ref_type get_topic () override;
 
-      IDL::traits< ::DDS::Publisher>::ref_type get_publisher () override;
+      IDL::traits<::DDS::Publisher>::ref_type get_publisher () override;
 
       ::DDS::ReturnCode_t wait_for_acknowledgments (const ::DDS::Duration_t &duration) override;
 
@@ -80,12 +80,12 @@ namespace CIAOX11
         ::DDS::SubscriptionBuiltinTopicData &data,
         const ::DDS::InstanceHandle_t &handle) override;
 
-      void set_dds_entity (IDL::traits< ::DDS::DataWriter>::ref_type dw);
+      void set_dds_entity (IDL::traits<::DDS::DataWriter>::ref_type dw);
 
-      IDL::traits< ::DDS::DataWriter>::ref_type get_dds_entity ();
+      IDL::traits<::DDS::DataWriter>::ref_type get_dds_entity ();
 
     private:
-      IDL::traits< ::DDS::DataWriter>::ref_type dds_entity_;
+      IDL::traits<::DDS::DataWriter>::ref_type dds_entity_;
 
       CCM_DataWriter() = delete;
       CCM_DataWriter(const CCM_DataWriter&) = delete;

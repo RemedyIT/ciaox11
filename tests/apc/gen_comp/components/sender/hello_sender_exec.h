@@ -54,7 +54,7 @@ namespace Hello_Sender_Impl
     /// Constructor
     /// @param[in] context Component context
     run_my_foo_prov_exec_i (
-        IDL::traits< ::Hello::CCM_Sender_Context>::ref_type context);
+        IDL::traits<::Hello::CCM_Sender_Context>::ref_type context);
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Sender_Impl::run_my_foo_prov_exec_i[ctor]
 
     /// Destructor
@@ -123,7 +123,7 @@ namespace Hello_Sender_Impl
     /// Constructor
     /// @param[in] context Component context
     run_my_bar_foo_prov_exec_i (
-        IDL::traits< ::Hello::CCM_Sender_Context>::ref_type context);
+        IDL::traits<::Hello::CCM_Sender_Context>::ref_type context);
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Sender_Impl::run_my_bar_foo_prov_exec_i[ctor]
 
     /// Destructor

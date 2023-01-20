@@ -16,7 +16,7 @@
 namespace DDSX11
 {
   DDS_DataReaderListener_proxy::DDS_DataReaderListener_proxy (
-    IDL::traits< ::DDS::DataReaderListener>::ref_type p)
+    IDL::traits<::DDS::DataReaderListener>::ref_type p)
     : impl_ (std::move (p))
   {
     DDSX11_LOG_TRACE ("DDS_DataReaderListener_proxy::DDS_DataReaderListener_proxy");
@@ -27,13 +27,13 @@ namespace DDSX11
     DDSX11_LOG_TRACE ("DDS_DataReaderListener_proxy::~DDS_DataReaderListener_proxy");
   }
 
-  IDL::traits< ::DDS::DataReader>::ref_type
+  IDL::traits<::DDS::DataReader>::ref_type
   DDS_DataReaderListener_proxy::get_datareader (
     DDS_Native::DDS::DataReader* the_reader)
   {
     DDSX11_LOG_TRACE ("DDS_DataReaderListener_proxy::get_datareader");
 
-    IDL::traits< ::DDS::DataReader>::ref_type dr = this->dr_.lock ();
+    IDL::traits<::DDS::DataReader>::ref_type dr = this->dr_.lock ();
     if (!dr)
     {
       // Weak pointer was not set. It could be that it has been removed from the
@@ -54,7 +54,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_DataReaderListener_proxy::on_requested_deadline_missed");
 
-    IDL::traits< ::DDS::DataReader>::ref_type dr = this->get_datareader (the_reader);
+    IDL::traits<::DDS::DataReader>::ref_type dr = this->get_datareader (the_reader);
     if (dr)
     {
       this->impl_->on_requested_deadline_missed (std::move(dr),
@@ -69,7 +69,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_DataReaderListener_proxy::on_requested_incompatible_qos");
 
-    IDL::traits< ::DDS::DataReader>::ref_type dr = this->get_datareader (the_reader);
+    IDL::traits<::DDS::DataReader>::ref_type dr = this->get_datareader (the_reader);
     if (dr)
     {
       this->impl_->on_requested_incompatible_qos (std::move(dr),
@@ -84,7 +84,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_DataReaderListener_proxy::on_sample_rejected");
 
-    IDL::traits< ::DDS::DataReader>::ref_type dr = this->get_datareader (the_reader);
+    IDL::traits<::DDS::DataReader>::ref_type dr = this->get_datareader (the_reader);
     if (dr)
     {
       this->impl_->on_sample_rejected (std::move(dr),
@@ -99,7 +99,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_DataReaderListener_proxy::on_liveliness_changed");
 
-    IDL::traits< ::DDS::DataReader>::ref_type dr = this->get_datareader (the_reader);
+    IDL::traits<::DDS::DataReader>::ref_type dr = this->get_datareader (the_reader);
     if (dr)
     {
       this->impl_->on_liveliness_changed (std::move(dr),
@@ -113,7 +113,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_DataReaderListener_proxy::on_data_available");
 
-    IDL::traits< ::DDS::DataReader>::ref_type dr = this->get_datareader (the_reader);
+    IDL::traits<::DDS::DataReader>::ref_type dr = this->get_datareader (the_reader);
     if (dr)
     {
       this->impl_->on_data_available (std::move(dr));
@@ -127,7 +127,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_DataReaderListener_proxy::on_subscription_matched");
 
-    IDL::traits< ::DDS::DataReader>::ref_type dr = this->get_datareader (the_reader);
+    IDL::traits<::DDS::DataReader>::ref_type dr = this->get_datareader (the_reader);
     if (dr)
     {
       this->impl_->on_subscription_matched (std::move(dr),
@@ -142,7 +142,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_DataReaderListener_proxy::on_sample_lost");
 
-    IDL::traits< ::DDS::DataReader>::ref_type dr = this->get_datareader (the_reader);
+    IDL::traits<::DDS::DataReader>::ref_type dr = this->get_datareader (the_reader);
     if (dr)
     {
       this->impl_->on_sample_lost (std::move(dr),
@@ -150,7 +150,7 @@ namespace DDSX11
     }
   }
 
-  IDL::traits< ::DDS::DataReaderListener>::ref_type
+  IDL::traits<::DDS::DataReaderListener>::ref_type
   DDS_DataReaderListener_proxy::get_datareaderlistener ()
   {
     return this->impl_;

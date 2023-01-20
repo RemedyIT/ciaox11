@@ -30,11 +30,11 @@ namespace DDSX11
     DDSX11_LOG_TRACE ("DDS_Publisher_proxy::DDS_Publisher_proxy");
   }
 
-  IDL::traits< ::DDS::DataWriter>::ref_type
+  IDL::traits<::DDS::DataWriter>::ref_type
   DDS_Publisher_proxy::create_datawriter (
-    IDL::traits< ::DDS::Topic>::ref_type a_topic,
+    IDL::traits<::DDS::Topic>::ref_type a_topic,
     const ::DDS::DataWriterQos &qos,
-    IDL::traits< ::DDS::DataWriterListener>::ref_type a_listener,
+    IDL::traits<::DDS::DataWriterListener>::ref_type a_listener,
     ::DDS::StatusMask mask)
   {
     DDSX11_LOG_TRACE ("DDS_Publisher_proxy::create_datawriter");
@@ -49,7 +49,7 @@ namespace DDSX11
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_Publisher_proxy::create_datawriter - "
           << "Error: Unable to retrieve default datawriter QoS <"
-          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+          << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">");
         return nullptr;
       }
@@ -70,7 +70,7 @@ namespace DDSX11
 
     DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipantFactory_proxy::create_datawriter - "
       << "Using DataWriterQos <"
-      << IDL::traits< ::DDS::DataWriterQos>::write (::DDSX11::traits <::DDS::DataWriterQos>::retn (qos_in))
+      << IDL::traits<::DDS::DataWriterQos>::write (::DDSX11::traits <::DDS::DataWriterQos>::retn (qos_in))
       << ">");
 
      DDS_Native::DDS::DataWriter_var native_dw =
@@ -93,7 +93,7 @@ namespace DDSX11
     // of scope.
     listener_guard.release ();
 
-    IDL::traits< ::DDS::DataWriter>::ref_type datawriter =
+    IDL::traits<::DDS::DataWriter>::ref_type datawriter =
       DDS_TypeSupport_i::create_datawriter (this->get_participant (),
                                             a_topic->get_type_name (),
                                             native_dw);
@@ -122,11 +122,11 @@ namespace DDSX11
 
   ::DDS::ReturnCode_t
   DDS_Publisher_proxy::delete_datawriter (
-    IDL::traits< ::DDS::DataWriter>::ref_type a_datawriter)
+    IDL::traits<::DDS::DataWriter>::ref_type a_datawriter)
   {
     DDSX11_LOG_TRACE ("DDS_Publisher_proxy::delete_datawriter");
 
-    IDL::traits< ::DDSX11::DDS_DataWriter_proxy>::ref_type dw_proxy =
+    IDL::traits<::DDSX11::DDS_DataWriter_proxy>::ref_type dw_proxy =
       data_writer_trait::proxy (a_datawriter);
     if (!dw_proxy)
       {
@@ -168,7 +168,7 @@ namespace DDSX11
 
         DDSX11_IMPL_LOG_ERROR ("DDS_Publisher_i::delete_datawriter - "
           << "Error: Native delete_datawriter returned non-ok error <"
-          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+          << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">");
       }
     else
@@ -190,7 +190,7 @@ namespace DDSX11
   }
 
 
-  IDL::traits< ::DDS::DataWriter>::ref_type
+  IDL::traits<::DDS::DataWriter>::ref_type
   DDS_Publisher_proxy::lookup_datawriter (
     const std::string &impl_name)
   {
@@ -231,7 +231,7 @@ namespace DDSX11
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_Publisher_proxy::set_qos - "
           << "Error: Unable to retrieve publisher QoS <"
-          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+          << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">");
         return retcode;
       }
@@ -240,7 +240,7 @@ namespace DDSX11
 
     DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipantFactory_proxy::set_qos - "
       << "Setting PublisherQos <"
-      << IDL::traits< ::DDS::PublisherQos>::write (::DDSX11::traits< ::DDS::PublisherQos>::retn(qos_in))
+      << IDL::traits<::DDS::PublisherQos>::write (::DDSX11::traits< ::DDS::PublisherQos>::retn(qos_in))
       << ">");
 
     return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
@@ -262,7 +262,7 @@ namespace DDSX11
 
   ::DDS::ReturnCode_t
   DDS_Publisher_proxy::set_listener (
-    IDL::traits< ::DDS::PublisherListener>::ref_type a_listener,
+    IDL::traits<::DDS::PublisherListener>::ref_type a_listener,
     ::DDS::StatusMask mask)
   {
     DDSX11_LOG_TRACE ("DDS_Publisher_proxy::set_listener");
@@ -298,7 +298,7 @@ namespace DDSX11
   }
 
 
-  IDL::traits< ::DDS::PublisherListener>::ref_type
+  IDL::traits<::DDS::PublisherListener>::ref_type
   DDS_Publisher_proxy::get_listener ()
   {
     DDSX11_LOG_TRACE ("DDS_Publisher_proxy::get_listener");
@@ -368,7 +368,7 @@ namespace DDSX11
   }
 
 
-  IDL::traits< ::DDS::DomainParticipant>::ref_type
+  IDL::traits<::DDS::DomainParticipant>::ref_type
   DDS_Publisher_proxy::get_participant ()
   {
     DDSX11_LOG_TRACE ("DDS_Publisher_proxy::get_participant");
@@ -395,7 +395,7 @@ namespace DDSX11
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_Publisher_proxy::set_default_datawriter_qos - "
           << "Error: Unable to retrieve default datawriter <"
-          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+          << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">");
         return retcode;
       }
@@ -404,7 +404,7 @@ namespace DDSX11
 
     DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipantFactory_proxy::set_default_datawriter_qos - "
       << "Setting PublisherQos <"
-      << IDL::traits< ::DDS::DataWriterQos>::write (::DDSX11::traits< ::DDS::DataWriterQos>::retn (qos_in))
+      << IDL::traits<::DDS::DataWriterQos>::write (::DDSX11::traits< ::DDS::DataWriterQos>::retn (qos_in))
       << ">");
 
     return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
@@ -444,10 +444,10 @@ namespace DDSX11
       this->native_entity ()->enable ());
   }
 
-  IDL::traits< ::DDS::StatusCondition>::ref_type
+  IDL::traits<::DDS::StatusCondition>::ref_type
   DDS_Publisher_proxy::get_statuscondition ()
   {
-    IDL::traits< ::DDS::StatusCondition>::ref_type retval;
+    IDL::traits<::DDS::StatusCondition>::ref_type retval;
     DDS_Native::DDS::StatusCondition_var sc = this->native_entity ()->get_statuscondition ();
     if (sc)
       {

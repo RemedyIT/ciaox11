@@ -101,7 +101,7 @@ namespace RG_LateBinding_Sender_Impl
 
     try
     {
-      IDL::traits< ::CommonTestConnector::Writer>::ref_type writer =
+      IDL::traits<::CommonTestConnector::Writer>::ref_type writer =
         this->context_->get_connection_info_write_data ();
       DDS4CCM_TEST_DEBUG << "Sender_exec_i::notify - Start writing samples " << std::endl;
       for (uint16_t key = 1; key < this->keys_ + 1; ++key)
@@ -165,17 +165,17 @@ namespace RG_LateBinding_Sender_Impl
     {
       DDS4CCM_TEST_DEBUG << "Sender_exec_i::reset_topic_name - "
         << "Setting topic name to <" << topic_name <<">." << std::endl;
-      IDL::traits< ::CommonTestConnector::Writer>::ref_type writer =
+      IDL::traits<::CommonTestConnector::Writer>::ref_type writer =
         this->context_->get_connection_info_write_data ();
-      IDL::traits< ::CORBA::Object>::ref_type cmp = writer->_get_component ();
+      IDL::traits<::CORBA::Object>::ref_type cmp = writer->_get_component ();
       if (!cmp)
       {
         DDS4CCM_TEST_ERROR << "Sender_exec_i::reset_topic_name - "
           "ERROR: Unable to get component interface." << std::endl;
         return;
       }
-      IDL::traits< ::CommonTestConnector::CCM_DDS_Event>::ref_type conn =
-        IDL::traits< ::CommonTestConnector::CCM_DDS_Event >::narrow (cmp);
+      IDL::traits<::CommonTestConnector::CCM_DDS_Event>::ref_type conn =
+        IDL::traits<::CommonTestConnector::CCM_DDS_Event >::narrow (cmp);
       if (!conn)
       {
         DDS4CCM_TEST_ERROR << "ERROR: Sender_exec_i::reset_topic_name - "

@@ -35,14 +35,14 @@ namespace EFC_FooConnector_Impl
 
   /// Executor implementation class for request_handler facet
   class request_handler_exec_i final
-    : public IDL::traits< ::EFC::CCM_FooHandler>::base_type
+    : public IDL::traits<::EFC::CCM_FooHandler>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : EFC_FooConnector_Impl::request_handler_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
     request_handler_exec_i (
-        IDL::traits< ::EFC::CCM_FooConnector_Context>::ref_type context);
+        IDL::traits<::EFC::CCM_FooConnector_Context>::ref_type context);
     //@@{__RIDL_REGEN_MARKER__} - END : EFC_FooConnector_Impl::request_handler_exec_i[ctor]
 
     /// Destructor
@@ -65,7 +65,7 @@ namespace EFC_FooConnector_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::EFC::CCM_FooConnector_Context>::ref_type context_;
+    IDL::traits<::EFC::CCM_FooConnector_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -84,7 +84,7 @@ namespace EFC_FooConnector_Impl
 
   /// Component Executor Implementation Class : FooConnector_exec_i
   class FooConnector_exec_i final
-    : public virtual IDL::traits< ::EFC::CCM_FooConnector>::base_type
+    : public virtual IDL::traits<::EFC::CCM_FooConnector>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : EFC_FooConnector_Impl::FooConnector_exec_i[ctor]
@@ -99,7 +99,7 @@ namespace EFC_FooConnector_Impl
 
     /// Factory method and getter for the request_handler facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< ::EFC::CCM_FooHandler>::ref_type get_request_handler () override;
+    IDL::traits<::EFC::CCM_FooHandler>::ref_type get_request_handler () override;
     //@}
 
     /** @name Supported attributes. */
@@ -143,7 +143,7 @@ namespace EFC_FooConnector_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::EFC::CCM_FooConnector_Context>::ref_type context_;
+    IDL::traits<::EFC::CCM_FooConnector_Context>::ref_type context_;
 
     /** @name Component attributes. */
     //@{
@@ -153,7 +153,7 @@ namespace EFC_FooConnector_Impl
 
     /** @name Component facets. */
     //@{
-    IDL::traits< ::EFC::CCM_FooHandler>::ref_type request_handler_;
+    IDL::traits<::EFC::CCM_FooHandler>::ref_type request_handler_;
     //@}
 
     /** @name User defined members. */

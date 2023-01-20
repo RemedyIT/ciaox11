@@ -159,7 +159,7 @@ DDS_Base_Connector_T<CCM_TYPE>::context ()
   * Initialization
  **/
 template <typename CCM_TYPE>
-IDL::traits< ::DDS::DomainParticipant>::ref_type
+IDL::traits<::DDS::DomainParticipant>::ref_type
 DDS_Base_Connector_T<CCM_TYPE>::init_domain ()
 {
   DDS4CCM_LOG_TRACE ("DDS_Base_Connector_T<CCM_TYPE>::init_domain");
@@ -167,9 +167,9 @@ DDS_Base_Connector_T<CCM_TYPE>::init_domain ()
   DDS4CCM_LOG_DEBUG ("DDS_Base_Connector_T::init_domain - "
     << "Start configuring default domain <" << this->domain_id_
     << ">.");
-  IDL::traits< ::DDS::DomainParticipant>::ref_type participant;
+  IDL::traits<::DDS::DomainParticipant>::ref_type participant;
 
-  IDL::traits< ::DDS::DomainParticipant>::ref_type dds_dp =
+  IDL::traits<::DDS::DomainParticipant>::ref_type dds_dp =
     DPMANAGER->get_participant (this->domain_id_, this->qos_profile_);
 
   if (!dds_dp)
@@ -184,7 +184,7 @@ DDS_Base_Connector_T<CCM_TYPE>::init_domain ()
       {
         DDS4CCM_LOG_ERROR ("DDS_Base_Connector_T::init_domain - "
           << "Error: Unable to retrieve default_participant_qos: <"
-          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+          << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">.");
         throw CCM_DDS::InternalError (retcode, 0);
       }
@@ -218,7 +218,7 @@ DDS_Base_Connector_T<CCM_TYPE>::init_domain ()
     if (retcode != ::DDS::RETCODE_OK)
     {
       DDS4CCM_LOG_ERROR ("DDS_Base_Connector_T::init_domain - "
-        << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+        << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
         << ">.");
       throw CCM_DDS::InternalError (retcode, 0);
     }
@@ -253,9 +253,9 @@ DDS_Base_Connector_T<CCM_TYPE>::init_domain ()
 }
 
 template <typename CCM_TYPE>
-IDL::traits< ::DDS::Topic>::ref_type
+IDL::traits<::DDS::Topic>::ref_type
 DDS_Base_Connector_T<CCM_TYPE>::init_topic (
-  IDL::traits< ::DDS::DomainParticipant>::ref_type participant,
+  IDL::traits<::DDS::DomainParticipant>::ref_type participant,
   const std::string &topic_name,
   const std::string &type_name)
 {
@@ -266,10 +266,10 @@ DDS_Base_Connector_T<CCM_TYPE>::init_topic (
     << this->qos_profile_ << "> in participant "
     << IDL::traits<DDS::Entity>::write<entity_formatter> (participant));
 
-  IDL::traits< ::DDS::Topic>::ref_type topic;
+  IDL::traits<::DDS::Topic>::ref_type topic;
 
   ::DDS::Duration_t timeout { 0, 0 };
-  IDL::traits< ::DDS::Topic>::ref_type dds_tp =
+  IDL::traits<::DDS::Topic>::ref_type dds_tp =
     participant->find_topic (topic_name, timeout);
 
   if (dds_tp)
@@ -302,7 +302,7 @@ DDS_Base_Connector_T<CCM_TYPE>::init_topic (
       {
         DDS4CCM_LOG_ERROR ("DDS_Base_Connector_T::init_topic - "
           << "Error: Unable to retrieve default_topic_qos: <"
-          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+          << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">.");
         throw CCM_DDS::InternalError (retcode, 0);
       }
@@ -319,7 +319,7 @@ DDS_Base_Connector_T<CCM_TYPE>::init_topic (
   {
     DDS4CCM_LOG_DEBUG ("DDS_Base_Connector_T::init_topic - "
       << "Created a topic <"
-      << IDL::traits< ::DDS::Entity>::write<entity_formatter> (topic)
+      << IDL::traits<::DDS::Entity>::write<entity_formatter> (topic)
       << ">: name <" << topic_name << "> type <" << type_name
       << "> for profile <" << this->qos_profile_
       << ">.");
@@ -335,14 +335,14 @@ DDS_Base_Connector_T<CCM_TYPE>::init_topic (
 }
 
 template <typename CCM_TYPE>
-IDL::traits< ::DDS::Publisher>::ref_type
+IDL::traits<::DDS::Publisher>::ref_type
 DDS_Base_Connector_T<CCM_TYPE>::init_publisher (
-  IDL::traits< ::DDS::DomainParticipant>::ref_type participant)
+  IDL::traits<::DDS::DomainParticipant>::ref_type participant)
 {
   DDS4CCM_LOG_TRACE ("DDS_Base_Connector_T::init_publisher");
 
   ::DDS::ReturnCode_t retcode;
-  IDL::traits< ::DDS::Publisher>::ref_type publisher;
+  IDL::traits<::DDS::Publisher>::ref_type publisher;
 
   if (!this->qos_profile_.empty ())
   {
@@ -360,7 +360,7 @@ DDS_Base_Connector_T<CCM_TYPE>::init_publisher (
     {
       DDS4CCM_LOG_ERROR ("DDS_Base_Connector_T::init_publisher - "
         << "Error: Unable to retrieve get_default_publisher_qos: <"
-        << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+        << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
         << ">.");
       throw CCM_DDS::InternalError (retcode, 0);
     }
@@ -378,7 +378,7 @@ DDS_Base_Connector_T<CCM_TYPE>::init_publisher (
     {
       DDS4CCM_LOG_ERROR ("DDS_Base_Connector_T::init_publisher - "
         << "Error whilst enabling the Publisher: <"
-        << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+        << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
         << ">.");
       throw CCM_DDS::InternalError (retcode, 0);
     }
@@ -399,14 +399,14 @@ DDS_Base_Connector_T<CCM_TYPE>::init_publisher (
 }
 
 template <typename CCM_TYPE>
-IDL::traits< ::DDS::Subscriber>::ref_type
+IDL::traits<::DDS::Subscriber>::ref_type
 DDS_Base_Connector_T<CCM_TYPE>::init_subscriber (
-  IDL::traits< ::DDS::DomainParticipant>::ref_type participant)
+  IDL::traits<::DDS::DomainParticipant>::ref_type participant)
 {
   DDS4CCM_LOG_TRACE ("DDS_Base_Connector_T::init_subscriber");
 
   ::DDS::ReturnCode_t retcode;
-  IDL::traits< ::DDS::Subscriber>::ref_type subscriber;
+  IDL::traits<::DDS::Subscriber>::ref_type subscriber;
 
   if (!this->qos_profile_.empty ())
   {
@@ -424,7 +424,7 @@ DDS_Base_Connector_T<CCM_TYPE>::init_subscriber (
     {
       DDS4CCM_LOG_ERROR ("DDS_Base_Connector_T::init_subscriber - "
         << "Error: Unable to retrieve get_default_subscriber_qos: <"
-        << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+        << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
         << ">.");
       throw CCM_DDS::InternalError (retcode, 0);
     }
@@ -439,7 +439,7 @@ DDS_Base_Connector_T<CCM_TYPE>::init_subscriber (
     {
       DDS4CCM_LOG_ERROR ("DDS_Base_Connector_T::init_subscriber - "
         << "Error whilst enabling the Subscriber: <"
-        << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+        << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
         << ">.");
       throw CCM_DDS::InternalError (retcode, 0);
     }
@@ -463,16 +463,16 @@ DDS_Base_Connector_T<CCM_TYPE>::init_subscriber (
   * Activation
   */
 template <typename CCM_TYPE>
-IDL::traits< ::DDS::TopicListener>::ref_type
+IDL::traits<::DDS::TopicListener>::ref_type
 DDS_Base_Connector_T<CCM_TYPE>::activate_topic (
-  IDL::traits< ::DDS::Topic>::ref_type topic)
+  IDL::traits<::DDS::Topic>::ref_type topic)
 {
   DDS4CCM_LOG_TRACE ("DDS_Base_Connector_T::activate_topic");
 
   IDL::traits< CCM_DDS::ConnectorStatusListener>::ref_type error_listener =
     this->context_->get_connection_error_listener ();
 
-  IDL::traits< ::DDS::TopicListener>::ref_type topic_listener;
+  IDL::traits<::DDS::TopicListener>::ref_type topic_listener;
 
   using event_strategy_type = typename CCM_TYPE::error_event_strategy_type;
   using topic_listener_type = CIAOX11::DDS4CCM::TopicListener_T<event_strategy_type>;
@@ -495,7 +495,7 @@ DDS_Base_Connector_T<CCM_TYPE>::activate_topic (
     {
       DDS4CCM_LOG_ERROR ("DDS_Base_Connector_T::activate_topic - "
         << "Error while setting the listener on the topic - <"
-        << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+        << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
         << ">.");
       throw CORBA::INTERNAL ();
     }
@@ -505,16 +505,16 @@ DDS_Base_Connector_T<CCM_TYPE>::activate_topic (
 }
 
 template <typename CCM_TYPE>
-IDL::traits< ::DDS::PublisherListener>::ref_type
+IDL::traits<::DDS::PublisherListener>::ref_type
 DDS_Base_Connector_T<CCM_TYPE>::activate_publisher (
-  IDL::traits< ::DDS::Publisher>::ref_type publisher)
+  IDL::traits<::DDS::Publisher>::ref_type publisher)
 {
   DDS4CCM_LOG_TRACE ("DDS_Base_Connector_T::activate_publisher");
 
   IDL::traits< CCM_DDS::ConnectorStatusListener>::ref_type error_listener =
     this->context_->get_connection_error_listener ();
 
-  IDL::traits< ::DDS::PublisherListener>::ref_type publisher_listener;
+  IDL::traits<::DDS::PublisherListener>::ref_type publisher_listener;
 
   using event_strategy_type = typename CCM_TYPE::error_event_strategy_type ;
 
@@ -536,7 +536,7 @@ DDS_Base_Connector_T<CCM_TYPE>::activate_publisher (
     {
       DDS4CCM_LOG_ERROR ("DDS_Base_Connector_T::activate_publisher - "
         << "Error while setting the listener on the publisher - <"
-        << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+        << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
         << ">.");
       throw CORBA::INTERNAL ();
     }
@@ -545,16 +545,16 @@ DDS_Base_Connector_T<CCM_TYPE>::activate_publisher (
 }
 
 template <typename CCM_TYPE>
-IDL::traits< ::DDS::SubscriberListener>::ref_type
+IDL::traits<::DDS::SubscriberListener>::ref_type
 DDS_Base_Connector_T<CCM_TYPE>::activate_subscriber (
-  IDL::traits< ::DDS::Subscriber>::ref_type subscriber)
+  IDL::traits<::DDS::Subscriber>::ref_type subscriber)
 {
   DDS4CCM_LOG_TRACE ("DDS_Base_Connector_T::activate_subscriber");
 
   IDL::traits< CCM_DDS::ConnectorStatusListener>::ref_type error_listener =
     this->context_->get_connection_error_listener ();
 
-  IDL::traits< ::DDS::SubscriberListener>::ref_type subscriber_listener;
+  IDL::traits<::DDS::SubscriberListener>::ref_type subscriber_listener;
 
   using event_strategy_type = typename CCM_TYPE::error_event_strategy_type;
   using subscriber_listener_type = CIAOX11::DDS4CCM::SubscriberListener_T<event_strategy_type>;
@@ -577,7 +577,7 @@ DDS_Base_Connector_T<CCM_TYPE>::activate_subscriber (
       {
         DDS4CCM_LOG_ERROR ("DDS_Base_Connector_T::activate_subscriber - "
           << "Error while setting the listener on the subscriber - <"
-          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+          << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">.");
         throw CORBA::INTERNAL ();
       }
@@ -591,8 +591,8 @@ DDS_Base_Connector_T<CCM_TYPE>::activate_subscriber (
 template <typename CCM_TYPE>
 void
 DDS_Base_Connector_T<CCM_TYPE>::passivate_topic (
-  IDL::traits< ::DDS::Topic>::ref_type topic,
-  IDL::traits< ::DDS::TopicListener>::ref_type topic_listener)
+  IDL::traits<::DDS::Topic>::ref_type topic,
+  IDL::traits<::DDS::TopicListener>::ref_type topic_listener)
 {
   DDS4CCM_LOG_TRACE ("DDS_Base_Connector_T::passivate_topic");
 
@@ -606,7 +606,7 @@ DDS_Base_Connector_T<CCM_TYPE>::passivate_topic (
     {
       DDS4CCM_LOG_ERROR ("DDS_Base_Connector_T::passivate_topic - "
         << "Error while setting the listener on the topic - <"
-        << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+        << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
         << ">.");
       throw CORBA::INTERNAL ();
     }
@@ -616,8 +616,8 @@ DDS_Base_Connector_T<CCM_TYPE>::passivate_topic (
 template <typename CCM_TYPE>
 void
 DDS_Base_Connector_T<CCM_TYPE>::passivate_publisher (
-  IDL::traits< ::DDS::Publisher>::ref_type publisher,
-  IDL::traits< ::DDS::PublisherListener>::ref_type publisher_listener)
+  IDL::traits<::DDS::Publisher>::ref_type publisher,
+  IDL::traits<::DDS::PublisherListener>::ref_type publisher_listener)
 
 {
   DDS4CCM_LOG_TRACE ("DDS_Base_Connector_T::passivate_publisher");
@@ -633,7 +633,7 @@ DDS_Base_Connector_T<CCM_TYPE>::passivate_publisher (
     {
       DDS4CCM_LOG_ERROR ("DDS_Base_Connector_T::passivate_publisher - "
         << "Error while setting the listener on the publisher - <"
-        << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+        << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
         << ">.");
       throw CORBA::INTERNAL ();
     }
@@ -643,8 +643,8 @@ DDS_Base_Connector_T<CCM_TYPE>::passivate_publisher (
 template <typename CCM_TYPE>
 void
 DDS_Base_Connector_T<CCM_TYPE>::passivate_subscriber (
-  IDL::traits< ::DDS::Subscriber>::ref_type subscriber,
-  IDL::traits< ::DDS::SubscriberListener>::ref_type subscriber_listener)
+  IDL::traits<::DDS::Subscriber>::ref_type subscriber,
+  IDL::traits<::DDS::SubscriberListener>::ref_type subscriber_listener)
 {
   DDS4CCM_LOG_TRACE ("DDS_Base_Connector_T::passivate_subscriber");
 
@@ -660,7 +660,7 @@ DDS_Base_Connector_T<CCM_TYPE>::passivate_subscriber (
     {
       DDS4CCM_LOG_ERROR ("DDS_Base_Connector_T::passivate_subscriber - "
         << "Error while setting the listener on the subscriber - <"
-        << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+        << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
         << ">.");
       throw CORBA::INTERNAL ();
     }
@@ -672,8 +672,8 @@ DDS_Base_Connector_T<CCM_TYPE>::passivate_subscriber (
   */
 template <typename CCM_TYPE>
 void DDS_Base_Connector_T<CCM_TYPE>::remove_topic (
-  IDL::traits< ::DDS::DomainParticipant>::ref_type participant,
-  IDL::traits< ::DDS::Topic>::ref_type topic)
+  IDL::traits<::DDS::DomainParticipant>::ref_type participant,
+  IDL::traits<::DDS::Topic>::ref_type topic)
 {
   DDS4CCM_LOG_TRACE ("DDS_Base_Connector_T::remove_topic");
 
@@ -695,7 +695,7 @@ void DDS_Base_Connector_T<CCM_TYPE>::remove_topic (
       << "> from participant "
       << IDL::traits<DDS::Entity>::write<entity_formatter> (participant)
       << " - return code <"
-      << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+      << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
       << ">.");
     throw CCM_DDS::InternalError (retcode, 0);
   }
@@ -707,7 +707,7 @@ void DDS_Base_Connector_T<CCM_TYPE>::remove_topic (
       << "> from participant "
       << IDL::traits<DDS::Entity>::write<entity_formatter> (participant)
       << " - return code <"
-      << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+      << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
       << ">.");
   }
 }
@@ -715,8 +715,8 @@ void DDS_Base_Connector_T<CCM_TYPE>::remove_topic (
 template <typename CCM_TYPE>
 void
 DDS_Base_Connector_T<CCM_TYPE>::remove_publisher (
-  IDL::traits< ::DDS::DomainParticipant>::ref_type participant,
-  IDL::traits< ::DDS::Publisher>::ref_type publisher)
+  IDL::traits<::DDS::DomainParticipant>::ref_type participant,
+  IDL::traits<::DDS::Publisher>::ref_type publisher)
 {
   DDS4CCM_LOG_TRACE ("DDS_Base_Connector_T::remove_publisher");
 
@@ -732,7 +732,7 @@ DDS_Base_Connector_T<CCM_TYPE>::remove_publisher (
   {
     DDS4CCM_LOG_ERROR ("DDS_Base_Connector_T::remove_publisher - "
       << "Unable to remove publisher: <"
-      << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+      << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
       << ">.");
     throw CORBA::INTERNAL ();
   }
@@ -746,8 +746,8 @@ DDS_Base_Connector_T<CCM_TYPE>::remove_publisher (
 template <typename CCM_TYPE>
 void
 DDS_Base_Connector_T<CCM_TYPE>::remove_subscriber (
-  IDL::traits< ::DDS::DomainParticipant>::ref_type participant,
-  IDL::traits< ::DDS::Subscriber>::ref_type subscriber)
+  IDL::traits<::DDS::DomainParticipant>::ref_type participant,
+  IDL::traits<::DDS::Subscriber>::ref_type subscriber)
 {
   DDS4CCM_LOG_TRACE ("DDS_Base_Connector_T::remove_subscriber");
 
@@ -763,7 +763,7 @@ DDS_Base_Connector_T<CCM_TYPE>::remove_subscriber (
   {
     DDS4CCM_LOG_ERROR ("DDS_Base_Connector_T::remove_subscriber - "
       << "Unable to remove subscriber: <"
-      << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+      << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
       << ">.");
     throw CORBA::INTERNAL ();
   }
@@ -778,7 +778,7 @@ DDS_Base_Connector_T<CCM_TYPE>::remove_subscriber (
 template <typename CCM_TYPE>
 void
 DDS_Base_Connector_T<CCM_TYPE>::remove_domain (
-  IDL::traits< ::DDS::DomainParticipant>::ref_type participant)
+  IDL::traits<::DDS::DomainParticipant>::ref_type participant)
 {
   DDS4CCM_LOG_TRACE ("DDS_Base_Connector_T::remove_domain");
 
@@ -801,7 +801,7 @@ DDS_Base_Connector_T<CCM_TYPE>::remove_domain (
       DDS4CCM_LOG_ERROR ("DDS_Base_Connector_T::remove_domain - "
         << "Error removing participant for domain <" << this->domain_id_
         << "> with qos <" << this->qos_profile_ << "> - return code <"
-        << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+        << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
         << ">.");
       throw CCM_DDS::InternalError (retcode, 0);
     }
@@ -810,7 +810,7 @@ DDS_Base_Connector_T<CCM_TYPE>::remove_domain (
       DDS4CCM_LOG_DEBUG ("DDS_Base_Connector_T::remove_domain - "
         << "Removed participant for domain <" << this->domain_id_
         << "> with qos <" << this->qos_profile_ << "> - return code <"
-        << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+        << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
         << ">.");
     }
   }

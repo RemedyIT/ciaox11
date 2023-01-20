@@ -31,11 +31,11 @@ namespace DDSX11
        * @brief NDDS extension. Creates a data reader, using
        *        the QOS profile string
        */
-      IDL::traits< ::DDS::DataReader>::ref_type
+      IDL::traits<::DDS::DataReader>::ref_type
       create_datareader_with_profile (
-        IDL::traits< ::DDS::TopicDescription>::ref_type a_topic,
+        IDL::traits<::DDS::TopicDescription>::ref_type a_topic,
         const std::string &qos_profile,
-        IDL::traits< ::DDS::DataReaderListener>::ref_type a_listener,
+        IDL::traits<::DDS::DataReaderListener>::ref_type a_listener,
         ::DDS::StatusMask mask) override;
 
   private:
@@ -45,14 +45,14 @@ namespace DDSX11
       //@{
       DDS_Native::DDS::DataReader *
       create_native_datareader_with_profile (
-        IDL::traits< ::DDS::Topic>::ref_type topic,
+        IDL::traits<::DDS::Topic>::ref_type topic,
         const std::string &qos_profile,
         DDS_Native::DDS::DataReaderListener * ccm_dds_drl,
         ::DDS::StatusMask mask);
 
       DDS_Native::DDS::DataReader *
       create_native_datareader_with_profile (
-        IDL::traits< ::DDS::ContentFilteredTopic>::ref_type topic,
+        IDL::traits<::DDS::ContentFilteredTopic>::ref_type topic,
         const std::string &qos_profile,
         DDS_Native::DDS::DataReaderListener * ccm_dds_drl,
         ::DDS::StatusMask mask);

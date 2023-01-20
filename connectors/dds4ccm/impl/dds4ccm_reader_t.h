@@ -57,10 +57,10 @@ namespace CIAOX11
       query (const CCM_DDS::QueryFilter &filter) override;
 
       void set_dds_reader (
-        IDL::traits< ::DDS::DataReader>::ref_type dr,
+        IDL::traits<::DDS::DataReader>::ref_type dr,
         SharedConditionManager condition_manager);
 
-      IDL::traits< ::DDS::DataReader>::ref_type
+      IDL::traits<::DDS::DataReader>::ref_type
       get_dds_reader ();
 
     private:
@@ -112,7 +112,7 @@ namespace CIAOX11
       read_wo_instance (
         TOPIC_SEQ_TYPE &data,
         ::DDS::SampleInfoSeq &sample_info,
-        IDL::traits< ::DDS::QueryCondition>::ref_type qc);
+        IDL::traits<::DDS::QueryCondition>::ref_type qc);
 
       /**
        * Switches between read_instance_w_condition or just read_instance
@@ -122,7 +122,7 @@ namespace CIAOX11
         TOPIC_SEQ_TYPE &data,
         ::DDS::SampleInfoSeq &sample_info,
         const ::DDS::InstanceHandle_t& lookup_hnd,
-        IDL::traits< ::DDS::QueryCondition>::ref_type qc);
+        IDL::traits<::DDS::QueryCondition>::ref_type qc);
 
       /**
        * Uniform way of returning the loan of the read samples back to DDS.

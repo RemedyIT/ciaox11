@@ -45,8 +45,8 @@ namespace Test_Sender_Impl
     /// Constructor
     /// @param[in] context Component context
     info_recv_exec_i (
-        IDL::traits< ::Test::CCM_Sender_Context>::ref_type context,
-        IDL::traits< ::Test::CCM_Sender>::ref_type component_executor);
+        IDL::traits<::Test::CCM_Sender_Context>::ref_type context,
+        IDL::traits<::Test::CCM_Sender>::ref_type component_executor);
     //@@{__RIDL_REGEN_MARKER__} - END : Test_Sender_Impl::info_recv_exec_i[ctor]
 
     /// Destructor
@@ -215,7 +215,7 @@ namespace Test_Sender_Impl
     bool already_publishing_ {};
 
 
-    IDL::traits< ::Test::LatencyDataConnector::Publisher>::ref_type writer_ {};
+    IDL::traits<::Test::LatencyDataConnector::Publisher>::ref_type writer_ {};
 
     uint32_t iteration_nr_ {};
     std::atomic<bool> matched_ {};

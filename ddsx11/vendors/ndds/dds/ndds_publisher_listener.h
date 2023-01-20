@@ -23,7 +23,7 @@ namespace DDSX11
     {
     public:
       NDDS_PublisherListener_proxy (
-        IDL::traits< ::DDS::PublisherListener>::ref_type p);
+        IDL::traits<::DDS::PublisherListener>::ref_type p);
 
       ~NDDS_PublisherListener_proxy () override;
 

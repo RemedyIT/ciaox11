@@ -38,15 +38,15 @@ namespace Test_Sender_Impl
 
   /// Executor implementation class for info_recv_data_listener facet
   class info_recv_data_listener_exec_i final
-    : public IDL::traits< ::Test::LatencyDataConnector::CCM_Listener>::base_type
+    : public IDL::traits<::Test::LatencyDataConnector::CCM_Listener>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::info_recv_data_listener_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
     info_recv_data_listener_exec_i (
-        IDL::traits< ::Test::CCM_Sender_Context>::ref_type context,
-        IDL::traits< ::Test::CCM_Sender>::ref_type component_executor);
+        IDL::traits<::Test::CCM_Sender_Context>::ref_type context,
+        IDL::traits<::Test::CCM_Sender>::ref_type component_executor);
     //@@{__RIDL_REGEN_MARKER__} - END : Test_Sender_Impl::info_recv_data_listener_exec_i[ctor]
 
     /// Destructor
@@ -75,7 +75,7 @@ namespace Test_Sender_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::Test::CCM_Sender_Context>::ref_type context_;
+    IDL::traits<::Test::CCM_Sender_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -94,14 +94,14 @@ namespace Test_Sender_Impl
 
   /// Executor implementation class for info_recv_status facet
   class info_recv_status_exec_i final
-    : public IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::base_type
+    : public IDL::traits<::CCM_DDS::CCM_PortStatusListener>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::info_recv_status_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
     info_recv_status_exec_i (
-        IDL::traits< ::Test::CCM_Sender_Context>::ref_type context);
+        IDL::traits<::Test::CCM_Sender_Context>::ref_type context);
     //@@{__RIDL_REGEN_MARKER__} - END : Test_Sender_Impl::info_recv_status_exec_i[ctor]
 
     /// Destructor
@@ -112,12 +112,12 @@ namespace Test_Sender_Impl
 
     void
     on_requested_deadline_missed (
-        IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+        IDL::traits<::DDS::DataReader>::ref_type the_reader,
         const ::DDS::RequestedDeadlineMissedStatus& status) override;
 
     void
     on_sample_lost (
-        IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+        IDL::traits<::DDS::DataReader>::ref_type the_reader,
         const ::DDS::SampleLostStatus& status) override;
     //@}
 
@@ -130,7 +130,7 @@ namespace Test_Sender_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::Test::CCM_Sender_Context>::ref_type context_;
+    IDL::traits<::Test::CCM_Sender_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -149,15 +149,15 @@ namespace Test_Sender_Impl
 
   /// Executor implementation class for connector_status facet
   class connector_status_exec_i final
-    : public IDL::traits< ::CCM_DDS::CCM_ConnectorStatusListener>::base_type
+    : public IDL::traits<::CCM_DDS::CCM_ConnectorStatusListener>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::connector_status_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
     connector_status_exec_i (
-        IDL::traits< ::Test::CCM_Sender_Context>::ref_type context,
-        IDL::traits< ::Test::CCM_Sender>::ref_type component_executor);
+        IDL::traits<::Test::CCM_Sender_Context>::ref_type context,
+        IDL::traits<::Test::CCM_Sender>::ref_type component_executor);
     //@@{__RIDL_REGEN_MARKER__} - END : Test_Sender_Impl::connector_status_exec_i[ctor]
 
     /// Destructor
@@ -168,32 +168,32 @@ namespace Test_Sender_Impl
 
     void
     on_inconsistent_topic (
-        IDL::traits< ::DDS::Topic>::ref_type the_topic,
+        IDL::traits<::DDS::Topic>::ref_type the_topic,
         const ::DDS::InconsistentTopicStatus& status) override;
 
     void
     on_requested_incompatible_qos (
-        IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+        IDL::traits<::DDS::DataReader>::ref_type the_reader,
         const ::DDS::RequestedIncompatibleQosStatus& status) override;
 
     void
     on_sample_rejected (
-        IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+        IDL::traits<::DDS::DataReader>::ref_type the_reader,
         const ::DDS::SampleRejectedStatus& status) override;
 
     void
     on_offered_deadline_missed (
-        IDL::traits< ::DDS::DataWriter>::ref_type the_writer,
+        IDL::traits<::DDS::DataWriter>::ref_type the_writer,
         const ::DDS::OfferedDeadlineMissedStatus& status) override;
 
     void
     on_offered_incompatible_qos (
-        IDL::traits< ::DDS::DataWriter>::ref_type the_writer,
+        IDL::traits<::DDS::DataWriter>::ref_type the_writer,
         const ::DDS::OfferedIncompatibleQosStatus& status) override;
 
     void
     on_unexpected_status (
-        IDL::traits< ::DDS::Entity>::ref_type the_entity,
+        IDL::traits<::DDS::Entity>::ref_type the_entity,
         ::DDS::StatusKind status_kind) override;
     //@}
 
@@ -206,7 +206,7 @@ namespace Test_Sender_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::Test::CCM_Sender_Context>::ref_type context_;
+    IDL::traits<::Test::CCM_Sender_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -226,7 +226,7 @@ namespace Test_Sender_Impl
 
   /// Component Executor Implementation Class : Sender_exec_i
   class Sender_exec_i final
-    : public virtual IDL::traits< ::Test::CCM_Sender>::base_type
+    : public virtual IDL::traits<::Test::CCM_Sender>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::Sender_exec_i[ctor]
@@ -241,13 +241,13 @@ namespace Test_Sender_Impl
 
     /// Factory method and getter for the info_recv_data_listener facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< ::Test::LatencyDataConnector::CCM_Listener>::ref_type get_info_recv_data_listener () override;
+    IDL::traits<::Test::LatencyDataConnector::CCM_Listener>::ref_type get_info_recv_data_listener () override;
     /// Factory method and getter for the info_recv_status facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type get_info_recv_status () override;
+    IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type get_info_recv_status () override;
     /// Factory method and getter for the connector_status facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< ::CCM_DDS::CCM_ConnectorStatusListener>::ref_type get_connector_status () override;
+    IDL::traits<::CCM_DDS::CCM_ConnectorStatusListener>::ref_type get_connector_status () override;
     //@}
 
     /** @name Supported attributes. */
@@ -311,7 +311,7 @@ namespace Test_Sender_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::Test::CCM_Sender_Context>::ref_type context_;
+    IDL::traits<::Test::CCM_Sender_Context>::ref_type context_;
 
     /** @name Component attributes. */
     //@{
@@ -331,9 +331,9 @@ namespace Test_Sender_Impl
 
     /** @name Component facets. */
     //@{
-    IDL::traits< ::Test::LatencyDataConnector::CCM_Listener>::ref_type info_recv_data_listener_;
-    IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type info_recv_status_;
-    IDL::traits< ::CCM_DDS::CCM_ConnectorStatusListener>::ref_type connector_status_;
+    IDL::traits<::Test::LatencyDataConnector::CCM_Listener>::ref_type info_recv_data_listener_;
+    IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type info_recv_status_;
+    IDL::traits<::CCM_DDS::CCM_ConnectorStatusListener>::ref_type connector_status_;
     //@}
 
     /** @name User defined members. */
@@ -346,7 +346,7 @@ namespace Test_Sender_Impl
     bool already_publishing_ {};
 
 
-    IDL::traits< ::Test::LatencyDataConnector::Writer>::ref_type writer_ {};
+    IDL::traits<::Test::LatencyDataConnector::Writer>::ref_type writer_ {};
 
     uint32_t iteration_nr_ {};
     std::atomic<bool> matched_ {};

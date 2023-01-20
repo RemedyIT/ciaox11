@@ -204,7 +204,7 @@ namespace PSDD
         return ((this->listener_ == nullptr && ls.listener_ == nullptr)
             || const_cast<ListenSocket*> (this)->listener_->_is_equivalent (ls.listener_));
       }
-      bool operator== (IDL::traits< ::PSDD::ZMQ::Listener>::ref_type lr) const
+      bool operator== (IDL::traits<::PSDD::ZMQ::Listener>::ref_type lr) const
       {
         return ((this->listener_ == nullptr && lr == nullptr)
             || const_cast<ListenSocket*> (this)->listener_->_is_equivalent (lr));
@@ -214,11 +214,11 @@ namespace PSDD
       friend class Context_Impl;
 
       ListenSocket (
-          IDL::traits< ::PSDD::ZMQ::Listener>::ref_type lr)
+          IDL::traits<::PSDD::ZMQ::Listener>::ref_type lr)
         : listener_ (lr)
       {}
 
-      IDL::traits< ::PSDD::ZMQ::Listener>::ref_type listener_ {};
+      IDL::traits<::PSDD::ZMQ::Listener>::ref_type listener_ {};
     };
   }
 }

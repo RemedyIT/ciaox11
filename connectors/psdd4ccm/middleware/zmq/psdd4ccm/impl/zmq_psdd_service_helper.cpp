@@ -19,7 +19,7 @@ namespace PSDD
   {
     void
     ServiceHelper::get_service_context (
-        IDL::traits< ::Components::SessionContext>::ref_type ctx)
+        IDL::traits<::Components::SessionContext>::ref_type ctx)
     {
       PSDD4CCM_LOG_TRACE (
         "PSDD::ZMQ::ServiceHelper::get_service_context");
@@ -43,7 +43,7 @@ namespace PSDD
           " - creating ZMQ service context");
 
         // create the ZMQ context
-        IDL::traits< ::PSDD::ZMQ::Context_Impl>::ref_type context_ =
+        IDL::traits<::PSDD::ZMQ::Context_Impl>::ref_type context_ =
             CORBA::make_reference< ::PSDD::ZMQ::Context_Impl>();
         // initialize the context
         context_->initialize (this->config_);
@@ -61,13 +61,13 @@ namespace PSDD
           " - retrieved existing ZMQ service context");
 
         this->svc_context_ =
-            IDL::traits< ::PSDD::ZMQ::Context_Impl>::narrow (ctx_obj);
+            IDL::traits<::PSDD::ZMQ::Context_Impl>::narrow (ctx_obj);
       }
     }
 
     void
     ServiceHelper::initialize (
-        IDL::traits< ::Components::SessionContext>::ref_type ctx,
+        IDL::traits<::Components::SessionContext>::ref_type ctx,
         bool publish,
         bool subscribe)
     {
@@ -207,7 +207,7 @@ namespace PSDD
 
     void
     ServiceHelper::schedule_listener (
-        IDL::traits< ::PSDD::ZMQ::Listener>::ref_type l)
+        IDL::traits<::PSDD::ZMQ::Listener>::ref_type l)
     {
       PSDD4CCM_LOG_TRACE (
           "PSDD::ZMQ::ServiceHelper::schedule_listener");
@@ -217,7 +217,7 @@ namespace PSDD
 
     void
     ServiceHelper::remove_listener (
-        IDL::traits< ::PSDD::ZMQ::Listener>::ref_type l)
+        IDL::traits<::PSDD::ZMQ::Listener>::ref_type l)
     {
       PSDD4CCM_LOG_TRACE (
           "PSDD::ZMQ::ServiceHelper::remove_listener");

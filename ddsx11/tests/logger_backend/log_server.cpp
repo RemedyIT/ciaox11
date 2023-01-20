@@ -161,7 +161,7 @@ ACE_TMAIN (int argc, ACE_TCHAR **argv)
       if (retval != DDS::RETCODE_OK)
       {
           DDSX11_TEST_ERROR << "log_server - Failed to register type <"
-            << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retval)
+            << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retval)
             << ">." << std::endl;
           throw 1;
       }
@@ -184,7 +184,7 @@ ACE_TMAIN (int argc, ACE_TCHAR **argv)
       if (retval != DDS::RETCODE_OK)
         {
           DDSX11_TEST_ERROR << "log_server - Failed to retrieve default subscriber QoS <"
-            << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retval)
+            << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retval)
             << ">." << std::endl;
           throw 1;
         }
@@ -206,7 +206,7 @@ ACE_TMAIN (int argc, ACE_TCHAR **argv)
       if (retval != DDS::RETCODE_OK)
         {
           DDSX11_TEST_ERROR << "log_server - Failed to retrieve default datareader QoS <"
-            << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retval)
+            << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retval)
             << ">." << std::endl;
           throw 1;
         }
@@ -252,7 +252,7 @@ ACE_TMAIN (int argc, ACE_TCHAR **argv)
       if (retval != DDS::RETCODE_OK)
         {
           DDSX11_TEST_ERROR << "log_server - Unable to delete datareader <"
-            << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retval)
+            << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retval)
             << ">." << std::endl;
         }
 
@@ -268,7 +268,7 @@ ACE_TMAIN (int argc, ACE_TCHAR **argv)
       if (retval != DDS::RETCODE_OK)
         {
           DDSX11_TEST_ERROR << "log_server - Unable to delete subscriber <"
-            << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retval)
+            << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retval)
             << ">." << std::endl;
         }
       subscriber_ = nullptr;
@@ -282,7 +282,7 @@ ACE_TMAIN (int argc, ACE_TCHAR **argv)
       if (retval != DDS::RETCODE_OK)
         {
           DDSX11_TEST_ERROR << "log_server - Unable to delete topic <"
-            << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retval)
+            << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retval)
             << ">." << std::endl;
         }
       topic_ = nullptr;
@@ -296,7 +296,7 @@ ACE_TMAIN (int argc, ACE_TCHAR **argv)
       if (retval != DDS::RETCODE_OK)
         {
           DDSX11_TEST_ERROR << "log_server - Unable to delete participant <"
-            << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retval)
+            << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retval)
             << ">." << std::endl;
         }
       participant_ = nullptr;
@@ -310,7 +310,7 @@ ACE_TMAIN (int argc, ACE_TCHAR **argv)
       if (retval != DDS::RETCODE_OK)
         {
           DDSX11_TEST_ERROR << "log_server - Unable to finalize participant factory <"
-            << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retval)
+            << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retval)
             << ">." << std::endl;
         }
       dpf_ = nullptr;
@@ -389,7 +389,7 @@ Log_RecordListener::on_data_available (
     else if (retval != DDS::RETCODE_OK)
     {
       DDSX11_TEST_DEBUG << "Unable to take data from datareader, error <"
-        << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retval)
+        << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retval)
         << ">" << std::endl;
       break;
     }

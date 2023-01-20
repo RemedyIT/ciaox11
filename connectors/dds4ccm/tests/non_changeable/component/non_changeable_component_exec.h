@@ -37,7 +37,7 @@ namespace NonChangeableComponent_Impl
 
   /// Executor implementation class for info_get_status facet
   class info_get_status_exec_i final
-    : public IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::base_type
+    : public IDL::traits<::CCM_DDS::CCM_PortStatusListener>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : NonChangeableComponent_Impl::info_get_status_exec_i[ctor]
@@ -55,12 +55,12 @@ namespace NonChangeableComponent_Impl
 
     void
     on_requested_deadline_missed (
-        IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+        IDL::traits<::DDS::DataReader>::ref_type the_reader,
         const ::DDS::RequestedDeadlineMissedStatus& status) override;
 
     void
     on_sample_lost (
-        IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+        IDL::traits<::DDS::DataReader>::ref_type the_reader,
         const ::DDS::SampleLostStatus& status) override;
     //@}
 
@@ -107,7 +107,7 @@ namespace NonChangeableComponent_Impl
 
     /// Factory method and getter for the info_get_status facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type get_info_get_status () override;
+    IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type get_info_get_status () override;
     //@}
 
     /** @name Session component operations */
@@ -147,7 +147,7 @@ namespace NonChangeableComponent_Impl
 
     /** @name Component facets. */
     //@{
-    IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type info_get_status_;
+    IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type info_get_status_;
     //@}
 
     /** @name User defined members. */
@@ -160,10 +160,10 @@ namespace NonChangeableComponent_Impl
     /** @name User defined private operations. */
     //@{
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : NonChangeableComponent_Impl::NonChangeableComponent_exec_i[user_private_ops]
-    bool test_qos_profile (IDL::traits< ::CommonTestConnector::CCM_DDS_Event>::ref_type conn);
-    bool test_filter (IDL::traits< ::CommonTestConnector::CCM_DDS_Event>::ref_type conn);
-    bool test_domain_id (IDL::traits< ::CommonTestConnector::CCM_DDS_Event>::ref_type conn);
-    bool test_topic_name (IDL::traits< ::CommonTestConnector::CCM_DDS_Event>::ref_type conn);
+    bool test_qos_profile (IDL::traits<::CommonTestConnector::CCM_DDS_Event>::ref_type conn);
+    bool test_filter (IDL::traits<::CommonTestConnector::CCM_DDS_Event>::ref_type conn);
+    bool test_domain_id (IDL::traits<::CommonTestConnector::CCM_DDS_Event>::ref_type conn);
+    bool test_topic_name (IDL::traits<::CommonTestConnector::CCM_DDS_Event>::ref_type conn);
     //@@{__RIDL_REGEN_MARKER__} - END : NonChangeableComponent_Impl::NonChangeableComponent_exec_i[user_private_ops]
     //@}
 

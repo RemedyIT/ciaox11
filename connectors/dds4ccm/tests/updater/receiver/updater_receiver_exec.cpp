@@ -249,7 +249,7 @@ namespace UpdaterModule_Receiver_Impl
 
   void
   info_out_one_by_one_status_exec_i::on_requested_deadline_missed (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::RequestedDeadlineMissedStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : UpdaterModule_Receiver_Impl::info_out_one_by_one_status_exec_i::on_requested_deadline_missed[_the_reader_status]
@@ -260,7 +260,7 @@ namespace UpdaterModule_Receiver_Impl
 
   void
   info_out_one_by_one_status_exec_i::on_sample_lost (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::SampleLostStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : UpdaterModule_Receiver_Impl::info_out_one_by_one_status_exec_i::on_sample_lost[_the_reader_status]
@@ -441,7 +441,7 @@ namespace UpdaterModule_Receiver_Impl
 
   void
   info_out_many_by_many_status_exec_i::on_requested_deadline_missed (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::RequestedDeadlineMissedStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : UpdaterModule_Receiver_Impl::info_out_many_by_many_status_exec_i::on_requested_deadline_missed[_the_reader_status]
@@ -452,7 +452,7 @@ namespace UpdaterModule_Receiver_Impl
 
   void
   info_out_many_by_many_status_exec_i::on_sample_lost (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::SampleLostStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : UpdaterModule_Receiver_Impl::info_out_many_by_many_status_exec_i::on_sample_lost[_the_reader_status]
@@ -492,7 +492,7 @@ namespace UpdaterModule_Receiver_Impl
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : UpdaterModule_Receiver_Impl::Receiver_exec_i[configuration_complete]
     DDS4CCM_TEST_DEBUG << "Receiver_exec_i::configuration_complete" << std::endl;
-    IDL::traits< ::CCM_DDS::StateListenerControl>::ref_type lc =
+    IDL::traits<::CCM_DDS::StateListenerControl>::ref_type lc =
       this->context_->get_connection_info_out_one_by_one_data_control ();
 
     if (!lc)
@@ -596,7 +596,7 @@ namespace UpdaterModule_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : UpdaterModule_Receiver_Impl::Receiver_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::CommonTestConnector::CCM_StateListener>::ref_type
+  IDL::traits<::CommonTestConnector::CCM_StateListener>::ref_type
   Receiver_exec_i::get_info_out_one_by_one_data_listener ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : UpdaterModule_Receiver_Impl::Receiver_exec_i[get_info_out_one_by_one_data_listener]
@@ -615,7 +615,7 @@ namespace UpdaterModule_Receiver_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : UpdaterModule_Receiver_Impl::Receiver_exec_i[get_info_out_one_by_one_data_listener]
   }
 
-  IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type
+  IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type
   Receiver_exec_i::get_info_out_one_by_one_status ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : UpdaterModule_Receiver_Impl::Receiver_exec_i[get_info_out_one_by_one_status]
@@ -627,7 +627,7 @@ namespace UpdaterModule_Receiver_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : UpdaterModule_Receiver_Impl::Receiver_exec_i[get_info_out_one_by_one_status]
   }
 
-  IDL::traits< ::CommonTestConnector::CCM_StateListener>::ref_type
+  IDL::traits<::CommonTestConnector::CCM_StateListener>::ref_type
   Receiver_exec_i::get_info_out_many_by_many_data_listener ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : UpdaterModule_Receiver_Impl::Receiver_exec_i[get_info_out_many_by_many_data_listener]
@@ -646,7 +646,7 @@ namespace UpdaterModule_Receiver_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : UpdaterModule_Receiver_Impl::Receiver_exec_i[get_info_out_many_by_many_data_listener]
   }
 
-  IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type
+  IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type
   Receiver_exec_i::get_info_out_many_by_many_status ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : UpdaterModule_Receiver_Impl::Receiver_exec_i[get_info_out_many_by_many_status]

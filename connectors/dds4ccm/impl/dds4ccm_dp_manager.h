@@ -46,7 +46,7 @@ namespace CIAOX11
       * (QOS profile string). If found, it'll increment the
       * reference count of the DDSParticipantTopic instance.
       */
-      IDL::traits< ::DDS::DomainParticipant>::ref_type
+      IDL::traits<::DDS::DomainParticipant>::ref_type
       get_participant (const ::DDS::DomainId_t domain_id,
         const std::string &qos_profile);
 
@@ -59,7 +59,7 @@ namespace CIAOX11
       bool
       register_participant (::DDS::DomainId_t domain_id,
         const std::string &qos_profile,
-        IDL::traits< ::DDS::DomainParticipant>::ref_type dp);
+        IDL::traits<::DDS::DomainParticipant>::ref_type dp);
 
       /**
       * Removes the DDSParticipantTopic instance when the
@@ -70,7 +70,7 @@ namespace CIAOX11
       bool
       unregister_participant (::DDS::DomainId_t domain_id,
         const std::string& qos_profile,
-        IDL::traits< ::DDS::DomainParticipant>::ref_type dp);
+        IDL::traits<::DDS::DomainParticipant>::ref_type dp);
 
       /**
       * Try to close the DPM, at the moment no domain participants are
@@ -95,7 +95,7 @@ namespace CIAOX11
       using IdQosProfile = std::pair<std::string, ::DDS::DomainId_t>;
       /// A domain participant can be used multiple times, so keep a ref count how many times
       /// it is used
-      using DomainParticipantRefcount = std::pair<IDL::traits< ::DDS::DomainParticipant>::ref_type, uint32_t>;
+      using DomainParticipantRefcount = std::pair<IDL::traits<::DDS::DomainParticipant>::ref_type, uint32_t>;
       using DomainParticipants = std::map<IdQosProfile, DomainParticipantRefcount>;
       DomainParticipants dps_;
 

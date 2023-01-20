@@ -139,7 +139,7 @@ namespace Shapes_Sender_comp_Impl
       {
         if (this->instance_handle_ != ::DDS::HANDLE_NIL)
           {
-            IDL::traits< ::ShapeTypeInterface::Writer>::ref_type writer =
+            IDL::traits<::ShapeTypeInterface::Writer>::ref_type writer =
               this->context_->get_connection_info_write_data ();
 
             writer->write_one (this->square_, this->instance_handle_);

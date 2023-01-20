@@ -19,20 +19,20 @@ public:
   TestTypeFactory () = default;
   ~TestTypeFactory() override = default;
 
-  IDL::traits< ::DDS::DataWriter>::ref_type
+  IDL::traits<::DDS::DataWriter>::ref_type
   create_datawriter (::DDS_Native::DDS::DataWriter* dw) override;
 
-  IDL::traits< ::DDS::DataReader>::ref_type
+  IDL::traits<::DDS::DataReader>::ref_type
   create_datareader (::DDS_Native::DDS::DataReader* dr) override;
 };
 
-IDL::traits< ::DDS::DataWriter>::ref_type
+IDL::traits<::DDS::DataWriter>::ref_type
 TestTypeFactory::create_datawriter (::DDS_Native::DDS::DataWriter*)
 {
   return nullptr;
 }
 
-IDL::traits< ::DDS::DataReader>::ref_type
+IDL::traits<::DDS::DataReader>::ref_type
 TestTypeFactory::create_datareader (::DDS_Native::DDS::DataReader*)
 {
   return nullptr;
@@ -52,11 +52,11 @@ int main (int , char **)
         domain_id = std::atoi (domain);
       }
 
-      IDL::traits< ::DDS::DomainParticipantFactory>::ref_type pf =
+      IDL::traits<::DDS::DomainParticipantFactory>::ref_type pf =
         DDS::traits<DDS::DomainParticipantFactory>::get_instance ();
 
       ::DDS::DomainParticipantQos qos;
-      IDL::traits< ::DDS::DomainParticipant>::ref_type dp1 =
+      IDL::traits<::DDS::DomainParticipant>::ref_type dp1 =
         pf->create_participant (domain_id, qos, nullptr, ::DDS::STATUS_MASK_NONE);
       if (!dp1)
         {
@@ -68,7 +68,7 @@ int main (int , char **)
           DDSX11_TEST_DEBUG << "Created DP1" << std::endl;
         }
 
-      IDL::traits< ::DDS::DomainParticipant>::ref_type dp2 =
+      IDL::traits<::DDS::DomainParticipant>::ref_type dp2 =
         pf->create_participant (domain_id, qos, nullptr, ::DDS::STATUS_MASK_NONE);
       if (!dp2)
         {

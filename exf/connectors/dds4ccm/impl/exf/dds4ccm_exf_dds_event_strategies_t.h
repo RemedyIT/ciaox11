@@ -36,7 +36,7 @@ namespace CIAOX11
       protected:
         EventStrategyBase (const Components::ConfigValues &config)
         {
-          DDS4CCM_LOG_TRACE ("ExF::EventStrategyBase::" << "ctor");
+          DDS4CCM_LOG_TRACE ("ExF::EventStrategyBase::ctor");
 
           // check for scheduling lane
           for (const Components::ConfigValue& cval : config)
@@ -54,11 +54,10 @@ namespace CIAOX11
             }
           }
         }
-        EventStrategyBase (const EventStrategyBase& evs)
-          : scheduling_lane_ (evs.scheduling_lane_) {}
+        EventStrategyBase (const EventStrategyBase& evs) = default;
 
       public:
-        virtual ~EventStrategyBase () {}
+        virtual ~EventStrategyBase () = default;
 
       private:
         EventStrategyBase (EventStrategyBase&&) = delete;
@@ -94,7 +93,6 @@ namespace CIAOX11
             if (CIAOX11::ExF::Util::get_exf_defaults (
                     config, def_prio, def_deadline))
             {
-
               this->unexpected_status_deadline_ = def_deadline;
               this->unexpected_status_priority_ = def_prio;
               this->requested_incompatible_qos_deadline_ = def_deadline;
@@ -110,7 +108,6 @@ namespace CIAOX11
             }
 
             // check for scheduling properties
-
             CIAOX11::ExF::Util::get_exf_settings (
                 config,
                 "unexpected_status",
@@ -165,7 +162,7 @@ namespace CIAOX11
           , offered_incompatible_qos_deadline_ (evs.offered_incompatible_qos_deadline_)
           , offered_incompatible_qos_priority_ (evs.offered_incompatible_qos_priority_)
         {}
-        virtual ~ErrorEventStrategy_T () = default;
+        ~ErrorEventStrategy_T () override = default;
 
         // on_unexpected_status
         void
@@ -510,7 +507,7 @@ namespace CIAOX11
           : PortStatusEventStrategyBase (port_status_config, port_status_listener)
           , data_listener_ (data_listener)
         {
-          DDS4CCM_LOG_TRACE ("ExF::DataEventStrategyBase_T<DATA_LISTENER>::" << "ctor");
+          DDS4CCM_LOG_TRACE ("ExF::DataEventStrategyBase_T<DATA_LISTENER>::ctor");
 
           // since it is theoretically possible the data listener is connected
           // from a different component (with a different scheduling lane) than

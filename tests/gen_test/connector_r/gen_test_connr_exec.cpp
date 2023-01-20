@@ -34,7 +34,7 @@ namespace Hello_MyBaseEvent_Impl
 
     void
     on_trigger (
-        IDL::traits< ::CCM_TT::TT_Timer>::ref_type timer,
+        IDL::traits<::CCM_TT::TT_Timer>::ref_type timer,
         const ::CCM_TT::TT_Duration& time,
         uint32_t round) override;
 
@@ -44,7 +44,7 @@ namespace Hello_MyBaseEvent_Impl
 
   void
   TT_Callback::on_trigger (
-      IDL::traits< ::CCM_TT::TT_Timer>::ref_type timer,
+      IDL::traits<::CCM_TT::TT_Timer>::ref_type timer,
       const ::CCM_TT::TT_Duration& time,
       uint32_t round)
   {

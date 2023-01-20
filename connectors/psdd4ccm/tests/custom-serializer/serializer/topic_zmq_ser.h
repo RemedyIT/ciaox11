@@ -26,46 +26,46 @@ namespace Emitter
       /// @copydoc topicPS.idl::LoRa::Topic::Serializer::setup_pack
       bool
       setup_pack (
-          IDL::traits< ::CCM_PSDD::PSData>::ref_type data) override;
+          IDL::traits<::CCM_PSDD::PSData>::ref_type data) override;
 
       /// @copydoc topicPS.idl::LoRa::Topic::Serializer::pack_key
       bool
       pack_key (
-          IDL::traits< ::CCM_PSDD::PSData>::ref_type data,
+          IDL::traits<::CCM_PSDD::PSData>::ref_type data,
           const ::Test::Topic& keyvalue) override;
 
       /// @copydoc topicPS.idl::LoRa::Topic::Serializer::pack_data
       bool
       pack_data (
-          IDL::traits< ::CCM_PSDD::PSData>::ref_type data,
+          IDL::traits<::CCM_PSDD::PSData>::ref_type data,
           const ::Test::Topic& datum) override;
 
       /// @copydoc topicPS.idl::LoRa::Topic::Serializer::finalize_pack
       void
       finalize_pack (
-          IDL::traits< ::CCM_PSDD::PSData>::ref_type data) override;
+          IDL::traits<::CCM_PSDD::PSData>::ref_type data) override;
 
       /// @copydoc topicPS.idl::LoRa::Topic::Serializer::setup_unpack
       bool
       setup_unpack (
-          IDL::traits< ::CCM_PSDD::PSData>::ref_type data) override;
+          IDL::traits<::CCM_PSDD::PSData>::ref_type data) override;
 
       /// @copydoc topicPS.idl::LoRa::Topic::Serializer::unpack_key
       bool
       unpack_key (
-          IDL::traits< ::CCM_PSDD::PSData>::ref_type data,
+          IDL::traits<::CCM_PSDD::PSData>::ref_type data,
           ::Test::Topic& keyvalue) override;
 
       /// @copydoc topicPS.idl::LoRa::Topic::Serializer::unpack_data
       bool
       unpack_data (
-          IDL::traits< ::CCM_PSDD::PSData>::ref_type data,
+          IDL::traits<::CCM_PSDD::PSData>::ref_type data,
           ::Test::Topic& datum) override;
 
       /// @copydoc topicPS.idl::LoRa::Topic::Serializer::finalize_unpack
       void
       finalize_unpack (
-          IDL::traits< ::CCM_PSDD::PSData>::ref_type data) override;
+          IDL::traits<::CCM_PSDD::PSData>::ref_type data) override;
     };
   }
 }

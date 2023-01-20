@@ -40,7 +40,7 @@ namespace Hello_Sender_Impl
       const std::string& func);
 
   void HandleException (
-      IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder,
+      IDL::traits<::CCM_AMI::ExceptionHolder>::ref_type excep_holder,
       const std::string& func);
 
   /// Worker thread for asynchronous invocations

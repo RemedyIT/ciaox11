@@ -29,12 +29,12 @@ namespace CIAOX11
 
       void
       on_reliable_writer_cache_changed (
-        IDL::traits< ::DDS::DataWriter>::ref_type the_writer,
+        IDL::traits<::DDS::DataWriter>::ref_type the_writer,
         const ::DDS::ReliableWriterCacheChangedStatus & status) override;
 
       void
       on_reliable_reader_activity_changed (
-        IDL::traits< ::DDS::DataWriter>::ref_type the_Writer,
+        IDL::traits<::DDS::DataWriter>::ref_type the_Writer,
         const ::DDS::ReliableReaderActivityChangedStatus & status) override;
 
       static ::DDS::StatusKind

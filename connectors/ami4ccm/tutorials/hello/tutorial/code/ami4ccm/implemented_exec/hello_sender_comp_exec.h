@@ -65,7 +65,7 @@ namespace Hello_Sender_comp_Impl
 
   /// Component Executor Implementation Class : Sender_comp_exec_i
   class Sender_comp_exec_i final
-    : public virtual IDL::traits< ::Hello::CCM_Sender_comp>::base_type
+    : public virtual IDL::traits<::Hello::CCM_Sender_comp>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_comp_Impl::Sender_comp_exec_i[ctor]
@@ -109,7 +109,7 @@ namespace Hello_Sender_comp_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::Hello::CCM_Sender_comp_Context>::ref_type context_;
+    IDL::traits<::Hello::CCM_Sender_comp_Context>::ref_type context_;
 
     /** @name Component facets. */
     //@{

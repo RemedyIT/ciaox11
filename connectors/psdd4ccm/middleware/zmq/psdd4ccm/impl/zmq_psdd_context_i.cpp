@@ -421,7 +421,7 @@ namespace PSDD
 
    void
    Context_Impl::schedule_listener (
-       IDL::traits< ::PSDD::ZMQ::Listener>::ref_type lr)
+       IDL::traits<::PSDD::ZMQ::Listener>::ref_type lr)
    {
      PSDD4CCM_LOG_TRACE (
          "PSDD::ZMQ::Context_Impl::schedule_listener");
@@ -439,7 +439,7 @@ namespace PSDD
 
    void
    Context_Impl::remove_listener (
-       IDL::traits< ::PSDD::ZMQ::Listener>::ref_type lr)
+       IDL::traits<::PSDD::ZMQ::Listener>::ref_type lr)
    {
      PSDD4CCM_LOG_TRACE (
          "PSDD::ZMQ::Context_Impl::remove_listener");

@@ -30,11 +30,11 @@ namespace DDSX11
       DDSX11_LOG_TRACE ("NDDS_DomainParticipantFactory_proxy::NDDS_DomainParticipantFactory_proxy");
     }
 
-    IDL::traits< ::DDS::DomainParticipant>::ref_type
+    IDL::traits<::DDS::DomainParticipant>::ref_type
     NDDS_DomainParticipantFactory_proxy::create_participant_with_profile (
       ::DDS::DomainId_t domain_id,
       const std::string &qos_profile,
-      IDL::traits< ::DDS::DomainParticipantListener>::ref_type a_listener,
+      IDL::traits<::DDS::DomainParticipantListener>::ref_type a_listener,
       ::DDS::StatusMask mask)
     {
       DDSX11_LOG_TRACE (
@@ -86,7 +86,7 @@ namespace DDSX11
       // of scope.
       ccm_dds_dpl.release ();
 
-      IDL::traits< ::DDS::DomainParticipant>::ref_type retval =
+      IDL::traits<::DDS::DomainParticipant>::ref_type retval =
         DDSX11::VendorUtils::create_domain_participant_proxy (dds_dp);
 
       if (retval)
@@ -126,7 +126,7 @@ namespace DDSX11
       if (retcode != DDS::RETCODE_OK)
       {
         DDSX11_IMPL_LOG_ERROR ("NDDS_DomainParticipantFactory_proxy::finalize_instance - Error finalizing NDDS: retcode <"
-          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode) << ">");
+          << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode) << ">");
       }
       else
       {

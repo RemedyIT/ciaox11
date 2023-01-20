@@ -65,7 +65,7 @@ namespace CIAOX11
         DDS4CCM_LOG_ERROR ("Updater_T<"
           << ::DDS::traits<TOPIC_TYPE>::get_type_name()
           << ">::update_i - Unable to update data, error <"
-          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+          << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">.");
         throw ::CCM_DDS::InternalError (
             retcode,
@@ -94,7 +94,7 @@ namespace CIAOX11
         DDS4CCM_LOG_ERROR ("Updater_T<"
           << ::DDS::traits<TOPIC_TYPE>::get_type_name()
           << ">::delete_i - Unable to dispose instance, error <"
-          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+          << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">.");
         throw ::CCM_DDS::InternalError (
             retcode,
@@ -107,7 +107,7 @@ namespace CIAOX11
         DDS4CCM_LOG_ERROR ("Updater_T<"
           << ::DDS::traits<TOPIC_TYPE>::get_type_name()
           << ">::delete_i - Unable to unregister instance, error <"
-          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+          << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">.");
         throw ::CCM_DDS::InternalError (
             retcode,
@@ -219,7 +219,7 @@ namespace CIAOX11
         DDS4CCM_LOG_ERROR ("Updater_T<"
           << ::DDS::traits<TOPIC_TYPE>::get_type_name()
           << ">::create_one - Instance already registered with handle <"
-          << IDL::traits< ::DDS::InstanceHandle_t>::write (hnd)
+          << IDL::traits<::DDS::InstanceHandle_t>::write (hnd)
           << ">.");
         throw CCM_DDS::AlreadyCreated ();
       }
@@ -265,7 +265,7 @@ namespace CIAOX11
       // Might throw a CCM_DDS::AlreadyCreated exception
       this->check_already_created (data);
 
-      IDL::traits< ::DDS::Publisher>::ref_type pub = this->dds_writer_->get_publisher ();
+      IDL::traits<::DDS::Publisher>::ref_type pub = this->dds_writer_->get_publisher ();
       if (!pub)
       {
         DDS4CCM_LOG_ERROR ("Updater_T<"

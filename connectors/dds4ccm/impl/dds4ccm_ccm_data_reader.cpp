@@ -27,7 +27,7 @@ namespace CIAOX11
       return this->dds_entity_->enable ();
     }
 
-    IDL::traits< ::DDS::StatusCondition>::ref_type
+    IDL::traits<::DDS::StatusCondition>::ref_type
     CCM_DataReader::get_statuscondition ()
     {
       return this->dds_entity_->get_statuscondition ();
@@ -45,7 +45,7 @@ namespace CIAOX11
       return this->dds_entity_->get_instance_handle ();
     }
 
-    IDL::traits< ::DDS::ReadCondition>::ref_type
+    IDL::traits<::DDS::ReadCondition>::ref_type
     CCM_DataReader::create_readcondition (
       ::DDS::SampleStateMask sample_states,
       ::DDS::ViewStateMask view_states,
@@ -56,7 +56,7 @@ namespace CIAOX11
                                                       instance_states);
     }
 
-    IDL::traits< ::DDS::QueryCondition>::ref_type
+    IDL::traits<::DDS::QueryCondition>::ref_type
     CCM_DataReader::create_querycondition (
       ::DDS::SampleStateMask sample_states,
       ::DDS::ViewStateMask view_states,
@@ -73,7 +73,7 @@ namespace CIAOX11
 
     ::DDS::ReturnCode_t
     CCM_DataReader::delete_readcondition (
-      IDL::traits< ::DDS::ReadCondition>::ref_type a_condition)
+      IDL::traits<::DDS::ReadCondition>::ref_type a_condition)
     {
       return this->dds_entity_->delete_readcondition (std::move(a_condition));
     }
@@ -100,25 +100,25 @@ namespace CIAOX11
 
     ::DDS::ReturnCode_t
     CCM_DataReader::set_listener (
-      IDL::traits< ::DDS::DataReaderListener>::ref_type a_listener,
+      IDL::traits<::DDS::DataReaderListener>::ref_type a_listener,
       ::DDS::StatusMask mask)
     {
       return this->dds_entity_->set_listener (std::move(a_listener), mask);
     }
 
-    IDL::traits< ::DDS::DataReaderListener>::ref_type
+    IDL::traits<::DDS::DataReaderListener>::ref_type
     CCM_DataReader::get_listener ()
     {
       return this->dds_entity_->get_listener ();
     }
 
-    IDL::traits< ::DDS::TopicDescription>::ref_type
+    IDL::traits<::DDS::TopicDescription>::ref_type
     CCM_DataReader::get_topicdescription ()
     {
       return this->dds_entity_->get_topicdescription();
     }
 
-    IDL::traits< ::DDS::Subscriber>::ref_type
+    IDL::traits<::DDS::Subscriber>::ref_type
     CCM_DataReader::get_subscriber ()
     {
       return this->dds_entity_->get_subscriber ();
@@ -191,13 +191,13 @@ namespace CIAOX11
 
     void
     CCM_DataReader::set_dds_entity (
-      IDL::traits< ::DDS::DataReader>::ref_type dr)
+      IDL::traits<::DDS::DataReader>::ref_type dr)
     {
       DDS4CCM_LOG_TRACE ("CCM_DataReader::set_dds_entity");
       this->dds_entity_ = std::move(dr);
     }
 
-    IDL::traits< ::DDS::DataReader>::ref_type
+    IDL::traits<::DDS::DataReader>::ref_type
     CCM_DataReader::get_dds_entity ()
     {
       DDS4CCM_LOG_TRACE ("CCM_DataReader::get_dds_entity");

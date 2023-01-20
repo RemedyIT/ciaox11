@@ -23,7 +23,7 @@ namespace DDSX11
   public:
     /// Constructor
     explicit DDS_PublisherListener_proxy (
-      IDL::traits< ::DDS::PublisherListener>::ref_type p);
+      IDL::traits<::DDS::PublisherListener>::ref_type p);
 
     /// Destructor
     ~DDS_PublisherListener_proxy () override;
@@ -48,11 +48,11 @@ namespace DDSX11
       DDS_Native::DDS::DataWriter *the_writer,
       const DDS_Native::DDS::PublicationMatchedStatus & status) override;
 
-    IDL::traits< ::DDS::PublisherListener>::ref_type
+    IDL::traits<::DDS::PublisherListener>::ref_type
     get_publisher_listener ();
 
   protected:
-    IDL::traits< ::DDS::PublisherListener>::ref_type impl_;
+    IDL::traits<::DDS::PublisherListener>::ref_type impl_;
 
   private:
     DDS_PublisherListener_proxy() = delete;

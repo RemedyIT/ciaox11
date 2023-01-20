@@ -47,7 +47,7 @@ namespace Hello_Sender_Impl
   }
 
   void HandleException (
-      IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder,
+      IDL::traits<::CCM_AMI::ExceptionHolder>::ref_type excep_holder,
       const std::string& func)
   {
     CIAOX11_TEST_INFO << "Sender:\t->HandleException "
@@ -92,7 +92,7 @@ namespace Hello_Sender_Impl
       CIAOX11_TEST_INFO << "Sender:\t->get_connection_sendc_run_my_foo "
                         << std::endl;
 
-      IDL::traits< ::Hello::AMI4CCM_MyFoo>::ref_type my_foo_ami_  =
+      IDL::traits<::Hello::AMI4CCM_MyFoo>::ref_type my_foo_ami_  =
          context_->get_connection_sendc_run_my_foo();
 
       if (!my_foo_ami_)
@@ -435,7 +435,7 @@ namespace Hello_Sender_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Sender_Impl::Sender_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::Hello::CCM_Control>::ref_type
+  IDL::traits<::Hello::CCM_Control>::ref_type
   Sender_exec_i::get_do_control ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl::Sender_exec_i[get_do_control]
@@ -450,7 +450,7 @@ namespace Hello_Sender_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : Hello_Sender_Impl::Sender_exec_i[get_do_control]
   }
 
-  IDL::traits< ::Hello::CCM_MyFoo>::ref_type
+  IDL::traits<::Hello::CCM_MyFoo>::ref_type
   Sender_exec_i::get_do_my_foo ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl::Sender_exec_i[get_do_my_foo]

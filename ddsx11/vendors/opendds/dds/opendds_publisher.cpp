@@ -26,11 +26,11 @@ namespace DDSX11
     {
     }
 
-    IDL::traits< ::DDS::DataWriter>::ref_type
+    IDL::traits<::DDS::DataWriter>::ref_type
     OpenDDS_Publisher_proxy::create_datawriter_with_profile (
-      IDL::traits< ::DDS::Topic>::ref_type a_topic,
+      IDL::traits<::DDS::Topic>::ref_type a_topic,
       const std::string &qos_profile,
-      IDL::traits< ::DDS::DataWriterListener>::ref_type a_listener,
+      IDL::traits<::DDS::DataWriterListener>::ref_type a_listener,
       ::DDS::StatusMask mask)
     {
       DDSX11_LOG_TRACE ("OpenDDS_Publisher_proxy::create_datawriter_with_profile");
@@ -47,7 +47,7 @@ namespace DDSX11
             << "Error: Unable to load the XML for <"
             << qos_profile
             << "> init returns <"
-            << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+            << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
             << ">");
           return {};
         }
@@ -58,14 +58,14 @@ namespace DDSX11
         {
           DDSX11_IMPL_LOG_ERROR ("OpenDDS_Publisher_proxy::create_datawriter_with_profile - "
             << "Error: Unable to retrieve the default DataWriterQos <"
-            << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+            << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
             << ">");
           return {};
         }
 
       DDSX11_IMPL_LOG_DEBUG ("OpenDDS_Publisher_proxy::create_datawriter_with_profile - "
         << "Retrieved default DataWriterQos <"
-        << IDL::traits< ::DDS::DataWriterQos>::write (qos)
+        << IDL::traits<::DDS::DataWriterQos>::write (qos)
         << ">");
 
       std::string const topic_name = a_topic->get_name ();
@@ -76,7 +76,7 @@ namespace DDSX11
 
       DDSX11_IMPL_LOG_DEBUG ("OpenDDS_Publisher_proxy::create_datawriter_with_profile - "
         << "Retrieved XML DataWriterQos <"
-        << IDL::traits< ::DDS::DataWriterQos>::write (qos)
+        << IDL::traits<::DDS::DataWriterQos>::write (qos)
         << ">");
 
       return this->create_datawriter (std::move(a_topic), qos, std::move(a_listener), mask);

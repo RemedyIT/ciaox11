@@ -27,23 +27,23 @@ namespace RG_LateBinding_Receiver_Impl
   : public IDL::traits<CCM_TT::TT_Handler>::base_type
   {
   public:
-    explicit TT_Callback (IDL::traits< ::RG_LateBinding::CCM_Receiver>::weak_ref_type component_executor)
+    explicit TT_Callback (IDL::traits<::RG_LateBinding::CCM_Receiver>::weak_ref_type component_executor)
             : component_executor_(component_executor)
     {}
 
     void
     on_trigger (
-      IDL::traits< ::CCM_TT::TT_Timer>::ref_type timer,
+      IDL::traits<::CCM_TT::TT_Timer>::ref_type timer,
       const ::CCM_TT::TT_Duration& time,
       uint32_t round) override;
 
   private:
-    IDL::traits< ::RG_LateBinding::CCM_Receiver>::weak_ref_type component_executor_;
+    IDL::traits<::RG_LateBinding::CCM_Receiver>::weak_ref_type component_executor_;
  };
 
    void
    TT_Callback::on_trigger (
-     IDL::traits< ::CCM_TT::TT_Timer>::ref_type timer,
+     IDL::traits<::CCM_TT::TT_Timer>::ref_type timer,
      const ::CCM_TT::TT_Duration& time,
      uint32_t round)
    {
@@ -92,7 +92,7 @@ namespace RG_LateBinding_Receiver_Impl
 
   void
   info_get_status_exec_i::on_requested_deadline_missed (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::RequestedDeadlineMissedStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : RG_LateBinding_Receiver_Impl::info_get_status_exec_i::on_requested_deadline_missed[_the_reader_status]
@@ -103,7 +103,7 @@ namespace RG_LateBinding_Receiver_Impl
 
   void
   info_get_status_exec_i::on_sample_lost (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::SampleLostStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : RG_LateBinding_Receiver_Impl::info_get_status_exec_i::on_sample_lost[_the_reader_status]
@@ -337,7 +337,7 @@ namespace RG_LateBinding_Receiver_Impl
   {
     try
     {
-      IDL::traits< ::CommonTestConnector::Reader>::ref_type reader =
+      IDL::traits<::CommonTestConnector::Reader>::ref_type reader =
         this->context_->get_connection_info_get_data ();
       if (!reader)
       {
@@ -367,7 +367,7 @@ namespace RG_LateBinding_Receiver_Impl
   {
     DDS4CCM_TEST_DEBUG << "Receiver_exec_i::start_reading - "
       "Start reading." << std::endl;
-    IDL::traits< ::CommonTestConnector::Reader>::ref_type reader =
+    IDL::traits<::CommonTestConnector::Reader>::ref_type reader =
       this->context_->get_connection_info_get_data ();
     try
     {
@@ -384,7 +384,7 @@ namespace RG_LateBinding_Receiver_Impl
   {
     try
     {
-      IDL::traits< ::CommonTestConnector::Getter>::ref_type getter =
+      IDL::traits<::CommonTestConnector::Getter>::ref_type getter =
         this->context_->get_connection_info_get_fresh_data ();
       if (!getter)
       {
@@ -411,17 +411,17 @@ namespace RG_LateBinding_Receiver_Impl
 
       DDS4CCM_TEST_DEBUG << "Receiver_exec_i::set_topic_name - "
         << "Setting topic name to <" << topic_name << ">." << std::endl;
-      IDL::traits< ::CommonTestConnector::Getter>::ref_type getter =
+      IDL::traits<::CommonTestConnector::Getter>::ref_type getter =
         this->context_->get_connection_info_get_fresh_data ();
-      IDL::traits< ::CORBA::Object>::ref_type cmp = getter->_get_component ();
+      IDL::traits<::CORBA::Object>::ref_type cmp = getter->_get_component ();
       if (!cmp)
       {
         DDS4CCM_TEST_ERROR << "Receiver_exec_i::set_topic_name - "
           "ERROR: Unable to get component interface." << std::endl;
         return;
       }
-      IDL::traits< ::CommonTestConnector::CCM_DDS_Event>::ref_type conn =
-        IDL::traits< ::CommonTestConnector::CCM_DDS_Event >::narrow (cmp);
+      IDL::traits<::CommonTestConnector::CCM_DDS_Event>::ref_type conn =
+        IDL::traits<::CommonTestConnector::CCM_DDS_Event >::narrow (cmp);
       if (!conn)
       {
         DDS4CCM_TEST_ERROR << "ERROR: Receiver_exec_i::set_topic_name - "
@@ -499,7 +499,7 @@ namespace RG_LateBinding_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : RG_LateBinding_Receiver_Impl::Receiver_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type
+  IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type
   Receiver_exec_i::get_info_get_status ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : RG_LateBinding_Receiver_Impl::Receiver_exec_i[get_info_get_status]

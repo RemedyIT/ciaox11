@@ -34,10 +34,10 @@ namespace DDSX11
   }
 
 
-  IDL::traits< ::DDS::Publisher>::ref_type
+  IDL::traits<::DDS::Publisher>::ref_type
   DDS_DomainParticipant_proxy::create_publisher (
     const ::DDS::PublisherQos & qos,
-    IDL::traits< ::DDS::PublisherListener>::ref_type a_listener,
+    IDL::traits<::DDS::PublisherListener>::ref_type a_listener,
     ::DDS::StatusMask mask)
   {
     DDSX11_LOG_TRACE ("DDS_DomainParticipant_proxy::create_publisher");
@@ -54,7 +54,7 @@ namespace DDSX11
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::create_publisher - "
           << "Error: Unable to retrieve default publisher qos <"
-          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+          << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">");
         return {};
       }
@@ -71,7 +71,7 @@ namespace DDSX11
 
     DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::create_publisher - "
       << "Using PublisherQos <"
-      << IDL::traits< ::DDS::PublisherQos>::write (::DDSX11::traits< ::DDS::PublisherQos>::retn(qos_in))
+      << IDL::traits<::DDS::PublisherQos>::write (::DDSX11::traits< ::DDS::PublisherQos>::retn(qos_in))
       << ">");
 
     DDS_Native::DDS::Publisher_var native_pub =
@@ -92,7 +92,7 @@ namespace DDSX11
     // of scope.
     listener_guard.release ();
 
-    IDL::traits< ::DDS::Publisher>::ref_type publisher =
+    IDL::traits<::DDS::Publisher>::ref_type publisher =
       VendorUtils::create_publisher_proxy (native_pub);
 
     if (publisher)
@@ -121,11 +121,11 @@ namespace DDSX11
 
   ::DDS::ReturnCode_t
   DDS_DomainParticipant_proxy::delete_publisher (
-    IDL::traits< ::DDS::Publisher>::ref_type p)
+    IDL::traits<::DDS::Publisher>::ref_type p)
   {
     DDSX11_LOG_TRACE ("DDS_DomainParticipant_proxy::delete_publisher");
 
-    IDL::traits< ::DDSX11::DDS_Publisher_proxy>::ref_type proxy =
+    IDL::traits<::DDSX11::DDS_Publisher_proxy>::ref_type proxy =
       publisher_trait::proxy (p);
     if (!proxy)
       {
@@ -164,7 +164,7 @@ namespace DDSX11
 
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::delete_publisher - "
           << "Error: delete_publisher returned non-ok error <"
-          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+          << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">");
       }
     else
@@ -185,10 +185,10 @@ namespace DDSX11
   }
 
 
-  IDL::traits< ::DDS::Subscriber>::ref_type
+  IDL::traits<::DDS::Subscriber>::ref_type
   DDS_DomainParticipant_proxy::create_subscriber (
     const ::DDS::SubscriberQos & qos,
-    IDL::traits< ::DDS::SubscriberListener>::ref_type a_listener,
+    IDL::traits<::DDS::SubscriberListener>::ref_type a_listener,
     ::DDS::StatusMask mask)
   {
     DDSX11_LOG_TRACE ("DDS_DomainParticipant_proxy::create_subscriber");
@@ -205,7 +205,7 @@ namespace DDSX11
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::create_subscriber - "
           << "Error: Unable to retrieve default subscriber qos <"
-          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+          << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">");
         return {};
       }
@@ -225,7 +225,7 @@ namespace DDSX11
 
     DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::create_subscriber - "
       << "Using SubscriberQos <"
-      << IDL::traits< ::DDS::SubscriberQos>::write (::DDSX11::traits< ::DDS::SubscriberQos>::retn(qos_in))
+      << IDL::traits<::DDS::SubscriberQos>::write (::DDSX11::traits< ::DDS::SubscriberQos>::retn(qos_in))
       << ">");
 
     DDS_Native::DDS::Subscriber_var native_sub =
@@ -247,7 +247,7 @@ namespace DDSX11
     // of scope.
     listener_guard.release ();
 
-    IDL::traits< ::DDS::Subscriber>::ref_type subscriber =
+    IDL::traits<::DDS::Subscriber>::ref_type subscriber =
       VendorUtils::create_subscriber_proxy (native_sub);
 
     if (subscriber)
@@ -278,11 +278,11 @@ namespace DDSX11
 
   ::DDS::ReturnCode_t
   DDS_DomainParticipant_proxy::delete_subscriber (
-    IDL::traits< ::DDS::Subscriber>::ref_type s)
+    IDL::traits<::DDS::Subscriber>::ref_type s)
   {
     DDSX11_LOG_TRACE ("DDS_DomainParticipant_proxy::delete_subscriber");
 
-    IDL::traits< ::DDSX11::DDS_Subscriber_proxy>::ref_type proxy =
+    IDL::traits<::DDSX11::DDS_Subscriber_proxy>::ref_type proxy =
       subscriber_trait::proxy (s);
     if (!proxy)
       {
@@ -321,7 +321,7 @@ namespace DDSX11
 
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::delete_subscriber - "
           << "Error: delete_subscriber returned non-ok error <"
-          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+          << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">");
       }
     else
@@ -341,7 +341,7 @@ namespace DDSX11
   }
 
 
-  IDL::traits< ::DDS::Subscriber>::ref_type
+  IDL::traits<::DDS::Subscriber>::ref_type
   DDS_DomainParticipant_proxy::get_builtin_subscriber ()
   {
     DDSX11_LOG_TRACE ("DDS_DomainParticipant_proxy::get_builtin_subscriber");
@@ -381,12 +381,12 @@ namespace DDSX11
   }
 
 
-  IDL::traits< ::DDS::Topic>::ref_type
+  IDL::traits<::DDS::Topic>::ref_type
   DDS_DomainParticipant_proxy::create_topic (
     const std::string &impl_name,
     const std::string &type_name,
     const ::DDS::TopicQos & qos,
-    IDL::traits< ::DDS::TopicListener>::ref_type a_listener,
+    IDL::traits<::DDS::TopicListener>::ref_type a_listener,
     ::DDS::StatusMask mask)
   {
     DDSX11_LOG_TRACE ("DDS_DomainParticipant_proxy::create_topic");
@@ -404,7 +404,7 @@ namespace DDSX11
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::create_topic - "
           << "Error: Unable to retrieve default topic qos <"
-          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+          << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">");
         return {};
       }
@@ -425,7 +425,7 @@ namespace DDSX11
 
     DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::create_topic - "
       << "Using TopicQos <"
-      << IDL::traits< ::DDS::TopicQos>::write (::DDSX11::traits< ::DDS::TopicQos>::retn (qos_in))
+      << IDL::traits<::DDS::TopicQos>::write (::DDSX11::traits< ::DDS::TopicQos>::retn (qos_in))
       << ">");
 
     DDS_Native::DDS::Topic_var dds_tp =
@@ -451,7 +451,7 @@ namespace DDSX11
     // scope
     listener_guard.release ();
 
-    IDL::traits< ::DDS::Topic>::ref_type topic_reference =
+    IDL::traits<::DDS::Topic>::ref_type topic_reference =
       TAOX11_CORBA::make_reference<DDS_Topic_proxy> (dds_tp);
 
     if (topic_reference)
@@ -481,11 +481,11 @@ namespace DDSX11
 
   ::DDS::ReturnCode_t
   DDS_DomainParticipant_proxy::delete_topic (
-    IDL::traits< ::DDS::Topic>::ref_type a_topic)
+    IDL::traits<::DDS::Topic>::ref_type a_topic)
   {
     DDSX11_LOG_TRACE ("DDS_DomainParticipant_proxy::delete_topic");
 
-    IDL::traits< ::DDSX11::DDS_Topic_proxy>::ref_type proxy =
+    IDL::traits<::DDSX11::DDS_Topic_proxy>::ref_type proxy =
       topic_trait::proxy (a_topic);
     if (!proxy)
       {
@@ -528,7 +528,7 @@ namespace DDSX11
 
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::delete_topic - "
           << "Error: delete_topic returned non-ok error code <"
-          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+          << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">");
       }
     else
@@ -557,7 +557,7 @@ namespace DDSX11
   }
 
 
-  IDL::traits< ::DDS::Topic>::ref_type
+  IDL::traits<::DDS::Topic>::ref_type
   DDS_DomainParticipant_proxy::find_topic (const std::string &impl_name,
     const ::DDS::Duration_t & timeout)
   {
@@ -570,7 +570,7 @@ namespace DDSX11
 
     if (native_topic)
       {
-        IDL::traits< ::DDS::Topic>::ref_type topic =
+        IDL::traits<::DDS::Topic>::ref_type topic =
           TAOX11_CORBA::make_reference<DDS_Topic_proxy> (native_topic);
 
         // Register the topic, when it is already in the map its refcount
@@ -599,7 +599,7 @@ namespace DDSX11
     return {};
   }
 
-  IDL::traits< ::DDS::TopicDescription>::ref_type
+  IDL::traits<::DDS::TopicDescription>::ref_type
   DDS_DomainParticipant_proxy::lookup_topicdescription (const std::string &name)
   {
     DDSX11_LOG_TRACE ("DDS_DomainParticipant_proxy::lookup_topicdescription");
@@ -607,7 +607,7 @@ namespace DDSX11
     DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::lookup_topicdescription - "
       << "Looking up topic: name <" << name << ">");
 
-    IDL::traits< ::DDS::TopicDescription>::ref_type td;
+    IDL::traits<::DDS::TopicDescription>::ref_type td;
     DDS_Native::DDS::TopicDescription_var native_td =
       this->native_entity ()->lookup_topicdescription (
         ::DDSX11::traits<std::string>::in (name));
@@ -642,10 +642,10 @@ namespace DDSX11
   }
 
 
-  IDL::traits< ::DDS::ContentFilteredTopic>::ref_type
+  IDL::traits<::DDS::ContentFilteredTopic>::ref_type
   DDS_DomainParticipant_proxy::create_contentfilteredtopic (
     const std::string &name,
-    IDL::traits< ::DDS::Topic>::ref_type related_topic,
+    IDL::traits<::DDS::Topic>::ref_type related_topic,
     const std::string &filter_expression,
     const ::DDS::StringSeq &expression_parameters)
   {
@@ -679,11 +679,11 @@ namespace DDSX11
 
   ::DDS::ReturnCode_t
   DDS_DomainParticipant_proxy::delete_contentfilteredtopic (
-    IDL::traits< ::DDS::ContentFilteredTopic>::ref_type a_contentfilteredtopic)
+    IDL::traits<::DDS::ContentFilteredTopic>::ref_type a_contentfilteredtopic)
   {
     DDSX11_LOG_TRACE ("DDS_DomainParticipant_proxy::delete_contentfilteredtopic");
 
-    IDL::traits< ::DDSX11::DDS_ContentFilteredTopic_proxy>::ref_type proxy =
+    IDL::traits<::DDSX11::DDS_ContentFilteredTopic_proxy>::ref_type proxy =
       cft_trait::proxy (a_contentfilteredtopic);
     if (!proxy)
       {
@@ -709,7 +709,7 @@ namespace DDSX11
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipantFactory_proxy::delete_contentfilteredtopic - "
           << "delete_contentfilteredtopic returned non-ok error <"
-          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+          << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">");
       }
     else
@@ -723,7 +723,7 @@ namespace DDSX11
     return retcode;
   }
 
-  IDL::traits< ::DDS::MultiTopic>::ref_type
+  IDL::traits<::DDS::MultiTopic>::ref_type
   DDS_DomainParticipant_proxy::create_multitopic (
     const std::string &/*name*/,
     const std::string &/*type_name*/,
@@ -738,7 +738,7 @@ namespace DDSX11
 
   ::DDS::ReturnCode_t
   DDS_DomainParticipant_proxy::delete_multitopic (
-    IDL::traits< ::DDS::MultiTopic>::ref_type /*a_multitopic*/)
+    IDL::traits<::DDS::MultiTopic>::ref_type /*a_multitopic*/)
   {
     DDSX11_LOG_TRACE ("DDS_DomainParticipant_proxy::delete_multitopic");
     //Not implemented in version ndds.4.5b.rev01 of RTI DDS.
@@ -771,7 +771,7 @@ namespace DDSX11
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::set_qos - "
           << "Error: Unable to retrieve participant qos <"
-          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+          << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">");
         return retcode;
       }
@@ -780,7 +780,7 @@ namespace DDSX11
 
     DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::set_qos - "
       << "Setting DomainParticipantQos <"
-      << IDL::traits< ::DDS::DomainParticipantQos>::write (::DDSX11::traits< ::DDS::DomainParticipantQos>::retn (qos_in))
+      << IDL::traits<::DDS::DomainParticipantQos>::write (::DDSX11::traits< ::DDS::DomainParticipantQos>::retn (qos_in))
       << ">");
 
     return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
@@ -801,7 +801,7 @@ namespace DDSX11
 
   ::DDS::ReturnCode_t
   DDS_DomainParticipant_proxy::set_listener (
-    IDL::traits< ::DDS::DomainParticipantListener>::ref_type a_listener,
+    IDL::traits<::DDS::DomainParticipantListener>::ref_type a_listener,
     ::DDS::StatusMask mask)
   {
     DDSX11_LOG_TRACE ("DDS_DomainParticipant_proxy::set_listener");
@@ -841,7 +841,7 @@ namespace DDSX11
   }
 
 
-  IDL::traits< ::DDS::DomainParticipantListener>::ref_type
+  IDL::traits<::DDS::DomainParticipantListener>::ref_type
   DDS_DomainParticipant_proxy::get_listener ()
   {
     DDSX11_LOG_TRACE ("DDS_DomainParticipant_proxy::get_listener");
@@ -870,7 +870,7 @@ namespace DDSX11
 
   ::DDS::ReturnCode_t
   DDS_DomainParticipant_proxy::ignore_participant (
-    IDL::traits< ::DDS::InstanceHandle_t>::in_type handle)
+    IDL::traits<::DDS::InstanceHandle_t>::in_type handle)
   {
     return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
       this->native_entity ()->ignore_participant (
@@ -939,7 +939,7 @@ namespace DDSX11
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::set_default_publisher_qos - "
           << "Error: Unable to retrieve default publisher qos <"
-          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+          << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">");
         return retcode;
       }
@@ -948,7 +948,7 @@ namespace DDSX11
 
     DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::set_default_publisher_qos - "
       << "Setting PublisherQos <"
-      << IDL::traits< ::DDS::PublisherQos>::write (::DDSX11::traits< ::DDS::PublisherQos>::retn (qos_in))
+      << IDL::traits<::DDS::PublisherQos>::write (::DDSX11::traits< ::DDS::PublisherQos>::retn (qos_in))
       << ">");
 
     return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
@@ -983,7 +983,7 @@ namespace DDSX11
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::set_default_subscriber_qos - "
           << "Error: Unable to retrieve default subscriber qos <"
-          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+          << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">");
         return retcode;
       }
@@ -992,7 +992,7 @@ namespace DDSX11
 
     DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::set_default_subscriber_qos - "
       << "Setting SubscriberQos <"
-      << IDL::traits< ::DDS::SubscriberQos>::write (::DDSX11::traits <::DDS::SubscriberQos>::retn (qos_in))
+      << IDL::traits<::DDS::SubscriberQos>::write (::DDSX11::traits <::DDS::SubscriberQos>::retn (qos_in))
       << ">");
 
     return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
@@ -1027,7 +1027,7 @@ namespace DDSX11
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::set_default_topic_qos - "
           << "Error: Unable to retrieve default topic qos <"
-          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+          << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">");
         return retcode;
       }
@@ -1036,7 +1036,7 @@ namespace DDSX11
 
     DDSX11_IMPL_LOG_DEBUG ("DDS_DomainParticipant_proxy::set_default_topic_qos - "
       << "Setting TopicQos <"
-      << IDL::traits< ::DDS::TopicQos>::write (::DDSX11::traits< ::DDS::TopicQos>::retn (qos_in))
+      << IDL::traits<::DDS::TopicQos>::write (::DDSX11::traits< ::DDS::TopicQos>::retn (qos_in))
       << ">");
 
     return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
@@ -1073,7 +1073,7 @@ namespace DDSX11
   ::DDS::ReturnCode_t
   DDS_DomainParticipant_proxy::get_discovered_participant_data (
     ::DDS::ParticipantBuiltinTopicData & impl_data,
-    IDL::traits< ::DDS::InstanceHandle_t>::in_type impl_handle)
+    IDL::traits<::DDS::InstanceHandle_t>::in_type impl_handle)
   {
     DDSX11_LOG_TRACE ("DDS_DomainParticipant_proxy::get_discovered_participant_data");
 
@@ -1127,7 +1127,7 @@ namespace DDSX11
 
   bool
   DDS_DomainParticipant_proxy::contains_entity (
-    IDL::traits< ::DDS::InstanceHandle_t>::in_type a_handle)
+    IDL::traits<::DDS::InstanceHandle_t>::in_type a_handle)
   {
     DDSX11_LOG_TRACE ("DDS_DomainParticipant_proxy::contains_entity");
 
@@ -1157,12 +1157,12 @@ namespace DDSX11
   }
 
 
-  IDL::traits< ::DDS::StatusCondition>::ref_type
+  IDL::traits<::DDS::StatusCondition>::ref_type
   DDS_DomainParticipant_proxy::get_statuscondition ()
   {
     DDSX11_LOG_TRACE ("DDS_DomainParticipant_proxy::get_statuscondition");
 
-    IDL::traits< ::DDS::StatusCondition>::ref_type retval;
+    IDL::traits<::DDS::StatusCondition>::ref_type retval;
     DDS_Native::DDS::StatusCondition_var sc =
       this->native_entity ()->get_statuscondition ();
     if (sc)

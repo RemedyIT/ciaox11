@@ -26,7 +26,7 @@ namespace DDSX11
 {
   namespace VendorUtils
   {
-    IDL::traits< ::DDS::Publisher>::ref_type
+    IDL::traits<::DDS::Publisher>::ref_type
     create_publisher_proxy (
       DDS_Native::DDS::Publisher *p)
     {
@@ -34,7 +34,7 @@ namespace DDSX11
       return proxy;
     }
 
-    IDL::traits< ::DDS::Subscriber>::ref_type
+    IDL::traits<::DDS::Subscriber>::ref_type
     create_subscriber_proxy (
       DDS_Native::DDS::Subscriber *s)
     {
@@ -42,7 +42,7 @@ namespace DDSX11
       return proxy;
     }
 
-    IDL::traits< ::DDS::DomainParticipant>::ref_type
+    IDL::traits<::DDS::DomainParticipant>::ref_type
     create_domain_participant_proxy (
       DDS_Native::DDS::DomainParticipant *dp)
     {
@@ -50,7 +50,7 @@ namespace DDSX11
       return proxy;
     }
 
-    IDL::traits< ::DDS::WaitSet>::ref_type
+    IDL::traits<::DDS::WaitSet>::ref_type
     create_waitset ()
     {
       DDS_Native::DDS::WaitSet_var waitset = new (std::nothrow) DDS_Native::DDS::WaitSet ();
@@ -61,7 +61,7 @@ namespace DDSX11
       return TAOX11_CORBA::make_reference<DDSX11::DDS_WaitSet_proxy> (waitset);
     }
 
-    IDL::traits< ::DDS::DomainParticipantFactory>::ref_type
+    IDL::traits<::DDS::DomainParticipantFactory>::ref_type
     init_dds ()
     {
       DDSX11_IMPL_LOG_DEBUG ("DDSX11::VendorUtils::init_dds - Initializing OpenDDS");
@@ -77,18 +77,18 @@ namespace DDSX11
       return TAOX11_CORBA::make_reference<DDSX11::OpenDDS_PROXY::OpenDDS_DomainParticipantFactory_proxy> (dpf);
     }
 
-    IDL::traits< ::DDS::DomainParticipantFactory>::ref_type
+    IDL::traits<::DDS::DomainParticipantFactory>::ref_type
     domain_participant_factory ()
     {
       DDSX11_IMPL_LOG_DEBUG ("DDSX11::VendorUtils::domain_participant_factory");
       // See C++ specification section 6.7 [stmt.dcl] p4
-      static IDL::traits< ::DDS::DomainParticipantFactory>::ref_type dpf = init_dds ();
+      static IDL::traits<::DDS::DomainParticipantFactory>::ref_type dpf = init_dds ();
       return dpf;
     }
 
     DDS_Native::DDS::PublisherListener*
     create_publisher_listener (
-      IDL::traits< ::DDS::PublisherListener>::ref_type listener)
+      IDL::traits<::DDS::PublisherListener>::ref_type listener)
     {
       return new DDS_PublisherListener_proxy (listener);
     }

@@ -17,7 +17,7 @@
 namespace DDS4CCM_TEST_UTILS
 {
   inline bool check_last (
-    IDL::traits< ::CommonTestConnector::Reader>::ref_type reader,
+    IDL::traits<::CommonTestConnector::Reader>::ref_type reader,
     uint32_t last_key, int32_t last_iteration)
   {
     std::string const key_str ("KEY_"+std::to_string (last_key));

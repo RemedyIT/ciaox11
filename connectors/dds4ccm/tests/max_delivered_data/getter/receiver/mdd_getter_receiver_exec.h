@@ -37,7 +37,7 @@ namespace MDD_Getter_Test_Receiver_Impl
 
   /// Executor implementation class for info_get_status facet
   class info_get_status_exec_i final
-    : public IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::base_type
+    : public IDL::traits<::CCM_DDS::CCM_PortStatusListener>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : MDD_Getter_Test_Receiver_Impl::info_get_status_exec_i[ctor]
@@ -55,12 +55,12 @@ namespace MDD_Getter_Test_Receiver_Impl
 
     void
     on_requested_deadline_missed (
-        IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+        IDL::traits<::DDS::DataReader>::ref_type the_reader,
         const ::DDS::RequestedDeadlineMissedStatus& status) override;
 
     void
     on_sample_lost (
-        IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+        IDL::traits<::DDS::DataReader>::ref_type the_reader,
         const ::DDS::SampleLostStatus& status) override;
     //@}
 
@@ -73,7 +73,7 @@ namespace MDD_Getter_Test_Receiver_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::MDD_Getter_Test::CCM_Receiver_Context>::ref_type context_;
+    IDL::traits<::MDD_Getter_Test::CCM_Receiver_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -92,7 +92,7 @@ namespace MDD_Getter_Test_Receiver_Impl
 
   /// Component Executor Implementation Class : Receiver_exec_i
   class Receiver_exec_i final
-    : public virtual IDL::traits< ::MDD_Getter_Test::CCM_Receiver>::base_type
+    : public virtual IDL::traits<::MDD_Getter_Test::CCM_Receiver>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : MDD_Getter_Test_Receiver_Impl::Receiver_exec_i[ctor]
@@ -107,7 +107,7 @@ namespace MDD_Getter_Test_Receiver_Impl
 
     /// Factory method and getter for the info_get_status facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type get_info_get_status () override;
+    IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type get_info_get_status () override;
     //@}
 
     /** @name Session component operations */
@@ -139,7 +139,7 @@ namespace MDD_Getter_Test_Receiver_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::MDD_Getter_Test::CCM_Receiver_Context>::ref_type context_;
+    IDL::traits<::MDD_Getter_Test::CCM_Receiver_Context>::ref_type context_;
 
     /** @name Component attributes. */
     //@{
@@ -147,7 +147,7 @@ namespace MDD_Getter_Test_Receiver_Impl
 
     /** @name Component facets. */
     //@{
-    IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type info_get_status_;
+    IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type info_get_status_;
     //@}
 
     /** @name User defined members. */

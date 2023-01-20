@@ -26,7 +26,7 @@ namespace DDS_Native {
 namespace DDSX11
 {
   class DDSX11_IMPL_Export DDS_Topic_proxy final
-    : public virtual IDL::traits< ::DDS::Topic>::base_type
+    : public virtual IDL::traits<::DDS::Topic>::base_type
     , public virtual NativeEntityBase_T<DDS_Native::DDS::Topic>
   {
   public:
@@ -44,10 +44,10 @@ namespace DDSX11
 
     ::DDS::ReturnCode_t
     set_listener (
-      IDL::traits< ::DDS::TopicListener>::ref_type a_listener,
+      IDL::traits<::DDS::TopicListener>::ref_type a_listener,
       ::DDS::StatusMask mask) override;
 
-    IDL::traits< ::DDS::TopicListener>::ref_type
+    IDL::traits<::DDS::TopicListener>::ref_type
     get_listener () override;
 
     ::DDS::ReturnCode_t
@@ -57,7 +57,7 @@ namespace DDSX11
     ::DDS::ReturnCode_t
     enable () override;
 
-    IDL::traits< ::DDS::StatusCondition>::ref_type
+    IDL::traits<::DDS::StatusCondition>::ref_type
     get_statuscondition () override;
 
     ::DDS::StatusMask
@@ -72,7 +72,7 @@ namespace DDSX11
     std::string
     get_name () override;
 
-    IDL::traits< ::DDS::DomainParticipant>::ref_type
+    IDL::traits<::DDS::DomainParticipant>::ref_type
     get_participant () override;
 
   private:

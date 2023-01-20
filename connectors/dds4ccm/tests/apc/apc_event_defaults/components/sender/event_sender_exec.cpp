@@ -28,7 +28,7 @@ namespace Data_Sender_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Data_Sender_Impl::connector_status_exec_i[ctor]
   connector_status_exec_i::connector_status_exec_i (
-    IDL::traits< ::Data::CCM_Sender_Context>::ref_type context)
+    IDL::traits<::Data::CCM_Sender_Context>::ref_type context)
     : context_ (std::move (context))
   {
   }
@@ -56,7 +56,7 @@ namespace Data_Sender_Impl
 
   void
   connector_status_exec_i::on_inconsistent_topic (
-      IDL::traits< ::DDS::Topic>::ref_type the_topic,
+      IDL::traits<::DDS::Topic>::ref_type the_topic,
       const ::DDS::InconsistentTopicStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Data_Sender_Impl::connector_status_exec_i::on_inconsistent_topic[_the_topic_status]
@@ -67,7 +67,7 @@ namespace Data_Sender_Impl
 
   void
   connector_status_exec_i::on_requested_incompatible_qos (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::RequestedIncompatibleQosStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Data_Sender_Impl::connector_status_exec_i::on_requested_incompatible_qos[_the_reader_status]
@@ -78,7 +78,7 @@ namespace Data_Sender_Impl
 
   void
   connector_status_exec_i::on_sample_rejected (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::SampleRejectedStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Data_Sender_Impl::connector_status_exec_i::on_sample_rejected[_the_reader_status]
@@ -89,7 +89,7 @@ namespace Data_Sender_Impl
 
   void
   connector_status_exec_i::on_offered_deadline_missed (
-      IDL::traits< ::DDS::DataWriter>::ref_type the_writer,
+      IDL::traits<::DDS::DataWriter>::ref_type the_writer,
       const ::DDS::OfferedDeadlineMissedStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Data_Sender_Impl::connector_status_exec_i::on_offered_deadline_missed[_the_writer_status]
@@ -100,7 +100,7 @@ namespace Data_Sender_Impl
 
   void
   connector_status_exec_i::on_offered_incompatible_qos (
-      IDL::traits< ::DDS::DataWriter>::ref_type the_writer,
+      IDL::traits<::DDS::DataWriter>::ref_type the_writer,
       const ::DDS::OfferedIncompatibleQosStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Data_Sender_Impl::connector_status_exec_i::on_offered_incompatible_qos[_the_writer_status]
@@ -111,7 +111,7 @@ namespace Data_Sender_Impl
 
   void
   connector_status_exec_i::on_unexpected_status (
-      IDL::traits< ::DDS::Entity>::ref_type the_entity,
+      IDL::traits<::DDS::Entity>::ref_type the_entity,
       ::DDS::StatusKind status_kind)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Data_Sender_Impl::connector_status_exec_i::on_unexpected_status[_the_entity_status_kind]
@@ -175,7 +175,7 @@ namespace Data_Sender_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Data_Sender_Impl::Sender_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::CCM_DDS::CCM_ConnectorStatusListener>::ref_type
+  IDL::traits<::CCM_DDS::CCM_ConnectorStatusListener>::ref_type
   Sender_exec_i::get_connector_status ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Data_Sender_Impl::Sender_exec_i[get_connector_status]
@@ -246,7 +246,7 @@ namespace Data_Sender_Impl
   {
     // Setting the context of this component.
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Data_Sender_Impl::Sender_exec_i[set_session_context]
-    this->context_ = IDL::traits< ::Data::CCM_Sender_Context >::narrow (std::move(ctx));
+    this->context_ = IDL::traits<::Data::CCM_Sender_Context >::narrow (std::move(ctx));
     //@@{__RIDL_REGEN_MARKER__} - END : Data_Sender_Impl::Sender_exec_i[set_session_context]
   }
 

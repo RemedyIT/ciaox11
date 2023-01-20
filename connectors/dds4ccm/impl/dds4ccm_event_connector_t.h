@@ -56,7 +56,7 @@ public:
   typename IDL::traits<typename CCM_TYPE::pull_consumer_traits::fresh_data_type>::ref_type
   get_pull_consumer_fresh_data () override;
 
-  IDL::traits< ::DDS::CCM_DataReader>::ref_type
+  IDL::traits<::DDS::CCM_DataReader>::ref_type
   get_pull_consumer_dds_entity () override;
 
   IDL::traits< CCM_DDS::CCM_ContentFilterSetting>::ref_type
@@ -78,7 +78,7 @@ public:
   IDL::traits< CCM_DDS::CCM_DataListenerControl>::ref_type
   get_push_consumer_data_control () override;
 
-  IDL::traits< ::DDS::CCM_DataReader>::ref_type
+  IDL::traits<::DDS::CCM_DataReader>::ref_type
   get_push_consumer_dds_entity () override;
 
   IDL::traits< CCM_DDS::CCM_ContentFilterSetting>::ref_type

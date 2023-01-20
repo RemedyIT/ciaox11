@@ -110,22 +110,22 @@ namespace QA_Read_Get_Test_Receiver_Impl
   : public IDL::traits<CCM_TT::TT_Handler>::base_type
   {
   public:
-    explicit TT_Callback (IDL::traits< ::QA_Read_Get_Test::CCM_Receiver>::weak_ref_type component_executor)
+    explicit TT_Callback (IDL::traits<::QA_Read_Get_Test::CCM_Receiver>::weak_ref_type component_executor)
     : component_executor_(component_executor)
     {}
 
     void
     on_trigger (
-         IDL::traits< ::CCM_TT::TT_Timer>::ref_type timer,
+         IDL::traits<::CCM_TT::TT_Timer>::ref_type timer,
          const ::CCM_TT::TT_Duration& time,
          uint32_t round) override;
     private:
-      IDL::traits< ::QA_Read_Get_Test::CCM_Receiver>::weak_ref_type component_executor_;
+      IDL::traits<::QA_Read_Get_Test::CCM_Receiver>::weak_ref_type component_executor_;
    };
 
    void
    TT_Callback::on_trigger (
-       IDL::traits< ::CCM_TT::TT_Timer>::ref_type timer,
+       IDL::traits<::CCM_TT::TT_Timer>::ref_type timer,
        const ::CCM_TT::TT_Duration& time,
        uint32_t round)
    {
@@ -174,7 +174,7 @@ namespace QA_Read_Get_Test_Receiver_Impl
 
   void
   get_port_status_exec_i::on_requested_deadline_missed (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::RequestedDeadlineMissedStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : QA_Read_Get_Test_Receiver_Impl::get_port_status_exec_i::on_requested_deadline_missed[_the_reader_status]
@@ -185,7 +185,7 @@ namespace QA_Read_Get_Test_Receiver_Impl
 
   void
   get_port_status_exec_i::on_sample_lost (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::SampleLostStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : QA_Read_Get_Test_Receiver_Impl::get_port_status_exec_i::on_sample_lost[_the_reader_status]
@@ -280,7 +280,7 @@ namespace QA_Read_Get_Test_Receiver_Impl
 
   void
   listen_port_status_exec_i::on_requested_deadline_missed (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::RequestedDeadlineMissedStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : QA_Read_Get_Test_Receiver_Impl::listen_port_status_exec_i::on_requested_deadline_missed[_the_reader_status]
@@ -291,7 +291,7 @@ namespace QA_Read_Get_Test_Receiver_Impl
 
   void
   listen_port_status_exec_i::on_sample_lost (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::SampleLostStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : QA_Read_Get_Test_Receiver_Impl::listen_port_status_exec_i::on_sample_lost[_the_reader_status]
@@ -538,7 +538,7 @@ namespace QA_Read_Get_Test_Receiver_Impl
   void Receiver_exec_i::ccm_activate ()
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : QA_Read_Get_Test_Receiver_Impl::Receiver_exec_i[ccm_activate]
-    IDL::traits< ::CommonTestConnector::Getter>::ref_type getter =
+    IDL::traits<::CommonTestConnector::Getter>::ref_type getter =
       this->context_->get_connection_get_port_fresh_data ();
     getter->time_out (DDS::Duration_t (2, 0));
 
@@ -589,7 +589,7 @@ namespace QA_Read_Get_Test_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : QA_Read_Get_Test_Receiver_Impl::Receiver_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type
+  IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type
   Receiver_exec_i::get_get_port_status ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : QA_Read_Get_Test_Receiver_Impl::Receiver_exec_i[get_get_port_status]
@@ -601,7 +601,7 @@ namespace QA_Read_Get_Test_Receiver_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : QA_Read_Get_Test_Receiver_Impl::Receiver_exec_i[get_get_port_status]
   }
 
-  IDL::traits< ::CommonTestConnector::CCM_Listener>::ref_type
+  IDL::traits<::CommonTestConnector::CCM_Listener>::ref_type
   Receiver_exec_i::get_listen_port_data_listener ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : QA_Read_Get_Test_Receiver_Impl::Receiver_exec_i[get_listen_port_data_listener]
@@ -613,7 +613,7 @@ namespace QA_Read_Get_Test_Receiver_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : QA_Read_Get_Test_Receiver_Impl::Receiver_exec_i[get_listen_port_data_listener]
   }
 
-  IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type
+  IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type
   Receiver_exec_i::get_listen_port_status ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : QA_Read_Get_Test_Receiver_Impl::Receiver_exec_i[get_listen_port_status]

@@ -33,7 +33,7 @@ namespace PSDD
 
       void
       initialize (
-          IDL::traits< ::Components::SessionContext>::ref_type ctx,
+          IDL::traits<::Components::SessionContext>::ref_type ctx,
           bool publish,
           bool subscribe);
 
@@ -66,10 +66,10 @@ namespace PSDD
       create_publisher_socket ();
 
       void
-      schedule_listener (IDL::traits< ::PSDD::ZMQ::Listener>::ref_type l);
+      schedule_listener (IDL::traits<::PSDD::ZMQ::Listener>::ref_type l);
 
       void
-      remove_listener (IDL::traits< ::PSDD::ZMQ::Listener>::ref_type l);
+      remove_listener (IDL::traits<::PSDD::ZMQ::Listener>::ref_type l);
 
       void
       reset_listeners ();
@@ -79,9 +79,9 @@ namespace PSDD
 
       void
       get_service_context (
-          IDL::traits< ::Components::SessionContext>::ref_type ctx);
+          IDL::traits<::Components::SessionContext>::ref_type ctx);
 
-      IDL::traits< ::PSDD::ZMQ::Context_Impl>::ref_type svc_context_
+      IDL::traits<::PSDD::ZMQ::Context_Impl>::ref_type svc_context_
       {};
 
       Config config_ {};

@@ -29,7 +29,7 @@ namespace Hello_Receiver_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::do_my_foo_exec_i[ctor]
   do_my_foo_exec_i::do_my_foo_exec_i (
-    IDL::traits< ::Hello::CCM_Receiver_Context>::ref_type context)
+    IDL::traits<::Hello::CCM_Receiver_Context>::ref_type context)
     : context_ (std::move (context))
   {
   }
@@ -203,7 +203,7 @@ namespace Hello_Receiver_Impl
   {
     // Setting the context of this component.
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::Receiver_exec_i[set_session_context]
-    this->context_ = IDL::traits< ::Hello::CCM_Receiver_Context >::narrow (std::move(ctx));
+    this->context_ = IDL::traits<::Hello::CCM_Receiver_Context >::narrow (std::move(ctx));
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::Receiver_exec_i[set_session_context]
   }
 

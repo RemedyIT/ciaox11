@@ -20,7 +20,7 @@ namespace DDSX11
     : public DDS_TypeFactory_i
   {
   public:
-    IDL::traits< ::DDS::DataWriter>::ref_type
+    IDL::traits<::DDS::DataWriter>::ref_type
     create_datawriter (DDS_Native::DDS::DataWriter *dw) override
     {
       using DataWriter_type = DDSX11::DataWriter_T<
@@ -31,7 +31,7 @@ namespace DDSX11
       return proxy;
     }
 
-    IDL::traits< ::DDS::DataReader>::ref_type
+    IDL::traits<::DDS::DataReader>::ref_type
     create_datareader (DDS_Native::DDS::DataReader *dr) override
     {
       using DataReader_type = DDSX11::DataReader_T<

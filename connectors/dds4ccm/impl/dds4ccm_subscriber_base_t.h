@@ -56,8 +56,8 @@ public:
   //@{
   virtual void
   configuration_complete (
-    IDL::traits< ::DDS::Topic>::ref_type topic,
-    IDL::traits< ::DDS::Subscriber>::ref_type subscriber,
+    IDL::traits<::DDS::Topic>::ref_type topic,
+    IDL::traits<::DDS::Subscriber>::ref_type subscriber,
     const std::string &qos_profile);
 
   virtual void
@@ -67,7 +67,7 @@ public:
 
   virtual void passivate ();
 
-  virtual void remove (IDL::traits< ::DDS::Subscriber>::ref_type subscriber);
+  virtual void remove (IDL::traits<::DDS::Subscriber>::ref_type subscriber);
   //@}
 
 protected:
@@ -81,7 +81,7 @@ protected:
    * DDS_Subscriber_Base_T protected members
    */
   //@{
-  IDL::traits< ::DDS::DataReaderListener>::ref_type listener_ {};
+  IDL::traits<::DDS::DataReaderListener>::ref_type listener_ {};
 
   /**
    * @name configuration_complete_

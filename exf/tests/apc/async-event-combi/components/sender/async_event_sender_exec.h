@@ -56,7 +56,7 @@ namespace Hello_Sender_Impl
     /// Constructor
     /// @param[in] context Component context
     connector_status_exec_i (
-        IDL::traits< ::Hello::CCM_Sender_Context>::ref_type context);
+        IDL::traits<::Hello::CCM_Sender_Context>::ref_type context);
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Sender_Impl::connector_status_exec_i[ctor]
 
     /// Destructor

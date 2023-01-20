@@ -41,7 +41,7 @@ namespace GetComponentComponent_Impl
 
   /// Executor implementation class for info_listen_data_listener facet
   class info_listen_data_listener_exec_i final
-    : public IDL::traits< ::CommonTestConnector::CCM_Listener>::base_type
+    : public IDL::traits<::CommonTestConnector::CCM_Listener>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : GetComponentComponent_Impl::info_listen_data_listener_exec_i[ctor]
@@ -96,7 +96,7 @@ namespace GetComponentComponent_Impl
 
   /// Executor implementation class for info_listen_status facet
   class info_listen_status_exec_i final
-    : public IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::base_type
+    : public IDL::traits<::CCM_DDS::CCM_PortStatusListener>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : GetComponentComponent_Impl::info_listen_status_exec_i[ctor]
@@ -114,12 +114,12 @@ namespace GetComponentComponent_Impl
 
     void
     on_requested_deadline_missed (
-        IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+        IDL::traits<::DDS::DataReader>::ref_type the_reader,
         const ::DDS::RequestedDeadlineMissedStatus& status) override;
 
     void
     on_sample_lost (
-        IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+        IDL::traits<::DDS::DataReader>::ref_type the_reader,
         const ::DDS::SampleLostStatus& status) override;
     //@}
 
@@ -151,7 +151,7 @@ namespace GetComponentComponent_Impl
 
   /// Executor implementation class for info_get_status facet
   class info_get_status_exec_i final
-    : public IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::base_type
+    : public IDL::traits<::CCM_DDS::CCM_PortStatusListener>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : GetComponentComponent_Impl::info_get_status_exec_i[ctor]
@@ -169,12 +169,12 @@ namespace GetComponentComponent_Impl
 
     void
     on_requested_deadline_missed (
-        IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+        IDL::traits<::DDS::DataReader>::ref_type the_reader,
         const ::DDS::RequestedDeadlineMissedStatus& status) override;
 
     void
     on_sample_lost (
-        IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+        IDL::traits<::DDS::DataReader>::ref_type the_reader,
         const ::DDS::SampleLostStatus& status) override;
     //@}
 
@@ -221,13 +221,13 @@ namespace GetComponentComponent_Impl
 
     /// Factory method and getter for the info_listen_data_listener facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< ::CommonTestConnector::CCM_Listener>::ref_type get_info_listen_data_listener () override;
+    IDL::traits<::CommonTestConnector::CCM_Listener>::ref_type get_info_listen_data_listener () override;
     /// Factory method and getter for the info_listen_status facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type get_info_listen_status () override;
+    IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type get_info_listen_status () override;
     /// Factory method and getter for the info_get_status facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type get_info_get_status () override;
+    IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type get_info_get_status () override;
     //@}
 
     /** @name Supported attributes. */
@@ -277,9 +277,9 @@ namespace GetComponentComponent_Impl
 
     /** @name Component facets. */
     //@{
-    IDL::traits< ::CommonTestConnector::CCM_Listener>::ref_type info_listen_data_listener_;
-    IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type info_listen_status_;
-    IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type info_get_status_;
+    IDL::traits<::CommonTestConnector::CCM_Listener>::ref_type info_listen_data_listener_;
+    IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type info_listen_status_;
+    IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type info_get_status_;
     //@}
 
     /** @name User defined members. */

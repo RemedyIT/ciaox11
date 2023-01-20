@@ -65,7 +65,7 @@ namespace Hello_Sender_Impl
     CIAOX11_TEST_INFO << "Sender_exec_i:ccm_activate." << std::endl;
     CIAOX11_TEST_INFO << "Sender_exec_i: get_connection_sendc_run_my_foo "
                          << std::endl;
-    IDL::traits< ::Hello::AMI4CCM_MyFoo>::ref_type my_foo_ami_  =
+    IDL::traits<::Hello::AMI4CCM_MyFoo>::ref_type my_foo_ami_  =
           this->context_->get_connection_sendc_run_my_foo();
 
     if (!my_foo_ami_)
@@ -73,7 +73,7 @@ namespace Hello_Sender_Impl
       CIAOX11_TEST_INFO << "ERROR Sender: get_connection_sendc_run_my_foo "
                         << "returns null" << std::endl;
     }
-    IDL::traits< ::Hello::AMI4CCM_MyFooReplyHandler>::ref_type cb =
+    IDL::traits<::Hello::AMI4CCM_MyFooReplyHandler>::ref_type cb =
       CORBA::make_reference<AMI4CCM_MyFooReplyHandler_run_my_foo_i> ();
 
     if(!cb)

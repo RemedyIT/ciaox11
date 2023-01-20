@@ -34,7 +34,7 @@ namespace CIAOX11
       /// Constructor
       explicit ListenerBase_T (
         const typename CCM_TYPE::event_strategy_type& evs,
-        IDL::traits< ::CCM_DDS::DataListenerControl>::ref_type control,
+        IDL::traits<::CCM_DDS::DataListenerControl>::ref_type control,
         SharedConditionManager condition_manager);
 
       /// Destructor
@@ -42,41 +42,41 @@ namespace CIAOX11
 
       /// Implements the thread switch
       void
-      on_data_available (IDL::traits< ::DDS::DataReader>::ref_type rdr) override;
+      on_data_available (IDL::traits<::DDS::DataReader>::ref_type rdr) override;
 
       /// Publishes data to the user defined facet. Invokes on_one_data of on_many_data
       /// based on what's the end user configured in the DataListenerControl.
       virtual void on_data_available_i (
-          IDL::traits< ::DDS::DataReader>::ref_type rdr,
+          IDL::traits<::DDS::DataReader>::ref_type rdr,
           typename IDL::traits<typename CCM_TYPE::data_listener_type>::ref_type listener) = 0;
 
       /// Helper method to determine which DDS mask we have to use
       static ::DDS::StatusMask get_mask (
         typename IDL::traits<typename CCM_TYPE::data_listener_type>::ref_type listener,
-        IDL::traits< ::CCM_DDS::PortStatusListener>::ref_type status);
+        IDL::traits<::CCM_DDS::PortStatusListener>::ref_type status);
 
       static ::DDS::ReturnCode_t take_data_i (
         typename ::DDS::traits<TOPIC_TYPE>::typed_datareader_ref_type reader,
-        IDL::traits< ::DDS::QueryCondition>::ref_type qc,
+        IDL::traits<::DDS::QueryCondition>::ref_type qc,
         TOPIC_SEQ_TYPE &data,
         ::DDS::SampleInfoSeq &sample_info,
         int32_t max_samples);
 
       static ::DDS::ReturnCode_t read_data_i (
         typename ::DDS::traits<TOPIC_TYPE>::typed_datareader_ref_type reader,
-        IDL::traits< ::DDS::QueryCondition>::ref_type qc,
+        IDL::traits<::DDS::QueryCondition>::ref_type qc,
         TOPIC_SEQ_TYPE &data,
         ::DDS::SampleInfoSeq &sample_info,
         int32_t max_samples);
 
     protected:
-      IDL::traits< ::CCM_DDS::DataListenerControl>::ref_type control_;
+      IDL::traits<::CCM_DDS::DataListenerControl>::ref_type control_;
       SharedConditionManager condition_manager_;
 
       /// Pure virtual helper method to get (read/take) data from DDS
       virtual ::DDS::ReturnCode_t get_data_i (
         typename ::DDS::traits<TOPIC_TYPE>::typed_datareader_ref_type reader,
-        IDL::traits< ::DDS::QueryCondition>::ref_type qc,
+        IDL::traits<::DDS::QueryCondition>::ref_type qc,
         TOPIC_SEQ_TYPE &data,
         ::DDS::SampleInfoSeq &sample_info,
         int32_t max_samples) = 0;

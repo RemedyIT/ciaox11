@@ -29,7 +29,7 @@ namespace App_Aggregator_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : App_Aggregator_Impl::do_recorder_exec_i[ctor]
   do_recorder_exec_i::do_recorder_exec_i (
-    IDL::traits< ::App::CCM_Aggregator_Context>::ref_type context,
+    IDL::traits<::App::CCM_Aggregator_Context>::ref_type context,
     TLocationSet& locations,
     TEnvironmentMap& env_hist,
     TRecordMap& record_hist,
@@ -101,7 +101,7 @@ namespace App_Aggregator_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : App_Aggregator_Impl::do_collector_exec_i[ctor]
   do_collector_exec_i::do_collector_exec_i (
-    IDL::traits< ::App::CCM_Aggregator_Context>::ref_type context,
+    IDL::traits<::App::CCM_Aggregator_Context>::ref_type context,
     TLocationSet& locations,
     TEnvironmentMap& env_hist,
     TRecordMap& record_hist,
@@ -322,7 +322,7 @@ namespace App_Aggregator_Impl
   {
     // Setting the context of this component.
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : App_Aggregator_Impl::Aggregator_exec_i[set_session_context]
-    this->context_ = IDL::traits< ::App::CCM_Aggregator_Context >::narrow (std::move(ctx));
+    this->context_ = IDL::traits<::App::CCM_Aggregator_Context >::narrow (std::move(ctx));
     //@@{__RIDL_REGEN_MARKER__} - END : App_Aggregator_Impl::Aggregator_exec_i[set_session_context]
   }
 

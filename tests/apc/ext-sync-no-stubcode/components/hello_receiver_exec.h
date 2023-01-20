@@ -43,7 +43,7 @@ namespace Test_Receiver_Impl
     /// Constructor
     /// @param[in] context Component context
     do_myfoo_exec_i (
-        IDL::traits< ::Test::CCM_Receiver_Context>::ref_type context);
+        IDL::traits<::Test::CCM_Receiver_Context>::ref_type context);
     //@@{__RIDL_REGEN_MARKER__} - END : Test_Receiver_Impl::do_myfoo_exec_i[ctor]
 
     /// Destructor

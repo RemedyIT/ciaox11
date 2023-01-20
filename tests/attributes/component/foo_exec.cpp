@@ -2282,7 +2282,7 @@ namespace Foo_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Foo_Impl::Foo_exec_i::my_any_type[setter]
   }
 
-  IDL::traits< ::MyFoo>::ref_type
+  IDL::traits<::MyFoo>::ref_type
   Foo_exec_i::my_foo_interface ()
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Foo_Impl::Foo_exec_i::my_foo_interface[getter]
@@ -2292,7 +2292,7 @@ namespace Foo_Impl
 
   void
   Foo_exec_i::my_foo_interface (
-      IDL::traits< ::MyFoo>::ref_type my_foo_interface)
+      IDL::traits<::MyFoo>::ref_type my_foo_interface)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Foo_Impl::Foo_exec_i::my_foo_interface[setter]
     this->my_foo_interface_ = my_foo_interface;

@@ -36,14 +36,14 @@ namespace Example_BarProvider_Impl
 
   /// Executor implementation class for do_my_bar facet
   class do_my_bar_exec_i final
-    : public IDL::traits< ::Example::CCM_Bar>::base_type
+    : public IDL::traits<::Example::CCM_Bar>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Example_BarProvider_Impl::do_my_bar_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
     do_my_bar_exec_i (
-        IDL::traits< ::Example::CCM_BarProvider_Context>::ref_type context);
+        IDL::traits<::Example::CCM_BarProvider_Context>::ref_type context);
     //@@{__RIDL_REGEN_MARKER__} - END : Example_BarProvider_Impl::do_my_bar_exec_i[ctor]
 
     /// Destructor
@@ -66,7 +66,7 @@ namespace Example_BarProvider_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::Example::CCM_BarProvider_Context>::ref_type context_;
+    IDL::traits<::Example::CCM_BarProvider_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -85,7 +85,7 @@ namespace Example_BarProvider_Impl
 
   /// Component Executor Implementation Class : BarProvider_exec_i
   class BarProvider_exec_i final
-    : public virtual IDL::traits< ::Example::CCM_BarProvider>::base_type
+    : public virtual IDL::traits<::Example::CCM_BarProvider>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Example_BarProvider_Impl::BarProvider_exec_i[ctor]
@@ -100,7 +100,7 @@ namespace Example_BarProvider_Impl
 
     /// Factory method and getter for the do_my_bar facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< ::Example::CCM_Bar>::ref_type get_do_my_bar () override;
+    IDL::traits<::Example::CCM_Bar>::ref_type get_do_my_bar () override;
     //@}
 
     /** @name Session component operations */
@@ -132,11 +132,11 @@ namespace Example_BarProvider_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::Example::CCM_BarProvider_Context>::ref_type context_;
+    IDL::traits<::Example::CCM_BarProvider_Context>::ref_type context_;
 
     /** @name Component facets. */
     //@{
-    IDL::traits< ::Example::CCM_Bar>::ref_type do_my_bar_;
+    IDL::traits<::Example::CCM_Bar>::ref_type do_my_bar_;
     //@}
 
     /** @name User defined members. */

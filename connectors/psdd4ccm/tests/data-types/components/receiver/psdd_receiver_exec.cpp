@@ -26,24 +26,24 @@ namespace Test_Receiver_Impl
   : public IDL::traits<CCM_TT::TT_Handler>::base_type
   {
   public:
-    explicit TT_Callback (IDL::traits< ::Test::CCM_Receiver>::weak_ref_type component_executor)
+    explicit TT_Callback (IDL::traits<::Test::CCM_Receiver>::weak_ref_type component_executor)
     : component_executor_(component_executor)
      {}
     virtual ~TT_Callback () = default;
 
     void
     on_trigger (
-        IDL::traits< ::CCM_TT::TT_Timer>::ref_type timer,
+        IDL::traits<::CCM_TT::TT_Timer>::ref_type timer,
         const ::CCM_TT::TT_Duration& time,
         uint32_t round) override;
 
   private:
-    IDL::traits< ::Test::CCM_Receiver>::weak_ref_type component_executor_;
+    IDL::traits<::Test::CCM_Receiver>::weak_ref_type component_executor_;
   };
 
   void
   TT_Callback::on_trigger (
-      IDL::traits< ::CCM_TT::TT_Timer>::ref_type timer,
+      IDL::traits<::CCM_TT::TT_Timer>::ref_type timer,
       const ::CCM_TT::TT_Duration& time,
       uint32_t round)
   {
@@ -842,7 +842,7 @@ namespace Test_Receiver_Impl
   {
     // Setting the context of this component.
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Receiver_Impl::Receiver_exec_i[set_session_context]
-    this->context_ = IDL::traits< ::Test::CCM_Receiver_Context >::narrow (std::move(ctx));
+    this->context_ = IDL::traits<::Test::CCM_Receiver_Context >::narrow (std::move(ctx));
     //@@{__RIDL_REGEN_MARKER__} - END : Test_Receiver_Impl::Receiver_exec_i[set_session_context]
   }
 

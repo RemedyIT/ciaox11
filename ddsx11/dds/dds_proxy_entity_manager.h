@@ -69,17 +69,17 @@ namespace DDSX11
       */
     //@{
     static bool
-    register_datareader_proxy (::IDL::traits< ::DDS::DataReader>::ref_type proxy);
+    register_datareader_proxy (::IDL::traits<::DDS::DataReader>::ref_type proxy);
 
-    static bool register_datawriter_proxy (::IDL::traits< ::DDS::DataWriter>::ref_type proxy);
+    static bool register_datawriter_proxy (::IDL::traits<::DDS::DataWriter>::ref_type proxy);
 
-    static bool register_subscriber_proxy (::IDL::traits< ::DDS::Subscriber>::ref_type proxy);
+    static bool register_subscriber_proxy (::IDL::traits<::DDS::Subscriber>::ref_type proxy);
 
-    static bool register_publisher_proxy (::IDL::traits< ::DDS::Publisher>::ref_type proxy);
+    static bool register_publisher_proxy (::IDL::traits<::DDS::Publisher>::ref_type proxy);
 
-    static bool register_topic_proxy (::IDL::traits< ::DDS::Topic>::ref_type proxy, DDS_Native::DDS::Entity *native_entity);
+    static bool register_topic_proxy (::IDL::traits<::DDS::Topic>::ref_type proxy, DDS_Native::DDS::Entity *native_entity);
 
-    static bool register_dp_proxy (::IDL::traits< ::DDS::DomainParticipant>::ref_type proxy);
+    static bool register_dp_proxy (::IDL::traits<::DDS::DomainParticipant>::ref_type proxy);
     //@}
 
     /**
@@ -93,28 +93,28 @@ namespace DDSX11
     //@{
     static bool
     unregister_datareader_proxy (
-      IDL::traits< ::DDS::InstanceHandle_t>::in_type handle);
+      IDL::traits<::DDS::InstanceHandle_t>::in_type handle);
 
     static bool
     unregister_datawriter_proxy (
-      IDL::traits< ::DDS::InstanceHandle_t>::in_type handle);
+      IDL::traits<::DDS::InstanceHandle_t>::in_type handle);
 
     static bool
     unregister_subscriber_proxy (
-      IDL::traits< ::DDS::InstanceHandle_t>::in_type handle);
+      IDL::traits<::DDS::InstanceHandle_t>::in_type handle);
 
     static bool
     unregister_publisher_proxy (
-      IDL::traits< ::DDS::InstanceHandle_t>::in_type handle);
+      IDL::traits<::DDS::InstanceHandle_t>::in_type handle);
 
     static bool
     unregister_topic_proxy (
       DDS_Native::DDS::Entity *native_entity,
-      IDL::traits< ::DDS::InstanceHandle_t>::in_type handle);
+      IDL::traits<::DDS::InstanceHandle_t>::in_type handle);
 
     static bool
     unregister_dp_proxy (
-      IDL::traits< ::DDS::InstanceHandle_t>::in_type handle);
+      IDL::traits<::DDS::InstanceHandle_t>::in_type handle);
     //@}
 
     /**
@@ -124,32 +124,32 @@ namespace DDSX11
       * @return              The C++11 proxy if found; nullptr otherwise
       */
     //@{
-    static ::IDL::traits< ::DDS::DataReader>::ref_type
+    static ::IDL::traits<::DDS::DataReader>::ref_type
     get_datareader_proxy (
       DDS_Native::DDS::Entity *native_entity);
 
-    static ::IDL::traits< ::DDS::DataWriter>::ref_type
+    static ::IDL::traits<::DDS::DataWriter>::ref_type
     get_datawriter_proxy (
       DDS_Native::DDS::Entity *native_entity);
 
-    static ::IDL::traits< ::DDS::Subscriber>::ref_type
+    static ::IDL::traits<::DDS::Subscriber>::ref_type
     get_subscriber_proxy (
       DDS_Native::DDS::Entity *native_entity);
 
-    static ::IDL::traits< ::DDS::Publisher>::ref_type
+    static ::IDL::traits<::DDS::Publisher>::ref_type
     get_publisher_proxy (
       DDS_Native::DDS::Entity *native_entity);
 
-    static ::IDL::traits< ::DDS::Topic>::ref_type
+    static ::IDL::traits<::DDS::Topic>::ref_type
     get_topic_proxy (
       DDS_Native::DDS::Entity *native_entity);
 
-    static ::IDL::traits< ::DDS::DomainParticipant>::ref_type
+    static ::IDL::traits<::DDS::DomainParticipant>::ref_type
     get_dp_proxy (
       DDS_Native::DDS::Entity *native_entity);
 
     /// Search every map for the given entity
-    static ::IDL::traits< ::DDS::Entity>::ref_type
+    static ::IDL::traits<::DDS::Entity>::ref_type
     get_entity_proxy (
         DDS_Native::DDS::Entity *native_entity);
     //@}
@@ -206,26 +206,26 @@ namespace DDSX11
     template<typename PROXY_MAP>
     static bool
     unregister_proxy (
-      IDL::traits< ::DDS::InstanceHandle_t>::in_type handle,
+      IDL::traits<::DDS::InstanceHandle_t>::in_type handle,
       PROXY_MAP &lst);
 
     /// Map containing all DataReader C++11 proxies
-    using DataReaderProxies = std::map< ::DDS::InstanceHandle_t, IDL::traits< ::DDS::DataReader>::ref_type, CompareHandles>;
+    using DataReaderProxies = std::map< ::DDS::InstanceHandle_t, IDL::traits<::DDS::DataReader>::ref_type, CompareHandles>;
     static DataReaderProxies dr_proxies;
     static std::mutex dr_mutex;
 
     /// Map containing all DataWriter C++11 proxies
-    using DataWriterProxies = std::map< ::DDS::InstanceHandle_t, IDL::traits< ::DDS::DataWriter>::ref_type, CompareHandles>;
+    using DataWriterProxies = std::map< ::DDS::InstanceHandle_t, IDL::traits<::DDS::DataWriter>::ref_type, CompareHandles>;
     static DataWriterProxies dw_proxies;
     static std::mutex dw_mutex;
 
     /// Map containing all Subscriber C++11 proxies
-    using SubscriberProxies = std::map< ::DDS::InstanceHandle_t, IDL::traits< ::DDS::Subscriber>::ref_type, CompareHandles>;
+    using SubscriberProxies = std::map< ::DDS::InstanceHandle_t, IDL::traits<::DDS::Subscriber>::ref_type, CompareHandles>;
     static SubscriberProxies sub_proxies;
     static std::mutex sub_mutex;
 
     /// Map containing all Publisher C++11 proxies
-    using PublisherProxies = std::map< ::DDS::InstanceHandle_t, IDL::traits< ::DDS::Publisher>::ref_type, CompareHandles>;
+    using PublisherProxies = std::map< ::DDS::InstanceHandle_t, IDL::traits<::DDS::Publisher>::ref_type, CompareHandles>;
     static PublisherProxies pub_proxies;
     static std::mutex pub_mutex;
 
@@ -233,13 +233,13 @@ namespace DDSX11
     /// A topic can be registered multiple times because using find_topic the native DDS
     /// implementation can return multiple times the same topic for which multiple times the delete_topic
     /// must be called, only for the last instance the unregister will remove it from the map
-    using TopicRefcount = std::pair <uint32_t, IDL::traits< ::DDS::Topic>::ref_type>;
+    using TopicRefcount = std::pair <uint32_t, IDL::traits<::DDS::Topic>::ref_type>;
     using TopicProxies = std::map<DDS_Native::DDS::Entity *, TopicRefcount>;
     static TopicProxies tp_proxies;
     static std::mutex tp_mutex;
 
     /// Map containing all DomainParticipant C++11 proxies
-    using DomainParticipantProxies = std::map< ::DDS::InstanceHandle_t, IDL::traits< ::DDS::DomainParticipant>::ref_type, CompareHandles>;
+    using DomainParticipantProxies = std::map< ::DDS::InstanceHandle_t, IDL::traits<::DDS::DomainParticipant>::ref_type, CompareHandles>;
     static DomainParticipantProxies dp_proxies;
     static std::mutex dp_mutex;
 

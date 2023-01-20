@@ -80,23 +80,23 @@ protected:
    * entities in DDS itself), like DomainParticipant, Topic, Subscriber and Publisher
    */
   //@{
-  IDL::traits< ::DDS::DomainParticipant>::ref_type
+  IDL::traits<::DDS::DomainParticipant>::ref_type
   init_domain ();
 
   virtual void
-  register_type (IDL::traits< ::DDS::DomainParticipant>::ref_type participant,
+  register_type (IDL::traits<::DDS::DomainParticipant>::ref_type participant,
     const std::string &typesupport_name) = 0;
 
-  IDL::traits< ::DDS::Topic>::ref_type
-  init_topic (IDL::traits< ::DDS::DomainParticipant>::ref_type participant,
+  IDL::traits<::DDS::Topic>::ref_type
+  init_topic (IDL::traits<::DDS::DomainParticipant>::ref_type participant,
     const std::string &topic_name,
     const std::string &type_name);
 
-  IDL::traits< ::DDS::Publisher>::ref_type
-  init_publisher (IDL::traits< ::DDS::DomainParticipant>::ref_type participant);
+  IDL::traits<::DDS::Publisher>::ref_type
+  init_publisher (IDL::traits<::DDS::DomainParticipant>::ref_type participant);
 
-  IDL::traits< ::DDS::Subscriber>::ref_type
-  init_subscriber (IDL::traits< ::DDS::DomainParticipant>::ref_type participant);
+  IDL::traits<::DDS::Subscriber>::ref_type
+  init_subscriber (IDL::traits<::DDS::DomainParticipant>::ref_type participant);
   //@}
 
   /**
@@ -106,14 +106,14 @@ protected:
    * This will activate the DDS Entities.
    */
   //@{
-  IDL::traits< ::DDS::TopicListener>::ref_type
-  activate_topic (IDL::traits< ::DDS::Topic>::ref_type topic);
+  IDL::traits<::DDS::TopicListener>::ref_type
+  activate_topic (IDL::traits<::DDS::Topic>::ref_type topic);
 
-  IDL::traits< ::DDS::PublisherListener>::ref_type
-  activate_publisher (IDL::traits< ::DDS::Publisher>::ref_type publisher);
+  IDL::traits<::DDS::PublisherListener>::ref_type
+  activate_publisher (IDL::traits<::DDS::Publisher>::ref_type publisher);
 
-  IDL::traits< ::DDS::SubscriberListener>::ref_type
-  activate_subscriber (IDL::traits< ::DDS::Subscriber>::ref_type subscriber);
+  IDL::traits<::DDS::SubscriberListener>::ref_type
+  activate_subscriber (IDL::traits<::DDS::Subscriber>::ref_type subscriber);
   //@}
 
   /**
@@ -124,15 +124,15 @@ protected:
    */
   //@{
   void
-  passivate_topic (IDL::traits< ::DDS::Topic>::ref_type topic,
-    IDL::traits< ::DDS::TopicListener>::ref_type topic_listener);
+  passivate_topic (IDL::traits<::DDS::Topic>::ref_type topic,
+    IDL::traits<::DDS::TopicListener>::ref_type topic_listener);
 
   void
-  passivate_publisher (IDL::traits< ::DDS::Publisher>::ref_type publisher,
-    IDL::traits< ::DDS::PublisherListener>::ref_type publisher_listener);
+  passivate_publisher (IDL::traits<::DDS::Publisher>::ref_type publisher,
+    IDL::traits<::DDS::PublisherListener>::ref_type publisher_listener);
   void
-  passivate_subscriber (IDL::traits< ::DDS::Subscriber>::ref_type subscriber,
-    IDL::traits< ::DDS::SubscriberListener>::ref_type subscriber_listener);
+  passivate_subscriber (IDL::traits<::DDS::Subscriber>::ref_type subscriber,
+    IDL::traits<::DDS::SubscriberListener>::ref_type subscriber_listener);
   //@}
 
    /**
@@ -142,22 +142,22 @@ protected:
    */
   //@{
   void
-  remove_topic (IDL::traits< ::DDS::DomainParticipant>::ref_type participant,
-    IDL::traits< ::DDS::Topic>::ref_type topic);
+  remove_topic (IDL::traits<::DDS::DomainParticipant>::ref_type participant,
+    IDL::traits<::DDS::Topic>::ref_type topic);
 
   void
-  remove_publisher (IDL::traits< ::DDS::DomainParticipant>::ref_type participant,
-    IDL::traits< ::DDS::Publisher>::ref_type publisher);
+  remove_publisher (IDL::traits<::DDS::DomainParticipant>::ref_type participant,
+    IDL::traits<::DDS::Publisher>::ref_type publisher);
 
   void
-  remove_subscriber (IDL::traits< ::DDS::DomainParticipant>::ref_type participant,
-    IDL::traits< ::DDS::Subscriber>::ref_type subscriber);
+  remove_subscriber (IDL::traits<::DDS::DomainParticipant>::ref_type participant,
+    IDL::traits<::DDS::Subscriber>::ref_type subscriber);
 
   void
-  remove_domain (IDL::traits< ::DDS::DomainParticipant>::ref_type participant);
+  remove_domain (IDL::traits<::DDS::DomainParticipant>::ref_type participant);
 
   virtual void
-  unregister_type (IDL::traits< ::DDS::DomainParticipant>::ref_type participant,
+  unregister_type (IDL::traits<::DDS::DomainParticipant>::ref_type participant,
     const std::string &typesupport_name) = 0;
   //@}
 
@@ -199,7 +199,7 @@ private:
   /**
    * DomainParticipantFactory. Administration of Domain Participants
    */
-  IDL::traits< ::DDS::DomainParticipantFactory>::ref_type participant_factory_;
+  IDL::traits<::DDS::DomainParticipantFactory>::ref_type participant_factory_;
 };
 
 #include "dds4ccm/impl/dds4ccm_base_connector_t.cpp"

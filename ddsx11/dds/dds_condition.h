@@ -26,7 +26,7 @@ namespace DDS_Native {
 namespace DDSX11
 {
   class DDSX11_IMPL_Export DDS_Condition_proxy final
-    : public virtual IDL::traits< ::DDS::Condition>::base_type
+    : public virtual IDL::traits<::DDS::Condition>::base_type
     , public virtual NativeEntityBase_T<DDS_Native::DDS::Condition>
   {
   public:

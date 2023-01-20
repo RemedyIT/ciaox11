@@ -20,7 +20,7 @@
 namespace Hello_Receiver_Impl
 {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl[user_namespace_impl]
-  class TheStateKeeper : public IDL::traits< ::Hello::StateController>::base_type
+  class TheStateKeeper : public IDL::traits<::Hello::StateController>::base_type
   {
   public:
     TheStateKeeper () {}
@@ -76,10 +76,10 @@ namespace Hello_Receiver_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::do_my_foo_exec_i[ctor]
   do_my_foo_exec_i::do_my_foo_exec_i (
-    IDL::traits< ::Hello::CCM_Receiver_Context>::ref_type context)
+    IDL::traits<::Hello::CCM_Receiver_Context>::ref_type context)
     : context_ (std::move (context))
   {
-    this->control_ = IDL::traits< ::Hello::StateController>::make_reference<TheStateKeeper> ();
+    this->control_ = IDL::traits<::Hello::StateController>::make_reference<TheStateKeeper> ();
   }
   //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::do_my_foo_exec_i[ctor]
 
@@ -218,13 +218,13 @@ namespace Hello_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::Receiver_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::Hello::CCM_MyFoo>::ref_type
+  IDL::traits<::Hello::CCM_MyFoo>::ref_type
   Receiver_exec_i::get_do_my_foo ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::Receiver_exec_i[get_do_my_foo]
     if (!this->do_my_foo_)
     {
-      this->do_my_foo_ = IDL::traits< ::Hello::CCM_MyFoo>::make_reference <do_my_foo_exec_i> (this->context_);
+      this->do_my_foo_ = IDL::traits<::Hello::CCM_MyFoo>::make_reference <do_my_foo_exec_i> (this->context_);
     }
     return this->do_my_foo_;
   //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::Receiver_exec_i[get_do_my_foo]
@@ -237,7 +237,7 @@ namespace Hello_Receiver_Impl
   {
     // Setting the context of this component.
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::Receiver_exec_i[set_session_context]
-    this->context_ = IDL::traits< ::Hello::CCM_Receiver_Context >::narrow (std::move(ctx));
+    this->context_ = IDL::traits<::Hello::CCM_Receiver_Context >::narrow (std::move(ctx));
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::Receiver_exec_i[set_session_context]
   }
 
@@ -252,7 +252,7 @@ extern "C" void
 create_Hello_Receiver_Impl (
   IDL::traits<Components::EnterpriseComponent>::ref_type& component)
 {
-  component = IDL::traits< ::Hello::CCM_Receiver>::make_reference <Hello_Receiver_Impl::Receiver_exec_i> ();
+  component = IDL::traits<::Hello::CCM_Receiver>::make_reference <Hello_Receiver_Impl::Receiver_exec_i> ();
 }
 //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl[factory]
 //@@{__RIDL_REGEN_MARKER__} - BEGIN : hello_receiver_impl.cpp[Footer]

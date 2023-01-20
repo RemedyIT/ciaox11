@@ -35,18 +35,18 @@ namespace Filters_Common_Event_Listen_Test_Sender_Impl
 
     void
     on_trigger (
-             IDL::traits< ::CCM_TT::TT_Timer>::ref_type timer,
+             IDL::traits<::CCM_TT::TT_Timer>::ref_type timer,
              const ::CCM_TT::TT_Duration& time,
              uint32_t round) override;
 
   private:
-    IDL::traits< ::Filters_Common_Event_Listen_Test::CCM_Sender>::weak_ref_type component_executor_;
+    IDL::traits<::Filters_Common_Event_Listen_Test::CCM_Sender>::weak_ref_type component_executor_;
     bool const activate_;
   };
 
   void
   TT_Callback::on_trigger (
-           IDL::traits< ::CCM_TT::TT_Timer>::ref_type timer,
+           IDL::traits<::CCM_TT::TT_Timer>::ref_type timer,
            const ::CCM_TT::TT_Duration& time,
            uint32_t round)
   {
@@ -100,7 +100,7 @@ namespace Filters_Common_Event_Listen_Test_Sender_Impl
 
   void
   connector_status_exec_i::on_inconsistent_topic (
-      IDL::traits< ::DDS::Topic>::ref_type the_topic,
+      IDL::traits<::DDS::Topic>::ref_type the_topic,
       const ::DDS::InconsistentTopicStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Filters_Common_Event_Listen_Test_Sender_Impl::connector_status_exec_i::on_inconsistent_topic[_the_topic_status]
@@ -111,7 +111,7 @@ namespace Filters_Common_Event_Listen_Test_Sender_Impl
 
   void
   connector_status_exec_i::on_requested_incompatible_qos (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::RequestedIncompatibleQosStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Filters_Common_Event_Listen_Test_Sender_Impl::connector_status_exec_i::on_requested_incompatible_qos[_the_reader_status]
@@ -122,7 +122,7 @@ namespace Filters_Common_Event_Listen_Test_Sender_Impl
 
   void
   connector_status_exec_i::on_sample_rejected (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::SampleRejectedStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Filters_Common_Event_Listen_Test_Sender_Impl::connector_status_exec_i::on_sample_rejected[_the_reader_status]
@@ -133,7 +133,7 @@ namespace Filters_Common_Event_Listen_Test_Sender_Impl
 
   void
   connector_status_exec_i::on_offered_deadline_missed (
-      IDL::traits< ::DDS::DataWriter>::ref_type the_writer,
+      IDL::traits<::DDS::DataWriter>::ref_type the_writer,
       const ::DDS::OfferedDeadlineMissedStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Filters_Common_Event_Listen_Test_Sender_Impl::connector_status_exec_i::on_offered_deadline_missed[_the_writer_status]
@@ -144,7 +144,7 @@ namespace Filters_Common_Event_Listen_Test_Sender_Impl
 
   void
   connector_status_exec_i::on_offered_incompatible_qos (
-      IDL::traits< ::DDS::DataWriter>::ref_type the_writer,
+      IDL::traits<::DDS::DataWriter>::ref_type the_writer,
       const ::DDS::OfferedIncompatibleQosStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Filters_Common_Event_Listen_Test_Sender_Impl::connector_status_exec_i::on_offered_incompatible_qos[_the_writer_status]
@@ -155,7 +155,7 @@ namespace Filters_Common_Event_Listen_Test_Sender_Impl
 
   void
   connector_status_exec_i::on_unexpected_status (
-      IDL::traits< ::DDS::Entity>::ref_type the_entity,
+      IDL::traits<::DDS::Entity>::ref_type the_entity,
       ::DDS::StatusKind status_kind)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Filters_Common_Event_Listen_Test_Sender_Impl::connector_status_exec_i::on_unexpected_status[_the_entity_status_kind]
@@ -205,7 +205,7 @@ namespace Filters_Common_Event_Listen_Test_Sender_Impl
   void
   Sender_exec_i::check_status ()
   {
-    IDL::traits< ::DDS::DataWriter>::ref_type writer_dds_entity =
+    IDL::traits<::DDS::DataWriter>::ref_type writer_dds_entity =
       this->context_->get_connection_info_write_dds_entity ();
     if (writer_dds_entity)
     {
@@ -216,7 +216,7 @@ namespace Filters_Common_Event_Listen_Test_Sender_Impl
       {
         DDS4CCM_TEST_ERROR <<"Sender_exec_i::check_status - "
           << "Error: Unable to get_publication_matched_status: <"
-          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+          << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">." << std::endl;
       }
       else
@@ -350,7 +350,7 @@ namespace Filters_Common_Event_Listen_Test_Sender_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Filters_Common_Event_Listen_Test_Sender_Impl::Sender_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::CCM_DDS::CCM_ConnectorStatusListener>::ref_type
+  IDL::traits<::CCM_DDS::CCM_ConnectorStatusListener>::ref_type
   Sender_exec_i::get_connector_status ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Filters_Common_Event_Listen_Test_Sender_Impl::Sender_exec_i[get_connector_status]

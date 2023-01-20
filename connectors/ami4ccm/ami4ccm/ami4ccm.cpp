@@ -12,7 +12,7 @@
 #include "ciaox11/logger/log.h"
 
 CCM_AMI::ExceptionHolder_i::ExceptionHolder_i (
-    IDL::traits< ::Messaging::ExceptionHolder>::ref_type holder)
+    IDL::traits<::Messaging::ExceptionHolder>::ref_type holder)
     : holder_ (std::move(holder))
 {
 }

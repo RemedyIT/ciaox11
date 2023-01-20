@@ -38,7 +38,7 @@ namespace Hello_Receiver_Impl
 
   /// Executor implementation class for do_my_foo facet
   class do_my_foo_exec_i final
-    : public IDL::traits< ::Hello::CCM_MyFoo>::base_type
+    : public IDL::traits<::Hello::CCM_MyFoo>::base_type
   {
   public:
 
@@ -46,7 +46,7 @@ namespace Hello_Receiver_Impl
     /// Constructor
     /// @param[in] context Component context
     do_my_foo_exec_i (
-        IDL::traits< ::Hello::CCM_Receiver_Context>::ref_type context);
+        IDL::traits<::Hello::CCM_Receiver_Context>::ref_type context);
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::do_my_foo_exec_i[ctor]
 
     /// Destructor
@@ -86,7 +86,7 @@ namespace Hello_Receiver_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::Hello::CCM_Receiver_Context>::ref_type context_;
+    IDL::traits<::Hello::CCM_Receiver_Context>::ref_type context_;
 
     /** @name Members to store attribute values from ::Hello::CCM_MyFoo */
     //@{
@@ -113,7 +113,7 @@ namespace Hello_Receiver_Impl
 
   /// Executor implementation class for do_foo_bar_bar facet
   class do_foo_bar_bar_exec_i final
-    : public IDL::traits< ::Hello::CCM_MyBar>::base_type
+    : public IDL::traits<::Hello::CCM_MyBar>::base_type
   {
   public:
 
@@ -121,7 +121,7 @@ namespace Hello_Receiver_Impl
     /// Constructor
     /// @param[in] context Component context
     do_foo_bar_bar_exec_i (
-        IDL::traits< ::Hello::CCM_Receiver_Context>::ref_type context);
+        IDL::traits<::Hello::CCM_Receiver_Context>::ref_type context);
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::do_foo_bar_bar_exec_i[ctor]
 
     /// Destructor
@@ -158,7 +158,7 @@ namespace Hello_Receiver_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::Hello::CCM_Receiver_Context>::ref_type context_;
+    IDL::traits<::Hello::CCM_Receiver_Context>::ref_type context_;
 
     /** @name Members to store attribute values from ::Hello::CCM_MyBar */
     //@{
@@ -185,7 +185,7 @@ namespace Hello_Receiver_Impl
 
   /// Component Executor Implementation Class : Receiver_exec_i
   class Receiver_exec_i final
-    : public virtual IDL::traits< ::Hello::CCM_Receiver>::base_type
+    : public virtual IDL::traits<::Hello::CCM_Receiver>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::Receiver_exec_i[ctor]
@@ -200,10 +200,10 @@ namespace Hello_Receiver_Impl
 
     /// Factory method and getter for the do_my_foo facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< ::Hello::CCM_MyFoo>::ref_type get_do_my_foo () override;
+    IDL::traits<::Hello::CCM_MyFoo>::ref_type get_do_my_foo () override;
     /// Factory method and getter for the do_foo_bar_bar facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< ::Hello::CCM_MyBar>::ref_type get_do_foo_bar_bar () override;
+    IDL::traits<::Hello::CCM_MyBar>::ref_type get_do_foo_bar_bar () override;
     //@}
 
     /** @name Supported attributes. */
@@ -247,7 +247,7 @@ namespace Hello_Receiver_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::Hello::CCM_Receiver_Context>::ref_type context_;
+    IDL::traits<::Hello::CCM_Receiver_Context>::ref_type context_;
 
     /** @name Component attributes. */
     //@{
@@ -257,8 +257,8 @@ namespace Hello_Receiver_Impl
 
     /** @name Component facets. */
     //@{
-    IDL::traits< ::Hello::CCM_MyFoo>::ref_type do_my_foo_;
-    IDL::traits< ::Hello::CCM_MyBar>::ref_type do_foo_bar_bar_;
+    IDL::traits<::Hello::CCM_MyFoo>::ref_type do_my_foo_;
+    IDL::traits<::Hello::CCM_MyBar>::ref_type do_foo_bar_bar_;
     //@}
 
     /** @name User defined members. */

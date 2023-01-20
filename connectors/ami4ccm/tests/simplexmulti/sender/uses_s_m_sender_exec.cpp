@@ -55,7 +55,7 @@ namespace UsesSM_Sender_Impl
       return 1;
     }
     //simplex
-    IDL::traits< ::UsesSM::AMI4CCM_Two>::ref_type my_two_ami_  =
+    IDL::traits<::UsesSM::AMI4CCM_Two>::ref_type my_two_ami_  =
            this->ciao_context_->get_connection_sendc_s_run_my_two();
 
     if (!my_two_ami_)
@@ -70,7 +70,7 @@ namespace UsesSM_Sender_Impl
     // and send one message bar to all connections
     for(::UsesSM::CCM_Sender::sendc_m_run_my_oneConnection my_one_ami_ : m_run_my_one_seq_)
     {
-      IDL::traits< ::UsesSM::AMI4CCM_OneReplyHandler>::ref_type cb_one =
+      IDL::traits<::UsesSM::AMI4CCM_OneReplyHandler>::ref_type cb_one =
         CORBA::make_reference< AMI4CCM_OneReplyHandler_m_run_my_one_i> ();
 
       std::string test;
@@ -100,7 +100,7 @@ namespace UsesSM_Sender_Impl
       }
 
       CIAOX11_TEST_INFO << "Sender (ASYNCH) : send asynch call bar " << i <<std::endl;
-      IDL::traits< ::UsesSM::AMI4CCM_TwoReplyHandler>::ref_type cb_two =
+      IDL::traits<::UsesSM::AMI4CCM_TwoReplyHandler>::ref_type cb_two =
         CORBA::make_reference< AMI4CCM_TwoReplyHandler_s_run_my_two_i> ();
       my_two_ami_->sendc_bar ( cb_two, i);
       i++;

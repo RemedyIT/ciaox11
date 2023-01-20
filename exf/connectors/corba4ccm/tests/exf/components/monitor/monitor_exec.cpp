@@ -24,7 +24,7 @@ namespace App_Monitor_Impl
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : App_Monitor_Impl[user_namespace_impl]
   void
   TT_Monitor::on_trigger (
-      IDL::traits< ::CCM_TT::TT_Timer>::ref_type timer,
+      IDL::traits<::CCM_TT::TT_Timer>::ref_type timer,
       const ::CCM_TT::TT_Duration& time,
       uint32_t round)
   {
@@ -58,7 +58,7 @@ namespace App_Monitor_Impl
       // schedule next trigger
       IDL::traits<CCM_TT::TT_Scheduler>::ref_type ts_mon = this->context_->get_connection_tt_monitor ();
       ts_mon->schedule_trigger (
-          IDL::traits< ::CCM_TT::TT_Handler>::narrow (this->_lock ()),
+          IDL::traits<::CCM_TT::TT_Handler>::narrow (this->_lock ()),
           CCM_TT::TT_Duration (0, 100000000));  // 100ms
     }
     catch (const CORBA::TRANSIENT&)
@@ -165,7 +165,7 @@ namespace App_Monitor_Impl
   {
     // Setting the context of this component.
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : App_Monitor_Impl::Monitor_exec_i[set_session_context]
-    this->context_ = IDL::traits< ::App::CCM_Monitor_Context >::narrow (std::move(ctx));
+    this->context_ = IDL::traits<::App::CCM_Monitor_Context >::narrow (std::move(ctx));
     //@@{__RIDL_REGEN_MARKER__} - END : App_Monitor_Impl::Monitor_exec_i[set_session_context]
   }
 

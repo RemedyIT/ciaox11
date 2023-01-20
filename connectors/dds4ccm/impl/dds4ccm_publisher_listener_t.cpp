@@ -25,13 +25,13 @@ namespace CIAOX11
     template <typename EVT_STRATEGY>
     void
     PublisherListener_T<EVT_STRATEGY>::on_unexpected_status (
-      IDL::traits< ::DDS::Entity>::ref_type entity,
+      IDL::traits<::DDS::Entity>::ref_type entity,
       ::DDS::StatusKind status_kind)
     {
       DDS4CCM_LOG_TRACE("PublisherListener_T<EVT_STRATEGY>::on_unexpected_status");
 
       DDS4CCM_LOG_INFO("PublisherListener_T<EVT_STRATEGY>::on_unexpected_status" <<
-          IDL::traits< ::DDS::StatusKind>::write<status_kind_formatter> (status_kind));
+          IDL::traits<::DDS::StatusKind>::write<status_kind_formatter> (status_kind));
 
       this->evs_.handle_unexpected_status_event (std::move(entity), status_kind);
     }
@@ -39,13 +39,13 @@ namespace CIAOX11
     template <typename EVT_STRATEGY>
     void
     PublisherListener_T<EVT_STRATEGY>::on_offered_deadline_missed (
-      IDL::traits< ::DDS::DataWriter>::ref_type the_Writer,
+      IDL::traits<::DDS::DataWriter>::ref_type the_Writer,
       const ::DDS::OfferedDeadlineMissedStatus & status)
     {
       DDS4CCM_LOG_TRACE("PublisherListener_T<EVT_STRATEGY>::on_offered_deadline_missed");
 
       DDS4CCM_LOG_INFO ("PublisherListener_T<EVT_STRATEGY>::on_offered_deadline_missed: "
-        << IDL::traits< ::DDS::OfferedDeadlineMissedStatus>::write (status));
+        << IDL::traits<::DDS::OfferedDeadlineMissedStatus>::write (status));
 
       this->evs_.handle_offered_deadline_missed_event (std::move(the_Writer), status);
     }
@@ -53,17 +53,17 @@ namespace CIAOX11
     template <typename EVT_STRATEGY>
     void
     PublisherListener_T<EVT_STRATEGY>::on_offered_incompatible_qos (
-      IDL::traits< ::DDS::DataWriter>::ref_type the_Writer,
+      IDL::traits<::DDS::DataWriter>::ref_type the_Writer,
       const ::DDS::OfferedIncompatibleQosStatus & status)
     {
       DDS4CCM_LOG_TRACE("PublisherListener_T<EVT_STRATEGY>::on_offered_incompatible_qos");
 
       DDS4CCM_LOG_INFO ("PublisherListener_T<EVT_STRATEGY>::on_offered_incompatible_qos - "
-        << IDL::traits< ::DDS::OfferedIncompatibleQosStatus>::write (status));
+        << IDL::traits<::DDS::OfferedIncompatibleQosStatus>::write (status));
 
       for (const ::DDS::QosPolicyCount& pol : status.policies ())
       {
-        DDS4CCM_LOG_DEBUG ("\t\t" << IDL::traits< ::DDS::QosPolicyCount>::write (pol));
+        DDS4CCM_LOG_DEBUG ("\t\t" << IDL::traits<::DDS::QosPolicyCount>::write (pol));
       }
 
       this->evs_.handle_offered_incompatible_qos_event (std::move(the_Writer), status);
@@ -72,13 +72,13 @@ namespace CIAOX11
     template <typename EVT_STRATEGY>
     void
     PublisherListener_T<EVT_STRATEGY>::on_liveliness_lost (
-      IDL::traits< ::DDS::DataWriter>::ref_type the_Writer,
+      IDL::traits<::DDS::DataWriter>::ref_type the_Writer,
       const ::DDS::LivelinessLostStatus & status)
     {
       DDS4CCM_LOG_TRACE("PublisherListener_T<EVT_STRATEGY>::on_liveliness_lost");
 
       DDS4CCM_LOG_INFO ("PublisherListener_T<EVT_STRATEGY>::on_liveliness_lost - "
-        << IDL::traits< ::DDS::LivelinessLostStatus>::write (status));
+        << IDL::traits<::DDS::LivelinessLostStatus>::write (status));
 
       this->on_unexpected_status (std::move(the_Writer), ::DDS::LIVELINESS_LOST_STATUS);
     }
@@ -86,13 +86,13 @@ namespace CIAOX11
     template <typename EVT_STRATEGY>
     void
     PublisherListener_T<EVT_STRATEGY>::on_publication_matched (
-      IDL::traits< ::DDS::DataWriter>::ref_type the_Writer,
+      IDL::traits<::DDS::DataWriter>::ref_type the_Writer,
       const ::DDS::PublicationMatchedStatus & status)
     {
       DDS4CCM_LOG_TRACE("PublisherListener_T<EVT_STRATEGY>::on_publication_matched");
 
       DDS4CCM_LOG_INFO ("PublisherListener_T<EVT_STRATEGY>::on_publication_matched - "
-        << IDL::traits< ::DDS::PublicationMatchedStatus>::write (status));
+        << IDL::traits<::DDS::PublicationMatchedStatus>::write (status));
 
       this->on_unexpected_status (std::move(the_Writer), ::DDS::PUBLICATION_MATCHED_STATUS);
     }
@@ -114,7 +114,7 @@ namespace CIAOX11
 
       DDS4CCM_LOG_DEBUG ("PublisherListener_T<EVT_STRATEGY>::get_mask - "
         << "Mask becomes <"
-        << IDL::traits< ::DDS::StatusMask>::write<status_mask_formatter> (mask)
+        << IDL::traits<::DDS::StatusMask>::write<status_mask_formatter> (mask)
         << ">.");
       return mask;
     }

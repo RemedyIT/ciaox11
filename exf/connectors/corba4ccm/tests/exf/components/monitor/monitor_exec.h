@@ -39,7 +39,7 @@ namespace App_Monitor_Impl
     : public IDL::traits<CCM_TT::TT_Handler>::base_type
   {
   public:
-    TT_Monitor (std::string loc, IDL::traits< ::App::CCM_Monitor_Context>::ref_type context)
+    TT_Monitor (std::string loc, IDL::traits<::App::CCM_Monitor_Context>::ref_type context)
       : location_ (std::move(loc)),
         context_ (std::move(context)),
         dre_ (std::random_device ()()),
@@ -49,7 +49,7 @@ namespace App_Monitor_Impl
 
     void
     on_trigger (
-        IDL::traits< ::CCM_TT::TT_Timer>::ref_type timer,
+        IDL::traits<::CCM_TT::TT_Timer>::ref_type timer,
         const ::CCM_TT::TT_Duration& time,
         uint32_t round) override;
 
@@ -62,7 +62,7 @@ namespace App_Monitor_Impl
   private:
     std::string location_;
     bool passivated_ {};
-    IDL::traits< ::App::CCM_Monitor_Context>::ref_type context_;
+    IDL::traits<::App::CCM_Monitor_Context>::ref_type context_;
     std::default_random_engine dre_;
     std::uniform_int_distribution<int> uniform_dist_;
     uint32_t msg_count_ {};

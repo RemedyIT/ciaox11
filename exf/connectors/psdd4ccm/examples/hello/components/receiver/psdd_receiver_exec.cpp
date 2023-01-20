@@ -26,23 +26,23 @@ namespace Test_Receiver_Impl
   : public IDL::traits<CCM_TT::TT_Handler>::base_type
   {
   public:
-    explicit TT_Callback (IDL::traits< ::Test::CCM_Receiver>::weak_ref_type component_executor)
+    explicit TT_Callback (IDL::traits<::Test::CCM_Receiver>::weak_ref_type component_executor)
     : component_executor_(component_executor)
     {}
 
     void
     on_trigger (
-        IDL::traits< ::CCM_TT::TT_Timer>::ref_type timer,
+        IDL::traits<::CCM_TT::TT_Timer>::ref_type timer,
         const ::CCM_TT::TT_Duration& time,
         uint32_t round) override;
 
   private:
-    IDL::traits< ::Test::CCM_Receiver>::weak_ref_type component_executor_;
+    IDL::traits<::Test::CCM_Receiver>::weak_ref_type component_executor_;
   };
 
   void
   TT_Callback::on_trigger (
-      IDL::traits< ::CCM_TT::TT_Timer>::ref_type timer,
+      IDL::traits<::CCM_TT::TT_Timer>::ref_type timer,
       const ::CCM_TT::TT_Duration& time,
       uint32_t round)
   {
@@ -63,8 +63,8 @@ namespace Test_Receiver_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Receiver_Impl::hello_listen_exec_i[ctor]
   hello_listen_exec_i::hello_listen_exec_i (
-    IDL::traits< ::Test::CCM_Receiver>::weak_ref_type component_executor,
-    IDL::traits< ::Test::CCM_Receiver_Context>::ref_type context)
+    IDL::traits<::Test::CCM_Receiver>::weak_ref_type component_executor,
+    IDL::traits<::Test::CCM_Receiver_Context>::ref_type context)
     : context_ (std::move (context))
     , component_executor_ (std::move(component_executor))
   {
@@ -97,7 +97,7 @@ namespace Test_Receiver_Impl
       ::Test::StringSeq_t& data)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Receiver_Impl::hello_listen_exec_i::on_data[_data]
-    PSDD4CCM_TEST_DEBUG << "hello_listen_exec_i::on_data : received [" << IDL::traits< ::Test::StringSeq_t>::write (data) << "]" << std::endl;
+    PSDD4CCM_TEST_DEBUG << "hello_listen_exec_i::on_data : received [" << IDL::traits<::Test::StringSeq_t>::write (data) << "]" << std::endl;
     auto cex = IDL::traits<Receiver_exec_i>::narrow (this->component_executor_.lock ());
     if (cex)
     {
@@ -145,8 +145,8 @@ namespace Test_Receiver_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Receiver_Impl::msg_listen_exec_i[ctor]
   msg_listen_exec_i::msg_listen_exec_i (
-    IDL::traits< ::Test::CCM_Receiver>::weak_ref_type component_executor,
-    IDL::traits< ::Test::CCM_Receiver_Context>::ref_type context)
+    IDL::traits<::Test::CCM_Receiver>::weak_ref_type component_executor,
+    IDL::traits<::Test::CCM_Receiver_Context>::ref_type context)
     : context_ (std::move (context))
     , component_executor_ (std::move(component_executor))
   {
@@ -179,7 +179,7 @@ namespace Test_Receiver_Impl
       ::Test::MessageSeq_t& data)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Receiver_Impl::msg_listen_exec_i::on_data[_data]
-    PSDD4CCM_TEST_DEBUG << "msg_listen_exec_i::on_data : received [" << IDL::traits< ::Test::MessageSeq_t>::write (data) << "]" << std::endl;
+    PSDD4CCM_TEST_DEBUG << "msg_listen_exec_i::on_data : received [" << IDL::traits<::Test::MessageSeq_t>::write (data) << "]" << std::endl;
     auto cex = IDL::traits<Receiver_exec_i>::narrow (this->component_executor_.lock ());
     if (cex)
     {
@@ -272,7 +272,7 @@ namespace Test_Receiver_Impl
         ::Test::Message topic;
         if (reader->get_one (topic))
         {
-          PSDD4CCM_TEST_DEBUG << "Receiver_exec_i::tick : read [" << IDL::traits< ::Test::Message>::write (topic) << "]" << std::endl;
+          PSDD4CCM_TEST_DEBUG << "Receiver_exec_i::tick : read [" << IDL::traits<::Test::Message>::write (topic) << "]" << std::endl;
 
           this->msg_counter_++;
         }
@@ -566,7 +566,7 @@ namespace Test_Receiver_Impl
   {
     // Setting the context of this component.
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Receiver_Impl::Receiver_exec_i[set_session_context]
-    this->context_ = IDL::traits< ::Test::CCM_Receiver_Context >::narrow (std::move(ctx));
+    this->context_ = IDL::traits<::Test::CCM_Receiver_Context >::narrow (std::move(ctx));
     //@@{__RIDL_REGEN_MARKER__} - END : Test_Receiver_Impl::Receiver_exec_i[set_session_context]
   }
 

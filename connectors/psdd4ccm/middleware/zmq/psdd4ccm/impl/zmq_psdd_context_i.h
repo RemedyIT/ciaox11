@@ -63,11 +63,11 @@ namespace PSDD
 
       void
       schedule_listener (
-          IDL::traits< ::PSDD::ZMQ::Listener>::ref_type l);
+          IDL::traits<::PSDD::ZMQ::Listener>::ref_type l);
 
       void
       remove_listener (
-          IDL::traits< ::PSDD::ZMQ::Listener>::ref_type l);
+          IDL::traits<::PSDD::ZMQ::Listener>::ref_type l);
 
       void
       reset_listeners ();

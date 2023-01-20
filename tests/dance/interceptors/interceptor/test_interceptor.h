@@ -113,7 +113,7 @@ namespace DAnCEX11
     uint32_t configure_invoked_ {};
     std::string node_ {};
 
-    typedef std::vector<IDL::traits< ::Interceptor::Foo>::ref_type> FooList;
+    typedef std::vector<IDL::traits<::Interceptor::Foo>::ref_type> FooList;
     FooList foo_list_ {};
 
     void

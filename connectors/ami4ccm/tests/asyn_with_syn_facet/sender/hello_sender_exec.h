@@ -43,7 +43,7 @@ namespace Hello_Sender_Impl
       const std::string& func);
 
   void HandleException (
-      IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder,
+      IDL::traits<::CCM_AMI::ExceptionHolder>::ref_type excep_holder,
       const std::string& func);
 
   /// Worker thread for asynchronous invocations
@@ -77,7 +77,7 @@ namespace Hello_Sender_Impl
 
   /// Executor implementation class for do_control facet
   class do_control_exec_i final
-    : public IDL::traits< ::Hello::CCM_Control>::base_type
+    : public IDL::traits<::Hello::CCM_Control>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl::do_control_exec_i[ctor]
@@ -110,7 +110,7 @@ namespace Hello_Sender_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::Hello::CCM_Sender_Context>::ref_type context_;
+    IDL::traits<::Hello::CCM_Sender_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -129,7 +129,7 @@ namespace Hello_Sender_Impl
 
   /// Executor implementation class for do_my_foo facet
   class do_my_foo_exec_i final
-    : public IDL::traits< ::Hello::CCM_MyFoo>::base_type
+    : public IDL::traits<::Hello::CCM_MyFoo>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl::do_my_foo_exec_i[ctor]
@@ -172,7 +172,7 @@ namespace Hello_Sender_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::Hello::CCM_Sender_Context>::ref_type context_;
+    IDL::traits<::Hello::CCM_Sender_Context>::ref_type context_;
 
     /** @name Members to store attribute values from ::Hello::CCM_MyFoo */
     //@{
@@ -200,7 +200,7 @@ namespace Hello_Sender_Impl
 
   /// Component Executor Implementation Class : Sender_exec_i
   class Sender_exec_i final
-    : public virtual IDL::traits< ::Hello::CCM_Sender>::base_type
+    : public virtual IDL::traits<::Hello::CCM_Sender>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl::Sender_exec_i[ctor]
@@ -215,10 +215,10 @@ namespace Hello_Sender_Impl
 
     /// Factory method and getter for the do_control facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< ::Hello::CCM_Control>::ref_type get_do_control () override;
+    IDL::traits<::Hello::CCM_Control>::ref_type get_do_control () override;
     /// Factory method and getter for the do_my_foo facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< ::Hello::CCM_MyFoo>::ref_type get_do_my_foo () override;
+    IDL::traits<::Hello::CCM_MyFoo>::ref_type get_do_my_foo () override;
     //@}
 
     /** @name Session component operations */
@@ -253,12 +253,12 @@ namespace Hello_Sender_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::Hello::CCM_Sender_Context>::ref_type context_;
+    IDL::traits<::Hello::CCM_Sender_Context>::ref_type context_;
 
     /** @name Component facets. */
     //@{
-    IDL::traits< ::Hello::CCM_Control>::ref_type do_control_;
-    IDL::traits< ::Hello::CCM_MyFoo>::ref_type do_my_foo_;
+    IDL::traits<::Hello::CCM_Control>::ref_type do_control_;
+    IDL::traits<::Hello::CCM_MyFoo>::ref_type do_my_foo_;
     //@}
 
     /** @name User defined members. */

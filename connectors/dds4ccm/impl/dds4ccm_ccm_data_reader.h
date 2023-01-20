@@ -39,20 +39,20 @@ namespace CIAOX11
       //@{
       ::DDS::ReturnCode_t enable () override;
 
-      IDL::traits< ::DDS::StatusCondition>::ref_type
+      IDL::traits<::DDS::StatusCondition>::ref_type
       get_statuscondition () override;
 
       ::DDS::StatusMask get_status_changes () override;
 
       ::DDS::InstanceHandle_t get_instance_handle () override;
 
-      IDL::traits< ::DDS::ReadCondition>::ref_type
+      IDL::traits<::DDS::ReadCondition>::ref_type
       create_readcondition (
         ::DDS::SampleStateMask sample_states,
         ::DDS::ViewStateMask view_states,
         ::DDS::InstanceStateMask instance_states) override;
 
-      IDL::traits< ::DDS::QueryCondition>::ref_type
+      IDL::traits<::DDS::QueryCondition>::ref_type
       create_querycondition (
         ::DDS::SampleStateMask sample_states,
         ::DDS::ViewStateMask view_states,
@@ -61,7 +61,7 @@ namespace CIAOX11
         const ::DDS::StringSeq &query_parameters) override;
 
       ::DDS::ReturnCode_t
-      delete_readcondition (IDL::traits< ::DDS::ReadCondition>::ref_type a_condition) override;
+      delete_readcondition (IDL::traits<::DDS::ReadCondition>::ref_type a_condition) override;
 
       ::DDS::ReturnCode_t
       delete_contained_entities () override;
@@ -74,14 +74,14 @@ namespace CIAOX11
 
       ::DDS::ReturnCode_t
       set_listener (
-        IDL::traits< ::DDS::DataReaderListener>::ref_type a_listener,
+        IDL::traits<::DDS::DataReaderListener>::ref_type a_listener,
         ::DDS::StatusMask mask) override;
 
-      IDL::traits< ::DDS::DataReaderListener>::ref_type get_listener () override;
+      IDL::traits<::DDS::DataReaderListener>::ref_type get_listener () override;
 
-      IDL::traits< ::DDS::TopicDescription>::ref_type get_topicdescription () override;
+      IDL::traits<::DDS::TopicDescription>::ref_type get_topicdescription () override;
 
-      IDL::traits< ::DDS::Subscriber>::ref_type get_subscriber () override;
+      IDL::traits<::DDS::Subscriber>::ref_type get_subscriber () override;
 
       ::DDS::ReturnCode_t
       get_sample_rejected_status (::DDS::SampleRejectedStatus &status) override;
@@ -119,14 +119,14 @@ namespace CIAOX11
        */
       //@{
       void
-      set_dds_entity (IDL::traits< ::DDS::DataReader>::ref_type dr);
+      set_dds_entity (IDL::traits<::DDS::DataReader>::ref_type dr);
 
-      IDL::traits< ::DDS::DataReader>::ref_type
+      IDL::traits<::DDS::DataReader>::ref_type
       get_dds_entity ();
       //@}
 
     private:
-      IDL::traits< ::DDS::DataReader>::ref_type dds_entity_;
+      IDL::traits<::DDS::DataReader>::ref_type dds_entity_;
 
       CCM_DataReader() = delete;
       CCM_DataReader(const CCM_DataReader&) = delete;

@@ -14,7 +14,7 @@ namespace CIAOX11
   namespace DDS4CCM
   {
     Coherent_Changes_Guard::Coherent_Changes_Guard (
-      IDL::traits< ::DDS::Publisher>::ref_type publisher,
+      IDL::traits<::DDS::Publisher>::ref_type publisher,
       bool coherent_write)
       : publisher_ (std::move(publisher))
       , coherent_write_ (coherent_write)

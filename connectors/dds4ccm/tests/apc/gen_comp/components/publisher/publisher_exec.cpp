@@ -30,7 +30,7 @@ namespace publisher_comp_Impl
 
     void
     on_trigger (
-       IDL::traits< ::CCM_TT::TT_Timer>::ref_type,
+       IDL::traits<::CCM_TT::TT_Timer>::ref_type,
        const ::CCM_TT::TT_Duration&,
        uint32_t round) override;
 
@@ -40,7 +40,7 @@ namespace publisher_comp_Impl
 
   void
   TT_Callback::on_trigger (
-     IDL::traits< ::CCM_TT::TT_Timer>::ref_type,
+     IDL::traits<::CCM_TT::TT_Timer>::ref_type,
      const ::CCM_TT::TT_Duration&,
      uint32_t)
   {
@@ -260,7 +260,7 @@ namespace publisher_comp_Impl
   {
     try
       {
-        IDL::traits< ::ShapeTypeInterface::Writer>::ref_type writer =
+        IDL::traits<::ShapeTypeInterface::Writer>::ref_type writer =
           this->context_->get_connection_info_write_data ();
 
         writer->write_one (this->square_, this->instance_handle_);

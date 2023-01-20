@@ -29,7 +29,7 @@ namespace Hello_Receiver_comp_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_comp_Impl::do_my_foo_exec_i[ctor]
   do_my_foo_exec_i::do_my_foo_exec_i (
-    IDL::traits< ::Hello::CCM_Receiver_comp_Context>::ref_type context)
+    IDL::traits<::Hello::CCM_Receiver_comp_Context>::ref_type context)
     : context_ (std::move (context))
   {
   }
@@ -156,7 +156,7 @@ namespace Hello_Receiver_comp_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_comp_Impl::Receiver_comp_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::Hello::CCM_MyFoo_obj>::ref_type
+  IDL::traits<::Hello::CCM_MyFoo_obj>::ref_type
   Receiver_comp_exec_i::get_do_my_foo ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_comp_Impl::Receiver_comp_exec_i[get_do_my_foo]
@@ -175,7 +175,7 @@ namespace Hello_Receiver_comp_Impl
   {
     // Setting the context of this component.
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_comp_Impl::Receiver_comp_exec_i[set_session_context]
-    this->context_ = IDL::traits< ::Hello::CCM_Receiver_comp_Context>::narrow (std::move(ctx));
+    this->context_ = IDL::traits<::Hello::CCM_Receiver_comp_Context>::narrow (std::move(ctx));
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_comp_Impl::Receiver_comp_exec_i[set_session_context]
   }
 

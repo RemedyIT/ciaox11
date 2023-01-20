@@ -18,7 +18,7 @@ namespace CIAOX11
     template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
     DataReaderListenerBase_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::DataReaderListenerBase_T (
       const typename CCM_TYPE::event_strategy_type& evs,
-      IDL::traits< ::CCM_DDS::DataListenerControl>::ref_type control,
+      IDL::traits<::CCM_DDS::DataListenerControl>::ref_type control,
       SharedConditionManager condition_manager)
       : ListenerBase_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE> (evs, std::move(control), condition_manager)
     {
@@ -28,7 +28,7 @@ namespace CIAOX11
     template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
     void
     DataReaderListenerBase_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::on_data_available_i (
-      IDL::traits< ::DDS::DataReader>::ref_type rdr,
+      IDL::traits<::DDS::DataReader>::ref_type rdr,
       typename IDL::traits<typename CCM_TYPE::data_listener_type>::ref_type listener)
     {
       DDS4CCM_LOG_TRACE ("DataReaderListenerBase_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::on_data_available_i");
@@ -80,7 +80,7 @@ namespace CIAOX11
 
         DDS4CCM_LOG_DEBUG ("DataReaderListenerBase_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::on_data_available_i - "
           << "Get data returned <"
-          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+          << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">.");
 
         if (retcode == ::DDS::RETCODE_NO_DATA)
@@ -145,7 +145,7 @@ namespace CIAOX11
         {
           DDS4CCM_LOG_ERROR ("DataReaderListenerBase_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::on_data_available_i - "
             << "Error returning loan to DDS - <"
-            << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode_returnloan)
+            << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode_returnloan)
             << ">.");
           // No exception here since this the DDS vendor doesn't expect this.
           // It will likely causes a crash in their implementation

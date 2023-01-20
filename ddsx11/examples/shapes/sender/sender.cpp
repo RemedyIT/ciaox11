@@ -38,7 +38,7 @@ int main (int , char *[])
       if (retcode != DDS::RETCODE_OK)
       {
         DDSX11_TEST_ERROR << "sender: Failed to register type: "
-                          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                          << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
                           << std::endl;
         return 1;
       }
@@ -67,7 +67,7 @@ int main (int , char *[])
             DDS::PublicationMatchedStatus status;
             DDS::ReturnCode_t const ret_pm = dw->get_publication_matched_status(status);
             DDSX11_TEST_DEBUG << "sender: PublicationMatchedStatus: status is " << status << ", return_code is "
-                              << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (ret_pm) << std::endl;
+                              << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (ret_pm) << std::endl;
             if (status.total_count() == 1)
             {
               DDSX11_TEST_DEBUG << "sender: PublicationMatchedStatus status has been received"
@@ -109,7 +109,7 @@ int main (int , char *[])
           if (retcode != DDS::RETCODE_OK)
           {
             DDSX11_TEST_ERROR << "sender: Failed to delete datawriter from publisher: "
-                              << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                              << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
                               << std::endl;
             return 1;
           }
@@ -133,7 +133,7 @@ int main (int , char *[])
         if (retcode != DDS::RETCODE_OK)
         {
           DDSX11_TEST_ERROR << "sender: Failed to delete topic from domain participant"
-                            << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                            << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
                             << std::endl;
           return 1;
         }
@@ -150,7 +150,7 @@ int main (int , char *[])
       if (retcode != DDS::RETCODE_OK)
       {
         DDSX11_TEST_ERROR << "sender: Failed to delete domain participant from domain participant factory: "
-                          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                          << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
                           << std::endl;
         return 1;
       }
@@ -159,7 +159,7 @@ int main (int , char *[])
       if (retcode != ::DDS::RETCODE_OK)
       {
         DDSX11_TEST_ERROR << "sender: Failed to finalize the domain participant factory: "
-                          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                          << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
                           << std::endl;
         return 1;
       }

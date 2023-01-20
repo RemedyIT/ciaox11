@@ -194,7 +194,7 @@ namespace Example_BasicSubscriber_comp_Impl
 
   void
   CA1DataSub_status_exec_i::on_requested_deadline_missed (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::RequestedDeadlineMissedStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Example_BasicSubscriber_comp_Impl::CA1DataSub_status_exec_i::on_requested_deadline_missed[_the_reader_status]
@@ -205,7 +205,7 @@ namespace Example_BasicSubscriber_comp_Impl
 
   void
   CA1DataSub_status_exec_i::on_sample_lost (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::SampleLostStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Example_BasicSubscriber_comp_Impl::CA1DataSub_status_exec_i::on_sample_lost[_the_reader_status]
@@ -252,7 +252,7 @@ namespace Example_BasicSubscriber_comp_Impl
   void BasicSubscriber_comp_exec_i::ccm_activate ()
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Example_BasicSubscriber_comp_Impl::BasicSubscriber_comp_exec_i[ccm_activate]
-    IDL::traits< ::CCM_DDS::DataListenerControl>::ref_type lc =
+    IDL::traits<::CCM_DDS::DataListenerControl>::ref_type lc =
       this->context_->get_connection_CA1DataSub_data_control ();
 
     if (!lc)
@@ -289,7 +289,7 @@ namespace Example_BasicSubscriber_comp_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Example_BasicSubscriber_comp_Impl::BasicSubscriber_comp_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::Example::CA1_conn::CCM_Listener>::ref_type
+  IDL::traits<::Example::CA1_conn::CCM_Listener>::ref_type
   BasicSubscriber_comp_exec_i::get_CA1DataSub_data_listener ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Example_BasicSubscriber_comp_Impl::BasicSubscriber_comp_exec_i[get_CA1DataSub_data_listener]
@@ -302,7 +302,7 @@ namespace Example_BasicSubscriber_comp_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : Example_BasicSubscriber_comp_Impl::BasicSubscriber_comp_exec_i[get_CA1DataSub_data_listener]
   }
 
-  IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type
+  IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type
   BasicSubscriber_comp_exec_i::get_CA1DataSub_status ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Example_BasicSubscriber_comp_Impl::BasicSubscriber_comp_exec_i[get_CA1DataSub_status]

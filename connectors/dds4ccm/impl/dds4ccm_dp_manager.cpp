@@ -34,7 +34,7 @@ namespace CIAOX11
       DDS4CCM_LOG_TRACE ("DomainParticipantManager::~DomainParticipantManager");
     }
 
-    IDL::traits< ::DDS::DomainParticipant>::ref_type
+    IDL::traits<::DDS::DomainParticipant>::ref_type
     DomainParticipantManager::get_participant (const ::DDS::DomainId_t domain_id,
       const std::string &qos_profile)
     {
@@ -53,12 +53,12 @@ namespace CIAOX11
       {
         // Increment refcount on the domain participant
         uint32_t const refcount = ++it_found->second.second;
-        IDL::traits< ::DDS::DomainParticipant>::ref_type const dp = it_found->second.first;
+        IDL::traits<::DDS::DomainParticipant>::ref_type const dp = it_found->second.first;
         DDS4CCM_LOG_DEBUG ("DomainParticipantManager::get_participant - "
           << "DomainParticipant found. domain <" << domain_id << "> - "
           << "profile <" << qos_profile << "> - ref_count <"
           << refcount << "> - handle <"
-          << IDL::traits< ::DDS::Entity>::write<entity_formatter> (dp)
+          << IDL::traits<::DDS::Entity>::write<entity_formatter> (dp)
           << ">.");
         return dp;
       }
@@ -72,7 +72,7 @@ namespace CIAOX11
     DomainParticipantManager::register_participant (
       ::DDS::DomainId_t domain_id,
       const std::string &qos_profile,
-      IDL::traits< ::DDS::DomainParticipant>::ref_type dp)
+      IDL::traits<::DDS::DomainParticipant>::ref_type dp)
     {
       DDS4CCM_LOG_TRACE ("DomainParticipantManager::register_participant");
 
@@ -110,7 +110,7 @@ namespace CIAOX11
         DDS4CCM_LOG_DEBUG ("DomainParticipantManager::register_participant - "
           << "Added a DomainParticipant for domain <"
           << domain_id << "> with profile <" << qos_profile << "> - handle <"
-          << IDL::traits< ::DDS::Entity>::write<entity_formatter> (dp)
+          << IDL::traits<::DDS::Entity>::write<entity_formatter> (dp)
           << ">.");
         return true;
 
@@ -119,7 +119,7 @@ namespace CIAOX11
       DDS4CCM_LOG_DEBUG ("DomainParticipantManager::register_participant - "
         << "Don't add participant for domain <" << domain_id << "> with profile <"
         << qos_profile << "> since it already exists as handle <"
-        << IDL::traits< ::DDS::Entity>::write<entity_formatter> (dp)
+        << IDL::traits<::DDS::Entity>::write<entity_formatter> (dp)
         << ">");
 
       return false;
@@ -129,7 +129,7 @@ namespace CIAOX11
     DomainParticipantManager::unregister_participant (
       ::DDS::DomainId_t domain_id,
       const std::string &qos_profile,
-      IDL::traits< ::DDS::DomainParticipant>::ref_type dp)
+      IDL::traits<::DDS::DomainParticipant>::ref_type dp)
     {
       DDS4CCM_LOG_TRACE ("DomainParticipantManager::unregister_participant");
 
@@ -151,7 +151,7 @@ namespace CIAOX11
         {
           DDS4CCM_LOG_DEBUG ("DomainParticipantManager::unregister_participant - "
             << "Delete participant <"
-            << IDL::traits< ::DDS::Entity>::write<entity_formatter> (dp)
+            << IDL::traits<::DDS::Entity>::write<entity_formatter> (dp)
             << "> for domain <" << domain_id << "> with profile <"
             << qos_profile << "> ref_count <0>");
           // Save to remove from list
@@ -163,7 +163,7 @@ namespace CIAOX11
 
           DDS4CCM_LOG_DEBUG ("DomainParticipantManager::unregister_participant - "
             << "Decremented refcount for participant <"
-            << IDL::traits< ::DDS::Entity>::write<entity_formatter> (dp)
+            << IDL::traits<::DDS::Entity>::write<entity_formatter> (dp)
             << "> for domain <" << domain_id << "> with profile <"
             << qos_profile << "> since " << "it's still used - ref_count <"
             << refcount << ">");
@@ -191,7 +191,7 @@ namespace CIAOX11
           {
             DDS4CCM_LOG_ERROR ("DomainParticipantManager::close - "
               << "Error finalizing domain participant factory - return code <"
-              << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+              << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
               << ">");
           }
           else

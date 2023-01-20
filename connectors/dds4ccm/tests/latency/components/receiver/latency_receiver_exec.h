@@ -38,15 +38,15 @@ namespace Test_Receiver_Impl
 
   /// Executor implementation class for info_out_data_listener facet
   class info_out_data_listener_exec_i final
-    : public IDL::traits< ::Test::LatencyDataConnector::CCM_Listener>::base_type
+    : public IDL::traits<::Test::LatencyDataConnector::CCM_Listener>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Receiver_Impl::info_out_data_listener_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
     info_out_data_listener_exec_i (
-        IDL::traits< ::Test::CCM_Receiver_Context>::ref_type context,
-        IDL::traits< ::Test::CCM_Receiver>::ref_type component_executor);
+        IDL::traits<::Test::CCM_Receiver_Context>::ref_type context,
+        IDL::traits<::Test::CCM_Receiver>::ref_type component_executor);
     //@@{__RIDL_REGEN_MARKER__} - END : Test_Receiver_Impl::info_out_data_listener_exec_i[ctor]
 
     /// Destructor
@@ -75,7 +75,7 @@ namespace Test_Receiver_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::Test::CCM_Receiver_Context>::ref_type context_;
+    IDL::traits<::Test::CCM_Receiver_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -94,14 +94,14 @@ namespace Test_Receiver_Impl
 
   /// Executor implementation class for info_out_status facet
   class info_out_status_exec_i final
-    : public IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::base_type
+    : public IDL::traits<::CCM_DDS::CCM_PortStatusListener>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Receiver_Impl::info_out_status_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
     info_out_status_exec_i (
-        IDL::traits< ::Test::CCM_Receiver_Context>::ref_type context);
+        IDL::traits<::Test::CCM_Receiver_Context>::ref_type context);
     //@@{__RIDL_REGEN_MARKER__} - END : Test_Receiver_Impl::info_out_status_exec_i[ctor]
 
     /// Destructor
@@ -112,12 +112,12 @@ namespace Test_Receiver_Impl
 
     void
     on_requested_deadline_missed (
-        IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+        IDL::traits<::DDS::DataReader>::ref_type the_reader,
         const ::DDS::RequestedDeadlineMissedStatus& status) override;
 
     void
     on_sample_lost (
-        IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+        IDL::traits<::DDS::DataReader>::ref_type the_reader,
         const ::DDS::SampleLostStatus& status) override;
     //@}
 
@@ -130,7 +130,7 @@ namespace Test_Receiver_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::Test::CCM_Receiver_Context>::ref_type context_;
+    IDL::traits<::Test::CCM_Receiver_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -149,7 +149,7 @@ namespace Test_Receiver_Impl
 
   /// Component Executor Implementation Class : Receiver_exec_i
   class Receiver_exec_i final
-    : public virtual IDL::traits< ::Test::CCM_Receiver>::base_type
+    : public virtual IDL::traits<::Test::CCM_Receiver>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Receiver_Impl::Receiver_exec_i[ctor]
@@ -164,10 +164,10 @@ namespace Test_Receiver_Impl
 
     /// Factory method and getter for the info_out_data_listener facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< ::Test::LatencyDataConnector::CCM_Listener>::ref_type get_info_out_data_listener () override;
+    IDL::traits<::Test::LatencyDataConnector::CCM_Listener>::ref_type get_info_out_data_listener () override;
     /// Factory method and getter for the info_out_status facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type get_info_out_status () override;
+    IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type get_info_out_status () override;
     //@}
 
     /** @name Session component operations */
@@ -199,7 +199,7 @@ namespace Test_Receiver_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::Test::CCM_Receiver_Context>::ref_type context_;
+    IDL::traits<::Test::CCM_Receiver_Context>::ref_type context_;
 
     /** @name Component attributes. */
     //@{
@@ -207,15 +207,15 @@ namespace Test_Receiver_Impl
 
     /** @name Component facets. */
     //@{
-    IDL::traits< ::Test::LatencyDataConnector::CCM_Listener>::ref_type info_out_data_listener_;
-    IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type info_out_status_;
+    IDL::traits<::Test::LatencyDataConnector::CCM_Listener>::ref_type info_out_data_listener_;
+    IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type info_out_status_;
     //@}
 
     /** @name User defined members. */
     //@{
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Receiver_Impl::Receiver_exec_i[user_members]
     uint32_t count_ {};
-    IDL::traits< ::Test::LatencyDataConnector::Writer>::ref_type writer_ {};
+    IDL::traits<::Test::LatencyDataConnector::Writer>::ref_type writer_ {};
     //@@{__RIDL_REGEN_MARKER__} - END : Test_Receiver_Impl::Receiver_exec_i[user_members]
     //@}
 

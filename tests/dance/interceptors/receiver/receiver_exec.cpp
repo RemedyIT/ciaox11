@@ -130,7 +130,7 @@ namespace Interceptor_Interceptor_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Interceptor_Interceptor_Receiver_Impl::Interceptor_Receiver_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::Interceptor::CCM_Foo>::ref_type
+  IDL::traits<::Interceptor::CCM_Foo>::ref_type
   Interceptor_Receiver_exec_i::get_prov_my_foo ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Interceptor_Interceptor_Receiver_Impl::Interceptor_Receiver_exec_i[get_prov_my_foo]

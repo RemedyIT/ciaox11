@@ -296,7 +296,7 @@ namespace DAnCE
         if (retval != DDS::RETCODE_OK)
           {
             DDSX11_TEST_ERROR <<"log_server - Unable to delete datawriter <"
-              << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retval)
+              << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retval)
               << ">."<< std::endl;
           }
         datawriter_ = nullptr;
@@ -311,7 +311,7 @@ namespace DAnCE
         if (retval != DDS::RETCODE_OK)
           {
             DDSX11_TEST_ERROR <<"log_server - Unable to delete publisher <"
-              << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retval)
+              << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retval)
               << ">."<< std::endl;
           }
         publisher_ = nullptr;
@@ -325,7 +325,7 @@ namespace DAnCE
         if (retval != DDS::RETCODE_OK)
           {
             DDSX11_TEST_ERROR <<"log_server - Unable to delete topic <"
-              << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retval)
+              << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retval)
               << ">."<< std::endl;
           }
         topic_ = nullptr;
@@ -342,7 +342,7 @@ namespace DAnCE
         if (retval != DDS::RETCODE_OK)
           {
             DDSX11_TEST_ERROR <<"ddsx11_log_backend::close - Unable to delete participant <"
-              << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retval)
+              << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retval)
               << ">."<< std::endl;
           }
 
@@ -353,7 +353,7 @@ namespace DAnCE
         if (retval != DDS::RETCODE_OK)
           {
             DDSX11_TEST_ERROR <<"ddsx11_log_backend::close - Unable to finalize participant factory <"
-              << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retval)
+              << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retval)
               << ">."<< std::endl;
           }
       }

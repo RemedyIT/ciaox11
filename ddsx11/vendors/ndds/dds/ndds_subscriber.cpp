@@ -31,7 +31,7 @@ namespace DDSX11
 
     DDS_Native::DDS::DataReader *
     NDDS_Subscriber_proxy::create_native_datareader_with_profile (
-      IDL::traits< ::DDS::ContentFilteredTopic>::ref_type topic,
+      IDL::traits<::DDS::ContentFilteredTopic>::ref_type topic,
       const std::string &qos_profile,
       DDS_Native::DDS::DataReaderListener * native_drl,
       ::DDS::StatusMask mask)
@@ -54,7 +54,7 @@ namespace DDSX11
 
     DDS_Native::DDS::DataReader *
     NDDS_Subscriber_proxy::create_native_datareader_with_profile (
-      IDL::traits< ::DDS::Topic>::ref_type topic,
+      IDL::traits<::DDS::Topic>::ref_type topic,
       const std::string &qos_profile,
       DDS_Native::DDS::DataReaderListener * native_drl,
       ::DDS::StatusMask mask)
@@ -75,11 +75,11 @@ namespace DDSX11
       return nullptr;
     }
 
-    IDL::traits< ::DDS::DataReader>::ref_type
+    IDL::traits<::DDS::DataReader>::ref_type
     NDDS_Subscriber_proxy::create_datareader_with_profile (
-      IDL::traits< ::DDS::TopicDescription>::ref_type a_topic,
+      IDL::traits<::DDS::TopicDescription>::ref_type a_topic,
       const std::string &qos_profile,
-      IDL::traits< ::DDS::DataReaderListener>::ref_type a_listener,
+      IDL::traits<::DDS::DataReaderListener>::ref_type a_listener,
       ::DDS::StatusMask mask)
     {
       DDSX11_LOG_TRACE ("NDDS_Subscriber_proxy::create_datareader_with_profile");
@@ -92,13 +92,13 @@ namespace DDSX11
 
       DDS_Native::DDS::DataReader_var native_dr {};
 
-      IDL::traits< ::DDS::Topic>::ref_type topic =
-        IDL::traits< ::DDS::Topic>::narrow (a_topic);
+      IDL::traits<::DDS::Topic>::ref_type topic =
+        IDL::traits<::DDS::Topic>::narrow (a_topic);
 
       if (!topic)
         {
-          IDL::traits< ::DDS::ContentFilteredTopic>::ref_type cf_topic =
-            IDL::traits< ::DDS::ContentFilteredTopic>::narrow (a_topic);
+          IDL::traits<::DDS::ContentFilteredTopic>::ref_type cf_topic =
+            IDL::traits<::DDS::ContentFilteredTopic>::narrow (a_topic);
           if (!cf_topic)
             {
               DDSX11_IMPL_LOG_ERROR (
@@ -140,7 +140,7 @@ namespace DDSX11
           << qos_profile << ">");
 
       // Create the X11 typed data reader
-      IDL::traits< ::DDS::DataReader>::ref_type datareader =
+      IDL::traits<::DDS::DataReader>::ref_type datareader =
         DDS_TypeSupport_i::create_datareader (
               this->get_participant (),
               a_topic->get_type_name (),

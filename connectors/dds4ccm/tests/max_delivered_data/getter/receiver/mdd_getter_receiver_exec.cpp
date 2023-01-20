@@ -26,24 +26,24 @@ namespace MDD_Getter_Test_Receiver_Impl
      : public IDL::traits<CCM_TT::TT_Handler>::base_type
    {
    public:
-     explicit TT_Callback (IDL::traits< ::MDD_Getter_Test::CCM_Receiver_Context>::ref_type ctx)
+     explicit TT_Callback (IDL::traits<::MDD_Getter_Test::CCM_Receiver_Context>::ref_type ctx)
           : ciao_context_ (ctx)
      {}
 
      void
      on_trigger (
-         IDL::traits< ::CCM_TT::TT_Timer>::ref_type timer,
+         IDL::traits<::CCM_TT::TT_Timer>::ref_type timer,
          const ::CCM_TT::TT_Duration& time,
          uint32_t round) override;
 
    private:
        std::string connection_;
-       IDL::traits< ::MDD_Getter_Test::CCM_Receiver_Context>::ref_type ciao_context_;
+       IDL::traits<::MDD_Getter_Test::CCM_Receiver_Context>::ref_type ciao_context_;
    };
 
    void
    TT_Callback::on_trigger (
-       IDL::traits< ::CCM_TT::TT_Timer>::ref_type timer,
+       IDL::traits<::CCM_TT::TT_Timer>::ref_type timer,
        const ::CCM_TT::TT_Duration&,
        uint32_t)
    {
@@ -113,7 +113,7 @@ namespace MDD_Getter_Test_Receiver_Impl
 
   void
   info_get_status_exec_i::on_requested_deadline_missed (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::RequestedDeadlineMissedStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : MDD_Getter_Test_Receiver_Impl::info_get_status_exec_i::on_requested_deadline_missed[_the_reader_status]
@@ -124,7 +124,7 @@ namespace MDD_Getter_Test_Receiver_Impl
 
   void
   info_get_status_exec_i::on_sample_lost (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::SampleLostStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : MDD_Getter_Test_Receiver_Impl::info_get_status_exec_i::on_sample_lost[_the_reader_status]
@@ -193,7 +193,7 @@ namespace MDD_Getter_Test_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : MDD_Getter_Test_Receiver_Impl::Receiver_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type
+  IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type
   Receiver_exec_i::get_info_get_status ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : MDD_Getter_Test_Receiver_Impl::Receiver_exec_i[get_info_get_status]

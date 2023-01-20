@@ -46,7 +46,7 @@ DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_observable_data
 }
 
 template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
-IDL::traits< ::DDS::CCM_DataWriter>::ref_type
+IDL::traits<::DDS::CCM_DataWriter>::ref_type
 DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_observable_dds_entity ()
 {
   DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::get_observable_dds_entity");
@@ -84,7 +84,7 @@ DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_passive_observe
 }
 
 template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
-IDL::traits< ::DDS::CCM_DataReader>::ref_type
+IDL::traits<::DDS::CCM_DataReader>::ref_type
 DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_passive_observer_dds_entity ()
 {
   DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::get_passive_observer_dds_entity");
@@ -169,7 +169,7 @@ DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_pull_observer_f
 }
 
 template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
-IDL::traits< ::DDS::CCM_DataReader>::ref_type
+IDL::traits<::DDS::CCM_DataReader>::ref_type
 DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_pull_observer_dds_entity ()
 {
   DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::get_pull_observer_dds_entity");
@@ -235,7 +235,7 @@ DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_push_observer_d
 }
 
 template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
-IDL::traits< ::DDS::CCM_DataReader>::ref_type
+IDL::traits<::DDS::CCM_DataReader>::ref_type
 DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_push_observer_dds_entity ()
 {
   DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::get_push_observer_dds_entity");
@@ -310,7 +310,7 @@ DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_push_state_obse
 }
 
 template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
-IDL::traits< ::DDS::CCM_DataReader>::ref_type
+IDL::traits<::DDS::CCM_DataReader>::ref_type
 DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_push_state_observer_dds_entity ()
 {
   DDS4CCM_LOG_TRACE ("DDS_State_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::get_push_state_observer_dds_entity");

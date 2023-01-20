@@ -164,7 +164,7 @@ TestExecutor::initialize (int argc, char* argv[])
   if (retcode != DDS::RETCODE_OK)
   {
     DDSX11_TEST_ERROR << "receiver: Failed to register type: "
-                      << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                      << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
                       << std::endl;
     return false;
   }
@@ -304,7 +304,7 @@ TestExecutor::cleanup ()
     if (retcode != DDS::RETCODE_OK)
     {
       DDSX11_TEST_ERROR << "receiver: Failed to delete datawriter from publisher: "
-                        << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                        << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
                         << std::endl;
     }
   }
@@ -325,7 +325,7 @@ TestExecutor::cleanup ()
     if (retcode != DDS::RETCODE_OK)
     {
       DDSX11_TEST_ERROR << "receiver: Failed to delete topic from domain participant"
-                        << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                        << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
                         << std::endl;
     }
   }
@@ -337,7 +337,7 @@ TestExecutor::cleanup ()
     if (retcode != DDS::RETCODE_OK)
     {
       DDSX11_TEST_ERROR << "receiver: Failed to delete datareader from subscriber."
-                        << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                        << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
                         << std::endl;
     }
   }
@@ -348,7 +348,7 @@ TestExecutor::cleanup ()
     if (retcode != DDS::RETCODE_OK)
     {
       DDSX11_TEST_ERROR << "receiver: Failed to delete subscriber from domain participant." << std::endl
-                        << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                        << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
                         << std::endl;
     }
   }
@@ -359,7 +359,7 @@ TestExecutor::cleanup ()
     if (retcode != DDS::RETCODE_OK)
     {
       DDSX11_TEST_ERROR << "receiver: Failed to delete topic from domain participant"
-                        << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                        << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
                         << std::endl;
     }
   }
@@ -371,7 +371,7 @@ TestExecutor::cleanup ()
     if (retcode != DDS::RETCODE_OK)
     {
       DDSX11_TEST_ERROR << "receiver: Failed to delete domain participant from domain participant factory: "
-                        << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                        << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
                         << std::endl;
     }
   }
@@ -382,7 +382,7 @@ TestExecutor::cleanup ()
     if (retcode != ::DDS::RETCODE_OK)
     {
       DDSX11_TEST_ERROR << "receiver: Failed to finalize the domain participant factory: "
-                        << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                        << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
                         << std::endl;
     }
   }
@@ -479,7 +479,7 @@ LatencyDataListener::on_data_available (
   else if (retcode != DDS::RETCODE_OK)
   {
     DDSX11_TEST_ERROR << "LatencyDataListener::on_data_available: Unable to take data from data reader, error "
-                      << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                      << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
                       << std::endl;
   }
   else if (info.valid_data ())

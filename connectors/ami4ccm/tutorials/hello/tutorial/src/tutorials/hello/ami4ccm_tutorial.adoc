@@ -303,7 +303,7 @@ receptacles:
 .Asynchronous receptacle
 [source,c++]
 ------------------------------------------------------------------
- IDL::traits< ::Hello::AMI4CCM_MyFoo_obj>::ref_type my_foo_ami_ =
+ IDL::traits<::Hello::AMI4CCM_MyFoo_obj>::ref_type my_foo_ami_ =
    this->context_->get_connection_sendc_run_my_foo();
 ------------------------------------------------------------------
 
@@ -322,7 +322,7 @@ a reference to the Reply handler.
 .Asynchronous invocation
 [source,c++]
 -----------------------------------------------------------------------
-IDL::traits< ::Hello::AMI4CCM_MyFoo_objReplyHandler>::ref_type cb =
+IDL::traits<::Hello::AMI4CCM_MyFoo_objReplyHandler>::ref_type cb =
   CORBA::make_reference<AMI4CCM_MyFoo_objReplyHandler_run_my_foo_i> ();
 
 my_foo_ami_->sendc_foo (cb, "Do something asynchronous");
@@ -351,7 +351,7 @@ AMI4CCM_MyFoo_objReplyHandler_run_my_foo_i::foo (int32_t ami_return_val,
                     << ">" << std::endl;
 }
 void
-AMI4CCM_MyFoo_objReplyHandler_run_my_foo_i::foo_excep (IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder)
+AMI4CCM_MyFoo_objReplyHandler_run_my_foo_i::foo_excep (IDL::traits<::CCM_AMI::ExceptionHolder>::ref_type excep_holder)
 {
 }
 -----------------------------------------------------------------------------------------------------------------------
@@ -695,7 +695,7 @@ interface from the context:
 
 [source,c++]
 -----------------------------------------------------------------
-IDL::traits< ::Hello::AMI4CCM_MyFoo_obj>::ref_type my_foo_ami_  =
+IDL::traits<::Hello::AMI4CCM_MyFoo_obj>::ref_type my_foo_ami_  =
        this->context_->get_connection_sendc_run_my_foo();
 -----------------------------------------------------------------
 

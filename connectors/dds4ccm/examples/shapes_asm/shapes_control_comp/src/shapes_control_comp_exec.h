@@ -39,7 +39,7 @@ namespace Shapes_Control_comp_Impl
 
   /// Component Executor Implementation Class : Control_comp_exec_i
   class Control_comp_exec_i final
-    : public virtual IDL::traits< ::Shapes::CCM_Control_comp>::base_type
+    : public virtual IDL::traits<::Shapes::CCM_Control_comp>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Shapes_Control_comp_Impl::Control_comp_exec_i[ctor]
@@ -107,7 +107,7 @@ namespace Shapes_Control_comp_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::Shapes::CCM_Control_comp_Context>::ref_type context_;
+    IDL::traits<::Shapes::CCM_Control_comp_Context>::ref_type context_;
 
     /** @name Component attributes. */
     //@{

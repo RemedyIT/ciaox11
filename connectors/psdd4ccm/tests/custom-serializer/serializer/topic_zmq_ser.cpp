@@ -29,7 +29,7 @@ namespace Emitter
   {
     bool
     Custom_ZMQ_Serializer::setup_pack (
-        IDL::traits< ::CCM_PSDD::PSData>::ref_type /*data*/)
+        IDL::traits<::CCM_PSDD::PSData>::ref_type /*data*/)
     {
       // leave endianness to default setting (native byte order)
       // as we only transmit single byte (char) streams
@@ -38,7 +38,7 @@ namespace Emitter
 
     bool
     Custom_ZMQ_Serializer::pack_key (
-        IDL::traits< ::CCM_PSDD::PSData>::ref_type data,
+        IDL::traits<::CCM_PSDD::PSData>::ref_type data,
         const ::Test::Topic& keyvalue)
     {
       IDL::traits<::PSDD::ZMQ::PSDataOut>::ref_type zmq_data =
@@ -58,7 +58,7 @@ namespace Emitter
 
     bool
     Custom_ZMQ_Serializer::pack_data (
-        IDL::traits< ::CCM_PSDD::PSData>::ref_type,
+        IDL::traits<::CCM_PSDD::PSData>::ref_type,
         const ::Test::Topic&)
     {
       // this custom serializer is for subscribers only
@@ -68,14 +68,14 @@ namespace Emitter
 
     void
     Custom_ZMQ_Serializer::finalize_pack (
-        IDL::traits< ::CCM_PSDD::PSData>::ref_type /*data*/)
+        IDL::traits<::CCM_PSDD::PSData>::ref_type /*data*/)
     {
       // noop
     }
 
     bool
     Custom_ZMQ_Serializer::setup_unpack (
-        IDL::traits< ::CCM_PSDD::PSData>::ref_type /*data*/)
+        IDL::traits<::CCM_PSDD::PSData>::ref_type /*data*/)
     {
       // leave endianness to default setting (native byte order)
       // as we only transmit single byte (char) streams
@@ -84,7 +84,7 @@ namespace Emitter
 
     bool
     Custom_ZMQ_Serializer::unpack_key (
-        IDL::traits< ::CCM_PSDD::PSData>::ref_type /*data*/,
+        IDL::traits<::CCM_PSDD::PSData>::ref_type /*data*/,
         ::Test::Topic& /*keyvalue*/)
     {
       // we use single frame serialization/transmission
@@ -95,12 +95,12 @@ namespace Emitter
 
     bool
     Custom_ZMQ_Serializer::unpack_data (
-        IDL::traits< ::CCM_PSDD::PSData>::ref_type data,
+        IDL::traits<::CCM_PSDD::PSData>::ref_type data,
         ::Test::Topic& datum)
     {
       PSDD4CCM_LOG_TRACE ("Custom_ZMQ_Serializer::unpack_data");
-      IDL::traits< ::PSDD::ZMQ::PSDataIn>::ref_type zmq_data =
-          IDL::traits< ::PSDD::ZMQ::PSDataIn>::narrow (data);
+      IDL::traits<::PSDD::ZMQ::PSDataIn>::ref_type zmq_data =
+          IDL::traits<::PSDD::ZMQ::PSDataIn>::narrow (data);
       if (zmq_data)
       {
         PSDD4CCM_LOG_DEBUG ("Custom_ZMQ_Serializer::unpack_data" <<
@@ -139,7 +139,7 @@ namespace Emitter
 
     void
     Custom_ZMQ_Serializer::finalize_unpack (
-        IDL::traits< ::CCM_PSDD::PSData>::ref_type /*data*/)
+        IDL::traits<::CCM_PSDD::PSData>::ref_type /*data*/)
     {
       // noop
     }

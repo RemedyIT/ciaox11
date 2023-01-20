@@ -40,7 +40,7 @@ namespace Hello_Sender_Impl
       const std::string& func);
 
   void HandleException (
-      IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder,
+      IDL::traits<::CCM_AMI::ExceptionHolder>::ref_type excep_holder,
       const std::string& func);
 
   /// Worker thread for asynchronous invocations
@@ -71,7 +71,7 @@ namespace Hello_Sender_Impl
 
   /// Component Executor Implementation Class : Sender_exec_i
   class Sender_exec_i final
-    : public virtual IDL::traits< ::Hello::CCM_Sender>::base_type
+    : public virtual IDL::traits<::Hello::CCM_Sender>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl::Sender_exec_i[ctor]
@@ -115,7 +115,7 @@ namespace Hello_Sender_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::Hello::CCM_Sender_Context>::ref_type context_;
+    IDL::traits<::Hello::CCM_Sender_Context>::ref_type context_;
 
     /** @name Component facets. */
     //@{

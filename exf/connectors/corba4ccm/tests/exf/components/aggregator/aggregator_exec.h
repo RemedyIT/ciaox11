@@ -51,7 +51,7 @@ namespace App_Aggregator_Impl
     /// Constructor
     /// @param[in] context Component context
     do_recorder_exec_i (
-        IDL::traits< ::App::CCM_Aggregator_Context>::ref_type context,
+        IDL::traits<::App::CCM_Aggregator_Context>::ref_type context,
         TLocationSet& locations,
         TEnvironmentMap& env_hist,
         TRecordMap& record_hist,
@@ -114,7 +114,7 @@ namespace App_Aggregator_Impl
     /// Constructor
     /// @param[in] context Component context
     do_collector_exec_i (
-        IDL::traits< ::App::CCM_Aggregator_Context>::ref_type context,
+        IDL::traits<::App::CCM_Aggregator_Context>::ref_type context,
         TLocationSet& locations,
         TEnvironmentMap& env_hist,
         TRecordMap& record_hist,

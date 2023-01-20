@@ -20,7 +20,7 @@ namespace DDSX11
   namespace NDDS_PROXY
   {
     NDDS_PublisherListener_proxy::NDDS_PublisherListener_proxy (
-        IDL::traits< ::DDS::PublisherListener>::ref_type p)
+        IDL::traits<::DDS::PublisherListener>::ref_type p)
       : DDS_PublisherListener_proxy (std::move(p))
     {
       DDSX11_LOG_TRACE ("NDDS_PublisherListener_proxy::NDDS_PublisherListener_proxy");
@@ -38,7 +38,7 @@ namespace DDSX11
     {
       DDSX11_LOG_TRACE ("NDDS_PublisherListener_proxy::on_reliable_reader_activity_changed");
 
-      IDL::traits< ::DDS::DataWriter>::ref_type dw =
+      IDL::traits<::DDS::DataWriter>::ref_type dw =
         DDS_ProxyEntityManager::get_datawriter_proxy (the_writer);
       if (dw)
       {
@@ -54,7 +54,7 @@ namespace DDSX11
     {
       DDSX11_LOG_TRACE ("NDDS_PublisherListener_proxy::on_reliable_writer_cache_changed");
 
-      IDL::traits< ::DDS::DataWriter>::ref_type dw =
+      IDL::traits<::DDS::DataWriter>::ref_type dw =
         DDS_ProxyEntityManager::get_datawriter_proxy (the_writer);
       if (dw)
       {

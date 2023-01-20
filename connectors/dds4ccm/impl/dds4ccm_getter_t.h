@@ -94,10 +94,10 @@ namespace CIAOX11
         */
       void
       set_dds_reader (
-        IDL::traits< ::DDS::DataReader>::ref_type reader,
+        IDL::traits<::DDS::DataReader>::ref_type reader,
         SharedConditionManager condition_manager);
 
-      IDL::traits< ::DDS::DataReader>::ref_type get_dds_reader ();
+      IDL::traits<::DDS::DataReader>::ref_type get_dds_reader ();
 
     private:
       typename ::DDS::traits<TOPIC_TYPE>::typed_datareader_ref_type dds_reader_ {};
@@ -125,14 +125,14 @@ namespace CIAOX11
         TOPIC_SEQ_TYPE& data,
         ::DDS::SampleInfoSeq & sample_info,
         uint32_t max_samples,
-        IDL::traits< ::DDS::QueryCondition>::ref_type qc);
+        IDL::traits<::DDS::QueryCondition>::ref_type qc);
 
       ::DDS::ReturnCode_t
       get (
         TOPIC_SEQ_TYPE & data,
         ::DDS::SampleInfoSeq & sample_info,
         uint32_t max_samples,
-        IDL::traits< ::DDS::ReadCondition>::ref_type rd);
+        IDL::traits<::DDS::ReadCondition>::ref_type rd);
       //@}
 
       Getter_T() = delete;

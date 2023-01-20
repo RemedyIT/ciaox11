@@ -20,10 +20,10 @@
 namespace CCM_AMI
 {
   class AMI4CCM_IMPL_Export ExceptionHolder_i final
-  : public virtual IDL::traits< ::CCM_AMI::ExceptionHolder>::base_type
+  : public virtual IDL::traits<::CCM_AMI::ExceptionHolder>::base_type
   {
   public:
-    explicit ExceptionHolder_i (IDL::traits< ::Messaging::ExceptionHolder>::ref_type excep_holder);
+    explicit ExceptionHolder_i (IDL::traits<::Messaging::ExceptionHolder>::ref_type excep_holder);
 
     ~ExceptionHolder_i () override = default;
 
@@ -31,7 +31,7 @@ namespace CCM_AMI
     void raise_exception () override;
 
   private:
-    IDL::traits< ::Messaging::ExceptionHolder>::ref_type holder_;
+    IDL::traits<::Messaging::ExceptionHolder>::ref_type holder_;
 
     ExceptionHolder_i() = delete;
     ExceptionHolder_i(const ExceptionHolder_i&) = delete;
