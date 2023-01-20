@@ -23,16 +23,13 @@ namespace <%= executor_cxx_namespace %>
   }
 
   bool
-  <%= lem_name %>_ExecutorLocator::disconnect (
-      const ::Components::FeatureName& name,
-      const std::string& conn_name)
+  <%= lem_name %>_ExecutorLocator::disconnect (const ::Components::FeatureName& name, const std::string& conn_name)
   {
 % nest { visit_disconnect }
   }
 
   void
-  <%= lem_name %>_ExecutorLocator::configure (
-      ::Components::ConfigValues& config)
+  <%= lem_name %>_ExecutorLocator::configure (::Components::ConfigValues& config)
   {
 % nest { visit_configure }
   }
@@ -91,10 +88,10 @@ namespace <%= executor_cxx_namespace %>
 % nest { visit_component_obtain_facet_executor }
 
   <%= lem_name %>_Context::<%= lem_name %>_Context (
-      IDL::traits<CIAOX11::Service_Registry>::ref_type svcreg,
-      std::string ins_name) :
-        service_registry_ (std::move (svcreg)),
-        instance_id_ (std::move (ins_name))
+    IDL::traits<CIAOX11::Service_Registry>::ref_type svcreg,
+    std::string ins_name) :
+      service_registry_ (std::move (svcreg)),
+      instance_id_ (std::move (ins_name))
   {
   }
 

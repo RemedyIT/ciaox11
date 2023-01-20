@@ -1,13 +1,7 @@
 
 // generated from <%= ridl_template_path %>
 bool
-<%= lem_name %>_Context::reset_connection (
-%   if all_incl_multiple_port?
-  const std::string& name,
-  const std::string& conn_name)
-%   else
-  const std::string& name)
-%   end
+<%= lem_name %>_Context::reset_connection (const std::string& name<% if all_incl_multiple_port? %>, const std::string& conn_name<% end %>)
 {
 %   nr_ports = 0
 %   all_ports.each do |_p|
