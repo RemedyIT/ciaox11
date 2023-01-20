@@ -28,7 +28,7 @@ namespace CIAOX11
     {
     public:
       Event_Connector_T () = default;
-      virtual ~Event_Connector_T () = default;
+      ~Event_Connector_T () override = default;
 
       /**
        * @name attributes of PSDD4CCM PSDD_Base

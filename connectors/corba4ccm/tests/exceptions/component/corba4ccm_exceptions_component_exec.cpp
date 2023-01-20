@@ -104,7 +104,7 @@ namespace Foo_CORBA4CCM_exception_component_Impl
   {
     // Setting the context of this component.
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Foo_CORBA4CCM_exception_component_Impl::CORBA4CCM_exception_component_exec_i[set_session_context]
-    this->context_ = IDL::traits< ::Foo::CCM_CORBA4CCM_exception_component_Context >::narrow (std::move(ctx));
+    this->context_ = IDL::traits<::Foo::CCM_CORBA4CCM_exception_component_Context >::narrow (std::move(ctx));
     //@@{__RIDL_REGEN_MARKER__} - END : Foo_CORBA4CCM_exception_component_Impl::CORBA4CCM_exception_component_exec_i[set_session_context]
   }
 

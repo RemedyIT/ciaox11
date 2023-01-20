@@ -25,7 +25,7 @@ namespace DDS_Native {
 namespace DDSX11
 {
   class DDSX11_IMPL_Export DDS_DomainParticipantFactory_proxy
-    : public virtual IDL::traits< ::DDS::DomainParticipantFactory>::base_type
+    : public virtual IDL::traits<::DDS::DomainParticipantFactory>::base_type
     , public virtual NativeEntityBase_T<DDS_Native::DDS::DomainParticipantFactory>
   {
   public:
@@ -35,18 +35,18 @@ namespace DDSX11
     /// Destructor
     ~DDS_DomainParticipantFactory_proxy () override = default;
 
-    IDL::traits< ::DDS::DomainParticipant>::ref_type
+    IDL::traits<::DDS::DomainParticipant>::ref_type
     create_participant (
       ::DDS::DomainId_t domain_id,
       const ::DDS::DomainParticipantQos & qos,
-      IDL::traits< ::DDS::DomainParticipantListener>::ref_type a_listener,
+      IDL::traits<::DDS::DomainParticipantListener>::ref_type a_listener,
       ::DDS::StatusMask mask) override;
 
     ::DDS::ReturnCode_t
     delete_participant (
-      IDL::traits< ::DDS::DomainParticipant>::ref_type a_participant) override;
+      IDL::traits<::DDS::DomainParticipant>::ref_type a_participant) override;
 
-    IDL::traits< ::DDS::DomainParticipant>::ref_type
+    IDL::traits<::DDS::DomainParticipant>::ref_type
     lookup_participant (
       ::DDS::DomainId_t domain_id) override;
 

@@ -398,7 +398,7 @@ namespace subscriber_comp_Impl
   void subscriber_comp_exec_i::ccm_activate ()
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::subscriber_comp_exec_i[ccm_activate]
-    IDL::traits< ::CCM_DDS::DataListenerControl>::ref_type lc =
+    IDL::traits<::CCM_DDS::DataListenerControl>::ref_type lc =
       this->context_->get_connection_info_out_data_control ();
     lc->mode (::CCM_DDS::ListenerMode::ONE_BY_ONE);
 

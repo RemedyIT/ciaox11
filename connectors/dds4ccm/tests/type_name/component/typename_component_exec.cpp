@@ -45,17 +45,17 @@ namespace TypeNameComponent_Impl
   {
     try
     {
-      IDL::traits< ::TypeNameConnector::Writer>::ref_type writer =
+      IDL::traits<::TypeNameConnector::Writer>::ref_type writer =
         this->context_->get_connection_type_name_writer_data ();
-      IDL::traits< ::CORBA::Object>::ref_type cmp = writer->_get_component ();
+      IDL::traits<::CORBA::Object>::ref_type cmp = writer->_get_component ();
       if (!cmp)
       {
         DDS4CCM_TEST_ERROR << "TypeNameComponent_exec_i::check_typename_global - "
           "ERROR: Unable to get component interface." << std::endl;
         return;
       }
-      IDL::traits< ::TypeNameConnector::CCM_DDS_Event>::ref_type conn =
-        IDL::traits< ::TypeNameConnector::CCM_DDS_Event >::narrow (cmp);
+      IDL::traits<::TypeNameConnector::CCM_DDS_Event>::ref_type conn =
+        IDL::traits<::TypeNameConnector::CCM_DDS_Event >::narrow (cmp);
       if (!conn)
       {
         DDS4CCM_TEST_ERROR << "ERROR: TypeNameComponent_exec_i::check_typename_global - "
@@ -84,17 +84,17 @@ namespace TypeNameComponent_Impl
   {
     try
     {
-      IDL::traits< ::TypeNameModule::TypeNameModuleConnector::Writer>::ref_type writer =
+      IDL::traits<::TypeNameModule::TypeNameModuleConnector::Writer>::ref_type writer =
         this->context_->get_connection_type_name_module_writer_data ();
-      IDL::traits< ::CORBA::Object>::ref_type cmp = writer->_get_component ();
+      IDL::traits<::CORBA::Object>::ref_type cmp = writer->_get_component ();
       if (!cmp)
       {
         DDS4CCM_TEST_ERROR << "TypeNameComponent_exec_i::check_typename_of_module - "
           "ERROR: Unable to get component interface." << std::endl;
         return;
       }
-      IDL::traits< ::TypeNameModule::TypeNameModuleConnector::CCM_DDS_Event>::ref_type conn =
-        IDL::traits< ::TypeNameModule::TypeNameModuleConnector::CCM_DDS_Event >::narrow (cmp);
+      IDL::traits<::TypeNameModule::TypeNameModuleConnector::CCM_DDS_Event>::ref_type conn =
+        IDL::traits<::TypeNameModule::TypeNameModuleConnector::CCM_DDS_Event >::narrow (cmp);
       if (!conn)
       {
         DDS4CCM_TEST_ERROR << "ERROR: TypeNameComponent_exec_i::check_typename_of_module - "
@@ -123,17 +123,17 @@ namespace TypeNameComponent_Impl
   {
     try
     {
-      IDL::traits< ::TypeNameModule::TypeNameModuleModule::TypeNameModuleModuleConnector::Writer>::ref_type writer =
+      IDL::traits<::TypeNameModule::TypeNameModuleModule::TypeNameModuleModuleConnector::Writer>::ref_type writer =
         this->context_->get_connection_type_name_module_module_writer_data ();
-      IDL::traits< ::CORBA::Object>::ref_type cmp = writer->_get_component ();
+      IDL::traits<::CORBA::Object>::ref_type cmp = writer->_get_component ();
       if (!cmp)
       {
         DDS4CCM_TEST_ERROR << "TypeNameComponent_exec_i::check_typename_of_module_in_module - "
           "ERROR: Unable to get component interface." << std::endl;
         return;
       }
-      IDL::traits< ::TypeNameModule::TypeNameModuleModule::TypeNameModuleModuleConnector::CCM_DDS_Event>::ref_type conn =
-        IDL::traits< ::TypeNameModule::TypeNameModuleModule::TypeNameModuleModuleConnector::CCM_DDS_Event >::narrow (cmp);
+      IDL::traits<::TypeNameModule::TypeNameModuleModule::TypeNameModuleModuleConnector::CCM_DDS_Event>::ref_type conn =
+        IDL::traits<::TypeNameModule::TypeNameModuleModule::TypeNameModuleModuleConnector::CCM_DDS_Event >::narrow (cmp);
       if (!conn)
       {
         DDS4CCM_TEST_ERROR << "ERROR: TypeNameComponent_exec_i::check_typename_of_module_in_module - "
@@ -162,17 +162,17 @@ namespace TypeNameComponent_Impl
   {
     try
     {
-      IDL::traits< ::TypeNameModule::TypeNameModuleModule2::TypeNameModuleModule2Connector::Writer>::ref_type writer =
+      IDL::traits<::TypeNameModule::TypeNameModuleModule2::TypeNameModuleModule2Connector::Writer>::ref_type writer =
         this->context_->get_connection_type_name_module_module_2_writer_data ();
-      IDL::traits< ::CORBA::Object>::ref_type cmp = writer->_get_component ();
+      IDL::traits<::CORBA::Object>::ref_type cmp = writer->_get_component ();
       if (!cmp)
       {
         DDS4CCM_TEST_ERROR << "TypeNameComponent_exec_i::check_typename_of_module_in_module_2 - "
           "ERROR: Unable to get component interface." << std::endl;
         return;
       }
-      IDL::traits< ::TypeNameModule::TypeNameModuleModule2::TypeNameModuleModule2Connector::CCM_DDS_Event>::ref_type conn =
-        IDL::traits< ::TypeNameModule::TypeNameModuleModule2::TypeNameModuleModule2Connector::CCM_DDS_Event >::narrow (cmp);
+      IDL::traits<::TypeNameModule::TypeNameModuleModule2::TypeNameModuleModule2Connector::CCM_DDS_Event>::ref_type conn =
+        IDL::traits<::TypeNameModule::TypeNameModuleModule2::TypeNameModuleModule2Connector::CCM_DDS_Event >::narrow (cmp);
       if (!conn)
       {
         DDS4CCM_TEST_ERROR << "ERROR: TypeNameComponent_exec_i::check_typename_of_module_in_module_2 - "

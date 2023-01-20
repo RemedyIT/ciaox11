@@ -161,7 +161,7 @@ The regeneration markers look like:
 ----
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : EFC_FooConnector_Impl::request_handler_exec_i[ctor]
   request_handler_exec_i::request_handler_exec_i (
-    IDL::traits< ::EFC::CCM_FooConnector_Context>::ref_type context)
+    IDL::traits<::EFC::CCM_FooConnector_Context>::ref_type context)
     : context_ (std::move (context))
   {
   }
@@ -220,7 +220,7 @@ setting or removing receptacle connections and retrieving receptacle configurati
    * component.
    */
   class FooConnector_Context final
-    : public IDL::traits< ::EFC::CCM_FooConnector_Context>::base_type
+    : public IDL::traits<::EFC::CCM_FooConnector_Context>::base_type
   {
   public:
     /**
@@ -239,7 +239,7 @@ setting or removing receptacle connections and retrieving receptacle configurati
     /// @name Accessors for all receptacles
     //@{
     /// Get the reply_listener receptacle
-    IDL::traits< ::EFC::FooListener>::ref_type get_connection_reply_listener () override;
+    IDL::traits<::EFC::FooListener>::ref_type get_connection_reply_listener () override;
     //@}
     // generated from ccmx11/templates/svnt/hdr/connector_context_extra_receptacles
 
@@ -275,7 +275,7 @@ setting or removing receptacle connections and retrieving receptacle configurati
     /// @name Member variables for storing all receptacles
     //@{
     /// Member variable for storing a reference for the reply_listener receptacle
-    IDL::traits< ::EFC::FooListener>::ref_type reply_listener_{};
+    IDL::traits<::EFC::FooListener>::ref_type reply_listener_{};
     //@}
 
     //@{
@@ -605,7 +605,7 @@ scheme) the default generated implementation for this method should be customize
 ----
   /// Component Executor Implementation Class : FooConnector_exec_i
   class FooConnector_exec_i final
-    : public virtual IDL::traits< ::EFC::CCM_FooConnector>::base_type
+    : public virtual IDL::traits<::EFC::CCM_FooConnector>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : EFC_FooConnector_Impl::FooConnector_exec_i[ctor]
@@ -620,7 +620,7 @@ scheme) the default generated implementation for this method should be customize
 
     /// Factory method and getter for the request_handler facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< ::EFC::CCM_FooHandler>::ref_type get_request_handler () override;
+    IDL::traits<::EFC::CCM_FooHandler>::ref_type get_request_handler () override;
     //@}
 
     /** @name Supported attributes. */
@@ -664,7 +664,7 @@ scheme) the default generated implementation for this method should be customize
 
   private:
     /// Context for component instance.
-    IDL::traits< ::EFC::CCM_FooConnector_Context>::ref_type context_;
+    IDL::traits<::EFC::CCM_FooConnector_Context>::ref_type context_;
 
     /** @name Component attributes. */
     //@{
@@ -674,7 +674,7 @@ scheme) the default generated implementation for this method should be customize
 
     /** @name Component facets. */
     //@{
-    IDL::traits< ::EFC::CCM_FooHandler>::ref_type request_handler_;
+    IDL::traits<::EFC::CCM_FooHandler>::ref_type request_handler_;
     //@}
 
     /** @name User defined members. */
@@ -772,7 +772,7 @@ The following factory method is generated in the component executor class.
 ----
     /// Factory method and getter for the request_handler facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< ::EFC::CCM_FooHandler>::ref_type get_request_handler () override;
+    IDL::traits<::EFC::CCM_FooHandler>::ref_type get_request_handler () override;
 ----
 ====
 
@@ -793,14 +793,14 @@ It is possible to customize the constructor for the generated facet executor cla
 ----
   /// Executor implementation class for request_handler facet
   class request_handler_exec_i final
-    : public IDL::traits< ::EFC::CCM_FooHandler>::base_type
+    : public IDL::traits<::EFC::CCM_FooHandler>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : EFC_FooConnector_Impl::request_handler_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
     request_handler_exec_i (
-        IDL::traits< ::EFC::CCM_FooConnector_Context>::ref_type context);
+        IDL::traits<::EFC::CCM_FooConnector_Context>::ref_type context);
     //@@{__RIDL_REGEN_MARKER__} - END : EFC_FooConnector_Impl::request_handler_exec_i[ctor]
 
     /// Destructor
@@ -823,7 +823,7 @@ It is possible to customize the constructor for the generated facet executor cla
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::EFC::CCM_FooConnector_Context>::ref_type context_;
+    IDL::traits<::EFC::CCM_FooConnector_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{

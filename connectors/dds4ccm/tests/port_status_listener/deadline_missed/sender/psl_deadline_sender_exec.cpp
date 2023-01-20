@@ -27,23 +27,23 @@ namespace PSL_DeadlineTest_Sender_Impl
   : public IDL::traits<CCM_TT::TT_Handler>::base_type
   {
     public:
-    explicit TT_Callback (IDL::traits< ::PSL_DeadlineTest::CCM_Sender>::weak_ref_type component_executor)
+    explicit TT_Callback (IDL::traits<::PSL_DeadlineTest::CCM_Sender>::weak_ref_type component_executor)
                   : component_executor_(component_executor)
     {}
 
     void
     on_trigger (
-        IDL::traits< ::CCM_TT::TT_Timer>::ref_type timer,
+        IDL::traits<::CCM_TT::TT_Timer>::ref_type timer,
         const ::CCM_TT::TT_Duration& time,
         uint32_t round) override;
 
     private:
-      IDL::traits< ::PSL_DeadlineTest::CCM_Sender>::weak_ref_type component_executor_;
+      IDL::traits<::PSL_DeadlineTest::CCM_Sender>::weak_ref_type component_executor_;
   };
 
   void
   TT_Callback::on_trigger (
-       IDL::traits< ::CCM_TT::TT_Timer>::ref_type timer,
+       IDL::traits<::CCM_TT::TT_Timer>::ref_type timer,
        const ::CCM_TT::TT_Duration& time,
        uint32_t round)
   {
@@ -79,7 +79,7 @@ namespace PSL_DeadlineTest_Sender_Impl
   void
   Sender_exec_i::tick ()
   {
-    IDL::traits< ::CommonTestConnector::Writer>::ref_type writer =
+    IDL::traits<::CommonTestConnector::Writer>::ref_type writer =
       this->context_->get_connection_writer_data ();
 
     try

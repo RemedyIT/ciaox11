@@ -36,7 +36,7 @@ namespace CIAOX11_TT_TimedTrigger_Impl
    * component.
    */
   class TimedTrigger_Context final
-    : public IDL::traits< ::CIAOX11_TT::CCM_TimedTrigger_Context >::base_type
+    : public IDL::traits<::CIAOX11_TT::CCM_TimedTrigger_Context >::base_type
   {
   public:
     /**
@@ -93,7 +93,7 @@ namespace CIAOX11_TT_TimedTrigger_Impl
     * @param component_context The context that is passed to the executor
     */
     TimedTrigger_ExecutorLocator (
-      IDL::traits< ::CIAOX11_TT::CCM_TimedTrigger>::ref_type component_executor,
+      IDL::traits<::CIAOX11_TT::CCM_TimedTrigger>::ref_type component_executor,
       IDL::traits< TimedTrigger_Context>::ref_type component_context);
 
     /**
@@ -136,7 +136,7 @@ namespace CIAOX11_TT_TimedTrigger_Impl
 
   private:
     /// Reference to the user implemented executor
-    IDL::traits< ::CIAOX11_TT::CCM_TimedTrigger>::ref_type component_executor_;
+    IDL::traits<::CIAOX11_TT::CCM_TimedTrigger>::ref_type component_executor_;
 
     /// The context for this component
     IDL::traits< TimedTrigger_Context>::ref_type component_context_;

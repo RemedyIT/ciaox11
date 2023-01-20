@@ -98,7 +98,7 @@ namespace CIAOX11
             ExF::Priority prio,
             ExF::Deadline dltm,
             IDL::traits<CCM_DDS::ConnectorStatusListener>::weak_ref_type lsn,
-            IDL::traits< ::DDS::Entity>::ref_type entity,
+            IDL::traits<::DDS::Entity>::ref_type entity,
             ::DDS::StatusKind status_kind)
           : DDSExecutorBase<CCM_DDS::ConnectorStatusListener> (
               prio, dltm, lsn, "unexpected_status")
@@ -110,7 +110,7 @@ namespace CIAOX11
       protected:
         virtual void execute_i (IDL::traits<CCM_DDS::ConnectorStatusListener>::ref_type listener)
         {
-          IDL::traits< ::DDS::Entity>::ref_type entity = this->entity_.lock ();
+          IDL::traits<::DDS::Entity>::ref_type entity = this->entity_.lock ();
           if (entity && listener)
           {
             listener->on_unexpected_status (std::move(entity), this->status_kind_);
@@ -125,7 +125,7 @@ namespace CIAOX11
         }
 
       private:
-        IDL::traits< ::DDS::Entity >::weak_ref_type entity_;
+        IDL::traits<::DDS::Entity >::weak_ref_type entity_;
         ::DDS::StatusKind status_kind_;
       };
 
@@ -137,7 +137,7 @@ namespace CIAOX11
             ExF::Priority prio,
             ExF::Deadline dltm,
             IDL::traits<CCM_DDS::ConnectorStatusListener>::weak_ref_type lsn,
-            IDL::traits< ::DDS::DataReader>::ref_type dr,
+            IDL::traits<::DDS::DataReader>::ref_type dr,
             const ::DDS::RequestedIncompatibleQosStatus &status)
           : DDSExecutorBase<CCM_DDS::ConnectorStatusListener> (
               prio, dltm, lsn, "requested_incompatible_qos")
@@ -149,7 +149,7 @@ namespace CIAOX11
       protected:
         virtual void execute_i (IDL::traits<CCM_DDS::ConnectorStatusListener>::ref_type listener)
         {
-          IDL::traits< ::DDS::DataReader>::ref_type dr = this->dr_.lock ();
+          IDL::traits<::DDS::DataReader>::ref_type dr = this->dr_.lock ();
           if (dr && listener)
           {
             listener->on_requested_incompatible_qos (std::move(dr), this->status_);
@@ -164,7 +164,7 @@ namespace CIAOX11
         }
 
       private:
-        IDL::traits< ::DDS::DataReader>::weak_ref_type dr_;
+        IDL::traits<::DDS::DataReader>::weak_ref_type dr_;
         ::DDS::RequestedIncompatibleQosStatus const status_;
       };
 
@@ -176,7 +176,7 @@ namespace CIAOX11
             ExF::Priority prio,
             ExF::Deadline dltm,
             IDL::traits<CCM_DDS::ConnectorStatusListener>::weak_ref_type lsn,
-            IDL::traits< ::DDS::DataReader>::ref_type dr,
+            IDL::traits<::DDS::DataReader>::ref_type dr,
             const ::DDS::SampleRejectedStatus &status)
           : DDSExecutorBase<CCM_DDS::ConnectorStatusListener> (
               prio, dltm, lsn, "sample_rejected")
@@ -188,7 +188,7 @@ namespace CIAOX11
       protected:
         virtual void execute_i (IDL::traits<CCM_DDS::ConnectorStatusListener>::ref_type listener)
         {
-          IDL::traits< ::DDS::DataReader>::ref_type dr = this->dr_.lock ();
+          IDL::traits<::DDS::DataReader>::ref_type dr = this->dr_.lock ();
           if (dr && listener)
           {
             listener->on_sample_rejected (std::move(dr), this->status_);
@@ -203,7 +203,7 @@ namespace CIAOX11
         }
 
       private:
-        IDL::traits< ::DDS::DataReader>::weak_ref_type dr_;
+        IDL::traits<::DDS::DataReader>::weak_ref_type dr_;
         ::DDS::SampleRejectedStatus const status_;
       };
 
@@ -214,8 +214,8 @@ namespace CIAOX11
         InconsistentTopicExecutor (
             ExF::Priority prio,
             ExF::Deadline dltm,
-            IDL::traits< CCM_DDS::ConnectorStatusListener>::weak_ref_type lsn,
-            IDL::traits< ::DDS::Topic>::ref_type tp,
+            IDL::traits<CCM_DDS::ConnectorStatusListener>::weak_ref_type lsn,
+            IDL::traits<::DDS::Topic>::ref_type tp,
             const ::DDS::InconsistentTopicStatus &status)
           : DDSExecutorBase<CCM_DDS::ConnectorStatusListener> (
               prio, dltm, lsn, "inconsistent_topic")
@@ -227,7 +227,7 @@ namespace CIAOX11
       protected:
         virtual void execute_i (IDL::traits<CCM_DDS::ConnectorStatusListener>::ref_type listener)
         {
-          IDL::traits< ::DDS::Topic>::ref_type tp = this->tp_.lock ();
+          IDL::traits<::DDS::Topic>::ref_type tp = this->tp_.lock ();
           if (tp && listener)
           {
             listener->on_inconsistent_topic (std::move(tp), this->status_);
@@ -242,7 +242,7 @@ namespace CIAOX11
         }
 
       private:
-        IDL::traits< ::DDS::Topic >::weak_ref_type tp_;
+        IDL::traits<::DDS::Topic >::weak_ref_type tp_;
         ::DDS::InconsistentTopicStatus const status_;
       };
 
@@ -254,7 +254,7 @@ namespace CIAOX11
             ExF::Priority prio,
             ExF::Deadline dltm,
             IDL::traits<CCM_DDS::ConnectorStatusListener>::weak_ref_type lsn,
-            IDL::traits< ::DDS::DataWriter>::ref_type dw,
+            IDL::traits<::DDS::DataWriter>::ref_type dw,
             const ::DDS::OfferedDeadlineMissedStatus &status)
           : DDSExecutorBase<CCM_DDS::ConnectorStatusListener> (
               prio, dltm, lsn, "offered_deadline_missed")
@@ -266,7 +266,7 @@ namespace CIAOX11
       protected:
         virtual void execute_i (IDL::traits<CCM_DDS::ConnectorStatusListener>::ref_type listener)
         {
-          IDL::traits< ::DDS::DataWriter>::ref_type dw = this->dw_.lock ();
+          IDL::traits<::DDS::DataWriter>::ref_type dw = this->dw_.lock ();
           if (dw && listener)
           {
             listener->on_offered_deadline_missed (std::move(dw), this->status_);
@@ -281,7 +281,7 @@ namespace CIAOX11
         }
 
       private:
-        IDL::traits< ::DDS::DataWriter>::weak_ref_type dw_;
+        IDL::traits<::DDS::DataWriter>::weak_ref_type dw_;
         ::DDS::OfferedDeadlineMissedStatus const status_;
       };
 
@@ -293,7 +293,7 @@ namespace CIAOX11
             ExF::Priority prio,
             ExF::Deadline dltm,
             IDL::traits<CCM_DDS::ConnectorStatusListener>::weak_ref_type lsn,
-            IDL::traits< ::DDS::DataWriter>::ref_type dw,
+            IDL::traits<::DDS::DataWriter>::ref_type dw,
             const ::DDS::OfferedIncompatibleQosStatus &status)
           : DDSExecutorBase<CCM_DDS::ConnectorStatusListener> (
               prio, dltm, lsn, "offered_deadline_missed")
@@ -305,7 +305,7 @@ namespace CIAOX11
       protected:
         virtual void execute_i (IDL::traits<CCM_DDS::ConnectorStatusListener>::ref_type listener)
         {
-          IDL::traits< ::DDS::DataWriter>::ref_type dw = this->dw_.lock ();
+          IDL::traits<::DDS::DataWriter>::ref_type dw = this->dw_.lock ();
           if (dw && listener)
           {
             listener->on_offered_incompatible_qos (std::move(dw), this->status_);
@@ -320,7 +320,7 @@ namespace CIAOX11
         }
 
       private:
-        IDL::traits< ::DDS::DataWriter>::weak_ref_type dw_;
+        IDL::traits<::DDS::DataWriter>::weak_ref_type dw_;
         ::DDS::OfferedIncompatibleQosStatus const status_;
       };
 
@@ -332,7 +332,7 @@ namespace CIAOX11
             ExF::Priority prio,
             ExF::Deadline dltm,
             IDL::traits<CCM_DDS::PortStatusListener>::weak_ref_type lsn,
-            IDL::traits< ::DDS::DataReader>::ref_type dr,
+            IDL::traits<::DDS::DataReader>::ref_type dr,
             const ::DDS::RequestedDeadlineMissedStatus &status)
           : DDSExecutorBase<CCM_DDS::PortStatusListener> (
               prio, dltm, lsn, "requested_deadline_missed")
@@ -344,7 +344,7 @@ namespace CIAOX11
       protected:
         virtual void execute_i (IDL::traits<CCM_DDS::PortStatusListener>::ref_type listener)
         {
-          IDL::traits< ::DDS::DataReader>::ref_type dr = this->dr_.lock ();
+          IDL::traits<::DDS::DataReader>::ref_type dr = this->dr_.lock ();
           if (dr && listener)
           {
             listener->on_requested_deadline_missed (std::move(dr), this->status_);
@@ -359,7 +359,7 @@ namespace CIAOX11
         }
 
       private:
-        IDL::traits< ::DDS::DataReader>::weak_ref_type dr_;
+        IDL::traits<::DDS::DataReader>::weak_ref_type dr_;
         ::DDS::RequestedDeadlineMissedStatus const status_;
       };
 
@@ -371,7 +371,7 @@ namespace CIAOX11
             ExF::Priority prio,
             ExF::Deadline dltm,
             IDL::traits<CCM_DDS::PortStatusListener>::weak_ref_type lsn,
-            IDL::traits< ::DDS::DataReader>::ref_type dr,
+            IDL::traits<::DDS::DataReader>::ref_type dr,
             const ::DDS::SampleLostStatus &status)
           : DDSExecutorBase<CCM_DDS::PortStatusListener> (
               prio, dltm, lsn, "sample_lost")
@@ -383,7 +383,7 @@ namespace CIAOX11
       protected:
         virtual void execute_i (IDL::traits<CCM_DDS::PortStatusListener>::ref_type listener)
         {
-          IDL::traits< ::DDS::DataReader>::ref_type dr = this->dr_.lock ();
+          IDL::traits<::DDS::DataReader>::ref_type dr = this->dr_.lock ();
           if (dr && listener)
           {
             listener->on_sample_lost (std::move(dr), this->status_);
@@ -398,7 +398,7 @@ namespace CIAOX11
         }
 
       private:
-        IDL::traits< ::DDS::DataReader>::weak_ref_type dr_;
+        IDL::traits<::DDS::DataReader>::weak_ref_type dr_;
         ::DDS::SampleLostStatus const status_;
       };
 
@@ -412,7 +412,7 @@ namespace CIAOX11
             ExF::Deadline dltm,
             typename IDL::traits<DATA_LISTENER>::weak_ref_type lsn,
             typename IDL::traits<LISTENER>::ref_type drl,
-            IDL::traits< ::DDS::DataReader>::ref_type dr)
+            IDL::traits<::DDS::DataReader>::ref_type dr)
           : DDSExecutorBase<DATA_LISTENER> (
               prio, dltm, lsn, "data_available")
           , drl_ (std::move(drl))
@@ -424,7 +424,7 @@ namespace CIAOX11
         virtual void execute_i (typename IDL::traits<DATA_LISTENER>::ref_type listener)
         {
           typename IDL::traits<LISTENER>::ref_type drl = this->drl_.lock ();
-          IDL::traits< ::DDS::DataReader>::ref_type dr = this->dr_.lock ();
+          IDL::traits<::DDS::DataReader>::ref_type dr = this->dr_.lock ();
           if (drl && listener)
           {
             drl->on_data_available_i (std::move(dr), std::move(listener));
@@ -440,7 +440,7 @@ namespace CIAOX11
         /// The weak reference to the data reader listener.
         typename IDL::traits<LISTENER>::weak_ref_type drl_;
         /// The weak reference to the data reader
-        IDL::traits< ::DDS::DataReader>::weak_ref_type dr_;
+        IDL::traits<::DDS::DataReader>::weak_ref_type dr_;
       };
     }
   }

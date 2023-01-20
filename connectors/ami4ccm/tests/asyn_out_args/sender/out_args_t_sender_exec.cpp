@@ -42,7 +42,7 @@ namespace InterOutArgsT_Sender_Impl
     CIAOX11_TEST_INFO << "Sender:\t->get_connection_sendc_run_my_foo "
                       << std::endl;
 
-    IDL::traits< ::InterOutArgsT::AMI4CCM_MyFoo>::ref_type my_foo_ami_  =
+    IDL::traits<::InterOutArgsT::AMI4CCM_MyFoo>::ref_type my_foo_ami_  =
           this->ciao_context_->get_connection_sendc_run_my_foo();
 
     if (!my_foo_ami_)
@@ -54,7 +54,7 @@ namespace InterOutArgsT_Sender_Impl
     CIAOX11_TEST_INFO << "Sender:\t->get_connection_sendc_run_my_foo ok"
                       << std::endl;
 
-    IDL::traits< ::InterOutArgsT::AMI4CCM_MyFooReplyHandler>::ref_type cb =
+    IDL::traits<::InterOutArgsT::AMI4CCM_MyFooReplyHandler>::ref_type cb =
              CORBA::make_reference<AMI4CCM_MyFooReplyHandler_run_my_foo_i> ();
 
     CIAOX11_TEST_INFO << "Sender:\t->invoking async calls"

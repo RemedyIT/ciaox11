@@ -174,7 +174,7 @@ namespace InterOutArgsT_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : InterOutArgsT_Receiver_Impl::Receiver_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::InterOutArgsT::CCM_MyFoo>::ref_type
+  IDL::traits<::InterOutArgsT::CCM_MyFoo>::ref_type
   Receiver_exec_i::get_do_my_foo ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : InterOutArgsT_Receiver_Impl::Receiver_exec_i[get_do_my_foo]

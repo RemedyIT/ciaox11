@@ -176,10 +176,10 @@ struct entity_formatter
   inline std::ostream&
   operator ()(
     std::ostream& os_,
-    IDL::traits< ::DDS::Entity>::ref_type val_)
+    IDL::traits<::DDS::Entity>::ref_type val_)
   {
     os_ <<
-      IDL::traits< ::DDS::InstanceHandle_t>::write<instance_handle_formatter<std::ostream>>(
+      IDL::traits<::DDS::InstanceHandle_t>::write<instance_handle_formatter<std::ostream>>(
         val_->get_instance_handle ());
     return os_;
   }
@@ -251,7 +251,7 @@ struct status_kind_formatter_os
       const ::DDS::StatusKind& val_)
   {
     os_ <<
-      IDL::traits< ::DDS::StatusKind>::write<status_kind_formatter>(val_);
+      IDL::traits<::DDS::StatusKind>::write<status_kind_formatter>(val_);
     return os_;
   }
 };
@@ -272,7 +272,7 @@ struct status_mask_formatter_os
       const ::DDS::StatusMask& val_)
   {
     os_ <<
-      IDL::traits< ::DDS::StatusMask>::write<status_mask_formatter>(val_);
+      IDL::traits<::DDS::StatusMask>::write<status_mask_formatter>(val_);
     return os_;
   }
 };
@@ -285,7 +285,7 @@ struct duration_formatter_os
     ::DDS::Duration_t const &val_)
   {
     os_ <<
-      IDL::traits< ::DDS::Duration_t>::write<duration_formatter>(val_);
+      IDL::traits<::DDS::Duration_t>::write<duration_formatter>(val_);
     return os_;
   }
 };
@@ -298,7 +298,7 @@ struct time_t_formatter_os
     ::DDS::Time_t const &val_)
   {
     os_ <<
-      IDL::traits< ::DDS::Time_t>::write<time_t_formatter>(val_);
+      IDL::traits<::DDS::Time_t>::write<time_t_formatter>(val_);
     return os_;
   }
 };
@@ -311,7 +311,7 @@ struct qos_policy_count_formatter_os
     ::DDS::QosPolicyCount const &val_)
   {
     os_ << "DDS::QosPolicyCount{policy_id="
-      << IDL::traits< ::DDS::QosPolicyId_t>::write<qos_policy_id_formatter>(val_.policy_id ())
+      << IDL::traits<::DDS::QosPolicyId_t>::write<qos_policy_id_formatter>(val_.policy_id ())
       << ",count=" << val_.count () << "}";
     return os_;
   }
@@ -336,7 +336,7 @@ namespace DDS
   inline OS&
   operator << (OS& os, __DDS_Writer< ::DDS::SampleRejectedStatusKind> const &w)
   {
-    os << IDL::traits< ::DDS::SampleRejectedStatusKind>::write(w.dds_writer_);
+    os << IDL::traits<::DDS::SampleRejectedStatusKind>::write(w.dds_writer_);
     return os;
   }
 
@@ -352,7 +352,7 @@ namespace DDS
   inline OS&
   operator << (OS& os, __DDS_Writer< ::DDS::InstanceHandle_t> const &w)
   {
-    IDL::traits< ::DDS::InstanceHandle_t>::write_on<
+    IDL::traits<::DDS::InstanceHandle_t>::write_on<
       ostream_type, instance_handle_formatter<ostream_type>>
         (os, w.dds_writer_);
     return os;
@@ -370,7 +370,7 @@ namespace DDS
   inline OS&
   operator << (OS& os, __DDS_Writer< ::DDS::StatusKind> const &w)
   {
-    IDL::traits< ::DDS::StatusKind>::write_on<
+    IDL::traits<::DDS::StatusKind>::write_on<
       ostream_type, status_kind_formatter_os<ostream_type>>
         (os, w.dds_writer_);
     return os;
@@ -461,7 +461,7 @@ namespace DDS
   inline OS&
   operator << (OS& os, __DDS_Writer< ::DDS::LivelinessLostStatus> const &w)
   {
-    IDL::traits< ::DDS::LivelinessLostStatus>::write_on<ostream_type>
+    IDL::traits<::DDS::LivelinessLostStatus>::write_on<ostream_type>
       (os, w.dds_writer_);
 
     return os;
@@ -498,23 +498,23 @@ namespace DDS
    */
   struct __DDS_EntityWriter
   {
-    __DDS_EntityWriter (IDL::traits< ::DDS::Entity>::ref_type e)
+    __DDS_EntityWriter (IDL::traits<::DDS::Entity>::ref_type e)
       : e_ (e) {}
 
-    IDL::traits< ::DDS::Entity>::ref_type e_;
+    IDL::traits<::DDS::Entity>::ref_type e_;
   };
 
   template <typename OS>
   inline OS&
   operator << (OS& os, __DDS_EntityWriter w)
   {
-    IDL::traits< ::DDS::InstanceHandle_t>::write_on<
+    IDL::traits<::DDS::InstanceHandle_t>::write_on<
        ostream_type, instance_handle_formatter<ostream_type>>
          (os, w.e_->get_instance_handle ());
     return os;
   }
 
-  inline __DDS_EntityWriter dds_write (IDL::traits< ::DDS::Entity>::ref_type e)
+  inline __DDS_EntityWriter dds_write (IDL::traits<::DDS::Entity>::ref_type e)
   {
     return __DDS_EntityWriter (e);
   }
@@ -526,7 +526,7 @@ namespace DDS
   inline OS&
   operator << (OS& os, __DDS_Writer< ::DDS::Duration_t> const &w)
   {
-    IDL::traits< ::DDS::Duration_t>::write_on<
+    IDL::traits<::DDS::Duration_t>::write_on<
       ostream_type, duration_formatter_os<ostream_type>>
         (os, w.dds_writer_);
     return os;
@@ -544,7 +544,7 @@ namespace DDS
   inline OS&
   operator << (OS& os, __DDS_Writer< ::DDS::Time_t> const &w)
   {
-    IDL::traits< ::DDS::Time_t>::write_on<
+    IDL::traits<::DDS::Time_t>::write_on<
       ostream_type, time_t_formatter_os<ostream_type>>
         (os, w.dds_writer_);
     return os;
@@ -562,7 +562,7 @@ namespace DDS
   inline OS&
   operator << (OS& os, __DDS_Writer< ::DDS::QosPolicyCount> const &w)
   {
-    IDL::traits< ::DDS::QosPolicyCount>::write_on<
+    IDL::traits<::DDS::QosPolicyCount>::write_on<
       ostream_type, qos_policy_count_formatter_os<ostream_type>>
         (os, w.dds_writer_);
     return os;
@@ -584,7 +584,7 @@ namespace DDS
     os << "DDS::PolicyCountSeq{";
     for (::DDS::QosPolicyCount const &pc : w.dds_writer_)
     {
-      IDL::traits< ::DDS::QosPolicyCount>::write_on<
+      IDL::traits<::DDS::QosPolicyCount>::write_on<
         ostream_type, qos_policy_count_formatter_os<ostream_type>> (os, pc);
       if (++i != w.dds_writer_.size ())
         os << ",";
@@ -606,7 +606,7 @@ namespace DDS
   inline OS&
   operator << (OS& os, __DDS_Writer< ::DDS::SampleLostStatus> const &w)
   {
-    IDL::traits< ::DDS::SampleLostStatus>::write_on<ostream_type>
+    IDL::traits<::DDS::SampleLostStatus>::write_on<ostream_type>
       (os, w.dds_writer_);
     return os;
   }
@@ -623,7 +623,7 @@ namespace DDS
   inline OS&
   operator << (OS& os, __DDS_Writer< ::DDS::InconsistentTopicStatus> const &w)
   {
-    IDL::traits< ::DDS::InconsistentTopicStatus>::write_on<ostream_type>
+    IDL::traits<::DDS::InconsistentTopicStatus>::write_on<ostream_type>
       (os, w.dds_writer_);
     return os;
   }
@@ -660,7 +660,7 @@ namespace DDS
   inline OS&
   operator << (OS& os, __DDS_Writer< ::DDS::QosPolicyId_t> const &w)
   {
-    IDL::traits< ::DDS::QosPolicyId_t>::write_on<
+    IDL::traits<::DDS::QosPolicyId_t>::write_on<
       ostream_type, qos_policy_id_formatter>
         (os, w.dds_writer_);
     return os;
@@ -695,7 +695,7 @@ namespace DDS
   operator << (OS& os, __DDS_Writer< ::DDS::OfferedDeadlineMissedStatus> const &w)
   {
     os << "DDS::OfferedDeadlineMissedStatus";
-    IDL::traits< ::DDS::OfferedDeadlineMissedStatus>::write_on<
+    IDL::traits<::DDS::OfferedDeadlineMissedStatus>::write_on<
       ostream_type, deadline_missed_qos_status_formatter_os<
         ostream_type, ::DDS::OfferedDeadlineMissedStatus>>
         (os, w.dds_writer_);
@@ -712,7 +712,7 @@ namespace DDS
   operator << (OS& os, __DDS_Writer< ::DDS::RequestedDeadlineMissedStatus> const &w)
   {
     os << "DDS::RequestedDeadlineMissedStatus";
-    IDL::traits< ::DDS::RequestedDeadlineMissedStatus>::write_on<
+    IDL::traits<::DDS::RequestedDeadlineMissedStatus>::write_on<
       ostream_type, deadline_missed_qos_status_formatter_os<
         ostream_type, ::DDS::RequestedDeadlineMissedStatus>>
         (os, w.dds_writer_);
@@ -739,7 +739,7 @@ namespace DDS
       os_ << "{total_count="
         << val_.total_count () << ",total_count_change="
         << val_.total_count_change () << ",last_policy_id="
-        << IDL::traits< ::DDS::QosPolicyId_t>::write<qos_policy_id_formatter>(val_.last_policy_id ())
+        << IDL::traits<::DDS::QosPolicyId_t>::write<qos_policy_id_formatter>(val_.last_policy_id ())
         << ",policies=" << ::DDS::dds_write (val_.policies ())
         << "}";
       return os_;
@@ -751,7 +751,7 @@ namespace DDS
   operator << (OS& os, __DDS_Writer< ::DDS::RequestedIncompatibleQosStatus> const &w)
   {
     os << "DDS::RequestedIncompatibleQosStatus";
-    IDL::traits< ::DDS::RequestedIncompatibleQosStatus>::write_on<
+    IDL::traits<::DDS::RequestedIncompatibleQosStatus>::write_on<
       ostream_type, incompatible_qos_status_formatter_os<ostream_type, ::DDS::RequestedIncompatibleQosStatus>>
         (os, w.dds_writer_);
     return os;
@@ -767,7 +767,7 @@ namespace DDS
   operator << (OS& os, __DDS_Writer< ::DDS::OfferedIncompatibleQosStatus> const &w)
   {
     os << "DDS::OfferedIncompatibleQosStatus";
-    IDL::traits< ::DDS::OfferedIncompatibleQosStatus>::write_on<
+    IDL::traits<::DDS::OfferedIncompatibleQosStatus>::write_on<
       ostream_type, incompatible_qos_status_formatter_os<ostream_type, ::DDS::OfferedIncompatibleQosStatus>>
         (os, w.dds_writer_);
     return os;

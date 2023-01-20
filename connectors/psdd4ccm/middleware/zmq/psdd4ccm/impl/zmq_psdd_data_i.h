@@ -30,7 +30,7 @@ namespace PSDD
    {
    public:
      PSDataOut_Impl (bool msg_envelope);
-     virtual ~PSDataOut_Impl () = default;
+     ~PSDataOut_Impl () override = default;
 
      void set_byte_order (EByteOrder) override;
 
@@ -60,7 +60,7 @@ namespace PSDD
    {
    public:
      PSDataIn_Impl (bool msg_envelope);
-     virtual ~PSDataIn_Impl ();
+     ~PSDataIn_Impl () override;
 
      void set_byte_order (EByteOrder) override;
 

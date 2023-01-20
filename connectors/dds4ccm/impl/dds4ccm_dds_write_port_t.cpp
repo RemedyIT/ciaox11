@@ -19,8 +19,8 @@ DDS_Write_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::DDS_Write_Port_T (
 template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 void
 DDS_Write_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::configuration_complete (
-  IDL::traits< ::DDS::Topic>::ref_type topic,
-  IDL::traits< ::DDS::Publisher>::ref_type publisher,
+  IDL::traits<::DDS::Topic>::ref_type topic,
+  IDL::traits<::DDS::Publisher>::ref_type publisher,
   const std::string &qos_profile)
 {
   DDS4CCM_LOG_TRACE ("DDS_Write_Port_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::configuration_complete");
@@ -46,7 +46,7 @@ DDS_Write_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::configuration_complete (
         DDS4CCM_LOG_ERROR ("DDS_Write_Port_T<"
           << ::DDS::traits<TOPIC_TYPE>::get_type_name()
           << ">::configuration_complete - Error: Unable to retrieve get_default_datawriter_qos: <"
-          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+          << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">.");
         throw ::CCM_DDS::InternalError (retcode, 0);
       }
@@ -80,7 +80,7 @@ DDS_Write_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::configuration_complete (
       DDS4CCM_LOG_ERROR ("DDS_Write_Port_T<"
         << ::DDS::traits<TOPIC_TYPE>::get_type_name()
         << ">::configuration_complete - Error: Unable to enable the datawriter: <"
-        << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode) << ">.");
+        << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode) << ">.");
       throw ::CORBA::INTERNAL ();
     }
 
@@ -98,7 +98,7 @@ DDS_Write_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::configuration_complete (
 template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 void
 DDS_Write_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::remove (
-  IDL::traits< ::DDS::Publisher>::ref_type publisher)
+  IDL::traits<::DDS::Publisher>::ref_type publisher)
 {
   DDS4CCM_LOG_TRACE ("DDS_Write_Port_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::remove");
 
@@ -128,7 +128,7 @@ DDS_Write_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::remove (
       DDS4CCM_LOG_ERROR ("DDS_Write_Port_T<"
         << ::DDS::traits<TOPIC_TYPE>::get_type_name()
         << ">::remove - Unable to remove DataWriter: <"
-        << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+        << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
         << ">.");
       throw ::CORBA::INTERNAL ();
     }

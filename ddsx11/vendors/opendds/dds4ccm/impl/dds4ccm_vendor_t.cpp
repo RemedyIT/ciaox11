@@ -18,7 +18,7 @@ namespace CIAOX11
     namespace VendorUtils
     {
       template <typename EVT_STRATEGY>
-      IDL::traits< ::DDS::PublisherListener>::ref_type
+      IDL::traits<::DDS::PublisherListener>::ref_type
       create_publisher_listener (const EVT_STRATEGY &evs)
       {
         return CORBA::make_reference<CIAOX11::DDS4CCM::PublisherListener_T<EVT_STRATEGY>> (evs);

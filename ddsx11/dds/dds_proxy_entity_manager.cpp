@@ -89,7 +89,7 @@ namespace DDSX11
   template<typename PROXY_MAP>
   bool
   DDS_ProxyEntityManager::unregister_proxy (
-    IDL::traits< ::DDS::InstanceHandle_t>::in_type handle,
+    IDL::traits<::DDS::InstanceHandle_t>::in_type handle,
     PROXY_MAP &lst)
   {
     if (lst.erase (handle) > 0)
@@ -110,7 +110,7 @@ namespace DDSX11
 
   bool
   DDS_ProxyEntityManager::register_datareader_proxy (
-    ::IDL::traits< ::DDS::DataReader>::ref_type proxy)
+    ::IDL::traits<::DDS::DataReader>::ref_type proxy)
   {
     std::lock_guard<std::mutex> __guard (DDS_ProxyEntityManager::dr_mutex);
 
@@ -118,14 +118,14 @@ namespace DDSX11
       "Registering proxy with handle <" << proxy->get_instance_handle () << ">");
 
     return DDS_ProxyEntityManager::register_proxy<
-      ::IDL::traits< ::DDS::DataReader>::ref_type,
+      ::IDL::traits<::DDS::DataReader>::ref_type,
       DDS_ProxyEntityManager::DataReaderProxies>
         (proxy, DDS_ProxyEntityManager::dr_proxies);
   }
 
   bool
   DDS_ProxyEntityManager::register_datawriter_proxy (
-    ::IDL::traits< ::DDS::DataWriter>::ref_type proxy)
+    ::IDL::traits<::DDS::DataWriter>::ref_type proxy)
   {
     std::lock_guard<std::mutex> __guard (DDS_ProxyEntityManager::dw_mutex);
 
@@ -133,14 +133,14 @@ namespace DDSX11
       "Registering proxy with handle <" << proxy->get_instance_handle () << ">");
 
     return DDS_ProxyEntityManager::register_proxy<
-      ::IDL::traits< ::DDS::DataWriter>::ref_type,
+      ::IDL::traits<::DDS::DataWriter>::ref_type,
       DDS_ProxyEntityManager::DataWriterProxies>
         (proxy, DDS_ProxyEntityManager::dw_proxies);
   }
 
   bool
   DDS_ProxyEntityManager::register_subscriber_proxy (
-    ::IDL::traits< ::DDS::Subscriber>::ref_type proxy)
+    ::IDL::traits<::DDS::Subscriber>::ref_type proxy)
   {
     std::lock_guard<std::mutex> __guard (DDS_ProxyEntityManager::sub_mutex);
 
@@ -148,14 +148,14 @@ namespace DDSX11
       "Registering proxy with handle <" << proxy->get_instance_handle () << ">");
 
     return DDS_ProxyEntityManager::register_proxy<
-      ::IDL::traits< ::DDS::Subscriber>::ref_type,
+      ::IDL::traits<::DDS::Subscriber>::ref_type,
       DDS_ProxyEntityManager::SubscriberProxies>
         (proxy, DDS_ProxyEntityManager::sub_proxies);
   }
 
   bool
   DDS_ProxyEntityManager::register_publisher_proxy (
-    ::IDL::traits< ::DDS::Publisher>::ref_type proxy)
+    ::IDL::traits<::DDS::Publisher>::ref_type proxy)
   {
     std::lock_guard<std::mutex> __guard (DDS_ProxyEntityManager::pub_mutex);
 
@@ -163,14 +163,14 @@ namespace DDSX11
       "Registering proxy with handle <" << proxy->get_instance_handle () << ">");
 
     return DDS_ProxyEntityManager::register_proxy<
-      ::IDL::traits< ::DDS::Publisher>::ref_type,
+      ::IDL::traits<::DDS::Publisher>::ref_type,
       DDS_ProxyEntityManager::PublisherProxies>
         (proxy, DDS_ProxyEntityManager::pub_proxies);
   }
 
   bool
   DDS_ProxyEntityManager::register_topic_proxy (
-    ::IDL::traits< ::DDS::Topic>::ref_type proxy,
+    ::IDL::traits<::DDS::Topic>::ref_type proxy,
     DDS_Native::DDS::Entity *native_entity)
   {
     std::lock_guard<std::mutex> __guard (DDS_ProxyEntityManager::tp_mutex);
@@ -209,7 +209,7 @@ namespace DDSX11
 
   bool
   DDS_ProxyEntityManager::register_dp_proxy (
-    ::IDL::traits< ::DDS::DomainParticipant>::ref_type proxy)
+    ::IDL::traits<::DDS::DomainParticipant>::ref_type proxy)
   {
     std::lock_guard<std::mutex> __guard (DDS_ProxyEntityManager::dp_mutex);
 
@@ -217,14 +217,14 @@ namespace DDSX11
       "Registering proxy with handle <" << proxy->get_instance_handle () << ">");
 
     return DDS_ProxyEntityManager::register_proxy<
-      ::IDL::traits< ::DDS::DomainParticipant>::ref_type,
+      ::IDL::traits<::DDS::DomainParticipant>::ref_type,
       DDS_ProxyEntityManager::DomainParticipantProxies>
         (proxy, DDS_ProxyEntityManager::dp_proxies);
   }
 
   bool
   DDS_ProxyEntityManager::unregister_datareader_proxy (
-    IDL::traits< ::DDS::InstanceHandle_t>::in_type handle)
+    IDL::traits<::DDS::InstanceHandle_t>::in_type handle)
   {
     std::lock_guard<std::mutex> __guard (DDS_ProxyEntityManager::dr_mutex);
 
@@ -237,7 +237,7 @@ namespace DDSX11
 
   bool
   DDS_ProxyEntityManager::unregister_datawriter_proxy (
-    IDL::traits< ::DDS::InstanceHandle_t>::in_type handle)
+    IDL::traits<::DDS::InstanceHandle_t>::in_type handle)
   {
     std::lock_guard<std::mutex> __guard (DDS_ProxyEntityManager::dw_mutex);
 
@@ -250,7 +250,7 @@ namespace DDSX11
 
   bool
   DDS_ProxyEntityManager::unregister_subscriber_proxy (
-    IDL::traits< ::DDS::InstanceHandle_t>::in_type handle)
+    IDL::traits<::DDS::InstanceHandle_t>::in_type handle)
   {
     std::lock_guard<std::mutex> __guard (DDS_ProxyEntityManager::sub_mutex);
 
@@ -263,7 +263,7 @@ namespace DDSX11
 
   bool
   DDS_ProxyEntityManager::unregister_publisher_proxy (
-    IDL::traits< ::DDS::InstanceHandle_t>::in_type handle)
+    IDL::traits<::DDS::InstanceHandle_t>::in_type handle)
   {
     std::lock_guard<std::mutex> __guard (DDS_ProxyEntityManager::pub_mutex);
 
@@ -277,7 +277,7 @@ namespace DDSX11
   bool
   DDS_ProxyEntityManager::unregister_topic_proxy (
     DDS_Native::DDS::Entity *native_entity,
-    IDL::traits< ::DDS::InstanceHandle_t>::in_type handle)
+    IDL::traits<::DDS::InstanceHandle_t>::in_type handle)
   {
     std::lock_guard<std::mutex> __guard (DDS_ProxyEntityManager::tp_mutex);
 
@@ -316,7 +316,7 @@ namespace DDSX11
 
   bool
   DDS_ProxyEntityManager::unregister_dp_proxy (
-    IDL::traits< ::DDS::InstanceHandle_t>::in_type handle)
+    IDL::traits<::DDS::InstanceHandle_t>::in_type handle)
   {
     std::lock_guard<std::mutex> __guard (DDS_ProxyEntityManager::dp_mutex);
 
@@ -327,51 +327,51 @@ namespace DDSX11
       (handle, DDS_ProxyEntityManager::dp_proxies);
   }
 
-  ::IDL::traits< ::DDS::DataReader>::ref_type
+  ::IDL::traits<::DDS::DataReader>::ref_type
   DDS_ProxyEntityManager::get_datareader_proxy (
     DDS_Native::DDS::Entity *native_entity)
   {
     std::lock_guard<std::mutex> __guard (DDS_ProxyEntityManager::dr_mutex);
     return DDS_ProxyEntityManager::get_proxy<
-      ::IDL::traits< ::DDS::DataReader>::ref_type,
+      ::IDL::traits<::DDS::DataReader>::ref_type,
       DDS_ProxyEntityManager::DataReaderProxies>
         (native_entity, DDS_ProxyEntityManager::dr_proxies);
   }
 
-  ::IDL::traits< ::DDS::DataWriter>::ref_type
+  ::IDL::traits<::DDS::DataWriter>::ref_type
   DDS_ProxyEntityManager::get_datawriter_proxy (
     DDS_Native::DDS::Entity *native_entity)
   {
     std::lock_guard<std::mutex> __guard (DDS_ProxyEntityManager::dw_mutex);
     return DDS_ProxyEntityManager::get_proxy<
-      ::IDL::traits< ::DDS::DataWriter>::ref_type,
+      ::IDL::traits<::DDS::DataWriter>::ref_type,
       DDS_ProxyEntityManager::DataWriterProxies>
         (native_entity, DDS_ProxyEntityManager::dw_proxies);
   }
 
-  ::IDL::traits< ::DDS::Subscriber>::ref_type
+  ::IDL::traits<::DDS::Subscriber>::ref_type
   DDS_ProxyEntityManager::get_subscriber_proxy (
     DDS_Native::DDS::Entity *native_entity)
   {
     std::lock_guard<std::mutex> __guard (DDS_ProxyEntityManager::sub_mutex);
     return DDS_ProxyEntityManager::get_proxy<
-      ::IDL::traits< ::DDS::Subscriber>::ref_type,
+      ::IDL::traits<::DDS::Subscriber>::ref_type,
       DDS_ProxyEntityManager::SubscriberProxies>
         (native_entity, DDS_ProxyEntityManager::sub_proxies);
   }
 
-  ::IDL::traits< ::DDS::Publisher>::ref_type
+  ::IDL::traits<::DDS::Publisher>::ref_type
   DDS_ProxyEntityManager::get_publisher_proxy (
     DDS_Native::DDS::Entity *native_entity)
   {
     std::lock_guard<std::mutex> __guard (DDS_ProxyEntityManager::pub_mutex);
     return DDS_ProxyEntityManager::get_proxy<
-      ::IDL::traits< ::DDS::Publisher>::ref_type,
+      ::IDL::traits<::DDS::Publisher>::ref_type,
       DDS_ProxyEntityManager::PublisherProxies>
         (native_entity, DDS_ProxyEntityManager::pub_proxies);
   }
 
-  ::IDL::traits< ::DDS::Topic>::ref_type
+  ::IDL::traits<::DDS::Topic>::ref_type
   DDS_ProxyEntityManager::get_topic_proxy (
     DDS_Native::DDS::Entity *native_entity)
   {
@@ -384,7 +384,7 @@ namespace DDSX11
       return {};
     }
 
-    ::IDL::traits< ::DDS::Topic>::ref_type proxy {};
+    ::IDL::traits<::DDS::Topic>::ref_type proxy {};
     ::DDS::InstanceHandle_t const handle =
       ::DDSX11::traits< ::DDS::InstanceHandle_t>::retn (
         native_entity->get_instance_handle ());
@@ -403,18 +403,18 @@ namespace DDSX11
     return proxy;
   }
 
-  ::IDL::traits< ::DDS::DomainParticipant>::ref_type
+  ::IDL::traits<::DDS::DomainParticipant>::ref_type
   DDS_ProxyEntityManager::get_dp_proxy (
     DDS_Native::DDS::Entity *native_entity)
   {
     std::lock_guard<std::mutex> __guard (DDS_ProxyEntityManager::dp_mutex);
     return DDS_ProxyEntityManager::get_proxy<
-      ::IDL::traits< ::DDS::DomainParticipant>::ref_type,
+      ::IDL::traits<::DDS::DomainParticipant>::ref_type,
       DDS_ProxyEntityManager::DomainParticipantProxies>
         (native_entity, DDS_ProxyEntityManager::dp_proxies);
   }
 
-  ::IDL::traits< ::DDS::Entity>::ref_type
+  ::IDL::traits<::DDS::Entity>::ref_type
   DDS_ProxyEntityManager::get_entity_proxy (
     DDS_Native::DDS::Entity *native_entity)
   {
@@ -425,7 +425,7 @@ namespace DDSX11
       return {};
     }
 
-    ::IDL::traits< ::DDS::Entity>::ref_type proxy {};
+    ::IDL::traits<::DDS::Entity>::ref_type proxy {};
     const ::DDS::InstanceHandle_t handle =
       ::DDSX11::traits< ::DDS::InstanceHandle_t>::retn (
         native_entity->get_instance_handle ());
@@ -516,7 +516,7 @@ namespace DDSX11
       DDSX11_IMPL_LOG_ERROR ("DDS_ProxyEntityManager::finalize - "
         << "Found a registered DataReader with handle <" << it.first
         << ">. Resetting the registered reference.");
-      IDL::traits< ::DDSX11::DDS_DataReader_proxy>::ref_type proxy =
+      IDL::traits<::DDSX11::DDS_DataReader_proxy>::ref_type proxy =
         data_reader_trait::proxy (it.second);
       if (proxy)
       {
@@ -531,7 +531,7 @@ namespace DDSX11
       DDSX11_IMPL_LOG_ERROR ("DDS_ProxyEntityManager::finalize - "
         << "Found a registered DataWriter with handle <" << it.first
         << ">. Resetting the registered reference.");
-      IDL::traits< ::DDSX11::DDS_DataWriter_proxy>::ref_type proxy =
+      IDL::traits<::DDSX11::DDS_DataWriter_proxy>::ref_type proxy =
         data_writer_trait::proxy (it.second);
       if (proxy)
       {
@@ -546,7 +546,7 @@ namespace DDSX11
       DDSX11_IMPL_LOG_ERROR ("DDS_ProxyEntityManager::finalize - "
         << "Found a registered Publisher with handle <" << it.first
         << ">. Resetting the registered reference.");
-      IDL::traits< ::DDSX11::DDS_Publisher_proxy>::ref_type proxy =
+      IDL::traits<::DDSX11::DDS_Publisher_proxy>::ref_type proxy =
         publisher_trait::proxy (it.second);
       if (proxy)
       {
@@ -561,7 +561,7 @@ namespace DDSX11
       DDSX11_IMPL_LOG_ERROR ("DDS_ProxyEntityManager::finalize - "
         << "Found a registered Subscriber with handle <" << it.first
         << ">. Resetting the registered reference.");
-      IDL::traits< ::DDSX11::DDS_Subscriber_proxy>::ref_type proxy =
+      IDL::traits<::DDSX11::DDS_Subscriber_proxy>::ref_type proxy =
         subscriber_trait::proxy (it.second);
       if (proxy)
       {
@@ -576,7 +576,7 @@ namespace DDSX11
       DDSX11_IMPL_LOG_ERROR ("DDS_ProxyEntityManager::finalize - "
         << "Found a registered Topic with handle <" << it.first
         << ">. Resetting the registered reference.");
-      IDL::traits< ::DDSX11::DDS_Topic_proxy>::ref_type proxy =
+      IDL::traits<::DDSX11::DDS_Topic_proxy>::ref_type proxy =
         topic_trait::proxy (it.second.second);
       if (proxy)
       {
@@ -591,7 +591,7 @@ namespace DDSX11
       DDSX11_IMPL_LOG_ERROR ("DDS_ProxyEntityManager::finalize - "
         << "Found a registered DomainParticipant with handle <" << it.first
         << ">. Resetting the registered reference.");
-      IDL::traits< ::DDSX11::DDS_DomainParticipant_proxy>::ref_type proxy =
+      IDL::traits<::DDSX11::DDS_DomainParticipant_proxy>::ref_type proxy =
         domain_participant_trait::proxy (it.second);
       if (proxy)
       {

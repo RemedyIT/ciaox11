@@ -37,7 +37,7 @@ namespace Test_TT_Tester_Impl
 
   /// Component Executor Implementation Class : TT_Tester_exec_i
   class TT_Tester_exec_i final
-    : public virtual IDL::traits< ::Test::CCM_TT_Tester>::base_type
+    : public virtual IDL::traits<::Test::CCM_TT_Tester>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_TT_Tester_Impl::TT_Tester_exec_i[ctor]
@@ -81,7 +81,7 @@ namespace Test_TT_Tester_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::Test::CCM_TT_Tester_Context>::ref_type context_;
+    IDL::traits<::Test::CCM_TT_Tester_Context>::ref_type context_;
 
     /** @name Component facets. */
     //@{

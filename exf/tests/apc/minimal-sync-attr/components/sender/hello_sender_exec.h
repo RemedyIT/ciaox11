@@ -54,7 +54,7 @@ namespace Hello_Sender_Impl
     /// Constructor
     /// @param[in] context Component context
     foo_port_s_foo_prov_exec_i (
-        IDL::traits< ::Hello::CCM_Sender_Context>::ref_type context);
+        IDL::traits<::Hello::CCM_Sender_Context>::ref_type context);
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Sender_Impl::foo_port_s_foo_prov_exec_i[ctor]
 
     /// Destructor

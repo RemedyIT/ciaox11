@@ -26,7 +26,7 @@ namespace DDS_Native {
 namespace DDSX11
 {
   class DDSX11_IMPL_Export DDS_Publisher_proxy
-    : public virtual IDL::traits< ::DDS::Publisher>::base_type
+    : public virtual IDL::traits<::DDS::Publisher>::base_type
     , public virtual NativeEntityBase_T<DDS_Native::DDS::Publisher>
   {
   public:
@@ -36,18 +36,18 @@ namespace DDSX11
     /// Destructor
     ~DDS_Publisher_proxy () override = default;
 
-    IDL::traits< ::DDS::DataWriter>::ref_type
+    IDL::traits<::DDS::DataWriter>::ref_type
     create_datawriter (
-      IDL::traits< ::DDS::Topic>::ref_type a_topic,
+      IDL::traits<::DDS::Topic>::ref_type a_topic,
       const ::DDS::DataWriterQos & qos,
-      IDL::traits< ::DDS::DataWriterListener>::ref_type a_listener,
+      IDL::traits<::DDS::DataWriterListener>::ref_type a_listener,
       ::DDS::StatusMask mask) override;
 
     ::DDS::ReturnCode_t
     delete_datawriter (
-      IDL::traits< ::DDS::DataWriter>::ref_type a_datawriter) override;
+      IDL::traits<::DDS::DataWriter>::ref_type a_datawriter) override;
 
-    IDL::traits< ::DDS::DataWriter>::ref_type
+    IDL::traits<::DDS::DataWriter>::ref_type
     lookup_datawriter (
       const std::string &impl_name) override;
 
@@ -64,10 +64,10 @@ namespace DDSX11
 
     ::DDS::ReturnCode_t
     set_listener (
-      IDL::traits< ::DDS::PublisherListener>::ref_type a_listener,
+      IDL::traits<::DDS::PublisherListener>::ref_type a_listener,
       ::DDS::StatusMask mask) override;
 
-    IDL::traits< ::DDS::PublisherListener>::ref_type
+    IDL::traits<::DDS::PublisherListener>::ref_type
     get_listener () override;
 
     ::DDS::ReturnCode_t
@@ -86,7 +86,7 @@ namespace DDSX11
     wait_for_acknowledgments (
       const ::DDS::Duration_t & max_wait) override;
 
-    IDL::traits< ::DDS::DomainParticipant>::ref_type
+    IDL::traits<::DDS::DomainParticipant>::ref_type
     get_participant () override;
 
     ::DDS::ReturnCode_t
@@ -105,7 +105,7 @@ namespace DDSX11
     ::DDS::ReturnCode_t
     enable () override;
 
-    IDL::traits< ::DDS::StatusCondition>::ref_type
+    IDL::traits<::DDS::StatusCondition>::ref_type
     get_statuscondition () override;
 
     ::DDS::StatusMask

@@ -31,7 +31,7 @@ namespace Test_TT_Tester_Impl
 
     void
     on_trigger (
-        IDL::traits< ::CCM_TT::TT_Timer>::ref_type timer,
+        IDL::traits<::CCM_TT::TT_Timer>::ref_type timer,
         const ::CCM_TT::TT_Duration& time,
         uint32_t round) override;
 
@@ -42,7 +42,7 @@ namespace Test_TT_Tester_Impl
 
   void
   TT_Callback::on_trigger (
-      IDL::traits< ::CCM_TT::TT_Timer>::ref_type timer,
+      IDL::traits<::CCM_TT::TT_Timer>::ref_type timer,
       const ::CCM_TT::TT_Duration& time,
       uint32_t round)
   {
@@ -161,7 +161,7 @@ namespace Test_TT_Tester_Impl
   {
     // Setting the context of this component.
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_TT_Tester_Impl::TT_Tester_exec_i[set_session_context]
-    this->context_ = IDL::traits< ::Test::CCM_TT_Tester_Context >::narrow (std::move(ctx));
+    this->context_ = IDL::traits<::Test::CCM_TT_Tester_Context >::narrow (std::move(ctx));
     //@@{__RIDL_REGEN_MARKER__} - END : Test_TT_Tester_Impl::TT_Tester_exec_i[set_session_context]
   }
 

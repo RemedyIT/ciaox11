@@ -38,7 +38,7 @@ int main (int, char *[])
       if (retcode != DDS::RETCODE_OK)
       {
         DDSX11_TEST_ERROR << "builtin: Failed to register type: "
-                          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                          << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
                           << std::endl;
         return 1;
       }
@@ -77,7 +77,7 @@ int main (int, char *[])
       if (retcode != DDS::RETCODE_OK)
       {
         DDSX11_TEST_ERROR << "Builtin: Error to register type: "
-                          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                          << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
                           << std::endl;
         return 1;
       }
@@ -125,7 +125,7 @@ int main (int, char *[])
       if (retcode != DDS::RETCODE_OK)
       {
         DDSX11_TEST_ERROR << "Builtin: Failed to delete topic from domain participant: "
-                          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                          << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
                           << std::endl;
         return 1;
       }
@@ -135,7 +135,7 @@ int main (int, char *[])
       if (retcode != DDS::RETCODE_OK)
       {
         DDSX11_TEST_ERROR << "Builtin: Failed to delete domain participant from domain participant factory: "
-                          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                          << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
                           << std::endl;
         return 1;
       }
@@ -144,7 +144,7 @@ int main (int, char *[])
       if (retcode != ::DDS::RETCODE_OK)
       {
         DDSX11_TEST_ERROR << "Builtin: Failed to finalize the domain participant factory: "
-                          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                          << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
                           << std::endl;
         return 1;
       }

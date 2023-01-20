@@ -131,7 +131,7 @@ private:
 
   void
   test_non_changeable_filter (
-    IDL::traits< ::CommonTestConnector::CCM_DDS_Event>::ref_type conn,
+    IDL::traits<::CommonTestConnector::CCM_DDS_Event>::ref_type conn,
     bool getter);
   void test_non_changeable_filter ();
 

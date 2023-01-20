@@ -37,7 +37,7 @@ namespace PSL_SampleLostTest_Receiver_Impl
 
   /// Executor implementation class for info_get_status facet
   class info_get_status_exec_i final
-    : public IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::base_type
+    : public IDL::traits<::CCM_DDS::CCM_PortStatusListener>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : PSL_SampleLostTest_Receiver_Impl::info_get_status_exec_i[ctor]
@@ -57,12 +57,12 @@ namespace PSL_SampleLostTest_Receiver_Impl
 
     void
     on_requested_deadline_missed (
-        IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+        IDL::traits<::DDS::DataReader>::ref_type the_reader,
         const ::DDS::RequestedDeadlineMissedStatus& status) override;
 
     void
     on_sample_lost (
-        IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+        IDL::traits<::DDS::DataReader>::ref_type the_reader,
         const ::DDS::SampleLostStatus& status) override;
     //@}
 
@@ -75,7 +75,7 @@ namespace PSL_SampleLostTest_Receiver_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::PSL_SampleLostTest::CCM_Receiver_Context>::ref_type context_;
+    IDL::traits<::PSL_SampleLostTest::CCM_Receiver_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -95,7 +95,7 @@ namespace PSL_SampleLostTest_Receiver_Impl
 
   /// Executor implementation class for info_out_data_listener facet
   class info_out_data_listener_exec_i final
-    : public IDL::traits< ::CommonTestConnector::CCM_Listener>::base_type
+    : public IDL::traits<::CommonTestConnector::CCM_Listener>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : PSL_SampleLostTest_Receiver_Impl::info_out_data_listener_exec_i[ctor]
@@ -131,7 +131,7 @@ namespace PSL_SampleLostTest_Receiver_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::PSL_SampleLostTest::CCM_Receiver_Context>::ref_type context_;
+    IDL::traits<::PSL_SampleLostTest::CCM_Receiver_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -150,7 +150,7 @@ namespace PSL_SampleLostTest_Receiver_Impl
 
   /// Executor implementation class for info_out_status facet
   class info_out_status_exec_i final
-    : public IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::base_type
+    : public IDL::traits<::CCM_DDS::CCM_PortStatusListener>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : PSL_SampleLostTest_Receiver_Impl::info_out_status_exec_i[ctor]
@@ -170,12 +170,12 @@ namespace PSL_SampleLostTest_Receiver_Impl
 
     void
     on_requested_deadline_missed (
-        IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+        IDL::traits<::DDS::DataReader>::ref_type the_reader,
         const ::DDS::RequestedDeadlineMissedStatus& status) override;
 
     void
     on_sample_lost (
-        IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+        IDL::traits<::DDS::DataReader>::ref_type the_reader,
         const ::DDS::SampleLostStatus& status) override;
     //@}
 
@@ -188,7 +188,7 @@ namespace PSL_SampleLostTest_Receiver_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::PSL_SampleLostTest::CCM_Receiver_Context>::ref_type context_;
+    IDL::traits<::PSL_SampleLostTest::CCM_Receiver_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -208,14 +208,14 @@ namespace PSL_SampleLostTest_Receiver_Impl
 
   /// Executor implementation class for connector_status facet
   class connector_status_exec_i final
-    : public IDL::traits< ::CCM_DDS::CCM_ConnectorStatusListener>::base_type
+    : public IDL::traits<::CCM_DDS::CCM_ConnectorStatusListener>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : PSL_SampleLostTest_Receiver_Impl::connector_status_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
     connector_status_exec_i (
-        IDL::traits< ::PSL_SampleLostTest::CCM_Receiver_Context>::ref_type context);
+        IDL::traits<::PSL_SampleLostTest::CCM_Receiver_Context>::ref_type context);
     //@@{__RIDL_REGEN_MARKER__} - END : PSL_SampleLostTest_Receiver_Impl::connector_status_exec_i[ctor]
 
     /// Destructor
@@ -226,32 +226,32 @@ namespace PSL_SampleLostTest_Receiver_Impl
 
     void
     on_inconsistent_topic (
-        IDL::traits< ::DDS::Topic>::ref_type the_topic,
+        IDL::traits<::DDS::Topic>::ref_type the_topic,
         const ::DDS::InconsistentTopicStatus& status) override;
 
     void
     on_requested_incompatible_qos (
-        IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+        IDL::traits<::DDS::DataReader>::ref_type the_reader,
         const ::DDS::RequestedIncompatibleQosStatus& status) override;
 
     void
     on_sample_rejected (
-        IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+        IDL::traits<::DDS::DataReader>::ref_type the_reader,
         const ::DDS::SampleRejectedStatus& status) override;
 
     void
     on_offered_deadline_missed (
-        IDL::traits< ::DDS::DataWriter>::ref_type the_writer,
+        IDL::traits<::DDS::DataWriter>::ref_type the_writer,
         const ::DDS::OfferedDeadlineMissedStatus& status) override;
 
     void
     on_offered_incompatible_qos (
-        IDL::traits< ::DDS::DataWriter>::ref_type the_writer,
+        IDL::traits<::DDS::DataWriter>::ref_type the_writer,
         const ::DDS::OfferedIncompatibleQosStatus& status) override;
 
     void
     on_unexpected_status (
-        IDL::traits< ::DDS::Entity>::ref_type the_entity,
+        IDL::traits<::DDS::Entity>::ref_type the_entity,
         ::DDS::StatusKind status_kind) override;
     //@}
 
@@ -264,7 +264,7 @@ namespace PSL_SampleLostTest_Receiver_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::PSL_SampleLostTest::CCM_Receiver_Context>::ref_type context_;
+    IDL::traits<::PSL_SampleLostTest::CCM_Receiver_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -283,7 +283,7 @@ namespace PSL_SampleLostTest_Receiver_Impl
 
   /// Component Executor Implementation Class : Receiver_exec_i
   class Receiver_exec_i final
-    : public virtual IDL::traits< ::PSL_SampleLostTest::CCM_Receiver>::base_type
+    : public virtual IDL::traits<::PSL_SampleLostTest::CCM_Receiver>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : PSL_SampleLostTest_Receiver_Impl::Receiver_exec_i[ctor]
@@ -298,16 +298,16 @@ namespace PSL_SampleLostTest_Receiver_Impl
 
     /// Factory method and getter for the info_get_status facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type get_info_get_status () override;
+    IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type get_info_get_status () override;
     /// Factory method and getter for the info_out_data_listener facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< ::CommonTestConnector::CCM_Listener>::ref_type get_info_out_data_listener () override;
+    IDL::traits<::CommonTestConnector::CCM_Listener>::ref_type get_info_out_data_listener () override;
     /// Factory method and getter for the info_out_status facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type get_info_out_status () override;
+    IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type get_info_out_status () override;
     /// Factory method and getter for the connector_status facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< ::CCM_DDS::CCM_ConnectorStatusListener>::ref_type get_connector_status () override;
+    IDL::traits<::CCM_DDS::CCM_ConnectorStatusListener>::ref_type get_connector_status () override;
     //@}
 
     /** @name Session component operations */
@@ -339,7 +339,7 @@ namespace PSL_SampleLostTest_Receiver_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::PSL_SampleLostTest::CCM_Receiver_Context>::ref_type context_;
+    IDL::traits<::PSL_SampleLostTest::CCM_Receiver_Context>::ref_type context_;
 
     /** @name Component attributes. */
     //@{
@@ -347,10 +347,10 @@ namespace PSL_SampleLostTest_Receiver_Impl
 
     /** @name Component facets. */
     //@{
-    IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type info_get_status_;
-    IDL::traits< ::CommonTestConnector::CCM_Listener>::ref_type info_out_data_listener_;
-    IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type info_out_status_;
-    IDL::traits< ::CCM_DDS::CCM_ConnectorStatusListener>::ref_type connector_status_;
+    IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type info_get_status_;
+    IDL::traits<::CommonTestConnector::CCM_Listener>::ref_type info_out_data_listener_;
+    IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type info_out_status_;
+    IDL::traits<::CCM_DDS::CCM_ConnectorStatusListener>::ref_type connector_status_;
     //@}
 
     /** @name User defined members. */

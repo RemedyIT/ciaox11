@@ -18,7 +18,7 @@
 namespace DDSX11
 {
   DDS_PublisherListener_proxy::DDS_PublisherListener_proxy (
-    IDL::traits< ::DDS::PublisherListener>::ref_type p)
+    IDL::traits<::DDS::PublisherListener>::ref_type p)
     : impl_ (std::move (p))
   {
     DDSX11_LOG_TRACE ("DDS_PublisherListener_proxy::DDS_PublisherListener_proxy");
@@ -36,7 +36,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_PublisherListener_proxy::on_offered_deadline_missed");
 
-    IDL::traits< ::DDS::DataWriter>::ref_type dw =
+    IDL::traits<::DDS::DataWriter>::ref_type dw =
       DDS_ProxyEntityManager::get_datawriter_proxy (the_writer);
     if (dw)
     {
@@ -52,7 +52,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_PublisherListener_proxy::on_offered_incompatible_qos");
 
-    IDL::traits< ::DDS::DataWriter>::ref_type dw =
+    IDL::traits<::DDS::DataWriter>::ref_type dw =
       DDS_ProxyEntityManager::get_datawriter_proxy (the_writer);
     if (dw)
     {
@@ -68,7 +68,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_PublisherListener_proxy::on_liveliness_lost");
 
-    IDL::traits< ::DDS::DataWriter>::ref_type dw =
+    IDL::traits<::DDS::DataWriter>::ref_type dw =
       DDS_ProxyEntityManager::get_datawriter_proxy (the_writer);
     if (dw)
     {
@@ -84,7 +84,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_PublisherListener_proxy::on_publication_matched");
 
-    IDL::traits< ::DDS::DataWriter>::ref_type dw =
+    IDL::traits<::DDS::DataWriter>::ref_type dw =
       DDS_ProxyEntityManager::get_datawriter_proxy (the_writer);
     if (dw)
     {
@@ -93,7 +93,7 @@ namespace DDSX11
     }
   }
 
-  IDL::traits< ::DDS::PublisherListener>::ref_type
+  IDL::traits<::DDS::PublisherListener>::ref_type
   DDS_PublisherListener_proxy::get_publisher_listener ()
   {
     return this->impl_;

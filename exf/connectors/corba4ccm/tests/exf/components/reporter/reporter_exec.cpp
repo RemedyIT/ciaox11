@@ -28,7 +28,7 @@ namespace App_Reporter_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : App_Reporter_Impl::do_presenter_exec_i[ctor]
   do_presenter_exec_i::do_presenter_exec_i (
-    IDL::traits< ::App::CCM_Reporter_Context>::ref_type context)
+    IDL::traits<::App::CCM_Reporter_Context>::ref_type context)
     : context_ (std::move(context))
   {
   }
@@ -137,7 +137,7 @@ namespace App_Reporter_Impl
   {
     // Setting the context of this component.
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : App_Reporter_Impl::Reporter_exec_i[set_session_context]
-    this->context_ = IDL::traits< ::App::CCM_Reporter_Context >::narrow (std::move(ctx));
+    this->context_ = IDL::traits<::App::CCM_Reporter_Context >::narrow (std::move(ctx));
     //@@{__RIDL_REGEN_MARKER__} - END : App_Reporter_Impl::Reporter_exec_i[set_session_context]
   }
 

@@ -46,8 +46,8 @@ namespace Shapes_Sender_comp_Impl
     /// Constructor
     /// @param[in] context Component context
     connector_status_exec_i (
-        IDL::traits< ::Shapes::CCM_Sender_comp_Context>::ref_type context,
-        IDL::traits< ::Shapes::CCM_Sender_comp>::weak_ref_type component_executor);
+        IDL::traits<::Shapes::CCM_Sender_comp_Context>::ref_type context,
+        IDL::traits<::Shapes::CCM_Sender_comp>::weak_ref_type component_executor);
     //@@{__RIDL_REGEN_MARKER__} - END : Shapes_Sender_comp_Impl::connector_status_exec_i[ctor]
 
     /// Destructor

@@ -130,7 +130,7 @@ namespace Hello_Sender_Impl
   {
     // Setting the context of this component.
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl::Sender_exec_i[set_session_context]
-    this->context_ = IDL::traits< ::Hello::CCM_Sender_Context >::narrow (std::move(ctx));
+    this->context_ = IDL::traits<::Hello::CCM_Sender_Context >::narrow (std::move(ctx));
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Sender_Impl::Sender_exec_i[set_session_context]
   }
 
@@ -145,7 +145,7 @@ extern "C" void
 create_Hello_Sender_Impl (
   IDL::traits<Components::EnterpriseComponent>::ref_type& component)
 {
-  component = IDL::traits< ::Hello::CCM_Sender>::make_reference <Hello_Sender_Impl::Sender_exec_i> ();
+  component = IDL::traits<::Hello::CCM_Sender>::make_reference <Hello_Sender_Impl::Sender_exec_i> ();
 }
 //@@{__RIDL_REGEN_MARKER__} - END : Hello_Sender_Impl[factory]
 //@@{__RIDL_REGEN_MARKER__} - BEGIN : hello_sender_impl.cpp[Footer]

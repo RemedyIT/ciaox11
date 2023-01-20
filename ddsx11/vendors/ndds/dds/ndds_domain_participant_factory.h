@@ -31,11 +31,11 @@ namespace DDSX11
        * @brief NDDS extension. Creates a domain participant, using
        *        the QOS profile string
        */
-      IDL::traits< ::DDS::DomainParticipant>::ref_type
+      IDL::traits<::DDS::DomainParticipant>::ref_type
       create_participant_with_profile (
         ::DDS::DomainId_t domain_id,
         const std::string &qos_profile,
-        IDL::traits< ::DDS::DomainParticipantListener>::ref_type a_listener,
+        IDL::traits<::DDS::DomainParticipantListener>::ref_type a_listener,
         ::DDS::StatusMask mask) override;
 
       ::DDS::ReturnCode_t

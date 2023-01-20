@@ -30,14 +30,14 @@ namespace App_Analyzer_Impl
     : public IDL::traits<CCM_TT::TT_Handler>::base_type
   {
   public:
-    explicit TT_Analyzer (IDL::traits< ::App::CCM_Analyzer_Context>::ref_type context)
+    explicit TT_Analyzer (IDL::traits<::App::CCM_Analyzer_Context>::ref_type context)
       : context_ (std::move(context))
     {
     }
 
     void
     on_trigger (
-        IDL::traits< ::CCM_TT::TT_Timer>::ref_type timer,
+        IDL::traits<::CCM_TT::TT_Timer>::ref_type timer,
         const ::CCM_TT::TT_Duration& time,
         uint32_t round) override;
 
@@ -48,14 +48,14 @@ namespace App_Analyzer_Impl
     { this->passivated_ = true; }
 
   private:
-    IDL::traits< ::App::CCM_Analyzer_Context>::ref_type context_;
+    IDL::traits<::App::CCM_Analyzer_Context>::ref_type context_;
     uint64_t result_count_ {};
     bool passivated_ {};
   };
 
   void
   TT_Analyzer::on_trigger (
-      IDL::traits< ::CCM_TT::TT_Timer>::ref_type timer,
+      IDL::traits<::CCM_TT::TT_Timer>::ref_type timer,
       const ::CCM_TT::TT_Duration& time,
       uint32_t round)
   {
@@ -229,7 +229,7 @@ namespace App_Analyzer_Impl
   {
     // Setting the context of this component.
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : App_Analyzer_Impl::Analyzer_exec_i[set_session_context]
-    this->context_ = IDL::traits< ::App::CCM_Analyzer_Context >::narrow (std::move(ctx));
+    this->context_ = IDL::traits<::App::CCM_Analyzer_Context >::narrow (std::move(ctx));
     //@@{__RIDL_REGEN_MARKER__} - END : App_Analyzer_Impl::Analyzer_exec_i[set_session_context]
   }
 

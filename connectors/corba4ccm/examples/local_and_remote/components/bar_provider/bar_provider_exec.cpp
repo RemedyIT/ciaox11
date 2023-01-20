@@ -28,7 +28,7 @@ namespace Example_BarProvider_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Example_BarProvider_Impl::do_my_bar_exec_i[ctor]
   do_my_bar_exec_i::do_my_bar_exec_i (
-    IDL::traits< ::Example::CCM_BarProvider_Context>::ref_type context)
+    IDL::traits<::Example::CCM_BarProvider_Context>::ref_type context)
     : context_ (std::move (context))
   {
   }
@@ -119,7 +119,7 @@ namespace Example_BarProvider_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Example_BarProvider_Impl::BarProvider_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::Example::CCM_Bar>::ref_type
+  IDL::traits<::Example::CCM_Bar>::ref_type
   BarProvider_exec_i::get_do_my_bar ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Example_BarProvider_Impl::BarProvider_exec_i[get_do_my_bar]
@@ -138,7 +138,7 @@ namespace Example_BarProvider_Impl
   {
     // Setting the context of this component.
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Example_BarProvider_Impl::BarProvider_exec_i[set_session_context]
-    this->context_ = IDL::traits< ::Example::CCM_BarProvider_Context >::narrow (std::move(ctx));
+    this->context_ = IDL::traits<::Example::CCM_BarProvider_Context >::narrow (std::move(ctx));
     //@@{__RIDL_REGEN_MARKER__} - END : Example_BarProvider_Impl::BarProvider_exec_i[set_session_context]
   }
 

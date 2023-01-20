@@ -19,7 +19,7 @@
 namespace DDSX11
 {
   DDS_SubscriberListener_proxy::DDS_SubscriberListener_proxy (
-    IDL::traits< ::DDS::SubscriberListener>::ref_type p)
+    IDL::traits<::DDS::SubscriberListener>::ref_type p)
     : impl_ (std::move (p))
   {
     DDSX11_LOG_TRACE ("DDS_SubscriberListener_proxy::DDS_SubscriberListener_proxy");
@@ -36,7 +36,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_SubscriberListener_proxy::on_data_on_readers");
 
-    IDL::traits< ::DDS::Subscriber>::ref_type sub =
+    IDL::traits<::DDS::Subscriber>::ref_type sub =
       DDS_ProxyEntityManager::get_subscriber_proxy (the_subscriber);
     if (sub)
     {
@@ -51,7 +51,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_SubscriberListener_proxy::on_requested_deadline_missed");
 
-    IDL::traits< ::DDS::DataReader>::ref_type dr =
+    IDL::traits<::DDS::DataReader>::ref_type dr =
       DDS_ProxyEntityManager::get_datareader_proxy (the_reader);
     if (dr)
     {
@@ -67,7 +67,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_SubscriberListener_proxy::on_requested_incompatible_qos");
 
-    IDL::traits< ::DDS::DataReader>::ref_type dr =
+    IDL::traits<::DDS::DataReader>::ref_type dr =
       DDS_ProxyEntityManager::get_datareader_proxy (the_reader);
     if (dr)
     {
@@ -83,7 +83,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_SubscriberListener_proxy::on_sample_rejected");
 
-    IDL::traits< ::DDS::DataReader>::ref_type dr =
+    IDL::traits<::DDS::DataReader>::ref_type dr =
       DDS_ProxyEntityManager::get_datareader_proxy (the_reader);
     if (dr)
     {
@@ -99,7 +99,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_SubscriberListener_proxy::on_liveliness_changed");
 
-    IDL::traits< ::DDS::DataReader>::ref_type dr =
+    IDL::traits<::DDS::DataReader>::ref_type dr =
       DDS_ProxyEntityManager::get_datareader_proxy (the_reader);
     if (dr)
     {
@@ -114,7 +114,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_SubscriberListener_proxy::on_data_available");
 
-    IDL::traits< ::DDS::DataReader>::ref_type dr =
+    IDL::traits<::DDS::DataReader>::ref_type dr =
       DDS_ProxyEntityManager::get_datareader_proxy (the_reader);
     if (dr)
     {
@@ -129,7 +129,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_SubscriberListener_proxy::on_subscription_matched");
 
-    IDL::traits< ::DDS::DataReader>::ref_type dr =
+    IDL::traits<::DDS::DataReader>::ref_type dr =
       DDS_ProxyEntityManager::get_datareader_proxy (the_reader);
     if (dr)
     {
@@ -145,7 +145,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_SubscriberListener_proxy::on_sample_lost");
 
-    IDL::traits< ::DDS::DataReader>::ref_type dr =
+    IDL::traits<::DDS::DataReader>::ref_type dr =
       DDS_ProxyEntityManager::get_datareader_proxy (the_reader);
     if (dr)
     {
@@ -154,7 +154,7 @@ namespace DDSX11
     }
   }
 
-  IDL::traits< ::DDS::SubscriberListener>::ref_type
+  IDL::traits<::DDS::SubscriberListener>::ref_type
   DDS_SubscriberListener_proxy::get_subscriber_listener ()
   {
     return this->impl_;

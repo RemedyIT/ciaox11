@@ -13,10 +13,6 @@
 
 namespace DAnCEX11
 {
-  Test_Interceptor::Test_Interceptor ()
-  {
-  }
-
   Test_Interceptor::~Test_Interceptor ()
   {
     uint32_t _instances;
@@ -360,8 +356,8 @@ namespace DAnCEX11
         // CORBA connectors.
         return;
       }
-    IDL::traits< ::Interceptor::Foo>::ref_type reference =
-      IDL::traits< ::Interceptor::Foo>::narrow (ep);
+    IDL::traits<::Interceptor::Foo>::ref_type reference =
+      IDL::traits<::Interceptor::Foo>::narrow (ep);
     if (reference == nullptr)
       {
         CIAOX11_TEST_ERROR << "Test_Interceptor::check_reference : <" << method << "> "
@@ -388,7 +384,7 @@ namespace DAnCEX11
     if (this->node_ == "ReceiverNode")
       return;
 
-    for (IDL::traits< ::Interceptor::Foo>::ref_type& reference : this->foo_list_)
+    for (IDL::traits<::Interceptor::Foo>::ref_type& reference : this->foo_list_)
     {
       CIAOX11_TEST_INFO << "Test_Interceptor::test_references calling cached reference"
                         << std::endl;

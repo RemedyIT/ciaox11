@@ -41,7 +41,7 @@ namespace CIAOX11_TT_TimedTrigger_Impl
 
   /// Executor implementation class for tt_scheduler facet
   class tt_scheduler_exec_i final
-    : public IDL::traits< ::CCM_TT::CCM_TT_Scheduler>::base_type
+    : public IDL::traits<::CCM_TT::CCM_TT_Scheduler>::base_type
   {
   public:
 
@@ -49,7 +49,7 @@ namespace CIAOX11_TT_TimedTrigger_Impl
     /// Constructor
     /// @param[in] context Component context
     tt_scheduler_exec_i (
-        IDL::traits< ::CIAOX11_TT::CCM_TimedTrigger_Context>::ref_type context);
+        IDL::traits<::CIAOX11_TT::CCM_TimedTrigger_Context>::ref_type context);
     //@@{__RIDL_REGEN_MARKER__} - END : CIAOX11_TT_TimedTrigger_Impl::tt_scheduler_exec_i[ctor]
 
     /// Destructor
@@ -58,14 +58,14 @@ namespace CIAOX11_TT_TimedTrigger_Impl
     /** @name Operations from ::CCM_TT::CCM_TT_Scheduler */
     //@{
 
-    IDL::traits< ::CCM_TT::TT_Timer>::ref_type
+    IDL::traits<::CCM_TT::TT_Timer>::ref_type
     schedule_trigger (
-        IDL::traits< ::CCM_TT::TT_Handler>::ref_type trigger_handler,
+        IDL::traits<::CCM_TT::TT_Handler>::ref_type trigger_handler,
         const ::CCM_TT::TT_Duration& trigger_delay) override;
 
-    IDL::traits< ::CCM_TT::TT_Timer>::ref_type
+    IDL::traits<::CCM_TT::TT_Timer>::ref_type
     schedule_repeated_trigger (
-        IDL::traits< ::CCM_TT::TT_Handler>::ref_type trigger_handler,
+        IDL::traits<::CCM_TT::TT_Handler>::ref_type trigger_handler,
         const ::CCM_TT::TT_Duration& start_delay,
         const ::CCM_TT::TT_Duration& interval,
         uint32_t max_rounds) override;
@@ -93,7 +93,7 @@ namespace CIAOX11_TT_TimedTrigger_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::CIAOX11_TT::CCM_TimedTrigger_Context>::ref_type context_;
+    IDL::traits<::CIAOX11_TT::CCM_TimedTrigger_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -113,7 +113,7 @@ namespace CIAOX11_TT_TimedTrigger_Impl
 
   /// Component Executor Implementation Class : TimedTrigger_exec_i
   class TimedTrigger_exec_i final
-    : public virtual IDL::traits< ::CIAOX11_TT::CCM_TimedTrigger>::base_type
+    : public virtual IDL::traits<::CIAOX11_TT::CCM_TimedTrigger>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : CIAOX11_TT_TimedTrigger_Impl::TimedTrigger_exec_i[ctor]
@@ -121,14 +121,14 @@ namespace CIAOX11_TT_TimedTrigger_Impl
     TimedTrigger_exec_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : CIAOX11_TT_TimedTrigger_Impl::TimedTrigger_exec_i[ctor]
     /// Destructor
-    virtual ~TimedTrigger_exec_i ();
+    ~TimedTrigger_exec_i () override;
 
     /** @name Component port operations. */
     //@{
 
     /// Factory method and getter for the tt_scheduler facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< ::CCM_TT::CCM_TT_Scheduler>::ref_type get_tt_scheduler () override;
+    IDL::traits<::CCM_TT::CCM_TT_Scheduler>::ref_type get_tt_scheduler () override;
     //@}
 
     /** @name Session component operations */
@@ -160,11 +160,11 @@ namespace CIAOX11_TT_TimedTrigger_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::CIAOX11_TT::CCM_TimedTrigger_Context>::ref_type context_;
+    IDL::traits<::CIAOX11_TT::CCM_TimedTrigger_Context>::ref_type context_;
 
     /** @name Component facets. */
     //@{
-    IDL::traits< ::CCM_TT::CCM_TT_Scheduler>::ref_type tt_scheduler_;
+    IDL::traits<::CCM_TT::CCM_TT_Scheduler>::ref_type tt_scheduler_;
     //@}
 
     /** @name User defined members. */
@@ -210,7 +210,7 @@ namespace CIAOX11_TT_TimedTrigger_Impl
     {
     }
 
-    virtual ~tt_timer_i () = default;
+    ~tt_timer_i () override = default;
 
     void on_timer (const CCM_TT::TT_Duration& delta_time) noexcept;
 
@@ -261,7 +261,7 @@ namespace CIAOX11_TT_TimedTrigger_Impl
       this->ccm_timer_->set_ev_handler (this);
     }
 
-    virtual ~tt_event_handler () = default;
+    ~tt_event_handler () override = default;
 
     int handle_timeout (const ACE_Time_Value&,
                         const void*) override;

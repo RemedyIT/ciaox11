@@ -33,10 +33,10 @@ namespace DDSX11
     DDS_TypeFactory_i () = default;
     virtual ~DDS_TypeFactory_i ();
 
-    virtual IDL::traits< ::DDS::DataWriter>::ref_type
+    virtual IDL::traits<::DDS::DataWriter>::ref_type
     create_datawriter (DDS_Native::DDS::DataWriter* dw) = 0;
 
-    virtual IDL::traits< ::DDS::DataReader>::ref_type
+    virtual IDL::traits<::DDS::DataReader>::ref_type
     create_datareader (DDS_Native::DDS::DataReader* dr) = 0;
   private:
     DDS_TypeFactory_i(const DDS_TypeFactory_i&) = delete;
@@ -94,7 +94,7 @@ namespace DDSX11
       */
     static bool
     register_type (
-      IDL::traits< ::DDS::DomainParticipant>::ref_type dp,
+      IDL::traits<::DDS::DomainParticipant>::ref_type dp,
       const std::string & type,
       const std::shared_ptr<DDS_TypeFactory_i> &factory);
 
@@ -109,23 +109,23 @@ namespace DDSX11
       */
     static bool
     unregister_type (
-      IDL::traits< ::DDS::DomainParticipant>::ref_type dp,
+      IDL::traits<::DDS::DomainParticipant>::ref_type dp,
       const std::string &type);
 
     /**
       * Create a type specific datawriter
       */
-    static IDL::traits< ::DDS::DataWriter>::ref_type
+    static IDL::traits<::DDS::DataWriter>::ref_type
     create_datawriter (
-      IDL::traits< ::DDS::DomainParticipant>::ref_type dp,
+      IDL::traits<::DDS::DomainParticipant>::ref_type dp,
       const std::string& type_name,
       DDS_Native::DDS::DataWriter* dw);
     /**
       * Create a type specific datareader
       */
-    static IDL::traits< ::DDS::DataReader>::ref_type
+    static IDL::traits<::DDS::DataReader>::ref_type
     create_datareader (
-      IDL::traits< ::DDS::DomainParticipant>::ref_type dp,
+      IDL::traits<::DDS::DomainParticipant>::ref_type dp,
       const std::string& type_name,
       DDS_Native::DDS::DataReader* dr);
 
@@ -157,7 +157,7 @@ namespace DDSX11
       * Searches for a TypeFactory, based on a type and DomainParticipant
       */
     static std::shared_ptr<DDS_TypeFactory_i> get_factory_i (
-      IDL::traits< ::DDS::DomainParticipant>::ref_type dp,
+      IDL::traits<::DDS::DomainParticipant>::ref_type dp,
       const std::string &type);
   };
 }

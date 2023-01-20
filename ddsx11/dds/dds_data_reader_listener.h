@@ -24,7 +24,7 @@ namespace DDSX11
   public:
     /// Constructor
     explicit DDS_DataReaderListener_proxy (
-      IDL::traits< ::DDS::DataReaderListener>::ref_type p);
+      IDL::traits<::DDS::DataReaderListener>::ref_type p);
 
     /// Destructor
     ~DDS_DataReaderListener_proxy () override;
@@ -62,11 +62,11 @@ namespace DDSX11
     on_subscription_matched (DDS_Native::DDS::DataReader* the_reader,
       const DDS_Native::DDS::SubscriptionMatchedStatus& status) override;
 
-    IDL::traits< ::DDS::DataReaderListener>::ref_type
+    IDL::traits<::DDS::DataReaderListener>::ref_type
     get_datareaderlistener ();
 
   private:
-    IDL::traits< ::DDS::DataReaderListener>::ref_type impl_;
+    IDL::traits<::DDS::DataReaderListener>::ref_type impl_;
 
     // In order to gain performance (especially for on_data_available), we keep
     // a weak_ref_pointer to the datareader. This pointer will be set the first
@@ -74,9 +74,9 @@ namespace DDSX11
     // reference and checked on each callback.
     // This prevents looking up the internal map in the ProxyEntityManager each
     // time a callback is called.
-    IDL::traits< ::DDS::DataReader>::weak_ref_type dr_ {};
+    IDL::traits<::DDS::DataReader>::weak_ref_type dr_ {};
 
-    IDL::traits< ::DDS::DataReader>::ref_type
+    IDL::traits<::DDS::DataReader>::ref_type
     get_datareader (DDS_Native::DDS::DataReader *the_reader);
 
     DDS_DataReaderListener_proxy() = delete;

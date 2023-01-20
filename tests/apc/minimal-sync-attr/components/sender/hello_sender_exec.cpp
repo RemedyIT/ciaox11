@@ -72,7 +72,7 @@ namespace Hello_Sender_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl::foo_port_s_foo_prov_exec_i[ctor]
   foo_port_s_foo_prov_exec_i::foo_port_s_foo_prov_exec_i (
-    IDL::traits< ::Hello::CCM_Sender_Context>::ref_type context)
+    IDL::traits<::Hello::CCM_Sender_Context>::ref_type context)
     : context_ (std::move (context))
   {
   }
@@ -174,7 +174,7 @@ namespace Hello_Sender_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Sender_Impl::Sender_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::Hello::CCM_PortFooS>::ref_type
+  IDL::traits<::Hello::CCM_PortFooS>::ref_type
   Sender_exec_i::get_foo_port_s_foo_prov ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl::Sender_exec_i[get_foo_port_s_foo_prov]
@@ -298,7 +298,7 @@ namespace Hello_Sender_Impl
   {
     // Setting the context of this component.
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl::Sender_exec_i[set_session_context]
-    this->context_ = IDL::traits< ::Hello::CCM_Sender_Context >::narrow (std::move(ctx));
+    this->context_ = IDL::traits<::Hello::CCM_Sender_Context >::narrow (std::move(ctx));
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Sender_Impl::Sender_exec_i[set_session_context]
   }
 

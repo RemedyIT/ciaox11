@@ -39,7 +39,7 @@ namespace IDL_Conversion_Test_Receiver_Impl
 
   /// Executor implementation class for info_out_data_listener facet
   class info_out_data_listener_exec_i final
-    : public IDL::traits< ::Example::IDLConversionTestConnector::CCM_Listener>::base_type
+    : public IDL::traits<::Example::IDLConversionTestConnector::CCM_Listener>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : IDL_Conversion_Test_Receiver_Impl::info_out_data_listener_exec_i[ctor]
@@ -76,7 +76,7 @@ namespace IDL_Conversion_Test_Receiver_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::IDL_Conversion_Test::CCM_Receiver_Context>::ref_type context_;
+    IDL::traits<::IDL_Conversion_Test::CCM_Receiver_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -97,7 +97,7 @@ namespace IDL_Conversion_Test_Receiver_Impl
 
   /// Executor implementation class for info_out_status facet
   class info_out_status_exec_i final
-    : public IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::base_type
+    : public IDL::traits<::CCM_DDS::CCM_PortStatusListener>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : IDL_Conversion_Test_Receiver_Impl::info_out_status_exec_i[ctor]
@@ -115,12 +115,12 @@ namespace IDL_Conversion_Test_Receiver_Impl
 
     void
     on_requested_deadline_missed (
-        IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+        IDL::traits<::DDS::DataReader>::ref_type the_reader,
         const ::DDS::RequestedDeadlineMissedStatus& status) override;
 
     void
     on_sample_lost (
-        IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+        IDL::traits<::DDS::DataReader>::ref_type the_reader,
         const ::DDS::SampleLostStatus& status) override;
     //@}
 
@@ -133,7 +133,7 @@ namespace IDL_Conversion_Test_Receiver_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::IDL_Conversion_Test::CCM_Receiver_Context>::ref_type context_;
+    IDL::traits<::IDL_Conversion_Test::CCM_Receiver_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -152,7 +152,7 @@ namespace IDL_Conversion_Test_Receiver_Impl
 
   /// Component Executor Implementation Class : Receiver_exec_i
   class Receiver_exec_i final
-    : public virtual IDL::traits< ::IDL_Conversion_Test::CCM_Receiver>::base_type
+    : public virtual IDL::traits<::IDL_Conversion_Test::CCM_Receiver>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : IDL_Conversion_Test_Receiver_Impl::Receiver_exec_i[ctor]
@@ -167,10 +167,10 @@ namespace IDL_Conversion_Test_Receiver_Impl
 
     /// Factory method and getter for the info_out_data_listener facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< ::Example::IDLConversionTestConnector::CCM_Listener>::ref_type get_info_out_data_listener () override;
+    IDL::traits<::Example::IDLConversionTestConnector::CCM_Listener>::ref_type get_info_out_data_listener () override;
     /// Factory method and getter for the info_out_status facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type get_info_out_status () override;
+    IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type get_info_out_status () override;
     //@}
 
     /** @name Session component operations */
@@ -202,7 +202,7 @@ namespace IDL_Conversion_Test_Receiver_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::IDL_Conversion_Test::CCM_Receiver_Context>::ref_type context_;
+    IDL::traits<::IDL_Conversion_Test::CCM_Receiver_Context>::ref_type context_;
 
     /** @name Component attributes. */
     //@{
@@ -210,8 +210,8 @@ namespace IDL_Conversion_Test_Receiver_Impl
 
     /** @name Component facets. */
     //@{
-    IDL::traits< ::Example::IDLConversionTestConnector::CCM_Listener>::ref_type info_out_data_listener_;
-    IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type info_out_status_;
+    IDL::traits<::Example::IDLConversionTestConnector::CCM_Listener>::ref_type info_out_data_listener_;
+    IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type info_out_status_;
     //@}
 
     /** @name User defined members. */

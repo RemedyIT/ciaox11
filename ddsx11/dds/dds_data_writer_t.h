@@ -32,15 +32,15 @@ namespace DDSX11
 
     ::DDS::ReturnCode_t
     set_listener (
-      IDL::traits< ::DDS::DataWriterListener>::ref_type a_listener,
+      IDL::traits<::DDS::DataWriterListener>::ref_type a_listener,
       ::DDS::StatusMask mask) override;
 
-    IDL::traits< ::DDS::DataWriterListener>::ref_type
+    IDL::traits<::DDS::DataWriterListener>::ref_type
       get_listener () override;
 
-    IDL::traits< ::DDS::Topic>::ref_type get_topic () override;
+    IDL::traits<::DDS::Topic>::ref_type get_topic () override;
 
-    IDL::traits< ::DDS::Publisher>::ref_type get_publisher () override;
+    IDL::traits<::DDS::Publisher>::ref_type get_publisher () override;
 
     ::DDS::ReturnCode_t
     wait_for_acknowledgments (
@@ -74,7 +74,7 @@ namespace DDSX11
 
     ::DDS::ReturnCode_t enable () override;
 
-    IDL::traits< ::DDS::StatusCondition>::ref_type
+    IDL::traits<::DDS::StatusCondition>::ref_type
     get_statuscondition () override;
 
     ::DDS::StatusMask get_status_changes () override;

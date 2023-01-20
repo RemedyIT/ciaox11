@@ -16,14 +16,10 @@ namespace CIAOX11
 {
   namespace ExF
   {
-    Component_Handler::~Component_Handler ()
-    {
-    }
-
     void
     Component_Handler::install_instance (const Deployment::DeploymentPlan &plan,
-                                           uint32_t instanceRef,
-                                           CORBA::Any& instance_reference)
+                                         uint32_t instanceRef,
+                                         CORBA::Any& instance_reference)
     {
       const ::Deployment::InstanceDeploymentDescription &idd (plan.instance()[instanceRef]);
       const ::Deployment::MonolithicDeploymentDescription &mdd (plan.implementation()[idd.implementationRef()]);
@@ -108,8 +104,7 @@ namespace CIAOX11
                                "opening scheduling lane");
 
             // get the scheduler allocated to the container
-            ExF::Scheduler::ref_type sched =
-                exf_container->the_scheduler ();
+            ExF::Scheduler::ref_type sched = exf_container->the_scheduler ();
             if (!sched)
             {
               CIAOX11_LOG_ERROR ("ExF::Component_Handler::install_instance - " \
@@ -141,8 +136,7 @@ namespace CIAOX11
             CIAOX11_LOG_DEBUG ("ExF::Component_Handler::install_instance - " <<
                                "inserted scheduling lane reference in Any");
 
-            exec_config.push_back (
-                Components::ConfigValue (ExF::SCHEDULING_LANE_REF, lane_ref));
+            exec_config.push_back (Components::ConfigValue (ExF::SCHEDULING_LANE_REF, lane_ref));
 
             CIAOX11_LOG_DEBUG ("ExF::Component_Handler::install_instance - " <<
                                "stored scheduling lane reference");
@@ -157,10 +151,7 @@ namespace CIAOX11
         }
 
         // register the component and it's configuration values
-        this->register_component (
-            idd.name (),
-            std::move (exec_config),
-            cont_id);
+        this->register_component (idd.name (), std::move (exec_config), cont_id);
 
         CIAOX11_LOG_DEBUG ("ExF::Component_Handler::install_instance - " <<
                            "installed component <" << idd.name () << ">:<" << cont_id << ">");
@@ -200,8 +191,8 @@ namespace CIAOX11
 
     void
     Component_Handler::remove_instance (const Deployment::DeploymentPlan & plan,
-                                          uint32_t instanceRef,
-                                          const CORBA::Any &)
+                                        uint32_t instanceRef,
+                                        const CORBA::Any &)
     {
       std::string const name = plan.instance ()[instanceRef].name ();
 
@@ -299,7 +290,6 @@ namespace CIAOX11
         }
       }
     }
-
   }
 }
 

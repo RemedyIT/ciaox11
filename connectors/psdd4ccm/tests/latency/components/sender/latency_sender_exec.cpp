@@ -98,8 +98,8 @@ namespace Test_Sender_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::info_recv_exec_i[ctor]
   info_recv_exec_i::info_recv_exec_i (
-      IDL::traits< ::Test::CCM_Sender_Context>::ref_type context,
-      IDL::traits< ::Test::CCM_Sender>::ref_type component_executor)
+      IDL::traits<::Test::CCM_Sender_Context>::ref_type context,
+      IDL::traits<::Test::CCM_Sender>::ref_type component_executor)
       : context_ (std::move (context))
       , component_executor_ (std::move (component_executor))
   {
@@ -653,7 +653,7 @@ namespace Test_Sender_Impl
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::Sender_exec_i[get_info_recv]
     if (!this->info_recv_)
     {
-      this->info_recv_ = IDL::traits< ::Test::LatencyDataConnector::CCM_Listener>::make_reference <info_recv_exec_i> (
+      this->info_recv_ = IDL::traits<::Test::LatencyDataConnector::CCM_Listener>::make_reference <info_recv_exec_i> (
           this->context_,
           IDL::traits<Test::CCM_Sender>::narrow (this->_lock()));
     }
@@ -771,7 +771,7 @@ namespace Test_Sender_Impl
   {
     // Setting the context of this component.
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::Sender_exec_i[set_session_context]
-    this->context_ = IDL::traits< ::Test::CCM_Sender_Context>::narrow (std::move(ctx));
+    this->context_ = IDL::traits<::Test::CCM_Sender_Context>::narrow (std::move(ctx));
     //@@{__RIDL_REGEN_MARKER__} - END : Test_Sender_Impl::Sender_exec_i[set_session_context]
   }
 
@@ -786,7 +786,7 @@ extern "C" void
 create_Test_Sender_Impl (
   IDL::traits<Components::EnterpriseComponent>::ref_type& component)
 {
-  component = IDL::traits< ::Test::CCM_Sender>::make_reference <Test_Sender_Impl::Sender_exec_i> ();
+  component = IDL::traits<::Test::CCM_Sender>::make_reference <Test_Sender_Impl::Sender_exec_i> ();
 }
 //@@{__RIDL_REGEN_MARKER__} - END : Test_Sender_Impl[factory]
 //@@{__RIDL_REGEN_MARKER__} - BEGIN : latency_sender_impl.cpp[Footer]

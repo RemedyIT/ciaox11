@@ -26,7 +26,7 @@ namespace DDS_Native {
 namespace DDSX11
 {
   class DDSX11_IMPL_Export DDS_StatusCondition_proxy final
-    : public virtual IDL::traits< ::DDS::StatusCondition>::base_type
+    : public virtual IDL::traits<::DDS::StatusCondition>::base_type
     , public virtual NativeEntityBase_T<DDS_Native::DDS::StatusCondition>
   {
   public:
@@ -46,7 +46,7 @@ namespace DDSX11
     set_enabled_statuses (
       ::DDS::StatusMask mask) override;
 
-    IDL::traits< ::DDS::Entity>::ref_type
+    IDL::traits<::DDS::Entity>::ref_type
     get_entity () override;
 
   private:

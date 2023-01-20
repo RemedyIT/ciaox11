@@ -26,7 +26,7 @@ namespace UnkeyedWriterTest_Sender_Impl
   : public IDL::traits<CCM_TT::TT_Handler>::base_type
   {
   public:
-    explicit TT_Callback (IDL::traits< ::UnkeyedWriterTest::CCM_Sender>::weak_ref_type component_executor,
+    explicit TT_Callback (IDL::traits<::UnkeyedWriterTest::CCM_Sender>::weak_ref_type component_executor,
                  bool activate)
     : component_executor_(component_executor)
     , activate_(activate)
@@ -34,18 +34,18 @@ namespace UnkeyedWriterTest_Sender_Impl
 
     void
     on_trigger (
-         IDL::traits< ::CCM_TT::TT_Timer>::ref_type timer,
+         IDL::traits<::CCM_TT::TT_Timer>::ref_type timer,
          const ::CCM_TT::TT_Duration& time,
          uint32_t round) override;
 
   private:
-    IDL::traits< ::UnkeyedWriterTest::CCM_Sender>::weak_ref_type component_executor_;
+    IDL::traits<::UnkeyedWriterTest::CCM_Sender>::weak_ref_type component_executor_;
     bool const activate_;
   };
 
   void
   TT_Callback::on_trigger (
-    IDL::traits< ::CCM_TT::TT_Timer>::ref_type /*timer*/,
+    IDL::traits<::CCM_TT::TT_Timer>::ref_type /*timer*/,
     const ::CCM_TT::TT_Duration& /*time*/,
     uint32_t /*round*/)
   {
@@ -216,7 +216,7 @@ namespace UnkeyedWriterTest_Sender_Impl
   void
   Sender_exec_i::check_status ()
   {
-    IDL::traits< ::DDS::DataWriter>::ref_type writer_dds_entity =
+    IDL::traits<::DDS::DataWriter>::ref_type writer_dds_entity =
       this->context_->get_connection_info_write_dds_entity ();
     if (writer_dds_entity)
     {
@@ -227,7 +227,7 @@ namespace UnkeyedWriterTest_Sender_Impl
       {
         DDS4CCM_TEST_ERROR <<"Sender_exec_i::check_status - "
           << "Error: Unable to get_publication_matched_status: <"
-          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+          << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">." << std::endl;
       }
       else

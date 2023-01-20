@@ -28,7 +28,7 @@ namespace DDSX11
 #endif /* DDSX11_HAS_VENDOR_TYPEDEFS */
 
   class DDSX11_IMPL_Export DDS_Subscriber_proxy
-    : public virtual IDL::traits< ::DDS::Subscriber>::base_type
+    : public virtual IDL::traits<::DDS::Subscriber>::base_type
     , public virtual NativeEntityBase_T<DDS_Native::DDS::Subscriber>
   {
   public:
@@ -41,7 +41,7 @@ namespace DDSX11
     ::DDS::ReturnCode_t
     enable () override;
 
-    IDL::traits< ::DDS::StatusCondition>::ref_type
+    IDL::traits<::DDS::StatusCondition>::ref_type
     get_statuscondition () override;
 
     ::DDS::StatusMask
@@ -50,21 +50,21 @@ namespace DDSX11
     ::DDS::InstanceHandle_t
     get_instance_handle () override;
 
-    IDL::traits< ::DDS::DataReader>::ref_type
+    IDL::traits<::DDS::DataReader>::ref_type
     create_datareader (
-      IDL::traits< ::DDS::TopicDescription>::ref_type a_topic,
+      IDL::traits<::DDS::TopicDescription>::ref_type a_topic,
       const ::DDS::DataReaderQos & qos,
-      IDL::traits< ::DDS::DataReaderListener>::ref_type a_listener,
+      IDL::traits<::DDS::DataReaderListener>::ref_type a_listener,
       ::DDS::StatusMask mask) override;
 
     ::DDS::ReturnCode_t
     delete_datareader (
-      IDL::traits< ::DDS::DataReader>::ref_type a_datareader) override;
+      IDL::traits<::DDS::DataReader>::ref_type a_datareader) override;
 
     ::DDS::ReturnCode_t
     delete_contained_entities () override;
 
-    IDL::traits< ::DDS::DataReader>::ref_type
+    IDL::traits<::DDS::DataReader>::ref_type
     lookup_datareader (const std::string &topic_name) override;
 
     ::DDS::ReturnCode_t
@@ -87,10 +87,10 @@ namespace DDSX11
 
     ::DDS::ReturnCode_t
     set_listener (
-      IDL::traits< ::DDS::SubscriberListener>::ref_type a_listener,
+      IDL::traits<::DDS::SubscriberListener>::ref_type a_listener,
       ::DDS::StatusMask mask) override;
 
-    IDL::traits< ::DDS::SubscriberListener>::ref_type
+    IDL::traits<::DDS::SubscriberListener>::ref_type
     get_listener () override;
 
     ::DDS::ReturnCode_t
@@ -99,7 +99,7 @@ namespace DDSX11
     ::DDS::ReturnCode_t
     end_access () override;
 
-    IDL::traits< ::DDS::DomainParticipant>::ref_type
+    IDL::traits<::DDS::DomainParticipant>::ref_type
     get_participant () override;
 
     ::DDS::ReturnCode_t
@@ -118,14 +118,14 @@ namespace DDSX11
   private:
     DDS_Native::DDS::DataReader *
     create_native_datareader (
-      IDL::traits< ::DDS::Topic>::ref_type topic,
+      IDL::traits<::DDS::Topic>::ref_type topic,
       DDS_Native::DDS::DataReaderListener * proxy_drl,
       ::DDS::StatusMask mask,
       const ::DDS::DataReaderQos & qos);
 
     DDS_Native::DDS::DataReader *
     create_native_datareader (
-      IDL::traits< ::DDS::ContentFilteredTopic>::ref_type topic,
+      IDL::traits<::DDS::ContentFilteredTopic>::ref_type topic,
       DDS_Native::DDS::DataReaderListener * proxy_drl,
       ::DDS::StatusMask mask,
       const ::DDS::DataReaderQos & qos);

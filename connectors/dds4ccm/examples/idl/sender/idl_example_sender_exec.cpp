@@ -26,23 +26,23 @@ namespace Example_BasicPublisher_comp_Impl
   : public IDL::traits<CCM_TT::TT_Handler>::base_type
   {
   public:
-    explicit TT_Callback (IDL::traits< ::Example::CCM_BasicPublisher_comp>::weak_ref_type component_executor)
+    explicit TT_Callback (IDL::traits<::Example::CCM_BasicPublisher_comp>::weak_ref_type component_executor)
     : component_executor_(component_executor)
      {}
 
     void
     on_trigger (
-         IDL::traits< ::CCM_TT::TT_Timer>::ref_type timer,
+         IDL::traits<::CCM_TT::TT_Timer>::ref_type timer,
          const ::CCM_TT::TT_Duration& time,
          uint32_t round) override;
 
   private:
-    IDL::traits< ::Example::CCM_BasicPublisher_comp>::weak_ref_type component_executor_;
+    IDL::traits<::Example::CCM_BasicPublisher_comp>::weak_ref_type component_executor_;
   };
 
   void
   TT_Callback::on_trigger (
-       IDL::traits< ::CCM_TT::TT_Timer>::ref_type ,
+       IDL::traits<::CCM_TT::TT_Timer>::ref_type ,
        const ::CCM_TT::TT_Duration& ,
        uint32_t)
   {
@@ -92,7 +92,7 @@ namespace Example_BasicPublisher_comp_Impl
 
   void
   CA1DataPub_CSL_exec_i::on_inconsistent_topic (
-      IDL::traits< ::DDS::Topic>::ref_type the_topic,
+      IDL::traits<::DDS::Topic>::ref_type the_topic,
       const ::DDS::InconsistentTopicStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Example_BasicPublisher_comp_Impl::CA1DataPub_CSL_exec_i::on_inconsistent_topic[_the_topic_status]
@@ -103,7 +103,7 @@ namespace Example_BasicPublisher_comp_Impl
 
   void
   CA1DataPub_CSL_exec_i::on_requested_incompatible_qos (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::RequestedIncompatibleQosStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Example_BasicPublisher_comp_Impl::CA1DataPub_CSL_exec_i::on_requested_incompatible_qos[_the_reader_status]
@@ -114,7 +114,7 @@ namespace Example_BasicPublisher_comp_Impl
 
   void
   CA1DataPub_CSL_exec_i::on_sample_rejected (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::SampleRejectedStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Example_BasicPublisher_comp_Impl::CA1DataPub_CSL_exec_i::on_sample_rejected[_the_reader_status]
@@ -125,7 +125,7 @@ namespace Example_BasicPublisher_comp_Impl
 
   void
   CA1DataPub_CSL_exec_i::on_offered_deadline_missed (
-      IDL::traits< ::DDS::DataWriter>::ref_type the_writer,
+      IDL::traits<::DDS::DataWriter>::ref_type the_writer,
       const ::DDS::OfferedDeadlineMissedStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Example_BasicPublisher_comp_Impl::CA1DataPub_CSL_exec_i::on_offered_deadline_missed[_the_writer_status]
@@ -136,7 +136,7 @@ namespace Example_BasicPublisher_comp_Impl
 
   void
   CA1DataPub_CSL_exec_i::on_offered_incompatible_qos (
-      IDL::traits< ::DDS::DataWriter>::ref_type the_writer,
+      IDL::traits<::DDS::DataWriter>::ref_type the_writer,
       const ::DDS::OfferedIncompatibleQosStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Example_BasicPublisher_comp_Impl::CA1DataPub_CSL_exec_i::on_offered_incompatible_qos[_the_writer_status]
@@ -147,7 +147,7 @@ namespace Example_BasicPublisher_comp_Impl
 
   void
   CA1DataPub_CSL_exec_i::on_unexpected_status (
-      IDL::traits< ::DDS::Entity>::ref_type the_entity,
+      IDL::traits<::DDS::Entity>::ref_type the_entity,
       ::DDS::StatusKind status_kind)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Example_BasicPublisher_comp_Impl::CA1DataPub_CSL_exec_i::on_unexpected_status[_the_entity_status_kind]
@@ -267,7 +267,7 @@ namespace Example_BasicPublisher_comp_Impl
   {
     if (!this->publication_matched_)
     {
-      IDL::traits< ::DDS::DataWriter>::ref_type writer_dds_entity =
+      IDL::traits<::DDS::DataWriter>::ref_type writer_dds_entity =
         this->context_->get_connection_CA1DataPub_dds_entity ();
       if (writer_dds_entity)
       {
@@ -278,7 +278,7 @@ namespace Example_BasicPublisher_comp_Impl
         {
           DDS4CCM_TEST_ERROR <<"BasicPublisher_comp_exec_i::check_status - "
             << "Error: Unable to get_publication_matched_status: <"
-            << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+            << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
             << ">." << std::endl;
         }
         else
@@ -359,7 +359,7 @@ namespace Example_BasicPublisher_comp_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Example_BasicPublisher_comp_Impl::BasicPublisher_comp_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::CCM_DDS::CCM_ConnectorStatusListener>::ref_type
+  IDL::traits<::CCM_DDS::CCM_ConnectorStatusListener>::ref_type
   BasicPublisher_comp_exec_i::get_CA1DataPub_CSL ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Example_BasicPublisher_comp_Impl::BasicPublisher_comp_exec_i[get_CA1DataPub_CSL]

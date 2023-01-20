@@ -26,7 +26,7 @@ namespace DDS_Native {
 namespace DDSX11
 {
   class DDSX11_IMPL_Export DDS_ContentFilteredTopic_proxy final
-    : public virtual IDL::traits< ::DDS::ContentFilteredTopic>::base_type
+    : public virtual IDL::traits<::DDS::ContentFilteredTopic>::base_type
     , public virtual NativeEntityBase_T<DDS_Native::DDS::ContentFilteredTopic>
   {
   public:
@@ -46,14 +46,14 @@ namespace DDSX11
     set_expression_parameters (
       const ::DDS::StringSeq & expression_parameters) override;
 
-    IDL::traits< ::DDS::Topic>::ref_type
+    IDL::traits<::DDS::Topic>::ref_type
     get_related_topic () override;
 
     std::string get_type_name () override;
 
     std::string get_name () override;
 
-    IDL::traits< ::DDS::DomainParticipant>::ref_type
+    IDL::traits<::DDS::DomainParticipant>::ref_type
     get_participant () override;
 
   private:

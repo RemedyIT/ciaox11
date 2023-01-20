@@ -28,7 +28,7 @@ namespace Hello_Receiver_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::do_my_foo_exec_i[ctor]
   do_my_foo_exec_i::do_my_foo_exec_i (
-    IDL::traits< ::Hello::CCM_Receiver_Context>::ref_type context)
+    IDL::traits<::Hello::CCM_Receiver_Context>::ref_type context)
     : context_ (std::move (context))
   {
   }
@@ -104,7 +104,7 @@ namespace Hello_Receiver_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::info_out_data_listener_exec_i[ctor]
   info_out_data_listener_exec_i::info_out_data_listener_exec_i (
-    IDL::traits< ::Hello::CCM_Receiver_Context>::ref_type context)
+    IDL::traits<::Hello::CCM_Receiver_Context>::ref_type context)
     : context_ (std::move (context))
   {
   }
@@ -157,7 +157,7 @@ namespace Hello_Receiver_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::info_out_status_exec_i[ctor]
   info_out_status_exec_i::info_out_status_exec_i (
-    IDL::traits< ::Hello::CCM_Receiver_Context>::ref_type context)
+    IDL::traits<::Hello::CCM_Receiver_Context>::ref_type context)
     : context_ (std::move (context))
   {
   }
@@ -242,7 +242,7 @@ namespace Hello_Receiver_Impl
   void Receiver_exec_i::ccm_activate ()
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::Receiver_exec_i[ccm_activate]
-    IDL::traits< ::CCM_DDS::DataListenerControl>::ref_type lc =
+    IDL::traits<::CCM_DDS::DataListenerControl>::ref_type lc =
           this->context_->get_connection_info_out_data_control ();
         lc->mode (::CCM_DDS::ListenerMode::ONE_BY_ONE);
 
@@ -341,7 +341,7 @@ namespace Hello_Receiver_Impl
   {
     // Setting the context of this component.
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::Receiver_exec_i[set_session_context]
-    this->context_ = IDL::traits< ::Hello::CCM_Receiver_Context >::narrow (std::move(ctx));
+    this->context_ = IDL::traits<::Hello::CCM_Receiver_Context >::narrow (std::move(ctx));
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::Receiver_exec_i[set_session_context]
   }
 

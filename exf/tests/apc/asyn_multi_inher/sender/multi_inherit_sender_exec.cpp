@@ -48,7 +48,7 @@ namespace InterMulti_Sender_Impl
       CIAOX11_TEST_INFO << "Sender:\t->get_connection_sendc_run_my_one "
                         << std::endl;
 
-      IDL::traits< ::InterMulti::AMI4CCM_One>::ref_type my_one_ami_  =
+      IDL::traits<::InterMulti::AMI4CCM_One>::ref_type my_one_ami_  =
             this->ciao_context_->get_connection_sendc_run_my_one();
 
       if (!my_one_ami_)
@@ -57,7 +57,7 @@ namespace InterMulti_Sender_Impl
                            << "returns null" << std::endl;
         return 1;
       }
-      IDL::traits< ::InterMulti::AMI4CCM_OneReplyHandler>::ref_type cb =
+      IDL::traits<::InterMulti::AMI4CCM_OneReplyHandler>::ref_type cb =
                CORBA::make_reference<AMI4CCM_OneReplyHandler_run_my_one_i> ();
       //Invoke Asynchronous calls to test
       my_one_ami_->sendc_foo ( cb, "Hi from asynch call ONE::foo", 1);
@@ -97,7 +97,7 @@ namespace InterMulti_Sender_Impl
        CIAOX11_TEST_INFO << "Sender:\t->get_connection_sendc_run_my_two "
                          << std::endl;
 
-       IDL::traits< ::InterMulti::AMI4CCM_Two>::ref_type my_two_ami_  =
+       IDL::traits<::InterMulti::AMI4CCM_Two>::ref_type my_two_ami_  =
              this->ciao_context_->get_connection_sendc_run_my_two();
 
        if (!my_two_ami_)
@@ -106,7 +106,7 @@ namespace InterMulti_Sender_Impl
                            << "returns null" << std::endl;
          return 1;
        }
-       IDL::traits< ::InterMulti::AMI4CCM_TwoReplyHandler>::ref_type cb =
+       IDL::traits<::InterMulti::AMI4CCM_TwoReplyHandler>::ref_type cb =
                 CORBA::make_reference<AMI4CCM_TwoReplyHandler_run_my_two_i> ();
 
        //Invoke Asynchronous calls to test
@@ -147,7 +147,7 @@ namespace InterMulti_Sender_Impl
         CIAOX11_TEST_INFO << "Sender:\t->get_connection_sendc_run_my_three "
                           << std::endl;
 
-        IDL::traits< ::InterMulti::AMI4CCM_Three>::ref_type my_three_ami_  =
+        IDL::traits<::InterMulti::AMI4CCM_Three>::ref_type my_three_ami_  =
               this->ciao_context_->get_connection_sendc_run_my_three();
 
         if (!my_three_ami_)
@@ -156,7 +156,7 @@ namespace InterMulti_Sender_Impl
                             << "returns null" << std::endl;
           return 1;
         }
-        IDL::traits< ::InterMulti::AMI4CCM_ThreeReplyHandler>::ref_type cb =
+        IDL::traits<::InterMulti::AMI4CCM_ThreeReplyHandler>::ref_type cb =
                  CORBA::make_reference<AMI4CCM_ThreeReplyHandler_run_my_three_i> ();
 
         //Invoke Asynchronous calls to test

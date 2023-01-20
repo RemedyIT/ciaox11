@@ -46,7 +46,7 @@ namespace Hello_Sender_Impl
   }
 
   void HandleException (
-      IDL::traits< ::CCM_AMI::ExceptionHolder>::ref_type excep_holder,
+      IDL::traits<::CCM_AMI::ExceptionHolder>::ref_type excep_holder,
       const std::string& func)
   {
     CIAOX11_TEST_INFO << "Sender:\t->HandleException "
@@ -84,7 +84,7 @@ namespace Hello_Sender_Impl
     CIAOX11_TEST_INFO << "Sender:\t->get_connection_sendc_run_my_foo "
       << std::endl;
 
-    IDL::traits< ::Hello::AMI4CCM_MyFoo>::ref_type my_foo_ami  =
+    IDL::traits<::Hello::AMI4CCM_MyFoo>::ref_type my_foo_ami  =
       this->ciao_context_->get_connection_sendc_run_my_foo ();
 
     if (!my_foo_ami)
@@ -93,7 +93,7 @@ namespace Hello_Sender_Impl
                         << "returns null" << std::endl;
       return 1;
     }
-    IDL::traits< ::Hello::AMI4CCM_MyFooReplyHandler>::ref_type cb =
+    IDL::traits<::Hello::AMI4CCM_MyFooReplyHandler>::ref_type cb =
       CORBA::make_reference<AMI4CCM_MyFooReplyHandler_run_my_foo_i> ();
 
     my_foo_ami->sendc_foo (cb,"Do something asynchronous");
@@ -176,7 +176,7 @@ namespace Hello_Sender_Impl
   {
     // Setting the context of this component.
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl::Sender_exec_i[set_session_context]
-    this->context_ = IDL::traits< ::Hello::CCM_Sender_Context >::narrow (std::move(ctx));
+    this->context_ = IDL::traits<::Hello::CCM_Sender_Context >::narrow (std::move(ctx));
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Sender_Impl::Sender_exec_i[set_session_context]
   }
 

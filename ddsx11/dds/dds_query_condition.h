@@ -26,7 +26,7 @@ namespace DDS_Native {
 namespace DDSX11
 {
   class DDSX11_IMPL_Export DDS_QueryCondition_proxy final
-    : public virtual IDL::traits< ::DDS::QueryCondition>::base_type
+    : public virtual IDL::traits<::DDS::QueryCondition>::base_type
     , public virtual NativeEntityBase_T<DDS_Native::DDS::QueryCondition>
   {
   public:
@@ -48,7 +48,7 @@ namespace DDSX11
     ::DDS::InstanceStateMask
     get_instance_state_mask () override;
 
-    IDL::traits< ::DDS::DataReader>::ref_type
+    IDL::traits<::DDS::DataReader>::ref_type
     get_datareader () override;
 
     std::string

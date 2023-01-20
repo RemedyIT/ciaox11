@@ -24,7 +24,7 @@ namespace DDS_Native {
 namespace DDSX11
 {
   class DDS_DataWriter_proxy
-    : public virtual IDL::traits< ::DDS::DataWriter>::base_type
+    : public virtual IDL::traits<::DDS::DataWriter>::base_type
   {
   public:
     DDS_DataWriter_proxy () = default;

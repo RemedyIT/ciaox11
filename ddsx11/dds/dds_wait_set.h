@@ -25,7 +25,7 @@ namespace DDSX11
     * Implementation of the waitset functionality.
     */
   class DDSX11_IMPL_Export DDS_WaitSet_proxy final
-    : public virtual IDL::traits< ::DDS::WaitSet>::base_type
+    : public virtual IDL::traits<::DDS::WaitSet>::base_type
     , public virtual NativeEntityBase_T<DDS_Native::DDS::WaitSet>
   {
 
@@ -53,7 +53,7 @@ namespace DDSX11
       */
     ::DDS::ReturnCode_t
     attach_condition (
-      IDL::traits< ::DDS::Condition>::ref_type cond) override;
+      IDL::traits<::DDS::Condition>::ref_type cond) override;
 
     /**
       * Detaches a condition from the waitset. 'wait' won't be waiting
@@ -61,7 +61,7 @@ namespace DDSX11
       */
     ::DDS::ReturnCode_t
     detach_condition (
-      IDL::traits< ::DDS::Condition>::ref_type cond) override;
+      IDL::traits<::DDS::Condition>::ref_type cond) override;
 
     /**
       * Retrieves a list of attached conditions.

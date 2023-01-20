@@ -38,7 +38,7 @@ namespace Foo_CORBA4CCM_exception_component_Impl
 
   /// Component Executor Implementation Class : CORBA4CCM_exception_component_exec_i
   class CORBA4CCM_exception_component_exec_i final
-    : public virtual IDL::traits< ::Foo::CCM_CORBA4CCM_exception_component>::base_type
+    : public virtual IDL::traits<::Foo::CCM_CORBA4CCM_exception_component>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Foo_CORBA4CCM_exception_component_Impl::CORBA4CCM_exception_component_exec_i[ctor]
@@ -82,7 +82,7 @@ namespace Foo_CORBA4CCM_exception_component_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::Foo::CCM_CORBA4CCM_exception_component_Context>::ref_type context_;
+    IDL::traits<::Foo::CCM_CORBA4CCM_exception_component_Context>::ref_type context_;
 
     /** @name Component facets. */
     //@{

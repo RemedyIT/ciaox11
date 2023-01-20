@@ -50,8 +50,8 @@ namespace Test_Receiver_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Receiver_Impl::info_out_exec_i[ctor]
   info_out_exec_i::info_out_exec_i (
-      IDL::traits< ::Test::CCM_Receiver_Context>::ref_type context,
-      IDL::traits< ::Test::CCM_Receiver>::ref_type component_executor)
+      IDL::traits<::Test::CCM_Receiver_Context>::ref_type context,
+      IDL::traits<::Test::CCM_Receiver>::ref_type component_executor)
       : context_ (std::move (context))
       , component_executor_ (std::move (component_executor))
   {
@@ -221,7 +221,7 @@ namespace Test_Receiver_Impl
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Receiver_Impl::Receiver_exec_i[get_info_out]
     if (!this->info_out_)
     {
-      this->info_out_ = IDL::traits< ::Test::LatencyDataConnector::CCM_Listener>::make_reference <info_out_exec_i> (
+      this->info_out_ = IDL::traits<::Test::LatencyDataConnector::CCM_Listener>::make_reference <info_out_exec_i> (
           this->context_,
           IDL::traits<::Test::CCM_Receiver>::narrow (this->_lock()));
     }
@@ -236,7 +236,7 @@ namespace Test_Receiver_Impl
   {
     // Setting the context of this component.
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Receiver_Impl::Receiver_exec_i[set_session_context]
-    this->context_ = IDL::traits< ::Test::CCM_Receiver_Context>::narrow (std::move(ctx));
+    this->context_ = IDL::traits<::Test::CCM_Receiver_Context>::narrow (std::move(ctx));
     //@@{__RIDL_REGEN_MARKER__} - END : Test_Receiver_Impl::Receiver_exec_i[set_session_context]
   }
 
@@ -251,7 +251,7 @@ extern "C" void
 create_Test_Receiver_Impl (
   IDL::traits<Components::EnterpriseComponent>::ref_type& component)
 {
-  component = IDL::traits< ::Test::CCM_Receiver>::make_reference <Test_Receiver_Impl::Receiver_exec_i> ();
+  component = IDL::traits<::Test::CCM_Receiver>::make_reference <Test_Receiver_Impl::Receiver_exec_i> ();
 }
 //@@{__RIDL_REGEN_MARKER__} - END : Test_Receiver_Impl[factory]
 //@@{__RIDL_REGEN_MARKER__} - BEGIN : latency_receiver_impl.cpp[Footer]

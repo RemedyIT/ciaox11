@@ -39,7 +39,7 @@ namespace MDD_State_Listener_Test_Receiver_Impl
 
   /// Executor implementation class for info_state_listen_data_listener facet
   class info_state_listen_data_listener_exec_i final
-    : public IDL::traits< ::CommonTestConnector::CCM_StateListener>::base_type
+    : public IDL::traits<::CommonTestConnector::CCM_StateListener>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : MDD_State_Listener_Test_Receiver_Impl::info_state_listen_data_listener_exec_i[ctor]
@@ -89,7 +89,7 @@ namespace MDD_State_Listener_Test_Receiver_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::MDD_State_Listener_Test::CCM_Receiver_Context>::ref_type context_;
+    IDL::traits<::MDD_State_Listener_Test::CCM_Receiver_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -111,7 +111,7 @@ namespace MDD_State_Listener_Test_Receiver_Impl
 
   /// Executor implementation class for info_state_listen_status facet
   class info_state_listen_status_exec_i final
-    : public IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::base_type
+    : public IDL::traits<::CCM_DDS::CCM_PortStatusListener>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : MDD_State_Listener_Test_Receiver_Impl::info_state_listen_status_exec_i[ctor]
@@ -129,12 +129,12 @@ namespace MDD_State_Listener_Test_Receiver_Impl
 
     void
     on_requested_deadline_missed (
-        IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+        IDL::traits<::DDS::DataReader>::ref_type the_reader,
         const ::DDS::RequestedDeadlineMissedStatus& status) override;
 
     void
     on_sample_lost (
-        IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+        IDL::traits<::DDS::DataReader>::ref_type the_reader,
         const ::DDS::SampleLostStatus& status) override;
     //@}
 
@@ -147,7 +147,7 @@ namespace MDD_State_Listener_Test_Receiver_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::MDD_State_Listener_Test::CCM_Receiver_Context>::ref_type context_;
+    IDL::traits<::MDD_State_Listener_Test::CCM_Receiver_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -166,7 +166,7 @@ namespace MDD_State_Listener_Test_Receiver_Impl
 
   /// Component Executor Implementation Class : Receiver_exec_i
   class Receiver_exec_i final
-    : public virtual IDL::traits< ::MDD_State_Listener_Test::CCM_Receiver>::base_type
+    : public virtual IDL::traits<::MDD_State_Listener_Test::CCM_Receiver>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : MDD_State_Listener_Test_Receiver_Impl::Receiver_exec_i[ctor]
@@ -181,10 +181,10 @@ namespace MDD_State_Listener_Test_Receiver_Impl
 
     /// Factory method and getter for the info_state_listen_data_listener facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< ::CommonTestConnector::CCM_StateListener>::ref_type get_info_state_listen_data_listener () override;
+    IDL::traits<::CommonTestConnector::CCM_StateListener>::ref_type get_info_state_listen_data_listener () override;
     /// Factory method and getter for the info_state_listen_status facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type get_info_state_listen_status () override;
+    IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type get_info_state_listen_status () override;
     //@}
 
     /** @name Session component operations */
@@ -216,7 +216,7 @@ namespace MDD_State_Listener_Test_Receiver_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::MDD_State_Listener_Test::CCM_Receiver_Context>::ref_type context_;
+    IDL::traits<::MDD_State_Listener_Test::CCM_Receiver_Context>::ref_type context_;
 
     /** @name Component attributes. */
     //@{
@@ -224,8 +224,8 @@ namespace MDD_State_Listener_Test_Receiver_Impl
 
     /** @name Component facets. */
     //@{
-    IDL::traits< ::CommonTestConnector::CCM_StateListener>::ref_type info_state_listen_data_listener_;
-    IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type info_state_listen_status_;
+    IDL::traits<::CommonTestConnector::CCM_StateListener>::ref_type info_state_listen_data_listener_;
+    IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type info_state_listen_status_;
     //@}
 
     /** @name User defined members. */

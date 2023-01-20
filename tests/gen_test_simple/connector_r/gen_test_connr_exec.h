@@ -39,7 +39,7 @@ namespace Hello_MyBaseEvent_Impl
 
   /// Component Executor Implementation Class : MyBaseEvent_exec_i
   class MyBaseEvent_exec_i final
-    : public virtual IDL::traits< ::Hello::CCM_MyBaseEvent>::base_type
+    : public virtual IDL::traits<::Hello::CCM_MyBaseEvent>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_MyBaseEvent_Impl::MyBaseEvent_exec_i[ctor]
@@ -96,7 +96,7 @@ namespace Hello_MyBaseEvent_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::Hello::CCM_MyBaseEvent_Context>::ref_type context_;
+    IDL::traits<::Hello::CCM_MyBaseEvent_Context>::ref_type context_;
 
     /** @name Component attributes. */
     //@{

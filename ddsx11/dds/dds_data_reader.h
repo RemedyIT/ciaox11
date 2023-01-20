@@ -23,7 +23,7 @@ namespace DDS_Native {
 namespace DDSX11
 {
   class DDS_DataReader_proxy
-    : public virtual IDL::traits< ::DDS::DataReader>::base_type
+    : public virtual IDL::traits<::DDS::DataReader>::base_type
   {
   public:
     DDS_DataReader_proxy () = default;

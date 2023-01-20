@@ -169,13 +169,13 @@ int main (int, char **)
   DDS::StatusMask const mask_none { DDS::STATUS_MASK_NONE };
 
   DDSX11_TEST_DEBUG << "Logging mask pub: "
-    << IDL::traits< ::DDS::StatusMask>::write<status_mask_formatter> (mask_pub_match) << std::endl;
+    << IDL::traits<::DDS::StatusMask>::write<status_mask_formatter> (mask_pub_match) << std::endl;
   DDSX11_TEST_DEBUG << "Logging mask pub data: "
-    << IDL::traits< ::DDS::StatusMask>::write<status_mask_formatter> (mask_pub_data_match) << std::endl;
+    << IDL::traits<::DDS::StatusMask>::write<status_mask_formatter> (mask_pub_data_match) << std::endl;
   DDSX11_TEST_DEBUG << "Logging mask all: "
-    << IDL::traits< ::DDS::StatusMask>::write<status_mask_formatter> (mask_all) << std::endl;
+    << IDL::traits<::DDS::StatusMask>::write<status_mask_formatter> (mask_all) << std::endl;
   DDSX11_TEST_DEBUG << "Logging mask none: "
-    << IDL::traits< ::DDS::StatusMask>::write<status_mask_formatter> (mask_none) << std::endl;
+    << IDL::traits<::DDS::StatusMask>::write<status_mask_formatter> (mask_none) << std::endl;
 
   DDS::SampleInfo si {};
   si.sample_state (DDS::READ_SAMPLE_STATE);

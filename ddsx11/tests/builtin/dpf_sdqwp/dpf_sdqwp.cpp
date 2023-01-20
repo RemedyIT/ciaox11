@@ -36,7 +36,7 @@ int main (int, char *[])
       if (retcode != DDS::RETCODE_OK)
       {
         DDSX11_TEST_ERROR << "Failed to set default participant QoS from profile: "
-                          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                          << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
                           << std::endl;
         return 1;
       }
@@ -49,7 +49,7 @@ int main (int, char *[])
       if (retcode != DDS::RETCODE_OK)
       {
         DDSX11_TEST_ERROR << "dpf_sdqwp: Failed to register type: "
-                          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                          << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
                           << std::endl;
         return 1;
       }
@@ -61,7 +61,7 @@ int main (int, char *[])
       if (retcode != DDS::RETCODE_OK)
       {
         DDSX11_TEST_ERROR << "Builtin: Error to register type: "
-                          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                          << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
                           << std::endl;
         return 1;
       }
@@ -87,7 +87,7 @@ int main (int, char *[])
       if (retcode != DDS::RETCODE_OK)
       {
         DDSX11_TEST_ERROR << "dpf_sdqwp: Failed to delete datawriter: "
-                          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                          << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
                           << std::endl;
         return 1;
       }
@@ -97,7 +97,7 @@ int main (int, char *[])
       if (retcode != DDS::RETCODE_OK)
       {
         DDSX11_TEST_ERROR << "dpf_sdqwp: Failed to delete publisher: "
-                          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                          << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
                           << std::endl;
         return 1;
       }
@@ -106,7 +106,7 @@ int main (int, char *[])
       if (retcode != DDS::RETCODE_OK)
       {
         DDSX11_TEST_ERROR << "dpf_sdqwp: Failed to delete topic from domain participant: "
-                          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                          << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
                           << std::endl;
         return 1;
       }
@@ -115,7 +115,7 @@ int main (int, char *[])
       if (retcode != DDS::RETCODE_OK)
       {
         DDSX11_TEST_ERROR << "Builtin: Failed to delete domain participant from domain participant factory: "
-                          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                          << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
                           << std::endl;
         return 1;
       }
@@ -125,7 +125,7 @@ int main (int, char *[])
       if (retcode != ::DDS::RETCODE_OK)
       {
         DDSX11_TEST_ERROR << "Builtin: Failed to finalize the domain participant factory: "
-                          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                          << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
                           << std::endl;
         return 1;
       }

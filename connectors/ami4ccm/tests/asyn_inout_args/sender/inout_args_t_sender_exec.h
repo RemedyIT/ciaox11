@@ -73,7 +73,7 @@ namespace InterInOutT_Sender_Impl
 
   /// Component Executor Implementation Class : Sender_exec_i
   class Sender_exec_i final
-    : public virtual IDL::traits< ::InterInOutT::CCM_Sender>::base_type
+    : public virtual IDL::traits<::InterInOutT::CCM_Sender>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : InterInOutT_Sender_Impl::Sender_exec_i[ctor]
@@ -117,7 +117,7 @@ namespace InterInOutT_Sender_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::InterInOutT::CCM_Sender_Context>::ref_type context_;
+    IDL::traits<::InterInOutT::CCM_Sender_Context>::ref_type context_;
 
     /** @name Component facets. */
     //@{

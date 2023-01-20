@@ -150,7 +150,7 @@ namespace FA_State_Listen_Test_Receiver_Impl
 
   void
   listen_port_1_status_exec_i::on_requested_deadline_missed (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::RequestedDeadlineMissedStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : FA_State_Listen_Test_Receiver_Impl::listen_port_1_status_exec_i::on_requested_deadline_missed[_the_reader_status]
@@ -161,7 +161,7 @@ namespace FA_State_Listen_Test_Receiver_Impl
 
   void
   listen_port_1_status_exec_i::on_sample_lost (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::SampleLostStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : FA_State_Listen_Test_Receiver_Impl::listen_port_1_status_exec_i::on_sample_lost[_the_reader_status]
@@ -303,7 +303,7 @@ namespace FA_State_Listen_Test_Receiver_Impl
 
   void
   listen_port_2_status_exec_i::on_requested_deadline_missed (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::RequestedDeadlineMissedStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : FA_State_Listen_Test_Receiver_Impl::listen_port_2_status_exec_i::on_requested_deadline_missed[_the_reader_status]
@@ -314,7 +314,7 @@ namespace FA_State_Listen_Test_Receiver_Impl
 
   void
   listen_port_2_status_exec_i::on_sample_lost (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::SampleLostStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : FA_State_Listen_Test_Receiver_Impl::listen_port_2_status_exec_i::on_sample_lost[_the_reader_status]
@@ -357,15 +357,15 @@ namespace FA_State_Listen_Test_Receiver_Impl
       std::to_string (listener_port) + ")");
     try
     {
-      IDL::traits< ::CORBA::Object>::ref_type cmp = ldc->_get_component ();
+      IDL::traits<::CORBA::Object>::ref_type cmp = ldc->_get_component ();
       if (!cmp)
       {
         DDS4CCM_TEST_ERROR << "ERROR: " << test << " - "
          << "ERROR: Unable to get component interface." << std::endl;
         return;
       }
-      IDL::traits< ::CommonTestConnector::CCM_DDS_State>::ref_type conn =
-        IDL::traits< ::CommonTestConnector::CCM_DDS_State >::narrow (cmp);
+      IDL::traits<::CommonTestConnector::CCM_DDS_State>::ref_type conn =
+        IDL::traits<::CommonTestConnector::CCM_DDS_State >::narrow (cmp);
       if (!conn)
       {
         DDS4CCM_TEST_ERROR << "ERROR: " << test << " - "
@@ -466,7 +466,7 @@ namespace FA_State_Listen_Test_Receiver_Impl
     this->test_internal_errors ();
 
     // Start the listeners
-    IDL::traits< ::CCM_DDS::DataListenerControl>::ref_type lc_1 =
+    IDL::traits<::CCM_DDS::DataListenerControl>::ref_type lc_1 =
       this->context_->get_connection_listen_port_1_data_control ();
 
     if (!lc_1)
@@ -477,7 +477,7 @@ namespace FA_State_Listen_Test_Receiver_Impl
     }
     lc_1->mode (::CCM_DDS::ListenerMode::ONE_BY_ONE);
 
-    IDL::traits< ::CCM_DDS::DataListenerControl>::ref_type lc_2 =
+    IDL::traits<::CCM_DDS::DataListenerControl>::ref_type lc_2 =
       this->context_->get_connection_listen_port_2_data_control ();
 
     if (!lc_2)
@@ -565,7 +565,7 @@ namespace FA_State_Listen_Test_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : FA_State_Listen_Test_Receiver_Impl::Receiver_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::CommonTestConnector::CCM_StateListener>::ref_type
+  IDL::traits<::CommonTestConnector::CCM_StateListener>::ref_type
   Receiver_exec_i::get_listen_port_1_data_listener ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : FA_State_Listen_Test_Receiver_Impl::Receiver_exec_i[get_listen_port_1_data_listener]
@@ -582,7 +582,7 @@ namespace FA_State_Listen_Test_Receiver_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : FA_State_Listen_Test_Receiver_Impl::Receiver_exec_i[get_listen_port_1_data_listener]
   }
 
-  IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type
+  IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type
   Receiver_exec_i::get_listen_port_1_status ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : FA_State_Listen_Test_Receiver_Impl::Receiver_exec_i[get_listen_port_1_status]
@@ -594,7 +594,7 @@ namespace FA_State_Listen_Test_Receiver_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : FA_State_Listen_Test_Receiver_Impl::Receiver_exec_i[get_listen_port_1_status]
   }
 
-  IDL::traits< ::CommonTestConnector::CCM_StateListener>::ref_type
+  IDL::traits<::CommonTestConnector::CCM_StateListener>::ref_type
   Receiver_exec_i::get_listen_port_2_data_listener ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : FA_State_Listen_Test_Receiver_Impl::Receiver_exec_i[get_listen_port_2_data_listener]
@@ -611,7 +611,7 @@ namespace FA_State_Listen_Test_Receiver_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : FA_State_Listen_Test_Receiver_Impl::Receiver_exec_i[get_listen_port_2_data_listener]
   }
 
-  IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type
+  IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type
   Receiver_exec_i::get_listen_port_2_status ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : FA_State_Listen_Test_Receiver_Impl::Receiver_exec_i[get_listen_port_2_status]

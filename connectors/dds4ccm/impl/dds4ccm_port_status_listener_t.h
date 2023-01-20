@@ -18,7 +18,7 @@ namespace CIAOX11
   {
     template <typename EVT_STRATEGY>
     class PortStatusListener_T
-      : public IDL::traits< ::DDS::DataReaderListener>::base_type
+      : public IDL::traits<::DDS::DataReaderListener>::base_type
     {
     public:
       /// Constructor
@@ -32,35 +32,35 @@ namespace CIAOX11
 
       void
       on_requested_deadline_missed (
-        IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+        IDL::traits<::DDS::DataReader>::ref_type the_reader,
         const ::DDS::RequestedDeadlineMissedStatus & status) override;
 
       void on_sample_lost (
-        IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+        IDL::traits<::DDS::DataReader>::ref_type the_reader,
         const ::DDS::SampleLostStatus & status) override;
 
       void
       on_requested_incompatible_qos (
-        IDL::traits< ::DDS::DataReader>::ref_type ,
+        IDL::traits<::DDS::DataReader>::ref_type ,
         const ::DDS::RequestedIncompatibleQosStatus & ) override;
 
       void
       on_sample_rejected (
-        IDL::traits< ::DDS::DataReader>::ref_type ,
+        IDL::traits<::DDS::DataReader>::ref_type ,
         const ::DDS::SampleRejectedStatus & ) override;
 
       void
       on_liveliness_changed (
-        IDL::traits< ::DDS::DataReader>::ref_type ,
+        IDL::traits<::DDS::DataReader>::ref_type ,
         const ::DDS::LivelinessChangedStatus & ) override;
 
       void
       on_data_available (
-        IDL::traits< ::DDS::DataReader>::ref_type) override;
+        IDL::traits<::DDS::DataReader>::ref_type) override;
 
       void
       on_subscription_matched (
-        IDL::traits< ::DDS::DataReader>::ref_type ,
+        IDL::traits<::DDS::DataReader>::ref_type ,
         const ::DDS::SubscriptionMatchedStatus & ) override;
 
       /// Helper method to determine which DDS mask we have to use

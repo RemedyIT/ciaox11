@@ -285,10 +285,6 @@ namespace CIAOX11
     {
     }
 
-    Container::~Container ()
-    {
-    }
-
     void
     Container::fini ()
     {

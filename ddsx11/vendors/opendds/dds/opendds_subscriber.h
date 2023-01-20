@@ -31,11 +31,11 @@ namespace DDSX11
        * @brief OpenDDS extension. Creates a data reader, using
        *        the QOS profile string
        */
-      IDL::traits< ::DDS::DataReader>::ref_type
+      IDL::traits<::DDS::DataReader>::ref_type
       create_datareader_with_profile (
-        IDL::traits< ::DDS::TopicDescription>::ref_type a_topic,
+        IDL::traits<::DDS::TopicDescription>::ref_type a_topic,
         const std::string &qos_profile,
-        IDL::traits< ::DDS::DataReaderListener>::ref_type a_listener,
+        IDL::traits<::DDS::DataReaderListener>::ref_type a_listener,
         ::DDS::StatusMask mask) override;
 
   private:

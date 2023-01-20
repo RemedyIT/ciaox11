@@ -45,7 +45,7 @@ typedef std::atomic<std::thread::id> atomic_thread_id;
 namespace DDS4CCM_TEST_UTILS
 {
   inline bool check_publication_matched_status (
-    IDL::traits< ::DDS::Entity>::ref_type the_entity,
+    IDL::traits<::DDS::Entity>::ref_type the_entity,
     ::DDS::StatusKind status_kind,
     uint16_t expected_reader_count)
   {
@@ -57,8 +57,8 @@ namespace DDS4CCM_TEST_UTILS
     if (status_kind == ::DDS::PUBLICATION_MATCHED_STATUS)
     {
       ::DDS::PublicationMatchedStatus current_pub_status {};
-      IDL::traits< ::DDS::DataWriter>::ref_type writer =
-        IDL::traits< ::DDS::DataWriter>::narrow (the_entity);
+      IDL::traits<::DDS::DataWriter>::ref_type writer =
+        IDL::traits<::DDS::DataWriter>::narrow (the_entity);
       ::DDS::ReturnCode_t const retcode = writer->get_publication_matched_status (current_pub_status);
 
       DDS4CCM_TEST_DEBUG << "unexpected_status_checker::check_publication_matched_status - "

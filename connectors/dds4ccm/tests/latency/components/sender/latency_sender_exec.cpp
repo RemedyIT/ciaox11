@@ -77,8 +77,8 @@ namespace Test_Sender_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::info_recv_data_listener_exec_i[ctor]
   info_recv_data_listener_exec_i::info_recv_data_listener_exec_i (
-    IDL::traits< ::Test::CCM_Sender_Context>::ref_type context,
-    IDL::traits< ::Test::CCM_Sender>::ref_type component_executor)
+    IDL::traits<::Test::CCM_Sender_Context>::ref_type context,
+    IDL::traits<::Test::CCM_Sender>::ref_type component_executor)
     : context_ (std::move (context))
     , component_executor_ (std::move (component_executor))
   {
@@ -153,7 +153,7 @@ namespace Test_Sender_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::info_recv_status_exec_i[ctor]
   info_recv_status_exec_i::info_recv_status_exec_i (
-    IDL::traits< ::Test::CCM_Sender_Context>::ref_type context)
+    IDL::traits<::Test::CCM_Sender_Context>::ref_type context)
     : context_ (std::move (context))
   {
   }
@@ -181,7 +181,7 @@ namespace Test_Sender_Impl
 
   void
   info_recv_status_exec_i::on_requested_deadline_missed (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::RequestedDeadlineMissedStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::info_recv_status_exec_i::on_requested_deadline_missed[_the_reader_status]
@@ -192,7 +192,7 @@ namespace Test_Sender_Impl
 
   void
   info_recv_status_exec_i::on_sample_lost (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::SampleLostStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::info_recv_status_exec_i::on_sample_lost[_the_reader_status]
@@ -206,8 +206,8 @@ namespace Test_Sender_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::connector_status_exec_i[ctor]
   connector_status_exec_i::connector_status_exec_i (
-    IDL::traits< ::Test::CCM_Sender_Context>::ref_type context,
-    IDL::traits< ::Test::CCM_Sender>::ref_type component_executor)
+    IDL::traits<::Test::CCM_Sender_Context>::ref_type context,
+    IDL::traits<::Test::CCM_Sender>::ref_type component_executor)
     : context_ (std::move (context))
     , component_executor_ (std::move (component_executor))
   {
@@ -240,7 +240,7 @@ namespace Test_Sender_Impl
 
   void
   connector_status_exec_i::on_inconsistent_topic (
-      IDL::traits< ::DDS::Topic>::ref_type the_topic,
+      IDL::traits<::DDS::Topic>::ref_type the_topic,
       const ::DDS::InconsistentTopicStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::connector_status_exec_i::on_inconsistent_topic[_the_topic_status]
@@ -251,7 +251,7 @@ namespace Test_Sender_Impl
 
   void
   connector_status_exec_i::on_requested_incompatible_qos (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::RequestedIncompatibleQosStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::connector_status_exec_i::on_requested_incompatible_qos[_the_reader_status]
@@ -262,7 +262,7 @@ namespace Test_Sender_Impl
 
   void
   connector_status_exec_i::on_sample_rejected (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::SampleRejectedStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::connector_status_exec_i::on_sample_rejected[_the_reader_status]
@@ -273,7 +273,7 @@ namespace Test_Sender_Impl
 
   void
   connector_status_exec_i::on_offered_deadline_missed (
-      IDL::traits< ::DDS::DataWriter>::ref_type the_writer,
+      IDL::traits<::DDS::DataWriter>::ref_type the_writer,
       const ::DDS::OfferedDeadlineMissedStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::connector_status_exec_i::on_offered_deadline_missed[_the_writer_status]
@@ -284,7 +284,7 @@ namespace Test_Sender_Impl
 
   void
   connector_status_exec_i::on_offered_incompatible_qos (
-      IDL::traits< ::DDS::DataWriter>::ref_type the_writer,
+      IDL::traits<::DDS::DataWriter>::ref_type the_writer,
       const ::DDS::OfferedIncompatibleQosStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::connector_status_exec_i::on_offered_incompatible_qos[_the_writer_status]
@@ -295,7 +295,7 @@ namespace Test_Sender_Impl
 
   void
   connector_status_exec_i::on_unexpected_status (
-      IDL::traits< ::DDS::Entity>::ref_type the_entity,
+      IDL::traits<::DDS::Entity>::ref_type the_entity,
       ::DDS::StatusKind status_kind)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::connector_status_exec_i::on_unexpected_status[_the_entity_status_kind]
@@ -347,7 +347,7 @@ namespace Test_Sender_Impl
   void
   Sender_exec_i::check_status ()
   {
-    IDL::traits< ::DDS::DataWriter>::ref_type writer_dds_entity =
+    IDL::traits<::DDS::DataWriter>::ref_type writer_dds_entity =
       this->context_->get_connection_info_write_dds_entity ();
     if (writer_dds_entity)
     {
@@ -358,7 +358,7 @@ namespace Test_Sender_Impl
       {
         DDS4CCM_TEST_ERROR <<"Sender_exec_i::check_status - "
           << "Error: Unable to get_publication_matched_status: <"
-          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+          << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">." << std::endl;
       }
       else
@@ -715,7 +715,7 @@ namespace Test_Sender_Impl
     try
     {
       this->writer_ = this->context_->get_connection_info_write_data ();
-      IDL::traits< ::CCM_DDS::DataListenerControl>::ref_type dlc =
+      IDL::traits<::CCM_DDS::DataListenerControl>::ref_type dlc =
           this->context_->get_connection_info_recv_data_control ();
       dlc->mode (::CCM_DDS::ListenerMode::ONE_BY_ONE);
 
@@ -792,14 +792,14 @@ namespace Test_Sender_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Test_Sender_Impl::Sender_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::Test::LatencyDataConnector::CCM_Listener>::ref_type
+  IDL::traits<::Test::LatencyDataConnector::CCM_Listener>::ref_type
   Sender_exec_i::get_info_recv_data_listener ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::Sender_exec_i[get_info_recv_data_listener]
     if (!this->info_recv_data_listener_)
     {
       this->info_recv_data_listener_ =
-          IDL::traits< ::Test::LatencyDataConnector::CCM_Listener>::make_reference <info_recv_data_listener_exec_i> (
+          IDL::traits<::Test::LatencyDataConnector::CCM_Listener>::make_reference <info_recv_data_listener_exec_i> (
               this->context_,
               IDL::traits<Test::CCM_Sender>::narrow (this->_lock()));
     }
@@ -807,28 +807,28 @@ namespace Test_Sender_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : Test_Sender_Impl::Sender_exec_i[get_info_recv_data_listener]
   }
 
-  IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type
+  IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type
   Sender_exec_i::get_info_recv_status ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::Sender_exec_i[get_info_recv_status]
     if (!this->info_recv_status_)
     {
       this->info_recv_status_ =
-          IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::make_reference <info_recv_status_exec_i> (
+          IDL::traits<::CCM_DDS::CCM_PortStatusListener>::make_reference <info_recv_status_exec_i> (
               this->context_);
     }
     return this->info_recv_status_;
   //@@{__RIDL_REGEN_MARKER__} - END : Test_Sender_Impl::Sender_exec_i[get_info_recv_status]
   }
 
-  IDL::traits< ::CCM_DDS::CCM_ConnectorStatusListener>::ref_type
+  IDL::traits<::CCM_DDS::CCM_ConnectorStatusListener>::ref_type
   Sender_exec_i::get_connector_status ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::Sender_exec_i[get_connector_status]
     if (!this->connector_status_)
     {
       this->connector_status_ =
-          IDL::traits< ::CCM_DDS::CCM_ConnectorStatusListener>::make_reference <connector_status_exec_i> (
+          IDL::traits<::CCM_DDS::CCM_ConnectorStatusListener>::make_reference <connector_status_exec_i> (
               this->context_,
               IDL::traits<Test::CCM_Sender>::narrow (this->_lock()));
     }
@@ -946,7 +946,7 @@ namespace Test_Sender_Impl
   {
     // Setting the context of this component.
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::Sender_exec_i[set_session_context]
-    this->context_ = IDL::traits< ::Test::CCM_Sender_Context>::narrow (std::move(ctx));
+    this->context_ = IDL::traits<::Test::CCM_Sender_Context>::narrow (std::move(ctx));
     //@@{__RIDL_REGEN_MARKER__} - END : Test_Sender_Impl::Sender_exec_i[set_session_context]
   }
 
@@ -961,7 +961,7 @@ extern "C" void
 create_Test_Sender_Impl (
   IDL::traits<Components::EnterpriseComponent>::ref_type& component)
 {
-  component = IDL::traits< ::Test::CCM_Sender>::make_reference < Test_Sender_Impl::Sender_exec_i > ();
+  component = IDL::traits<::Test::CCM_Sender>::make_reference < Test_Sender_Impl::Sender_exec_i > ();
 }
 //@@{__RIDL_REGEN_MARKER__} - END : Test_Sender_Impl[factory]
 //@@{__RIDL_REGEN_MARKER__} - BEGIN : latency_sender_impl.cpp[Footer]

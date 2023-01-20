@@ -154,8 +154,8 @@ namespace CIAOX11_TT_TimedTrigger_Impl
     /**
      * Start monitoring
      */
-    IDL::traits< ::CCM_TT::TT_Timer>::ref_type
-    start_monitoring (IDL::traits< ::CCM_TT::TT_Handler>::ref_type trigger_handler,
+    IDL::traits<::CCM_TT::TT_Timer>::ref_type
+    start_monitoring (IDL::traits<::CCM_TT::TT_Handler>::ref_type trigger_handler,
                       const ACE_Time_Value& delay,
                       const ACE_Time_Value& interval,
                       uint32_t max_rounds,

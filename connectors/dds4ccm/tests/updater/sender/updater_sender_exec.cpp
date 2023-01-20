@@ -60,7 +60,7 @@ namespace UpdaterModule_Sender_Impl
 
   void
   connector_status_exec_i::on_inconsistent_topic (
-      IDL::traits< ::DDS::Topic>::ref_type the_topic,
+      IDL::traits<::DDS::Topic>::ref_type the_topic,
       const ::DDS::InconsistentTopicStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : UpdaterModule_Sender_Impl::connector_status_exec_i::on_inconsistent_topic[_the_topic_status]
@@ -71,7 +71,7 @@ namespace UpdaterModule_Sender_Impl
 
   void
   connector_status_exec_i::on_requested_incompatible_qos (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::RequestedIncompatibleQosStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : UpdaterModule_Sender_Impl::connector_status_exec_i::on_requested_incompatible_qos[_the_reader_status]
@@ -82,7 +82,7 @@ namespace UpdaterModule_Sender_Impl
 
   void
   connector_status_exec_i::on_sample_rejected (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::SampleRejectedStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : UpdaterModule_Sender_Impl::connector_status_exec_i::on_sample_rejected[_the_reader_status]
@@ -93,7 +93,7 @@ namespace UpdaterModule_Sender_Impl
 
   void
   connector_status_exec_i::on_offered_deadline_missed (
-      IDL::traits< ::DDS::DataWriter>::ref_type the_writer,
+      IDL::traits<::DDS::DataWriter>::ref_type the_writer,
       const ::DDS::OfferedDeadlineMissedStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : UpdaterModule_Sender_Impl::connector_status_exec_i::on_offered_deadline_missed[_the_writer_status]
@@ -104,7 +104,7 @@ namespace UpdaterModule_Sender_Impl
 
   void
   connector_status_exec_i::on_offered_incompatible_qos (
-      IDL::traits< ::DDS::DataWriter>::ref_type the_writer,
+      IDL::traits<::DDS::DataWriter>::ref_type the_writer,
       const ::DDS::OfferedIncompatibleQosStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : UpdaterModule_Sender_Impl::connector_status_exec_i::on_offered_incompatible_qos[_the_writer_status]
@@ -115,7 +115,7 @@ namespace UpdaterModule_Sender_Impl
 
   void
   connector_status_exec_i::on_unexpected_status (
-      IDL::traits< ::DDS::Entity>::ref_type the_entity,
+      IDL::traits<::DDS::Entity>::ref_type the_entity,
       ::DDS::StatusKind status_kind)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : UpdaterModule_Sender_Impl::connector_status_exec_i::on_unexpected_status[_the_entity_status_kind]
@@ -432,7 +432,7 @@ namespace UpdaterModule_Sender_Impl
   {
     if (!this->started_)
     {
-      IDL::traits< ::DDS::DataWriter>::ref_type writer_dds_entity =
+      IDL::traits<::DDS::DataWriter>::ref_type writer_dds_entity =
         this->context_->get_connection_test_topic_update_dds_entity ();
       if (writer_dds_entity)
       {
@@ -443,7 +443,7 @@ namespace UpdaterModule_Sender_Impl
         {
           DDS4CCM_TEST_ERROR <<"Sender_exec_i::check_status - "
             << "Error: Unable to get_publication_matched_status: <"
-            << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+            << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
             << ">." << std::endl;
         }
         else
@@ -486,7 +486,7 @@ namespace UpdaterModule_Sender_Impl
   Sender_exec_i::create_one ()
   {
     uint16_t errors = 0;
-    IDL::traits< ::CommonTestConnector::Updater>::ref_type updater =
+    IDL::traits<::CommonTestConnector::Updater>::ref_type updater =
       this->context_->get_connection_test_topic_update_data ();
     CommonTestMessage const i = this->topic_seq_one_[0];
 
@@ -515,7 +515,7 @@ namespace UpdaterModule_Sender_Impl
   Sender_exec_i::create_one_already_exist ()
   {
     uint16_t errors = 0;
-    IDL::traits< ::CommonTestConnector::Updater>::ref_type updater =
+    IDL::traits<::CommonTestConnector::Updater>::ref_type updater =
       this->context_->get_connection_test_topic_update_data ();
     CommonTestMessage const i = this->topic_seq_one_[0];
 
@@ -547,7 +547,7 @@ namespace UpdaterModule_Sender_Impl
   Sender_exec_i::update_one ()
   {
     uint16_t errors = 0;
-    IDL::traits< ::CommonTestConnector::Updater>::ref_type updater =
+    IDL::traits<::CommonTestConnector::Updater>::ref_type updater =
       this->context_->get_connection_test_topic_update_data ();
     CommonTestMessage i = this->topic_seq_one_[0];
     i.iteration (i.iteration () + 5);
@@ -577,7 +577,7 @@ namespace UpdaterModule_Sender_Impl
   Sender_exec_i::update_one_not_registered ()
   {
     uint16_t errors = 0;
-    IDL::traits< ::CommonTestConnector::Updater>::ref_type updater =
+    IDL::traits<::CommonTestConnector::Updater>::ref_type updater =
       this->context_->get_connection_test_topic_update_data ();
 
     // update a not yet registered instance, expect a NonExistent exception
@@ -612,7 +612,7 @@ namespace UpdaterModule_Sender_Impl
   Sender_exec_i::delete_one ()
   {
     uint16_t errors = 0;
-    IDL::traits< ::CommonTestConnector::Updater>::ref_type updater =
+    IDL::traits<::CommonTestConnector::Updater>::ref_type updater =
       this->context_->get_connection_test_topic_update_data ();
 
     // update a not yet registered instance, expect a NonExistent exception
@@ -643,7 +643,7 @@ namespace UpdaterModule_Sender_Impl
   Sender_exec_i::delete_one_not_registered ()
   {
     uint16_t errors = 0;
-    IDL::traits< ::CommonTestConnector::Updater>::ref_type updater =
+    IDL::traits<::CommonTestConnector::Updater>::ref_type updater =
       this->context_->get_connection_test_topic_update_data ();
 
     // Delete non-existing instance, expect NonExistent exception
@@ -676,7 +676,7 @@ namespace UpdaterModule_Sender_Impl
   Sender_exec_i::update_and_delete_one_after_register ()
   {
     uint16_t errors = 0;
-    IDL::traits< ::CommonTestConnector::Updater>::ref_type updater =
+    IDL::traits<::CommonTestConnector::Updater>::ref_type updater =
       this->context_->get_connection_test_topic_update_data ();
     // Update an instance after registering first, using a handle
     CommonTestMessage i = this->topic_seq_one_[2];
@@ -745,7 +745,7 @@ namespace UpdaterModule_Sender_Impl
   Sender_exec_i::update_and_delete_one_after_register_2 ()
   {
     uint16_t errors = 0;
-    IDL::traits< ::CommonTestConnector::Updater>::ref_type updater =
+    IDL::traits<::CommonTestConnector::Updater>::ref_type updater =
       this->context_->get_connection_test_topic_update_data ();
     // Update an instance after registering first, using a handle
     CommonTestMessage i = this->topic_seq_one_[2];
@@ -782,7 +782,7 @@ namespace UpdaterModule_Sender_Impl
   Sender_exec_i::create_many ()
   {
     uint16_t errors = 0;
-    IDL::traits< ::CommonTestConnector::Updater>::ref_type updater =
+    IDL::traits<::CommonTestConnector::Updater>::ref_type updater =
       this->context_->get_connection_test_topic_update_data ();
 
     //create many with no exception
@@ -856,7 +856,7 @@ namespace UpdaterModule_Sender_Impl
   Sender_exec_i::update_many ()
   {
     uint16_t errors = 0;
-    IDL::traits< ::CommonTestConnector::Updater>::ref_type updater =
+    IDL::traits<::CommonTestConnector::Updater>::ref_type updater =
       this->context_->get_connection_test_topic_update_data ();
 
     try
@@ -932,7 +932,7 @@ namespace UpdaterModule_Sender_Impl
   Sender_exec_i::delete_many ()
   {
     uint16_t errors = 0;
-    IDL::traits< ::CommonTestConnector::Updater>::ref_type updater =
+    IDL::traits<::CommonTestConnector::Updater>::ref_type updater =
       this->context_->get_connection_test_topic_update_data ();
 
     // delete_many with exception (the second and third instances are unknown to DDS)
@@ -1052,7 +1052,7 @@ namespace UpdaterModule_Sender_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : UpdaterModule_Sender_Impl::Sender_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::CCM_DDS::CCM_ConnectorStatusListener>::ref_type
+  IDL::traits<::CCM_DDS::CCM_ConnectorStatusListener>::ref_type
   Sender_exec_i::get_connector_status ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : UpdaterModule_Sender_Impl::Sender_exec_i[get_connector_status]

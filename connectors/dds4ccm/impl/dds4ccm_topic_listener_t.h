@@ -18,7 +18,7 @@ namespace CIAOX11
   {
     template <typename EVT_STRATEGY>
     class TopicListener_T
-      : public virtual IDL::traits< ::DDS::TopicListener>::base_type
+      : public virtual IDL::traits<::DDS::TopicListener>::base_type
     {
     public:
       explicit TopicListener_T (const EVT_STRATEGY &evs);
@@ -29,7 +29,7 @@ namespace CIAOX11
 
       void
       on_inconsistent_topic (
-        IDL::traits< ::DDS::Topic>::ref_type the_topic,
+        IDL::traits<::DDS::Topic>::ref_type the_topic,
         const ::DDS::InconsistentTopicStatus & status) override;
 
       /// Helper method to determine which DDS mask we have to use

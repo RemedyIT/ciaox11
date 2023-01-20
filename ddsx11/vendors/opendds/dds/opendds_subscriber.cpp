@@ -29,11 +29,11 @@ namespace DDSX11
     {
     }
 
-    IDL::traits< ::DDS::DataReader>::ref_type
+    IDL::traits<::DDS::DataReader>::ref_type
     OpenDDS_Subscriber_proxy::create_datareader_with_profile (
-      IDL::traits< ::DDS::TopicDescription>::ref_type a_topic,
+      IDL::traits<::DDS::TopicDescription>::ref_type a_topic,
       const std::string &qos_profile,
-      IDL::traits< ::DDS::DataReaderListener>::ref_type a_listener,
+      IDL::traits<::DDS::DataReaderListener>::ref_type a_listener,
       ::DDS::StatusMask mask)
     {
       DDSX11_LOG_TRACE ("OpenDDS_Subscriber_proxy::create_datareader_with_profile");
@@ -50,7 +50,7 @@ namespace DDSX11
             << "Error: Unable to load the XML for <"
             << qos_profile
             << "> init returns <"
-            << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+            << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
             << ">");
           return {};
         }
@@ -61,14 +61,14 @@ namespace DDSX11
         {
           DDSX11_IMPL_LOG_ERROR ("OpenDDS_Subscriber_proxy::create_datareader_with_profile - "
             << "Error: Unable to retrieve the default datareader qos <"
-            << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+            << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
             << ">");
           return {};
         }
 
       DDSX11_IMPL_LOG_DEBUG ("OpenDDS_Subscriber_proxy::create_datareader_with_profile - "
         << "Retrieved default DataReaderQos <"
-        << IDL::traits< ::DDS::DataReaderQos>::write (qos)
+        << IDL::traits<::DDS::DataReaderQos>::write (qos)
         << ">");
 
       std::string const topic_name = a_topic->get_name ();
@@ -79,7 +79,7 @@ namespace DDSX11
 
       DDSX11_IMPL_LOG_DEBUG ("OpenDDS_Subscriber_proxy::create_datareader_with_profile - "
         << "Retrieved XML DataReaderQos <"
-        << IDL::traits< ::DDS::DataReaderQos>::write (qos)
+        << IDL::traits<::DDS::DataReaderQos>::write (qos)
         << ">");
 
       return this->create_datareader (std::move(a_topic), qos, std::move(a_listener), mask);

@@ -166,7 +166,7 @@ namespace Shapes_Sender_comp_Impl
   {
     if (this->instance_handle_ != ::DDS::HANDLE_NIL)
       {
-        IDL::traits< ::ShapeTypeInterface::Writer>::ref_type writer =
+        IDL::traits<::ShapeTypeInterface::Writer>::ref_type writer =
           this->context_->get_connection_info_write_data ();
 
         writer->write_one (square_, this->instance_handle_);
@@ -218,7 +218,7 @@ namespace Shapes_Sender_comp_Impl
           << ": " << ex << std::endl;
       }
 
-    IDL::traits< ::DDS::DataWriter>::ref_type writer_dds_entity =
+    IDL::traits<::DDS::DataWriter>::ref_type writer_dds_entity =
       this->context_->get_connection_info_write_dds_entity ();
     if (writer_dds_entity)
     {
@@ -229,7 +229,7 @@ namespace Shapes_Sender_comp_Impl
       {
         DDS4CCM_TEST_ERROR <<"Sender_comp_exec_i::ccm_activate - "
           << "Error: Unable to get_publication_matched_status: <"
-          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+          << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">." << std::endl;
       }
       else
@@ -296,7 +296,7 @@ namespace Shapes_Sender_comp_Impl
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Shapes_Sender_comp_Impl::Sender_comp_exec_i[get_connector_status]
     if (!this->connector_status_)
     {
-      this->connector_status_ = IDL::traits< ::CCM_DDS::CCM_ConnectorStatusListener>::make_reference <connector_status_exec_i> (
+      this->connector_status_ = IDL::traits<::CCM_DDS::CCM_ConnectorStatusListener>::make_reference <connector_status_exec_i> (
         this->context_, IDL::traits<Shapes::CCM_Sender_comp>::narrow (this->_lock()));
     }
     return this->connector_status_;

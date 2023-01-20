@@ -35,7 +35,7 @@ namespace DDSX11
       this->native_entity ()->get_name ());
   }
 
-  IDL::traits< ::DDS::DomainParticipant>::ref_type
+  IDL::traits<::DDS::DomainParticipant>::ref_type
   DDS_TopicDescription_proxy::get_participant ()
   {
     DDSX11_LOG_TRACE ("DDS_TopicDescription_proxy::get_participant");

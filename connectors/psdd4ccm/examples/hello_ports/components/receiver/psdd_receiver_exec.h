@@ -38,15 +38,15 @@ namespace Test_Receiver_Impl
 
   /// Executor implementation class for hello_sub_data_listener facet
   class hello_sub_data_listener_exec_i final
-    : public IDL::traits< ::Test::Hello::CCM_Listener>::base_type
+    : public IDL::traits<::Test::Hello::CCM_Listener>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Receiver_Impl::hello_sub_data_listener_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
     hello_sub_data_listener_exec_i (
-        IDL::traits< ::Test::CCM_Receiver>::weak_ref_type component_executor,
-        IDL::traits< ::Test::CCM_Receiver_Context>::ref_type context);
+        IDL::traits<::Test::CCM_Receiver>::weak_ref_type component_executor,
+        IDL::traits<::Test::CCM_Receiver_Context>::ref_type context);
     //@@{__RIDL_REGEN_MARKER__} - END : Test_Receiver_Impl::hello_sub_data_listener_exec_i[ctor]
 
     /// Destructor
@@ -77,7 +77,7 @@ namespace Test_Receiver_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::Test::CCM_Receiver_Context>::ref_type context_;
+    IDL::traits<::Test::CCM_Receiver_Context>::ref_type context_;
 
     /** @name Members to store attribute values from ::Test::Hello::CCM_Listener */
     //@{
@@ -90,7 +90,7 @@ namespace Test_Receiver_Impl
     /** @name User defined members. */
     //@{
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Receiver_Impl::hello_sub_data_listener_exec_i[user_members]
-    IDL::traits< ::Test::CCM_Receiver>::weak_ref_type component_executor_;
+    IDL::traits<::Test::CCM_Receiver>::weak_ref_type component_executor_;
     //@@{__RIDL_REGEN_MARKER__} - END : Test_Receiver_Impl::hello_sub_data_listener_exec_i[user_members]
     //@}
 
@@ -104,15 +104,15 @@ namespace Test_Receiver_Impl
 
   /// Executor implementation class for msg_sub_data_listener facet
   class msg_sub_data_listener_exec_i final
-    : public IDL::traits< ::Test::Msg::CCM_Listener>::base_type
+    : public IDL::traits<::Test::Msg::CCM_Listener>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Receiver_Impl::msg_sub_data_listener_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
     msg_sub_data_listener_exec_i (
-        IDL::traits< ::Test::CCM_Receiver>::weak_ref_type component_executor,
-        IDL::traits< ::Test::CCM_Receiver_Context>::ref_type context);
+        IDL::traits<::Test::CCM_Receiver>::weak_ref_type component_executor,
+        IDL::traits<::Test::CCM_Receiver_Context>::ref_type context);
     //@@{__RIDL_REGEN_MARKER__} - END : Test_Receiver_Impl::msg_sub_data_listener_exec_i[ctor]
 
     /// Destructor
@@ -143,7 +143,7 @@ namespace Test_Receiver_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::Test::CCM_Receiver_Context>::ref_type context_;
+    IDL::traits<::Test::CCM_Receiver_Context>::ref_type context_;
 
     /** @name Members to store attribute values from ::Test::Msg::CCM_Listener */
     //@{
@@ -156,7 +156,7 @@ namespace Test_Receiver_Impl
     /** @name User defined members. */
     //@{
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Receiver_Impl::msg_sub_data_listener_exec_i[user_members]
-    IDL::traits< ::Test::CCM_Receiver>::weak_ref_type component_executor_;
+    IDL::traits<::Test::CCM_Receiver>::weak_ref_type component_executor_;
     //@@{__RIDL_REGEN_MARKER__} - END : Test_Receiver_Impl::msg_sub_data_listener_exec_i[user_members]
     //@}
 
@@ -170,7 +170,7 @@ namespace Test_Receiver_Impl
 
   /// Component Executor Implementation Class : Receiver_exec_i
   class Receiver_exec_i final
-    : public virtual IDL::traits< ::Test::CCM_Receiver>::base_type
+    : public virtual IDL::traits<::Test::CCM_Receiver>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Receiver_Impl::Receiver_exec_i[ctor]
@@ -185,10 +185,10 @@ namespace Test_Receiver_Impl
 
     /// Factory method and getter for the hello_sub_data_listener facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< ::Test::Hello::CCM_Listener>::ref_type get_hello_sub_data_listener () override;
+    IDL::traits<::Test::Hello::CCM_Listener>::ref_type get_hello_sub_data_listener () override;
     /// Factory method and getter for the msg_sub_data_listener facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< ::Test::Msg::CCM_Listener>::ref_type get_msg_sub_data_listener () override;
+    IDL::traits<::Test::Msg::CCM_Listener>::ref_type get_msg_sub_data_listener () override;
     //@}
 
     /** @name Supported attributes. */
@@ -248,7 +248,7 @@ namespace Test_Receiver_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::Test::CCM_Receiver_Context>::ref_type context_;
+    IDL::traits<::Test::CCM_Receiver_Context>::ref_type context_;
 
     /** @name Component attributes. */
     //@{
@@ -266,8 +266,8 @@ namespace Test_Receiver_Impl
 
     /** @name Component facets. */
     //@{
-    IDL::traits< ::Test::Hello::CCM_Listener>::ref_type hello_sub_data_listener_;
-    IDL::traits< ::Test::Msg::CCM_Listener>::ref_type msg_sub_data_listener_;
+    IDL::traits<::Test::Hello::CCM_Listener>::ref_type hello_sub_data_listener_;
+    IDL::traits<::Test::Msg::CCM_Listener>::ref_type msg_sub_data_listener_;
     //@}
 
     /** @name User defined members. */

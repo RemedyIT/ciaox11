@@ -247,7 +247,7 @@ namespace InterReturnT_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : InterReturnT_Receiver_Impl::Receiver_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::InterReturnT::CCM_MyFoo>::ref_type
+  IDL::traits<::InterReturnT::CCM_MyFoo>::ref_type
   Receiver_exec_i::get_do_my_foo ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : InterReturnT_Receiver_Impl::Receiver_exec_i[get_do_my_foo]

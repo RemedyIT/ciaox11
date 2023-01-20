@@ -39,7 +39,7 @@ namespace Example_BasicSubscriber_comp_Impl
 
   /// Executor implementation class for CA1DataSub_data_listener facet
   class CA1DataSub_data_listener_exec_i final
-    : public IDL::traits< ::Example::CA1_conn::CCM_Listener>::base_type
+    : public IDL::traits<::Example::CA1_conn::CCM_Listener>::base_type
   {
   public:
 
@@ -77,7 +77,7 @@ namespace Example_BasicSubscriber_comp_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::Example::CCM_BasicSubscriber_comp_Context>::ref_type context_;
+    IDL::traits<::Example::CCM_BasicSubscriber_comp_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -97,7 +97,7 @@ namespace Example_BasicSubscriber_comp_Impl
 
   /// Executor implementation class for CA1DataSub_status facet
   class CA1DataSub_status_exec_i final
-    : public IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::base_type
+    : public IDL::traits<::CCM_DDS::CCM_PortStatusListener>::base_type
   {
   public:
 
@@ -116,12 +116,12 @@ namespace Example_BasicSubscriber_comp_Impl
 
     void
     on_requested_deadline_missed (
-        IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+        IDL::traits<::DDS::DataReader>::ref_type the_reader,
         const ::DDS::RequestedDeadlineMissedStatus& status) override;
 
     void
     on_sample_lost (
-        IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+        IDL::traits<::DDS::DataReader>::ref_type the_reader,
         const ::DDS::SampleLostStatus& status) override;
     //@}
 
@@ -134,7 +134,7 @@ namespace Example_BasicSubscriber_comp_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::Example::CCM_BasicSubscriber_comp_Context>::ref_type context_;
+    IDL::traits<::Example::CCM_BasicSubscriber_comp_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -153,7 +153,7 @@ namespace Example_BasicSubscriber_comp_Impl
 
   /// Component Executor Implementation Class : BasicSubscriber_comp_exec_i
   class BasicSubscriber_comp_exec_i final
-    : public virtual IDL::traits< ::Example::CCM_BasicSubscriber_comp>::base_type
+    : public virtual IDL::traits<::Example::CCM_BasicSubscriber_comp>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Example_BasicSubscriber_comp_Impl::BasicSubscriber_comp_exec_i[ctor]
@@ -168,10 +168,10 @@ namespace Example_BasicSubscriber_comp_Impl
 
     /// Factory method and getter for the CA1DataSub_data_listener facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< ::Example::CA1_conn::CCM_Listener>::ref_type get_CA1DataSub_data_listener () override;
+    IDL::traits<::Example::CA1_conn::CCM_Listener>::ref_type get_CA1DataSub_data_listener () override;
     /// Factory method and getter for the CA1DataSub_status facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type get_CA1DataSub_status () override;
+    IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type get_CA1DataSub_status () override;
     //@}
 
     /** @name Supported attributes. */
@@ -215,7 +215,7 @@ namespace Example_BasicSubscriber_comp_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::Example::CCM_BasicSubscriber_comp_Context>::ref_type context_;
+    IDL::traits<::Example::CCM_BasicSubscriber_comp_Context>::ref_type context_;
 
     /** @name Component attributes. */
     //@{
@@ -225,8 +225,8 @@ namespace Example_BasicSubscriber_comp_Impl
 
     /** @name Component facets. */
     //@{
-    IDL::traits< ::Example::CA1_conn::CCM_Listener>::ref_type CA1DataSub_data_listener_;
-    IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type CA1DataSub_status_;
+    IDL::traits<::Example::CA1_conn::CCM_Listener>::ref_type CA1DataSub_data_listener_;
+    IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type CA1DataSub_status_;
     //@}
 
     /** @name User defined members. */

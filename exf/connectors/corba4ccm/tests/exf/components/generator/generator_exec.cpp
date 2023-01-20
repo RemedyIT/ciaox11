@@ -30,7 +30,7 @@ namespace App_Generator_Impl
     : public IDL::traits<CCM_TT::TT_Handler>::base_type
   {
   public:
-    TT_Generator (std::string loc, IDL::traits< ::App::CCM_Generator_Context>::ref_type context)
+    TT_Generator (std::string loc, IDL::traits<::App::CCM_Generator_Context>::ref_type context)
       : location_ (loc),
         context_ (std::move(context)),
         dre_ (std::random_device ()()),
@@ -40,7 +40,7 @@ namespace App_Generator_Impl
 
     void
     on_trigger (
-        IDL::traits< ::CCM_TT::TT_Timer>::ref_type timer,
+        IDL::traits<::CCM_TT::TT_Timer>::ref_type timer,
         const ::CCM_TT::TT_Duration& time,
         uint32_t round) override;
 
@@ -53,7 +53,7 @@ namespace App_Generator_Impl
   private:
     std::string location_;
     bool passivated_ {};
-    IDL::traits< ::App::CCM_Generator_Context>::ref_type context_;
+    IDL::traits<::App::CCM_Generator_Context>::ref_type context_;
     std::default_random_engine dre_;
     std::uniform_int_distribution<int> uniform_dist_;
     uint32_t message_count_ {};
@@ -61,7 +61,7 @@ namespace App_Generator_Impl
 
   void
   TT_Generator::on_trigger (
-      IDL::traits< ::CCM_TT::TT_Timer>::ref_type timer,
+      IDL::traits<::CCM_TT::TT_Timer>::ref_type timer,
       const ::CCM_TT::TT_Duration& time,
       uint32_t round)
   {
@@ -203,7 +203,7 @@ namespace App_Generator_Impl
   {
     // Setting the context of this component.
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : App_Generator_Impl::Generator_exec_i[set_session_context]
-    this->context_ = IDL::traits< ::App::CCM_Generator_Context >::narrow (std::move(ctx));
+    this->context_ = IDL::traits<::App::CCM_Generator_Context >::narrow (std::move(ctx));
     //@@{__RIDL_REGEN_MARKER__} - END : App_Generator_Impl::Generator_exec_i[set_session_context]
   }
 

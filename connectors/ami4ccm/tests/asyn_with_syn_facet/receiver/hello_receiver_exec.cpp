@@ -67,7 +67,7 @@ namespace Hello_Receiver_Impl
     CIAOX11_TEST_INFO << "Receiver:\tdo_my_foo_exec_i::foo(" << in_str << ")" << std::endl;
     answer = "Hello you " + in_str;
 
-    IDL::traits< ::Hello::MyFoo>::ref_type run_my_syn_foo = this->context_->get_connection_run_my_syn_foo ();
+    IDL::traits<::Hello::MyFoo>::ref_type run_my_syn_foo = this->context_->get_connection_run_my_syn_foo ();
     return run_my_syn_foo->foo (answer, answer);
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::do_my_foo_exec_i::foo[_in_str_answer]
   }
@@ -90,13 +90,13 @@ namespace Hello_Receiver_Impl
     }
     else if (this->nr_of_messages_ == 4)
     {
-      IDL::traits< ::Hello::Control>::ref_type run_control = this->context_->get_connection_run_control ();
+      IDL::traits<::Hello::Control>::ref_type run_control = this->context_->get_connection_run_control ();
       run_control->shutdown ();
       answer = 0;
     }
     else
     {
-      IDL::traits< ::Hello::MyFoo>::ref_type run_my_syn_foo = this->context_->get_connection_run_my_syn_foo ();
+      IDL::traits<::Hello::MyFoo>::ref_type run_my_syn_foo = this->context_->get_connection_run_my_syn_foo ();
       run_my_syn_foo->hello (answer);
       answer += 10 + this->nr_of_messages_;
     }
@@ -181,7 +181,7 @@ namespace Hello_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::Receiver_exec_i[ccm_activate]
     CIAOX11_TEST_INFO << "Receiver_exec_i::ccm_activate." << std::endl;
 
-    IDL::traits< ::Hello::Control>::ref_type run_control = this->context_->get_connection_run_control ();
+    IDL::traits<::Hello::Control>::ref_type run_control = this->context_->get_connection_run_control ();
     run_control->start ();
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::Receiver_exec_i[ccm_activate]
   }
@@ -206,7 +206,7 @@ namespace Hello_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::Receiver_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::Hello::CCM_MyFoo>::ref_type
+  IDL::traits<::Hello::CCM_MyFoo>::ref_type
   Receiver_exec_i::get_do_my_foo ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::Receiver_exec_i[get_do_my_foo]

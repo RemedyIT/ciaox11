@@ -36,9 +36,9 @@ namespace CIAOX11
         const TOPIC_TYPE& datum,
         const ::DDS::InstanceHandle_t& instance_handle) override;
 
-      void set_dds_writer (IDL::traits< ::DDS::DataWriter>::ref_type dds_writer);
+      void set_dds_writer (IDL::traits<::DDS::DataWriter>::ref_type dds_writer);
 
-      IDL::traits< ::DDS::DataWriter>::ref_type get_dds_writer ();
+      IDL::traits<::DDS::DataWriter>::ref_type get_dds_writer ();
 
     protected:
       typename ::DDS::traits<TOPIC_TYPE>::typed_datawriter_ref_type dds_writer_ {};

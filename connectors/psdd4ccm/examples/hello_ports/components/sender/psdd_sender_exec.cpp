@@ -28,23 +28,23 @@ namespace Test_Sender_Impl
   : public IDL::traits<CCM_TT::TT_Handler>::base_type
   {
   public:
-    explicit TT_HelloCallback (IDL::traits< ::Test::CCM_Sender>::weak_ref_type component_executor)
+    explicit TT_HelloCallback (IDL::traits<::Test::CCM_Sender>::weak_ref_type component_executor)
     : component_executor_(component_executor)
      {}
 
     void
     on_trigger (
-        IDL::traits< ::CCM_TT::TT_Timer>::ref_type timer,
+        IDL::traits<::CCM_TT::TT_Timer>::ref_type timer,
         const ::CCM_TT::TT_Duration& time,
         uint32_t round) override;
 
   private:
-    IDL::traits< ::Test::CCM_Sender>::weak_ref_type component_executor_;
+    IDL::traits<::Test::CCM_Sender>::weak_ref_type component_executor_;
   };
 
   void
   TT_HelloCallback::on_trigger (
-      IDL::traits< ::CCM_TT::TT_Timer>::ref_type timer,
+      IDL::traits<::CCM_TT::TT_Timer>::ref_type timer,
       const ::CCM_TT::TT_Duration& time,
       uint32_t round)
   {
@@ -62,23 +62,23 @@ namespace Test_Sender_Impl
   : public IDL::traits<CCM_TT::TT_Handler>::base_type
   {
   public:
-    explicit TT_MsgCallback (IDL::traits< ::Test::CCM_Sender>::weak_ref_type component_executor)
+    explicit TT_MsgCallback (IDL::traits<::Test::CCM_Sender>::weak_ref_type component_executor)
     : component_executor_(component_executor)
     {}
 
     void
     on_trigger (
-        IDL::traits< ::CCM_TT::TT_Timer>::ref_type timer,
+        IDL::traits<::CCM_TT::TT_Timer>::ref_type timer,
         const ::CCM_TT::TT_Duration& time,
         uint32_t round) override;
 
   private:
-    IDL::traits< ::Test::CCM_Sender>::weak_ref_type component_executor_;
+    IDL::traits<::Test::CCM_Sender>::weak_ref_type component_executor_;
   };
 
   void
   TT_MsgCallback::on_trigger (
-      IDL::traits< ::CCM_TT::TT_Timer>::ref_type timer,
+      IDL::traits<::CCM_TT::TT_Timer>::ref_type timer,
       const ::CCM_TT::TT_Duration& time,
       uint32_t round)
   {
@@ -354,7 +354,7 @@ namespace Test_Sender_Impl
   {
     // Setting the context of this component.
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::Sender_exec_i[set_session_context]
-    this->context_ = IDL::traits< ::Test::CCM_Sender_Context >::narrow (std::move(ctx));
+    this->context_ = IDL::traits<::Test::CCM_Sender_Context >::narrow (std::move(ctx));
     //@@{__RIDL_REGEN_MARKER__} - END : Test_Sender_Impl::Sender_exec_i[set_session_context]
   }
 

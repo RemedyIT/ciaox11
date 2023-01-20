@@ -26,23 +26,23 @@ namespace PSL_DeadlineTest_Receiver_Impl
   : public IDL::traits<CCM_TT::TT_Handler>::base_type
   {
   public:
-    explicit TT_Callback (IDL::traits< ::PSL_DeadlineTest::CCM_Receiver>::weak_ref_type component_executor)
+    explicit TT_Callback (IDL::traits<::PSL_DeadlineTest::CCM_Receiver>::weak_ref_type component_executor)
               : component_executor_(component_executor)
     {}
 
     void
     on_trigger (
-         IDL::traits< ::CCM_TT::TT_Timer>::ref_type timer,
+         IDL::traits<::CCM_TT::TT_Timer>::ref_type timer,
          const ::CCM_TT::TT_Duration& time,
          uint32_t round) override;
 
    private:
-     IDL::traits< ::PSL_DeadlineTest::CCM_Receiver>::weak_ref_type component_executor_;
+     IDL::traits<::PSL_DeadlineTest::CCM_Receiver>::weak_ref_type component_executor_;
   };
 
   void
   TT_Callback::on_trigger (
-       IDL::traits< ::CCM_TT::TT_Timer>::ref_type timer,
+       IDL::traits<::CCM_TT::TT_Timer>::ref_type timer,
        const ::CCM_TT::TT_Duration& time,
        uint32_t round)
   {
@@ -95,7 +95,7 @@ namespace PSL_DeadlineTest_Receiver_Impl
 
   void
   info_get_status_exec_i::on_requested_deadline_missed (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::RequestedDeadlineMissedStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : PSL_DeadlineTest_Receiver_Impl::info_get_status_exec_i::on_requested_deadline_missed[_the_reader_status]
@@ -113,7 +113,7 @@ namespace PSL_DeadlineTest_Receiver_Impl
 
   void
   info_get_status_exec_i::on_sample_lost (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::SampleLostStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : PSL_DeadlineTest_Receiver_Impl::info_get_status_exec_i::on_sample_lost[_the_reader_status]
@@ -215,7 +215,7 @@ namespace PSL_DeadlineTest_Receiver_Impl
 
   void
   info_out_status_exec_i::on_requested_deadline_missed (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::RequestedDeadlineMissedStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : PSL_DeadlineTest_Receiver_Impl::info_out_status_exec_i::on_requested_deadline_missed[_the_reader_status]
@@ -234,7 +234,7 @@ namespace PSL_DeadlineTest_Receiver_Impl
 
   void
   info_out_status_exec_i::on_sample_lost (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::SampleLostStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : PSL_DeadlineTest_Receiver_Impl::info_out_status_exec_i::on_sample_lost[_the_reader_status]
@@ -264,7 +264,7 @@ namespace PSL_DeadlineTest_Receiver_Impl
   void
   Receiver_exec_i::tick ()
   {
-    IDL::traits< ::CommonTestConnector::Reader>::ref_type reader =
+    IDL::traits<::CommonTestConnector::Reader>::ref_type reader =
       this->context_->get_connection_info_out_data ();
     if (!reader)
     {
@@ -375,7 +375,7 @@ namespace PSL_DeadlineTest_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : PSL_DeadlineTest_Receiver_Impl::Receiver_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type
+  IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type
   Receiver_exec_i::get_info_get_status ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : PSL_DeadlineTest_Receiver_Impl::Receiver_exec_i[get_info_get_status]
@@ -388,7 +388,7 @@ namespace PSL_DeadlineTest_Receiver_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : PSL_DeadlineTest_Receiver_Impl::Receiver_exec_i[get_info_get_status]
   }
 
-  IDL::traits< ::CommonTestConnector::CCM_Listener>::ref_type
+  IDL::traits<::CommonTestConnector::CCM_Listener>::ref_type
   Receiver_exec_i::get_info_out_data_listener ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : PSL_DeadlineTest_Receiver_Impl::Receiver_exec_i[get_info_out_data_listener]
@@ -400,7 +400,7 @@ namespace PSL_DeadlineTest_Receiver_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : PSL_DeadlineTest_Receiver_Impl::Receiver_exec_i[get_info_out_data_listener]
   }
 
-  IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type
+  IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type
   Receiver_exec_i::get_info_out_status ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : PSL_DeadlineTest_Receiver_Impl::Receiver_exec_i[get_info_out_status]

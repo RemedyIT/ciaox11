@@ -40,7 +40,7 @@ namespace Hello_Sender_comp_Impl
     CIAOX11_TEST_INFO << "Sender: get_connection_sendc_run_my_foo "
                       << std::endl;
 
-    IDL::traits< ::Hello::AMI4CCM_MyFoo_obj>::ref_type my_foo_ami_  =
+    IDL::traits<::Hello::AMI4CCM_MyFoo_obj>::ref_type my_foo_ami_  =
        this->context_->get_connection_sendc_run_my_foo();
 
     if (!my_foo_ami_)
@@ -49,7 +49,7 @@ namespace Hello_Sender_comp_Impl
                         << "returns null" << std::endl;
       return 1;
     }
-    IDL::traits< ::Hello::AMI4CCM_MyFoo_objReplyHandler>::ref_type cb =
+    IDL::traits<::Hello::AMI4CCM_MyFoo_objReplyHandler>::ref_type cb =
          CORBA::make_reference<AMI4CCM_MyFoo_objReplyHandler_run_my_foo_i> ();
     // run asynch call's
     for (int i = 0; i < 5; ++i)

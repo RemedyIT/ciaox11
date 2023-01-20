@@ -45,8 +45,8 @@ namespace Test_Receiver_Impl
     /// Constructor
     /// @param[in] context Component context
     info_out_data_listener_exec_i (
-        IDL::traits< ::Test::CCM_Receiver_Context>::ref_type context,
-        IDL::traits< ::Test::CCM_Receiver>::ref_type component_executor);
+        IDL::traits<::Test::CCM_Receiver_Context>::ref_type context,
+        IDL::traits<::Test::CCM_Receiver>::ref_type component_executor);
     //@@{__RIDL_REGEN_MARKER__} - END : Test_Receiver_Impl::info_out_data_listener_exec_i[ctor]
 
     /// Destructor
@@ -101,7 +101,7 @@ namespace Test_Receiver_Impl
     /// Constructor
     /// @param[in] context Component context
     info_out_status_exec_i (
-        IDL::traits< ::Test::CCM_Receiver_Context>::ref_type context);
+        IDL::traits<::Test::CCM_Receiver_Context>::ref_type context);
     //@@{__RIDL_REGEN_MARKER__} - END : Test_Receiver_Impl::info_out_status_exec_i[ctor]
 
     /// Destructor
@@ -215,7 +215,7 @@ namespace Test_Receiver_Impl
     //@{
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Receiver_Impl::Receiver_exec_i[user_members]
     uint32_t count_ {};
-    IDL::traits< ::Test::LatencyDataConnector::Writer>::ref_type writer_ {};
+    IDL::traits<::Test::LatencyDataConnector::Writer>::ref_type writer_ {};
     //@@{__RIDL_REGEN_MARKER__} - END : Test_Receiver_Impl::Receiver_exec_i[user_members]
     //@}
 

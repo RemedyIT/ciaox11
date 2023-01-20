@@ -27,13 +27,13 @@ namespace CIAOX11
     template <typename EVT_STRATEGY>
     void
     NDDSPublisherListener_T<EVT_STRATEGY>::on_reliable_writer_cache_changed (
-      IDL::traits< ::DDS::DataWriter>::ref_type the_Writer,
+      IDL::traits<::DDS::DataWriter>::ref_type the_Writer,
       const ::DDS::ReliableWriterCacheChangedStatus & status)
     {
       DDS4CCM_LOG_TRACE("NDDSPublisherListener_T<EVT_STRATEGY>::on_reliable_writer_cache_changed");
 
       DDS4CCM_LOG_DEBUG ("NDDSPublisherListener_T<EVT_STRATEGY>::on_reliable_writer_cache_changed - "
-        << IDL::traits< ::DDS::ReliableWriterCacheChangedStatus>::write (status));
+        << IDL::traits<::DDS::ReliableWriterCacheChangedStatus>::write (status));
 
       this->on_unexpected_status (std::move(the_Writer), ::DDS::RELIABLE_WRITER_CACHE_CHANGED_STATUS);
     }
@@ -41,13 +41,13 @@ namespace CIAOX11
     template <typename EVT_STRATEGY>
     void
     NDDSPublisherListener_T<EVT_STRATEGY>::on_reliable_reader_activity_changed (
-      IDL::traits< ::DDS::DataWriter>::ref_type the_Writer,
+      IDL::traits<::DDS::DataWriter>::ref_type the_Writer,
       const ::DDS::ReliableReaderActivityChangedStatus & status)
     {
       DDS4CCM_LOG_TRACE("NDDSPublisherListener_T<EVT_STRATEGY>::on_reliable_reader_activity_changed");
 
       DDS4CCM_LOG_DEBUG ("NDDSPublisherListener_T<EVT_STRATEGY>::on_reliable_reader_activity_changed - "
-        << IDL::traits< ::DDS::ReliableReaderActivityChangedStatus>::write (status));
+        << IDL::traits<::DDS::ReliableReaderActivityChangedStatus>::write (status));
 
       this->on_unexpected_status (std::move(the_Writer), ::DDS::RELIABLE_READER_ACTIVITY_CHANGED_STATUS);
     }
@@ -67,7 +67,7 @@ namespace CIAOX11
         }
       DDS4CCM_LOG_DEBUG ("NDDSPublisherListener_T<EVT_STRATEGY>::get_mask - "
         << "Mask becomes <"
-        << IDL::traits< ::DDS::StatusMask>::write<status_mask_formatter> (mask)
+        << IDL::traits<::DDS::StatusMask>::write<status_mask_formatter> (mask)
         << ">");
       return mask;
     }

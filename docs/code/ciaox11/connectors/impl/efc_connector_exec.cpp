@@ -27,7 +27,7 @@ namespace EFC_FooConnector_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : EFC_FooConnector_Impl::request_handler_exec_i[ctor]
   request_handler_exec_i::request_handler_exec_i (
-    IDL::traits< ::EFC::CCM_FooConnector_Context>::ref_type context)
+    IDL::traits<::EFC::CCM_FooConnector_Context>::ref_type context)
     : context_ (std::move (context))
   {
   }
@@ -118,13 +118,13 @@ namespace EFC_FooConnector_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : EFC_FooConnector_Impl::FooConnector_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::EFC::CCM_FooHandler>::ref_type
+  IDL::traits<::EFC::CCM_FooHandler>::ref_type
   FooConnector_exec_i::get_request_handler ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : EFC_FooConnector_Impl::FooConnector_exec_i[get_request_handler]
     if (!this->request_handler_)
     {
-      this->request_handler_ = IDL::traits< ::EFC::CCM_FooHandler>::make_reference <request_handler_exec_i> (this->context_);
+      this->request_handler_ = IDL::traits<::EFC::CCM_FooHandler>::make_reference <request_handler_exec_i> (this->context_);
     }
     return this->request_handler_;
   //@@{__RIDL_REGEN_MARKER__} - END : EFC_FooConnector_Impl::FooConnector_exec_i[get_request_handler]
@@ -155,7 +155,7 @@ namespace EFC_FooConnector_Impl
   {
     // Setting the context of this component.
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : EFC_FooConnector_Impl::FooConnector_exec_i[set_session_context]
-    this->context_ = IDL::traits< ::EFC::CCM_FooConnector_Context>::narrow (std::move(ctx));
+    this->context_ = IDL::traits<::EFC::CCM_FooConnector_Context>::narrow (std::move(ctx));
     //@@{__RIDL_REGEN_MARKER__} - END : EFC_FooConnector_Impl::FooConnector_exec_i[set_session_context]
   }
 
@@ -170,7 +170,7 @@ extern "C" void
 create_EFC_FooConnector_Impl (
   IDL::traits<Components::EnterpriseComponent>::ref_type& component)
 {
-  component = IDL::traits< ::EFC::CCM_FooConnector>::make_reference <EFC_FooConnector_Impl::FooConnector_exec_i> ();
+  component = IDL::traits<::EFC::CCM_FooConnector>::make_reference <EFC_FooConnector_Impl::FooConnector_exec_i> ();
 }
 //@@{__RIDL_REGEN_MARKER__} - END : EFC_FooConnector_Impl[factory]
 //@@{__RIDL_REGEN_MARKER__} - BEGIN : efc_connector_impl.cpp[Footer]

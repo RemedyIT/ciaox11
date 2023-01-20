@@ -41,7 +41,7 @@ namespace DDSX11
       {
         DDSX11_IMPL_LOG_ERROR ("DDS_DomainParticipant_proxy::set_qos - "
           << "Error: Unable to retrieve participant QoS <"
-          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+          << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">");
         return retcode;
       }
@@ -50,7 +50,7 @@ namespace DDSX11
 
     DDSX11_IMPL_LOG_DEBUG ("DDS_Topic_proxy::set_qos - "
       << "Setting TopicQos <"
-      << IDL::traits< ::DDS::TopicQos>::write (::DDSX11::traits< ::DDS::TopicQos>::retn(qos_in))
+      << IDL::traits<::DDS::TopicQos>::write (::DDSX11::traits< ::DDS::TopicQos>::retn(qos_in))
       << ">");
 
     return ::DDSX11::traits< ::DDS::ReturnCode_t>::retn (
@@ -69,7 +69,7 @@ namespace DDSX11
 
   ::DDS::ReturnCode_t
   DDS_Topic_proxy::set_listener (
-    IDL::traits< ::DDS::TopicListener>::ref_type a_listener,
+    IDL::traits<::DDS::TopicListener>::ref_type a_listener,
     ::DDS::StatusMask mask)
   {
     DDSX11_LOG_TRACE ("DDS_Topic_proxy::set_listener");
@@ -108,7 +108,7 @@ namespace DDSX11
     return retcode;
   }
 
-  IDL::traits< ::DDS::TopicListener>::ref_type
+  IDL::traits<::DDS::TopicListener>::ref_type
   DDS_Topic_proxy::get_listener ()
   {
     DDSX11_LOG_TRACE ("DDS_Topic_proxy::get_listener");
@@ -155,12 +155,12 @@ namespace DDSX11
       this->native_entity ()->enable ());
   }
 
-  IDL::traits< ::DDS::StatusCondition>::ref_type
+  IDL::traits<::DDS::StatusCondition>::ref_type
   DDS_Topic_proxy::get_statuscondition ()
   {
     DDSX11_LOG_TRACE ("DDS_Topic_proxy::get_statuscondition");
 
-    IDL::traits< ::DDS::StatusCondition>::ref_type retval;
+    IDL::traits<::DDS::StatusCondition>::ref_type retval;
     DDS_Native::DDS::StatusCondition_var sc =
       this->native_entity ()->get_statuscondition ();
     if (sc)
@@ -206,7 +206,7 @@ namespace DDSX11
       this->native_entity ()->get_name ());
   }
 
-  IDL::traits< ::DDS::DomainParticipant>::ref_type
+  IDL::traits<::DDS::DomainParticipant>::ref_type
   DDS_Topic_proxy::get_participant ()
   {
     DDSX11_LOG_TRACE ("DDS_Topic_proxy::get_participant");

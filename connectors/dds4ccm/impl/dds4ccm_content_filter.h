@@ -34,16 +34,16 @@ namespace CIAOX11
 
       void filter (const CCM_DDS::QueryFilter &filter);
 
-      IDL::traits< ::DDS::ContentFilteredTopic>::ref_type
+      IDL::traits<::DDS::ContentFilteredTopic>::ref_type
       create_contentfilteredtopic (
-        IDL::traits< ::DDS::Topic>::ref_type topic,
-        IDL::traits< ::DDS::Subscriber>::ref_type subscriber);
+        IDL::traits<::DDS::Topic>::ref_type topic,
+        IDL::traits<::DDS::Subscriber>::ref_type subscriber);
 
-      void delete_contentfilteredtopic (IDL::traits< ::DDS::Subscriber>::ref_type subscriber);
+      void delete_contentfilteredtopic (IDL::traits<::DDS::Subscriber>::ref_type subscriber);
 
     private:
       CCM_DDS::QueryFilter filter_ {};
-      IDL::traits< ::DDS::ContentFilteredTopic>::ref_type cft_ {};
+      IDL::traits<::DDS::ContentFilteredTopic>::ref_type cft_ {};
 
       CCM_DDS_ContentFilterSetting_i(const CCM_DDS_ContentFilterSetting_i&) = delete;
       CCM_DDS_ContentFilterSetting_i(CCM_DDS_ContentFilterSetting_i&&) = delete;

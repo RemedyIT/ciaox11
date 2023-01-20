@@ -253,7 +253,7 @@ namespace Hello_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::Receiver_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::Hello::CCM_MyFoo>::ref_type
+  IDL::traits<::Hello::CCM_MyFoo>::ref_type
   Receiver_exec_i::get_rec_listen_port_foo_prov ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::Receiver_exec_i[get_rec_listen_port_foo_prov]
@@ -267,7 +267,7 @@ namespace Hello_Receiver_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::Receiver_exec_i[get_rec_listen_port_foo_prov]
   }
 
-  IDL::traits< ::Hello::CCM_MyBar>::ref_type
+  IDL::traits<::Hello::CCM_MyBar>::ref_type
   Receiver_exec_i::get_rec_listen_port_bar_prov ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::Receiver_exec_i[get_rec_listen_port_bar_prov]

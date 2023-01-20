@@ -117,7 +117,7 @@ namespace CIAOX11
       conn.internalEndpoint ()[endpointRef];
 
     CIAOX11_LOG_DEBUG ("Connection_Handler::connect_instance - " <<
-                       "Connecting " << IDL::traits< ::Deployment::CCMComponentPortKind>::write (endpoint.kind ())
+                       "Connecting " << IDL::traits<::Deployment::CCMComponentPortKind>::write (endpoint.kind ())
                        << " connection <" << conn.name () << ">:<" << plan.instance ()[endpoint.instanceRef ()].name () << ">");
 
     try
@@ -159,7 +159,7 @@ namespace CIAOX11
           default:
             CIAOX11_LOG_ERROR ("Connection_Handler::connect_instance - " <<
                        "Unsupported kind <"
-                       << IDL::traits< ::Deployment::CCMComponentPortKind>::write (endpoint.kind ())
+                       << IDL::traits<::Deployment::CCMComponentPortKind>::write (endpoint.kind ())
                        << "> for connection <" << conn.name () << ">");
             throw ::Deployment::InvalidConnection (conn.name (),
                                                  "Unsupported port type");
@@ -171,7 +171,7 @@ namespace CIAOX11
     {
       CIAOX11_LOG_ERROR ("Connection_Handler::connect_instance - " <<
                          "Caught InvalidConnection exception while connecting "
-                         << IDL::traits< ::Deployment::CCMComponentPortKind>::write (endpoint.kind ())
+                         << IDL::traits<::Deployment::CCMComponentPortKind>::write (endpoint.kind ())
                          << " <" << conn.name () << ">:<" << ex << ">");
       throw;
     }
@@ -181,7 +181,7 @@ namespace CIAOX11
       err << ex;
       CIAOX11_LOG_ERROR ("Connection_Handler::connect_instance - " <<
                          "Caught CORBA exception while connecting "
-                         << IDL::traits< ::Deployment::CCMComponentPortKind>::write (endpoint.kind ())
+                         << IDL::traits<::Deployment::CCMComponentPortKind>::write (endpoint.kind ())
                          << " <" << conn.name () << ">:<" << err.str () << ">");
       throw ::Deployment::InvalidConnection (conn.name (), err.str ());
     }
@@ -189,7 +189,7 @@ namespace CIAOX11
     {
       CIAOX11_LOG_ERROR ("Component_Handler::connect_instance - " <<
                          "Caught C++ std::exception while connecting "
-                         << IDL::traits< ::Deployment::CCMComponentPortKind>::write (endpoint.kind ())
+                         << IDL::traits<::Deployment::CCMComponentPortKind>::write (endpoint.kind ())
                          << "<" << conn.name () << ">:<" <<
                          ex << ">");
       throw ::Deployment::InvalidConnection (conn.name (), ex.what ());
@@ -198,7 +198,7 @@ namespace CIAOX11
     {
       CIAOX11_LOG_ERROR ("Connection_Handler::connect_instance - " <<
                          "Caught unknown C++ exception while connecting "
-                          << IDL::traits< ::Deployment::CCMComponentPortKind>::write (endpoint.kind ())
+                          << IDL::traits<::Deployment::CCMComponentPortKind>::write (endpoint.kind ())
                           << " <" << conn.name () << ">");
       throw ::Deployment::InvalidConnection (conn.name (), "Unknown C++ Exception");
     }
@@ -218,7 +218,7 @@ namespace CIAOX11
 
     CIAOX11_LOG_DEBUG ("Connection_Handler::disconnect_instance - " <<
                        "Disconnecting "
-                       << IDL::traits< ::Deployment::CCMComponentPortKind>::write (endpoint.kind ())
+                       << IDL::traits<::Deployment::CCMComponentPortKind>::write (endpoint.kind ())
                        << "connection <" << conn.name () << ">:<"
                        << plan.instance ()[endpoint.instanceRef ()].name () << ">");
 
@@ -241,7 +241,7 @@ namespace CIAOX11
           default:
             CIAOX11_LOG_ERROR ("Connection_Handler::disconnect_instance - " <<
                        "Unsupported kind <"
-                       << IDL::traits< ::Deployment::CCMComponentPortKind>::write (endpoint.kind ())
+                       << IDL::traits<::Deployment::CCMComponentPortKind>::write (endpoint.kind ())
                        << "> for connection <" << conn.name () << ">");
             throw ::Deployment::InvalidConnection (conn.name (),
                                                    "Unsupported port type");
@@ -265,7 +265,7 @@ namespace CIAOX11
       err << ex;
       CIAOX11_LOG_ERROR ("Connection_Handler::disconnect_instance - " <<
                          "Caught COMM_FAILURE exception while disconnecting "
-                         << IDL::traits< ::Deployment::CCMComponentPortKind>::write (endpoint.kind ())
+                         << IDL::traits<::Deployment::CCMComponentPortKind>::write (endpoint.kind ())
                          << " <" << conn.name () << ">:<" << err.str () << ">");
       throw ::Deployment::InvalidConnection (conn.name (),
                                              err.str ());
@@ -276,7 +276,7 @@ namespace CIAOX11
       err << ex;
       CIAOX11_LOG_ERROR ("Connection_Handler::disconnect_instance - " <<
                          "Caught OBJECT_NOT_EXIST exception while disconnecting "
-                         << IDL::traits< ::Deployment::CCMComponentPortKind>::write (endpoint.kind ())
+                         << IDL::traits<::Deployment::CCMComponentPortKind>::write (endpoint.kind ())
                          << " <" << conn.name () << ">:<" << err.str () << ">");
       throw ::Deployment::InvalidConnection (conn.name (),
                                              err.str ());
@@ -287,7 +287,7 @@ namespace CIAOX11
       err << ex;
       CIAOX11_LOG_ERROR ("Connection_Handler::disconnect_instance - " <<
                          "Caught TRANSIENT exception while disconnecting "
-                         << IDL::traits< ::Deployment::CCMComponentPortKind>::write (endpoint.kind ())
+                         << IDL::traits<::Deployment::CCMComponentPortKind>::write (endpoint.kind ())
                          << " <" << conn.name () << ">:<" << err.str () << ">");
       throw ::Deployment::InvalidConnection (conn.name (),
                                              err.str ());
@@ -298,7 +298,7 @@ namespace CIAOX11
       err << ex;
       CIAOX11_LOG_ERROR ("Connection_Handler::disconnect_instance - " <<
                          "Caught CORBA exception while disconnecting "
-                         << IDL::traits< ::Deployment::CCMComponentPortKind>::write (endpoint.kind ())
+                         << IDL::traits<::Deployment::CCMComponentPortKind>::write (endpoint.kind ())
                          << " <" << conn.name () << ">:<" << err.str () << ">");
       throw ::Deployment::InvalidConnection (conn.name (), err.str ());
     }
@@ -306,7 +306,7 @@ namespace CIAOX11
     {
       CIAOX11_LOG_ERROR ("Component_Handler::disconnect_instance - " <<
                          "Caught C++ std::exception while connecting "
-                         << IDL::traits< ::Deployment::CCMComponentPortKind>::write (endpoint.kind ())
+                         << IDL::traits<::Deployment::CCMComponentPortKind>::write (endpoint.kind ())
                          << "<" << conn.name () << ">:<" <<
                          ex << ">");
       throw ::Deployment::InvalidConnection (conn.name (), ex.what ());
@@ -315,7 +315,7 @@ namespace CIAOX11
     {
       CIAOX11_LOG_ERROR ("Connection_Handler::disconnect_instance - " <<
                          "Caught unknown C++ exception while disconnecting "
-                         << IDL::traits< ::Deployment::CCMComponentPortKind>::write (endpoint.kind ())
+                         << IDL::traits<::Deployment::CCMComponentPortKind>::write (endpoint.kind ())
                          << " <" << conn.name () << ">");
       throw ::Deployment::InvalidConnection (conn.name (), "Unknown C++ Exception");
     }

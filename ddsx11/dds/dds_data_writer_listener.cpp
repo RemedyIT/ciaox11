@@ -16,7 +16,7 @@
 namespace DDSX11
 {
   DDS_DataWriterListener_proxy::DDS_DataWriterListener_proxy (
-    IDL::traits< ::DDS::DataWriterListener>::ref_type s)
+    IDL::traits<::DDS::DataWriterListener>::ref_type s)
     : impl_ (std::move (s))
   {
     DDSX11_LOG_TRACE ("DDS_DataWriterListener_proxy::DDS_DataWriterListener_proxy");
@@ -27,13 +27,13 @@ namespace DDSX11
     DDSX11_LOG_TRACE ("DDS_DataWriterListener_proxy::~DDS_DataWriterListener_proxy");
   }
 
-  IDL::traits< ::DDS::DataWriter>::ref_type
+  IDL::traits<::DDS::DataWriter>::ref_type
   DDS_DataWriterListener_proxy::get_datawriter (
     DDS_Native::DDS::DataWriter *the_writer)
   {
     DDSX11_LOG_TRACE ("DDS_DataWriterListener_proxy::get_datawriter");
 
-    IDL::traits< ::DDS::DataWriter>::ref_type dw = this->dw_.lock ();
+    IDL::traits<::DDS::DataWriter>::ref_type dw = this->dw_.lock ();
     if (!dw)
     {
       // Weak pointer was not set. It could be that it has been removed from the
@@ -54,7 +54,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_DataWriterListener_proxy::on_offered_deadline_missed");
 
-    IDL::traits< ::DDS::DataWriter>::ref_type dw = this->get_datawriter (the_writer);
+    IDL::traits<::DDS::DataWriter>::ref_type dw = this->get_datawriter (the_writer);
     if (dw)
     {
       this->impl_->on_offered_deadline_missed (std::move(dw),
@@ -69,7 +69,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_DataWriterListener_proxy::on_offered_incompatible_qos");
 
-    IDL::traits< ::DDS::DataWriter>::ref_type dw = this->get_datawriter (the_writer);
+    IDL::traits<::DDS::DataWriter>::ref_type dw = this->get_datawriter (the_writer);
     if (dw)
     {
       this->impl_->on_offered_incompatible_qos (std::move(dw),
@@ -84,7 +84,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_DataWriterListener_proxy::on_liveliness_lost");
 
-    IDL::traits< ::DDS::DataWriter>::ref_type dw = this->get_datawriter (the_writer);
+    IDL::traits<::DDS::DataWriter>::ref_type dw = this->get_datawriter (the_writer);
     if (dw)
     {
       this->impl_->on_liveliness_lost (std::move(dw),
@@ -99,7 +99,7 @@ namespace DDSX11
   {
     DDSX11_LOG_TRACE ("DDS_DataWriterListener_proxy::on_publication_matched");
 
-    IDL::traits< ::DDS::DataWriter>::ref_type dw = this->get_datawriter (the_writer);
+    IDL::traits<::DDS::DataWriter>::ref_type dw = this->get_datawriter (the_writer);
     if (dw)
     {
       this->impl_->on_publication_matched (std::move(dw),
@@ -107,7 +107,7 @@ namespace DDSX11
     }
   }
 
-  IDL::traits< ::DDS::DataWriterListener>::ref_type
+  IDL::traits<::DDS::DataWriterListener>::ref_type
   DDS_DataWriterListener_proxy::get_datawriterlistener ()
   {
     return this->impl_;

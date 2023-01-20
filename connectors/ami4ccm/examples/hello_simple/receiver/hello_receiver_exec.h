@@ -36,7 +36,7 @@ namespace Hello_Receiver_Impl
 
   /// Executor implementation class for do_my_foo facet
   class do_my_foo_exec_i final
-    : public IDL::traits< ::Hello::CCM_MyFoo>::base_type
+    : public IDL::traits<::Hello::CCM_MyFoo>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::do_my_foo_exec_i[ctor]
@@ -81,7 +81,7 @@ namespace Hello_Receiver_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::Hello::CCM_Receiver_Context>::ref_type context_;
+    IDL::traits<::Hello::CCM_Receiver_Context>::ref_type context_;
 
     /** @name Members to store attribute values from ::Hello::CCM_MyFoo */
     //@{
@@ -110,7 +110,7 @@ namespace Hello_Receiver_Impl
 
   /// Component Executor Implementation Class : Receiver_exec_i
   class Receiver_exec_i final
-    : public virtual IDL::traits< ::Hello::CCM_Receiver>::base_type
+    : public virtual IDL::traits<::Hello::CCM_Receiver>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::Receiver_exec_i[ctor]
@@ -125,7 +125,7 @@ namespace Hello_Receiver_Impl
 
     /// Factory method and getter for the do_my_foo facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< ::Hello::CCM_MyFoo>::ref_type get_do_my_foo () override;
+    IDL::traits<::Hello::CCM_MyFoo>::ref_type get_do_my_foo () override;
     //@}
 
     /** @name Session component operations */
@@ -157,11 +157,11 @@ namespace Hello_Receiver_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::Hello::CCM_Receiver_Context>::ref_type context_;
+    IDL::traits<::Hello::CCM_Receiver_Context>::ref_type context_;
 
     /** @name Component facets. */
     //@{
-    IDL::traits< ::Hello::CCM_MyFoo>::ref_type do_my_foo_;
+    IDL::traits<::Hello::CCM_MyFoo>::ref_type do_my_foo_;
     //@}
 
     /** @name User defined members. */

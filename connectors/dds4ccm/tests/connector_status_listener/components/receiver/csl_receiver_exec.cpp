@@ -25,23 +25,23 @@ namespace CSL_Test_Receiver_Impl
   : public IDL::traits<CCM_TT::TT_Handler>::base_type
   {
   public:
-    explicit TT_Callback (IDL::traits< ::CSL_Test::CCM_Receiver>::weak_ref_type component_executor)
+    explicit TT_Callback (IDL::traits<::CSL_Test::CCM_Receiver>::weak_ref_type component_executor)
     :  component_executor_(component_executor)
     {}
 
     void
     on_trigger (
-         IDL::traits< ::CCM_TT::TT_Timer>::ref_type timer,
+         IDL::traits<::CCM_TT::TT_Timer>::ref_type timer,
          const ::CCM_TT::TT_Duration& time,
          uint32_t round) override;
 
     private:
-      IDL::traits< ::CSL_Test::CCM_Receiver>::weak_ref_type component_executor_;
+      IDL::traits<::CSL_Test::CCM_Receiver>::weak_ref_type component_executor_;
   };
 
   void
   TT_Callback::on_trigger (
-     IDL::traits< ::CCM_TT::TT_Timer>::ref_type timer,
+     IDL::traits<::CCM_TT::TT_Timer>::ref_type timer,
      const ::CCM_TT::TT_Duration& time,
      uint32_t round)
   {
@@ -90,7 +90,7 @@ namespace CSL_Test_Receiver_Impl
 
   void
   info_get_status_exec_i::on_requested_deadline_missed (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::RequestedDeadlineMissedStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : CSL_Test_Receiver_Impl::info_get_status_exec_i::on_requested_deadline_missed[_the_reader_status]
@@ -102,7 +102,7 @@ namespace CSL_Test_Receiver_Impl
 
   void
   info_get_status_exec_i::on_sample_lost (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::SampleLostStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : CSL_Test_Receiver_Impl::info_get_status_exec_i::on_sample_lost[_the_reader_status]
@@ -175,7 +175,7 @@ namespace CSL_Test_Receiver_Impl
 
   void
   connector_status_receiver_exec_i::on_inconsistent_topic (
-      IDL::traits< ::DDS::Topic>::ref_type the_topic,
+      IDL::traits<::DDS::Topic>::ref_type the_topic,
       const ::DDS::InconsistentTopicStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : CSL_Test_Receiver_Impl::connector_status_receiver_exec_i::on_inconsistent_topic[_the_topic_status]
@@ -198,7 +198,7 @@ namespace CSL_Test_Receiver_Impl
 
   void
   connector_status_receiver_exec_i::on_requested_incompatible_qos (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::RequestedIncompatibleQosStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : CSL_Test_Receiver_Impl::connector_status_receiver_exec_i::on_requested_incompatible_qos[_the_reader_status]
@@ -214,7 +214,7 @@ namespace CSL_Test_Receiver_Impl
 
   void
   connector_status_receiver_exec_i::on_sample_rejected (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::SampleRejectedStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : CSL_Test_Receiver_Impl::connector_status_receiver_exec_i::on_sample_rejected[_the_reader_status]
@@ -228,7 +228,7 @@ namespace CSL_Test_Receiver_Impl
 
   void
   connector_status_receiver_exec_i::on_offered_deadline_missed (
-      IDL::traits< ::DDS::DataWriter>::ref_type the_writer,
+      IDL::traits<::DDS::DataWriter>::ref_type the_writer,
       const ::DDS::OfferedDeadlineMissedStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : CSL_Test_Receiver_Impl::connector_status_receiver_exec_i::on_offered_deadline_missed[_the_writer_status]
@@ -241,7 +241,7 @@ namespace CSL_Test_Receiver_Impl
 
   void
   connector_status_receiver_exec_i::on_offered_incompatible_qos (
-      IDL::traits< ::DDS::DataWriter>::ref_type the_writer,
+      IDL::traits<::DDS::DataWriter>::ref_type the_writer,
       const ::DDS::OfferedIncompatibleQosStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : CSL_Test_Receiver_Impl::connector_status_receiver_exec_i::on_offered_incompatible_qos[_the_writer_status]
@@ -254,7 +254,7 @@ namespace CSL_Test_Receiver_Impl
 
   void
   connector_status_receiver_exec_i::on_unexpected_status (
-      IDL::traits< ::DDS::Entity>::ref_type the_entity,
+      IDL::traits<::DDS::Entity>::ref_type the_entity,
       ::DDS::StatusKind status_kind)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : CSL_Test_Receiver_Impl::connector_status_receiver_exec_i::on_unexpected_status[_the_entity_status_kind]
@@ -266,8 +266,8 @@ namespace CSL_Test_Receiver_Impl
         {
           this->on_liveliness_changed_thread_id_ = std::this_thread::get_id ();
 
-          IDL::traits< ::DDS::DataReader>::ref_type reader =
-            IDL::traits< ::DDS::DataReader>::narrow (the_entity);
+          IDL::traits<::DDS::DataReader>::ref_type reader =
+            IDL::traits<::DDS::DataReader>::narrow (the_entity);
           if (reader)
           {
             ::DDS::LivelinessChangedStatus lcs;
@@ -303,8 +303,8 @@ namespace CSL_Test_Receiver_Impl
         {
           this->on_subscription_matched_thread_id_ = std::this_thread::get_id ();
           // Extra check
-          IDL::traits< ::DDS::DataReader>::ref_type reader =
-            IDL::traits< ::DDS::DataReader>::narrow (the_entity);
+          IDL::traits<::DDS::DataReader>::ref_type reader =
+            IDL::traits<::DDS::DataReader>::narrow (the_entity);
           if (reader)
           {
             DDS::SubscriptionMatchedStatus sms;
@@ -565,7 +565,7 @@ namespace CSL_Test_Receiver_Impl
     // any status
     if ((this->assignment_ == ASSIGNMENT::ASSIGNMENT_INCOMPATIBLE_QOS) && (this->requested_incompatible_total_count_ == 0))
     {
-      IDL::traits< ::DDS::DataReader>::ref_type reader =
+      IDL::traits<::DDS::DataReader>::ref_type reader =
         this->context_->get_connection_info_get_dds_entity ();
       if (reader)
       {
@@ -592,20 +592,20 @@ namespace CSL_Test_Receiver_Impl
 
     if ((this->assignment_ == ASSIGNMENT::ASSIGNMENT_INCONSISTENT_TOPIC) && (this->inconsistent_topic_total_count_ == 0))
     {
-      IDL::traits< ::DDS::DataReader>::ref_type reader =
+      IDL::traits<::DDS::DataReader>::ref_type reader =
         this->context_->get_connection_info_get_dds_entity ();
       if (reader)
       {
         // Get the topic through the subscriber/domain participant by using the
         // topic name of the connector we are connected to
-        IDL::traits< ::DDS::Subscriber>::ref_type sub = reader->get_subscriber ();
-        IDL::traits< ::DDS::DomainParticipant>::ref_type dp = sub->get_participant ();
-        IDL::traits< ::CORBA::Object>::ref_type cmp = reader->_get_component ();
-        IDL::traits< ::CommonTestConnector::CCM_DDS_Event>::ref_type conn =
-          IDL::traits< ::CommonTestConnector::CCM_DDS_Event >::narrow (cmp);
+        IDL::traits<::DDS::Subscriber>::ref_type sub = reader->get_subscriber ();
+        IDL::traits<::DDS::DomainParticipant>::ref_type dp = sub->get_participant ();
+        IDL::traits<::CORBA::Object>::ref_type cmp = reader->_get_component ();
+        IDL::traits<::CommonTestConnector::CCM_DDS_Event>::ref_type conn =
+          IDL::traits<::CommonTestConnector::CCM_DDS_Event >::narrow (cmp);
 
         ::DDS::Duration_t timeout (0, 0);
-        IDL::traits< ::DDS::Topic>::ref_type tp = dp->find_topic(conn->topic_name(), timeout);
+        IDL::traits<::DDS::Topic>::ref_type tp = dp->find_topic(conn->topic_name(), timeout);
         ::DDS::InconsistentTopicStatus status {};
         ::DDS::ReturnCode_t const retcode = tp->get_inconsistent_topic_status (status);
 
@@ -629,7 +629,7 @@ namespace CSL_Test_Receiver_Impl
 
     if ((this->assignment_ == ASSIGNMENT::ASSIGNMENT_UNEXPECTED_STATUS) && (this->subscription_matched_total_count_ == 0))
     {
-      IDL::traits< ::DDS::DataReader>::ref_type reader =
+      IDL::traits<::DDS::DataReader>::ref_type reader =
         this->context_->get_connection_info_get_dds_entity ();
       if (reader)
       {
@@ -698,7 +698,7 @@ namespace CSL_Test_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : CSL_Test_Receiver_Impl::Receiver_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type
+  IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type
   Receiver_exec_i::get_info_get_status ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : CSL_Test_Receiver_Impl::Receiver_exec_i[get_info_get_status]
@@ -710,7 +710,7 @@ namespace CSL_Test_Receiver_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : CSL_Test_Receiver_Impl::Receiver_exec_i[get_info_get_status]
   }
 
-  IDL::traits< ::CCM_DDS::CCM_ConnectorStatusListener>::ref_type
+  IDL::traits<::CCM_DDS::CCM_ConnectorStatusListener>::ref_type
   Receiver_exec_i::get_connector_status_receiver ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : CSL_Test_Receiver_Impl::Receiver_exec_i[get_connector_status_receiver]

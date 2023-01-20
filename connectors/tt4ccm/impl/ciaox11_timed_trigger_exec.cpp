@@ -36,7 +36,7 @@ namespace CIAOX11_TT_TimedTrigger_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : CIAOX11_TT_TimedTrigger_Impl::tt_scheduler_exec_i[ctor]
   tt_scheduler_exec_i::tt_scheduler_exec_i (
-    IDL::traits< ::CIAOX11_TT::CCM_TimedTrigger_Context>::ref_type context)
+    IDL::traits<::CIAOX11_TT::CCM_TimedTrigger_Context>::ref_type context)
     : context_ (std::move (context))
   {
     CIAOX11_LOG_DEBUG ("tt_scheduler_exec_i::tt_scheduler_exec_i using orb reactor.");
@@ -128,9 +128,9 @@ namespace CIAOX11_TT_TimedTrigger_Impl
 
   /** Operations and attributes from tt_scheduler */
 
-  IDL::traits< ::CCM_TT::TT_Timer>::ref_type
+  IDL::traits<::CCM_TT::TT_Timer>::ref_type
   tt_scheduler_exec_i::schedule_trigger (
-      IDL::traits< ::CCM_TT::TT_Handler>::ref_type trigger_handler,
+      IDL::traits<::CCM_TT::TT_Handler>::ref_type trigger_handler,
       const ::CCM_TT::TT_Duration& trigger_delay)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : CIAOX11_TT_TimedTrigger_Impl::tt_scheduler_exec_i::schedule_trigger[_trigger_handler_trigger_delay]
@@ -145,9 +145,9 @@ namespace CIAOX11_TT_TimedTrigger_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : CIAOX11_TT_TimedTrigger_Impl::tt_scheduler_exec_i::schedule_trigger[_trigger_handler_trigger_delay]
   }
 
-  IDL::traits< ::CCM_TT::TT_Timer>::ref_type
+  IDL::traits<::CCM_TT::TT_Timer>::ref_type
   tt_scheduler_exec_i::schedule_repeated_trigger (
-      IDL::traits< ::CCM_TT::TT_Handler>::ref_type trigger_handler,
+      IDL::traits<::CCM_TT::TT_Handler>::ref_type trigger_handler,
       const ::CCM_TT::TT_Duration& start_delay,
       const ::CCM_TT::TT_Duration& interval,
       uint32_t max_rounds)
@@ -258,7 +258,7 @@ namespace CIAOX11_TT_TimedTrigger_Impl
   }
 
 
-  IDL::traits< ::CCM_TT::CCM_TT_Scheduler>::ref_type
+  IDL::traits<::CCM_TT::CCM_TT_Scheduler>::ref_type
   TimedTrigger_exec_i::get_tt_scheduler ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : CIAOX11_TT_TimedTrigger_Impl::TimedTrigger_exec_i[get_tt_scheduler]
@@ -278,7 +278,7 @@ namespace CIAOX11_TT_TimedTrigger_Impl
   {
     // Setting the context of this component.
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : CIAOX11_TT_TimedTrigger_Impl::TimedTrigger_exec_i[set_session_context]
-    this->context_ = IDL::traits< ::CIAOX11_TT::CCM_TimedTrigger_Context >::narrow (std::move(ctx));
+    this->context_ = IDL::traits<::CIAOX11_TT::CCM_TimedTrigger_Context >::narrow (std::move(ctx));
     //@@{__RIDL_REGEN_MARKER__} - END : CIAOX11_TT_TimedTrigger_Impl::TimedTrigger_exec_i[set_session_context]
   }
 

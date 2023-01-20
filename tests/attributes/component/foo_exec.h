@@ -480,8 +480,8 @@ namespace Foo_Impl
     void my_any_type (const ::any_type& my_any_type) override;
 
     /// Attribute my_foo_interface
-    IDL::traits< ::MyFoo>::ref_type my_foo_interface () override;
-    void my_foo_interface (IDL::traits< ::MyFoo>::ref_type my_foo_interface) override;
+    IDL::traits<::MyFoo>::ref_type my_foo_interface () override;
+    void my_foo_interface (IDL::traits<::MyFoo>::ref_type my_foo_interface) override;
     //@}
 
     /** @name Session component operations */
@@ -676,7 +676,7 @@ namespace Foo_Impl
     /// Class member storing value of my_any_type attribute
     ::any_type my_any_type_{};
     /// Class member storing value of my_foo_interface attribute
-    IDL::traits< ::MyFoo>::ref_type my_foo_interface_{};
+    IDL::traits<::MyFoo>::ref_type my_foo_interface_{};
     //@}
 
     /** @name Component facets. */

@@ -30,8 +30,8 @@ namespace Test_Receiver_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Receiver_Impl::info_out_data_listener_exec_i[ctor]
   info_out_data_listener_exec_i::info_out_data_listener_exec_i (
-    IDL::traits< ::Test::CCM_Receiver_Context>::ref_type context,
-    IDL::traits< ::Test::CCM_Receiver>::ref_type component_executor)
+    IDL::traits<::Test::CCM_Receiver_Context>::ref_type context,
+    IDL::traits<::Test::CCM_Receiver>::ref_type component_executor)
     : context_ (std::move (context))
     , component_executor_ (std::move (component_executor))
   {
@@ -104,7 +104,7 @@ namespace Test_Receiver_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Receiver_Impl::info_out_status_exec_i[ctor]
   info_out_status_exec_i::info_out_status_exec_i (
-    IDL::traits< ::Test::CCM_Receiver_Context>::ref_type context)
+    IDL::traits<::Test::CCM_Receiver_Context>::ref_type context)
     : context_ (std::move (context))
   {
   }
@@ -132,7 +132,7 @@ namespace Test_Receiver_Impl
 
   void
   info_out_status_exec_i::on_requested_deadline_missed (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::RequestedDeadlineMissedStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Receiver_Impl::info_out_status_exec_i::on_requested_deadline_missed[_the_reader_status]
@@ -143,7 +143,7 @@ namespace Test_Receiver_Impl
 
   void
   info_out_status_exec_i::on_sample_lost (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::SampleLostStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Receiver_Impl::info_out_status_exec_i::on_sample_lost[_the_reader_status]
@@ -237,14 +237,14 @@ namespace Test_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Test_Receiver_Impl::Receiver_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::Test::LatencyDataConnector::CCM_Listener>::ref_type
+  IDL::traits<::Test::LatencyDataConnector::CCM_Listener>::ref_type
   Receiver_exec_i::get_info_out_data_listener ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Receiver_Impl::Receiver_exec_i[get_info_out_data_listener]
     if (!this->info_out_data_listener_)
     {
       this->info_out_data_listener_ =
-          IDL::traits< ::Test::LatencyDataConnector::CCM_Listener>::make_reference <info_out_data_listener_exec_i> (
+          IDL::traits<::Test::LatencyDataConnector::CCM_Listener>::make_reference <info_out_data_listener_exec_i> (
               this->context_,
               IDL::traits<::Test::CCM_Receiver>::narrow (this->_lock()));
     }
@@ -252,13 +252,13 @@ namespace Test_Receiver_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : Test_Receiver_Impl::Receiver_exec_i[get_info_out_data_listener]
   }
 
-  IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type
+  IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type
   Receiver_exec_i::get_info_out_status ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Receiver_Impl::Receiver_exec_i[get_info_out_status]
     if (!this->info_out_status_)
     {
-      this->info_out_status_ = IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::make_reference <info_out_status_exec_i> (this->context_);
+      this->info_out_status_ = IDL::traits<::CCM_DDS::CCM_PortStatusListener>::make_reference <info_out_status_exec_i> (this->context_);
     }
     return this->info_out_status_;
   //@@{__RIDL_REGEN_MARKER__} - END : Test_Receiver_Impl::Receiver_exec_i[get_info_out_status]
@@ -271,7 +271,7 @@ namespace Test_Receiver_Impl
   {
     // Setting the context of this component.
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Receiver_Impl::Receiver_exec_i[set_session_context]
-    this->context_ = IDL::traits< ::Test::CCM_Receiver_Context>::narrow (std::move(ctx));
+    this->context_ = IDL::traits<::Test::CCM_Receiver_Context>::narrow (std::move(ctx));
     //@@{__RIDL_REGEN_MARKER__} - END : Test_Receiver_Impl::Receiver_exec_i[set_session_context]
   }
 
@@ -286,7 +286,7 @@ extern "C" void
 create_Test_Receiver_Impl (
   IDL::traits<Components::EnterpriseComponent>::ref_type& component)
 {
-  component = IDL::traits< ::Test::CCM_Receiver>::make_reference < Test_Receiver_Impl::Receiver_exec_i > ();
+  component = IDL::traits<::Test::CCM_Receiver>::make_reference < Test_Receiver_Impl::Receiver_exec_i > ();
 }
 //@@{__RIDL_REGEN_MARKER__} - END : Test_Receiver_Impl[factory]
 //@@{__RIDL_REGEN_MARKER__} - BEGIN : latency_receiver_impl.cpp[Footer]

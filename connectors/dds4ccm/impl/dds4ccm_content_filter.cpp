@@ -30,17 +30,17 @@ namespace CIAOX11
 
       this->filter_ = filter;
       DDS4CCM_LOG_DEBUG ("CCM_DDS_ContentFilterSetting_i::filter - "
-        << IDL::traits< ::CCM_DDS::QueryFilter>::write (filter));
+        << IDL::traits<::CCM_DDS::QueryFilter>::write (filter));
     }
 
-    IDL::traits< ::DDS::ContentFilteredTopic>::ref_type
+    IDL::traits<::DDS::ContentFilteredTopic>::ref_type
     CCM_DDS_ContentFilterSetting_i::create_contentfilteredtopic (
-      IDL::traits< ::DDS::Topic>::ref_type topic,
-      IDL::traits< ::DDS::Subscriber>::ref_type subscriber)
+      IDL::traits<::DDS::Topic>::ref_type topic,
+      IDL::traits<::DDS::Subscriber>::ref_type subscriber)
     {
       DDS4CCM_LOG_TRACE ("CCM_DDS_ContentFilterSetting_i::create_contentfilteredtopic");
 
-      IDL::traits< ::DDS::DomainParticipant>::ref_type dp = subscriber->get_participant ();
+      IDL::traits<::DDS::DomainParticipant>::ref_type dp = subscriber->get_participant ();
 
       if (!dp)
       {
@@ -86,12 +86,12 @@ namespace CIAOX11
 
     void
     CCM_DDS_ContentFilterSetting_i::delete_contentfilteredtopic (
-      IDL::traits< ::DDS::Subscriber>::ref_type subscriber)
+      IDL::traits<::DDS::Subscriber>::ref_type subscriber)
     {
       DDS4CCM_LOG_TRACE (
         "CCM_DDS_ContentFilterSetting_i::delete_contentfilteredtopic");
 
-      IDL::traits< ::DDS::DomainParticipant>::ref_type dp = subscriber->get_participant ();
+      IDL::traits<::DDS::DomainParticipant>::ref_type dp = subscriber->get_participant ();
 
       if (dp && this->cft_)
       {
@@ -112,7 +112,7 @@ namespace CIAOX11
             "CCM_DDS_ContentFilterSetting_i::delete_contentfilteredtopic: "
             << "Error deleting ContentFilteredTopic <"
             << name << ">: <"
-            << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+            << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
             << ">.");
           throw CCM_DDS::InternalError (retcode, 0);
         }
@@ -145,7 +145,7 @@ namespace CIAOX11
       {
         DDS4CCM_LOG_ERROR("CCM_DDS_ContentFilterSetting_i::set_filter_parameters: "
           << "Error setting filter parameters: <"
-          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+          << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">.");
 
         throw CCM_DDS::InternalError (retcode, 0);

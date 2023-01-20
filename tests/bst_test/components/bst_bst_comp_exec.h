@@ -39,7 +39,7 @@ namespace BST_BST_comp_Impl
 
   /// Component Executor Implementation Class : BST_comp_exec_i
   class BST_comp_exec_i final
-    : public virtual IDL::traits< ::BST::CCM_BST_comp>::base_type
+    : public virtual IDL::traits<::BST::CCM_BST_comp>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : BST_BST_comp_Impl::BST_comp_exec_i[ctor]
@@ -99,7 +99,7 @@ namespace BST_BST_comp_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::BST::CCM_BST_comp_Context>::ref_type context_;
+    IDL::traits<::BST::CCM_BST_comp_Context>::ref_type context_;
 
     /** @name Component attributes. */
     //@{

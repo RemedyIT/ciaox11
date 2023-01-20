@@ -38,7 +38,7 @@ namespace PSDD
     {
     public:
       Context_Impl () = default;
-      virtual ~Context_Impl ();
+      ~Context_Impl () override;
 
       void
       initialize (const Config&);
@@ -63,11 +63,11 @@ namespace PSDD
 
       void
       schedule_listener (
-          IDL::traits< ::PSDD::ZMQ::Listener>::ref_type l);
+          IDL::traits<::PSDD::ZMQ::Listener>::ref_type l);
 
       void
       remove_listener (
-          IDL::traits< ::PSDD::ZMQ::Listener>::ref_type l);
+          IDL::traits<::PSDD::ZMQ::Listener>::ref_type l);
 
       void
       reset_listeners ();

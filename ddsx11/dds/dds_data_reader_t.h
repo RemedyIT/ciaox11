@@ -49,14 +49,14 @@ namespace DDSX11
       SEQ_TYPE & data_values,
       ::DDS::SampleInfoSeq & sample_infos,
       int32_t max_samples,
-      IDL::traits< ::DDS::ReadCondition>::ref_type a_condition) override;
+      IDL::traits<::DDS::ReadCondition>::ref_type a_condition) override;
 
     ::DDS::ReturnCode_t
     take_w_condition (
       SEQ_TYPE & data_values,
       ::DDS::SampleInfoSeq & sample_infos,
       int32_t max_samples,
-      IDL::traits< ::DDS::ReadCondition>::ref_type a_condition) override;
+      IDL::traits<::DDS::ReadCondition>::ref_type a_condition) override;
 
     ::DDS::ReturnCode_t
     read_next_sample (
@@ -94,7 +94,7 @@ namespace DDSX11
       ::DDS::SampleInfoSeq& sample_infos,
       int32_t max_samples,
       const ::DDS::InstanceHandle_t& a_handle,
-      IDL::traits< ::DDS::ReadCondition>::ref_type a_condition) override;
+      IDL::traits<::DDS::ReadCondition>::ref_type a_condition) override;
 
     ::DDS::ReturnCode_t
     take_instance_w_condition (
@@ -102,7 +102,7 @@ namespace DDSX11
       ::DDS::SampleInfoSeq& sample_infos,
       int32_t max_samples,
       const ::DDS::InstanceHandle_t& a_handle,
-      IDL::traits< ::DDS::ReadCondition>::ref_type a_condition) override;
+      IDL::traits<::DDS::ReadCondition>::ref_type a_condition) override;
 
     ::DDS::ReturnCode_t
     read_next_instance (
@@ -130,7 +130,7 @@ namespace DDSX11
       ::DDS::SampleInfoSeq & sample_infos,
       int32_t max_samples,
       const ::DDS::InstanceHandle_t& previous_handle,
-      IDL::traits< ::DDS::ReadCondition>::ref_type a_condition) override;
+      IDL::traits<::DDS::ReadCondition>::ref_type a_condition) override;
 
     ::DDS::ReturnCode_t
     take_next_instance_w_condition (
@@ -138,7 +138,7 @@ namespace DDSX11
       ::DDS::SampleInfoSeq & sample_infos,
       int32_t max_samples,
       const ::DDS::InstanceHandle_t& previous_handle,
-      IDL::traits< ::DDS::ReadCondition>::ref_type a_condition) override;
+      IDL::traits<::DDS::ReadCondition>::ref_type a_condition) override;
 
     ::DDS::ReturnCode_t
     return_loan (
@@ -156,19 +156,19 @@ namespace DDSX11
 
     ::DDS::ReturnCode_t enable () override;
 
-    IDL::traits< ::DDS::StatusCondition>::ref_type get_statuscondition () override;
+    IDL::traits<::DDS::StatusCondition>::ref_type get_statuscondition () override;
 
     ::DDS::StatusMask get_status_changes () override;
 
     ::DDS::InstanceHandle_t get_instance_handle () override;
 
-    IDL::traits< ::DDS::ReadCondition>::ref_type
+    IDL::traits<::DDS::ReadCondition>::ref_type
     create_readcondition (
       ::DDS::SampleStateMask sample_states,
       ::DDS::ViewStateMask view_states,
       ::DDS::InstanceStateMask instance_states) override;
 
-    IDL::traits< ::DDS::QueryCondition>::ref_type
+    IDL::traits<::DDS::QueryCondition>::ref_type
     create_querycondition (
       ::DDS::SampleStateMask sample_states,
       ::DDS::ViewStateMask view_states,
@@ -178,7 +178,7 @@ namespace DDSX11
 
     ::DDS::ReturnCode_t
     delete_readcondition (
-      IDL::traits< ::DDS::ReadCondition>::ref_type a_condition) override;
+      IDL::traits<::DDS::ReadCondition>::ref_type a_condition) override;
 
     ::DDS::ReturnCode_t delete_contained_entities () override;
 
@@ -190,16 +190,16 @@ namespace DDSX11
 
     ::DDS::ReturnCode_t
     set_listener (
-      IDL::traits< ::DDS::DataReaderListener>::ref_type a_listener,
+      IDL::traits<::DDS::DataReaderListener>::ref_type a_listener,
       ::DDS::StatusMask mask) override;
 
-    IDL::traits< ::DDS::DataReaderListener>::ref_type
+    IDL::traits<::DDS::DataReaderListener>::ref_type
     get_listener () override;
 
-    IDL::traits< ::DDS::TopicDescription>::ref_type
+    IDL::traits<::DDS::TopicDescription>::ref_type
     get_topicdescription () override;
 
-    IDL::traits< ::DDS::Subscriber>::ref_type
+    IDL::traits<::DDS::Subscriber>::ref_type
     get_subscriber () override;
 
     ::DDS::ReturnCode_t

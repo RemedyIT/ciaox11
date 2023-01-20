@@ -26,23 +26,23 @@ namespace Hello_Sender_Impl
          : public IDL::traits<CCM_TT::TT_Handler>::base_type
   {
   public:
-    explicit TT_Callback (IDL::traits< ::Hello::CCM_Sender>::weak_ref_type component_executor)
+    explicit TT_Callback (IDL::traits<::Hello::CCM_Sender>::weak_ref_type component_executor)
     : component_executor_(component_executor)
     {}
 
     void
     on_trigger (
-       IDL::traits< ::CCM_TT::TT_Timer>::ref_type timer,
+       IDL::traits<::CCM_TT::TT_Timer>::ref_type timer,
        const ::CCM_TT::TT_Duration& time,
        uint32_t round) override;
 
    private:
-     IDL::traits< ::Hello::CCM_Sender>::weak_ref_type component_executor_;
+     IDL::traits<::Hello::CCM_Sender>::weak_ref_type component_executor_;
   };
 
   void
   TT_Callback::on_trigger (
-     IDL::traits< ::CCM_TT::TT_Timer>::ref_type timer,
+     IDL::traits<::CCM_TT::TT_Timer>::ref_type timer,
      const ::CCM_TT::TT_Duration& time,
      uint32_t round)
   {
@@ -68,7 +68,7 @@ namespace Hello_Sender_Impl
     CIAOX11_TEST_INFO << "Sender:\t->get_connection_sendc_run_my_foo "
       << std::endl;
 
-    IDL::traits< ::Hello::AMI4CCM_MyFoo>::ref_type my_foo_ami  =
+    IDL::traits<::Hello::AMI4CCM_MyFoo>::ref_type my_foo_ami  =
       this->ciao_context_->get_connection_sendc_run_my_foo ();
 
     if (!my_foo_ami)
@@ -77,7 +77,7 @@ namespace Hello_Sender_Impl
                         << "returns null" << std::endl;
       return 1;
     }
-    IDL::traits< ::Hello::AMI4CCM_MyFooReplyHandler>::ref_type cb =
+    IDL::traits<::Hello::AMI4CCM_MyFooReplyHandler>::ref_type cb =
       CORBA::make_reference<AMI4CCM_MyFooReplyHandler_run_my_foo_i> ();
 
     my_foo_ami->sendc_foo (cb,"Do something asynchronous");
@@ -92,7 +92,7 @@ namespace Hello_Sender_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl::connector_status_exec_i[ctor]
   connector_status_exec_i::connector_status_exec_i (
-    IDL::traits< ::Hello::CCM_Sender_Context>::ref_type context)
+    IDL::traits<::Hello::CCM_Sender_Context>::ref_type context)
     : context_ (std::move (context))
   {
   }
@@ -120,7 +120,7 @@ namespace Hello_Sender_Impl
 
   void
   connector_status_exec_i::on_inconsistent_topic (
-      IDL::traits< ::DDS::Topic>::ref_type the_topic,
+      IDL::traits<::DDS::Topic>::ref_type the_topic,
       const ::DDS::InconsistentTopicStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl::connector_status_exec_i::on_inconsistent_topic[_the_topic_status]
@@ -131,7 +131,7 @@ namespace Hello_Sender_Impl
 
   void
   connector_status_exec_i::on_requested_incompatible_qos (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::RequestedIncompatibleQosStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl::connector_status_exec_i::on_requested_incompatible_qos[_the_reader_status]
@@ -142,7 +142,7 @@ namespace Hello_Sender_Impl
 
   void
   connector_status_exec_i::on_sample_rejected (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::SampleRejectedStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl::connector_status_exec_i::on_sample_rejected[_the_reader_status]
@@ -153,7 +153,7 @@ namespace Hello_Sender_Impl
 
   void
   connector_status_exec_i::on_offered_deadline_missed (
-      IDL::traits< ::DDS::DataWriter>::ref_type the_writer,
+      IDL::traits<::DDS::DataWriter>::ref_type the_writer,
       const ::DDS::OfferedDeadlineMissedStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl::connector_status_exec_i::on_offered_deadline_missed[_the_writer_status]
@@ -164,7 +164,7 @@ namespace Hello_Sender_Impl
 
   void
   connector_status_exec_i::on_offered_incompatible_qos (
-      IDL::traits< ::DDS::DataWriter>::ref_type the_writer,
+      IDL::traits<::DDS::DataWriter>::ref_type the_writer,
       const ::DDS::OfferedIncompatibleQosStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl::connector_status_exec_i::on_offered_incompatible_qos[_the_writer_status]
@@ -175,7 +175,7 @@ namespace Hello_Sender_Impl
 
   void
   connector_status_exec_i::on_unexpected_status (
-      IDL::traits< ::DDS::Entity>::ref_type the_entity,
+      IDL::traits<::DDS::Entity>::ref_type the_entity,
       ::DDS::StatusKind status_kind)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl::connector_status_exec_i::on_unexpected_status[_the_entity_status_kind]
@@ -258,7 +258,7 @@ namespace Hello_Sender_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Sender_Impl::Sender_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::CCM_DDS::CCM_ConnectorStatusListener>::ref_type
+  IDL::traits<::CCM_DDS::CCM_ConnectorStatusListener>::ref_type
   Sender_exec_i::get_connector_status ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl::Sender_exec_i[get_connector_status]
@@ -329,7 +329,7 @@ namespace Hello_Sender_Impl
   {
     // Setting the context of this component.
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl::Sender_exec_i[set_session_context]
-    this->context_ = IDL::traits< ::Hello::CCM_Sender_Context >::narrow (std::move(ctx));
+    this->context_ = IDL::traits<::Hello::CCM_Sender_Context >::narrow (std::move(ctx));
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Sender_Impl::Sender_exec_i[set_session_context]
   }
 

@@ -23,17 +23,17 @@ namespace CIAOX11
       /* Provides for creation of middleware extended entities.
        */
       template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
-      typename IDL::traits< ::PSDD::Publisher_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>>::ref_type
+      typename IDL::traits<::PSDD::Publisher_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>>::ref_type
       create_publisher ();
 
       template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
-      typename IDL::traits< ::PSDD::Subscriber_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>>::ref_type
+      typename IDL::traits<::PSDD::Subscriber_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>>::ref_type
       create_subscriber ();
 
       template <typename CCM_TYPE>
       std::shared_ptr<typename CCM_TYPE::service_helper_type>
       create_service_helper (
-          IDL::traits< ::Components::SessionContext>::ref_type,
+          IDL::traits<::Components::SessionContext>::ref_type,
           bool publish,
           bool subscribe);
     }

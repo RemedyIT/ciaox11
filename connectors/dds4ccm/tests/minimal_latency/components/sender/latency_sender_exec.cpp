@@ -77,8 +77,8 @@ namespace Test_Sender_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::info_recv_data_listener_exec_i[ctor]
   info_recv_data_listener_exec_i::info_recv_data_listener_exec_i (
-    IDL::traits< ::Test::CCM_Sender_Context>::ref_type context,
-    IDL::traits< ::Test::CCM_Sender>::ref_type component_executor)
+    IDL::traits<::Test::CCM_Sender_Context>::ref_type context,
+    IDL::traits<::Test::CCM_Sender>::ref_type component_executor)
     : context_ (std::move (context))
     , component_executor_ (std::move (component_executor))
   {
@@ -153,7 +153,7 @@ namespace Test_Sender_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::info_recv_status_exec_i[ctor]
   info_recv_status_exec_i::info_recv_status_exec_i (
-    IDL::traits< ::Test::CCM_Sender_Context>::ref_type context)
+    IDL::traits<::Test::CCM_Sender_Context>::ref_type context)
     : context_ (std::move (context))
   {
   }
@@ -206,8 +206,8 @@ namespace Test_Sender_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::connector_status_exec_i[ctor]
   connector_status_exec_i::connector_status_exec_i (
-    IDL::traits< ::Test::CCM_Sender_Context>::ref_type context,
-    IDL::traits< ::Test::CCM_Sender>::ref_type component_executor)
+    IDL::traits<::Test::CCM_Sender_Context>::ref_type context,
+    IDL::traits<::Test::CCM_Sender>::ref_type component_executor)
     : context_ (std::move (context))
     , component_executor_ (std::move (component_executor))
   {
@@ -344,7 +344,7 @@ namespace Test_Sender_Impl
   void
   Sender_exec_i::check_status ()
   {
-    IDL::traits< ::DDS::DataWriter>::ref_type writer_dds_entity =
+    IDL::traits<::DDS::DataWriter>::ref_type writer_dds_entity =
       this->context_->get_connection_info_write_dds_entity ();
     if (writer_dds_entity)
     {
@@ -355,7 +355,7 @@ namespace Test_Sender_Impl
       {
         DDS4CCM_TEST_ERROR <<"Sender_exec_i::check_status - "
           << "Error: Unable to get_publication_matched_status: <"
-          << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+          << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
           << ">." << std::endl;
       }
       else
@@ -712,7 +712,7 @@ namespace Test_Sender_Impl
     try
     {
       this->writer_ = this->context_->get_connection_info_write_data ();
-      IDL::traits< ::CCM_DDS::DataListenerControl>::ref_type dlc =
+      IDL::traits<::CCM_DDS::DataListenerControl>::ref_type dlc =
           this->context_->get_connection_info_recv_data_control ();
       dlc->mode (::CCM_DDS::ListenerMode::ONE_BY_ONE);
 
@@ -796,7 +796,7 @@ namespace Test_Sender_Impl
     if (!this->info_recv_data_listener_)
     {
       this->info_recv_data_listener_ =
-          IDL::traits< ::Test::LatencyDataConnector::CCM_Listener>::make_reference <info_recv_data_listener_exec_i> (
+          IDL::traits<::Test::LatencyDataConnector::CCM_Listener>::make_reference <info_recv_data_listener_exec_i> (
               this->context_,
               IDL::traits<Test::CCM_Sender>::narrow (this->_lock()));
     }
@@ -811,7 +811,7 @@ namespace Test_Sender_Impl
     if (!this->info_recv_status_)
     {
       this->info_recv_status_ =
-          IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::make_reference <info_recv_status_exec_i> (
+          IDL::traits<::CCM_DDS::CCM_PortStatusListener>::make_reference <info_recv_status_exec_i> (
               this->context_);
     }
     return this->info_recv_status_;
@@ -825,7 +825,7 @@ namespace Test_Sender_Impl
     if (!this->connector_status_)
     {
       this->connector_status_ =
-          IDL::traits< ::CCM_DDS::CCM_ConnectorStatusListener>::make_reference <connector_status_exec_i> (
+          IDL::traits<::CCM_DDS::CCM_ConnectorStatusListener>::make_reference <connector_status_exec_i> (
               this->context_,
               IDL::traits<Test::CCM_Sender>::narrow (this->_lock()));
     }
@@ -926,7 +926,7 @@ namespace Test_Sender_Impl
   {
     // Setting the context of this component.
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::Sender_exec_i[set_session_context]
-    this->context_ = IDL::traits< ::Test::CCM_Sender_Context>::narrow (std::move(ctx));
+    this->context_ = IDL::traits<::Test::CCM_Sender_Context>::narrow (std::move(ctx));
     //@@{__RIDL_REGEN_MARKER__} - END : Test_Sender_Impl::Sender_exec_i[set_session_context]
   }
 
@@ -941,7 +941,7 @@ extern "C" void
 create_Test_Sender_Impl (
   IDL::traits<Components::EnterpriseComponent>::ref_type& component)
 {
-  component = IDL::traits< ::Test::CCM_Sender>::make_reference < Test_Sender_Impl::Sender_exec_i > ();
+  component = IDL::traits<::Test::CCM_Sender>::make_reference < Test_Sender_Impl::Sender_exec_i > ();
 }
 //@@{__RIDL_REGEN_MARKER__} - END : Test_Sender_Impl[factory]
 //@@{__RIDL_REGEN_MARKER__} - BEGIN : latency_sender_impl.cpp[Footer]

@@ -56,7 +56,7 @@
 %   end
     {}
 
-    ~<%= operation.cxxname %>_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Executor () = default;
+    ~<%= operation.cxxname %>_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Executor () override = default;
 
     void
     execute_i () noexcept(true) override
@@ -119,7 +119,7 @@
       excep_holder_(std::move (excep_holder))
     {}
 
-    ~<%= operation.cxxname %>_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Excep_Executor () = default;
+    ~<%= operation.cxxname %>_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Excep_Executor () override = default;
 
     void
     execute_i () noexcept(true) override

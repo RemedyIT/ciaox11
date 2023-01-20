@@ -29,7 +29,7 @@ namespace CIAOX11
     public:
       explicit DataReaderContextSwitch_T (
         typename IDL::traits<LISTENER>::ref_type drl,
-        IDL::traits< ::DDS::DataReader>::ref_type dr,
+        IDL::traits<::DDS::DataReader>::ref_type dr,
         typename IDL::traits<DATA_LISTENER>::weak_ref_type dl);
       ~DataReaderContextSwitch_T () override = default;
 
@@ -37,7 +37,7 @@ namespace CIAOX11
 
       static void handle_event (
         typename IDL::traits<LISTENER>::ref_type drl,
-        IDL::traits< ::DDS::DataReader>::ref_type dr,
+        IDL::traits<::DDS::DataReader>::ref_type dr,
         typename IDL::traits<DATA_LISTENER>::ref_type dl);
 
     private:
@@ -46,7 +46,7 @@ namespace CIAOX11
       /// All strong references are managed in the DDS proxy. We therefor need
       /// to use a weak_ref_type here otherwise we would extend the lifecycle
       /// of the DataReader here
-      IDL::traits< ::DDS::DataReader>::weak_ref_type dr_;
+      IDL::traits<::DDS::DataReader>::weak_ref_type dr_;
 
       typename IDL::traits<DATA_LISTENER>::weak_ref_type dl_;
 

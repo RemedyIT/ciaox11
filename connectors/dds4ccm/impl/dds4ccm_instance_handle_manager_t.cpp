@@ -43,7 +43,7 @@ namespace CIAOX11
     template <typename BASE_TYPE, typename TOPIC_TYPE>
     void
     InstanceHandleManager_T<BASE_TYPE, TOPIC_TYPE>::set_dds_writer (
-      IDL::traits< ::DDS::DataWriter>::ref_type dds_writer)
+      IDL::traits<::DDS::DataWriter>::ref_type dds_writer)
     {
       DDS4CCM_LOG_TRACE ("InstanceHandleManager_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::set_dds_writer");
 
@@ -59,7 +59,7 @@ namespace CIAOX11
     }
 
     template <typename BASE_TYPE, typename TOPIC_TYPE>
-    IDL::traits< ::DDS::DataWriter>::ref_type
+    IDL::traits<::DDS::DataWriter>::ref_type
     InstanceHandleManager_T<BASE_TYPE, TOPIC_TYPE>::get_dds_writer ()
     {
       return this->dds_writer_;

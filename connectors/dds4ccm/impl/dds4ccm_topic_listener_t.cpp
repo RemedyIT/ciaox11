@@ -23,13 +23,13 @@ namespace CIAOX11
     template <typename EVT_STRATEGY>
     void
     TopicListener_T<EVT_STRATEGY>::on_inconsistent_topic (
-      IDL::traits< ::DDS::Topic>::ref_type the_topic,
+      IDL::traits<::DDS::Topic>::ref_type the_topic,
       const ::DDS::InconsistentTopicStatus & status)
     {
       DDS4CCM_LOG_TRACE("TopicListener_T::on_inconsistent_topic");
 
       DDS4CCM_LOG_DEBUG ("TopicListener_T::on_inconsistent_topic - "
-        << IDL::traits< ::DDS::InconsistentTopicStatus>::write (status));
+        << IDL::traits<::DDS::InconsistentTopicStatus>::write (status));
 
       this->evs_.handle_inconsistent_topic_event (the_topic, status);
     }
@@ -50,7 +50,7 @@ namespace CIAOX11
 
       DDS4CCM_LOG_DEBUG ("TopicListener_T::get_mask - "
         << "Mask becomes <"
-        << IDL::traits< ::DDS::StatusMask>::write<status_mask_formatter> (mask)
+        << IDL::traits<::DDS::StatusMask>::write<status_mask_formatter> (mask)
         << ">.");
       return mask;
     }

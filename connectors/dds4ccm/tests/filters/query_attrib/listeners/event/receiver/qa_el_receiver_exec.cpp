@@ -114,7 +114,7 @@ namespace QA_Event_Listen_Test_Receiver_Impl
 
   void
   listen_port_1_status_exec_i::on_requested_deadline_missed (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::RequestedDeadlineMissedStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : QA_Event_Listen_Test_Receiver_Impl::listen_port_1_status_exec_i::on_requested_deadline_missed[_the_reader_status]
@@ -125,7 +125,7 @@ namespace QA_Event_Listen_Test_Receiver_Impl
 
   void
   listen_port_1_status_exec_i::on_sample_lost (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::SampleLostStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : QA_Event_Listen_Test_Receiver_Impl::listen_port_1_status_exec_i::on_sample_lost[_the_reader_status]
@@ -225,7 +225,7 @@ namespace QA_Event_Listen_Test_Receiver_Impl
 
   void
   listen_port_2_status_exec_i::on_requested_deadline_missed (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::RequestedDeadlineMissedStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : QA_Event_Listen_Test_Receiver_Impl::listen_port_2_status_exec_i::on_requested_deadline_missed[_the_reader_status]
@@ -236,7 +236,7 @@ namespace QA_Event_Listen_Test_Receiver_Impl
 
   void
   listen_port_2_status_exec_i::on_sample_lost (
-      IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+      IDL::traits<::DDS::DataReader>::ref_type the_reader,
       const ::DDS::SampleLostStatus& status)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : QA_Event_Listen_Test_Receiver_Impl::listen_port_2_status_exec_i::on_sample_lost[_the_reader_status]
@@ -296,7 +296,7 @@ namespace QA_Event_Listen_Test_Receiver_Impl
     reader_2->query (CCM_DDS::QueryFilter (QUERY_LISTENER_II, params));
 
     // Start the listeners
-    IDL::traits< ::CCM_DDS::DataListenerControl>::ref_type lc_1 =
+    IDL::traits<::CCM_DDS::DataListenerControl>::ref_type lc_1 =
       this->context_->get_connection_listen_port_1_data_control ();
     if (!lc_1)
     {
@@ -306,7 +306,7 @@ namespace QA_Event_Listen_Test_Receiver_Impl
     }
     lc_1->mode (::CCM_DDS::ListenerMode::ONE_BY_ONE);
 
-    IDL::traits< ::CCM_DDS::DataListenerControl>::ref_type lc_2 =
+    IDL::traits<::CCM_DDS::DataListenerControl>::ref_type lc_2 =
       this->context_->get_connection_listen_port_2_data_control ();
     if (!lc_2)
     {
@@ -359,7 +359,7 @@ namespace QA_Event_Listen_Test_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : QA_Event_Listen_Test_Receiver_Impl::Receiver_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::CommonTestConnector::CCM_Listener>::ref_type
+  IDL::traits<::CommonTestConnector::CCM_Listener>::ref_type
   Receiver_exec_i::get_listen_port_1_data_listener ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : QA_Event_Listen_Test_Receiver_Impl::Receiver_exec_i[get_listen_port_1_data_listener]
@@ -373,7 +373,7 @@ namespace QA_Event_Listen_Test_Receiver_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : QA_Event_Listen_Test_Receiver_Impl::Receiver_exec_i[get_listen_port_1_data_listener]
   }
 
-  IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type
+  IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type
   Receiver_exec_i::get_listen_port_1_status ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : QA_Event_Listen_Test_Receiver_Impl::Receiver_exec_i[get_listen_port_1_status]
@@ -385,7 +385,7 @@ namespace QA_Event_Listen_Test_Receiver_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : QA_Event_Listen_Test_Receiver_Impl::Receiver_exec_i[get_listen_port_1_status]
   }
 
-  IDL::traits< ::CommonTestConnector::CCM_Listener>::ref_type
+  IDL::traits<::CommonTestConnector::CCM_Listener>::ref_type
   Receiver_exec_i::get_listen_port_2_data_listener ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : QA_Event_Listen_Test_Receiver_Impl::Receiver_exec_i[get_listen_port_2_data_listener]
@@ -399,7 +399,7 @@ namespace QA_Event_Listen_Test_Receiver_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : QA_Event_Listen_Test_Receiver_Impl::Receiver_exec_i[get_listen_port_2_data_listener]
   }
 
-  IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type
+  IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type
   Receiver_exec_i::get_listen_port_2_status ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : QA_Event_Listen_Test_Receiver_Impl::Receiver_exec_i[get_listen_port_2_status]

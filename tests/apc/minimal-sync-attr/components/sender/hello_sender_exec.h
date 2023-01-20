@@ -47,14 +47,14 @@ namespace Hello_Sender_Impl
 
   /// Executor implementation class for foo_port_s_foo_prov facet
   class foo_port_s_foo_prov_exec_i final
-    : public IDL::traits< ::Hello::CCM_PortFooS>::base_type
+    : public IDL::traits<::Hello::CCM_PortFooS>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl::foo_port_s_foo_prov_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
     foo_port_s_foo_prov_exec_i (
-        IDL::traits< ::Hello::CCM_Sender_Context>::ref_type context);
+        IDL::traits<::Hello::CCM_Sender_Context>::ref_type context);
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Sender_Impl::foo_port_s_foo_prov_exec_i[ctor]
 
     /// Destructor
@@ -77,7 +77,7 @@ namespace Hello_Sender_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::Hello::CCM_Sender_Context>::ref_type context_;
+    IDL::traits<::Hello::CCM_Sender_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -96,7 +96,7 @@ namespace Hello_Sender_Impl
 
   /// Component Executor Implementation Class : Sender_exec_i
   class Sender_exec_i final
-    : public virtual IDL::traits< ::Hello::CCM_Sender>::base_type
+    : public virtual IDL::traits<::Hello::CCM_Sender>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl::Sender_exec_i[ctor]
@@ -111,7 +111,7 @@ namespace Hello_Sender_Impl
 
     /// Factory method and getter for the foo_port_s_foo_prov facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< ::Hello::CCM_PortFooS>::ref_type get_foo_port_s_foo_prov () override;
+    IDL::traits<::Hello::CCM_PortFooS>::ref_type get_foo_port_s_foo_prov () override;
     //@}
 
     /** @name Supported attributes. */
@@ -171,7 +171,7 @@ namespace Hello_Sender_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::Hello::CCM_Sender_Context>::ref_type context_;
+    IDL::traits<::Hello::CCM_Sender_Context>::ref_type context_;
 
     /** @name Component attributes. */
     //@{
@@ -191,7 +191,7 @@ namespace Hello_Sender_Impl
 
     /** @name Component facets. */
     //@{
-    IDL::traits< ::Hello::CCM_PortFooS>::ref_type foo_port_s_foo_prov_;
+    IDL::traits<::Hello::CCM_PortFooS>::ref_type foo_port_s_foo_prov_;
     //@}
 
     /** @name User defined members. */

@@ -36,7 +36,7 @@ namespace CIAOX11
       protected:
         EventStrategyBase (const Components::ConfigValues &config)
         {
-          DDS4CCM_LOG_TRACE ("ExF::EventStrategyBase::" << "ctor");
+          DDS4CCM_LOG_TRACE ("ExF::EventStrategyBase::ctor");
 
           // check for scheduling lane
           for (const Components::ConfigValue& cval : config)
@@ -54,11 +54,10 @@ namespace CIAOX11
             }
           }
         }
-        EventStrategyBase (const EventStrategyBase& evs)
-          : scheduling_lane_ (evs.scheduling_lane_) {}
+        EventStrategyBase (const EventStrategyBase& evs) = default;
 
       public:
-        virtual ~EventStrategyBase () {}
+        virtual ~EventStrategyBase () = default;
 
       private:
         EventStrategyBase (EventStrategyBase&&) = delete;
@@ -94,7 +93,6 @@ namespace CIAOX11
             if (CIAOX11::ExF::Util::get_exf_defaults (
                     config, def_prio, def_deadline))
             {
-
               this->unexpected_status_deadline_ = def_deadline;
               this->unexpected_status_priority_ = def_prio;
               this->requested_incompatible_qos_deadline_ = def_deadline;
@@ -110,7 +108,6 @@ namespace CIAOX11
             }
 
             // check for scheduling properties
-
             CIAOX11::ExF::Util::get_exf_settings (
                 config,
                 "unexpected_status",
@@ -165,12 +162,12 @@ namespace CIAOX11
           , offered_incompatible_qos_deadline_ (evs.offered_incompatible_qos_deadline_)
           , offered_incompatible_qos_priority_ (evs.offered_incompatible_qos_priority_)
         {}
-        virtual ~ErrorEventStrategy_T () = default;
+        ~ErrorEventStrategy_T () override = default;
 
         // on_unexpected_status
         void
         handle_unexpected_status_event (
-            IDL::traits< ::DDS::Entity>::ref_type entity,
+            IDL::traits<::DDS::Entity>::ref_type entity,
             ::DDS::StatusKind status_kind)
         {
           if (!this->error_listener_connected_)
@@ -203,7 +200,7 @@ namespace CIAOX11
         // on_requested_incompatible_qos
         void
         handle_requested_incompatible_qos_event (
-            IDL::traits< ::DDS::DataReader>::ref_type dr,
+            IDL::traits<::DDS::DataReader>::ref_type dr,
             const ::DDS::RequestedIncompatibleQosStatus &status)
         {
           if (!this->error_listener_connected_)
@@ -236,7 +233,7 @@ namespace CIAOX11
         // on_sample_rejected
         void
         handle_sample_rejected_event (
-            IDL::traits< ::DDS::DataReader>::ref_type dr,
+            IDL::traits<::DDS::DataReader>::ref_type dr,
             const ::DDS::SampleRejectedStatus &status)
         {
           if (!this->error_listener_connected_)
@@ -269,7 +266,7 @@ namespace CIAOX11
         // on_inconsistent_topic
         void
         handle_inconsistent_topic_event (
-            IDL::traits< ::DDS::Topic>::ref_type tp,
+            IDL::traits<::DDS::Topic>::ref_type tp,
             const ::DDS::InconsistentTopicStatus &status)
         {
           if (!this->error_listener_connected_)
@@ -302,7 +299,7 @@ namespace CIAOX11
         // on_offered_deadline_missed
         void
         handle_offered_deadline_missed_event (
-            IDL::traits< ::DDS::DataWriter>::ref_type dw,
+            IDL::traits<::DDS::DataWriter>::ref_type dw,
             const ::DDS::OfferedDeadlineMissedStatus &status)
         {
           if (!this->error_listener_connected_)
@@ -335,7 +332,7 @@ namespace CIAOX11
         // on_offered_incompatible_qos
         void
         handle_offered_incompatible_qos_event (
-            IDL::traits< ::DDS::DataWriter>::ref_type dw,
+            IDL::traits<::DDS::DataWriter>::ref_type dw,
             const ::DDS::OfferedIncompatibleQosStatus &status)
         {
           if (!this->error_listener_connected_)
@@ -441,7 +438,7 @@ namespace CIAOX11
         // on_requested_deadline_missed
         void
         handle_requested_deadline_missed_event (
-            IDL::traits< ::DDS::DataReader>::ref_type dr,
+            IDL::traits<::DDS::DataReader>::ref_type dr,
             const ::DDS::RequestedDeadlineMissedStatus &status)
         {
           try
@@ -464,7 +461,7 @@ namespace CIAOX11
         // on_sample_lost
         void
         handle_sample_lost_event (
-            IDL::traits< ::DDS::DataReader>::ref_type dr,
+            IDL::traits<::DDS::DataReader>::ref_type dr,
             const ::DDS::SampleLostStatus &status)
         {
           try
@@ -510,7 +507,7 @@ namespace CIAOX11
           : PortStatusEventStrategyBase (port_status_config, port_status_listener)
           , data_listener_ (data_listener)
         {
-          DDS4CCM_LOG_TRACE ("ExF::DataEventStrategyBase_T<DATA_LISTENER>::" << "ctor");
+          DDS4CCM_LOG_TRACE ("ExF::DataEventStrategyBase_T<DATA_LISTENER>::ctor");
 
           // since it is theoretically possible the data listener is connected
           // from a different component (with a different scheduling lane) than
@@ -569,7 +566,7 @@ namespace CIAOX11
         template <typename LISTENER>
         void handle_data_available_event (
             typename IDL::traits<LISTENER>::ref_type drl,
-            IDL::traits< ::DDS::DataReader>::ref_type dr)
+            IDL::traits<::DDS::DataReader>::ref_type dr)
         {
           typedef DataReaderExecutor_T<LISTENER, DATA_LISTENER> DataReaderExec_type;
 

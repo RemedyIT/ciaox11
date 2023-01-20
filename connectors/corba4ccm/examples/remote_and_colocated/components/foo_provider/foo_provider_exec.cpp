@@ -28,7 +28,7 @@ namespace Example_FooProvider_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Example_FooProvider_Impl::do_my_foo_exec_i[ctor]
   do_my_foo_exec_i::do_my_foo_exec_i (
-    IDL::traits< ::Example::CCM_FooProvider_Context>::ref_type context)
+    IDL::traits<::Example::CCM_FooProvider_Context>::ref_type context)
     : context_ (std::move (context))
   {
   }
@@ -118,7 +118,7 @@ namespace Example_FooProvider_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Example_FooProvider_Impl::FooProvider_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::Example::CCM_Foo>::ref_type
+  IDL::traits<::Example::CCM_Foo>::ref_type
   FooProvider_exec_i::get_do_my_foo ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Example_FooProvider_Impl::FooProvider_exec_i[get_do_my_foo]
@@ -137,7 +137,7 @@ namespace Example_FooProvider_Impl
   {
     // Setting the context of this component.
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Example_FooProvider_Impl::FooProvider_exec_i[set_session_context]
-    this->context_ = IDL::traits< ::Example::CCM_FooProvider_Context >::narrow (std::move(ctx));
+    this->context_ = IDL::traits<::Example::CCM_FooProvider_Context >::narrow (std::move(ctx));
     //@@{__RIDL_REGEN_MARKER__} - END : Example_FooProvider_Impl::FooProvider_exec_i[set_session_context]
   }
 

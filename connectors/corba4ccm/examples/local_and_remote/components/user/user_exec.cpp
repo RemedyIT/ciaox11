@@ -27,25 +27,25 @@ namespace Example_User_Impl
   public:
     explicit TT_Callback (
         std::string conn,
-        IDL::traits< ::Example::CCM_User_Context>::ref_type ctx)
+        IDL::traits<::Example::CCM_User_Context>::ref_type ctx)
       : connection_ (std::move(conn))
       , ciao_context_ (std::move(ctx))
     {}
 
     void
     on_trigger (
-        IDL::traits< ::CCM_TT::TT_Timer>::ref_type timer,
+        IDL::traits<::CCM_TT::TT_Timer>::ref_type timer,
         const ::CCM_TT::TT_Duration& time,
         uint32_t round) override;
 
   private:
     std::string connection_;
-    IDL::traits< ::Example::CCM_User_Context>::ref_type ciao_context_;
+    IDL::traits<::Example::CCM_User_Context>::ref_type ciao_context_;
   };
 
   void
   TT_Callback::on_trigger (
-      IDL::traits< ::CCM_TT::TT_Timer>::ref_type timer,
+      IDL::traits<::CCM_TT::TT_Timer>::ref_type timer,
       const ::CCM_TT::TT_Duration& time,
       uint32_t round)
   {
@@ -59,7 +59,7 @@ namespace Example_User_Impl
 
     CIAOX11_TEST_INFO << "Accessing run_my_foo receptacle" << std::endl;
 
-    IDL::traits< ::Example::Foo>::ref_type run_my_foo = this->ciao_context_->get_connection_run_my_foo ();
+    IDL::traits<::Example::Foo>::ref_type run_my_foo = this->ciao_context_->get_connection_run_my_foo ();
     if (run_my_foo)
     {
       run_my_foo->do_something ("Request from "+this->connection_+" User");
@@ -71,7 +71,7 @@ namespace Example_User_Impl
 
     CIAOX11_TEST_INFO << "Accessing run_my_bar receptacle" << std::endl;
 
-    IDL::traits< ::Example::Bar>::ref_type run_my_bar = this->ciao_context_->get_connection_run_my_bar ();
+    IDL::traits<::Example::Bar>::ref_type run_my_bar = this->ciao_context_->get_connection_run_my_bar ();
     if (run_my_bar)
     {
       std::string msg = "Request from "+this->connection_+" User";
@@ -171,7 +171,7 @@ namespace Example_User_Impl
   {
     // Setting the context of this component.
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Example_User_Impl::User_exec_i[set_session_context]
-    this->context_ = IDL::traits< ::Example::CCM_User_Context >::narrow (std::move(ctx));
+    this->context_ = IDL::traits<::Example::CCM_User_Context >::narrow (std::move(ctx));
     //@@{__RIDL_REGEN_MARKER__} - END : Example_User_Impl::User_exec_i[set_session_context]
   }
 

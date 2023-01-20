@@ -34,10 +34,10 @@ namespace DDSX11
     {
     }
 
-    IDL::traits< ::DDS::Publisher>::ref_type
+    IDL::traits<::DDS::Publisher>::ref_type
     OpenDDS_DomainParticipant_proxy::create_publisher_with_profile (
       const std::string &qos_profile,
-      IDL::traits< ::DDS::PublisherListener>::ref_type a_listener,
+      IDL::traits<::DDS::PublisherListener>::ref_type a_listener,
       ::DDS::StatusMask mask)
     {
       DDSX11_LOG_TRACE ("OpenDDS_DomainParticipant_proxy::create_publisher_with_profile");
@@ -58,7 +58,7 @@ namespace DDSX11
             << "Error: Unable to load the XML for <"
             << qos_profile
             << "> init returns <"
-            << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+            << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
             << ">");
           return {};
         }
@@ -69,14 +69,14 @@ namespace DDSX11
         {
           DDSX11_IMPL_LOG_ERROR ("OpenDDS_DomainParticipant_proxy::create_publisher_with_profile - "
             << "Error: Unable to retrieve the default PublisherQos <"
-            << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+            << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
             << ">");
           return {};
         }
 
       DDSX11_IMPL_LOG_DEBUG ("OpenDDS_DomainParticipant_proxy::create_publisher_with_profile - "
         << "Retrieved default PublisherQos <"
-        << IDL::traits< ::DDS::PublisherQos>::write (qos)
+        << IDL::traits<::DDS::PublisherQos>::write (qos)
         << ">");
 
       xml_loader.get_publisher_qos (
@@ -85,16 +85,16 @@ namespace DDSX11
 
       DDSX11_IMPL_LOG_DEBUG ("OpenDDS_DomainParticipant_proxy::create_publisher_with_profile - "
         << "Retrieved XML PublisherQos <"
-        << IDL::traits< ::DDS::PublisherQos>::write (qos)
+        << IDL::traits<::DDS::PublisherQos>::write (qos)
         << ">");
 
       return this->create_publisher (qos, std::move(a_listener), mask);
     }
 
-    IDL::traits< ::DDS::Subscriber>::ref_type
+    IDL::traits<::DDS::Subscriber>::ref_type
     OpenDDS_DomainParticipant_proxy::create_subscriber_with_profile (
       const std::string &qos_profile,
-      IDL::traits< ::DDS::SubscriberListener>::ref_type a_listener,
+      IDL::traits<::DDS::SubscriberListener>::ref_type a_listener,
       ::DDS::StatusMask mask)
     {
       DDSX11_LOG_TRACE ("OpenDDS_DomainParticipant_proxy::create_subscriber_with_profile");
@@ -115,7 +115,7 @@ namespace DDSX11
             << "Error: Unable to load the XML for <"
             << qos_profile
             << "> init returns <"
-            << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+            << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
             << ">");
           return {};
         }
@@ -126,14 +126,14 @@ namespace DDSX11
         {
           DDSX11_IMPL_LOG_ERROR ("OpenDDS_DomainParticipant_proxy::create_subscriber_with_profile - "
             << "Error: Unable to retrieve the default SubscriberQos <"
-            << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+            << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
             << ">");
           return {};
         }
 
       DDSX11_IMPL_LOG_DEBUG ("OpenDDS_DomainParticipant_proxy::create_subscriber_with_profile - "
         << "Retrieved default SubscriberQos <"
-        << IDL::traits< ::DDS::SubscriberQos>::write (qos)
+        << IDL::traits<::DDS::SubscriberQos>::write (qos)
         << ">");
 
       xml_loader.get_subscriber_qos (
@@ -142,18 +142,18 @@ namespace DDSX11
 
       DDSX11_IMPL_LOG_DEBUG ("OpenDDS_DomainParticipant_proxy::create_subscriber_with_profile - "
         << "Retrieved XML SubscriberQos <"
-        << IDL::traits< ::DDS::SubscriberQos>::write (qos)
+        << IDL::traits<::DDS::SubscriberQos>::write (qos)
         << ">");
 
       return this->create_subscriber (qos, std::move(a_listener), mask);
     }
 
-    IDL::traits< ::DDS::Topic>::ref_type
+    IDL::traits<::DDS::Topic>::ref_type
     OpenDDS_DomainParticipant_proxy::create_topic_with_profile (
       const std::string &topic_name,
       const std::string &type_name,
       const std::string &qos_profile,
-      IDL::traits< ::DDS::TopicListener>::ref_type a_listener,
+      IDL::traits<::DDS::TopicListener>::ref_type a_listener,
       ::DDS::StatusMask mask)
     {
       DDSX11_LOG_TRACE ("OpenDDS_DomainParticipant_proxy::create_topic_with_profile");
@@ -175,7 +175,7 @@ namespace DDSX11
             << "Error: Unable to load the XML for <"
             << qos_profile
             << "> init returns <"
-            << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+            << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
             << ">");
           return {};
         }
@@ -186,14 +186,14 @@ namespace DDSX11
         {
           DDSX11_IMPL_LOG_ERROR ("OpenDDS_DomainParticipant_proxy::create_topic_with_profile - "
             << "Error: Unable to retrieve the default TopicQos <"
-            << IDL::traits< ::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+            << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
             << ">");
           return {};
         }
 
       DDSX11_IMPL_LOG_DEBUG ("OpenDDS_DomainParticipant_proxy::create_topic_with_profile - "
         << "Retrieved default TopicQos <"
-        << IDL::traits< ::DDS::TopicQos>::write (qos)
+        << IDL::traits<::DDS::TopicQos>::write (qos)
         << ">");
 
       xml_loader.get_topic_qos (
@@ -203,7 +203,7 @@ namespace DDSX11
 
       DDSX11_IMPL_LOG_DEBUG ("OpenDDS_DomainParticipant_proxy::create_topic_with_profile - "
         << "Retrieved XML TopicQos <"
-        << IDL::traits< ::DDS::TopicQos>::write (qos)
+        << IDL::traits<::DDS::TopicQos>::write (qos)
         << ">");
 
       return this->create_topic (topic_name, type_name, qos, std::move(a_listener), mask);
