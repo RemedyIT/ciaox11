@@ -38,7 +38,7 @@ namespace Test_Sender_Impl
 
   /// Executor implementation class for info_recv facet
   class info_recv_exec_i final
-    : public IDL::traits< ::Test::LatencyDataConnector::CCM_Listener>::base_type
+    : public IDL::traits<::Test::LatencyDataConnector::CCM_Listener>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::info_recv_exec_i[ctor]
@@ -77,7 +77,7 @@ namespace Test_Sender_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::Test::CCM_Sender_Context>::ref_type context_;
+    IDL::traits<::Test::CCM_Sender_Context>::ref_type context_;
 
     /** @name Members to store attribute values from ::Test::LatencyDataConnector::CCM_Listener */
     //@{
@@ -104,7 +104,7 @@ namespace Test_Sender_Impl
 
   /// Component Executor Implementation Class : Sender_exec_i
   class Sender_exec_i final
-    : public virtual IDL::traits< ::Test::CCM_Sender>::base_type
+    : public virtual IDL::traits<::Test::CCM_Sender>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::Sender_exec_i[ctor]
@@ -119,7 +119,7 @@ namespace Test_Sender_Impl
 
     /// Factory method and getter for the info_recv facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< ::Test::LatencyDataConnector::CCM_Listener>::ref_type get_info_recv () override;
+    IDL::traits<::Test::LatencyDataConnector::CCM_Listener>::ref_type get_info_recv () override;
     //@}
 
     /** @name Supported attributes. */
@@ -182,7 +182,7 @@ namespace Test_Sender_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::Test::CCM_Sender_Context>::ref_type context_;
+    IDL::traits<::Test::CCM_Sender_Context>::ref_type context_;
 
     /** @name Component attributes. */
     //@{
@@ -202,7 +202,7 @@ namespace Test_Sender_Impl
 
     /** @name Component facets. */
     //@{
-    IDL::traits< ::Test::LatencyDataConnector::CCM_Listener>::ref_type info_recv_;
+    IDL::traits<::Test::LatencyDataConnector::CCM_Listener>::ref_type info_recv_;
     //@}
 
     /** @name User defined members. */

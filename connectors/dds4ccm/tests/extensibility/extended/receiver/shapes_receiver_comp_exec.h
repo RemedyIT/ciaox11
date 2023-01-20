@@ -39,7 +39,7 @@ namespace Shapes_Receiver_comp_Impl
 
   /// Executor implementation class for info_out_data_listener facet
   class info_out_data_listener_exec_i final
-    : public IDL::traits< ::ShapeTypeInterface::CCM_Listener>::base_type
+    : public IDL::traits<::ShapeTypeInterface::CCM_Listener>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Shapes_Receiver_comp_Impl::info_out_data_listener_exec_i[ctor]
@@ -76,7 +76,7 @@ namespace Shapes_Receiver_comp_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::Shapes::CCM_Receiver_comp_Context>::ref_type context_;
+    IDL::traits<::Shapes::CCM_Receiver_comp_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -95,7 +95,7 @@ namespace Shapes_Receiver_comp_Impl
 
   /// Executor implementation class for info_out_status facet
   class info_out_status_exec_i final
-    : public IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::base_type
+    : public IDL::traits<::CCM_DDS::CCM_PortStatusListener>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Shapes_Receiver_comp_Impl::info_out_status_exec_i[ctor]
@@ -113,12 +113,12 @@ namespace Shapes_Receiver_comp_Impl
 
     void
     on_requested_deadline_missed (
-        IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+        IDL::traits<::DDS::DataReader>::ref_type the_reader,
         const ::DDS::RequestedDeadlineMissedStatus& status) override;
 
     void
     on_sample_lost (
-        IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+        IDL::traits<::DDS::DataReader>::ref_type the_reader,
         const ::DDS::SampleLostStatus& status) override;
     //@}
 
@@ -131,7 +131,7 @@ namespace Shapes_Receiver_comp_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::Shapes::CCM_Receiver_comp_Context>::ref_type context_;
+    IDL::traits<::Shapes::CCM_Receiver_comp_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -149,7 +149,7 @@ namespace Shapes_Receiver_comp_Impl
 
   /// Component Executor Implementation Class : Receiver_comp_exec_i
   class Receiver_comp_exec_i final
-    : public virtual IDL::traits< ::Shapes::CCM_Receiver_comp>::base_type
+    : public virtual IDL::traits<::Shapes::CCM_Receiver_comp>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Shapes_Receiver_comp_Impl::Receiver_comp_exec_i[ctor]
@@ -164,10 +164,10 @@ namespace Shapes_Receiver_comp_Impl
 
     /// Factory method and getter for the info_out_data_listener facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< ::ShapeTypeInterface::CCM_Listener>::ref_type get_info_out_data_listener () override;
+    IDL::traits<::ShapeTypeInterface::CCM_Listener>::ref_type get_info_out_data_listener () override;
     /// Factory method and getter for the info_out_status facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type get_info_out_status () override;
+    IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type get_info_out_status () override;
     //@}
 
     /** @name Session component operations */
@@ -199,7 +199,7 @@ namespace Shapes_Receiver_comp_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::Shapes::CCM_Receiver_comp_Context>::ref_type context_;
+    IDL::traits<::Shapes::CCM_Receiver_comp_Context>::ref_type context_;
 
     /** @name Component attributes. */
     //@{
@@ -207,8 +207,8 @@ namespace Shapes_Receiver_comp_Impl
 
     /** @name Component facets. */
     //@{
-    IDL::traits< ::ShapeTypeInterface::CCM_Listener>::ref_type info_out_data_listener_;
-    IDL::traits< ::CCM_DDS::CCM_PortStatusListener>::ref_type info_out_status_;
+    IDL::traits<::ShapeTypeInterface::CCM_Listener>::ref_type info_out_data_listener_;
+    IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type info_out_status_;
     //@}
 
     /** @name User defined members. */

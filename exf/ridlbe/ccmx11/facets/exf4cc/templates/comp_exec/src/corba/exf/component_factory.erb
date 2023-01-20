@@ -2,14 +2,13 @@
 %# There's always one port
 % _p = all_ports[0] if !all_ports.empty?
 % _cc = _p.interface_type.scoped_cxxname.scope_to_cxxname + '_CorbaConnector'
-  typedef CCM_CORBA::CORBA_Connector_T<
+  using <%= _cc %> = CCM_CORBA::CORBA_Connector_T<
     <%= scoped_ccm_name %>,
     <%= scoped_ccm_name %>_Context,
     <%= _p.interface_type.scoped_ccm_name %>,
     <%= executor_cxx_namespace %>::<%= _p.lem_name %>_exec_i,
     <%= _p.resolved_cxxtype %>,
-    <%= _p.interface_type.scoped_cxxname.identify %>_servant>
-      <%= _cc %>;
+    <%= _p.interface_type.scoped_cxxname.identify %>_servant>;
 
   namespace ExF
   {
@@ -17,7 +16,7 @@
       : public <%= executor_cxx_namespace %>::<%= _cc %>
     {
     public:
-      typedef <%= executor_cxx_namespace %>::<%= _cc %> base_type;
+      using base_type = <%= executor_cxx_namespace %>::<%= _cc %>;
 
       <%= _cc %> () = default;
       ~<%= _cc %> () override = default;

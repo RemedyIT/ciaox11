@@ -35,7 +35,7 @@ namespace publisher_comp_Impl
 
   /// Executor implementation class for connector_status_ShapeType facet
   class connector_status_ShapeType_exec_i final
-    : public IDL::traits< ::CCM_DDS::CCM_ConnectorStatusListener>::base_type
+    : public IDL::traits<::CCM_DDS::CCM_ConnectorStatusListener>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : publisher_comp_Impl::connector_status_ShapeType_exec_i[ctor]
@@ -53,32 +53,32 @@ namespace publisher_comp_Impl
 
     void
     on_inconsistent_topic (
-        IDL::traits< ::DDS::Topic>::ref_type the_topic,
+        IDL::traits<::DDS::Topic>::ref_type the_topic,
         const ::DDS::InconsistentTopicStatus& status) override;
 
     void
     on_requested_incompatible_qos (
-        IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+        IDL::traits<::DDS::DataReader>::ref_type the_reader,
         const ::DDS::RequestedIncompatibleQosStatus& status) override;
 
     void
     on_sample_rejected (
-        IDL::traits< ::DDS::DataReader>::ref_type the_reader,
+        IDL::traits<::DDS::DataReader>::ref_type the_reader,
         const ::DDS::SampleRejectedStatus& status) override;
 
     void
     on_offered_deadline_missed (
-        IDL::traits< ::DDS::DataWriter>::ref_type the_writer,
+        IDL::traits<::DDS::DataWriter>::ref_type the_writer,
         const ::DDS::OfferedDeadlineMissedStatus& status) override;
 
     void
     on_offered_incompatible_qos (
-        IDL::traits< ::DDS::DataWriter>::ref_type the_writer,
+        IDL::traits<::DDS::DataWriter>::ref_type the_writer,
         const ::DDS::OfferedIncompatibleQosStatus& status) override;
 
     void
     on_unexpected_status (
-        IDL::traits< ::DDS::Entity>::ref_type the_entity,
+        IDL::traits<::DDS::Entity>::ref_type the_entity,
         ::DDS::StatusKind status_kind) override;
     //@}
 
@@ -91,7 +91,7 @@ namespace publisher_comp_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< CCM_publisher_comp_Context>::ref_type context_;
+    IDL::traits<CCM_publisher_comp_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -110,7 +110,7 @@ namespace publisher_comp_Impl
 
   /// Component Executor Implementation Class : publisher_comp_exec_i
   class publisher_comp_exec_i final
-    : public virtual IDL::traits< CCM_publisher_comp>::base_type
+    : public virtual IDL::traits<CCM_publisher_comp>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : publisher_comp_Impl::publisher_comp_exec_i[ctor]
@@ -125,7 +125,7 @@ namespace publisher_comp_Impl
 
     /// Factory method and getter for the connector_status_ShapeType facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< ::CCM_DDS::CCM_ConnectorStatusListener>::ref_type get_connector_status_ShapeType () override;
+    IDL::traits<::CCM_DDS::CCM_ConnectorStatusListener>::ref_type get_connector_status_ShapeType () override;
     //@}
 
     /** @name Session component operations */
@@ -157,11 +157,11 @@ namespace publisher_comp_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< CCM_publisher_comp_Context>::ref_type context_;
+    IDL::traits<CCM_publisher_comp_Context>::ref_type context_;
 
     /** @name Component facets. */
     //@{
-    IDL::traits< ::CCM_DDS::CCM_ConnectorStatusListener>::ref_type connector_status_ShapeType_;
+    IDL::traits<::CCM_DDS::CCM_ConnectorStatusListener>::ref_type connector_status_ShapeType_;
     //@}
 
     /** @name User defined members. */

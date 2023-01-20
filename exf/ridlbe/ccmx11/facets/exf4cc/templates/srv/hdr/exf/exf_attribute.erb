@@ -4,7 +4,7 @@ class <%= skel_export_macro %><%= interface.skel_cxxname %>_get_<%= cxxname %>_R
   : public <%= interface.skel_cxxname %>_RequestHandlerBase
 {
 public:
-  typedef std::shared_ptr<<%= interface.skel_cxxname %>_get_<%= cxxname %>_RequestHandler> ref_type;
+  using ref_type = std::shared_ptr<<%= interface.skel_cxxname %>_get_<%= cxxname %>_RequestHandler>;
 
   void init (TAO_ServerRequest&);
 
@@ -20,7 +20,7 @@ class <%= skel_export_macro %><%= interface.skel_cxxname %>_set_<%= cxxname %>_R
   : public <%= interface.skel_cxxname %>_RequestHandlerBase
 {
 public:
-  typedef std::shared_ptr<<%= interface.skel_cxxname %>_set_<%= cxxname %>_RequestHandler> ref_type;
+  using ref_type = std::shared_ptr<<%= interface.skel_cxxname %>_set_<%= cxxname %>_RequestHandler>;
 
   void init (TAO_ServerRequest&);
 

@@ -8,8 +8,8 @@ namespace PSDD
   {
     static std::string get_type_name () { return "<%= scoped_cxxname %>"; }
 
-    typedef std::<%= has_key_only? %>_type key_only;
-    typedef std::<%= has_no_key? %>_type no_key;
+    using key_only = std::<%= has_key_only? %>_type;
+    using no_key = std::<%= has_no_key? %>_type;
 
     static
     bool append_key (

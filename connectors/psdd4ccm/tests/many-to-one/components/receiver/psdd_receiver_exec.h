@@ -38,7 +38,7 @@ namespace Test_Receiver_Impl
 
   /// Component Executor Implementation Class : Receiver_exec_i
   class Receiver_exec_i final
-    : public virtual IDL::traits< ::Test::CCM_Receiver>::base_type
+    : public virtual IDL::traits<::Test::CCM_Receiver>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Receiver_Impl::Receiver_exec_i[ctor]
@@ -102,7 +102,7 @@ namespace Test_Receiver_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::Test::CCM_Receiver_Context>::ref_type context_;
+    IDL::traits<::Test::CCM_Receiver_Context>::ref_type context_;
 
     /** @name Component attributes. */
     //@{
