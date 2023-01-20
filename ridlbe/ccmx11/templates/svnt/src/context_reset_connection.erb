@@ -21,6 +21,7 @@ bool
 %       else
     this-><%= _p.cxxname %>_ = nullptr;
 %       end
+% nest (2) { visit_template('context_port_reset_connection', {:port => _p}) }
   }
 %     end
 %   end

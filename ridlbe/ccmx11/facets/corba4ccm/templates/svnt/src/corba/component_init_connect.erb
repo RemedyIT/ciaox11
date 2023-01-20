@@ -1,15 +1,14 @@
-  // generated from <%= ridl_template_path %>
 % if all_incl_receptacle_port?
-
-  // prefer local exec connection; retrieve remote ref only when necessary
+// generated from <%= ridl_template_path %>
+// prefer local exec connection; retrieve remote ref only when necessary
+if (!connection)
+{
+  connection = CIAOX11::Corba::Utility::get_provider_reference (config);
   if (!connection)
   {
-    connection = CIAOX11::Corba::Utility::get_provider_reference (config);
-    if (!connection)
-    {
-      // return here to prevent an inadvertent disconnect
-      return true;
-    }
+    // return here to prevent an inadvertent disconnect
+    return true;
   }
+}
 
 % end

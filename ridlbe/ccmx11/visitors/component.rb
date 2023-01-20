@@ -358,6 +358,9 @@ module IDL
       optional_template :component_end_extra
       #ami4ccm connector
       optional_template :connector_extra
+      #exf
+      optional_template :context_port_set_connection
+      optional_template :context_port_reset_connection
 
      protected
 
