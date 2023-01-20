@@ -1,8 +1,7 @@
 
 // generated from <%= ridl_template_path %>
-typedef <%= psdd4ccm_event_strategy_template %><
-    CCM_<%= scoped_cxxname.scope_to_cxxname %>_Traits> event_strategy_type;
+using event_strategy_type = typedef <%= psdd4ccm_event_strategy_template %><CCM_<%= scoped_cxxname.scope_to_cxxname %>_Traits>;
 
-typedef ::PSDD::traits<<%= template_args.first.cxx_type %>> topic_psdd_traits_type;
-typedef ::PSDD::ServiceHelper service_helper_type;
-typedef <%= scoped_enclosure_cxxname %>::CCM_Serializer custom_serializer_type;
+using topic_psdd_traits_type = ::PSDD::traits<<%= template_args.first.cxx_type %>>;
+using service_helper_type = ::PSDD::ServiceHelper;
+using custom_serializer_type = <%= scoped_enclosure_cxxname %>::CCM_Serializer;

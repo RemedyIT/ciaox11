@@ -39,7 +39,7 @@ namespace Shapes_Sender_comp_Impl
 
   /// Executor implementation class for control facet
   class control_exec_i final
-    : public IDL::traits< ::Shapes::CCM_Control_obj>::base_type
+    : public IDL::traits<::Shapes::CCM_Control_obj>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Shapes_Sender_comp_Impl::control_exec_i[ctor]
@@ -75,7 +75,7 @@ namespace Shapes_Sender_comp_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< ::Shapes::CCM_Sender_comp_Context>::ref_type context_;
+    IDL::traits<::Shapes::CCM_Sender_comp_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -94,7 +94,7 @@ namespace Shapes_Sender_comp_Impl
 
   /// Component Executor Implementation Class : Sender_comp_exec_i
   class Sender_comp_exec_i final
-    : public virtual IDL::traits< ::Shapes::CCM_Sender_comp>::base_type
+    : public virtual IDL::traits<::Shapes::CCM_Sender_comp>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Shapes_Sender_comp_Impl::Sender_comp_exec_i[ctor]
@@ -109,7 +109,7 @@ namespace Shapes_Sender_comp_Impl
 
     /// Factory method and getter for the control facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< ::Shapes::CCM_Control_obj>::ref_type get_control () override;
+    IDL::traits<::Shapes::CCM_Control_obj>::ref_type get_control () override;
     //@}
 
     /** @name Session component operations */
@@ -143,11 +143,11 @@ namespace Shapes_Sender_comp_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< ::Shapes::CCM_Sender_comp_Context>::ref_type context_;
+    IDL::traits<::Shapes::CCM_Sender_comp_Context>::ref_type context_;
 
     /** @name Component facets. */
     //@{
-    IDL::traits< ::Shapes::CCM_Control_obj>::ref_type control_;
+    IDL::traits<::Shapes::CCM_Control_obj>::ref_type control_;
     //@}
 
     /** @name User defined members. */

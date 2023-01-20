@@ -215,7 +215,7 @@ namespace Test_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Test_Receiver_Impl::Receiver_exec_i[ccm_remove]
   }
 
-  IDL::traits< ::Test::LatencyDataConnector::CCM_Listener>::ref_type
+  IDL::traits<::Test::LatencyDataConnector::CCM_Listener>::ref_type
   Receiver_exec_i::get_info_out ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Receiver_Impl::Receiver_exec_i[get_info_out]

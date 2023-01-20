@@ -1,32 +1,32 @@
 
 % if incl_ami4ccm_receptacle?
-  // generated from <%= ridl_template_path %>
+// generated from <%= ridl_template_path %>
 %  all_ports.each do |_p|
 %    if _p.port_type == :receptacle
 %      if _p.is_ami4ccm_port?
 %        if  _p.is_multiple?
-  <%= scoped_ccm_name %>::sendc_<%= _p.lem_name %>Connections
-  <%= lem_name %>_Context::get_connections_sendc_<%= _p.lem_name %> ()
+<%= scoped_ccm_name %>::sendc_<%= _p.lem_name %>Connections
+<%= lem_name %>_Context::get_connections_sendc_<%= _p.lem_name %> ()
+{
+  std::lock_guard<std::mutex> lock (this->context_tbl_lock_);
+  <%= scoped_ccm_name %>::sendc_<%= _p.lem_name %>Connections retv;
+  retv.reserve (this->sendc_<%= _p.lem_name %>_context_tbl_.size());
+  using conn_type = IDL::traits<<%= scoped_ccm_name %>::sendc_<%= _p.lem_name %>Connections>::element_traits::value_type;
+
+  for (const auto& elem : this->sendc_<%= _p.lem_name %>_context_tbl_)
   {
-    std::lock_guard<std::mutex> lock (this->context_tbl_lock_);
-    <%= scoped_ccm_name %>::sendc_<%= _p.lem_name %>Connections retv;
-    retv.reserve (this->sendc_<%= _p.lem_name %>_context_tbl_.size());
-    using conn_type = IDL::traits<<%= scoped_ccm_name %>::sendc_<%= _p.lem_name %>Connections>::element_traits::value_type;
-
-    for (const auto& elem : this->sendc_<%= _p.lem_name %>_context_tbl_)
-    {
-      retv.push_back (conn_type(elem.second, elem.first));
-    }
-
-    return retv;
+    retv.push_back (conn_type(elem.second, elem.first));
   }
+
+  return retv;
+}
 
 %        else
-  IDL::traits<::<%= _p.interface_type.scoped_ami4ccm_name %>>::ref_type
-  <%= lem_name %>_Context::get_connection_sendc_<%= _p.lem_name %> ()
-  {
-    return this->sendc_<%= _p.cxxname %>_;
-  }
+IDL::traits<::<%= _p.interface_type.scoped_ami4ccm_name %>>::ref_type
+<%= lem_name %>_Context::get_connection_sendc_<%= _p.lem_name %> ()
+{
+  return this->sendc_<%= _p.cxxname %>_;
+}
 %        end
 %      end
 %    end

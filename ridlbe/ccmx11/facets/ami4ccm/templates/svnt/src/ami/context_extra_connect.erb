@@ -1,27 +1,24 @@
-
 % if incl_ami4ccm_receptacle?
-    // generated from <%= ridl_template_path %>
+// generated from <%= ridl_template_path %>
 %  all_ports.each do |_p|
 %   if _p.port_type == :receptacle
 % # if port also amiport generate sendc variant of this port
 %     if _p.is_ami4ccm_port?
 %       if _p.is_multiple?
-    else if (name == "sendc_<%= _p.lem_name %>")
-    {
-      IDL::traits<::<%= _p.interface_type.scoped_ami4ccm_name %>>::ref_type c_ = IDL::traits<::<%= _p.interface_type.scoped_ami4ccm_name %>>::narrow (std::move(connection));
+else if (name == "sendc_<%= _p.lem_name %>")
+{
+  IDL::traits<::<%= _p.interface_type.scoped_ami4ccm_name %>>::ref_type c_ = IDL::traits<::<%= _p.interface_type.scoped_ami4ccm_name %>>::narrow (std::move(connection));
 
-      {
-        std::lock_guard<std::mutex> lock (this->context_tbl_lock_);
-
-        this->sendc_<%= _p.lem_name %>_context_tbl_.insert (
-          SENDC_<%= _p.interface_type.scoped_cxxname.upcase.identify %>_CONTEXT_TABLE::value_type (conn_name, std::move(c_)));
-      }
-    }
+  {
+    std::lock_guard<std::mutex> lock (this->context_tbl_lock_);
+    this->sendc_<%= _p.lem_name %>_context_tbl_.insert (SENDC_<%= _p.interface_type.scoped_cxxname.upcase.identify %>_CONTEXT_TABLE::value_type (conn_name, std::move(c_)));
+  }
+}
 %       else
-    else if (name == "sendc_<%= _p.lem_name %>")
-    {
-      this->sendc_<%= _p.cxxname %>_ = IDL::traits<::<%= _p.interface_type.scoped_ami4ccm_name %>>::narrow (std::move(connection));
-    }
+else if (name == "sendc_<%= _p.lem_name %>")
+{
+  this->sendc_<%= _p.cxxname %>_ = IDL::traits<::<%= _p.interface_type.scoped_ami4ccm_name %>>::narrow (std::move(connection));
+}
 %       end
 %     end
 %   end
