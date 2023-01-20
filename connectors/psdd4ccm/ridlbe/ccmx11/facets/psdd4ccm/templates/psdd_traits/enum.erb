@@ -8,8 +8,8 @@ namespace PSDD
   {
     static std::string get_type_name () { return "<%= scoped_cxxname %>"; }
 
-    typedef std::true_type key_only;
-    typedef std::false_type no_key;
+    using key_only = std::true_type;
+    using no_key = std::false_type;
 
     static
     bool append_key (

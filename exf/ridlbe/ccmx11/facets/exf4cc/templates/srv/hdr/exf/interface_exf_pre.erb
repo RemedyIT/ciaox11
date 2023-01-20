@@ -7,7 +7,7 @@ namespace ExF
     : public CIAOX11::ExF::Impl::RequestHandler
   {
   public:
-    typedef std::shared_ptr<<%= skel_cxxname %>_RequestHandlerBase> ref_type;
+    using ref_type = std::shared_ptr<<%= skel_cxxname %>_RequestHandlerBase>;
 
     virtual void execute (IDL::traits<::<%= scoped_cxxname %>>::ref_type&) = 0;
 

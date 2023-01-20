@@ -4,7 +4,7 @@
 % all_ports.each do |_p|
 %   if _p.port_type == :facet
 %     if _p.cxxname == 'ami4ccm_port_ami4ccm_provides'
-typedef std::vector<<%=_p.interface_type.scoped_ccm_name_member_type %>> <%= _p.cxxname %>_list_t;
+using <%= _p.cxxname %>_list_t = std::vector<<%=_p.interface_type.scoped_ccm_name_member_type %>>;
 <%= _p.cxxname %>_list_t <%= _p.cxxname %>_list_;
 %     else
 <%= _p.interface_type.scoped_ccm_name_member_type %> <%= _p.cxxname %>_;
