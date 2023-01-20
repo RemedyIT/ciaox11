@@ -18,7 +18,7 @@ namespace CIAOX11_TT_TimedTrigger_Impl
 {
 
   TimedTrigger_ExecutorLocator::TimedTrigger_ExecutorLocator (
-      IDL::traits< ::CIAOX11_TT::CCM_TimedTrigger>::ref_type component_executor,
+      IDL::traits<::CIAOX11_TT::CCM_TimedTrigger>::ref_type component_executor,
       IDL::traits< TimedTrigger_Context>::ref_type component_context) :
         component_executor_ (std::move (component_executor)),
         component_context_ (std::move (component_context))
@@ -75,12 +75,12 @@ namespace CIAOX11_TT_TimedTrigger_Impl
   {
     if (name == "tt_scheduler")
     {
-      IDL::traits< ::CCM_TT::CCM_TT_Scheduler>::ref_type tt_sched =
+      IDL::traits<::CCM_TT::CCM_TT_Scheduler>::ref_type tt_sched =
         this->component_executor_->get_tt_scheduler ();
       if (tt_sched)
       {
-        IDL::traits< ::CIAOX11_TT_TimedTrigger_Impl::tt_scheduler_exec_i>::ref_type tt_sched_i =
-          IDL::traits< ::CIAOX11_TT_TimedTrigger_Impl::tt_scheduler_exec_i>::narrow (tt_sched);
+        IDL::traits<::CIAOX11_TT_TimedTrigger_Impl::tt_scheduler_exec_i>::ref_type tt_sched_i =
+          IDL::traits<::CIAOX11_TT_TimedTrigger_Impl::tt_scheduler_exec_i>::narrow (tt_sched);
         tt_sched_i->set_config (config);
       }
       return tt_sched;
@@ -101,7 +101,7 @@ namespace CIAOX11_TT_TimedTrigger_Impl
   {
   }
 
-  IDL::traits< ::CIAOX11::Service_Registry>::ref_type
+  IDL::traits<::CIAOX11::Service_Registry>::ref_type
   TimedTrigger_Context::the_service_registry ()
   {
     return this->service_registry_;
@@ -120,8 +120,8 @@ namespace CIAOX11_TT_TimedTrigger_Impl
     const std::string& ins_name,
     IDL::traits<CIAOX11::ExecutorLocator>::ref_type& executor_locator)
   {
-    IDL::traits< ::CIAOX11_TT::CCM_TimedTrigger>::ref_type component_executor =
-      IDL::traits< ::CIAOX11_TT::CCM_TimedTrigger>::narrow (p);
+    IDL::traits<::CIAOX11_TT::CCM_TimedTrigger>::ref_type component_executor =
+      IDL::traits<::CIAOX11_TT::CCM_TimedTrigger>::narrow (p);
 
     if (component_executor)
     {

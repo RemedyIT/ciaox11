@@ -167,7 +167,7 @@ namespace CIAOX11
         // on_unexpected_status
         void
         handle_unexpected_status_event (
-            IDL::traits< ::DDS::Entity>::ref_type entity,
+            IDL::traits<::DDS::Entity>::ref_type entity,
             ::DDS::StatusKind status_kind)
         {
           if (!this->error_listener_connected_)
@@ -200,7 +200,7 @@ namespace CIAOX11
         // on_requested_incompatible_qos
         void
         handle_requested_incompatible_qos_event (
-            IDL::traits< ::DDS::DataReader>::ref_type dr,
+            IDL::traits<::DDS::DataReader>::ref_type dr,
             const ::DDS::RequestedIncompatibleQosStatus &status)
         {
           if (!this->error_listener_connected_)
@@ -233,7 +233,7 @@ namespace CIAOX11
         // on_sample_rejected
         void
         handle_sample_rejected_event (
-            IDL::traits< ::DDS::DataReader>::ref_type dr,
+            IDL::traits<::DDS::DataReader>::ref_type dr,
             const ::DDS::SampleRejectedStatus &status)
         {
           if (!this->error_listener_connected_)
@@ -266,7 +266,7 @@ namespace CIAOX11
         // on_inconsistent_topic
         void
         handle_inconsistent_topic_event (
-            IDL::traits< ::DDS::Topic>::ref_type tp,
+            IDL::traits<::DDS::Topic>::ref_type tp,
             const ::DDS::InconsistentTopicStatus &status)
         {
           if (!this->error_listener_connected_)
@@ -299,7 +299,7 @@ namespace CIAOX11
         // on_offered_deadline_missed
         void
         handle_offered_deadline_missed_event (
-            IDL::traits< ::DDS::DataWriter>::ref_type dw,
+            IDL::traits<::DDS::DataWriter>::ref_type dw,
             const ::DDS::OfferedDeadlineMissedStatus &status)
         {
           if (!this->error_listener_connected_)
@@ -332,7 +332,7 @@ namespace CIAOX11
         // on_offered_incompatible_qos
         void
         handle_offered_incompatible_qos_event (
-            IDL::traits< ::DDS::DataWriter>::ref_type dw,
+            IDL::traits<::DDS::DataWriter>::ref_type dw,
             const ::DDS::OfferedIncompatibleQosStatus &status)
         {
           if (!this->error_listener_connected_)
@@ -438,7 +438,7 @@ namespace CIAOX11
         // on_requested_deadline_missed
         void
         handle_requested_deadline_missed_event (
-            IDL::traits< ::DDS::DataReader>::ref_type dr,
+            IDL::traits<::DDS::DataReader>::ref_type dr,
             const ::DDS::RequestedDeadlineMissedStatus &status)
         {
           try
@@ -461,7 +461,7 @@ namespace CIAOX11
         // on_sample_lost
         void
         handle_sample_lost_event (
-            IDL::traits< ::DDS::DataReader>::ref_type dr,
+            IDL::traits<::DDS::DataReader>::ref_type dr,
             const ::DDS::SampleLostStatus &status)
         {
           try
@@ -566,7 +566,7 @@ namespace CIAOX11
         template <typename LISTENER>
         void handle_data_available_event (
             typename IDL::traits<LISTENER>::ref_type drl,
-            IDL::traits< ::DDS::DataReader>::ref_type dr)
+            IDL::traits<::DDS::DataReader>::ref_type dr)
         {
           typedef DataReaderExecutor_T<LISTENER, DATA_LISTENER> DataReaderExec_type;
 

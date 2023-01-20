@@ -21,7 +21,7 @@ namespace CIAOX11_TT_TimedTrigger_Impl
    */
 
    tt_scheduler_exec_i::tt_scheduler_exec_i (
-    IDL::traits< ::CIAOX11_TT::CCM_TimedTrigger_Context>::ref_type context,
+    IDL::traits<::CIAOX11_TT::CCM_TimedTrigger_Context>::ref_type context,
     TimerMonitor::ref_type monitor)
     : context_ (std::move (context)),
       monitor_ (std::move (monitor))
@@ -35,9 +35,9 @@ namespace CIAOX11_TT_TimedTrigger_Impl
 
   /** Operations and attributes from tt_scheduler */
 
-  IDL::traits< ::CCM_TT::TT_Timer>::ref_type
+  IDL::traits<::CCM_TT::TT_Timer>::ref_type
   tt_scheduler_exec_i::schedule_trigger (
-      IDL::traits< ::CCM_TT::TT_Handler>::ref_type trigger_handler,
+      IDL::traits<::CCM_TT::TT_Handler>::ref_type trigger_handler,
       const ::CCM_TT::TT_Duration& trigger_delay)
   {
     CIAOX11_CALL_TRACE ("tt_scheduler_exec_i::schedule_trigger");
@@ -50,9 +50,9 @@ namespace CIAOX11_TT_TimedTrigger_Impl
         1);
   }
 
-  IDL::traits< ::CCM_TT::TT_Timer>::ref_type
+  IDL::traits<::CCM_TT::TT_Timer>::ref_type
   tt_scheduler_exec_i::schedule_repeated_trigger (
-      IDL::traits< ::CCM_TT::TT_Handler>::ref_type trigger_handler,
+      IDL::traits<::CCM_TT::TT_Handler>::ref_type trigger_handler,
       const ::CCM_TT::TT_Duration& start_delay,
       const ::CCM_TT::TT_Duration& interval,
       uint32_t max_rounds)
@@ -163,7 +163,7 @@ namespace CIAOX11_TT_TimedTrigger_Impl
   }
 
 
-  IDL::traits< ::CCM_TT::CCM_TT_Scheduler>::ref_type
+  IDL::traits<::CCM_TT::CCM_TT_Scheduler>::ref_type
   TimedTrigger_exec_i::get_tt_scheduler ()
   {
     if (!this->monitor_)
@@ -191,7 +191,7 @@ namespace CIAOX11_TT_TimedTrigger_Impl
     IDL::traits<Components::SessionContext>::ref_type ctx)
   {
     // Setting the context of this component.
-    this->context_ = IDL::traits< ::CIAOX11_TT::CCM_TimedTrigger_Context >::narrow (std::move(ctx));
+    this->context_ = IDL::traits<::CIAOX11_TT::CCM_TimedTrigger_Context >::narrow (std::move(ctx));
   }
 
   extern "C" void
