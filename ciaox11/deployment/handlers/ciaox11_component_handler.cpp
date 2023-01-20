@@ -406,8 +406,7 @@ namespace CIAOX11
     {
       // collect unique configuration values for component
       Components::ConfigValues exec_config;
-      Deployment_Common::collect_config_values (info.pmap,
-                                                exec_config);
+      Deployment_Common::collect_config_values (info.pmap, exec_config);
 
       // configure component (and optionally collect additional/updated values)
       executor_locator->configure (exec_config);

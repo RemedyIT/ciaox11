@@ -116,8 +116,7 @@ namespace CIAOX11
   {
     std::lock_guard<std::mutex> lock (this->state_mutex_);
 
-    INSTANCE_CONFIG::iterator cfgit =
-      this->instance_config_.find (id);
+    INSTANCE_CONFIG::iterator cfgit = this->instance_config_.find (id);
 
     if (cfgit != this->instance_config_.end ())
     {

@@ -13,10 +13,6 @@
 
 namespace DAnCEX11
 {
-  Test_Interceptor::Test_Interceptor ()
-  {
-  }
-
   Test_Interceptor::~Test_Interceptor ()
   {
     uint32_t _instances;

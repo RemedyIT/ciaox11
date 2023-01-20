@@ -26,9 +26,9 @@ namespace DAnCEX11
     : public DAnCEX11::DeploymentInterceptor_Base
   {
   public:
-    Test_Interceptor ();
+    Test_Interceptor () = default;
 
-    virtual ~Test_Interceptor ();
+    ~Test_Interceptor () override;
 
     void
     configure (const Deployment::Properties &config) override;

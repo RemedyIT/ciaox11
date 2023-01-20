@@ -44,7 +44,7 @@ namespace CCM_CORBA
       std::string component_name);
 
     /// Destructor
-    virtual ~CCMObject_impl () override = default;
+    ~CCMObject_impl () override = default;
 
     /**
      * Retrieve the CORBA facet servant for the provided facet name.
