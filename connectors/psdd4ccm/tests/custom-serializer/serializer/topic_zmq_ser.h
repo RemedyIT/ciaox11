@@ -21,7 +21,7 @@ namespace Emitter
     {
     public:
       Custom_ZMQ_Serializer () = default;
-      virtual ~Custom_ZMQ_Serializer () = default;
+      ~Custom_ZMQ_Serializer () override = default;
 
       /// @copydoc topicPS.idl::LoRa::Topic::Serializer::setup_pack
       bool

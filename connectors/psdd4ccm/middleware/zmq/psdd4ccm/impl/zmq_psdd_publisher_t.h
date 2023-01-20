@@ -32,11 +32,11 @@ namespace PSDD
       : public ::PSDD::Publisher_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>
     {
     public:
-      typedef typename CCM_TYPE::service_helper_type service_helper_type;
-      typedef typename CCM_TYPE::topic_psdd_traits_type topic_psdd_traits_type;
+      using service_helper_type = typename CCM_TYPE::service_helper_type;
+      using topic_psdd_traits_type = typename CCM_TYPE::topic_psdd_traits_type ;
 
       Publisher_T ();
-      virtual ~Publisher_T ();
+      ~Publisher_T () override;
 
       void
       initialize (

@@ -29,7 +29,7 @@ namespace Test_Receiver_Impl
     explicit TT_Callback (IDL::traits<::Test::CCM_Receiver>::weak_ref_type component_executor)
     : component_executor_(component_executor)
      {}
-    virtual ~TT_Callback () = default;
+    ~TT_Callback () override = default;
 
     void
     on_trigger (

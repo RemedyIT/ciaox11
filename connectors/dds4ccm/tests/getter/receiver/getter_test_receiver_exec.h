@@ -44,7 +44,7 @@ namespace Getter_Test_Receiver_Impl
     GetOneHandler (IDL::traits<Getter_Test::CCM_Receiver>::weak_ref_type component_executor,
                    const std::string &key,
                    int32_t iteration);
-    virtual ~GetOneHandler () = default;
+    ~GetOneHandler () override = default;
 
     void
     on_trigger (

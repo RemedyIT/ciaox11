@@ -38,7 +38,7 @@ namespace PSDD
     {
     public:
       Context_Impl () = default;
-      virtual ~Context_Impl ();
+      ~Context_Impl () override;
 
       void
       initialize (const Config&);

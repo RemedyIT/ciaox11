@@ -48,7 +48,7 @@ namespace PSDD
       typedef typename CCM_TYPE::topic_psdd_traits_type topic_psdd_traits_type;
 
       Subscriber_T ();
-      virtual ~Subscriber_T ();
+      ~Subscriber_T () override;
 
       // override because inherited multiple times
       bool

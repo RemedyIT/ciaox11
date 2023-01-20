@@ -89,7 +89,7 @@ namespace CIAOX11
         , listener_ (dpces.listener_)
       {}
 
-      virtual ~DefaultPushConsumerEventStrategy_T () = default;
+      ~DefaultPushConsumerEventStrategy_T () override = default;
 
       DefaultPushConsumerEventStrategy_T& operator =(
           const DefaultPushConsumerEventStrategy_T& dpces)

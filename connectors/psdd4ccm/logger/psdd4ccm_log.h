@@ -39,7 +39,7 @@ namespace CIAOX11
         : public x11_logger::Log_Module
       {
       public:
-        virtual ~PSDD4CCM_Log_Module () = default;
+        ~PSDD4CCM_Log_Module () override = default;
 
         static PSDD4CCM_Log_Module* getInstance ();
 
@@ -56,7 +56,7 @@ namespace CIAOX11
         : public x11_logger::Log_Module
       {
       public:
-        virtual ~PSDD4CCM_Test_Log_Module () = default;
+        ~PSDD4CCM_Test_Log_Module () override = default;
 
         typedef x11_logger::Log_Type_T<PSDD4CCM_Test_Log_Module> log_type;
 

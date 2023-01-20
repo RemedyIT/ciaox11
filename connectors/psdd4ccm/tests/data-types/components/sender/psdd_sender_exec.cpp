@@ -31,7 +31,7 @@ namespace Test_Sender_Impl
     explicit TT_TopicCallback (IDL::traits<::Test::CCM_Sender>::weak_ref_type component_executor)
     : component_executor_(component_executor)
      {}
-    virtual ~TT_TopicCallback () = default;
+    ~TT_TopicCallback () override = default;
 
     void
     on_trigger (

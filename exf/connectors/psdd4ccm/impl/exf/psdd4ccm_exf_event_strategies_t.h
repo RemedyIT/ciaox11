@@ -59,7 +59,7 @@ namespace CIAOX11
         { this->scheduling_lane_ = des.scheduling_lane_; }
 
       public:
-        virtual ~EventStrategyBase () = default;
+        virtual ~EventStrategyBase () override = default;
 
       private:
         EventStrategyBase (EventStrategyBase&&) = delete;

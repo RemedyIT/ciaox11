@@ -121,7 +121,7 @@ namespace CIAOX11_TT_TimedTrigger_Impl
     TimedTrigger_exec_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : CIAOX11_TT_TimedTrigger_Impl::TimedTrigger_exec_i[ctor]
     /// Destructor
-    virtual ~TimedTrigger_exec_i ();
+    ~TimedTrigger_exec_i () override;
 
     /** @name Component port operations. */
     //@{
@@ -210,7 +210,7 @@ namespace CIAOX11_TT_TimedTrigger_Impl
     {
     }
 
-    virtual ~tt_timer_i () = default;
+    ~tt_timer_i () override = default;
 
     void on_timer (const CCM_TT::TT_Duration& delta_time) noexcept;
 
@@ -261,7 +261,7 @@ namespace CIAOX11_TT_TimedTrigger_Impl
       this->ccm_timer_->set_ev_handler (this);
     }
 
-    virtual ~tt_event_handler () = default;
+    ~tt_event_handler () override = default;
 
     int handle_timeout (const ACE_Time_Value&,
                         const void*) override;

@@ -17,7 +17,7 @@ namespace PSDD
     : public CCM_TYPE::supplier_traits::data_type
   {
   public:
-    virtual ~Publisher_T () = default;
+    ~Publisher_T () override = default;
 
     typedef typename CCM_TYPE::service_helper_type service_helper_type;
 

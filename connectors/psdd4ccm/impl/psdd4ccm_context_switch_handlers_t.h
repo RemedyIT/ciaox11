@@ -26,7 +26,7 @@ namespace CIAOX11
       explicit DataListenerContextSwitch_T (
         typename IDL::traits<HANDLER>::ref_type dh,
         typename IDL::traits<LISTENER>::weak_ref_type dl);
-      virtual ~DataListenerContextSwitch_T () = default;
+      ~DataListenerContextSwitch_T () override = default;
 
       int handle_exception (ACE_HANDLE fc = ACE_INVALID_HANDLE) override;
 

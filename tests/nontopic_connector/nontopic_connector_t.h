@@ -20,7 +20,7 @@ class NT_Connector_T : public virtual CCM_TYPE::base_type
 {
 public:
    NT_Connector_T () = default;
-   virtual ~NT_Connector_T ();
+   ~NT_Connector_T () override;
 
    void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
 
@@ -46,7 +46,7 @@ class NT2_Connector_T : public virtual CCM_TYPE::base_type
 {
 public:
    NT2_Connector_T ();
-   virtual ~NT2_Connector_T ();
+   ~NT2_Connector_T () override;
 
    typename IDL::traits<typename CCM_TYPE::write_port_traits::foo2_type>::ref_type
    get_write_port_foo2 () override;
@@ -83,7 +83,7 @@ class NT3_Connector_T : public virtual NT2_Connector_T<CCM_TYPE, T, U, Tseq, Use
 {
 public:
   NT3_Connector_T () = default;
-  virtual ~NT3_Connector_T () = default;
+  ~NT3_Connector_T () override = default;
   typename CCM_TYPE::NT3_attrib_type NT3_attrib() override;
   void NT3_attrib(const typename CCM_TYPE::NT3_attrib_type& _v) override;
 
@@ -123,7 +123,7 @@ class Bar_Connector_T : public virtual CCM_TYPE::base_type
 {
 public:
   Bar_Connector_T () = default;
-  virtual ~Bar_Connector_T () = default;
+  ~Bar_Connector_T () override = default;
 
   void set_session_context (IDL::traits<Components::SessionContext>::ref_type ctx) override;
   void configuration_complete () override;

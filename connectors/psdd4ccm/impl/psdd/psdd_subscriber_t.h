@@ -17,7 +17,7 @@ namespace PSDD
     : public CCM_TYPE::consumer_traits::data_subscriber_type
   {
   public:
-    virtual ~Subscriber_T () = default;
+    ~Subscriber_T () override = default;
 
     typedef typename CCM_TYPE::event_strategy_type event_strategy_type;
     typedef typename CCM_TYPE::consumer_traits::data_type pull_consumer_data_type;

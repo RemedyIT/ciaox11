@@ -95,7 +95,7 @@ namespace PSDD
       WriterSocket (WriterSocket&& ws)
         : Socket (std::move (ws))
       {}
-      virtual ~WriterSocket () = default;
+      ~WriterSocket () override = default;
 
       void send (
           void*,
@@ -124,7 +124,7 @@ namespace PSDD
       ReaderSocket (ReaderSocket&& rs)
         : Socket (std::move (rs))
       {}
-      virtual ~ReaderSocket () = default;
+      ~ReaderSocket () override = default;
 
       bool
       receive_topic (
@@ -151,7 +151,7 @@ namespace PSDD
       SubscriberSocket (SubscriberSocket&& ss)
         : ReaderSocket (std::move (ss))
       {}
-      virtual ~SubscriberSocket () = default;
+      ~SubscriberSocket () override = default;
 
       void
       subscribe_topic (

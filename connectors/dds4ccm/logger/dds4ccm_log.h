@@ -39,7 +39,7 @@ namespace CIAOX11
         : public x11_logger::Log_Module
       {
       public:
-        virtual ~DDS4CCM_Log_Module ();
+        ~DDS4CCM_Log_Module () override;
 
         static DDS4CCM_Log_Module* getInstance ();
 
@@ -56,7 +56,7 @@ namespace CIAOX11
         : public x11_logger::Log_Module
       {
       public:
-        virtual ~DDS4CCM_Test_Log_Module ();
+        ~DDS4CCM_Test_Log_Module () override;
 
         typedef x11_logger::Log_Type_T<DDS4CCM_Test_Log_Module> log_type;
 
