@@ -166,8 +166,8 @@ namespace <%= executor_cxx_namespace %>
      * name we throw an InvalidName() exception
      */
     IDL::traits<CORBA::Object>::ref_type obtain_facet_executor (
-                          const ::Components::FeatureName& name,
-                          ::Components::ConfigValues& config) override;
+      const ::Components::FeatureName& name,
+      ::Components::ConfigValues& config) override;
 
   private:
 % if any_mutable_attributes_incl_mirror_port?
