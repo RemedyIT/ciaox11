@@ -33,7 +33,7 @@ namespace CIAOX11
         EventStrategyBase () = default;
         EventStrategyBase (const Components::ConfigValues &config)
         {
-          PSDD4CCM_LOG_TRACE ("PSDD4CCM::ExF::EventStrategyBase::" << "ctor");
+          PSDD4CCM_LOG_TRACE ("PSDD4CCM::ExF::EventStrategyBase::ctor");
 
           // check for scheduling lane
           for (const Components::ConfigValue& cval : config)
@@ -59,7 +59,7 @@ namespace CIAOX11
         { this->scheduling_lane_ = des.scheduling_lane_; }
 
       public:
-        ~EventStrategyBase () override = default;
+        virtual ~EventStrategyBase () = default;
 
       private:
         EventStrategyBase (EventStrategyBase&&) = delete;
