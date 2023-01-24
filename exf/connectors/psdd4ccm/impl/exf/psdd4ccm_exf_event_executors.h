@@ -51,16 +51,16 @@ namespace CIAOX11
           catch (const std::exception& ex)
           {
             PSDD4CCM_LOG_ERROR (
-                "PSDD4CCM::ExF::PSDDDataListenerExecutor<LISTENER, HANDLER>::execute " <<
-                "caught exception [" << ex << ']' <<
-                " for event_id: " << this->event_id ());
+                "ExF::PSDDDataListenerExecutor<LISTENER, HANDLER>::execute " <<
+                "caught exception [" << ex << "] for event_id: " <<
+                this->event_id ());
           }
           catch (...)
           {
             PSDD4CCM_LOG_ERROR (
-                "PSDD4CCM::ExF::PSDDDataListenerExecutor<LISTENER, HANDLER>::execute " <<
-                "caught unknown C++ exception" <<
-                " for event_id: " << this->event_id ());
+                "ExF::PSDDDataListenerExecutor<LISTENER, HANDLER>::execute " <<
+                "caught unknown C++ exception for event_id: " <<
+                this->event_id ());
           }
         }
 
@@ -71,11 +71,11 @@ namespace CIAOX11
         {
           if (ctyp == CIAOX11::ExF::CancellationType::CT_SHUTDOWN)
             PSDD4CCM_LOG_INFO (
-                "PSDD4CCM::ExF::PSDDDataListenerExecutor<LISTENER, HANDLER>::cancel received " <<
+                "ExF::PSDDDataListenerExecutor<LISTENER, HANDLER>::cancel received " <<
                 "CT_SHUTDOWN" << " for event_id: " << this->event_id ());
           else
             PSDD4CCM_LOG_INFO (
-                "PSDD4CCM::ExF::PSDDDataListenerExecutor<LISTENER, HANDLER>::cancel received " <<
+                "ExF::PSDDDataListenerExecutor<LISTENER, HANDLER>::cancel received " <<
                 "CT_TIMEOUT" << " for event_id: " << this->event_id ());
         }
 
@@ -97,7 +97,7 @@ namespace CIAOX11
           else
           {
             PSDD4CCM_LOG_WARNING (
-                "PSDD4CCM::ExF::PSDDDataListenerExecutor<LISTENER, HANDLER>::execute_i - "
+                "ExF::PSDDDataListenerExecutor<LISTENER, HANDLER>::execute_i - "
                 "No PSDD Listener or CCM Listener implementation found (dh=" <<
                 (dh ? "true" : "false") << " dl=" << (dl ? "true" : "false") << ").");
           }

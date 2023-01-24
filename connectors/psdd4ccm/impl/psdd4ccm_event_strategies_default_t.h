@@ -30,7 +30,7 @@ namespace CIAOX11
       DefaultEventStrategyBase () = default;
       DefaultEventStrategyBase (IDL::traits<Components::SessionContext>::ref_type ctx)
       {
-        PSDD4CCM_LOG_TRACE ("PSDD4CCM::DefaultEventStrategyBase::" << "ctor");
+        PSDD4CCM_LOG_TRACE ("DefaultEventStrategyBase::ctor");
 
 #if (CIAOX11_PSDD4CCM_CONTEXT_SWITCH == 1)
         IDL::traits<CORBA::Object>::ref_type orb_object =
@@ -43,7 +43,7 @@ namespace CIAOX11
           }
         else
           {
-            PSDD4CCM_LOG_WARNING ("PSDD4CCM::DefaultEventStrategyBase::" << "ctor" <<
+            PSDD4CCM_LOG_WARNING ("DefaultEventStrategyBase::ctor" <<
                 " - unable to resolve ORB for reactor" );
           }
 #endif
@@ -114,7 +114,7 @@ namespace CIAOX11
 
           if (this->reactor_->notify (rh.handler ()) != 0)
           {
-            PSDD4CCM_LOG_ERROR ("DefaultDataEventStrategyBase_T<LISTENER>::" <<
+            PSDD4CCM_LOG_ERROR ("DefaultPushConsumerEventStrategy_T<LISTENER>::" <<
                 "handle_data_available_event<LISTENER>" <<
                 " - failed to use reactor.");
           }
