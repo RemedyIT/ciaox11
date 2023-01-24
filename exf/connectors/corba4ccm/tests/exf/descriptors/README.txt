@@ -40,6 +40,14 @@ This plan deploys the system with
   additional container without ExF support with an Analyzer component
 - a node running one locality with ExF support with a Reporter component
 
+== plan-exf-and-non-exf-locality
+
+This plan deploys the system with an ExF container but some components have ExF disabled because of
+the default configuration of the locality
+- a node running a single locality with ExF support but with ExF disabled at locality level with 2 Generator components and 2 Monitor components
+- a node running one locality with ExF support but with ExF disabled as locality level with an Aggregator component and one locality with an Analyzer component
+- a node running one locality with ExF support with a Reporter component
+
 == plan-deadlines-and-delays
 
 This plan showcases the deadline monitoring options of ExF.
