@@ -53,7 +53,7 @@ namespace Foo_Impl
     // Installing a service with a null object reference should fail
     try
     {
-      this->context_ ->the_service_registry ()->install_service ("Foo", nullptr);
+      this->context_->the_service_registry ()->install_service ("Foo", nullptr);
     }
     catch (const Components::CCMException&ex)
     {
