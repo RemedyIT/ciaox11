@@ -379,7 +379,6 @@ namespace CIAOX11
     conn_config.clear ();
     Deployment_Common::collect_config_values (connection_props, conn_config);
 
-
     CIAOX11_LOG_DEBUG ("Connection_Handler::connect_non_local_facet - "
                        "connecting facet <" << endpoint.portName () <<
                        "> of <" << component_name << ">");
