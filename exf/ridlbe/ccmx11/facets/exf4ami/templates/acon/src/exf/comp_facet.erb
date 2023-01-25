@@ -6,15 +6,12 @@
   <%= lem_name %>_conn_i::get_<%= _p.lem_name %> ()
   {
 %     if _p.cxxname == 'ami4ccm_port_ami4ccm_provides'
-     this-><%= _p.cxxname %>_list_.push_back (CORBA::make_reference <<%= _p.cxxname %>_exec_i> (
-                                                         this->context_));
+    this-><%= _p.cxxname %>_list_.push_back (CORBA::make_reference <<%= _p.cxxname %>_exec_i> (this->context_));
     return this-><%= _p.cxxname %>_list_.back ();
 %     else
     if (!this-><%= _p.cxxname %>_)
     {
-      this-><%= _p.cxxname %>_ =
-        CORBA::make_reference <<%= _p.lem_name %>_exec_i> (
-          this->context_);
+      this-><%= _p.cxxname %>_ = CORBA::make_reference <<%= _p.lem_name %>_exec_i> (this->context_);
     }
     return this-><%= _p.cxxname %>_;
 %     end
