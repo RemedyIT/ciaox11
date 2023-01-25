@@ -70,8 +70,7 @@ namespace CIAOX11
         // copy unique deployment properties
         Components::ConfigValues cfgval;
         Deployment_Common::collect_config_values (props, cfgval);
-        ExF::Scheduler::ref_type sched =
-            ExF::Scheduler::create_instance (cfgval);
+        ExF::Scheduler::ref_type sched = ExF::Scheduler::create_instance (cfgval);
         if (sched)
         {
           CIAOX11_LOG_DEBUG ("ExF::Container_Handler::install_instance - " <<
@@ -98,7 +97,7 @@ namespace CIAOX11
       else
       {
         CIAOX11_LOG_DEBUG ("ExF::Container_Handler::install_instance - " <<
-                           "creating container " << name);
+                           "creating regular container " << name);
 
         try
         {

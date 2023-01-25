@@ -7,9 +7,7 @@
   {
     if (!this-><%= _p.cxxname %>_)
     {
-      this-><%= _p.cxxname %>_ =
-        CORBA::make_reference <<%= _p.lem_name %>_exec_i> (
-          this->context_);
+      this-><%= _p.cxxname %>_ = CORBA::make_reference <<%= _p.lem_name %>_exec_i> (this->context_);
     }
     return this-><%= _p.cxxname %>_;
   }
