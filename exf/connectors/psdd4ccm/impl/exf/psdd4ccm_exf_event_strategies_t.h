@@ -26,14 +26,13 @@ namespace CIAOX11
   {
     namespace ExF
     {
-
       class EventStrategyBase
       {
       protected:
         EventStrategyBase () = default;
         EventStrategyBase (const Components::ConfigValues &config)
         {
-          PSDD4CCM_LOG_TRACE ("PSDD4CCM::ExF::EventStrategyBase::ctor");
+          PSDD4CCM_LOG_TRACE ("ExF::EventStrategyBase::ctor");
 
           // check for scheduling lane
           for (const Components::ConfigValue& cval : config)
@@ -44,7 +43,7 @@ namespace CIAOX11
               if (!(cval.value () >>= objref))
               {
                 throw std::runtime_error (
-                    "PSDD4CCM::ExF::EventStrategyBase: failed to extract " +
+                    "ExF::EventStrategyBase: failed to extract " +
                     CIAOX11::ExF::SCHEDULING_LANE_REF);
               }
               this->scheduling_lane_ =
@@ -129,7 +128,7 @@ namespace CIAOX11
         void handle_data_available_event (
             typename IDL::traits<HANDLER>::ref_type dh)
         {
-          typedef PSDDDataListenerExecutor<listener_type, HANDLER> DataListenerExec_type;
+          using DataListenerExec_type = PSDDDataListenerExecutor<listener_type, HANDLER>;
 
           try
           {
@@ -144,7 +143,7 @@ namespace CIAOX11
           }
           catch (const std::bad_alloc&)
           {
-            PSDD4CCM_LOG_ERROR ("PSDD4CCM::ExF::PushConsumerEventStrategy_T<CCM_TYPE>::handle_data_available_event - no memory");
+            PSDD4CCM_LOG_ERROR ("ExF::PushConsumerEventStrategy_T<CCM_TYPE>::handle_data_available_event - no memory");
           }
         }
 
@@ -152,7 +151,7 @@ namespace CIAOX11
         PushConsumerEventStrategy_T (PushConsumerEventStrategy_T&&) = delete;
         PushConsumerEventStrategy_T& operator=(PushConsumerEventStrategy_T&&) = delete;
 
-        typename IDL::traits < listener_type >::weak_ref_type listener_ {};
+        typename IDL::traits<listener_type>::weak_ref_type listener_ {};
 
         CIAOX11::ExF::Deadline data_available_deadline_ {};
         CIAOX11::ExF::Priority data_available_priority_ {};

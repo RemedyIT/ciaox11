@@ -52,13 +52,13 @@ namespace CIAOX11
           }
           catch (const std::exception& ex)
           {
-            DDS4CCM_LOG_ERROR ("DDS4CCM::ExF::ErrorExecutorBase::execute " <<
+            DDS4CCM_LOG_ERROR ("ExF::DDSExecutorBase::execute " <<
                                "caught exception [" << ex << ']' <<
                                " for event_id: " << this->event_id_);
           }
           catch (...)
           {
-            DDS4CCM_LOG_ERROR ("DDS4CCM::ExF::ErrorExecutorBase::execute " <<
+            DDS4CCM_LOG_ERROR ("ExF::DDSExecutorBase::execute " <<
                                "caught unknown C++ exception" <<
                                " for event_id: " << this->event_id_);
           }
@@ -70,10 +70,10 @@ namespace CIAOX11
             ExF::CancellationType ctyp) noexcept(true) override
         {
           if (ctyp == CIAOX11::ExF::CancellationType::CT_SHUTDOWN)
-            DDS4CCM_LOG_INFO ("DDS4CCM::ExF::ErrorExecutorBase::cancel received " <<
+            DDS4CCM_LOG_INFO ("ExF::DDSExecutorBase::cancel received " <<
                               "CT_SHUTDOWN" << " for event_id: " << this->event_id_);
           else
-            DDS4CCM_LOG_INFO ("DDS4CCM::ExF::ErrorExecutorBase::cancel received " <<
+            DDS4CCM_LOG_INFO ("ExF::DDSExecutorBase::cancel received " <<
                               "CT_TIMEOUT" << " for event_id: " << this->event_id_);
         }
 
