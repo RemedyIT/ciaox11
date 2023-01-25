@@ -57,8 +57,7 @@
 
 % _pfx = ''
 % unless operation.is_oneway? || operation.is_void?
-  return
-% _pfx = '  '
+% _pfx = 'return '
 % end
 %   _args = operation.arguments.dup
 %   _arg = _args.shift
@@ -67,7 +66,7 @@
   <%= _pfx %>receptacle_objref-><%= operation.cxxname %> (<%= _s %>
 % while !_args.empty?
 %   _arg = _args.shift
-      <%= _pfx %><%= _arg.cxxname %><%= _args.empty? ? ');' : ',' %>
+    <%= _arg.cxxname %><%= _args.empty? ? ');' : ',' %>
 % end
 }
 
