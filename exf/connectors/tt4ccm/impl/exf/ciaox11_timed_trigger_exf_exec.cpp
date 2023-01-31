@@ -40,8 +40,6 @@ namespace CIAOX11_TT_TimedTrigger_Impl
       IDL::traits<::CCM_TT::TT_Handler>::ref_type trigger_handler,
       const ::CCM_TT::TT_Duration& trigger_delay)
   {
-    CIAOX11_CALL_TRACE ("tt_scheduler_exec_i::schedule_trigger");
-
     // schedule as trigger with zero interval and max 1 rounds
     return this->schedule_repeated_trigger (
         trigger_handler,
@@ -57,7 +55,6 @@ namespace CIAOX11_TT_TimedTrigger_Impl
       const ::CCM_TT::TT_Duration& interval,
       uint32_t max_rounds)
   {
-    CIAOX11_CALL_TRACE ("tt_scheduler_exec_i::schedule_repeated_trigger");
     // schedule timer
     timespec_t const ts_delay {
       ACE_Utils::truncate_cast<time_t> (start_delay.sec ()),
@@ -92,8 +89,6 @@ namespace CIAOX11_TT_TimedTrigger_Impl
    void tt_scheduler_exec_i::set_config (
        const ::Components::ConfigValues& config)
    {
-     CIAOX11_CALL_TRACE ("tt_scheduler_exec_i::set_config ");
-
      // check for scheduling lane
      for (const Components::ConfigValue& cval : config)
      {

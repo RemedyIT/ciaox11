@@ -188,8 +188,6 @@ namespace CIAOX11_TT_TimedTrigger_Impl
   void
   tt_timer_i::cancel ()
   {
-    CIAOX11_CALL_TRACE ("tt_timer_i::cancel");
-
     bool const cancelled = this->cancelled_.exchange (true);
     if (cancelled)
       return; // already cancelled/cancelling

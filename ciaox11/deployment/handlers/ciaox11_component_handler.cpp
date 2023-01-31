@@ -366,8 +366,6 @@ namespace CIAOX11
                                          uint32_t instanceRef,
                                          CORBA::Any& instance_reference)
   {
-    CIAOX11_CALL_TRACE ("Component_Handler_i::install_instance");
-
     const ::Deployment::InstanceDeploymentDescription &idd (plan.instance()[instanceRef]);
     const ::Deployment::MonolithicDeploymentDescription &mdd (plan.implementation()[idd.implementationRef()]);
 
