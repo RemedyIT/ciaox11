@@ -182,7 +182,7 @@ ReadGetReceiverRunner_T<CONTEXT_TYPE, QUERY_ATTRIB>::check_filter (
           << std::endl;
         error = true;
       }
-      if (filter.parameters ().size () != 0)
+      if (!filter.parameters ().empty ())
       {
         DDS4CCM_TEST_ERROR << "ERROR: ReadGetReceiverRunner_T<CONTEXT_TYPE, QUERY_ATTRIB>::check_filter <"
           << port << "> - Unexpected parameter list: expected an "
