@@ -22,7 +22,7 @@ module IDL
             helper_method :has_ami4ccm_receptacles?
 
             def has_ami4ccm_receptacles?
-              properties[:ami4ccm_receptacles].size > 0
+              !properties[:ami4ccm_receptacles].empty?
             end
 
             def pre_visit_with_ami(parser)
@@ -59,7 +59,7 @@ module IDL
             helper_method :has_ami4ccm_receptacles?
 
             def has_ami4ccm_receptacles?
-              properties[:ami4ccm_receptacles].size > 0
+              !properties[:ami4ccm_receptacles].empty?
             end
 
             def pre_visit_with_ami(parser)

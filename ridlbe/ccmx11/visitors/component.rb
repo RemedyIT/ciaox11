@@ -218,7 +218,7 @@ module IDL
       end
 
       def attributes_incl_mirror_port?
-        (attributes_incl_mirror_port.size > 0) ? true : false
+        (!attributes_incl_mirror_port.empty?) ? true : false
       end
 
       def any_mutable_attributes_incl_mirror_port?
@@ -226,7 +226,7 @@ module IDL
       end
 
       def attributes?
-        (attributes.size > 0) ? true : false
+        (!attributes.empty?) ? true : false
       end
 
       def all_attributes(inc_implicit = false)  # incl. inherited
@@ -244,7 +244,7 @@ module IDL
       end
 
       def all_attributes?(inc_implicit = false)
-        (all_attributes(inc_implicit).size > 0) ? true : false
+        (!all_attributes(inc_implicit).empty?) ? true : false
       end
 
       def all_operations(inc_implicit = false)  # incl. inherited
