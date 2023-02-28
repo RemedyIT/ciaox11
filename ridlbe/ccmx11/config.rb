@@ -198,7 +198,7 @@ module IDL
           IDL::CCMX11.gen_component_servant(options, idl_ext)
         end
 
-     end # becfg.on_process_input
+      end # becfg.on_process_input
 
     end # Backend.configure
 
