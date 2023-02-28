@@ -31,7 +31,7 @@ module IDL
 
         def self.add_extended_options(ol)
 
-          ol.for_switch '-G{generation options}', :type => String, :separator => true do |swcfg|
+          ol.for_switch '-G{generation options}', type: String, separator: true do |swcfg|
             swcfg.for_group :dds4ccm_group do |grpcfg|
               grpcfg.on_prepare do |arg, params|
                 if /^dds4ccm\,(.*)/ =~ arg
@@ -42,37 +42,37 @@ module IDL
               # IMPORTANT When these flags are updated also update the DDS4CCM docs/src/ridlc.adoc
               # which is used for our user documentation
               grpcfg.for_params :strings,
-              :params => {
+              params: {
                 'conn' => {
-                    :option_name => :gen_ddsconn_complete,
-                    :description => "-Gdds4ccm,conn\t\tGenerate all files needed for an DDS4CCM connector"
+                    option_name: :gen_ddsconn_complete,
+                    description: "-Gdds4ccm,conn\t\tGenerate all files needed for an DDS4CCM connector"
                   },
                 'conn_only' => {
-                    :option_name => :gen_ddsconn_only,
-                    :description => "-Gdds4ccm,conn_only\tGenerate connector files needed for an DDS4CCM connector"
+                    option_name: :gen_ddsconn_only,
+                    description: "-Gdds4ccm,conn_only\tGenerate connector files needed for an DDS4CCM connector"
                   },
                 'lem' => {
-                    :option_name => :gen_dds4ccm_lem,
-                    :description => "-Gdds4ccm,lem\t\tGenerate lem IDL needed for DDS4CCM interaction"
+                    option_name: :gen_dds4ccm_lem,
+                    description: "-Gdds4ccm,lem\t\tGenerate lem IDL needed for DDS4CCM interaction"
                   },
                 'lemgen' => {
-                    :option_name => :gen_dds4ccm_lemgen,
-                    :description => "-Gdds4ccm,lemgen\t\tGenerate lem IDL + derived code needed for DDS4CCM interaction"
+                    option_name: :gen_dds4ccm_lemgen,
+                    description: "-Gdds4ccm,lemgen\t\tGenerate lem IDL + derived code needed for DDS4CCM interaction"
                 }
               }
             end
           end
 
-          ol.for_switch '-W<extended option>=OPT', :type => String, :separator => true do |swcfg|
+          ol.for_switch '-W<extended option>=OPT', type: String, separator: true do |swcfg|
             swcfg.modify_group :b_extopt do |grpcfg|
               grpcfg.modify_params :strings,
-                                   :params => {
-                                       'dds_topic' => {:description => "-Wb,dds_topic=SCOPED_TOPIC\tspecifies scoped topic name for DDS4CCM lem generation"},
-                                       'dds_topic_namespace' => {:description => "-Wb,dds_topic_namespace=SCOPED_NAME\tspecifies scoped namespace name for DDS4CCM lem generation (default is topic type namespace)"},
-                                       'dds_topic_seq_suffix' => {:description => "-Wb,dds_topic_seq_suffix=SUFFIX\tspecifies suffix for topic sequence name for DDS4CCM lem generation"},
-                                       'dds_topic_if_suffix' => {:description => "-Wb,dds_topic_if_suffix=SUFFIX\tspecifies suffix topic interface name for DDS4CCM lem generation"},
-                                       'dds_topic_seq' => {:description => "-Wb,dds_topic_seq=NAME\t\tspecifies topic sequence name for DDS4CCM lem generation. Only effective in combination with -Wb,dds_topic"},
-                                       'dds_topic_if' => {:description => "-Wb,dds_topic_if=NAME\t\tspecifies topic interface name for DDS4CCM lem generation. Only effective in combination with -Wb,dds_topic"}
+                                   params: {
+                                       'dds_topic' => {description: "-Wb,dds_topic=SCOPED_TOPIC\tspecifies scoped topic name for DDS4CCM lem generation"},
+                                       'dds_topic_namespace' => {description: "-Wb,dds_topic_namespace=SCOPED_NAME\tspecifies scoped namespace name for DDS4CCM lem generation (default is topic type namespace)"},
+                                       'dds_topic_seq_suffix' => {description: "-Wb,dds_topic_seq_suffix=SUFFIX\tspecifies suffix for topic sequence name for DDS4CCM lem generation"},
+                                       'dds_topic_if_suffix' => {description: "-Wb,dds_topic_if_suffix=SUFFIX\tspecifies suffix topic interface name for DDS4CCM lem generation"},
+                                       'dds_topic_seq' => {description: "-Wb,dds_topic_seq=NAME\t\tspecifies topic sequence name for DDS4CCM lem generation. Only effective in combination with -Wb,dds_topic"},
+                                       'dds_topic_if' => {description: "-Wb,dds_topic_if=NAME\t\tspecifies topic interface name for DDS4CCM lem generation. Only effective in combination with -Wb,dds_topic"}
                                    }
             end
           end
@@ -194,7 +194,7 @@ module IDL
         # schedule dds4ccm lem IDL generation
         IDL.push_production(:dds4ccm_lem_idl,
                             ::IDL::CCMX11::DDS4CCM::SEVIDLWriter.new(dds4ccm_lem_idl_file,
-                                                                     options.merge({ :output => options[:dds4ccm_lem_idl_file] })))
+                                                                     options.merge({ output: options[:dds4ccm_lem_idl_file] })))
       end
 
       # This method drives 3 input processing passes:
