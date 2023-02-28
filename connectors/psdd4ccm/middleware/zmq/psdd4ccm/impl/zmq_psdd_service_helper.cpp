@@ -183,13 +183,11 @@ namespace PSDD
       WriterSocket ws;
       if (this->config_.publisher_connection_scheme() == ConnectionScheme::BIND_MULTIPLEX)
       {
-        ws = this->svc_context_->create_publisher_multiplex_socket (
-            this->config_);
+        ws = this->svc_context_->create_publisher_multiplex_socket (this->config_);
       }
       else
       {
-        ws = this->svc_context_->create_publisher_socket (
-            this->config_);
+        ws = this->svc_context_->create_publisher_socket (this->config_);
       }
       if (!ws)
       {
