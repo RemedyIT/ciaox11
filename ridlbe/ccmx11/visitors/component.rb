@@ -105,7 +105,7 @@ module IDL
         interface_type = []
         multiple_ports = []
         mp_ports.each do |mp|
-          if !interface_type.include?(mp.interface_type.scoped_cxxname)
+          unless interface_type.include?(mp.interface_type.scoped_cxxname)
             interface_type << mp.interface_type.scoped_cxxname
             multiple_ports << mp
           end

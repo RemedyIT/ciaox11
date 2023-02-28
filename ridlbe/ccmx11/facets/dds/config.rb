@@ -187,7 +187,7 @@ module IDL
       def self.gen_typesupport_export(options, prefix = nil)
         return if IDL.has_production?(:typesupport_export_header)
         export_file = options.typesupport_export_include
-        if !options.typesupport_export_file.nil?
+        unless options.typesupport_export_file.nil?
           export_file = options.typesupport_export_file
         end
         if export_file
