@@ -14,7 +14,6 @@ module IDL
     # Reopen visitor class to add ami4ccm specifics
     #
     class IncludeVisitor
-
       def has_ami4ccm_receptacles?
         !self.properties[:ami4ccm_receptacles].empty?
       end
@@ -35,7 +34,6 @@ module IDL
       def has_ami4ccm_idl_lem_includes?
         !self.ami4ccm_idl_lem_includes.empty?
       end
-
     end
   end
 end

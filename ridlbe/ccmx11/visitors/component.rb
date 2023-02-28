@@ -6,9 +6,9 @@
 #
 # @copyright Copyright (c) Remedy IT Expertise BV
 #--------------------------------------------------------------------
-require 'ridlbe/ccmx11/visitors/port.rb'
-require 'ridlbe/c++11/visitors/attribute.rb'
-require 'ridlbe/ccmx11/visitors/mixins/ccm_names.rb'
+require 'ridlbe/ccmx11/visitors/port'
+require 'ridlbe/c++11/visitors/attribute'
+require 'ridlbe/ccmx11/visitors/mixins/ccm_names'
 
 module IDL
   module CCMX11
@@ -105,7 +105,7 @@ module IDL
         interface_type = []
         multiple_ports = []
         mp_ports.each do |mp|
-          if !interface_type.include?(mp.interface_type.scoped_cxxname)
+          unless interface_type.include?(mp.interface_type.scoped_cxxname)
             interface_type << mp.interface_type.scoped_cxxname
             multiple_ports << mp
           end
@@ -204,7 +204,7 @@ module IDL
         @attributes_component_and_mirror_port
       end
 
-      #Only the Component attributes, not the attributes of a port of the component
+      # Only the Component attributes, not the attributes of a port of the component
       def attributes_excl_port
         unless @attributes_component
           @attributes_component = []
@@ -218,7 +218,7 @@ module IDL
       end
 
       def attributes_incl_mirror_port?
-        (attributes_incl_mirror_port.size > 0) ? true : false
+        (!attributes_incl_mirror_port.empty?) ? true : false
       end
 
       def any_mutable_attributes_incl_mirror_port?
@@ -226,7 +226,7 @@ module IDL
       end
 
       def attributes?
-        (attributes.size > 0) ? true : false
+        (!attributes.empty?) ? true : false
       end
 
       def all_attributes(inc_implicit = false)  # incl. inherited
@@ -244,7 +244,7 @@ module IDL
       end
 
       def all_attributes?(inc_implicit = false)
-        (all_attributes(inc_implicit).size > 0) ? true : false
+        (!all_attributes(inc_implicit).empty?) ? true : false
       end
 
       def all_operations(inc_implicit = false)  # incl. inherited
@@ -328,7 +328,7 @@ module IDL
 
       def has_concrete_base?
         false
-        #node.bases.any? { |_base| !_base.is_abstract? }
+        # node.bases.any? { |_base| !_base.is_abstract? }
       end
 
       # template mapping
@@ -342,23 +342,23 @@ module IDL
 
       # corba4ccm & ami4ccm svnt
       optional_template :component_init_connect
-      #ami4ccm svnt
+      # ami4ccm svnt
       optional_template :context_extra_members
       optional_template :context_extra_connect
       optional_template :context_extra_disconnect
       optional_template :context_extra_receptacles
-      #corba facet svnt
+      # corba facet svnt
       optional_template :component_pre
       optional_template :component_extra_member
       optional_template :component_create
-      #ami4ccm lem idl
+      # ami4ccm lem idl
       optional_template :lem_extra_receptacles
       optional_template :lem_extra_multiple_receptacles
-      #ami4ccm comp_exec
+      # ami4ccm comp_exec
       optional_template :component_end_extra
-      #ami4ccm connector
+      # ami4ccm connector
       optional_template :connector_extra
-      #exf
+      # exf
       optional_template :context_port_set_connection
       optional_template :context_port_reset_connection
 
@@ -405,7 +405,6 @@ module IDL
       def supported_interface_ids
         @sup_intf_ids ||= (collect_ancestors([], node).collect {|ancestor| ancestor.repository_id } << node.repository_id)
       end
-
     end
 
   end

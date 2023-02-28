@@ -25,7 +25,6 @@ module IDL
     end
 
     class SvntComponentHeaderWriter < SvntComponentBaseWriter
-
       class IncludeScanner < Cxx11::CxxCodeWriterBase
         attr_reader :uses_multiple
         attr_reader :has_non_local_facets
@@ -49,7 +48,6 @@ module IDL
             @uses_multiple ||= v.incl_multiple_port?
           end
         end
-
       end
 
       helper CCMX11::VersionHelper
@@ -91,11 +89,9 @@ module IDL
       def enter_connector(node)
         visitor(ConnectorVisitor).visit_component(node)
       end
-
     end # ComponentSvntHeaderWriter
 
     class SvntComponentSourceWriter < SvntComponentBaseWriter
-
       # special AST scanner to check for any non-local facets in any component
       class IncludeScanner < Cxx11::CxxCodeWriterBase
         attr_reader :has_non_local_facets
@@ -117,7 +113,6 @@ module IDL
             @has_non_local_facets ||= v.has_non_local_facet_ports?
           end
         end
-
       end
 
       def initialize(output = STDOUT, opts = {})
@@ -141,7 +136,6 @@ module IDL
       def enter_connector(node)
         visitor(ConnectorVisitor).visit_component(node)
       end
-
     end # CorbaComponentSvntSourceWriter
 
     module SvntComponent

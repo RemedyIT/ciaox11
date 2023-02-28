@@ -6,7 +6,7 @@
 #
 # @copyright Copyright (c) Remedy IT Expertise BV
 #--------------------------------------------------------------------
-require 'ridlbe/ccmx11/visitors/mixins/ccm_names.rb'
+require 'ridlbe/ccmx11/visitors/mixins/ccm_names'
 
 module IDL
   module Cxx11
@@ -19,11 +19,10 @@ module IDL
       def gen_operation(extra_props = {})
         visit_template('operation', extra_props)
       end
-
     end
 
     class ArgumentVisitor
-    #out or inout argument of operation becomes in argument of ReplyHandler
+    # out or inout argument of operation becomes in argument of ReplyHandler
       def idl_arg_type_rph
         case direction
           when :in
@@ -45,7 +44,6 @@ module IDL
             "inout #{idltype_name}"
         end
       end
-
     end
 
   end

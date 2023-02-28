@@ -15,7 +15,6 @@ module IDL
     # Reopen visitor class to add DDS specifics
     #
     class ArrayVisitor
-
       def dds_native_element_cxxtype
         "::DDS_Native::#{strip_global_scope self.scoped_cxxname}"
       end

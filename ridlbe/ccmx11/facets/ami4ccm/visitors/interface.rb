@@ -6,7 +6,7 @@
 #
 # @copyright Copyright (c) Remedy IT Expertise BV
 #--------------------------------------------------------------------
-require 'ridlbe/ccmx11/visitors/mixins/ccm_names.rb'
+require 'ridlbe/ccmx11/visitors/mixins/ccm_names'
 
 module IDL
   module Cxx11
@@ -14,7 +14,6 @@ module IDL
     # Reopen InterfaceVisitor class to add AMI4CCM specifics
     #
     class InterfaceVisitor
-
       def ami4ccm_name
         'AMI4CCM_' + name
       end
@@ -30,7 +29,6 @@ module IDL
       def scoped_ami4ccm_name
         scoped_enclosure_name + '::AMI4CCM_' + name
       end
-
     end
   end
 end

@@ -14,7 +14,6 @@ module IDL
     # Reopen visitor class to add DDSX11 specifics
     #
     class PreVisitor
-
       def ddsx11_incl
         @ddsx11_includes ||= []
       end
@@ -53,7 +52,6 @@ module IDL
         # return without any output directories prefixed
         idl_base + params[:dds_typed_entities_pfx] + params[:stub_pfx] + params[:hdr_ext]
       end
-
     end # PreVisitor
 
   end # Cxx11

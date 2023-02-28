@@ -6,8 +6,8 @@
 #
 # @copyright Copyright (c) Remedy IT Expertise BV
 #----------------------------------------------------------------------
-require 'ridlbe/c++11/visitors/interface.rb'
-require 'ridlbe/ccmx11/visitors/mixins/ccm_names.rb'
+require 'ridlbe/c++11/visitors/interface'
+require 'ridlbe/ccmx11/visitors/mixins/ccm_names'
 
 module IDL
   module CCMX11
@@ -54,12 +54,12 @@ module IDL
         @component
       end
 
-      #in case of a extended port, the port contains ports
+      # in case of a extended port, the port contains ports
       def ports
         node.ports.collect { |p| (pv = visitor(PortVisitor)).visit(p); pv }
       end
 
-      #remove prefix extended_port_name, we don't want the expanded_copy name but the original port name
+      # remove prefix extended_port_name, we don't want the expanded_copy name but the original port name
       def port_name_without_extended_port(extended_port)
         @port_name ||= node.name
         @port_name.slice!(extended_port + '_')
@@ -73,7 +73,6 @@ module IDL
       def gen_facet_exec(extra_props = {})
         visit_template('facet_exec', extra_props)
       end
-
      end
   end
 end

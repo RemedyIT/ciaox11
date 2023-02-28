@@ -6,7 +6,7 @@
 #
 # @copyright Copyright (c) Remedy IT Expertise BV
 #--------------------------------------------------------------------
-require 'ridlbe/ccmx11/visitors/mixins/ccm_names.rb'
+require 'ridlbe/ccmx11/visitors/mixins/ccm_names'
 
 module IDL
   module Cxx11
@@ -18,7 +18,6 @@ module IDL
       def executor_cxx_namespace
         scoped_cxxname.scope_to_cxxname + '_Impl'
       end
-
     end
   end
 end

@@ -6,13 +6,12 @@
 #
 # @copyright Copyright (c) Remedy IT Expertise BV
 #----------------------------------------------------------------------
-require 'ridlbe/ccmx11/visitors/component.rb'
+require 'ridlbe/ccmx11/visitors/component'
 
 module IDL
   module CCMX11
 
     class ConnectorVisitor < ComponentVisitor
-
       def base
         (@base = visitor(ConnectorVisitor)).visit(@node.base) unless @base
         @base

@@ -12,7 +12,6 @@ module IDL
 
     # reopen and extend
     class ConnectorVisitor
-
       def dds4ccm_error_event_strategy_template
         '::CIAOX11::DDS4CCM::DefaultErrorEventStrategy_T'
       end
@@ -46,7 +45,6 @@ module IDL
           return '::CIAOX11::DDS4CCM::DefaultPushConsumerEventStrategy_T'
         end
       end
-
     end
 
   end

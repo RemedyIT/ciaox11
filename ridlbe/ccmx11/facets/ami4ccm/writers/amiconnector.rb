@@ -26,7 +26,7 @@ module IDL
       helper Cxx11::IncludeGuardHelper
     end
 
-    #write the xxxA_conn.idl file for the ami connector
+    # write the xxxA_conn.idl file for the ami connector
     class AmiConnectorConnIDLWriter < AmiConnectorBaseWriter
       helper_method :is_ami_conn_idl?
 
@@ -79,10 +79,9 @@ module IDL
       def is_conn_interface?(node)
         (!node.is_local?) && (!node.is_abstract?) && node.has_ami_annotation? && (params[:conn_intf].blank? || params[:conn_intf] == node.scoped_name)
       end
-
     end # AmiConnectorConnIDLWriter
 
-    #write the xxxA.idl file for the ami interfaces
+    # write the xxxA.idl file for the ami interfaces
     class AmiConnectorIDLWriter < AmiConnectorBaseWriter
       helper_method :is_ami_conn_idl?
 
@@ -143,12 +142,12 @@ module IDL
 
         properties[:lem_stub_include] = File.basename(params[:idlfile], params[:idlext]) + params[:lem_pfx] + params[:stub_pfx] + params[:hdr_ext]
 
-        #get the base header, remove the A_conn.idl
+        # get the base header, remove the A_conn.idl
         base_name = File.basename(params[:idlfile], params[:idlext])
         base_name = base_name.chomp(params[:ami_idl_conn_pfx])
-        #generate  the  AmiC.h name
+        # generate  the  AmiC.h name
         properties[:ami_stub_include] = base_name + params[:ami_pfx] + params[:stub_pfx] + params[:hdr_ext]
-        #gnerate the  AS.h name
+        # gnerate the  AS.h name
         properties[:svntc_skel_include] = base_name + params[:ami_idl_pfx] + params[:srv_pfx] + params[:hdr_ext]
       end
 
@@ -185,7 +184,7 @@ module IDL
       end
     end # AmiConnectorSourceWriter
 
-    end #AMI4CCM
+    end # AMI4CCM
 
   end # CCMX11
 

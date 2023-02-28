@@ -10,21 +10,21 @@ module IDL
   module CCMX11
     module CcmNames
 
-      #original escaped name used in composed name with 'CCM_'
+      # original escaped name used in composed name with 'CCM_'
       def ccm_name
         'CCM_' + name
       end
 
-      #original escaped name for using in composed names
+      # original escaped name for using in composed names
       def lem_name
         name
       end
 
-      #needed for generating idl from idl
+      # needed for generating idl from idl
       def scoped_unescaped_ccm_name
         ((@node.enclosure && !@node.enclosure.scopes.empty?) ? scoped_enclosure_unescaped_name + '::' + ccm_name : ccm_name)
       end
-      #needed for generating idl from idl
+      # needed for generating idl from idl
       def scoped_unescaped_type
         ((@node.enclosure && !@node.enclosure.scopes.empty?) ? scoped_enclosure_unescaped_name + '::' + unescaped_name : unescaped_name)
       end

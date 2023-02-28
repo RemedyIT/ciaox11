@@ -7,7 +7,7 @@
 # @copyright Copyright (c) Remedy IT Expertise BV
 #--------------------------------------------------------------------
 require 'ridlbe/c++11/visitors/include'
-require 'ridlbe/ccmx11/visitors/mixins/ccm_names.rb'
+require 'ridlbe/ccmx11/visitors/mixins/ccm_names'
 
 module IDL
   module CCMX11
@@ -21,11 +21,9 @@ module IDL
     end # StructVisitor
 
     class StructMemberVisitor
-
       def has_key_annotation?
         !self.annotations[:key].empty?
       end
-
     end
 
   end # CCMX11
