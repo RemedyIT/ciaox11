@@ -372,7 +372,7 @@ module IDL
     # determine the LEM idl out-/input file name
     def self.lem_output_file(base, options, idl_ext)
       options[:lem_outputdir] = options.outputdir unless options[:lem_outputdir]
-      options[:lem_output_file] = File.join(options[:lem_outputdir], File.basename(base, idl_ext ) + options[:lem_pfx] + idl_ext)
+      options[:lem_output_file] = File.join(options[:lem_outputdir], File.basename(base, idl_ext) + options[:lem_pfx] + idl_ext)
     end
 
     # schedule a generation (production) of the LEM idl
