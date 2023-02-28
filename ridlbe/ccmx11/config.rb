@@ -498,7 +498,7 @@ module IDL
     def self.gen_svnt_facets_or_components(options, idl_ext, facet=true)
       # for generating facet svnt's and component svnt's the same writer is used.
       # only the output_dir may differ .
-      #svnt files
+      # svnt files
       if facet
         options[:svntcomp_output] = File.join(options[:conn_outputdir], File.basename(options[:idlfile], idl_ext) +
                                     options[:svnt_impl_pfx])

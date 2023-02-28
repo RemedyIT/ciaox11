@@ -201,7 +201,7 @@ module IDL
         check_ami_stub_export_params(options)
         check_conn_lem_stub_export_params(options)
 
-        #first pass , generate files from base idl
+        # first pass , generate files from base idl
         IDL::CCMX11::AMI4CCM.gen_ami_connector_only_ami4ccm_base(options, idl_ext)
 
         # second pass, with as input the options from the first pass , with idlname *.idl
@@ -659,7 +659,7 @@ module IDL
         end
       end
 
-    end  #AMI4CCM
+    end  # AMI4CCM
 
     self.singleton_class.__send__(:include, AMI4CCM::BaseExt)
 

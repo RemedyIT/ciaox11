@@ -54,12 +54,12 @@ module IDL
         @component
       end
 
-      #in case of a extended port, the port contains ports
+      # in case of a extended port, the port contains ports
       def ports
         node.ports.collect { |p| (pv = visitor(PortVisitor)).visit(p); pv }
       end
 
-      #remove prefix extended_port_name, we don't want the expanded_copy name but the original port name
+      # remove prefix extended_port_name, we don't want the expanded_copy name but the original port name
       def port_name_without_extended_port(extended_port)
         @port_name ||= node.name
         @port_name.slice!(extended_port + '_')

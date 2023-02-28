@@ -50,7 +50,7 @@ module IDL
       end
 
       def enter_connector(node)
-        #uses @template_args
+        # uses @template_args
         visitor(ConnectorVisitor).visit_connector(node)
       end
 
@@ -77,7 +77,7 @@ module IDL
       end
 
       def enter_connector(node)
-         #uses @template_args
+         # uses @template_args
          visitor(ConnectorVisitor).visit_connector(node)
       end
 

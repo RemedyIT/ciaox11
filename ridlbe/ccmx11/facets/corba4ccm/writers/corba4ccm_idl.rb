@@ -44,7 +44,7 @@ module IDL
           (!node.is_local?) && (!node.is_abstract?) && (params[:conn_intf].blank? || params[:conn_intf] == node.scoped_name)
         end
 
-      end #IDLForCorbaConnectorWriter
+      end # IDLForCorbaConnectorWriter
 
     end # CORBA
   end # CCMX11

@@ -23,7 +23,7 @@ module IDL
     end
 
     class ArgumentVisitor
-    #out or inout argument of operation becomes in argument of ReplyHandler
+    # out or inout argument of operation becomes in argument of ReplyHandler
       def idl_arg_type_rph
         case direction
           when :in

@@ -40,8 +40,8 @@ module IDL
         @node.readonly
       end
 
-      #Used for attributes of extended ports
-      #remove prefix extended_port_name, we don't want the expanded_copy name but the original attribute name
+      # Used for attributes of extended ports
+      # remove prefix extended_port_name, we don't want the expanded_copy name but the original attribute name
       def attribute_name_without_extended_port(extended_port)
         @attribute_name ||= node.name
         @attribute_name.slice!(extended_port + '_')

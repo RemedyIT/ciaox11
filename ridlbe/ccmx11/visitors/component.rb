@@ -204,7 +204,7 @@ module IDL
         @attributes_component_and_mirror_port
       end
 
-      #Only the Component attributes, not the attributes of a port of the component
+      # Only the Component attributes, not the attributes of a port of the component
       def attributes_excl_port
         unless @attributes_component
           @attributes_component = []
@@ -328,7 +328,7 @@ module IDL
 
       def has_concrete_base?
         false
-        #node.bases.any? { |_base| !_base.is_abstract? }
+        # node.bases.any? { |_base| !_base.is_abstract? }
       end
 
       # template mapping
@@ -342,23 +342,23 @@ module IDL
 
       # corba4ccm & ami4ccm svnt
       optional_template :component_init_connect
-      #ami4ccm svnt
+      # ami4ccm svnt
       optional_template :context_extra_members
       optional_template :context_extra_connect
       optional_template :context_extra_disconnect
       optional_template :context_extra_receptacles
-      #corba facet svnt
+      # corba facet svnt
       optional_template :component_pre
       optional_template :component_extra_member
       optional_template :component_create
-      #ami4ccm lem idl
+      # ami4ccm lem idl
       optional_template :lem_extra_receptacles
       optional_template :lem_extra_multiple_receptacles
-      #ami4ccm comp_exec
+      # ami4ccm comp_exec
       optional_template :component_end_extra
-      #ami4ccm connector
+      # ami4ccm connector
       optional_template :connector_extra
-      #exf
+      # exf
       optional_template :context_port_set_connection
       optional_template :context_port_reset_connection
 

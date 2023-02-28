@@ -31,7 +31,7 @@ module IDL
         case res_idl_type
         when IDL::Type::Component
           return
-          #visitor(CCMX11::ComponentVisitor).visit_sarg_traits(res_idl_type.node) unless is_tracked?(res_idl_type.node)
+          # visitor(CCMX11::ComponentVisitor).visit_sarg_traits(res_idl_type.node) unless is_tracked?(res_idl_type.node)
         else
           check_idl_type_without_cxx11_check_idl_type(idl_type)
         end
