@@ -134,8 +134,6 @@ namespace CIAOX11_TT_TimedTrigger_Impl
       const ::CCM_TT::TT_Duration& trigger_delay)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : CIAOX11_TT_TimedTrigger_Impl::tt_scheduler_exec_i::schedule_trigger[_trigger_handler_trigger_delay]
-    CIAOX11_CALL_TRACE ("tt_scheduler_exec_i::schedule_trigger");
-
     // schedule as trigger with zero interval and max 1 rounds
     return this->schedule_repeated_trigger (
         trigger_handler,
@@ -153,8 +151,6 @@ namespace CIAOX11_TT_TimedTrigger_Impl
       uint32_t max_rounds)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : CIAOX11_TT_TimedTrigger_Impl::tt_scheduler_exec_i::schedule_repeated_trigger[_trigger_handler_start_delay_interval_max_rounds]
-    CIAOX11_CALL_TRACE ("tt_scheduler_exec_i::schedule_repeated_trigger");
-
     // create timer object
     bool const recurring = (interval.sec() > 0 || interval.nanosec () > 0);
     IDL::traits< tt_timer_i>::ref_type timer =
@@ -296,8 +292,6 @@ namespace CIAOX11_TT_TimedTrigger_Impl
   void
   tt_timer_i::on_timer (const CCM_TT::TT_Duration& delta_time) noexcept
   {
-    CIAOX11_CALL_TRACE ("tt_timer_i::on_timer");
-
     try
     {
       // unless we're already finished
@@ -372,8 +366,6 @@ namespace CIAOX11_TT_TimedTrigger_Impl
   void
   tt_timer_i::cancel ()
   {
-    CIAOX11_CALL_TRACE ("tt_timer_i::cancel");
-
     ACE_Event_Handler* evh = this->ev_handler_.exchange (nullptr);
     if (evh)
     {
