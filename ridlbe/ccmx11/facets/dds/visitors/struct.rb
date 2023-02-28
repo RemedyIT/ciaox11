@@ -7,7 +7,7 @@
 # @copyright Copyright (c) Remedy IT Expertise BV
 #--------------------------------------------------------------------
 require 'ridlbe/c++11/visitors/include'
-require 'ridlbe/ccmx11/visitors/mixins/ccm_names.rb'
+require 'ridlbe/ccmx11/visitors/mixins/ccm_names'
 
 module IDL
   module CCMX11

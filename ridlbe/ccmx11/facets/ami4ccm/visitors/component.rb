@@ -6,9 +6,9 @@
 #
 # @copyright Copyright (c) Remedy IT Expertise BV
 #--------------------------------------------------------------------
-require 'ridlbe/ccmx11/visitors/port.rb'
-require 'ridlbe/c++11/visitors/attribute.rb'
-require 'ridlbe/ccmx11/visitors/mixins/ccm_names.rb'
+require 'ridlbe/ccmx11/visitors/port'
+require 'ridlbe/c++11/visitors/attribute'
+require 'ridlbe/ccmx11/visitors/mixins/ccm_names'
 
 module IDL
   module CCMX11

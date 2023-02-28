@@ -6,13 +6,13 @@
 #
 # @copyright Copyright (c) Remedy IT Expertise BV
 #--------------------------------------------------------------------
-require 'ridlbe/c++11/visitors/pre_post.rb'
-require 'ridlbe/c++11/visitors/interface.rb'
-require 'ridlbe/c++11/visitors/struct.rb'
-require 'ridlbe/c++11/visitors/include.rb'
-require 'ridlbe/c++11/visitors/operation.rb'
-require 'ridlbe/c++11/visitors/attribute.rb'
-require 'ridlbe/c++11/visitors/union.rb'
+require 'ridlbe/c++11/visitors/pre_post'
+require 'ridlbe/c++11/visitors/interface'
+require 'ridlbe/c++11/visitors/struct'
+require 'ridlbe/c++11/visitors/include'
+require 'ridlbe/c++11/visitors/operation'
+require 'ridlbe/c++11/visitors/attribute'
+require 'ridlbe/c++11/visitors/union'
 
 module IDL
   module CCMX11
