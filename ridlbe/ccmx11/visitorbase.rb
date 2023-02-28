@@ -14,7 +14,6 @@ module IDL
     # Reopen C++11 VisitorBase to add CCMX11 specific properties
     #
     class VisitorBase
-
       def exec_export_include?
         params[:exec_export_include] || self.export_include?
       end
@@ -50,7 +49,6 @@ module IDL
       def conn_export_macro
         params[:conn_export_macro] ? params[:conn_export_macro] + ' ' : self.export_macro
       end
-
     end
 
   end # Cxx11

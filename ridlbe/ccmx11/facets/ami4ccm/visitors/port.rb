@@ -14,7 +14,6 @@ module IDL
 
     # Reopen PortVisitor class to add AMI4CCM specifics
     class PortVisitor < Cxx11::NodeVisitorBase
-
       def is_ami4ccm_port?
         (port_type == :receptacle && properties[:ami4ccm_receptacles].include?(scoped_cxxname)) ? true : false
       end
@@ -26,7 +25,6 @@ module IDL
       def ami4ccm_rh_executor
         "AMI4CCM_#{interface_type.cxxname}ReplyHandler_#{cxxname}_i"
       end
-
     end
   end
 end

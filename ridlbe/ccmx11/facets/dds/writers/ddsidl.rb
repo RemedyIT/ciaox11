@@ -142,7 +142,6 @@ module IDL
             @dds_native_module = false
           end
         end
-
       end # DDSIDLWriter
 
     end # DDSX11

@@ -14,7 +14,6 @@ module IDL
     # Reopen visitor class to add ccmx11 specifics
     #
     class IncludeVisitor
-
       def has_impl_includes?(all = true)
         all ? !all_impl_includes.empty? : @node.has_impl_includes?
       end
@@ -30,7 +29,6 @@ module IDL
       end
 
       optional_template :include
-
     end # IncludeVisitor
 
   end # Cxx11

@@ -90,7 +90,6 @@ module IDL
     end # add_extended_options
 
     class << self
-
       VERSION_REGEXP = /\#\s*define\s+CIAOX11_(\w+)_VERSION\s+(\d+)/
 
       def determine_ciaox11_version

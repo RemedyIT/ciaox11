@@ -15,7 +15,6 @@ module IDL
     # Reopen ServantHeaderWriter class to add CCMX11 specifics
     #
     class ServantHeaderWriter
-
       helper CCMX11::VersionHelper
 
       def visit_attribute(node)
@@ -25,7 +24,6 @@ module IDL
                   node.enclosure.is_abstract?
         visitor(AttributeVisitor).visit_attribute(node)
       end
-
     end
 
   end # Cxx11

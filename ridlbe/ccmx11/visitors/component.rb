@@ -405,7 +405,6 @@ module IDL
       def supported_interface_ids
         @sup_intf_ids ||= (collect_ancestors([], node).collect {|ancestor| ancestor.repository_id } << node.repository_id)
       end
-
     end
 
   end

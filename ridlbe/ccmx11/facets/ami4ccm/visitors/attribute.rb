@@ -14,11 +14,9 @@ module IDL
     # Reopen AttributeVisitor class to add AMI4CCMX specifics
     #
     class AttributeVisitor
-
       def gen_attribute(extra_props = {})
         visit_template('attribute', extra_props)
       end
-
     end
   end
 end

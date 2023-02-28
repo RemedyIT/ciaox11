@@ -19,7 +19,6 @@ module IDL
       def gen_operation(extra_props = {})
         visit_template('operation', extra_props)
       end
-
     end
 
     class ArgumentVisitor
@@ -45,7 +44,6 @@ module IDL
             "inout #{idltype_name}"
         end
       end
-
     end
 
   end

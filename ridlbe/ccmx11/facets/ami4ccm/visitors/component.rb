@@ -16,7 +16,6 @@ module IDL
     # Reopen ComponentVisitor class to add AMI4CCM specifics
     #
     class ComponentVisitor
-
       def incl_ami4ccm_receptacle?
         ports.any? {|p| p.is_ami4ccm_port? }
       end
@@ -35,7 +34,6 @@ module IDL
         end
         multiple_ami_ports
       end
-
     end
 
   end

@@ -73,7 +73,6 @@ module IDL
       def gen_facet_exec(extra_props = {})
         visit_template('facet_exec', extra_props)
       end
-
      end
   end
 end

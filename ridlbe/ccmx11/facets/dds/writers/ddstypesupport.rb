@@ -16,7 +16,6 @@ module IDL
     module DDSX11
 
       class DDSTypeSupportBaseWriter < Cxx11::CxxCodeWriterBase
-
         def initialize(output = STDOUT, opts = {})
           super
         end
@@ -41,7 +40,6 @@ module IDL
           return false if annot.nil?
           return annot.fields[:value].nil? || annot.fields[:value]
         end
-
       end # DDSTypeSupportBaseWriter
 
       class DDSTypeSupportHeaderWriter < DDSTypeSupportBaseWriter

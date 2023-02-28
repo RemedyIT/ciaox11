@@ -12,7 +12,6 @@ module IDL
   module CCMX11
 
     class ConnectorVisitor < ComponentVisitor
-
       def base
         (@base = visitor(ConnectorVisitor)).visit(@node.base) unless @base
         @base

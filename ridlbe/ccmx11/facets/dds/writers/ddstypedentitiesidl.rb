@@ -68,7 +68,6 @@ module IDL
           return false if annot.nil?
           return annot.fields[:value].nil? || annot.fields[:value]
         end
-
       end # DDSTypeEntitiesIDLWriter
 
     end # DDSX11

@@ -21,7 +21,6 @@ module IDL
         self.disable_scope_tracking = false
       end
       attr_accessor :include_guard
-
     end
 
     class LemComponentScanner < Cxx11::CxxCodeWriterBase
@@ -89,11 +88,9 @@ module IDL
           node = node.enclosure
         end
       end
-
     end
 
     class LemExecutorIDLWriter < LemExecutorIDLWriterBase
-
       helper_method :has_component?, :has_connector?, :has_lem_includes?, :lem_includes
       helper Cxx11::IncludeGuardHelper
 

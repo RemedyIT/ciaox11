@@ -21,11 +21,9 @@ module IDL
     end # StructVisitor
 
     class StructMemberVisitor
-
       def has_key_annotation?
         !self.annotations[:key].empty?
       end
-
     end
 
   end # CCMX11

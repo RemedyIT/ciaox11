@@ -14,7 +14,6 @@ module IDL
     # Reopen AttributeVisitor class to add CCMX11 specifics
     #
     class AttributeVisitor
-
       def interface_with_cxx11_interface(interface_for_att = nil)
         # set interface_for_att to node.enclosure unless passed as arg or @interface already set
         interface_for_att ||= node.enclosure unless @interface || !node?

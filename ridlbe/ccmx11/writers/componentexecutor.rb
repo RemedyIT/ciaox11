@@ -50,7 +50,6 @@ module IDL
       def enter_connector(node)
         visitor(ConnectorVisitor).visit_component(node)
       end
-
     end # ComponentExecutorHeaderWriter
 
     class ComponentExecutorSourceWriter < ComponentExecutorBaseWriter
@@ -76,7 +75,6 @@ module IDL
       def enter_connector(node)
         visitor(ConnectorVisitor).visit_component(node)
       end
-
     end # ComponentExecutorSourceWriter
 
 

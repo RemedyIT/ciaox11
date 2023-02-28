@@ -29,11 +29,9 @@ module IDL
         # include without any output directories prefixed
         properties[:conn_exec_lem_stub_include] = File.basename(params[:idlfile], params[:idlext]) + params[:lem_pfx] + 'C' + params[:hdr_ext]
       end
-
     end
 
     class TemplatedConnectorImplHeaderWriter < TemplatedConnectorImplBaseWriter
-
       helper CCMX11::VersionHelper
 
       def initialize(output = STDOUT, opts = {})
@@ -53,11 +51,9 @@ module IDL
         # uses @template_args
         visitor(ConnectorVisitor).visit_connector(node)
       end
-
     end # TemplatedConnectorImplHeaderWriter
 
     class TemplatedConnectorImplSourceWriter < TemplatedConnectorImplBaseWriter
-
       def initialize(output = STDOUT, opts = {})
         super
         self.template_root = File.join(self.template_root, 'src')
@@ -80,7 +76,6 @@ module IDL
          # uses @template_args
          visitor(ConnectorVisitor).visit_connector(node)
       end
-
     end # TemplatedConnectorImplSourceWriter
 
 

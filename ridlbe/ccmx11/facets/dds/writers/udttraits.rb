@@ -26,7 +26,6 @@ module IDL
       end
 
       class UserDefinedTypeTraitsWriter < UserDefinedTypeTraitsBaseWriter
-
         helper_method :template_args
         helper Cxx11::IncludeGuardHelper
         helper Cxx11::VersionHelper
@@ -88,11 +87,9 @@ module IDL
         def add_include(inc_file)
           @includes << inc_file unless @includes.include?(inc_file)
         end
-
       end # DDSX11IDLWriter
 
       class UserDefinedTypeTraitsIncludeWriter < UserDefinedTypeTraitsBaseWriter
-
         helper Cxx11::IncludeGuardHelper
         helper Cxx11::VersionHelper
 

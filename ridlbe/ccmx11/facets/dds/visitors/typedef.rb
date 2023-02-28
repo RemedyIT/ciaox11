@@ -15,7 +15,6 @@ module IDL
     # Reopen visitor class to add DDS specifics
     #
     class TypedefVisitor
-
       def idl_typedef_type
         idl_declaration = ''
 
@@ -39,7 +38,6 @@ module IDL
         end
         idl_declaration
       end
-
     end # TypedefVisitor
 
   end # CCMX11

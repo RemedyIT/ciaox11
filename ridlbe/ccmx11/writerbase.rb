@@ -36,7 +36,6 @@ module IDL
         @properties[:_context][:scopes].pop
         @properties[:_context][:cur_scope] = @properties[:_context][:scopes].last
       end
-
     end # CxxCodeWriterBase
 
   end

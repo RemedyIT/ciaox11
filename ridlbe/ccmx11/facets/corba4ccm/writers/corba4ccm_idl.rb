@@ -43,7 +43,6 @@ module IDL
         def is_conn_interface?(node)
           (!node.is_local?) && (!node.is_abstract?) && (params[:conn_intf].blank? || params[:conn_intf] == node.scoped_name)
         end
-
       end # IDLForCorbaConnectorWriter
 
     end # CORBA

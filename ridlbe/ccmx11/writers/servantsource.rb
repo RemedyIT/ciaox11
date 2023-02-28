@@ -20,7 +20,6 @@ module IDL
                   node.enclosure.is_local? || node.enclosure.is_pseudo? || node.enclosure.is_abstract?
         check_idl_type(node.idltype)
       end
-
     end # ServantSourceIncludeWriter
 
     # Reopen ServantSourceSArgTraitsWriter class to add CCMX11 specifics
@@ -45,7 +44,6 @@ module IDL
                   node.enclosure.is_local? || node.enclosure.is_pseudo? || node.enclosure.is_abstract?
         check_idl_type(node.idltype)
       end
-
     end # ServantSourceSArgTraitsWriter
 
   end # Cxx11

@@ -15,7 +15,6 @@ module IDL
     # Reopen visitor class to add DDS specifics
     #
     class SequenceVisitor
-
       def is_string_type?
         ::IDL::Type::String === self._resolved_idltype.basetype.resolved_type
       end
@@ -47,7 +46,6 @@ module IDL
       def is_char_type?
         ::IDL::Type::Char === self._resolved_idltype.basetype.resolved_type || ::IDL::Type::WChar === self._resolved_idltype.basetype.resolved_type
       end
-
     end # SequenceVisitor
 
   end # CCMX11

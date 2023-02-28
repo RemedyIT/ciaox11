@@ -14,13 +14,11 @@ module IDL
     # Reopen StubHeaderWriter class to add CCMX11 specifics
     #
     class StubHeaderWriter
-
       def visit_attribute(node)
         return if node.enclosure.is_a?(IDL::AST::Component) ||
                    node.enclosure.is_a?(IDL::AST::Connector)
         visitor(AttributeVisitor).visit_attribute(node)
       end
-
     end # StubHeaderWriter
 
   end # Cxx11

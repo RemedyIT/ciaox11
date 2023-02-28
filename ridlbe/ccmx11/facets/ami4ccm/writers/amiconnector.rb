@@ -79,7 +79,6 @@ module IDL
       def is_conn_interface?(node)
         (!node.is_local?) && (!node.is_abstract?) && node.has_ami_annotation? && (params[:conn_intf].blank? || params[:conn_intf] == node.scoped_name)
       end
-
     end # AmiConnectorConnIDLWriter
 
     # write the xxxA.idl file for the ami interfaces
