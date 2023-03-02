@@ -75,7 +75,6 @@ module IDL
       end
     end # ComponentExecutorSourceWriter
 
-
     module ComponentExecutor
       HeaderWriter = ComponentExecutorHeaderWriter
       SourceWriter = ComponentExecutorSourceWriter

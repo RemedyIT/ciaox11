@@ -107,21 +107,27 @@ module IDL
       def proxy_cxxname
         cxxname + Cxx11::STUB_PROXY_SUFFIX
       end
+
       def scoped_proxy_cxxname
         scoped_cxxname + Cxx11::STUB_PROXY_SUFFIX
       end
+
       def srvproxy_cxxname
         cxxname + Cxx11::SRV_PROXY_SUFFIX
       end
+
       def scoped_srvproxy_cxxname
         scoped_skel_cxxnamespace + '::' + srvproxy_cxxname
       end
+
       def scoped_skel_cxxnamespace
         ((enclosure && !enclosure.scopes.empty?) ? enclosure.scoped_cxxname + '::' : '') + 'POA'
       end
+
       def skel_cxxname
         cxxname
       end
+
       def scoped_skel_cxxname
         scoped_skel_cxxnamespace + '::' + skel_cxxname
       end

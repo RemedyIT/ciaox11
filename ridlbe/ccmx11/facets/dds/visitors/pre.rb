@@ -16,6 +16,7 @@ module IDL
       def ddsx11_incl
         @ddsx11_includes ||= []
       end
+
       def ddsx11_includes
         if ddsx11_incl.empty?
           self.ddsx11_incl << 'dds/dds_vendor_adapter.h'

@@ -23,6 +23,7 @@ module IDL
       def scoped_unescaped_ccm_name
         ((@node.enclosure && !@node.enclosure.scopes.empty?) ? scoped_enclosure_unescaped_name + '::' + ccm_name : ccm_name)
       end
+
       # needed for generating idl from idl
       def scoped_unescaped_type
         ((@node.enclosure && !@node.enclosure.scopes.empty?) ? scoped_enclosure_unescaped_name + '::' + unescaped_name : unescaped_name)

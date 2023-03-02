@@ -317,6 +317,7 @@ module IDL
       def srvproxy_cxxname
         node.srvproxy_cxxname
       end
+
       def scoped_srvproxy_cxxname
         node.scoped_srvproxy_cxxname
       end

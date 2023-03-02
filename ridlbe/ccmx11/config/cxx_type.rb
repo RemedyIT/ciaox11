@@ -15,9 +15,11 @@ module IDL
       def cxx_type(scope = nil)
         'TAOX11_CORBA::Home'
       end
+
       def cxx_typecode
         "_tc_Home"
       end
+
       def scoped_cxx_typecode
         "TAOX11_CORBA::_tc_Home"
       end
