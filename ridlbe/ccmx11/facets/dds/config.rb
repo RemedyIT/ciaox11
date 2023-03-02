@@ -8,7 +8,9 @@
 #--------------------------------------------------------------------
 
 module IDL
+
   module CCMX11
+
     module DDSX11
       COPYRIGHT = "Copyright (c) 2007-#{Time.now.year} Remedy IT Expertise BV, The Netherlands".freeze
       TITLE = 'RIDL DDS Facet'.freeze
@@ -18,9 +20,8 @@ module IDL
           swcfg.for_group :ddsx11_group do |grpcfg|
             grpcfg.on_prepare do |arg, params|
               if /^ddsx11\,(.*)/ =~ arg
-                return [::Regexp.last_match(1)]
+                return [$1]
               end
-
               nil
             end
             grpcfg.modify_params :strings,
@@ -53,6 +54,7 @@ module IDL
       ## Configure facet
       #
       Backend::Facet.configure('dds', File.dirname(__FILE__), TITLE, COPYRIGHT, IDL::CCMX11.ciaox11_version) do |fctcfg|
+
         # setup facet option handling
         #
         fctcfg.on_setup do |optlist, ridl_params|
@@ -74,6 +76,7 @@ module IDL
         #   in options - initialized option hash
         #
         fctcfg.on_process_input do |parser, options|
+
           idl_ext = (options.idlext ||= File.extname(options.idlfile))
 
           options.dds_idl_file_base = File.basename(options.idlfile, idl_ext) + options[:dds_idl_pfx]
@@ -183,7 +186,6 @@ module IDL
 
       def self.gen_typesupport_export(options, prefix = nil)
         return if IDL.has_production?(:typesupport_export_header)
-
         export_file = options.typesupport_export_include
         unless options.typesupport_export_file.nil?
           export_file = options.typesupport_export_file

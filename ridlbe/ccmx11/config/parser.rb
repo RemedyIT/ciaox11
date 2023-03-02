@@ -8,7 +8,9 @@
 #--------------------------------------------------------------------
 
 module IDL
+
   module CCMX11
+
     ###
     # Delegator extension mixin to add CCMX11 customization
     module DelegatorExt
@@ -20,7 +22,7 @@ module IDL
           base.add_pragma_handler(:axcioma_lem) do |_delegator, _curnode, _pragmastr|
             # 20190729, add backwards compatibility for ciao lem, see devportal #4737
             if (rc = (/^(ciao|axcioma)\s+lem\s+(.*)/ =~ _pragmastr ? true : false))
-              _delegator.add_lem_include(::Regexp.last_match(2).strip)
+              _delegator.add_lem_include($2.strip)
             end
             rc
           end
@@ -28,7 +30,7 @@ module IDL
           base.add_pragma_handler(:axcioma_impl) do |_delegator, _curnode, _pragmastr|
             # 20190729, added backwards compatibility for dds4ccm impl, see devportal #4738
             if (rc = (/^(dds4ccm|axcioma)\s+impl\s+(.*)/ =~ _pragmastr ? true : false))
-              _delegator.add_impl_include(::Regexp.last_match(2).strip)
+              _delegator.add_impl_include($2.strip)
             end
             rc
           end
@@ -55,6 +57,7 @@ module IDL
             end
           end
         end # Methods
+
     end # DelegatorExt
 
     ###
@@ -107,31 +110,26 @@ module IDL
       def proxy_cxxname
         cxxname + Cxx11::STUB_PROXY_SUFFIX
       end
-
       def scoped_proxy_cxxname
         scoped_cxxname + Cxx11::STUB_PROXY_SUFFIX
       end
-
       def srvproxy_cxxname
         cxxname + Cxx11::SRV_PROXY_SUFFIX
       end
-
       def scoped_srvproxy_cxxname
         scoped_skel_cxxnamespace + '::' + srvproxy_cxxname
       end
-
       def scoped_skel_cxxnamespace
         ((enclosure && !enclosure.scopes.empty?) ? enclosure.scoped_cxxname + '::' : '') + 'POA'
       end
-
       def skel_cxxname
         cxxname
       end
-
       def scoped_skel_cxxname
         scoped_skel_cxxnamespace + '::' + skel_cxxname
       end
     end # ComponentBaseMixin
+
   end # CCMX11
 
   # extend with CCMX11 pragma handling
@@ -142,4 +140,5 @@ module IDL
 
   # extend with CCMX11 naming extensions
   AST::ComponentBase.send(:include, CCMX11::ComponentBaseMixin) unless AST::ComponentBase < CCMX11::ComponentBaseMixin
+
 end # IDL

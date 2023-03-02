@@ -9,11 +9,15 @@
 require 'ridlbe/c++11/config/core'
 
 module IDL
+
   module CCMX11
+
     module AMI4CCM
+
       ###
       # Adds AMI4CCM pragma support
       module PragmaExt
+
         def self.included(base)
           # add AMI4CCM pragma extension methods
           base.send(:include, Methods)
@@ -21,21 +25,21 @@ module IDL
           # add AMI pragma handlers
           base.add_pragma_handler(:axcioma_ami4ccm_interface) do |_delegator, _curnode, _pragmastr|
             if (rc = (/^ami4ccm\s+interface\s+(.*)/ =~ _pragmastr ? true : false))
-              _delegator.add_ami4ccm_interface(::Regexp.last_match(1).strip)
+              _delegator.add_ami4ccm_interface($1.strip)
             end
             rc
           end
 
           base.add_pragma_handler(:axcioma_ami4ccm_receptacle) do |_delegator, _curnode, _pragmastr|
             if (rc = (/^ami4ccm\s+receptacle\s+(.*)/ =~ _pragmastr ? true : false))
-               _delegator.add_ami4ccm_receptacle(::Regexp.last_match(1).strip)
+               _delegator.add_ami4ccm_receptacle($1.strip)
             end
             rc
           end
 
           base.add_pragma_handler(:axcioma_ami4ccm_idl) do |_delegator, _curnode, _pragmastr|
             if (rc = (/^ami4ccm\s+idl\s+(.*)/ =~ _pragmastr ? true : false))
-              _delegator.add_ami4ccm_idl_include(::Regexp.last_match(1).strip)
+              _delegator.add_ami4ccm_idl_include($1.strip)
             end
             rc
           end
@@ -43,7 +47,7 @@ module IDL
 
         module Methods
           def add_ami4ccm_interface(s)
-            add_ami_interfaces(s) # add interface to ami_interfaces registry
+            add_ami_interfaces(s)  # add interface to ami_interfaces registry
             # determin current file name and transform to ami4ccm *A.idl
             aidl = File.basename(@scanner.position.name).gsub(/.idl\Z/, 'A.idl')
             # now automatically register *A.idl
@@ -73,11 +77,13 @@ module IDL
             end
           end
         end # Methods
+
       end # Pragma
 
       ###
       # AST::Include node customization mixin
       module IncludeMixin
+
         def ami4ccm_idl_includes
           @ami4ccm_idl_includes ||= []
         end
@@ -102,8 +108,11 @@ module IDL
           end
           _all_ami4ccm_idl_incs
         end
+
       end # IncludeMixin
+
     end # AMI4CCM
+
   end # CCMX11
 
   # extend with AMI4CCM pragma handling
@@ -111,4 +120,5 @@ module IDL
 
   # extend with AMI4CCM idl include properties
   AST::Include.send(:include, CCMX11::AMI4CCM::IncludeMixin) unless AST::Include < CCMX11::AMI4CCM::IncludeMixin
+
 end # IDL

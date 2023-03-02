@@ -10,7 +10,9 @@ require 'ridlbe/c++11/writerbase'
 require 'ridlbe/c++11/writers/helpers/include_guard_helper'
 
 module IDL
+
   module CCMX11
+
     class LemExecutorIDLWriterBase < Cxx11::CxxCodeWriterBase
       def initialize(output = STDOUT, opts = {})
         super
@@ -23,7 +25,6 @@ module IDL
 
     class LemComponentScanner < Cxx11::CxxCodeWriterBase
       attr_accessor :has_component, :has_connector
-
       def initialize(output = STDOUT, opts = {})
         super
         self.disable_scope_tracking = true
@@ -135,10 +136,8 @@ module IDL
 
       def enter_interface(node)
         return if node.is_abstract?
-
         annot = node.annotations[:"lem"]
         return if annot[0] != nil && annot[0].fields[:value] != nil && annot[0].fields[:value] == false
-
         visitor(InterfaceVisitor).visit_lem(node)
       end
 
@@ -184,12 +183,14 @@ module IDL
     end # LemExecutorIDLWriter
 
     module LemExecutor
+
       IDLWriter = LemExecutorIDLWriter
 
       def self.set_idl_writer(klass)
         remove_const(:IDLWriter) if const_defined?(:IDLWriter)
         const_set(:IDLWriter, klass)
       end
+
     end
   end # CCMX11
 end # module IDL

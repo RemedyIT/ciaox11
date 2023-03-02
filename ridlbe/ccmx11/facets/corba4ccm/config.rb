@@ -9,7 +9,9 @@
 
 
 module IDL
+
   module CCMX11
+
     module CORBA
       COPYRIGHT = "Copyright (c) 2007-#{Time.now.year} Remedy IT Expertise BV, The Netherlands".freeze
       TITLE = 'RIDL CCMX11 CORBA Facet'.freeze
@@ -17,15 +19,15 @@ module IDL
       ## Configure facet
       #
       Backend::Facet.configure('corba4ccm', File.dirname(__FILE__), TITLE, COPYRIGHT, IDL::CCMX11.ciaox11_version) do |fctcfg|
+
         def self.add_extended_options(ol)
 
           ol.for_switch '-G{generation options}', type: String, separator: true do |swcfg|
             swcfg.for_group :corba4ccm_group do |grpcfg|
               grpcfg.on_prepare do |arg, params|
                 if /^corba4ccm\,(.*)/ =~ arg
-                  return [::Regexp.last_match(1)]
+                  return [$1]
                 end
-
                 nil
               end
               # IMPORTANT When these flags are updated also update the CORBA4CCM docs/src/ridlc.adoc
@@ -46,7 +48,7 @@ module IDL
             swcfg.modify_group :b_extopt do |grpcfg|
               grpcfg.modify_params :strings,
                                    params: {
-                                       'conn_intf' => { description: "-Wb,conn_intf=SCOPED_INTERFACE\tspecifies scoped interface type name for connector generation" }
+                                       'conn_intf' => {description: "-Wb,conn_intf=SCOPED_INTERFACE\tspecifies scoped interface type name for connector generation"}
                                    }
             end
           end
@@ -65,6 +67,7 @@ module IDL
         #   in options - initialized option hash
         #
         fctcfg.on_process_input do |parser, options|
+
           idl_ext = (options[:idlext] ||= File.extname(options[:idlfile]))
 
           if options[:gen_all_for_corba_connector]
@@ -84,6 +87,7 @@ module IDL
             # input is the corba connector idl
             IDL::CCMX11::CORBA.gen_exec_for_corba_connector(options, idl_ext)
           end
+
         end # fctcfg.on_process_input
       end # configure facet
 
@@ -189,8 +193,10 @@ module IDL
 
       # extend the base backend with some specific CORBA4CCM settings/handling
       module BaseExt
+
         def self.included(base)
           base.class_eval do
+
             # extend CCMX11#check_servant_export_params
             # use corba4ccm prefix for servant export names when generating corba4ccm connector
             def check_servant_export_params_with_corba(options, prefix = nil, force = false)
@@ -212,11 +218,16 @@ module IDL
             end
 
             alias_method_chain :check_executor_export_params, :corba
+
           end
         end
+
       end
-    end # CORBA
+
+    end  # CORBA
 
     self.singleton_class.__send__(:include, CORBA::BaseExt)
+
   end # CCMX11
+
 end # IDL

@@ -10,6 +10,7 @@ require 'ridlbe/c++11/visitors/exception'
 
 module IDL
   module Cxx11
+
     # Reopen AttributeVisitor class to add AMI4CCMX specifics
     #
     class AttributeVisitor

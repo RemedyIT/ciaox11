@@ -43,7 +43,7 @@ module IDL
         end
 
         def extract_annotation_with_ndds
-          @ndds_annotation_level ||= 0 # set to 0 if not set before
+          @ndds_annotation_level ||= 0  # set to 0 if not set before
 
           # increase the level to signal we're parsing an annotation body (optionally recursive)
           @ndds_annotation_level += 1 # inc level

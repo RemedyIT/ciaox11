@@ -9,7 +9,9 @@
 require 'ridlbe/c++11/visitors/include'
 
 module IDL
+
   module CCMX11
+
     # Reopen visitor class to add DDS specifics
     #
     class TypedefVisitor
@@ -37,5 +39,7 @@ module IDL
         idl_declaration
       end
     end # TypedefVisitor
+
   end # CCMX11
+
 end # IDL

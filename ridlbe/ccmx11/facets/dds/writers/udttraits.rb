@@ -11,8 +11,11 @@ require 'ridlbe/c++11/writerbase'
 require 'ridlbe/c++11/writers/helpers/include_guard_helper'
 
 module IDL
+
   module CCMX11
+
     module DDSX11
+
       class UserDefinedTypeTraitsBaseWriter < Cxx11::CxxCodeWriterBase
         def initialize(output = STDOUT, opts = {})
           super
@@ -105,7 +108,6 @@ module IDL
         def visit_typedef(node)
           return if IDL::Type::Native === node.idltype.resolved_type && params[:no_gen_native]
           return if IDL::Type::ScopedName === node.idltype # alias typedef
-
           idl_type = node.idltype.resolved_type
           case idl_type
           when IDL::Type::String, IDL::Type::WString
@@ -115,11 +117,13 @@ module IDL
         end
 
         private
-
         def add_include(inc_file)
           @includes << inc_file unless @includes.include?(inc_file)
         end
       end # UserDefinedTypeTraitsIncludeWriter
+
     end # DDSX11
+
   end # CCMX11
+
 end # IDL

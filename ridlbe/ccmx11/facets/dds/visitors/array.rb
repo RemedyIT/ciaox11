@@ -9,7 +9,9 @@
 require 'ridlbe/c++11/visitors/include'
 
 module IDL
+
   module CCMX11
+
     # Reopen visitor class to add DDS specifics
     #
     class ArrayVisitor
@@ -23,5 +25,7 @@ module IDL
 
       optional_template :life_cycle_traits
     end # ArrayVisitor
+
   end # CCMX11
+
 end # IDL

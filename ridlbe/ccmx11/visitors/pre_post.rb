@@ -9,6 +9,7 @@
 
 module IDL
   module Cxx11
+
     class PreVisitor
       optional_template :extra_include
       optional_template :conn_ami_post_pre
@@ -17,5 +18,6 @@ module IDL
         File.basename(params[:idlfile])
       end
     end
+
   end
 end

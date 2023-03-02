@@ -8,15 +8,22 @@
 #--------------------------------------------------------------------
 
 module IDL
+
   module CCMX11
+
     module CORBA
+
       ROOT = 'ridlbe/ccmx11/facets/corba4ccm'
+
     end
+
   end
+
 end
 
 # base modules
-['config'].each do |f|
+[ 'config'
+].each do |f|
   require "#{IDL::CCMX11::CORBA::ROOT}/#{f}"
 end
 

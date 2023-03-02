@@ -11,7 +11,9 @@ require 'ridlbe/ccmx11/writers/helpers/version_helper'
 require 'ridlbe/c++11/writers/helpers/include_guard_helper'
 
 module IDL
+
   module CCMX11
+
     class SvntComponentBaseWriter < Cxx11::CxxCodeWriterBase
       def initialize(output = STDOUT, opts = {})
         super
@@ -26,7 +28,6 @@ module IDL
       class IncludeScanner < Cxx11::CxxCodeWriterBase
         attr_reader :uses_multiple
         attr_reader :has_non_local_facets
-
         def initialize(output = STDOUT, opts = {})
           super
           self.disable_scope_tracking = true
@@ -94,7 +95,6 @@ module IDL
       # special AST scanner to check for any non-local facets in any component
       class IncludeScanner < Cxx11::CxxCodeWriterBase
         attr_reader :has_non_local_facets
-
         def initialize(output = STDOUT, opts = {})
           super
           self.disable_scope_tracking = true
@@ -139,6 +139,7 @@ module IDL
     end # CorbaComponentSvntSourceWriter
 
     module SvntComponent
+
       HeaderWriter = SvntComponentHeaderWriter
       SourceWriter = SvntComponentSourceWriter
 
@@ -151,6 +152,10 @@ module IDL
         remove_const(:SourceWriter) if const_defined?(:SourceWriter)
         const_set(:SourceWriter, klass)
       end
+
     end
+
+
   end # CCMX11
+
 end # IDL

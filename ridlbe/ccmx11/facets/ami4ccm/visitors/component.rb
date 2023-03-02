@@ -12,11 +12,12 @@ require 'ridlbe/ccmx11/visitors/mixins/ccm_names'
 
 module IDL
   module CCMX11
+
     # Reopen ComponentVisitor class to add AMI4CCM specifics
     #
     class ComponentVisitor
       def incl_ami4ccm_receptacle?
-        ports.any? { |p| p.is_ami4ccm_port? }
+        ports.any? {|p| p.is_ami4ccm_port? }
       end
 
       def interfaces_with_multiple_ami4ccm_ports
@@ -34,5 +35,7 @@ module IDL
         multiple_ami_ports
       end
     end
+
   end
+
 end

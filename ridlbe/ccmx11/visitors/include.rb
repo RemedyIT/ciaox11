@@ -10,6 +10,7 @@ require 'ridlbe/c++11/visitors/include'
 
 module IDL
   module Cxx11
+
     # Reopen visitor class to add ccmx11 specifics
     #
     class IncludeVisitor
@@ -29,5 +30,7 @@ module IDL
 
       optional_template :include
     end # IncludeVisitor
+
   end # Cxx11
+
 end # IDL

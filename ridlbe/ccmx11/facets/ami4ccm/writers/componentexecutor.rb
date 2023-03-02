@@ -10,9 +10,13 @@ require 'ridlbe/c++11/writerbase'
 require 'ridlbe/c++11/writers/helpers/include_guard_helper'
 
 module IDL
+
   module CCMX11
+
     module AmiComponentExecutorHeaderEx
+
       module WriterExtension
+
         def self.included(base)
           base.class_eval do
             helper_method :has_ami4ccm_receptacles?
@@ -36,16 +40,20 @@ module IDL
             alias_method_chain :visit_include, :ami
           end
         end
+
       end
 
       def self.configure_extension(writer)
         writer.append_template(:component_end_extra, 'ami/component_end_extra')
         writer.append_template(:include, 'ami/include')
       end
+
     end
 
     module AmiComponentExecutorSourceEx
+
       module WriterExtension
+
         def self.included(base)
           base.class_eval do
             helper_method :has_ami4ccm_receptacles?
@@ -62,11 +70,15 @@ module IDL
             alias_method_chain :pre_visit, :ami
           end
         end
+
       end
 
       def self.configure_extension(writer)
         writer.append_template(:component_end_extra, 'ami/component_end_extra')
       end
+
     end
+
   end # CCMX11
+
 end # IDL

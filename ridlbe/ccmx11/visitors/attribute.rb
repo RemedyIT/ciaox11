@@ -10,6 +10,7 @@ require 'ridlbe/c++11/visitors/exception'
 
 module IDL
   module Cxx11
+
     # Reopen AttributeVisitor class to add CCMX11 specifics
     #
     class AttributeVisitor
@@ -21,7 +22,7 @@ module IDL
           if NodeVisitorBase === interface_for_att
             @interface = interface_for_att
           else
-            if interface_for_att.is_a?(IDL::AST::Component)
+            if  interface_for_att.is_a?(IDL::AST::Component)
               @interface = visitor(IDL::CCMX11::ComponentVisitor)
               @interface.visit(interface_for_att)
             else

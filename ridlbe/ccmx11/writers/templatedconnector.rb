@@ -11,7 +11,9 @@ require 'ridlbe/c++11/writerbase'
 require 'ridlbe/c++11/writers/helpers/include_guard_helper'
 
 module IDL
+
   module CCMX11
+
     class TemplatedConnectorImplBaseWriter < Cxx11::CxxCodeWriterBase
       helper Cxx11::IncludeGuardHelper
 
@@ -75,5 +77,8 @@ module IDL
          visitor(ConnectorVisitor).visit_connector(node)
       end
     end # TemplatedConnectorImplSourceWriter
+
+
   end # CCMX11
+
 end # IDL

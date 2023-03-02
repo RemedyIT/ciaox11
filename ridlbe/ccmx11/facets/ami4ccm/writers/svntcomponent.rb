@@ -10,9 +10,13 @@ require 'ridlbe/c++11/writerbase'
 require 'ridlbe/ccmx11/writers/helpers/version_helper'
 
 module IDL
+
   module CCMX11
+
     module Ami4ccmSvntComponentHeaderExt
+
       module WriterExtension
+
         def self.included(base)
           base.class_eval do
             helper_method :has_ami4ccm?
@@ -29,6 +33,7 @@ module IDL
             alias_method_chain :pre_visit, :ami
           end
         end
+
       end
 
       def self.configure_extension(writer)
@@ -36,10 +41,13 @@ module IDL
         writer.append_template(:context_extra_members, 'ami/context_extra_members')
         writer.append_template(:context_extra_receptacles, 'ami/context_extra_receptacles')
       end
+
     end
 
     module Ami4ccmSvntComponentSourceExt
+
       module WriterExtension
+
         def self.included(base)
           base.class_eval do
             helper_method :has_ami4ccm?
@@ -56,6 +64,7 @@ module IDL
             alias_method_chain :pre_visit, :ami
           end
         end
+
       end
 
       def self.configure_extension(writer)
@@ -64,6 +73,7 @@ module IDL
         writer.append_template(:context_extra_disconnect, 'ami/context_extra_disconnect')
         writer.append_template(:context_extra_receptacles, 'ami/context_extra_receptacles')
       end
+
     end
 
     module Ami4ccmSvntConnectorHeaderExt
@@ -109,5 +119,7 @@ module IDL
         writer.override_template(:pre_extra_include, 'ami/pre_extra_include')
       end
     end
+
   end # CCMX11
+
 end # IDL

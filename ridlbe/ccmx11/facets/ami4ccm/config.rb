@@ -8,7 +8,9 @@
 #--------------------------------------------------------------------
 
 module IDL
+
   module CCMX11
+
     module AMI4CCM
       COPYRIGHT = "Copyright (c) 2007-#{Time.now.year} Remedy IT Expertise BV, The Netherlands".freeze
       TITLE = 'RIDL CCMX11 AMI4CCM Facet'.freeze
@@ -16,40 +18,40 @@ module IDL
       ## Configure facet
       #
       Backend::Facet.configure('ami4ccm', File.dirname(__FILE__), TITLE, COPYRIGHT, IDL::CCMX11.ciaox11_version) do |fctcfg|
+
         def self.add_extended_options(ol)
           ol.for_switch '-G{generation options}', type: String, separator: true do |swcfg|
             swcfg.for_group :ami4ccm_group do |grpcfg|
               grpcfg.on_prepare do |arg, params|
                 if /^ami4ccm\,(.*)/ =~ arg
-                  return [::Regexp.last_match(1)]
+                  return [$1]
                 end
-
                 nil
               end
               # IMPORTANT When these flags are updated also update the AMI4CCM docs/src/ridlc.adoc
               # which is used for our user documentation
               grpcfg.for_params :strings,
                 params: {
-                  'Aidl' => { description: "-Gami4ccm,Aidl\t\tGenerate the AMI4CCM IDL and stubs",
-                           option_name: :gen_ami_idl },
-                  'Aidl-only' => { description: "-Gami4ccm,Aidl\t\tGenerate the AMI4CCM IDL only",
-                           option_name: :gen_ami_idl_only },
-                  'idl' => { description: "-Gami4ccm,idl\t\tGenerate all AMI4CCM connector IDL",
-                           option_name: :gen_ami_connector_idl },
-                  'impl' => { description: "-Gami4ccm,impl\t\tGenerate the AMI4CCM connector implementation",
+                  'Aidl' => {description: "-Gami4ccm,Aidl\t\tGenerate the AMI4CCM IDL and stubs",
+                           option_name: :gen_ami_idl},
+                  'Aidl-only' => {description: "-Gami4ccm,Aidl\t\tGenerate the AMI4CCM IDL only",
+                           option_name: :gen_ami_idl_only},
+                  'idl' => {description: "-Gami4ccm,idl\t\tGenerate all AMI4CCM connector IDL",
+                           option_name: :gen_ami_connector_idl},
+                  'impl' => {description: "-Gami4ccm,impl\t\tGenerate the AMI4CCM connector implementation",
                             option_name: :gen_ami_connector_impl },
-                  'lem' => { description: "-Gami4ccm,lem\t\tGenerate the local executor mapping (lem) for AMI4CCM",
-                           option_name: :gen_lem_with_ami },
-                  'svnt' => { description: "-Gami4ccm,svnt\t\tGenerate the servant for AMI4CCM",
+                  'lem' => {description: "-Gami4ccm,lem\t\tGenerate the local executor mapping (lem) for AMI4CCM",
+                           option_name: :gen_lem_with_ami},
+                  'svnt' => {description: "-Gami4ccm,svnt\t\tGenerate the servant for AMI4CCM",
                             option_name: :gen_component_servant_with_ami },
-                  'conn' => { description: "-Gami4ccm,conn\t\tGenerate all files needed for an AMI4CCM connector",
+                  'conn' => {description: "-Gami4ccm,conn\t\tGenerate all files needed for an AMI4CCM connector",
                             option_name: :gen_amiconn_complete },
-                  'conn_only' => { description: "-Gami4ccm,conn_only\tGenerate all AMI4CCM dependent files needed for an AMI4CCM connector",
+                  'conn_only' => {description: "-Gami4ccm,conn_only\tGenerate all AMI4CCM dependent files needed for an AMI4CCM connector",
                               option_name: :gen_amiconn_only_ami4ccm_complete },
                   'comp' => { description: "-Gami4ccm,comp\t\tGenerate all files/support needed for an AMI4CCM component",
-                             option_name: :gen_amicomp_complete },
+                             option_name: :gen_amicomp_complete},
                   'ex' => { description: "-Gami4ccm,ex\t\tGenerate AMI4CCM component executor support",
-                            option_name: :gen_component_executor_with_ami },
+                            option_name: :gen_component_executor_with_ami},
                 }
             end # ami4ccm_group
           end
@@ -72,6 +74,7 @@ module IDL
           ridl_params[:ami4ccm_pfx] = '_ami4ccm'
 
           IDL::CCMX11::AMI4CCM.add_extended_options(optlist)
+
         end
 
         # process input / generate code
@@ -142,6 +145,7 @@ module IDL
           if options[:gen_ami_connector_impl]
             IDL::CCMX11::AMI4CCM.gen_ami_connector_impl(options, idl_ext)
           end
+
         end # fctcfg.on_process_input
       end # fctcfg
 
@@ -592,8 +596,10 @@ module IDL
 
       # extend the base backend with some specific AMI4CCM settings/handling
       module BaseExt
+
         def self.included(base)
           base.class_eval do
+
             # extend CCMX11#setup_compile_lem_idl
             # make sure to reset some switches to prevent unwanted actions
             # in new input passes
@@ -627,13 +633,17 @@ module IDL
             end
 
             alias_method_chain :check_conn_export_params, :ami4ccm
+
           end
         end
+
       end
 
       module Cxx11Ext
+
         def self.included(base)
           base.class_eval do
+
             def check_stub_export_params_with_ami4ccm(options)
               if options.gen_ami_idl && options.gen_export_st
                 # use composite _stub_export for stub generated of *A.idl file unless specified explicitly
@@ -644,15 +654,19 @@ module IDL
             end
 
             alias_method_chain :check_stub_export_params, :ami4ccm
+
           end
         end
       end
-    end # AMI4CCM
+
+    end  # AMI4CCM
 
     self.singleton_class.__send__(:include, AMI4CCM::BaseExt)
 
     IDL::Cxx11.singleton_class.__send__(:include, AMI4CCM::Cxx11Ext)
+
   end # CCMX11
+
 end # IDL
 
 # config modules

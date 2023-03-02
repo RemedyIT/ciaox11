@@ -10,26 +10,27 @@ require 'ridlbe/c++11/writerbase'
 require 'ridlbe/c++11/writers/helpers/include_guard_helper'
 
 module IDL
+
   module CCMX11
+
     module DDSX11
+
       class DDSTypeSupportBaseWriter < Cxx11::CxxCodeWriterBase
         def initialize(output = STDOUT, opts = {})
           super
         end
 
       protected
-
         def init_visitor(v, node)
           v.properties[:topic_namespaces] =
               (params[:dds_topic_namespace] && params[:dds_topic_namespace].split('::')) ||
-                  node.scopes[0, node.scopes.length - 1].collect { |s| s.name }
+                  node.scopes[0, node.scopes.length - 1].collect {|s| s.name }
         end
 
         def is_dds_topic?(node)
           if params[:dds_topic].blank? || params[:dds_topic] == node.scoped_name
             return has_toplevel_annotation?(node)
           end
-
           false
         end
 
@@ -37,8 +38,7 @@ module IDL
           # 20190730 Add support for AXCIOMA 2 top-level annotation, issue #4729
           annot = node.annotations[:'top-level'].first || node.annotations[:TopLevel].first
           return false if annot.nil?
-
-          annot.fields[:value].nil? || annot.fields[:value]
+          return annot.fields[:value].nil? || annot.fields[:value]
         end
       end # DDSTypeSupportBaseWriter
 
@@ -184,7 +184,7 @@ module IDL
         end
 
         def enter_struct(node)
-          visitor(StructVisitor) do |v|
+          visitor(StructVisitor)do |v|
             init_visitor(v, node)
             v.visit_factory(node)
           end if is_dds_topic?(node)
@@ -197,6 +197,9 @@ module IDL
           end if is_dds_topic?(node)
         end
       end # DDSTypeSupportSourceWriter
+
     end # DDSX11
+
   end # CCMX11
+
 end # IDL
