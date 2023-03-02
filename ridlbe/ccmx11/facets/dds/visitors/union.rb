@@ -9,9 +9,7 @@
 require 'ridlbe/c++11/visitors/include'
 
 module IDL
-
   module CCMX11
-
     # Reopen visitor class to add DDS specifics
     #
     class UnionMemberVisitor
@@ -35,7 +33,5 @@ module IDL
 
       optional_template :life_cycle_traits
     end
-
   end # CCMX11
-
 end # IDL

@@ -10,11 +10,8 @@ require 'ridlbe/c++11/writerbase'
 require 'ridlbe/c++11/writers/helpers/include_guard_helper'
 
 module IDL
-
   module CCMX11
-
     module DDSX11
-
       class DDSTypeEntitiesIDLWriter < Cxx11::CxxCodeWriterBase
         helper Cxx11::IncludeGuardHelper
 
@@ -49,16 +46,18 @@ module IDL
         end
 
       protected
+
         def init_visitor(v, node)
           v.properties[:topic_namespaces] =
               (params[:dds_topic_namespace] && params[:dds_topic_namespace].split('::')) ||
-                  node.scopes[0, node.scopes.length - 1].collect {|s| s.unescaped_name }
+                  node.scopes[0, node.scopes.length - 1].collect { |s| s.unescaped_name }
         end
 
         def is_dds_topic?(node)
           if params[:dds_topic].blank? || params[:dds_topic] == node.scoped_name
             return has_toplevel_annotation?(node)
           end
+
           false
         end
 
@@ -66,12 +65,10 @@ module IDL
           # 20190730 Add support for AXCIOMA 2 top-level annotation, issue #4729
           annot = node.annotations[:'top-level'].first || node.annotations[:TopLevel].first
           return false if annot.nil?
-          return annot.fields[:value].nil? || annot.fields[:value]
+
+          annot.fields[:value].nil? || annot.fields[:value]
         end
       end # DDSTypeEntitiesIDLWriter
-
     end # DDSX11
-
   end # CCMX11
-
 end # IDL

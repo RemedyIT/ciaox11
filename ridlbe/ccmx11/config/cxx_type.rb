@@ -6,7 +6,6 @@
 #--------------------------------------------------------------------
 
 module IDL
-
   # add language mapping specific type customizations for CCMX11
 
   class Type
@@ -16,9 +15,11 @@ module IDL
       def cxx_type(scope = nil)
         'TAOX11_CORBA::Home'
       end
+
       def cxx_typecode
         "_tc_Home"
       end
+
       def scoped_cxx_typecode
         "TAOX11_CORBA::_tc_Home"
       end
@@ -29,5 +30,4 @@ module IDL
       include IdlType_Mixin
     end # Component
   end # Type
-
 end # IDL

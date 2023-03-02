@@ -8,11 +8,8 @@
 #--------------------------------------------------------------------
 
 module IDL
-
   module CCMX11
-
     module VersionHelper
-
       def ciaox11_version_header
         "ciaox11/versionx11.h"
       end
@@ -34,9 +31,6 @@ module IDL
             "(#{ciaox11_version[:major]}.#{ciaox11_version[:minor]}.#{ciaox11_version[:micro]}). " +
             "Please re-generate.\n#endif"
       end
-
     end # VersionHelper
-
   end # CCMX11
-
 end # IDL

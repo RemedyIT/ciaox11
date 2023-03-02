@@ -9,16 +9,11 @@
 require 'ridlbe/c++11/writerbase'
 
 module IDL
-
   module CCMX11
-
     module Ami4ccmLemExecutorIDLExt
-
       module WriterExtension
-
         def self.included(base)
           base.class_eval do
-
             helper_method :has_ami4ccm?
 
             def has_ami4ccm?
@@ -39,7 +34,6 @@ module IDL
             alias_method_chain :visit_include, :ami
           end
         end
-
       end
 
       def self.configure_extension(writer)
@@ -48,9 +42,6 @@ module IDL
         writer.append_template(:lem_extra_multiple_receptacles, 'ami/lem_extra_multiple_receptacles')
         writer.append_template(:lem_extra_receptacles, 'ami/lem_extra_receptacles')
       end
-
     end
-
   end # CCMX11
-
 end # module IDL

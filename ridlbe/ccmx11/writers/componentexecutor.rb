@@ -10,9 +10,7 @@ require 'ridlbe/c++11/writerbase'
 require 'ridlbe/c++11/writers/helpers/include_guard_helper'
 
 module IDL
-
   module CCMX11
-
     class ComponentExecutorBaseWriter < Cxx11::CxxCodeWriterBase
       def initialize(output = STDOUT, opts = {})
         super
@@ -77,9 +75,7 @@ module IDL
       end
     end # ComponentExecutorSourceWriter
 
-
     module ComponentExecutor
-
       HeaderWriter = ComponentExecutorHeaderWriter
       SourceWriter = ComponentExecutorSourceWriter
 
@@ -92,9 +88,6 @@ module IDL
         remove_const(:SourceWriter) if const_defined?(:SourceWriter)
         const_set(:SourceWriter, klass)
       end
-
     end
-
   end # CCMX11
-
 end # IDL

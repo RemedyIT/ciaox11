@@ -10,11 +10,8 @@ require 'ridlbe/c++11/writerbase'
 require 'ridlbe/c++11/writers/helpers/include_guard_helper'
 
 module IDL
-
   module CCMX11
-
     module AMI4CCM
-
     class AmiConnectorBaseWriter < Cxx11::CxxCodeWriterBase
       def initialize(output = STDOUT, opts = {})
         super
@@ -23,6 +20,7 @@ module IDL
       end
 
       attr_accessor :include_guard
+
       helper Cxx11::IncludeGuardHelper
     end
 
@@ -130,6 +128,7 @@ module IDL
 
       def enter_interface(node)
         return if node.is_local? || node.is_abstract? || !node.has_ami_annotation?
+
         visitor(InterfaceVisitor).visit_ami(node)
       end
     end # AmiConnectorIDLWriter
@@ -183,9 +182,6 @@ module IDL
         visitor(ConnectorVisitor).visit_connector(node)
       end
     end # AmiConnectorSourceWriter
-
     end # AMI4CCM
-
   end # CCMX11
-
 end # IDL

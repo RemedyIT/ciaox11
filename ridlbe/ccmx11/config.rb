@@ -9,7 +9,6 @@
 
 
 module IDL
-
   module CCMX11
     COPYRIGHT = "Copyright (c) 2007-#{Time.now.year} Remedy IT Expertise BV, The Netherlands".freeze
     TITLE = 'RIDL CCMX11 backend'.freeze
@@ -22,18 +21,18 @@ module IDL
         swcfg.modify_group :b_extopt do |grpcfg|
           grpcfg.modify_params :strings,
             params: {
-              'exec_export_macro' => {description: "-Wb,exec_export_macro=MACRO\tSet export macro for executor files"},
-              'exec_export_include' => {description: "-Wb,exec_export_include=FILE\tSet export include file for executor files"},
-              'exec_export_file' => {description: "-Wb,exec_export_file=FILE\t\tSet skeleton export file to generate for -Gxhex"},
-              'conn_export_macro' => {description: "-Wb,conn_export_macro=MACRO\tSet export macro for connector files"},
-              'conn_export_include' => {description: "-Wb,conn_export_include=FILE\tSet export include file for connector files"},
-              'conn_export_file' => {description: "-Wb,conn_export_file=FILE\t\tSet connector export file to generate for -Gxhcn"},
-              'svnt_export_macro' => {description: "-Wb,svnt_export_macro=MACRO\tSet export macro for servant files"},
-              'svnt_export_include' => {description: "-Wb,svnt_export_include=FILE\tSet export include file for servant files"},
-              'svnt_export_file' => {description: "-Wb,svnt_export_file=FILE\t\tSet servant export file to generate for -Ghst"},
-              'lem_stub_export_macro' => {description: "-Wb,lem_stub_export_macro=MACRO\tSet export macro for lem stub files"},
-              'lem_stub_export_include' => {description: "-Wb,lem_stub_export_include=FILE\tSet export include file for lem stub files"},
-              'lem_stub_export_file' => {description: "-Wb,lem_stub_export_file=FILE\tSet lem stub export file to generate for -Gxhlst"}
+              'exec_export_macro' => { description: "-Wb,exec_export_macro=MACRO\tSet export macro for executor files" },
+              'exec_export_include' => { description: "-Wb,exec_export_include=FILE\tSet export include file for executor files" },
+              'exec_export_file' => { description: "-Wb,exec_export_file=FILE\t\tSet skeleton export file to generate for -Gxhex" },
+              'conn_export_macro' => { description: "-Wb,conn_export_macro=MACRO\tSet export macro for connector files" },
+              'conn_export_include' => { description: "-Wb,conn_export_include=FILE\tSet export include file for connector files" },
+              'conn_export_file' => { description: "-Wb,conn_export_file=FILE\t\tSet connector export file to generate for -Gxhcn" },
+              'svnt_export_macro' => { description: "-Wb,svnt_export_macro=MACRO\tSet export macro for servant files" },
+              'svnt_export_include' => { description: "-Wb,svnt_export_include=FILE\tSet export include file for servant files" },
+              'svnt_export_file' => { description: "-Wb,svnt_export_file=FILE\t\tSet servant export file to generate for -Ghst" },
+              'lem_stub_export_macro' => { description: "-Wb,lem_stub_export_macro=MACRO\tSet export macro for lem stub files" },
+              'lem_stub_export_include' => { description: "-Wb,lem_stub_export_include=FILE\tSet export include file for lem stub files" },
+              'lem_stub_export_file' => { description: "-Wb,lem_stub_export_file=FILE\tSet lem stub export file to generate for -Gxhlst" }
             }
         end
       end
@@ -61,8 +60,9 @@ module IDL
         swcfg.for_group :lem_group do |grpcfg|
               grpcfg.on_prepare do |arg, params|
                 if /^lem(\,(.*))?/ =~ arg
-                  return [$2 || ':']
+                  return [::Regexp.last_match(2) || ':']
                 end
+
                 nil
               end
               grpcfg.for_params :strings,
@@ -103,7 +103,7 @@ module IDL
         File.open(base, "r") do |file|
           while (line = file.gets)
             if VERSION_REGEXP =~ line
-              x11_version[$1.downcase.to_sym] = $2.to_i
+              x11_version[::Regexp.last_match(1).downcase.to_sym] = ::Regexp.last_match(2).to_i
             end
           end
         end
@@ -120,7 +120,6 @@ module IDL
     ## Configure C++11 backend
     #
     Backend.configure('ccmx11', File.dirname(__FILE__), TITLE, COPYRIGHT, IDL::CCMX11.ciaox11_version) do |becfg|
-
       # load c++11 backend as base
       becfg.add_backend('c++11')
 
@@ -196,9 +195,7 @@ module IDL
         if options[:gen_component_servant]
           IDL::CCMX11.gen_component_servant(options, idl_ext)
         end
-
       end # becfg.on_process_input
-
     end # Backend.configure
 
     #################################################################
@@ -257,6 +254,7 @@ module IDL
 
     def self.gen_exec_export(options, prefix = nil)
       return if IDL.has_production?(:exec_export_header)
+
       check_executor_export_params(options, prefix, true)
       export_file = options[:exec_export_include]
       unless options[:exec_export_file].nil?
@@ -272,6 +270,7 @@ module IDL
 
     def self.gen_svnt_export(options, prefix = nil)
       return if IDL.has_production?(:svnt_export_header)
+
       check_servant_export_params(options, prefix, true)
       export_file = options[:svnt_export_include]
       unless options[:svnt_export_file].nil?
@@ -287,6 +286,7 @@ module IDL
 
     def self.gen_conn_export(options, prefix = nil)
       return if IDL.has_production?(:conn_export_header)
+
       check_conn_export_params(options, prefix, true)
       export_file = options[:conn_export_include]
       unless options[:conn_export_file].nil?
@@ -377,6 +377,7 @@ module IDL
     # schedule a generation (production) of the LEM idl
     def self.gen_lem_idl(options, idl_ext)
       return if IDL.has_production?(:lem_idl)
+
       IDL::CCMX11.lem_output_file(options[:idlfile], options, idl_ext)
       lem_idl_file = GenFile.new(options[:lem_output_file])
 
@@ -445,6 +446,7 @@ module IDL
     # (header and source file)
     def self.gen_component_executor(options, idl_ext)
       return if IDL.has_production?(:comp_exec_header)
+
       unless options[:impl_outputdir].nil?
         options[:comp_exec_outputdir] = options[:impl_outputdir]
       else
@@ -476,6 +478,7 @@ module IDL
     # implementation (header and source file)
     def self.gen_templated_connector_impl(options, idl_ext)
       return if IDL.has_production?(:templated_conn_impl_header)
+
       options[:conn_exec_outputdir] = options.outputdir unless options[:conn_exec_outputdir]
       options[:conn_exec_output_hdr] = File.join(options[:conn_exec_outputdir], File.basename(options[:idlfile], idl_ext) + options[:conn_exec_pfx])
       options[:conn_exec_output_src] = options[:conn_exec_output_hdr] + options.src_ext
@@ -494,7 +497,7 @@ module IDL
 
     # schedule the generation (production) of a Facet or Component Servant
     # implementation (header and source)
-    def self.gen_svnt_facets_or_components(options, idl_ext, facet=true)
+    def self.gen_svnt_facets_or_components(options, idl_ext, facet = true)
       # for generating facet svnt's and component svnt's the same writer is used.
       # only the output_dir may differ .
       # svnt files
@@ -526,13 +529,12 @@ module IDL
     # implementation (header and source)
     def self.gen_component_servant(options, idl_ext)
       return if IDL.has_production?(:comp_svnt_header)
+
       # generate component servants (xxx_svnt.{h,cpp})
       options[:svntcomp_outputdir] = options.outputdir unless options[:svntcomp_outputdir]
       gen_svnt_facets_or_components(options, idl_ext, false)
     end
-
   end # CCMX11
-
 end # IDL
 
 # config modules

@@ -9,7 +9,6 @@
 
 module IDL
   module CCMX11
-
     # reopen and extend
     class ConnectorVisitor
       def dds4ccm_error_event_strategy_template
@@ -32,20 +31,19 @@ module IDL
       def dds4ccm_event_strategy_template(ext_port)
         case ext_port.name.to_s
         when 'passive_observer'
-          return '::CIAOX11::DDS4CCM::DefaultPassiveObserverEventStrategy_T'
+          '::CIAOX11::DDS4CCM::DefaultPassiveObserverEventStrategy_T'
         when 'pull_observer'
-          return '::CIAOX11::DDS4CCM::DefaultPullObserverEventStrategy_T'
+          '::CIAOX11::DDS4CCM::DefaultPullObserverEventStrategy_T'
         when 'push_observer'
-          return '::CIAOX11::DDS4CCM::DefaultPushObserverEventStrategy_T'
+          '::CIAOX11::DDS4CCM::DefaultPushObserverEventStrategy_T'
         when 'push_state_observer'
-          return '::CIAOX11::DDS4CCM::DefaultPushStateObserverEventStrategy_T'
+          '::CIAOX11::DDS4CCM::DefaultPushStateObserverEventStrategy_T'
         when 'pull_consumer'
-          return '::CIAOX11::DDS4CCM::DefaultPullConsumerEventStrategy_T'
+          '::CIAOX11::DDS4CCM::DefaultPullConsumerEventStrategy_T'
         when 'push_consumer'
-          return '::CIAOX11::DDS4CCM::DefaultPushConsumerEventStrategy_T'
+          '::CIAOX11::DDS4CCM::DefaultPushConsumerEventStrategy_T'
         end
       end
     end
-
   end
 end

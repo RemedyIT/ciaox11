@@ -8,22 +8,15 @@
 #--------------------------------------------------------------------
 
 module IDL
-
   module CCMX11
-
     module AMI4CCM
-
       ROOT = 'ridlbe/ccmx11/facets/ami4ccm'
-
     end
-
   end
-
 end
 
 # base modules
-[ 'config'
-].each do |f|
+['config'].each do |f|
   require "#{IDL::CCMX11::AMI4CCM::ROOT}/#{f}"
 end
 

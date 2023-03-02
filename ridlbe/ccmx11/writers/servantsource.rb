@@ -10,7 +10,6 @@ require 'ridlbe/c++11/writers/servantsource'
 
 module IDL
   module Cxx11
-
     # Reopen ServantSourceIncludeWriter class to add CCMX11 specifics
     #
     class ServantSourceIncludeWriter
@@ -18,6 +17,7 @@ module IDL
         return if node.enclosure.is_a?(IDL::AST::Component) ||
                   node.enclosure.is_a?(IDL::AST::Connector) ||
                   node.enclosure.is_local? || node.enclosure.is_pseudo? || node.enclosure.is_abstract?
+
         check_idl_type(node.idltype)
       end
     end # ServantSourceIncludeWriter
@@ -42,9 +42,9 @@ module IDL
         return if node.enclosure.is_a?(IDL::AST::Component) ||
                   node.enclosure.is_a?(IDL::AST::Connector) ||
                   node.enclosure.is_local? || node.enclosure.is_pseudo? || node.enclosure.is_abstract?
+
         check_idl_type(node.idltype)
       end
     end # ServantSourceSArgTraitsWriter
-
   end # Cxx11
 end # IDL

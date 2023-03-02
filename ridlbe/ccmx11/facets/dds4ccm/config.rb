@@ -8,18 +8,14 @@
 #--------------------------------------------------------------------
 
 module IDL
-
   module CCMX11
-
     module DDS4CCM
-
       COPYRIGHT = "Copyright (c) 2007-#{Time.now.year} Remedy IT Expertise BV, The Netherlands".freeze
       TITLE = 'RIDL CCMX11 DDS4CCM Facet'.freeze
 
       # Configure facet
       #
       Backend::Facet.configure('dds4ccm', File.dirname(__FILE__), TITLE, COPYRIGHT, IDL::CCMX11.ciaox11_version) do |fctcfg|
-
         # optionally define dependencies on other facets
         #   specify dependencies either as:
         #   - a facet id (assumed to be loaded by current backend)
@@ -35,8 +31,9 @@ module IDL
             swcfg.for_group :dds4ccm_group do |grpcfg|
               grpcfg.on_prepare do |arg, params|
                 if /^dds4ccm\,(.*)/ =~ arg
-                  return [$1]
+                  return [::Regexp.last_match(1)]
                 end
+
                 nil
               end
               # IMPORTANT When these flags are updated also update the DDS4CCM docs/src/ridlc.adoc
@@ -67,12 +64,12 @@ module IDL
             swcfg.modify_group :b_extopt do |grpcfg|
               grpcfg.modify_params :strings,
                                    params: {
-                                       'dds_topic' => {description: "-Wb,dds_topic=SCOPED_TOPIC\tspecifies scoped topic name for DDS4CCM lem generation"},
-                                       'dds_topic_namespace' => {description: "-Wb,dds_topic_namespace=SCOPED_NAME\tspecifies scoped namespace name for DDS4CCM lem generation (default is topic type namespace)"},
-                                       'dds_topic_seq_suffix' => {description: "-Wb,dds_topic_seq_suffix=SUFFIX\tspecifies suffix for topic sequence name for DDS4CCM lem generation"},
-                                       'dds_topic_if_suffix' => {description: "-Wb,dds_topic_if_suffix=SUFFIX\tspecifies suffix topic interface name for DDS4CCM lem generation"},
-                                       'dds_topic_seq' => {description: "-Wb,dds_topic_seq=NAME\t\tspecifies topic sequence name for DDS4CCM lem generation. Only effective in combination with -Wb,dds_topic"},
-                                       'dds_topic_if' => {description: "-Wb,dds_topic_if=NAME\t\tspecifies topic interface name for DDS4CCM lem generation. Only effective in combination with -Wb,dds_topic"}
+                                       'dds_topic' => { description: "-Wb,dds_topic=SCOPED_TOPIC\tspecifies scoped topic name for DDS4CCM lem generation" },
+                                       'dds_topic_namespace' => { description: "-Wb,dds_topic_namespace=SCOPED_NAME\tspecifies scoped namespace name for DDS4CCM lem generation (default is topic type namespace)" },
+                                       'dds_topic_seq_suffix' => { description: "-Wb,dds_topic_seq_suffix=SUFFIX\tspecifies suffix for topic sequence name for DDS4CCM lem generation" },
+                                       'dds_topic_if_suffix' => { description: "-Wb,dds_topic_if_suffix=SUFFIX\tspecifies suffix topic interface name for DDS4CCM lem generation" },
+                                       'dds_topic_seq' => { description: "-Wb,dds_topic_seq=NAME\t\tspecifies topic sequence name for DDS4CCM lem generation. Only effective in combination with -Wb,dds_topic" },
+                                       'dds_topic_if' => { description: "-Wb,dds_topic_if=NAME\t\tspecifies topic interface name for DDS4CCM lem generation. Only effective in combination with -Wb,dds_topic" }
                                    }
             end
           end
@@ -95,7 +92,6 @@ module IDL
         #   in options - initialized option hash
         #
         fctcfg.on_process_input do |parser, options|
-
           idl_ext = (options.idlext ||= File.extname(options.idlfile))
 
           if options.gen_ddsconn_complete
@@ -113,9 +109,7 @@ module IDL
           if options.gen_dds4ccm_lemgen
             IDL::CCMX11::DDS4CCM.gen_dds4ccm_lemgen(options, idl_ext)
           end
-
         end # process_input
-
       end # configure
 
       #########################################################################
@@ -244,9 +238,6 @@ module IDL
         IDL.push_input(lemgen_opts[:idlfile], lemgen_opts)
         lemgen_opts
       end
-
     end # DDS4CCM
-
   end # CCMX11
-
 end # IDL

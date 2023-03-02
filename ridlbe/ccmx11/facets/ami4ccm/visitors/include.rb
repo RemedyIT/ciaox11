@@ -10,7 +10,6 @@ require 'ridlbe/c++11/visitors/include'
 
 module IDL
   module Cxx11
-
     # Reopen visitor class to add ami4ccm specifics
     #
     class IncludeVisitor
@@ -28,7 +27,7 @@ module IDL
 
       def ami4ccm_idl_lem_includes
         chomp_str = params[:idlext]
-        @node.all_ami4ccm_idl_includes.map {|inc| inc.chomp(chomp_str) + params[:stub_pfx] + params[:hdr_ext]}
+        @node.all_ami4ccm_idl_includes.map { |inc| inc.chomp(chomp_str) + params[:stub_pfx] + params[:hdr_ext] }
       end
 
       def has_ami4ccm_idl_lem_includes?

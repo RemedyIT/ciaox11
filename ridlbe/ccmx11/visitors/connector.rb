@@ -10,14 +10,13 @@ require 'ridlbe/ccmx11/visitors/component'
 
 module IDL
   module CCMX11
-
     class ConnectorVisitor < ComponentVisitor
       def base
         (@base = visitor(ConnectorVisitor)).visit(@node.base) unless @base
         @base
       end
 
-      def all_operations(inc_implicit = false)  # incl. inherited
+      def all_operations(inc_implicit = false) # incl. inherited
         inc_implicit ? implicit_operations : []
       end
 
@@ -45,6 +44,7 @@ module IDL
             @templated = true if IDL::AST::Module === n && n.is_templated?
             @tpl_module = n if @templated
             return @templated if @templated
+
             n = n.enclosure
           end
         end
@@ -73,6 +73,5 @@ module IDL
       optional_template :connector_pre_extra
       optional_template :connector_extended_port_extra
     end
-
   end
 end

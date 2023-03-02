@@ -10,7 +10,6 @@ require 'ridlbe/ccmx11/visitors/mixins/ccm_names'
 
 module IDL
   module Cxx11
-
     # Reopen OperationVisitor class to add AMI4CCM specifics
     #
     class OperationVisitor
@@ -45,6 +44,5 @@ module IDL
         end
       end
     end
-
   end
 end
