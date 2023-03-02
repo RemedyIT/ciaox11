@@ -48,7 +48,7 @@ module IDL
             swcfg.modify_group :b_extopt do |grpcfg|
               grpcfg.modify_params :strings,
                                    params: {
-                                       'conn_intf' => {description: "-Wb,conn_intf=SCOPED_INTERFACE\tspecifies scoped interface type name for connector generation"}
+                                       'conn_intf' => { description: "-Wb,conn_intf=SCOPED_INTERFACE\tspecifies scoped interface type name for connector generation" }
                                    }
             end
           end

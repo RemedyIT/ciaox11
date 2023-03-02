@@ -22,18 +22,18 @@ module IDL
         swcfg.modify_group :b_extopt do |grpcfg|
           grpcfg.modify_params :strings,
             params: {
-              'exec_export_macro' => {description: "-Wb,exec_export_macro=MACRO\tSet export macro for executor files"},
-              'exec_export_include' => {description: "-Wb,exec_export_include=FILE\tSet export include file for executor files"},
-              'exec_export_file' => {description: "-Wb,exec_export_file=FILE\t\tSet skeleton export file to generate for -Gxhex"},
-              'conn_export_macro' => {description: "-Wb,conn_export_macro=MACRO\tSet export macro for connector files"},
-              'conn_export_include' => {description: "-Wb,conn_export_include=FILE\tSet export include file for connector files"},
-              'conn_export_file' => {description: "-Wb,conn_export_file=FILE\t\tSet connector export file to generate for -Gxhcn"},
-              'svnt_export_macro' => {description: "-Wb,svnt_export_macro=MACRO\tSet export macro for servant files"},
-              'svnt_export_include' => {description: "-Wb,svnt_export_include=FILE\tSet export include file for servant files"},
-              'svnt_export_file' => {description: "-Wb,svnt_export_file=FILE\t\tSet servant export file to generate for -Ghst"},
-              'lem_stub_export_macro' => {description: "-Wb,lem_stub_export_macro=MACRO\tSet export macro for lem stub files"},
-              'lem_stub_export_include' => {description: "-Wb,lem_stub_export_include=FILE\tSet export include file for lem stub files"},
-              'lem_stub_export_file' => {description: "-Wb,lem_stub_export_file=FILE\tSet lem stub export file to generate for -Gxhlst"}
+              'exec_export_macro' => { description: "-Wb,exec_export_macro=MACRO\tSet export macro for executor files" },
+              'exec_export_include' => { description: "-Wb,exec_export_include=FILE\tSet export include file for executor files" },
+              'exec_export_file' => { description: "-Wb,exec_export_file=FILE\t\tSet skeleton export file to generate for -Gxhex" },
+              'conn_export_macro' => { description: "-Wb,conn_export_macro=MACRO\tSet export macro for connector files" },
+              'conn_export_include' => { description: "-Wb,conn_export_include=FILE\tSet export include file for connector files" },
+              'conn_export_file' => { description: "-Wb,conn_export_file=FILE\t\tSet connector export file to generate for -Gxhcn" },
+              'svnt_export_macro' => { description: "-Wb,svnt_export_macro=MACRO\tSet export macro for servant files" },
+              'svnt_export_include' => { description: "-Wb,svnt_export_include=FILE\tSet export include file for servant files" },
+              'svnt_export_file' => { description: "-Wb,svnt_export_file=FILE\t\tSet servant export file to generate for -Ghst" },
+              'lem_stub_export_macro' => { description: "-Wb,lem_stub_export_macro=MACRO\tSet export macro for lem stub files" },
+              'lem_stub_export_include' => { description: "-Wb,lem_stub_export_include=FILE\tSet export include file for lem stub files" },
+              'lem_stub_export_file' => { description: "-Wb,lem_stub_export_file=FILE\tSet lem stub export file to generate for -Gxhlst" }
             }
         end
       end

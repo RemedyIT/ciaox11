@@ -67,12 +67,12 @@ module IDL
             swcfg.modify_group :b_extopt do |grpcfg|
               grpcfg.modify_params :strings,
                                    params: {
-                                       'dds_topic' => {description: "-Wb,dds_topic=SCOPED_TOPIC\tspecifies scoped topic name for DDS4CCM lem generation"},
-                                       'dds_topic_namespace' => {description: "-Wb,dds_topic_namespace=SCOPED_NAME\tspecifies scoped namespace name for DDS4CCM lem generation (default is topic type namespace)"},
-                                       'dds_topic_seq_suffix' => {description: "-Wb,dds_topic_seq_suffix=SUFFIX\tspecifies suffix for topic sequence name for DDS4CCM lem generation"},
-                                       'dds_topic_if_suffix' => {description: "-Wb,dds_topic_if_suffix=SUFFIX\tspecifies suffix topic interface name for DDS4CCM lem generation"},
-                                       'dds_topic_seq' => {description: "-Wb,dds_topic_seq=NAME\t\tspecifies topic sequence name for DDS4CCM lem generation. Only effective in combination with -Wb,dds_topic"},
-                                       'dds_topic_if' => {description: "-Wb,dds_topic_if=NAME\t\tspecifies topic interface name for DDS4CCM lem generation. Only effective in combination with -Wb,dds_topic"}
+                                       'dds_topic' => { description: "-Wb,dds_topic=SCOPED_TOPIC\tspecifies scoped topic name for DDS4CCM lem generation" },
+                                       'dds_topic_namespace' => { description: "-Wb,dds_topic_namespace=SCOPED_NAME\tspecifies scoped namespace name for DDS4CCM lem generation (default is topic type namespace)" },
+                                       'dds_topic_seq_suffix' => { description: "-Wb,dds_topic_seq_suffix=SUFFIX\tspecifies suffix for topic sequence name for DDS4CCM lem generation" },
+                                       'dds_topic_if_suffix' => { description: "-Wb,dds_topic_if_suffix=SUFFIX\tspecifies suffix topic interface name for DDS4CCM lem generation" },
+                                       'dds_topic_seq' => { description: "-Wb,dds_topic_seq=NAME\t\tspecifies topic sequence name for DDS4CCM lem generation. Only effective in combination with -Wb,dds_topic" },
+                                       'dds_topic_if' => { description: "-Wb,dds_topic_if=NAME\t\tspecifies topic interface name for DDS4CCM lem generation. Only effective in combination with -Wb,dds_topic" }
                                    }
             end
           end
