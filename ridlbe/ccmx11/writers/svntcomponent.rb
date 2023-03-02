@@ -26,6 +26,7 @@ module IDL
       class IncludeScanner < Cxx11::CxxCodeWriterBase
         attr_reader :uses_multiple
         attr_reader :has_non_local_facets
+
         def initialize(output = STDOUT, opts = {})
           super
           self.disable_scope_tracking = true
@@ -93,6 +94,7 @@ module IDL
       # special AST scanner to check for any non-local facets in any component
       class IncludeScanner < Cxx11::CxxCodeWriterBase
         attr_reader :has_non_local_facets
+
         def initialize(output = STDOUT, opts = {})
           super
           self.disable_scope_tracking = true

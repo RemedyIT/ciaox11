@@ -23,6 +23,7 @@ module IDL
 
     class LemComponentScanner < Cxx11::CxxCodeWriterBase
       attr_accessor :has_component, :has_connector
+
       def initialize(output = STDOUT, opts = {})
         super
         self.disable_scope_tracking = true

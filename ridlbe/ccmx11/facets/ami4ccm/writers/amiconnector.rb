@@ -20,6 +20,7 @@ module IDL
       end
 
       attr_accessor :include_guard
+
       helper Cxx11::IncludeGuardHelper
     end
 
