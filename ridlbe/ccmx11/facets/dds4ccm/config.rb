@@ -35,7 +35,7 @@ module IDL
             swcfg.for_group :dds4ccm_group do |grpcfg|
               grpcfg.on_prepare do |arg, params|
                 if /^dds4ccm\,(.*)/ =~ arg
-                  return [$1]
+                  return [::Regexp.last_match(1)]
                 end
                 nil
               end

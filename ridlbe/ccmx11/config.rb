@@ -61,7 +61,7 @@ module IDL
         swcfg.for_group :lem_group do |grpcfg|
               grpcfg.on_prepare do |arg, params|
                 if /^lem(\,(.*))?/ =~ arg
-                  return [$2 || ':']
+                  return [::Regexp.last_match(2) || ':']
                 end
                 nil
               end
@@ -103,7 +103,7 @@ module IDL
         File.open(base, "r") do |file|
           while (line = file.gets)
             if VERSION_REGEXP =~ line
-              x11_version[$1.downcase.to_sym] = $2.to_i
+              x11_version[::Regexp.last_match(1).downcase.to_sym] = ::Regexp.last_match(2).to_i
             end
           end
         end

@@ -25,21 +25,21 @@ module IDL
           # add AMI pragma handlers
           base.add_pragma_handler(:axcioma_ami4ccm_interface) do |_delegator, _curnode, _pragmastr|
             if (rc = (/^ami4ccm\s+interface\s+(.*)/ =~ _pragmastr ? true : false))
-              _delegator.add_ami4ccm_interface($1.strip)
+              _delegator.add_ami4ccm_interface(::Regexp.last_match(1).strip)
             end
             rc
           end
 
           base.add_pragma_handler(:axcioma_ami4ccm_receptacle) do |_delegator, _curnode, _pragmastr|
             if (rc = (/^ami4ccm\s+receptacle\s+(.*)/ =~ _pragmastr ? true : false))
-               _delegator.add_ami4ccm_receptacle($1.strip)
+               _delegator.add_ami4ccm_receptacle(::Regexp.last_match(1).strip)
             end
             rc
           end
 
           base.add_pragma_handler(:axcioma_ami4ccm_idl) do |_delegator, _curnode, _pragmastr|
             if (rc = (/^ami4ccm\s+idl\s+(.*)/ =~ _pragmastr ? true : false))
-              _delegator.add_ami4ccm_idl_include($1.strip)
+              _delegator.add_ami4ccm_idl_include(::Regexp.last_match(1).strip)
             end
             rc
           end

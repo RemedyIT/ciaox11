@@ -20,7 +20,7 @@ module IDL
           swcfg.for_group :ddsx11_group do |grpcfg|
             grpcfg.on_prepare do |arg, params|
               if /^ddsx11\,(.*)/ =~ arg
-                return [$1]
+                return [::Regexp.last_match(1)]
               end
               nil
             end

@@ -22,7 +22,7 @@ module IDL
           base.add_pragma_handler(:axcioma_lem) do |_delegator, _curnode, _pragmastr|
             # 20190729, add backwards compatibility for ciao lem, see devportal #4737
             if (rc = (/^(ciao|axcioma)\s+lem\s+(.*)/ =~ _pragmastr ? true : false))
-              _delegator.add_lem_include($2.strip)
+              _delegator.add_lem_include(::Regexp.last_match(2).strip)
             end
             rc
           end
@@ -30,7 +30,7 @@ module IDL
           base.add_pragma_handler(:axcioma_impl) do |_delegator, _curnode, _pragmastr|
             # 20190729, added backwards compatibility for dds4ccm impl, see devportal #4738
             if (rc = (/^(dds4ccm|axcioma)\s+impl\s+(.*)/ =~ _pragmastr ? true : false))
-              _delegator.add_impl_include($2.strip)
+              _delegator.add_impl_include(::Regexp.last_match(2).strip)
             end
             rc
           end
