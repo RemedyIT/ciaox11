@@ -500,7 +500,7 @@ module IDL
 
     # schedule the generation (production) of a Facet or Component Servant
     # implementation (header and source)
-    def self.gen_svnt_facets_or_components(options, idl_ext, facet=true)
+    def self.gen_svnt_facets_or_components(options, idl_ext, facet = true)
       # for generating facet svnt's and component svnt's the same writer is used.
       # only the output_dir may differ .
       # svnt files

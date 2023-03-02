@@ -370,7 +370,7 @@ module IDL
         end
       end
 
-      def collect_resolved_bases(list=[], n=nil)
+      def collect_resolved_bases(list = [], n = nil)
         base = (n || node).base
         if base
           base = base.idltype.resolved_type.node if base.is_a?(IDL::AST::Typedef)
