@@ -84,7 +84,7 @@ module IDL
                IDL::Type::Native,
                IDL::Type::Object,
                IDL::Type::Interface
-            return
+            nil
           else
             check_namespace_begin
             visitor(TypedefVisitor).visit_typedef(node)

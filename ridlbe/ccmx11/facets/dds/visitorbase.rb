@@ -48,7 +48,7 @@ module IDL
 
       def typedef_sequence_dds_type
         # No cxxname since we're writing to IDL
-        return "typedef sequence<#{unescaped_name}> #{sequence_dds_type};"
+        "typedef sequence<#{unescaped_name}> #{sequence_dds_type};"
       end
 
       def strip_global_scope(typename)
@@ -60,7 +60,7 @@ module IDL
         annot = self.annotations[:'top-level'].first || self.annotations[:TopLevel].first
         return false if annot.nil?
 
-        return annot.fields[:value].nil? || annot.fields[:value]
+        annot.fields[:value].nil? || annot.fields[:value]
       end
 
       def extensibility_annotation

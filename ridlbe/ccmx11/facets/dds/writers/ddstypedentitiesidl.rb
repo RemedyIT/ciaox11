@@ -66,7 +66,7 @@ module IDL
           annot = node.annotations[:'top-level'].first || node.annotations[:TopLevel].first
           return false if annot.nil?
 
-          return annot.fields[:value].nil? || annot.fields[:value]
+          annot.fields[:value].nil? || annot.fields[:value]
         end
       end # DDSTypeEntitiesIDLWriter
     end # DDSX11
