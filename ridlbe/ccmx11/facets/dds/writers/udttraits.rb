@@ -115,6 +115,7 @@ module IDL
         end
 
         private
+
         def add_include(inc_file)
           @includes << inc_file unless @includes.include?(inc_file)
         end
