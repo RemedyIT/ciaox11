@@ -9,9 +9,7 @@
 
 
 module IDL
-
   module CCMX11
-
     module CORBA
       COPYRIGHT = "Copyright (c) 2007-#{Time.now.year} Remedy IT Expertise BV, The Netherlands".freeze
       TITLE = 'RIDL CCMX11 CORBA Facet'.freeze
@@ -193,7 +191,6 @@ module IDL
 
       # extend the base backend with some specific CORBA4CCM settings/handling
       module BaseExt
-
         def self.included(base)
           base.class_eval do
 
@@ -221,13 +218,9 @@ module IDL
 
           end
         end
-
       end
-
     end  # CORBA
 
     self.singleton_class.__send__(:include, CORBA::BaseExt)
-
   end # CCMX11
-
 end # IDL

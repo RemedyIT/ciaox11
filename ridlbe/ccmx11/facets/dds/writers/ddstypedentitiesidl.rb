@@ -10,11 +10,8 @@ require 'ridlbe/c++11/writerbase'
 require 'ridlbe/c++11/writers/helpers/include_guard_helper'
 
 module IDL
-
   module CCMX11
-
     module DDSX11
-
       class DDSTypeEntitiesIDLWriter < Cxx11::CxxCodeWriterBase
         helper Cxx11::IncludeGuardHelper
 
@@ -69,9 +66,6 @@ module IDL
           return annot.fields[:value].nil? || annot.fields[:value]
         end
       end # DDSTypeEntitiesIDLWriter
-
     end # DDSX11
-
   end # CCMX11
-
 end # IDL

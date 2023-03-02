@@ -9,9 +9,7 @@
 require 'ridlbe/c++11/visitorbase'
 
 module IDL
-
   module Cxx11
-
     # Reopen C++11 VisitorBase to add DDSX11 specific properties
     #
     class VisitorBase
@@ -82,7 +80,5 @@ module IDL
         params[:typesupport_export_macro] ? params[:typesupport_export_macro] + ' ' : ''
       end
     end # VisitorBase
-
   end # Cxx11
-
 end # IDL

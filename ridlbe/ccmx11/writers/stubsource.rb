@@ -10,7 +10,6 @@ require 'ridlbe/c++11/writers/stubsource'
 
 module IDL
   module Cxx11
-
     # Reopen StubSourceWriter class to add CCMX11 specifics
     #
     class StubSourceWriter
@@ -21,6 +20,5 @@ module IDL
         visitor(AttributeVisitor).visit_attribute(node)
       end
     end # StubSourceWriter
-
   end
 end

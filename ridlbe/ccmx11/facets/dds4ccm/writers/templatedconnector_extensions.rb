@@ -8,11 +8,8 @@
 #--------------------------------------------------------------------
 
 module IDL
-
   module CCMX11
-
     module DDS4CCM
-
       module TemplatedConnectorImplSourceExt
         def self.configure_extension(writer)
           IDL.log(3, 'Configuring DDS4CCM TemplatedConnectorImplSourceExt extension')
@@ -22,9 +19,6 @@ module IDL
           writer.override_template(:pre, :pre_dds4ccm)
         end
       end # TemplatedConnectorImplSourceExt
-
     end # DDS4CCM
-
   end # CCMX11
-
 end # IDL

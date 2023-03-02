@@ -8,9 +8,7 @@
 #--------------------------------------------------------------------
 
 module IDL
-
   module CCMX11
-
     module AMI4CCM
       COPYRIGHT = "Copyright (c) 2007-#{Time.now.year} Remedy IT Expertise BV, The Netherlands".freeze
       TITLE = 'RIDL CCMX11 AMI4CCM Facet'.freeze
@@ -596,7 +594,6 @@ module IDL
 
       # extend the base backend with some specific AMI4CCM settings/handling
       module BaseExt
-
         def self.included(base)
           base.class_eval do
 
@@ -636,11 +633,9 @@ module IDL
 
           end
         end
-
       end
 
       module Cxx11Ext
-
         def self.included(base)
           base.class_eval do
 
@@ -658,15 +653,12 @@ module IDL
           end
         end
       end
-
     end  # AMI4CCM
 
     self.singleton_class.__send__(:include, AMI4CCM::BaseExt)
 
     IDL::Cxx11.singleton_class.__send__(:include, AMI4CCM::Cxx11Ext)
-
   end # CCMX11
-
 end # IDL
 
 # config modules

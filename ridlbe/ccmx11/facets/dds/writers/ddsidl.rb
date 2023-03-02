@@ -10,11 +10,8 @@ require 'ridlbe/c++11/writerbase'
 require 'ridlbe/c++11/writers/helpers/include_guard_helper'
 
 module IDL
-
   module CCMX11
-
     module DDSX11
-
       class DDSIDLWriter < Cxx11::CxxCodeWriterBase
         helper Cxx11::IncludeGuardHelper
 
@@ -143,9 +140,6 @@ module IDL
           end
         end
       end # DDSIDLWriter
-
     end # DDSX11
-
   end # CCMX11
-
 end # IDL

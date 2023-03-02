@@ -10,11 +10,8 @@ require 'ridlbe/c++11/writerbase'
 require 'ridlbe/c++11/writers/helpers/include_guard_helper'
 
 module IDL
-
   module CCMX11
-
     module DDSX11
-
       class DDSTypeSupportBaseWriter < Cxx11::CxxCodeWriterBase
         def initialize(output = STDOUT, opts = {})
           super
@@ -197,9 +194,6 @@ module IDL
           end if is_dds_topic?(node)
         end
       end # DDSTypeSupportSourceWriter
-
     end # DDSX11
-
   end # CCMX11
-
 end # IDL

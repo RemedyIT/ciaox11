@@ -6,7 +6,6 @@
 #--------------------------------------------------------------------
 
 module IDL
-
   # add language mapping specific type customizations for CCMX11
 
   class Type
@@ -29,5 +28,4 @@ module IDL
       include IdlType_Mixin
     end # Component
   end # Type
-
 end # IDL

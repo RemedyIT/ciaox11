@@ -9,7 +9,6 @@
 module IDL
   module CCMX11
     module CcmNames
-
       # original escaped name used in composed name with 'CCM_'
       def ccm_name
         'CCM_' + name

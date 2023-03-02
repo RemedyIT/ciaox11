@@ -10,7 +10,6 @@ require 'ridlbe/c++11/writerbase'
 
 module IDL
   module Cxx11
-
     # Reopen Output writer base class to add CCMX11 specifics
     #
     class CxxCodeWriterBase
@@ -37,6 +36,5 @@ module IDL
         @properties[:_context][:cur_scope] = @properties[:_context][:scopes].last
       end
     end # CxxCodeWriterBase
-
   end
 end

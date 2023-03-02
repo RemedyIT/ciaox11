@@ -11,7 +11,6 @@ require 'ridlbe/ccmx11/visitors/mixins/ccm_names'
 
 module IDL
   module CCMX11
-
     # Reopen PortVisitor class to add AMI4CCM specifics
     class PortVisitor < Cxx11::NodeVisitorBase
       def is_ami4ccm_port?

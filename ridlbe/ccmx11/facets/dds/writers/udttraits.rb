@@ -11,11 +11,8 @@ require 'ridlbe/c++11/writerbase'
 require 'ridlbe/c++11/writers/helpers/include_guard_helper'
 
 module IDL
-
   module CCMX11
-
     module DDSX11
-
       class UserDefinedTypeTraitsBaseWriter < Cxx11::CxxCodeWriterBase
         def initialize(output = STDOUT, opts = {})
           super
@@ -121,9 +118,6 @@ module IDL
           @includes << inc_file unless @includes.include?(inc_file)
         end
       end # UserDefinedTypeTraitsIncludeWriter
-
     end # DDSX11
-
   end # CCMX11
-
 end # IDL

@@ -10,7 +10,6 @@ require 'ridlbe/c++11/visitorbase'
 
 module IDL
   module Cxx11
-
     # Reopen C++11 VisitorBase to add CCMX11 specific properties
     #
     class VisitorBase
@@ -50,7 +49,5 @@ module IDL
         params[:conn_export_macro] ? params[:conn_export_macro] + ' ' : self.export_macro
       end
     end
-
   end # Cxx11
-
 end # IDL

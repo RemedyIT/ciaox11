@@ -11,7 +11,6 @@ require 'ridlbe/ccmx11/visitors/mixins/ccm_names'
 
 module IDL
   module CCMX11
-
     class PortVisitor < Cxx11::NodeVisitorBase
       include CcmNames
 

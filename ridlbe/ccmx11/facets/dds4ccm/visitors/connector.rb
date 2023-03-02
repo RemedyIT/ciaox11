@@ -9,7 +9,6 @@
 
 module IDL
   module CCMX11
-
     # reopen and extend
     class ConnectorVisitor
       def dds4ccm_error_event_strategy_template
@@ -46,6 +45,5 @@ module IDL
         end
       end
     end
-
   end
 end

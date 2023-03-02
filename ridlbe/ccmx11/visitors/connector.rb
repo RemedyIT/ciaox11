@@ -10,7 +10,6 @@ require 'ridlbe/ccmx11/visitors/component'
 
 module IDL
   module CCMX11
-
     class ConnectorVisitor < ComponentVisitor
       def base
         (@base = visitor(ConnectorVisitor)).visit(@node.base) unless @base
@@ -73,6 +72,5 @@ module IDL
       optional_template :connector_pre_extra
       optional_template :connector_extended_port_extra
     end
-
   end
 end

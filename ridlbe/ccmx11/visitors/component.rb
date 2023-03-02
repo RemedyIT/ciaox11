@@ -12,7 +12,6 @@ require 'ridlbe/ccmx11/visitors/mixins/ccm_names'
 
 module IDL
   module CCMX11
-
     class ComponentVisitor < Cxx11::NodeVisitorBase
       include CcmNames
 
@@ -406,7 +405,5 @@ module IDL
         @sup_intf_ids ||= (collect_ancestors([], node).collect {|ancestor| ancestor.repository_id } << node.repository_id)
       end
     end
-
   end
-
 end

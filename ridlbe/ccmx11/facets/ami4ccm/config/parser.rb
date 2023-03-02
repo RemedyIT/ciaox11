@@ -9,15 +9,11 @@
 require 'ridlbe/c++11/config/core'
 
 module IDL
-
   module CCMX11
-
     module AMI4CCM
-
       ###
       # Adds AMI4CCM pragma support
       module PragmaExt
-
         def self.included(base)
           # add AMI4CCM pragma extension methods
           base.send(:include, Methods)
@@ -77,13 +73,11 @@ module IDL
             end
           end
         end # Methods
-
       end # Pragma
 
       ###
       # AST::Include node customization mixin
       module IncludeMixin
-
         def ami4ccm_idl_includes
           @ami4ccm_idl_includes ||= []
         end
@@ -108,11 +102,8 @@ module IDL
           end
           _all_ami4ccm_idl_incs
         end
-
       end # IncludeMixin
-
     end # AMI4CCM
-
   end # CCMX11
 
   # extend with AMI4CCM pragma handling
@@ -120,5 +111,4 @@ module IDL
 
   # extend with AMI4CCM idl include properties
   AST::Include.send(:include, CCMX11::AMI4CCM::IncludeMixin) unless AST::Include < CCMX11::AMI4CCM::IncludeMixin
-
 end # IDL

@@ -11,11 +11,8 @@ require 'ridlbe/ccmx11/writers/helpers/version_helper'
 require 'ridlbe/ccmx11/visitors/component'
 
 module IDL
-
   module CCMX11
-
     module CorbaExecComponentHeaderExt
-
       module WriterExtension
         def self.included(base)
           base.class_eval do
@@ -29,7 +26,6 @@ module IDL
             end
           end
         end
-
       end
 
       def self.configure_extension(writer)
@@ -41,7 +37,6 @@ module IDL
         writer.add_optional_template(:component_extra_public, IDL::CCMX11::ComponentVisitor)
         writer.add_optional_template(:component_extra_private, IDL::CCMX11::ComponentVisitor)
       end
-
     end
 
     module CorbaExecComponentSourceExt
@@ -52,7 +47,5 @@ module IDL
         writer.add_optional_template(:component_extra_impl, IDL::CCMX11::ComponentVisitor)
       end
     end
-
   end # CCMX11
-
 end # IDL

@@ -8,11 +8,8 @@
 #--------------------------------------------------------------------
 
 module IDL
-
   module CCMX11
-
     module DDS4CCM
-
       COPYRIGHT = "Copyright (c) 2007-#{Time.now.year} Remedy IT Expertise BV, The Netherlands".freeze
       TITLE = 'RIDL CCMX11 DDS4CCM Facet'.freeze
 
@@ -244,9 +241,6 @@ module IDL
         IDL.push_input(lemgen_opts[:idlfile], lemgen_opts)
         lemgen_opts
       end
-
     end # DDS4CCM
-
   end # CCMX11
-
 end # IDL

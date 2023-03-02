@@ -12,7 +12,6 @@ require 'ridlbe/ccmx11/visitors/mixins/ccm_names'
 
 module IDL
   module CCMX11
-
     # Reopen ComponentVisitor class to add AMI4CCM specifics
     #
     class ComponentVisitor
@@ -35,7 +34,5 @@ module IDL
         multiple_ami_ports
       end
     end
-
   end
-
 end

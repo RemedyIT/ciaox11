@@ -8,9 +8,7 @@
 #--------------------------------------------------------------------
 
 module IDL
-
   module CCMX11
-
     ###
     # Delegator extension mixin to add CCMX11 customization
     module DelegatorExt
@@ -57,7 +55,6 @@ module IDL
             end
           end
         end # Methods
-
     end # DelegatorExt
 
     ###
@@ -129,7 +126,6 @@ module IDL
         scoped_skel_cxxnamespace + '::' + skel_cxxname
       end
     end # ComponentBaseMixin
-
   end # CCMX11
 
   # extend with CCMX11 pragma handling
@@ -140,5 +136,4 @@ module IDL
 
   # extend with CCMX11 naming extensions
   AST::ComponentBase.send(:include, CCMX11::ComponentBaseMixin) unless AST::ComponentBase < CCMX11::ComponentBaseMixin
-
 end # IDL

@@ -9,7 +9,6 @@
 
 
 module IDL
-
   module CCMX11
     COPYRIGHT = "Copyright (c) 2007-#{Time.now.year} Remedy IT Expertise BV, The Netherlands".freeze
     TITLE = 'RIDL CCMX11 backend'.freeze
@@ -530,9 +529,7 @@ module IDL
       options[:svntcomp_outputdir] = options.outputdir unless options[:svntcomp_outputdir]
       gen_svnt_facets_or_components(options, idl_ext, false)
     end
-
   end # CCMX11
-
 end # IDL
 
 # config modules

@@ -11,7 +11,6 @@ require 'ridlbe/ccmx11/visitors/mixins/ccm_names'
 
 module IDL
   module CCMX11
-
     # Reopen visitor class to add DDS specifics
     #
     class StructVisitor < Cxx11::NodeVisitorBase
@@ -25,6 +24,5 @@ module IDL
         !self.annotations[:key].empty?
       end
     end
-
   end # CCMX11
 end # IDL

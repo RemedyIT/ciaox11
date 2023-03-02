@@ -10,7 +10,6 @@ require 'ridlbe/c++11/visitors/include'
 
 module IDL
   module Cxx11
-
     # Reopen visitor class to add DDSX11 specifics
     #
     class PreVisitor
@@ -53,6 +52,5 @@ module IDL
         idl_base + params[:dds_typed_entities_pfx] + params[:stub_pfx] + params[:hdr_ext]
       end
     end # PreVisitor
-
   end # Cxx11
 end # IDL

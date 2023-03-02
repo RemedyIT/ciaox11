@@ -8,17 +8,11 @@
 #--------------------------------------------------------------------
 
 module IDL
-
   module CCMX11
-
     module AMI4CCM
-
       ROOT = 'ridlbe/ccmx11/facets/ami4ccm'
-
     end
-
   end
-
 end
 
 # base modules

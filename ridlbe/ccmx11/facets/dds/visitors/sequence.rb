@@ -9,9 +9,7 @@
 require 'ridlbe/c++11/visitors/include'
 
 module IDL
-
   module CCMX11
-
     # Reopen visitor class to add DDS specifics
     #
     class SequenceVisitor
@@ -47,7 +45,5 @@ module IDL
         ::IDL::Type::Char === self._resolved_idltype.basetype.resolved_type || ::IDL::Type::WChar === self._resolved_idltype.basetype.resolved_type
       end
     end # SequenceVisitor
-
   end # CCMX11
-
 end # IDL
