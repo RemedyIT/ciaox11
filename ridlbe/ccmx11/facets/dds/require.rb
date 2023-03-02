@@ -17,7 +17,7 @@ end
 
 # base modules
 ['config',
-  'visitorbase',
+ 'visitorbase',
 ].each do |f|
   require "#{IDL::CCMX11::DDSX11::ROOT}/#{f}"
 end
