@@ -20,6 +20,7 @@ module IDL
               if /^ddsx11\,(.*)/ =~ arg
                 return [::Regexp.last_match(1)]
               end
+
               nil
             end
             grpcfg.modify_params :strings,
@@ -184,6 +185,7 @@ module IDL
 
       def self.gen_typesupport_export(options, prefix = nil)
         return if IDL.has_production?(:typesupport_export_header)
+
         export_file = options.typesupport_export_include
         unless options.typesupport_export_file.nil?
           export_file = options.typesupport_export_file

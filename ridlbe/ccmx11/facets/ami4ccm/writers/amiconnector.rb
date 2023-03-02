@@ -127,6 +127,7 @@ module IDL
 
       def enter_interface(node)
         return if node.is_local? || node.is_abstract? || !node.has_ami_annotation?
+
         visitor(InterfaceVisitor).visit_ami(node)
       end
     end # AmiConnectorIDLWriter

@@ -28,6 +28,7 @@ module IDL
           if params[:dds_topic].blank? || params[:dds_topic] == node.scoped_name
             return has_toplevel_annotation?(node)
           end
+
           false
         end
 
@@ -35,6 +36,7 @@ module IDL
           # 20190730 Add support for AXCIOMA 2 top-level annotation, issue #4729
           annot = node.annotations[:'top-level'].first || node.annotations[:TopLevel].first
           return false if annot.nil?
+
           return annot.fields[:value].nil? || annot.fields[:value]
         end
       end # DDSTypeSupportBaseWriter

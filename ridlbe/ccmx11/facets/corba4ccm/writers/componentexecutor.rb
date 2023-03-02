@@ -20,6 +20,7 @@ module IDL
 
             def visit_include(node)
               return if File.basename(node.filename) == 'orb.idl'
+
               at_global_scope do
                 visitor(IncludeVisitor).visit(node)
               end

@@ -24,6 +24,7 @@ module IDL
                 if /^ami4ccm\,(.*)/ =~ arg
                   return [::Regexp.last_match(1)]
                 end
+
                 nil
               end
               # IMPORTANT When these flags are updated also update the AMI4CCM docs/src/ridlc.adoc

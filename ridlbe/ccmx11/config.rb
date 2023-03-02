@@ -62,6 +62,7 @@ module IDL
                 if /^lem(\,(.*))?/ =~ arg
                   return [::Regexp.last_match(2) || ':']
                 end
+
                 nil
               end
               grpcfg.for_params :strings,
@@ -256,6 +257,7 @@ module IDL
 
     def self.gen_exec_export(options, prefix = nil)
       return if IDL.has_production?(:exec_export_header)
+
       check_executor_export_params(options, prefix, true)
       export_file = options[:exec_export_include]
       unless options[:exec_export_file].nil?
@@ -271,6 +273,7 @@ module IDL
 
     def self.gen_svnt_export(options, prefix = nil)
       return if IDL.has_production?(:svnt_export_header)
+
       check_servant_export_params(options, prefix, true)
       export_file = options[:svnt_export_include]
       unless options[:svnt_export_file].nil?
@@ -286,6 +289,7 @@ module IDL
 
     def self.gen_conn_export(options, prefix = nil)
       return if IDL.has_production?(:conn_export_header)
+
       check_conn_export_params(options, prefix, true)
       export_file = options[:conn_export_include]
       unless options[:conn_export_file].nil?
@@ -376,6 +380,7 @@ module IDL
     # schedule a generation (production) of the LEM idl
     def self.gen_lem_idl(options, idl_ext)
       return if IDL.has_production?(:lem_idl)
+
       IDL::CCMX11.lem_output_file(options[:idlfile], options, idl_ext)
       lem_idl_file = GenFile.new(options[:lem_output_file])
 
@@ -444,6 +449,7 @@ module IDL
     # (header and source file)
     def self.gen_component_executor(options, idl_ext)
       return if IDL.has_production?(:comp_exec_header)
+
       unless options[:impl_outputdir].nil?
         options[:comp_exec_outputdir] = options[:impl_outputdir]
       else
@@ -475,6 +481,7 @@ module IDL
     # implementation (header and source file)
     def self.gen_templated_connector_impl(options, idl_ext)
       return if IDL.has_production?(:templated_conn_impl_header)
+
       options[:conn_exec_outputdir] = options.outputdir unless options[:conn_exec_outputdir]
       options[:conn_exec_output_hdr] = File.join(options[:conn_exec_outputdir], File.basename(options[:idlfile], idl_ext) + options[:conn_exec_pfx])
       options[:conn_exec_output_src] = options[:conn_exec_output_hdr] + options.src_ext
@@ -525,6 +532,7 @@ module IDL
     # implementation (header and source)
     def self.gen_component_servant(options, idl_ext)
       return if IDL.has_production?(:comp_svnt_header)
+
       # generate component servants (xxx_svnt.{h,cpp})
       options[:svntcomp_outputdir] = options.outputdir unless options[:svntcomp_outputdir]
       gen_svnt_facets_or_components(options, idl_ext, false)

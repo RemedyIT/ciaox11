@@ -34,6 +34,7 @@ module IDL
                 if /^dds4ccm\,(.*)/ =~ arg
                   return [::Regexp.last_match(1)]
                 end
+
                 nil
               end
               # IMPORTANT When these flags are updated also update the DDS4CCM docs/src/ridlc.adoc

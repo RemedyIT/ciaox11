@@ -26,6 +26,7 @@ module IDL
                 if /^corba4ccm\,(.*)/ =~ arg
                   return [::Regexp.last_match(1)]
                 end
+
                 nil
               end
               # IMPORTANT When these flags are updated also update the CORBA4CCM docs/src/ridlc.adoc

@@ -44,6 +44,7 @@ module IDL
             @templated = true if IDL::AST::Module === n && n.is_templated?
             @tpl_module = n if @templated
             return @templated if @templated
+
             n = n.enclosure
           end
         end

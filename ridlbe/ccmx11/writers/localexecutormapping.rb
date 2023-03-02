@@ -134,8 +134,10 @@ module IDL
 
       def enter_interface(node)
         return if node.is_abstract?
+
         annot = node.annotations[:"lem"]
         return if annot[0] != nil && annot[0].fields[:value] != nil && annot[0].fields[:value] == false
+
         visitor(InterfaceVisitor).visit_lem(node)
       end
 

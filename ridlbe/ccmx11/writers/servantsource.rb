@@ -17,6 +17,7 @@ module IDL
         return if node.enclosure.is_a?(IDL::AST::Component) ||
                   node.enclosure.is_a?(IDL::AST::Connector) ||
                   node.enclosure.is_local? || node.enclosure.is_pseudo? || node.enclosure.is_abstract?
+
         check_idl_type(node.idltype)
       end
     end # ServantSourceIncludeWriter
@@ -41,6 +42,7 @@ module IDL
         return if node.enclosure.is_a?(IDL::AST::Component) ||
                   node.enclosure.is_a?(IDL::AST::Connector) ||
                   node.enclosure.is_local? || node.enclosure.is_pseudo? || node.enclosure.is_abstract?
+
         check_idl_type(node.idltype)
       end
     end # ServantSourceSArgTraitsWriter

@@ -59,12 +59,14 @@ module IDL
         # 20190730 Add support for AXCIOMA 2 top-level annotation, issue #4729
         annot = self.annotations[:'top-level'].first || self.annotations[:TopLevel].first
         return false if annot.nil?
+
         return annot.fields[:value].nil? || annot.fields[:value]
       end
 
       def extensibility_annotation
         # DDS X-Types defines that the default for extensibility is appendable
         return :final if self.annotations[:'final'].first
+
         :appendable
       end
 

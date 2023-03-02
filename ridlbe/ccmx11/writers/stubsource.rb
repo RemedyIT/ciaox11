@@ -17,6 +17,7 @@ module IDL
         return if node.enclosure.is_a?(IDL::AST::Component) ||
                   node.enclosure.is_a?(IDL::AST::Connector) ||
                   node.enclosure.is_local?
+
         visitor(AttributeVisitor).visit_attribute(node)
       end
     end # StubSourceWriter

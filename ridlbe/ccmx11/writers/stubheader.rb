@@ -16,6 +16,7 @@ module IDL
       def visit_attribute(node)
         return if node.enclosure.is_a?(IDL::AST::Component) ||
                    node.enclosure.is_a?(IDL::AST::Connector)
+
         visitor(AttributeVisitor).visit_attribute(node)
       end
     end # StubHeaderWriter
