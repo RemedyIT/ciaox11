@@ -8,10 +8,10 @@
 #--------------------------------------------------------------------
 
 # base modules
-[ 'config',
+['config',
   'visitorbase',
   'writerbase'
-  ].each do |f|
+].each do |f|
   require File.join('ridlbe', 'ccmx11', f)
 end
 
