@@ -16,7 +16,7 @@ module IDL
     #
     class ComponentVisitor
       def incl_ami4ccm_receptacle?
-        ports.any? {|p| p.is_ami4ccm_port? }
+        ports.any? { |p| p.is_ami4ccm_port? }
       end
 
       def interfaces_with_multiple_ami4ccm_ports

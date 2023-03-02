@@ -61,16 +61,16 @@ module IDL
 
       def extended_ports
         @ext_ports_ ||= collect_resolved_bases([node]).collect do |n|
-          n.select_members { |c| IDL::AST::Port === c && (c.porttype == :mirrorport || c.porttype == :port)}
+          n.select_members { |c| IDL::AST::Port === c && (c.porttype == :mirrorport || c.porttype == :port) }
         end.flatten
-        @extended_ports ||= @ext_ports_.collect { |p| visitor(PortVisitor) {|v| v.visit(p) } }
+        @extended_ports ||= @ext_ports_.collect { |p| visitor(PortVisitor) { |v| v.visit(p) } }
       end
 
       def no_extended_ports
         @no_extended_ports_ ||= collect_resolved_bases([node]).collect do |n|
-          n.select_members { |c| IDL::AST::Port === c && (c.porttype != :mirrorport && c.porttype != :port)}
+          n.select_members { |c| IDL::AST::Port === c && (c.porttype != :mirrorport && c.porttype != :port) }
         end.flatten
-        @no_extended_ports ||= @no_extended_ports_.collect { |p| visitor(PortVisitor) {|v| v.visit(p) } }
+        @no_extended_ports ||= @no_extended_ports_.collect { |p| visitor(PortVisitor) { |v| v.visit(p) } }
       end
 
       def non_local_ports
@@ -113,27 +113,27 @@ module IDL
       end
 
       def incl_receptacle_port?
-        ports.any? {|p| p.port_type == :receptacle}
+        ports.any? { |p| p.port_type == :receptacle }
       end
 
       def incl_facet_port?
-        ports.any? {|p| p.port_type == :facet}
+        ports.any? { |p| p.port_type == :facet }
       end
 
       def incl_multiple_port?
-        ports.any? {|p| p.is_multiple?}
+        ports.any? { |p| p.is_multiple? }
       end
 
       def all_incl_receptacle_port?
-        all_ports.any? {|p| p.port_type == :receptacle}
+        all_ports.any? { |p| p.port_type == :receptacle }
       end
 
       def all_incl_facet_port?
-        all_ports.any? {|p| p.port_type == :facet}
+        all_ports.any? { |p| p.port_type == :facet }
       end
 
       def all_incl_multiple_port?
-        all_ports.any? {|p| p.is_multiple?}
+        all_ports.any? { |p| p.is_multiple? }
       end
 
       # all attributes, except the attributes belonging to extended ports.
@@ -154,7 +154,7 @@ module IDL
       def attributes_not_from_extended_ports
         unless @attr_no_ext_port
           @attr_no_ext_port = self.attributes_excl_port
-          ports_ = node.select_members { |c| IDL::AST::Port === c && (c.porttype != :mirrorport && c.porttype != :port)}
+          ports_ = node.select_members { |c| IDL::AST::Port === c && (c.porttype != :mirrorport && c.porttype != :port) }
           ports_.each do |p|
              p.attributes.each do |att|
                 @attr_no_ext_port << visitor(AttributeVisitor) { |v| v.interface(node); v.visit(att) }
@@ -221,7 +221,7 @@ module IDL
       end
 
       def any_mutable_attributes_incl_mirror_port?
-        all_attributes_incl_mirror_port.any? {|att| !att.is_readonly?}
+        all_attributes_incl_mirror_port.any? { |att| !att.is_readonly? }
       end
 
       def attributes?
@@ -402,7 +402,7 @@ module IDL
 
       public
       def supported_interface_ids
-        @sup_intf_ids ||= (collect_ancestors([], node).collect {|ancestor| ancestor.repository_id } << node.repository_id)
+        @sup_intf_ids ||= (collect_ancestors([], node).collect { |ancestor| ancestor.repository_id } << node.repository_id)
       end
     end
   end
