@@ -14,7 +14,6 @@ module IDL
       module WriterExtension
         def self.included(base)
           base.class_eval do
-
             helper_method :has_ami4ccm?
 
             def has_ami4ccm?

@@ -53,7 +53,6 @@ module IDL
       ## Configure facet
       #
       Backend::Facet.configure('dds', File.dirname(__FILE__), TITLE, COPYRIGHT, IDL::CCMX11.ciaox11_version) do |fctcfg|
-
         # setup facet option handling
         #
         fctcfg.on_setup do |optlist, ridl_params|
@@ -75,7 +74,6 @@ module IDL
         #   in options - initialized option hash
         #
         fctcfg.on_process_input do |parser, options|
-
           idl_ext = (options.idlext ||= File.extname(options.idlfile))
 
           options.dds_idl_file_base = File.basename(options.idlfile, idl_ext) + options[:dds_idl_pfx]

@@ -120,7 +120,6 @@ module IDL
     ## Configure C++11 backend
     #
     Backend.configure('ccmx11', File.dirname(__FILE__), TITLE, COPYRIGHT, IDL::CCMX11.ciaox11_version) do |becfg|
-
       # load c++11 backend as base
       becfg.add_backend('c++11')
 
@@ -196,9 +195,7 @@ module IDL
         if options[:gen_component_servant]
           IDL::CCMX11.gen_component_servant(options, idl_ext)
         end
-
       end # becfg.on_process_input
-
     end # Backend.configure
 
     #################################################################

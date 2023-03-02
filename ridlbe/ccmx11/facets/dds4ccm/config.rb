@@ -16,7 +16,6 @@ module IDL
       # Configure facet
       #
       Backend::Facet.configure('dds4ccm', File.dirname(__FILE__), TITLE, COPYRIGHT, IDL::CCMX11.ciaox11_version) do |fctcfg|
-
         # optionally define dependencies on other facets
         #   specify dependencies either as:
         #   - a facet id (assumed to be loaded by current backend)
@@ -93,7 +92,6 @@ module IDL
         #   in options - initialized option hash
         #
         fctcfg.on_process_input do |parser, options|
-
           idl_ext = (options.idlext ||= File.extname(options.idlfile))
 
           if options.gen_ddsconn_complete
@@ -111,9 +109,7 @@ module IDL
           if options.gen_dds4ccm_lemgen
             IDL::CCMX11::DDS4CCM.gen_dds4ccm_lemgen(options, idl_ext)
           end
-
         end # process_input
-
       end # configure
 
       #########################################################################

@@ -17,7 +17,6 @@ module IDL
       ## Configure facet
       #
       Backend::Facet.configure('corba4ccm', File.dirname(__FILE__), TITLE, COPYRIGHT, IDL::CCMX11.ciaox11_version) do |fctcfg|
-
         def self.add_extended_options(ol)
 
           ol.for_switch '-G{generation options}', type: String, separator: true do |swcfg|
@@ -66,7 +65,6 @@ module IDL
         #   in options - initialized option hash
         #
         fctcfg.on_process_input do |parser, options|
-
           idl_ext = (options[:idlext] ||= File.extname(options[:idlfile]))
 
           if options[:gen_all_for_corba_connector]
@@ -86,7 +84,6 @@ module IDL
             # input is the corba connector idl
             IDL::CCMX11::CORBA.gen_exec_for_corba_connector(options, idl_ext)
           end
-
         end # fctcfg.on_process_input
       end # configure facet
 
@@ -194,7 +191,6 @@ module IDL
       module BaseExt
         def self.included(base)
           base.class_eval do
-
             # extend CCMX11#check_servant_export_params
             # use corba4ccm prefix for servant export names when generating corba4ccm connector
             def check_servant_export_params_with_corba(options, prefix = nil, force = false)
@@ -216,7 +212,6 @@ module IDL
             end
 
             alias_method_chain :check_executor_export_params, :corba
-
           end
         end
       end

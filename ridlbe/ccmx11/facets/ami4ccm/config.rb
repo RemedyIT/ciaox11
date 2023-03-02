@@ -16,7 +16,6 @@ module IDL
       ## Configure facet
       #
       Backend::Facet.configure('ami4ccm', File.dirname(__FILE__), TITLE, COPYRIGHT, IDL::CCMX11.ciaox11_version) do |fctcfg|
-
         def self.add_extended_options(ol)
           ol.for_switch '-G{generation options}', type: String, separator: true do |swcfg|
             swcfg.for_group :ami4ccm_group do |grpcfg|
@@ -73,7 +72,6 @@ module IDL
           ridl_params[:ami4ccm_pfx] = '_ami4ccm'
 
           IDL::CCMX11::AMI4CCM.add_extended_options(optlist)
-
         end
 
         # process input / generate code
@@ -144,7 +142,6 @@ module IDL
           if options[:gen_ami_connector_impl]
             IDL::CCMX11::AMI4CCM.gen_ami_connector_impl(options, idl_ext)
           end
-
         end # fctcfg.on_process_input
       end # fctcfg
 
@@ -597,7 +594,6 @@ module IDL
       module BaseExt
         def self.included(base)
           base.class_eval do
-
             # extend CCMX11#setup_compile_lem_idl
             # make sure to reset some switches to prevent unwanted actions
             # in new input passes
@@ -631,7 +627,6 @@ module IDL
             end
 
             alias_method_chain :check_conn_export_params, :ami4ccm
-
           end
         end
       end
@@ -639,7 +634,6 @@ module IDL
       module Cxx11Ext
         def self.included(base)
           base.class_eval do
-
             def check_stub_export_params_with_ami4ccm(options)
               if options.gen_ami_idl && options.gen_export_st
                 # use composite _stub_export for stub generated of *A.idl file unless specified explicitly
@@ -650,7 +644,6 @@ module IDL
             end
 
             alias_method_chain :check_stub_export_params, :ami4ccm
-
           end
         end
       end
