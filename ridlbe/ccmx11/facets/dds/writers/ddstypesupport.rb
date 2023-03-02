@@ -183,7 +183,7 @@ module IDL
         end
 
         def enter_struct(node)
-          visitor(StructVisitor)do |v|
+          visitor(StructVisitor) do |v|
             init_visitor(v, node)
             v.visit_factory(node)
           end if is_dds_topic?(node)
