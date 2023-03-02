@@ -52,7 +52,7 @@ module IDL
         @ports ||= node.ports.collect { |p| (pv = visitor(PortVisitor)).visit(p); pv }
       end
 
-      def all_ports  # incl. inherited
+      def all_ports # incl. inherited
         @all_ports ||= node.ports(true).collect do |p|
           (pv = visitor(PortVisitor)).visit(p, node)
           pv

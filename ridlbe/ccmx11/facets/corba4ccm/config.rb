@@ -220,7 +220,7 @@ module IDL
           end
         end
       end
-    end  # CORBA
+    end # CORBA
 
     self.singleton_class.__send__(:include, CORBA::BaseExt)
   end # CCMX11

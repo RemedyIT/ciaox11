@@ -16,7 +16,7 @@ module IDL
         @base
       end
 
-      def all_operations(inc_implicit = false)  # incl. inherited
+      def all_operations(inc_implicit = false) # incl. inherited
         inc_implicit ? implicit_operations : []
       end
 

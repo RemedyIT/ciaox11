@@ -654,7 +654,7 @@ module IDL
           end
         end
       end
-    end  # AMI4CCM
+    end # AMI4CCM
 
     self.singleton_class.__send__(:include, AMI4CCM::BaseExt)
 

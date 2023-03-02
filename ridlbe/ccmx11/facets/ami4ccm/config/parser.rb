@@ -43,7 +43,7 @@ module IDL
 
         module Methods
           def add_ami4ccm_interface(s)
-            add_ami_interfaces(s)  # add interface to ami_interfaces registry
+            add_ami_interfaces(s) # add interface to ami_interfaces registry
             # determin current file name and transform to ami4ccm *A.idl
             aidl = File.basename(@scanner.position.name).gsub(/.idl\Z/, 'A.idl')
             # now automatically register *A.idl
