@@ -55,26 +55,14 @@ void
   // check for scheduling properties
 %  if interface_type.all_operations.size > 0
 %   interface_type.all_operations.each do |_op|
-  CIAOX11::ExF::Util::get_exf_settings (
-      config,
-      "<%=_op.name.sub('sendc_','') %>",
-      this-><%=_op.name %>_priority_,
-      this-><%=_op.name %>_deadline_);
+  CIAOX11::ExF::Util::get_exf_settings (config, "<%=_op.name.sub('sendc_','') %>", this-><%=_op.name %>_priority_, this-><%=_op.name %>_deadline_);
 %   end
 %  end
 %  if interface_type.all_attributes.size > 0
 %   interface_type.all_attributes.each do |_att|
-  CIAOX11::ExF::Util::get_exf_settings (
-      config,
-      "get_<%=_attr.name.sub('sendc_','') %>",
-      this-><%=_attr.name %>_priority_,
-      this-><%=_attr.name %>_deadline_);
+  CIAOX11::ExF::Util::get_exf_settings (config, "get_<%=_attr.name.sub('sendc_','') %>", this-><%=_attr.name %>_priority_, this-><%=_attr.name %>_deadline_);
 %    unless attribute.is_readonly?
-   CIAOX11::ExF::Util::get_exf_settings (
-      config,
-      "set_<%=_attr.name.sub('sendc_','') %>",
-      this-><%=_attr.name %>_priority_,
-      this-><%=_attr.name %>_deadline_);
+   CIAOX11::ExF::Util::get_exf_settings (config, "set_<%=_attr.name.sub('sendc_','') %>", this-><%=_attr.name %>_priority_, this-><%=_attr.name %>_deadline_);
 %    end
 %   end
 %  end
