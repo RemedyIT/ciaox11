@@ -39,7 +39,6 @@ namespace Hello_Receiver_Impl
     : public IDL::traits<::Hello::CCM_MyFoo>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::do_my_foo_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -64,19 +63,23 @@ namespace Hello_Receiver_Impl
 
     void
     do_something () override;
+
+    int16_t
+    return_something () override;
+
+    int32_t
+    bar (
+        const std::string& in_str,
+        const std::string& in_str2,
+        std::string& answer,
+        std::string& answer2) override;
     //@}
 
     /** @name Attributes from ::Hello::CCM_MyFoo */
     //@{
-
-    int16_t
-    rw_attrib () override;
-
-    void
-    rw_attrib (int16_t rw_attrib) override;
-
-    int16_t
-    ro_attrib () override;
+    int16_t rw_attrib () override;
+    void rw_attrib (int16_t rw_attrib) override;
+    int16_t ro_attrib () override;
     //@}
 
     /** @name User defined public operations. */
@@ -93,9 +96,9 @@ namespace Hello_Receiver_Impl
     /** @name Members to store attribute values from ::Hello::CCM_MyFoo */
     //@{
     /// Class member storing value of rw_attrib attribute
-    int16_t rw_attrib_ {};
+    int16_t rw_attrib_{};
     /// Class member storing value of ro_attrib attribute
-    int16_t ro_attrib_ {};
+    int16_t ro_attrib_{};
     //@}
 
     /** @name User defined members. */

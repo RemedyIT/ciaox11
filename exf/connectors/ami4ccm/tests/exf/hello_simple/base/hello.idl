@@ -35,6 +35,11 @@ module Hello
 
       void do_something ();
 
+      short return_something ();
+
+      long bar (in string in_str, in string in_str2, out string answer, out string answer2)
+        raises (InternalError);
+
       attribute short rw_attrib
         getraises (InternalError)
         setraises (InternalError);

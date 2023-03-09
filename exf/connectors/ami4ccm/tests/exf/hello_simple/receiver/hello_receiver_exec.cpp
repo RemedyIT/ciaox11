@@ -95,6 +95,30 @@ namespace Hello_Receiver_Impl
   }
 
   int16_t
+  do_my_foo_exec_i::return_something ()
+  {
+    //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::do_my_foo_exec_i::return_something[void]
+    return 5;
+    //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::do_my_foo_exec_i::return_something[void]
+  }
+
+  int32_t
+  do_my_foo_exec_i::bar (
+      const std::string& in_str,
+      const std::string& in_str2,
+      std::string& answer,
+      std::string& answer2)
+  {
+    //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::do_my_foo_exec_i::bar[_in_str_in_str2_answer_answer2]
+    X11_UNUSED_ARG(in_str);
+    X11_UNUSED_ARG(in_str2);
+    answer = "answer1";
+    answer2 = "answer2";
+    return 77;
+    //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::do_my_foo_exec_i::bar[_in_str_in_str2_answer_answer2]
+  }
+
+  int16_t
   do_my_foo_exec_i::rw_attrib ()
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::do_my_foo_exec_i::rw_attrib[getter]
