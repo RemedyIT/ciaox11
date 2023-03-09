@@ -8,7 +8,8 @@ void
 
   // Push the reply into ExF
   CIAOX11::ExF::Executor::ref_type exec =
-    std::make_unique<get_<%= attribute.cxxname %>_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Executor> ("get_<%= attribute.cxxname %>",
+    std::make_unique<get_<%= attribute.cxxname %>_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Executor> (
+      "get_<%= attribute.cxxname %>",
       this->callback_,
       ami_return_val,
       this->deadline_,
@@ -51,7 +52,6 @@ void
       this->callback_,
       this->deadline_,
       this->priority_);
-
   this->scheduling_lane_->submit (std::move (exec));
 }
 
@@ -73,7 +73,6 @@ void
       std::move (holder),
       this->deadline_,
       this->priority_);
-
   this->scheduling_lane_->submit (std::move (exec));
 }
 % end
