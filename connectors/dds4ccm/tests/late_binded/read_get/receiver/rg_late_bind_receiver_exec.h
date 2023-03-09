@@ -96,7 +96,7 @@ namespace RG_LateBinding_Receiver_Impl
 
   /// Executor implementation class for start_reading facet
   class start_reading_exec_i final
-    : public IDL::traits< CCM_ReaderStarter>::base_type
+    : public IDL::traits<CCM_ReaderStarter>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : RG_LateBinding_Receiver_Impl::start_reading_exec_i[ctor]
@@ -172,7 +172,7 @@ namespace RG_LateBinding_Receiver_Impl
     IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type get_info_get_status () override;
     /// Factory method and getter for the start_reading facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< CCM_ReaderStarter>::ref_type get_start_reading () override;
+    IDL::traits<CCM_ReaderStarter>::ref_type get_start_reading () override;
     //@}
 
     /** @name Session component operations */
@@ -216,7 +216,7 @@ namespace RG_LateBinding_Receiver_Impl
     /** @name Component facets. */
     //@{
     IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type info_get_status_;
-    IDL::traits< CCM_ReaderStarter>::ref_type start_reading_;
+    IDL::traits<CCM_ReaderStarter>::ref_type start_reading_;
     //@}
 
     /** @name User defined members. */

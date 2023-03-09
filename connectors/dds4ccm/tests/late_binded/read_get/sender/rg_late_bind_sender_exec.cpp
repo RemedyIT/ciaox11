@@ -234,7 +234,7 @@ namespace RG_LateBinding_Sender_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : RG_LateBinding_Sender_Impl::Sender_exec_i[ccm_remove]
   }
 
-  IDL::traits< CCM_WriterStarter>::ref_type
+  IDL::traits<CCM_WriterStarter>::ref_type
   Sender_exec_i::get_start_writing ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : RG_LateBinding_Sender_Impl::Sender_exec_i[get_start_writing]

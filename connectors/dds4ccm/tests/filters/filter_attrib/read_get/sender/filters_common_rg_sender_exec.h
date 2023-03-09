@@ -119,7 +119,7 @@ namespace Filters_Common_Read_Get_Test_Sender_Impl
 
   /// Executor implementation class for start_writing facet
   class start_writing_exec_i final
-    : public IDL::traits< CCM_WriterStarter>::base_type
+    : public IDL::traits<CCM_WriterStarter>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Filters_Common_Read_Get_Test_Sender_Impl::start_writing_exec_i[ctor]
@@ -186,7 +186,7 @@ namespace Filters_Common_Read_Get_Test_Sender_Impl
     IDL::traits<::CCM_DDS::CCM_ConnectorStatusListener>::ref_type get_connector_status () override;
     /// Factory method and getter for the start_writing facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< CCM_WriterStarter>::ref_type get_start_writing () override;
+    IDL::traits<CCM_WriterStarter>::ref_type get_start_writing () override;
     //@}
 
     /** @name Session component operations */
@@ -224,7 +224,7 @@ namespace Filters_Common_Read_Get_Test_Sender_Impl
     /** @name Component facets. */
     //@{
     IDL::traits<::CCM_DDS::CCM_ConnectorStatusListener>::ref_type connector_status_;
-    IDL::traits< CCM_WriterStarter>::ref_type start_writing_;
+    IDL::traits<CCM_WriterStarter>::ref_type start_writing_;
     //@}
 
     /** @name User defined members. */

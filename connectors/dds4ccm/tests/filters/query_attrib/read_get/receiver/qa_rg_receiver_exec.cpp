@@ -625,7 +625,7 @@ namespace QA_Read_Get_Test_Receiver_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : QA_Read_Get_Test_Receiver_Impl::Receiver_exec_i[get_listen_port_status]
   }
 
-  IDL::traits< CCM_ReaderStarter>::ref_type
+  IDL::traits<CCM_ReaderStarter>::ref_type
   Receiver_exec_i::get_start_reading ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : QA_Read_Get_Test_Receiver_Impl::Receiver_exec_i[get_start_reading]

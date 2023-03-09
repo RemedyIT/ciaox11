@@ -204,7 +204,7 @@ namespace QA_Read_Get_Test_Receiver_Impl
 
   /// Executor implementation class for start_reading facet
   class start_reading_exec_i final
-    : public IDL::traits< CCM_ReaderStarter>::base_type
+    : public IDL::traits<CCM_ReaderStarter>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : QA_Read_Get_Test_Receiver_Impl::start_reading_exec_i[ctor]
@@ -286,7 +286,7 @@ namespace QA_Read_Get_Test_Receiver_Impl
     IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type get_listen_port_status () override;
     /// Factory method and getter for the start_reading facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< CCM_ReaderStarter>::ref_type get_start_reading () override;
+    IDL::traits<CCM_ReaderStarter>::ref_type get_start_reading () override;
     //@}
 
     /** @name Session component operations */
@@ -331,7 +331,7 @@ namespace QA_Read_Get_Test_Receiver_Impl
     IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type get_port_status_;
     IDL::traits<::CommonTestConnector::CCM_Listener>::ref_type listen_port_data_listener_;
     IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type listen_port_status_;
-    IDL::traits< CCM_ReaderStarter>::ref_type start_reading_;
+    IDL::traits<CCM_ReaderStarter>::ref_type start_reading_;
     //@}
 
     /** @name User defined members. */

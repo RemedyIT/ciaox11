@@ -5,7 +5,7 @@ project(*idl_gen) : ciaox11_test_ami4ccm_comp_all_idl {
 
   idlflags += -Wb,base_export_macro=AMI4CCM_IDLTEST_SENDER \
               -Wb,base_export_include=ami4ccm_idltest_sender \
-              -Gex -oI .
+              -Gex
 
   IDL_Files {
     gendir=generated_code

@@ -131,7 +131,7 @@ namespace UpdaterModule_Sender_Impl
 
   /// Executor implementation class for next_assignment facet
   class next_assignment_exec_i final
-    : public IDL::traits< CCM_NextAssignment>::base_type
+    : public IDL::traits<CCM_NextAssignment>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : UpdaterModule_Sender_Impl::next_assignment_exec_i[ctor]
@@ -199,7 +199,7 @@ namespace UpdaterModule_Sender_Impl
     IDL::traits<::CCM_DDS::CCM_ConnectorStatusListener>::ref_type get_connector_status () override;
     /// Factory method and getter for the next_assignment facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< CCM_NextAssignment>::ref_type get_next_assignment () override;
+    IDL::traits<CCM_NextAssignment>::ref_type get_next_assignment () override;
     //@}
 
     /** @name Session component operations */
@@ -238,7 +238,7 @@ namespace UpdaterModule_Sender_Impl
     /** @name Component facets. */
     //@{
     IDL::traits<::CCM_DDS::CCM_ConnectorStatusListener>::ref_type connector_status_;
-    IDL::traits< CCM_NextAssignment>::ref_type next_assignment_;
+    IDL::traits<CCM_NextAssignment>::ref_type next_assignment_;
     //@}
 
     /** @name User defined members. */

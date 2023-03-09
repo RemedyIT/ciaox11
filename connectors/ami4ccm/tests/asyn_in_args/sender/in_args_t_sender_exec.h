@@ -149,34 +149,34 @@ namespace InterInArgsT_Sender_Impl
   };
   /// AMI4CCM reply handler implementation class
   class AMI4CCM_MyFooReplyHandler_run_my_foo_i final
-    :public IDL::traits< InterInArgsT::AMI4CCM_MyFooReplyHandler>::base_type
+    : public IDL::traits<InterInArgsT::AMI4CCM_MyFooReplyHandler>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : InterInArgsT_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[ctor]
     AMI4CCM_MyFooReplyHandler_run_my_foo_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : InterInArgsT_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[ctor]
 
-    virtual ~AMI4CCM_MyFooReplyHandler_run_my_foo_i ();
+    ~AMI4CCM_MyFooReplyHandler_run_my_foo_i () override;
 
     void foo (
-        int32_t ami_return_val,
-        const std::string& answer) override;
+      int32_t ami_return_val,
+      const std::string& answer) override;
 
     void foo_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
     void var_ins (
-        const std::string& answer) override;
+      const std::string& answer) override;
 
     void var_ins_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
     void var_div_ins (
-        const std::string& answer) override;
+      const std::string& answer) override;
 
     void var_div_ins_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
     void var_div2_ins (
-        const std::string& answer) override;
+      const std::string& answer) override;
 
     void var_div2_ins_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
     void enum_in (
-        const std::string& answer) override;
+      const std::string& answer) override;
 
     void enum_in_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
 

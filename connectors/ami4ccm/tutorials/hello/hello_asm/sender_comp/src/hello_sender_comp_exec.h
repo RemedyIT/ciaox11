@@ -141,22 +141,22 @@ namespace Hello_Sender_comp_Impl
   };
   /// AMI4CCM reply handler implementation class
   class AMI4CCM_MyFoo_objReplyHandler_run_my_foo_i final
-    :public IDL::traits< Hello::AMI4CCM_MyFoo_objReplyHandler>::base_type
+    : public IDL::traits<Hello::AMI4CCM_MyFoo_objReplyHandler>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_comp_Impl::AMI4CCM_MyFoo_objReplyHandler_run_my_foo_i[ctor]
     AMI4CCM_MyFoo_objReplyHandler_run_my_foo_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Sender_comp_Impl::AMI4CCM_MyFoo_objReplyHandler_run_my_foo_i[ctor]
 
-    virtual ~AMI4CCM_MyFoo_objReplyHandler_run_my_foo_i ();
+    ~AMI4CCM_MyFoo_objReplyHandler_run_my_foo_i () override;
 
     void foo (
-        int32_t ami_return_val,
-        const std::string& answer) override;
+      int32_t ami_return_val,
+      const std::string& answer) override;
 
     void foo_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
     void hello (
-        int32_t answer) override;
+      int32_t answer) override;
 
     void hello_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
 

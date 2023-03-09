@@ -141,18 +141,18 @@ namespace UsesMulti_Sender_Impl
   };
   /// AMI4CCM reply handler implementation class
   class AMI4CCM_OneReplyHandler_run_my_um_one_i final
-    :public IDL::traits< UsesMulti::AMI4CCM_OneReplyHandler>::base_type
+    : public IDL::traits<UsesMulti::AMI4CCM_OneReplyHandler>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : UsesMulti_Sender_Impl::AMI4CCM_OneReplyHandler_run_my_um_one_i[ctor]
     AMI4CCM_OneReplyHandler_run_my_um_one_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : UsesMulti_Sender_Impl::AMI4CCM_OneReplyHandler_run_my_um_one_i[ctor]
 
-    virtual ~AMI4CCM_OneReplyHandler_run_my_um_one_i ();
+    ~AMI4CCM_OneReplyHandler_run_my_um_one_i () override;
 
     void foo (
-        int32_t ami_return_val,
-        const std::string& answer) override;
+      int32_t ami_return_val,
+      const std::string& answer) override;
 
     void foo_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
 

@@ -167,7 +167,7 @@ namespace Foo_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Foo_Impl::Foo_exec_i[ccm_remove]
   }
 
-  IDL::traits< CCM_MyFoo>::ref_type
+  IDL::traits<CCM_MyFoo>::ref_type
   Foo_exec_i::get_my_foo_prov ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Foo_Impl::Foo_exec_i[get_my_foo_prov]

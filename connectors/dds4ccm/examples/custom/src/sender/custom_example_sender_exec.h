@@ -40,7 +40,6 @@ namespace Example_BasicPublisher_comp_Impl
     : public IDL::traits<::CCM_DDS::CCM_ConnectorStatusListener>::base_type
   {
   public:
-
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Example_BasicPublisher_comp_Impl::CA1DataPub_CSL_exec_i[ctor]
     /// Constructor
     /// @param[in] context Component context
@@ -50,7 +49,7 @@ namespace Example_BasicPublisher_comp_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Example_BasicPublisher_comp_Impl::CA1DataPub_CSL_exec_i[ctor]
 
     /// Destructor
-    virtual ~CA1DataPub_CSL_exec_i ();
+    ~CA1DataPub_CSL_exec_i () override;
 
     /** @name Operations from ::CCM_DDS::CCM_ConnectorStatusListener */
     //@{
@@ -123,7 +122,7 @@ namespace Example_BasicPublisher_comp_Impl
     BasicPublisher_comp_exec_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : Example_BasicPublisher_comp_Impl::BasicPublisher_comp_exec_i[ctor]
     /// Destructor
-    virtual ~BasicPublisher_comp_exec_i ();
+    ~BasicPublisher_comp_exec_i () override;
 
     /** @name Component port operations. */
     //@{
@@ -137,12 +136,8 @@ namespace Example_BasicPublisher_comp_Impl
     //@{
 
     /// Attribute count
-
-    uint32_t
-    count () override;
-
-    void
-    count (uint32_t count) override;
+    uint32_t count () override;
+    void count (uint32_t count) override;
     //@}
 
     /** @name Session component operations */

@@ -140,34 +140,34 @@ namespace InterOutArgsT_Sender_Impl
   };
   /// AMI4CCM reply handler implementation class
   class AMI4CCM_MyFooReplyHandler_run_my_foo_i final
-    :public IDL::traits< InterOutArgsT::AMI4CCM_MyFooReplyHandler>::base_type
+    : public IDL::traits<InterOutArgsT::AMI4CCM_MyFooReplyHandler>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : InterOutArgsT_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[ctor]
     AMI4CCM_MyFooReplyHandler_run_my_foo_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : InterOutArgsT_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[ctor]
 
-    virtual ~AMI4CCM_MyFooReplyHandler_run_my_foo_i ();
+    ~AMI4CCM_MyFooReplyHandler_run_my_foo_i () override;
 
     void var_outs (
-        const std::string& answer,
-        double d_cmd,
-        int32_t l_cmd) override;
+      const std::string& answer,
+      double d_cmd,
+      int32_t l_cmd) override;
 
     void var_outs_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
     void var_div_outs (
-        const ::InterOutArgsT::TestTopic& test_topic,
-        const ::InterOutArgsT::TopicString& topic_str,
-        const ::InterOutArgsT::TopicArray& topic_arr) override;
+      const ::InterOutArgsT::TestTopic& test_topic,
+      const ::InterOutArgsT::TopicString& topic_str,
+      const ::InterOutArgsT::TopicArray& topic_arr) override;
 
     void var_div_outs_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
     void var_div2_outs (
-        const ::InterOutArgsT::X_Union& x_uni,
-        const ::InterOutArgsT::test_seq& seq) override;
+      const ::InterOutArgsT::X_Union& x_uni,
+      const ::InterOutArgsT::test_seq& seq) override;
 
     void var_div2_outs_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
     void enum_out (
-        ::InterOutArgsT::test_enum out_test) override;
+      ::InterOutArgsT::test_enum out_test) override;
 
     void enum_out_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
 
