@@ -4,7 +4,7 @@
 % _regen_marker = "#{executor_cxx_namespace}::#{_p.ami4ccm_rh_executor}"
   /// AMI4CCM reply handler implementation class
   class <%= _p.ami4ccm_rh_executor %> final
-    :public IDL::traits<<%= _p.interface_type.scoped_enclosure_cxxname %>::AMI4CCM_<%= _p.interface_type.cxxname %>ReplyHandler>::base_type
+    : public IDL::traits<<%= _p.interface_type.scoped_enclosure_cxxname %>::AMI4CCM_<%= _p.interface_type.cxxname %>ReplyHandler>::base_type
   {
   public:
 % write_regen_section(_regen_marker+'[ctor]', indent: 2) do

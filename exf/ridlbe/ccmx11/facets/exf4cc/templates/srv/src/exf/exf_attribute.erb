@@ -1,8 +1,7 @@
 
 // generated from <%= ridl_template_path %>
 void
-<%= interface.skel_cxxname %>_get_<%= cxxname %>_RequestHandler::init (
-    TAO_ServerRequest& srvreq)
+<%= interface.skel_cxxname %>_get_<%= cxxname %>_RequestHandler::init (TAO_ServerRequest& srvreq)
 {
   this->_exf_rh_init_handler (srvreq);
 }
@@ -21,8 +20,7 @@ void
 
   if (this->_exf_operation_details ()) // in case of collocated call
   {
-    PS::get_ret_arg<<%= scoped_cxx_arg_type %>> (
-        this->_exf_operation_details (), 0) = std::move (this->val_);
+    PS::get_ret_arg<<%= scoped_cxx_arg_type %>> (this->_exf_operation_details (), nullptr) = std::move (this->val_);
   }
   else
   {
@@ -37,22 +35,17 @@ void
 % unless is_readonly?
 
 void
-<%= interface.skel_cxxname %>_set_<%= cxxname %>_RequestHandler::init (
-    TAO_ServerRequest& srvreq)
+<%= interface.skel_cxxname %>_set_<%= cxxname %>_RequestHandler::init (TAO_ServerRequest& srvreq)
 {
-  if (srvreq.incoming () == 0) // in case of a collocated call
+  if (srvreq.incoming () == nullptr) // in case of a collocated call
   {
-    this->val_ =
-        std::move (PS::get_in_arg<<%= scoped_cxx_arg_type %>> (
-            srvreq.operation_details (), 0, 1));
+    this->val_ = std::move (PS::get_in_arg<<%= scoped_cxx_arg_type %>> (srvreq.operation_details (), nullptr, 1));
   }
   else
   {
     TAO_InputCDR & _tao_in = *srvreq.incoming ();
 
-    if (!(
-        (_tao_in >> <%= cdr_from_fmt % 'this->val_' %>)
-       ))
+    if (!((_tao_in >> <%= cdr_from_fmt % 'this->val_' %>)))
     {
       throw TAO_CORBA::MARSHAL();
     }
