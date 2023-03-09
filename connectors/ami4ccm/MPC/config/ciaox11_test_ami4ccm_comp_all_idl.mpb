@@ -5,5 +5,6 @@
 // --------------------------------------------------------------------
 
 project : ciaox11_ami4ccm_comp_all_idl, ciaox11_test_idldefaults, ciaox11_gen_exec {
+  idlflags += -oI .
 }
 
