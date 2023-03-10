@@ -6,7 +6,7 @@ void
 % unless in_arguments.empty?
   if (srvreq.incoming () == nullptr) // in case of a collocated call
   {
-%   in_arguments.each_with_index do |_arg, _ix|
+%   arguments.each_with_index do |_arg, _ix|
 %     case _arg.direction
 %     when :in
     this-><%= _arg.cxxname %> = std::move (PS::get_in_arg<<%= _arg.scoped_cxx_arg_type %>> (srvreq.operation_details (), nullptr, <%= _ix+1 %>));
@@ -62,7 +62,7 @@ void
 %   unless is_oneway? || is_void?
     PS::get_ret_arg<<%= scoped_cxx_arg_type %>> (this->_exf_operation_details (), nullptr) = std::move (this->retval);
 %   end
-%   out_arguments.each_with_index do |_arg, _ix|
+%   arguments.each_with_index do |_arg, _ix|
 %     case _arg.direction
 %     when :out
     PS::get_out_arg<<%= _arg.scoped_cxx_arg_type %>> (this->_exf_operation_details (), nullptr, <%= _ix+1 %>) = std::move (this-><%= _arg.cxxname %>);
