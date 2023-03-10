@@ -43,8 +43,7 @@ namespace CIAOX11
         RequestHandler ();
         virtual ~RequestHandler ();
 
-        void send_exception (
-            const TAOX11_CORBA::Exception& ex)
+        void send_exception (const TAOX11_CORBA::Exception& ex)
         { this->_exf_rh_send_exception (ex); }
 
         void _exf_wait_for_collocated_result ();
