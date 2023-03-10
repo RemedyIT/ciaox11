@@ -147,7 +147,7 @@ namespace Hello_Sender_Impl
   };
   /// AMI4CCM reply handler implementation class
   class AMI4CCM_MyFooReplyHandler_run_my_foo_i final
-    :public IDL::traits< Hello::AMI4CCM_MyFooReplyHandler>::base_type
+    : public IDL::traits<Hello::AMI4CCM_MyFooReplyHandler>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[ctor]
@@ -156,40 +156,38 @@ namespace Hello_Sender_Impl
 
     ~AMI4CCM_MyFooReplyHandler_run_my_foo_i () override;
 
-    void
-    foo (
-        int32_t ami_return_val,
-        const std::string& answer) override;
+    void foo (
+      int32_t ami_return_val,
+      const std::string& answer) override;
 
-    void
-    foo_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
-    void
-    hello (
-        int32_t answer) override;
+    void foo_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+    void hello (
+      int32_t answer) override;
 
-    void
-    hello_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
-    void
-    do_something () override;
+    void hello_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+    void do_something () override;
 
-    void
-    do_something_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+    void do_something_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+    void return_something (
+      int16_t ami_return_val) override;
+
+    void return_something_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+    void bar (
+      int32_t ami_return_val,
+      const std::string& answer,
+      const std::string& answer2) override;
+
+    void bar_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
 
 
-    void
-    get_rw_attrib(int16_t _rw_attrib) override;
-    void
-    get_rw_attrib_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+    void get_rw_attrib(int16_t _rw_attrib) override;
+    void get_rw_attrib_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
 
-    void
-    set_rw_attrib() override;
-    void
-    set_rw_attrib_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+    void set_rw_attrib() override;
+    void set_rw_attrib_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
 
-    void
-    get_ro_attrib(int16_t _ro_attrib) override;
-    void
-    get_ro_attrib_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
+    void get_ro_attrib(int16_t _ro_attrib) override;
+    void get_ro_attrib_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
 
     /** @name User defined public operations. */
     //@{
