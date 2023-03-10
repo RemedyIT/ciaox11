@@ -39,7 +39,7 @@ namespace Foo_Impl
 
   /// Executor implementation class for my_foo_prov facet
   class my_foo_prov_exec_i final
-    : public IDL::traits< CCM_MyFoo>::base_type
+    : public IDL::traits<CCM_MyFoo>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Foo_Impl::my_foo_prov_exec_i[ctor]
@@ -70,7 +70,7 @@ namespace Foo_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< CCM_Foo_Context>::ref_type context_;
+    IDL::traits<CCM_Foo_Context>::ref_type context_;
 
     /** @name Members to store attribute values from CCM_MyFoo */
     //@{
@@ -97,7 +97,7 @@ namespace Foo_Impl
 
   /// Component Executor Implementation Class : Foo_exec_i
   class Foo_exec_i final
-    : public virtual IDL::traits< CCM_Foo>::base_type
+    : public virtual IDL::traits<CCM_Foo>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Foo_Impl::Foo_exec_i[ctor]
@@ -112,7 +112,7 @@ namespace Foo_Impl
 
     /// Factory method and getter for the my_foo_prov facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< CCM_MyFoo>::ref_type get_my_foo_prov () override;
+    IDL::traits<CCM_MyFoo>::ref_type get_my_foo_prov () override;
     //@}
 
     /** @name Supported attributes. */
@@ -188,7 +188,7 @@ namespace Foo_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< CCM_Foo_Context>::ref_type context_;
+    IDL::traits<CCM_Foo_Context>::ref_type context_;
 
     /** @name Component attributes. */
     //@{
@@ -216,7 +216,7 @@ namespace Foo_Impl
 
     /** @name Component facets. */
     //@{
-    IDL::traits< CCM_MyFoo>::ref_type my_foo_prov_;
+    IDL::traits<CCM_MyFoo>::ref_type my_foo_prov_;
     //@}
 
     /** @name User defined members. */

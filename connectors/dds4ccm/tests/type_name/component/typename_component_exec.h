@@ -39,7 +39,7 @@ namespace TypeNameComponent_Impl
 
   /// Component Executor Implementation Class : TypeNameComponent_exec_i
   class TypeNameComponent_exec_i final
-    : public virtual IDL::traits< CCM_TypeNameComponent>::base_type
+    : public virtual IDL::traits<CCM_TypeNameComponent>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : TypeNameComponent_Impl::TypeNameComponent_exec_i[ctor]
@@ -83,7 +83,7 @@ namespace TypeNameComponent_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< CCM_TypeNameComponent_Context>::ref_type context_;
+    IDL::traits<CCM_TypeNameComponent_Context>::ref_type context_;
 
     /** @name Component facets. */
     //@{

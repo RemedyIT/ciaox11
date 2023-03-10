@@ -77,7 +77,7 @@ namespace GetComponentComponent_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< CCM_GetComponentComponent_Context>::ref_type context_;
+    IDL::traits<CCM_GetComponentComponent_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -132,7 +132,7 @@ namespace GetComponentComponent_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< CCM_GetComponentComponent_Context>::ref_type context_;
+    IDL::traits<CCM_GetComponentComponent_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -187,7 +187,7 @@ namespace GetComponentComponent_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< CCM_GetComponentComponent_Context>::ref_type context_;
+    IDL::traits<CCM_GetComponentComponent_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -206,7 +206,7 @@ namespace GetComponentComponent_Impl
 
   /// Component Executor Implementation Class : GetComponentComponent_exec_i
   class GetComponentComponent_exec_i final
-    : public virtual IDL::traits< CCM_GetComponentComponent>::base_type
+    : public virtual IDL::traits<CCM_GetComponentComponent>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : GetComponentComponent_Impl::GetComponentComponent_exec_i[ctor]
@@ -267,7 +267,7 @@ namespace GetComponentComponent_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< CCM_GetComponentComponent_Context>::ref_type context_;
+    IDL::traits<CCM_GetComponentComponent_Context>::ref_type context_;
 
     /** @name Component attributes. */
     //@{

@@ -136,7 +136,7 @@ namespace Hello_Sender_Impl
   };
   /// AMI4CCM reply handler implementation class
   class AMI4CCM_MyFooReplyHandler_run_my_foo_arr_i final
-    :public IDL::traits<Hello::AMI4CCM_MyFooReplyHandler>::base_type
+    : public IDL::traits<Hello::AMI4CCM_MyFooReplyHandler>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_arr_i[ctor]
@@ -146,12 +146,12 @@ namespace Hello_Sender_Impl
     ~AMI4CCM_MyFooReplyHandler_run_my_foo_arr_i () override;
 
     void foo (
-        int32_t ami_return_val,
-        const std::string& answer) override;
+      int32_t ami_return_val,
+      const std::string& answer) override;
 
     void foo_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
     void hello (
-        int32_t answer) override;
+      int32_t answer) override;
 
     void hello_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
 
@@ -188,7 +188,7 @@ namespace Hello_Sender_Impl
   };
   /// AMI4CCM reply handler implementation class
   class AMI4CCM_MyFooReplyHandler_run_my_foo_arr_2_i final
-    :public IDL::traits<Hello::AMI4CCM_MyFooReplyHandler>::base_type
+    : public IDL::traits<Hello::AMI4CCM_MyFooReplyHandler>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_arr_2_i[ctor]
@@ -198,12 +198,12 @@ namespace Hello_Sender_Impl
     ~AMI4CCM_MyFooReplyHandler_run_my_foo_arr_2_i () override;
 
     void foo (
-        int32_t ami_return_val,
-        const std::string& answer) override;
+      int32_t ami_return_val,
+      const std::string& answer) override;
 
     void foo_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
     void hello (
-        int32_t answer) override;
+      int32_t answer) override;
 
     void hello_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
 

@@ -141,18 +141,18 @@ namespace UsesSM_Sender_Impl
   };
   /// AMI4CCM reply handler implementation class
   class AMI4CCM_OneReplyHandler_m_run_my_one_i final
-    :public IDL::traits< UsesSM::AMI4CCM_OneReplyHandler>::base_type
+    : public IDL::traits<UsesSM::AMI4CCM_OneReplyHandler>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : UsesSM_Sender_Impl::AMI4CCM_OneReplyHandler_m_run_my_one_i[ctor]
     AMI4CCM_OneReplyHandler_m_run_my_one_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : UsesSM_Sender_Impl::AMI4CCM_OneReplyHandler_m_run_my_one_i[ctor]
 
-    virtual ~AMI4CCM_OneReplyHandler_m_run_my_one_i ();
+    ~AMI4CCM_OneReplyHandler_m_run_my_one_i () override;
 
     void foo (
-        int32_t ami_return_val,
-        const std::string& answer) override;
+      int32_t ami_return_val,
+      const std::string& answer) override;
 
     void foo_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
 
@@ -178,17 +178,17 @@ namespace UsesSM_Sender_Impl
   };
   /// AMI4CCM reply handler implementation class
   class AMI4CCM_TwoReplyHandler_s_run_my_two_i final
-    :public IDL::traits< UsesSM::AMI4CCM_TwoReplyHandler>::base_type
+    : public IDL::traits<UsesSM::AMI4CCM_TwoReplyHandler>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : UsesSM_Sender_Impl::AMI4CCM_TwoReplyHandler_s_run_my_two_i[ctor]
     AMI4CCM_TwoReplyHandler_s_run_my_two_i ();
     //@@{__RIDL_REGEN_MARKER__} - END : UsesSM_Sender_Impl::AMI4CCM_TwoReplyHandler_s_run_my_two_i[ctor]
 
-    virtual ~AMI4CCM_TwoReplyHandler_s_run_my_two_i ();
+    ~AMI4CCM_TwoReplyHandler_s_run_my_two_i () override;
 
     void bar (
-        const std::string& answer) override;
+      const std::string& answer) override;
 
     void bar_excep (IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder) override;
 

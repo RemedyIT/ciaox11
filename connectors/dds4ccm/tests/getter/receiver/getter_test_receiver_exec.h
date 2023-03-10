@@ -142,7 +142,7 @@ namespace Getter_Test_Receiver_Impl
 
   /// Executor implementation class for getter_invoke facet
   class getter_invoke_exec_i final
-    : public IDL::traits< CCM_GetInvoker>::base_type
+    : public IDL::traits<CCM_GetInvoker>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Getter_Test_Receiver_Impl::getter_invoke_exec_i[ctor]
@@ -222,7 +222,7 @@ namespace Getter_Test_Receiver_Impl
     IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type get_info_get_status () override;
     /// Factory method and getter for the getter_invoke facet
     /// @return existing instance of facet if one exists, else creates one
-    IDL::traits< CCM_GetInvoker>::ref_type get_getter_invoke () override;
+    IDL::traits<CCM_GetInvoker>::ref_type get_getter_invoke () override;
     //@}
 
     /** @name Session component operations */
@@ -285,7 +285,7 @@ namespace Getter_Test_Receiver_Impl
     /** @name Component facets. */
     //@{
     IDL::traits<::CCM_DDS::CCM_PortStatusListener>::ref_type info_get_status_;
-    IDL::traits< CCM_GetInvoker>::ref_type getter_invoke_;
+    IDL::traits<CCM_GetInvoker>::ref_type getter_invoke_;
     //@}
 
     /** @name User defined members. */

@@ -643,7 +643,7 @@ namespace Getter_Test_Receiver_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : Getter_Test_Receiver_Impl::Receiver_exec_i[get_info_get_status]
   }
 
-  IDL::traits< CCM_GetInvoker>::ref_type
+  IDL::traits<CCM_GetInvoker>::ref_type
   Receiver_exec_i::get_getter_invoke ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Getter_Test_Receiver_Impl::Receiver_exec_i[get_getter_invoke]

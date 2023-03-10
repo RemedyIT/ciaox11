@@ -73,7 +73,7 @@ namespace NonChangeableComponent_Impl
 
   private:
     /// Context for component instance. Used for all middleware communication.
-    IDL::traits< CCM_NonChangeableComponent_Context>::ref_type context_;
+    IDL::traits<CCM_NonChangeableComponent_Context>::ref_type context_;
 
     /** @name User defined members. */
     //@{
@@ -92,7 +92,7 @@ namespace NonChangeableComponent_Impl
 
   /// Component Executor Implementation Class : NonChangeableComponent_exec_i
   class NonChangeableComponent_exec_i final
-    : public virtual IDL::traits< CCM_NonChangeableComponent>::base_type
+    : public virtual IDL::traits<CCM_NonChangeableComponent>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : NonChangeableComponent_Impl::NonChangeableComponent_exec_i[ctor]
@@ -139,7 +139,7 @@ namespace NonChangeableComponent_Impl
 
   private:
     /// Context for component instance.
-    IDL::traits< CCM_NonChangeableComponent_Context>::ref_type context_;
+    IDL::traits<CCM_NonChangeableComponent_Context>::ref_type context_;
 
     /** @name Component attributes. */
     //@{

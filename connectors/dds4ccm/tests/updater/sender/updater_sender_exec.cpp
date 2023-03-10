@@ -1066,7 +1066,7 @@ namespace UpdaterModule_Sender_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : UpdaterModule_Sender_Impl::Sender_exec_i[get_connector_status]
   }
 
-  IDL::traits< CCM_NextAssignment>::ref_type
+  IDL::traits<CCM_NextAssignment>::ref_type
   Sender_exec_i::get_next_assignment ()
   {
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : UpdaterModule_Sender_Impl::Sender_exec_i[get_next_assignment]
