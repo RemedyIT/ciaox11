@@ -233,7 +233,7 @@ and documentation describing the DnCX11 tool configuration files and the various
 Compared to a regular (non-ExF) deployments the Locality configuration needs to be updated with two additional plugins
 and two alternate plugins.
 
-The two addtions are:
+The two additions are:
 
 - the ExF Scheduler service (see <<{xref_docs_root}/dancex11/dncx11-config#_ciaox11_exf_scheduler_service,here>> for details)
 - the ExF Deadline Monitor service (see <<{xref_docs_root}/dancex11/dncx11-config#_ciaox11_exf_deadline_monitor_service,here>> for details)
