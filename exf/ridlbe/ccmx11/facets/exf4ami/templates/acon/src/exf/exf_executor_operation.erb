@@ -6,29 +6,29 @@
 %     _arg_string_empty = 1
 %     _void_op_ = 1
 % else
-%     _arg_string = "          #{operation.scoped_cxx_in_type} ami_return_val,"
+%     _arg_string = "      #{operation.scoped_cxx_in_type} ami_return_val,\n"
 %     _arg_string_empty = 0
 %     _void_op = 0
 % end
 % while !_args.empty?
 %   _arg = _args.shift
 %   if (_arg.direction == :out) || (_arg.direction == :inout)
-%     _arg_string << "          #{_arg.scoped_cxx_in_type} #{_arg.cxxname},"
+%     _arg_string << "      #{_arg.scoped_cxx_in_type} #{_arg.cxxname},\n"
 %     _arg_string_empty = 0
 %   end
 % end
   class <%= operation.cxxname %>_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Executor final
-  :  public AMI_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Executor
+  : public AMI_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Executor
   {
   public:
     <%= operation.cxxname %>_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Executor (
-          std::string event_id,
-          IDL::traits<<%= receptacle_port.interface_type.scoped_enclosure_cxxname %>::<%= receptacle_port.interface_type.ami4ccm_ReplyHandler %>>::ref_type callback,
+      std::string event_id,
+      IDL::traits<<%= receptacle_port.interface_type.scoped_enclosure_cxxname %>::<%= receptacle_port.interface_type.ami4ccm_ReplyHandler %>>::ref_type callback,
 % if  _arg_string_empty == 0
 <%= _arg_string %>
 % end
-          CIAOX11::ExF::Deadline dead_line,
-          CIAOX11::ExF::Priority priority)
+      CIAOX11::ExF::Deadline dead_line,
+      CIAOX11::ExF::Priority priority)
     : AMI_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Executor(std::move(event_id), std::move(callback), std::move(dead_line), std::move (priority))
 % if _void_op
     , ami_return_val_(ami_return_val)
@@ -68,7 +68,7 @@
   private:
 % _args = operation.arguments.dup
 % if !operation.is_void?
-    <%= operation.scoped_cxx_arg_type %> ami_return_val_;
+    <%= operation.scoped_cxx_arg_type %> const ami_return_val_;
 % end
 % while !_args.empty?
 %   _arg = _args.shift
@@ -89,16 +89,15 @@
   };
 
   class <%= operation.cxxname %>_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Excep_Executor final
-  :  public AMI_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Executor
-
+  : public AMI_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Executor
   {
   public:
     <%= operation.cxxname %>_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Excep_Executor (
-          std::string event_id,
-          IDL::traits<<%= receptacle_port.interface_type.scoped_enclosure_cxxname %>::<%= receptacle_port.interface_type.ami4ccm_ReplyHandler %>>::ref_type callback,
-          IDL::traits<::CCM_AMI::ExceptionHolder>::ref_type excep_holder,
-          CIAOX11::ExF::Deadline dead_line,
-          CIAOX11::ExF::Priority priority)
+      std::string event_id,
+      IDL::traits<<%= receptacle_port.interface_type.scoped_enclosure_cxxname %>::<%= receptacle_port.interface_type.ami4ccm_ReplyHandler %>>::ref_type callback,
+      IDL::traits<::CCM_AMI::ExceptionHolder>::ref_type excep_holder,
+      CIAOX11::ExF::Deadline dead_line,
+      CIAOX11::ExF::Priority priority)
     : AMI_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Executor(std::move (event_id), std::move(callback), dead_line, priority),
       excep_holder_(std::move (excep_holder))
     {}
