@@ -42,26 +42,25 @@
 %   end
       this->deadline_,
       this->priority_);
-
-    this->scheduling_lane_->submit (std::move (exec));
+  this->scheduling_lane_->submit (std::move (exec));
 }
 
-  void <%= interface_type.ami4ccm_reply_handler %>::<%= operation.cxxname %>_excep (
-  IDL::traits<::Messaging::ExceptionHolder>::ref_type excep_holder)
-  {
-    // Deactivate our CORBA AMI servant
-    this->deactivate ();
+void <%= interface_type.ami4ccm_reply_handler %>::<%= operation.cxxname %>_excep (
+IDL::traits<::Messaging::ExceptionHolder>::ref_type excep_holder)
+{
+  // Deactivate our CORBA AMI servant
+  this->deactivate ();
 
-   IDL::traits<::CCM_AMI::ExceptionHolder>::ref_type holder =
-      CORBA::make_reference<::CCM_AMI::ExceptionHolder_i> (std::move (excep_holder));
+  IDL::traits<::CCM_AMI::ExceptionHolder>::ref_type holder =
+    CORBA::make_reference<::CCM_AMI::ExceptionHolder_i> (std::move (excep_holder));
 
-    // Push the reply into ExF
-    CIAOX11::ExF::Executor::ref_type exec =
-         std::make_unique<<%= operation.cxxname %>_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Excep_Executor> (
-           "<%= operation.cxxname %>_excep",
-           this->callback_,
-           std::move (holder),
-           this->deadline_,
-           this->priority_);
-    this->scheduling_lane_->submit (std::move (exec));
-  }
+  // Push the reply into ExF
+  CIAOX11::ExF::Executor::ref_type exec =
+    std::make_unique<<%= operation.cxxname %>_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Excep_Executor> (
+      "<%= operation.cxxname %>_excep",
+      this->callback_,
+      std::move (holder),
+      this->deadline_,
+      this->priority_);
+  this->scheduling_lane_->submit (std::move (exec));
+}
