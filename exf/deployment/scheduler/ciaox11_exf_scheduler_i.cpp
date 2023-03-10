@@ -51,7 +51,7 @@ namespace CIAOX11
       ExF::SchedulerResult SchedulingLane::submit (
           ExF::Executor::ref_type&& exec)
       {
-        CIAOX11_EXF_LOG_DEBUG ("ExF::Impl::SchedulingLane::submit -");
+        CIAOX11_EXF_LOG_DEBUG ("ExF::Impl::SchedulingLane::submit");
 
         if (!this->gate_)
         {
@@ -61,7 +61,7 @@ namespace CIAOX11
 
         if (!this->closed ())
         {
-          CIAOX11_EXF_LOG_DEBUG ("ExF::Impl::SchedulingLane::submit -" <<
+          CIAOX11_EXF_LOG_DEBUG ("ExF::Impl::SchedulingLane::submit - " <<
                              "entering scheduling gate");
 
           return this->gate_->enter (std::move (exec));
