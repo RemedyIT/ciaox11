@@ -2,7 +2,7 @@
   // generated from <%= ridl_template_path %>
 
   class get_<%= attribute.cxxname %>_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Executor final
-  :  public AMI_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Executor
+  : public AMI_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Executor
   {
   public:
     get_<%= attribute.cxxname %>_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Executor (
@@ -26,7 +26,7 @@
   };
 
   class get_<%= attribute.cxxname %>_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Excep_Executor final
-  :  public AMI_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Executor
+  : public AMI_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Executor
   {
   public:
     get_<%= attribute.cxxname %>_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Excep_Executor (
@@ -51,7 +51,7 @@
 
 % unless attribute.is_readonly?
   class set_<%= attribute.cxxname %>_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Executor final
-  :  public AMI_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Executor
+  : public AMI_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Executor
   {
   public:
     set_<%= attribute.cxxname %>_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Executor (
@@ -70,8 +70,7 @@
   };
 
   class set_<%= attribute.cxxname %>_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Excep_Executor final
-  :  public AMI_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Executor
-
+  : public AMI_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Executor
   {
   public:
     set_<%= attribute.cxxname %>_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Excep_Executor (
