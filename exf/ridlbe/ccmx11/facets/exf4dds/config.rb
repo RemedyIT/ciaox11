@@ -16,7 +16,7 @@ module IDL
 
       ## Configure facet
       #
-      Backend::Facet.configure('exf4dds', File.dirname(__FILE__), TITLE, COPYRIGHT, {major: 0, minor: 1, release: 1}) do |fctcfg|
+      Backend::Facet.configure('exf4dds', File.dirname(__FILE__), TITLE, COPYRIGHT, { major: 0, minor: 1, release: 1 }) do |fctcfg|
         # optionally define dependencies on other facets
         #   specify dependencies either as:
         #   - a facet id (assumed to be loaded by current backend)
