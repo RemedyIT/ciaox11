@@ -106,8 +106,8 @@ AMI4CCM connectors are derived from user defined IDL interface definitions. Conn
 standardized stub code (AMI4CCM connectors do not provide facets) generated from the user defined IDL. See the
 <<{xref_docs_root}/ami4ccm/ami4ccm#,AMI4CCM>> documentation for the common details
 regarding the implementation of the these connectors.
-The implementation of ExF enabled AMI4CCM connectors requires the generation of tailored stub code as well as
-tailored executor and servant code.
+The implementation of ExF enabled AMI4CCM connectors requires the generation of tailored connector internal
+CORBA AMI reply handler code as well as tailored executor and servant code.
 
 Implementation::
 To implement ExF enabled AMI4CCM connectors code needs to be generated using the following RIDL switch combinations. +

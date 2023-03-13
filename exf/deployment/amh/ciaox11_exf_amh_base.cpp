@@ -69,7 +69,7 @@ namespace CIAOX11
       RequestHandler::_exf_rh_init_handler (TAO_ServerRequest& srvreq)
       {
         CIAOX11_EXF_LOG_TRACE ("RequestHandler::_exf_rh_init_handler - " <<
-                               "request for " << srvreq.operation ());
+                               "request for <" << srvreq.operation () << ">");
 
         if (nullptr == srvreq.incoming ())
         {
@@ -77,7 +77,7 @@ namespace CIAOX11
                                  "colocated call");
 
           // cache for collocated call handling
-          this->srv_request_ = &srvreq;
+          this->srv_request_ = std::addressof(srvreq);
         }
         else
         {
@@ -108,8 +108,7 @@ namespace CIAOX11
           // manage response handler reference
           try
           {
-            this->proxy_ =
-                std::make_unique<TAOX11_NAMESPACE::Object_proxy> (_tao_rh_ptr);
+            this->proxy_ = std::make_unique<TAOX11_NAMESPACE::Object_proxy> (_tao_rh_ptr);
           }
           catch (const std::bad_alloc&)
           {

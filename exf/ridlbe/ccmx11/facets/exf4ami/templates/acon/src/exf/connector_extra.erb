@@ -2,7 +2,7 @@
 % ports.each do |_p|
 %  if (_p.port_type == :receptacle && (_p.cxxname.include? 'ami4ccm_uses'))
   class AMI_<%= _p.interface_type.scoped_cxxname.identify %>_Executor
-  :  public ExF::Executor
+  : public ExF::Executor
   {
   public:
     AMI_<%= _p.interface_type.scoped_cxxname.identify %>_Executor (
