@@ -10,7 +10,7 @@
 module IDL
   module CCMX11
     module ExF4CORBA
-      ROOT = 'ridlbe/ccmx11/facets/exf4cc'
+      ROOT = 'ridlbe/ccmx11/facets/exf4cc'.freeze
     end
   end
 end
