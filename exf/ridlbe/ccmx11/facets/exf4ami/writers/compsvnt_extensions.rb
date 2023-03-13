@@ -9,13 +9,9 @@
 require 'ridlbe/c++11/writerbase'
 
 module IDL
-
   module CCMX11
-
     module ExF
-
       module AmiExFSvntConnectorSourceExt
-
         def self.configure_extension(writer)
           IDL.log(3, 'Configuring AmiExFSvntConnectorSourceExt extension')
 
@@ -25,11 +21,7 @@ module IDL
           writer.override_template(:component_configure, 'ami/exf/component_configure')
           writer.override_template(:component_obtain_facet_executor, 'ami/exf/component_obtain_facet_executor')
         end
-
       end
-
     end # ExF
-
   end # CCMX11
-
 end # IDL

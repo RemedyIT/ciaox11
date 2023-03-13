@@ -7,19 +7,15 @@
 # @copyright Copyright (c) Remedy IT Expertise BV
 #--------------------------------------------------------------------
 
-
 module IDL
-
   module CCMX11
-
     module ExF4PSDD
       COPYRIGHT = "Copyright (c) 2007-#{Time.now.year} Remedy IT Expertise BV, The Netherlands".freeze
       TITLE = 'RIDL AXCIOMA ExF for PSDD4CCM Facet'.freeze
 
       ## Configure facet
       #
-      Backend::Facet.configure('exf4psdd', File.dirname(__FILE__), TITLE, COPYRIGHT, {major: 0, minor: 1, release: 1}) do |fctcfg|
-
+      Backend::Facet.configure('exf4psdd', File.dirname(__FILE__), TITLE, COPYRIGHT, { major: 0, minor: 1, release: 1 }) do |fctcfg|
         # optionally define dependencies on other facets
         #   specify dependencies either as:
         #   - a facet id (assumed to be loaded by current backend)
@@ -38,7 +34,7 @@ module IDL
 
         # setup backend option handling
         #
-        fctcfg.on_setup do |optlist, ridl_params|
+        fctcfg.on_setup do |optlist, _ridl_params|
           ExF4PSDD.add_extended_options(optlist)
 
           # extend PSDD4CCM facet
@@ -50,8 +46,7 @@ module IDL
         #   in parser - parser object with full AST from parsed source
         #   in options - initialized option hash
         #
-        fctcfg.on_process_input do |parser, options|
-
+        fctcfg.on_process_input do |_parser, options|
           if options.gen_exf_support
 
             if options.gen_exec_for_psdd_connector
@@ -68,17 +63,13 @@ module IDL
             end
 
           end
-
         end # fctcfg.on_process_input
-
       end # configure facet
 
       # extend the PSDD4CCM facet with some specific ExF settings/handling
       module PSDD4CCMExt
-
         def self.included(base)
           base.class_eval do
-
             # extend CCMX11::PSDD4CCM#gen_psdd4ccm_lemgen
             def gen_psdd4ccm_lemgen_with_exf(options, idl_ext)
               # make sure the -GExF is passed on
@@ -87,14 +78,9 @@ module IDL
             end
 
             alias_method_chain :gen_psdd4ccm_lemgen, :exf
-
           end
         end
-
       end
-
-    end  #ExF4PSDD
-
+    end # ExF4PSDD
   end # CCMX11
-
 end # IDL

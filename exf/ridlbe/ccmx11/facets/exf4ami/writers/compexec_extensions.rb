@@ -9,13 +9,9 @@
 require 'ridlbe/c++11/writerbase'
 
 module IDL
-
   module CCMX11
-
     module ExF
-
       module AmiExFConnectorHeaderWriter
-
         def self.configure_extension(writer)
           IDL.log(3, 'Configuring ExF AmiExFConnectorHeaderWriter extension')
           # make writer look for templates in ExF folder first
@@ -24,11 +20,9 @@ module IDL
           writer.overload_template(:reply_handler, 'exf/reply_handler')
           writer.overload_template(:facet_exec, 'exf/facet_exec')
         end
-
       end
 
       module AmiExFConnectorSourceWriter
-
         def self.configure_extension(writer)
           IDL.log(3, 'Configuring ExF AmiExFConnectorSourceWriter extension')
           # make writer look for templates in ExF folder first
@@ -38,9 +32,6 @@ module IDL
           writer.append_template(:pre, :pre_exf)
         end
       end
-
     end # ExF
-
   end # CCMX11
-
 end # IDL

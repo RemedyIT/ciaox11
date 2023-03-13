@@ -8,22 +8,15 @@
 #--------------------------------------------------------------------
 
 module IDL
-
   module CCMX11
-
     module ExF4DDS
-
-      ROOT = 'ridlbe/ccmx11/facets/exf4dds'
-
+      ROOT = 'ridlbe/ccmx11/facets/exf4dds'.freeze
     end
-
   end
-
 end
 
 # base modules
-[ 'config'
-].each do |f|
+['config'].each do |f|
   require "#{IDL::CCMX11::ExF4DDS::ROOT}/#{f}"
 end
 

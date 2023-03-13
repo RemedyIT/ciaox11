@@ -8,18 +8,14 @@
 #--------------------------------------------------------------------
 
 module IDL
-
   module CCMX11
-
     module ExF4PSDD
-
       module TemplatedConnectorImplSourceExt
-
         module WriterExtension
           def self.included(base)
             base.class_eval do
               def enter_connector(node)
-                 visitor(ExF4PSDD::ConnectorVisitor).visit_connector(node)
+                visitor(ExF4PSDD::ConnectorVisitor).visit_connector(node)
               end
             end
           end
@@ -33,9 +29,6 @@ module IDL
           # writer.override_template(:pre, :pre_exf4psdd)
         end
       end
-
     end # ExF4PSDD
-
   end # CCMX11
-
 end # IDL
