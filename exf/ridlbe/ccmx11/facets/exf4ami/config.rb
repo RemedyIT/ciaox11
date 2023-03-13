@@ -91,7 +91,7 @@ module IDL
 
       end # AMI4CCMExt
 
-    end  #ExF4AMI
+    end  # ExF4AMI
 
   end # CCMX11
 

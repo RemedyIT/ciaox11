@@ -47,7 +47,7 @@ module IDL
         end # fctcfg.on_process_input
       end # configure facet
 
-    end  #ExF4Base
+    end  # ExF4Base
 
   end # CCMX11
 

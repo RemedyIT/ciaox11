@@ -93,7 +93,7 @@ module IDL
 
       end
 
-    end  #ExF4PSDD
+    end  # ExF4PSDD
 
   end # CCMX11
 
