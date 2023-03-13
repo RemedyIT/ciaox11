@@ -176,6 +176,22 @@ namespace Hello_Sender_Impl
       CIAOX11_TEST_INFO << "Sender:\tsynch rw_attrib expected exception caught"
                         << std::endl;
     }
+
+    std::string answer;
+    std::string answer2;
+    int32_t const retval = my_foo->bar("bar1", "bar2", answer, answer2);
+    if ((retval != 77) || (answer != "answer1") || (answer2 != "answer2"))
+      {
+        CIAOX11_TEST_ERROR << "Sender: >bar "
+                            << "received incorrect values" << retval
+                            << " answer <" << answer << "><" << answer2 << ">" << std::endl;
+      }
+    else
+      {
+        CIAOX11_TEST_INFO << "Sender: bar returned <" << retval << "> with answer <"
+                          << answer << ">:<" << answer2 << ">" << std::endl;
+      }
+
     return 0;
   }
   //@@{__RIDL_REGEN_MARKER__} - END : Hello_Sender_Impl[user_namespace_impl]
