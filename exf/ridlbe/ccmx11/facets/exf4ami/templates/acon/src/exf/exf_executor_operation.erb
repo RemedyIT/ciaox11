@@ -54,7 +54,6 @@
     }
 
   private:
-% _args = operation.arguments.dup
 % unless operation.is_void?
     <%= operation.scoped_cxx_arg_type %> const ami_return_val_;
 % end
@@ -93,7 +92,7 @@
     void
     execute_i () noexcept(true) override
     {
-      this->callback_-><%= operation.cxxname %>_excep (this->excep_holder_);
+      this->callback_-><%= operation.cxxname %>_excep (std::move(this->excep_holder_));
     }
 
   private:
