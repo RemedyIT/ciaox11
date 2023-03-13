@@ -7,7 +7,6 @@
 # @copyright Copyright (c) Remedy IT Expertise BV
 #--------------------------------------------------------------------
 
-
 module IDL
   module CCMX11
     module ExF4CORBA
