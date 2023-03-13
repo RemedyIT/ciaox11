@@ -31,7 +31,7 @@ module IDL
 
         # setup backend option handling
         #
-        fctcfg.on_setup do |optlist, ridl_params|
+        fctcfg.on_setup do |optlist, _ridl_params|
           ExF4AMI.add_extended_options(optlist)
 
           # setup extension here now we know AMI4CCM is loaded as result of this facet's dependencies
@@ -43,7 +43,7 @@ module IDL
         #   in parser - parser object with full AST from parsed source
         #   in options - initialized option hash
         #
-        fctcfg.on_process_input do |parser, options|
+        fctcfg.on_process_input do |_parser, options|
           if options.gen_exf_support
             if options[:gen_component_servant]
               IDL.log(2, 'Extending ami4ccm connector executor generation for ExF')

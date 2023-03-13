@@ -34,7 +34,7 @@ module IDL
 
         # setup backend option handling
         #
-        fctcfg.on_setup do |optlist, ridl_params|
+        fctcfg.on_setup do |optlist, _ridl_params|
           ExF4PSDD.add_extended_options(optlist)
 
           # extend PSDD4CCM facet
@@ -46,7 +46,7 @@ module IDL
         #   in parser - parser object with full AST from parsed source
         #   in options - initialized option hash
         #
-        fctcfg.on_process_input do |parser, options|
+        fctcfg.on_process_input do |_parser, options|
           if options.gen_exf_support
 
             if options.gen_exec_for_psdd_connector
