@@ -90,6 +90,6 @@ module IDL
           end
         end
       end
-    end  # ExF4CORBA
+    end # ExF4CORBA
   end # CCMX11
 end # IDL

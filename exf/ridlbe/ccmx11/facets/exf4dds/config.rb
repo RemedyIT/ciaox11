@@ -80,6 +80,6 @@ module IDL
           end
         end
       end
-    end  # ExF4DDS
+    end # ExF4DDS
   end # CCMX11
 end # IDL

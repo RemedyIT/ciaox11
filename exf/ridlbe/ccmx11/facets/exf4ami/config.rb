@@ -83,6 +83,6 @@ module IDL
           AMI4CCM.singleton_class.__send__(:include, AMI4CCMExt)
         end
       end # AMI4CCMExt
-    end  # ExF4AMI
+    end # ExF4AMI
   end # CCMX11
 end # IDL
