@@ -9,9 +9,7 @@
 
 
 module IDL
-
   module CCMX11
-
     module ExF4AMI
       COPYRIGHT = "Copyright (c) 2007-#{Time.now.year} Remedy IT Expertise BV, The Netherlands".freeze
       TITLE = 'RIDL AXCIOMA ExF for AMI4CCM Facet'.freeze
@@ -65,7 +63,6 @@ module IDL
 
       # extend the AMIA4CCM facet with some specific ExF settings/handling
       module AMI4CCMExt
-
         def self.included(base)
           base.class_eval do
             # extend gen_ami_connector_complete
@@ -85,11 +82,7 @@ module IDL
         def self.setup_extension
           AMI4CCM.singleton_class.__send__(:include, AMI4CCMExt)
         end
-
       end # AMI4CCMExt
-
     end  # ExF4AMI
-
   end # CCMX11
-
 end # IDL

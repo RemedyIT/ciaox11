@@ -9,9 +9,7 @@
 
 module IDL
   module CCMX11
-
     module ExF4DDS
-
       class ConnectorVisitor < CCMX11::ConnectorVisitor
         # overload
         def dds4ccm_error_event_strategy_template
@@ -36,8 +34,6 @@ module IDL
           end
         end
       end
-
     end
-
   end
 end

@@ -8,17 +8,11 @@
 #--------------------------------------------------------------------
 
 module IDL
-
   module CCMX11
-
     module ExF4PSDD
-
       ROOT = 'ridlbe/ccmx11/facets/exf4psdd'
-
     end
-
   end
-
 end
 
 # base modules

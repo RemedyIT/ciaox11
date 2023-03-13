@@ -9,9 +9,7 @@
 
 
 module IDL
-
   module CCMX11
-
     module ExF4CORBA
       COPYRIGHT = "Copyright (c) 2007-#{Time.now.year} Remedy IT Expertise BV, The Netherlands".freeze
       TITLE = 'RIDL AXCIOMA ExF for CORBA4CCM Facet'.freeze
@@ -77,7 +75,6 @@ module IDL
 
       # extend the CORBA4CCM facet with some specific ExF settings/handling
       module Corba4CCMExt
-
         def self.included(base)
           base.class_eval do
             # extend CCMX11::CORBA#schedule_corba4ccm_idl_input
@@ -92,11 +89,7 @@ module IDL
             alias_method_chain :schedule_corba4ccm_idl_input, :exf
           end
         end
-
       end
-
     end  # ExF4CORBA
-
   end # CCMX11
-
 end # IDL

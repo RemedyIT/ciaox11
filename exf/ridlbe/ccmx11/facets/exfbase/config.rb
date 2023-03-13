@@ -9,9 +9,7 @@
 
 
 module IDL
-
   module CCMX11
-
     module ExFBase
       COPYRIGHT = "Copyright (c) 2007-#{Time.now.year} Remedy IT Expertise BV, The Netherlands".freeze
       TITLE = 'RIDL AXCIOMA ExF Base Facet'.freeze
@@ -44,9 +42,6 @@ module IDL
         fctcfg.on_process_input do |parser, options|
         end # fctcfg.on_process_input
       end # configure facet
-
     end  # ExF4Base
-
   end # CCMX11
-
 end # IDL

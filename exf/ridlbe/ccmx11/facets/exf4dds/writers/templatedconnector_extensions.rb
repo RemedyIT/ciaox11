@@ -8,13 +8,9 @@
 #--------------------------------------------------------------------
 
 module IDL
-
   module CCMX11
-
     module ExF4DDS
-
       module TemplatedConnectorImplSourceExt
-
         module WriterExtension
           def self.included(base)
             base.class_eval do
@@ -33,9 +29,6 @@ module IDL
           writer.override_template(:pre, :pre_exf4dds)
         end
       end
-
     end # DDS4CCM
-
   end # CCMX11
-
 end # IDL

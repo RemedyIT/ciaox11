@@ -9,9 +9,7 @@
 
 
 module IDL
-
   module CCMX11
-
     module ExF4DDS
       COPYRIGHT = "Copyright (c) 2007-#{Time.now.year} Remedy IT Expertise BV, The Netherlands".freeze
       TITLE = 'RIDL AXCIOMA ExF for DDS4CCM Facet'.freeze
@@ -69,7 +67,6 @@ module IDL
 
       # extend the DDS4CCM facet with some specific ExF settings/handling
       module DDS4CCMExt
-
         def self.included(base)
           base.class_eval do
             # extend CCMX11::DDS4CCM#gen_dds4ccm_lemgen
@@ -82,11 +79,7 @@ module IDL
             alias_method_chain :gen_dds4ccm_lemgen, :exf
           end
         end
-
       end
-
     end  # ExF4DDS
-
   end # CCMX11
-
 end # IDL

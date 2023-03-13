@@ -9,15 +9,10 @@
 require 'ridlbe/c++11/writerbase'
 
 module IDL
-
   module CCMX11
-
     module ExF
-
       module CorbaServantHeaderExt
-
         module WriterExtension
-
           def self.included(base)
             base.class_eval do
               # override
@@ -30,7 +25,6 @@ module IDL
               end
             end
           end
-
         end # WriterExtension
 
         def self.configure_extension(writer)
@@ -40,13 +34,10 @@ module IDL
           # prepend ExF template before regular template
           writer.prepend_template(:interface_pre, :interface_exf_pre)
         end
-
       end
 
       module CorbaServantSourceExt
-
         module WriterExtension
-
           def self.included(base)
             base.class_eval do
               # overload
@@ -58,7 +49,6 @@ module IDL
               end
             end
           end
-
         end # WriterExtension
 
         def self.configure_extension(writer)
@@ -67,9 +57,6 @@ module IDL
           writer.template_root = File.join(writer.template_root, 'exf')
         end
       end
-
     end # ExF
-
   end # CCMX11
-
 end # IDL

@@ -8,17 +8,11 @@
 #--------------------------------------------------------------------
 
 module IDL
-
   module CCMX11
-
     module ExF4CORBA
-
       ROOT = 'ridlbe/ccmx11/facets/exf4cc'
-
     end
-
   end
-
 end
 
 # base modules

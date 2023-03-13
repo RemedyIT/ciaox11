@@ -9,9 +9,7 @@
 
 
 module IDL
-
   module CCMX11
-
     module ExF4PSDD
       COPYRIGHT = "Copyright (c) 2007-#{Time.now.year} Remedy IT Expertise BV, The Netherlands".freeze
       TITLE = 'RIDL AXCIOMA ExF for PSDD4CCM Facet'.freeze
@@ -71,7 +69,6 @@ module IDL
 
       # extend the PSDD4CCM facet with some specific ExF settings/handling
       module PSDD4CCMExt
-
         def self.included(base)
           base.class_eval do
             # extend CCMX11::PSDD4CCM#gen_psdd4ccm_lemgen
@@ -84,11 +81,7 @@ module IDL
             alias_method_chain :gen_psdd4ccm_lemgen, :exf
           end
         end
-
       end
-
     end  # ExF4PSDD
-
   end # CCMX11
-
 end # IDL
