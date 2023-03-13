@@ -6,12 +6,12 @@ void
 % unless in_arguments.empty?
   if (srvreq.incoming () == nullptr) // in case of a collocated call
   {
-%   arguments.each_with_index do |_arg, _ix|
+%   arguments.each.with_index(1) do |_arg, _ix|
 %     case _arg.direction
 %     when :in
-    this-><%= _arg.cxxname %> = std::move (PS::get_in_arg<<%= _arg.scoped_cxx_arg_type %>> (srvreq.operation_details (), nullptr, <%= _ix+1 %>));
+    this-><%= _arg.cxxname %> = std::move (PS::get_in_arg<<%= _arg.scoped_cxx_arg_type %>> (srvreq.operation_details (), nullptr, <%= _ix %>));
 %     when :inout
-    this-><%= _arg.cxxname %> = PS::get_inout_arg<<%= _arg.scoped_cxx_arg_type %>> (srvreq.operation_details (), nullptr, <%= _ix+1 %>);
+    this-><%= _arg.cxxname %> = PS::get_inout_arg<<%= _arg.scoped_cxx_arg_type %>> (srvreq.operation_details (), nullptr, <%= _ix %>);
 %     end
 %   end
   }
@@ -62,12 +62,12 @@ void
 %   unless is_oneway? || is_void?
     PS::get_ret_arg<<%= scoped_cxx_arg_type %>> (this->_exf_operation_details (), nullptr) = std::move (this->retval);
 %   end
-%   arguments.each_with_index do |_arg, _ix|
+%   arguments.each.with_index(1) do |_arg, _ix|
 %     case _arg.direction
 %     when :out
-    PS::get_out_arg<<%= _arg.scoped_cxx_arg_type %>> (this->_exf_operation_details (), nullptr, <%= _ix+1 %>) = std::move (this-><%= _arg.cxxname %>);
+    PS::get_out_arg<<%= _arg.scoped_cxx_arg_type %>> (this->_exf_operation_details (), nullptr, <%= _ix %>) = std::move (this-><%= _arg.cxxname %>);
 %     when :inout
-    PS::get_inout_arg<<%= _arg.scoped_cxx_arg_type %>> (this->_exf_operation_details (), nullptr, <%= _ix+1 %>) = std::move (this-><%= _arg.cxxname %>);
+    PS::get_inout_arg<<%= _arg.scoped_cxx_arg_type %>> (this->_exf_operation_details (), nullptr, <%= _ix %>) = std::move (this-><%= _arg.cxxname %>);
 %     end
 %   end
   }
