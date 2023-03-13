@@ -19,7 +19,6 @@ module IDL
       ## Configure facet
       #
       Backend::Facet.configure('exf4cc', File.dirname(__FILE__), TITLE, COPYRIGHT, {major: 0, minor: 1, release: 1}) do |fctcfg|
-
         # optionally define dependencies on other facets
         #   specify dependencies either as:
         #   - a facet id (assumed to be loaded by current backend)
@@ -49,7 +48,6 @@ module IDL
         #   in options - initialized option hash
         #
         fctcfg.on_process_input do |parser, options|
-
           if options.gen_exf_support
 
             if options.svnt_skeletons && !(options.no_servant_header || options.no_servant_code)
@@ -74,7 +72,6 @@ module IDL
             end
 
           end
-
         end # fctcfg.on_process_input
       end # configure facet
 
@@ -83,7 +80,6 @@ module IDL
 
         def self.included(base)
           base.class_eval do
-
             # extend CCMX11::CORBA#schedule_corba4ccm_idl_input
             def schedule_corba4ccm_idl_input_with_exf(options, cc_opts)
               # make sure the -GExF is passed on
@@ -94,7 +90,6 @@ module IDL
             end
 
             alias_method_chain :schedule_corba4ccm_idl_input, :exf
-
           end
         end
 

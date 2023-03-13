@@ -19,7 +19,6 @@ module IDL
       ## Configure facet
       #
       Backend::Facet.configure('exf4ami', File.dirname(__FILE__), TITLE, COPYRIGHT, {major: 0, minor: 1, release: 1}) do |fctcfg|
-
         # optionally define dependencies on other facets
         #   specify dependencies either as:
         #   - a facet id (assumed to be loaded by current backend)
@@ -69,7 +68,6 @@ module IDL
 
         def self.included(base)
           base.class_eval do
-
             # extend gen_ami_connector_complete
             def gen_ami_connector_complete_ami_conn_idl_with_exf4ami(options, idl_ext)
 
@@ -81,7 +79,6 @@ module IDL
             end
 
             alias_method_chain :gen_ami_connector_complete_ami_conn_idl, :exf4ami
-
           end
         end
 

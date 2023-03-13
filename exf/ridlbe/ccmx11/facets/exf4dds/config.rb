@@ -19,7 +19,6 @@ module IDL
       ## Configure facet
       #
       Backend::Facet.configure('exf4dds', File.dirname(__FILE__), TITLE, COPYRIGHT, {major: 0, minor: 1, release: 1}) do |fctcfg|
-
         # optionally define dependencies on other facets
         #   specify dependencies either as:
         #   - a facet id (assumed to be loaded by current backend)
@@ -49,7 +48,6 @@ module IDL
         #   in options - initialized option hash
         #
         fctcfg.on_process_input do |parser, options|
-
           if options.gen_exf_support
 
             if options.gen_exec_for_dds_connector
@@ -66,9 +64,7 @@ module IDL
             end
 
           end
-
         end # fctcfg.on_process_input
-
       end # configure facet
 
       # extend the DDS4CCM facet with some specific ExF settings/handling
@@ -76,7 +72,6 @@ module IDL
 
         def self.included(base)
           base.class_eval do
-
             # extend CCMX11::DDS4CCM#gen_dds4ccm_lemgen
             def gen_dds4ccm_lemgen_with_exf(options, idl_ext)
               # make sure the -GExF is passed on
@@ -85,7 +80,6 @@ module IDL
             end
 
             alias_method_chain :gen_dds4ccm_lemgen, :exf
-
           end
         end
 

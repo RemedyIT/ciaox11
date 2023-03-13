@@ -19,7 +19,6 @@ module IDL
       ## Configure facet
       #
       Backend::Facet.configure('exfbase', File.dirname(__FILE__), TITLE, COPYRIGHT, {major: 0, minor: 1, release: 1}) do |fctcfg|
-
         def self.add_extended_options(ol)
           ol.for_switch '-G{generation options}', type: String, separator: true do |swcfg|
             swcfg.modify_group :exf_group,
@@ -43,7 +42,6 @@ module IDL
         #   in options - initialized option hash
         #
         fctcfg.on_process_input do |parser, options|
-
         end # fctcfg.on_process_input
       end # configure facet
 

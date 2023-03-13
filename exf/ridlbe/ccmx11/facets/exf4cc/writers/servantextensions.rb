@@ -20,7 +20,6 @@ module IDL
 
           def self.included(base)
             base.class_eval do
-
               # override
               def visit_includes(parser)
                 writer(Cxx11::ServantHeaderIncludeWriter) do |w|
@@ -29,7 +28,6 @@ module IDL
                   w.visit_nodes(parser)
                 end
               end
-
             end
           end
 
@@ -51,7 +49,6 @@ module IDL
 
           def self.included(base)
             base.class_eval do
-
               # overload
               def enter_interface(node)
                 unless node.is_local? || node.is_pseudo? || node.is_abstract?
@@ -59,7 +56,6 @@ module IDL
                 end
                 super
               end
-
             end
           end
 
