@@ -16,7 +16,6 @@ module IDL
 end
 
 # base modules
-['config'
-].each do |f|
+['config'].each do |f|
   require "#{IDL::CCMX11::ExFBase::ROOT}/#{f}"
 end
