@@ -28,7 +28,6 @@ module IDL
         fctcfg.setup_after :exfbase, :corba4ccm
 
         def self.add_extended_options(ol)
-
         end # add_extended_options
 
         # setup backend option handling

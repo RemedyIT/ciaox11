@@ -28,7 +28,6 @@ module IDL
         fctcfg.setup_after :exfbase, :ami4ccm
 
         def self.add_extended_options(ol)
-
         end # add_extended_options
 
         # setup backend option handling
@@ -67,12 +66,10 @@ module IDL
           base.class_eval do
             # extend gen_ami_connector_complete
             def gen_ami_connector_complete_ami_conn_idl_with_exf4ami(options, idl_ext)
-
                 run_opts = gen_ami_connector_complete_ami_conn_idl_without_exf4ami(options, idl_ext)
 
                 # make sure the -GExF is passed on
                 run_opts.gen_exf_support = true if options.gen_exf_support && options.gen_ami_connector_idl
-
             end
 
             alias_method_chain :gen_ami_connector_complete_ami_conn_idl, :exf4ami
