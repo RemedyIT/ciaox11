@@ -15,7 +15,7 @@ module IDL
           def self.included(base)
             base.class_eval do
               def enter_connector(node)
-                 visitor(ExF4PSDD::ConnectorVisitor).visit_connector(node)
+                visitor(ExF4PSDD::ConnectorVisitor).visit_connector(node)
               end
             end
           end
