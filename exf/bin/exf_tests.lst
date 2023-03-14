@@ -14,7 +14,7 @@ exf/connectors/dds4ccm/tests/exf/unkeyed_writer/descriptors/run_test.pl plan_ndd
 exf/connectors/dds4ccm/tests/exf/unkeyed_writer/descriptors/run_test.pl plan_opendds.config: DDS4CCM_EVENT EXF4CCM OPENDDS
 exf/connectors/dds4ccm/tests/exf/unkeyed_writer/descriptors/run_test.pl plan_ndds.cdp: DDS4CCM_EVENT EXF4CCM NDDS
 exf/connectors/dds4ccm/tests/exf/unkeyed_writer/descriptors/run_test.pl plan_opendds.cdp: DDS4CCM_EVENT EXF4CCM OPENDDS
-exf/connectors/ami4ccm/tests/exf/hello_simple/descriptors/run_test.pl : AMI4CCM CORBA4CCM EXF4CCM
+exf/connectors/ami4ccm/tests/exf/hello_simple/descriptors/run_test.pl plan.config: AMI4CCM CORBA4CCM EXF4CCM
 exf/connectors/corba4ccm/tests/exf/descriptors/run_test.pl plan.config: CORBA4CCM EXF4CCM
 exf/connectors/corba4ccm/tests/exf/descriptors/run_test.pl plan-no-exf.config: CORBA4CCM EXF4CCM
 exf/connectors/corba4ccm/tests/exf/descriptors/run_test.pl plan-full-exf.config: CORBA4CCM EXF4CCM
