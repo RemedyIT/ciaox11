@@ -85,7 +85,7 @@ module AxciomaPC
         BRIX11.log(2, '[APC::Project] loading project')
         root_path = find_project_root
         # make sure that recipes are loaded and interpreted again
-        if !projects[root_path].nil?
+        unless projects[root_path].nil?
           projects[root_path] = nil
         end
         # project doesn't exist yet/anymore.

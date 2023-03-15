@@ -20,7 +20,7 @@ module AxciomaPC
       end
 
       def get_port_handler_klass(port_type)
-        if !port_types.has_key?(port_type)
+        unless port_types.has_key?(port_type)
           raise "PortType :#{port_type} not implemented. Valid port types are #{port_types.keys}"
         end
         port_types[port_type]

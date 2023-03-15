@@ -273,7 +273,7 @@ module AxciomaPC
         idl_prj_dependencies = fidl.project_dependencies
 
         # check all required interaction types
-        if !interaction_types.nil?
+        unless interaction_types.nil?
           interaction_types.each do |int_type|
             if int_type == :sev
               BRIX11.log(4, '[%s] idl_prj_dependencies : %s', self, idl_prj_dependencies)

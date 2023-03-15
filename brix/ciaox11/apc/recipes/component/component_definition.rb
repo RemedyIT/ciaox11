@@ -133,7 +133,7 @@ module AxciomaPC
       private :create_component_idl
 
       def port(port_name, kind = nil, &_block)
-        if !port_name
+        unless port_name
           raise "Port name is missing in component recipe."
         end
         port = PortDefinition.new(port_name, self)

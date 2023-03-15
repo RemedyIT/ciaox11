@@ -69,7 +69,7 @@ module AxciomaPC
         base_name = File.basename(sev_data_idl, '.idl')
         idlmatch = recipe.project.match_idl_files(base_name + 'SE.idl')
         topic = type_name
-        if !idlmatch.empty?
+        unless idlmatch.empty?
           intf_idl_file = idlmatch.find do |fidl|
             if rcp = fidl.recipes.first
               SEV::InterfaceRecipe === rcp && rcp.topic == topic
@@ -87,7 +87,7 @@ module AxciomaPC
         else
           # find recipe file with recipe for #{base_name+'.idl'}
           idlmatch = recipe.project.match_idl_files(base_name + '.idl')
-          if !idlmatch.empty?
+          unless idlmatch.empty?
             intf_base_idl_file = idlmatch.find do |fidl|
               if rcp = fidl.recipes.first
                 # found recipe for #{base_name+'.idl'}"
@@ -136,7 +136,7 @@ module AxciomaPC
         port.set_type 'provides'
         port.set_intf_name 'CCM_DDS::ConnectorStatusListener'
         # check if already a ConnectorStatusListener exist for this InterFace
-        if !comp.port_exist?(port)
+        unless comp.port_exist?(port)
           comp.add_port(port)
         end
       end

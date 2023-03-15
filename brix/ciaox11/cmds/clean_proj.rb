@@ -27,7 +27,7 @@ module BRIX11
           project.dump
         end
 
-        if !project
+        unless project
           raise Command::CmdError, 'Unable to locate AXCIOMA project root'
         end
 

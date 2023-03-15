@@ -87,7 +87,7 @@ module AxciomaPC
       def add_lem_proj(fidl)
         prj_dependencies = fidl.project_dependencies
         # if the idl file doesn't contain an interface, don't generate lem
-        if !fidl.properties[:has_interface]
+        unless fidl.properties[:has_interface]
           # Although no lem is needed, the stub headers are included in the base lem stub headers,
           # so the included dirs must be set here.
           # by not specifying the recipe for the :lem_stub dependency (nil) this is a noop

@@ -42,7 +42,7 @@ module BRIX11
         # return project if  exist
         project = AxciomaPC::Project.load_project(:ifneeded)
 
-        if !project
+        unless project
           raise Command::CmdError, 'Unable to locate AXCIOMA project root'
         end
 

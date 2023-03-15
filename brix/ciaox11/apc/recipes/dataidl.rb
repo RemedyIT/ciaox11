@@ -232,7 +232,7 @@ module AxciomaPC
       project_dependencies.merge(idl_prj_dependencies, :idl_gen, :stub)
 
       # check all required interaction types
-      if !interaction_types.nil?
+      unless interaction_types.nil?
         interaction_types.each do |int_type|
           get_interaction_dependencies(int_type, idl_prj_dependencies, project_dependencies)
         end
