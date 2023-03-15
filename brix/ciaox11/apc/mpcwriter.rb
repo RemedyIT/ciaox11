@@ -77,7 +77,7 @@ module AxciomaPC
           begin
             target.respond_to?(m) ? target.__send__(m, *args, &block) : super(m, *args, &block)
           ensure
-            $@.delete_if {|t| %r"\A#{Regexp.quote(__FILE__)}:#{__LINE__ - 2}:"o =~ t} if $@
+            $@.delete_if { |t| %r"\A#{Regexp.quote(__FILE__)}:#{__LINE__ - 2}:"o =~ t } if $@
           end
         end
       end
@@ -116,7 +116,7 @@ module AxciomaPC
       helper_method   :projects
 
       def projects
-        @projects ||= @mpc_file.mpc_projects.collect {|p| p.wants_build? ? ProjectVisitor.new(p, @output, @properties.dup, self) : nil }.compact
+        @projects ||= @mpc_file.mpc_projects.collect { |p| p.wants_build? ? ProjectVisitor.new(p, @output, @properties.dup, self) : nil }.compact
         # MPC::Project list
         @projects
       end

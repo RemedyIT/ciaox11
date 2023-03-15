@@ -55,7 +55,7 @@ module AxciomaPC
 
     def pragmas
       pragmas = []
-      pragmas = ports.collect {|p| p.pragma.to_s unless p.pragma.blank?}.reject{ |c| c.nil? || c.empty?}
+      pragmas = ports.collect { |p| p.pragma.to_s unless p.pragma.blank? }.reject{ |c| c.nil? || c.empty? }
       pragmas
     end
 

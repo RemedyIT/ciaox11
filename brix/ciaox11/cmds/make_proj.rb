@@ -32,10 +32,10 @@ module BRIX11
         optparser.on('-c', '--clean', 'Clean project only.') { options[:axpmake][:clean] = true; options[:axpmake][:build] = false }
         optparser.on('-r', '--rebuild', 'Clean and than build project.') { options[:axpmake][:clean] = true; options[:axpmake][:build] = true }
         optparser.on('--debug', 'Debug build.') { options[:axpmake][:debug] = true }
-        optparser.on('--release', 'Release build.') { options[:axpmake][:debug] = false}
+        optparser.on('--release', 'Release build.') { options[:axpmake][:debug] = false }
         optparser.on('-N', '--no-redirect',
                      'Do not redirect output from child process..',
-                     'Default: redirect and filter output.') {|v|
+                     'Default: redirect and filter output.') { |v|
           options[:axpmake][:noredirect] = true
         }
       end

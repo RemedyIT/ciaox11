@@ -111,9 +111,9 @@ module AxciomaPC
       # returns all prerequisite projects resulting from this dependency
       def prerequisite_projects
         # start with all direct dependencies
-        preqs = ::Set.new(recipes.collect {|rcp| (rcp.mpc_file[project_type].wants_build? && rcp.mpc_file[project_type].project_name) || nil }.compact)
+        preqs = ::Set.new(recipes.collect { |rcp| (rcp.mpc_file[project_type].wants_build? && rcp.mpc_file[project_type].project_name) || nil }.compact)
         # now collect all (unique) recorded dependencies for these direct prerequisites
-        preq_deps = recipes.inject([]) {|list, rcp| list.concat(rcp.mpc_file[project_type].project_dependencies) }
+        preq_deps = recipes.inject([]) { |list, rcp| list.concat(rcp.mpc_file[project_type].project_dependencies) }
         # now add all projects from indirect dependencies that are not covered by direct dependencies
         dependencies.each do |idep|
           preqs.merge(idep.prerequisite_projects - preq_deps)
@@ -124,7 +124,7 @@ module AxciomaPC
       # returns all necessary include paths resulting from this dependency
       def includes
         # start with includes resulting from direct dependencies
-        incs = ::Set.new(recipes.inject([]) {|list, rcp| list.concat(rcp.mpc_file[project_type].include_dependencies) })
+        incs = ::Set.new(recipes.inject([]) { |list, rcp| list.concat(rcp.mpc_file[project_type].include_dependencies) })
         # now add includes resulting from indirect dependencies
         dependencies.each do |idep|
           incs.merge(idep.includes)
@@ -200,7 +200,7 @@ module AxciomaPC
 
       def dump(indent=0, out=STDERR)
         out.puts (' ' * indent) + self.to_s
-        self.each {|dep| dep.dump(indent + 2, out) }
+        self.each { |dep| dep.dump(indent + 2, out) }
       end
 
     end # Dependencies

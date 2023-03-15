@@ -30,7 +30,7 @@ module BRIX11
         optparser.on('-c', '--component', '=NAME',
                      'Defines name to use for component.',
                      'Use scoped name (i.e. <name>::[<name>::]::<name>) to generate enclosing module(s).',
-                     'Default: derived from IDL file basename with first character uppercased') {|v|
+                     'Default: derived from IDL file basename with first character uppercased') { |v|
                        options[:gencompidl][:modules] = v.split('::');
                        options[:gencompidl][:component] = options[:gencompidl][:modules].pop
                      }
@@ -38,7 +38,7 @@ module BRIX11
         optparser.on('-I[FILE]', '--with-idl=[FILE]',
                      'Create includes for FILE , an idl file containing interfaces and defines.',
                      'Specify filename without extension. Separate with \',\' when more than one.',
-                     'Default: Generate includes for IDL files in working dir') {|v|
+                     'Default: Generate includes for IDL files in working dir') { |v|
                      options[:gencompidl][:idl] = (v ? v.split(',') : true)}
 
         optparser.on('-r', '=INTERFACENAME PORTNAME',

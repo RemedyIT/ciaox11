@@ -91,15 +91,15 @@ module AxciomaPC
 
       def includes(*dirs)
         #Solve event. used environment variables
-        solved_dirs = dirs.flatten.collect  {|dir|  Util::path_without_env(dir) }
-        @recipe.include_dirs << solved_dirs.flatten.collect {|dir| File.expand_path(dir, @recipe.recipe_file.path) }
+        solved_dirs = dirs.flatten.collect  { |dir|  Util::path_without_env(dir) }
+        @recipe.include_dirs << solved_dirs.flatten.collect { |dir| File.expand_path(dir, @recipe.recipe_file.path) }
         @recipe.include_dirs
       end
 
       def libpaths(*paths)
         #Solve event. used environment variables
-        solved_paths = paths.flatten.collect  {|path|  Util::path_without_env(path) }
-        @recipe.lib_paths << solved_paths.flatten.collect {|p| File.expand_path(p, @recipe.recipe_file.path) }
+        solved_paths = paths.flatten.collect  { |path|  Util::path_without_env(path) }
+        @recipe.lib_paths << solved_paths.flatten.collect { |p| File.expand_path(p, @recipe.recipe_file.path) }
       end
 
       def libs(*libs)
@@ -611,19 +611,19 @@ module AxciomaPC
     private :process_anytypecode_include
 
     def needs_anytype?
-      @idl_files.each_value.any? {|val|val.needs_anytype?}
+      @idl_files.each_value.any? { |val|val.needs_anytype? }
     end
 
     def has_ttc?
-      @idl_files.each_value.any? {|val|val.has_ttc?}
+      @idl_files.each_value.any? { |val|val.has_ttc? }
     end
 
     def needs_stub?
-      @idl_files.each_value.any? {|val|val.needs_stub?}
+      @idl_files.each_value.any? { |val|val.needs_stub? }
     end
 
     def creates_stubcode?
-      @idl_files.each_value.any? {|val| val.creates_stubcode? || val.needs_anytype? }
+      @idl_files.each_value.any? { |val| val.creates_stubcode? || val.needs_anytype? }
     end
   end
 

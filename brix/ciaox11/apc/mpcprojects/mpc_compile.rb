@@ -16,7 +16,7 @@ module AxciomaPC
       # returns all necessary link libraries resulting from this dependency
       def libs
         # start with libraries resulting from direct dependencies
-        libs = ::Set.new(recipes.inject([]) {|list, rcp| list.concat(rcp.mpc_file[project_type].lib_dependencies) })
+        libs = ::Set.new(recipes.inject([]) { |list, rcp| list.concat(rcp.mpc_file[project_type].lib_dependencies) })
         # now add libraries resulting from indirect dependencies
         dependencies.each do |idep|
           libs.merge(idep.libs)
@@ -27,7 +27,7 @@ module AxciomaPC
       # returns all necessary link library search paths resulting from this dependency
       def lib_paths
         # start with library search paths resulting from direct dependencies
-        lib_paths = ::Set.new(recipes.inject([]) {|list, rcp| list.concat(rcp.mpc_file[project_type].lib_paths) })
+        lib_paths = ::Set.new(recipes.inject([]) { |list, rcp| list.concat(rcp.mpc_file[project_type].lib_paths) })
         # now add library search paths resulting from indirect dependencies
         dependencies.each do |idep|
           lib_paths.merge(idep.lib_paths)
@@ -187,8 +187,8 @@ module AxciomaPC
         project_dependencies << "#{mpc_id}_comp_gen"
         base_projects(%w(ciaox11_ccm_session_stub))
         # add default sources and headers
-        @sources << (recipe.idl_without_ext.collect {|ifs| ((recipe.gen_dir + '/') << ifs << LEM_STUB_F << EXT_CPP) })
-        @headers << (recipe.idl_without_ext.collect {|ifs| ((recipe.gen_dir + '/') << ifs << LEM_STUB_F << EXT_HEADER) })
+        @sources << (recipe.idl_without_ext.collect { |ifs| ((recipe.gen_dir + '/') << ifs << LEM_STUB_F << EXT_CPP) })
+        @headers << (recipe.idl_without_ext.collect { |ifs| ((recipe.gen_dir + '/') << ifs << LEM_STUB_F << EXT_HEADER) })
         @headers << ((recipe.gen_dir + '/') << recipe.export_name << LEM_STUB_NM_EXT << EXPORT_HEADER)
       end
 
@@ -214,8 +214,8 @@ module AxciomaPC
         end
         base_projects(%w(ciaox11_ccm_session_stub))
         # add default sources and headers
-        @sources << (recipe.idl_without_ext.collect {|ifs| ((recipe.gen_dir + '/') << ifs << SVNT_F << EXT_CPP) })
-        @headers << (recipe.idl_without_ext.collect {|ifs| ((recipe.gen_dir + '/') << ifs << SVNT_F << EXT_HEADER) })
+        @sources << (recipe.idl_without_ext.collect { |ifs| ((recipe.gen_dir + '/') << ifs << SVNT_F << EXT_CPP) })
+        @headers << (recipe.idl_without_ext.collect { |ifs| ((recipe.gen_dir + '/') << ifs << SVNT_F << EXT_HEADER) })
         @headers << ((recipe.gen_dir + '/') << recipe.export_name << SVNT_NM_EXT << EXPORT_HEADER)
       end
 

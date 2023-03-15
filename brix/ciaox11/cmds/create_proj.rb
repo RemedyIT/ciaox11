@@ -25,12 +25,12 @@ module BRIX11
         optparser.banner = "#{DESC}\n\n" +
                            "Usage: #{options[:script_name]} apc prepare [options] [-- [mwc_options]]\n\n"
         optparser.on('-e', '--enable', '=FEATURE',
-                     'Enable feature(s). If specifying more than 1 separate by \',\'') {|v|
+                     'Enable feature(s). If specifying more than 1 separate by \',\'') { |v|
                         options[:axpcreate][:features] ||= {};
                         v.split(',').each { |f| options[:axpcreate][:features][f] = 1 }
                      }
         optparser.on('-d', '--disable', '=FEATURE',
-                     'Disable feature(s). If specifying more than 1 separate by \',\'') {|v|
+                     'Disable feature(s). If specifying more than 1 separate by \',\'') { |v|
                         options[:axpcreate][:features] ||= {};
                         v.split(',').each { |f| options[:axpcreate][:features][f] = 0 }
                      }

@@ -42,17 +42,17 @@ module AxciomaPC
         base_projects(%w(ciaox11_ami4ccm_impl ciaox11_executor))
         project_dependencies << "#{mpc_id}_amic_conn_gen"
         # add default sources and headers
-        @sources.concat(recipe.idl_without_ext.collect {|ifs| ((recipe.gen_dir + '/') << ifs << AC << EXEC_F << EXT_CPP) })
-        @sources.concat(recipe.idl_without_ext.collect {|ifs| ((recipe.gen_dir + '/') << ifs << AC << SVNT_F << EXT_CPP) })
-        @sources.concat(recipe.idl_without_ext.collect {|ifs| ((recipe.gen_dir + '/') << ifs << AC << LEM_STUB_F << EXT_CPP) })
-        @sources.concat(recipe.idl_without_ext.collect {|ifs| ((recipe.gen_dir + '/') << ifs << 'A' << LEM_STUB_F << EXT_CPP) })
-        @sources.concat(recipe.idl_without_ext.collect {|ifs| ((recipe.gen_dir + '/') << ifs << 'Ami' << STUB_F << EXT_CPP) })
+        @sources.concat(recipe.idl_without_ext.collect { |ifs| ((recipe.gen_dir + '/') << ifs << AC << EXEC_F << EXT_CPP) })
+        @sources.concat(recipe.idl_without_ext.collect { |ifs| ((recipe.gen_dir + '/') << ifs << AC << SVNT_F << EXT_CPP) })
+        @sources.concat(recipe.idl_without_ext.collect { |ifs| ((recipe.gen_dir + '/') << ifs << AC << LEM_STUB_F << EXT_CPP) })
+        @sources.concat(recipe.idl_without_ext.collect { |ifs| ((recipe.gen_dir + '/') << ifs << 'A' << LEM_STUB_F << EXT_CPP) })
+        @sources.concat(recipe.idl_without_ext.collect { |ifs| ((recipe.gen_dir + '/') << ifs << 'Ami' << STUB_F << EXT_CPP) })
 
-        @headers.concat(recipe.idl_without_ext.collect {|ifs| ((recipe.gen_dir + '/') << ifs << AC << EXEC_F << EXT_HEADER) })
-        @headers.concat(recipe.idl_without_ext.collect {|ifs| ((recipe.gen_dir + '/') << ifs << AC << SVNT_F << EXT_HEADER) })
-        @headers.concat(recipe.idl_without_ext.collect {|ifs| ((recipe.gen_dir + '/') << ifs << AC << LEM_STUB_F << EXT_HEADER) })
-        @headers.concat(recipe.idl_without_ext.collect {|ifs| ((recipe.gen_dir + '/') << ifs << 'A' << LEM_STUB_F << EXT_HEADER) })
-        @headers.concat(recipe.idl_without_ext.collect {|ifs| ((recipe.gen_dir + '/') << ifs << 'Ami' << STUB_F << EXT_HEADER) })
+        @headers.concat(recipe.idl_without_ext.collect { |ifs| ((recipe.gen_dir + '/') << ifs << AC << EXEC_F << EXT_HEADER) })
+        @headers.concat(recipe.idl_without_ext.collect { |ifs| ((recipe.gen_dir + '/') << ifs << AC << SVNT_F << EXT_HEADER) })
+        @headers.concat(recipe.idl_without_ext.collect { |ifs| ((recipe.gen_dir + '/') << ifs << AC << LEM_STUB_F << EXT_HEADER) })
+        @headers.concat(recipe.idl_without_ext.collect { |ifs| ((recipe.gen_dir + '/') << ifs << 'A' << LEM_STUB_F << EXT_HEADER) })
+        @headers.concat(recipe.idl_without_ext.collect { |ifs| ((recipe.gen_dir + '/') << ifs << 'Ami' << STUB_F << EXT_HEADER) })
       end
 
       def template_path

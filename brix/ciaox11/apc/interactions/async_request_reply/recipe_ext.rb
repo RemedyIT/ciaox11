@@ -35,7 +35,7 @@ module AxciomaPC
     module ComponentExtension
 
       def needs_ami?
-        @idl_files.each_value.any? {|fidl| fidl.properties[:has_ami4ccm_receptacle] == true }
+        @idl_files.each_value.any? { |fidl| fidl.properties[:has_ami4ccm_receptacle] == true }
       end
 
       def setup_comp_gen_ami(project_dependencies)

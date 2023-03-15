@@ -21,7 +21,7 @@ module BRIX11
             # an MPC build project dir should contain an .mpc file itself
             # OR it's subdirectories must contain .mpc files
             # the root should *not* contain an aprc file
-            Dir.glob(File.join(dir, 'aprc')).empty? && Dir.glob(File.join(dir, '**', '*.mpc')).any? {|p| File.file?(p)}
+            Dir.glob(File.join(dir, 'aprc')).empty? && Dir.glob(File.join(dir, '**', '*.mpc')).any? { |p| File.file?(p) }
           end
         end
 

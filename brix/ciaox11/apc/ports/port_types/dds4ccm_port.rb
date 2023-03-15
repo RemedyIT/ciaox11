@@ -157,17 +157,17 @@ module AxciomaPC
           BRIX11.log(3, '[%s] process_project_dependencies %s', self, fidl)
           inc_fidl = project.idl_files[fidl.full_path]
           rcp = inc_fidl.recipes.first
-          rcp.get_dependencies(inc_fidl, [:sev].concat(middleware.collect {|m| :"dds4ccm_#{m}" }), project_dependencies)
+          rcp.get_dependencies(inc_fidl, [:sev].concat(middleware.collect { |m| :"dds4ccm_#{m}" }), project_dependencies)
 
           fidl.includes.each do |ifidl|
             if ifidl.is_member?
               rcp = ifidl.recipes.first
-              rcp.get_dependencies(ifidl, [:sev].concat(middleware.collect {|m| :"dds4ccm_#{m}" }), project_dependencies)
+              rcp.get_dependencies(ifidl, [:sev].concat(middleware.collect { |m| :"dds4ccm_#{m}" }), project_dependencies)
             end
           end
         end
         inc_fidl = project.idl_files[@interface_recipe.interface_idl_path]
-        @interface_recipe.get_dependencies(inc_fidl, [:sev].concat(middleware.collect {|m| :"dds4ccm_#{m}" }), project_dependencies)
+        @interface_recipe.get_dependencies(inc_fidl, [:sev].concat(middleware.collect { |m| :"dds4ccm_#{m}" }), project_dependencies)
 
         BRIX11.log(3, '[%s] process_project_dependencies inc_fidl: %s %s', self, inc_fidl, project_dependencies)
 

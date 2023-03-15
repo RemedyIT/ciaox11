@@ -73,7 +73,7 @@ module BRIX11
 
     end # Collection.configure
 
-    Dir.glob(File.join(ROOT, 'cmds', '*.rb')).each { |p| require "brix/ciaox11/cmds/#{File.basename(p)}"}
+    Dir.glob(File.join(ROOT, 'cmds', '*.rb')).each { |p| require "brix/ciaox11/cmds/#{File.basename(p)}" }
   end # CIAOX11
 
 end # BRIX11

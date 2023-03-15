@@ -28,7 +28,7 @@ module AxciomaPC
 
       # add IDL include paths for all recipes in the project
       def idl_includes(*paths)
-        @project.idl_includes << paths.flatten.collect {|ip| File.expand_path(ip, @project.root_path)}
+        @project.idl_includes << paths.flatten.collect { |ip| File.expand_path(ip, @project.root_path) }
       end
 
       # set the default library output path for the project
@@ -39,18 +39,18 @@ module AxciomaPC
       # add common C++ compiler include paths for the project
       def includes(*dirs)
         # resolve embedded environment variable references
-        solved_dirs = dirs.flatten.collect  {|dir|  Util::path_without_env(dir) }
+        solved_dirs = dirs.flatten.collect  { |dir|  Util::path_without_env(dir) }
 
-        @project.include_dirs << solved_dirs.flatten.collect {|dir| File.expand_path(dir, @project.root_path) }
+        @project.include_dirs << solved_dirs.flatten.collect { |dir| File.expand_path(dir, @project.root_path) }
         @project.include_dirs
       end
 
       # add common library search paths for the project
       def libpaths(*paths)
         # resolve environment variable references
-        solved_paths = paths.flatten.collect  {|path|  Util::path_without_env(path) }
+        solved_paths = paths.flatten.collect  { |path|  Util::path_without_env(path) }
 
-        @project.lib_paths << solved_paths.flatten.collect {|p| File.expand_path(p, @project.root_path) }
+        @project.lib_paths << solved_paths.flatten.collect { |p| File.expand_path(p, @project.root_path) }
       end
 
       # add common link libraries for the project
@@ -172,7 +172,7 @@ module AxciomaPC
     end
 
     def idl_includes(incs = nil)
-      @idl_includes.assign(incs.collect {|ip| File.expand_path(ip, root_path)}) if incs
+      @idl_includes.assign(incs.collect { |ip| File.expand_path(ip, root_path) }) if incs
       @idl_includes
     end
 
@@ -339,7 +339,7 @@ module AxciomaPC
 
     # get all IDL filepaths of IDL files generated from recipes
     def generated_idl
-      @idl_files.select {|path, fidl| fidl.is_generated? }.keys
+      @idl_files.select { |path, fidl| fidl.is_generated? }.keys
     end
 
     # registry of known recipe files
@@ -376,7 +376,7 @@ module AxciomaPC
 
     # match feature requirements
     def check_features(*required_features)
-      required_features.all? {|rf| features[rf.to_sym] }
+      required_features.all? { |rf| features[rf.to_sym] }
     end
 
     def to_s

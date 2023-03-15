@@ -40,15 +40,15 @@ module AxciomaPC
       end
 
       def handle_interaction_setup(recipe, interaction_type, fidl)
-        interaction_handlers[interaction_type].each {|ih| ih.setup_data(recipe, fidl) } if interaction_handlers.has_key?(interaction_type)
+        interaction_handlers[interaction_type].each { |ih| ih.setup_data(recipe, fidl) } if interaction_handlers.has_key?(interaction_type)
       end
 
       def handle_interaction_dependencies(recipe, interaction_type, project_dependencies)
-        interaction_handlers[interaction_type].each {|ih| ih.process_data_dependencies(recipe, project_dependencies) } if interaction_handlers.has_key?(interaction_type)
+        interaction_handlers[interaction_type].each { |ih| ih.process_data_dependencies(recipe, project_dependencies) } if interaction_handlers.has_key?(interaction_type)
       end
 
       def get_interaction_dependencies(recipe, interaction_type, idl_prj_dependencies, project_dependencies)
-        interaction_handlers[interaction_type].each {|ih| ih.get_data_dependencies(recipe, idl_prj_dependencies, project_dependencies) } if interaction_handlers.has_key?(interaction_type)
+        interaction_handlers[interaction_type].each { |ih| ih.get_data_dependencies(recipe, idl_prj_dependencies, project_dependencies) } if interaction_handlers.has_key?(interaction_type)
       end
     end
 

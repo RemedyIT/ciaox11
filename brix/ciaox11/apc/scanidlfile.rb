@@ -120,10 +120,10 @@ module AxciomaPC
       # @ridl_opts[:xincludepaths].concat(@recipe.recipe_idl_includes.collect {|inc| inc.end_with?('/', '\\') ? inc : inc+'/' })
 
       # user defined project includes
-      @ridl_opts[:xincludepaths].concat(@recipe.project.idl_includes.collect {|inc| inc.end_with?('/', '\\') ? inc : inc + '/' })
+      @ridl_opts[:xincludepaths].concat(@recipe.project.idl_includes.collect { |inc| inc.end_with?('/', '\\') ? inc : inc + '/' })
 
       # user defined recipe includes
-      @ridl_opts[:xincludepaths].concat(@recipe.idl_includes.collect {|inc| inc.end_with?('/', '\\') ? inc : inc + '/' })
+      @ridl_opts[:xincludepaths].concat(@recipe.idl_includes.collect { |inc| inc.end_with?('/', '\\') ? inc : inc + '/' })
     end
 
     def scan_idl_file(idl_file)
@@ -312,7 +312,7 @@ module IDL
           idlfile = project.idl_files[fpinc]
           if idlfile
             @includepaths.concat(idlfile.properties[:includepaths]) if idlfile.properties[:includepaths]
-            idlfile.properties[:macros].each {|k, v| @defined[k] = v } if idlfile.properties[:macros]
+            idlfile.properties[:macros].each { |k, v| @defined[k] = v } if idlfile.properties[:macros]
           end
         end
       else
@@ -327,7 +327,7 @@ module IDL
             fpinc = idlfile.full_path
             # check for additionally required include paths and/or macros
             @includepaths.concat(idlfile.properties[:includepaths]) if idlfile.properties[:includepaths]
-            idlfile.properties[:macros].each {|k, v| @defined[k] = v } if idlfile.properties[:macros]
+            idlfile.properties[:macros].each { |k, v| @defined[k] = v } if idlfile.properties[:macros]
           end
         end
       end

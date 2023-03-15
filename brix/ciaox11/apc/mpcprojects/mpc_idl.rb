@@ -102,7 +102,7 @@ module AxciomaPC
         DEFAULTS[type].each do |k, v|
           case k
           when :auto_dependencies
-            v.each {|adp| project_dependencies << "#{mpc_id}_#{adp}" }
+            v.each { |adp| project_dependencies << "#{mpc_id}_#{adp}" }
           else
             self.send(k, v)
           end
@@ -161,7 +161,7 @@ module AxciomaPC
       end
 
       def includes_flags
-        recipe.get_relative_paths(includes).collect {|idir| "-I#{idir}"}.join(' ')
+        recipe.get_relative_paths(includes).collect { |idir| "-I#{idir}" }.join(' ')
       end
 
       def idl_extras(extras=nil)
@@ -192,11 +192,11 @@ module AxciomaPC
             idl_sections << OpenStruct.new(idl_flags_plus: Util::Flags.new,
                                            sources: [idl_sources.shift])
             # add all '-GxhXXX' flags
-            idlflags.each {|flag| idl_sections.last.idl_flags_plus.add(flag) if /-Gxh/ =~ flag }
+            idlflags.each { |flag| idl_sections.last.idl_flags_plus.add(flag) if /-Gxh/ =~ flag }
             # add '-Xxxx' flags for all '-GxhXXX' flags to other idl section (except for '-Gxh')
-            idl_sections.last.idl_flags_plus.each {|flag| other_idl_flags.add(flag.sub(/-Gxh/, '-X')) if flag != '-Gxh' }
+            idl_sections.last.idl_flags_plus.each { |flag| other_idl_flags.add(flag.sub(/-Gxh/, '-X')) if flag != '-Gxh' }
             # Remove all '-GxhXXX' flags from main flags list
-            idl_sections.last.idl_flags_plus.each {|flag| idlflags.delete(flag) }
+            idl_sections.last.idl_flags_plus.each { |flag| idlflags.delete(flag) }
           end
           # add idl section with remaining IDL source files without any flags
           idl_sections << OpenStruct.new(idl_flags_plus: other_idl_flags,
