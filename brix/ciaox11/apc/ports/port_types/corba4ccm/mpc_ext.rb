@@ -8,7 +8,7 @@
 #--------------------------------------------------------------------
 
 # make sure MPC base definitions are loaded
-require 'brix/ciaox11/apc/mpcfile.rb'
+require 'brix/ciaox11/apc/mpcfile'
 
 module AxciomaPC
   module MPC

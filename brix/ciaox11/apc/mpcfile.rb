@@ -338,6 +338,6 @@ module AxciomaPC
   end # MPC
 end # AxciomaPC
 
-require 'brix/ciaox11/apc/mpcprojects/mpc_compile.rb'
-require 'brix/ciaox11/apc/mpcprojects/mpc_exec.rb'
-require 'brix/ciaox11/apc/mpcprojects/mpc_idl.rb'
+require 'brix/ciaox11/apc/mpcprojects/mpc_compile'
+require 'brix/ciaox11/apc/mpcprojects/mpc_exec'
+require 'brix/ciaox11/apc/mpcprojects/mpc_idl'

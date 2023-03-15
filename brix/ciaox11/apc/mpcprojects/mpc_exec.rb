@@ -7,7 +7,7 @@
 # @copyright Copyright (c) Remedy IT Expertise BV
 #--------------------------------------------------------------------
 require 'pathname'
-require 'brix/ciaox11/apc/mpcprojects/mpc_compile.rb'
+require 'brix/ciaox11/apc/mpcprojects/mpc_compile'
 
 
 module AxciomaPC
