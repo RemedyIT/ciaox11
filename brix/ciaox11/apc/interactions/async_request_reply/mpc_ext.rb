@@ -43,7 +43,7 @@ module AxciomaPC
       end
 
       # overwrite because we can't use  @project_postfix ('_ami')
-      #we must use here AMI4CCM_NM_EXT ('_ami4ccm'), because this is used in the export header generation
+      # we must use here AMI4CCM_NM_EXT ('_ami4ccm'), because this is used in the export header generation
       def dynamic_names
         [(recipe.export_name.upcase + AMI4CCM_NM_EXT.upcase) << STUB_NM_EXT.upcase << '_BUILD_DLL']
       end

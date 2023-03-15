@@ -15,7 +15,7 @@ module AxciomaPC
     # add ami4ccm port specializations
     MPC::IDLProject::DEFAULTS.merge!({
        amic_conn_gen: {
-           #:add_idl_flags => '-Gami4ccm,conn -Gxhsv -Gxhcn -Scc -Scp -Sch ',
+           # :add_idl_flags => '-Gami4ccm,conn -Gxhsv -Gxhcn -Scc -Scp -Sch ',
            export: true,
            base_projects: %w{ciaox11_ami4ccm_conn_all_idl},
            auto_dependencies: %w{ami_lem_gen}
@@ -34,7 +34,7 @@ module AxciomaPC
 
       def initialize(recipe)
         super(:amic_conn, recipe)
-        #Add event. extra sources from recipe
+        # Add event. extra sources from recipe
         @sources.concat recipe.sources
         @headers.concat recipe.headers
         base_projects(%w(ciaox11_ami4ccm_impl ciaox11_executor))

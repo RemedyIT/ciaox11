@@ -184,7 +184,7 @@ module AxciomaPC
         # idl_includes: idl in recipe self, concat with includes given in project root apcrc file
         mpc_obj.includes << idl_includes << project.idl_includes
 
-        #Also needed the gen_dir from the original recipe of the idl_files for the includes
+        # Also needed the gen_dir from the original recipe of the idl_files for the includes
         recipe.idl_files.each do |n, idf|
           org_fidl = project.idl_files[idf.full_path]
           rcp = org_fidl.recipes.first

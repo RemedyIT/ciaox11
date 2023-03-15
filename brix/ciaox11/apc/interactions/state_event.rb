@@ -12,7 +12,7 @@ module AxciomaPC
     module ComponentInteractionHandler
       def self.setup_component(recipe)
         BRIX11.log(3, '[%s|SEV] setup_component', self)
-        #noop
+        # noop
       end
 
       def self.process_component_dependencies(recipe, project_dependencies)
@@ -27,7 +27,7 @@ module AxciomaPC
 
     module DataInteractionHandler
       def self.setup_data(recipe, fidl)
-        #noop
+        # noop
       end
 
       def self.process_data_dependencies(recipe, project_dependencies)
@@ -85,7 +85,7 @@ module AxciomaPC
           # found recipe with derived  *SE.idl"
           intf_idl_file.recipes.first
         else
-          #find recipe file with recipe for #{base_name+'.idl'}
+          # find recipe file with recipe for #{base_name+'.idl'}
           idlmatch = recipe.project.match_idl_files(base_name + '.idl')
           if !idlmatch.empty?
             intf_base_idl_file = idlmatch.find do |fidl|
@@ -97,7 +97,7 @@ module AxciomaPC
                 false
               end
             end
-          #else not found file #{base_name+'.idl'} in project yet
+          # else not found file #{base_name+'.idl'} in project yet
           end
           if intf_base_idl_file
             rec_base = intf_base_idl_file.recipes.first
@@ -135,7 +135,7 @@ module AxciomaPC
         port = ComponentRecipe::PortDefinition.new(name, comp)
         port.set_type 'provides'
         port.set_intf_name 'CCM_DDS::ConnectorStatusListener'
-        #check if already a ConnectorStatusListener exist for this InterFace
+        # check if already a ConnectorStatusListener exist for this InterFace
         if !comp.port_exist?(port)
           comp.add_port(port)
         end

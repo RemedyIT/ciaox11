@@ -190,7 +190,7 @@ module AxciomaPC
         @headers << ((recipe.gen_dir + '/') << recipe.export_name << LEM_STUB_NM_EXT << EXPORT_HEADER)
       end
 
-      #overwrite because we must use here always the LEM_STUB_NM_EXT
+      # overwrite because we must use here always the LEM_STUB_NM_EXT
       def dynamic_names
         [recipe.export_name.upcase << LEM_STUB_NM_EXT.upcase + '_BUILD_DLL']
       end
@@ -222,4 +222,4 @@ module AxciomaPC
       end
     end
   end # MPC
-end #AxciomaPC
+end # AxciomaPC

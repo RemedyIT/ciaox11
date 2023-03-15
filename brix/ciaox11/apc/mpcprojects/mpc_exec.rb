@@ -17,7 +17,7 @@ module AxciomaPC
         super(:exec, recipe)
         project_dependencies << "#{mpc_id}#{COMP_LEM_NM_EXT}" unless combined
         link_libs << "#{recipe.shared_name}#{COMP_LEM_NM_EXT}" unless combined
-        #Add event. extra sources from recipe
+        # Add event. extra sources from recipe
         @sources << recipe.sources
         @headers << recipe.headers
         @sources << (recipe.idl_without_ext.collect { |ifs| ((ifs + EXEC_F) << EXT_CPP) })
@@ -78,4 +78,4 @@ module AxciomaPC
       end
     end
   end # MPC
-end #AxciomaPC
+end # AxciomaPC

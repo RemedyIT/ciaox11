@@ -71,11 +71,11 @@ module BRIX11
         # Finally delete project object
         AxciomaPC::Project.clean_project(project)
 
-         #return always true, so in case of multiple brix commands, the next command is invoked
+         # return always true, so in case of multiple brix commands, the next command is invoked
          true
       end
       Command.register('apc|axp:clean', DESC, CIAOX11::RemoveProject)
 
-    end #RemoveProject
+    end # RemoveProject
   end # CIAOX11
 end # BRIX11

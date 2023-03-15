@@ -17,7 +17,7 @@ module AxciomaPC
         super
       end
 
-      #not used yet
+      # not used yet
     end
 
     CONFIGURATOR = DataConfigurator
@@ -71,7 +71,7 @@ module AxciomaPC
       unless mpc_file[:idl_gen]
         mpc_idl_obj = MPC::IDLProject.new(:idl_gen, self)
         mpc_file.add_mpc_project(mpc_idl_obj)
-        #set idl_includes set in recipe and set in  project file
+        # set idl_includes set in recipe and set in  project file
         mpc_idl_obj.includes << idl_includes << project.idl_includes
 
         mpc_stub_obj = MPC::StubProject.new(self)

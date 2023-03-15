@@ -13,9 +13,9 @@ module AxciomaPC
 
     class Base_Projects
       attr_reader :plus , :min, :default
-      #min contains the projects that has to be removed from the final list
-      #plus contains the projects that has to be added to the final list
-      #default contains the projects that will replace the default projects
+      # min contains the projects that has to be removed from the final list
+      # plus contains the projects that has to be added to the final list
+      # default contains the projects that will replace the default projects
 
       def initialize(defbases = nil)
         @plus = Util::UniqueStringList.new(:ws)
@@ -89,14 +89,14 @@ module AxciomaPC
       end
 
       def includes(*dirs)
-        #Solve event. used environment variables
+        # Solve event. used environment variables
         solved_dirs = dirs.flatten.collect  { |dir|  Util::path_without_env(dir) }
         @recipe.include_dirs << solved_dirs.flatten.collect { |dir| File.expand_path(dir, @recipe.recipe_file.path) }
         @recipe.include_dirs
       end
 
       def libpaths(*paths)
-        #Solve event. used environment variables
+        # Solve event. used environment variables
         solved_paths = paths.flatten.collect  { |path|  Util::path_without_env(path) }
         @recipe.lib_paths << solved_paths.flatten.collect { |p| File.expand_path(p, @recipe.recipe_file.path) }
       end
@@ -423,7 +423,7 @@ module AxciomaPC
     def setup_exec_lib(project_dependencies)
       mpc_obj = mpc_file[:exec]
       mpc_obj.add_dependencies(project_dependencies, :lem_stub, false)
-      #include paths, lib_paths and libs given in recipe:
+      # include paths, lib_paths and libs given in recipe:
       mpc_obj.includes << include_dirs << project.include_dirs
       mpc_obj.lib_paths << lib_paths << project.lib_paths
       mpc_obj.link_libs << libs + project.libs
@@ -560,7 +560,7 @@ module AxciomaPC
           type = a.idltype.resolved_type
           check_for_anytypecode_include(type)
         end
-      end  #each attribute
+      end  # each attribute
     end
     private :check_attributes_for_anytypecode
 

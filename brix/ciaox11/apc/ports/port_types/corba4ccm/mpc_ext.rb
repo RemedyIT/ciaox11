@@ -28,7 +28,7 @@ module AxciomaPC
       def initialize(recipe)
         super(:corba_conn, recipe)
         project_dependencies << (mpc_id + '_corba_conn_gen')
-        #Add event. extra sources from recipe
+        # Add event. extra sources from recipe
         @sources.concat recipe.sources
         @headers.concat recipe.headers
         @sources.concat(recipe.idl_without_ext.collect { |ifs| ((recipe.gen_dir + '/') << ifs << CC << EXEC_F << EXT_CPP) })

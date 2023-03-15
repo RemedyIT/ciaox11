@@ -12,12 +12,12 @@ module AxciomaPC
     module ComponentInteractionHandler
       def self.setup_component(recipe)
         BRIX11.log(4, '[%s|SRR] setup_component', self)
-        #noop
+        # noop
       end
 
       def self.process_component_dependencies(recipe, project_dependencies)
         BRIX11.log(4, '[%s|SRR] process_component_dependencies', self)
-        #noop
+        # noop
       end
     end
 
@@ -67,12 +67,12 @@ module AxciomaPC
   class ComponentRecipe::PortDefinition
 
     class Configurator
-      #srr
+      # srr
       def uses(itf_name = nil, multiple = nil)
         @port.uses(itf_name, multiple)
       end
 
-      #facet
+      # facet
       def provides(itf_name = nil)
         @port.provides(itf_name)
       end

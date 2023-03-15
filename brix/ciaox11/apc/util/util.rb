@@ -16,10 +16,10 @@ module AxciomaPC
     end
 
     def self.path_without_env (path)
-      #Find each $(...) in path with gsub and substitute with the solved environment variable
-      #use match.match()[1] to get the value between $( and ) , for using in ENV .
+      # Find each $(...) in path with gsub and substitute with the solved environment variable
+      # use match.match()[1] to get the value between $( and ) , for using in ENV .
    #   new_path = path.gsub(/\$\((.*?)\)/) {|match| ENV[match.match(/\$\((.*?)\)/)[1]]}
-      #Use the brix11 environment variable if set, else use the user set environment variable
+      # Use the brix11 environment variable if set, else use the user set environment variable
       new_path = path.gsub(/\$\((.*?)\)/) { |match| BRIX11::Exec.get_run_environment(match.match(/\$\((.*?)\)/)[1], true) }
     end
   end

@@ -12,7 +12,7 @@ module AxciomaPC
     module ComponentInteractionHandler
       def self.setup_component(recipe)
         BRIX11.log(4, '[%s|ARR] setup_component', self)
-        #noop
+        # noop
       end
 
       def self.process_component_dependencies(recipe, project_dependencies)
@@ -118,7 +118,7 @@ module AxciomaPC
   class ComponentRecipe::PortDefinition
 
     class Configurator
-      #arr
+      # arr
       def sends(itf_name = nil, multiple = nil)
         @port.sends(itf_name, multiple)
       end

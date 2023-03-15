@@ -341,7 +341,7 @@ module AxciomaPC
 
     end # Project
   end # MPC
-end #AxciomaPC
+end # AxciomaPC
 
 require 'brix/ciaox11/apc/mpcprojects/mpc_compile.rb'
 require 'brix/ciaox11/apc/mpcprojects/mpc_exec.rb'

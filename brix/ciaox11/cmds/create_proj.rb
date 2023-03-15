@@ -50,11 +50,11 @@ module BRIX11
         end
 
         if !project
-          #give error
+          # give error
           return
         end
 
-        #make the  mpcfiles
+        # make the  mpcfiles
         project.prepare
 
         if options[:verbose] > 5
@@ -69,7 +69,7 @@ module BRIX11
           opts[:genbuild][:features] ||= {}
           opts[:genbuild][:features].merge!(opts[:axpcreate][:features] || {})
 
-          #all arguments behind '--' , including '--', must be passed to gen build command unless it is another brix command
+          # all arguments behind '--' , including '--', must be passed to gen build command unless it is another brix command
           cmdargv = []
           if !argv.empty? && argv.first == '--'
             while !argv.empty?
@@ -84,8 +84,8 @@ module BRIX11
         end
 
         if !options[:axpcreate][:mpc]
-          #throw away temporarily mpc files
-          #remove mpc files
+          # throw away temporarily mpc files
+          # remove mpc files
           AxciomaPC::MPC.remove(project)
         end
 
@@ -94,6 +94,6 @@ module BRIX11
 
       Command.register('apc|axp:prepare', DESC, CIAOX11::CreateProject)
 
-    end #CreateProject
+    end # CreateProject
   end # CIAOX11
 end # BRIX11

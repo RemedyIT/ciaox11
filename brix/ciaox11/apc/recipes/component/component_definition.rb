@@ -20,12 +20,12 @@ module AxciomaPC
         def port(port = nil, type = nil, &_block)
           if block_given?
             raise "Do not use port definition argument (#{type}) when using block form." unless type.nil?
-            #example:  intf.port 'run_my_bar_foo_prov' do |p|
+            # example:  intf.port 'run_my_bar_foo_prov' do |p|
             #          p.provides 'Foo::MyFoo'
             #          end
             @comp.port(port, &_block)
           else
-            #example:  intf.port 'run_my_bar_foo_prov' , provides: 'Foo::MyFoo'
+            # example:  intf.port 'run_my_bar_foo_prov' , provides: 'Foo::MyFoo'
             @comp.port(port, type)
           end
         end

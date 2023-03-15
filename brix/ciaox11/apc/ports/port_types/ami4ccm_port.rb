@@ -48,7 +48,7 @@ module AxciomaPC
         recipe.idl_files.each do |_, fidl|
           inc_fidl = project.idl_files[fidl.full_path]
           rcp = inc_fidl.recipes.first
-          #set the interaction type
+          # set the interaction type
           rcp.setup_project_interaction(inc_fidl, :ami4ccm)
         end
       end
@@ -107,7 +107,7 @@ module AxciomaPC
 
         mpc_obj.add_dependencies(project_dependencies, :lem_gen)
 
-        #Also needed the gen_dir from the original recipe of the idl_files for the includes
+        # Also needed the gen_dir from the original recipe of the idl_files for the includes
         recipe.idl_files.each do |n, idf|
           org_fidl = project.idl_files[idf.full_path]
           rcp = org_fidl.recipes.first

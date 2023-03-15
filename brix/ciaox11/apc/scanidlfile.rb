@@ -95,15 +95,15 @@ module AxciomaPC
         @recipe.check_idl_node(self, node, delegator)
       end
 
-    end #IDLScanner
+    end # IDLScanner
 
     def initialize(recipe)
       @recipe = recipe
       @ridl_opts = {
           client_stubs: false,
           svnt_skeletons: false,
-          xincludepaths: [],  #quoted includes
-          includepaths: []    #all includes ("" and <>)
+          xincludepaths: [],  # quoted includes
+          includepaths: []    # all includes ("" and <>)
       }
 
       # include system paths
@@ -291,7 +291,7 @@ module AxciomaPC
     end
 
   end
-end #AxciomaPC
+end # AxciomaPC
 
 # IDL::Scanner patch to provide support for including auto-generated IDL files
 #

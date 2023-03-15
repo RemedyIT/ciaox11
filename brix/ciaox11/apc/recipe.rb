@@ -98,7 +98,7 @@ module AxciomaPC
     def clean
       recipes.each do |rcp|
         if !rcp.gen_dir || rcp.gen_dir == '.'
-          #do nothing because the user has indicated as generated_code dir, the same dir as the recipe dir
+          # do nothing because the user has indicated as generated_code dir, the same dir as the recipe dir
         else
           gen_dir_path = File.join(@path, rcp.gen_dir)
           if Dir.exist?(gen_dir_path)
@@ -233,7 +233,7 @@ module AxciomaPC
     end
 
     def initialize(rcpfile, recipe_id)
-      #defaults
+      # defaults
       @recipe_file = rcpfile
       @recipe_id = recipe_id.to_s
       @enabled = true # recipes are enabled by default; only disabled by (optional) feature checks
@@ -535,7 +535,7 @@ module AxciomaPC
 
     # called to setup the MPC projects for this recipe
     def setup_projects
-      #noop
+      # noop
     end
 
     # called from #setup_projects of a component or connector recipe
@@ -543,7 +543,7 @@ module AxciomaPC
     # to handle interaction specific setup of the MPC projects for this
     # recipe and register project dependencies for the specified IDL file
     def setup_project_interaction(_fidl, *_interaction_types)
-      #noop
+      # noop
     end
 
     #================================================================

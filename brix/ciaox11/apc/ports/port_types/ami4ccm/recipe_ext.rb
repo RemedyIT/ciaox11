@@ -37,7 +37,7 @@ module AxciomaPC
         else
           mpc_idl_obj = MPC::IDLProject.new(:ami4ccm_lem_idl_gen, self)
           mpc_file.add_mpc_project(mpc_idl_obj)
-          #set idl_includes set in recipe and set in  project file
+          # set idl_includes set in recipe and set in  project file
           mpc_idl_obj.includes << idl_includes << project.idl_includes
 
           mpc_idl_stubs_obj = MPC::IDLProject.new(:ami4ccm_lem_gen, self)
