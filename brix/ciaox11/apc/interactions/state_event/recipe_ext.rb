@@ -10,12 +10,9 @@
 require 'fileutils'
 
 module AxciomaPC
-
   module SEV
-
     # Extension module for DataIdlRecipe
     module DataIDLExtension
-
       class << self
         # list of possible DDS IDL generation projects (vendor specific)
         def dds_idl_gen_prj
@@ -34,7 +31,6 @@ module AxciomaPC
       def get_sev_data_dependencies(project_dependencies, idl_prj_dependencies)
         project_dependencies.merge(idl_prj_dependencies, :stub)
       end
-
     end # DataIDLExtension
 
     AxciomaPC::DataIdlRecipe.send(:include, DataIDLExtension)
@@ -404,7 +400,6 @@ module AxciomaPC
 
     # Extension module for ComponentRecipe
     module ComponentExtension
-
       def setup_comp_gen_sev(project_dependencies)
         mpc_obj = mpc_file[:comp_gen]
         # add SEV base project
@@ -447,11 +442,8 @@ module AxciomaPC
         mpc_obj.add_dependencies(project_dependencies, :dds_lem_stub)
         mpc_obj.add_dependencies(project_dependencies, :stub)
       end
-
     end
 
     AxciomaPC::ComponentRecipe.send(:include, ComponentExtension)
-
   end # SEV
-
 end

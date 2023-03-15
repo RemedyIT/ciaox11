@@ -24,7 +24,6 @@ module AxciomaPC
   end
 
   APC_ROOT = self.root_path
-
 end # AxciomaPC
 
 Dir.glob(File.join(AxciomaPC::APC_ROOT, '*.rb')).each do |fnm|

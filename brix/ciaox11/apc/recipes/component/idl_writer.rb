@@ -8,7 +8,6 @@
 #--------------------------------------------------------------------
 
 module AxciomaPC
-
   class ComponentIDLWriter < BRIX11::Generate::Writer
 
     def initialize(output, options)
@@ -60,5 +59,4 @@ module AxciomaPC
     end
 
   end # ComponentIDLWriter
-
 end

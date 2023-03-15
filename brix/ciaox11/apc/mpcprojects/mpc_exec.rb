@@ -11,9 +11,7 @@ require 'brix/ciaox11/apc/mpcprojects/mpc_compile.rb'
 
 
 module AxciomaPC
-
   module MPC
-
     class ExecProject < MPC::CompileProject
       def initialize(recipe, combined=false)
         super(:exec, recipe)
@@ -79,7 +77,5 @@ module AxciomaPC
         project_dependencies << "#{mpc_id}#{STUB_NM_EXT}"
       end
     end
-
   end # MPC
-
 end #AxciomaPC

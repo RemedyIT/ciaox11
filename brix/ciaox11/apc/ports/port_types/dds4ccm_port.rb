@@ -8,9 +8,7 @@
 #--------------------------------------------------------------------
 
 module AxciomaPC
-
   module DDS4CCM
-
     class Port < PortType
 
       class Configurator < PortType::Configurator
@@ -202,11 +200,9 @@ module AxciomaPC
       end
 
     end # Port
-
   end # DDS4CCM
 
   ConnectorRecipe.register_port_type(:dds4ccm, DDS4CCM::Port)
-
 end
 
 # load specializations and extensions

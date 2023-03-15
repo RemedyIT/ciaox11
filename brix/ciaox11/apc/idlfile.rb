@@ -9,7 +9,6 @@
 require 'set'
 
 module AxciomaPC
-
   class IDLFile
 
     @@nil_creator = Class.new do
@@ -140,6 +139,4 @@ module AxciomaPC
       out.puts (' ')
     end
   end
-
-
 end #AxciomaPC

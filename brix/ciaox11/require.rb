@@ -8,9 +8,7 @@
 #--------------------------------------------------------------------
 
 module BRIX11
-
   module CIAOX11
-
     ROOT = File.dirname(__FILE__)
     TITLE = 'CIAOX11'.freeze
     DESC = 'BRIX11 CIAOX11 brix collection'.freeze
@@ -75,5 +73,4 @@ module BRIX11
 
     Dir.glob(File.join(ROOT, 'cmds', '*.rb')).each { |p| require "brix/ciaox11/cmds/#{File.basename(p)}" }
   end # CIAOX11
-
 end # BRIX11

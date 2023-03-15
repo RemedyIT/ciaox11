@@ -10,7 +10,6 @@ require 'pathname'
 require 'set'
 
 module AxciomaPC
-
   class DataIdlRecipe < Recipe
 
     class DataConfigurator < Recipe::Configurator
@@ -257,5 +256,4 @@ module AxciomaPC
   end
 
   Recipe.register_recipe(:base, DataIdlRecipe)
-
 end

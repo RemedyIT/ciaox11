@@ -10,9 +10,7 @@ require 'pathname'
 require 'ostruct'
 
 module AxciomaPC
-
   module MPC
-
     # class to efficiently keep track of IDL compiler flags
     # that need to be added (+=) or removed (-=) in MPC
     # uses Util::Flags to prevent duplicates
@@ -225,7 +223,5 @@ module AxciomaPC
       end
 
     end # IDLProject
-
   end # MPC
-
 end # AxciomaPC

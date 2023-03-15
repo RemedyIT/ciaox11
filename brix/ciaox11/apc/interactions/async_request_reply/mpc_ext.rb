@@ -11,9 +11,7 @@
 require 'brix/ciaox11/apc/mpcfile.rb'
 
 module AxciomaPC
-
   module MPC
-
     # add  asynch request and reply MPC IDL project specializations
     MPC::IDLProject::DEFAULTS.merge!({
       ami4ccm_lem_idl_gen: {
@@ -59,7 +57,5 @@ module AxciomaPC
       end
 
     end
-
   end # MPC
-
 end # AxciomaPC

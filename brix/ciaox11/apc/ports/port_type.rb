@@ -7,7 +7,6 @@
 # @copyright Copyright (c) Remedy IT Expertise BV
 #--------------------------------------------------------------------
 module AxciomaPC
-
   class PortType
 
     class Configurator
@@ -62,7 +61,6 @@ module AxciomaPC
     end
 
   end # PortType
-
 end # AxciomaPC
 
 # load all interaction pattern port type implementations

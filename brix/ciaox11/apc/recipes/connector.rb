@@ -8,7 +8,6 @@
 #--------------------------------------------------------------------
 
 module AxciomaPC
-
   class ConnectorRecipe < Recipe
 
     class << self
@@ -125,5 +124,4 @@ module AxciomaPC
   end
 
   Recipe.register_recipe(:connector, ConnectorRecipe)
-
 end

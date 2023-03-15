@@ -8,11 +8,8 @@
 #--------------------------------------------------------------------
 
 module AxciomaPC
-
   module SRR
-
     module ComponentInteractionHandler
-
       def self.setup_component(recipe)
         BRIX11.log(4, '[%s|SRR] setup_component', self)
         #noop
@@ -22,11 +19,9 @@ module AxciomaPC
         BRIX11.log(4, '[%s|SRR] process_component_dependencies', self)
         #noop
       end
-
     end
 
     module DataInteractionHandler
-
       def self.setup_data(recipe, fidl)
         if fidl.properties[:needs_lem]
           recipe.add_lem_proj(fidl)
@@ -47,9 +42,7 @@ module AxciomaPC
       def self.get_data_dependencies(recipe, idl_prj_dependencies, project_dependencies)
         recipe.get_srr_data_dependencies(project_dependencies, idl_prj_dependencies)
       end
-
     end
-
   end # SRR
 
   ComponentRecipe.register_interaction_handler(:srr, SRR::ComponentInteractionHandler)
@@ -106,7 +99,6 @@ module AxciomaPC
     end
 
   end
-
 end
 
 # load specializations and extensions

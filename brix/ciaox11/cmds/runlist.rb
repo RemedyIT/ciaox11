@@ -10,7 +10,6 @@ require 'brix11/command'
 
 module BRIX11
   module CIAOX11
-
     class RunList < TAOX11::RunList
 
       # setup
@@ -39,6 +38,5 @@ module BRIX11
 
       Command.register('run:list', TAOX11::RunList::DESC, CIAOX11::RunList, true)
     end # RunList
-
   end # CIAOX11
 end # BRIX11

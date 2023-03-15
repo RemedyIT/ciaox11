@@ -9,7 +9,6 @@
 require 'find'
 
 module AxciomaPC
-
   # Represents a BRIX11 APC project
   class Project
 
@@ -392,5 +391,4 @@ module AxciomaPC
     end
 
   end
-
 end

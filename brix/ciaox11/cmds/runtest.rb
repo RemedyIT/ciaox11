@@ -10,7 +10,6 @@ require 'brix11/command'
 
 module BRIX11
   module CIAOX11
-
     class RunTest < TAOX11::RunTest
 
       # setup
@@ -41,6 +40,5 @@ module BRIX11
 
       Command.register('run:test|script', TAOX11::RunTest::DESC, CIAOX11::RunTest, true)
     end # RunTest
-
   end # CIAOX11
 end # BRIX11

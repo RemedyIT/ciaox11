@@ -9,9 +9,7 @@
 require 'set'
 
 module AxciomaPC
-
   module MPC
-
     def self.generate(project)
       options = {}
       BRIX11::GenFile.transaction do
@@ -342,9 +340,7 @@ module AxciomaPC
       protected :add_dependency
 
     end # Project
-
   end # MPC
-
 end #AxciomaPC
 
 require 'brix/ciaox11/apc/mpcprojects/mpc_compile.rb'

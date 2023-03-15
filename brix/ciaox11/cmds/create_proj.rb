@@ -11,7 +11,6 @@ require 'brix/ciaox11/apc/project'
 
 module BRIX11
   module CIAOX11
-
     class CreateProject < Command::Base
       DESC = 'Make project files for AXCIOMA project.'.freeze
 
@@ -96,7 +95,5 @@ module BRIX11
       Command.register('apc|axp:prepare', DESC, CIAOX11::CreateProject)
 
     end #CreateProject
-
   end # CIAOX11
-
 end # BRIX11

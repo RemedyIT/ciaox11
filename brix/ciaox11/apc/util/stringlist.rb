@@ -8,9 +8,7 @@
 #--------------------------------------------------------------------
 
 module AxciomaPC
-
   module Util
-
     class StringList
       include ::Enumerable
 
@@ -158,7 +156,5 @@ module AxciomaPC
         self.class.new(@value.collect { |s| s.dup })
       end
     end # Flags
-
   end # Util
-
 end # AxciomaPC

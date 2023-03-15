@@ -8,7 +8,6 @@
 #--------------------------------------------------------------------
 
 module AxciomaPC
-
   class IDLFileScanner
     class IDLScanner
 
@@ -292,7 +291,6 @@ module AxciomaPC
     end
 
   end
-
 end #AxciomaPC
 
 # IDL::Scanner patch to provide support for including auto-generated IDL files

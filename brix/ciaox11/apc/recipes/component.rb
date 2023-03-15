@@ -9,7 +9,6 @@
 require 'set'
 
 module AxciomaPC
-
   class ComponentRecipe < Recipe
 
     class Base_Projects
@@ -628,7 +627,6 @@ module AxciomaPC
   end
 
   Recipe.register_recipe(:component, ComponentRecipe)
-
 end
 
 # load specializations and extensions

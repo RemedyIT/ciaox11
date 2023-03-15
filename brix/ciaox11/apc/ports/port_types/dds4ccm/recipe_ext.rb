@@ -10,12 +10,9 @@
 require 'fileutils'
 
 module AxciomaPC
-
   module DDS4CCM
-
     # Extension module for DataIdlRecipe
     module DataIDLExtension
-
       def dds_idl_file_path(fidl_name)
         File.join(full_gen_path, File.basename(fidl_name, '.idl') + '_dds.idl')
       end
@@ -42,11 +39,8 @@ module AxciomaPC
                                    :lem_gen, :lem_stub,
                                    *prjtypes)
       end
-
     end # DataIDLExtension
 
     AxciomaPC::DataIdlRecipe.send(:include, DataIDLExtension)
-
   end # DDS4CCM
-
 end

@@ -8,7 +8,6 @@
 #--------------------------------------------------------------------
 
 module AxciomaPC
-
   class ComponentRecipe < Recipe
 
     class ComponentDefinition

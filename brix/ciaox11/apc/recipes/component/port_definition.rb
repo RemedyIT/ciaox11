@@ -8,7 +8,6 @@
 #--------------------------------------------------------------------
 
 module AxciomaPC
-
   class ComponentRecipe < Recipe
 
     class PortDefinition
@@ -142,5 +141,4 @@ module AxciomaPC
 
     end
   end
-
 end

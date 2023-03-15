@@ -9,9 +9,7 @@
 require 'brix/ciaox11/apc/scanidlfile'
 
 module AxciomaPC
-
   module AMI4CCM
-
     class Port < PortType
 
       class Configurator < PortType::Configurator
@@ -137,7 +135,6 @@ module AxciomaPC
     end
 
     module DataInteractionHandler
-
       def self.setup_data(recipe, fidl)
         # lem is needed, but ami4ccm requires corba4ccm, so lem generation
         # is done in Data IDL extension of corba4ccm port
@@ -150,14 +147,11 @@ module AxciomaPC
       def self.get_data_dependencies(recipe, idl_prj_dependencies, project_dependencies)
         recipe.get_ami4ccm_data_dependencies(project_dependencies, idl_prj_dependencies)
       end
-
     end
-
   end
 
   ConnectorRecipe.register_port_type(:ami4ccm, AMI4CCM::Port)
   DataIdlRecipe.register_interaction_handler(:ami4ccm, AMI4CCM::DataInteractionHandler)
-
 end # AMI4CCM
 
 # load specializations and extensions

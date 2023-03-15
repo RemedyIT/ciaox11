@@ -10,7 +10,6 @@ require 'brix11/command'
 
 module BRIX11
   module CIAOX11
-
     class GenerateCompIDL < Command::Base
 
       DESC = 'Generate component idl for CIAOX11 project.'.freeze
@@ -97,6 +96,5 @@ module BRIX11
 
       Command.register('generate:compidl', DESC, CIAOX11::GenerateCompIDL)
     end # GenerateIDL
-
   end # Common
 end # BRIX11

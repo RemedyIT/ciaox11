@@ -11,9 +11,7 @@
 require 'brix/ciaox11/apc/mpcfile.rb'
 
 module AxciomaPC
-
   module MPC
-
     # add State/Event MPC IDL project specializations
     MPC::IDLProject::DEFAULTS.merge!({
        dds_conn_gen: {
@@ -23,7 +21,5 @@ module AxciomaPC
            auto_dependencies: []
        },
     })
-
   end # MPC
-
 end

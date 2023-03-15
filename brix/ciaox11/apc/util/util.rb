@@ -9,9 +9,7 @@
 require 'pathname'
 
 module AxciomaPC
-
   module Util
-
     def self.path_rel_to_path (path, path_rel_to)
       p = Pathname.new(path)
       p.relative_path_from(Pathname.new(path_rel_to))
@@ -24,7 +22,5 @@ module AxciomaPC
       #Use the brix11 environment variable if set, else use the user set environment variable
       new_path = path.gsub(/\$\((.*?)\)/) { |match| BRIX11::Exec.get_run_environment(match.match(/\$\((.*?)\)/)[1], true) }
     end
-
   end
-
 end # AxciomaPC

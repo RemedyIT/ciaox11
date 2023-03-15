@@ -10,7 +10,6 @@ require 'scanidlfile'
 require 'fileutils'
 
 module AxciomaPC
-
   # Represents a recipe file (a file containing 1 or more recipes)
   class RecipeFile
 
@@ -575,7 +574,6 @@ module AxciomaPC
     end
 
   end # Recipe
-
 end # AxciomaPC
 
 # load all recipe specializations

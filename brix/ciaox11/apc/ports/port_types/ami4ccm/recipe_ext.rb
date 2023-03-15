@@ -8,12 +8,9 @@
 #--------------------------------------------------------------------
 
 module AxciomaPC
-
   module AMI4CCM
-
     # Extension module for DataIdlRecipe
     module DataIDLExtension
-
       def process_ami4ccm_data_dependencies(project_dependencies)
         if mpc_proj = mpc_file[:lem_gen]
           mpc_proj.add_dependencies(project_dependencies, :lem_gen)
@@ -72,11 +69,8 @@ module AxciomaPC
           ifidl.interaction_types << :arr
         end
       end
-
     end # DataIDLExtension
-
   end # AMI4CCM
 
   AxciomaPC::DataIdlRecipe.send(:include, AMI4CCM::DataIDLExtension)
-
 end

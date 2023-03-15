@@ -8,11 +8,8 @@
 #--------------------------------------------------------------------
 
 module AxciomaPC
-
   module SEV
-
     module ComponentInteractionHandler
-
       def self.setup_component(recipe)
         BRIX11.log(3, '[%s|SEV] setup_component', self)
         #noop
@@ -26,11 +23,9 @@ module AxciomaPC
         recipe.setup_svnt_comp_sev(project_dependencies)
         recipe.setup_exec_lib_sev(project_dependencies)
       end
-
     end
 
     module DataInteractionHandler
-
       def self.setup_data(recipe, fidl)
         #noop
       end
@@ -42,10 +37,7 @@ module AxciomaPC
       def self.get_data_dependencies(recipe, idl_prj_dependencies, project_dependencies)
         recipe.get_sev_data_dependencies(project_dependencies, idl_prj_dependencies)
       end
-
-
     end
-
   end
 
   ComponentRecipe.register_interaction_handler(:sev, SEV::ComponentInteractionHandler)

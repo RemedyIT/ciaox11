@@ -9,9 +9,7 @@
 require 'pathname'
 
 module AxciomaPC
-
   module MPC
-
     class LinkDependency < CompileDependency
       # returns all necessary link libraries resulting from this dependency
       def libs
@@ -223,7 +221,5 @@ module AxciomaPC
         link_libs << (recipe.shared_name + STUB_NM_EXT)
       end
     end
-
   end # MPC
-
 end #AxciomaPC

@@ -11,9 +11,7 @@
 require 'brix/ciaox11/apc/mpcfile.rb'
 
 module AxciomaPC
-
   module MPC
-
     # add corba4ccm port specializations
     MPC::IDLProject::DEFAULTS.merge!({
       corba_conn_gen: {
@@ -58,7 +56,5 @@ module AxciomaPC
          (recipe.export_name.upcase << '_CC_SVNT_BUILD_DLL')]
       end
     end
-
   end # MPC
-
 end

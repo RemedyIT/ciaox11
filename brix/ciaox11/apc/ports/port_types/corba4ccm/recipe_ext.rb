@@ -8,12 +8,9 @@
 #--------------------------------------------------------------------
 
 module AxciomaPC
-
   module CORBA4CCM
-
     # Extension module for DataIdlRecipe
     module DataIDLExtension
-
       def process_corba4ccm_data_dependencies(project_dependencies)
         [:lem_gen, :skel_gen, :lem_stub, :skel].each do |prjtype|
           if mpc_proj = mpc_file[prjtype]
@@ -135,7 +132,5 @@ module AxciomaPC
     end
 
     AxciomaPC::DataIdlRecipe.send(:include, DataIDLExtension)
-
   end # CORBA4CCM
-
 end

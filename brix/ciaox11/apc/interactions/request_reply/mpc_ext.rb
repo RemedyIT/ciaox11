@@ -11,9 +11,7 @@
 require 'brix/ciaox11/apc/mpcfile.rb'
 
 module AxciomaPC
-
   module MPC
-
     # add synch request and reply MPC IDL project specializations
     MPC::IDLProject::DEFAULTS.merge!({
       lem_gen: {
@@ -82,7 +80,5 @@ module AxciomaPC
         @headers.concat((recipe.gen_dir + '/') << idf << LEM_STUB_F << EXT_HEADER)
       end
     end
-
   end # MPC
-
 end # AxciomaPC

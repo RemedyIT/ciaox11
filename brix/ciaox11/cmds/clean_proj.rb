@@ -11,7 +11,6 @@ require 'brix/ciaox11/apc/project'
 
 module BRIX11
   module CIAOX11
-
     class RemoveProject < Command::Base
       DESC = 'Remove generated files from AXCIOMA project.'.freeze
 
@@ -78,7 +77,5 @@ module BRIX11
       Command.register('apc|axp:clean', DESC, CIAOX11::RemoveProject)
 
     end #RemoveProject
-
   end # CIAOX11
-
 end # BRIX11

@@ -11,9 +11,7 @@
 require 'brix/ciaox11/apc/mpcfile.rb'
 
 module AxciomaPC
-
   module MPC
-
     # add ami4ccm port specializations
     MPC::IDLProject::DEFAULTS.merge!({
        amic_conn_gen: {
@@ -68,7 +66,5 @@ module AxciomaPC
       end
 
     end
-
   end # MPC
-
 end
