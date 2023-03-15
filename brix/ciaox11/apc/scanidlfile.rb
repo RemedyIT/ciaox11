@@ -10,7 +10,6 @@
 module AxciomaPC
   class IDLFileScanner
     class IDLScanner
-
       def initialize(recipe, fidl)
         @recipe = recipe
         @fidl = fidl
@@ -94,7 +93,6 @@ module AxciomaPC
         # call recipe specific checks
         @recipe.check_idl_node(self, node, delegator)
       end
-
     end # IDLScanner
 
     def initialize(recipe)
@@ -160,7 +158,6 @@ module AxciomaPC
 
   class IDLFileScannerType < IDLFileScanner
     class IDLScannerType < IDLFileScanner::IDLScanner
-
       def initialize(recipe, fidl, type_name, &type_check)
         super(recipe, fidl)
         @scoped_type_name = type_name
@@ -208,7 +205,6 @@ module AxciomaPC
           end
         end
       end
-
     end
 
     def idl_has_type?(idl_file, type_name, &type_check)
@@ -217,13 +213,10 @@ module AxciomaPC
       BRIX11.log(4, "[%s] Type %s %sfound", self.class.name, type_name, @is.type_found ? '' : 'NOT ')
       return @is.type_found
     end
-
   end
 
   class IDLFileScannerAttr < IDLFileScanner
-
     class IDLScannerAttr < IDLFileScanner::IDLScanner
-
       def initialize(recipe, fidl, type_name)
         super(recipe, fidl)
         @type_name = type_name
@@ -280,7 +273,6 @@ module AxciomaPC
             bt.is_pod? || check_type(bt)
         end
       end
-
     end
 
     def idl_has_attrib_def?(idl_file, type_name)
@@ -289,7 +281,6 @@ module AxciomaPC
       BRIX11.log(4, "[%s] Type %s %sfound", self.class.name, type_name, @is.type_found ? '' : 'NOT ')
       return @is.type_found
     end
-
   end
 end # AxciomaPC
 
@@ -297,7 +288,6 @@ end # AxciomaPC
 #
 module IDL
   class Scanner
-
     def find_include_with_apcautogen(fname, all = true)
       # first check if IDL include already exists
       if fpinc = find_include_without_apcautogen(fname, all)
@@ -334,6 +324,5 @@ module IDL
 
     # create patched method chain
     alias_method_chain :find_include, :apcautogen
-
   end
 end

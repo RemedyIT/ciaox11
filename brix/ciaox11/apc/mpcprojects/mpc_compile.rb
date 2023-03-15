@@ -39,7 +39,6 @@ module AxciomaPC
     end # LinkDependency
 
     class CompileProject < MPC::Project
-
       # file extensions
       EXT_CPP = '.cpp'
       EXT_HEADER = '.h'

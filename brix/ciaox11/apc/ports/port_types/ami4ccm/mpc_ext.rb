@@ -64,7 +64,6 @@ module AxciomaPC
          (recipe.export_name.upcase << '_AMI4CCM_CONN_BUILD_DLL'),
          (recipe.export_name.upcase << '_AMI4CCM_SVNT_BUILD_DLL')]
       end
-
     end
   end # MPC
 end

@@ -9,9 +9,7 @@
 
 module AxciomaPC
   class ComponentRecipe < Recipe
-
     class PortDefinition
-
       class Configurator
         def initialize(port)
           @port = port
@@ -138,7 +136,6 @@ module AxciomaPC
       def to_s
         "#{@comp}\##{name}"
       end
-
     end
   end
 end

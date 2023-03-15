@@ -11,7 +11,6 @@ require 'find'
 module AxciomaPC
   # Represents a BRIX11 APC project
   class Project
-
     RCFILE = RECIPE_FILE_EXT.dup.freeze
 
     # Provides the DSL interface for APC project files (aprc)
@@ -70,7 +69,6 @@ module AxciomaPC
 
     # Project singleton class methods
     class << self
-
       # known/loaded project registry
       def projects
         @projects ||= {}
@@ -134,7 +132,6 @@ module AxciomaPC
         prj.setup
         prj
       end
-
     end
 
     def initialize(root_path, autogen = :allways)
@@ -389,6 +386,5 @@ module AxciomaPC
       out.puts (' ' * (indent + 2)) + '-----'
       idl_files.each_value { |fidl| fidl.dump(indent + 2, out) }
     end
-
   end
 end

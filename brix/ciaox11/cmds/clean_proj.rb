@@ -75,7 +75,6 @@ module BRIX11
          true
       end
       Command.register('apc|axp:clean', DESC, CIAOX11::RemoveProject)
-
     end # RemoveProject
   end # CIAOX11
 end # BRIX11

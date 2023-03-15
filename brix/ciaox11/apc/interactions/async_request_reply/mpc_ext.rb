@@ -31,7 +31,6 @@ module AxciomaPC
     AMI4CCM_NM_EXT = '_ami4ccm'
 
     class AMI4CCMStubProject < MPC::CompileProject
-
       def initialize(recipe)
         super(:ami4ccm_lem_stub, recipe)
         project_dependencies << "#{mpc_id}_ami4ccm_idl_gen_stubs"
@@ -55,7 +54,6 @@ module AxciomaPC
       def add_headers(idf)
         @headers.concat((recipe.gen_dir + '/') << idf << 'A' << STUB_F << EXT_HEADER)
       end
-
     end
   end # MPC
 end # AxciomaPC

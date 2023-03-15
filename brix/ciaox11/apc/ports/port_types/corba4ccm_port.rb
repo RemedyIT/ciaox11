@@ -9,7 +9,6 @@
 module AxciomaPC
   module CORBA4CCM
     class Port < PortType
-
       class Configurator < PortType::Configurator
         def interface(name)
           @port_type.set_interface(name)
@@ -102,7 +101,6 @@ module AxciomaPC
       def mpc_name
         '_cc'
       end
-
     end
 
     module DataInteractionHandler

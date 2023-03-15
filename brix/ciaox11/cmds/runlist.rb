@@ -11,7 +11,6 @@ require 'brix11/command'
 module BRIX11
   module CIAOX11
     class RunList < TAOX11::RunList
-
       # setup
       def self.setup(optparser, options)
         # base setup

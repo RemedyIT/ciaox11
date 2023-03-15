@@ -10,7 +10,6 @@ require 'set'
 
 module AxciomaPC
   class IDLFile
-
     @@nil_creator = Class.new do
       def self.create
         # noop

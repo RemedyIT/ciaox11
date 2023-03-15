@@ -10,7 +10,6 @@ require 'set'
 
 module AxciomaPC
   class ComponentRecipe < Recipe
-
     class Base_Projects
       attr_reader :plus , :min, :default
       # min contains the projects that has to be removed from the final list
@@ -51,7 +50,6 @@ module AxciomaPC
     end # Base_Projects
 
     class << self
-
       def interaction_handlers
         @interaction_handlers ||= {}
       end
@@ -140,7 +138,6 @@ module AxciomaPC
           @recipe.define(comp_def)
         end
       end
-
     end
 
     CONFIGURATOR = ComponentConfigurator

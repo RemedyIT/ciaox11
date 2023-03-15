@@ -52,7 +52,6 @@ module AxciomaPC
       def add_headers(idf)
         @headers.concat((recipe.gen_dir + '/') << idf << SKEL_F << EXT_HEADER)
       end
-
     end
 
     class DataLemStubProject < MPC::CompileProject

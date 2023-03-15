@@ -12,7 +12,6 @@ require 'fileutils'
 module AxciomaPC
   # Represents a recipe file (a file containing 1 or more recipes)
   class RecipeFile
-
     def initialize(path, project)
       @name = File.basename(path)
       @path = File.dirname(path)
@@ -151,11 +150,9 @@ module AxciomaPC
       out.puts (' ' * indent) + self.to_s
       recipes.each { |rcp| rcp.dump(indent + 2, out) }
     end
-
   end # RecipeFile
 
   class Recipe
-
     # Provides the basic DSL interface for all recipes in recipe files (*.rcp)
     class Configurator
       def initialize(recipe)
@@ -208,7 +205,6 @@ module AxciomaPC
 
     # Recipe singleton class methods
     class << self
-
       # recipe types (derivatives) registry
       def recipe_types
         @recipe_types ||= {}
@@ -229,7 +225,6 @@ module AxciomaPC
         end
         nil
       end
-
     end
 
     def initialize(rcpfile, recipe_id)
@@ -572,7 +567,6 @@ module AxciomaPC
       @idl_files.each { |n, f| out.puts (' ' * (indent + 2)) + "#{n} =>"; f.dump(indent + 4, out) }
       out.puts (' ')
     end
-
   end # Recipe
 end # AxciomaPC
 

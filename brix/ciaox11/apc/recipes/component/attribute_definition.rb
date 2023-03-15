@@ -9,9 +9,7 @@
 
 module AxciomaPC
   class ComponentRecipe < Recipe
-
     class AttributeDefinition
-
       BASIC_TYPES = %w{
         string
         wstring

@@ -93,7 +93,6 @@ module BRIX11
       end
 
       Command.register('apc|axp:prepare', DESC, CIAOX11::CreateProject)
-
     end # CreateProject
   end # CIAOX11
 end # BRIX11

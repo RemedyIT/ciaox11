@@ -29,7 +29,6 @@ module AxciomaPC
     })
 
     class DdsLemStubProject < MPC::CompileProject
-
       def initialize(recipe)
         super(:dds_lem_stub, recipe)
         project_dependencies << "#{mpc_id}_lem_gen"
@@ -52,7 +51,6 @@ module AxciomaPC
         [ "#{recipe.export_name.upcase}_STUB_BUILD_DLL",
           "#{recipe.export_name.upcase}_LEM_STUB_BUILD_DLL" ]
       end
-
     end
   end # MPC
 end # AxciomaPC

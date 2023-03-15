@@ -116,7 +116,6 @@ module AxciomaPC
 
   # patch ComponentRecipe::PortDefinition for arr ports component
   class ComponentRecipe::PortDefinition
-
     class Configurator
       # arr
       def sends(itf_name = nil, multiple = nil)
@@ -137,7 +136,6 @@ module AxciomaPC
       end
       self.extend ARR::SenderPort
     end
-
   end
 end
 

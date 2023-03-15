@@ -11,7 +11,6 @@ require 'brix/ciaox11/apc/scanidlfile'
 module AxciomaPC
   module AMI4CCM
     class Port < PortType
-
       class Configurator < PortType::Configurator
         def interface(name)
           @port_type.set_interface(name)
@@ -130,7 +129,6 @@ module AxciomaPC
       def mpc_name
         '_ac'
       end
-
     end
 
     module DataInteractionHandler

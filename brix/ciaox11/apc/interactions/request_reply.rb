@@ -66,7 +66,6 @@ module AxciomaPC
 
   # patch ComponentRecipe::PortDefinition for srr ports component
   class ComponentRecipe::PortDefinition
-
     class Configurator
       # srr
       def uses(itf_name = nil, multiple = nil)
@@ -98,7 +97,6 @@ module AxciomaPC
       @config[:type_name] = intf_name
       self.extend SRR::Facet
     end
-
   end
 end
 

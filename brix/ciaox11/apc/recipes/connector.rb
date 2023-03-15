@@ -9,7 +9,6 @@
 
 module AxciomaPC
   class ConnectorRecipe < Recipe
-
     class << self
       def port_types
         @port_types ||= {}
@@ -26,7 +25,6 @@ module AxciomaPC
         end
         port_types[port_type]
       end
-
     end
 
     class ConnectorConfigurator < Recipe::Configurator
@@ -120,7 +118,6 @@ module AxciomaPC
       port_handler_ = self.port_handler
       port_handler_.process_project_dependencies
     end
-
   end
 
   Recipe.register_recipe(:connector, ConnectorRecipe)

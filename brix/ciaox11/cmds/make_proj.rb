@@ -13,7 +13,6 @@ require 'brix/ciaox11/apc/project'
 module BRIX11
   module CIAOX11
     class MakeProject < Command::Base
-
       DESC = 'Make (build) the AXCIOMA project.'.freeze
 
       OPTIONS = {

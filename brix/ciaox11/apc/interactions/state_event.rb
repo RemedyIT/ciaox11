@@ -225,7 +225,6 @@ module AxciomaPC
 
   # patch ComponentRecipe::PortDefinition for sev ports component
   class ComponentRecipe::PortDefinition
-
     class Configurator
       def writes(type_name = nil)
         @port.writes(type_name)

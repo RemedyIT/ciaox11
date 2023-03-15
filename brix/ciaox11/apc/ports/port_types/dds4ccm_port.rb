@@ -10,7 +10,6 @@
 module AxciomaPC
   module DDS4CCM
     class Port < PortType
-
       class Configurator < PortType::Configurator
         def topic(name)
           @port_type.topic = name
@@ -205,7 +204,6 @@ module AxciomaPC
       def mpc_name
         '_dds4ccm'
       end
-
     end # Port
   end # DDS4CCM
 

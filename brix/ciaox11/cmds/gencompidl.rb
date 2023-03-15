@@ -11,7 +11,6 @@ require 'brix11/command'
 module BRIX11
   module CIAOX11
     class GenerateCompIDL < Command::Base
-
       DESC = 'Generate component idl for CIAOX11 project.'.freeze
 
       OPTIONS = {
@@ -94,7 +93,6 @@ module BRIX11
         def idl_names
           @options[:idl] || []
         end
-
       end
 
       Command.register('generate:compidl', DESC, CIAOX11::GenerateCompIDL)

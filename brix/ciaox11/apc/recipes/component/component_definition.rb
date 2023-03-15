@@ -9,9 +9,7 @@
 
 module AxciomaPC
   class ComponentRecipe < Recipe
-
     class ComponentDefinition
-
       class Configurator
         def initialize(comp)
           @comp = comp
@@ -210,7 +208,6 @@ module AxciomaPC
       def to_s
         "#{@recipe}:#{@recipe.comp_name}"
       end
-
     end # ComponentDefinition
   end
 end

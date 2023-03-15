@@ -74,7 +74,6 @@ module AxciomaPC
     end # IDLFlags
 
     class IDLProject < MPC::Project
-
       # registry with default IDLProject settings for the various
       # IDLProject types; derived classes will add to this
       DEFAULTS = {
@@ -221,7 +220,6 @@ module AxciomaPC
       def idl_sections
         mpc_genobj.idl_sections
       end
-
     end # IDLProject
   end # MPC
 end # AxciomaPC

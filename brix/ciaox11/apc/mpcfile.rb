@@ -200,11 +200,9 @@ module AxciomaPC
         out.puts (' ' * indent) + self.to_s
         self.each { |dep| dep.dump(indent + 2, out) }
       end
-
     end # Dependencies
 
     class File
-
       @mpc_projects = []
 
       def initialize(full_path, project)
@@ -242,11 +240,9 @@ module AxciomaPC
       def to_s
         "APC::MPC::File{#{full_path}}"
       end
-
     end # File
 
     class Project
-
       def initialize (type, recipe)
         @recipe = recipe
         @type = type
@@ -338,7 +334,6 @@ module AxciomaPC
         includes << dep.includes
       end
       protected :add_dependency
-
     end # Project
   end # MPC
 end # AxciomaPC

@@ -11,7 +11,6 @@ require 'set'
 
 module AxciomaPC
   class DataIdlRecipe < Recipe
-
     class DataConfigurator < Recipe::Configurator
       def initialize(recipe)
         super
@@ -23,7 +22,6 @@ module AxciomaPC
     CONFIGURATOR = DataConfigurator
 
     class << self
-
       def interaction_handlers
         @interaction_handlers ||= {}
       end
@@ -251,7 +249,6 @@ module AxciomaPC
         end
       end
     end
-
   end
 
   Recipe.register_recipe(:base, DataIdlRecipe)

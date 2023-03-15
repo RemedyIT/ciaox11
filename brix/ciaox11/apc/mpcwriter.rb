@@ -12,7 +12,6 @@ require 'brix11/command'
 module AxciomaPC
   module MPC
     class ProjectVisitor < BRIX11::Generate::Visitor
-
       def initialize(mpcprj, output, properties, writer)
         super(output, properties, writer)
         @mpc_project = mpcprj
