@@ -80,18 +80,18 @@ module AxciomaPC
       # registry with default IDLProject settings for the various
       # IDLProject types; derived classes will add to this
       DEFAULTS = {
-          :comp_gen => {
-              :add_idl_flags => '-Gcomp -Gxhex -Gxhsv -Scc -Scp -Gex -oI\\ .',
-              :export => true,
-              :base_projects => %w{ciaox11_idldefaults},
-              :idl_extras =>  'precious_files += _exec.h\Z _exec.cpp\Z',
-              :auto_dependencies => %w{}
+          comp_gen: {
+              add_idl_flags: '-Gcomp -Gxhex -Gxhsv -Scc -Scp -Gex -oI\\ .',
+              export: true,
+              base_projects: %w{ciaox11_idldefaults},
+              idl_extras: 'precious_files += _exec.h\Z _exec.cpp\Z',
+              auto_dependencies: %w{}
           },
-          :idl_gen => {
-              :add_idl_flags => '-Scc -Scp',
-              :export => true,
-              :base_projects => %w{ciaox11_idldefaults},
-              :auto_dependencies => %w{}
+          idl_gen: {
+              add_idl_flags: '-Scc -Scp',
+              export: true,
+              base_projects: %w{ciaox11_idldefaults},
+              auto_dependencies: %w{}
           },
       }
 

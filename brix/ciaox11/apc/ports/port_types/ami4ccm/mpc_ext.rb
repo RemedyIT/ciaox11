@@ -16,17 +16,17 @@ module AxciomaPC
 
     # add ami4ccm port specializations
     MPC::IDLProject::DEFAULTS.merge!({
-       :amic_conn_gen => {
+       amic_conn_gen: {
            #:add_idl_flags => '-Gami4ccm,conn -Gxhsv -Gxhcn -Scc -Scp -Sch ',
-           :export => true,
-           :base_projects => %w{ciaox11_ami4ccm_conn_all_idl},
-           :auto_dependencies => %w{ami_lem_gen}
+           export: true,
+           base_projects: %w{ciaox11_ami4ccm_conn_all_idl},
+           auto_dependencies: %w{ami_lem_gen}
        },
-       :ami_lem_gen => {
-           :add_idl_flags => '-Glem,gen -Gxhlst -Sch -Scc -Scp',
-           :export => true,
-           :base_projects => %w{ciaox11_idldefaults},
-           :auto_dependencies => %w{}
+       ami_lem_gen: {
+           add_idl_flags: '-Glem,gen -Gxhlst -Sch -Scc -Scp',
+           export: true,
+           base_projects: %w{ciaox11_idldefaults},
+           auto_dependencies: %w{}
        },
     })
 

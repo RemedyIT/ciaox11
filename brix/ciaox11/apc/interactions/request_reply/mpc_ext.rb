@@ -16,18 +16,18 @@ module AxciomaPC
 
     # add synch request and reply MPC IDL project specializations
     MPC::IDLProject::DEFAULTS.merge!({
-      :lem_gen => {
-         :add_idl_flags => '-Glem,gen -Gxhlst -Sch -Scc -Scp',
-         :export => true,
-         :base_projects => %w{ciaox11_idldefaults},
-         :auto_dependencies => %w{}
+      lem_gen: {
+         add_idl_flags: '-Glem,gen -Gxhlst -Sch -Scc -Scp',
+         export: true,
+         base_projects: %w{ciaox11_idldefaults},
+         auto_dependencies: %w{}
       },
-      :skel_gen => {
-         :add_idl_flags => '-Scc -Sch -Scp -Gxhsk',
-         :del_idl_flags => '-Ssh',
-         :export => true,
-         :base_projects => %w{ridl_defaults},
-         :auto_dependencies => %w{}
+      skel_gen: {
+         add_idl_flags: '-Scc -Sch -Scp -Gxhsk',
+         del_idl_flags: '-Ssh',
+         export: true,
+         base_projects: %w{ridl_defaults},
+         auto_dependencies: %w{}
       },
     })
 

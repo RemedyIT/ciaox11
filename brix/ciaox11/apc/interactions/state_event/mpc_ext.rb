@@ -16,17 +16,17 @@ module AxciomaPC
 
     # Add State/Event MPC IDL project specializations
     MPC::IDLProject::DEFAULTS.merge!({
-      :dds_lem_gen => {
-        :add_idl_flags => '-Glem,gen -Gxhst -Scdr -Scp',
-        :project_postfix => 'lem_gen',
-        :export => true,
-        :base_projects => %w{ciaox11_idldefaults ciaox11_dds4ccm},
-        :auto_dependencies => %w{}
+      dds_lem_gen: {
+        add_idl_flags: '-Glem,gen -Gxhst -Scdr -Scp',
+        project_postfix: 'lem_gen',
+        export: true,
+        base_projects: %w{ciaox11_idldefaults ciaox11_dds4ccm},
+        auto_dependencies: %w{}
       },
-      :se_idl_gen => {
-        :add_idl_flags => '-Gdds4ccm,lem -Scc -Sch -Scp -Scdr',
-        :base_projects => %w{ciaox11_dds4ccm_idldefaults ciaox11_dds4ccm},
-        :auto_dependencies => %w{}
+      se_idl_gen: {
+        add_idl_flags: '-Gdds4ccm,lem -Scc -Sch -Scp -Scdr',
+        base_projects: %w{ciaox11_dds4ccm_idldefaults ciaox11_dds4ccm},
+        auto_dependencies: %w{}
       }
     })
 

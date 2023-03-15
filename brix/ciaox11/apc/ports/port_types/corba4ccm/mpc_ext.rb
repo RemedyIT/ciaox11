@@ -16,10 +16,10 @@ module AxciomaPC
 
     # add corba4ccm port specializations
     MPC::IDLProject::DEFAULTS.merge!({
-      :corba_conn_gen => {
-           :export => true,
-           :base_projects => %w{ciaox11_corba4ccm_idl},
-           :auto_dependencies => %w{}
+      corba_conn_gen: {
+           export: true,
+           base_projects: %w{ciaox11_corba4ccm_idl},
+           auto_dependencies: %w{}
        },
     })
 

@@ -16,11 +16,11 @@ module AxciomaPC
 
     # add State/Event MPC IDL project specializations
     MPC::IDLProject::DEFAULTS.merge!({
-       :dds_conn_gen => {
-           :add_idl_flags => '-Gdds4ccm,conn_only -Gxhsv -Gxhcn -Scc -Scp -Sci -Sch',
-           :export => true,
-           :base_projects => %w{ciaox11_dds4ccm_idldefaults ciaox11_dds4ccm},
-           :auto_dependencies => []
+       dds_conn_gen: {
+           add_idl_flags: '-Gdds4ccm,conn_only -Gxhsv -Gxhcn -Scc -Scp -Sci -Sch',
+           export: true,
+           base_projects: %w{ciaox11_dds4ccm_idldefaults ciaox11_dds4ccm},
+           auto_dependencies: []
        },
     })
 
