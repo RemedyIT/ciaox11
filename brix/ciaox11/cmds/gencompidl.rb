@@ -82,12 +82,15 @@ module BRIX11
         def project_name
           @options[:name]
         end
+
         def module_names
           @options[:modules]
         end
+
         def component_name
           @options[:component]
         end
+
         def idl_names
           @options[:idl] || []
         end

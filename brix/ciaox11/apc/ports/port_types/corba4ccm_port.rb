@@ -69,7 +69,6 @@ module AxciomaPC
         setup_conn_lib(project_dependencies)
       end
 
-
       def create_conn_gen
         mpcobj = MPC::IDLProject.new(:corba_conn_gen, self.recipe)
         mpcobj.add_idl_flags("-Wb,conn_intf=#{self.recipe.port_handler.interface}") if self.recipe.port_handler.interface

@@ -292,7 +292,6 @@ module AxciomaPC
         end
       end
 
-
       def add_lem_proj(fidl)
         # Is there already a dds_lem_gen project for this interface idl?
         prj_dependencies = fidl.project_dependencies

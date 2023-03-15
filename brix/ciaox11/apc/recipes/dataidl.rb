@@ -58,7 +58,6 @@ module AxciomaPC
       configure(&block) if block_given?
     end
 
-
     def to_s
       "APC::DataIdlRecipe{#{@recipe_id}}"
     end

@@ -55,6 +55,7 @@ module AxciomaPC
         generate_port(@config[:multiple] ? 'uses multiple' : 'uses', @config[:type_name])
       end
     end
+
     module Facet
       def verify
         BRIX11.log(4, "[%s] verify", self)

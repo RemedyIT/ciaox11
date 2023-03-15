@@ -96,6 +96,7 @@ module AxciomaPC
       def initialize_clone(obj) # :nodoc:
         @mpc_project = obj.instance_variable_get(:@mpc_project).clone
       end
+
       def initialize_dup(obj) # :nodoc:
         @mpc_project = obj.instance_variable_get(:@mpc_project).dup
       end

@@ -162,6 +162,7 @@ module AxciomaPC
         recipe.idl_includes << File.dirname(@interface_recipe.interface_idl_path)
       end
     end
+
     module UpdaterPort
       def verify
         BRIX11.log(4, "[%s] verify", self)
@@ -176,6 +177,7 @@ module AxciomaPC
         recipe.idl_includes << File.dirname(@interface_recipe.interface_idl_path)
       end
     end
+
     module ReaderPort
       def verify
         BRIX11.log(4, "[%s] verify", self)
@@ -186,6 +188,7 @@ module AxciomaPC
         recipe.idl_includes << File.dirname(@interface_recipe.interface_idl_path)
       end
     end
+
     module GetterPort
       def verify
         BRIX11.log(4, "[%s] verify", self)
@@ -196,6 +199,7 @@ module AxciomaPC
         recipe.idl_includes << File.dirname(@interface_recipe.interface_idl_path)
       end
     end
+
     module MonitorPort
       def verify
         BRIX11.log(4, "[%s] verify", self)
@@ -206,6 +210,7 @@ module AxciomaPC
         recipe.idl_includes << File.dirname(@interface_recipe.interface_idl_path)
       end
     end
+
     module ObserverPort
       def verify
         BRIX11.log(4, "[%s] verify", self)

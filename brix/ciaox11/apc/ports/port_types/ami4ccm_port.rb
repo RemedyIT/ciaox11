@@ -100,7 +100,6 @@ module AxciomaPC
         mpc_obj.add_dependencies(project_dependencies, :ami4ccm_lem_gen)
       end
 
-
       def setup_conn_gen(project_dependencies)
         mpc_obj = mpc_file[:amic_conn_gen]
         recipe.idl_files.collect { |n, f| mpc_obj.add_project_file(f.full_path) }
@@ -141,9 +140,11 @@ module AxciomaPC
         recipe.add_lem_proj(fidl)
         recipe.add_ami_proj(fidl)
       end
+
       def self.process_data_dependencies(recipe, project_dependencies)
         recipe.process_ami4ccm_data_dependencies(project_dependencies)
       end
+
       def self.get_data_dependencies(recipe, idl_prj_dependencies, project_dependencies)
         recipe.get_ami4ccm_data_dependencies(project_dependencies, idl_prj_dependencies)
       end
