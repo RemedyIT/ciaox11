@@ -25,7 +25,7 @@ module AxciomaPC
            export: true,
            base_projects: %w{ciaox11_idldefaults},
            auto_dependencies: %w{}
-       },
+       }
     })
 
     # MPC project specialization for AMI4CCM connector library

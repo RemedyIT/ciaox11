@@ -25,7 +25,7 @@ module AxciomaPC
          export: false, ## set false so we can add our own export flags
          base_projects: %w{ciaox11_ami4ccm_idldefaults},
          auto_dependencies: []
-      },
+      }
     })
 
     AMI4CCM_NM_EXT = '_ami4ccm'

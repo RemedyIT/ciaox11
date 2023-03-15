@@ -26,7 +26,7 @@ module AxciomaPC
          export: true,
          base_projects: %w{ridl_defaults},
          auto_dependencies: %w{}
-      },
+      }
     })
 
     LEM_STUB_NM_EXT = '_lem_stub'

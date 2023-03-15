@@ -19,7 +19,7 @@ module AxciomaPC
            export: true,
            base_projects: %w{ciaox11_dds4ccm_idldefaults ciaox11_dds4ccm},
            auto_dependencies: []
-       },
+       }
     })
   end # MPC
 end

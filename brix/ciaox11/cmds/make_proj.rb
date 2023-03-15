@@ -18,7 +18,7 @@ module BRIX11
       OPTIONS = {
         clean: false,
         build: true,
-        debug: false,
+        debug: false
       }
 
 

@@ -18,7 +18,7 @@ module AxciomaPC
            export: true,
            base_projects: %w{ciaox11_corba4ccm_idl},
            auto_dependencies: %w{}
-       },
+       }
     })
 
     # MPC project specialization for CORBA4CCM connector library

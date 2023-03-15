@@ -89,7 +89,7 @@ module AxciomaPC
               export: true,
               base_projects: %w{ciaox11_idldefaults},
               auto_dependencies: %w{}
-          },
+          }
       }
 
       def initialize(type, recipe)
