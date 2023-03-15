@@ -42,7 +42,7 @@ module AxciomaPC
       properties.merge!(prop)
     end
 
-    def set_scanned(b=true)
+    def set_scanned(b = true)
       @scanned = (b ? true : false)
     end
 
@@ -120,7 +120,7 @@ module AxciomaPC
       "APC::IDLFile{#{full_path}}"
     end
 
-    def dump(indent=0, out=STDERR)
+    def dump(indent = 0, out = STDERR)
       out.puts (' ' * indent) + self.to_s
       out.puts (' ' * (indent + 2)) + '{'
       properties.each do |k, v|

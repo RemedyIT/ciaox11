@@ -63,7 +63,7 @@ module AxciomaPC
       "APC::DataIdlRecipe{#{@recipe_id}}"
     end
 
-    def dump(indent=0, out=STDERR)
+    def dump(indent = 0, out = STDERR)
       super(indent, out, "shared_name: [#{@shared_name}] export_name: [#{@export_name}]")
     end
 
@@ -119,7 +119,7 @@ module AxciomaPC
     end
 
     # add managed IDLFile
-    def add_idl_file(idl_file, name=nil)
+    def add_idl_file(idl_file, name = nil)
       idl_file.recipes << self unless idl_file.recipes.include?(self)
       @idl_files[name || idl_file.full_path] = idl_file
     end

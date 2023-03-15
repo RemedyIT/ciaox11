@@ -162,7 +162,7 @@ module AxciomaPC
       eval(code, binding, path)
     end
 
-    def project_type(type=nil)
+    def project_type(type = nil)
       if type
         BRIX11.log_fatal("Invalid project_type '#{type}' for #{self.to_s}") unless BRIX11::Project.valid_type?(type)
         @project_type = type
@@ -175,27 +175,27 @@ module AxciomaPC
       @idl_includes
     end
 
-    def libout(path=nil)
+    def libout(path = nil)
       @libout = File.expand_path(path, root_path) if path
       @libout
     end
 
-    def include_dirs(paths=nil)
+    def include_dirs(paths = nil)
       @include_dirs.assign(paths) if paths
       @include_dirs
     end
 
-    def lib_paths(paths=nil)
+    def lib_paths(paths = nil)
       @lib_paths.assign(paths) if paths
       @lib_paths
     end
 
-    def libs(libs=nil)
+    def libs(libs = nil)
       @libs.assign(libs) if libs
       @libs
     end
 
-    def lit_libs(libs=nil)
+    def lit_libs(libs = nil)
       @lit_libs.assign(libs) if libs
       @lit_libs
     end
@@ -309,7 +309,7 @@ module AxciomaPC
     end
 
     # add a 'known' IDL file
-    def add_idl_file(fp, state=nil)
+    def add_idl_file(fp, state = nil)
       if idl_files.has_key?(fp)
         idl_files[fp]
       else
@@ -347,7 +347,7 @@ module AxciomaPC
     end
 
     # add a known recipe file
-    def add_recipe_file (path, implicit=false)
+    def add_recipe_file (path, implicit = false)
       frcp = RecipeFile.new(path, self)
       frcp.mark_implicit if implicit
       recipe_files[path] = frcp
@@ -382,7 +382,7 @@ module AxciomaPC
       "APC::Project{#{root_path}}"
     end
 
-    def dump(indent=0, out=STDERR)
+    def dump(indent = 0, out = STDERR)
       out.puts (' ' * indent) + self.to_s
       out.puts (' ' * (indent + 2)) + '-----'
       recipe_files.each_value { |frcp| frcp.dump(indent + 2, out) }

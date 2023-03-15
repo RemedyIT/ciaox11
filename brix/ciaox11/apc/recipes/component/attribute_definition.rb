@@ -35,7 +35,7 @@ module AxciomaPC
           @attrib = attrib
         end
 
-        def type(type=nil)
+        def type(type = nil)
           @attrib.set_type(type)
         end
 
@@ -71,7 +71,7 @@ module AxciomaPC
         @type = type.strip
       end
 
-      def readonly(readonly=nil)
+      def readonly(readonly = nil)
         @readonly = readonly unless readonly.nil?
         @readonly
       end

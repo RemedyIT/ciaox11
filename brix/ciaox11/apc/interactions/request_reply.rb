@@ -68,12 +68,12 @@ module AxciomaPC
 
     class Configurator
       #srr
-      def uses(itf_name=nil, multiple=nil)
+      def uses(itf_name = nil, multiple = nil)
         @port.uses(itf_name, multiple)
       end
 
       #facet
-      def provides(itf_name=nil)
+      def provides(itf_name = nil)
         @port.provides(itf_name)
       end
     end
@@ -81,7 +81,7 @@ module AxciomaPC
     # extend the known ports list
     self.possible_ports.concat(%w(provides uses))
 
-    def uses(intf_name, multiple=nil)
+    def uses(intf_name, multiple = nil)
       @config[:kind] = :receptacle
       @config[:type_name] = intf_name
       if ::Hash === multiple && multiple.size == 1

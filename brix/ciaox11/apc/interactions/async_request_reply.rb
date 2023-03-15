@@ -119,7 +119,7 @@ module AxciomaPC
 
     class Configurator
       #arr
-      def sends(itf_name=nil, multiple=nil)
+      def sends(itf_name = nil, multiple = nil)
         @port.sends(itf_name, multiple)
       end
     end
@@ -127,7 +127,7 @@ module AxciomaPC
     # extend the known ports list
     self.possible_ports.concat(%w(sends))
 
-    def sends(intf_name, multiple=nil)
+    def sends(intf_name, multiple = nil)
       @config[:kind] = :sender
       @config[:type_name] = intf_name
       if ::Hash === multiple && multiple.size == 1

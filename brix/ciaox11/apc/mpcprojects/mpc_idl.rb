@@ -108,7 +108,7 @@ module AxciomaPC
         @idl_files = Util::UniqueStringList.new
       end
 
-      def idl_flags(val=nil)
+      def idl_flags(val = nil)
         @idl_flags = (IDLFlags === val ? val : IDLFlags.new(val)) if val
         @idl_flags
       end
@@ -136,7 +136,7 @@ module AxciomaPC
         includes.to_a + [recipe.full_gen_path]
       end
 
-      def template_path(path=nil)
+      def template_path(path = nil)
         @template_path = path if path
         @template_path ||= 'idl'
       end
@@ -148,7 +148,7 @@ module AxciomaPC
         idl_flags.add '-Gxhst'
       end
 
-      def export(export_b=false)
+      def export(export_b = false)
          @export = export_b if export_b
          @export
       end
@@ -162,7 +162,7 @@ module AxciomaPC
         recipe.get_relative_paths(includes).collect { |idir| "-I#{idir}" }.join(' ')
       end
 
-      def idl_extras(extras=nil)
+      def idl_extras(extras = nil)
         @extras.assign(extras) if extras
         @extras
       end

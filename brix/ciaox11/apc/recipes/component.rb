@@ -17,7 +17,7 @@ module AxciomaPC
       #plus contains the projects that has to be added to the final list
       #default contains the projects that will replace the default projects
 
-      def initialize(defbases=nil)
+      def initialize(defbases = nil)
         @plus = Util::UniqueStringList.new(:ws)
         @min = Util::UniqueStringList.new(:ws)
         @default = Util::UniqueStringList.new(:ws, defbases)
@@ -194,22 +194,22 @@ module AxciomaPC
       @combined_lib == true
     end
 
-    def include_dirs(paths=nil)
+    def include_dirs(paths = nil)
       @include_dirs.assign(paths) if paths
       @include_dirs
     end
 
-    def lib_paths(paths=nil)
+    def lib_paths(paths = nil)
       @lib_paths.assign(paths) if paths
       @lib_paths
     end
 
-    def libs(libs=nil)
+    def libs(libs = nil)
       @libs.assign(libs) if libs
       @libs
     end
 
-    def lit_libs(libs=nil)
+    def lit_libs(libs = nil)
       @lit_libs.assign(libs) if libs
       @lit_libs
     end
@@ -219,7 +219,7 @@ module AxciomaPC
     end
 
     # add IDLFile, override for component
-    def add_idl_file(idl_file, name=nil)
+    def add_idl_file(idl_file, name = nil)
        # IDLFiles listed by component recipes are not managed
        # so we do not register the recipe with the IDLFile,
        # unless it is the component idl file self.
@@ -231,7 +231,7 @@ module AxciomaPC
       "APC::ComponentRecipe{#{recipe_id}}"
     end
 
-    def dump(indent=0, out=STDERR)
+    def dump(indent = 0, out = STDERR)
       super(indent, out, "shared_name: [#{@shared_name}] export_name: [#{@export_name}]")
     end
 

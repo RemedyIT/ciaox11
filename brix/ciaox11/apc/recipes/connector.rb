@@ -59,13 +59,13 @@ module AxciomaPC
     end
 
     # add IDLFile
-    def add_idl_file(idl_file, name=nil)
+    def add_idl_file(idl_file, name = nil)
       # IDLFiles listed by connector recipes are not managed
       # so we do not register the recipe with the IDLFile
       @idl_files[name || idl_file.full_path] = idl_file
     end
 
-    def idl_files_gen_dir_rel_path(idlfiles, postfix='')
+    def idl_files_gen_dir_rel_path(idlfiles, postfix = '')
       idlfiles.collect do |n, f|
         #get recipe file belonging to idl_file
         name = f.name.gsub('.idl', "#{postfix}.idl")
@@ -104,7 +104,7 @@ module AxciomaPC
       "APC::ConnectorRecipe{#{recipe_id}}"
     end
 
-    def dump(indent=0, out=STDERR)
+    def dump(indent = 0, out = STDERR)
       super(indent, out, "shared_name: [#{@shared_name}] export_name: [#{@export_name}] port_type: [#{@port_type}]")
     end
 

@@ -13,7 +13,7 @@ require 'brix/ciaox11/apc/mpcprojects/mpc_compile.rb'
 module AxciomaPC
   module MPC
     class ExecProject < MPC::CompileProject
-      def initialize(recipe, combined=false)
+      def initialize(recipe, combined = false)
         super(:exec, recipe)
         project_dependencies << "#{mpc_id}#{COMP_LEM_NM_EXT}" unless combined
         link_libs << "#{recipe.shared_name}#{COMP_LEM_NM_EXT}" unless combined

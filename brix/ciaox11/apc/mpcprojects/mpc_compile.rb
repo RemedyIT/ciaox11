@@ -91,7 +91,7 @@ module AxciomaPC
         @lib_paths
       end
 
-      def lib_out(path=nil)
+      def lib_out(path = nil)
         if path
           lib_paths.delete(@lib_out) if @lib_out
           lib_paths << (@lib_out = path)

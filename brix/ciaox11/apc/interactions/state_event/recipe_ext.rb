@@ -167,7 +167,7 @@ module AxciomaPC
       end
 
       # only allow a single topic IDL file
-      def idl(idlfiles=nil)
+      def idl(idlfiles = nil)
         if idlfiles
           BRIX11.log_fatal("SE interface recipe #{self.recipe_file.full_path} only allows a single topic IDL to be defined!") if idlfiles.size > 1
         end
@@ -175,7 +175,7 @@ module AxciomaPC
       end
 
       # add IDLFile
-      def add_idl_file(idl_file, name=nil)
+      def add_idl_file(idl_file, name = nil)
         # IDLFiles listed by interface recipes are not managed
         # so we do not register the recipe with the IDLFile
         @idl_files[name || idl_file.full_path] = idl_file
@@ -186,7 +186,7 @@ module AxciomaPC
       end
 
       # overrule
-      def export_name(export_name_=nil)
+      def export_name(export_name_ = nil)
         @export_name = export_name_.downcase if export_name_
         @export_name ||= interface_name.downcase
       end
@@ -264,7 +264,7 @@ module AxciomaPC
         "APC::SEV::InterfaceRecipe[#{recipe_id}]"
       end
 
-      def dump(indent=0, out=STDERR)
+      def dump(indent = 0, out = STDERR)
         super(indent, out, "shared_name: [#{@shared_name}] export_name: [#{@export_name}]")
       end
 

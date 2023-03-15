@@ -147,7 +147,7 @@ module AxciomaPC
       "APC::RecipeFile{#{full_path}}"
     end
 
-    def dump(indent=0, out=STDERR)
+    def dump(indent = 0, out = STDERR)
       out.puts (' ' * indent) + self.to_s
       recipes.each { |rcp| rcp.dump(indent + 2, out) }
     end
@@ -293,7 +293,7 @@ module AxciomaPC
     end
 
     # add and/or return IDL include paths for this recipe
-    def idl_includes(incs=nil)
+    def idl_includes(incs = nil)
       @idl_includes.assign(incs.collect { |ip| File.expand_path(ip, recipe_file.path) }) if incs
       @idl_includes
     end
@@ -303,7 +303,7 @@ module AxciomaPC
     # end
 
     # add and/or return IDL file paths for this recipe
-    def idl(idlfiles=nil)
+    def idl(idlfiles = nil)
       if idlfiles
         @idl_files = idlfiles.inject({}) { |map, fidl| map[fidl] = nil; map }
       end
@@ -321,7 +321,7 @@ module AxciomaPC
     end
 
     # set/get generated code output folder
-    def gen_dir(gendir=nil)
+    def gen_dir(gendir = nil)
       @gen_dir = "#{gendir}#{gendir.empty? ? '.' : ''}" if gendir
       @gen_dir
     end
@@ -332,13 +332,13 @@ module AxciomaPC
     end
 
     # set/get shared library base name
-    def shared_name(shared_name=nil)
+    def shared_name(shared_name = nil)
       @shared_name = shared_name.to_s if shared_name
       @shared_name
     end
 
     # add/get library search paths
-    def lib_paths(lib_path=nil)
+    def lib_paths(lib_path = nil)
       @lib_paths.assign(lib_path) if lib_path
       @lib_paths
     end
@@ -356,25 +356,25 @@ module AxciomaPC
     end
 
     # add managed IDLFile
-    def add_idl_file(idl_file, name=nil)
+    def add_idl_file(idl_file, name = nil)
       idl_file.recipes << self unless idl_file.recipes.include?(self)
       @idl_files[name || idl_file.full_path] = idl_file
     end
 
     # set/get export base name
-    def export_name(export_name=nil)
+    def export_name(export_name = nil)
       @export_name = export_name.downcase if export_name
       @export_name
     end
 
     # add/get user defined source files
-    def sources(sources=nil)
+    def sources(sources = nil)
       @sources.assign(sources) if sources
       @sources
     end
 
     # add/get user defined header files
-    def headers(headers=nil)
+    def headers(headers = nil)
       @headers.assign(headers) if headers
       @headers
     end
@@ -566,7 +566,7 @@ module AxciomaPC
       "APC::Recipe{#{recipe_id}}"
     end
 
-    def dump(indent=0, out=STDERR, data=nil)
+    def dump(indent = 0, out = STDERR, data = nil)
       out.puts (' ' * indent) + self.to_s
       out.puts((' ' * (indent + 2)) + data.to_s) if data
       @idl_files.each { |n, f| out.puts (' ' * (indent + 2)) + "#{n} =>"; f.dump(indent + 4, out) }

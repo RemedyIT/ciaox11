@@ -187,7 +187,7 @@ module AxciomaPC
         @ports << port
       end
 
-      def attribute(attrib, attrib_def=nil, &block)
+      def attribute(attrib, attrib_def = nil, &block)
         attribute = AttributeDefinition.new(attrib, self)
         if block_given?
           attribute.configure(&block)

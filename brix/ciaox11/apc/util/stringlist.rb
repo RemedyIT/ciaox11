@@ -18,7 +18,7 @@ module AxciomaPC
         self << val if val
       end
 
-      def join_sep(sep=nil)
+      def join_sep(sep = nil)
         s_ = (sep || @separator)
         s_ == :ws ? ' ' : s_
       end

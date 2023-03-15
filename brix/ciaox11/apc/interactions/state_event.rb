@@ -222,27 +222,27 @@ module AxciomaPC
   class ComponentRecipe::PortDefinition
 
     class Configurator
-      def writes(type_name=nil)
+      def writes(type_name = nil)
         @port.writes(type_name)
       end
 
-      def updates(type_name=nil)
+      def updates(type_name = nil)
         @port.updates(type_name)
       end
 
-      def reads(type_name=nil)
+      def reads(type_name = nil)
         @port.reads(type_name)
       end
 
-      def gets(type_name=nil)
+      def gets(type_name = nil)
         @port.gets(type_name)
       end
 
-      def monitors(type_name=nil)
+      def monitors(type_name = nil)
         @port.monitors(type_name)
       end
 
-      def observes(type_name=nil)
+      def observes(type_name = nil)
         @port.observes(type_name)
       end
     end
