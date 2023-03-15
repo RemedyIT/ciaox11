@@ -18,9 +18,9 @@ module BRIX11
         # add debug/release options for windows environment
         if Sys.mswin?
           optparser.on('--debug',
-                       'Run test using Debug deployment environment (only applicable for msvc/icc builds).' ) { options[:runtest][:debug] = true }
+                       'Run test using Debug deployment environment (only applicable for msvc/icc builds).') { options[:runtest][:debug] = true }
           optparser.on('--release',
-                       'Run test using Release deployment environment (only applicable for msvc/icc builds).' ) { options[:runtest][:debug] = false }
+                       'Run test using Release deployment environment (only applicable for msvc/icc builds).') { options[:runtest][:debug] = false }
         end
       end
 

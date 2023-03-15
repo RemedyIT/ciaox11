@@ -199,7 +199,7 @@ module AxciomaPC
           else
             type_name = attrib_def[:type]
             attribute.set_type(type_name)
-            attribute.readonly( attrib_def[:readonly])
+            attribute.readonly(attrib_def[:readonly])
           end
         end
         @attributes << attribute

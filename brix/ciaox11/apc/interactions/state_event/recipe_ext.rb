@@ -310,7 +310,7 @@ module AxciomaPC
           mpc_idl_obj.project_dependencies <<  "#{mpc_id}_se_idl_gen"
 
           # create LEM stub project
-          mpc_stub_obj = MPC::DdsLemStubProject.new( self)
+          mpc_stub_obj = MPC::DdsLemStubProject.new(self)
           mpc_file.add_mpc_project(mpc_stub_obj)
         end
 
