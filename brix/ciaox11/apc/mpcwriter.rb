@@ -111,7 +111,7 @@ module AxciomaPC
         self.template_root = 'apc'
       end
 
-      helper_method   :projects
+      helper_method :projects
 
       def projects
         @projects ||= @mpc_file.mpc_projects.collect { |p| p.wants_build? ? ProjectVisitor.new(p, @output, @properties.dup, self) : nil }.compact
