@@ -112,6 +112,7 @@ module AxciomaPC
 
     def set_creator(creator)
       raise "ERROR: Invalid creator for #{self.to_s}" unless creator.respond_to? :create
+
       @creator = creator
     end
 

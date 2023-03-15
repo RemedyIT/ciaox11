@@ -66,6 +66,7 @@ module AxciomaPC
         if type.nil?
           raise "[#{self}] Type of attribute '#{name}' is nil!"
         end
+
         @type = type.strip
       end
 
@@ -86,6 +87,7 @@ module AxciomaPC
 
       def find_idl_attr
         return nil if BASIC_TYPES.include?(@type)
+
         # look at the idl files mentioned in the component recipe
         # these idl files must be in the same dir as the recipe or otherwise in the
         # project idl_includes dirs.

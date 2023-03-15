@@ -74,6 +74,7 @@ module BRIX11
           if !argv.empty? && argv.first == '--'
             while !argv.empty?
               break if Command.is_command_arg?(argv.first, options)
+
               cmdargv << argv.shift
             end
           end

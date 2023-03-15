@@ -438,6 +438,7 @@ module AxciomaPC
 
     def setup_svnt_comp(project_dependencies)
       return if self.combined_lib?
+
       mpc_obj = mpc_file[:comp_svnt]
       mpc_obj.add_dependencies(project_dependencies, :lem_stub, false)
 
@@ -491,6 +492,7 @@ module AxciomaPC
       enc = n.enclosure
       while enc
         return enc if IDL::AST::Include === enc
+
         enc = enc.enclosure
       end
       nil

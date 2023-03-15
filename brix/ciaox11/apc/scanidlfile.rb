@@ -141,6 +141,7 @@ module AxciomaPC
         Thread.current[:apc_project] = @recipe.project
         parser = BRIX11::ERIDL.parse('ccmx11', idl_file.full_path, scan_opts)
         raise "ERROR in  idl file #{idl_file.full_path}" unless parser
+
         parser.visit_nodes(@is)
       ensure
         # reset current project reference

@@ -58,6 +58,7 @@ module AxciomaPC
           unless sev_data_idl
             raise "[#{self}] No valid Struct type #{type_name} found!"
           end
+
           generate_sev_interface_recipe(type_name, sev_data_idl)
           @idl_interface = File.basename(sev_data_idl, '.idl') + 'SE.idl'
         end

@@ -16,6 +16,7 @@ module AxciomaPC
 
       def register_port_type(keyword, klass)
         raise "Attempt to register port type with duplicate keyword #{keyword}" if port_types.has_key?(keyword)
+
         port_types[keyword.to_s.to_sym] = klass
       end
 
@@ -23,6 +24,7 @@ module AxciomaPC
         unless port_types.has_key?(port_type)
           raise "PortType :#{port_type} not implemented. Valid port types are #{port_types.keys}"
         end
+
         port_types[port_type]
       end
     end

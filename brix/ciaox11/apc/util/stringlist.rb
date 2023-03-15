@@ -83,6 +83,7 @@ module AxciomaPC
 
       def assign(val)
         return if self == val # check for self assignment
+
         self.clear << val
       end
 

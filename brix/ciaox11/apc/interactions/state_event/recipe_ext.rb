@@ -406,6 +406,7 @@ module AxciomaPC
 
       def setup_stub_comp_sev(project_dependencies)
         return if self.combined_lib?
+
         if mpc_obj = mpc_file[:comp_stub]
           # add SEV base project
           mpc_obj.base_projects << 'ciaox11_dds4ccm_lem_stub'
@@ -416,6 +417,7 @@ module AxciomaPC
 
       def setup_lem_comp_sev(project_dependencies)
         return if self.combined_lib?
+
         mpc_obj = mpc_file[:comp_lem]
         # add SEV base project
         mpc_obj.base_projects << 'ciaox11_dds4ccm_lem_stub'
@@ -425,6 +427,7 @@ module AxciomaPC
 
       def setup_svnt_comp_sev(project_dependencies)
         return if self.combined_lib?
+
         mpc_obj = mpc_file[:comp_svnt]
         # add SEV base project
         mpc_obj.base_projects << 'ciaox11_dds4ccm_lem_stub'

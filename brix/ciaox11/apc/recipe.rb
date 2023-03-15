@@ -75,6 +75,7 @@ module AxciomaPC
     # add a recipe to this file
     def add_recipe(recipe)
       raise "[#{self}] duplicate recipe #{recipe.recipe_id} defined." if @recipes.has_key?(recipe.recipe_id)
+
       @recipes[recipe.recipe_id] = recipe
     end
 
@@ -214,6 +215,7 @@ module AxciomaPC
       # register a recipe class with it's declaration keyword
       def register_recipe(keyword, klass)
         raise "Attempt to register recipe with duplicate keyword #{keyword}" if recipe_types.has_key?(keyword)
+
         recipe_types[keyword.to_s.to_sym] = klass
       end
 
@@ -223,6 +225,7 @@ module AxciomaPC
         if recipe_types.has_key?(keyword)
           return recipe_types[keyword].new(rcp_file, *args, &block)
         end
+
         nil
       end
     end

@@ -41,12 +41,14 @@ module AxciomaPC
 
       def setup_lem_comp_ami(project_dependencies)
         return if self.combined_lib?
+
         mpc_obj = mpc_file[:comp_lem]
         mpc_obj.add_dependencies(project_dependencies, :ami4ccm_lem_stub)
       end
 
       def setup_svnt_comp_ami(project_dependencies)
         return if self.combined_lib?
+
         mpc_obj = mpc_file[:comp_svnt]
         mpc_obj.add_dependencies(project_dependencies, :ami4ccm_lem_stub)
       end

@@ -82,6 +82,7 @@ module AxciomaPC
 
       def merge(dep)
         raise "[#{self}] ERROR - merging different project type [#{dep.project_type}]" if project_type != dep.project_type
+
         @dependencies.merge(dep.dependencies)
       end
 
