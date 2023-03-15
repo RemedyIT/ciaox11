@@ -10,10 +10,8 @@ require 'scanidlfile'
 require 'fileutils'
 
 module AxciomaPC
-
   # Represents a recipe file (a file containing 1 or more recipes)
   class RecipeFile
-
     def initialize(path, project)
       @name = File.basename(path)
       @path = File.dirname(path)
@@ -77,6 +75,7 @@ module AxciomaPC
     # add a recipe to this file
     def add_recipe(recipe)
       raise "[#{self}] duplicate recipe #{recipe.recipe_id} defined." if @recipes.has_key?(recipe.recipe_id)
+
       @recipes[recipe.recipe_id] = recipe
     end
 
@@ -92,14 +91,14 @@ module AxciomaPC
 
     # verify the recipes in this file
     def verify
-      recipes.each {|rcp| rcp.verify }
+      recipes.each { |rcp| rcp.verify }
     end
 
     # cleanup generated artifacts
     def clean
       recipes.each do |rcp|
         if !rcp.gen_dir || rcp.gen_dir == '.'
-          #do nothing because the user has indicated as generated_code dir, the same dir as the recipe dir
+          # do nothing because the user has indicated as generated_code dir, the same dir as the recipe dir
         else
           gen_dir_path = File.join(@path, rcp.gen_dir)
           if Dir.exist?(gen_dir_path)
@@ -108,7 +107,7 @@ module AxciomaPC
             # the gen dir , this file will be removed also
             # solution: adapt mpc to remove generated export headers also.
             if Dir.empty?(gen_dir_path) ||
-                Dir.entries(gen_dir_path).all? {|ff| ff.match?(/((export\.h)|(\.\.?))\Z/) }
+                Dir.entries(gen_dir_path).all? { |ff| ff.match?(/((export\.h)|(\.\.?))\Z/) }
               # empty or no other then export file, so remove
               FileUtils.remove_dir(gen_dir_path)
             end
@@ -120,12 +119,12 @@ module AxciomaPC
     # collect and register all project IDL files referenced
     # from recipes in this file (recursively analyzed)
     def collect_idl_files
-      recipes.each {|rcp| rcp.collect_idl_files }
+      recipes.each { |rcp| rcp.collect_idl_files }
     end
 
     # check all dependencies of all IDL referenced in recipes in this file
     def check_idl_dependencies
-      recipes.each {|rcp| rcp.check_idl_dependencies }
+      recipes.each { |rcp| rcp.check_idl_dependencies }
     end
 
     # process recipes in this file, setup resulting MPC objects
@@ -148,15 +147,13 @@ module AxciomaPC
       "APC::RecipeFile{#{full_path}}"
     end
 
-    def dump(indent=0, out=STDERR)
+    def dump(indent = 0, out = STDERR)
       out.puts (' ' * indent) + self.to_s
       recipes.each { |rcp| rcp.dump(indent + 2, out) }
     end
-
   end # RecipeFile
 
   class Recipe
-
     # Provides the basic DSL interface for all recipes in recipe files (*.rcp)
     class Configurator
       def initialize(recipe)
@@ -209,7 +206,6 @@ module AxciomaPC
 
     # Recipe singleton class methods
     class << self
-
       # recipe types (derivatives) registry
       def recipe_types
         @recipe_types ||= {}
@@ -219,6 +215,7 @@ module AxciomaPC
       # register a recipe class with it's declaration keyword
       def register_recipe(keyword, klass)
         raise "Attempt to register recipe with duplicate keyword #{keyword}" if recipe_types.has_key?(keyword)
+
         recipe_types[keyword.to_s.to_sym] = klass
       end
 
@@ -228,13 +225,13 @@ module AxciomaPC
         if recipe_types.has_key?(keyword)
           return recipe_types[keyword].new(rcp_file, *args, &block)
         end
+
         nil
       end
-
     end
 
     def initialize(rcpfile, recipe_id)
-      #defaults
+      # defaults
       @recipe_file = rcpfile
       @recipe_id = recipe_id.to_s
       @enabled = true # recipes are enabled by default; only disabled by (optional) feature checks
@@ -294,8 +291,8 @@ module AxciomaPC
     end
 
     # add and/or return IDL include paths for this recipe
-    def idl_includes(incs=nil)
-      @idl_includes.assign(incs.collect {|ip| File.expand_path(ip, recipe_file.path)}) if incs
+    def idl_includes(incs = nil)
+      @idl_includes.assign(incs.collect { |ip| File.expand_path(ip, recipe_file.path) }) if incs
       @idl_includes
     end
 
@@ -304,9 +301,9 @@ module AxciomaPC
     # end
 
     # add and/or return IDL file paths for this recipe
-    def idl(idlfiles=nil)
+    def idl(idlfiles = nil)
       if idlfiles
-        @idl_files = idlfiles.inject({}) {|map, fidl| map[fidl] = nil; map }
+        @idl_files = idlfiles.inject({}) { |map, fidl| map[fidl] = nil; map }
       end
       @idl_files.keys
     end
@@ -318,11 +315,11 @@ module AxciomaPC
 
     # get the basenames of all IDL files without extension
     def idl_without_ext
-     idl.collect {|idf| File.basename(idf, '.idl')}
+     idl.collect { |idf| File.basename(idf, '.idl') }
     end
 
     # set/get generated code output folder
-    def gen_dir(gendir=nil)
+    def gen_dir(gendir = nil)
       @gen_dir = "#{gendir}#{gendir.empty? ? '.' : ''}" if gendir
       @gen_dir
     end
@@ -333,13 +330,13 @@ module AxciomaPC
     end
 
     # set/get shared library base name
-    def shared_name(shared_name=nil)
+    def shared_name(shared_name = nil)
       @shared_name = shared_name.to_s if shared_name
       @shared_name
     end
 
     # add/get library search paths
-    def lib_paths(lib_path=nil)
+    def lib_paths(lib_path = nil)
       @lib_paths.assign(lib_path) if lib_path
       @lib_paths
     end
@@ -357,25 +354,25 @@ module AxciomaPC
     end
 
     # add managed IDLFile
-    def add_idl_file(idl_file, name=nil)
+    def add_idl_file(idl_file, name = nil)
       idl_file.recipes << self unless idl_file.recipes.include?(self)
       @idl_files[name || idl_file.full_path] = idl_file
     end
 
     # set/get export base name
-    def export_name(export_name=nil)
+    def export_name(export_name = nil)
       @export_name = export_name.downcase if export_name
       @export_name
     end
 
     # add/get user defined source files
-    def sources(sources=nil)
+    def sources(sources = nil)
       @sources.assign(sources) if sources
       @sources
     end
 
     # add/get user defined header files
-    def headers(headers=nil)
+    def headers(headers = nil)
       @headers.assign(headers) if headers
       @headers
     end
@@ -406,7 +403,7 @@ module AxciomaPC
       idl_scanner = IDLFileScanner.new(self)
       searchpaths = idl_includes + project.idl_includes
       @idl_files.each_key do |fnidl|
-        idl_dir = searchpaths.detect {|sp| ::File.file?(::File.expand_path(fnidl, sp)) }
+        idl_dir = searchpaths.detect { |sp| ::File.file?(::File.expand_path(fnidl, sp)) }
         unless idl_dir
           # in case we are not generating (clean up) see if a matching,
           # autogenerated IDLFile has already been defined for this recipe
@@ -536,7 +533,7 @@ module AxciomaPC
 
     # called to setup the MPC projects for this recipe
     def setup_projects
-      #noop
+      # noop
     end
 
     # called from #setup_projects of a component or connector recipe
@@ -544,7 +541,7 @@ module AxciomaPC
     # to handle interaction specific setup of the MPC projects for this
     # recipe and register project dependencies for the specified IDL file
     def setup_project_interaction(_fidl, *_interaction_types)
-      #noop
+      # noop
     end
 
     #================================================================
@@ -567,15 +564,13 @@ module AxciomaPC
       "APC::Recipe{#{recipe_id}}"
     end
 
-    def dump(indent=0, out=STDERR, data=nil)
+    def dump(indent = 0, out = STDERR, data = nil)
       out.puts (' ' * indent) + self.to_s
       out.puts((' ' * (indent + 2)) + data.to_s) if data
       @idl_files.each { |n, f| out.puts (' ' * (indent + 2)) + "#{n} =>"; f.dump(indent + 4, out) }
       out.puts (' ')
     end
-
   end # Recipe
-
 end # AxciomaPC
 
 # load all recipe specializations

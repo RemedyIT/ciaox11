@@ -9,9 +9,7 @@
 require 'set'
 
 module AxciomaPC
-
   class IDLFile
-
     @@nil_creator = Class.new do
       def self.create
         # noop
@@ -43,7 +41,7 @@ module AxciomaPC
       properties.merge!(prop)
     end
 
-    def set_scanned(b=true)
+    def set_scanned(b = true)
       @scanned = (b ? true : false)
     end
 
@@ -114,6 +112,7 @@ module AxciomaPC
 
     def set_creator(creator)
       raise "ERROR: Invalid creator for #{self.to_s}" unless creator.respond_to? :create
+
       @creator = creator
     end
 
@@ -121,7 +120,7 @@ module AxciomaPC
       "APC::IDLFile{#{full_path}}"
     end
 
-    def dump(indent=0, out=STDERR)
+    def dump(indent = 0, out = STDERR)
       out.puts (' ' * indent) + self.to_s
       out.puts (' ' * (indent + 2)) + '{'
       properties.each do |k, v|
@@ -140,6 +139,4 @@ module AxciomaPC
       out.puts (' ')
     end
   end
-
-
-end #AxciomaPC
+end # AxciomaPC

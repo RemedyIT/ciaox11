@@ -8,12 +8,9 @@
 #--------------------------------------------------------------------
 
 module AxciomaPC
-
   module SRR
-
     # Extension module for DataIdlRecipe
     module DataIDLExtension
-
       def process_srr_data_dependencies(project_dependencies)
         [:lem_gen, :lem_stub].each do |prjtype|
           if mpc_proj = mpc_file[prjtype]
@@ -26,11 +23,8 @@ module AxciomaPC
         # merge any available lem dependencies whether or not the IDL file needed lem or not
         project_dependencies.merge(idl_prj_dependencies, :lem_gen, :lem_stub)
       end
-
     end
 
     AxciomaPC::DataIdlRecipe.send(:include, DataIDLExtension)
-
   end # SRR
-
 end

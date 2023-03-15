@@ -12,15 +12,13 @@ require 'brix/ciaox11/apc/project'
 
 module BRIX11
   module CIAOX11
-
     class MakeProject < Command::Base
-
       DESC = 'Make (build) the AXCIOMA project.'.freeze
 
       OPTIONS = {
         clean: false,
         build: true,
-        debug: false,
+        debug: false
       }
 
 
@@ -32,10 +30,10 @@ module BRIX11
         optparser.on('-c', '--clean', 'Clean project only.') { options[:axpmake][:clean] = true; options[:axpmake][:build] = false }
         optparser.on('-r', '--rebuild', 'Clean and than build project.') { options[:axpmake][:clean] = true; options[:axpmake][:build] = true }
         optparser.on('--debug', 'Debug build.') { options[:axpmake][:debug] = true }
-        optparser.on('--release', 'Release build.') { options[:axpmake][:debug] = false}
+        optparser.on('--release', 'Release build.') { options[:axpmake][:debug] = false }
         optparser.on('-N', '--no-redirect',
                      'Do not redirect output from child process..',
-                     'Default: redirect and filter output.') {|v|
+                     'Default: redirect and filter output.') { |v|
           options[:axpmake][:noredirect] = true
         }
       end
@@ -44,7 +42,7 @@ module BRIX11
         # return project if  exist
         project = AxciomaPC::Project.load_project(:ifneeded)
 
-        if !project
+        unless project
           raise Command::CmdError, 'Unable to locate AXCIOMA project root'
         end
 
@@ -62,6 +60,5 @@ module BRIX11
 
       Command.register('apc|axp:make|build', DESC, CIAOX11::MakeProject)
     end # MakeProject
-
   end # CIAOX11
 end # BRIX11

@@ -7,9 +7,7 @@
 # @copyright Copyright (c) Remedy IT Expertise BV
 #--------------------------------------------------------------------
 module AxciomaPC
-
   class PortType
-
     class Configurator
       def initialize(port_type)
         @port_type = port_type
@@ -60,9 +58,7 @@ module AxciomaPC
     def to_s
       "#{recipe}@Port<#{recipe.get_port_type}>"
     end
-
   end # PortType
-
 end # AxciomaPC
 
 # load all interaction pattern port type implementations

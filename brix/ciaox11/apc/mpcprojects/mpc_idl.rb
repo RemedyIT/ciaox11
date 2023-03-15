@@ -10,9 +10,7 @@ require 'pathname'
 require 'ostruct'
 
 module AxciomaPC
-
   module MPC
-
     # class to efficiently keep track of IDL compiler flags
     # that need to be added (+=) or removed (-=) in MPC
     # uses Util::Flags to prevent duplicates
@@ -76,23 +74,22 @@ module AxciomaPC
     end # IDLFlags
 
     class IDLProject < MPC::Project
-
       # registry with default IDLProject settings for the various
       # IDLProject types; derived classes will add to this
       DEFAULTS = {
-          :comp_gen => {
-              :add_idl_flags => '-Gcomp -Gxhex -Gxhsv -Scc -Scp -Gex -oI\\ .',
-              :export => true,
-              :base_projects => %w{ciaox11_idldefaults},
-              :idl_extras =>  'precious_files += _exec.h\Z _exec.cpp\Z',
-              :auto_dependencies => %w{}
+          comp_gen: {
+              add_idl_flags: '-Gcomp -Gxhex -Gxhsv -Scc -Scp -Gex -oI\\ .',
+              export: true,
+              base_projects: %w{ciaox11_idldefaults},
+              idl_extras: 'precious_files += _exec.h\Z _exec.cpp\Z',
+              auto_dependencies: %w{}
           },
-          :idl_gen => {
-              :add_idl_flags => '-Scc -Scp',
-              :export => true,
-              :base_projects => %w{ciaox11_idldefaults},
-              :auto_dependencies => %w{}
-          },
+          idl_gen: {
+              add_idl_flags: '-Scc -Scp',
+              export: true,
+              base_projects: %w{ciaox11_idldefaults},
+              auto_dependencies: %w{}
+          }
       }
 
       def initialize(type, recipe)
@@ -102,7 +99,7 @@ module AxciomaPC
         DEFAULTS[type].each do |k, v|
           case k
           when :auto_dependencies
-            v.each {|adp| project_dependencies << "#{mpc_id}_#{adp}" }
+            v.each { |adp| project_dependencies << "#{mpc_id}_#{adp}" }
           else
             self.send(k, v)
           end
@@ -110,7 +107,7 @@ module AxciomaPC
         @idl_files = Util::UniqueStringList.new
       end
 
-      def idl_flags(val=nil)
+      def idl_flags(val = nil)
         @idl_flags = (IDLFlags === val ? val : IDLFlags.new(val)) if val
         @idl_flags
       end
@@ -138,7 +135,7 @@ module AxciomaPC
         includes.to_a + [recipe.full_gen_path]
       end
 
-      def template_path(path=nil)
+      def template_path(path = nil)
         @template_path = path if path
         @template_path ||= 'idl'
       end
@@ -150,7 +147,7 @@ module AxciomaPC
         idl_flags.add '-Gxhst'
       end
 
-      def export(export_b=false)
+      def export(export_b = false)
          @export = export_b if export_b
          @export
       end
@@ -161,10 +158,10 @@ module AxciomaPC
       end
 
       def includes_flags
-        recipe.get_relative_paths(includes).collect {|idir| "-I#{idir}"}.join(' ')
+        recipe.get_relative_paths(includes).collect { |idir| "-I#{idir}" }.join(' ')
       end
 
-      def idl_extras(extras=nil)
+      def idl_extras(extras = nil)
         @extras.assign(extras) if extras
         @extras
       end
@@ -192,11 +189,11 @@ module AxciomaPC
             idl_sections << OpenStruct.new(idl_flags_plus: Util::Flags.new,
                                            sources: [idl_sources.shift])
             # add all '-GxhXXX' flags
-            idlflags.each {|flag| idl_sections.last.idl_flags_plus.add(flag) if /-Gxh/ =~ flag }
+            idlflags.each { |flag| idl_sections.last.idl_flags_plus.add(flag) if /-Gxh/ =~ flag }
             # add '-Xxxx' flags for all '-GxhXXX' flags to other idl section (except for '-Gxh')
-            idl_sections.last.idl_flags_plus.each {|flag| other_idl_flags.add(flag.sub(/-Gxh/, '-X')) if flag != '-Gxh' }
+            idl_sections.last.idl_flags_plus.each { |flag| other_idl_flags.add(flag.sub(/-Gxh/, '-X')) if flag != '-Gxh' }
             # Remove all '-GxhXXX' flags from main flags list
-            idl_sections.last.idl_flags_plus.each {|flag| idlflags.delete(flag) }
+            idl_sections.last.idl_flags_plus.each { |flag| idlflags.delete(flag) }
           end
           # add idl section with remaining IDL source files without any flags
           idl_sections << OpenStruct.new(idl_flags_plus: other_idl_flags,
@@ -223,9 +220,6 @@ module AxciomaPC
       def idl_sections
         mpc_genobj.idl_sections
       end
-
     end # IDLProject
-
   end # MPC
-
 end # AxciomaPC

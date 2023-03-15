@@ -8,25 +8,20 @@
 #--------------------------------------------------------------------
 
 module AxciomaPC
-
   module SRR
-
     module ComponentInteractionHandler
-
       def self.setup_component(recipe)
         BRIX11.log(4, '[%s|SRR] setup_component', self)
-        #noop
+        # noop
       end
 
       def self.process_component_dependencies(recipe, project_dependencies)
         BRIX11.log(4, '[%s|SRR] process_component_dependencies', self)
-        #noop
+        # noop
       end
-
     end
 
     module DataInteractionHandler
-
       def self.setup_data(recipe, fidl)
         if fidl.properties[:needs_lem]
           recipe.add_lem_proj(fidl)
@@ -47,9 +42,7 @@ module AxciomaPC
       def self.get_data_dependencies(recipe, idl_prj_dependencies, project_dependencies)
         recipe.get_srr_data_dependencies(project_dependencies, idl_prj_dependencies)
       end
-
     end
-
   end # SRR
 
   ComponentRecipe.register_interaction_handler(:srr, SRR::ComponentInteractionHandler)
@@ -62,6 +55,7 @@ module AxciomaPC
         generate_port(@config[:multiple] ? 'uses multiple' : 'uses', @config[:type_name])
       end
     end
+
     module Facet
       def verify
         BRIX11.log(4, "[%s] verify", self)
@@ -72,15 +66,14 @@ module AxciomaPC
 
   # patch ComponentRecipe::PortDefinition for srr ports component
   class ComponentRecipe::PortDefinition
-
     class Configurator
-      #srr
-      def uses(itf_name=nil, multiple=nil)
+      # srr
+      def uses(itf_name = nil, multiple = nil)
         @port.uses(itf_name, multiple)
       end
 
-      #facet
-      def provides(itf_name=nil)
+      # facet
+      def provides(itf_name = nil)
         @port.provides(itf_name)
       end
     end
@@ -88,7 +81,7 @@ module AxciomaPC
     # extend the known ports list
     self.possible_ports.concat(%w(provides uses))
 
-    def uses(intf_name, multiple=nil)
+    def uses(intf_name, multiple = nil)
       @config[:kind] = :receptacle
       @config[:type_name] = intf_name
       if ::Hash === multiple && multiple.size == 1
@@ -104,9 +97,7 @@ module AxciomaPC
       @config[:type_name] = intf_name
       self.extend SRR::Facet
     end
-
   end
-
 end
 
 # load specializations and extensions

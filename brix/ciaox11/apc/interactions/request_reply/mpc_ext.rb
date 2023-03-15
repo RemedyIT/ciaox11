@@ -8,27 +8,25 @@
 #--------------------------------------------------------------------
 
 # make sure MPC base definitions are loaded
-require 'brix/ciaox11/apc/mpcfile.rb'
+require 'brix/ciaox11/apc/mpcfile'
 
 module AxciomaPC
-
   module MPC
-
     # add synch request and reply MPC IDL project specializations
     MPC::IDLProject::DEFAULTS.merge!({
-      :lem_gen => {
-         :add_idl_flags => '-Glem,gen -Gxhlst -Sch -Scc -Scp',
-         :export => true,
-         :base_projects => %w{ciaox11_idldefaults},
-         :auto_dependencies => %w{}
+      lem_gen: {
+         add_idl_flags: '-Glem,gen -Gxhlst -Sch -Scc -Scp',
+         export: true,
+         base_projects: %w{ciaox11_idldefaults},
+         auto_dependencies: %w{}
       },
-      :skel_gen => {
-         :add_idl_flags => '-Scc -Sch -Scp -Gxhsk',
-         :del_idl_flags => '-Ssh',
-         :export => true,
-         :base_projects => %w{ridl_defaults},
-         :auto_dependencies => %w{}
-      },
+      skel_gen: {
+         add_idl_flags: '-Scc -Sch -Scp -Gxhsk',
+         del_idl_flags: '-Ssh',
+         export: true,
+         base_projects: %w{ridl_defaults},
+         auto_dependencies: %w{}
+      }
     })
 
     LEM_STUB_NM_EXT = '_lem_stub'
@@ -54,7 +52,6 @@ module AxciomaPC
       def add_headers(idf)
         @headers.concat((recipe.gen_dir + '/') << idf << SKEL_F << EXT_HEADER)
       end
-
     end
 
     class DataLemStubProject < MPC::CompileProject
@@ -82,7 +79,5 @@ module AxciomaPC
         @headers.concat((recipe.gen_dir + '/') << idf << LEM_STUB_F << EXT_HEADER)
       end
     end
-
   end # MPC
-
 end # AxciomaPC

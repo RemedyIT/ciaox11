@@ -10,21 +10,18 @@ require 'pathname'
 require 'set'
 
 module AxciomaPC
-
   class DataIdlRecipe < Recipe
-
     class DataConfigurator < Recipe::Configurator
       def initialize(recipe)
         super
       end
 
-      #not used yet
+      # not used yet
     end
 
     CONFIGURATOR = DataConfigurator
 
     class << self
-
       def interaction_handlers
         @interaction_handlers ||= {}
       end
@@ -40,15 +37,15 @@ module AxciomaPC
       end
 
       def handle_interaction_setup(recipe, interaction_type, fidl)
-        interaction_handlers[interaction_type].each {|ih| ih.setup_data(recipe, fidl) } if interaction_handlers.has_key?(interaction_type)
+        interaction_handlers[interaction_type].each { |ih| ih.setup_data(recipe, fidl) } if interaction_handlers.has_key?(interaction_type)
       end
 
       def handle_interaction_dependencies(recipe, interaction_type, project_dependencies)
-        interaction_handlers[interaction_type].each {|ih| ih.process_data_dependencies(recipe, project_dependencies) } if interaction_handlers.has_key?(interaction_type)
+        interaction_handlers[interaction_type].each { |ih| ih.process_data_dependencies(recipe, project_dependencies) } if interaction_handlers.has_key?(interaction_type)
       end
 
       def get_interaction_dependencies(recipe, interaction_type, idl_prj_dependencies, project_dependencies)
-        interaction_handlers[interaction_type].each {|ih| ih.get_data_dependencies(recipe, idl_prj_dependencies, project_dependencies) } if interaction_handlers.has_key?(interaction_type)
+        interaction_handlers[interaction_type].each { |ih| ih.get_data_dependencies(recipe, idl_prj_dependencies, project_dependencies) } if interaction_handlers.has_key?(interaction_type)
       end
     end
 
@@ -59,12 +56,11 @@ module AxciomaPC
       configure(&block) if block_given?
     end
 
-
     def to_s
       "APC::DataIdlRecipe{#{@recipe_id}}"
     end
 
-    def dump(indent=0, out=STDERR)
+    def dump(indent = 0, out = STDERR)
       super(indent, out, "shared_name: [#{@shared_name}] export_name: [#{@export_name}]")
     end
 
@@ -72,7 +68,7 @@ module AxciomaPC
       unless mpc_file[:idl_gen]
         mpc_idl_obj = MPC::IDLProject.new(:idl_gen, self)
         mpc_file.add_mpc_project(mpc_idl_obj)
-        #set idl_includes set in recipe and set in  project file
+        # set idl_includes set in recipe and set in  project file
         mpc_idl_obj.includes << idl_includes << project.idl_includes
 
         mpc_stub_obj = MPC::StubProject.new(self)
@@ -120,7 +116,7 @@ module AxciomaPC
     end
 
     # add managed IDLFile
-    def add_idl_file(idl_file, name=nil)
+    def add_idl_file(idl_file, name = nil)
       idl_file.recipes << self unless idl_file.recipes.include?(self)
       @idl_files[name || idl_file.full_path] = idl_file
     end
@@ -236,7 +232,7 @@ module AxciomaPC
       project_dependencies.merge(idl_prj_dependencies, :idl_gen, :stub)
 
       # check all required interaction types
-      if !interaction_types.nil?
+      unless interaction_types.nil?
         interaction_types.each do |int_type|
           get_interaction_dependencies(int_type, idl_prj_dependencies, project_dependencies)
         end
@@ -253,9 +249,7 @@ module AxciomaPC
         end
       end
     end
-
   end
 
   Recipe.register_recipe(:base, DataIdlRecipe)
-
 end

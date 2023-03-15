@@ -9,16 +9,14 @@
 require 'set'
 
 module AxciomaPC
-
   class ComponentRecipe < Recipe
-
     class Base_Projects
       attr_reader :plus , :min, :default
-      #min contains the projects that has to be removed from the final list
-      #plus contains the projects that has to be added to the final list
-      #default contains the projects that will replace the default projects
+      # min contains the projects that has to be removed from the final list
+      # plus contains the projects that has to be added to the final list
+      # default contains the projects that will replace the default projects
 
-      def initialize(defbases=nil)
+      def initialize(defbases = nil)
         @plus = Util::UniqueStringList.new(:ws)
         @min = Util::UniqueStringList.new(:ws)
         @default = Util::UniqueStringList.new(:ws, defbases)
@@ -52,7 +50,6 @@ module AxciomaPC
     end # Base_Projects
 
     class << self
-
       def interaction_handlers
         @interaction_handlers ||= {}
       end
@@ -90,16 +87,16 @@ module AxciomaPC
       end
 
       def includes(*dirs)
-        #Solve event. used environment variables
-        solved_dirs = dirs.flatten.collect  {|dir|  Util::path_without_env(dir) }
-        @recipe.include_dirs << solved_dirs.flatten.collect {|dir| File.expand_path(dir, @recipe.recipe_file.path) }
+        # Solve event. used environment variables
+        solved_dirs = dirs.flatten.collect  { |dir|  Util::path_without_env(dir) }
+        @recipe.include_dirs << solved_dirs.flatten.collect { |dir| File.expand_path(dir, @recipe.recipe_file.path) }
         @recipe.include_dirs
       end
 
       def libpaths(*paths)
-        #Solve event. used environment variables
-        solved_paths = paths.flatten.collect  {|path|  Util::path_without_env(path) }
-        @recipe.lib_paths << solved_paths.flatten.collect {|p| File.expand_path(p, @recipe.recipe_file.path) }
+        # Solve event. used environment variables
+        solved_paths = paths.flatten.collect  { |path|  Util::path_without_env(path) }
+        @recipe.lib_paths << solved_paths.flatten.collect { |p| File.expand_path(p, @recipe.recipe_file.path) }
       end
 
       def libs(*libs)
@@ -141,7 +138,6 @@ module AxciomaPC
           @recipe.define(comp_def)
         end
       end
-
     end
 
     CONFIGURATOR = ComponentConfigurator
@@ -195,22 +191,22 @@ module AxciomaPC
       @combined_lib == true
     end
 
-    def include_dirs(paths=nil)
+    def include_dirs(paths = nil)
       @include_dirs.assign(paths) if paths
       @include_dirs
     end
 
-    def lib_paths(paths=nil)
+    def lib_paths(paths = nil)
       @lib_paths.assign(paths) if paths
       @lib_paths
     end
 
-    def libs(libs=nil)
+    def libs(libs = nil)
       @libs.assign(libs) if libs
       @libs
     end
 
-    def lit_libs(libs=nil)
+    def lit_libs(libs = nil)
       @lit_libs.assign(libs) if libs
       @lit_libs
     end
@@ -220,7 +216,7 @@ module AxciomaPC
     end
 
     # add IDLFile, override for component
-    def add_idl_file(idl_file, name=nil)
+    def add_idl_file(idl_file, name = nil)
        # IDLFiles listed by component recipes are not managed
        # so we do not register the recipe with the IDLFile,
        # unless it is the component idl file self.
@@ -232,7 +228,7 @@ module AxciomaPC
       "APC::ComponentRecipe{#{recipe_id}}"
     end
 
-    def dump(indent=0, out=STDERR)
+    def dump(indent = 0, out = STDERR)
       super(indent, out, "shared_name: [#{@shared_name}] export_name: [#{@export_name}]")
     end
 
@@ -424,7 +420,7 @@ module AxciomaPC
     def setup_exec_lib(project_dependencies)
       mpc_obj = mpc_file[:exec]
       mpc_obj.add_dependencies(project_dependencies, :lem_stub, false)
-      #include paths, lib_paths and libs given in recipe:
+      # include paths, lib_paths and libs given in recipe:
       mpc_obj.includes << include_dirs << project.include_dirs
       mpc_obj.lib_paths << lib_paths << project.lib_paths
       mpc_obj.link_libs << libs + project.libs
@@ -442,6 +438,7 @@ module AxciomaPC
 
     def setup_svnt_comp(project_dependencies)
       return if self.combined_lib?
+
       mpc_obj = mpc_file[:comp_svnt]
       mpc_obj.add_dependencies(project_dependencies, :lem_stub, false)
 
@@ -495,6 +492,7 @@ module AxciomaPC
       enc = n.enclosure
       while enc
         return enc if IDL::AST::Include === enc
+
         enc = enc.enclosure
       end
       nil
@@ -561,7 +559,7 @@ module AxciomaPC
           type = a.idltype.resolved_type
           check_for_anytypecode_include(type)
         end
-      end  #each attribute
+      end  # each attribute
     end
     private :check_attributes_for_anytypecode
 
@@ -611,24 +609,23 @@ module AxciomaPC
     private :process_anytypecode_include
 
     def needs_anytype?
-      @idl_files.each_value.any? {|val|val.needs_anytype?}
+      @idl_files.each_value.any? { |val|val.needs_anytype? }
     end
 
     def has_ttc?
-      @idl_files.each_value.any? {|val|val.has_ttc?}
+      @idl_files.each_value.any? { |val|val.has_ttc? }
     end
 
     def needs_stub?
-      @idl_files.each_value.any? {|val|val.needs_stub?}
+      @idl_files.each_value.any? { |val|val.needs_stub? }
     end
 
     def creates_stubcode?
-      @idl_files.each_value.any? {|val| val.creates_stubcode? || val.needs_anytype? }
+      @idl_files.each_value.any? { |val| val.creates_stubcode? || val.needs_anytype? }
     end
   end
 
   Recipe.register_recipe(:component, ComponentRecipe)
-
 end
 
 # load specializations and extensions

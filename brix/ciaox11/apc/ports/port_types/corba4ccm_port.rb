@@ -7,11 +7,8 @@
 # @copyright Copyright (c) Remedy IT Expertise BV
 #--------------------------------------------------------------------
 module AxciomaPC
-
   module CORBA4CCM
-
     class Port < PortType
-
       class Configurator < PortType::Configurator
         def interface(name)
           @port_type.set_interface(name)
@@ -71,7 +68,6 @@ module AxciomaPC
         setup_conn_lib(project_dependencies)
       end
 
-
       def create_conn_gen
         mpcobj = MPC::IDLProject.new(:corba_conn_gen, self.recipe)
         mpcobj.add_idl_flags("-Wb,conn_intf=#{self.recipe.port_handler.interface}") if self.recipe.port_handler.interface
@@ -105,11 +101,9 @@ module AxciomaPC
       def mpc_name
         '_cc'
       end
-
     end
 
     module DataInteractionHandler
-
       def self.setup_data(recipe, fidl)
         # always lem needed, despite lem arg
         recipe.add_lem_proj(fidl)
@@ -123,14 +117,11 @@ module AxciomaPC
       def self.get_data_dependencies(recipe, idl_prj_dependencies, project_dependencies)
         recipe.get_corba4ccm_data_dependencies(project_dependencies, idl_prj_dependencies)
       end
-
     end
-
   end # CORBA4CCM
 
   ConnectorRecipe.register_port_type(:corba4ccm, CORBA4CCM::Port)
   DataIdlRecipe.register_interaction_handler(:corba4ccm, CORBA4CCM::DataInteractionHandler)
-
 end # AxciomaPC
 
 # load specializations and extensions

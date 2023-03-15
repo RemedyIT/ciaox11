@@ -8,12 +8,9 @@
 #--------------------------------------------------------------------
 
 module AxciomaPC
-
   module CORBA4CCM
-
     # Extension module for DataIdlRecipe
     module DataIDLExtension
-
       def process_corba4ccm_data_dependencies(project_dependencies)
         [:lem_gen, :skel_gen, :lem_stub, :skel].each do |prjtype|
           if mpc_proj = mpc_file[prjtype]
@@ -90,7 +87,7 @@ module AxciomaPC
       def add_lem_proj(fidl)
         prj_dependencies = fidl.project_dependencies
         # if the idl file doesn't contain an interface, don't generate lem
-        if !fidl.properties[:has_interface]
+        unless fidl.properties[:has_interface]
           # Although no lem is needed, the stub headers are included in the base lem stub headers,
           # so the included dirs must be set here.
           # by not specifying the recipe for the :lem_stub dependency (nil) this is a noop
@@ -107,7 +104,7 @@ module AxciomaPC
         else
           mpc_idl_obj = MPC::IDLProject.new(:lem_gen, self)
           mpc_file.add_mpc_project(mpc_idl_obj)
-          #set idl_includes set in recipe and set in  project file
+          # set idl_includes set in recipe and set in  project file
           mpc_idl_obj.includes << idl_includes << project.idl_includes
 
           mpc_stub_obj = MPC::DataLemStubProject.new(:lem_stub, self)
@@ -135,7 +132,5 @@ module AxciomaPC
     end
 
     AxciomaPC::DataIdlRecipe.send(:include, DataIDLExtension)
-
   end # CORBA4CCM
-
 end

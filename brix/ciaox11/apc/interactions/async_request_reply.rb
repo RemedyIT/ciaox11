@@ -8,14 +8,11 @@
 #--------------------------------------------------------------------
 
 module AxciomaPC
-
   module ARR
-
     module ComponentInteractionHandler
-
       def self.setup_component(recipe)
         BRIX11.log(4, '[%s|ARR] setup_component', self)
-        #noop
+        # noop
       end
 
       def self.process_component_dependencies(recipe, project_dependencies)
@@ -25,11 +22,9 @@ module AxciomaPC
         recipe.setup_svnt_comp_ami(project_dependencies)
         recipe.setup_exec_lib_ami(project_dependencies)
       end
-
     end
 
     module DataInteractionHandler
-
       def self.setup_data(recipe, fidl)
         # lem is also needed for srr and corba4ccm, but ami4ccm requires corba4ccm, so lem generation
         # is done in DataIdl extension of request_reply interactions (#add_lem_proj)
@@ -46,9 +41,7 @@ module AxciomaPC
       def self.get_data_dependencies(recipe, idl_prj_dependencies, project_dependencies)
         recipe.get_arr_data_dependencies(project_dependencies, idl_prj_dependencies)
       end
-
     end
-
   end # ARR
 
   ComponentRecipe.register_interaction_handler(:arr, ARR::ComponentInteractionHandler)
@@ -57,7 +50,6 @@ module AxciomaPC
 
   # Extension module for ComponentRecipe
   module ComponentExtension
-
     def self.included(base)
       base.send(:include, ComponentExtension::Overloads)
       base.class_eval do
@@ -107,9 +99,7 @@ module AxciomaPC
           end
         end
       end
-
     end
-
   end
 
   AxciomaPC::ComponentRecipe.send(:include, ComponentExtension)
@@ -126,10 +116,9 @@ module AxciomaPC
 
   # patch ComponentRecipe::PortDefinition for arr ports component
   class ComponentRecipe::PortDefinition
-
     class Configurator
-      #arr
-      def sends(itf_name=nil, multiple=nil)
+      # arr
+      def sends(itf_name = nil, multiple = nil)
         @port.sends(itf_name, multiple)
       end
     end
@@ -137,7 +126,7 @@ module AxciomaPC
     # extend the known ports list
     self.possible_ports.concat(%w(sends))
 
-    def sends(intf_name, multiple=nil)
+    def sends(intf_name, multiple = nil)
       @config[:kind] = :sender
       @config[:type_name] = intf_name
       if ::Hash === multiple && multiple.size == 1
@@ -147,9 +136,7 @@ module AxciomaPC
       end
       self.extend ARR::SenderPort
     end
-
   end
-
 end
 
 # load specializations and extensions

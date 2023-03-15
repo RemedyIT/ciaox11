@@ -8,33 +8,37 @@
 #--------------------------------------------------------------------
 
 module AxciomaPC
-
   module DDS4CCM
-
     class Port < PortType
-
       class Configurator < PortType::Configurator
         def topic(name)
           @port_type.topic = name
         end
+
         def topic_namespace(name)
           @port_type.topic_namespace = name
         end
+
         def topic_sequence_suffix(name)
           @port_type.topic_seq_suffix = name
         end
+
         def topic_interface_suffix(name)
           @port_type.topic_if_suffix = name
         end
+
         def topic_sequence(name)
           @port_type.topic_seq = name
         end
+
         def topic_interface(name)
           @port_type.topic_if = name
         end
+
         def middleware(name)
           @port_type.middleware([name])
         end
+
         def disable_context_switch
           @port_type.disable_context_switch
         end
@@ -157,17 +161,17 @@ module AxciomaPC
           BRIX11.log(3, '[%s] process_project_dependencies %s', self, fidl)
           inc_fidl = project.idl_files[fidl.full_path]
           rcp = inc_fidl.recipes.first
-          rcp.get_dependencies(inc_fidl, [:sev].concat(middleware.collect {|m| :"dds4ccm_#{m}" }), project_dependencies)
+          rcp.get_dependencies(inc_fidl, [:sev].concat(middleware.collect { |m| :"dds4ccm_#{m}" }), project_dependencies)
 
           fidl.includes.each do |ifidl|
             if ifidl.is_member?
               rcp = ifidl.recipes.first
-              rcp.get_dependencies(ifidl, [:sev].concat(middleware.collect {|m| :"dds4ccm_#{m}" }), project_dependencies)
+              rcp.get_dependencies(ifidl, [:sev].concat(middleware.collect { |m| :"dds4ccm_#{m}" }), project_dependencies)
             end
           end
         end
         inc_fidl = project.idl_files[@interface_recipe.interface_idl_path]
-        @interface_recipe.get_dependencies(inc_fidl, [:sev].concat(middleware.collect {|m| :"dds4ccm_#{m}" }), project_dependencies)
+        @interface_recipe.get_dependencies(inc_fidl, [:sev].concat(middleware.collect { |m| :"dds4ccm_#{m}" }), project_dependencies)
 
         BRIX11.log(3, '[%s] process_project_dependencies inc_fidl: %s %s', self, inc_fidl, project_dependencies)
 
@@ -186,7 +190,7 @@ module AxciomaPC
         # idl_includes: idl in recipe self, concat with includes given in project root apcrc file
         mpc_obj.includes << idl_includes << project.idl_includes
 
-        #Also needed the gen_dir from the original recipe of the idl_files for the includes
+        # Also needed the gen_dir from the original recipe of the idl_files for the includes
         recipe.idl_files.each do |n, idf|
           org_fidl = project.idl_files[idf.full_path]
           rcp = org_fidl.recipes.first
@@ -200,13 +204,10 @@ module AxciomaPC
       def mpc_name
         '_dds4ccm'
       end
-
     end # Port
-
   end # DDS4CCM
 
   ConnectorRecipe.register_port_type(:dds4ccm, DDS4CCM::Port)
-
 end
 
 # load specializations and extensions

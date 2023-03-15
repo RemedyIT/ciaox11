@@ -8,9 +8,7 @@
 #--------------------------------------------------------------------
 
 module AxciomaPC
-
   class ConnectorRecipe < Recipe
-
     class << self
       def port_types
         @port_types ||= {}
@@ -18,16 +16,17 @@ module AxciomaPC
 
       def register_port_type(keyword, klass)
         raise "Attempt to register port type with duplicate keyword #{keyword}" if port_types.has_key?(keyword)
+
         port_types[keyword.to_s.to_sym] = klass
       end
 
       def get_port_handler_klass(port_type)
-        if !port_types.has_key?(port_type)
+        unless port_types.has_key?(port_type)
           raise "PortType :#{port_type} not implemented. Valid port types are #{port_types.keys}"
         end
+
         port_types[port_type]
       end
-
     end
 
     class ConnectorConfigurator < Recipe::Configurator
@@ -48,7 +47,7 @@ module AxciomaPC
 
     def initialize(rcpfile, name, *features, &block)
       super(rcpfile, name)
-      #defaults
+      # defaults
       @port_type = :corba4ccm
       @type = :connector
       # only configure if required features match
@@ -60,15 +59,15 @@ module AxciomaPC
     end
 
     # add IDLFile
-    def add_idl_file(idl_file, name=nil)
+    def add_idl_file(idl_file, name = nil)
       # IDLFiles listed by connector recipes are not managed
       # so we do not register the recipe with the IDLFile
       @idl_files[name || idl_file.full_path] = idl_file
     end
 
-    def idl_files_gen_dir_rel_path(idlfiles, postfix='')
+    def idl_files_gen_dir_rel_path(idlfiles, postfix = '')
       idlfiles.collect do |n, f|
-        #get recipe file belonging to idl_file
+        # get recipe file belonging to idl_file
         name = f.name.gsub('.idl', "#{postfix}.idl")
         gen_dir = f.recipes.first.gen_dir
         Util::path_rel_to_path(File.join(f.path, gen_dir, name), self.recipe_file.path).to_s
@@ -105,7 +104,7 @@ module AxciomaPC
       "APC::ConnectorRecipe{#{recipe_id}}"
     end
 
-    def dump(indent=0, out=STDERR)
+    def dump(indent = 0, out = STDERR)
       super(indent, out, "shared_name: [#{@shared_name}] export_name: [#{@export_name}] port_type: [#{@port_type}]")
     end
 
@@ -121,9 +120,7 @@ module AxciomaPC
       port_handler_ = self.port_handler
       port_handler_.process_project_dependencies
     end
-
   end
 
   Recipe.register_recipe(:connector, ConnectorRecipe)
-
 end

@@ -8,9 +8,7 @@
 #--------------------------------------------------------------------
 
 module BRIX11
-
   module CIAOX11
-
     ROOT = File.dirname(__FILE__)
     TITLE = 'CIAOX11'.freeze
     DESC = 'BRIX11 CIAOX11 brix collection'.freeze
@@ -18,7 +16,6 @@ module BRIX11
     VERSION = {major: 1, minor: 0, release: 0}
 
     Collection.configure(:ciaox11, ROOT, TITLE, DESC, COPYRIGHT, VERSION) do |cfg|
-
       # declare dependency on :taox11 collection (forces it to load first)
       cfg.add_collection(:taox11)
 
@@ -70,10 +67,8 @@ module BRIX11
 
         Common::GenerateDocumentation::OPTIONS[:doxygen_config] = '${CIAOX11_ROOT}/etc/ciaox11.doxygen'
       end
-
     end # Collection.configure
 
-    Dir.glob(File.join(ROOT, 'cmds', '*.rb')).each { |p| require "brix/ciaox11/cmds/#{File.basename(p)}"}
+    Dir.glob(File.join(ROOT, 'cmds', '*.rb')).each { |p| require "brix/ciaox11/cmds/#{File.basename(p)}" }
   end # CIAOX11
-
 end # BRIX11

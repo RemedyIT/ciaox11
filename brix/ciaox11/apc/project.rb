@@ -9,10 +9,8 @@
 require 'find'
 
 module AxciomaPC
-
   # Represents a BRIX11 APC project
   class Project
-
     RCFILE = RECIPE_FILE_EXT.dup.freeze
 
     # Provides the DSL interface for APC project files (aprc)
@@ -28,7 +26,7 @@ module AxciomaPC
 
       # add IDL include paths for all recipes in the project
       def idl_includes(*paths)
-        @project.idl_includes << paths.flatten.collect {|ip| File.expand_path(ip, @project.root_path)}
+        @project.idl_includes << paths.flatten.collect { |ip| File.expand_path(ip, @project.root_path) }
       end
 
       # set the default library output path for the project
@@ -39,18 +37,18 @@ module AxciomaPC
       # add common C++ compiler include paths for the project
       def includes(*dirs)
         # resolve embedded environment variable references
-        solved_dirs = dirs.flatten.collect  {|dir|  Util::path_without_env(dir) }
+        solved_dirs = dirs.flatten.collect  { |dir|  Util::path_without_env(dir) }
 
-        @project.include_dirs << solved_dirs.flatten.collect {|dir| File.expand_path(dir, @project.root_path) }
+        @project.include_dirs << solved_dirs.flatten.collect { |dir| File.expand_path(dir, @project.root_path) }
         @project.include_dirs
       end
 
       # add common library search paths for the project
       def libpaths(*paths)
         # resolve environment variable references
-        solved_paths = paths.flatten.collect  {|path|  Util::path_without_env(path) }
+        solved_paths = paths.flatten.collect  { |path|  Util::path_without_env(path) }
 
-        @project.lib_paths << solved_paths.flatten.collect {|p| File.expand_path(p, @project.root_path) }
+        @project.lib_paths << solved_paths.flatten.collect { |p| File.expand_path(p, @project.root_path) }
       end
 
       # add common link libraries for the project
@@ -71,7 +69,6 @@ module AxciomaPC
 
     # Project singleton class methods
     class << self
-
       # known/loaded project registry
       def projects
         @projects ||= {}
@@ -88,7 +85,7 @@ module AxciomaPC
         BRIX11.log(2, '[APC::Project] loading project')
         root_path = find_project_root
         # make sure that recipes are loaded and interpreted again
-        if !projects[root_path].nil?
+        unless projects[root_path].nil?
           projects[root_path] = nil
         end
         # project doesn't exist yet/anymore.
@@ -135,7 +132,6 @@ module AxciomaPC
         prj.setup
         prj
       end
-
     end
 
     def initialize(root_path, autogen = :allways)
@@ -163,7 +159,7 @@ module AxciomaPC
       eval(code, binding, path)
     end
 
-    def project_type(type=nil)
+    def project_type(type = nil)
       if type
         BRIX11.log_fatal("Invalid project_type '#{type}' for #{self.to_s}") unless BRIX11::Project.valid_type?(type)
         @project_type = type
@@ -172,31 +168,31 @@ module AxciomaPC
     end
 
     def idl_includes(incs = nil)
-      @idl_includes.assign(incs.collect {|ip| File.expand_path(ip, root_path)}) if incs
+      @idl_includes.assign(incs.collect { |ip| File.expand_path(ip, root_path) }) if incs
       @idl_includes
     end
 
-    def libout(path=nil)
+    def libout(path = nil)
       @libout = File.expand_path(path, root_path) if path
       @libout
     end
 
-    def include_dirs(paths=nil)
+    def include_dirs(paths = nil)
       @include_dirs.assign(paths) if paths
       @include_dirs
     end
 
-    def lib_paths(paths=nil)
+    def lib_paths(paths = nil)
       @lib_paths.assign(paths) if paths
       @lib_paths
     end
 
-    def libs(libs=nil)
+    def libs(libs = nil)
       @libs.assign(libs) if libs
       @libs
     end
 
-    def lit_libs(libs=nil)
+    def lit_libs(libs = nil)
       @lit_libs.assign(libs) if libs
       @lit_libs
     end
@@ -299,7 +295,7 @@ module AxciomaPC
     end
 
     # add an MPC::File for given path
-    def add_mpc_file (path)
+    def add_mpc_file(path)
       mpc_files[path] = MPC::File.new(path, self)
       mpc_files[path]
     end
@@ -310,7 +306,7 @@ module AxciomaPC
     end
 
     # add a 'known' IDL file
-    def add_idl_file(fp, state=nil)
+    def add_idl_file(fp, state = nil)
       if idl_files.has_key?(fp)
         idl_files[fp]
       else
@@ -339,7 +335,7 @@ module AxciomaPC
 
     # get all IDL filepaths of IDL files generated from recipes
     def generated_idl
-      @idl_files.select {|path, fidl| fidl.is_generated? }.keys
+      @idl_files.select { |path, fidl| fidl.is_generated? }.keys
     end
 
     # registry of known recipe files
@@ -348,7 +344,7 @@ module AxciomaPC
     end
 
     # add a known recipe file
-    def add_recipe_file (path, implicit=false)
+    def add_recipe_file(path, implicit = false)
       frcp = RecipeFile.new(path, self)
       frcp.mark_implicit if implicit
       recipe_files[path] = frcp
@@ -376,21 +372,19 @@ module AxciomaPC
 
     # match feature requirements
     def check_features(*required_features)
-      required_features.all? {|rf| features[rf.to_sym] }
+      required_features.all? { |rf| features[rf.to_sym] }
     end
 
     def to_s
       "APC::Project{#{root_path}}"
     end
 
-    def dump(indent=0, out=STDERR)
+    def dump(indent = 0, out = STDERR)
       out.puts (' ' * indent) + self.to_s
       out.puts (' ' * (indent + 2)) + '-----'
       recipe_files.each_value { |frcp| frcp.dump(indent + 2, out) }
       out.puts (' ' * (indent + 2)) + '-----'
       idl_files.each_value { |fidl| fidl.dump(indent + 2, out) }
     end
-
   end
-
 end

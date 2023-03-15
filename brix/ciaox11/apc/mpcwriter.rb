@@ -10,11 +10,8 @@
 require 'brix11/command'
 
 module AxciomaPC
-
   module MPC
-
     class ProjectVisitor < BRIX11::Generate::Visitor
-
       def initialize(mpcprj, output, properties, writer)
         super(output, properties, writer)
         @mpc_project = mpcprj
@@ -77,7 +74,7 @@ module AxciomaPC
           begin
             target.respond_to?(m) ? target.__send__(m, *args, &block) : super(m, *args, &block)
           ensure
-            $@.delete_if {|t| %r"\A#{Regexp.quote(__FILE__)}:#{__LINE__ - 2}:"o =~ t} if $@
+            $@.delete_if { |t| %r"\A#{Regexp.quote(__FILE__)}:#{__LINE__ - 2}:"o =~ t } if $@
           end
         end
       end
@@ -98,6 +95,7 @@ module AxciomaPC
       def initialize_clone(obj) # :nodoc:
         @mpc_project = obj.instance_variable_get(:@mpc_project).clone
       end
+
       def initialize_dup(obj) # :nodoc:
         @mpc_project = obj.instance_variable_get(:@mpc_project).dup
       end
@@ -113,15 +111,13 @@ module AxciomaPC
         self.template_root = 'apc'
       end
 
-      helper_method   :projects
+      helper_method :projects
 
       def projects
-        @projects ||= @mpc_file.mpc_projects.collect {|p| p.wants_build? ? ProjectVisitor.new(p, @output, @properties.dup, self) : nil }.compact
+        @projects ||= @mpc_file.mpc_projects.collect { |p| p.wants_build? ? ProjectVisitor.new(p, @output, @properties.dup, self) : nil }.compact
         # MPC::Project list
         @projects
       end
     end
-
   end # MPC
-
 end # AxciomaPC

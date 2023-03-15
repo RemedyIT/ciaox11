@@ -8,10 +8,8 @@
 #--------------------------------------------------------------------
 
 module AxciomaPC
-
   class IDLFileScanner
     class IDLScanner
-
       def initialize(recipe, fidl)
         @recipe = recipe
         @fidl = fidl
@@ -95,16 +93,15 @@ module AxciomaPC
         # call recipe specific checks
         @recipe.check_idl_node(self, node, delegator)
       end
-
-    end #IDLScanner
+    end # IDLScanner
 
     def initialize(recipe)
       @recipe = recipe
       @ridl_opts = {
-          :client_stubs => false,
-          :svnt_skeletons => false,
-          :xincludepaths => [],  #quoted includes
-          :includepaths => []    #all includes ("" and <>)
+          client_stubs: false,
+          svnt_skeletons: false,
+          xincludepaths: [],  # quoted includes
+          includepaths: []    # all includes ("" and <>)
       }
 
       # include system paths
@@ -120,10 +117,10 @@ module AxciomaPC
       # @ridl_opts[:xincludepaths].concat(@recipe.recipe_idl_includes.collect {|inc| inc.end_with?('/', '\\') ? inc : inc+'/' })
 
       # user defined project includes
-      @ridl_opts[:xincludepaths].concat(@recipe.project.idl_includes.collect {|inc| inc.end_with?('/', '\\') ? inc : inc + '/' })
+      @ridl_opts[:xincludepaths].concat(@recipe.project.idl_includes.collect { |inc| inc.end_with?('/', '\\') ? inc : inc + '/' })
 
       # user defined recipe includes
-      @ridl_opts[:xincludepaths].concat(@recipe.idl_includes.collect {|inc| inc.end_with?('/', '\\') ? inc : inc + '/' })
+      @ridl_opts[:xincludepaths].concat(@recipe.idl_includes.collect { |inc| inc.end_with?('/', '\\') ? inc : inc + '/' })
     end
 
     def scan_idl_file(idl_file)
@@ -144,6 +141,7 @@ module AxciomaPC
         Thread.current[:apc_project] = @recipe.project
         parser = BRIX11::ERIDL.parse('ccmx11', idl_file.full_path, scan_opts)
         raise "ERROR in  idl file #{idl_file.full_path}" unless parser
+
         parser.visit_nodes(@is)
       ensure
         # reset current project reference
@@ -161,7 +159,6 @@ module AxciomaPC
 
   class IDLFileScannerType < IDLFileScanner
     class IDLScannerType < IDLFileScanner::IDLScanner
-
       def initialize(recipe, fidl, type_name, &type_check)
         super(recipe, fidl)
         @scoped_type_name = type_name
@@ -209,7 +206,6 @@ module AxciomaPC
           end
         end
       end
-
     end
 
     def idl_has_type?(idl_file, type_name, &type_check)
@@ -218,13 +214,10 @@ module AxciomaPC
       BRIX11.log(4, "[%s] Type %s %sfound", self.class.name, type_name, @is.type_found ? '' : 'NOT ')
       return @is.type_found
     end
-
   end
 
   class IDLFileScannerAttr < IDLFileScanner
-
     class IDLScannerAttr < IDLFileScanner::IDLScanner
-
       def initialize(recipe, fidl, type_name)
         super(recipe, fidl)
         @type_name = type_name
@@ -281,7 +274,6 @@ module AxciomaPC
             bt.is_pod? || check_type(bt)
         end
       end
-
     end
 
     def idl_has_attrib_def?(idl_file, type_name)
@@ -290,16 +282,13 @@ module AxciomaPC
       BRIX11.log(4, "[%s] Type %s %sfound", self.class.name, type_name, @is.type_found ? '' : 'NOT ')
       return @is.type_found
     end
-
   end
-
-end #AxciomaPC
+end # AxciomaPC
 
 # IDL::Scanner patch to provide support for including auto-generated IDL files
 #
 module IDL
   class Scanner
-
     def find_include_with_apcautogen(fname, all = true)
       # first check if IDL include already exists
       if fpinc = find_include_without_apcautogen(fname, all)
@@ -312,7 +301,7 @@ module IDL
           idlfile = project.idl_files[fpinc]
           if idlfile
             @includepaths.concat(idlfile.properties[:includepaths]) if idlfile.properties[:includepaths]
-            idlfile.properties[:macros].each {|k, v| @defined[k] = v } if idlfile.properties[:macros]
+            idlfile.properties[:macros].each { |k, v| @defined[k] = v } if idlfile.properties[:macros]
           end
         end
       else
@@ -327,7 +316,7 @@ module IDL
             fpinc = idlfile.full_path
             # check for additionally required include paths and/or macros
             @includepaths.concat(idlfile.properties[:includepaths]) if idlfile.properties[:includepaths]
-            idlfile.properties[:macros].each {|k, v| @defined[k] = v } if idlfile.properties[:macros]
+            idlfile.properties[:macros].each { |k, v| @defined[k] = v } if idlfile.properties[:macros]
           end
         end
       end
@@ -336,6 +325,5 @@ module IDL
 
     # create patched method chain
     alias_method_chain :find_include, :apcautogen
-
   end
 end

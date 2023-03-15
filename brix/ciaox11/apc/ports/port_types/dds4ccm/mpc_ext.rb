@@ -8,22 +8,18 @@
 #--------------------------------------------------------------------
 
 # make sure MPC base definitions are loaded
-require 'brix/ciaox11/apc/mpcfile.rb'
+require 'brix/ciaox11/apc/mpcfile'
 
 module AxciomaPC
-
   module MPC
-
     # add State/Event MPC IDL project specializations
     MPC::IDLProject::DEFAULTS.merge!({
-       :dds_conn_gen => {
-           :add_idl_flags => '-Gdds4ccm,conn_only -Gxhsv -Gxhcn -Scc -Scp -Sci -Sch',
-           :export => true,
-           :base_projects => %w{ciaox11_dds4ccm_idldefaults ciaox11_dds4ccm},
-           :auto_dependencies => []
-       },
+       dds_conn_gen: {
+           add_idl_flags: '-Gdds4ccm,conn_only -Gxhsv -Gxhcn -Scc -Scp -Sci -Sch',
+           export: true,
+           base_projects: %w{ciaox11_dds4ccm_idldefaults ciaox11_dds4ccm},
+           auto_dependencies: []
+       }
     })
-
   end # MPC
-
 end

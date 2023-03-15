@@ -8,14 +8,11 @@
 #--------------------------------------------------------------------
 
 module AxciomaPC
-
   module SEV
-
     module ComponentInteractionHandler
-
       def self.setup_component(recipe)
         BRIX11.log(3, '[%s|SEV] setup_component', self)
-        #noop
+        # noop
       end
 
       def self.process_component_dependencies(recipe, project_dependencies)
@@ -26,13 +23,11 @@ module AxciomaPC
         recipe.setup_svnt_comp_sev(project_dependencies)
         recipe.setup_exec_lib_sev(project_dependencies)
       end
-
     end
 
     module DataInteractionHandler
-
       def self.setup_data(recipe, fidl)
-        #noop
+        # noop
       end
 
       def self.process_data_dependencies(recipe, project_dependencies)
@@ -42,10 +37,7 @@ module AxciomaPC
       def self.get_data_dependencies(recipe, idl_prj_dependencies, project_dependencies)
         recipe.get_sev_data_dependencies(project_dependencies, idl_prj_dependencies)
       end
-
-
     end
-
   end
 
   ComponentRecipe.register_interaction_handler(:sev, SEV::ComponentInteractionHandler)
@@ -66,6 +58,7 @@ module AxciomaPC
           unless sev_data_idl
             raise "[#{self}] No valid Struct type #{type_name} found!"
           end
+
           generate_sev_interface_recipe(type_name, sev_data_idl)
           @idl_interface = File.basename(sev_data_idl, '.idl') + 'SE.idl'
         end
@@ -77,7 +70,7 @@ module AxciomaPC
         base_name = File.basename(sev_data_idl, '.idl')
         idlmatch = recipe.project.match_idl_files(base_name + 'SE.idl')
         topic = type_name
-        if !idlmatch.empty?
+        unless idlmatch.empty?
           intf_idl_file = idlmatch.find do |fidl|
             if rcp = fidl.recipes.first
               SEV::InterfaceRecipe === rcp && rcp.topic == topic
@@ -93,9 +86,9 @@ module AxciomaPC
           # found recipe with derived  *SE.idl"
           intf_idl_file.recipes.first
         else
-          #find recipe file with recipe for #{base_name+'.idl'}
+          # find recipe file with recipe for #{base_name+'.idl'}
           idlmatch = recipe.project.match_idl_files(base_name + '.idl')
-          if !idlmatch.empty?
+          unless idlmatch.empty?
             intf_base_idl_file = idlmatch.find do |fidl|
               if rcp = fidl.recipes.first
                 # found recipe for #{base_name+'.idl'}"
@@ -105,7 +98,7 @@ module AxciomaPC
                 false
               end
             end
-          #else not found file #{base_name+'.idl'} in project yet
+          # else not found file #{base_name+'.idl'} in project yet
           end
           if intf_base_idl_file
             rec_base = intf_base_idl_file.recipes.first
@@ -143,8 +136,8 @@ module AxciomaPC
         port = ComponentRecipe::PortDefinition.new(name, comp)
         port.set_type 'provides'
         port.set_intf_name 'CCM_DDS::ConnectorStatusListener'
-        #check if already a ConnectorStatusListener exist for this InterFace
-        if !comp.port_exist?(port)
+        # check if already a ConnectorStatusListener exist for this InterFace
+        unless comp.port_exist?(port)
           comp.add_port(port)
         end
       end
@@ -170,6 +163,7 @@ module AxciomaPC
         recipe.idl_includes << File.dirname(@interface_recipe.interface_idl_path)
       end
     end
+
     module UpdaterPort
       def verify
         BRIX11.log(4, "[%s] verify", self)
@@ -184,6 +178,7 @@ module AxciomaPC
         recipe.idl_includes << File.dirname(@interface_recipe.interface_idl_path)
       end
     end
+
     module ReaderPort
       def verify
         BRIX11.log(4, "[%s] verify", self)
@@ -194,6 +189,7 @@ module AxciomaPC
         recipe.idl_includes << File.dirname(@interface_recipe.interface_idl_path)
       end
     end
+
     module GetterPort
       def verify
         BRIX11.log(4, "[%s] verify", self)
@@ -204,6 +200,7 @@ module AxciomaPC
         recipe.idl_includes << File.dirname(@interface_recipe.interface_idl_path)
       end
     end
+
     module MonitorPort
       def verify
         BRIX11.log(4, "[%s] verify", self)
@@ -214,6 +211,7 @@ module AxciomaPC
         recipe.idl_includes << File.dirname(@interface_recipe.interface_idl_path)
       end
     end
+
     module ObserverPort
       def verify
         BRIX11.log(4, "[%s] verify", self)
@@ -228,29 +226,28 @@ module AxciomaPC
 
   # patch ComponentRecipe::PortDefinition for sev ports component
   class ComponentRecipe::PortDefinition
-
     class Configurator
-      def writes(type_name=nil)
+      def writes(type_name = nil)
         @port.writes(type_name)
       end
 
-      def updates(type_name=nil)
+      def updates(type_name = nil)
         @port.updates(type_name)
       end
 
-      def reads(type_name=nil)
+      def reads(type_name = nil)
         @port.reads(type_name)
       end
 
-      def gets(type_name=nil)
+      def gets(type_name = nil)
         @port.gets(type_name)
       end
 
-      def monitors(type_name=nil)
+      def monitors(type_name = nil)
         @port.monitors(type_name)
       end
 
-      def observes(type_name=nil)
+      def observes(type_name = nil)
         @port.observes(type_name)
       end
     end

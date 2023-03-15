@@ -8,11 +8,8 @@
 #--------------------------------------------------------------------
 
 module AxciomaPC
-
   class ComponentRecipe < Recipe
-
     class ComponentDefinition
-
       class Configurator
         def initialize(comp)
           @comp = comp
@@ -21,12 +18,13 @@ module AxciomaPC
         def port(port = nil, type = nil, &_block)
           if block_given?
             raise "Do not use port definition argument (#{type}) when using block form." unless type.nil?
-            #example:  intf.port 'run_my_bar_foo_prov' do |p|
+
+            # example:  intf.port 'run_my_bar_foo_prov' do |p|
             #          p.provides 'Foo::MyFoo'
             #          end
             @comp.port(port, &_block)
           else
-            #example:  intf.port 'run_my_bar_foo_prov' , provides: 'Foo::MyFoo'
+            # example:  intf.port 'run_my_bar_foo_prov' , provides: 'Foo::MyFoo'
             @comp.port(port, type)
           end
         end
@@ -34,6 +32,7 @@ module AxciomaPC
         def attribute(attrib, type = nil, &_block)
           if block_given?
             raise "Do not use attribute type argument (#{type}) when using block form." unless type.nil?
+
             @comp.attribute(attrib, &_block)
           else
             @comp.attribute(attrib, type)
@@ -136,9 +135,10 @@ module AxciomaPC
       private :create_component_idl
 
       def port(port_name, kind = nil, &_block)
-        if !port_name
+        unless port_name
           raise "Port name is missing in component recipe."
         end
+
         port = PortDefinition.new(port_name, self)
         if block_given?
           port.configure(&_block)
@@ -188,7 +188,7 @@ module AxciomaPC
         @ports << port
       end
 
-      def attribute(attrib, attrib_def=nil, &block)
+      def attribute(attrib, attrib_def = nil, &block)
         attribute = AttributeDefinition.new(attrib, self)
         if block_given?
           attribute.configure(&block)
@@ -202,7 +202,7 @@ module AxciomaPC
           else
             type_name = attrib_def[:type]
             attribute.set_type(type_name)
-            attribute.readonly( attrib_def[:readonly])
+            attribute.readonly(attrib_def[:readonly])
           end
         end
         @attributes << attribute
@@ -211,7 +211,6 @@ module AxciomaPC
       def to_s
         "#{@recipe}:#{@recipe.comp_name}"
       end
-
     end # ComponentDefinition
   end
 end

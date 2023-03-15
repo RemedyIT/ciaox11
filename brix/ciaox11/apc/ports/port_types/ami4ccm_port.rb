@@ -9,11 +9,8 @@
 require 'brix/ciaox11/apc/scanidlfile'
 
 module AxciomaPC
-
   module AMI4CCM
-
     class Port < PortType
-
       class Configurator < PortType::Configurator
         def interface(name)
           @port_type.set_interface(name)
@@ -50,7 +47,7 @@ module AxciomaPC
         recipe.idl_files.each do |_, fidl|
           inc_fidl = project.idl_files[fidl.full_path]
           rcp = inc_fidl.recipes.first
-          #set the interaction type
+          # set the interaction type
           rcp.setup_project_interaction(inc_fidl, :ami4ccm)
         end
       end
@@ -102,14 +99,13 @@ module AxciomaPC
         mpc_obj.add_dependencies(project_dependencies, :ami4ccm_lem_gen)
       end
 
-
       def setup_conn_gen(project_dependencies)
         mpc_obj = mpc_file[:amic_conn_gen]
         recipe.idl_files.collect { |n, f| mpc_obj.add_project_file(f.full_path) }
 
         mpc_obj.add_dependencies(project_dependencies, :lem_gen)
 
-        #Also needed the gen_dir from the original recipe of the idl_files for the includes
+        # Also needed the gen_dir from the original recipe of the idl_files for the includes
         recipe.idl_files.each do |n, idf|
           org_fidl = project.idl_files[idf.full_path]
           rcp = org_fidl.recipes.first
@@ -133,31 +129,28 @@ module AxciomaPC
       def mpc_name
         '_ac'
       end
-
     end
 
     module DataInteractionHandler
-
       def self.setup_data(recipe, fidl)
         # lem is needed, but ami4ccm requires corba4ccm, so lem generation
         # is done in Data IDL extension of corba4ccm port
         recipe.add_lem_proj(fidl)
         recipe.add_ami_proj(fidl)
       end
+
       def self.process_data_dependencies(recipe, project_dependencies)
         recipe.process_ami4ccm_data_dependencies(project_dependencies)
       end
+
       def self.get_data_dependencies(recipe, idl_prj_dependencies, project_dependencies)
         recipe.get_ami4ccm_data_dependencies(project_dependencies, idl_prj_dependencies)
       end
-
     end
-
   end
 
   ConnectorRecipe.register_port_type(:ami4ccm, AMI4CCM::Port)
   DataIdlRecipe.register_interaction_handler(:ami4ccm, AMI4CCM::DataInteractionHandler)
-
 end # AMI4CCM
 
 # load specializations and extensions

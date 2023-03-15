@@ -10,12 +10,9 @@
 require 'fileutils'
 
 module AxciomaPC
-
   module SEV
-
     # Extension module for DataIdlRecipe
     module DataIDLExtension
-
       class << self
         # list of possible DDS IDL generation projects (vendor specific)
         def dds_idl_gen_prj
@@ -34,14 +31,12 @@ module AxciomaPC
       def get_sev_data_dependencies(project_dependencies, idl_prj_dependencies)
         project_dependencies.merge(idl_prj_dependencies, :stub)
       end
-
     end # DataIDLExtension
 
     AxciomaPC::DataIdlRecipe.send(:include, DataIDLExtension)
 
     # State-Event interface recipe
     class InterfaceRecipe < Recipe
-
       class InterfaceConfigurator < Recipe::Configurator
         def initialize(recipe)
           super
@@ -96,7 +91,7 @@ module AxciomaPC
 
       def initialize(rcpfile, name, &block)
         super(rcpfile, name)
-        #defaults
+        # defaults
         @type = :sev_interface
         @export_name = nil # defaults to interface_name
         @topic_idl = nil
@@ -124,7 +119,7 @@ module AxciomaPC
         ridl_args << "-Wb,dds_topic_seq=#{self.topic_seq}" unless self.topic_seq.nil?
         ridl_args << "-Wb,dds_topic_if=#{self.topic_if}" unless self.topic_if.nil?
         # specify user defined include paths
-        ridl_args.concat self.get_relative_paths(self.idl_includes + self.project.idl_includes).collect {|p| "-I#{p}"}
+        ridl_args.concat self.get_relative_paths(self.idl_includes + self.project.idl_includes).collect { |p| "-I#{p}" }
         # specify system include path
         ridl_args << "-I#{BRIX11::Exec.get_run_environment('TAOX11_ROOT')}"
         # add input file
@@ -171,7 +166,7 @@ module AxciomaPC
       end
 
       # only allow a single topic IDL file
-      def idl(idlfiles=nil)
+      def idl(idlfiles = nil)
         if idlfiles
           BRIX11.log_fatal("SE interface recipe #{self.recipe_file.full_path} only allows a single topic IDL to be defined!") if idlfiles.size > 1
         end
@@ -179,7 +174,7 @@ module AxciomaPC
       end
 
       # add IDLFile
-      def add_idl_file(idl_file, name=nil)
+      def add_idl_file(idl_file, name = nil)
         # IDLFiles listed by interface recipes are not managed
         # so we do not register the recipe with the IDLFile
         @idl_files[name || idl_file.full_path] = idl_file
@@ -190,7 +185,7 @@ module AxciomaPC
       end
 
       # overrule
-      def export_name(export_name_=nil)
+      def export_name(export_name_ = nil)
         @export_name = export_name_.downcase if export_name_
         @export_name ||= interface_name.downcase
       end
@@ -268,7 +263,7 @@ module AxciomaPC
         "APC::SEV::InterfaceRecipe[#{recipe_id}]"
       end
 
-      def dump(indent=0, out=STDERR)
+      def dump(indent = 0, out = STDERR)
         super(indent, out, "shared_name: [#{@shared_name}] export_name: [#{@export_name}]")
       end
 
@@ -278,7 +273,7 @@ module AxciomaPC
         idl_prj_dependencies = fidl.project_dependencies
 
         # check all required interaction types
-        if !interaction_types.nil?
+        unless interaction_types.nil?
           interaction_types.each do |int_type|
             if int_type == :sev
               BRIX11.log(4, '[%s] idl_prj_dependencies : %s', self, idl_prj_dependencies)
@@ -295,7 +290,6 @@ module AxciomaPC
           end
         end
       end
-
 
       def add_lem_proj(fidl)
         # Is there already a dds_lem_gen project for this interface idl?
@@ -316,7 +310,7 @@ module AxciomaPC
           mpc_idl_obj.project_dependencies <<  "#{mpc_id}_se_idl_gen"
 
           # create LEM stub project
-          mpc_stub_obj = MPC::DdsLemStubProject.new( self)
+          mpc_stub_obj = MPC::DdsLemStubProject.new(self)
           mpc_file.add_mpc_project(mpc_stub_obj)
         end
 
@@ -397,14 +391,12 @@ module AxciomaPC
           mpc_proj.add_dependencies(project_dependencies, :stub)
         end
       end
-
     end # InterfaceRecipe
 
     AxciomaPC::Recipe.register_recipe(:sev_interface, InterfaceRecipe)
 
     # Extension module for ComponentRecipe
     module ComponentExtension
-
       def setup_comp_gen_sev(project_dependencies)
         mpc_obj = mpc_file[:comp_gen]
         # add SEV base project
@@ -414,6 +406,7 @@ module AxciomaPC
 
       def setup_stub_comp_sev(project_dependencies)
         return if self.combined_lib?
+
         if mpc_obj = mpc_file[:comp_stub]
           # add SEV base project
           mpc_obj.base_projects << 'ciaox11_dds4ccm_lem_stub'
@@ -424,6 +417,7 @@ module AxciomaPC
 
       def setup_lem_comp_sev(project_dependencies)
         return if self.combined_lib?
+
         mpc_obj = mpc_file[:comp_lem]
         # add SEV base project
         mpc_obj.base_projects << 'ciaox11_dds4ccm_lem_stub'
@@ -433,6 +427,7 @@ module AxciomaPC
 
       def setup_svnt_comp_sev(project_dependencies)
         return if self.combined_lib?
+
         mpc_obj = mpc_file[:comp_svnt]
         # add SEV base project
         mpc_obj.base_projects << 'ciaox11_dds4ccm_lem_stub'
@@ -447,11 +442,8 @@ module AxciomaPC
         mpc_obj.add_dependencies(project_dependencies, :dds_lem_stub)
         mpc_obj.add_dependencies(project_dependencies, :stub)
       end
-
     end
 
     AxciomaPC::ComponentRecipe.send(:include, ComponentExtension)
-
   end # SEV
-
 end

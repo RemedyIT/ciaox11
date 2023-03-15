@@ -11,7 +11,6 @@ require 'brix/ciaox11/apc/project'
 
 module BRIX11
   module CIAOX11
-
     class CreateProject < Command::Base
       DESC = 'Make project files for AXCIOMA project.'.freeze
 
@@ -25,12 +24,12 @@ module BRIX11
         optparser.banner = "#{DESC}\n\n" +
                            "Usage: #{options[:script_name]} apc prepare [options] [-- [mwc_options]]\n\n"
         optparser.on('-e', '--enable', '=FEATURE',
-                     'Enable feature(s). If specifying more than 1 separate by \',\'') {|v|
+                     'Enable feature(s). If specifying more than 1 separate by \',\'') { |v|
                         options[:axpcreate][:features] ||= {};
                         v.split(',').each { |f| options[:axpcreate][:features][f] = 1 }
                      }
         optparser.on('-d', '--disable', '=FEATURE',
-                     'Disable feature(s). If specifying more than 1 separate by \',\'') {|v|
+                     'Disable feature(s). If specifying more than 1 separate by \',\'') { |v|
                         options[:axpcreate][:features] ||= {};
                         v.split(',').each { |f| options[:axpcreate][:features][f] = 0 }
                      }
@@ -50,12 +49,12 @@ module BRIX11
           project.dump
         end
 
-        if !project
-          #give error
+        unless project
+          # give error
           return
         end
 
-        #make the  mpcfiles
+        # make the  mpcfiles
         project.prepare
 
         if options[:verbose] > 5
@@ -70,11 +69,12 @@ module BRIX11
           opts[:genbuild][:features] ||= {}
           opts[:genbuild][:features].merge!(opts[:axpcreate][:features] || {})
 
-          #all arguments behind '--' , including '--', must be passed to gen build command unless it is another brix command
+          # all arguments behind '--' , including '--', must be passed to gen build command unless it is another brix command
           cmdargv = []
           if !argv.empty? && argv.first == '--'
             while !argv.empty?
               break if Command.is_command_arg?(argv.first, options)
+
               cmdargv << argv.shift
             end
           end
@@ -84,9 +84,9 @@ module BRIX11
           rc = BRIX11::Common::GenerateBuild.new(entry, opts).run(cmdargv)
         end
 
-        if !options[:axpcreate][:mpc]
-          #throw away temporarily mpc files
-          #remove mpc files
+        unless options[:axpcreate][:mpc]
+          # throw away temporarily mpc files
+          # remove mpc files
           AxciomaPC::MPC.remove(project)
         end
 
@@ -94,9 +94,6 @@ module BRIX11
       end
 
       Command.register('apc|axp:prepare', DESC, CIAOX11::CreateProject)
-
-    end #CreateProject
-
+    end # CreateProject
   end # CIAOX11
-
 end # BRIX11

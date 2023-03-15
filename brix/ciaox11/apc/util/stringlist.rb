@@ -8,9 +8,7 @@
 #--------------------------------------------------------------------
 
 module AxciomaPC
-
   module Util
-
     class StringList
       include ::Enumerable
 
@@ -20,7 +18,7 @@ module AxciomaPC
         self << val if val
       end
 
-      def join_sep(sep=nil)
+      def join_sep(sep = nil)
         s_ = (sep || @separator)
         s_ == :ws ? ' ' : s_
       end
@@ -47,7 +45,7 @@ module AxciomaPC
       def concat(val)
         if val
           if ::Enumerable === val
-            append_values(*val.inject([]) {|lv, el| lv.concat(split_value(el)) })
+            append_values(*val.inject([]) { |lv, el| lv.concat(split_value(el)) })
           else
             append_values(*split_value(val))
           end
@@ -59,7 +57,7 @@ module AxciomaPC
       def add(val)
         if val
           if ::Enumerable === val
-            append_values(*val.collect {|el| el.to_s })
+            append_values(*val.collect { |el| el.to_s })
           else
             append_values(val.to_s)
           end
@@ -85,6 +83,7 @@ module AxciomaPC
 
       def assign(val)
         return if self == val # check for self assignment
+
         self.clear << val
       end
 
@@ -98,7 +97,7 @@ module AxciomaPC
           (@value.detect { |el| val =~ el }) != nil
         else
           val_sl = (::Enumerable === val ? val : self.dup.assign(val))
-          val_sl.all? {|s| @value.include?(s) }
+          val_sl.all? { |s| @value.include?(s) }
         end
       end
 
@@ -121,7 +120,7 @@ module AxciomaPC
       end
 
       def dup
-        self.class.new(@separator, @value.collect {|s| s.dup})
+        self.class.new(@separator, @value.collect { |s| s.dup })
       end
 
       def to_s(sep = nil)
@@ -155,10 +154,8 @@ module AxciomaPC
       protected :split_value
 
       def dup
-        self.class.new(@value.collect {|s| s.dup})
+        self.class.new(@value.collect { |s| s.dup })
       end
     end # Flags
-
   end # Util
-
 end # AxciomaPC

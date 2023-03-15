@@ -11,7 +11,6 @@ require 'brix/ciaox11/apc/project'
 
 module BRIX11
   module CIAOX11
-
     class RemoveProject < Command::Base
       DESC = 'Remove generated files from AXCIOMA project.'.freeze
 
@@ -28,7 +27,7 @@ module BRIX11
           project.dump
         end
 
-        if !project
+        unless project
           raise Command::CmdError, 'Unable to locate AXCIOMA project root'
         end
 
@@ -72,13 +71,10 @@ module BRIX11
         # Finally delete project object
         AxciomaPC::Project.clean_project(project)
 
-         #return always true, so in case of multiple brix commands, the next command is invoked
+         # return always true, so in case of multiple brix commands, the next command is invoked
          true
       end
       Command.register('apc|axp:clean', DESC, CIAOX11::RemoveProject)
-
-    end #RemoveProject
-
+    end # RemoveProject
   end # CIAOX11
-
 end # BRIX11

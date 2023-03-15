@@ -9,19 +9,15 @@
 require 'brix11/command'
 
 module BRIX11
-
   module Common
-
     class Make < Command::Base
-
       class ListBuilder
-
         module MPCBuilder
           def self.check_build(dir)
             # an MPC build project dir should contain an .mpc file itself
             # OR it's subdirectories must contain .mpc files
             # the root should *not* contain an aprc file
-            Dir.glob(File.join(dir, 'aprc')).empty? && Dir.glob(File.join(dir, '**', '*.mpc')).any? {|p| File.file?(p)}
+            Dir.glob(File.join(dir, 'aprc')).empty? && Dir.glob(File.join(dir, '**', '*.mpc')).any? { |p| File.file?(p) }
           end
         end
 
@@ -79,11 +75,7 @@ module BRIX11
         end # APCBuilder
 
         self.builders[:apc] = APCBuilder
-
       end # ListBuilder
-
     end # Make
-
   end # Common
-
 end # BRIX11
