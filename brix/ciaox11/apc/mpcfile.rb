@@ -243,7 +243,7 @@ module AxciomaPC
     end # File
 
     class Project
-      def initialize (type, recipe)
+      def initialize(type, recipe)
         @recipe = recipe
         @type = type
         @project_postfix = @type.to_s
@@ -323,7 +323,7 @@ module AxciomaPC
         []
       end
 
-      def add_dependencies (deps, deptype, include_prereq = true)
+      def add_dependencies(deps, deptype, include_prereq = true)
         if dep = deps.find(deptype)
           project_dependencies << dep.prerequisite_projects if include_prereq
           add_dependency(dep)

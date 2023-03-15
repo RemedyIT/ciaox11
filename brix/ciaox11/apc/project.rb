@@ -295,7 +295,7 @@ module AxciomaPC
     end
 
     # add an MPC::File for given path
-    def add_mpc_file (path)
+    def add_mpc_file(path)
       mpc_files[path] = MPC::File.new(path, self)
       mpc_files[path]
     end
@@ -344,7 +344,7 @@ module AxciomaPC
     end
 
     # add a known recipe file
-    def add_recipe_file (path, implicit = false)
+    def add_recipe_file(path, implicit = false)
       frcp = RecipeFile.new(path, self)
       frcp.mark_implicit if implicit
       recipe_files[path] = frcp
