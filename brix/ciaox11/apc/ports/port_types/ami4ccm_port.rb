@@ -37,7 +37,6 @@ module AxciomaPC
         mpc_obj = create_ami_lem_gen
         mpc_file.add_mpc_project(mpc_obj)
 
-
         mpc_obj = create_conn_gen
         mpc_file.add_mpc_project(mpc_obj)
 

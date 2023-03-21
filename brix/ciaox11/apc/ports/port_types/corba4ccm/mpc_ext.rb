@@ -35,7 +35,6 @@ module AxciomaPC
         @sources.concat(recipe.idl_without_ext.collect { |ifs| ((recipe.gen_dir + '/') << ifs << CC << SVNT_F << EXT_CPP) })
         @sources.concat(recipe.idl_without_ext.collect { |ifs| ((recipe.gen_dir + '/') << ifs << CC << LEM_STUB_F << EXT_CPP) })
 
-
         @headers.concat(recipe.idl_without_ext.collect { |ifs| ((recipe.gen_dir + '/') << ifs << CC << EXEC_F << EXT_HEADER) })
         @headers.concat(recipe.idl_without_ext.collect { |ifs| ((recipe.gen_dir + '/') << ifs << CC << SVNT_F << EXT_HEADER) })
         @headers.concat(recipe.idl_without_ext.collect { |ifs| ((recipe.gen_dir + '/') << ifs << CC << LEM_STUB_F << EXT_HEADER) })

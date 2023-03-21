@@ -7,12 +7,10 @@
 # @copyright Copyright (c) Remedy IT Expertise BV
 #--------------------------------------------------------------------
 
-
 module IDL
   module CCMX11
     COPYRIGHT = "Copyright (c) 2007-#{Time.now.year} Remedy IT Expertise BV, The Netherlands".freeze
     TITLE = 'RIDL CCMX11 backend'.freeze
-
 
     def self.add_extended_options(ol)
       # IMPORTANT When these flags are updated also update the docs/src/ridlc.adoc

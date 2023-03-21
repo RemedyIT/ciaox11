@@ -72,7 +72,6 @@ module AxciomaPC
       end
     end
 
-
     class ComponentConfigurator < Recipe::Configurator
       def initialize(recipe)
         super

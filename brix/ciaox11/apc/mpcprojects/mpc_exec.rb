@@ -9,7 +9,6 @@
 require 'pathname'
 require 'brix/ciaox11/apc/mpcprojects/mpc_compile'
 
-
 module AxciomaPC
   module MPC
     class ExecProject < MPC::CompileProject

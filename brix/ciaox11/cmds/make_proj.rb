@@ -21,7 +21,6 @@ module BRIX11
         debug: false
       }
 
-
       def self.setup(optparser, options)
         options[:axpmake] = OPTIONS.dup
         optparser.banner = "#{DESC}\n\n" +
@@ -45,7 +44,6 @@ module BRIX11
         unless project
           raise Command::CmdError, 'Unable to locate AXCIOMA project root'
         end
-
 
         prj = Project.handler(options[:config][:project_type])
         if prj.project_exists?(nil, project.root_path)

@@ -24,7 +24,6 @@ $CIAO_pre = $EduVdrBilt + ".CIAO"
 $DAnCE_pre = $EduVdrBilt + ".DAnCE"
 $DAnCE_pre2 = $EdudrVBilt + ".DAnCE"
 
-
 # The last 3 lines should always stay at the end of this hash.
 $conversion_hash = { "#{$DAnCE_pre}.LocalityUUID" => "#{$DnCx11_pre}.DnCX11.Locality. " ,
                     "#{$DAnCE_pre}.LocalityTimeout" => "#{$DnCx11_pre}.Locality.Timeout",
@@ -48,7 +47,6 @@ $local_interface_array = ["<deployRequirement>",
                           "<resourceType>Local_Interface</resourceType>",
                           "</deployRequirement>"
                          ]
-
 
 module CIAOX11_Plan_Converter
   def self.convert_plan(options)
@@ -217,6 +215,5 @@ if options[:cdp_plan_out] == nil
     end
   end until options[:cdp_plan_out] != nil
 end
-
 
 CIAOX11_Plan_Converter.run(options)

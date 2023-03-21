@@ -301,7 +301,6 @@ module IDL
         options[:gen_ami_connector_idl] = true
       end
 
-
       ##=======================================================================
 
       # schedule an additional input processing pass from the xxxA_conn.idl
@@ -579,7 +578,6 @@ module IDL
         a_opts[:no_client_proxy] = false
         IDL.push_input(a_opts[:idlfile], a_opts)
       end
-
 
       #########################################################################
       ## AMI4CCM configuration
