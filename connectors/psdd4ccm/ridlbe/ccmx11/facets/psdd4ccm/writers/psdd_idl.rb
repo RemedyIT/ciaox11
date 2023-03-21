@@ -92,6 +92,7 @@ module IDL
         end
 
       protected
+
         def init_visitor(v, node)
           v.properties[:topic_namespaces] =
               (params[:psdd_topic_namespace] && params[:psdd_topic_namespace].split('::')) ||
