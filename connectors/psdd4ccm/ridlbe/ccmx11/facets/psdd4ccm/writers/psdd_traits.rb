@@ -70,6 +70,7 @@ module IDL
 
         def visit_typedef(node)
           return if IDL::Type::ScopedName === node.idltype # alias typedef
+
           idl_type = node.idltype.resolved_type
           case idl_type
           when IDL::Type::Sequence

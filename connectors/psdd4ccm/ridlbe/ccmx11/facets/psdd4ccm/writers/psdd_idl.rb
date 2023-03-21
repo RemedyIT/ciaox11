@@ -109,6 +109,7 @@ module IDL
             annot = node.annotations[:TopLevel]
             return false if annot[0] == nil
             return true if annot[0].fields[:value] == nil
+
             annot[0].fields[:value]
           end
           false

@@ -20,6 +20,7 @@ module IDL
               if /^psdd4ccm\,(.*)/ =~ arg
                 return [$1]
               end
+
               nil
             end
             # IMPORTANT When these flags are updated also update the PSDD4CCM docs/src/ridlc.adoc

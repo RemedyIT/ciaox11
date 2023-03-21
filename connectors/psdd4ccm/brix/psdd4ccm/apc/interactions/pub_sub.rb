@@ -76,6 +76,7 @@ module AxciomaPC
           unless ps_data_idl || ComponentRecipe::AttributeDefinition::BASIC_TYPES.include?(type_name)
             raise "No valid data type #{type_name} found for component recipe #{recipe.recipe_id}!"
           end
+
           generate_pubsub_interface_recipe(type_name, ps_data_idl)
           @idl_interface = @interface_recipe.interface_name + '.idl'
         end

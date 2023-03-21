@@ -402,6 +402,7 @@ module AxciomaPC
 
       def setup_stub_comp_pubsub(project_dependencies)
         return if self.combined_lib?
+
         if mpc_obj = mpc_file[:comp_stub]
           # add PS base project
           mpc_obj.base_projects << 'ciaox11_psdd4ccm_stub'
@@ -412,6 +413,7 @@ module AxciomaPC
 
       def setup_lem_comp_pubsub(project_dependencies)
         return if self.combined_lib?
+
         mpc_obj = mpc_file[:comp_lem]
         # add PS base project
         mpc_obj.base_projects << 'ciaox11_psdd4ccm_stub'
@@ -421,6 +423,7 @@ module AxciomaPC
 
       def setup_svnt_comp_pubsub(project_dependencies)
         return if self.combined_lib?
+
         mpc_obj = mpc_file[:comp_svnt]
         # add PS base project
         mpc_obj.base_projects << 'ciaox11_psdd4ccm_stub'

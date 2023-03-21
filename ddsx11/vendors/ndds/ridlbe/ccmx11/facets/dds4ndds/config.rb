@@ -36,6 +36,7 @@ module IDL
                   if /^ddsx11\,(.*)/ =~ arg
                     return [$1]
                   end
+
                   nil
                 end
                 grpcfg.modify_params :strings,
