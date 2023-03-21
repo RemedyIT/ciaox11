@@ -49,7 +49,7 @@ module IDL
                   'comp' => { description: "-Gami4ccm,comp\t\tGenerate all files/support needed for an AMI4CCM component",
                               option_name: :gen_amicomp_complete },
                   'ex' => { description: "-Gami4ccm,ex\t\tGenerate AMI4CCM component executor support",
-                            option_name: :gen_component_executor_with_ami },
+                            option_name: :gen_component_executor_with_ami }
                 }
             end # ami4ccm_group
           end

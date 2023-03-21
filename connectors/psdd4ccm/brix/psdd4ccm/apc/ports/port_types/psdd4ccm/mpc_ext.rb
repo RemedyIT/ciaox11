@@ -19,7 +19,7 @@ module AxciomaPC
            export: true,
            base_projects: %w{ciaox11_psdd4ccm_idl},
            auto_dependencies: []
-       },
+       }
     })
 
     # MPC project specialization for PSDD4CCM connector library

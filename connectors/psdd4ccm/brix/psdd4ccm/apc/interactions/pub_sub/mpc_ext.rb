@@ -30,7 +30,7 @@ module AxciomaPC
         add_idl_flags: '-Gpsdd4ccm,lem -Scc -Sch -Scp -Scdr',
         base_projects: %w{ciaox11_psdd4ccm_idl ciaox11_psdd4ccm},
         auto_dependencies: %w{}
-      },
+      }
     })
     class PSDDLemStubProject < MPC::CompileProject
       def initialize(recipe)
