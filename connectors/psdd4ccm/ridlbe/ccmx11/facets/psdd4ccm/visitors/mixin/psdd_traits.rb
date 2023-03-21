@@ -35,7 +35,7 @@ module IDL
         # overload
         def members
           unless @members
-            super.each {|_m| _m.singleton_class.__send__(:include, MemberMixin) }
+            super.each { |_m| _m.singleton_class.__send__(:include, MemberMixin) }
           end
           super
         end
@@ -45,7 +45,7 @@ module IDL
         end
 
         def has_key_only?
-          @psdd_key_only ||= members.all? {|_m| _m.is_key_only? }
+          @psdd_key_only ||= members.all? { |_m| _m.is_key_only? }
         end
 
         def has_no_key?

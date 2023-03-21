@@ -103,7 +103,7 @@ module AxciomaPC
         ridl_args << "-Wb,psdd_topic_seq=#{self.topic_sequence}" unless self.topic_sequence.nil?
         ridl_args << "-Wb,psdd_topic_if=#{self.topic_interface}" unless self.topic_interface.nil?
         # specify user defined include paths
-        ridl_args.concat self.get_relative_paths(self.idl_includes + self.project.idl_includes).collect {|p| "-I#{p}"}
+        ridl_args.concat self.get_relative_paths(self.idl_includes + self.project.idl_includes).collect { |p| "-I#{p}" }
         # specify system include path
         ridl_args << "-I#{BRIX11::Exec.get_run_environment('TAOX11_ROOT')}"
         if self.idl.empty?

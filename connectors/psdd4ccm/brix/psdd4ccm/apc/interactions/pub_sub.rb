@@ -169,7 +169,7 @@ module AxciomaPC
         inports = @config[:interaction].inject({}) do |hsh, int|
                     case int
                     when Hash
-                      int.inject(hsh) {|h, (k, v)| h[k.to_sym] = v.to_s; h }
+                      int.inject(hsh) { |h, (k, v)| h[k.to_sym] = v.to_s; h }
                     when String, Symbol
                       hsh[int.to_sym] = "#{name}_#{int}"
                     when NilClass

@@ -95,7 +95,7 @@ module IDL
         def init_visitor(v, node)
           v.properties[:topic_namespaces] =
               (params[:psdd_topic_namespace] && params[:psdd_topic_namespace].split('::')) ||
-                  node.scopes[0, node.scopes.length - 1].collect {|s| s.name }
+                  node.scopes[0, node.scopes.length - 1].collect { |s| s.name }
           v.properties[:topic_sequence] =
               (params[:psdd_topic] && params[:psdd_topic_seq]) ||
                   "#{node.name}#{params[:psdd_topic_seq_suffix] || 'Seq'}"
