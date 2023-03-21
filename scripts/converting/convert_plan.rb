@@ -26,20 +26,20 @@ $DAnCE_pre2 = $EdudrVBilt + ".DAnCE"
 
 # The last 3 lines should always stay at the end of this hash.
 $conversion_hash = { "#{$DAnCE_pre}.LocalityUUID" => "#{$DnCx11_pre}.DnCX11.Locality. " ,
-                    "#{$DAnCE_pre}.LocalityTimeout" => "#{$DnCx11_pre}.Locality.Timeout",
-                    "#{$DAnCE_pre}.LocalityArguments" => "#{$DnCx11_pre}.Locality.Arguments",
-                    "#{$DAnCE_pre}.LocalityExec" => "#{$DnCx11_pre}.Locality.Exec",
-                    "#{$DAnCE_pre}.LocalityMultithread" => "#{$DnCx11_pre}.Locality.Multithread",
-                    "#{$EduVdrBilt}.CCM." => "#{$NlRemedyIt}.CCM.",
-                    "home factory" => "#{$DnCx11_pre}.Home.Factory",
-                    "component factory" => "#{$DnCx11_pre}.Executor.Factory",
-                    "#{$CIAO_pre}.ExecutorArtifact" => "#{$DnCx11_pre}.Executor.Artifact",
-                    "#{$CIAO_pre}.ServantEntrypoint" => "#{$DnCx11_pre}.Servant.Factory",
-                    "#{$CIAO_pre}.ServantArtifact" => "#{$DnCx11_pre}.Servant.Artifact",
-                    "#{$DAnCE_pre2}" => "#{$DnCx11_pre}",
-                    "#{$DAnCE_pre}" => "#{$DnCx11_pre}",
-                    "#{$CIAO_pre}" => "#{$DnCx11_pre}",
-                    $EduVdrBilt => $NlRemedyIt
+                     "#{$DAnCE_pre}.LocalityTimeout" => "#{$DnCx11_pre}.Locality.Timeout",
+                     "#{$DAnCE_pre}.LocalityArguments" => "#{$DnCx11_pre}.Locality.Arguments",
+                     "#{$DAnCE_pre}.LocalityExec" => "#{$DnCx11_pre}.Locality.Exec",
+                     "#{$DAnCE_pre}.LocalityMultithread" => "#{$DnCx11_pre}.Locality.Multithread",
+                     "#{$EduVdrBilt}.CCM." => "#{$NlRemedyIt}.CCM.",
+                     "home factory" => "#{$DnCx11_pre}.Home.Factory",
+                     "component factory" => "#{$DnCx11_pre}.Executor.Factory",
+                     "#{$CIAO_pre}.ExecutorArtifact" => "#{$DnCx11_pre}.Executor.Artifact",
+                     "#{$CIAO_pre}.ServantEntrypoint" => "#{$DnCx11_pre}.Servant.Factory",
+                     "#{$CIAO_pre}.ServantArtifact" => "#{$DnCx11_pre}.Servant.Artifact",
+                     "#{$DAnCE_pre2}" => "#{$DnCx11_pre}",
+                     "#{$DAnCE_pre}" => "#{$DnCx11_pre}",
+                     "#{$CIAO_pre}" => "#{$DnCx11_pre}",
+                     $EduVdrBilt => $NlRemedyIt
                    }
 
 $local_interface_array = ["<deployRequirement>",
