@@ -17,7 +17,6 @@ module BRIX11
       VERSION = { major: 0, minor: 1, release: 0 }
 
       Collection.configure(:exf, ROOT, TITLE, DESC, COPYRIGHT, VERSION) do |cfg|
-
         # declare dependency on :ciaox11 collection (forces it to load first)
         cfg.add_collection(:ciaox11)
         # declare optional dependencies on :ndds, :opendds and :psdd4ccm collections (i.e. load if available)
@@ -43,7 +42,6 @@ module BRIX11
           # update documentation config
           Common::GenerateDocumentation::OPTIONS[:docsources]['exf'] = ['${CIAOX11_ROOT}/exf/docs']
         end
-
       end
 
       # no commands to load, only APC extensions

@@ -17,7 +17,6 @@ module BRIX11
       VERSION = { major: 0, minor: 1, release: 0 }
 
       Collection.configure(:opendds, ROOT, TITLE, DESC, COPYRIGHT, VERSION) do |cfg|
-
         # declare dependency on :ciaox11 collection (forces it to load first)
         cfg.add_collection(:ciaox11)
 
@@ -50,7 +49,6 @@ module BRIX11
             end
           end
         end
-
       end
 
       # no commands to load, only APC extensions

@@ -17,13 +17,11 @@ module BRIX11
       VERSION = { major: 1, minor: 0, release: 0 }
 
       Collection.configure(:psdd4ccm_zmq, ROOT, TITLE, DESC, COPYRIGHT, VERSION) do |cfg|
-
         # declare dependency on :psdd4ccm collection (forces it to load first)
         cfg.add_collection(:psdd4ccm)
 
         cfg.on_setup do |_optparser, _options|
         end
-
       end
 
       # no commands to load, only APC extensions

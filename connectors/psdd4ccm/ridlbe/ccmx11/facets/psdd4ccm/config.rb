@@ -70,7 +70,6 @@ module IDL
       # Configure facet
       #
       Backend::Facet.configure('psdd4ccm', File.dirname(__FILE__), TITLE, COPYRIGHT, IDL::CCMX11.ciaox11_version) do |fctcfg|
-
         # setup facet option handling
         #
         fctcfg.on_setup do |optlist, ridl_params|
@@ -87,7 +86,6 @@ module IDL
         #   in options - initialized option hash
         #
         fctcfg.on_process_input do |parser, options|
-
           idl_ext = (options[:idlext] ||= File.extname(options[:idlfile]))
 
           if options[:gen_psddconn_complete]
@@ -109,9 +107,7 @@ module IDL
           if options[:gen_psdd_traits]
             IDL::CCMX11::PSDD4CCM.gen_psdd_traits(options, idl_ext)
           end
-
         end # process_input
-
       end # configure
 
       #########################################################################

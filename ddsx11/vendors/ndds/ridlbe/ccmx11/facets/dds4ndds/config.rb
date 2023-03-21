@@ -17,7 +17,6 @@ module IDL
         ## Configure facet
         #
         Backend::Facet.configure('dds4ndds', File.dirname(__FILE__), TITLE, COPYRIGHT, IDL::CCMX11.ciaox11_version) do |fctcfg|
-
           # optionally define dependencies on other facets
           #   specify dependencies either as:
           #   - a facet id (assumed to be loaded by current backend)
@@ -30,7 +29,6 @@ module IDL
           # setup facet option handling
           #
           fctcfg.on_setup do |optlist, ridl_params|
-
             # extend DDS facet options
             optlist.for_switch '-S{suppression options}', type: String, separator: true do |swcfg|
               swcfg.for_group :ddsx11_group do |grpcfg|
@@ -49,7 +47,6 @@ module IDL
                  }
               end
             end
-
           end
 
           # process input / generate code
