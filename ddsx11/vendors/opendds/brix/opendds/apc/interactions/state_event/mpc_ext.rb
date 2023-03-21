@@ -27,7 +27,6 @@ module AxciomaPC
     })
 
     class OpenDDSTsStubProject < MPC::CompileProject
-
       def initialize(recipe)
         super(:ddsx11_opendds_types, recipe)
         project_dependencies << "#{mpc_id}_ddsx11_opendds_types_gen"

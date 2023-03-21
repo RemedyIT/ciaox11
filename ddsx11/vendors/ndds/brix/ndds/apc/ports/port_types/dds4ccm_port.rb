@@ -18,7 +18,6 @@ module AxciomaPC
 
     # reopen Port class
     class Port < PortType
-
       def setup_projects_with_ndds
         setup_projects_without_ndds
         if middleware.include?(:ndds)
@@ -70,7 +69,6 @@ module AxciomaPC
       alias_method_chain :setup_projects, :ndds
       alias_method_chain :process_project_dependencies, :ndds
       alias_method_chain :setup_conn_gen, :ndds
-
     end # Port
 
     module NDDSDataInteractionHandler

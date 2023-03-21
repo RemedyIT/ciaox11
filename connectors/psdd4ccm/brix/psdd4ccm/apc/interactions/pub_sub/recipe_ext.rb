@@ -26,7 +26,6 @@ module AxciomaPC
 
     # PubSub interface recipe
     class InterfaceRecipe < Recipe
-
       class InterfaceConfigurator < Recipe::Configurator
         def initialize(recipe)
           super
@@ -388,7 +387,6 @@ module AxciomaPC
           mpc_proj.add_dependencies(project_dependencies, :stub)
         end
       end
-
     end # InterfaceRecipe
 
     AxciomaPC::Recipe.register_recipe(:ps_interface, InterfaceRecipe)

@@ -24,7 +24,6 @@ module AxciomaPC
 
     # MPC project specialization for PSDD4CCM connector library
     class PSDDConnProject < MPC::CompileProject
-
       class << self
         def middleware_base_projects
           @middleware_base_projects ||= {}
@@ -62,7 +61,6 @@ module AxciomaPC
         [(recipe.export_name.upcase << '_CONN_BUILD_DLL'),
          (recipe.export_name.upcase << '_SVNT_BUILD_DLL')]
       end
-
     end
   end # MPC
 end

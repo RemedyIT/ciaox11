@@ -26,7 +26,6 @@ module AxciomaPC
     })
 
     class NDDSTsStubProject < MPC::CompileProject
-
       def initialize(recipe)
         super(:ddsx11_ndds_types, recipe)
         project_dependencies << "#{mpc_id}_ddsx11_ndds_types_gen"

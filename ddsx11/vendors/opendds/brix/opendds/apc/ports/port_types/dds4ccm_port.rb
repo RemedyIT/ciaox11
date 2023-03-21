@@ -18,7 +18,6 @@ module AxciomaPC
 
     # reopen Port class
     class Port < PortType
-
       def setup_projects_with_opendds
         setup_projects_without_opendds
         if middleware.include?(:opendds)
@@ -70,7 +69,6 @@ module AxciomaPC
       alias_method_chain :setup_projects, :opendds
       alias_method_chain :process_project_dependencies, :opendds
       alias_method_chain :setup_conn_gen, :opendds
-
     end # Port
 
     module OpenDDSDataInteractionHandler

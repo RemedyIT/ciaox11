@@ -217,7 +217,6 @@ module AxciomaPC
 
   # patch ComponentRecipe::PortDefinition for pubsub ports component
   class ComponentRecipe::PortDefinition
-
     # reopen and extend Configurator
     class Configurator
       def publishes(type_name=nil)

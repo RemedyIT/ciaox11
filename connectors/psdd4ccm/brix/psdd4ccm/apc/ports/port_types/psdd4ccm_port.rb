@@ -10,7 +10,6 @@
 module AxciomaPC
   module PSDD4CCM
     class Port < PortType
-
       class Configurator < PortType::Configurator
         def topic(name)
           @port_type.topic = name
@@ -239,7 +238,6 @@ module AxciomaPC
       def mpc_name
         '_psdd4ccm'
       end
-
     end # Port
 
     module DataInteractionHandler

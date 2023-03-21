@@ -113,7 +113,6 @@ module IDL
           end
           false
         end
-
       end # PSDDIDLWriter
     end # PSDD4CCM
   end # CCMX11

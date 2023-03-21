@@ -14,7 +14,6 @@ module IDL
   module CCMX11
     module PSDD4CCM
       class PSDDTraitsWriter < Cxx11::CxxCodeWriterBase
-
         helper CCMX11::VersionHelper
         helper Cxx11::IncludeGuardHelper
 
@@ -131,7 +130,6 @@ module IDL
             true
           end
         end
-
       end # PSDDTraitsWriter
     end # PSDD4CCM
   end # CCMX11

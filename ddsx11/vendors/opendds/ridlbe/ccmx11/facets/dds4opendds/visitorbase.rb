@@ -13,7 +13,6 @@ module IDL
     # Reopen C++11 VisitorBase to add custom OpenDDS handler
     #
     class VisitorBase
-
       def native_scoped_seq_cxxtype
         "#{native_scoped_name_prefix}OpenDDSSeq"
       end
