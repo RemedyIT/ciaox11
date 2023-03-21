@@ -170,7 +170,7 @@ module CIAOX11_Plan_Converter
   end
 end
 
-options = {:cdp_plan_in => nil, :cdp_plan_out => nil, :logging => false}
+options = {cdp_plan_in: nil, cdp_plan_out: nil, logging: false}
 
 script_name = File.basename($0, '.*')
 if !(script_name =~ /convert_plan/)

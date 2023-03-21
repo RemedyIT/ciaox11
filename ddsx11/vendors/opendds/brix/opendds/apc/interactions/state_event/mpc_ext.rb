@@ -11,18 +11,18 @@ module AxciomaPC
   module MPC
     # Add State/Event MPC IDL project specializations
     MPC::IDLProject::DEFAULTS.merge!({
-      :ddsx11_opendds_idl_gen => {
-        :add_idl_flags => '-Scc -Sch -Scp -Scdr',
-        :export => true,
-        :base_projects => %w{ddsx11_ts_defaults},
-        :auto_dependencies => %w{}
+      ddsx11_opendds_idl_gen: {
+        add_idl_flags: '-Scc -Sch -Scp -Scdr',
+        export: true,
+        base_projects: %w{ddsx11_ts_defaults},
+        auto_dependencies: %w{}
       },
-      :ddsx11_opendds_types_gen => {
-        :base_projects => %w{ddsx11_vendor_ts_defaults dcps_ts_subdir},
-        :project_postfix => 'ddsx11_opendds_types_gen',
-        :export => true,
-        :auto_dependencies => %w{ddsx11_opendds_idl_gen},
-        :template_path => 'idl/opendds'
+      ddsx11_opendds_types_gen: {
+        base_projects: %w{ddsx11_vendor_ts_defaults dcps_ts_subdir},
+        project_postfix: 'ddsx11_opendds_types_gen',
+        export: true,
+        auto_dependencies: %w{ddsx11_opendds_idl_gen},
+        template_path: 'idl/opendds'
       }
     })
 

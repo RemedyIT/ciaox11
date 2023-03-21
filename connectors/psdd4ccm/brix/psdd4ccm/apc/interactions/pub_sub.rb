@@ -173,7 +173,7 @@ module AxciomaPC
                     when String, Symbol
                       hsh[int.to_sym] = "#{name}_#{int}"
                     when NilClass
-                      hsh.merge!({ :listen => "#{name}_listen", :get => "#{name}_get" })
+                      hsh.merge!({ listen: "#{name}_listen", get: "#{name}_get" })
                     else
                       BRIX11.log_fatal("[#{self}] Invalid interactions specified!")
                     end
