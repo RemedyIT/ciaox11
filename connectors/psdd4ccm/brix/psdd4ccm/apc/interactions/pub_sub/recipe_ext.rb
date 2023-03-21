@@ -149,7 +149,7 @@ module AxciomaPC
         # register required PubSub specific includepaths and macros to facilitate IDL scanner
         ciaox11_root = BRIX11::Exec.get_run_environment('CIAOX11_ROOT')
         (idlfile.properties[:includepaths] ||= []).concat([
-          File.join(ciaox11_root, 'connectors/psdd4ccm/idl') + '/',
+          File.join(ciaox11_root, 'connectors/psdd4ccm/idl') + '/'
         ])
       end
 
