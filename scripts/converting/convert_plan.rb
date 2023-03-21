@@ -174,7 +174,7 @@ script_name = File.basename($0, '.*')
 if !(script_name =~ /convert_plan/)
   script_name = 'ruby ' + $0
 end
-parser = OptionParser.new do|opts|
+parser = OptionParser.new do |opts|
   opts.banner = "Usage: #{script_name} [options]"
   opts.on('-i', '--input plan', 'Filename for input plan (*.cdp)') do |in_plan|
     options[:cdp_plan_in] = in_plan;

@@ -77,7 +77,7 @@ module AxciomaPC
         prj_dependencies << MPC::CompileDependency.new(:skel_gen, self)
 
         # data IDL files do not have interaction types after scanning, so add a interaction type here
-        fidl.includes.each do|ifidl|
+        fidl.includes.each do |ifidl|
           ifidl.interaction_types << :corba4ccm
         end
       end
@@ -125,7 +125,7 @@ module AxciomaPC
         # data IDL files do not have interaction types after scanning, so add interaction type here
         # lem is also needed for ami4ccm, but ami4ccm requires corba4ccm, so lem generation
         # is done here
-        fidl.includes.each do|ifidl|
+        fidl.includes.each do |ifidl|
           ifidl.interaction_types << :srr
         end
       end

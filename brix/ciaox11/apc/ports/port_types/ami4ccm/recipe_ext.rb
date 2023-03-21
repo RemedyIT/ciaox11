@@ -65,7 +65,7 @@ module AxciomaPC
                                     MPC::LinkDependency.new(:stub, self))
 
         # register resulting project dependencies for IDL file
-        fidl.includes.each do|ifidl|
+        fidl.includes.each do |ifidl|
           ifidl.interaction_types << :arr
         end
       end

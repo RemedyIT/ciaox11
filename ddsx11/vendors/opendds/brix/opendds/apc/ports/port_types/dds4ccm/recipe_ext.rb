@@ -68,7 +68,7 @@ module AxciomaPC
 
         mpc_types_impl_obj.add_dependencies(prj_dependencies, :stub)
 
-        fidl.includes.each do|ifidl|
+        fidl.includes.each do |ifidl|
           ifidl.interaction_types << :sev
         end
       end

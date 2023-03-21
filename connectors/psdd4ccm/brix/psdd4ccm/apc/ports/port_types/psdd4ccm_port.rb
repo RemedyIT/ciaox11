@@ -258,7 +258,7 @@ module AxciomaPC
         prj_dependencies <<
             MPC::CompileDependency.new(:psdd_traits_gen, recipe) <<
             MPC::LinkDependency.new(:stub, recipe)
-        fidl.includes.each do|ifidl|
+        fidl.includes.each do |ifidl|
           ifidl.interaction_types << :pubsub
         end
       end
