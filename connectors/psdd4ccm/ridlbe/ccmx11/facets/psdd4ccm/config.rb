@@ -14,7 +14,6 @@ module IDL
       TITLE = 'RIDL CCMX11 PSDD4CCM Facet'.freeze
 
       def self.add_extended_options(ol)
-
         ol.for_switch '-G{generation options}', type: String, separator: true do |swcfg|
           swcfg.for_group :psdd4ccm_group do |grpcfg|
             grpcfg.on_prepare do |arg, params|
@@ -64,7 +63,6 @@ module IDL
                                  }
           end
         end
-
       end # add_extended_options
 
       # Configure facet

@@ -26,7 +26,6 @@ module IDL
         fctcfg.setup_after :dds
 
         def self.add_extended_options(ol)
-
           ol.for_switch '-G{generation options}', type: String, separator: true do |swcfg|
             swcfg.for_group :dds4ccm_group do |grpcfg|
               grpcfg.on_prepare do |arg, params|
@@ -73,7 +72,6 @@ module IDL
                                    }
             end
           end
-
         end # add_extended_options
 
         # setup facet option handling

@@ -48,7 +48,6 @@ module BRIX11
         optparser.on('-a', '=INTERFACENAME PORTNAME',
                      'Defines interface and name to use for an ami4ccm facet and creates an ami4ccm receptacle pragma for it. ',
                      'Use scoped interface name (i.e. <name>::[<name>::]::<name>) to generate enclosing module(s).')
-
       end
 
       def run(argv)
