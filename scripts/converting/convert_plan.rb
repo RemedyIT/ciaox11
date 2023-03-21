@@ -26,7 +26,7 @@ $DAnCE_pre2 = $EdudrVBilt + ".DAnCE"
 
 
 # The last 3 lines should always stay at the end of this hash.
-$conversion_hash = {"#{$DAnCE_pre}.LocalityUUID" => "#{$DnCx11_pre}.DnCX11.Locality. " ,
+$conversion_hash = { "#{$DAnCE_pre}.LocalityUUID" => "#{$DnCx11_pre}.DnCX11.Locality. " ,
                     "#{$DAnCE_pre}.LocalityTimeout" => "#{$DnCx11_pre}.Locality.Timeout",
                     "#{$DAnCE_pre}.LocalityArguments" => "#{$DnCx11_pre}.Locality.Arguments",
                     "#{$DAnCE_pre}.LocalityExec" => "#{$DnCx11_pre}.Locality.Exec",
@@ -170,7 +170,7 @@ module CIAOX11_Plan_Converter
   end
 end
 
-options = {cdp_plan_in: nil, cdp_plan_out: nil, logging: false}
+options = { cdp_plan_in: nil, cdp_plan_out: nil, logging: false }
 
 script_name = File.basename($0, '.*')
 if !(script_name =~ /convert_plan/)

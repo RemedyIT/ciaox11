@@ -55,12 +55,12 @@ module IDL
           swcfg.modify_group :b_extopt do |grpcfg|
             grpcfg.modify_params :strings,
                                  params: {
-                                     'psdd_topic' => {description: "-Wb,psdd_topic=SCOPED_TOPIC\tSpecifies scoped topic name for PSDD4CCM lem generation"},
-                                     'psdd_topic_namespace' => {description: "-Wb,psdd_topic_namespace=SCOPED_NAME\tSpecifies scoped namespace name for PSDD4CCM lem generation (default is topic type namespace)"},
-                                     'psdd_topic_seq_suffix' => {description: "-Wb,psdd_topic_seq_suffix=SUFFIX\tSpecifies suffix for topic sequence name for PSDD4CCM lem generation"},
-                                     'psdd_topic_if_suffix' => {description: "-Wb,psdd_topic_if_suffix=SUFFIX\tSpecifies suffix topic interface name for PSDD4CCM lem generation"},
-                                     'psdd_topic_seq' => {description: "-Wb,psdd_topic_seq=NAME\t\tSpecifies topic sequence name for PSDD4CCM lem generation. Only effective in combination with -Wb,psdd_topic"},
-                                     'psdd_topic_if' => {description: "-Wb,psdd_topic_if=NAME\t\tSpecifies topic interface name for PSDD4CCM lem generation. Only effective in combination with -Wb,psdd_topic"}
+                                     'psdd_topic' => { description: "-Wb,psdd_topic=SCOPED_TOPIC\tSpecifies scoped topic name for PSDD4CCM lem generation" },
+                                     'psdd_topic_namespace' => { description: "-Wb,psdd_topic_namespace=SCOPED_NAME\tSpecifies scoped namespace name for PSDD4CCM lem generation (default is topic type namespace)" },
+                                     'psdd_topic_seq_suffix' => { description: "-Wb,psdd_topic_seq_suffix=SUFFIX\tSpecifies suffix for topic sequence name for PSDD4CCM lem generation" },
+                                     'psdd_topic_if_suffix' => { description: "-Wb,psdd_topic_if_suffix=SUFFIX\tSpecifies suffix topic interface name for PSDD4CCM lem generation" },
+                                     'psdd_topic_seq' => { description: "-Wb,psdd_topic_seq=NAME\t\tSpecifies topic sequence name for PSDD4CCM lem generation. Only effective in combination with -Wb,psdd_topic" },
+                                     'psdd_topic_if' => { description: "-Wb,psdd_topic_if=NAME\t\tSpecifies topic interface name for PSDD4CCM lem generation. Only effective in combination with -Wb,psdd_topic" }
                                  }
           end
         end

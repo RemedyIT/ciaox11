@@ -14,7 +14,7 @@ module BRIX11
       TITLE = 'PSDD4CCM_ZMQ'
       DESC = 'BRIX11 PSDD4CCM ZMQ brix collection'
       COPYRIGHT = "Copyright (c) 2014-#{Time.now.year} Remedy IT Expertise BV, The Netherlands"
-      VERSION = {major: 1, minor: 0, release: 0}
+      VERSION = { major: 1, minor: 0, release: 0 }
 
       Collection.configure(:psdd4ccm_zmq, ROOT, TITLE, DESC, COPYRIGHT, VERSION) do |cfg|
 

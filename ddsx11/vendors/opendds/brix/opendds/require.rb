@@ -14,7 +14,7 @@ module BRIX11
       TITLE = 'OPENDDS'.freeze
       DESC = 'BRIX11 OPENDDS brix collection'.freeze
       COPYRIGHT = "Copyright (c) 2014-#{Time.now.year} Remedy IT Expertise BV, The Netherlands".freeze
-      VERSION = {major: 0, minor: 1, release: 0}
+      VERSION = { major: 0, minor: 1, release: 0 }
 
       Collection.configure(:opendds, ROOT, TITLE, DESC, COPYRIGHT, VERSION) do |cfg|
 

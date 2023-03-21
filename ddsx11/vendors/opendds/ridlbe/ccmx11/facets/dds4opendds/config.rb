@@ -16,7 +16,7 @@ module IDL
 
         ## Configure facet
         #
-        Backend::Facet.configure('dds4opendds', File.dirname(__FILE__), TITLE, COPYRIGHT, {major: 1, minor: 0, release: 0}) do |fctcfg|
+        Backend::Facet.configure('dds4opendds', File.dirname(__FILE__), TITLE, COPYRIGHT, { major: 1, minor: 0, release: 0 }) do |fctcfg|
 
           # optionally define dependencies on other facets
           #   specify dependencies either as:
