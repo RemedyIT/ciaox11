@@ -131,7 +131,7 @@ module CIAOX11_Plan_Converter
     file_tmp.close!
   end
 
-  def self.check_input_file_name (filename)
+  def self.check_input_file_name(filename)
     ret = false
     if !File.file?(filename)
       puts "Error, input plan <#{filename}> doesn't exist"
@@ -145,7 +145,7 @@ module CIAOX11_Plan_Converter
     ret
   end
 
-  def self.check_output_file_name (filename)
+  def self.check_output_file_name(filename)
     ret = false
     dirname = File.dirname (filename)
     if !File.directory?(dirname)
