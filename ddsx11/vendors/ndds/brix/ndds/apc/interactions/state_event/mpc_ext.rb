@@ -36,18 +36,18 @@ module AxciomaPC
         ifs = recipe.dds_idl_file_path(idf)
         ifs_noext = ifs.sub(/\.idl\Z/, '')
         @sources.concat([recipe.get_relative_path(ifs_noext + '.cxx'),
-          recipe.get_relative_path(ifs_noext + 'Plugin.cxx'),
-          recipe.get_relative_path(ifs_noext + 'Support.cxx'),
-          recipe.get_relative_path(ifs_noext + '_typesupport.cpp')].flatten)
+                         recipe.get_relative_path(ifs_noext + 'Plugin.cxx'),
+                         recipe.get_relative_path(ifs_noext + 'Support.cxx'),
+                         recipe.get_relative_path(ifs_noext + '_typesupport.cpp')].flatten)
       end
 
       def add_headers(idf)
         ifs = recipe.dds_idl_file_path(idf)
         ifs_noext = ifs.sub(/\.idl\Z/, '')
         @headers.concat([recipe.get_relative_path(ifs_noext + '.h'),
-                          recipe.get_relative_path(ifs_noext + 'Plugin.h'),
-                          recipe.get_relative_path(ifs_noext + 'Support.h'),
-                          recipe.get_relative_path(ifs_noext + '_typesupport.h')].flatten)
+                         recipe.get_relative_path(ifs_noext + 'Plugin.h'),
+                         recipe.get_relative_path(ifs_noext + 'Support.h'),
+                         recipe.get_relative_path(ifs_noext + '_typesupport.h')].flatten)
       end
 
       def shared_name

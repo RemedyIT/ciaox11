@@ -49,7 +49,7 @@ module AxciomaPC
 
       def dynamic_names
         ["#{recipe.export_name.upcase}_STUB_BUILD_DLL",
-          "#{recipe.export_name.upcase}_LEM_STUB_BUILD_DLL"]
+         "#{recipe.export_name.upcase}_LEM_STUB_BUILD_DLL"]
       end
     end
   end # MPC
