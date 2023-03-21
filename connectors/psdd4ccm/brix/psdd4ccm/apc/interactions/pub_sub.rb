@@ -219,11 +219,11 @@ module AxciomaPC
   class ComponentRecipe::PortDefinition
     # reopen and extend Configurator
     class Configurator
-      def publishes(type_name=nil)
+      def publishes(type_name = nil)
         @port.publishes(type_name)
       end
 
-      def subscribes(type_name=nil, *interaction)
+      def subscribes(type_name = nil, *interaction)
         @port.subscribes(type_name, *interaction)
       end
     end
