@@ -14,24 +14,31 @@ module AxciomaPC
         def topic(name)
           @port_type.topic = name
         end
+
         def topic_namespace(name)
           @port_type.topic_namespace = name
         end
+
         def topic_sequence_suffix(name)
           @port_type.topic_seq_suffix = name
         end
+
         def topic_interface_suffix(name)
           @port_type.topic_if_suffix = name
         end
+
         def topic_sequence(name)
           @port_type.topic_seq = name
         end
+
         def topic_interface(name)
           @port_type.topic_if = name
         end
+
         def middleware(*names)
           @port_type.middleware(*names.flatten)
         end
+
         def disable_context_switch
           @context_switch_disabled = true
         end

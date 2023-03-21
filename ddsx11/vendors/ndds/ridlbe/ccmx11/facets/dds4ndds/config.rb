@@ -74,10 +74,12 @@ module IDL
           # schedule ndds type traits generation
           IDL.production(:dds_type_traits).extend(IDL::CCMX11::DDSX11::NDDS::UserDefinedTypeTraitsWriterExt)
         end
+
         def self.gen_impl_for_type_support_for_ndds(options)
           # schedule ndds type support source generation
           IDL.production(:dds_typesupport_source_file).extend(IDL::CCMX11::DDSX11::NDDS::DDSTypeSupportSourceWriterExt)
         end
+
         def self.gen_idl_for_dds_for_ndds(options)
           # schedule ndds idl file generation
           IDL.production(:dds_idl).extend(IDL::CCMX11::DDSX11::NDDS::DDSIDLWriterExt)

@@ -57,10 +57,12 @@ module IDL
           # schedule opendds type traits generation
           IDL.production(:dds_type_traits).extend(IDL::CCMX11::DDSX11::OPENDDS::UserDefinedTypeTraitsWriterExt)
         end
+
         def self.gen_impl_for_type_support_for_opendds(options)
           # schedule opendds type support source generation
           IDL.production(:dds_typesupport_source_file).extend(IDL::CCMX11::DDSX11::OPENDDS::DDSTypeSupportSourceWriterExt)
         end
+
         def self.gen_idl_for_dds_for_opendds(options)
           # schedule opendds idl file generation
           IDL.production(:dds_idl).extend(IDL::CCMX11::DDSX11::OPENDDS::DDSIDLWriterExt)

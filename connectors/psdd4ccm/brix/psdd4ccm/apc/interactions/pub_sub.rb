@@ -161,6 +161,7 @@ module AxciomaPC
       end
       protected :generate_pubsub_interface_recipe
     end
+
     module SubscriberPort
       def verify
         BRIX11.log(4, "[%s] verify", self)
@@ -203,6 +204,7 @@ module AxciomaPC
         recipe.idl_includes << File.dirname(@interface_recipe.interface_idl_path)
       end
     end
+
     module PublisherPort
       def verify
         BRIX11.log(4, "[%s] verify", self)
