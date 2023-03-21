@@ -71,7 +71,7 @@ module AxciomaPC
       end
 
       def dynamic_names
-        [ recipe.export_name.upcase << '_' << @project_postfix.upcase + '_BUILD_DLL' ]
+        [recipe.export_name.upcase << '_' << @project_postfix.upcase + '_BUILD_DLL']
       end
 
       def template_path
