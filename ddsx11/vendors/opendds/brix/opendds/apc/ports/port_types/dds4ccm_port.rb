@@ -28,13 +28,13 @@ module AxciomaPC
           recipe.idl_files.each do |_, fidl|
             inc_fidl = project.idl_files[fidl.full_path]
             rcp = inc_fidl.recipes.first
-            #set the interaction type
+            # set the interaction type
             rcp.setup_project_interaction(inc_fidl, :dds4ccm_opendds)
           end
 
-          #Also for the state event interface file, which the connector needs,
+          # Also for the state event interface file, which the connector needs,
           # setup the project files,
-          #in case this isn't done already via a sev component
+          # in case this isn't done already via a sev component
           inc_fidl = project.idl_files[@interface_recipe.interface_idl_path]
           rcp = inc_fidl.recipes.first
           rcp.setup_project_interaction(inc_fidl, :sev)

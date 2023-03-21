@@ -28,7 +28,7 @@ module AxciomaPC
           recipe.idl_files.each do |_, fidl|
             inc_fidl = project.idl_files[fidl.full_path]
             rcp = inc_fidl.recipes.first
-            #set the interaction type
+            # set the interaction type
             rcp.setup_project_interaction(inc_fidl, :dds4ccm_ndds)
           end
 

@@ -26,7 +26,7 @@ module AxciomaPC
         else
           mpc_idl_obj = MPC::IDLProject.new(:ddsx11_opendds_idl_gen, self)
           mpc_file.add_mpc_project(mpc_idl_obj)
-          #set idl_includes set in recipe and set in  project file
+          # set idl_includes set in recipe and set in  project file
           mpc_idl_obj.includes << idl_includes << project.idl_includes
 
           # make sure :stub projects exist

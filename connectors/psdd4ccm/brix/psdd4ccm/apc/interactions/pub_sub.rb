@@ -12,7 +12,7 @@ module AxciomaPC
     module ComponentInteractionHandler
       def self.setup_component(recipe)
         BRIX11.log(3, '[%s|PS] setup_component', self)
-        #noop
+        # noop
       end
 
       def self.process_component_dependencies(recipe, project_dependencies)
@@ -27,7 +27,7 @@ module AxciomaPC
 
     module DataInteractionHandler
       def self.setup_data(recipe, fidl)
-        #noop
+        # noop
       end
 
       def self.process_data_dependencies(recipe, project_dependencies)
@@ -123,7 +123,7 @@ module AxciomaPC
                   false
                 end
               end
-            #else not found file #{base_name+'.idl'} in project yet
+            # else not found file #{base_name+'.idl'} in project yet
             end
             if intf_base_idl_file
               rec_base = intf_base_idl_file.recipes.first

@@ -75,7 +75,7 @@ module AxciomaPC
 
       def initialize(rcpfile, name, &block)
         super(rcpfile, name)
-        #defaults
+        # defaults
         @type = :ps_interface
         @export_name = nil # defaults to interface_name
         @topic_idl = nil

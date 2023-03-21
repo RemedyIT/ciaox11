@@ -25,7 +25,7 @@ $DAnCE_pre = $EduVdrBilt + ".DAnCE"
 $DAnCE_pre2 = $EdudrVBilt + ".DAnCE"
 
 
-#The last 3 lines should always stay at the end of this hash.
+# The last 3 lines should always stay at the end of this hash.
 $conversion_hash = {"#{$DAnCE_pre}.LocalityUUID" => "#{$DnCx11_pre}.DnCX11.Locality. " ,
                     "#{$DAnCE_pre}.LocalityTimeout" => "#{$DnCx11_pre}.Locality.Timeout",
                     "#{$DAnCE_pre}.LocalityArguments" => "#{$DnCx11_pre}.Locality.Arguments",
@@ -127,7 +127,7 @@ module CIAOX11_Plan_Converter
           output_file.write(line)
         end
       else
-        #nothing shouldn't happen
+        # nothing shouldn't happen
       end
     end
     file_tmp.close!

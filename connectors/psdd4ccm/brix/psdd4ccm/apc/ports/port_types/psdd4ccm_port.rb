@@ -163,7 +163,7 @@ module AxciomaPC
         recipe.idl_files.each do |_, fidl|
           inc_fidl = project.idl_files[fidl.full_path]
           rcp = inc_fidl.recipes.first
-          #set the interaction type
+          # set the interaction type
           rcp.setup_project_interaction(inc_fidl, :psdd4ccm)
         end
 
@@ -214,7 +214,7 @@ module AxciomaPC
         # idl_includes: idl in recipe self, concat with includes given in project root apcrc file
         mpc_obj.includes << idl_includes << project.idl_includes
 
-        #Also needed the gen_dir from the original recipe of the idl_files for the includes
+        # Also needed the gen_dir from the original recipe of the idl_files for the includes
         recipe.idl_files.each do |n, idf|
           org_fidl = project.idl_files[idf.full_path]
           rcp = org_fidl.recipes.first
