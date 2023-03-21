@@ -52,7 +52,7 @@ module AxciomaPC
           BRIX11.log_error("[#{self}] Topic type of port is nil!")
         else
           set_type type
-          ps_data_idl = find_idl_type(type_name)  do |n|
+          ps_data_idl = find_idl_type(type_name) do |n|
                 t = n.idltype.resolved_type
                 case t
                 when IDL::Type::Any,
@@ -136,7 +136,7 @@ module AxciomaPC
             end
           else
             # basic type so no data recipe to use
-            rec_base = recipe   # use component recipe itself
+            rec_base = recipe # use component recipe itself
           end
 
           # Now we can create interface recipe

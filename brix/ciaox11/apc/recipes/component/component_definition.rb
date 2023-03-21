@@ -142,7 +142,7 @@ module AxciomaPC
         port = PortDefinition.new(port_name, self)
         if block_given?
           port.configure(&_block)
-        else  # type of port isn't given as block but but as condensed definition
+        else # type of port isn't given as block but but as condensed definition
             if Hash === kind
               if kind.size > 1
                 raise "Only a single port definition tuple allowed. Specifying #{kind} is invalid."

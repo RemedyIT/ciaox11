@@ -88,14 +88,14 @@ module AxciomaPC
 
       def includes(*dirs)
         # Solve event. used environment variables
-        solved_dirs = dirs.flatten.collect  { |dir|  Util::path_without_env(dir) }
+        solved_dirs = dirs.flatten.collect { |dir| Util::path_without_env(dir) }
         @recipe.include_dirs << solved_dirs.flatten.collect { |dir| File.expand_path(dir, @recipe.recipe_file.path) }
         @recipe.include_dirs
       end
 
       def libpaths(*paths)
         # Solve event. used environment variables
-        solved_paths = paths.flatten.collect  { |path|  Util::path_without_env(path) }
+        solved_paths = paths.flatten.collect { |path| Util::path_without_env(path) }
         @recipe.lib_paths << solved_paths.flatten.collect { |p| File.expand_path(p, @recipe.recipe_file.path) }
       end
 
@@ -516,7 +516,7 @@ module AxciomaPC
       attrs.each do |a|
         BRIX11.log(5, '[%s] IDL scan checking attribute %s %s for component %s', self, a.idltype.typename, a.cxxname, node.cxxname)
 
-        look_for_members = false    # remember if need to recurse type members as well
+        look_for_members = false # remember if need to recurse type members as well
         anytypecode_needed = false
 
         case a.idltype.resolved_type
@@ -559,7 +559,7 @@ module AxciomaPC
           type = a.idltype.resolved_type
           check_for_anytypecode_include(type)
         end
-      end  # each attribute
+      end # each attribute
     end
     private :check_attributes_for_anytypecode
 

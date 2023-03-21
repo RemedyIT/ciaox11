@@ -37,7 +37,7 @@ module AxciomaPC
       # add common C++ compiler include paths for the project
       def includes(*dirs)
         # resolve embedded environment variable references
-        solved_dirs = dirs.flatten.collect  { |dir|  Util::path_without_env(dir) }
+        solved_dirs = dirs.flatten.collect { |dir| Util::path_without_env(dir) }
 
         @project.include_dirs << solved_dirs.flatten.collect { |dir| File.expand_path(dir, @project.root_path) }
         @project.include_dirs
@@ -46,7 +46,7 @@ module AxciomaPC
       # add common library search paths for the project
       def libpaths(*paths)
         # resolve environment variable references
-        solved_paths = paths.flatten.collect  { |path|  Util::path_without_env(path) }
+        solved_paths = paths.flatten.collect { |path| Util::path_without_env(path) }
 
         @project.lib_paths << solved_paths.flatten.collect { |p| File.expand_path(p, @project.root_path) }
       end
@@ -358,7 +358,7 @@ module AxciomaPC
         _cfg_file = File.join(_ace_root, 'bin', 'MakeProjectCreator', 'config', 'default.features')
         if File.exist?(_cfg_file)
           File.readlines(_cfg_file).each do |ln|
-            if /\A\s*\w+\s*=\s*1\s*\Z/ =~ ln  # only match enabled features
+            if /\A\s*\w+\s*=\s*1\s*\Z/ =~ ln # only match enabled features
               feature = ln.split('=').first.strip
               @features[feature.to_sym] = true
             end

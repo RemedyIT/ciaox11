@@ -205,7 +205,7 @@ if options[:cdp_plan_in] == nil
     if CIAOX11_Plan_Converter::check_input_file_name(input_file)
       options[:cdp_plan_in] = input_file
     end
-  end until  options[:cdp_plan_in] != nil
+  end until options[:cdp_plan_in] != nil
 end
 
 if options[:cdp_plan_out] == nil
@@ -215,7 +215,7 @@ if options[:cdp_plan_out] == nil
     if CIAOX11_Plan_Converter::check_output_file_name(output_file)
       options[:cdp_plan_out] = output_file
     end
-  end until  options[:cdp_plan_out] != nil
+  end until options[:cdp_plan_out] != nil
 end
 
 

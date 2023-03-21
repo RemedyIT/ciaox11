@@ -107,8 +107,8 @@ module AxciomaPC
         # specify system include path
         ridl_args << "-I#{BRIX11::Exec.get_run_environment('TAOX11_ROOT')}"
         if self.idl.empty?
-          ridl_args << '--no-input' <<            # no input parsing
-                       topic.tr(' ', '_') + '.idl'   # 'fake' input filename as template for output
+          ridl_args << '--no-input' << # no input parsing
+                       topic.tr(' ', '_') + '.idl' # 'fake' input filename as template for output
         else
           # use '--search-includepath' to have RIDL search for the input file in one
           # of the given include directories
@@ -245,7 +245,7 @@ module AxciomaPC
           topic_name_ = topic.split('::').pop
         else
           scope_ = topic.split('::')
-          topic_name_ = scope_.pop  # pop and store topic typename itself
+          topic_name_ = scope_.pop # pop and store topic typename itself
           scope_ = scope_.join('::')
         end
         "#{scope_}::#{@topic_interface || "#{topic_name_}#{@topic_interace_suffix || 'Interface'}"}"

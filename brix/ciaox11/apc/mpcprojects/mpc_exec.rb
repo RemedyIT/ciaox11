@@ -44,7 +44,7 @@ module AxciomaPC
             @base_projects << %w(ciaox11_ccm_session_stub)
             recipe.idl_files.each do |idlfn, fidl|
               @headers << ((recipe.gen_dir + '/') << ::File.basename(idlfn, '.idl') << STUB_F << EXT_HEADER)
-              if fidl.creates_stubcode? || fidl.needs_anytype?  # stub code?
+              if fidl.creates_stubcode? || fidl.needs_anytype? # stub code?
                 @sources << ((recipe.gen_dir + '/') << ::File.basename(idlfn, '.idl') << STUB_F << EXT_CPP)
               end
             end
