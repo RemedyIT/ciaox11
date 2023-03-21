@@ -256,7 +256,7 @@ module AxciomaPC
       end
 
       attr_accessor :mpc_file
-      attr_accessor :recipe , :type , :base_projects
+      attr_accessor :recipe, :type, :base_projects
       attr_reader :project_dependencies
 
       def to_s

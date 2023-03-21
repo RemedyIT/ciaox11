@@ -11,7 +11,7 @@ require 'set'
 module AxciomaPC
   class ComponentRecipe < Recipe
     class Base_Projects
-      attr_reader :plus , :min, :default
+      attr_reader :plus, :min, :default
       # min contains the projects that has to be removed from the final list
       # plus contains the projects that has to be added to the final list
       # default contains the projects that will replace the default projects

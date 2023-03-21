@@ -25,7 +25,7 @@ $DAnCE_pre = $EduVdrBilt + ".DAnCE"
 $DAnCE_pre2 = $EdudrVBilt + ".DAnCE"
 
 # The last 3 lines should always stay at the end of this hash.
-$conversion_hash = { "#{$DAnCE_pre}.LocalityUUID" => "#{$DnCx11_pre}.DnCX11.Locality. " ,
+$conversion_hash = { "#{$DAnCE_pre}.LocalityUUID" => "#{$DnCx11_pre}.DnCX11.Locality. ",
                      "#{$DAnCE_pre}.LocalityTimeout" => "#{$DnCx11_pre}.Locality.Timeout",
                      "#{$DAnCE_pre}.LocalityArguments" => "#{$DnCx11_pre}.Locality.Arguments",
                      "#{$DAnCE_pre}.LocalityExec" => "#{$DnCx11_pre}.Locality.Exec",

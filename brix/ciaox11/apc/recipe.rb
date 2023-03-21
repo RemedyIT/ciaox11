@@ -26,7 +26,7 @@ module AxciomaPC
     def load_recipes
       BRIX11.log(3, '[%s] loading recipes', self)
       begin
-        instance_eval(File.read(full_path) , full_path)
+        instance_eval(File.read(full_path), full_path)
       rescue
         BRIX11.log_error($!.message)
         $!.backtrace.find do |bt|
