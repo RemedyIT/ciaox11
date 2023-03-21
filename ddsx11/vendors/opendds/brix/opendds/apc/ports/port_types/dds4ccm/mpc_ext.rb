@@ -8,9 +8,7 @@
 #--------------------------------------------------------------------
 
 module AxciomaPC
-
   module MPC
-
     # MPC project specialization for DDS4CCM OpenDDS connector library
     class DdsOpenDDSConnProject < MPC::CompileProject
 
@@ -46,7 +44,5 @@ module AxciomaPC
       end
 
     end
-
   end # MPC
-
 end

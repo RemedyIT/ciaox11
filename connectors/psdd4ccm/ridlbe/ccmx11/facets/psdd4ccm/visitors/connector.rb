@@ -9,9 +9,7 @@
 
 module IDL
   module CCMX11
-
     module PSDD4CCM
-
       # extend
       class ConnectorVisitor < CCMX11::ConnectorVisitor
 
@@ -25,8 +23,6 @@ module IDL
         end
 
       end
-
     end
-
   end
 end

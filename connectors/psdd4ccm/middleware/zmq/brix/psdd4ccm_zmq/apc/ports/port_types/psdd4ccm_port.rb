@@ -8,13 +8,9 @@
 #--------------------------------------------------------------------
 
 module AxciomaPC
-
   module PSDD4CCM
-
     Port.middleware_implementations << :zmq
-
   end # PSDD4CCM
-
 end
 
 # load specializations and extensions

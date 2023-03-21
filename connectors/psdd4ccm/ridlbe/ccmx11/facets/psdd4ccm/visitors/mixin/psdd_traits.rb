@@ -9,11 +9,8 @@
 
 module IDL
   module CCMX11
-
     module PSDD
-
       module MemberMixin
-
         def is_key?
           !self.annotations[:key].empty?
         end
@@ -32,11 +29,9 @@ module IDL
                 true
               end
         end
-
       end
 
       module StructMixin
-
         # overload
         def members
           unless @members
@@ -64,10 +59,7 @@ module IDL
         def data_members
           members.select { |_m|  !_m.is_key? }
         end
-
       end
-
     end
-
   end
 end

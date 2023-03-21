@@ -8,9 +8,7 @@
 #--------------------------------------------------------------------
 
 module AxciomaPC
-
   module DDS4CCM
-
     # reopen Port class
     class Port < PortType
       def create_ndds_conn_lib_with_exf
@@ -36,7 +34,5 @@ module AxciomaPC
       alias_method_chain :create_opendds_conn_lib, :exf if method_defined? :create_opendds_conn_lib
       alias_method_chain :setup_conn_gen, :exf
     end # Port
-
   end # DDS4CCM
-
 end

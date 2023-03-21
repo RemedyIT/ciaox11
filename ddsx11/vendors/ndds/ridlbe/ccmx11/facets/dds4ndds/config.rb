@@ -8,11 +8,8 @@
 #--------------------------------------------------------------------
 
 module IDL
-
   module CCMX11
-
     module DDSX11
-
       module NDDS
         COPYRIGHT = "Copyright (c) 2007-#{Time.now.year} Remedy IT Expertise BV, The Netherlands".freeze
         TITLE = 'RIDL NDDS DDS Facet'.freeze
@@ -89,9 +86,6 @@ module IDL
           IDL.production(:dds_idl).extend(IDL::CCMX11::DDSX11::NDDS::DDSIDLWriterExt)
         end
       end # NDDS
-
     end # DDSX11
-
   end # CCMX11
-
 end # IDL

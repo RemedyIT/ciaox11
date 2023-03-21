@@ -8,11 +8,8 @@
 #--------------------------------------------------------------------
 
 module AxciomaPC
-
   module PS
-
     module ComponentInteractionHandler
-
       def self.setup_component(recipe)
         BRIX11.log(3, '[%s|PS] setup_component', self)
         #noop
@@ -26,11 +23,9 @@ module AxciomaPC
         recipe.setup_svnt_comp_pubsub(project_dependencies)
         recipe.setup_exec_lib_pubsub(project_dependencies)
       end
-
     end
 
     module DataInteractionHandler
-
       def self.setup_data(recipe, fidl)
         #noop
       end
@@ -42,9 +37,7 @@ module AxciomaPC
       def self.get_data_dependencies(recipe, idl_prj_dependencies, project_dependencies)
         recipe.get_ps_data_dependencies(project_dependencies, idl_prj_dependencies)
       end
-
     end
-
   end
 
   ComponentRecipe.register_interaction_handler(:pubsub, PS::ComponentInteractionHandler)
@@ -167,7 +160,6 @@ module AxciomaPC
         end
       end
       protected :generate_pubsub_interface_recipe
-
     end
     module SubscriberPort
       def verify

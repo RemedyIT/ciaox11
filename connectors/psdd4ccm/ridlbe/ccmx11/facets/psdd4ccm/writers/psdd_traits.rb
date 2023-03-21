@@ -11,11 +11,8 @@ require 'ridlbe/c++11/writers/helpers/include_guard_helper'
 require 'ridlbe/ccmx11/facets/psdd4ccm/visitors/mixin/psdd_traits'
 
 module IDL
-
   module CCMX11
-
     module PSDD4CCM
-
       class PSDDTraitsWriter < Cxx11::CxxCodeWriterBase
 
         helper CCMX11::VersionHelper
@@ -136,9 +133,6 @@ module IDL
         end
 
       end # PSDDTraitsWriter
-
     end # PSDD4CCM
-
   end # CCMX11
-
 end # IDL

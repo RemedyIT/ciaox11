@@ -8,11 +8,8 @@
 #--------------------------------------------------------------------
 
 module BRIX11
-
   module CIAOX11
-
     module PSDD4CCM
-
       ROOT = File.dirname(__FILE__)
       TITLE = 'PSDD4CCM'.freeze
       DESC = 'BRIX11 PSDD4CCM brix collection'.freeze
@@ -44,7 +41,5 @@ module BRIX11
       # no commands to load, only APC extensions
       require "brix/psdd4ccm/apc/require"
     end
-
   end
-
 end

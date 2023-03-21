@@ -10,7 +10,6 @@ require 'ridlbe/c++11/visitors/include'
 
 module IDL
   module Cxx11
-
     # Reopen visitor class to add psdd traits specifics
     #
     class IncludeVisitor

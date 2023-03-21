@@ -8,12 +8,9 @@
 #--------------------------------------------------------------------
 
 module AxciomaPC
-
   module DDS4CCM
-
     # reopen Extension module for DataIdlRecipe
     module DataIDLExtension
-
       def add_opendds_proj(fidl)
         # is there already an opendds project for this recipe?
         prj_dependencies = fidl.project_dependencies
@@ -75,9 +72,6 @@ module AxciomaPC
           ifidl.interaction_types << :sev
         end
       end
-
     end # DataIDLExtension
-
   end # DDS4CCM
-
 end

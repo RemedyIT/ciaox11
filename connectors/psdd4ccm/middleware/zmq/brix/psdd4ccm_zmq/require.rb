@@ -8,11 +8,8 @@
 #--------------------------------------------------------------------
 
 module BRIX11
-
   module CIAOX11
-
     module PSDD4CCM_ZMQ
-
       ROOT = File.dirname(__FILE__)
       TITLE = 'PSDD4CCM_ZMQ'
       DESC = 'BRIX11 PSDD4CCM ZMQ brix collection'
@@ -32,7 +29,5 @@ module BRIX11
       # no commands to load, only APC extensions
       require "brix/psdd4ccm_zmq/apc/require"
     end
-
   end
-
 end

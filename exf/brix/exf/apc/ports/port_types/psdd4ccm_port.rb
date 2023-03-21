@@ -8,9 +8,7 @@
 #--------------------------------------------------------------------
 
 module AxciomaPC
-
   module PSDD4CCM
-
     # reopen Port class
     class Port < PortType
       def create_conn_lib_with_exf(mw)
@@ -29,7 +27,5 @@ module AxciomaPC
       alias_method_chain :create_conn_lib, :exf if method_defined? :create_conn_lib
       alias_method_chain :setup_conn_gen, :exf
     end # Port
-
   end # PSDD4CCM
-
 end

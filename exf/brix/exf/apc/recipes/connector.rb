@@ -8,7 +8,6 @@
 #--------------------------------------------------------------------
 
 module AxciomaPC
-
   # reopen recipe class
   class ConnectorRecipe < Recipe
     # reopen recipe configurator class
@@ -25,5 +24,4 @@ module AxciomaPC
       @exf ? true : false # make sure to return true or false even is attribute is nil
     end
   end
-
 end

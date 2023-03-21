@@ -8,9 +8,7 @@
 #--------------------------------------------------------------------
 
 module AxciomaPC
-
   module PSDD4CCM
-
     class Port < PortType
 
       class Configurator < PortType::Configurator
@@ -245,7 +243,6 @@ module AxciomaPC
     end # Port
 
     module DataInteractionHandler
-
       def self.setup_data(recipe, fidl)
         prj_dependencies = fidl.project_dependencies
         if mpc_idl_obj = recipe.mpc_file[:psdd_traits_gen]
@@ -279,14 +276,11 @@ module AxciomaPC
         project_dependencies.merge(idl_prj_dependencies,
                                    :lem_gen, :lem_stub, :psdd_traits_gen)
       end
-
     end
-
   end # PSDD4CCM
 
   ConnectorRecipe.register_port_type(:psdd4ccm, PSDD4CCM::Port)
   DataIdlRecipe.register_interaction_handler(:psdd4ccm, PSDD4CCM::DataInteractionHandler)
-
 end
 
 # load specializations and extensions

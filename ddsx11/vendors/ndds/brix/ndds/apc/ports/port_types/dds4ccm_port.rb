@@ -8,9 +8,7 @@
 #--------------------------------------------------------------------
 
 module AxciomaPC
-
   module DDS4CCM
-
     Port.middleware_implementations << :ndds
 
     # initialize the vendor IDL include path for the SEV interface recipe
@@ -76,7 +74,6 @@ module AxciomaPC
     end # Port
 
     module NDDSDataInteractionHandler
-
       def self.setup_data(recipe, fidl)
         recipe.add_ndds_proj(fidl)
       end
@@ -92,13 +89,10 @@ module AxciomaPC
         recipe.get_dds4ccm_data_dependencies(project_dependencies, idl_prj_dependencies,
                                              :ddsx11_ndds_idl_gen, :ddsx11_ndds_types)
       end
-
     end
-
   end # DDS4CCM
 
   DataIdlRecipe.register_interaction_handler(:dds4ccm_ndds, DDS4CCM::NDDSDataInteractionHandler)
-
 end
 
 # load specializations and extensions

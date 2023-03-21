@@ -10,12 +10,9 @@
 require 'fileutils'
 
 module AxciomaPC
-
   module PS
-
     # Extension module for DataIdlRecipe
     module DataIDLExtension
-
       def process_ps_data_dependencies(project_dependencies)
         # noop
       end
@@ -23,7 +20,6 @@ module AxciomaPC
       def get_ps_data_dependencies(project_dependencies, idl_prj_dependencies)
         project_dependencies.merge(idl_prj_dependencies, :stub)
       end
-
     end # DataIDLExtension
 
     AxciomaPC::DataIdlRecipe.send(:include, DataIDLExtension)
@@ -400,7 +396,6 @@ module AxciomaPC
 
     # Extension module for ComponentRecipe
     module ComponentExtension
-
       def setup_comp_gen_pubsub(project_dependencies)
         mpc_obj = mpc_file[:comp_gen]
         # add PS base project
@@ -443,11 +438,8 @@ module AxciomaPC
         mpc_obj.add_dependencies(project_dependencies, :psdd_lem_stub)
         mpc_obj.add_dependencies(project_dependencies, :stub)
       end
-
     end
 
     AxciomaPC::ComponentRecipe.send(:include, ComponentExtension)
-
   end # PS
-
 end

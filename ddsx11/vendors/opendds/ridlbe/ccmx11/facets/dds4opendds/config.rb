@@ -8,11 +8,8 @@
 #--------------------------------------------------------------------
 
 module IDL
-
   module CCMX11
-
     module DDS
-
       module OPENDDS
         COPYRIGHT = "Copyright (c) 2007-#{Time.now.year} Remedy IT Expertise BV, The Netherlands".freeze
         TITLE = 'RIDL OpenDDS DDS Facet'.freeze

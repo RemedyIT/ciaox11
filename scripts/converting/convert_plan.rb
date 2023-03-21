@@ -51,7 +51,6 @@ $local_interface_array = ["<deployRequirement>",
 
 
 module CIAOX11_Plan_Converter
-
   def self.convert_plan(options)
     file_tmp = Tempfile.new("cdp_out")
     @line_nr = 0

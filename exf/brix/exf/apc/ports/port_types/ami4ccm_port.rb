@@ -8,9 +8,7 @@
 #--------------------------------------------------------------------
 
 module AxciomaPC
-
   module AMI4CCM
-
     # reopen Port class
     class Port < PortType
       # add chain method
@@ -31,5 +29,4 @@ module AxciomaPC
       alias_method_chain :create_conn_lib, :exf
     end
   end
-
 end # AMI4CCM

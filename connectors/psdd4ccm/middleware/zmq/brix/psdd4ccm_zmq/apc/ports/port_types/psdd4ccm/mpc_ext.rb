@@ -11,11 +11,7 @@
 require 'brix/ciaox11/apc/mpcfile.rb'
 
 module AxciomaPC
-
   module MPC
-
     PSDDConnProject.middleware_base_projects[:zmq] = 'ciaox11_psdd4ccm_zmq_impl'
-
   end # MPC
-
 end

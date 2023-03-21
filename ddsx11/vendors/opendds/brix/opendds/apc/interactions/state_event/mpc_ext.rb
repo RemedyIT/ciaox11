@@ -8,9 +8,7 @@
 #--------------------------------------------------------------------
 
 module AxciomaPC
-
   module MPC
-
     # Add State/Event MPC IDL project specializations
     MPC::IDLProject::DEFAULTS.merge!({
       :ddsx11_opendds_idl_gen => {
@@ -62,7 +60,5 @@ module AxciomaPC
         [ "#{recipe.export_name.upcase}_TYPESUPPORT_BUILD_DLL" ]
       end
     end
-
   end # MPC
-
 end # AxciomaPC

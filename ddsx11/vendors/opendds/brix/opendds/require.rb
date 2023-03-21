@@ -8,11 +8,8 @@
 #--------------------------------------------------------------------
 
 module BRIX11
-
   module CIAOX11
-
     module OPENDDS
-
       ROOT = File.dirname(__FILE__)
       TITLE = 'OPENDDS'.freeze
       DESC = 'BRIX11 OPENDDS brix collection'.freeze
@@ -59,7 +56,5 @@ module BRIX11
       # no commands to load, only APC extensions
       require "brix/opendds/apc/require"
     end
-
   end
-
 end

@@ -8,11 +8,8 @@
 #--------------------------------------------------------------------
 
 module BRIX11
-
   module CIAOX11
-
     module ExF
-
       ROOT = File.dirname(__FILE__)
       TITLE = 'ExF'.freeze
       DESC = 'BRIX11 ExF brix collection'.freeze
@@ -52,7 +49,5 @@ module BRIX11
       # no commands to load, only APC extensions
       require "brix/exf/apc/require"
     end
-
   end
-
 end

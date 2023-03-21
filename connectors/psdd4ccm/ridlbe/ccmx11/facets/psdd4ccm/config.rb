@@ -8,11 +8,8 @@
 #--------------------------------------------------------------------
 
 module IDL
-
   module CCMX11
-
     module PSDD4CCM
-
       COPYRIGHT = "Copyright (c) 2016-#{Time.now.year} Remedy IT Expertise BV, The Netherlands".freeze
       TITLE = 'RIDL CCMX11 PSDD4CCM Facet'.freeze
 
@@ -253,9 +250,6 @@ module IDL
         IDL.push_production(:psdd_traits,
                             ::IDL::CCMX11::PSDD4CCM::PSDDTraitsWriter.new(psdd_traits_file, options))
       end
-
     end # PSDD4CCM
-
   end # CCMX11
-
 end # IDL

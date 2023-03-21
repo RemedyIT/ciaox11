@@ -11,9 +11,7 @@
 require 'brix/ciaox11/apc/mpcfile.rb'
 
 module AxciomaPC
-
   module MPC
-
     # Add State/Event MPC IDL project specializations
     MPC::IDLProject::DEFAULTS.merge!({
       :psdd_traits_gen => {
@@ -60,7 +58,5 @@ module AxciomaPC
       end
 
     end
-
   end # MPC
-
 end # AxciomaPC

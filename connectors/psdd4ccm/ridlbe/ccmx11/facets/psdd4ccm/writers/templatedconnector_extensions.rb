@@ -8,13 +8,9 @@
 #--------------------------------------------------------------------
 
 module IDL
-
   module CCMX11
-
     module PSDD4CCM
-
       module TemplatedConnectorImplSourceExt
-
         module WriterExtension
           def self.included(base)
             base.class_eval do
@@ -35,9 +31,6 @@ module IDL
           writer.append_template(:pre, :pre_psdd4ccm)
         end
       end
-
     end # PSDD4CCM
-
   end # CCMX11
-
 end # IDL
