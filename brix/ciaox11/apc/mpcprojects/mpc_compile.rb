@@ -133,12 +133,10 @@ module AxciomaPC
       end
 
       # derived classes implement versions to add derived source(s)
-      def add_sources(prj_fileid)
-      end
+      def add_sources(prj_fileid); end
 
       # derived classes implement versions to add derived source(s)
-      def add_headers(prj_fileid)
-      end
+      def add_headers(prj_fileid); end
     end # CompileProject
 
     class StubProject < CompileProject
