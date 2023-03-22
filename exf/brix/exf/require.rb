@@ -8,19 +8,15 @@
 #--------------------------------------------------------------------
 
 module BRIX11
-
   module CIAOX11
-
     module ExF
-
       ROOT = File.dirname(__FILE__)
       TITLE = 'ExF'.freeze
       DESC = 'BRIX11 ExF brix collection'.freeze
       COPYRIGHT = "Copyright (c) 2014-#{Time.now.year} Remedy IT Expertise BV, The Netherlands".freeze
-      VERSION = {major: 0, minor: 1, release: 0}
+      VERSION = { major: 0, minor: 1, release: 0 }
 
       Collection.configure(:exf, ROOT, TITLE, DESC, COPYRIGHT, VERSION) do |cfg|
-
         # declare dependency on :ciaox11 collection (forces it to load first)
         cfg.add_collection(:ciaox11)
         # declare optional dependencies on :ndds, :opendds and :psdd4ccm collections (i.e. load if available)
@@ -46,13 +42,10 @@ module BRIX11
           # update documentation config
           Common::GenerateDocumentation::OPTIONS[:docsources]['exf'] = ['${CIAOX11_ROOT}/exf/docs']
         end
-
       end
 
       # no commands to load, only APC extensions
       require "brix/exf/apc/require"
     end
-
   end
-
 end

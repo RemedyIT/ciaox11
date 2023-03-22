@@ -8,14 +8,11 @@
 #--------------------------------------------------------------------
 
 module AxciomaPC
-
   module PS
-
     module ComponentInteractionHandler
-
       def self.setup_component(recipe)
         BRIX11.log(3, '[%s|PS] setup_component', self)
-        #noop
+        # noop
       end
 
       def self.process_component_dependencies(recipe, project_dependencies)
@@ -26,13 +23,11 @@ module AxciomaPC
         recipe.setup_svnt_comp_pubsub(project_dependencies)
         recipe.setup_exec_lib_pubsub(project_dependencies)
       end
-
     end
 
     module DataInteractionHandler
-
       def self.setup_data(recipe, fidl)
-        #noop
+        # noop
       end
 
       def self.process_data_dependencies(recipe, project_dependencies)
@@ -42,9 +37,7 @@ module AxciomaPC
       def self.get_data_dependencies(recipe, idl_prj_dependencies, project_dependencies)
         recipe.get_ps_data_dependencies(project_dependencies, idl_prj_dependencies)
       end
-
     end
-
   end
 
   ComponentRecipe.register_interaction_handler(:pubsub, PS::ComponentInteractionHandler)
@@ -59,7 +52,7 @@ module AxciomaPC
           BRIX11.log_error("[#{self}] Topic type of port is nil!")
         else
           set_type type
-          ps_data_idl = find_idl_type(type_name)  do |n|
+          ps_data_idl = find_idl_type(type_name) do |n|
                 t = n.idltype.resolved_type
                 case t
                 when IDL::Type::Any,
@@ -83,6 +76,7 @@ module AxciomaPC
           unless ps_data_idl || ComponentRecipe::AttributeDefinition::BASIC_TYPES.include?(type_name)
             raise "No valid data type #{type_name} found for component recipe #{recipe.recipe_id}!"
           end
+
           generate_pubsub_interface_recipe(type_name, ps_data_idl)
           @idl_interface = @interface_recipe.interface_name + '.idl'
         end
@@ -130,7 +124,7 @@ module AxciomaPC
                   false
                 end
               end
-            #else not found file #{base_name+'.idl'} in project yet
+            # else not found file #{base_name+'.idl'} in project yet
             end
             if intf_base_idl_file
               rec_base = intf_base_idl_file.recipes.first
@@ -143,7 +137,7 @@ module AxciomaPC
             end
           else
             # basic type so no data recipe to use
-            rec_base = recipe   # use component recipe itself
+            rec_base = recipe # use component recipe itself
           end
 
           # Now we can create interface recipe
@@ -167,8 +161,8 @@ module AxciomaPC
         end
       end
       protected :generate_pubsub_interface_recipe
-
     end
+
     module SubscriberPort
       def verify
         BRIX11.log(4, "[%s] verify", self)
@@ -177,11 +171,11 @@ module AxciomaPC
         inports = @config[:interaction].inject({}) do |hsh, int|
                     case int
                     when Hash
-                      int.inject(hsh) {|h, (k, v)| h[k.to_sym] = v.to_s; h }
+                      int.inject(hsh) { |h, (k, v)| h[k.to_sym] = v.to_s; h }
                     when String, Symbol
                       hsh[int.to_sym] = "#{name}_#{int}"
                     when NilClass
-                      hsh.merge!({ :listen => "#{name}_listen", :get => "#{name}_get" })
+                      hsh.merge!({ listen: "#{name}_listen", get: "#{name}_get" })
                     else
                       BRIX11.log_fatal("[#{self}] Invalid interactions specified!")
                     end
@@ -211,6 +205,7 @@ module AxciomaPC
         recipe.idl_includes << File.dirname(@interface_recipe.interface_idl_path)
       end
     end
+
     module PublisherPort
       def verify
         BRIX11.log(4, "[%s] verify", self)
@@ -225,14 +220,13 @@ module AxciomaPC
 
   # patch ComponentRecipe::PortDefinition for pubsub ports component
   class ComponentRecipe::PortDefinition
-
     # reopen and extend Configurator
     class Configurator
-      def publishes(type_name=nil)
+      def publishes(type_name = nil)
         @port.publishes(type_name)
       end
 
-      def subscribes(type_name=nil, *interaction)
+      def subscribes(type_name = nil, *interaction)
         @port.subscribes(type_name, *interaction)
       end
     end

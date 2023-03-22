@@ -8,19 +8,15 @@
 #--------------------------------------------------------------------
 
 module BRIX11
-
   module CIAOX11
-
     module OPENDDS
-
       ROOT = File.dirname(__FILE__)
       TITLE = 'OPENDDS'.freeze
       DESC = 'BRIX11 OPENDDS brix collection'.freeze
       COPYRIGHT = "Copyright (c) 2014-#{Time.now.year} Remedy IT Expertise BV, The Netherlands".freeze
-      VERSION = {major: 0, minor: 1, release: 0}
+      VERSION = { major: 0, minor: 1, release: 0 }
 
       Collection.configure(:opendds, ROOT, TITLE, DESC, COPYRIGHT, VERSION) do |cfg|
-
         # declare dependency on :ciaox11 collection (forces it to load first)
         cfg.add_collection(:ciaox11)
 
@@ -53,13 +49,10 @@ module BRIX11
             end
           end
         end
-
       end
 
       # no commands to load, only APC extensions
       require "brix/opendds/apc/require"
     end
-
   end
-
 end

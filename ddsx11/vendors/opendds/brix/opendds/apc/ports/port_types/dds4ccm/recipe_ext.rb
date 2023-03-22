@@ -8,12 +8,9 @@
 #--------------------------------------------------------------------
 
 module AxciomaPC
-
   module DDS4CCM
-
     # reopen Extension module for DataIdlRecipe
     module DataIDLExtension
-
       def add_opendds_proj(fidl)
         # is there already an opendds project for this recipe?
         prj_dependencies = fidl.project_dependencies
@@ -29,7 +26,7 @@ module AxciomaPC
         else
           mpc_idl_obj = MPC::IDLProject.new(:ddsx11_opendds_idl_gen, self)
           mpc_file.add_mpc_project(mpc_idl_obj)
-          #set idl_includes set in recipe and set in  project file
+          # set idl_includes set in recipe and set in  project file
           mpc_idl_obj.includes << idl_includes << project.idl_includes
 
           # make sure :stub projects exist
@@ -71,13 +68,10 @@ module AxciomaPC
 
         mpc_types_impl_obj.add_dependencies(prj_dependencies, :stub)
 
-        fidl.includes.each do|ifidl|
+        fidl.includes.each do |ifidl|
           ifidl.interaction_types << :sev
         end
       end
-
     end # DataIDLExtension
-
   end # DDS4CCM
-
 end

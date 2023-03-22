@@ -7,9 +7,7 @@
 # @copyright Copyright (c) Remedy IT Expertise BV
 #--------------------------------------------------------------------
 module AxciomaPC
-
   module CORBA4CCM
-
     # reopen Port class
     class Port < PortType
       # add chain method
@@ -51,7 +49,6 @@ module AxciomaPC
     # add ExF specific interaction handler
     module ExF
       module DataInteractionHandler
-
         def self.setup_data(recipe, fidl)
           # does the IDL file need full skeletons?
           if fidl.properties[:needs_skel]
@@ -75,13 +72,10 @@ module AxciomaPC
         def self.get_data_dependencies(_recipe, _idl_prj_dependencies, _project_dependencies)
           # noop
         end
-
       end
     end
-
   end # CORBA4CCM
 
   # register ExF specific interaction handler
   DataIdlRecipe.register_interaction_handler(:corba4ccm, CORBA4CCM::ExF::DataInteractionHandler)
-
 end # AxciomaPC

@@ -249,7 +249,7 @@ module AxciomaPC
           topic_name_ = topic.split('::').pop
         else
           scope_ = topic.split('::')
-          topic_name_ = scope_.pop  # pop and store topic typename itself
+          topic_name_ = scope_.pop # pop and store topic typename itself
           scope_ = scope_.join('::')
         end
         "#{scope_}::#{@topic_if || "#{topic_name_}#{@topic_if_suffix || 'Interface'}"}"
@@ -353,7 +353,7 @@ module AxciomaPC
 
       def setup_projects
         BRIX11.log(3, '[%s] setup projects', self)
-        if @topic_idl  # should always be there
+        if @topic_idl # should always be there
           # always setup the project to generate the <base_idl>SE.idl file
           mpc_obj = MPC::IDLProject.new(:se_idl_gen, self)
           mpc_obj.add_project_file(@topic_idl.full_path)

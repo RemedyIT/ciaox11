@@ -8,9 +8,7 @@
 #--------------------------------------------------------------------
 
 module AxciomaPC
-
   module DDS4CCM
-
     Port.middleware_implementations << :opendds
 
     # initialize the vendor IDL include path for the SEV interface recipe
@@ -20,7 +18,6 @@ module AxciomaPC
 
     # reopen Port class
     class Port < PortType
-
       def setup_projects_with_opendds
         setup_projects_without_opendds
         if middleware.include?(:opendds)
@@ -30,13 +27,13 @@ module AxciomaPC
           recipe.idl_files.each do |_, fidl|
             inc_fidl = project.idl_files[fidl.full_path]
             rcp = inc_fidl.recipes.first
-            #set the interaction type
+            # set the interaction type
             rcp.setup_project_interaction(inc_fidl, :dds4ccm_opendds)
           end
 
-          #Also for the state event interface file, which the connector needs,
+          # Also for the state event interface file, which the connector needs,
           # setup the project files,
-          #in case this isn't done already via a sev component
+          # in case this isn't done already via a sev component
           inc_fidl = project.idl_files[@interface_recipe.interface_idl_path]
           rcp = inc_fidl.recipes.first
           rcp.setup_project_interaction(inc_fidl, :sev)
@@ -72,11 +69,9 @@ module AxciomaPC
       alias_method_chain :setup_projects, :opendds
       alias_method_chain :process_project_dependencies, :opendds
       alias_method_chain :setup_conn_gen, :opendds
-
     end # Port
 
     module OpenDDSDataInteractionHandler
-
       def self.setup_data(recipe, fidl)
         recipe.add_opendds_proj(fidl)
       end
@@ -92,13 +87,10 @@ module AxciomaPC
         recipe.get_dds4ccm_data_dependencies(project_dependencies, idl_prj_dependencies,
                                              :ddsx11_opendds_idl_gen, :ddsx11_opendds_types)
       end
-
     end
-
   end # DDS4CCM
 
   DataIdlRecipe.register_interaction_handler(:dds4ccm_opendds, DDS4CCM::OpenDDSDataInteractionHandler)
-
 end
 
 # load specializations and extensions

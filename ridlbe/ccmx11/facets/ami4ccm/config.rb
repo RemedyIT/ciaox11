@@ -31,25 +31,25 @@ module IDL
               grpcfg.for_params :strings,
                 params: {
                   'Aidl' => { description: "-Gami4ccm,Aidl\t\tGenerate the AMI4CCM IDL and stubs",
-                           option_name: :gen_ami_idl },
+                              option_name: :gen_ami_idl },
                   'Aidl-only' => { description: "-Gami4ccm,Aidl\t\tGenerate the AMI4CCM IDL only",
-                           option_name: :gen_ami_idl_only },
+                                   option_name: :gen_ami_idl_only },
                   'idl' => { description: "-Gami4ccm,idl\t\tGenerate all AMI4CCM connector IDL",
-                           option_name: :gen_ami_connector_idl },
+                             option_name: :gen_ami_connector_idl },
                   'impl' => { description: "-Gami4ccm,impl\t\tGenerate the AMI4CCM connector implementation",
-                            option_name: :gen_ami_connector_impl },
+                              option_name: :gen_ami_connector_impl },
                   'lem' => { description: "-Gami4ccm,lem\t\tGenerate the local executor mapping (lem) for AMI4CCM",
-                           option_name: :gen_lem_with_ami },
+                             option_name: :gen_lem_with_ami },
                   'svnt' => { description: "-Gami4ccm,svnt\t\tGenerate the servant for AMI4CCM",
-                            option_name: :gen_component_servant_with_ami },
+                              option_name: :gen_component_servant_with_ami },
                   'conn' => { description: "-Gami4ccm,conn\t\tGenerate all files needed for an AMI4CCM connector",
-                            option_name: :gen_amiconn_complete },
+                              option_name: :gen_amiconn_complete },
                   'conn_only' => { description: "-Gami4ccm,conn_only\tGenerate all AMI4CCM dependent files needed for an AMI4CCM connector",
-                              option_name: :gen_amiconn_only_ami4ccm_complete },
+                                   option_name: :gen_amiconn_only_ami4ccm_complete },
                   'comp' => { description: "-Gami4ccm,comp\t\tGenerate all files/support needed for an AMI4CCM component",
-                             option_name: :gen_amicomp_complete },
+                              option_name: :gen_amicomp_complete },
                   'ex' => { description: "-Gami4ccm,ex\t\tGenerate AMI4CCM component executor support",
-                            option_name: :gen_component_executor_with_ami },
+                            option_name: :gen_component_executor_with_ami }
                 }
             end # ami4ccm_group
           end
@@ -300,7 +300,6 @@ module IDL
         # signal to schedule *A_conn.idl generation later in this pass
         options[:gen_ami_connector_idl] = true
       end
-
 
       ##=======================================================================
 
@@ -579,7 +578,6 @@ module IDL
         a_opts[:no_client_proxy] = false
         IDL.push_input(a_opts[:idlfile], a_opts)
       end
-
 
       #########################################################################
       ## AMI4CCM configuration

@@ -11,13 +11,9 @@ require 'ridlbe/c++11/writers/helpers/include_guard_helper'
 require 'ridlbe/ccmx11/facets/psdd4ccm/visitors/mixin/psdd_traits'
 
 module IDL
-
   module CCMX11
-
     module PSDD4CCM
-
       class PSDDTraitsWriter < Cxx11::CxxCodeWriterBase
-
         helper CCMX11::VersionHelper
         helper Cxx11::IncludeGuardHelper
 
@@ -74,6 +70,7 @@ module IDL
 
         def visit_typedef(node)
           return if IDL::Type::ScopedName === node.idltype # alias typedef
+
           idl_type = node.idltype.resolved_type
           case idl_type
           when IDL::Type::Sequence
@@ -134,11 +131,7 @@ module IDL
             true
           end
         end
-
       end # PSDDTraitsWriter
-
     end # PSDD4CCM
-
   end # CCMX11
-
 end # IDL

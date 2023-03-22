@@ -24,23 +24,22 @@ $CIAO_pre = $EduVdrBilt + ".CIAO"
 $DAnCE_pre = $EduVdrBilt + ".DAnCE"
 $DAnCE_pre2 = $EdudrVBilt + ".DAnCE"
 
-
-#The last 3 lines should always stay at the end of this hash.
-$conversion_hash = {"#{$DAnCE_pre}.LocalityUUID" => "#{$DnCx11_pre}.DnCX11.Locality. " ,
-                    "#{$DAnCE_pre}.LocalityTimeout" => "#{$DnCx11_pre}.Locality.Timeout",
-                    "#{$DAnCE_pre}.LocalityArguments" => "#{$DnCx11_pre}.Locality.Arguments",
-                    "#{$DAnCE_pre}.LocalityExec" => "#{$DnCx11_pre}.Locality.Exec",
-                    "#{$DAnCE_pre}.LocalityMultithread" => "#{$DnCx11_pre}.Locality.Multithread",
-                    "#{$EduVdrBilt}.CCM." => "#{$NlRemedyIt}.CCM.",
-                    "home factory" => "#{$DnCx11_pre}.Home.Factory",
-                    "component factory" => "#{$DnCx11_pre}.Executor.Factory",
-                    "#{$CIAO_pre}.ExecutorArtifact" => "#{$DnCx11_pre}.Executor.Artifact",
-                    "#{$CIAO_pre}.ServantEntrypoint" => "#{$DnCx11_pre}.Servant.Factory",
-                    "#{$CIAO_pre}.ServantArtifact" => "#{$DnCx11_pre}.Servant.Artifact",
-                    "#{$DAnCE_pre2}" => "#{$DnCx11_pre}",
-                    "#{$DAnCE_pre}" => "#{$DnCx11_pre}",
-                    "#{$CIAO_pre}" => "#{$DnCx11_pre}",
-                    $EduVdrBilt => $NlRemedyIt
+# The last 3 lines should always stay at the end of this hash.
+$conversion_hash = { "#{$DAnCE_pre}.LocalityUUID" => "#{$DnCx11_pre}.DnCX11.Locality. ",
+                     "#{$DAnCE_pre}.LocalityTimeout" => "#{$DnCx11_pre}.Locality.Timeout",
+                     "#{$DAnCE_pre}.LocalityArguments" => "#{$DnCx11_pre}.Locality.Arguments",
+                     "#{$DAnCE_pre}.LocalityExec" => "#{$DnCx11_pre}.Locality.Exec",
+                     "#{$DAnCE_pre}.LocalityMultithread" => "#{$DnCx11_pre}.Locality.Multithread",
+                     "#{$EduVdrBilt}.CCM." => "#{$NlRemedyIt}.CCM.",
+                     "home factory" => "#{$DnCx11_pre}.Home.Factory",
+                     "component factory" => "#{$DnCx11_pre}.Executor.Factory",
+                     "#{$CIAO_pre}.ExecutorArtifact" => "#{$DnCx11_pre}.Executor.Artifact",
+                     "#{$CIAO_pre}.ServantEntrypoint" => "#{$DnCx11_pre}.Servant.Factory",
+                     "#{$CIAO_pre}.ServantArtifact" => "#{$DnCx11_pre}.Servant.Artifact",
+                     "#{$DAnCE_pre2}" => "#{$DnCx11_pre}",
+                     "#{$DAnCE_pre}" => "#{$DnCx11_pre}",
+                     "#{$CIAO_pre}" => "#{$DnCx11_pre}",
+                     $EduVdrBilt => $NlRemedyIt
                    }
 
 $local_interface_array = ["<deployRequirement>",
@@ -49,9 +48,7 @@ $local_interface_array = ["<deployRequirement>",
                           "</deployRequirement>"
                          ]
 
-
 module CIAOX11_Plan_Converter
-
   def self.convert_plan(options)
     file_tmp = Tempfile.new("cdp_out")
     @line_nr = 0
@@ -128,13 +125,13 @@ module CIAOX11_Plan_Converter
           output_file.write(line)
         end
       else
-        #nothing shouldn't happen
+        # nothing shouldn't happen
       end
     end
     file_tmp.close!
   end
 
-  def self.check_input_file_name (filename)
+  def self.check_input_file_name(filename)
     ret = false
     if !File.file?(filename)
       puts "Error, input plan <#{filename}> doesn't exist"
@@ -148,7 +145,7 @@ module CIAOX11_Plan_Converter
     ret
   end
 
-  def self.check_output_file_name (filename)
+  def self.check_output_file_name(filename)
     ret = false
     dirname = File.dirname (filename)
     if !File.directory?(dirname)
@@ -171,13 +168,13 @@ module CIAOX11_Plan_Converter
   end
 end
 
-options = {:cdp_plan_in => nil, :cdp_plan_out => nil, :logging => false}
+options = { cdp_plan_in: nil, cdp_plan_out: nil, logging: false }
 
 script_name = File.basename($0, '.*')
 if !(script_name =~ /convert_plan/)
   script_name = 'ruby ' + $0
 end
-parser = OptionParser.new do|opts|
+parser = OptionParser.new do |opts|
   opts.banner = "Usage: #{script_name} [options]"
   opts.on('-i', '--input plan', 'Filename for input plan (*.cdp)') do |in_plan|
     options[:cdp_plan_in] = in_plan;
@@ -206,7 +203,7 @@ if options[:cdp_plan_in] == nil
     if CIAOX11_Plan_Converter::check_input_file_name(input_file)
       options[:cdp_plan_in] = input_file
     end
-  end until  options[:cdp_plan_in] != nil
+  end until options[:cdp_plan_in] != nil
 end
 
 if options[:cdp_plan_out] == nil
@@ -216,8 +213,7 @@ if options[:cdp_plan_out] == nil
     if CIAOX11_Plan_Converter::check_output_file_name(output_file)
       options[:cdp_plan_out] = output_file
     end
-  end until  options[:cdp_plan_out] != nil
+  end until options[:cdp_plan_out] != nil
 end
-
 
 CIAOX11_Plan_Converter.run(options)

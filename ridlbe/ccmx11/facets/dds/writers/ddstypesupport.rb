@@ -93,17 +93,13 @@ module IDL
 
         attr_accessor :include_guard
 
-        def pre_visit(parser)
-        end
+        def pre_visit(parser); end
 
-        def post_visit(parser)
-        end
+        def post_visit(parser); end
 
-        def enter_module(node)
-        end
+        def enter_module(node); end
 
-        def leave_module(node)
-        end
+        def leave_module(node); end
 
         def enter_struct(node)
           visitor(StructVisitor) do |v|
@@ -130,17 +126,13 @@ module IDL
 
         attr_accessor :include_guard
 
-        def pre_visit(parser)
-        end
+        def pre_visit(parser); end
 
-        def post_visit(parser)
-        end
+        def post_visit(parser); end
 
-        def enter_module(node)
-        end
+        def enter_module(node); end
 
-        def leave_module(node)
-        end
+        def leave_module(node); end
 
         def enter_struct(node)
           visitor(StructVisitor) do |v|

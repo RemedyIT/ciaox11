@@ -12,8 +12,7 @@ module AxciomaPC
 
   RECIPE_FILE_EXT = 'aprc'.freeze
 
-  OPTIONS = {
-  }
+  OPTIONS = {}
 
   def self.root_path
     f = File.expand_path(__FILE__)

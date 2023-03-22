@@ -13,7 +13,7 @@ module BRIX11
     TITLE = 'CIAOX11'.freeze
     DESC = 'BRIX11 CIAOX11 brix collection'.freeze
     COPYRIGHT = "Copyright (c) 2014-#{Time.now.year} Remedy IT Expertise BV, The Netherlands".freeze
-    VERSION = {major: 1, minor: 0, release: 0}
+    VERSION = { major: 1, minor: 0, release: 0 }
 
     Collection.configure(:ciaox11, ROOT, TITLE, DESC, COPYRIGHT, VERSION) do |cfg|
       # declare dependency on :taox11 collection (forces it to load first)
@@ -56,12 +56,12 @@ module BRIX11
         # update documentation config
         Common::GenerateDocumentation::OPTIONS[:docsources].merge!({
             'ciaox11' => ['${CIAOX11_ROOT}/docs'],
-            'ddsx11'    => ['${CIAOX11_ROOT}/ddsx11/docs'],
-            'tt4ccm'    => ['${CIAOX11_ROOT}/connectors/tt4ccm/docs'],
+            'ddsx11' => ['${CIAOX11_ROOT}/ddsx11/docs'],
+            'tt4ccm' => ['${CIAOX11_ROOT}/connectors/tt4ccm/docs'],
             'corba4ccm' => ['${CIAOX11_ROOT}/connectors/corba4ccm/docs'],
-            'ami4ccm'   => ['${CIAOX11_ROOT}/connectors/ami4ccm/docs',
-                            '${CIAOX11_ROOT}/connectors/ami4ccm/tutorials/hello/tutorial'],
-            'dds4ccm'   => ['${CIAOX11_ROOT}/connectors/dds4ccm/docs']
+            'ami4ccm' => ['${CIAOX11_ROOT}/connectors/ami4ccm/docs',
+                          '${CIAOX11_ROOT}/connectors/ami4ccm/tutorials/hello/tutorial'],
+            'dds4ccm' => ['${CIAOX11_ROOT}/connectors/dds4ccm/docs']
           })
         Common::GenerateDocumentation::OPTIONS[:adoc_attribs]['ciaox11_src_root'] = Exec.get_run_environment('CIAOX11_ROOT')
 

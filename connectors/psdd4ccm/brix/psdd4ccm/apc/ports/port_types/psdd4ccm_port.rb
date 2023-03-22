@@ -8,33 +8,37 @@
 #--------------------------------------------------------------------
 
 module AxciomaPC
-
   module PSDD4CCM
-
     class Port < PortType
-
       class Configurator < PortType::Configurator
         def topic(name)
           @port_type.topic = name
         end
+
         def topic_namespace(name)
           @port_type.topic_namespace = name
         end
+
         def topic_sequence_suffix(name)
           @port_type.topic_seq_suffix = name
         end
+
         def topic_interface_suffix(name)
           @port_type.topic_if_suffix = name
         end
+
         def topic_sequence(name)
           @port_type.topic_seq = name
         end
+
         def topic_interface(name)
           @port_type.topic_if = name
         end
+
         def middleware(*names)
           @port_type.middleware(*names.flatten)
         end
+
         def disable_context_switch
           @context_switch_disabled = true
         end
@@ -165,7 +169,7 @@ module AxciomaPC
         recipe.idl_files.each do |_, fidl|
           inc_fidl = project.idl_files[fidl.full_path]
           rcp = inc_fidl.recipes.first
-          #set the interaction type
+          # set the interaction type
           rcp.setup_project_interaction(inc_fidl, :psdd4ccm)
         end
 
@@ -216,7 +220,7 @@ module AxciomaPC
         # idl_includes: idl in recipe self, concat with includes given in project root apcrc file
         mpc_obj.includes << idl_includes << project.idl_includes
 
-        #Also needed the gen_dir from the original recipe of the idl_files for the includes
+        # Also needed the gen_dir from the original recipe of the idl_files for the includes
         recipe.idl_files.each do |n, idf|
           org_fidl = project.idl_files[idf.full_path]
           rcp = org_fidl.recipes.first
@@ -241,11 +245,9 @@ module AxciomaPC
       def mpc_name
         '_psdd4ccm'
       end
-
     end # Port
 
     module DataInteractionHandler
-
       def self.setup_data(recipe, fidl)
         prj_dependencies = fidl.project_dependencies
         if mpc_idl_obj = recipe.mpc_file[:psdd_traits_gen]
@@ -263,7 +265,7 @@ module AxciomaPC
         prj_dependencies <<
             MPC::CompileDependency.new(:psdd_traits_gen, recipe) <<
             MPC::LinkDependency.new(:stub, recipe)
-        fidl.includes.each do|ifidl|
+        fidl.includes.each do |ifidl|
           ifidl.interaction_types << :pubsub
         end
       end
@@ -279,14 +281,11 @@ module AxciomaPC
         project_dependencies.merge(idl_prj_dependencies,
                                    :lem_gen, :lem_stub, :psdd_traits_gen)
       end
-
     end
-
   end # PSDD4CCM
 
   ConnectorRecipe.register_port_type(:psdd4ccm, PSDD4CCM::Port)
   DataIdlRecipe.register_interaction_handler(:psdd4ccm, PSDD4CCM::DataInteractionHandler)
-
 end
 
 # load specializations and extensions

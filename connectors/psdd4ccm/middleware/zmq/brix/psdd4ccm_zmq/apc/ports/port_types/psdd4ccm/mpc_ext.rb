@@ -8,14 +8,10 @@
 #--------------------------------------------------------------------
 
 # make sure MPC base definitions are loaded
-require 'brix/ciaox11/apc/mpcfile.rb'
+require 'brix/ciaox11/apc/mpcfile'
 
 module AxciomaPC
-
   module MPC
-
     PSDDConnProject.middleware_base_projects[:zmq] = 'ciaox11_psdd4ccm_zmq_impl'
-
   end # MPC
-
 end

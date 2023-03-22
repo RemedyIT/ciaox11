@@ -49,7 +49,6 @@ module AxciomaPC
       end
     end
 
-
     def initialize(rcpfile, name, &block)
       super(rcpfile, name)
       @type = :data

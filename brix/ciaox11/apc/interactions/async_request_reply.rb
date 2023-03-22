@@ -47,7 +47,6 @@ module AxciomaPC
   ComponentRecipe.register_interaction_handler(:arr, ARR::ComponentInteractionHandler)
   DataIdlRecipe.register_interaction_handler(:arr, ARR::DataInteractionHandler)
 
-
   # Extension module for ComponentRecipe
   module ComponentExtension
     def self.included(base)

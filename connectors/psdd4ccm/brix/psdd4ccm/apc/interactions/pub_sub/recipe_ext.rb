@@ -10,12 +10,9 @@
 require 'fileutils'
 
 module AxciomaPC
-
   module PS
-
     # Extension module for DataIdlRecipe
     module DataIDLExtension
-
       def process_ps_data_dependencies(project_dependencies)
         # noop
       end
@@ -23,14 +20,12 @@ module AxciomaPC
       def get_ps_data_dependencies(project_dependencies, idl_prj_dependencies)
         project_dependencies.merge(idl_prj_dependencies, :stub)
       end
-
     end # DataIDLExtension
 
     AxciomaPC::DataIdlRecipe.send(:include, DataIDLExtension)
 
     # PubSub interface recipe
     class InterfaceRecipe < Recipe
-
       class InterfaceConfigurator < Recipe::Configurator
         def initialize(recipe)
           super
@@ -79,7 +74,7 @@ module AxciomaPC
 
       def initialize(rcpfile, name, &block)
         super(rcpfile, name)
-        #defaults
+        # defaults
         @type = :ps_interface
         @export_name = nil # defaults to interface_name
         @topic_idl = nil
@@ -107,12 +102,12 @@ module AxciomaPC
         ridl_args << "-Wb,psdd_topic_seq=#{self.topic_sequence}" unless self.topic_sequence.nil?
         ridl_args << "-Wb,psdd_topic_if=#{self.topic_interface}" unless self.topic_interface.nil?
         # specify user defined include paths
-        ridl_args.concat self.get_relative_paths(self.idl_includes + self.project.idl_includes).collect {|p| "-I#{p}"}
+        ridl_args.concat self.get_relative_paths(self.idl_includes + self.project.idl_includes).collect { |p| "-I#{p}" }
         # specify system include path
         ridl_args << "-I#{BRIX11::Exec.get_run_environment('TAOX11_ROOT')}"
         if self.idl.empty?
-          ridl_args << '--no-input' <<            # no input parsing
-                       topic.tr(' ', '_') + '.idl'   # 'fake' input filename as template for output
+          ridl_args << '--no-input' << # no input parsing
+                       topic.tr(' ', '_') + '.idl' # 'fake' input filename as template for output
         else
           # use '--search-includepath' to have RIDL search for the input file in one
           # of the given include directories
@@ -154,12 +149,12 @@ module AxciomaPC
         # register required PubSub specific includepaths and macros to facilitate IDL scanner
         ciaox11_root = BRIX11::Exec.get_run_environment('CIAOX11_ROOT')
         (idlfile.properties[:includepaths] ||= []).concat([
-          File.join(ciaox11_root, 'connectors/psdd4ccm/idl') + '/',
+          File.join(ciaox11_root, 'connectors/psdd4ccm/idl') + '/'
         ])
       end
 
       # only allow a single topic IDL file
-      def idl(idlfiles=nil)
+      def idl(idlfiles = nil)
         if idlfiles
           BRIX11.log_fatal("PS interface recipe #{self.recipe_file.full_path} only allows a single topic IDL to be defined!") if idlfiles.size > 1
         end
@@ -167,7 +162,7 @@ module AxciomaPC
       end
 
       # add IDLFile
-      def add_idl_file(idl_file, name=nil)
+      def add_idl_file(idl_file, name = nil)
         # IDLFiles listed by interface recipes are not managed
         # so we do not register the recipe with the IDLFile
         @idl_files[name || idl_file.full_path] = idl_file
@@ -185,7 +180,7 @@ module AxciomaPC
       end
 
       # overrule
-      def export_name(export_name_=nil)
+      def export_name(export_name_ = nil)
         @export_name = export_name_.downcase if export_name_
         @export_name ||= interface_name.downcase
       end
@@ -249,7 +244,7 @@ module AxciomaPC
           topic_name_ = topic.split('::').pop
         else
           scope_ = topic.split('::')
-          topic_name_ = scope_.pop  # pop and store topic typename itself
+          topic_name_ = scope_.pop # pop and store topic typename itself
           scope_ = scope_.join('::')
         end
         "#{scope_}::#{@topic_interface || "#{topic_name_}#{@topic_interace_suffix || 'Interface'}"}"
@@ -263,7 +258,7 @@ module AxciomaPC
         "APC::PS::InterfaceRecipe[#{recipe_id}]"
       end
 
-      def dump(indent=0, out=STDERR)
+      def dump(indent = 0, out = STDERR)
         super(indent, out, "shared_name: [#{@shared_name}] export_name: [#{@export_name}]")
       end
 
@@ -290,7 +285,6 @@ module AxciomaPC
           end
         end
       end
-
 
       def add_lem_proj(fidl)
         # Is there already a psdd_lem_gen project for this interface idl?
@@ -393,14 +387,12 @@ module AxciomaPC
           mpc_proj.add_dependencies(project_dependencies, :stub)
         end
       end
-
     end # InterfaceRecipe
 
     AxciomaPC::Recipe.register_recipe(:ps_interface, InterfaceRecipe)
 
     # Extension module for ComponentRecipe
     module ComponentExtension
-
       def setup_comp_gen_pubsub(project_dependencies)
         mpc_obj = mpc_file[:comp_gen]
         # add PS base project
@@ -410,6 +402,7 @@ module AxciomaPC
 
       def setup_stub_comp_pubsub(project_dependencies)
         return if self.combined_lib?
+
         if mpc_obj = mpc_file[:comp_stub]
           # add PS base project
           mpc_obj.base_projects << 'ciaox11_psdd4ccm_stub'
@@ -420,6 +413,7 @@ module AxciomaPC
 
       def setup_lem_comp_pubsub(project_dependencies)
         return if self.combined_lib?
+
         mpc_obj = mpc_file[:comp_lem]
         # add PS base project
         mpc_obj.base_projects << 'ciaox11_psdd4ccm_stub'
@@ -429,6 +423,7 @@ module AxciomaPC
 
       def setup_svnt_comp_pubsub(project_dependencies)
         return if self.combined_lib?
+
         mpc_obj = mpc_file[:comp_svnt]
         # add PS base project
         mpc_obj.base_projects << 'ciaox11_psdd4ccm_stub'
@@ -443,11 +438,8 @@ module AxciomaPC
         mpc_obj.add_dependencies(project_dependencies, :psdd_lem_stub)
         mpc_obj.add_dependencies(project_dependencies, :stub)
       end
-
     end
 
     AxciomaPC::ComponentRecipe.send(:include, ComponentExtension)
-
   end # PS
-
 end

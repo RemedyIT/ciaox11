@@ -8,25 +8,22 @@
 #--------------------------------------------------------------------
 
 # make sure MPC base definitions are loaded
-require 'brix/ciaox11/apc/mpcfile.rb'
+require 'brix/ciaox11/apc/mpcfile'
 
 module AxciomaPC
-
   module MPC
-
     # add PubSub MPC IDL project specializations
     MPC::IDLProject::DEFAULTS.merge!({
-       :psdd_conn_gen => {
-           :add_idl_flags => '-Gpsdd4ccm,conn_only -Gxhsv -Gxhcn -Scc -Scp -Sci -Sch',
-           :export => true,
-           :base_projects => %w{ciaox11_psdd4ccm_idl},
-           :auto_dependencies => []
-       },
+       psdd_conn_gen: {
+           add_idl_flags: '-Gpsdd4ccm,conn_only -Gxhsv -Gxhcn -Scc -Scp -Sci -Sch',
+           export: true,
+           base_projects: %w{ciaox11_psdd4ccm_idl},
+           auto_dependencies: []
+       }
     })
 
     # MPC project specialization for PSDD4CCM connector library
     class PSDDConnProject < MPC::CompileProject
-
       class << self
         def middleware_base_projects
           @middleware_base_projects ||= {}
@@ -64,9 +61,6 @@ module AxciomaPC
         [(recipe.export_name.upcase << '_CONN_BUILD_DLL'),
          (recipe.export_name.upcase << '_SVNT_BUILD_DLL')]
       end
-
     end
-
   end # MPC
-
 end

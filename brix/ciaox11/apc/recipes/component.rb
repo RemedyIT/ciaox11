@@ -11,7 +11,7 @@ require 'set'
 module AxciomaPC
   class ComponentRecipe < Recipe
     class Base_Projects
-      attr_reader :plus , :min, :default
+      attr_reader :plus, :min, :default
       # min contains the projects that has to be removed from the final list
       # plus contains the projects that has to be added to the final list
       # default contains the projects that will replace the default projects
@@ -72,7 +72,6 @@ module AxciomaPC
       end
     end
 
-
     class ComponentConfigurator < Recipe::Configurator
       def initialize(recipe)
         super
@@ -88,14 +87,14 @@ module AxciomaPC
 
       def includes(*dirs)
         # Solve event. used environment variables
-        solved_dirs = dirs.flatten.collect  { |dir|  Util::path_without_env(dir) }
+        solved_dirs = dirs.flatten.collect { |dir| Util::path_without_env(dir) }
         @recipe.include_dirs << solved_dirs.flatten.collect { |dir| File.expand_path(dir, @recipe.recipe_file.path) }
         @recipe.include_dirs
       end
 
       def libpaths(*paths)
         # Solve event. used environment variables
-        solved_paths = paths.flatten.collect  { |path|  Util::path_without_env(path) }
+        solved_paths = paths.flatten.collect { |path| Util::path_without_env(path) }
         @recipe.lib_paths << solved_paths.flatten.collect { |p| File.expand_path(p, @recipe.recipe_file.path) }
       end
 
@@ -516,7 +515,7 @@ module AxciomaPC
       attrs.each do |a|
         BRIX11.log(5, '[%s] IDL scan checking attribute %s %s for component %s', self, a.idltype.typename, a.cxxname, node.cxxname)
 
-        look_for_members = false    # remember if need to recurse type members as well
+        look_for_members = false # remember if need to recurse type members as well
         anytypecode_needed = false
 
         case a.idltype.resolved_type
@@ -559,7 +558,7 @@ module AxciomaPC
           type = a.idltype.resolved_type
           check_for_anytypecode_include(type)
         end
-      end  # each attribute
+      end # each attribute
     end
     private :check_attributes_for_anytypecode
 

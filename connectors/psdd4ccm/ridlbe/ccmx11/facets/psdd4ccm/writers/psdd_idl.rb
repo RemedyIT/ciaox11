@@ -10,11 +10,8 @@ require 'ridlbe/c++11/writerbase'
 require 'ridlbe/c++11/writers/helpers/include_guard_helper'
 
 module IDL
-
   module CCMX11
-
     module PSDD4CCM
-
       class PSDDIDLWriter < Cxx11::CxxCodeWriterBase
         helper Cxx11::IncludeGuardHelper
 
@@ -95,10 +92,11 @@ module IDL
         end
 
       protected
+
         def init_visitor(v, node)
           v.properties[:topic_namespaces] =
               (params[:psdd_topic_namespace] && params[:psdd_topic_namespace].split('::')) ||
-                  node.scopes[0, node.scopes.length - 1].collect {|s| s.name }
+                  node.scopes[0, node.scopes.length - 1].collect { |s| s.name }
           v.properties[:topic_sequence] =
               (params[:psdd_topic] && params[:psdd_topic_seq]) ||
                   "#{node.name}#{params[:psdd_topic_seq_suffix] || 'Seq'}"
@@ -112,15 +110,12 @@ module IDL
             annot = node.annotations[:TopLevel]
             return false if annot[0] == nil
             return true if annot[0].fields[:value] == nil
+
             annot[0].fields[:value]
           end
           false
         end
-
       end # PSDDIDLWriter
-
     end # PSDD4CCM
-
   end # CCMX11
-
 end # IDL

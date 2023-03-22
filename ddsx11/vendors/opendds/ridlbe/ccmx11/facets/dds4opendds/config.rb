@@ -8,19 +8,15 @@
 #--------------------------------------------------------------------
 
 module IDL
-
   module CCMX11
-
     module DDS
-
       module OPENDDS
         COPYRIGHT = "Copyright (c) 2007-#{Time.now.year} Remedy IT Expertise BV, The Netherlands".freeze
         TITLE = 'RIDL OpenDDS DDS Facet'.freeze
 
         ## Configure facet
         #
-        Backend::Facet.configure('dds4opendds', File.dirname(__FILE__), TITLE, COPYRIGHT, {major: 1, minor: 0, release: 0}) do |fctcfg|
-
+        Backend::Facet.configure('dds4opendds', File.dirname(__FILE__), TITLE, COPYRIGHT, { major: 1, minor: 0, release: 0 }) do |fctcfg|
           # optionally define dependencies on other facets
           #   specify dependencies either as:
           #   - a facet id (assumed to be loaded by current backend)
@@ -61,10 +57,12 @@ module IDL
           # schedule opendds type traits generation
           IDL.production(:dds_type_traits).extend(IDL::CCMX11::DDSX11::OPENDDS::UserDefinedTypeTraitsWriterExt)
         end
+
         def self.gen_impl_for_type_support_for_opendds(options)
           # schedule opendds type support source generation
           IDL.production(:dds_typesupport_source_file).extend(IDL::CCMX11::DDSX11::OPENDDS::DDSTypeSupportSourceWriterExt)
         end
+
         def self.gen_idl_for_dds_for_opendds(options)
           # schedule opendds idl file generation
           IDL.production(:dds_idl).extend(IDL::CCMX11::DDSX11::OPENDDS::DDSIDLWriterExt)

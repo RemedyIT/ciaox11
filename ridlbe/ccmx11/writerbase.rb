@@ -13,8 +13,7 @@ module IDL
     # Reopen Output writer base class to add CCMX11 specifics
     #
     class CxxCodeWriterBase
-      def declare_component(node)
-      end
+      def declare_component(node); end
 
       def enter_component(node)
         return if self.no_scope_tracking?(node)

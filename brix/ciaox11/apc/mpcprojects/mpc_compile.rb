@@ -71,7 +71,7 @@ module AxciomaPC
       end
 
       def dynamic_names
-        [ recipe.export_name.upcase << '_' << @project_postfix.upcase + '_BUILD_DLL' ]
+        [recipe.export_name.upcase << '_' << @project_postfix.upcase + '_BUILD_DLL']
       end
 
       def template_path
@@ -133,12 +133,10 @@ module AxciomaPC
       end
 
       # derived classes implement versions to add derived source(s)
-      def add_sources(prj_fileid)
-      end
+      def add_sources(prj_fileid); end
 
       # derived classes implement versions to add derived source(s)
-      def add_headers(prj_fileid)
-      end
+      def add_headers(prj_fileid); end
     end # CompileProject
 
     class StubProject < CompileProject
@@ -169,7 +167,7 @@ module AxciomaPC
         # add default sources and headers
         recipe.idl_files.each do |idlfn, fidl|
           @headers << ((recipe.gen_dir + '/') << ::File.basename(idlfn, '.idl') << STUB_F << EXT_HEADER)
-          if fidl.creates_stubcode? || fidl.needs_anytype?  # stub code?
+          if fidl.creates_stubcode? || fidl.needs_anytype? # stub code?
             @sources << ((recipe.gen_dir + '/') << ::File.basename(idlfn, '.idl') << STUB_F << EXT_CPP)
           end
         end

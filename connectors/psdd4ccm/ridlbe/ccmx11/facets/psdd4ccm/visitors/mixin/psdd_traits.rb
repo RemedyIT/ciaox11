@@ -9,11 +9,8 @@
 
 module IDL
   module CCMX11
-
     module PSDD
-
       module MemberMixin
-
         def is_key?
           !self.annotations[:key].empty?
         end
@@ -32,15 +29,13 @@ module IDL
                 true
               end
         end
-
       end
 
       module StructMixin
-
         # overload
         def members
           unless @members
-            super.each {|_m| _m.singleton_class.__send__(:include, MemberMixin) }
+            super.each { |_m| _m.singleton_class.__send__(:include, MemberMixin) }
           end
           super
         end
@@ -50,7 +45,7 @@ module IDL
         end
 
         def has_key_only?
-          @psdd_key_only ||= members.all? {|_m| _m.is_key_only? }
+          @psdd_key_only ||= members.all? { |_m| _m.is_key_only? }
         end
 
         def has_no_key?
@@ -64,10 +59,7 @@ module IDL
         def data_members
           members.select { |_m|  !_m.is_key? }
         end
-
       end
-
     end
-
   end
 end

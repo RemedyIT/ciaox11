@@ -8,12 +8,9 @@
 #--------------------------------------------------------------------
 
 module AxciomaPC
-
   module MPC
-
     # MPC project specialization for DDS4CCM NDDS connector library
     class DdsNddsConnProject < MPC::CompileProject
-
       def initialize(recipe)
         super(:dds_ndds_conn, recipe)
         base_projects(%w{ciaox11_dds4ccm_impl ciaox11_dds4ccm_base ciaox11_executor})
@@ -44,9 +41,6 @@ module AxciomaPC
         [(recipe.export_name.upcase << '_CONN_BUILD_DLL'),
          (recipe.export_name.upcase << '_SVNT_BUILD_DLL')]
       end
-
     end
-
   end # MPC
-
 end
