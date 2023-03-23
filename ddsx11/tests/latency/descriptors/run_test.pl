@@ -134,8 +134,7 @@ if ($sender_status != 0) {
 }
 
 print "Waiting for Sender to complete\n";
-while ($SR->TimedWait(1) == -1) {
-}
+$SR->TimedWait(360);
 $SR->Kill();
 
 $receiver_status = $RV->WaitKill ($receiver->ProcessStopWaitInterval());
