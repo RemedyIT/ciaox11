@@ -153,7 +153,7 @@ namespace CIAOX11
       Executor () = default;
       Executor (ExF::Priority prio, ExF::Deadline dltm)
        : priority_ (prio), deadline_ (dltm) {}
-      virtual ~Executor ();
+      virtual ~Executor () = default;
 
       /**
        * Execute the required operation for the encapsulated event.
@@ -218,7 +218,7 @@ namespace CIAOX11
       : public ::CORBA::LocalObject
     {
     public:
-      ~SchedulingLane () override ;
+      ~SchedulingLane () override = default;
 
       virtual ExF::Count trafic_count () = 0;
 
@@ -248,7 +248,7 @@ namespace CIAOX11
     public:
       typedef std::shared_ptr<Scheduler> ref_type;
 
-      virtual ~Scheduler ();
+      virtual ~Scheduler () = default;
 
       /**
        * Open (allocate) a scheduling lane for the component

@@ -17,13 +17,6 @@ namespace CIAOX11
 {
   namespace ExF
   {
-
-    Executor::~Executor () {}
-
-    SchedulingLane::~SchedulingLane () {}
-
-    Scheduler::~Scheduler () {}
-
     const std::string Scheduler::ServiceName { "CIAOX11_ExF_Scheduler_Svc" };
 
     Scheduler::ref_type Scheduler::create_instance (

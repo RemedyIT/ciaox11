@@ -286,8 +286,8 @@ namespace CIAOX11
 
         CIAOX11_EXF_LOG_INFO("Exf::Impl::Dispatcher::open" <<
                              " - DispatchQueuePolicy=" << ExF::Impl::queue_policy_id (this->dqp_) <<
-                               " DispatchThreadPolicy=" << ExF::Impl::thread_policy_id(this->dtp_) <<
-                               "  (min threads=" << this->minsize_ << ", max threads=" << this->maxsize_ << ")");
+                             " DispatchThreadPolicy=" << ExF::Impl::thread_policy_id(this->dtp_) <<
+                             "  (min threads=" << this->minsize_ << ", max threads=" << this->maxsize_ << ")");
 
         if (!this->queue_)
         {
@@ -644,7 +644,6 @@ namespace CIAOX11
            * and when the task has already been handled (expired or cancelled otherwise)
            * execute () won't do anything.
            */
-
           dtask->execute ();
 
           CIAOX11_EXF_LOG_DEBUG ("ExF::Impl::Dispatcher::execute_task - " \
