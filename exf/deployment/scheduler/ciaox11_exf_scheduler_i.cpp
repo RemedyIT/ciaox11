@@ -316,7 +316,7 @@ namespace CIAOX11
           if (lane_dispatch == DispatchPolicyType::EXCLUSIVE)
           {
             CIAOX11_EXF_LOG_DEBUG ("ExF::Impl::Scheduler::open_scheduling_lane - "\
-                               "creating dispatcher for " << instance_id);
+                               "creating exclusive dispatcher for " << instance_id);
 
             // create an exclusive single threaded dispatcher
             ExF::Impl::Dispatcher::ref_type dispatcher =
@@ -360,7 +360,7 @@ namespace CIAOX11
           else if (lane_dispatch == DispatchPolicyType::GROUPED)
           {
             CIAOX11_EXF_LOG_DEBUG ("ExF::Impl::Scheduler::open_scheduling_lane - "\
-                               "setting up sheduling lane for " << instance_id);
+                               "setting up grouped scheduling lane for " << instance_id);
 
             // check for existing group lane
             GROUP_MAP::iterator it = this->groups_.find (lane_group);
