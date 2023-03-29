@@ -192,13 +192,15 @@ namespace CIAOX11
           // create a dispatch task for the task reference
           // ***NOTE*** moves the exec reference so 'exec' is not valid
           //            anymore after this -> so cache prority here
-          ExF::Priority exec_prio = exec->priority ();
+          ExF::Priority const exec_prio = exec->priority ();
           DispatchTask::task_ref dtask =
               std::make_shared<DispatchTask> (std::move (exec), this->instance_);
 
           CIAOX11_EXF_LOG_DEBUG ("ExF::Impl::DispatchGate::enter - " <<
                              "Created task " << dtask.get ()
-                             << " for " << this->instance_id ());
+                             << "::" << dtask->event_id ()
+                             << " for " << this->instance_id ()
+                             << " with priority " << exec_prio);
 
           // register task with deadline monitor if required
           if (dtask->deadline ().deadline_type_ != ExF::DeadlineType::DLT_NONE)
