@@ -501,7 +501,6 @@ namespace FA_State_Listen_Test_Receiver_Impl
         << keys () << "> - created <" << this->created_on_listener_1_ << ">."
         << std::endl;
       error = true;
-
     }
     if (this->created_on_listener_2_ != keys ())
     {

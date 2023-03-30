@@ -231,7 +231,6 @@ ReadGetReceiverRunner_T<CONTEXT_TYPE, QUERY_ATTRIB>::check_filter (
       << this->run_ << "> - "
       << "Filter test past for the " << port << std::endl;
   }
-
 }
 
 template<typename CONTEXT_TYPE, bool QUERY_ATTRIB>
@@ -662,12 +661,10 @@ ReadGetReceiverRunner_T<CONTEXT_TYPE, QUERY_ATTRIB>::get_all ()
             {
               this->check_iter_getter (msg, params);
             }
-
           }
           samples.clear ();
           readinfo.clear ();
         }
-
       }
       break;
     case 4:

@@ -238,7 +238,6 @@ namespace Example_BasicPublisher_comp_Impl
       writer->write_one (msg, ::DDS::HANDLE_NIL);
 
       ++this->counter_;
-
     }
     catch (const CORBA::Exception &ex)
     {

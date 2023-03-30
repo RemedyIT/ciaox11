@@ -102,9 +102,7 @@ DDS_TopicBase_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::topic ()
   {
     this->register_type (this->domain_participant (), this->type_name ());
 
-    this->topic_ = this->init_topic (
-      this->domain_participant (), this->topic_name (), this->type_name ());
-
+    this->topic_ = this->init_topic (this->domain_participant (), this->topic_name (), this->type_name ());
   }
   return this->topic_;
 }

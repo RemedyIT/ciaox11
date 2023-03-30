@@ -104,7 +104,6 @@ namespace UsesSM_Sender_Impl
         CORBA::make_reference< AMI4CCM_TwoReplyHandler_s_run_my_two_i> ();
       my_two_ami_->sendc_bar ( cb_two, i);
       i++;
-
     }
     return 0;
   }
@@ -121,7 +120,6 @@ namespace UsesSM_Sender_Impl
 
   int synch_foo_generator::svc ()
   {
-
     ::UsesSM::CCM_Sender::m_run_my_oneConnections m_run_my_one_seq_ =
          ciao_context_->get_connections_m_run_my_one();
 

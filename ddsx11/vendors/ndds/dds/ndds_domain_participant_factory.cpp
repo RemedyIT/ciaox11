@@ -105,7 +105,6 @@ namespace DDSX11
               DDSX11_IMPL_LOG_ERROR ("NDDS_DomainParticipant_proxy::create_participant_with_profile - "
                 << "ERROR: Failed to register a domainparticipant proxy.");
             }
-
         }
       else
         {

@@ -74,7 +74,6 @@ namespace Getter_Test_Sender_Impl
     , component_executor_ (std::move(component_executor))
   {
     DDS4CCM_TEST_DEBUG << "Sender_ info_out_connector_status_exec_i::info_out_connector_status_exec_i" << std::endl;
-
   }
   //@@{__RIDL_REGEN_MARKER__} - END : Getter_Test_Sender_Impl::info_out_connector_status_exec_i[ctor]
 

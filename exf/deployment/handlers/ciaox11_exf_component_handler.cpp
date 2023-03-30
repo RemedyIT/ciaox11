@@ -155,7 +155,6 @@ namespace CIAOX11
 
         CIAOX11_LOG_DEBUG ("ExF::Component_Handler::install_instance - " <<
                            "installed component <" << idd.name () << ">:<" << cont_id << ">");
-
       }
       catch (const ::Deployment::StartError &)
       {

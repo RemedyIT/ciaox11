@@ -161,9 +161,7 @@ namespace CIAOX11
                        "Unsupported kind <"
                        << IDL::traits<::Deployment::CCMComponentPortKind>::write (endpoint.kind ())
                        << "> for connection <" << conn.name () << ">");
-            throw ::Deployment::InvalidConnection (conn.name (),
-                                                 "Unsupported port type");
-
+            throw ::Deployment::InvalidConnection (conn.name (), "Unsupported port type");
         }
       }
     }
@@ -243,9 +241,7 @@ namespace CIAOX11
                        "Unsupported kind <"
                        << IDL::traits<::Deployment::CCMComponentPortKind>::write (endpoint.kind ())
                        << "> for connection <" << conn.name () << ">");
-            throw ::Deployment::InvalidConnection (conn.name (),
-                                                   "Unsupported port type");
-
+            throw ::Deployment::InvalidConnection (conn.name (), "Unsupported port type");
         }
       }
     }

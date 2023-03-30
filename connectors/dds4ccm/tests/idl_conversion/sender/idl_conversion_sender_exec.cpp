@@ -598,7 +598,6 @@ namespace IDL_Conversion_Test_Sender_Impl
         this->connector_status_ =
           CORBA::make_reference <connector_status_exec_i>
             (this->context_, IDL::traits<IDL_Conversion_Test::CCM_Sender>::narrow (this->_lock()));
-
       }
     return this->connector_status_;
   //@@{__RIDL_REGEN_MARKER__} - END : IDL_Conversion_Test_Sender_Impl::Sender_exec_i[get_connector_status]

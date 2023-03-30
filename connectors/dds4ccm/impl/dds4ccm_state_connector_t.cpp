@@ -550,7 +550,6 @@ DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::do_ccm_activate ()
       this->context ()->get_connection_push_state_observer_data_listener (),
       this->context ()->get_connection_push_state_observer_status ());
   }
-
 }
 
 template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>

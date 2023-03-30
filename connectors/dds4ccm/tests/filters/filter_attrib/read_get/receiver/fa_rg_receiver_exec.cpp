@@ -525,8 +525,6 @@ namespace FA_Read_Get_Test_Receiver_Impl
                           CCM_TT::TT_Duration (1, 0),
                           CCM_TT::TT_Duration (1, 0),
                           0);
-
-
   }
   //@@{__RIDL_REGEN_MARKER__} - END : FA_Read_Get_Test_Receiver_Impl::Receiver_exec_i[user_public_ops]
 

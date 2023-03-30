@@ -139,7 +139,6 @@ namespace DDSX11
     {
       // allocate a maximum size buffer
       to = ::DDS_String_alloc (max_member_string_size ());
-
     }
     // copy string content
     std::strncpy (to, from.c_str (), max_member_string_size ());

@@ -87,7 +87,6 @@ public:
   void run ();
 
 private:
-
   void usage ();
   bool parse_args (int argc, char * argv[]);
 
