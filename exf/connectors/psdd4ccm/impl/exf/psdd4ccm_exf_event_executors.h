@@ -66,8 +66,7 @@ namespace CIAOX11
 
         void finish () noexcept(true) override {}
 
-        void cancel (
-            ExF::CancellationType ctyp) noexcept(true) override
+        void cancel (ExF::CancellationType ctyp) noexcept(true) override
         {
           if (ctyp == CIAOX11::ExF::CancellationType::CT_SHUTDOWN)
             PSDD4CCM_LOG_INFO (
@@ -86,9 +85,7 @@ namespace CIAOX11
         }
 
       protected:
-        void execute_i (
-            typename IDL::traits<HANDLER>::ref_type dh,
-            typename IDL::traits<LISTENER>::ref_type dl)
+        void execute_i (typename IDL::traits<HANDLER>::ref_type dh, typename IDL::traits<LISTENER>::ref_type dl)
         {
           if (dh && dl)
           {
@@ -106,7 +103,6 @@ namespace CIAOX11
       private:
         /// The weak reference to the data reader listener.
         typename IDL::traits<HANDLER>::weak_ref_type dh_;
-
         typename IDL::traits<LISTENER>::weak_ref_type dl_ {};
       };
     }

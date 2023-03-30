@@ -85,13 +85,11 @@ namespace CIAOX11
 
           if (this->scheduling_lane_)
           {
-            const Components::ConfigValues &config =
-                ctx->error_listener_configuration ();
+            const Components::ConfigValues &config = ctx->error_listener_configuration ();
             // get scheduling settings
             CIAOX11::ExF::Priority def_prio {};
             CIAOX11::ExF::Deadline def_deadline {};
-            if (CIAOX11::ExF::Util::get_exf_defaults (
-                    config, def_prio, def_deadline))
+            if (CIAOX11::ExF::Util::get_exf_defaults (config, def_prio, def_deadline))
             {
               this->unexpected_status_deadline_ = def_deadline;
               this->unexpected_status_priority_ = def_prio;
@@ -108,41 +106,12 @@ namespace CIAOX11
             }
 
             // check for scheduling properties
-            CIAOX11::ExF::Util::get_exf_settings (
-                config,
-                "unexpected_status",
-                this->unexpected_status_priority_,
-                this->unexpected_status_deadline_);
-
-            CIAOX11::ExF::Util::get_exf_settings (
-                config,
-                "requested_incompatible_qos",
-                this->requested_incompatible_qos_priority_,
-                this->requested_incompatible_qos_deadline_);
-
-            CIAOX11::ExF::Util::get_exf_settings (
-                config,
-                "sample_rejected",
-                this->sample_rejected_priority_,
-                this->sample_rejected_deadline_);
-
-            CIAOX11::ExF::Util::get_exf_settings (
-                config,
-                "inconsistent_topic",
-                this->inconsistent_topic_priority_,
-                this->inconsistent_topic_deadline_);
-
-            CIAOX11::ExF::Util::get_exf_settings (
-                config,
-                "offered_deadline_missed",
-                this->offered_deadline_missed_priority_,
-                this->offered_deadline_missed_deadline_);
-
-            CIAOX11::ExF::Util::get_exf_settings (
-                config,
-                "offered_incompatible_qos",
-                this->offered_incompatible_qos_priority_,
-                this->offered_incompatible_qos_deadline_);
+            CIAOX11::ExF::Util::get_exf_settings (config, "unexpected_status", this->unexpected_status_priority_, this->unexpected_status_deadline_);
+            CIAOX11::ExF::Util::get_exf_settings (config, "requested_incompatible_qos", this->requested_incompatible_qos_priority_, this->requested_incompatible_qos_deadline_);
+            CIAOX11::ExF::Util::get_exf_settings (config, "sample_rejected", this->sample_rejected_priority_, this->sample_rejected_deadline_);
+            CIAOX11::ExF::Util::get_exf_settings (config, "inconsistent_topic", this->inconsistent_topic_priority_, this->inconsistent_topic_deadline_);
+            CIAOX11::ExF::Util::get_exf_settings (config, "offered_deadline_missed", this->offered_deadline_missed_priority_, this->offered_deadline_missed_deadline_);
+            CIAOX11::ExF::Util::get_exf_settings (config, "offered_incompatible_qos", this->offered_incompatible_qos_priority_, this->offered_incompatible_qos_deadline_);
           }
         }
         ErrorEventStrategy_T (const ErrorEventStrategy_T& evs)
@@ -166,9 +135,7 @@ namespace CIAOX11
 
         // on_unexpected_status
         void
-        handle_unexpected_status_event (
-            IDL::traits<::DDS::Entity>::ref_type entity,
-            ::DDS::StatusKind status_kind)
+        handle_unexpected_status_event (IDL::traits<::DDS::Entity>::ref_type entity, ::DDS::StatusKind status_kind)
         {
           if (!this->error_listener_connected_)
           {
@@ -399,10 +366,8 @@ namespace CIAOX11
             // get scheduling settings
             CIAOX11::ExF::Priority def_prio {};
             CIAOX11::ExF::Deadline def_deadline {};
-            if (CIAOX11::ExF::Util::get_exf_defaults (
-                port_status_config, def_prio, def_deadline))
+            if (CIAOX11::ExF::Util::get_exf_defaults (port_status_config, def_prio, def_deadline))
             {
-
               this->requested_deadline_missed_deadline_ = def_deadline;
               this->requested_deadline_missed_priority_ = def_prio;
               this->sample_lost_deadline_ = def_deadline;
@@ -410,18 +375,8 @@ namespace CIAOX11
             }
 
             // check for scheduling properties
-
-            CIAOX11::ExF::Util::get_exf_settings (
-                port_status_config,
-                "requested_deadline_missed",
-                this->requested_deadline_missed_priority_,
-                this->requested_deadline_missed_deadline_);
-
-            CIAOX11::ExF::Util::get_exf_settings (
-                port_status_config,
-                "sample_lost",
-                this->sample_lost_priority_,
-                this->sample_lost_deadline_);
+            CIAOX11::ExF::Util::get_exf_settings (port_status_config, "requested_deadline_missed", this->requested_deadline_missed_priority_, this->requested_deadline_missed_deadline_);
+            CIAOX11::ExF::Util::get_exf_settings (port_status_config, "sample_lost", this->sample_lost_priority_, this->sample_lost_deadline_);
           }
         }
         PortStatusEventStrategyBase (const PortStatusEventStrategyBase& pses)
@@ -524,8 +479,7 @@ namespace CIAOX11
                     "ExF::DataEventStrategyBase_T<DATA_LISTENER>: failed to extract " +
                     CIAOX11::ExF::SCHEDULING_LANE_REF);
               }
-              this->data_scheduling_lane_ =
-                  IDL::traits<CIAOX11::ExF::SchedulingLane>::narrow (objref);
+              this->data_scheduling_lane_ = IDL::traits<CIAOX11::ExF::SchedulingLane>::narrow (objref);
             }
 
             if (this->data_scheduling_lane_)
@@ -533,21 +487,14 @@ namespace CIAOX11
               // get scheduling settings
               CIAOX11::ExF::Priority def_prio {};
               CIAOX11::ExF::Deadline def_deadline {};
-              if (CIAOX11::ExF::Util::get_exf_defaults (
-                  data_listener_config, def_prio, def_deadline))
+              if (CIAOX11::ExF::Util::get_exf_defaults (data_listener_config, def_prio, def_deadline))
               {
-
                 this->data_available_deadline_ = def_deadline;
                 this->data_available_priority_ = def_prio;
               }
 
               // check for scheduling properties
-
-              CIAOX11::ExF::Util::get_exf_settings (
-                  data_listener_config,
-                  "data_available",
-                  this->data_available_priority_,
-                  this->data_available_deadline_);
+              CIAOX11::ExF::Util::get_exf_settings (data_listener_config, "data_available", this->data_available_priority_, this->data_available_deadline_);
             }
 
           }

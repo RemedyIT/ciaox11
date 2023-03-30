@@ -66,8 +66,7 @@ namespace CIAOX11
 
         void finish () noexcept(true) override {}
 
-        void cancel (
-            ExF::CancellationType ctyp) noexcept(true) override
+        void cancel (ExF::CancellationType ctyp) noexcept(true) override
         {
           if (ctyp == CIAOX11::ExF::CancellationType::CT_SHUTDOWN)
             DDS4CCM_LOG_INFO ("ExF::DDSExecutorBase::cancel received " <<
@@ -87,7 +86,7 @@ namespace CIAOX11
 
       private:
         typename IDL::traits<LISTENER>::weak_ref_type listener_ {};
-        std::string event_id_;
+        std::string const event_id_;
       };
 
       class UnexpectedStatusExecutor
@@ -108,7 +107,7 @@ namespace CIAOX11
         ~UnexpectedStatusExecutor () override = default;
 
       protected:
-        virtual void execute_i (IDL::traits<CCM_DDS::ConnectorStatusListener>::ref_type listener)
+        void execute_i (IDL::traits<CCM_DDS::ConnectorStatusListener>::ref_type listener) override
         {
           IDL::traits<::DDS::Entity>::ref_type entity = this->entity_.lock ();
           if (entity && listener)
@@ -147,7 +146,7 @@ namespace CIAOX11
         ~RequestedIncompatibleQosExecutor () override = default;
 
       protected:
-        virtual void execute_i (IDL::traits<CCM_DDS::ConnectorStatusListener>::ref_type listener)
+        void execute_i (IDL::traits<CCM_DDS::ConnectorStatusListener>::ref_type listener) override
         {
           IDL::traits<::DDS::DataReader>::ref_type dr = this->dr_.lock ();
           if (dr && listener)
@@ -186,7 +185,7 @@ namespace CIAOX11
         ~SampleRejectedExecutor () override = default;
 
       protected:
-        virtual void execute_i (IDL::traits<CCM_DDS::ConnectorStatusListener>::ref_type listener)
+        void execute_i (IDL::traits<CCM_DDS::ConnectorStatusListener>::ref_type listener) override
         {
           IDL::traits<::DDS::DataReader>::ref_type dr = this->dr_.lock ();
           if (dr && listener)
@@ -225,7 +224,7 @@ namespace CIAOX11
         ~InconsistentTopicExecutor () override = default;
 
       protected:
-        virtual void execute_i (IDL::traits<CCM_DDS::ConnectorStatusListener>::ref_type listener)
+        void execute_i (IDL::traits<CCM_DDS::ConnectorStatusListener>::ref_type listener) override
         {
           IDL::traits<::DDS::Topic>::ref_type tp = this->tp_.lock ();
           if (tp && listener)
@@ -264,7 +263,7 @@ namespace CIAOX11
         ~OfferedDeadlineMissedExecutor () override = default;
 
       protected:
-        virtual void execute_i (IDL::traits<CCM_DDS::ConnectorStatusListener>::ref_type listener)
+        void execute_i (IDL::traits<CCM_DDS::ConnectorStatusListener>::ref_type listener) override
         {
           IDL::traits<::DDS::DataWriter>::ref_type dw = this->dw_.lock ();
           if (dw && listener)
@@ -303,7 +302,7 @@ namespace CIAOX11
         ~OfferedIncompatibleQoSExecutor () override = default;
 
       protected:
-        virtual void execute_i (IDL::traits<CCM_DDS::ConnectorStatusListener>::ref_type listener)
+        void execute_i (IDL::traits<CCM_DDS::ConnectorStatusListener>::ref_type listener) override
         {
           IDL::traits<::DDS::DataWriter>::ref_type dw = this->dw_.lock ();
           if (dw && listener)
@@ -342,7 +341,7 @@ namespace CIAOX11
         ~RequestedDeadlineMissedExecutor () override = default;
 
       protected:
-        virtual void execute_i (IDL::traits<CCM_DDS::PortStatusListener>::ref_type listener)
+        void execute_i (IDL::traits<CCM_DDS::PortStatusListener>::ref_type listener) override
         {
           IDL::traits<::DDS::DataReader>::ref_type dr = this->dr_.lock ();
           if (dr && listener)
@@ -381,7 +380,7 @@ namespace CIAOX11
         ~SampleLostExecutor () override = default;
 
       protected:
-        virtual void execute_i (IDL::traits<CCM_DDS::PortStatusListener>::ref_type listener)
+        void execute_i (IDL::traits<CCM_DDS::PortStatusListener>::ref_type listener) override
         {
           IDL::traits<::DDS::DataReader>::ref_type dr = this->dr_.lock ();
           if (dr && listener)
@@ -421,7 +420,7 @@ namespace CIAOX11
         ~DataReaderExecutor_T () override = default;
 
       protected:
-        virtual void execute_i (typename IDL::traits<DATA_LISTENER>::ref_type listener)
+        void execute_i (typename IDL::traits<DATA_LISTENER>::ref_type listener) override
         {
           typename IDL::traits<LISTENER>::ref_type drl = this->drl_.lock ();
           IDL::traits<::DDS::DataReader>::ref_type dr = this->dr_.lock ();

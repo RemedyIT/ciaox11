@@ -46,8 +46,7 @@ namespace CIAOX11
                     "ExF::EventStrategyBase: failed to extract " +
                     CIAOX11::ExF::SCHEDULING_LANE_REF);
               }
-              this->scheduling_lane_ =
-                  IDL::traits<CIAOX11::ExF::SchedulingLane>::narrow (std::move(objref));
+              this->scheduling_lane_ = IDL::traits<CIAOX11::ExF::SchedulingLane>::narrow (std::move(objref));
             }
           }
         }
@@ -87,21 +86,14 @@ namespace CIAOX11
             // get scheduling settings
             CIAOX11::ExF::Priority def_prio {};
             CIAOX11::ExF::Deadline def_deadline {};
-            if (CIAOX11::ExF::Util::get_exf_defaults (
-                ctx->consumer_data_listener_configuration (),
-                def_prio, def_deadline))
+            if (CIAOX11::ExF::Util::get_exf_defaults (ctx->consumer_data_listener_configuration (), def_prio, def_deadline))
             {
-
               this->data_available_deadline_ = def_deadline;
               this->data_available_priority_ = def_prio;
             }
 
             // check for scheduling properties
-            CIAOX11::ExF::Util::get_exf_settings (
-                ctx->consumer_data_listener_configuration (),
-                "data_available",
-                this->data_available_priority_,
-                this->data_available_deadline_);
+            CIAOX11::ExF::Util::get_exf_settings (ctx->consumer_data_listener_configuration (), "data_available", this->data_available_priority_, this->data_available_deadline_);
           }
         }
         PushConsumerEventStrategy_T (const PushConsumerEventStrategy_T& dpces)
@@ -113,8 +105,7 @@ namespace CIAOX11
 
         ~PushConsumerEventStrategy_T () override = default;
 
-        PushConsumerEventStrategy_T& operator =(
-            const PushConsumerEventStrategy_T& dpces)
+        PushConsumerEventStrategy_T& operator =(const PushConsumerEventStrategy_T& dpces)
         {
           this->assign (dpces);
           this->listener_ = dpces.listener_;
@@ -125,8 +116,7 @@ namespace CIAOX11
 
         // on_data_available
         template <typename HANDLER>
-        void handle_data_available_event (
-            typename IDL::traits<HANDLER>::ref_type dh)
+        void handle_data_available_event (typename IDL::traits<HANDLER>::ref_type dh)
         {
           using DataListenerExec_type = PSDDDataListenerExecutor<listener_type, HANDLER>;
 
