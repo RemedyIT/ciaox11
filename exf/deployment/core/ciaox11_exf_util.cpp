@@ -176,7 +176,7 @@ namespace CIAOX11
       {
         for (const Components::ConfigValue& cval : config)
         {
-          if ( cval.name () == (ExF::SCHEDULING_PRIORITY + "." + event))
+          if (cval.name () == (ExF::SCHEDULING_PRIORITY + "." + event))
           {
             if (!(cval.value () >>= prio))
             {
@@ -191,7 +191,7 @@ namespace CIAOX11
                                  " for " << event << " : " << prio);
             }
           }
-          else if ( cval.name () == (ExF::SCHEDULING_DEADLINE_TYPE + "." + event))
+          else if (cval.name () == (ExF::SCHEDULING_DEADLINE_TYPE + "." + event))
           {
             std::string type;
             if (!(cval.value () >>= type))
@@ -209,7 +209,7 @@ namespace CIAOX11
               deadline.deadline_type_ = exf_string_to_deadline_type (type);
             }
           }
-          else if ( cval.name () == (ExF::SCHEDULING_DEADLINE_TIME + "." + event))
+          else if (cval.name () == (ExF::SCHEDULING_DEADLINE_TIME + "." + event))
           {
             std::string time;
             if (!(cval.value () >>= time))
