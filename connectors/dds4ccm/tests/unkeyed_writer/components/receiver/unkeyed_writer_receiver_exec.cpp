@@ -235,7 +235,6 @@ namespace UnkeyedWriterTest_Receiver_Impl
                   << "Did receive the expected number of samples: "
                   << "expected <" << expected << "> - received <"
                   << this->samples_received_ << ">" << std::endl;
-
       }
     }
     else

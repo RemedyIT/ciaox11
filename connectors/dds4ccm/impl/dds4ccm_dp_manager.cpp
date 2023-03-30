@@ -113,7 +113,6 @@ namespace CIAOX11
           << IDL::traits<::DDS::Entity>::write<entity_formatter> (dp)
           << ">.");
         return true;
-
       }
 
       DDS4CCM_LOG_DEBUG ("DomainParticipantManager::register_participant - "
@@ -160,7 +159,6 @@ namespace CIAOX11
         }
         else
         {
-
           DDS4CCM_LOG_DEBUG ("DomainParticipantManager::unregister_participant - "
             << "Decremented refcount for participant <"
             << IDL::traits<::DDS::Entity>::write<entity_formatter> (dp)

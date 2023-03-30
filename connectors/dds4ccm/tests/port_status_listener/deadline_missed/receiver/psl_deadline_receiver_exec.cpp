@@ -278,7 +278,6 @@ namespace PSL_DeadlineTest_Receiver_Impl
       reader->read_all(messages, readinfoseq);
       for (CommonTestMessageSeq::size_type i = 0; i < messages.size (); ++i)
       {
-
         DDS4CCM_TEST_DEBUG << "Receiver_exec_i::tick - "
           << "Timestamp for sample <" << messages[i] << ">: "
           << ::DDS::dds_write (readinfoseq[i].source_timestamp ())
@@ -295,7 +294,6 @@ namespace PSL_DeadlineTest_Receiver_Impl
       DDS4CCM_TEST_ERROR << "Receiver_exec_i::tick - "
         "ERROR: Internal Error caught <" << ex << ">" << std::endl;
     }
-
   }
 
   //@@{__RIDL_REGEN_MARKER__} - END : PSL_DeadlineTest_Receiver_Impl::Receiver_exec_i[user_public_ops]

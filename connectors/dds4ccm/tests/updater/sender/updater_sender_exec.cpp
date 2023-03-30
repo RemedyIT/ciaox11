@@ -669,7 +669,6 @@ namespace UpdaterModule_Sender_Impl
     }
     this->notify ();
     return errors;
-
   }
 
   uint16_t

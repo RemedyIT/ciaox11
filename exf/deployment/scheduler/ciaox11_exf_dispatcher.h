@@ -519,7 +519,6 @@ namespace CIAOX11
               return (e1.prio_ < e2.prio_ || (e1.prio_ == e2.prio_ && e1.seqnr_ < e2.seqnr_));
             }
           };
-
         }; /* class DispatchQueue */
 
         typedef DispatchQueue task_queue;

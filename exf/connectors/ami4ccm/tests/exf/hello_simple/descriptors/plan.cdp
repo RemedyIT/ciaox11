@@ -478,6 +478,21 @@
       <instance xmi:idref="Hello.ComponentImplementations.HelloImplementation.Hello.AMI" />
     </internalEndpoint>
   </connection>
+  <connection>
+    <name>synch_foo_connection_from_sender2_to_ami_connector</name>
+    <internalEndpoint>
+      <portName>run_my_foo</portName>
+      <provider>false</provider>
+      <kind>SimplexReceptacle</kind>
+      <instance xmi:idref="Hello.ComponentImplementations.HelloImplementation.Hello.Sender2" />
+    </internalEndpoint>
+    <internalEndpoint>
+      <portName>ami4ccm_port_ami4ccm_sync_provides</portName>
+      <provider>true</provider>
+      <kind>Facet</kind>
+      <instance xmi:idref="Hello.ComponentImplementations.HelloImplementation.Hello.AMI" />
+    </internalEndpoint>
+  </connection>
 
   <connection>
     <name>synch_foo_connection_from_ami_connector_to_cc_receiver</name>

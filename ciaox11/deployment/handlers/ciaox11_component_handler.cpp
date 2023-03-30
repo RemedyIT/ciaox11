@@ -416,14 +416,10 @@ namespace CIAOX11
                                         "Failed to install component");
       }
 
-      this->register_component (
-          idd.name (),
-          std::move (exec_config),
-          cont_id);
+      this->register_component (idd.name (), std::move (exec_config),  cont_id);
 
       CIAOX11_LOG_DEBUG ("Component_Handler::install_instance - " <<
                          "installed component <" << idd.name () << ">:<" << cont_id << ">");
-
     }
     catch (const ::Deployment::StartError &)
     {
@@ -631,31 +627,25 @@ namespace CIAOX11
 
   void
   Component_Handler::provide_endpoint_reference (const Deployment::DeploymentPlan & plan,
-                                                   uint32_t connectionRef,
-                                                   CORBA::Any& endpoint_reference)
+                                                 uint32_t connectionRef,
+                                                 CORBA::Any& endpoint_reference)
   {
-    this->connection_handler_->provide_endpoint_reference (plan,
-                                                         connectionRef,
-                                                         endpoint_reference);
+    this->connection_handler_->provide_endpoint_reference (plan, connectionRef, endpoint_reference);
   }
 
   void
   Component_Handler::connect_instance (const Deployment::DeploymentPlan & plan,
-                                         uint32_t connectionRef,
-                                         const CORBA::Any & provided_reference)
+                                       uint32_t connectionRef,
+                                       const CORBA::Any & provided_reference)
   {
-    this->connection_handler_->connect_instance (plan,
-                                               connectionRef,
-                                               provided_reference);
+    this->connection_handler_->connect_instance (plan, connectionRef, provided_reference);
   }
 
   void
   Component_Handler::disconnect_instance (const Deployment::DeploymentPlan & plan,
-                                            uint32_t connectionRef)
+                                          uint32_t connectionRef)
   {
-    this->connection_handler_->disconnect_instance (plan,
-                                                  connectionRef);
-
+    this->connection_handler_->disconnect_instance (plan, connectionRef);
   }
 
   void

@@ -513,7 +513,6 @@ namespace CIAOX11
             this->lanes_.insert (LANE_PAIR (instance_id, lane_entry));
             std::swap (lane, lane_entry.lane_);
           }
-
         } // leave lock scope
 
         if (!lane)

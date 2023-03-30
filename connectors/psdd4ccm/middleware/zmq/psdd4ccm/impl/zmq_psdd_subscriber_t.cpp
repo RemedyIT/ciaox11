@@ -226,7 +226,6 @@ namespace PSDD
               if (this->read_i (datum, true))
                 dataseq.push_back (std::move(datum));
             }
-
           }
           else
           {
@@ -244,7 +243,6 @@ namespace PSDD
 
               dataseq.push_back (std::move(datum));
             }
-
           }
           if (!dataseq.empty ())
           {

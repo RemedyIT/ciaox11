@@ -66,7 +66,7 @@ namespace CIAOX11_TT_TimedTrigger_Impl
                         " for round " << this->round_);
     }
 
-    virtual const std::string& event_id () const noexcept(true) override
+    const std::string& event_id () const noexcept(true) override
     { return event_id_; }
 
   private:
@@ -254,7 +254,6 @@ namespace CIAOX11_TT_TimedTrigger_Impl
       int /*recurring_timer*/,
       const ACE_Time_Value & cur_time)
   {
-
     ACE_TCHAR tss[27];
     CIAOX11_LOG_INFO ("TTC_Task_Timer_Upcall::timeout - "
                      "timer[" <<

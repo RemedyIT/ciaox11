@@ -239,7 +239,6 @@ namespace App_Aggregator_Impl
       CIAOX11_TEST_INFO << "App::Aggregator(" << this << "): "
                         << "captured " << recorder_exec->environment_count () << " Environment messages"
                         << " and " << recorder_exec->record_count () << " Record messages" << std::endl;
-
     }
     //@@{__RIDL_REGEN_MARKER__} - END : App_Aggregator_Impl::Aggregator_exec_i[ccm_remove]
   }

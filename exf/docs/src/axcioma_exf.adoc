@@ -390,6 +390,22 @@ configured.
 With regard to the interaction between component and connector settings the same rules apply as described for the
 ExF concurrency settings.
 
+=== Default event ID's
+
+The AXCIOMA provided connectors can trigger the following ExF _event ID_'s, each of them can be configured using the scheme
+above.
+
+include::{ciaox11_src_root}/exf/connectors/tt4ccm/docs/src/eventids.asc[]
+
+include::{ciaox11_src_root}/exf/connectors/corba4ccm/docs/src/eventids.asc[]
+
+include::{ciaox11_src_root}/exf/connectors/ami4ccm/docs/src/eventids.asc[]
+
+include::{ciaox11_src_root}/exf/connectors/dds4ccm/docs/src/eventids.asc[]
+
+include::{ciaox11_src_root}/exf/connectors/psdd4ccm/docs/src/eventids.asc[]
+
+
 === Beware: there be dragons
 
 Do not be alarmed. Yes, there are potential 'dragons' but only a few and they are easily circumvented. +

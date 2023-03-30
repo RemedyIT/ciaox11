@@ -119,11 +119,7 @@ namespace CIAOX11_TT_TimedTrigger_Impl
         }
 
        // check for scheduling properties
-       CIAOX11::ExF::Util::get_exf_settings (
-           config,
-           "handle_trigger",
-           this->get_exf_tts_priority_,
-           this->get_exf_tts_deadline_);
+       CIAOX11::ExF::Util::get_exf_settings (config, "handle_trigger", this->get_exf_tts_priority_, this->get_exf_tts_deadline_);
      }
    }
 

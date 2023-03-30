@@ -99,7 +99,6 @@ namespace PSDD
               "PSDD::ZMQ::ListenPoller::start",
               "THREAD_FAIL");
         }
-
       }
     }
 
