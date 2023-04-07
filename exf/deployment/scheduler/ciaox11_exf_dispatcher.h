@@ -196,7 +196,7 @@ namespace CIAOX11
          * Allocated entry blocks are never freed during the life cycle of the queue.
          * Dequeued entries are released to the free list enqueued entries allocated from the free list.
          */
-        class DispatchQueue
+        class DispatchQueue final
         {
         public:
           DispatchQueue (DispatchQueuePolicy dqp)
