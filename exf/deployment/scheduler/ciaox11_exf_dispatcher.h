@@ -102,8 +102,13 @@ namespace CIAOX11
         private:
           friend class Dispatcher;
 
-          Instance (const std::string& id)
+          explicit Instance (const std::string& id)
             : instance_id_ (id) {}
+          Instance () = delete;
+          Instance (const Instance&) = delete;
+          Instance (Instance&&) = delete;
+          Instance& operator= (const Instance&) = delete;
+          Instance& operator= (Instance&&) = delete;
 
           std::string const instance_id_;
           std::atomic<bool> busy_ {};
@@ -166,6 +171,7 @@ namespace CIAOX11
           { return this->executor_->event_id (); }
 
         private:
+          DispatchTask () = delete;
           DispatchTask (const DispatchTask&) = delete;
           DispatchTask& operator= (const DispatchTask&) = delete;
           DispatchTask (DispatchTask&&) = delete;
@@ -572,12 +578,17 @@ namespace CIAOX11
             : instance_ (std::move(instance))
             , queue_ (std::move(q))
             , dispatcher_ (std::move(disp)) {}
+          DispatchGate () = delete;
+          DispatchGate (const DispatchGate&) = delete;
+          DispatchGate (DispatchGate&&) = delete;
+          DispatchGate& operator= (const DispatchGate&) = delete;
+          DispatchGate& operator= (DispatchGate&&) = delete;
 
           Dispatcher::task_queue_ref task_queue () const { return this->queue_; }
 
           Dispatcher::instance_ref instance_;
           Dispatcher::task_queue_ref queue_;
-          std::shared_ptr<Dispatcher> dispatcher_;
+          Dispatcher::ref_type dispatcher_;
         }; /* class DispatchGate */
 
         using gate_ref = std::shared_ptr<DispatchGate>;
