@@ -85,10 +85,6 @@ namespace CIAOX11
           bool closed () const
           { return this->closed_.load (); }
 
-          /// Are we executing a task for this instance?
-          bool is_busy () const
-          { return this->busy_.load (); }
-
           /// Allocate this instance for executing a next task
           /// @retval true Instance has been allocated for a next task
           /// @retval false Instance was not allocated, already busy with a task
