@@ -78,18 +78,22 @@ namespace CIAOX11
         public:
           ~Instance () = default;
 
+          /// Return the unique id of this instance
           const std::string& instance_id () const
           { return this->instance_id_; }
 
           bool closed () const
           { return this->closed_.load (); }
 
+          /// Are we executing a task for this instance?
           bool is_busy () const
           { return this->busy_.load (); }
 
+          /// Allocate this instance for executing a next task
           bool allocate ()
           { return !this->busy_.exchange(true); }
 
+          /// Tag this instance ready for the next task
           void release ()
           { this->busy_ = false; }
 
@@ -99,7 +103,7 @@ namespace CIAOX11
           Instance (const std::string& id)
             : instance_id_ (id) {}
 
-          std::string instance_id_;
+          std::string const instance_id_;
           std::atomic<bool> busy_ {};
           std::atomic<bool> closed_ {};
         }; /* class Instance */
@@ -375,7 +379,7 @@ namespace CIAOX11
             }
           }
 
-          bool dequeue_i (task_ref& task, bool always=false)
+          bool dequeue_i (task_ref& task, bool always = false)
           {
             // start looking from the head for an entry
             // of which the instance is not busy (if any)
@@ -414,7 +418,7 @@ namespace CIAOX11
                 this->insert_free(qep);
 
                 // decrement the queue count
-                this->count_--;
+                --this->count_;
                 if (this->count_ == 0)
                 {
                   // reset sequence number when queue is empty

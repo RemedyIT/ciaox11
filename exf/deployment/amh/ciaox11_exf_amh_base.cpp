@@ -95,8 +95,7 @@ namespace CIAOX11
               TAO_AMH_BUFFER_ALLOCATOR
             > buffer_allocator (amh_allocator);
 
-          ExF::Impl::AMH_ResponseHandler_ptr _tao_rh_ptr =
-            buffer_allocator.allocate();
+          ExF::Impl::AMH_ResponseHandler_ptr _tao_rh_ptr = buffer_allocator.allocate();
 
           if (!_tao_rh_ptr)
           {
