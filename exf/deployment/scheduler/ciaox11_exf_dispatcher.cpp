@@ -191,7 +191,7 @@ namespace CIAOX11
         {
           // create a dispatch task for the task reference
           // ***NOTE*** moves the exec reference so 'exec' is not valid
-          //            anymore after this -> so cache prority here
+          //            anymore after this -> so cache priority here
           ExF::Priority const exec_prio = exec->priority ();
           DispatchTask::task_ref dtask =
               std::make_shared<DispatchTask> (std::move (exec), this->instance_);
@@ -382,8 +382,7 @@ namespace CIAOX11
 
         this->queue_->activate ();
 
-        int start_count =
-            this->dtp_ == DispatchThreadPolicy::DTP_SINGLE ? 1 : this->minsize_;
+        int const start_count = this->dtp_ == DispatchThreadPolicy::DTP_SINGLE ? 1 : this->minsize_;
 
         CIAOX11_EXF_LOG_DEBUG ("ExF::Impl::Dispatcher::start_i - " \
                            "starting " << start_count << " dispatcher thread(s)");
