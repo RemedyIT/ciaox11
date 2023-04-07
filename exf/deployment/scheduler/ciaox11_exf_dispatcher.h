@@ -127,7 +127,7 @@ namespace CIAOX11
 
           DispatchTask (ExF::Executor::ref_type&& exec,
                         instance_ref instance)
-            : executor_ (std::move (exec)), instance_ (instance)
+            : executor_ (std::move (exec)), instance_ (std::move(instance))
           {
             if (this->executor_->deadline ().deadline_type_ != ExF::DeadlineType::DLT_NONE)
             {
@@ -140,13 +140,13 @@ namespace CIAOX11
           }
           ~DispatchTask () override = default;
 
-          virtual const ExF::Deadline& deadline () const noexcept(true);
+          const ExF::Deadline& deadline () const noexcept(true) override;
 
           /**
            * Expire the encapsulated operation.
            * This method should never throw an exception.
            */
-          virtual void expire () noexcept(true);
+          void expire () noexcept(true) override;
 
           /**
            * Cancel the encapsulated operation.
@@ -160,10 +160,10 @@ namespace CIAOX11
            */
           void execute () noexcept(true);
 
-          const std::string& instance_id () const noexcept(true)
+          const std::string& instance_id () const noexcept(true) override
           { return this->instance_->instance_id (); }
 
-          const std::string& event_id () const noexcept(true)
+          const std::string& event_id () const noexcept(true) override
           { return this->executor_->event_id (); }
 
         private:
