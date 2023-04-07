@@ -73,20 +73,17 @@ namespace CIAOX11
 
         ExF::DeadlineMonitor::ref_type monitor_;
 
-        ExF::Impl::DispatchThreadPolicy thread_policy_
-            {ExF::Impl::DispatchThreadPolicy::DTP_SINGLE};
+        ExF::Impl::DispatchThreadPolicy thread_policy_ {ExF::Impl::DispatchThreadPolicy::DTP_SINGLE};
         uint16_t min_threads_ {};
         uint16_t max_threads_ {};
         ExF::Impl::DispatchQueuePolicy queue_policy_
             {ExF::Impl::DispatchQueuePolicy::DQP_FIFO};
 
         // defaults for lane groups
-        ExF::Impl::DispatchThreadPolicy lane_thread_policy_
-            {ExF::Impl::DispatchThreadPolicy::DTP_SINGLE};
+        ExF::Impl::DispatchThreadPolicy lane_thread_policy_ {ExF::Impl::DispatchThreadPolicy::DTP_SINGLE};
         uint16_t lane_min_threads_ {};
         uint16_t lane_max_threads_ {};
-        ExF::Impl::DispatchQueuePolicy lane_queue_policy_
-            {};
+        ExF::Impl::DispatchQueuePolicy lane_queue_policy_ {};
 
         std::mutex lock_;
 
