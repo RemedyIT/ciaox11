@@ -25,7 +25,7 @@ namespace CIAOX11
     class CIAOX11_EXF_CORE_Export ExecutionTask
     {
     public:
-      typedef std::shared_ptr<ExecutionTask> ref_type;
+      using ref_type = std::shared_ptr<ExecutionTask>;
 
       virtual ~ExecutionTask ();
 

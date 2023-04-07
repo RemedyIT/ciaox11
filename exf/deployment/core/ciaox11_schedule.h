@@ -86,9 +86,9 @@ namespace CIAOX11
      * the execution task instantiated for this event by the execution
      * queue's scheduling policy
      */
-    typedef uint16_t Priority;
+    using Priority = uint16_t;
 
-    typedef uint32_t Count;
+    using Count = uint32_t;
 
     enum class CancellationType : uint32_t
     {
@@ -148,7 +148,7 @@ namespace CIAOX11
     class CIAOX11_EXF_CORE_Export Executor
     {
     public:
-      typedef std::unique_ptr<Executor> ref_type;
+      using ref_type = std::unique_ptr<Executor>;
 
       Executor () = default;
       Executor (ExF::Priority prio, ExF::Deadline dltm)
@@ -246,7 +246,7 @@ namespace CIAOX11
     class CIAOX11_EXF_CORE_Export Scheduler
     {
     public:
-      typedef std::shared_ptr<Scheduler> ref_type;
+      using ref_type = std::shared_ptr<Scheduler>;
 
       virtual ~Scheduler () = default;
 

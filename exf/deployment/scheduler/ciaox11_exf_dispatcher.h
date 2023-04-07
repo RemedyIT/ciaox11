@@ -67,11 +67,11 @@ namespace CIAOX11
       class Dispatcher
       {
       public:
-        typedef std::shared_ptr<Dispatcher> ref_type;
+        using ref_type = std::shared_ptr<Dispatcher>;
 
         class DispatchTask; // fwd
 
-        typedef std::shared_ptr<DispatchTask> task_ref;
+        using task_ref = std::shared_ptr<DispatchTask>;
 
         class Instance
         {
@@ -104,7 +104,7 @@ namespace CIAOX11
           std::atomic<bool> closed_ {};
         }; /* class Instance */
 
-        typedef std::shared_ptr<Instance> instance_ref;
+        using instance_ref = std::shared_ptr<Instance>;
 
         /**
          * @class DispatchTask
@@ -116,7 +116,7 @@ namespace CIAOX11
           : public ExF::ExecutionTask
         {
         public:
-          typedef std::shared_ptr<DispatchTask> task_ref;
+          using task_ref = std::shared_ptr<DispatchTask>;
 
           DispatchTask (ExF::Executor::ref_type&& exec,
                         instance_ref instance)
@@ -481,8 +481,8 @@ namespace CIAOX11
             }
           }
 
-          typedef std::unique_ptr<QEntry[]> alloc_block_type;
-          typedef std::vector<alloc_block_type> alloc_list_type;
+          using alloc_block_type = std::unique_ptr<QEntry[]>;
+          using alloc_list_type = std::vector<alloc_block_type>;
 
           alloc_list_type           allocations_ {};
 
@@ -500,7 +500,7 @@ namespace CIAOX11
           std::condition_variable   condition_ {};
           std::atomic<bool>         shutdown_ {};
 
-          typedef std::function<bool (const QEntry&, const QEntry&)> cmp_type;
+          using cmp_type = std::function<bool (const QEntry&, const QEntry&)>;
 
           cmp_type                  cmp_ {};
 
@@ -521,20 +521,19 @@ namespace CIAOX11
           };
         }; /* class DispatchQueue */
 
-        typedef DispatchQueue task_queue;
-        typedef std::shared_ptr<task_queue> task_queue_ref;
+        using task_queue = DispatchQueue ;
+        using task_queue_ref = std::shared_ptr<task_queue>;
 
         /**
          * @class DispatchGate
          *
          * @brief A class implementing an entrypoint for the dispatcher
          *        queue for executors from a single instance.
-         *
          */
         class DispatchGate
         {
         public:
-          typedef std::shared_ptr<DispatchGate> ref_type;
+          using ref_type = std::shared_ptr<DispatchGate> ;
 
           ~DispatchGate ();
 
@@ -556,9 +555,9 @@ namespace CIAOX11
           DispatchGate (Dispatcher::ref_type disp,
                         Dispatcher::instance_ref instance,
                         Dispatcher::task_queue_ref q)
-            : instance_ (instance)
-            , queue_ (q)
-            , dispatcher_ (disp) {}
+            : instance_ (std::move(instance))
+            , queue_ (std::move(q))
+            , dispatcher_ (std::move(disp)) {}
 
           Dispatcher::task_queue_ref task_queue () const { return this->queue_; }
 
@@ -567,7 +566,7 @@ namespace CIAOX11
           std::shared_ptr<Dispatcher> dispatcher_;
         }; /* class DispatchGate */
 
-        typedef std::shared_ptr<DispatchGate> gate_ref;
+        using gate_ref = std::shared_ptr<DispatchGate>;
 
         virtual ~Dispatcher ();
 
@@ -606,7 +605,7 @@ namespace CIAOX11
 
         ExF::DeadlineMonitor::ref_type monitor () { return this->monitor_; }
 
-        void svc (void);
+        void svc ();
 
         void execute_task (task_ref dtask, task_queue& taskq);
 
@@ -626,8 +625,8 @@ namespace CIAOX11
         std::vector<std::thread> threads_ {};
         std::atomic<size_t> thread_num_ {};
 
-        typedef std::pair<std::string, instance_ref> INSTANCE_PAIR;
-        typedef std::map<std::string, instance_ref> INSTANCE_MAP;
+        using INSTANCE_PAIR = std::pair<std::string, instance_ref>;
+        using INSTANCE_MAP = std::map<std::string, instance_ref>;
 
         INSTANCE_MAP instance_map_ {};
         std::atomic<size_t> busy_count_ {};

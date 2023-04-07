@@ -477,7 +477,6 @@ namespace CIAOX11
                       this->queue_));
           }
 
-
           CIAOX11_EXF_LOG_CRITICAL ("ExF::Impl::Dispatcher::open_dispatch_gate - "\
                                 "failed to lock dispatcher reference for "
                                 << instance_id);
@@ -514,7 +513,7 @@ namespace CIAOX11
         }
       }
 
-      void Dispatcher::svc (void)
+      void Dispatcher::svc ()
       {
         CIAOX11_EXF_LOG_INFO ("ExF::Impl::Dispatcher::svc - enter");
 
@@ -696,7 +695,7 @@ namespace CIAOX11
                                "releasing instance");
 
             // release
-            this->busy_count_--;
+            --this->busy_count_;
             dtask->instance ()->release ();
           }
 

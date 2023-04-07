@@ -32,7 +32,7 @@ namespace CIAOX11
     namespace Impl
     {
       class AMH_ResponseHandler;
-      typedef AMH_ResponseHandler* AMH_ResponseHandler_ptr;
+      using AMH_ResponseHandler_ptr = AMH_ResponseHandler*;
 
       struct ExceptionHolder;
 

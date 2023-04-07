@@ -95,8 +95,8 @@ namespace CIAOX11
           std::string group_ {};
         };
 
-        typedef std::pair<std::string, LANE_ENTRY> LANE_PAIR;
-        typedef std::map<std::string, LANE_ENTRY> LANE_MAP;
+        using LANE_PAIR = std::pair<std::string, LANE_ENTRY>;
+        using LANE_MAP = std::map<std::string, LANE_ENTRY>;
 
         struct GROUP_ENTRY
         {
@@ -109,8 +109,8 @@ namespace CIAOX11
           uint32_t lane_count_ {};
         };
 
-        typedef std::pair<std::string, GROUP_ENTRY> GROUP_PAIR;
-        typedef std::map<std::string, GROUP_ENTRY> GROUP_MAP;
+        using GROUP_PAIR = std::pair<std::string, GROUP_ENTRY>;
+        using GROUP_MAP = std::map<std::string, GROUP_ENTRY>;
 
         LANE_MAP lanes_ {};
         GROUP_MAP groups_ {};
