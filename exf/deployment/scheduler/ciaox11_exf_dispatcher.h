@@ -206,13 +206,13 @@ namespace CIAOX11
           }
           ~DispatchQueue () = default;
 
-
+          /// Enqueue a task to the dispatch queue
           bool enqueu(task_ref data, ExF::Priority prio)
           {
             {
               std::unique_lock<std::mutex> _g_queue (this->mutex_);
 
-              bool flow_control = (high_water_mark>low_water_mark && high_water_mark==this->count_);
+              bool const flow_control = (high_water_mark>low_water_mark && high_water_mark==this->count_);
 
               while (!this->shutdown_ &&
                   ((flow_control && this->count_ > low_water_mark) ||
@@ -236,7 +236,11 @@ namespace CIAOX11
             return true;
           }
 
-          bool dequeue(task_ref& data, bool always=false)
+          /// Dequeue a task from the queue. By default only a task
+          /// is dequeued for an instance which is not executing already a task.
+          /// At the moment @a always is true a task can be dequeued which
+          /// is already executing a task
+          bool dequeue(task_ref& data, bool always = false)
           {
             std::lock_guard<std::mutex> _g_queue (this->mutex_);
 
@@ -265,6 +269,8 @@ namespace CIAOX11
             return false;
           }
 
+          /// Activate the queue and notify all worker threads about
+          /// this state change
           void activate ()
           {
             {
@@ -276,6 +282,8 @@ namespace CIAOX11
             this->condition_.notify_all ();
           }
 
+          /// Shutdown this queue and notify all worker threads about
+          /// this state change
           void shutdown ()
           {
             {
@@ -287,17 +295,17 @@ namespace CIAOX11
             this->condition_.notify_all ();
           }
 
-          bool is_shutdown ()
+          bool is_shutdown () const
           {
             return this->shutdown_;
           }
 
-          bool is_active ()
+          bool is_active () const
           {
             return !this->is_shutdown ();
           }
 
-          bool empty ()
+          bool empty () const
           {
             return this->count_ == 0;
           }
