@@ -218,14 +218,14 @@ namespace Test_Sender_Impl
     IDL::traits<::Test::LatencyDataConnector::Publisher>::ref_type writer_ {};
 
     uint32_t iteration_nr_ {};
-    std::atomic<bool> matched_ {};
+    std::atomic_bool matched_ {};
     uint64_t tv_total_ {};
     uint64_t tv_max_ {};
     uint64_t tv_min_ {};
     uint16_t count_ {};
     uint16_t number_of_msg_ {};
-    std::atomic<bool> received_ {};
-    std::atomic<bool> receiving_ {};
+    std::atomic_bool received_ {};
+    std::atomic_bool receiving_ {};
     int32_t seq_num_ {};
     double sigma_duration_squared_ {};
     uint64_t start_time_ {};

@@ -125,7 +125,7 @@ namespace Test_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Receiver_Impl::Receiver_exec_i[user_members]
     IDL::traits<CCM_TT::TT_Timer>::ref_type tm_;
     std::atomic<uint32_t> topic_counter_ {0};
-    std::atomic<bool> read_multiple_ {false};
+    std::atomic_bool read_multiple_ {false};
     //@@{__RIDL_REGEN_MARKER__} - END : Test_Receiver_Impl::Receiver_exec_i[user_members]
     //@}
 

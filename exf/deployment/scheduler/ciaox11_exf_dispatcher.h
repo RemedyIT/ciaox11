@@ -111,7 +111,7 @@ namespace CIAOX11
           Instance& operator= (Instance&&) = delete;
 
           std::string const instance_id_;
-          std::atomic<bool> busy_ {};
+          std::atomic_bool busy_ {};
           std::atomic_bool closed_ {};
         }; /* class Instance */
 
@@ -518,7 +518,7 @@ namespace CIAOX11
           uint64_t                  seqnr_ {};
           std::mutex                mutex_ {};
           std::condition_variable   condition_ {};
-          std::atomic<bool>         shutdown_ {};
+          std::atomic_bool         shutdown_ {};
 
           using cmp_type = std::function<bool (const QEntry&, const QEntry&)>;
 

@@ -69,7 +69,7 @@ namespace PSDD
       std::vector<std::thread> threads_ {};
       WriterSocket pipe_wr_ {};
       ReaderSocket pipe_rd_ {};
-      std::atomic<bool> stopping_ { false };
+      std::atomic_bool stopping_ { false };
       bool polling_ { false };
       uint32_t max_sockets_ {};
       std::vector<ListenSocket> listeners_ {};
