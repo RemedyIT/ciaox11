@@ -342,7 +342,7 @@ namespace CIAOX11
               new_entry->seqnr_ = this->seqnr_++;
 
               // increment the queue count
-              this->count_++;
+              ++this->count_;
 
               // insert into queue list based on prio and seq
               // start looking from the tail until an entry is found

@@ -573,7 +573,7 @@ namespace CIAOX11
           GROUP_MAP::iterator itg = this->groups_.find (lane_copy.group_);
           if ( itg != this->groups_.end ())
           {
-            itg->second.lane_count_--;
+            --itg->second.lane_count_;
             if (itg->second.lane_count_ == 0)
             {
               this->groups_.erase (itg);

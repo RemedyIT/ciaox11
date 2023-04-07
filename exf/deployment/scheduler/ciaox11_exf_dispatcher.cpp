@@ -390,7 +390,7 @@ namespace CIAOX11
         for (int i=0; i<start_count ;++i)
         {
           this->threads_.push_back(std::thread(&Dispatcher::svc, this));
-          this->thread_num_++;
+          ++this->thread_num_;
         }
 
         CIAOX11_EXF_LOG_INFO ("ExF::Impl::Dispatcher::start_i - " <<
@@ -573,7 +573,7 @@ namespace CIAOX11
                         if (std::this_thread::get_id() == trd_it->get_id())
                         {
                           this->threads_.erase(trd_it);
-                          this->thread_num_--;
+                          --this->thread_num_;
                           break;
                         }
                       }
@@ -680,7 +680,7 @@ namespace CIAOX11
                 {
                   // add a new thread to the pool
                   this->threads_.push_back (std::thread (&Dispatcher::svc, this));
-                  this->thread_num_++;
+                  ++this->thread_num_;
                   CIAOX11_EXF_LOG_INFO ("ExF::Impl::Dispatcher::execute_task - "\
                                      "added extra pool thread [min="
                                      << this->minsize_ << " max="
