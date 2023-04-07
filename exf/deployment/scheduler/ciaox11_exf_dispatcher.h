@@ -90,6 +90,8 @@ namespace CIAOX11
           { return this->busy_.load (); }
 
           /// Allocate this instance for executing a next task
+          /// @retval true Instance has been allocated for a next task
+          /// @retval false Instance was not allocated, already busy with a task
           bool allocate ()
           { return !this->busy_.exchange(true); }
 
