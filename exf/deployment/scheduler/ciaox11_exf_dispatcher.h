@@ -112,7 +112,7 @@ namespace CIAOX11
 
           std::string const instance_id_;
           std::atomic<bool> busy_ {};
-          std::atomic<bool> closed_ {};
+          std::atomic_bool closed_ {};
         }; /* class Instance */
 
         using instance_ref = std::shared_ptr<Instance>;
