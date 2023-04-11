@@ -21,32 +21,28 @@ void <%= port_interface.scoped_cxxname.identify %>_servant::_configuration_compl
   if (this->scheduling_lane_)
   {
     // Get scheduling settings
-    CIAOX11::ExF::Priority def_prio {};
-    CIAOX11::ExF::Deadline def_deadline {};
-    if (CIAOX11::ExF::Util::get_exf_defaults (config, def_prio, def_deadline))
+    CIAOX11::ExF::Settings def_settings {};
+    if (CIAOX11::ExF::Util::get_exf_defaults (config, def_settings))
     {
 % port_interface.all_operations.each do |_op|
-      this-><%= _op.cxxname %>_deadline_ = def_deadline;
-      this-><%= _op.cxxname %>_priority_ = def_prio;
+      this-><%= _op.cxxname %>_exf_settings_ = def_settings;
 % end
 % port_interface.all_attributes.each do |_att|
-      this->get_<%= _att.cxxname %>_deadline_ = def_deadline;
-      this->get_<%= _att.cxxname %>_priority_ = def_prio;
+      this->get_<%= _att.cxxname %>_exf_settings_ = def_settings;
 %   unless _att.is_readonly?
-      this->set_<%= _att.cxxname %>_deadline_ = def_deadline;
-      this->set_<%= _att.cxxname %>_priority_ = def_prio;
+      this->set_<%= _att.cxxname %>_exf_settings_ = def_settings;
 %   end
 % end
     }
 
     // check for scheduling properties
 % port_interface.all_operations.each do |_op|
-    CIAOX11::ExF::Util::get_exf_settings (config, "<%= _op.cxxname %>", this-><%= _op.cxxname %>_priority_, this-><%= _op.cxxname %>_deadline_);
+    CIAOX11::ExF::Util::get_exf_settings (config, "<%= _op.cxxname %>", this-><%= _op.cxxname %>_exf_settings_);
 % end
 % port_interface.all_attributes.each do |_att|
-    CIAOX11::ExF::Util::get_exf_settings (config, "get_<%= _att.cxxname %>", this->get_<%= _att.cxxname %>_priority_, this->get_<%= _att.cxxname %>_deadline_);
+    CIAOX11::ExF::Util::get_exf_settings (config, "get_<%= _att.cxxname %>", this->get_<%= _att.cxxname %>_exf_settings_);
 %   unless _att.is_readonly?
-    CIAOX11::ExF::Util::get_exf_settings (config, "set_<%= _att.cxxname %>", this->set_<%= _att.cxxname %>_priority_, this->set_<%= _att.cxxname %>_deadline_);
+    CIAOX11::ExF::Util::get_exf_settings (config, "set_<%= _att.cxxname %>", this->set_<%= _att.cxxname %>_exf_settings_);
 %   end
 % end
   }
@@ -63,9 +59,8 @@ public:
       std::string event_id,
       <%= _intf.scoped_enclosure_cxxname %>::ExF::<%= _intf.skel_cxxname %>_RequestHandlerBase::ref_type&& rh,
       IDL::traits<::<%= _intf.scoped_cxxname %>>::ref_type executor,
-      CIAOX11::ExF::Priority prio,
-      CIAOX11::ExF::Deadline dl)
-    : CIAOX11::ExF::Impl::AMH_Executor (std::move (prio), std::move (dl))
+      CIAOX11::ExF::Settings exf_settings)
+    : CIAOX11::ExF::Impl::AMH_Executor (std::move (exf_settings))
     , event_id_ (std::move (event_id))
     , rh_ (std::move (rh))
     , executor_ (std::move (executor))

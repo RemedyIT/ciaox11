@@ -4,15 +4,12 @@ IDL::traits<CIAOX11::ExF::SchedulingLane>::ref_type scheduling_lane_ {};
 /// Member variables for ExF configuration
 % interfaces_for_nonlocal_facet_ports.each do |_i|
 %   _i.all_operations.each do |_op|
-CIAOX11::ExF::Deadline <%= _op.cxxname %>_deadline_ {};
-CIAOX11::ExF::Priority <%= _op.cxxname %>_priority_ {};
+CIAOX11::ExF::Settings <%= _op.cxxname %>_exf_settings_ {};
 %   end
 %   _i.all_attributes.each do |_att|
-CIAOX11::ExF::Deadline get_<%= _att.cxxname %>_deadline_ {};
-CIAOX11::ExF::Priority get_<%= _att.cxxname %>_priority_ {};
+CIAOX11::ExF::Settings get_<%= _att.cxxname %>_exf_settings_ {};
 %     unless _att.is_readonly?
-CIAOX11::ExF::Deadline set_<%= _att.cxxname %>_deadline_ {};
-CIAOX11::ExF::Priority set_<%= _att.cxxname %>_priority_ {};
+CIAOX11::ExF::Settings set_<%= _att.cxxname %>_exf_settings_ {};
 %     end
 %   end
 % end

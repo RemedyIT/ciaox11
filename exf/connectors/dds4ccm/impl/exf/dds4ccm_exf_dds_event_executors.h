@@ -34,11 +34,10 @@ namespace CIAOX11
       {
       public:
         DDSExecutorBase (
-            ExF::Priority prio,
-            ExF::Deadline dltm,
+            ExF::Settings settings,
             typename IDL::traits<LISTENER>::weak_ref_type lsn,
             std::string evtid)
-          : Executor (prio, dltm)
+          : Executor (std::move(settings))
           , listener_ (std::move (lsn))
           , event_id_ (std::move (evtid))
         {}
@@ -94,13 +93,12 @@ namespace CIAOX11
       {
       public:
         UnexpectedStatusExecutor (
-            ExF::Priority prio,
-            ExF::Deadline dltm,
+            ExF::Settings settings,
             IDL::traits<CCM_DDS::ConnectorStatusListener>::weak_ref_type lsn,
             IDL::traits<::DDS::Entity>::ref_type entity,
             ::DDS::StatusKind status_kind)
           : DDSExecutorBase<CCM_DDS::ConnectorStatusListener> (
-              prio, dltm, lsn, "unexpected_status")
+              std::move(settings), lsn, "unexpected_status")
           , entity_ (entity)
           , status_kind_ (status_kind)
         {}
@@ -133,13 +131,12 @@ namespace CIAOX11
       {
       public:
         RequestedIncompatibleQosExecutor (
-            ExF::Priority prio,
-            ExF::Deadline dltm,
+            ExF::Settings settings,
             IDL::traits<CCM_DDS::ConnectorStatusListener>::weak_ref_type lsn,
             IDL::traits<::DDS::DataReader>::ref_type dr,
             const ::DDS::RequestedIncompatibleQosStatus &status)
           : DDSExecutorBase<CCM_DDS::ConnectorStatusListener> (
-              prio, dltm, lsn, "requested_incompatible_qos")
+              std::move(settings), lsn, "requested_incompatible_qos")
           , dr_ (dr)
           , status_ (status)
         {}
@@ -172,13 +169,12 @@ namespace CIAOX11
       {
       public:
         SampleRejectedExecutor (
-            ExF::Priority prio,
-            ExF::Deadline dltm,
+            ExF::Settings settings,
             IDL::traits<CCM_DDS::ConnectorStatusListener>::weak_ref_type lsn,
             IDL::traits<::DDS::DataReader>::ref_type dr,
             const ::DDS::SampleRejectedStatus &status)
           : DDSExecutorBase<CCM_DDS::ConnectorStatusListener> (
-              prio, dltm, lsn, "sample_rejected")
+              std::move(settings), lsn, "sample_rejected")
           , dr_ (dr)
           , status_ (status)
         {}
@@ -211,13 +207,12 @@ namespace CIAOX11
       {
       public:
         InconsistentTopicExecutor (
-            ExF::Priority prio,
-            ExF::Deadline dltm,
+            ExF::Settings settings,
             IDL::traits<CCM_DDS::ConnectorStatusListener>::weak_ref_type lsn,
             IDL::traits<::DDS::Topic>::ref_type tp,
             const ::DDS::InconsistentTopicStatus &status)
           : DDSExecutorBase<CCM_DDS::ConnectorStatusListener> (
-              prio, dltm, lsn, "inconsistent_topic")
+              std::move(settings), lsn, "inconsistent_topic")
           , tp_ (tp)
           , status_ (status)
         {}
@@ -250,13 +245,12 @@ namespace CIAOX11
       {
       public:
         OfferedDeadlineMissedExecutor (
-            ExF::Priority prio,
-            ExF::Deadline dltm,
+            ExF::Settings settings,
             IDL::traits<CCM_DDS::ConnectorStatusListener>::weak_ref_type lsn,
             IDL::traits<::DDS::DataWriter>::ref_type dw,
             const ::DDS::OfferedDeadlineMissedStatus &status)
           : DDSExecutorBase<CCM_DDS::ConnectorStatusListener> (
-              prio, dltm, lsn, "offered_deadline_missed")
+              std::move(settings), lsn, "offered_deadline_missed")
           , dw_ (dw)
           , status_ (status)
         {}
@@ -289,13 +283,12 @@ namespace CIAOX11
       {
       public:
         OfferedIncompatibleQoSExecutor (
-            ExF::Priority prio,
-            ExF::Deadline dltm,
+            ExF::Settings settings,
             IDL::traits<CCM_DDS::ConnectorStatusListener>::weak_ref_type lsn,
             IDL::traits<::DDS::DataWriter>::ref_type dw,
             const ::DDS::OfferedIncompatibleQosStatus &status)
           : DDSExecutorBase<CCM_DDS::ConnectorStatusListener> (
-              prio, dltm, lsn, "offered_deadline_missed")
+              std::move(settings), lsn, "offered_deadline_missed")
           , dw_ (dw)
           , status_ (status)
         {}
@@ -328,13 +321,12 @@ namespace CIAOX11
       {
       public:
         RequestedDeadlineMissedExecutor (
-            ExF::Priority prio,
-            ExF::Deadline dltm,
+            ExF::Settings settings,
             IDL::traits<CCM_DDS::PortStatusListener>::weak_ref_type lsn,
             IDL::traits<::DDS::DataReader>::ref_type dr,
             const ::DDS::RequestedDeadlineMissedStatus &status)
           : DDSExecutorBase<CCM_DDS::PortStatusListener> (
-              prio, dltm, lsn, "requested_deadline_missed")
+              std::move(settings), lsn, "requested_deadline_missed")
           , dr_ (dr)
           , status_ (status)
         {}
@@ -367,13 +359,12 @@ namespace CIAOX11
       {
       public:
         SampleLostExecutor (
-            ExF::Priority prio,
-            ExF::Deadline dltm,
+            ExF::Settings settings,
             IDL::traits<CCM_DDS::PortStatusListener>::weak_ref_type lsn,
             IDL::traits<::DDS::DataReader>::ref_type dr,
             const ::DDS::SampleLostStatus &status)
           : DDSExecutorBase<CCM_DDS::PortStatusListener> (
-              prio, dltm, lsn, "sample_lost")
+              std::move(settings), lsn, "sample_lost")
           , dr_ (dr)
           , status_ (status)
         {}
@@ -407,13 +398,12 @@ namespace CIAOX11
       {
       public:
         DataReaderExecutor_T (
-            ExF::Priority prio,
-            ExF::Deadline dltm,
+            ExF::Settings settings,
             typename IDL::traits<DATA_LISTENER>::weak_ref_type lsn,
             typename IDL::traits<LISTENER>::ref_type drl,
             IDL::traits<::DDS::DataReader>::ref_type dr)
           : DDSExecutorBase<DATA_LISTENER> (
-              prio, dltm, lsn, "data_available")
+              std::move(settings), lsn, "data_available")
           , drl_ (std::move(drl))
           , dr_ (std::move(dr))
         {}

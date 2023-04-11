@@ -20,15 +20,13 @@ namespace CIAOX11
       CIAOX11_EXF_CORE_Export
       bool get_exf_defaults (
           const Components::ConfigValues& config,
-          ExF::Priority& prio,
-          ExF::Deadline& deadline);
+          ExF::Settings& settings);
 
       CIAOX11_EXF_CORE_Export
       void get_exf_settings (
           const Components::ConfigValues& config,
           const std::string& event,
-          ExF::Priority& prio,
-          ExF::Deadline& deadline);
+          ExF::Settings& settings);
     }
   }
 };

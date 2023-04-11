@@ -84,23 +84,20 @@ namespace CIAOX11
           if (this->scheduling_lane_)
           {
             // get scheduling settings
-            CIAOX11::ExF::Priority def_prio {};
-            CIAOX11::ExF::Deadline def_deadline {};
-            if (CIAOX11::ExF::Util::get_exf_defaults (ctx->consumer_data_listener_configuration (), def_prio, def_deadline))
+            CIAOX11::ExF::Settings def_settings {};
+            if (CIAOX11::ExF::Util::get_exf_defaults (ctx->consumer_data_listener_configuration (), def_settings))
             {
-              this->data_available_deadline_ = def_deadline;
-              this->data_available_priority_ = def_prio;
+              this->data_available_exf_settings_ = def_settings;
             }
 
             // check for scheduling properties
-            CIAOX11::ExF::Util::get_exf_settings (ctx->consumer_data_listener_configuration (), "data_available", this->data_available_priority_, this->data_available_deadline_);
+            CIAOX11::ExF::Util::get_exf_settings (ctx->consumer_data_listener_configuration (), "data_available", this->data_available_exf_settings_);
           }
         }
         PushConsumerEventStrategy_T (const PushConsumerEventStrategy_T& dpces)
           : EventStrategyBase (dpces)
           , listener_ (dpces.listener_)
-          , data_available_deadline_ (dpces.data_available_deadline_)
-          , data_available_priority_ (dpces.data_available_priority_)
+          , data_available_exf_settings_ (dpces.data_available_exf_settings_)
         {}
 
         ~PushConsumerEventStrategy_T () override = default;
@@ -109,8 +106,7 @@ namespace CIAOX11
         {
           this->assign (dpces);
           this->listener_ = dpces.listener_;
-          this->data_available_deadline_ = dpces.data_available_deadline_;
-          this->data_available_priority_ = dpces.data_available_priority_;
+          this->data_available_exf_settings_ = dpces.data_available_exf_settings_;
           return *this;
         }
 
@@ -124,8 +120,7 @@ namespace CIAOX11
           {
             CIAOX11::ExF::Executor::ref_type exec =
                 std::make_unique<DataListenerExec_type> (
-                    this->data_available_priority_,
-                    this->data_available_deadline_,
+                    this->data_available_exf_settings_,
                     std::move(dh),
                     this->listener_);
 
@@ -143,8 +138,7 @@ namespace CIAOX11
 
         typename IDL::traits<listener_type>::weak_ref_type listener_ {};
 
-        CIAOX11::ExF::Deadline data_available_deadline_ {};
-        CIAOX11::ExF::Priority data_available_priority_ {};
+        CIAOX11::ExF::Settings data_available_exf_settings_ {};
       };
 
     } /* ExF */

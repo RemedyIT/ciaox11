@@ -87,49 +87,36 @@ namespace CIAOX11
           {
             const Components::ConfigValues &config = ctx->error_listener_configuration ();
             // get scheduling settings
-            CIAOX11::ExF::Priority def_prio {};
-            CIAOX11::ExF::Deadline def_deadline {};
-            if (CIAOX11::ExF::Util::get_exf_defaults (config, def_prio, def_deadline))
+            CIAOX11::ExF::Settings def_settings {};
+            if (CIAOX11::ExF::Util::get_exf_defaults (config, def_settings))
             {
-              this->unexpected_status_deadline_ = def_deadline;
-              this->unexpected_status_priority_ = def_prio;
-              this->requested_incompatible_qos_deadline_ = def_deadline;
-              this->requested_incompatible_qos_priority_ = def_prio;
-              this->sample_rejected_deadline_ = def_deadline;
-              this->sample_rejected_priority_ = def_prio;
-              this->inconsistent_topic_deadline_ = def_deadline;
-              this->inconsistent_topic_priority_ = def_prio;
-              this->offered_deadline_missed_deadline_ = def_deadline;
-              this->offered_deadline_missed_priority_ = def_prio;
-              this->offered_incompatible_qos_deadline_ = def_deadline;
-              this->offered_incompatible_qos_priority_ = def_prio;
+              this->unexpected_status_settings_ = def_settings;
+              this->requested_incompatible_qos_settings_ = def_settings;
+              this->sample_rejected_settings_ = def_settings;
+              this->inconsistent_topic_settings_ = def_settings;
+              this->offered_deadline_missed_settings_ = def_settings;
+              this->offered_incompatible_qos_settings_ = def_settings;
             }
 
             // check for scheduling properties
-            CIAOX11::ExF::Util::get_exf_settings (config, "unexpected_status", this->unexpected_status_priority_, this->unexpected_status_deadline_);
-            CIAOX11::ExF::Util::get_exf_settings (config, "requested_incompatible_qos", this->requested_incompatible_qos_priority_, this->requested_incompatible_qos_deadline_);
-            CIAOX11::ExF::Util::get_exf_settings (config, "sample_rejected", this->sample_rejected_priority_, this->sample_rejected_deadline_);
-            CIAOX11::ExF::Util::get_exf_settings (config, "inconsistent_topic", this->inconsistent_topic_priority_, this->inconsistent_topic_deadline_);
-            CIAOX11::ExF::Util::get_exf_settings (config, "offered_deadline_missed", this->offered_deadline_missed_priority_, this->offered_deadline_missed_deadline_);
-            CIAOX11::ExF::Util::get_exf_settings (config, "offered_incompatible_qos", this->offered_incompatible_qos_priority_, this->offered_incompatible_qos_deadline_);
+            CIAOX11::ExF::Util::get_exf_settings (config, "unexpected_status", this->unexpected_status_settings_);
+            CIAOX11::ExF::Util::get_exf_settings (config, "requested_incompatible_qos", this->requested_incompatible_qos_settings_);
+            CIAOX11::ExF::Util::get_exf_settings (config, "sample_rejected", this->sample_rejected_settings_);
+            CIAOX11::ExF::Util::get_exf_settings (config, "inconsistent_topic", this->inconsistent_topic_settings_);
+            CIAOX11::ExF::Util::get_exf_settings (config, "offered_deadline_missed", this->offered_deadline_missed_settings_);
+            CIAOX11::ExF::Util::get_exf_settings (config, "offered_incompatible_qos", this->offered_incompatible_qos_settings_);
           }
         }
         ErrorEventStrategy_T (const ErrorEventStrategy_T& evs)
           : EventStrategyBase (evs)
           , error_listener_ (evs.error_listener_)
           , error_listener_connected_ (evs.error_listener_connected_)
-          , unexpected_status_deadline_ (evs.unexpected_status_deadline_)
-          , unexpected_status_priority_ (evs.unexpected_status_priority_)
-          , requested_incompatible_qos_deadline_ (evs.requested_incompatible_qos_deadline_)
-          , requested_incompatible_qos_priority_ (evs.requested_incompatible_qos_priority_)
-          , sample_rejected_deadline_ (evs.sample_rejected_deadline_)
-          , sample_rejected_priority_ (evs.sample_rejected_priority_)
-          , inconsistent_topic_deadline_ (evs.inconsistent_topic_deadline_)
-          , inconsistent_topic_priority_ (evs.inconsistent_topic_priority_)
-          , offered_deadline_missed_deadline_ (evs.offered_deadline_missed_deadline_)
-          , offered_deadline_missed_priority_ (evs.offered_deadline_missed_priority_)
-          , offered_incompatible_qos_deadline_ (evs.offered_incompatible_qos_deadline_)
-          , offered_incompatible_qos_priority_ (evs.offered_incompatible_qos_priority_)
+          , unexpected_status_settings_ (evs.unexpected_status_settings_)
+          , requested_incompatible_qos_settings_ (evs.requested_incompatible_qos_settings_)
+          , sample_rejected_settings_ (evs.sample_rejected_settings_)
+          , inconsistent_topic_settings_ (evs.inconsistent_topic_settings_)
+          , offered_deadline_missed_settings_ (evs.offered_deadline_missed_settings_)
+          , offered_incompatible_qos_settings_ (evs.offered_incompatible_qos_settings_)
         {}
         ~ErrorEventStrategy_T () override = default;
 
@@ -150,8 +137,7 @@ namespace CIAOX11
             {
               CIAOX11::ExF::Executor::ref_type exec =
                   std::make_unique<UnexpectedStatusExecutor> (
-                      this->unexpected_status_priority_,
-                      this->unexpected_status_deadline_,
+                      this->unexpected_status_settings_,
                       this->error_listener_,
                       std::move(entity), status_kind);
 
@@ -183,8 +169,7 @@ namespace CIAOX11
             {
               CIAOX11::ExF::Executor::ref_type exec =
                   std::make_unique<RequestedIncompatibleQosExecutor> (
-                      this->requested_incompatible_qos_priority_,
-                      this->requested_incompatible_qos_deadline_,
+                      this->requested_incompatible_qos_settings_,
                       this->error_listener_,
                       std::move(dr), status);
 
@@ -216,8 +201,7 @@ namespace CIAOX11
             {
               CIAOX11::ExF::Executor::ref_type exec =
                   std::make_unique<SampleRejectedExecutor> (
-                      this->sample_rejected_priority_,
-                      this->sample_rejected_deadline_,
+                      this->sample_rejected_settings_,
                       this->error_listener_,
                       std::move(dr), status);
 
@@ -249,8 +233,7 @@ namespace CIAOX11
             {
               CIAOX11::ExF::Executor::ref_type exec =
                   std::make_unique<InconsistentTopicExecutor> (
-                      this->sample_rejected_priority_,
-                      this->sample_rejected_deadline_,
+                      this->sample_rejected_settings_,
                       this->error_listener_,
                       std::move(tp), status);
 
@@ -282,8 +265,7 @@ namespace CIAOX11
             {
               CIAOX11::ExF::Executor::ref_type exec =
                   std::make_unique<OfferedDeadlineMissedExecutor> (
-                      this->sample_rejected_priority_,
-                      this->sample_rejected_deadline_,
+                      this->sample_rejected_settings_,
                       this->error_listener_,
                       std::move(dw), status);
 
@@ -315,8 +297,7 @@ namespace CIAOX11
             {
               CIAOX11::ExF::Executor::ref_type exec =
                   std::make_unique<OfferedIncompatibleQoSExecutor> (
-                      this->sample_rejected_priority_,
-                      this->sample_rejected_deadline_,
+                      this->sample_rejected_settings_,
                       this->error_listener_,
                       std::move(dw), status);
 
@@ -337,18 +318,12 @@ namespace CIAOX11
         IDL::traits<CCM_DDS::ConnectorStatusListener>::weak_ref_type error_listener_ {};
         bool error_listener_connected_ {};
 
-        CIAOX11::ExF::Deadline unexpected_status_deadline_ {};
-        CIAOX11::ExF::Priority unexpected_status_priority_ {};
-        CIAOX11::ExF::Deadline requested_incompatible_qos_deadline_ {};
-        CIAOX11::ExF::Priority requested_incompatible_qos_priority_ {};
-        CIAOX11::ExF::Deadline sample_rejected_deadline_ {};
-        CIAOX11::ExF::Priority sample_rejected_priority_ {};
-        CIAOX11::ExF::Deadline inconsistent_topic_deadline_ {};
-        CIAOX11::ExF::Priority inconsistent_topic_priority_ {};
-        CIAOX11::ExF::Deadline offered_deadline_missed_deadline_ {};
-        CIAOX11::ExF::Priority offered_deadline_missed_priority_ {};
-        CIAOX11::ExF::Deadline offered_incompatible_qos_deadline_ {};
-        CIAOX11::ExF::Priority offered_incompatible_qos_priority_ {};
+        CIAOX11::ExF::Settings unexpected_status_settings_ {};
+        CIAOX11::ExF::Settings requested_incompatible_qos_settings_ {};
+        CIAOX11::ExF::Settings sample_rejected_settings_ {};
+        CIAOX11::ExF::Settings inconsistent_topic_settings_ {};
+        CIAOX11::ExF::Settings offered_deadline_missed_settings_ {};
+        CIAOX11::ExF::Settings offered_incompatible_qos_settings_ {};
       };
 
       class PortStatusEventStrategyBase
@@ -364,28 +339,23 @@ namespace CIAOX11
           if (this->scheduling_lane_)
           {
             // get scheduling settings
-            CIAOX11::ExF::Priority def_prio {};
-            CIAOX11::ExF::Deadline def_deadline {};
-            if (CIAOX11::ExF::Util::get_exf_defaults (port_status_config, def_prio, def_deadline))
+            CIAOX11::ExF::Settings def_settings {};
+            if (CIAOX11::ExF::Util::get_exf_defaults (port_status_config, def_settings))
             {
-              this->requested_deadline_missed_deadline_ = def_deadline;
-              this->requested_deadline_missed_priority_ = def_prio;
-              this->sample_lost_deadline_ = def_deadline;
-              this->sample_lost_priority_ = def_prio;
+              this->requested_deadline_missed_settings_ = def_settings;
+              this->sample_lost_settings_ = def_settings;
             }
 
             // check for scheduling properties
-            CIAOX11::ExF::Util::get_exf_settings (port_status_config, "requested_deadline_missed", this->requested_deadline_missed_priority_, this->requested_deadline_missed_deadline_);
-            CIAOX11::ExF::Util::get_exf_settings (port_status_config, "sample_lost", this->sample_lost_priority_, this->sample_lost_deadline_);
+            CIAOX11::ExF::Util::get_exf_settings (port_status_config, "requested_deadline_missed", this->requested_deadline_missed_settings_);
+            CIAOX11::ExF::Util::get_exf_settings (port_status_config, "sample_lost", this->sample_lost_settings_);
           }
         }
         PortStatusEventStrategyBase (const PortStatusEventStrategyBase& pses)
           : EventStrategyBase (pses)
           , status_listener_ (pses.status_listener_)
-        , requested_deadline_missed_deadline_ (pses.requested_deadline_missed_deadline_)
-        , requested_deadline_missed_priority_ (pses.requested_deadline_missed_priority_)
-        , sample_lost_deadline_ (pses.sample_lost_deadline_)
-        , sample_lost_priority_ (pses.sample_lost_priority_)
+        , requested_deadline_missed_settings_ (pses.requested_deadline_missed_settings_)
+        , sample_lost_settings_ (pses.sample_lost_settings_)
         {}
       public:
         ~PortStatusEventStrategyBase () override = default;
@@ -400,8 +370,7 @@ namespace CIAOX11
           {
             CIAOX11::ExF::Executor::ref_type exec =
                 std::make_unique<RequestedDeadlineMissedExecutor> (
-                    this->requested_deadline_missed_priority_,
-                    this->requested_deadline_missed_deadline_,
+                    this->requested_deadline_missed_settings_,
                     this->status_listener_,
                     std::move(dr), status);
 
@@ -423,8 +392,7 @@ namespace CIAOX11
           {
             CIAOX11::ExF::Executor::ref_type exec =
                 std::make_unique<SampleLostExecutor> (
-                    this->sample_lost_priority_,
-                    this->sample_lost_deadline_,
+                    this->sample_lost_settings_,
                     this->status_listener_,
                     std::move(dr), status);
 
@@ -443,10 +411,8 @@ namespace CIAOX11
 
         IDL::traits < ::CCM_DDS::PortStatusListener>::weak_ref_type status_listener_ {};
 
-        CIAOX11::ExF::Deadline requested_deadline_missed_deadline_ {};
-        CIAOX11::ExF::Priority requested_deadline_missed_priority_ {};
-        CIAOX11::ExF::Deadline sample_lost_deadline_ {};
-        CIAOX11::ExF::Priority sample_lost_priority_ {};
+        CIAOX11::ExF::Settings requested_deadline_missed_settings_ {};
+        CIAOX11::ExF::Settings sample_lost_settings_ {};
       };
 
       template <typename DATA_LISTENER>
@@ -485,16 +451,14 @@ namespace CIAOX11
             if (this->data_scheduling_lane_)
             {
               // get scheduling settings
-              CIAOX11::ExF::Priority def_prio {};
-              CIAOX11::ExF::Deadline def_deadline {};
-              if (CIAOX11::ExF::Util::get_exf_defaults (data_listener_config, def_prio, def_deadline))
+              CIAOX11::ExF::Settings def_settings {};
+              if (CIAOX11::ExF::Util::get_exf_defaults (data_listener_config, def_settings))
               {
-                this->data_available_deadline_ = def_deadline;
-                this->data_available_priority_ = def_prio;
+                this->data_available_settings_ = def_settings;
               }
 
               // check for scheduling properties
-              CIAOX11::ExF::Util::get_exf_settings (data_listener_config, "data_available", this->data_available_priority_, this->data_available_deadline_);
+              CIAOX11::ExF::Util::get_exf_settings (data_listener_config, "data_available", this->data_available_settings_);
             }
 
           }
@@ -503,8 +467,7 @@ namespace CIAOX11
           : PortStatusEventStrategyBase (des)
           , data_listener_ (des.data_listener_)
           , data_scheduling_lane_ (des.data_scheduling_lane_)
-          , data_available_deadline_ (des.data_available_deadline_)
-          , data_available_priority_ (des.data_available_priority_)
+          , data_available_settings_ (des.data_available_settings_)
         {}
       public:
         virtual ~DataEventStrategyBase_T () = default;
@@ -521,8 +484,7 @@ namespace CIAOX11
           {
             CIAOX11::ExF::Executor::ref_type exec =
                 std::make_unique<DataReaderExec_type> (
-                    this->data_available_priority_,
-                    this->data_available_deadline_,
+                    this->data_available_settings_,
                     this->data_listener_,
                     std::move(drl), std::move(dr));
 
@@ -542,8 +504,7 @@ namespace CIAOX11
         typename IDL::traits <DATA_LISTENER>::weak_ref_type data_listener_ {};
 
         IDL::traits<CIAOX11::ExF::SchedulingLane>::ref_type data_scheduling_lane_ {};
-        CIAOX11::ExF::Deadline data_available_deadline_ {};
-        CIAOX11::ExF::Priority data_available_priority_ {};
+        CIAOX11::ExF::Settings data_available_settings_ {};
       };
 
       template <typename CCM_TYPE>

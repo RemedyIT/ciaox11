@@ -21,10 +21,10 @@ namespace CIAOX11_TT_TimedTrigger_Impl
   public:
     TimedTrigger_Executor (
          std::string event_id,
-         IDL::traits< tt_timer_i>::ref_type timer,
+         IDL::traits<tt_timer_i>::ref_type timer,
          const ::CCM_TT::TT_Duration& delta_time,
          uint32_t round)
-       : CIAOX11::ExF::Executor (timer->exf_priority(), timer->exf_deadline()),
+       : CIAOX11::ExF::Executor (std::move(timer->exf_settings())),
          event_id_ (std::move (event_id))
        , timer_(std::move (timer))
        , delta_time_(std::move (delta_time))
@@ -402,8 +402,7 @@ namespace CIAOX11_TT_TimedTrigger_Impl
       const ACE_Time_Value& interval,
       uint32_t max_rounds,
       IDL::traits<CIAOX11::ExF::SchedulingLane>::ref_type scheduling_lane,
-      CIAOX11::ExF::Priority exf_priority ,
-      CIAOX11::ExF::Deadline exf_deadline)
+      CIAOX11::ExF::Settings exf_settings)
   {
     CIAOX11_LOG_TRACE ("TimerMonitor::start_monitoring.");
 
@@ -454,8 +453,7 @@ namespace CIAOX11_TT_TimedTrigger_Impl
               start_time_,
               recurring_,
               std::move(scheduling_lane),
-              exf_deadline,
-              exf_priority);
+              std::move(exf_settings));
 
       TT_QEntry qe (timer);
       if (this->timer_q_->schedule (qe, 0, future_time,interval ) != -1)

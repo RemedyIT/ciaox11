@@ -9,8 +9,7 @@ void
       "get_<%= attribute.cxxname %>",
       std::move (rh),
       this->facet_executor_,
-      this->get_<%= attribute.cxxname %>_priority_,
-      this->get_<%= attribute.cxxname %>_deadline_);
+      this->get_<%= attribute.cxxname %>_exf_settings_);
   this->scheduling_lane_->submit (std::move (exec));
 }
 %unless attribute.is_readonly?
@@ -24,8 +23,7 @@ void
       "set_<%= attribute.cxxname %>",
       std::move (rh),
       this->facet_executor_,
-      this->set_<%= attribute.cxxname %>_priority_,
-      this->set_<%= attribute.cxxname %>_deadline_);
+      this->set_<%= attribute.cxxname %>_exf_settings_);
   this->scheduling_lane_->submit (std::move (exec));
 }
 %end

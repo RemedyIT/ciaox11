@@ -265,7 +265,7 @@ namespace CIAOX11
 
       ExF::SchedulerResult
       Scheduler::open_scheduling_lane (
-          std::string instance_id,
+          const std::string& instance_id,
           const Components::ConfigValues& cfg,
           ::IDL::traits<ExF::SchedulingLane>::ref_type& lane)
       {
@@ -528,7 +528,7 @@ namespace CIAOX11
 
       ExF::SchedulerResult
       Scheduler::find_scheduling_lane (
-          std::string instance_id,
+          const std::string& instance_id,
           IDL::traits<ExF::SchedulingLane>::ref_type& lane)
       {
         CIAOX11_EXF_LOG_DEBUG ("ExF::Impl::Scheduler::find_scheduling_lane -");
@@ -550,7 +550,7 @@ namespace CIAOX11
 
       ExF::SchedulerResult
       Scheduler::close_scheduling_lane (
-          std::string instance_id)
+          const std::string& instance_id)
       {
         CIAOX11_EXF_LOG_DEBUG ("ExF::Impl::Scheduler::close_scheduling_lane -");
 

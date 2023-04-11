@@ -57,16 +57,14 @@ namespace CIAOX11_TT_TimedTrigger_Impl
         const ACE_Time_Value& start_time,
         bool recurring,
         IDL::traits<CIAOX11::ExF::SchedulingLane>::ref_type scheduling_lane,
-        CIAOX11::ExF::Deadline exf_deadline,
-        CIAOX11::ExF::Priority exf_priority)
+        CIAOX11::ExF::Settings exf_settings)
       : monitor_ (monitor)
       , tt_handler_ (std::move(tt_handler))
       , max_rounds_ (max_rounds)
       , start_time_ (start_time)
       , recurring_ (recurring)
       , scheduling_lane_(std::move(scheduling_lane))
-      , exf_deadline_ (exf_deadline)
-      , exf_priority_ (exf_priority)
+      , exf_settings_ (std::move(exf_settings))
     {
       this->set_id_ ();
     }
@@ -92,11 +90,8 @@ namespace CIAOX11_TT_TimedTrigger_Impl
     IDL::traits<CCM_TT::TT_Handler>::ref_type tt_handler()
     {return this->tt_handler_;}
 
-    CIAOX11::ExF::Deadline exf_deadline()
-    {return this->exf_deadline_;}
-
-    CIAOX11::ExF::Priority exf_priority()
-    {return this->exf_priority_;}
+    CIAOX11::ExF::Settings exf_settings()
+    {return this->exf_settings_;}
 
   private:
     tt_timer_i (const tt_timer_i&) = delete;
@@ -115,8 +110,7 @@ namespace CIAOX11_TT_TimedTrigger_Impl
     ACE_Time_Value start_time_;
     bool recurring_ {false};
     IDL::traits<CIAOX11::ExF::SchedulingLane>::ref_type scheduling_lane_ {};
-    CIAOX11::ExF::Deadline exf_deadline_ {};
-    CIAOX11::ExF::Priority exf_priority_ {};
+    CIAOX11::ExF::Settings exf_settings_ {};
     std::string id_ {};
   };
 
@@ -160,8 +154,7 @@ namespace CIAOX11_TT_TimedTrigger_Impl
                       const ACE_Time_Value& interval,
                       uint32_t max_rounds,
                       IDL::traits< CIAOX11::ExF::SchedulingLane>::ref_type scheduling_lane,
-                      CIAOX11::ExF::Priority exf_priority ,
-                      CIAOX11::ExF::Deadline exf_deadline);
+                      CIAOX11::ExF::Settings exf_settings);
 
     /**
      * Stop monitoring.

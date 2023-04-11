@@ -24,8 +24,8 @@ namespace CIAOX11
         : public ExF::Executor
       {
       public:
-        AMH_Executor (ExF::Priority prio, ExF::Deadline dltm)
-          : Executor (prio, dltm) {}
+        AMH_Executor (ExF::Settings settings)
+          : Executor (std::move(settings)) {}
         ~AMH_Executor () override = default;
 
         void execute () noexcept(true) override;

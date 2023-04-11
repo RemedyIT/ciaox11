@@ -12,8 +12,7 @@ public:
   <%= interface_type.ami4ccm_reply_handler %> (
     IDL::traits<<%= interface_type.scoped_enclosure_cxxname %>::<%= interface_type.ami4ccm_ReplyHandler %>>::ref_type callback,
     IDL::traits<::PortableServer::POA>::ref_type poa,
-    CIAOX11::ExF::Deadline dead_line,
-    CIAOX11::ExF::Priority priority,
+    CIAOX11::ExF::Settings exf_settings,
     IDL::traits<CIAOX11::ExF::SchedulingLane>::ref_type scheduling_lane);
 
   /// Destructor
@@ -47,8 +46,7 @@ private:
   IDL::traits<::PortableServer::POA>::ref_type poa_;
 
   /// Member variables for ExF configuration
-  CIAOX11::ExF::Deadline deadline_ {};
-  CIAOX11::ExF::Priority priority_ {};
+  CIAOX11::ExF::Settings exf_settings_ {};
   IDL::traits<CIAOX11::ExF::SchedulingLane>::ref_type scheduling_lane_ {};
 
   /// Helper method to deactivate ourselves from the AMI POA

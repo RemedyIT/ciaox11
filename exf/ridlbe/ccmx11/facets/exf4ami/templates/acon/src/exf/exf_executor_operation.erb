@@ -15,9 +15,8 @@
       <%= _arg.scoped_cxx_in_type %> <%= _arg.cxxname %>,
 %  end
 %end
-      CIAOX11::ExF::Deadline dead_line,
-      CIAOX11::ExF::Priority priority)
-    : AMI_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Executor(std::move(event_id), std::move(callback), std::move(dead_line), std::move (priority))
+      CIAOX11::ExF::Settings exf_settings)
+    : AMI_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Executor(std::move(event_id), std::move(callback), std::move(exf_settings))
 %unless operation.is_void?
     , ami_return_val_(ami_return_val)
 %end
@@ -81,9 +80,8 @@
       std::string event_id,
       IDL::traits<<%= receptacle_port.interface_type.scoped_enclosure_cxxname %>::<%= receptacle_port.interface_type.ami4ccm_ReplyHandler %>>::ref_type callback,
       IDL::traits<::CCM_AMI::ExceptionHolder>::ref_type excep_holder,
-      CIAOX11::ExF::Deadline dead_line,
-      CIAOX11::ExF::Priority priority)
-    : AMI_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Executor(std::move (event_id), std::move(callback), dead_line, priority),
+      CIAOX11::ExF::Settings exf_settings)
+    : AMI_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Executor(std::move (event_id), std::move(callback), std::move(exf_settings)),
       excep_holder_(std::move (excep_holder))
     {}
 

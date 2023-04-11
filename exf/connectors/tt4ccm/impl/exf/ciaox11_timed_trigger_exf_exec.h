@@ -77,8 +77,7 @@ namespace CIAOX11_TT_TimedTrigger_Impl
     IDL::traits<CIAOX11::ExF::SchedulingLane>::ref_type scheduling_lane_ {};
 
     /// Member variables for ExF configuration
-    CIAOX11::ExF::Deadline get_exf_tts_deadline_ {};
-    CIAOX11::ExF::Priority get_exf_tts_priority_ {};
+    CIAOX11::ExF::Settings get_exf_tts_settings_ {};
     //@}
   };
 
