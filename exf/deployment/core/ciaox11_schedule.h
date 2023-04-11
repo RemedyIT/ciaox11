@@ -161,7 +161,7 @@ namespace CIAOX11
 
       Executor () = default;
       Executor (ExF::Settings settings)
-       : settings_ (settings) {}
+       : settings_ (std::move(settings)) {}
       virtual ~Executor () = default;
 
       /**
