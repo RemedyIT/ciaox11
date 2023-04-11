@@ -26,14 +26,14 @@ namespace CIAOX11
       public:
         // = Initialization and termination methods.
         /// Constructor.
-        ExF_Task_Timer_Upcall (void) = default;
+        ExF_Task_Timer_Upcall () = default;
 
-        typedef ACE_Timer_Queue_T<ExF::ExecutionTask::ref_type,
+        using TimerQueue = ACE_Timer_Queue_T<ExF::ExecutionTask::ref_type,
                                   ExF_Task_Timer_Upcall,
                                   ACE_SYNCH_RECURSIVE_MUTEX,
-                                  EXF_TIME_POLICY> TimerQueue;
+                                  EXF_TIME_POLICY>;
         /// Destructor.
-        ~ExF_Task_Timer_Upcall (void) = default;
+        ~ExF_Task_Timer_Upcall () = default;
 
         /// This method is called when a timer is registered.
         int registration (TimerQueue & /* timer_queue */,

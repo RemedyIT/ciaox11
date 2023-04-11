@@ -67,44 +67,51 @@ namespace CIAOX11
       class Dispatcher
       {
       public:
-        typedef std::shared_ptr<Dispatcher> ref_type;
+        using ref_type = std::shared_ptr<Dispatcher>;
 
         class DispatchTask; // fwd
 
-        typedef std::shared_ptr<DispatchTask> task_ref;
+        using task_ref = std::shared_ptr<DispatchTask>;
 
         class Instance
         {
         public:
           ~Instance () = default;
 
+          /// Return the unique id of this instance
           const std::string& instance_id () const
           { return this->instance_id_; }
 
           bool closed () const
           { return this->closed_.load (); }
 
-          bool is_busy () const
-          { return this->busy_.load (); }
-
+          /// Allocate this instance for executing a next task
+          /// @retval true Instance has been allocated for a next task
+          /// @retval false Instance was not allocated, already busy with a task
           bool allocate ()
           { return !this->busy_.exchange(true); }
 
+          /// Tag this instance ready for the next task
           void release ()
           { this->busy_ = false; }
 
         private:
           friend class Dispatcher;
 
-          Instance (const std::string& id)
+          explicit Instance (const std::string& id)
             : instance_id_ (id) {}
+          Instance () = delete;
+          Instance (const Instance&) = delete;
+          Instance (Instance&&) = delete;
+          Instance& operator= (const Instance&) = delete;
+          Instance& operator= (Instance&&) = delete;
 
-          std::string instance_id_;
-          std::atomic<bool> busy_ {};
-          std::atomic<bool> closed_ {};
+          std::string const instance_id_;
+          std::atomic_bool busy_ {};
+          std::atomic_bool closed_ {};
         }; /* class Instance */
 
-        typedef std::shared_ptr<Instance> instance_ref;
+        using instance_ref = std::shared_ptr<Instance>;
 
         /**
          * @class DispatchTask
@@ -116,11 +123,11 @@ namespace CIAOX11
           : public ExF::ExecutionTask
         {
         public:
-          typedef std::shared_ptr<DispatchTask> task_ref;
+          using task_ref = std::shared_ptr<DispatchTask>;
 
           DispatchTask (ExF::Executor::ref_type&& exec,
                         instance_ref instance)
-            : executor_ (std::move (exec)), instance_ (instance)
+            : executor_ (std::move (exec)), instance_ (std::move(instance))
           {
             if (this->executor_->deadline ().deadline_type_ != ExF::DeadlineType::DLT_NONE)
             {
@@ -133,13 +140,13 @@ namespace CIAOX11
           }
           ~DispatchTask () override = default;
 
-          virtual const ExF::Deadline& deadline () const noexcept(true);
+          const ExF::Deadline& deadline () const noexcept(true) override;
 
           /**
            * Expire the encapsulated operation.
            * This method should never throw an exception.
            */
-          virtual void expire () noexcept(true);
+          void expire () noexcept(true) override;
 
           /**
            * Cancel the encapsulated operation.
@@ -153,13 +160,14 @@ namespace CIAOX11
            */
           void execute () noexcept(true);
 
-          const std::string& instance_id () const noexcept(true)
+          const std::string& instance_id () const noexcept(true) override
           { return this->instance_->instance_id (); }
 
-          const std::string& event_id () const noexcept(true)
+          const std::string& event_id () const noexcept(true) override
           { return this->executor_->event_id (); }
 
         private:
+          DispatchTask () = delete;
           DispatchTask (const DispatchTask&) = delete;
           DispatchTask& operator= (const DispatchTask&) = delete;
           DispatchTask (DispatchTask&&) = delete;
@@ -188,7 +196,7 @@ namespace CIAOX11
          * Allocated entry blocks are never freed during the life cycle of the queue.
          * Dequeued entries are released to the free list enqueued entries allocated from the free list.
          */
-        class DispatchQueue
+        class DispatchQueue final
         {
         public:
           DispatchQueue (DispatchQueuePolicy dqp)
@@ -202,13 +210,13 @@ namespace CIAOX11
           }
           ~DispatchQueue () = default;
 
-
+          /// Enqueue a task to the dispatch queue
           bool enqueu(task_ref data, ExF::Priority prio)
           {
             {
               std::unique_lock<std::mutex> _g_queue (this->mutex_);
 
-              bool flow_control = (high_water_mark>low_water_mark && high_water_mark==this->count_);
+              bool const flow_control = (high_water_mark>low_water_mark && high_water_mark==this->count_);
 
               while (!this->shutdown_ &&
                   ((flow_control && this->count_ > low_water_mark) ||
@@ -232,7 +240,11 @@ namespace CIAOX11
             return true;
           }
 
-          bool dequeue(task_ref& data, bool always=false)
+          /// Dequeue a task from the queue. By default only a task
+          /// is dequeued for an instance which is not executing already a task.
+          /// At the moment @a always is true a task can be dequeued which
+          /// is already executing a task
+          bool dequeue(task_ref& data, bool always = false)
           {
             std::lock_guard<std::mutex> _g_queue (this->mutex_);
 
@@ -261,6 +273,8 @@ namespace CIAOX11
             return false;
           }
 
+          /// Activate the queue and notify all worker threads about
+          /// this state change
           void activate ()
           {
             {
@@ -272,6 +286,8 @@ namespace CIAOX11
             this->condition_.notify_all ();
           }
 
+          /// Shutdown this queue and notify all worker threads about
+          /// this state change
           void shutdown ()
           {
             {
@@ -283,17 +299,17 @@ namespace CIAOX11
             this->condition_.notify_all ();
           }
 
-          bool is_shutdown ()
+          bool is_shutdown () const
           {
             return this->shutdown_;
           }
 
-          bool is_active ()
+          bool is_active () const
           {
             return !this->is_shutdown ();
           }
 
-          bool empty ()
+          bool empty () const
           {
             return this->count_ == 0;
           }
@@ -330,7 +346,7 @@ namespace CIAOX11
               new_entry->seqnr_ = this->seqnr_++;
 
               // increment the queue count
-              this->count_++;
+              ++this->count_;
 
               // insert into queue list based on prio and seq
               // start looking from the tail until an entry is found
@@ -375,7 +391,7 @@ namespace CIAOX11
             }
           }
 
-          bool dequeue_i (task_ref& task, bool always=false)
+          bool dequeue_i (task_ref& task, bool always = false)
           {
             // start looking from the head for an entry
             // of which the instance is not busy (if any)
@@ -414,7 +430,7 @@ namespace CIAOX11
                 this->insert_free(qep);
 
                 // decrement the queue count
-                this->count_--;
+                --this->count_;
                 if (this->count_ == 0)
                 {
                   // reset sequence number when queue is empty
@@ -481,8 +497,8 @@ namespace CIAOX11
             }
           }
 
-          typedef std::unique_ptr<QEntry[]> alloc_block_type;
-          typedef std::vector<alloc_block_type> alloc_list_type;
+          using alloc_block_type = std::unique_ptr<QEntry[]>;
+          using alloc_list_type = std::vector<alloc_block_type>;
 
           alloc_list_type           allocations_ {};
 
@@ -498,9 +514,9 @@ namespace CIAOX11
           uint64_t                  seqnr_ {};
           std::mutex                mutex_ {};
           std::condition_variable   condition_ {};
-          std::atomic<bool>         shutdown_ {};
+          std::atomic_bool         shutdown_ {};
 
-          typedef std::function<bool (const QEntry&, const QEntry&)> cmp_type;
+          using cmp_type = std::function<bool (const QEntry&, const QEntry&)>;
 
           cmp_type                  cmp_ {};
 
@@ -521,20 +537,19 @@ namespace CIAOX11
           };
         }; /* class DispatchQueue */
 
-        typedef DispatchQueue task_queue;
-        typedef std::shared_ptr<task_queue> task_queue_ref;
+        using task_queue = DispatchQueue ;
+        using task_queue_ref = std::shared_ptr<task_queue>;
 
         /**
          * @class DispatchGate
          *
          * @brief A class implementing an entrypoint for the dispatcher
          *        queue for executors from a single instance.
-         *
          */
         class DispatchGate
         {
         public:
-          typedef std::shared_ptr<DispatchGate> ref_type;
+          using ref_type = std::shared_ptr<DispatchGate> ;
 
           ~DispatchGate ();
 
@@ -556,18 +571,23 @@ namespace CIAOX11
           DispatchGate (Dispatcher::ref_type disp,
                         Dispatcher::instance_ref instance,
                         Dispatcher::task_queue_ref q)
-            : instance_ (instance)
-            , queue_ (q)
-            , dispatcher_ (disp) {}
+            : instance_ (std::move(instance))
+            , queue_ (std::move(q))
+            , dispatcher_ (std::move(disp)) {}
+          DispatchGate () = delete;
+          DispatchGate (const DispatchGate&) = delete;
+          DispatchGate (DispatchGate&&) = delete;
+          DispatchGate& operator= (const DispatchGate&) = delete;
+          DispatchGate& operator= (DispatchGate&&) = delete;
 
           Dispatcher::task_queue_ref task_queue () const { return this->queue_; }
 
           Dispatcher::instance_ref instance_;
           Dispatcher::task_queue_ref queue_;
-          std::shared_ptr<Dispatcher> dispatcher_;
+          Dispatcher::ref_type dispatcher_;
         }; /* class DispatchGate */
 
-        typedef std::shared_ptr<DispatchGate> gate_ref;
+        using gate_ref = std::shared_ptr<DispatchGate>;
 
         virtual ~Dispatcher ();
 
@@ -606,7 +626,7 @@ namespace CIAOX11
 
         ExF::DeadlineMonitor::ref_type monitor () { return this->monitor_; }
 
-        void svc (void);
+        void svc ();
 
         void execute_task (task_ref dtask, task_queue& taskq);
 
@@ -626,8 +646,8 @@ namespace CIAOX11
         std::vector<std::thread> threads_ {};
         std::atomic<size_t> thread_num_ {};
 
-        typedef std::pair<std::string, instance_ref> INSTANCE_PAIR;
-        typedef std::map<std::string, instance_ref> INSTANCE_MAP;
+        using INSTANCE_PAIR = std::pair<std::string, instance_ref>;
+        using INSTANCE_MAP = std::map<std::string, instance_ref>;
 
         INSTANCE_MAP instance_map_ {};
         std::atomic<size_t> busy_count_ {};

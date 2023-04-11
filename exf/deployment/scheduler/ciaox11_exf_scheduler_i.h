@@ -73,20 +73,17 @@ namespace CIAOX11
 
         ExF::DeadlineMonitor::ref_type monitor_;
 
-        ExF::Impl::DispatchThreadPolicy thread_policy_
-            {ExF::Impl::DispatchThreadPolicy::DTP_SINGLE};
+        ExF::Impl::DispatchThreadPolicy thread_policy_ {ExF::Impl::DispatchThreadPolicy::DTP_SINGLE};
         uint16_t min_threads_ {};
         uint16_t max_threads_ {};
         ExF::Impl::DispatchQueuePolicy queue_policy_
             {ExF::Impl::DispatchQueuePolicy::DQP_FIFO};
 
         // defaults for lane groups
-        ExF::Impl::DispatchThreadPolicy lane_thread_policy_
-            {ExF::Impl::DispatchThreadPolicy::DTP_SINGLE};
+        ExF::Impl::DispatchThreadPolicy lane_thread_policy_ {ExF::Impl::DispatchThreadPolicy::DTP_SINGLE};
         uint16_t lane_min_threads_ {};
         uint16_t lane_max_threads_ {};
-        ExF::Impl::DispatchQueuePolicy lane_queue_policy_
-            {};
+        ExF::Impl::DispatchQueuePolicy lane_queue_policy_ {};
 
         std::mutex lock_;
 
@@ -98,8 +95,8 @@ namespace CIAOX11
           std::string group_ {};
         };
 
-        typedef std::pair<std::string, LANE_ENTRY> LANE_PAIR;
-        typedef std::map<std::string, LANE_ENTRY> LANE_MAP;
+        using LANE_PAIR = std::pair<std::string, LANE_ENTRY>;
+        using LANE_MAP = std::map<std::string, LANE_ENTRY>;
 
         struct GROUP_ENTRY
         {
@@ -112,8 +109,8 @@ namespace CIAOX11
           uint32_t lane_count_ {};
         };
 
-        typedef std::pair<std::string, GROUP_ENTRY> GROUP_PAIR;
-        typedef std::map<std::string, GROUP_ENTRY> GROUP_MAP;
+        using GROUP_PAIR = std::pair<std::string, GROUP_ENTRY>;
+        using GROUP_MAP = std::map<std::string, GROUP_ENTRY>;
 
         LANE_MAP lanes_ {};
         GROUP_MAP groups_ {};

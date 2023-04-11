@@ -25,17 +25,16 @@ namespace CIAOX11
           : gate_ (gate) {}
         ~SchedulingLane () override;
 
-        virtual ExF::Count trafic_count ()
+        ExF::Count trafic_count () override
         { return this->gate_->queued_count (); }
 
-        virtual bool closed ()
+        bool closed () override
         { return this->gate_->closed (); }
 
-        virtual void close ()
+        void close () override
         { this->gate_->close (); }
 
-        virtual ExF::SchedulerResult submit (
-            ExF::Executor::ref_type&& exec);
+        ExF::SchedulerResult submit (ExF::Executor::ref_type&& exec) override;
 
       private:
         ExF::Impl::Dispatcher::gate_ref gate_;
@@ -349,8 +348,7 @@ namespace CIAOX11
                                "opening dispatch gate for " << instance_id);
 
             // open a gate on the dispatcher
-            ExF::Impl::Dispatcher::gate_ref gate =
-                dispatcher->open_dispatch_gate (instance_id);
+            ExF::Impl::Dispatcher::gate_ref gate = dispatcher->open_dispatch_gate (instance_id);
             if (gate)
             {
               // create the exclusive scheduling lane
@@ -427,8 +425,7 @@ namespace CIAOX11
                                  "opening dispatch gate for " << instance_id);
 
               // open a gate on the dispatcher
-              ExF::Impl::Dispatcher::gate_ref gate =
-                  dispatcher->open_dispatch_gate (instance_id);
+              ExF::Impl::Dispatcher::gate_ref gate = dispatcher->open_dispatch_gate (instance_id);
               if (gate)
               {
                 // create the exclusive scheduling lane
@@ -576,7 +573,7 @@ namespace CIAOX11
           GROUP_MAP::iterator itg = this->groups_.find (lane_copy.group_);
           if ( itg != this->groups_.end ())
           {
-            itg->second.lane_count_--;
+            --itg->second.lane_count_;
             if (itg->second.lane_count_ == 0)
             {
               this->groups_.erase (itg);

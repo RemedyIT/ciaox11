@@ -41,8 +41,7 @@ namespace CIAOX11
 
       this->prepare_install (plan, mdd, info, exec_art, exec_entry, svnt_art, svnt_entry, open_mode, cont_id);
 
-      std::shared_ptr<CIAOX11::Container> container =
-          this->fetch_container (cont_id);
+      std::shared_ptr<CIAOX11::Container> container = this->fetch_container (cont_id);
 
       if (!container)
       {

@@ -32,7 +32,7 @@ namespace CIAOX11
     class CIAOX11_EXF_CORE_Export DeadlineMonitor
     {
     public:
-      typedef std::shared_ptr<DeadlineMonitor>  ref_type;
+      using ref_type = std::shared_ptr<DeadlineMonitor>;
 
       DeadlineMonitor () = default;
       virtual ~DeadlineMonitor ();

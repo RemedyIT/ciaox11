@@ -46,7 +46,7 @@ namespace CIAOX11
 
       static CIAOX11_EXF_Log_Msg* getInstance();
 
-      typedef x11_logger::Log_Type_T<CIAOX11_EXF_Log_Msg> log_type;
+      using log_type = x11_logger::Log_Type_T<CIAOX11_EXF_Log_Msg>;
     };
   } // namespace ciaox11_exf_logger
 

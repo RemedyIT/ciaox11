@@ -60,10 +60,10 @@ namespace CIAOX11
 
         int svc () override;
 
-        typedef ACE_Timer_Wheel_T<ExF::ExecutionTask::ref_type,
+        using TimerQueue = ACE_Timer_Wheel_T<ExF::ExecutionTask::ref_type,
                                   ExF_Task_Timer_Upcall,
                                   ACE_SYNCH_RECURSIVE_MUTEX,
-                                  EXF_TIME_POLICY> TimerQueue;
+                                  EXF_TIME_POLICY>;
 
         TimerQueue& timer_q () { return *this->timer_q_; }
 

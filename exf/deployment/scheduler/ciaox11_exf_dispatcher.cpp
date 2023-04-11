@@ -191,7 +191,7 @@ namespace CIAOX11
         {
           // create a dispatch task for the task reference
           // ***NOTE*** moves the exec reference so 'exec' is not valid
-          //            anymore after this -> so cache prority here
+          //            anymore after this -> so cache priority here
           ExF::Priority const exec_prio = exec->priority ();
           DispatchTask::task_ref dtask =
               std::make_shared<DispatchTask> (std::move (exec), this->instance_);
@@ -382,8 +382,7 @@ namespace CIAOX11
 
         this->queue_->activate ();
 
-        int start_count =
-            this->dtp_ == DispatchThreadPolicy::DTP_SINGLE ? 1 : this->minsize_;
+        int const start_count = this->dtp_ == DispatchThreadPolicy::DTP_SINGLE ? 1 : this->minsize_;
 
         CIAOX11_EXF_LOG_DEBUG ("ExF::Impl::Dispatcher::start_i - " \
                            "starting " << start_count << " dispatcher thread(s)");
@@ -391,7 +390,7 @@ namespace CIAOX11
         for (int i=0; i<start_count ;++i)
         {
           this->threads_.push_back(std::thread(&Dispatcher::svc, this));
-          this->thread_num_++;
+          ++this->thread_num_;
         }
 
         CIAOX11_EXF_LOG_INFO ("ExF::Impl::Dispatcher::start_i - " <<
@@ -478,7 +477,6 @@ namespace CIAOX11
                       this->queue_));
           }
 
-
           CIAOX11_EXF_LOG_CRITICAL ("ExF::Impl::Dispatcher::open_dispatch_gate - "\
                                 "failed to lock dispatcher reference for "
                                 << instance_id);
@@ -515,7 +513,7 @@ namespace CIAOX11
         }
       }
 
-      void Dispatcher::svc (void)
+      void Dispatcher::svc ()
       {
         CIAOX11_EXF_LOG_INFO ("ExF::Impl::Dispatcher::svc - enter");
 
@@ -575,7 +573,7 @@ namespace CIAOX11
                         if (std::this_thread::get_id() == trd_it->get_id())
                         {
                           this->threads_.erase(trd_it);
-                          this->thread_num_--;
+                          --this->thread_num_;
                           break;
                         }
                       }
@@ -682,7 +680,7 @@ namespace CIAOX11
                 {
                   // add a new thread to the pool
                   this->threads_.push_back (std::thread (&Dispatcher::svc, this));
-                  this->thread_num_++;
+                  ++this->thread_num_;
                   CIAOX11_EXF_LOG_INFO ("ExF::Impl::Dispatcher::execute_task - "\
                                      "added extra pool thread [min="
                                      << this->minsize_ << " max="
@@ -697,7 +695,7 @@ namespace CIAOX11
                                "releasing instance");
 
             // release
-            this->busy_count_--;
+            --this->busy_count_;
             dtask->instance ()->release ();
           }
 
