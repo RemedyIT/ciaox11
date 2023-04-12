@@ -9,7 +9,6 @@ void
       "<%= operation.cxxname %>",
       std::move (rh),
       this->facet_executor_,
-      this-><%= operation.cxxname %>_priority_,
-      this-><%= operation.cxxname %>_deadline_);
+      this-><%= operation.cxxname %>_exf_settings_);
   this->scheduling_lane_->submit (std::move (exec));
 }

@@ -130,6 +130,15 @@ namespace CIAOX11
       DeadlineType    deadline_type_ {DeadlineType::DLT_NONE};
     };
 
+    /**
+     * The ExF settings for a event
+     */
+    struct Settings
+    {
+      Priority priority_ {};
+      Deadline deadline_ {};
+    };
+
     enum class SchedulerResult : uint32_t
     {
        SOK,         // operation successfully completed
@@ -151,8 +160,8 @@ namespace CIAOX11
       using ref_type = std::unique_ptr<Executor>;
 
       Executor () = default;
-      Executor (ExF::Priority prio, ExF::Deadline dltm)
-       : priority_ (prio), deadline_ (dltm) {}
+      Executor (ExF::Settings settings)
+       : settings_ (std::move(settings)) {}
       virtual ~Executor () = default;
 
       /**
@@ -183,23 +192,22 @@ namespace CIAOX11
        */
       virtual const std::string& event_id () const noexcept(true) = 0;
 
-      ExF::Priority priority () const { return this->priority_; }
-      const ExF::Deadline& deadline () const { return this->deadline_; }
+      ExF::Priority priority () const { return this->settings_.priority_; }
+      const ExF::Deadline& deadline () const { return this->settings_.deadline_; }
 
     protected:
       void set_priority_i (ExF::Priority prio) noexcept(true)
-      { this->priority_ = prio; }
+      { this->settings_.priority_ = prio; }
 
       void set_deadline_i (ExF::Deadline dl) noexcept(true)
-      { this->deadline_ = dl; }
+      { this->settings_.deadline_ = std::move(dl); }
 
     private:
       Executor (const Executor&) = delete;
       Executor (Executor&&) = delete;
       Executor& operator= (const Executor&) = delete;
       Executor& operator= (Executor&&) = delete;
-      ExF::Priority priority_ {};
-      ExF::Deadline deadline_ {};
+      ExF::Settings settings_ {};
     };
 
     /**
@@ -263,7 +271,7 @@ namespace CIAOX11
        * QFAILED is returned if opening the lane did not succeed.
        */
       virtual ExF::SchedulerResult open_scheduling_lane (
-          std::string instance_id,
+          const std::string& instance_id,
           const Components::ConfigValues& cfg,
           ::IDL::traits<ExF::SchedulingLane>::ref_type& lane) = 0;
 
@@ -273,7 +281,7 @@ namespace CIAOX11
        * QFAILED is returned if no open lane could be found.
        */
       virtual ExF::SchedulerResult find_scheduling_lane (
-          std::string instance_id,
+          const std::string& instance_id,
           ::IDL::traits<ExF::SchedulingLane>::ref_type& lane) = 0;
 
       /**
@@ -283,7 +291,7 @@ namespace CIAOX11
        * QFAILED is returned if no open lane could be found.
        */
       virtual ExF::SchedulerResult close_scheduling_lane (
-          std::string instance_id) = 0;
+          const std::string& instance_id) = 0;
 
       /**
        * Close the scheduler.

@@ -593,8 +593,6 @@ namespace CIAOX11
 
       void Dispatcher::execute_task (task_ref dtask, task_queue& local_thread_taskq)
       {
-        CIAOX11_EXF_LOG_DEBUG ("ExF::Impl::Dispatcher::execute_task -");
-
         CIAOX11_EXF_LOG_DEBUG ("ExF::Impl::Dispatcher::execute_task - " \
                            "checking instance state for " <<
                            dtask->instance_id ());

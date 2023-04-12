@@ -39,9 +39,9 @@ namespace CIAOX11
     {
     public:
       LifecycleExecutor (std::shared_ptr<LifecycleSemaphore> sem)
-       : sem_ (sem) {}
-      LifecycleExecutor (std::shared_ptr<LifecycleSemaphore> sem, ExF::Priority prio, ExF::Deadline dltm)
-       : Executor (prio, dltm), sem_ (sem) {}
+       : sem_ (std::move(sem)) {}
+      LifecycleExecutor (std::shared_ptr<LifecycleSemaphore> sem, ExF::Settings settings)
+       : Executor (std::move(settings)), sem_ (std::move(sem)) {}
       ~LifecycleExecutor () override = default;
 
       virtual void execute () noexcept(true);
@@ -159,14 +159,13 @@ namespace CIAOX11
       UninstallExecutor (
           std::shared_ptr<LifecycleSemaphore> sem,
           IDL::traits<Components::SessionComponent>::ref_type se)
-        : LifecycleExecutor (sem), session_exec_ (se) {}
+        : LifecycleExecutor (std::move(sem)), session_exec_ (std::move(se)) {}
       UninstallExecutor (
           std::shared_ptr<LifecycleSemaphore> sem,
           IDL::traits<Components::SessionComponent>::ref_type se,
-          ExF::Priority prio,
-          ExF::Deadline dltm)
-        : LifecycleExecutor (sem, prio, dltm),
-          session_exec_ (se) {}
+          ExF::Settings settings)
+        : LifecycleExecutor (std::move(sem), std::move(settings)),
+          session_exec_ (std::move(se)) {}
 
       const std::string& event_id () const noexcept(true) override
       { return event_id_; }
@@ -194,10 +193,9 @@ namespace CIAOX11
       ActivationExecutor (
           std::shared_ptr<LifecycleSemaphore> sem,
           IDL::traits<Components::SessionComponent>::ref_type se,
-          ExF::Priority prio,
-          ExF::Deadline dltm)
-        : LifecycleExecutor (sem, prio, dltm),
-          session_exec_ (se) {}
+          ExF::Settings settings)
+        : LifecycleExecutor (std::move(sem), std::move(settings)),
+          session_exec_ (std::move(se)) {}
 
       const std::string& event_id () const noexcept(true) override
       { return event_id_; }
@@ -221,14 +219,13 @@ namespace CIAOX11
       PassivationExecutor (
           std::shared_ptr<LifecycleSemaphore> sem,
           IDL::traits<Components::SessionComponent>::ref_type se)
-        : LifecycleExecutor (sem), session_exec_ (se) {}
+        : LifecycleExecutor (std::move(sem)), session_exec_ (std::move(se)) {}
       PassivationExecutor (
           std::shared_ptr<LifecycleSemaphore> sem,
           IDL::traits<Components::SessionComponent>::ref_type se,
-          ExF::Priority prio,
-          ExF::Deadline dltm)
-        : LifecycleExecutor (sem, prio, dltm),
-          session_exec_ (se) {}
+          ExF::Settings settings)
+        : LifecycleExecutor (std::move(sem), std::move(settings)),
+          session_exec_ (std::move(se)) {}
 
       const std::string& event_id () const noexcept(true) override
       { return event_id_; }
@@ -252,14 +249,13 @@ namespace CIAOX11
       ConfiguredExecutor (
           std::shared_ptr<LifecycleSemaphore> sem,
           IDL::traits<Components::SessionComponent>::ref_type se)
-        : LifecycleExecutor (sem), session_exec_ (se) {}
+        : LifecycleExecutor (std::move(sem)), session_exec_ (std::move(se)) {}
       ConfiguredExecutor (
           std::shared_ptr<LifecycleSemaphore> sem,
           IDL::traits<Components::SessionComponent>::ref_type se,
-          ExF::Priority prio,
-          ExF::Deadline dltm)
-        : LifecycleExecutor (sem, prio, dltm),
-          session_exec_ (se) {}
+          ExF::Settings settings)
+        : LifecycleExecutor (std::move(sem), std::move(settings)),
+          session_exec_ (std::move(se)) {}
 
       const std::string& event_id () const noexcept(true) override
       { return event_id_; }

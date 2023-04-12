@@ -598,8 +598,7 @@ namespace CIAOX11
 
         bool close ();
 
-        std::shared_ptr<DispatchGate> open_dispatch_gate (
-            const std::string& instance_id);
+        std::shared_ptr<DispatchGate> open_dispatch_gate (const std::string& instance_id);
 
         static std::chrono::microseconds dispatcher_dequeue_timeout;
         static size_t max_idle_pool_threads;

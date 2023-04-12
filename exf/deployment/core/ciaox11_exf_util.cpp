@@ -106,15 +106,14 @@ namespace CIAOX11
 
       bool get_exf_defaults (
           const Components::ConfigValues& config,
-          ExF::Priority& prio,
-          ExF::Deadline& deadline)
+          ExF::Settings& settings)
       {
         bool rc = false;
         for (const Components::ConfigValue& cval : config)
         {
           if (cval.name () == ExF::SCHEDULING_PRIORITY)
           {
-            if (!(cval.value () >>= prio))
+            if (!(cval.value () >>= settings.priority_))
             {
               CIAOX11_EXF_LOG_ERROR ("ExF::Util::get_exf_defaults - " <<
                                  "failed to extract " << ExF::SCHEDULING_PRIORITY);
@@ -123,7 +122,7 @@ namespace CIAOX11
             {
               CIAOX11_EXF_LOG_DEBUG ("ExF::Util::get_exf_defaults - " <<
                                  "found " << ExF::SCHEDULING_PRIORITY <<
-                                 " : " << prio);
+                                 " : " << settings.priority_);
 
               rc = true;
             }
@@ -142,7 +141,7 @@ namespace CIAOX11
                                  "found " << ExF::SCHEDULING_DEADLINE_TYPE <<
                                  " : " << type);
 
-              deadline.deadline_type_ = exf_string_to_deadline_type (type);
+              settings.deadline_.deadline_type_ = exf_string_to_deadline_type (type);
               rc = true;
             }
           }
@@ -160,7 +159,7 @@ namespace CIAOX11
                                  "found " << ExF::SCHEDULING_DEADLINE_TIME <<
                                  " : " << time);
 
-              deadline.deadline_time_ = exf_string_to_deadline_time (time);
+              settings.deadline_.deadline_time_ = exf_string_to_deadline_time (time);
               rc = true;
             }
           }
@@ -171,14 +170,13 @@ namespace CIAOX11
       void get_exf_settings (
           const Components::ConfigValues& config,
           const std::string& event,
-          ExF::Priority& prio,
-          ExF::Deadline& deadline)
+          ExF::Settings& settings)
       {
         for (const Components::ConfigValue& cval : config)
         {
           if (cval.name () == (ExF::SCHEDULING_PRIORITY + "." + event))
           {
-            if (!(cval.value () >>= prio))
+            if (!(cval.value () >>= settings.priority_))
             {
               CIAOX11_EXF_LOG_ERROR ("ExF::Util::get_exf_settings - " <<
                                  "failed to extract " << ExF::SCHEDULING_PRIORITY <<
@@ -188,7 +186,7 @@ namespace CIAOX11
             {
               CIAOX11_EXF_LOG_DEBUG ("ExF::Util::get_exf_settings - " <<
                                  "found " << ExF::SCHEDULING_PRIORITY <<
-                                 " for " << event << " : " << prio);
+                                 " for " << event << " : " << settings.priority_);
             }
           }
           else if (cval.name () == (ExF::SCHEDULING_DEADLINE_TYPE + "." + event))
@@ -206,7 +204,7 @@ namespace CIAOX11
                                  "found " << ExF::SCHEDULING_DEADLINE_TYPE <<
                                  " for " << event << " : " << type);
 
-              deadline.deadline_type_ = exf_string_to_deadline_type (type);
+              settings.deadline_.deadline_type_ = exf_string_to_deadline_type (type);
             }
           }
           else if (cval.name () == (ExF::SCHEDULING_DEADLINE_TIME + "." + event))
@@ -224,7 +222,7 @@ namespace CIAOX11
                                  "found " << ExF::SCHEDULING_DEADLINE_TIME <<
                                  " for " << event << " : " << time);
 
-              deadline.deadline_time_ = exf_string_to_deadline_time (time);
+              settings.deadline_.deadline_time_ = exf_string_to_deadline_time (time);
             }
           }
         }

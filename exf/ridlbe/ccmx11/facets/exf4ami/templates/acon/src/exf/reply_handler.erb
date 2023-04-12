@@ -2,13 +2,11 @@
 <%= interface_type.ami4ccm_reply_handler %>::<%= interface_type.ami4ccm_reply_handler %> (
   IDL::traits<<%= interface_type.scoped_enclosure_cxxname %>::<%= interface_type.ami4ccm_ReplyHandler %>>::ref_type callback,
   IDL::traits<::PortableServer::POA>::ref_type poa,
-  CIAOX11::ExF::Deadline dead_line,
-  CIAOX11::ExF::Priority priority,
+  CIAOX11::ExF::Settings exf_settings,
   IDL::traits<CIAOX11::ExF::SchedulingLane>::ref_type scheduling_lane)
   : callback_(std::move (callback)),
     poa_(std::move (poa)),
-    deadline_(std::move (dead_line)),
-    priority_(std::move (priority)),
+    exf_settings_(std::move (exf_settings)),
     scheduling_lane_(std::move (scheduling_lane))
 {
 }

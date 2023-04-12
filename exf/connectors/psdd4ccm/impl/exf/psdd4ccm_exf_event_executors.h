@@ -32,11 +32,10 @@ namespace CIAOX11
       {
       public:
         PSDDDataListenerExecutor (
-            ExF::Priority prio,
-            ExF::Deadline dltm,
+            ExF::Settings settings,
             typename IDL::traits<HANDLER>::ref_type dh,
             typename IDL::traits<LISTENER>::weak_ref_type dl)
-          : Executor (prio, dltm)
+          : Executor (std::move(settings))
           , dh_ (dh.weak_reference ())
           , dl_ (std::move (dl))
         {}

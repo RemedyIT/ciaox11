@@ -26,28 +26,24 @@ void
                                    CIAOX11::ExF::SCHEDULING_LANE_REF +
                                   " for AMI4CCM connector");
       }
-      this->scheduling_lane_ =
-        IDL::traits<CIAOX11::ExF::SchedulingLane>::narrow (objref);
+      this->scheduling_lane_ = IDL::traits<CIAOX11::ExF::SchedulingLane>::narrow (objref);
     }
   }
 
   if (this->scheduling_lane_)
   {
     // Get scheduling settings
-    CIAOX11::ExF::Priority def_prio {};
-    CIAOX11::ExF::Deadline def_deadline {};
-    if (CIAOX11::ExF::Util::get_exf_defaults (config, def_prio, def_deadline))
+    CIAOX11::ExF::Settings def_settings {};
+    if (CIAOX11::ExF::Util::get_exf_defaults (config, def_settings))
     {
 %  if interface_type.all_operations.size > 0
 %   interface_type.all_operations.each do |_op|
-      this-><%=_op.name %>_deadline_ = def_deadline;
-      this-><%=_op.name %>_priority_ = def_prio;
+      this-><%=_op.name %>_exf_settings_ = def_settings;
 %   end
 %  end
 %  if interface_type.all_attributes.size > 0
 %   interface_type.all_attributes.each do |_att|
-      this-><%=_att.name %>_deadline_ = def_deadline;
-      this-><%=_att.name %>_priority_ = def_prio;
+      this-><%=_att.name %>_exf_settings_ = def_settings;
 %   end
 %  end
     }
@@ -55,14 +51,14 @@ void
   // check for scheduling properties
 %  if interface_type.all_operations.size > 0
 %   interface_type.all_operations.each do |_op|
-  CIAOX11::ExF::Util::get_exf_settings (config, "<%=_op.name.sub('sendc_','') %>", this-><%=_op.name %>_priority_, this-><%=_op.name %>_deadline_);
+  CIAOX11::ExF::Util::get_exf_settings (config, "<%=_op.name.sub('sendc_','') %>", this-><%=_op.name %>_exf_settings_);
 %   end
 %  end
 %  if interface_type.all_attributes.size > 0
 %   interface_type.all_attributes.each do |_att|
-  CIAOX11::ExF::Util::get_exf_settings (config, "get_<%=_attr.name.sub('sendc_','') %>", this-><%=_attr.name %>_priority_, this-><%=_attr.name %>_deadline_);
+  CIAOX11::ExF::Util::get_exf_settings (config, "get_<%=_attr.name.sub('sendc_','') %>", this-><%=_attr.name %>_exf_settings_);
 %    unless attribute.is_readonly?
-  CIAOX11::ExF::Util::get_exf_settings (config, "set_<%=_attr.name.sub('sendc_','') %>", this-><%=_attr.name %>_priority_, this-><%=_attr.name %>_deadline_);
+  CIAOX11::ExF::Util::get_exf_settings (config, "set_<%=_attr.name.sub('sendc_','') %>", this-><%=_attr.name %>_exf_settings_);
 %    end
 %   end
 %  end
@@ -75,8 +71,7 @@ CORBA::amic_traits<<%= _derived_scoped_interface %>>::ref_type
 <%= lem_name %>_exec_i::get_receptacle_and_handler (
   const IDL::traits<<%= interface_type.scoped_enclosure_cxxname %>::<%= _reply_handler_interface %>>::ref_type& ami4ccm_reply_handler,
   CORBA::amic_traits<<%= _derived_scoped_interface %>>::replyhandler_ref_type& reply_handler,
-  CIAOX11::ExF::Deadline dead_line,
-  CIAOX11::ExF::Priority priority)
+  CIAOX11::ExF::Settings exf_settings)
 {
   // Get the receptacle pointing to the provider component
   IDL::traits<<%= _derived_scoped_interface %>>::ref_type receptacle_obj =
@@ -104,8 +99,7 @@ CORBA::amic_traits<<%= _derived_scoped_interface %>>::ref_type
       CORBA::make_reference<<%= interface_type.cxxname %>_reply_handler> (
                                         ami4ccm_reply_handler,
                                         this->ami_poa_,
-                                        dead_line,
-                                        priority,
+                                        std::move(exf_settings),
                                         this->scheduling_lane_);
 
     ::PortableServer::ObjectId const oid = this->ami_poa_->activate_object (std::move(handler));

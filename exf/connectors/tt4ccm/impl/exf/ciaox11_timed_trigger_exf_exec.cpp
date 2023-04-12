@@ -73,8 +73,7 @@ namespace CIAOX11_TT_TimedTrigger_Impl
                                               ACE_Time_Value (ts_interval),
                                               max_rounds,
                                               this->scheduling_lane_,
-                                              this->get_exf_tts_priority_,
-                                              this->get_exf_tts_deadline_);
+                                              this->get_exf_tts_settings_);
     }
     catch (...)
     {
@@ -109,17 +108,14 @@ namespace CIAOX11_TT_TimedTrigger_Impl
      if (this->scheduling_lane_)
      {
        // get scheduling settings
-       CIAOX11::ExF::Priority def_prio {};
-       CIAOX11::ExF::Deadline def_deadline {};
-       if (CIAOX11::ExF::Util::get_exf_defaults (
-               config, def_prio, def_deadline))
+       CIAOX11::ExF::Settings def_settings {};
+       if (CIAOX11::ExF::Util::get_exf_defaults (config, def_settings))
        {
-         this->get_exf_tts_deadline_ = def_deadline;
-         this->get_exf_tts_priority_ = def_prio;
+         this->get_exf_tts_settings_ = def_settings;
         }
 
        // check for scheduling properties
-       CIAOX11::ExF::Util::get_exf_settings (config, "handle_trigger", this->get_exf_tts_priority_, this->get_exf_tts_deadline_);
+       CIAOX11::ExF::Util::get_exf_settings (config, "handle_trigger", this->get_exf_tts_settings_);
      }
    }
 

@@ -34,16 +34,16 @@ namespace CIAOX11
         ~Scheduler () override;
 
         ExF::SchedulerResult open_scheduling_lane (
-            std::string instance_id,
+            const std::string& instance_id,
             const Components::ConfigValues& cfg,
             ::IDL::traits<ExF::SchedulingLane>::ref_type& lane) override;
 
         ExF::SchedulerResult find_scheduling_lane (
-            std::string instance_id,
+            const std::string& instance_id,
             ::IDL::traits<ExF::SchedulingLane>::ref_type& lane) override;
 
         ExF::SchedulerResult close_scheduling_lane (
-            std::string instance_id) override;
+            const std::string& instance_id) override;
 
         void close () override;
 

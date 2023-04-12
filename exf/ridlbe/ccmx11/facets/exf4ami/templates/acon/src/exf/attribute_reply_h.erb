@@ -12,8 +12,7 @@ void
       "get_<%= attribute.cxxname %>",
       this->callback_,
       ami_return_val,
-      this->deadline_,
-      this->priority_);
+      this->exf_settings_);
   this->scheduling_lane_->submit (std::move (exec));
 }
 
@@ -33,8 +32,7 @@ void
       "get_<%= attribute.cxxname %>_excep",
       this->callback_,
       std::move (holder),
-      this->deadline_,
-      this->priority_);
+      this->exf_settings_);
   this->scheduling_lane_->submit (std::move (exec));
 }
 % unless attribute.is_readonly?
@@ -50,8 +48,7 @@ void
     std::make_unique<set_<%= attribute.cxxname %>_<%= receptacle_port.interface_type.scoped_cxxname.identify %>_Executor> (
       "set_<%= attribute.cxxname %>",
       this->callback_,
-      this->deadline_,
-      this->priority_);
+      this->exf_settings_);
   this->scheduling_lane_->submit (std::move (exec));
 }
 
@@ -71,8 +68,7 @@ void
       "set_<%= attribute.cxxname %>_excep",
       this->callback_,
       std::move (holder),
-      this->deadline_,
-      this->priority_);
+      this->exf_settings_);
   this->scheduling_lane_->submit (std::move (exec));
 }
 % end

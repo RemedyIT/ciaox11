@@ -49,14 +49,12 @@ private:
 
 %if interface_type.all_operations.size > 0
 %  interface_type.all_operations.each do |_op|
-  CIAOX11::ExF::Deadline <%=_op.name %>_deadline_ {};
-  CIAOX11::ExF::Priority <%= _op.name %>_priority_ {};
+  CIAOX11::ExF::Settings <%=_op.name %>_exf_settings_ {};
 %  end
 %end
 %if interface_type.all_attributes.size > 0
 %  interface_type.all_attributes.each do |_att|
-  CIAOX11::ExF::Deadline <%= _att.name %>_deadline_ {};
-  CIAOX11::ExF::Priority <%= _att.name %>_priority_ {};
+  CIAOX11::ExF::Settings <%= _att.name %>_exf_settings_ {};
 %  end
 %end
 
@@ -65,8 +63,7 @@ private:
   get_receptacle_and_handler (
     const IDL::traits<<%= interface_type.scoped_enclosure_cxxname %>::<%= _reply_handler_interface %>>::ref_type& ami4ccm_reply_handler,
     CORBA::amic_traits<<%= _derived_scoped_interface %>>::replyhandler_ref_type& reply_handler,
-    CIAOX11::ExF::Deadline dead_line,
-    CIAOX11::ExF::Priority priority);
+    CIAOX11::ExF::Settings exf_settings);
 
 % end
   /** @name Illegal to be called. Deleted explicitly to let the compiler detect any violation */

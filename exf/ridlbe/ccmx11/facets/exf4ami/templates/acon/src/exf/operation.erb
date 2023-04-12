@@ -24,8 +24,7 @@
   CORBA::amic_traits<<%= _derived_scoped_interface %>>::ref_type corba_ami_stub =
     this->get_receptacle_and_handler (ami4ccm_reply_handler,
                                       corba_ami_reply_handler,
-                                      this-><%=operation.cxxname %>_deadline_,
-                                      this-><%=operation.cxxname %>_priority_);
+                                      this-><%=operation.cxxname %>_exf_settings_);
 
 %   _args = operation.arguments.dup
 %   _arg = _args.shift
