@@ -441,7 +441,6 @@ namespace CIAOX11
           CIAOX11_EXF_LOG_INFO ("ExF::Impl::Dispatcher::open_dispatch_gate - "\
                              "opening dispatcher gate for " << instance_id);
 
-
           instance_ref inst {};
           INSTANCE_MAP::iterator it = this->instance_map_.find (instance_id);
           if (it != this->instance_map_.end ())
@@ -463,7 +462,8 @@ namespace CIAOX11
           }
           else
           {
-            inst = instance_ref (new Instance (instance_id));
+            // TODO SETTING
+            inst = instance_ref (new Instance (instance_id, 1));
             this->instance_map_.insert (INSTANCE_PAIR (instance_id, inst));
           }
 
