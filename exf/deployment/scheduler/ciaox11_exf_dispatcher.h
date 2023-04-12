@@ -88,26 +88,49 @@ namespace CIAOX11
           /// Allocate this instance for executing a next task
           /// @retval true Instance has been allocated for a next task
           /// @retval false Instance was not allocated, already busy with a task
+          /// @note This operation must be called from the dispatcher with
+          /// its _g_queue lock held, this operation is *NOT* thread safe
+          /// in itself
           bool allocate ()
-          { return !this->busy_.exchange(true); }
+          {
+            // When have a concurrent flag greater as zero we can dispatch
+            // a task to it
+            if (this->concurrent_ > 0)
+            {
+              --concurrent_;
+              return true;
+            }
+            return false;
+          }
 
-          /// Tag this instance ready for the next task
+          /// A event is ready we release this instance so that it can be
+          /// scheduled for another event
+          /// @note This operation must be called from the dispatcher with
+          /// its _g_queue lock held, this operation is *NOT* thread safe
+          /// in itself
           void release ()
-          { this->busy_ = false; }
+          { ++this->concurrent_; }
 
         private:
           friend class Dispatcher;
 
-          explicit Instance (std::string id)
-            : instance_id_ (std::move(id)) {}
+          explicit Instance (std::string id, size_t concurrent)
+            : instance_id_ (std::move(id)), concurrent_ (concurrent) {}
           Instance () = delete;
           Instance (const Instance&) = delete;
           Instance (Instance&&) = delete;
           Instance& operator= (const Instance&) = delete;
           Instance& operator= (Instance&&) = delete;
 
+          /// Unique id for this instance
           std::string const instance_id_;
-          std::atomic_bool busy_ {};
+          /// How many concurrent events can we still dispatch to the instance.
+          /// This has a default value of 1 (single threade), but can be configured
+          /// to a higher number to allow multiple threads to execute events
+          /// on the instance.
+          /// A new event can be dispatched when this counter has a value greater
+          /// than
+          size_t concurrent_ {};
           std::atomic_bool closed_ {};
         }; /* class Instance */
 
