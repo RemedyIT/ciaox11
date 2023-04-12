@@ -98,8 +98,8 @@ namespace CIAOX11
         private:
           friend class Dispatcher;
 
-          explicit Instance (const std::string& id)
-            : instance_id_ (id) {}
+          explicit Instance (std::string id)
+            : instance_id_ (std::move(id)) {}
           Instance () = delete;
           Instance (const Instance&) = delete;
           Instance (Instance&&) = delete;
