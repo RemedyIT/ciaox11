@@ -526,7 +526,6 @@ namespace CIAOX11
           alloc_list_type           allocations_ {};
 
           // linked lists are linked from tail -> head
-
           QEntry*                   head_ {};
           QEntry*                   tail_ {};
           std::atomic<uint64_t>     count_ {};
@@ -537,7 +536,7 @@ namespace CIAOX11
           uint64_t                  seqnr_ {};
           std::mutex                mutex_ {};
           std::condition_variable   condition_ {};
-          std::atomic_bool         shutdown_ {};
+          std::atomic_bool          shutdown_ {};
 
           using cmp_type = std::function<bool (const QEntry&, const QEntry&)>;
 
