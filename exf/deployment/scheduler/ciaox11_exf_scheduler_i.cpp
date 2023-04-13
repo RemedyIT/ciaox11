@@ -301,7 +301,7 @@ namespace CIAOX11
               return SchedulerResult::SFAILED;
             }
           }
-          else if (cval.name () == ExF::SCHEDULING_CONCURRENT)
+          else if (cval.name () == ExF::SCHEDULING_LANE_DISPATCH_CONCURRENT)
           {
             if (!this->get_uint16_t (cval, concurrent))
             {

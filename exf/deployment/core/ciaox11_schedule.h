@@ -52,6 +52,9 @@ namespace CIAOX11
     const std::string SCHEDULING_LANE_GROUPED_DISPATCH = "GROUPED"; // shared (single or multi threaded) dispatcher for grouped component executors
     // any other value or missing == non-exclusive (default)
 
+    // string value; number of concurrent events that maybe be dispatched on a component
+    const std::string SCHEDULING_LANE_DISPATCH_CONCURRENT = "nl.remedy.it.Axcioma.ExF.SchedulingLane.Dispatch.Concurrent";
+
     // string value; queuing policy for EXCLUSIVE and GROUPED scheduling lanes
     const std::string SCHEDULING_LANE_QUEUE_POLICY = "nl.remedy.it.Axcioma.ExF.SchedulingLane.Queue.Policy";
 
@@ -66,9 +69,6 @@ namespace CIAOX11
     const std::string SCHEDULING_LANE_THREAD_COUNT = "nl.remedy.it.Axcioma.ExF.SchedulingLane.Thread.Count";
     // uint16_t value; maximum size of dynamic thread pool
     const std::string SCHEDULING_LANE_THREAD_MAXCOUNT = "nl.remedy.it.Axcioma.ExF.SchedulingLane.Thread.MaxCount";
-
-    // string value; number of concurrent events that maybe be dispatched on a component
-    const std::string SCHEDULING_CONCURRENT = "nl.remedy.it.Axcioma.ExF.Concurrent";
 
     // uint16_t; 0-255
     const std::string SCHEDULING_PRIORITY = "nl.remedy.it.Axcioma.ExF.Priority";
