@@ -61,6 +61,7 @@ namespace Hello_Receiver_Impl
       std::string& answer)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::do_my_foo_exec_i::foo[_in_str_answer]
+    CIAOX11_TEST_INFO << "OK: Receiver_exec_i::do_my_foo_exec_i::foo is called" << std::endl;
     if (in_str.empty())
     {
       Hello::InternalError ex (42, "Hello world");
@@ -79,7 +80,7 @@ namespace Hello_Receiver_Impl
       int32_t& answer)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::do_my_foo_exec_i::hello[_answer]
-    this->nr_of_messages_++;
+    ++this->nr_of_messages_;
     CIAOX11_TEST_INFO <<
         "OK: Receiver_exec_i::do_my_foo_exec_i::hello is called <"
         << this->nr_of_messages_<< "> time(s)." << std::endl;
@@ -98,6 +99,7 @@ namespace Hello_Receiver_Impl
   do_my_foo_exec_i::return_something ()
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::do_my_foo_exec_i::return_something[void]
+    CIAOX11_TEST_INFO << "OK: Receiver_exec_i::do_my_foo_exec_i::return_something is called" << std::endl;
     return 5;
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::do_my_foo_exec_i::return_something[void]
   }
@@ -110,8 +112,15 @@ namespace Hello_Receiver_Impl
       std::string& answer2)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::do_my_foo_exec_i::bar[_in_str_in_str2_answer_answer2]
-    X11_UNUSED_ARG(in_str);
-    X11_UNUSED_ARG(in_str2);
+    CIAOX11_TEST_INFO << "OK: Receiver_exec_i::do_my_foo_exec_i::bar is called" << std::endl;
+    if (in_str != "bar1")
+    {
+      CIAOX11_TEST_ERROR <<"ERROR do_my_foo_exec_i::bar received in_str <" << in_str << ">" << std::endl;
+    }
+    if (in_str2 != "bar2")
+    {
+      CIAOX11_TEST_ERROR <<"ERROR do_my_foo_exec_i::bar received in_str2 <" << in_str2 << ">" << std::endl;
+    }
     answer = "answer1";
     answer2 = "answer2";
     return 77;
@@ -122,6 +131,7 @@ namespace Hello_Receiver_Impl
   do_my_foo_exec_i::rw_attrib ()
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::do_my_foo_exec_i::rw_attrib[getter]
+    CIAOX11_TEST_INFO << "OK: Receiver_exec_i::do_my_foo_exec_i::get_rw_attrib is called" << std::endl;
     return 100;
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::do_my_foo_exec_i::rw_attrib[getter]
   }
@@ -131,7 +141,8 @@ namespace Hello_Receiver_Impl
       int16_t rw_attrib)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::do_my_foo_exec_i::rw_attrib[setter]
-    //throw exceptions for test purpose
+    CIAOX11_TEST_INFO << "OK: Receiver_exec_i::do_my_foo_exec_i::set_rw_attrib is called" << std::endl;
+    // Throw exceptions for test purpose
     if (rw_attrib == 0)
     {
       Hello::InternalError ex (42, "Hello world");
@@ -144,6 +155,7 @@ namespace Hello_Receiver_Impl
   do_my_foo_exec_i::ro_attrib ()
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::do_my_foo_exec_i::ro_attrib[getter]
+    CIAOX11_TEST_INFO << "OK: Receiver_exec_i::do_my_foo_exec_i::get_ro_attrib is called" << std::endl;
     std::this_thread::sleep_for (std::chrono::seconds (2));
     return 200;
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::do_my_foo_exec_i::ro_attrib[getter]
@@ -209,8 +221,7 @@ namespace Hello_Receiver_Impl
 
     if (!this->do_my_foo_)
     {
-      this->do_my_foo_ =
-        CORBA::make_reference <do_my_foo_exec_i> (this->context_);
+      this->do_my_foo_ = CORBA::make_reference <do_my_foo_exec_i> (this->context_);
     }
     return this->do_my_foo_;
   //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::Receiver_exec_i[get_do_my_foo]
