@@ -271,10 +271,11 @@ namespace CIAOX11
       {
         CIAOX11_EXF_LOG_DEBUG ("ExF::Impl::Scheduler::open_scheduling_lane -");
 
-        // lane settings
+        // Lane settings
         DispatchPolicyType lane_dispatch { DispatchPolicyType::DEFAULT };
         DispatchQueuePolicy lane_pol {this->lane_queue_policy_};
         std::string lane_group {};
+        // Default number of events we will schedule onto a component instance
         uint16_t concurrent { 1 };
 
         // analyze provided configuration
