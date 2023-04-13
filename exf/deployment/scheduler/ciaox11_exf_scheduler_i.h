@@ -61,7 +61,7 @@ namespace CIAOX11
         bool get_queue_policy (
             const Components::ConfigValue&,
             ExF::Impl::DispatchQueuePolicy&);
-        bool get_count (
+        bool get_uint16_t (
             const Components::ConfigValue&,
             uint16_t&);
         bool get_group (
