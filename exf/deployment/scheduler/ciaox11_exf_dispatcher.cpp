@@ -439,7 +439,8 @@ namespace CIAOX11
         if (this->queue_)
         {
           CIAOX11_EXF_LOG_INFO ("ExF::Impl::Dispatcher::open_dispatch_gate - "\
-                             "opening dispatcher gate for " << instance_id);
+                             "opening dispatcher gate for " << instance_id <<
+                             " with concurrent " << concurrent);
 
           instance_ref inst {};
           INSTANCE_MAP::iterator it = this->instance_map_.find (instance_id);
@@ -693,7 +694,11 @@ namespace CIAOX11
 
             // release
             --this->busy_count_;
-            dtask->instance ()->release ();
+            {
+              std::lock_guard<std::mutex> _q_guard (this->q_lock_);
+
+              dtask->instance ()->release ();
+            }
           }
 
           CIAOX11_EXF_LOG_DEBUG ("ExF::Impl::Dispatcher::execute_task - " \
