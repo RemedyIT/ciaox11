@@ -162,8 +162,9 @@ Non-exclusive Scheduling lanes are associated with a _shared_ Dispatcher which c
 (default), static threadpool (fixed thread count) or dynamic threadpool (minimum and maximum threadcount) operation.
 With multi threaded operation (static or dynamic) the Dispatcher will run multiple threads simultaneously dequeuing
 and routing scheduled events. Each component instance associated with the Dispatcher through the Non-exclusive
-Scheduling Lane will however be guaranteed to only be offered a single event to handle at anyone time (i.e. each
-thread will always dispatch events for a different component instance as another thread at that time).
+Scheduling Lane will however by default be guaranteed to only be offered a single event to handle at anyone time (i.e. each
+thread will always dispatch events for a different component instance as another thread at that time). See
+below for how to configure that a component instance may be offered multiple events at anyone time.
 
 === Deployment options
 
@@ -275,13 +276,18 @@ The following properties are available.
 [width="100%",cols="<34%a,<10%a,<55%a",options="header",]
 |=======================================================================
 |Property ID |Type |Description
-|nl.remedy.it.Axcioma.ExF.SchedulingLane.Dispatch.Policy| string
+|nl.remedy.it.Axcioma.ExF.SchedulingLane.Dispatch.Policy|string
 |Specifies the dispatch policy for the Scheduler attached to the scheduling lane for a component instance. Currently supports
 3 options:
 
 * "EXCLUSIVE" : configures an exclusive Scheduler for a component instance
 * "GROUPED" : configures a shared Scheduler for a used defined group of component instances
 * _unset_ (or any unmatched value) : configures to use the default non-exclusive Scheduler
+
+|nl.remedy.it.Axcioma.ExF.SchedulingLane.Dispatch.Concurrent|uint16
+|Specifies how many events may be dispatched to a component instance at anyone time.
+The default is 1. At the moment this value is set to any other value the component business
+logic *must* be thread safe.
 
 |nl.remedy.it.Axcioma.ExF.SchedulingLane.Group |string
 |Specifies a user defined group ID for a _GROUPED_ Scheduler
