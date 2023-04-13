@@ -7,5 +7,5 @@
 project : ciaox11, taox11_lib {
   libpaths += ../lib
   libout = ../lib
-  includes += . .. ../base ../base/generated_code generated_code
+  includes += .. ../base ../base/generated_code generated_code
 }
