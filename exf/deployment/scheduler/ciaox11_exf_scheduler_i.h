@@ -64,7 +64,7 @@ namespace CIAOX11
         bool get_uint16_t (
             const Components::ConfigValue&,
             uint16_t&);
-        bool get_group (
+        bool get_string (
             const Components::ConfigValue&,
             std::string&);
         bool get_dispatch_policy (

@@ -157,14 +157,14 @@ namespace CIAOX11
         return true;
       }
 
-      bool Scheduler::get_group (
+      bool Scheduler::get_string (
           const Components::ConfigValue& cval,
           std::string& group)
       {
         std::string val;
         if (!(cval.value () >>= val))
         {
-          CIAOX11_EXF_LOG_ERROR ("ExF::Impl::Scheduler::get_group - "
+          CIAOX11_EXF_LOG_ERROR ("ExF::Impl::Scheduler::get_string - "
                              "failed to extract value for "
                              << cval.name ());
           return false;
@@ -172,7 +172,7 @@ namespace CIAOX11
         else
         {
           group = val;
-          CIAOX11_EXF_LOG_DEBUG ("ExF::Impl::Scheduler::get_group - "
+          CIAOX11_EXF_LOG_DEBUG ("ExF::Impl::Scheduler::get_string - "
                              << cval.name () << " group = " << group);
         }
         return true;
@@ -296,7 +296,7 @@ namespace CIAOX11
           }
           else if (cval.name () == ExF::SCHEDULING_LANE_GROUP_ID)
           {
-            if (!this->get_group (cval, lane_group))
+            if (!this->get_string (cval, lane_group))
             {
               return SchedulerResult::SFAILED;
             }
