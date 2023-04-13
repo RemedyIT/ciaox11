@@ -1,4 +1,4 @@
-Like the CIAOX11 extended hello example, this example also follows the filosophy
+Like the CIAOX11 extended hello example, this example also follows the philosophy
 of AXCIOMA.
 The four 'parts':
 
