@@ -275,6 +275,7 @@ namespace CIAOX11
         DispatchPolicyType lane_dispatch { DispatchPolicyType::DEFAULT };
         DispatchQueuePolicy lane_pol {this->lane_queue_policy_};
         std::string lane_group {};
+        uint16_t concurrent { 1 };
 
         // analyze provided configuration
         for (const Components::ConfigValue& cval : cfg)
@@ -296,6 +297,13 @@ namespace CIAOX11
           else if (cval.name () == ExF::SCHEDULING_LANE_GROUP_ID)
           {
             if (!this->get_group (cval, lane_group))
+            {
+              return SchedulerResult::SFAILED;
+            }
+          }
+          else if (cval.name () == ExF::SCHEDULING_CONCURRENT)
+          {
+            if (!this->get_count (cval, concurrent))
             {
               return SchedulerResult::SFAILED;
             }
@@ -345,10 +353,11 @@ namespace CIAOX11
             }
 
             CIAOX11_EXF_LOG_DEBUG ("ExF::Impl::Scheduler::open_scheduling_lane - "\
-                               "opening dispatch gate for " << instance_id);
+                                 "opening dispatch gate for " << instance_id <<
+                                 " with concurrent " << concurrent);
 
             // open a gate on the dispatcher
-            ExF::Impl::Dispatcher::gate_ref gate = dispatcher->open_dispatch_gate (instance_id);
+            ExF::Impl::Dispatcher::gate_ref gate = dispatcher->open_dispatch_gate (instance_id, concurrent);
             if (gate)
             {
               // create the exclusive scheduling lane
@@ -422,10 +431,11 @@ namespace CIAOX11
               this->groups_.insert (GROUP_PAIR (lane_group, GROUP_ENTRY {dispatcher}));
 
               CIAOX11_EXF_LOG_DEBUG ("ExF::Impl::Scheduler::open_scheduling_lane - "\
-                                 "opening dispatch gate for " << instance_id);
+                                 "opening dispatch gate for " << instance_id <<
+                                 " with concurrent " << concurrent);
 
               // open a gate on the dispatcher
-              ExF::Impl::Dispatcher::gate_ref gate = dispatcher->open_dispatch_gate (instance_id);
+              ExF::Impl::Dispatcher::gate_ref gate = dispatcher->open_dispatch_gate (instance_id, concurrent);
               if (gate)
               {
                 // create the exclusive scheduling lane
@@ -435,11 +445,12 @@ namespace CIAOX11
             else
             {
               CIAOX11_EXF_LOG_DEBUG ("ExF::Impl::Scheduler::open_scheduling_lane - "\
-                                 "opening dispatch gate for " << instance_id);
+                                 "opening dispatch gate for " << instance_id <<
+                                 " with concurrent " << concurrent);
 
               // open a gate on the dispatcher
               ExF::Impl::Dispatcher::gate_ref gate =
-                  it->second.dispatcher_->open_dispatch_gate (instance_id);
+                  it->second.dispatcher_->open_dispatch_gate (instance_id, concurrent);
               if (gate)
               {
                 // create the exclusive scheduling lane
@@ -490,11 +501,12 @@ namespace CIAOX11
             }
 
             CIAOX11_EXF_LOG_DEBUG ("ExF::Impl::Scheduler::open_scheduling_lane - "\
-                               "opening dispatch gate for " << instance_id);
+                                 "opening dispatch gate for " << instance_id <<
+                                 " with concurrent " << concurrent);
 
             // open a gate on the default dispatcher
             ExF::Impl::Dispatcher::gate_ref gate =
-                this->default_dispatcher_->open_dispatch_gate (instance_id);
+                this->default_dispatcher_->open_dispatch_gate (instance_id, concurrent);
             if (gate)
             {
               // create the non-exclusive scheduling lane

@@ -67,6 +67,9 @@ namespace CIAOX11
     // uint16_t value; maximum size of dynamic thread pool
     const std::string SCHEDULING_LANE_THREAD_MAXCOUNT = "nl.remedy.it.Axcioma.ExF.SchedulingLane.Thread.MaxCount";
 
+    // string value; number of concurrent events that maybe be dispatched on a component
+    const std::string SCHEDULING_CONCURRENT = "nl.remedy.it.Axcioma.ExF.Concurrent";
+
     // uint16_t; 0-255
     const std::string SCHEDULING_PRIORITY = "nl.remedy.it.Axcioma.ExF.Priority";
     // string
@@ -79,7 +82,6 @@ namespace CIAOX11
     // where '9' is digit; range for number is 0 - std::numeric_limits<uint32_t>::max ()
     // 'tt' is time unit 'ns' == nanosec, 'us' == microsec, 'ms' == millisec 's' == sec, 'm' == minutes or 'h' == hours
     const std::string SCHEDULING_DEADLINE_TIME = "nl.remedy.it.Axcioma.ExF.Deadline.Time";
-
 
     /**
      * The priority specifies the scheduling priority to be used for

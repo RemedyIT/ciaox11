@@ -114,7 +114,7 @@ namespace CIAOX11
         private:
           friend class Dispatcher;
 
-          explicit Instance (std::string id, size_t concurrent)
+          explicit Instance (std::string id, uint16_t concurrent)
             : instance_id_ (std::move(id)), concurrent_ (concurrent) {}
           Instance () = delete;
           Instance (const Instance&) = delete;
@@ -130,7 +130,7 @@ namespace CIAOX11
           /// on the instance.
           /// A new event can be dispatched when this counter has a value greater
           /// than
-          size_t concurrent_ {};
+          uint16_t concurrent_ {};
           std::atomic_bool closed_ {};
         }; /* class Instance */
 
@@ -620,7 +620,7 @@ namespace CIAOX11
 
         bool close ();
 
-        std::shared_ptr<DispatchGate> open_dispatch_gate (const std::string& instance_id);
+        std::shared_ptr<DispatchGate> open_dispatch_gate (const std::string& instance_id, uint16_t concurrent);
 
         static std::chrono::microseconds dispatcher_dequeue_timeout;
         static size_t max_idle_pool_threads;

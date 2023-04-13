@@ -430,7 +430,7 @@ namespace CIAOX11
 
       Dispatcher::gate_ref
       Dispatcher::open_dispatch_gate (
-          const std::string& instance_id)
+          const std::string& instance_id, uint16_t concurrent)
       {
         CIAOX11_EXF_LOG_DEBUG ("ExF::Impl::Dispatcher::open_dispatch_gate");
 
@@ -462,8 +462,7 @@ namespace CIAOX11
           }
           else
           {
-            // TODO SETTING
-            inst = instance_ref (new Instance (instance_id, 1));
+            inst = instance_ref (new Instance (instance_id, concurrent));
             this->instance_map_.insert (INSTANCE_PAIR (instance_id, inst));
           }
 
