@@ -131,6 +131,10 @@ namespace CIAOX11
           /// A new event can be dispatched when this counter has a value greater
           /// than
           uint16_t concurrent_ {};
+          /// A reference to an instance is stored in the tasks that are scheduled.
+          /// This flag is to prevent that we execute tasks that are for an instance
+          /// that is closed in the time the task is in the queue between scheduling
+          /// and execution
           std::atomic_bool closed_ {};
         }; /* class Instance */
 
