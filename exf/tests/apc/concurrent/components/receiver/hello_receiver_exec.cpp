@@ -55,78 +55,11 @@ namespace Hello_Receiver_Impl
 
   /** Operations and attributes from do_my_foo */
 
-  int32_t
-  do_my_foo_exec_i::foo (
-      const std::string& in_str,
-      std::string& answer)
-  {
-    //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::do_my_foo_exec_i::foo[_in_str_answer]
-    answer = "Hello you " + in_str;
-    return 300;
-    //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::do_my_foo_exec_i::foo[_in_str_answer]
-  }
-
   void
-  do_my_foo_exec_i::hello (
-      int32_t& answer)
+  do_my_foo_exec_i::hello ()
   {
-    //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::do_my_foo_exec_i::hello[_answer]
-    this->nr_of_messages_++;
-    CIAOX11_TEST_INFO <<
-        "OK: Receiver_exec_i::do_my_foo_exec_i::hello is called <"
-        << this->nr_of_messages_<< "> time(s)." << std::endl;
-
-    //throw exceptions for test purpose
-    if (this->nr_of_messages_ == 3 || this->nr_of_messages_ == 4)
-    {
-      Hello::InternalError ex (42, "Hello world");
-      throw ex;
-    }
-    else
-    {
-      answer = 10 + this->nr_of_messages_;
-    }
-    //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::do_my_foo_exec_i::hello[_answer]
-  }
-
-  int16_t
-  do_my_foo_exec_i::rw_attrib ()
-  {
-    //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::do_my_foo_exec_i::rw_attrib[getter]
-    return 100;
-    //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::do_my_foo_exec_i::rw_attrib[getter]
-  }
-
-  void
-  do_my_foo_exec_i::rw_attrib (
-      int16_t rw_attrib)
-  {
-    //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::do_my_foo_exec_i::rw_attrib[setter]
-    if (rw_attrib == 0)
-    {
-      Hello::InternalError ex (42, "Hello world");
-      throw ex;
-    }
-    //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::do_my_foo_exec_i::rw_attrib[setter]
-  }
-
-  int16_t
-  do_my_foo_exec_i::ro_attrib ()
-  {
-    //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::do_my_foo_exec_i::ro_attrib[getter]
-    if (this->get_ro_)
-    {
-      this->get_ro_ = false;
-      Hello::InternalError ex (42, "Hello world");
-      throw ex;
-    }
-    else
-    {
-      std::this_thread::sleep_for (std::chrono::seconds (2));
-      this->get_ro_ = true;
-    }
-    return 200;
-    //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::do_my_foo_exec_i::ro_attrib[getter]
+    //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::do_my_foo_exec_i::hello[void]
+    //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::do_my_foo_exec_i::hello[void]
   }
 
   /**

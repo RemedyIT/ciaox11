@@ -55,12 +55,6 @@ namespace Hello_Sender_Impl
     {
       excep_holder->raise_exception ();
     }
-    catch (const Hello::InternalError& ex)
-    {
-      CIAOX11_TEST_INFO << "Sender: Caught the correct except type : "
-                        << ex.id() << " , " <<  ex.error_string() << std::endl;
-      HandleException (ex.id(), ex.error_string(), func);
-    }
     catch (const std::exception& e)
     {
       CIAOX11_TEST_ERROR << "HandleException - ERROR - unexpected exception caught: "
@@ -97,16 +91,8 @@ namespace Hello_Sender_Impl
     IDL::traits<::Hello::AMI4CCM_MyFooReplyHandler>::ref_type cb =
       CORBA::make_reference<AMI4CCM_MyFooReplyHandler_run_my_foo_i> ();
 
-    my_foo_ami->sendc_foo (cb,"Do something asynchronous");
-    my_foo_ami->sendc_foo (cb,"");
     my_foo_ami->sendc_hello (cb);
     my_foo_ami->sendc_hello (cb);
-    my_foo_ami->sendc_get_rw_attrib(cb);
-    my_foo_ami->sendc_get_rw_attrib(cb);
-    my_foo_ami->sendc_set_rw_attrib(cb, 15);
-    my_foo_ami->sendc_set_rw_attrib(cb, 0);
-    my_foo_ami->sendc_get_ro_attrib(cb);
-    my_foo_ami->sendc_get_ro_attrib(cb);
 
     CIAOX11_TEST_INFO << "Sender (ASYNCH) :\tInvoked Asynchronous calls" << std::endl;
     return 0;
@@ -208,33 +194,10 @@ namespace Hello_Sender_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : Hello_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[user_private_ops]
 
   void
-  AMI4CCM_MyFooReplyHandler_run_my_foo_i::foo (
-    int32_t ami_return_val,
-    const std::string& answer)
-  {
-    //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[foo]
-    // Your code here
-    X11_UNUSED_ARG (ami_return_val);
-    X11_UNUSED_ARG (answer);
-    //@@{__RIDL_REGEN_MARKER__} - END : Hello_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[foo]
-  }
-
-  void AMI4CCM_MyFooReplyHandler_run_my_foo_i::foo_excep (
-    IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder)
-  {
-    //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[foo_excep]
-    // Your code here
-    X11_UNUSED_ARG (excep_holder);
-    //@@{__RIDL_REGEN_MARKER__} - END : Hello_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[foo_excep]
-  }
-
-  void
-  AMI4CCM_MyFooReplyHandler_run_my_foo_i::hello (
-    int32_t answer)
+  AMI4CCM_MyFooReplyHandler_run_my_foo_i::hello ()
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[hello]
     // Your code here
-    X11_UNUSED_ARG (answer);
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[hello]
   }
 
@@ -246,60 +209,6 @@ namespace Hello_Sender_Impl
     X11_UNUSED_ARG (excep_holder);
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[hello_excep]
   }
-
-  void
-  AMI4CCM_MyFooReplyHandler_run_my_foo_i::get_rw_attrib (
-    int16_t ami_return_val)
-  {
-    //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[get_rw_attrib]
-    CIAOX11_TEST_INFO << "Sender:\tAMI4CCM_MyFooReplyHandler_run_my_foo_i::get_rw_attrib "
-                      << " rw_attrib: " << ami_return_val <<std::endl;
-    //@@{__RIDL_REGEN_MARKER__} - END : Hello_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[get_rw_attrib]
-  }
-
-  void AMI4CCM_MyFooReplyHandler_run_my_foo_i::get_rw_attrib_excep (
-    IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder)
-  {
-    //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[get_rw_attrib_excep]
-    HandleException (excep_holder, "get_rw_attrib");
-    //@@{__RIDL_REGEN_MARKER__} - END : Hello_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[get_rw_attrib_excep]
-  }
-
-  void
-  AMI4CCM_MyFooReplyHandler_run_my_foo_i::set_rw_attrib ()
-  {
-    //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[set_rw_attrib]
-    CIAOX11_TEST_INFO << "Sender:\tAMI4CCM_MyFooReplyHandler_run_my_foo_i::set_rw_attrib "
-                      <<std::endl;
-    //@@{__RIDL_REGEN_MARKER__} - END : Hello_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[set_rw_attrib]
-  }
-
-  void AMI4CCM_MyFooReplyHandler_run_my_foo_i::set_rw_attrib_excep (
-    IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder)
-  {
-    //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[set_rw_attrib_excep]
-    HandleException (excep_holder, "set_rw_attribo");
-    //@@{__RIDL_REGEN_MARKER__} - END : Hello_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[set_rw_attrib_excep]
-  }
-
-  void
-  AMI4CCM_MyFooReplyHandler_run_my_foo_i::get_ro_attrib (
-    int16_t ami_return_val)
-  {
-    //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[get_ro_attrib]
-    CIAOX11_TEST_INFO << "Sender:\tAMI4CCM_MyFooReplyHandler_run_my_foo_i::get_ro_attrib "
-                       << " ro_attrib: " << ami_return_val <<std::endl;
-    //@@{__RIDL_REGEN_MARKER__} - END : Hello_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[get_ro_attrib]
-  }
-
-  void AMI4CCM_MyFooReplyHandler_run_my_foo_i::get_ro_attrib_excep (
-    IDL::traits<CCM_AMI::ExceptionHolder>::ref_type excep_holder)
-  {
-    //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[get_ro_attrib_excep]
-    HandleException (excep_holder, "get_ro_attrib");
-    //@@{__RIDL_REGEN_MARKER__} - END : Hello_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[get_ro_attrib_excep]
-  }
-
 
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl[user_namespace_end_impl]

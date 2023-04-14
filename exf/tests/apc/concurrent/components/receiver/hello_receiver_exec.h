@@ -52,21 +52,8 @@ namespace Hello_Receiver_Impl
     /** @name Operations from ::Hello::CCM_MyFoo */
     //@{
 
-    int32_t
-    foo (
-        const std::string& in_str,
-        std::string& answer) override;
-
     void
-    hello (
-        int32_t& answer) override;
-    //@}
-
-    /** @name Attributes from ::Hello::CCM_MyFoo */
-    //@{
-    int16_t rw_attrib () override;
-    void rw_attrib (int16_t rw_attrib) override;
-    int16_t ro_attrib () override;
+    hello () override;
     //@}
 
     /** @name User defined public operations. */
@@ -79,14 +66,6 @@ namespace Hello_Receiver_Impl
   private:
     /// Context for component instance. Used for all middleware communication.
     IDL::traits<::Hello::CCM_Receiver_Context>::ref_type context_;
-
-    /** @name Members to store attribute values from ::Hello::CCM_MyFoo */
-    //@{
-    /// Class member storing value of rw_attrib attribute
-    int16_t rw_attrib_{};
-    /// Class member storing value of ro_attrib attribute
-    int16_t ro_attrib_{};
-    //@}
 
     /** @name User defined members. */
     //@{
