@@ -91,7 +91,7 @@ With ExF after event reception/generation the connector will submit the event, p
 lane_ configured for the component (!) from where the event is entered into the scheduling queue of the _dispatcher_.
 The _dispatcher_, which executes in a configurable execution context (single or multi threaded), retrieves
 events from the queue and dispatches these to the connected (to the scheduling lane) component instances sequentially
-per component instance (i.e. any component instance will only ever get a single event at a time to handle).
+per component instance (i.e. any component instance will only ever get by default a single event at a time to handle).
 
 This execution sequence is depicted in the following figure.
 
@@ -164,7 +164,7 @@ With multi threaded operation (static or dynamic) the Dispatcher will run multip
 and routing scheduled events. Each component instance associated with the Dispatcher through the Non-exclusive
 Scheduling Lane will however by default be guaranteed to only be offered a single event to handle at anyone time (i.e. each
 thread will always dispatch events for a different component instance as another thread at that time). See
-below for how to configure that a component instance may be offered multiple events at anyone time.
+the Concurrent flag for how to configure that a component instance may be offered multiple events at anyone time.
 
 === Deployment options
 
