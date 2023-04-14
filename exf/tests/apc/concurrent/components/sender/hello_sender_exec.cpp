@@ -91,8 +91,10 @@ namespace Hello_Sender_Impl
     IDL::traits<::Hello::AMI4CCM_MyFooReplyHandler>::ref_type cb =
       CORBA::make_reference<AMI4CCM_MyFooReplyHandler_run_my_foo_i> ();
 
-    my_foo_ami->sendc_hello (cb);
-    my_foo_ami->sendc_hello (cb);
+    for (int i = 0; i <= 10; ++i)
+    {
+      my_foo_ami->sendc_hello (cb);
+    }
 
     CIAOX11_TEST_INFO << "Sender (ASYNCH) :\tInvoked Asynchronous calls" << std::endl;
     return 0;

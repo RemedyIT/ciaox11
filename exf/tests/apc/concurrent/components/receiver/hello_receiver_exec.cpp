@@ -59,6 +59,9 @@ namespace Hello_Receiver_Impl
   do_my_foo_exec_i::hello ()
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::do_my_foo_exec_i::hello[void]
+    CIAOX11_TEST_INFO << "Receiver (hello) :\tReceived hello call" << std::endl;
+    std::this_thread::sleep_for (std::chrono::milliseconds (500));
+    CIAOX11_TEST_INFO << "Receiver (hello) :\tReturning hello call" << std::endl;
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::do_my_foo_exec_i::hello[void]
   }
 
