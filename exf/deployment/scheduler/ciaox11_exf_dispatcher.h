@@ -581,8 +581,6 @@ namespace CIAOX11
 
           const std::string& instance_id () const { return this->instance_->instance_id (); }
 
-          ExF::Count queued_count ();
-
           ExF::SchedulerResult enter (ExF::Executor::ref_type&& exec);
 
           bool closed ()

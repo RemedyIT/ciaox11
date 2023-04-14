@@ -230,8 +230,6 @@ namespace CIAOX11
     public:
       ~SchedulingLane () override = default;
 
-      virtual ExF::Count trafic_count () = 0;
-
       virtual bool closed () = 0;
 
       virtual void close () = 0;

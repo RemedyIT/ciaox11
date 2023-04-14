@@ -25,9 +25,6 @@ namespace CIAOX11
           : gate_ (gate) {}
         ~SchedulingLane () override;
 
-        ExF::Count trafic_count () override
-        { return this->gate_->queued_count (); }
-
         bool closed () override
         { return this->gate_->closed (); }
 

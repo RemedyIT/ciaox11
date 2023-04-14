@@ -171,12 +171,6 @@ namespace CIAOX11
         this->close ();
       }
 
-      ExF::Count
-      Dispatcher::DispatchGate::queued_count ()
-      {
-        return ACE_Utils::truncate_cast<ExF::Count> (this->queue_->count ());
-      }
-
       ExF::SchedulerResult
       Dispatcher::DispatchGate::enter (
           ExF::Executor::ref_type&& exec)
@@ -186,7 +180,6 @@ namespace CIAOX11
                             << " in dispatcher queue.");
 
         // encapsulate executor as a dispatch task
-
         try
         {
           // create a dispatch task for the task reference
