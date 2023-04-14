@@ -17,7 +17,8 @@
 #include /**/ "hello_receiver_exec_export.h"
 
 //@@{__RIDL_REGEN_MARKER__} - BEGIN : hello_receiver_impl.h[user_includes]
-// Your includes here
+#include <mutex>
+#include <algorithm>
 //@@{__RIDL_REGEN_MARKER__} - END : hello_receiver_impl.h[user_includes]
 
 //@@{__RIDL_REGEN_MARKER__} - BEGIN : hello_receiver_impl.h[user_global_decl]
@@ -43,7 +44,7 @@ namespace Hello_Receiver_Impl
     /// Constructor
     /// @param[in] context Component context
     do_my_foo_exec_i (
-        IDL::traits<::Hello::CCM_Receiver_Context>::ref_type context);
+        IDL::traits<::Hello::CCM_Receiver_Context>::ref_type context, uint16_t& active_threads, uint16_t& max_active_threads);
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::do_my_foo_exec_i[ctor]
 
     /// Destructor
@@ -70,9 +71,9 @@ namespace Hello_Receiver_Impl
     /** @name User defined members. */
     //@{
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::do_my_foo_exec_i[user_members]
-    int32_t nr_of_messages_ {};
-    bool get_rw_ {};
-    bool get_ro_ {};
+    std::mutex lock_;
+    uint16_t& active_threads_;
+    uint16_t& max_active_threads_;
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::do_my_foo_exec_i[user_members]
     //@}
 
@@ -157,7 +158,8 @@ namespace Hello_Receiver_Impl
     /** @name User defined members. */
     //@{
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::Receiver_exec_i[user_members]
-    // Your code here
+    uint16_t active_threads_ {};
+    uint16_t max_active_threads_ {};
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::Receiver_exec_i[user_members]
     //@}
 
