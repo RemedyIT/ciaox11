@@ -7,6 +7,7 @@ exf/tests/apc/async-event-combi/descriptors/run_test.pl plan_opendds.config: DDS
 exf/tests/apc/ext-sync-complex/descriptors/run_test.pl: CORBA4CCM EXF4CCM
 exf/tests/apc/ext-sync-multiple-recipe/descriptors/run_test.pl: CORBA4CCM EXF4CCM
 exf/tests/apc/minimal-async/descriptors/run_test.pl: AMI4CCM CORBA4CCM EXF4CCM
+exf/tests/apc/concurrent/descriptors/run_test.pl: AMI4CCM CORBA4CCM EXF4CCM
 exf/tests/apc/minimal-sync-attr/descriptors/run_test.pl: CORBA4CCM EXF4CCM
 exf/tests/apc/minimal-sync-data/descriptors/run_test.pl: CORBA4CCM EXF4CCM
 exf/tests/apc/asyn_multi_inher/descriptors/run_test.pl: CORBA4CCM AMI4CCM EXF4CCM
