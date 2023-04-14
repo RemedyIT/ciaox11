@@ -132,6 +132,24 @@ namespace Hello_Receiver_Impl
   //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::Receiver_exec_i[get_do_my_foo]
   }
 
+
+  uint16_t
+  Receiver_exec_i::threads ()
+  {
+    //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::Receiver_exec_i::threads[getter]
+    return this->threads_;
+    //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::Receiver_exec_i::threads[getter]
+  }
+
+  void
+  Receiver_exec_i::threads (
+      uint16_t threads)
+  {
+    //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::Receiver_exec_i::threads[setter]
+    this->threads_ = threads;
+    //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::Receiver_exec_i::threads[setter]
+  }
+
   /// Operations from Components::SessionComponent
   void
   Receiver_exec_i::set_session_context (

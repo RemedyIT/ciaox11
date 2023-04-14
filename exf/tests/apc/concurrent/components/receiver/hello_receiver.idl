@@ -1,6 +1,6 @@
 /**
  * @file    hello_receiver.idl
- * @author  Martin Corino
+ * @author  Johnny Willemsen
  *
  * @brief   Receiver component for minimal sync manual example
  *
@@ -20,6 +20,7 @@ module Hello
   {
     /// Provides
     provides MyFoo do_my_foo;
+    attribute unsigned short threads;
   };
 };
 

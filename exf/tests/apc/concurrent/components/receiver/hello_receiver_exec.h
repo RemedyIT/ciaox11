@@ -104,6 +104,14 @@ namespace Hello_Receiver_Impl
     IDL::traits<::Hello::CCM_MyFoo>::ref_type get_do_my_foo () override;
     //@}
 
+    /** @name Supported attributes. */
+    //@{
+
+    /// Attribute threads
+    uint16_t threads () override;
+    void threads (uint16_t threads) override;
+    //@}
+
     /** @name Session component operations */
     //@{
 
@@ -134,6 +142,12 @@ namespace Hello_Receiver_Impl
   private:
     /// Context for component instance.
     IDL::traits<::Hello::CCM_Receiver_Context>::ref_type context_;
+
+    /** @name Component attributes. */
+    //@{
+    /// Class member storing value of threads attribute
+    uint16_t threads_{};
+    //@}
 
     /** @name Component facets. */
     //@{
