@@ -76,8 +76,7 @@ namespace CIAOX11
         ExF::Impl::DispatchThreadPolicy thread_policy_ {ExF::Impl::DispatchThreadPolicy::DTP_SINGLE};
         uint16_t min_threads_ {};
         uint16_t max_threads_ {};
-        ExF::Impl::DispatchQueuePolicy queue_policy_
-            {ExF::Impl::DispatchQueuePolicy::DQP_FIFO};
+        ExF::Impl::DispatchQueuePolicy queue_policy_ {ExF::Impl::DispatchQueuePolicy::DQP_FIFO};
 
         // defaults for lane groups
         ExF::Impl::DispatchThreadPolicy lane_thread_policy_ {ExF::Impl::DispatchThreadPolicy::DTP_SINGLE};
@@ -91,7 +90,7 @@ namespace CIAOX11
 
         struct LANE_ENTRY
         {
-          ::IDL::traits<ExF::SchedulingLane>::ref_type lane_ {};
+          IDL::traits<ExF::SchedulingLane>::ref_type lane_ {};
           std::string group_ {};
         };
 
@@ -100,7 +99,7 @@ namespace CIAOX11
 
         struct GROUP_ENTRY
         {
-          GROUP_ENTRY (ExF::Impl::Dispatcher::ref_type d) : dispatcher_ (d) {}
+          GROUP_ENTRY (ExF::Impl::Dispatcher::ref_type d) : dispatcher_ (std::move(d)) {}
           GROUP_ENTRY () = default;
           GROUP_ENTRY (const GROUP_ENTRY&) = default;
           GROUP_ENTRY (GROUP_ENTRY&&) = default;
