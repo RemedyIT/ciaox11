@@ -1,6 +1,6 @@
 /**
  * @file    hello_sender.idl
- * @author  Martin Corino
+ * @author  Johnny Willemsen
  *
  * @brief   Sender component for minimal sync manual example
  *

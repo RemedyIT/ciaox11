@@ -1,7 +1,7 @@
 // -*- C++ -*-
 /**
  * @file    hello_sender_exec.cpp
- * @author  Martin Corino
+ * @author  Johnny Willemsen
  *
  * @copyright Copyright (c) Remedy IT Expertise BV
  */
