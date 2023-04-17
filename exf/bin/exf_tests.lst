@@ -2,6 +2,7 @@
 # Each line has its own test, and a test can be followed by a
 # list of configurations it does _not_ run on.
 #
+exf/tests/dispatch_queue/run_test.pl: EXF4CCM
 exf/tests/apc/async-event-combi/descriptors/run_test.pl plan_ndds.config: DDS4CCM_EVENT AMI4CCM CORBA4CCM EXF4CCM NDDS
 exf/tests/apc/async-event-combi/descriptors/run_test.pl plan_opendds.config: DDS4CCM_EVENT AMI4CCM CORBA4CCM EXF4CCM OPENDDS
 exf/tests/apc/ext-sync-complex/descriptors/run_test.pl: CORBA4CCM EXF4CCM

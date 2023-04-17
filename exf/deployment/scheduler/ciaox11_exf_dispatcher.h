@@ -386,7 +386,6 @@ namespace CIAOX11
         /*
          * State
          */
-
         DispatchThreadPolicy dtp_;
         DispatchQueuePolicy dqp_;
         uint16_t minsize_;
