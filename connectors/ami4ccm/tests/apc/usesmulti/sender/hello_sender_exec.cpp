@@ -233,8 +233,7 @@ namespace UsesMulti_Sender_Impl
     const std::string& answer)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : UsesMulti_Sender_Impl::AMI4CCM_OneReplyHandler_run_my_um_one_i[foo]
-    // Your code here
-    this->received_++;
+    ++this->received_;
     CIAOX11_TEST_INFO << "Sender:\tAMI4CCM_OneReplyHandler_run_my_um_one_i::foo "
                       << " answer: " << answer
                       << " return_val " << ami_return_val <<std::endl;

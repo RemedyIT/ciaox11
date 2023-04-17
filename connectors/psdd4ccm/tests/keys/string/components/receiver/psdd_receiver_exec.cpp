@@ -91,7 +91,7 @@ namespace Test_Receiver_Impl
         {
           PSDD4CCM_TEST_DEBUG << "Receiver_exec_i::tick : read \"" << IDL::traits<std::string>::write (topic) << "\"" << std::endl;
 
-          this->topic_counter_++;
+          ++this->topic_counter_;
         }
         else
         {

@@ -246,7 +246,7 @@ namespace Hello_Sender_Impl
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl::Sender_exec_i[user_public_ops]
     void start ();
     void stop ();
-    void add_asyn_reply () { this->asyn_replies_++; }
+    void add_asyn_reply () { ++this->asyn_replies_; }
     uint32_t asyn_replies () { return this->asyn_replies_; }
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Sender_Impl::Sender_exec_i[user_public_ops]
     //@}

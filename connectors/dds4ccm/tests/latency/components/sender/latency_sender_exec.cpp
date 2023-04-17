@@ -456,7 +456,7 @@ namespace Test_Sender_Impl
   void
   Sender_exec_i::inc_unexpected_count ()
   {
-    this->unexpected_count_++;
+    ++this->unexpected_count_;
   }
   //@@{__RIDL_REGEN_MARKER__} - END : Test_Sender_Impl::Sender_exec_i[user_public_ops]
 
