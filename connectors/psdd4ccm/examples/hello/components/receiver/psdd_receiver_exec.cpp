@@ -256,7 +256,7 @@ namespace Test_Receiver_Impl
         {
           PSDD4CCM_TEST_DEBUG << "Receiver_exec_i::tick : read \"" << topic << "\"" << std::endl;
 
-          this->hello_counter_++;
+          ++this->hello_counter_;
         }
         else
         {
@@ -274,7 +274,7 @@ namespace Test_Receiver_Impl
         {
           PSDD4CCM_TEST_DEBUG << "Receiver_exec_i::tick : read [" << IDL::traits<::Test::Message>::write (topic) << "]" << std::endl;
 
-          this->msg_counter_++;
+          ++this->msg_counter_;
         }
         else
         {

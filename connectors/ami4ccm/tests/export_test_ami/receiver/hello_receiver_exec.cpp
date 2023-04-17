@@ -72,7 +72,7 @@ namespace Hello_Receiver_Impl
       int32_t& answer)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::do_my_foo_exec_i::hello[_answer]
-    this->nr_of_messages_++;
+    ++this->nr_of_messages_;
     CIAOX11_TEST_INFO <<
         "OK: Receiver_exec_i::do_my_foo_exec_i::hello is called for the <"
         << this->nr_of_messages_<< "> time." << std::endl;

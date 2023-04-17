@@ -468,7 +468,7 @@ namespace Hello_Sender_Impl
            this->context_->get_connection_info_write_data ();
 
       writer->write_one (this->square_, this->instance_handle_);
-      ticks ++;
+      ++ticks;
       CIAOX11_TEST_INFO << "Sender (DDS4CCM) :\tTICK [" << ticks << "]" << std::endl;
       if (ticks > 10)
       {
