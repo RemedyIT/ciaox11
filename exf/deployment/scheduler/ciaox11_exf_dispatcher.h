@@ -153,18 +153,7 @@ namespace CIAOX11
           using task_ref = std::shared_ptr<DispatchTask>;
 
           DispatchTask (ExF::Executor::ref_type&& exec,
-                        instance_ref instance)
-            : executor_ (std::move (exec)), instance_ (std::move(instance))
-          {
-            if (this->executor_->deadline ().deadline_type_ != ExF::DeadlineType::DLT_NONE)
-            {
-              this->absolute_dead_line_.deadline_time_ =
-                  ACE_Time_Value_T<EXF_TIME_POLICY> (
-                      this->executor_->deadline ().deadline_time_).to_absolute_time ();
-              this->absolute_dead_line_.deadline_type_ =
-                      this->executor_->deadline ().deadline_type_;
-            }
-          }
+                        instance_ref instance);
           ~DispatchTask () override = default;
 
           const ExF::Deadline& deadline () const noexcept(true) override;
@@ -187,11 +176,9 @@ namespace CIAOX11
            */
           void execute () noexcept(true);
 
-          const std::string& instance_id () const noexcept(true) override
-          { return this->instance_->instance_id (); }
+          const std::string& instance_id () const noexcept(true) override;
 
-          const std::string& event_id () const noexcept(true) override
-          { return this->executor_->event_id (); }
+          const std::string& event_id () const noexcept(true) override;
 
         private:
           DispatchTask () = delete;
@@ -226,127 +213,31 @@ namespace CIAOX11
         class DispatchQueue final
         {
         public:
-          DispatchQueue (DispatchQueuePolicy dqp)
-          {
-            if (dqp == DispatchQueuePolicy::DQP_FIFO)
-              this->cmp_ = DispatchPolicyFIFO();
-            else
-              this->cmp_ = DispatchPolicyLIFO();
-            // initialize free list
-            this->allocate_block ();
-          }
+          DispatchQueue (DispatchQueuePolicy dqp);
           ~DispatchQueue () = default;
 
           /// Enqueue a task to the dispatch queue
-          bool enqueu(task_ref data, ExF::Priority prio)
-          {
-            {
-              std::unique_lock<std::mutex> _g_queue (this->mutex_);
-
-              bool const flow_control = (high_water_mark>low_water_mark && high_water_mark==this->count_);
-
-              while (!this->shutdown_ &&
-                  ((flow_control && this->count_ > low_water_mark) ||
-                      this->seqnr_ == std::numeric_limits<uint64_t>::max ()))
-              {
-                // in case we've triggered flow control or reached the overrun max
-                // (unlikely to happen more than once every several thousand year or so)
-                // we wait (block) until dequeue frees us or the queue is shutdown.
-                this->condition_.wait (_g_queue);
-              }
-
-              if (this->shutdown_)
-                return false;
-
-              if (!this->enqueue_i(std::move (data), prio))
-                return false;
-            }
-
-            this->condition_.notify_all ();
-
-            return true;
-          }
+          bool enqueu(task_ref data, ExF::Priority prio);
 
           /// Dequeue a task from the queue. By default only a task
           /// is dequeued for an instance which is not executing already a task.
           /// At the moment @a always is true a task can be dequeued which
           /// is already executing a task
-          bool dequeue(task_ref& data, bool always = false)
-          {
-            std::lock_guard<std::mutex> _g_queue (this->mutex_);
-
-            if (always || !this->shutdown_)
-            {
-              return this->dequeue_i(data, always);
-            }
-            return false;
-          }
-
-          bool dequeue(task_ref& data, std::chrono::microseconds timeout)
-          {
-            std::unique_lock<std::mutex> _g_queue (this->mutex_);
-
-            if (!this->shutdown_)
-            {
-              if (this->dequeue_i(data))
-                return true;
-
-              this->condition_.wait_for (_g_queue, timeout);
-
-              if (!this->shutdown_ && this->dequeue_i(data))
-                return true;
-            }
-
-            return false;
-          }
+          bool dequeue(task_ref& data, bool always = false);
+          bool dequeue(task_ref& data, std::chrono::microseconds timeout);
 
           /// Activate the queue and notify all worker threads about
           /// this state change
-          void activate ()
-          {
-            {
-              std::lock_guard<std::mutex> _g_queue (this->mutex_);
-
-              this->shutdown_ = false;
-            }
-
-            this->condition_.notify_all ();
-          }
+          void activate ();
 
           /// Shutdown this queue and notify all worker threads about
           /// this state change
-          void shutdown ()
-          {
-            {
-              std::lock_guard<std::mutex> _g_queue (this->mutex_);
+          void shutdown ();
 
-              this->shutdown_ = true;
-            }
-
-            this->condition_.notify_all ();
-          }
-
-          bool is_shutdown () const
-          {
-            return this->shutdown_;
-          }
-
-          bool is_active () const
-          {
-            return !this->is_shutdown ();
-          }
-
-          bool empty () const
-          {
-            return this->count_ == 0;
-          }
-
-          uint64_t count ()
-          {
-            std::lock_guard<std::mutex> _g_queue (this->mutex_);
-
-            return this->count_;
-          }
+          bool is_shutdown () const;
+          bool is_active () const;
+          bool empty () const;
+          uint64_t count ();
 
           static uint32_t allocation_block_size; // default 64
           static uint64_t high_water_mark; // default 0 (flow control disabled)
@@ -362,167 +253,11 @@ namespace CIAOX11
             QEntry*       next_ {};
           };
 
-          bool enqueue_i (task_ref task, ExF::Priority prio)
-          {
-            try
-            {
-              // claim a free entry
-              QEntry* new_entry = this->claim_free ();
-              new_entry->task_ = std::move (task);
-              new_entry->prio_ = prio;
-              new_entry->seqnr_ = this->seqnr_++;
-
-              // increment the queue count
-              ++this->count_;
-
-              // insert into queue list based on prio and seq
-              // start looking from the tail until an entry is found
-              // which is 'larger' than the new entry
-              for (QEntry* qep=this->tail_ ; qep ; qep=qep->next_)
-              {
-                // is new entry 'smaller' than queue entry?
-                if (this->cmp_ (*new_entry, *qep))
-                {
-                  // insert before the queue entry
-                  new_entry->next_ = qep;
-                  if (qep->prev_)
-                  {
-                    new_entry->prev_ = qep->prev_;
-                    qep->prev_->next_ = new_entry;
-                  }
-                  else
-                  {
-                    // this must be the tail end itself
-                    // replace with new entry
-                    this->tail_ = new_entry;
-                  }
-                  qep->prev_ = new_entry;
-
-                  return true;
-                }
-              }
-              // new entry 'larger' than any (or queue empty) add as new queue head
-              new_entry->prev_ = this->head_;
-              if (this->head_)
-                this->head_->next_ = new_entry;
-              this->head_ = new_entry;
-              // if the queue was empty also set tail to new_entry
-              if (!this->tail_)
-                this->tail_ = new_entry;
-
-              return true;
-            }
-            catch (const std::bad_alloc&)
-            {
-              return false;
-            }
-          }
-
-          bool dequeue_i (task_ref& task, bool always = false)
-          {
-            // start looking from the head for an entry
-            // of which the instance is not busy (if any)
-            for (QEntry* qep=this->head_; qep ;qep=qep->prev_)
-            {
-              if (always || qep->task_->instance_->allocate ())
-              {
-                // remove entry from queue list
-                if (qep->next_)
-                {
-                  qep->next_->prev_ = qep->prev_;
-                }
-                else
-                {
-                  // must be head itself
-                  this->head_ = qep->prev_;
-                  if (this->head_)
-                    this->head_->next_ = nullptr;
-                }
-                if (qep->prev_)
-                {
-                  qep->prev_->next_ = qep->next_;
-                }
-                else
-                {
-                  // must be tail
-                  this->tail_ = qep->next_;
-                  if (this->tail_)
-                    this->tail_->prev_ = nullptr;
-                }
-                // get task
-                task = std::move (qep->task_);
-                // cleanup entry
-                qep->prev_ = nullptr;
-                // insert into free list
-                this->insert_free(qep);
-
-                // decrement the queue count
-                --this->count_;
-                if (this->count_ == 0)
-                {
-                  // reset sequence number when queue is empty
-                  if (this->seqnr_ == std::numeric_limits<uint64_t>::max ())
-                  {
-                    // notify any overrun waiters that we're resetting
-                    this->condition_.notify_all ();
-                  }
-                  this->seqnr_ = 0;
-                }
-
-                return true;
-              }
-            }
-            return false;
-          }
-
-          QEntry* claim_free ()
-          {
-            if (!this->free_head_)
-            {
-              this->allocate_block();
-            }
-            QEntry* claimed_block = this->free_head_;
-            if (claimed_block->prev_)
-            {
-              this->free_head_ = claimed_block->prev_;
-              this->free_head_->next_ = nullptr;
-            }
-            else
-            {
-              // list is empty now
-              this->free_tail_ = nullptr;
-              this->free_head_ = nullptr;
-            }
-            claimed_block->prev_ = claimed_block->next_ = nullptr;
-            return claimed_block;
-          }
-
-          void insert_free (QEntry* free_entry)
-          {
-            // insert into free list at tail end
-            free_entry->next_ = this->free_tail_;
-            if (this->free_tail_)
-              this->free_tail_->prev_ = free_entry;
-            this->free_tail_ = free_entry;
-            // if this is the first for an empty list this new entry also becomes the current head
-            if (!this->free_head_)
-              this->free_head_ = this->free_tail_;
-          }
-
-          // allocates a new block of (initially) free entries
-          void allocate_block ()
-          {
-            // allocate block
-            this->allocations_.push_back(std::make_unique<QEntry[]> (allocation_block_size));
-            // get block pointer
-            QEntry* new_block_ = this->allocations_.back ().get ();
-            // insert into free list at tail end
-            for (uint32_t i=0; i<allocation_block_size ;++i)
-            {
-              QEntry* new_entry = std::addressof(new_block_[i]);
-              this->insert_free(new_entry);
-            }
-          }
+          bool enqueue_i (task_ref task, ExF::Priority prio);
+          bool dequeue_i (task_ref& task, bool always = false);
+          QEntry* claim_free ();
+          void insert_free (QEntry* free_entry);
+          void allocate_block ();
 
           using alloc_block_type = std::unique_ptr<QEntry[]>;
           using alloc_list_type = std::vector<alloc_block_type>;
@@ -579,25 +314,20 @@ namespace CIAOX11
 
           ~DispatchGate ();
 
-          const std::string& instance_id () const { return this->instance_->instance_id (); }
+          const std::string& instance_id () const;
 
           ExF::SchedulerResult enter (ExF::Executor::ref_type&& exec);
 
-          bool closed ()
-          { return this->instance_->closed (); }
+          bool closed ();
 
-          void close ()
-          { if (!this->closed ()) this->dispatcher_->close_dispatch_gate (*this); }
+          void close ();
 
         private:
           friend class Dispatcher;
 
           DispatchGate (Dispatcher::ref_type disp,
                         Dispatcher::instance_ref instance,
-                        Dispatcher::task_queue_ref q)
-            : instance_ (std::move(instance))
-            , queue_ (std::move(q))
-            , dispatcher_ (std::move(disp)) {}
+                        Dispatcher::task_queue_ref q);
           DispatchGate () = delete;
           DispatchGate (const DispatchGate&) = delete;
           DispatchGate (DispatchGate&&) = delete;
@@ -647,7 +377,7 @@ namespace CIAOX11
 
         void close_dispatch_gate (const DispatchGate& dg);
 
-        ExF::DeadlineMonitor::ref_type monitor () { return this->monitor_; }
+        ExF::DeadlineMonitor::ref_type monitor ();
 
         void svc ();
 
