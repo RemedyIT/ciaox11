@@ -44,12 +44,12 @@ namespace CIAOX11
        : Executor (std::move(settings)), sem_ (std::move(sem)) {}
       ~LifecycleExecutor () override = default;
 
-      virtual void execute () noexcept(true);
+      void execute () noexcept(true) override;
 
-      virtual void finish () noexcept(true)
+      void finish () noexcept(true) override
       { this->signal_completion (); }
 
-      virtual void cancel (CancellationType) noexcept(true)
+      void cancel (CancellationType) noexcept(true) override
       { this->signal_completion (true); }
 
     protected:

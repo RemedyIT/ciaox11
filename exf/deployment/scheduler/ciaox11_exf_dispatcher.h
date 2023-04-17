@@ -13,6 +13,7 @@
 
 #include "exf/deployment/core/ciaox11_schedule.h"
 #include "exf/deployment/core/ciaox11_monitor.h"
+#include "exf/deployment/scheduler/ciaox11_exf_scheduler_export.h"
 
 #if defined(ACE_WIN32) || \
     (defined (_POSIX_MONOTONIC_CLOCK) && !defined (ACE_LACKS_MONOTONIC_TIME)) || \
@@ -73,9 +74,11 @@ namespace CIAOX11
 
         using task_ref = std::shared_ptr<DispatchTask>;
 
-        class Instance
+        class CIAOX11_EXF_SCHEDULER_Export Instance
         {
         public:
+          explicit Instance (std::string id, uint16_t concurrent)
+            : instance_id_ (std::move(id)), concurrent_ (concurrent) {}
           ~Instance () = default;
 
           /// Return the unique id of this instance
@@ -113,9 +116,6 @@ namespace CIAOX11
 
         private:
           friend class Dispatcher;
-
-          explicit Instance (std::string id, uint16_t concurrent)
-            : instance_id_ (std::move(id)), concurrent_ (concurrent) {}
           Instance () = delete;
           Instance (const Instance&) = delete;
           Instance (Instance&&) = delete;
@@ -146,7 +146,7 @@ namespace CIAOX11
          * @brief A class implementing support for queued executors.
          *
          */
-        class DispatchTask
+        class CIAOX11_EXF_SCHEDULER_Export DispatchTask
           : public ExF::ExecutionTask
         {
         public:
@@ -210,7 +210,7 @@ namespace CIAOX11
          * Allocated entry blocks are never freed during the life cycle of the queue.
          * Dequeued entries are released to the free list enqueued entries allocated from the free list.
          */
-        class DispatchQueue final
+        class CIAOX11_EXF_SCHEDULER_Export DispatchQueue final
         {
         public:
           DispatchQueue (DispatchQueuePolicy dqp);

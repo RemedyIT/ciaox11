@@ -197,6 +197,9 @@ namespace CIAOX11
           this->cmp_ = DispatchPolicyLIFO();
         // initialize free list
         this->allocate_block ();
+
+        CIAOX11_EXF_LOG_DEBUG ("ExF::Impl::DispatchQueue::DispatchQueue - " <<
+                               "Created dispatch queue with policy " << queue_policy_id(dqp));
       }
 
       bool
