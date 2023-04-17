@@ -368,7 +368,7 @@ namespace Filters_Common_State_Listen_Test_Sender_Impl
       << "Continue publishing samples." << std::endl;
 
     this->tm_ = tt_s->schedule_repeated_trigger (
-                         CORBA::make_reference<TT_Callback> (IDL::traits< Filters_Common_State_Listen_Test::CCM_Sender>::narrow (this->_lock()),false),
+                         CORBA::make_reference<TT_Callback> (IDL::traits<Filters_Common_State_Listen_Test::CCM_Sender>::narrow (this->_lock()),false),
                          CCM_TT::TT_Duration (0,100000000),
                          CCM_TT::TT_Duration (0, 100000000),
                          0);
@@ -431,7 +431,7 @@ namespace Filters_Common_State_Listen_Test_Sender_Impl
     // Start status checker
     this->tt_s = this->context_->get_connection_tt_scheduler ();
     this->tm_activate_ = this->tt_s->schedule_repeated_trigger (
-                           CORBA::make_reference<TT_Callback> (IDL::traits< Filters_Common_State_Listen_Test::CCM_Sender>::narrow (this->_lock()),true),
+                           CORBA::make_reference<TT_Callback> (IDL::traits<Filters_Common_State_Listen_Test::CCM_Sender>::narrow (this->_lock()),true),
                            CCM_TT::TT_Duration (0, 1000000000),
                            CCM_TT::TT_Duration (0, 1000000000),
                           0);

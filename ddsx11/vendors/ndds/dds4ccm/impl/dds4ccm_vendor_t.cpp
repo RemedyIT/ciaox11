@@ -26,7 +26,7 @@ namespace CIAOX11
       template <typename EVT_STRATEGY>
       ::DDS::StatusKind
       get_publisher_listener_mask (
-        IDL::traits< CCM_DDS::ConnectorStatusListener>::ref_type error_listener)
+        IDL::traits<CCM_DDS::ConnectorStatusListener>::ref_type error_listener)
       {
         return CIAOX11::NDDS4CCM::NDDSPublisherListener_T<EVT_STRATEGY>::get_mask (error_listener);
       }

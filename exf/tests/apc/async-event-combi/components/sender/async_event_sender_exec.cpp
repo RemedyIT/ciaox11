@@ -232,7 +232,7 @@ namespace Hello_Sender_Impl
 
       IDL::traits<CCM_TT::TT_Scheduler>::ref_type tt_s = this->context_->get_connection_tt_scheduler ();
       this->tm_= tt_s->schedule_repeated_trigger (
-                              CORBA::make_reference<TT_Callback> (IDL::traits< CCM_Sender>::narrow (this->_lock())),
+                              CORBA::make_reference<TT_Callback> (IDL::traits<CCM_Sender>::narrow (this->_lock())),
                               CCM_TT::TT_Duration (1,0),
                               CCM_TT::TT_Duration (1,0),
                               0);
@@ -464,7 +464,7 @@ namespace Hello_Sender_Impl
   {
     try
     {
-      IDL::traits< Hello::ShapeTypeInterface::Writer>::ref_type writer =
+      IDL::traits<Hello::ShapeTypeInterface::Writer>::ref_type writer =
            this->context_->get_connection_info_write_data ();
 
       writer->write_one (this->square_, this->instance_handle_);

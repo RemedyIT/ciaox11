@@ -28,7 +28,7 @@ namespace PortComp_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : PortComp_Impl::run_my_bar_foo_prov_exec_i[ctor]
   run_my_bar_foo_prov_exec_i::run_my_bar_foo_prov_exec_i (
-    IDL::traits< CCM_PortComp_Context>::ref_type context)
+    IDL::traits<CCM_PortComp_Context>::ref_type context)
     : context_ (std::move (context))
   {
   }
@@ -137,7 +137,7 @@ namespace PortComp_Impl
   {
     // Setting the context of this component.
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : PortComp_Impl::PortComp_exec_i[set_session_context]
-    this->context_ = IDL::traits< CCM_PortComp_Context >::narrow (std::move(ctx));
+    this->context_ = IDL::traits<CCM_PortComp_Context >::narrow (std::move(ctx));
     //@@{__RIDL_REGEN_MARKER__} - END : PortComp_Impl::PortComp_exec_i[set_session_context]
   }
 

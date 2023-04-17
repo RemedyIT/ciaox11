@@ -44,7 +44,7 @@ namespace QA_State_Listen_Test_Receiver_Impl
     /// Constructor
     /// @param[in] context Component context
     listen_port_1_data_listener_exec_i (
-        IDL::traits< QA_State_Listen_Test::CCM_Receiver_Context>::ref_type context,
+        IDL::traits<QA_State_Listen_Test::CCM_Receiver_Context>::ref_type context,
         std::atomic_ullong &created,
         std::atomic_ullong &updated,
         std::atomic_ullong &deleted);
@@ -114,7 +114,7 @@ namespace QA_State_Listen_Test_Receiver_Impl
     /// Constructor
     /// @param[in] context Component context
     listen_port_1_status_exec_i (
-        IDL::traits< QA_State_Listen_Test::CCM_Receiver_Context>::ref_type context);
+        IDL::traits<QA_State_Listen_Test::CCM_Receiver_Context>::ref_type context);
     //@@{__RIDL_REGEN_MARKER__} - END : QA_State_Listen_Test_Receiver_Impl::listen_port_1_status_exec_i[ctor]
 
     /// Destructor
@@ -169,7 +169,7 @@ namespace QA_State_Listen_Test_Receiver_Impl
     /// Constructor
     /// @param[in] context Component context
     listen_port_2_data_listener_exec_i (
-        IDL::traits< QA_State_Listen_Test::CCM_Receiver_Context>::ref_type context,
+        IDL::traits<QA_State_Listen_Test::CCM_Receiver_Context>::ref_type context,
         std::atomic_ullong &created_,
         std::atomic_ullong &updated_,
         std::atomic_ullong &deleted_);
@@ -239,7 +239,7 @@ namespace QA_State_Listen_Test_Receiver_Impl
     /// Constructor
     /// @param[in] context Component context
     listen_port_2_status_exec_i (
-        IDL::traits< QA_State_Listen_Test::CCM_Receiver_Context>::ref_type context);
+        IDL::traits<QA_State_Listen_Test::CCM_Receiver_Context>::ref_type context);
     //@@{__RIDL_REGEN_MARKER__} - END : QA_State_Listen_Test_Receiver_Impl::listen_port_2_status_exec_i[ctor]
 
     /// Destructor

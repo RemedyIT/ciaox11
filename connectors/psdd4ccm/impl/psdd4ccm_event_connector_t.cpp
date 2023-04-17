@@ -97,7 +97,7 @@ namespace CIAOX11
      * PSDD4CCM PSD_Events ports
      */
     template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
-    typename IDL::traits< typename CCM_TYPE::supplier_traits::data_type>::ref_type
+    typename IDL::traits<typename CCM_TYPE::supplier_traits::data_type>::ref_type
     Event_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_supplier_data ()
     {
       PSDD4CCM_LOG_TRACE (
@@ -107,7 +107,7 @@ namespace CIAOX11
     }
 
     template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
-    typename IDL::traits< typename CCM_TYPE::consumer_traits::data_type>::ref_type
+    typename IDL::traits<typename CCM_TYPE::consumer_traits::data_type>::ref_type
     Event_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_consumer_data ()
     {
       PSDD4CCM_LOG_TRACE (
@@ -117,7 +117,7 @@ namespace CIAOX11
     }
 
     template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
-    typename IDL::traits< typename CCM_TYPE::consumer_traits::data_subscriber_type>::ref_type
+    typename IDL::traits<typename CCM_TYPE::consumer_traits::data_subscriber_type>::ref_type
     Event_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_consumer_data_subscriber ()
     {
       PSDD4CCM_LOG_TRACE (
@@ -127,7 +127,7 @@ namespace CIAOX11
     }
 
     template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
-    typename IDL::traits< typename Event_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::publisher_type>::ref_type
+    typename IDL::traits<typename Event_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::publisher_type>::ref_type
     Event_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::publisher ()
     {
       PSDD4CCM_LOG_TRACE (
@@ -142,7 +142,7 @@ namespace CIAOX11
     }
 
     template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
-    typename IDL::traits< typename Event_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::subscriber_type>::ref_type
+    typename IDL::traits<typename Event_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::subscriber_type>::ref_type
     Event_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::subscriber ()
     {
       PSDD4CCM_LOG_TRACE (
@@ -291,7 +291,7 @@ namespace CIAOX11
     }
 
     template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
-    typename IDL::traits< typename CCM_TYPE::context_type>::ref_type
+    typename IDL::traits<typename CCM_TYPE::context_type>::ref_type
     Event_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::context ()
     {
       return this->context_;

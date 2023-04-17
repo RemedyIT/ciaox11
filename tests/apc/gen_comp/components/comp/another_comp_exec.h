@@ -43,7 +43,7 @@ namespace AnotherComp_Impl
     /// Constructor
     /// @param[in] context Component context
     run_my_bar_foo_prov_exec_i (
-        IDL::traits< CCM_AnotherComp_Context>::ref_type context);
+        IDL::traits<CCM_AnotherComp_Context>::ref_type context);
     //@@{__RIDL_REGEN_MARKER__} - END : AnotherComp_Impl::run_my_bar_foo_prov_exec_i[ctor]
 
     /// Destructor

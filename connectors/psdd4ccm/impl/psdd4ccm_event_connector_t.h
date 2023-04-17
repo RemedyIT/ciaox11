@@ -65,13 +65,13 @@ namespace CIAOX11
        * PSDD4CCM PSD_Events ports
        */
       //@{
-      typename IDL::traits< typename CCM_TYPE::supplier_traits::data_type>::ref_type
+      typename IDL::traits<typename CCM_TYPE::supplier_traits::data_type>::ref_type
       get_supplier_data () override;
 
-      typename IDL::traits< typename CCM_TYPE::consumer_traits::data_type>::ref_type
+      typename IDL::traits<typename CCM_TYPE::consumer_traits::data_type>::ref_type
       get_consumer_data () override;
 
-      typename IDL::traits< typename CCM_TYPE::consumer_traits::data_subscriber_type>::ref_type
+      typename IDL::traits<typename CCM_TYPE::consumer_traits::data_subscriber_type>::ref_type
       get_consumer_data_subscriber () override;
       //@}
 
@@ -111,7 +111,7 @@ namespace CIAOX11
       configuration_completed (bool configuration_completed);
 
       /// Get the context of this connector.
-      typename IDL::traits< typename CCM_TYPE::context_type>::ref_type
+      typename IDL::traits<typename CCM_TYPE::context_type>::ref_type
       context ();
 
       /**
@@ -124,13 +124,13 @@ namespace CIAOX11
       typedef ::PSDD::Subscriber_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>
           subscriber_type;
 
-      typename IDL::traits< publisher_type>::ref_type
+      typename IDL::traits<publisher_type>::ref_type
       publisher ();
-      typename IDL::traits< subscriber_type>::ref_type
+      typename IDL::traits<subscriber_type>::ref_type
       subscriber ();
 
-      typename IDL::traits< publisher_type>::ref_type publisher_;
-      typename IDL::traits< subscriber_type>::ref_type subscriber_;
+      typename IDL::traits<publisher_type>::ref_type publisher_;
+      typename IDL::traits<subscriber_type>::ref_type subscriber_;
 
     private:
       std::string topic_name_;
@@ -150,7 +150,7 @@ namespace CIAOX11
        * Context of the connector. Used to make connections to the user component
        * like the interfaces to the data listeners.
        */
-      typename IDL::traits< typename CCM_TYPE::context_type>::ref_type context_;
+      typename IDL::traits<typename CCM_TYPE::context_type>::ref_type context_;
 
 
       Event_Connector_T(const Event_Connector_T&) = delete;

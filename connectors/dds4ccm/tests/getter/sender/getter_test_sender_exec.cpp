@@ -264,7 +264,7 @@ namespace Getter_Test_Sender_Impl
       start_timeout_tests ();
 
       this->tm_ = tt_s->schedule_repeated_trigger (
-                        CORBA::make_reference<TT_Callback> (IDL::traits< Getter_Test::CCM_Sender>::narrow (this->_lock()),false),
+                        CORBA::make_reference<TT_Callback> (IDL::traits<Getter_Test::CCM_Sender>::narrow (this->_lock()),false),
                         CCM_TT::TT_Duration (0, 500000000),
                         CCM_TT::TT_Duration (0, 500000000),
                         0);
@@ -277,7 +277,7 @@ namespace Getter_Test_Sender_Impl
 
     IDL::traits<CommonTestConnector::Writer>::ref_type writer =
       this->context_->get_connection_info_write_data ();
-    IDL::traits< GetInvoker>::ref_type invoker =
+    IDL::traits<GetInvoker>::ref_type invoker =
       this->context_->get_connection_invoke_getter ();
 
     if (this->last_iter_ <= this->iterations_)
@@ -310,7 +310,7 @@ namespace Getter_Test_Sender_Impl
   Sender_exec_i::start_timeout_tests ()
   {
     DDS4CCM_TEST_DEBUG << "Sender_exec_i::start_time_out_tests" << std::endl;
-    IDL::traits< GetInvoker>::ref_type invoker =
+    IDL::traits<GetInvoker>::ref_type invoker =
       this->context_->get_connection_invoke_getter ();
 
     invoker->start_timeout_get_one ();
@@ -323,7 +323,7 @@ namespace Getter_Test_Sender_Impl
     DDS4CCM_TEST_DEBUG << "Sender_exec_i::write_many" << std::endl;
     IDL::traits<CommonTestConnector::Writer>::ref_type writer =
       this->context_->get_connection_info_write_data ();
-    IDL::traits< GetInvoker>::ref_type invoker =
+    IDL::traits<GetInvoker>::ref_type invoker =
       this->context_->get_connection_invoke_getter ();
 
     // Prepare the samples.
@@ -377,7 +377,7 @@ namespace Getter_Test_Sender_Impl
     DDS4CCM_TEST_DEBUG << "Sender_exec_i::ccm_activate" << std::endl;
     this->tt_s = this->context_->get_connection_tt_scheduler ();
     this->tm_activate_ = this->tt_s->schedule_repeated_trigger (
-                           CORBA::make_reference<TT_Callback> (IDL::traits< Getter_Test::CCM_Sender>::narrow (this->_lock()),true),
+                           CORBA::make_reference<TT_Callback> (IDL::traits<Getter_Test::CCM_Sender>::narrow (this->_lock()),true),
                            CCM_TT::TT_Duration (0, 1000000000),
                            CCM_TT::TT_Duration (0, 1000000000),
                            0);

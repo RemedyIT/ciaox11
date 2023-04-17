@@ -61,8 +61,8 @@ namespace UpdaterModule_Sender_Impl
     /// Constructor
     /// @param[in] context Component context
     connector_status_exec_i (
-        IDL::traits< UpdaterModule::CCM_Sender_Context>::ref_type context,
-        IDL::traits< UpdaterModule::CCM_Sender>::weak_ref_type component_executor);
+        IDL::traits<UpdaterModule::CCM_Sender_Context>::ref_type context,
+        IDL::traits<UpdaterModule::CCM_Sender>::weak_ref_type component_executor);
     //@@{__RIDL_REGEN_MARKER__} - END : UpdaterModule_Sender_Impl::connector_status_exec_i[ctor]
 
     /// Destructor
@@ -138,8 +138,8 @@ namespace UpdaterModule_Sender_Impl
     /// Constructor
     /// @param[in] context Component context
     next_assignment_exec_i (
-        IDL::traits< UpdaterModule::CCM_Sender_Context>::ref_type context,
-        IDL::traits< UpdaterModule::CCM_Sender>::weak_ref_type component_executor);
+        IDL::traits<UpdaterModule::CCM_Sender_Context>::ref_type context,
+        IDL::traits<UpdaterModule::CCM_Sender>::weak_ref_type component_executor);
     //@@{__RIDL_REGEN_MARKER__} - END : UpdaterModule_Sender_Impl::next_assignment_exec_i[ctor]
 
     /// Destructor
@@ -167,7 +167,7 @@ namespace UpdaterModule_Sender_Impl
     /** @name User defined members. */
     //@{
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : UpdaterModule_Sender_Impl::next_assignment_exec_i[user_members]
-    IDL::traits< UpdaterModule::CCM_Sender>::weak_ref_type component_executor_;
+    IDL::traits<UpdaterModule::CCM_Sender>::weak_ref_type component_executor_;
     //@@{__RIDL_REGEN_MARKER__} - END : UpdaterModule_Sender_Impl::next_assignment_exec_i[user_members]
     //@}
 

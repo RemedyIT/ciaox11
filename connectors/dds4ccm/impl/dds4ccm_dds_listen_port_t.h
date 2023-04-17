@@ -38,14 +38,14 @@ public:
    * DDS_Listen operations
    */
   //@{
-  IDL::traits< CCM_DDS::CCM_DataListenerControl>::ref_type get_data_control ();
+  IDL::traits<CCM_DDS::CCM_DataListenerControl>::ref_type get_data_control ();
   //@}
 
   void
   activate (
     const typename CCM_TYPE::event_strategy_type &evs,
     typename IDL::traits<typename CCM_TYPE::data_listener_type>::ref_type listener,
-    IDL::traits< CCM_DDS::PortStatusListener>::ref_type status);
+    IDL::traits<CCM_DDS::PortStatusListener>::ref_type status);
 
 private:
   using DataReaderListener_type = ::CIAOX11::DDS4CCM::DataReaderListener_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE, LRT>;
@@ -56,7 +56,7 @@ private:
    * DDS_Listen
    */
   //@{
-  typename IDL::traits< DataListenerControl_type>::ref_type data_control_;
+  typename IDL::traits<DataListenerControl_type>::ref_type data_control_;
   //@}
 
   DDS_Listen_Port_T() = delete;

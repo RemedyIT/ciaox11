@@ -45,7 +45,7 @@ namespace NoReplyH_Receiver_Impl
     /// Constructor
     /// @param[in] context Component context
     do_my_foo_exec_i (
-        IDL::traits< NoReplyH::CCM_Receiver_Context>::ref_type context);
+        IDL::traits<NoReplyH::CCM_Receiver_Context>::ref_type context);
     //@@{__RIDL_REGEN_MARKER__} - END : NoReplyH_Receiver_Impl::do_my_foo_exec_i[ctor]
 
     /// Destructor

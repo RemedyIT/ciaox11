@@ -46,7 +46,7 @@ namespace Example_BasicSubscriber_comp_Impl
     /// Constructor
     /// @param[in] context Component context
     CA1DataSub_data_listener_exec_i (
-        IDL::traits< Example::CCM_BasicSubscriber_comp_Context>::ref_type context,
+        IDL::traits<Example::CCM_BasicSubscriber_comp_Context>::ref_type context,
         std::atomic_ulong &samples_received);
     //@@{__RIDL_REGEN_MARKER__} - END : Example_BasicSubscriber_comp_Impl::CA1DataSub_data_listener_exec_i[ctor]
 
@@ -103,7 +103,7 @@ namespace Example_BasicSubscriber_comp_Impl
     /// Constructor
     /// @param[in] context Component context
     CA1DataSub_status_exec_i (
-        IDL::traits< Example::CCM_BasicSubscriber_comp_Context>::ref_type context);
+        IDL::traits<Example::CCM_BasicSubscriber_comp_Context>::ref_type context);
     //@@{__RIDL_REGEN_MARKER__} - END : Example_BasicSubscriber_comp_Impl::CA1DataSub_status_exec_i[ctor]
 
     /// Destructor

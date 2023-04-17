@@ -45,7 +45,7 @@ namespace Interceptor_Interceptor_Receiver_Impl
     /// Constructor
     /// @param[in] context Component context
     prov_my_foo_exec_i (
-        IDL::traits< Interceptor::CCM_Interceptor_Receiver_Context>::ref_type context);
+        IDL::traits<Interceptor::CCM_Interceptor_Receiver_Context>::ref_type context);
     //@@{__RIDL_REGEN_MARKER__} - END : Interceptor_Interceptor_Receiver_Impl::prov_my_foo_exec_i[ctor]
 
     /// Destructor

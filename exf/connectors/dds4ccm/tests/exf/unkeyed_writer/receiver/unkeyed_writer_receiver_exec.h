@@ -104,7 +104,7 @@ namespace UnkeyedWriterTest_Receiver_Impl
     /// Constructor
     /// @param[in] context Component context
     info_out_status_exec_i (
-        IDL::traits< UnkeyedWriterTest::CCM_Receiver_Context>::ref_type context);
+        IDL::traits<UnkeyedWriterTest::CCM_Receiver_Context>::ref_type context);
     //@@{__RIDL_REGEN_MARKER__} - END : UnkeyedWriterTest_Receiver_Impl::info_out_status_exec_i[ctor]
 
     /// Destructor

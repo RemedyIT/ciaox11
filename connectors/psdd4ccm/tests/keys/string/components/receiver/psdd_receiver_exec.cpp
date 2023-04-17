@@ -84,7 +84,7 @@ namespace Test_Receiver_Impl
     {
       if (this->count () > this->topic_counter_)
       {
-        IDL::traits< stringInterface::Getter>::ref_type reader =
+        IDL::traits<stringInterface::Getter>::ref_type reader =
           this->context_->get_connection_topic_read ();
         std::string topic {};
         if (reader->get_one (topic))

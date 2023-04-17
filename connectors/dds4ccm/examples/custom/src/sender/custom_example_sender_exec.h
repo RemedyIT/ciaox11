@@ -44,8 +44,8 @@ namespace Example_BasicPublisher_comp_Impl
     /// Constructor
     /// @param[in] context Component context
     CA1DataPub_CSL_exec_i (
-        IDL::traits< Example::CCM_BasicPublisher_comp_Context>::ref_type context,
-        IDL::traits< Example::CCM_BasicPublisher_comp>::weak_ref_type component_executor);
+        IDL::traits<Example::CCM_BasicPublisher_comp_Context>::ref_type context,
+        IDL::traits<Example::CCM_BasicPublisher_comp>::weak_ref_type component_executor);
     //@@{__RIDL_REGEN_MARKER__} - END : Example_BasicPublisher_comp_Impl::CA1DataPub_CSL_exec_i[ctor]
 
     /// Destructor

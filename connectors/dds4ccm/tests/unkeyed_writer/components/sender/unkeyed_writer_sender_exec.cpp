@@ -458,7 +458,7 @@ namespace UnkeyedWriterTest_Sender_Impl
     // Start status checker
     this->tt_s = this->context_->get_connection_tt_scheduler ();
     this->tm_activate_ = this->tt_s->schedule_repeated_trigger (
-                              CORBA::make_reference<TT_Callback> (IDL::traits< UnkeyedWriterTest::CCM_Sender>::narrow (this->_lock()),true),
+                              CORBA::make_reference<TT_Callback> (IDL::traits<UnkeyedWriterTest::CCM_Sender>::narrow (this->_lock()),true),
                               CCM_TT::TT_Duration (1, 0),
                               CCM_TT::TT_Duration (1, 0),
                               0);

@@ -51,7 +51,7 @@ namespace UsesMulti_Sender_Impl
     }
 
     IDL::traits<::UsesMulti::AMI4CCM_OneReplyHandler>::ref_type cb =
-             CORBA::make_reference< AMI4CCM_OneReplyHandler_run_my_um_one_i> ();
+             CORBA::make_reference<AMI4CCM_OneReplyHandler_run_my_um_one_i> ();
 
     int32_t cmd = 10;
     const std::string hello = "Hello,";

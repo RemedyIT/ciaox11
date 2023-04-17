@@ -84,7 +84,7 @@ namespace Test_Receiver_Impl
     {
       if (this->count () > this->topic_counter_)
       {
-        IDL::traits< booleanInterface::Getter>::ref_type reader =
+        IDL::traits<booleanInterface::Getter>::ref_type reader =
           this->context_->get_connection_topic_read ();
         bool topic {};
         if (reader->get_one (topic))

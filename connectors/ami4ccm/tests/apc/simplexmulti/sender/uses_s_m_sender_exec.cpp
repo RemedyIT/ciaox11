@@ -71,7 +71,7 @@ namespace UsesSM_Sender_Impl
     for(::UsesSM::CCM_Sender::sendc_m_run_my_oneConnection my_one_ami_ : m_run_my_one_seq_)
     {
       IDL::traits<::UsesSM::AMI4CCM_OneReplyHandler>::ref_type cb_one =
-        CORBA::make_reference< AMI4CCM_OneReplyHandler_m_run_my_one_i> ();
+        CORBA::make_reference<AMI4CCM_OneReplyHandler_m_run_my_one_i> ();
 
       std::string test;
       switch (i)

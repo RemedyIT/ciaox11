@@ -116,7 +116,7 @@ namespace RG_LateBinding_Sender_Impl
             DDS4CCM_TEST_DEBUG << "Sender_exec_i::notify - Write sample <" << sample << "> for topic <" << topic_name_ << ">" << std::endl;
           }
       }
-      IDL::traits< ReaderStarter>::ref_type starter =
+      IDL::traits<ReaderStarter>::ref_type starter =
         this->context_->get_connection_reader_start ();
       DDS4CCM_TEST_DEBUG << "Sender_exec_i::notify  - "
         << "Inform the receiver that all samples were written."
@@ -154,7 +154,7 @@ namespace RG_LateBinding_Sender_Impl
       this->tm_.reset ();
     }
     this->tm_ = tt_s->schedule_trigger (
-                       CORBA::make_reference<ContextSwitch> (IDL::traits< RG_LateBinding::CCM_Sender>::narrow (this->_lock())),
+                       CORBA::make_reference<ContextSwitch> (IDL::traits<RG_LateBinding::CCM_Sender>::narrow (this->_lock())),
                        CCM_TT::TT_Duration (0, 0));
   }
 

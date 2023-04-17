@@ -130,9 +130,9 @@ namespace Test
 
       /// @name Member types
       //@{
-      typedef TAOX11_IDL::traits< Serializer>           _traits_type;
+      typedef TAOX11_IDL::traits<Serializer>           _traits_type;
       /// Strong reference type
-      typedef TAOX11_IDL::traits< Serializer>::ref_type _ref_type;
+      typedef TAOX11_IDL::traits<Serializer>::ref_type _ref_type;
       //@}
 
       /// Determine if we are of the type specified by the @a logical_type_id.
@@ -247,9 +247,9 @@ namespace Test
 
       /// @name Member types
       //@{
-      typedef TAOX11_IDL::traits< CCM_Serializer>           _traits_type;
+      typedef TAOX11_IDL::traits<CCM_Serializer>           _traits_type;
       /// Strong reference type
-      typedef TAOX11_IDL::traits< CCM_Serializer>::ref_type _ref_type;
+      typedef TAOX11_IDL::traits<CCM_Serializer>::ref_type _ref_type;
       //@}
 
       /// Determine if we are of the type specified by the @a logical_type_id.

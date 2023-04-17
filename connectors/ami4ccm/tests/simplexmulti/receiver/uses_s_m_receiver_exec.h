@@ -46,7 +46,7 @@ namespace UsesSM_Receiver_Impl
     /// Constructor
     /// @param[in] context Component context
     do_my_one_exec_i (
-        IDL::traits< UsesSM::CCM_Receiver_Context>::ref_type context);
+        IDL::traits<UsesSM::CCM_Receiver_Context>::ref_type context);
     //@@{__RIDL_REGEN_MARKER__} - END : UsesSM_Receiver_Impl::do_my_one_exec_i[ctor]
 
     /// Destructor
@@ -101,7 +101,7 @@ namespace UsesSM_Receiver_Impl
     /// Constructor
     /// @param[in] context Component context
     do_my_two_exec_i (
-        IDL::traits< UsesSM::CCM_Receiver_Context>::ref_type context);
+        IDL::traits<UsesSM::CCM_Receiver_Context>::ref_type context);
     //@@{__RIDL_REGEN_MARKER__} - END : UsesSM_Receiver_Impl::do_my_two_exec_i[ctor]
 
     /// Destructor
