@@ -398,6 +398,17 @@ ExF concurrency settings.
 
 === Default event ID's
 
+For each component the following ExF lifecycle _event ID_'s are defined.
+
+[width="100%",cols="<1a,<5a",options="header",]
+|=======================================================================
+|Event ID | Description
+|configuration_complete| `configuration_complete` lifecycle callback
+|ccm_activate| `ccm_activate` lifecycle callback
+|ccm_passivate| `ccm_passivate` lifecycle callback
+|ccm_remove| `ccm_remove` lifecycle callback
+|=======================================================================
+
 The AXCIOMA provided connectors can trigger the following ExF _event ID_'s, each of them can be configured using the scheme
 above.
 
