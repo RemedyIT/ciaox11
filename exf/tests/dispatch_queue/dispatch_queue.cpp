@@ -217,7 +217,7 @@ int main(int /*argc*/, char** /*argv[]*/)
   catch (const std::exception& e)
   {
     // X11_FUZZ: disable check_test_log_macros
-    ciaox11_error << "exception caught: " << e.what () << std::endl;
+    CIAOX11_TEST_ERROR << "exception caught: " << e.what () << std::endl;
     // X11_FUZZ: enable check_test_log_macros
     return 1;
   }

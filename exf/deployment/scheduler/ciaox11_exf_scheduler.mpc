@@ -1,9 +1,7 @@
 
 project (ciaox11_exf_scheduler_impl) : install, \
-         dancex11_deployment_stub, ciaox11_lib, \
-         ciaox11_output, ciaox11_core, ciaox11_ccm_session_stub, \
-         dancex11_stub, dancex11_state, \
-         ciaox11_exf_logger, ciaox11_exf_core, taox11_portableserver {
+         ciaox11_lib, ciaox11_output, ciaox11_core, ciaox11_ccm_session_stub, \
+         ciaox11_exf_logger, ciaox11_exf_core {
   dynamicflags += CIAOX11_EXF_SCHEDULER_BUILD_DLL
   sharedname = ciaox11_exf_scheduler
   Source_Files {
