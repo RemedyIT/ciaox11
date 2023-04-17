@@ -6,7 +6,7 @@
 // Copyright (c) Remedy IT Expertise BV
 // --------------------------------------------------------------------
 
-project : ciaox11_lib, ciaox11_exf, ciaox11_exf_core {
+project : ciaox11_lib, ciaox11_exf, ciaox11_exf_core, ciaox11_exf_logger {
   after    += ciaox11_exf_scheduler_impl
   libs     += ciaox11_exf_scheduler
   includes += $(CIAOX11_ROOT)/exf
