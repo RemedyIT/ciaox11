@@ -94,7 +94,7 @@ namespace CIAOX11_TT_TimedTrigger_Impl
     */
     TimedTrigger_ExecutorLocator (
       IDL::traits<::CIAOX11_TT::CCM_TimedTrigger>::ref_type component_executor,
-      IDL::traits< TimedTrigger_Context>::ref_type component_context);
+      IDL::traits<TimedTrigger_Context>::ref_type component_context);
 
     /**
      * Configure the component
@@ -139,7 +139,7 @@ namespace CIAOX11_TT_TimedTrigger_Impl
     IDL::traits<::CIAOX11_TT::CCM_TimedTrigger>::ref_type component_executor_;
 
     /// The context for this component
-    IDL::traits< TimedTrigger_Context>::ref_type component_context_;
+    IDL::traits<TimedTrigger_Context>::ref_type component_context_;
 
     /** @name Illegal to be called. Deleted explicitly to let the compiler detect any violation */
     //@{

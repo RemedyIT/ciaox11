@@ -300,7 +300,7 @@ namespace MDD_Test_Sender_Impl
     DDS4CCM_TEST_DEBUG << "Sender_exec_i::ccm_activate" << std::endl;
     this->tt_s = this->context_->get_connection_tt_scheduler ();
     this->tm_activate_ = this->tt_s->schedule_repeated_trigger (
-                             CORBA::make_reference<TT_Callback> (IDL::traits< MDD_Test::CCM_Sender>::narrow (this->_lock())),
+                             CORBA::make_reference<TT_Callback> (IDL::traits<MDD_Test::CCM_Sender>::narrow (this->_lock())),
                              CCM_TT::TT_Duration (0, 1000000000),
                              CCM_TT::TT_Duration (0, 1000000000),
                             0);

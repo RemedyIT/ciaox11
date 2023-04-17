@@ -376,7 +376,7 @@ namespace PSL_SampleLostTest_Receiver_Impl
   void Receiver_exec_i::ccm_activate ()
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : PSL_SampleLostTest_Receiver_Impl::Receiver_exec_i[ccm_activate]
-    IDL::traits< CCM_DDS::DataListenerControl>::ref_type lc =
+    IDL::traits<CCM_DDS::DataListenerControl>::ref_type lc =
       this->context_->get_connection_info_out_data_control ();
     try
     {
@@ -386,7 +386,7 @@ namespace PSL_SampleLostTest_Receiver_Impl
 
     IDL::traits<CCM_TT::TT_Scheduler>::ref_type tt_s = this->context_->get_connection_tt_scheduler ();
             this->tm_ = tt_s->schedule_repeated_trigger (
-                               CORBA::make_reference<TT_Callback> (IDL::traits< PSL_SampleLostTest::CCM_Receiver>::narrow (this->_lock())),
+                               CORBA::make_reference<TT_Callback> (IDL::traits<PSL_SampleLostTest::CCM_Receiver>::narrow (this->_lock())),
                                CCM_TT::TT_Duration (3, 1),
                                CCM_TT::TT_Duration (3, 1),
                                0);

@@ -160,7 +160,7 @@ namespace Example_BasicPublisher_comp_Impl
       // start publishing and set started_ to true, so start_publishing is invoked only once.
       if (DDS4CCM_TEST_UTILS::check_publication_matched_status (the_entity, status_kind, 1))
       {
-        auto cex = IDL::traits< BasicPublisher_comp_exec_i>::narrow (this->component_executor_.lock ());
+        auto cex = IDL::traits<BasicPublisher_comp_exec_i>::narrow (this->component_executor_.lock ());
         if (cex)
         {
           this->started_ = true;
@@ -200,7 +200,7 @@ namespace Example_BasicPublisher_comp_Impl
     IDL::traits<CCM_TT::TT_Scheduler>::ref_type tt_s = this->context_->get_connection_tt_scheduler ();
 
     this->tm_ = tt_s->schedule_repeated_trigger (
-                      CORBA::make_reference<TT_Callback> (IDL::traits< Example::CCM_BasicPublisher_comp>::narrow (this->_lock())),
+                      CORBA::make_reference<TT_Callback> (IDL::traits<Example::CCM_BasicPublisher_comp>::narrow (this->_lock())),
                       CCM_TT::TT_Duration (0, 1000000),
                       CCM_TT::TT_Duration (0, 1000000),
                       0);
@@ -211,7 +211,7 @@ namespace Example_BasicPublisher_comp_Impl
   {
     try
     {
-      IDL::traits< Example::CA1_conn::Writer>::ref_type writer =
+      IDL::traits<Example::CA1_conn::Writer>::ref_type writer =
         this->context_->get_connection_CA1DataPub_data ();
 
       if (this->count () == this->counter_)

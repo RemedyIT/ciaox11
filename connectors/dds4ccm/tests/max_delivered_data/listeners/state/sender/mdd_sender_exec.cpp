@@ -299,7 +299,7 @@ namespace MDD_Test_Sender_Impl
     // Start status checker
     this->tt_s = this->context_->get_connection_tt_scheduler ();
     this->tm_activate_ = this->tt_s->schedule_repeated_trigger (
-                             CORBA::make_reference<TT_Callback> (IDL::traits< MDD_Test::CCM_Sender>::narrow (this->_lock())),
+                             CORBA::make_reference<TT_Callback> (IDL::traits<MDD_Test::CCM_Sender>::narrow (this->_lock())),
                              CCM_TT::TT_Duration (0, 1000000000),
                              CCM_TT::TT_Duration (0, 1000000000),
                             0);

@@ -47,7 +47,7 @@ private:
    * DDS_Get
    */
   //@{
-  typename IDL::traits< DDS4CCM_Getter_type>::ref_type dds4ccm_getter_ {};
+  typename IDL::traits<DDS4CCM_Getter_type>::ref_type dds4ccm_getter_ {};
   //@}
 
   DDS_Get_Port_T() = delete;

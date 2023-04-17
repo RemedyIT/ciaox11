@@ -57,7 +57,7 @@ public:
   IDL::traits<::DDS::CCM_DataReader>::ref_type
   get_passive_observer_dds_entity () override;
 
-  IDL::traits< CCM_DDS::CCM_ContentFilterSetting>::ref_type
+  IDL::traits<CCM_DDS::CCM_ContentFilterSetting>::ref_type
   get_passive_observer_filter_config () override;
 
   ::CCM_DDS::QueryFilter passive_observer_filter () override;
@@ -79,7 +79,7 @@ public:
   IDL::traits<::DDS::CCM_DataReader>::ref_type
   get_pull_observer_dds_entity () override;
 
-  IDL::traits< CCM_DDS::CCM_ContentFilterSetting>::ref_type
+  IDL::traits<CCM_DDS::CCM_ContentFilterSetting>::ref_type
   get_pull_observer_filter_config () override;
 
   CCM_DDS::QueryFilter pull_observer_filter () override;
@@ -95,13 +95,13 @@ public:
   typename IDL::traits<typename CCM_TYPE::push_observer_traits::data_type>::ref_type
   get_push_observer_data () override;
 
-  IDL::traits< CCM_DDS::CCM_DataListenerControl>::ref_type
+  IDL::traits<CCM_DDS::CCM_DataListenerControl>::ref_type
   get_push_observer_data_control () override;
 
   IDL::traits<::DDS::CCM_DataReader>::ref_type
   get_push_observer_dds_entity () override;
 
-  IDL::traits< CCM_DDS::CCM_ContentFilterSetting>::ref_type
+  IDL::traits<CCM_DDS::CCM_ContentFilterSetting>::ref_type
   get_push_observer_filter_config () override;
 
   ::CCM_DDS::QueryFilter push_observer_filter () override;
@@ -117,13 +117,13 @@ public:
   typename IDL::traits<typename CCM_TYPE::push_state_observer_traits::data_type>::ref_type
   get_push_state_observer_data () override;
 
-  IDL::traits< CCM_DDS::CCM_StateListenerControl>::ref_type
+  IDL::traits<CCM_DDS::CCM_StateListenerControl>::ref_type
   get_push_state_observer_data_control () override;
 
   IDL::traits<::DDS::CCM_DataReader>::ref_type
   get_push_state_observer_dds_entity () override;
 
-  IDL::traits< CCM_DDS::CCM_ContentFilterSetting>::ref_type
+  IDL::traits<CCM_DDS::CCM_ContentFilterSetting>::ref_type
   get_push_state_observer_filter_config () override;
 
   ::CCM_DDS::QueryFilter

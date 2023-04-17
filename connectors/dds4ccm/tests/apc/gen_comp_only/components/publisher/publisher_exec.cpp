@@ -28,7 +28,7 @@ namespace publisher_comp_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : publisher_comp_Impl::connector_status_ShapeType_exec_i[ctor]
   connector_status_ShapeType_exec_i::connector_status_ShapeType_exec_i (
-    IDL::traits< CCM_publisher_comp_Context>::ref_type context)
+    IDL::traits<CCM_publisher_comp_Context>::ref_type context)
     : context_ (std::move (context))
   {
   }
@@ -210,7 +210,7 @@ namespace publisher_comp_Impl
   {
     // Setting the context of this component.
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : publisher_comp_Impl::publisher_comp_exec_i[set_session_context]
-    this->context_ = IDL::traits< CCM_publisher_comp_Context >::narrow (std::move(ctx));
+    this->context_ = IDL::traits<CCM_publisher_comp_Context >::narrow (std::move(ctx));
     //@@{__RIDL_REGEN_MARKER__} - END : publisher_comp_Impl::publisher_comp_exec_i[set_session_context]
   }
 

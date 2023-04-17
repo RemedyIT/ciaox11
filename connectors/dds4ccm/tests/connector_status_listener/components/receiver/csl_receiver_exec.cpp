@@ -117,7 +117,7 @@ namespace CSL_Test_Receiver_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : CSL_Test_Receiver_Impl::connector_status_receiver_exec_i[ctor]
   connector_status_receiver_exec_i::connector_status_receiver_exec_i (
-    IDL::traits< CSL_Test::CCM_Receiver_Context>::ref_type context,
+    IDL::traits<CSL_Test::CCM_Receiver_Context>::ref_type context,
     std::atomic_ulong &on_sample_rejected_invoked,
     atomic_thread_id &on_inconsistent_topic_thread_id,
     atomic_thread_id &on_requested_incompatible_qos_thread_id,
@@ -539,7 +539,7 @@ namespace CSL_Test_Receiver_Impl
     if (this->assignment_ == ASSIGNMENT::ASSIGNMENT_UNEXPECTED_STATUS)
     {
       this->tm_ = tt_s->schedule_repeated_trigger (
-                         CORBA::make_reference<TT_Callback> (IDL::traits< CSL_Test::CCM_Receiver>::narrow (this->_lock())),
+                         CORBA::make_reference<TT_Callback> (IDL::traits<CSL_Test::CCM_Receiver>::narrow (this->_lock())),
                          CCM_TT::TT_Duration (6, 0),
                          CCM_TT::TT_Duration (3, 0),
                          0);
@@ -547,7 +547,7 @@ namespace CSL_Test_Receiver_Impl
     else if (this->assignment_ == ASSIGNMENT::ASSIGNMENT_SAMPLE_REJECTED)
     {
       this->tm_ = tt_s->schedule_repeated_trigger (
-                               CORBA::make_reference<TT_Callback> (IDL::traits< CSL_Test::CCM_Receiver>::narrow (this->_lock())),
+                               CORBA::make_reference<TT_Callback> (IDL::traits<CSL_Test::CCM_Receiver>::narrow (this->_lock())),
                                CCM_TT::TT_Duration (1, 0),
                                CCM_TT::TT_Duration (1, 0),
                                0);

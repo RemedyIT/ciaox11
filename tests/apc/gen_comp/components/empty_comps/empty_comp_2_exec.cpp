@@ -85,7 +85,7 @@ namespace EmptyComp_2_Impl
   {
     // Setting the context of this component.
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : EmptyComp_2_Impl::EmptyComp_2_exec_i[set_session_context]
-    this->context_ = IDL::traits< CCM_EmptyComp_2_Context >::narrow (std::move(ctx));
+    this->context_ = IDL::traits<CCM_EmptyComp_2_Context >::narrow (std::move(ctx));
     //@@{__RIDL_REGEN_MARKER__} - END : EmptyComp_2_Impl::EmptyComp_2_exec_i[set_session_context]
   }
 

@@ -687,7 +687,7 @@ namespace Test_Sender_Impl
         IDL::traits<TT_Callback>::narrow(this->tmh_)->shutdown ();
       }
       this->tmh_ = IDL::traits<CCM_TT::TT_Handler>::make_reference<TT_Callback> (
-          IDL::traits< Sender_exec_i>::narrow (this->_lock()), false);
+          IDL::traits<Sender_exec_i>::narrow (this->_lock()), false);
       this->tm_ = tt_s->schedule_repeated_trigger (
                     this->tmh_,
                     CCM_TT::TT_Duration (this->rate_ / 1000000, (this->rate_ % 1000000) * 1000),
@@ -720,7 +720,7 @@ namespace Test_Sender_Impl
 
       this->tt_s = this->context_->get_connection_tt_scheduler ();
       this->tmh_ = IDL::traits<CCM_TT::TT_Handler>::make_reference<TT_Callback> (
-          IDL::traits< Sender_exec_i>::narrow (this->_lock()), true);
+          IDL::traits<Sender_exec_i>::narrow (this->_lock()), true);
       this->tm_activate_ = this->tt_s->schedule_repeated_trigger (
                                 this->tmh_,
                                 CCM_TT::TT_Duration (0, 100000000),

@@ -43,8 +43,8 @@ namespace PSL_SampleLostTest_Sender_Impl
     /// Constructor
     /// @param[in] context Component context
     connector_status_exec_i (
-        IDL::traits< PSL_SampleLostTest::CCM_Sender_Context>::ref_type context,
-        IDL::traits< PSL_SampleLostTest::CCM_Sender>::weak_ref_type component_executor);
+        IDL::traits<PSL_SampleLostTest::CCM_Sender_Context>::ref_type context,
+        IDL::traits<PSL_SampleLostTest::CCM_Sender>::weak_ref_type component_executor);
     //@@{__RIDL_REGEN_MARKER__} - END : PSL_SampleLostTest_Sender_Impl::connector_status_exec_i[ctor]
 
     /// Destructor

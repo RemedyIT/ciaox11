@@ -43,7 +43,7 @@ namespace QA_Event_Listen_Test_Receiver_Impl
     /// Constructor
     /// @param[in] context Component context
     listen_port_1_data_listener_exec_i (
-        IDL::traits< QA_Event_Listen_Test::CCM_Receiver_Context>::ref_type context,
+        IDL::traits<QA_Event_Listen_Test::CCM_Receiver_Context>::ref_type context,
         std::atomic_ullong &received);
     //@@{__RIDL_REGEN_MARKER__} - END : QA_Event_Listen_Test_Receiver_Impl::listen_port_1_data_listener_exec_i[ctor]
 
@@ -99,7 +99,7 @@ namespace QA_Event_Listen_Test_Receiver_Impl
     /// Constructor
     /// @param[in] context Component context
     listen_port_1_status_exec_i (
-        IDL::traits< QA_Event_Listen_Test::CCM_Receiver_Context>::ref_type context);
+        IDL::traits<QA_Event_Listen_Test::CCM_Receiver_Context>::ref_type context);
     //@@{__RIDL_REGEN_MARKER__} - END : QA_Event_Listen_Test_Receiver_Impl::listen_port_1_status_exec_i[ctor]
 
     /// Destructor
@@ -154,7 +154,7 @@ namespace QA_Event_Listen_Test_Receiver_Impl
     /// Constructor
     /// @param[in] context Component context
     listen_port_2_data_listener_exec_i (
-        IDL::traits< QA_Event_Listen_Test::CCM_Receiver_Context>::ref_type context,
+        IDL::traits<QA_Event_Listen_Test::CCM_Receiver_Context>::ref_type context,
         std::atomic_ullong &received);
     //@@{__RIDL_REGEN_MARKER__} - END : QA_Event_Listen_Test_Receiver_Impl::listen_port_2_data_listener_exec_i[ctor]
 
@@ -210,7 +210,7 @@ namespace QA_Event_Listen_Test_Receiver_Impl
     /// Constructor
     /// @param[in] context Component context
     listen_port_2_status_exec_i (
-        IDL::traits< QA_Event_Listen_Test::CCM_Receiver_Context>::ref_type context);
+        IDL::traits<QA_Event_Listen_Test::CCM_Receiver_Context>::ref_type context);
     //@@{__RIDL_REGEN_MARKER__} - END : QA_Event_Listen_Test_Receiver_Impl::listen_port_2_status_exec_i[ctor]
 
     /// Destructor
