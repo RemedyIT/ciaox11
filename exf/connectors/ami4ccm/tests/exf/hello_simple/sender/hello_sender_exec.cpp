@@ -91,7 +91,7 @@ namespace Hello_Sender_Impl
 
     my_foo_ami->sendc_foo (cb,"Do something asynchronous");
 
-    //next should throw an exception
+    // Next should throw an exception
     my_foo_ami->sendc_foo (cb,"");
 
     my_foo_ami->sendc_hello (cb);
@@ -102,7 +102,7 @@ namespace Hello_Sender_Impl
     my_foo_ami->sendc_return_something(cb);
     my_foo_ami->sendc_bar(cb, "bar1", "bar2");
 
-    //next should throw an exception
+    // Next should throw an exception
     my_foo_ami->sendc_set_rw_attrib(cb, 0);
 
     my_foo_ami->sendc_get_ro_attrib(cb);

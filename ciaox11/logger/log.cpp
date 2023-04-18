@@ -38,6 +38,8 @@ namespace CIAOX11
       : x11_logger::Log_Module ("CIAOX11_TEST",
                                 x11_logger::X11_LogMask::LP_ALL,
                                 x11_logger::X11_Verbose::V_PRIO|
+                                x11_logger::X11_Verbose::V_THREAD_ID|
+                                x11_logger::X11_Verbose::V_PROCESS_ID|
                                 x11_logger::X11_Verbose::V_TIME)
     {
     }

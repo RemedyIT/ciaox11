@@ -1,0 +1,25 @@
+/**
+ * @file    hello.idl
+ * @author  Johnny Willemsen
+ *
+ * @brief   Data interfaces for minimal sync manual example
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ */
+
+#ifndef HELLO_IDL_
+#define HELLO_IDL_
+
+#pragma ami4ccm interface "Hello::MyFoo"
+#pragma ami4ccm idl "helloA.idl"
+
+module Hello
+{
+  // Sender/Receiver interface
+  interface MyFoo
+    {
+      void hello ();
+    };
+};
+
+#endif /* HELLO_IDL_ */

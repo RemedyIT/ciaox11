@@ -17,7 +17,6 @@ module Hello
   struct bar_struct {
     hello3_struct bar_long_struct;
   };
-
 };
 
 #endif /* HELLO2_IDL_ */

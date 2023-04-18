@@ -1,0 +1,27 @@
+/**
+ * @file    hello_receiver.idl
+ * @author  Johnny Willemsen
+ *
+ * @brief   Receiver component for minimal sync manual example
+ *
+ * @copyright Copyright (c) Remedy IT Expertise BV
+ */
+
+#ifndef HELLO_RECEIVER_IDL_
+#define HELLO_RECEIVER_IDL_
+
+#include <Components.idl>
+
+#include "hello.idl"
+
+module Hello
+{
+  component Receiver
+  {
+    /// Provides
+    provides MyFoo do_my_foo;
+    attribute unsigned short threads;
+  };
+};
+
+#endif /* HELLO_RECEIVER_IDL_ */
