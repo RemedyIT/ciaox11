@@ -805,7 +805,7 @@ namespace CIAOX11
           }
           else
           {
-            inst = instance_ref (new Instance (instance_id, concurrent));
+            inst = std::make_shared<Instance> (instance_id, concurrent);
             this->instance_map_.insert (INSTANCE_PAIR (instance_id, inst));
           }
 
