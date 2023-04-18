@@ -64,7 +64,7 @@ namespace Foo_CORBA4CCM_exception_component_Impl
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Foo_CORBA4CCM_exception_component_Impl::CORBA4CCM_exception_component_exec_i[ccm_activate]
     try
     {
-      IDL::traits< Hello>::ref_type foo =
+      IDL::traits<Hello>::ref_type foo =
         this->context_->get_connection_foo_hello ();
       foo->say_hello ();
       CIAOX11_TEST_ERROR << "ERROR: CORBA4CCM_exception_component_exec_i::ccm_activate - "

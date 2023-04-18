@@ -141,7 +141,7 @@ namespace IDL_Conversion_Test_Receiver_Impl
           << "datum.b_15[" << c << "]: expected <" << expected << "> - got <"
           << val << ">" << std::endl;
       }
-      c++;
+      ++c;
     }
 
     uint32_t x = 0;
@@ -171,7 +171,7 @@ namespace IDL_Conversion_Test_Receiver_Impl
           << "datum.b_17[" << c << "]: expected <" << expected << "> - got <"
           << val << ">" << std::endl;
       }
-      c++;
+      ++c;
     }
 
     c = 0;
@@ -185,7 +185,7 @@ namespace IDL_Conversion_Test_Receiver_Impl
           << "datum.b_18[" << c << "]: expected <" << expected << "> - got <"
           << val << ">" << std::endl;
       }
-      c++;
+      ++c;
     }
 
     c = 0;
@@ -199,7 +199,7 @@ namespace IDL_Conversion_Test_Receiver_Impl
           << "datum.b_19_1[" << c << "]: expected <" << expected << "> - got <"
           << val << ">" << std::endl;
       }
-      c++;
+      ++c;
     }
 
     c = 0;
@@ -213,7 +213,7 @@ namespace IDL_Conversion_Test_Receiver_Impl
           << "datum.b_19_2[" << c << "]: expected <" << expected << "> - got <"
           << val << ">" << std::endl;
       }
-      c++;
+      ++c;
     }
 
     c = 0;
@@ -227,7 +227,7 @@ namespace IDL_Conversion_Test_Receiver_Impl
           << "datum.b_19_3[" << c << "]: expected <" << expected << "> - got <"
           << val << ">" << std::endl;
       }
-      c++;
+      ++c;
     }
 
     c = 0;
@@ -241,7 +241,7 @@ namespace IDL_Conversion_Test_Receiver_Impl
           << "datum.b_19_4[" << c << "]: expected <" << expected << "> - got <"
           << val << ">" << std::endl;
       }
-      c++;
+      ++c;
     }
 
     /// Check b_20 [Example::B20_4 (IDL::bounded_vector < B20_4, 1>)]

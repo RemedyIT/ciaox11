@@ -126,8 +126,8 @@ namespace Filters_Common_Read_Get_Test_Sender_Impl
     /// Constructor
     /// @param[in] context Component context
     start_writing_exec_i (
-        IDL::traits< Filters_Common_Read_Get_Test::CCM_Sender_Context>::ref_type context,
-        IDL::traits< Filters_Common_Read_Get_Test::CCM_Sender>::weak_ref_type component_executor);
+        IDL::traits<Filters_Common_Read_Get_Test::CCM_Sender_Context>::ref_type context,
+        IDL::traits<Filters_Common_Read_Get_Test::CCM_Sender>::weak_ref_type component_executor);
     //@@{__RIDL_REGEN_MARKER__} - END : Filters_Common_Read_Get_Test_Sender_Impl::start_writing_exec_i[ctor]
 
     /// Destructor
@@ -154,7 +154,7 @@ namespace Filters_Common_Read_Get_Test_Sender_Impl
     /** @name User defined members. */
     //@{
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Filters_Common_Read_Get_Test_Sender_Impl::start_writing_exec_i[user_members]
-    IDL::traits< Filters_Common_Read_Get_Test::CCM_Sender>::weak_ref_type component_executor_;
+    IDL::traits<Filters_Common_Read_Get_Test::CCM_Sender>::weak_ref_type component_executor_;
     //@@{__RIDL_REGEN_MARKER__} - END : Filters_Common_Read_Get_Test_Sender_Impl::start_writing_exec_i[user_members]
     //@}
 

@@ -115,7 +115,7 @@ namespace Hello_Sender_comp_Impl
   };
   /// AMI4CCM reply handler implementation class
   class AMI4CCM_MyFoo_objReplyHandler_run_my_foo_i final
-    :public IDL::traits< Hello::AMI4CCM_MyFoo_objReplyHandler>::base_type
+    :public IDL::traits<Hello::AMI4CCM_MyFoo_objReplyHandler>::base_type
   {
   public:
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_comp_Impl::AMI4CCM_MyFoo_objReplyHandler_run_my_foo_i[ctor]

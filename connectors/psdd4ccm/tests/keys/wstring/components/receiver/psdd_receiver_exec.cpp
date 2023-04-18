@@ -84,14 +84,14 @@ namespace Test_Receiver_Impl
     {
       if (this->count () > this->topic_counter_)
       {
-        IDL::traits< wstringInterface::Getter>::ref_type reader =
+        IDL::traits<wstringInterface::Getter>::ref_type reader =
           this->context_->get_connection_topic_read ();
         std::wstring topic {};
         if (reader->get_one (topic))
         {
           PSDD4CCM_TEST_DEBUG << "Receiver_exec_i::tick : read \"" << IDL::traits<std::wstring>::write (topic) << "\"" << std::endl;
 
-          this->topic_counter_++;
+          ++this->topic_counter_;
         }
         else
         {

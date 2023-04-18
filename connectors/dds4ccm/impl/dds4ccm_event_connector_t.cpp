@@ -91,7 +91,7 @@ DDS_Event_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_pull_consumer_d
 }
 
 template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
-IDL::traits< CCM_DDS::CCM_ContentFilterSetting>::ref_type
+IDL::traits<CCM_DDS::CCM_ContentFilterSetting>::ref_type
 DDS_Event_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_pull_consumer_filter_config ()
 {
   DDS4CCM_LOG_TRACE ("DDS_Event_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::get_pull_consumer_filter_config");
@@ -156,7 +156,7 @@ DDS_Event_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_push_consumer_d
 }
 
 template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
-IDL::traits< CCM_DDS::CCM_DataListenerControl>::ref_type
+IDL::traits<CCM_DDS::CCM_DataListenerControl>::ref_type
 DDS_Event_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_push_consumer_data_control ()
 {
   DDS4CCM_LOG_TRACE ("DDS_Event_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::get_push_consumer_data_control");
@@ -174,7 +174,7 @@ DDS_Event_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_push_consumer_d
 }
 
 template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
-IDL::traits< CCM_DDS::CCM_ContentFilterSetting>::ref_type
+IDL::traits<CCM_DDS::CCM_ContentFilterSetting>::ref_type
 DDS_Event_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::get_push_consumer_filter_config ()
 {
   DDS4CCM_LOG_TRACE ("DDS_Event_Connector_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::get_push_consumer_filter_config");
@@ -211,9 +211,9 @@ DDS_Event_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::do_configuration_co
   typename IDL::traits<typename CCM_TYPE::push_consumer_traits::data_listener_type>::ref_type
     push_consumer_data_listener =
       this->context ()->get_connection_push_consumer_data_listener ();
-  IDL::traits< CCM_DDS::PortStatusListener>::ref_type push_consumer_psl =
+  IDL::traits<CCM_DDS::PortStatusListener>::ref_type push_consumer_psl =
     this->context ()->get_connection_push_consumer_status ();
-  IDL::traits< CCM_DDS::PortStatusListener>::ref_type pull_consumer_psl =
+  IDL::traits<CCM_DDS::PortStatusListener>::ref_type pull_consumer_psl =
     this->context ()->get_connection_pull_consumer_status ();
 
   // Listeners can be connected (deploymentplan) without having

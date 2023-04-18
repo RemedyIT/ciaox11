@@ -39,7 +39,7 @@ namespace CIAOX11
 
       static ::DDS::StatusKind
       get_mask (
-        IDL::traits< CCM_DDS::ConnectorStatusListener>::ref_type error_listener);
+        IDL::traits<CCM_DDS::ConnectorStatusListener>::ref_type error_listener);
     };
   }
 }

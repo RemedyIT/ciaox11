@@ -137,7 +137,7 @@ private:
 
   void
   test_internal_error_filter (
-    IDL::traits< CCM_DDS::ContentFilterSetting>::ref_type cft,
+    IDL::traits<CCM_DDS::ContentFilterSetting>::ref_type cft,
     bool getter);
   void test_internal_error_filter ();
 

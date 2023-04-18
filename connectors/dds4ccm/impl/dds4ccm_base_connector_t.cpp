@@ -469,7 +469,7 @@ DDS_Base_Connector_T<CCM_TYPE>::activate_topic (
 {
   DDS4CCM_LOG_TRACE ("DDS_Base_Connector_T::activate_topic");
 
-  IDL::traits< CCM_DDS::ConnectorStatusListener>::ref_type error_listener =
+  IDL::traits<CCM_DDS::ConnectorStatusListener>::ref_type error_listener =
     this->context_->get_connection_error_listener ();
 
   IDL::traits<::DDS::TopicListener>::ref_type topic_listener;
@@ -511,7 +511,7 @@ DDS_Base_Connector_T<CCM_TYPE>::activate_publisher (
 {
   DDS4CCM_LOG_TRACE ("DDS_Base_Connector_T::activate_publisher");
 
-  IDL::traits< CCM_DDS::ConnectorStatusListener>::ref_type error_listener =
+  IDL::traits<CCM_DDS::ConnectorStatusListener>::ref_type error_listener =
     this->context_->get_connection_error_listener ();
 
   IDL::traits<::DDS::PublisherListener>::ref_type publisher_listener;
@@ -551,7 +551,7 @@ DDS_Base_Connector_T<CCM_TYPE>::activate_subscriber (
 {
   DDS4CCM_LOG_TRACE ("DDS_Base_Connector_T::activate_subscriber");
 
-  IDL::traits< CCM_DDS::ConnectorStatusListener>::ref_type error_listener =
+  IDL::traits<CCM_DDS::ConnectorStatusListener>::ref_type error_listener =
     this->context_->get_connection_error_listener ();
 
   IDL::traits<::DDS::SubscriberListener>::ref_type subscriber_listener;

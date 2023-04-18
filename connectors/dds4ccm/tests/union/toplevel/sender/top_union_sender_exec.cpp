@@ -68,7 +68,7 @@ namespace Uni_Sender_Impl
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : Uni_Sender_Impl::connector_status_exec_i[ctor]
   connector_status_exec_i::connector_status_exec_i (
     IDL::traits<::Uni::CCM_Sender_Context>::ref_type context,
-    IDL::traits< Uni::CCM_Sender>::weak_ref_type component_executor)
+    IDL::traits<Uni::CCM_Sender>::weak_ref_type component_executor)
     : context_ (std::move (context))
     , component_executor_ (std::move(component_executor))
   {
@@ -238,7 +238,7 @@ namespace Uni_Sender_Impl
 
       this->tm_activate_->cancel();
       this->tm_ = tt_s->schedule_repeated_trigger (
-                        CORBA::make_reference<TT_Callback> (IDL::traits< Uni::CCM_Sender>::narrow (this->_lock()),false),
+                        CORBA::make_reference<TT_Callback> (IDL::traits<Uni::CCM_Sender>::narrow (this->_lock()),false),
                         CCM_TT::TT_Duration (1, 0),
                         CCM_TT::TT_Duration (1, 0),
                         0);
@@ -342,7 +342,7 @@ namespace Uni_Sender_Impl
     // Start status checker
     this->tt_s = this->context_->get_connection_tt_scheduler ();
     this->tm_activate_ = this->tt_s->schedule_repeated_trigger (
-                              CORBA::make_reference<TT_Callback> (IDL::traits< Uni::CCM_Sender>::narrow (this->_lock()),true),
+                              CORBA::make_reference<TT_Callback> (IDL::traits<Uni::CCM_Sender>::narrow (this->_lock()),true),
                               CCM_TT::TT_Duration (0, 1000000000),
                               CCM_TT::TT_Duration (0, 1000000000),
                               0);

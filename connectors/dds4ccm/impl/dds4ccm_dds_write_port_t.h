@@ -51,8 +51,8 @@ private:
    * DDS_Write
    */
   //@{
-  typename IDL::traits< DDS4CCM_Writer_type>::ref_type dds4ccm_writer_ {};
-  typename IDL::traits< CCM_DataWriter_type>::ref_type ccm_data_writer_ {};
+  typename IDL::traits<DDS4CCM_Writer_type>::ref_type dds4ccm_writer_ {};
+  typename IDL::traits<CCM_DataWriter_type>::ref_type ccm_data_writer_ {};
   IDL::traits<::DDS::DataWriter>::ref_type data_writer_ {};
   //@}
 

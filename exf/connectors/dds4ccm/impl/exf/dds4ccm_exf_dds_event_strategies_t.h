@@ -77,7 +77,7 @@ namespace CIAOX11
           typename IDL::traits<typename CCM_TYPE::context_type>::ref_type ctx)
           : EventStrategyBase (ctx->error_listener_configuration ())
         {
-          IDL::traits< CCM_DDS::ConnectorStatusListener>::ref_type erl =
+          IDL::traits<CCM_DDS::ConnectorStatusListener>::ref_type erl =
               ctx->get_connection_error_listener ();
           this->error_listener_ = erl;
           if (erl)
