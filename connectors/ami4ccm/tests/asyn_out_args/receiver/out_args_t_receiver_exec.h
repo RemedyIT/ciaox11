@@ -46,7 +46,7 @@ namespace InterOutArgsT_Receiver_Impl
     /// Constructor
     /// @param[in] context Component context
     do_my_foo_exec_i (
-        IDL::traits< InterOutArgsT::CCM_Receiver_Context>::ref_type context);
+        IDL::traits<InterOutArgsT::CCM_Receiver_Context>::ref_type context);
     //@@{__RIDL_REGEN_MARKER__} - END : InterOutArgsT_Receiver_Impl::do_my_foo_exec_i[ctor]
 
     /// Destructor

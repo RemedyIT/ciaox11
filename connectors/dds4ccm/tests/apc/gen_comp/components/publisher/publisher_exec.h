@@ -42,7 +42,7 @@ namespace publisher_comp_Impl
     /// Constructor
     /// @param[in] context Component context
     connector_status_ShapeType_exec_i (
-        IDL::traits< CCM_publisher_comp_Context>::ref_type context);
+        IDL::traits<CCM_publisher_comp_Context>::ref_type context);
     //@@{__RIDL_REGEN_MARKER__} - END : publisher_comp_Impl::connector_status_ShapeType_exec_i[ctor]
 
     /// Destructor

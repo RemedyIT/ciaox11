@@ -77,7 +77,7 @@ namespace CIAOX11_TT_TimedTrigger_Impl
     TimedTrigger_Executor& operator= (TimedTrigger_Executor&&) = delete;
 
     std::string const event_id_;
-    IDL::traits< tt_timer_i>::ref_type timer_;
+    IDL::traits<tt_timer_i>::ref_type timer_;
     ::CCM_TT::TT_Duration const delta_time_;
     uint32_t const round_;
   };
@@ -192,7 +192,7 @@ namespace CIAOX11_TT_TimedTrigger_Impl
     if (cancelled)
       return; // already cancelled/cancelling
 
-    IDL::traits< tt_timer_i>::ref_type tmref = IDL::traits<tt_timer_i>::narrow (this->_lock ());
+    IDL::traits<tt_timer_i>::ref_type tmref = IDL::traits<tt_timer_i>::narrow (this->_lock ());
     TimerMonitor::TT_QEntry ttqe (std::move(tmref));
     if (this->monitor_.stop_monitoring (ttqe))
     {
@@ -445,7 +445,7 @@ namespace CIAOX11_TT_TimedTrigger_Impl
                                        sizeof(ts) / sizeof(ACE_TCHAR),
                                        true)));
       // create timer object
-      IDL::traits< tt_timer_i>::ref_type timer =
+      IDL::traits<tt_timer_i>::ref_type timer =
           CORBA::make_reference< tt_timer_i> (
               *this,
               std::move(trigger_handler),

@@ -46,7 +46,7 @@ namespace InterMulti_Receiver_Impl
     /// Constructor
     /// @param[in] context Component context
     do_my_one_exec_i (
-        IDL::traits< InterMulti::CCM_Receiver_Context>::ref_type context);
+        IDL::traits<InterMulti::CCM_Receiver_Context>::ref_type context);
     //@@{__RIDL_REGEN_MARKER__} - END : InterMulti_Receiver_Impl::do_my_one_exec_i[ctor]
 
     /// Destructor
@@ -97,7 +97,7 @@ namespace InterMulti_Receiver_Impl
     /// Constructor
     /// @param[in] context Component context
     do_my_two_exec_i (
-        IDL::traits< InterMulti::CCM_Receiver_Context>::ref_type context);
+        IDL::traits<InterMulti::CCM_Receiver_Context>::ref_type context);
     //@@{__RIDL_REGEN_MARKER__} - END : InterMulti_Receiver_Impl::do_my_two_exec_i[ctor]
 
     /// Destructor
@@ -147,7 +147,7 @@ namespace InterMulti_Receiver_Impl
     /// Constructor
     /// @param[in] context Component context
     do_my_three_exec_i (
-        IDL::traits< InterMulti::CCM_Receiver_Context>::ref_type context);
+        IDL::traits<InterMulti::CCM_Receiver_Context>::ref_type context);
     //@@{__RIDL_REGEN_MARKER__} - END : InterMulti_Receiver_Impl::do_my_three_exec_i[ctor]
 
     /// Destructor

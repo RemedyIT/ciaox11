@@ -44,7 +44,7 @@ namespace PSL_SampleLostTest_Receiver_Impl
     /// Constructor
     /// @param[in] context Component context
     info_get_status_exec_i (
-        IDL::traits< PSL_SampleLostTest::CCM_Receiver_Context>::ref_type context,
+        IDL::traits<PSL_SampleLostTest::CCM_Receiver_Context>::ref_type context,
         std::atomic_bool &sample_lost,
         atomic_thread_id &thread_id);
     //@@{__RIDL_REGEN_MARKER__} - END : PSL_SampleLostTest_Receiver_Impl::info_get_status_exec_i[ctor]
@@ -102,7 +102,7 @@ namespace PSL_SampleLostTest_Receiver_Impl
     /// Constructor
     /// @param[in] context Component context
     info_out_data_listener_exec_i (
-        IDL::traits< PSL_SampleLostTest::CCM_Receiver_Context>::ref_type context);
+        IDL::traits<PSL_SampleLostTest::CCM_Receiver_Context>::ref_type context);
     //@@{__RIDL_REGEN_MARKER__} - END : PSL_SampleLostTest_Receiver_Impl::info_out_data_listener_exec_i[ctor]
 
     /// Destructor
@@ -157,7 +157,7 @@ namespace PSL_SampleLostTest_Receiver_Impl
     /// Constructor
     /// @param[in] context Component context
     info_out_status_exec_i (
-        IDL::traits< PSL_SampleLostTest::CCM_Receiver_Context>::ref_type context,
+        IDL::traits<PSL_SampleLostTest::CCM_Receiver_Context>::ref_type context,
         std::atomic_bool &sample_lost,
         atomic_thread_id &thread_id);
     //@@{__RIDL_REGEN_MARKER__} - END : PSL_SampleLostTest_Receiver_Impl::info_out_status_exec_i[ctor]

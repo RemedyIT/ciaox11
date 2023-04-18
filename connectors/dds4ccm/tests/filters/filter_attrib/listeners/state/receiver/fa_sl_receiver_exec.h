@@ -44,7 +44,7 @@ namespace FA_State_Listen_Test_Receiver_Impl
     /// Constructor
     /// @param[in] context Component context
     listen_port_1_data_listener_exec_i (
-        IDL::traits< FA_State_Listen_Test::CCM_Receiver_Context>::ref_type context,
+        IDL::traits<FA_State_Listen_Test::CCM_Receiver_Context>::ref_type context,
         std::atomic_ullong &created,
         std::atomic_ullong &updated,
         std::atomic_ullong &deleted);
@@ -114,7 +114,7 @@ namespace FA_State_Listen_Test_Receiver_Impl
     /// Constructor
     /// @param[in] context Component context
     listen_port_1_status_exec_i (
-        IDL::traits< FA_State_Listen_Test::CCM_Receiver_Context>::ref_type context);
+        IDL::traits<FA_State_Listen_Test::CCM_Receiver_Context>::ref_type context);
     //@@{__RIDL_REGEN_MARKER__} - END : FA_State_Listen_Test_Receiver_Impl::listen_port_1_status_exec_i[ctor]
 
     /// Destructor
@@ -169,7 +169,7 @@ namespace FA_State_Listen_Test_Receiver_Impl
     /// Constructor
     /// @param[in] context Component context
     listen_port_2_data_listener_exec_i (
-        IDL::traits< FA_State_Listen_Test::CCM_Receiver_Context>::ref_type context,
+        IDL::traits<FA_State_Listen_Test::CCM_Receiver_Context>::ref_type context,
         std::atomic_ullong &created_,
         std::atomic_ullong &updated_,
         std::atomic_ullong &deleted_);
@@ -239,7 +239,7 @@ namespace FA_State_Listen_Test_Receiver_Impl
     /// Constructor
     /// @param[in] context Component context
     listen_port_2_status_exec_i (
-        IDL::traits< FA_State_Listen_Test::CCM_Receiver_Context>::ref_type context);
+        IDL::traits<FA_State_Listen_Test::CCM_Receiver_Context>::ref_type context);
     //@@{__RIDL_REGEN_MARKER__} - END : FA_State_Listen_Test_Receiver_Impl::listen_port_2_status_exec_i[ctor]
 
     /// Destructor
@@ -377,7 +377,7 @@ namespace FA_State_Listen_Test_Receiver_Impl
     void
     test_internal_error (
       uint16_t listener_port,
-      IDL::traits< CCM_DDS::ContentFilterSetting>::ref_type cft);
+      IDL::traits<CCM_DDS::ContentFilterSetting>::ref_type cft);
     void test_internal_errors ();
 
     void
@@ -385,7 +385,7 @@ namespace FA_State_Listen_Test_Receiver_Impl
       uint16_t listener_port,
       std::string const &current_query,
       std::string const &new_query,
-      IDL::traits< CCM_DDS::DataListenerControl>::ref_type ldc);
+      IDL::traits<CCM_DDS::DataListenerControl>::ref_type ldc);
     void test_non_changeables ();
     //@@{__RIDL_REGEN_MARKER__} - END : FA_State_Listen_Test_Receiver_Impl::Receiver_exec_i[user_private_ops]
     //@}

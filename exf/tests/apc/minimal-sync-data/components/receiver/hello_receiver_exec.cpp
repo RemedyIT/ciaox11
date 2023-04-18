@@ -23,8 +23,8 @@ namespace Hello_Receiver_Impl
   class TheStateKeeper : public IDL::traits<::Hello::StateKeeper>::base_type
   {
   public:
-    TheStateKeeper () {}
-    ~TheStateKeeper () {}
+    TheStateKeeper () = default;
+    ~TheStateKeeper () = default;
 
     virtual
     void

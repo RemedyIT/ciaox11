@@ -46,7 +46,7 @@ namespace MDD_State_Listener_Test_Receiver_Impl
     /// Constructor
     /// @param[in] context Component context
     info_state_listen_data_listener_exec_i (
-        IDL::traits< MDD_State_Listener_Test::CCM_Receiver_Context>::ref_type context,
+        IDL::traits<MDD_State_Listener_Test::CCM_Receiver_Context>::ref_type context,
         atomic_thread_id &thread_id_on_creation,
         atomic_thread_id &thread_id_on_many_updates,
         std::atomic_ullong &sample_created_received,
@@ -118,7 +118,7 @@ namespace MDD_State_Listener_Test_Receiver_Impl
     /// Constructor
     /// @param[in] context Component context
     info_state_listen_status_exec_i (
-        IDL::traits< MDD_State_Listener_Test::CCM_Receiver_Context>::ref_type context);
+        IDL::traits<MDD_State_Listener_Test::CCM_Receiver_Context>::ref_type context);
     //@@{__RIDL_REGEN_MARKER__} - END : MDD_State_Listener_Test_Receiver_Impl::info_state_listen_status_exec_i[ctor]
 
     /// Destructor

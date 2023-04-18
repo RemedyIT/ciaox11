@@ -101,7 +101,7 @@ namespace Example_BasicPublisher_comp_Impl
     /** @name User defined members. */
     //@{
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Example_BasicPublisher_comp_Impl::CA1DataPub_CSL_exec_i[user_members]
-    IDL::traits< Example::CCM_BasicPublisher_comp>::weak_ref_type component_executor_;
+    IDL::traits<Example::CCM_BasicPublisher_comp>::weak_ref_type component_executor_;
     bool &publication_matched_;
     //@@{__RIDL_REGEN_MARKER__} - END : Example_BasicPublisher_comp_Impl::CA1DataPub_CSL_exec_i[user_members]
     //@}

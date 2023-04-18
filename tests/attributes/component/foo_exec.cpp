@@ -325,7 +325,7 @@ namespace Foo_Impl
       ret = false;
     }
 
-    if (!IDL::traits< BarSeq >::is_bounded ())
+    if (!IDL::traits<BarSeq >::is_bounded ())
     {
       CIAOX11_TEST_ERROR << "ERROR: <my_bar_sequence> is not bounded. " << std::endl;
       ret = false;
@@ -343,18 +343,18 @@ namespace Foo_Impl
   {
     uint16_t error = 0;
 
-    if (IDL::traits< sequence_bounded_string >::is_bounded ())
+    if (IDL::traits<sequence_bounded_string >::is_bounded ())
     {
       CIAOX11_TEST_ERROR << "ERROR: my_sequence_bounded_string should not be "
         "bounded" << std::endl;
       ++error;
     }
 
-    if (IDL::traits< bounded_string >::bound () != 50)
+    if (IDL::traits<bounded_string >::bound () != 50)
     {
       CIAOX11_TEST_ERROR << "ERROR: Unexpected bound of <bounded_string> "
         << "Expected <50> - found <"
-        << IDL::traits< bounded_string >::bound ()
+        << IDL::traits<bounded_string >::bound ()
         << ">." << std::endl;
       ++error;
     }
@@ -387,18 +387,18 @@ namespace Foo_Impl
   Foo_exec_i::check_bounded_sequence_of_bounded_strings ()
   {
     uint16_t error = 0;
-    if (!IDL::traits< bounded_sequence_bounded_string >::is_bounded ())
+    if (!IDL::traits<bounded_sequence_bounded_string >::is_bounded ())
     {
       CIAOX11_TEST_ERROR << "ERROR: bounded_sequence_bounded_string should be "
         "bounded" << std::endl;
       ++error;
     }
 
-    if (IDL::traits< bounded_sequence_bounded_string >::bound () != 5)
+    if (IDL::traits<bounded_sequence_bounded_string >::bound () != 5)
     {
       CIAOX11_TEST_ERROR << "ERROR: Unexpected bound for bounded_sequence_bounded_string. "
         << "Expected <5> - found <"
-        << IDL::traits< bounded_sequence_bounded_string >::bound ()
+        << IDL::traits<bounded_sequence_bounded_string >::bound ()
         << ">." << std::endl;
       ++error;
     }
@@ -425,10 +425,10 @@ namespace Foo_Impl
     }};
 
     std::integral_constant<uint32_t, 2> const two_dimensions;
-    if (IDL::traits< multi_dimensional_short_array>::dimensions () != two_dimensions)
+    if (IDL::traits<multi_dimensional_short_array>::dimensions () != two_dimensions)
     {
       CIAOX11_TEST_ERROR << "ERROR: Unexpected dimension found. Expected <"
-        << two_dimensions << "> - found <" << IDL::traits< multi_dimensional_short_array>::dimensions ()
+        << two_dimensions << "> - found <" << IDL::traits<multi_dimensional_short_array>::dimensions ()
         << ">." << std::endl;
       ++error;
     }

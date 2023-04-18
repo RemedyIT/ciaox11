@@ -195,7 +195,7 @@ namespace CIAOX11_TT_TimedTrigger_Impl
 
   // Timer implementation
   class tt_timer_i final
-    : public IDL::traits< CCM_TT::TT_Timer>::base_type
+    : public IDL::traits<CCM_TT::TT_Timer>::base_type
   {
   public:
     tt_timer_i (

@@ -46,7 +46,7 @@ namespace Hello_Receiver_Impl
     /// Constructor
     /// @param[in] context Component context
     do_my_foo_exec_i (
-        IDL::traits< Hello::CCM_Receiver_Context>::ref_type context);
+        IDL::traits<Hello::CCM_Receiver_Context>::ref_type context);
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::do_my_foo_exec_i[ctor]
 
     /// Destructor
@@ -95,7 +95,7 @@ namespace Hello_Receiver_Impl
     /// Constructor
     /// @param[in] context Component context
     do_my_foo2_exec_i (
-        IDL::traits< Hello::CCM_Receiver_Context>::ref_type context);
+        IDL::traits<Hello::CCM_Receiver_Context>::ref_type context);
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::do_my_foo2_exec_i[ctor]
 
     /// Destructor
@@ -144,7 +144,7 @@ namespace Hello_Receiver_Impl
     /// Constructor
     /// @param[in] context Component context
     do_my_foo3_exec_i (
-        IDL::traits< Hello::CCM_Receiver_Context>::ref_type context);
+        IDL::traits<Hello::CCM_Receiver_Context>::ref_type context);
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::do_my_foo3_exec_i[ctor]
 
     /// Destructor
@@ -193,7 +193,7 @@ namespace Hello_Receiver_Impl
     /// Constructor
     /// @param[in] context Component context
     do_my_bar_exec_i (
-        IDL::traits< Hello::CCM_Receiver_Context>::ref_type context);
+        IDL::traits<Hello::CCM_Receiver_Context>::ref_type context);
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::do_my_bar_exec_i[ctor]
 
     /// Destructor

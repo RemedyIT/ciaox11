@@ -153,7 +153,7 @@ namespace CIAOX11_TT_TimedTrigger_Impl
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : CIAOX11_TT_TimedTrigger_Impl::tt_scheduler_exec_i::schedule_repeated_trigger[_trigger_handler_start_delay_interval_max_rounds]
     // create timer object
     bool const recurring = (interval.sec() > 0 || interval.nanosec () > 0);
-    IDL::traits< tt_timer_i>::ref_type timer =
+    IDL::traits<tt_timer_i>::ref_type timer =
         CORBA::make_reference< tt_timer_i> (
             IDL::traits<tt_scheduler_exec_i>::narrow (this->_this ()),
             trigger_handler,

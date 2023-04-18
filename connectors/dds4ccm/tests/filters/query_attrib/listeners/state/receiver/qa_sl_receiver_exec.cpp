@@ -219,7 +219,7 @@ namespace QA_State_Listen_Test_Receiver_Impl
     if (this->created_ == keys ())
     {
       // sender may continue.
-      IDL::traits< WriterStarter>::ref_type starter =
+      IDL::traits<WriterStarter>::ref_type starter =
         this->context_->get_connection_writer_start ();
       starter->start_write ();
     }

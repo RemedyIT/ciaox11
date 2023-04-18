@@ -84,8 +84,8 @@ namespace ExceptionT_Sender_Impl
                         << "returns null" << std::endl;
       return 1;
     }
-      IDL::traits< ExceptionT::AMI4CCM_MyFooReplyHandler>::ref_type cb =
-         CORBA::make_reference< AMI4CCM_MyFooReplyHandler_run_my_foo_i> ();
+      IDL::traits<ExceptionT::AMI4CCM_MyFooReplyHandler>::ref_type cb =
+         CORBA::make_reference<AMI4CCM_MyFooReplyHandler_run_my_foo_i> ();
 
     //Invoke Asynchronous calls to test exception handling
     //for this test, all functions of

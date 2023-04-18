@@ -45,7 +45,7 @@ namespace Hello_Receiver_Impl
     /// Constructor
     /// @param[in] context Component context
     rec_listen_port_foo_prov_exec_i (
-        IDL::traits< Hello::CCM_Receiver_Context>::ref_type context);
+        IDL::traits<Hello::CCM_Receiver_Context>::ref_type context);
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::rec_listen_port_foo_prov_exec_i[ctor]
 
     /// Destructor
@@ -108,7 +108,7 @@ namespace Hello_Receiver_Impl
     /// Constructor
     /// @param[in] context Component context
     rec_listen_port_bar_prov_exec_i (
-        IDL::traits< Hello::CCM_Receiver_Context>::ref_type context);
+        IDL::traits<Hello::CCM_Receiver_Context>::ref_type context);
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::rec_listen_port_bar_prov_exec_i[ctor]
 
     /// Destructor

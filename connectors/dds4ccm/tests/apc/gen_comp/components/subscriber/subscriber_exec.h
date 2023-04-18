@@ -43,7 +43,7 @@ namespace subscriber_comp_Impl
     /// Constructor
     /// @param[in] context Component context
     info_out_data_listener_exec_i (
-        IDL::traits< CCM_subscriber_comp_Context>::ref_type context);
+        IDL::traits<CCM_subscriber_comp_Context>::ref_type context);
     //@@{__RIDL_REGEN_MARKER__} - END : subscriber_comp_Impl::info_out_data_listener_exec_i[ctor]
 
     /// Destructor
@@ -98,7 +98,7 @@ namespace subscriber_comp_Impl
     /// Constructor
     /// @param[in] context Component context
     info_out_status_exec_i (
-        IDL::traits< CCM_subscriber_comp_Context>::ref_type context);
+        IDL::traits<CCM_subscriber_comp_Context>::ref_type context);
     //@@{__RIDL_REGEN_MARKER__} - END : subscriber_comp_Impl::info_out_status_exec_i[ctor]
 
     /// Destructor
@@ -153,7 +153,7 @@ namespace subscriber_comp_Impl
     /// Constructor
     /// @param[in] context Component context
     info_read_status_exec_i (
-        IDL::traits< CCM_subscriber_comp_Context>::ref_type context);
+        IDL::traits<CCM_subscriber_comp_Context>::ref_type context);
     //@@{__RIDL_REGEN_MARKER__} - END : subscriber_comp_Impl::info_read_status_exec_i[ctor]
 
     /// Destructor
@@ -208,7 +208,7 @@ namespace subscriber_comp_Impl
     /// Constructor
     /// @param[in] context Component context
     info_get_status_exec_i (
-        IDL::traits< CCM_subscriber_comp_Context>::ref_type context);
+        IDL::traits<CCM_subscriber_comp_Context>::ref_type context);
     //@@{__RIDL_REGEN_MARKER__} - END : subscriber_comp_Impl::info_get_status_exec_i[ctor]
 
     /// Destructor
@@ -263,7 +263,7 @@ namespace subscriber_comp_Impl
     /// Constructor
     /// @param[in] context Component context
     info_state_data_listener_exec_i (
-        IDL::traits< CCM_subscriber_comp_Context>::ref_type context);
+        IDL::traits<CCM_subscriber_comp_Context>::ref_type context);
     //@@{__RIDL_REGEN_MARKER__} - END : subscriber_comp_Impl::info_state_data_listener_exec_i[ctor]
 
     /// Destructor
@@ -328,7 +328,7 @@ namespace subscriber_comp_Impl
     /// Constructor
     /// @param[in] context Component context
     info_state_status_exec_i (
-        IDL::traits< CCM_subscriber_comp_Context>::ref_type context);
+        IDL::traits<CCM_subscriber_comp_Context>::ref_type context);
     //@@{__RIDL_REGEN_MARKER__} - END : subscriber_comp_Impl::info_state_status_exec_i[ctor]
 
     /// Destructor
