@@ -94,7 +94,7 @@ namespace CIAOX11
           /// @note This operation must be called from the dispatcher with
           /// its _g_queue lock held, this operation is *NOT* thread safe
           /// in itself
-          bool allocate ()
+          bool allocate_i ()
           {
             // When have a concurrent flag greater as zero we can dispatch
             // a task to it
@@ -111,7 +111,7 @@ namespace CIAOX11
           /// @note This operation must be called from the dispatcher with
           /// its _g_queue lock held, this operation is *NOT* thread safe
           /// in itself
-          void release ()
+          void release_i ()
           { ++this->concurrent_; }
 
         private:

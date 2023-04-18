@@ -188,7 +188,7 @@ int test_concurrent_2 ()
     ++retval;
   }
   // Release instance_A so that it gets another event
-  instance_A->release();
+  instance_A->release_i();
   if (!dp.dequeue (dequeue_task))
   {
     CIAOX11_TEST_ERROR << "Can't dequeue task" << std::endl;

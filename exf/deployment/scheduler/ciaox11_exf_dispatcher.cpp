@@ -377,7 +377,7 @@ namespace CIAOX11
         // of which the instance is not busy (if any)
         for (QEntry* qep=this->head_; qep ;qep=qep->prev_)
         {
-          if (always || qep->task_->instance_->allocate ())
+          if (always || qep->task_->instance_->allocate_i ())
           {
             // remove entry from queue list
             if (qep->next_)
@@ -1045,7 +1045,7 @@ namespace CIAOX11
             {
               std::lock_guard<std::mutex> _q_guard (this->q_lock_);
 
-              dtask->instance ()->release ();
+              dtask->instance ()->release_i ();
             }
           }
 
