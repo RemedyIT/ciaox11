@@ -13,7 +13,7 @@
 class TestExecutor : public CIAOX11::ExF::Executor
 {
 public:
-  TestExecutor (std::string id) : event_id_ (id) {}
+  TestExecutor (std::string id) : event_id_ (std::move(id)) {}
   ~TestExecutor () override = default;
 
   const std::string& event_id () const noexcept(true) override
