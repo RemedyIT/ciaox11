@@ -129,7 +129,7 @@ namespace CIAOX11
           /// to a higher number to allow multiple threads to execute events
           /// on the instance.
           /// A new event can be dispatched when this counter has a value greater
-          /// than
+          /// than zero
           uint16_t concurrent_ {};
           /// A reference to an instance is stored in the tasks that are scheduled.
           /// This flag is to prevent that we execute tasks that are for an instance
