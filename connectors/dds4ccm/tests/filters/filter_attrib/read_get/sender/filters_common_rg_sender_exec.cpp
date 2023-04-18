@@ -283,7 +283,7 @@ namespace Filters_Common_Read_Get_Test_Sender_Impl
     this->written_ += msgs.size ();
 
     // Let the receiver know that the samples were written
-    IDL::traits< ReaderStarter>::ref_type starter =
+    IDL::traits<ReaderStarter>::ref_type starter =
       this->context_->get_connection_reader_start ();
     starter->start_read ();
   }

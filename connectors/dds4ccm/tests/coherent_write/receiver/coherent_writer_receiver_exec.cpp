@@ -155,7 +155,7 @@ namespace CoherentWriter_Receiver_Impl
       uint16_t run)
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : CoherentWriter_Receiver_Impl::start_reading_exec_i::start_new_run[_run]
-    auto cex = IDL::traits< Receiver_exec_i >::narrow (this->component_executor_.lock ());
+    auto cex = IDL::traits<Receiver_exec_i >::narrow (this->component_executor_.lock ());
     if (cex)
     {
       cex->start_read (run);
@@ -176,7 +176,7 @@ namespace CoherentWriter_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : CoherentWriter_Receiver_Impl::start_reading_exec_i::set_reader_properties[_nr_keys_nr_iterations]
     X11_UNUSED_ARG(nr_keys);
 
-    auto cex = IDL::traits< Receiver_exec_i >::narrow (this->component_executor_.lock ());
+    auto cex = IDL::traits<Receiver_exec_i >::narrow (this->component_executor_.lock ());
     if (cex)
     {
       cex->iterations (nr_iterations);
@@ -213,7 +213,7 @@ namespace CoherentWriter_Receiver_Impl
     IDL::traits<CCM_TT::TT_Scheduler>::ref_type tt_s = this->context_->get_connection_tt_scheduler ();
 
     this->tm_ = tt_s->schedule_repeated_trigger (
-                       CORBA::make_reference<TT_Callback> (IDL::traits< CoherentWriter::CCM_Receiver>::narrow (this->_lock())),
+                       CORBA::make_reference<TT_Callback> (IDL::traits<CoherentWriter::CCM_Receiver>::narrow (this->_lock())),
                        CCM_TT::TT_Duration (1, 0),
                        CCM_TT::TT_Duration (1, 0),
                        0);
@@ -270,7 +270,7 @@ namespace CoherentWriter_Receiver_Impl
           << "No errors found in read. Continue next run." << std::endl;
         try
         {
-          IDL::traits< WriterStarter>::ref_type restarter =
+          IDL::traits<WriterStarter>::ref_type restarter =
             this->context_->get_connection_writer_start ();
           restarter->start_write ();
         }

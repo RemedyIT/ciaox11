@@ -19,7 +19,7 @@ namespace CIAOX11
   namespace DDS4CCM
   {
     class DDS4CCM_IMPL_Export CCM_DDS_ContentFilterSetting_i
-      : public virtual IDL::traits< CCM_DDS::CCM_ContentFilterSetting>::base_type
+      : public virtual IDL::traits<CCM_DDS::CCM_ContentFilterSetting>::base_type
     {
     public:
       /// Constructor

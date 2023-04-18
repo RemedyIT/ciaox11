@@ -44,8 +44,8 @@ namespace MDD_Test_Sender_Impl
     /// Constructor
     /// @param[in] context Component context
     connector_status_exec_i (
-        IDL::traits< MDD_Test::CCM_Sender_Context>::ref_type context,
-        IDL::traits< MDD_Test::CCM_Sender>::weak_ref_type component_executor);
+        IDL::traits<MDD_Test::CCM_Sender_Context>::ref_type context,
+        IDL::traits<MDD_Test::CCM_Sender>::weak_ref_type component_executor);
     //@@{__RIDL_REGEN_MARKER__} - END : MDD_Test_Sender_Impl::connector_status_exec_i[ctor]
 
     /// Destructor
@@ -99,7 +99,7 @@ namespace MDD_Test_Sender_Impl
     /** @name User defined members. */
     //@{
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : MDD_Test_Sender_Impl::connector_status_exec_i[user_members]
-    IDL::traits< MDD_Test::CCM_Sender>::weak_ref_type component_executor_;
+    IDL::traits<MDD_Test::CCM_Sender>::weak_ref_type component_executor_;
     bool started_ { false };
     //@@{__RIDL_REGEN_MARKER__} - END : MDD_Test_Sender_Impl::connector_status_exec_i[user_members]
     //@}

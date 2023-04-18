@@ -65,7 +65,7 @@ namespace Test_TT_Tester_Impl
 
       timer->cancel ();
     }
-    nr_of_received_++;
+    ++nr_of_received_;
     std::this_thread::sleep_for (std::chrono::seconds (3));
   }
   //@@{__RIDL_REGEN_MARKER__} - END : Test_TT_Tester_Impl[user_namespace_impl]

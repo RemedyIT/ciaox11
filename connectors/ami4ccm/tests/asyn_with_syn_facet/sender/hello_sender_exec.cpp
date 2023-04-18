@@ -101,8 +101,8 @@ namespace Hello_Sender_Impl
                           << "returns null" << std::endl;
         return 1;
       }
-        IDL::traits< Hello::AMI4CCM_MyFooReplyHandler>::ref_type cb =
-           CORBA::make_reference< AMI4CCM_MyFooReplyHandler_run_my_foo_i> (this->comp_exec_);
+        IDL::traits<Hello::AMI4CCM_MyFooReplyHandler>::ref_type cb =
+           CORBA::make_reference<AMI4CCM_MyFooReplyHandler_run_my_foo_i> (this->comp_exec_);
 
       my_foo_ami_->sendc_foo (cb,"Do something asynchronous");
       my_foo_ami_->sendc_foo (cb,"");

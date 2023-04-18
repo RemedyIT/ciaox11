@@ -105,7 +105,7 @@ namespace Test_Sender_Impl
         return;
       }
 
-      IDL::traits< stringInterface::Publisher>::ref_type writer =
+      IDL::traits<stringInterface::Publisher>::ref_type writer =
         this->context_->get_connection_topic_pub ();
 
       std::string topic {};

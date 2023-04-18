@@ -126,7 +126,7 @@ namespace CoherentWriter_Sender_Impl
     {
       if (DDS4CCM_TEST_UTILS::check_publication_matched_status (the_entity, status_kind, 1))
       {
-        auto cex = IDL::traits< Sender_exec_i>::narrow (this->component_executor_.lock ());
+        auto cex = IDL::traits<Sender_exec_i>::narrow (this->component_executor_.lock ());
         if (cex)
         {
           this->publication_matched_ = true;
@@ -179,7 +179,7 @@ namespace CoherentWriter_Sender_Impl
   start_writing_exec_i::start_write ()
   {
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : CoherentWriter_Sender_Impl::start_writing_exec_i::start_write[void]
-    auto cex = IDL::traits< Sender_exec_i >::narrow (this->component_executor_.lock ());
+    auto cex = IDL::traits<Sender_exec_i >::narrow (this->component_executor_.lock ());
     if (cex)
     {
       cex->restart ();

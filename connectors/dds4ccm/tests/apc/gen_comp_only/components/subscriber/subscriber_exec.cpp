@@ -28,7 +28,7 @@ namespace subscriber_comp_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::info_out_data_listener_exec_i[ctor]
   info_out_data_listener_exec_i::info_out_data_listener_exec_i (
-    IDL::traits< CCM_subscriber_comp_Context>::ref_type context)
+    IDL::traits<CCM_subscriber_comp_Context>::ref_type context)
     : context_ (std::move (context))
   {
   }
@@ -81,7 +81,7 @@ namespace subscriber_comp_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::info_out_status_exec_i[ctor]
   info_out_status_exec_i::info_out_status_exec_i (
-    IDL::traits< CCM_subscriber_comp_Context>::ref_type context)
+    IDL::traits<CCM_subscriber_comp_Context>::ref_type context)
     : context_ (std::move (context))
   {
   }
@@ -134,7 +134,7 @@ namespace subscriber_comp_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::info_read_status_exec_i[ctor]
   info_read_status_exec_i::info_read_status_exec_i (
-    IDL::traits< CCM_subscriber_comp_Context>::ref_type context)
+    IDL::traits<CCM_subscriber_comp_Context>::ref_type context)
     : context_ (std::move (context))
   {
   }
@@ -187,7 +187,7 @@ namespace subscriber_comp_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::info_get_status_exec_i[ctor]
   info_get_status_exec_i::info_get_status_exec_i (
-    IDL::traits< CCM_subscriber_comp_Context>::ref_type context)
+    IDL::traits<CCM_subscriber_comp_Context>::ref_type context)
     : context_ (std::move (context))
   {
   }
@@ -240,7 +240,7 @@ namespace subscriber_comp_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::info_state_data_listener_exec_i[ctor]
   info_state_data_listener_exec_i::info_state_data_listener_exec_i (
-    IDL::traits< CCM_subscriber_comp_Context>::ref_type context)
+    IDL::traits<CCM_subscriber_comp_Context>::ref_type context)
     : context_ (std::move (context))
   {
   }
@@ -315,7 +315,7 @@ namespace subscriber_comp_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::info_state_status_exec_i[ctor]
   info_state_status_exec_i::info_state_status_exec_i (
-    IDL::traits< CCM_subscriber_comp_Context>::ref_type context)
+    IDL::traits<CCM_subscriber_comp_Context>::ref_type context)
     : context_ (std::move (context))
   {
   }
@@ -368,7 +368,7 @@ namespace subscriber_comp_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::info_out_2_data_listener_exec_i[ctor]
   info_out_2_data_listener_exec_i::info_out_2_data_listener_exec_i (
-    IDL::traits< CCM_subscriber_comp_Context>::ref_type context)
+    IDL::traits<CCM_subscriber_comp_Context>::ref_type context)
     : context_ (std::move (context))
   {
   }
@@ -421,7 +421,7 @@ namespace subscriber_comp_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::info_out_2_status_exec_i[ctor]
   info_out_2_status_exec_i::info_out_2_status_exec_i (
-    IDL::traits< CCM_subscriber_comp_Context>::ref_type context)
+    IDL::traits<CCM_subscriber_comp_Context>::ref_type context)
     : context_ (std::move (context))
   {
   }
@@ -474,7 +474,7 @@ namespace subscriber_comp_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::info_read_2_status_exec_i[ctor]
   info_read_2_status_exec_i::info_read_2_status_exec_i (
-    IDL::traits< CCM_subscriber_comp_Context>::ref_type context)
+    IDL::traits<CCM_subscriber_comp_Context>::ref_type context)
     : context_ (std::move (context))
   {
   }
@@ -527,7 +527,7 @@ namespace subscriber_comp_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::info_get_2_status_exec_i[ctor]
   info_get_2_status_exec_i::info_get_2_status_exec_i (
-    IDL::traits< CCM_subscriber_comp_Context>::ref_type context)
+    IDL::traits<CCM_subscriber_comp_Context>::ref_type context)
     : context_ (std::move (context))
   {
   }
@@ -580,7 +580,7 @@ namespace subscriber_comp_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::info_state_2_data_listener_exec_i[ctor]
   info_state_2_data_listener_exec_i::info_state_2_data_listener_exec_i (
-    IDL::traits< CCM_subscriber_comp_Context>::ref_type context)
+    IDL::traits<CCM_subscriber_comp_Context>::ref_type context)
     : context_ (std::move (context))
   {
   }
@@ -655,7 +655,7 @@ namespace subscriber_comp_Impl
 
   //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::info_state_2_status_exec_i[ctor]
   info_state_2_status_exec_i::info_state_2_status_exec_i (
-    IDL::traits< CCM_subscriber_comp_Context>::ref_type context)
+    IDL::traits<CCM_subscriber_comp_Context>::ref_type context)
     : context_ (std::move (context))
   {
   }
@@ -908,7 +908,7 @@ namespace subscriber_comp_Impl
   {
     // Setting the context of this component.
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : subscriber_comp_Impl::subscriber_comp_exec_i[set_session_context]
-    this->context_ = IDL::traits< CCM_subscriber_comp_Context >::narrow (std::move(ctx));
+    this->context_ = IDL::traits<CCM_subscriber_comp_Context >::narrow (std::move(ctx));
     //@@{__RIDL_REGEN_MARKER__} - END : subscriber_comp_Impl::subscriber_comp_exec_i[set_session_context]
   }
 

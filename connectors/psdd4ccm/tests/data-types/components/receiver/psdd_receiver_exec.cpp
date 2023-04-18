@@ -90,7 +90,7 @@ namespace Test_Receiver_Impl
         Test::Topic topic {};
         if (reader->get_one (topic))
         {
-          this->topic_counter_++;
+          ++this->topic_counter_;
           PSDD4CCM_TEST_DEBUG << "Receiver_exec_i::tick : read #" << this->topic_counter_ << std::endl;
           this->check_datum (topic);
         }
@@ -230,7 +230,7 @@ namespace Test_Receiver_Impl
           << "datum.b_15[" << c << "]: expected <" << expected << "> - got <"
           << val << ">" << std::endl;
       }
-      c++;
+      ++c;
     }
 
     uint32_t x = 0;

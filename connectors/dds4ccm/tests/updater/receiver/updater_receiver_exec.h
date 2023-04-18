@@ -119,7 +119,7 @@ namespace UpdaterModule_Receiver_Impl
     /// Constructor
     /// @param[in] context Component context
     info_out_one_by_one_status_exec_i (
-        IDL::traits< UpdaterModule::CCM_Receiver_Context>::ref_type context);
+        IDL::traits<UpdaterModule::CCM_Receiver_Context>::ref_type context);
     //@@{__RIDL_REGEN_MARKER__} - END : UpdaterModule_Receiver_Impl::info_out_one_by_one_status_exec_i[ctor]
 
     /// Destructor
@@ -251,7 +251,7 @@ namespace UpdaterModule_Receiver_Impl
     /// Constructor
     /// @param[in] context Component context
     info_out_many_by_many_status_exec_i (
-        IDL::traits< UpdaterModule::CCM_Receiver_Context>::ref_type context);
+        IDL::traits<UpdaterModule::CCM_Receiver_Context>::ref_type context);
     //@@{__RIDL_REGEN_MARKER__} - END : UpdaterModule_Receiver_Impl::info_out_many_by_many_status_exec_i[ctor]
 
     /// Destructor

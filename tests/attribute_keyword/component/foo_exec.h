@@ -46,7 +46,7 @@ namespace Foo_Impl
     /// Constructor
     /// @param[in] context Component context
     my_foo_prov_exec_i (
-        IDL::traits< CCM_Foo_Context>::ref_type context);
+        IDL::traits<CCM_Foo_Context>::ref_type context);
     //@@{__RIDL_REGEN_MARKER__} - END : Foo_Impl::my_foo_prov_exec_i[ctor]
 
     /// Destructor

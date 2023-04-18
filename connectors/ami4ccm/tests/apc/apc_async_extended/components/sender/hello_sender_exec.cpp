@@ -230,7 +230,7 @@ namespace Hello_Sender_Impl
     // Your code here
     X11_UNUSED_ARG (ami_return_val);
     X11_UNUSED_ARG (answer);
-    nr_of_received_++;
+    ++nr_of_received_;
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[foo]
   }
 
@@ -250,7 +250,7 @@ namespace Hello_Sender_Impl
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[hello]
     // Your code here
     X11_UNUSED_ARG (answer);
-    nr_of_received_++;
+    ++nr_of_received_;
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[hello]
   }
 
@@ -270,7 +270,7 @@ namespace Hello_Sender_Impl
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[get_rw_attrib]
     CIAOX11_TEST_INFO << "Sender:\tAMI4CCM_MyFooReplyHandler_run_my_foo_i::get_rw_attrib "
                       << " rw_attrib: " << ami_return_val <<std::endl;
-    nr_of_received_++;
+    ++nr_of_received_;
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[get_rw_attrib]
   }
 
@@ -288,7 +288,7 @@ namespace Hello_Sender_Impl
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[set_rw_attrib]
     CIAOX11_TEST_INFO << "Sender:\tAMI4CCM_MyFooReplyHandler_run_my_foo_i::set_rw_attrib "
                       <<std::endl;
-    nr_of_received_++;
+    ++nr_of_received_;
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[set_rw_attrib]
   }
 
@@ -307,7 +307,7 @@ namespace Hello_Sender_Impl
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[get_ro_attrib]
     CIAOX11_TEST_INFO << "Sender:\tAMI4CCM_MyFooReplyHandler_run_my_foo_i::get_ro_attrib "
                        << " ro_attrib: " << ami_return_val <<std::endl;
-    nr_of_received_++;
+    ++nr_of_received_;
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Sender_Impl::AMI4CCM_MyFooReplyHandler_run_my_foo_i[get_ro_attrib]
   }
 

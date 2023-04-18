@@ -53,7 +53,7 @@ namespace App_Monitor_Impl
     {
       this->context_->get_connection_my_recorder ()->submit_environment_data (data);
 
-      this->msg_count_++;
+      ++this->msg_count_;
 
       // schedule next trigger
       IDL::traits<CCM_TT::TT_Scheduler>::ref_type ts_mon = this->context_->get_connection_tt_monitor ();

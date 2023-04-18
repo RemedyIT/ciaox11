@@ -48,7 +48,7 @@ namespace CSL_Test_Receiver_Impl
     /// Constructor
     /// @param[in] context Component context
     info_get_status_exec_i (
-        IDL::traits< CSL_Test::CCM_Receiver_Context>::ref_type context);
+        IDL::traits<CSL_Test::CCM_Receiver_Context>::ref_type context);
     //@@{__RIDL_REGEN_MARKER__} - END : CSL_Test_Receiver_Impl::info_get_status_exec_i[ctor]
 
     /// Destructor
@@ -103,7 +103,7 @@ namespace CSL_Test_Receiver_Impl
     /// Constructor
     /// @param[in] context Component context
     connector_status_receiver_exec_i (
-        IDL::traits< CSL_Test::CCM_Receiver_Context>::ref_type context,
+        IDL::traits<CSL_Test::CCM_Receiver_Context>::ref_type context,
         std::atomic_ulong &on_sample_rejected_invoked,
         atomic_thread_id &on_inconsistent_topic_thread_id,
         atomic_thread_id &on_requested_incompatible_qos_thread_id,

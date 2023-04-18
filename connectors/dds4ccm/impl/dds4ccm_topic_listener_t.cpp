@@ -37,7 +37,7 @@ namespace CIAOX11
     template <typename EVT_STRATEGY>
     ::DDS::StatusMask
      TopicListener_T<EVT_STRATEGY>::get_mask (
-      IDL::traits< CCM_DDS::ConnectorStatusListener>::ref_type error_listener)
+      IDL::traits<CCM_DDS::ConnectorStatusListener>::ref_type error_listener)
     {
       DDS4CCM_LOG_TRACE("TopicListener_T::get_mask");
 

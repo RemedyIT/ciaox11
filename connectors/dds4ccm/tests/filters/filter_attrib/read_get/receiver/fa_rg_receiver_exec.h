@@ -45,7 +45,7 @@ namespace FA_Read_Get_Test_Receiver_Impl
     /// Constructor
     /// @param[in] context Component context
     get_port_status_exec_i (
-        IDL::traits< FA_Read_Get_Test::CCM_Receiver_Context>::ref_type context);
+        IDL::traits<FA_Read_Get_Test::CCM_Receiver_Context>::ref_type context);
     //@@{__RIDL_REGEN_MARKER__} - END : FA_Read_Get_Test_Receiver_Impl::get_port_status_exec_i[ctor]
 
     /// Destructor
@@ -100,7 +100,7 @@ namespace FA_Read_Get_Test_Receiver_Impl
     /// Constructor
     /// @param[in] context Component context
     listen_port_data_listener_exec_i (
-        IDL::traits< FA_Read_Get_Test::CCM_Receiver_Context>::ref_type context);
+        IDL::traits<FA_Read_Get_Test::CCM_Receiver_Context>::ref_type context);
     //@@{__RIDL_REGEN_MARKER__} - END : FA_Read_Get_Test_Receiver_Impl::listen_port_data_listener_exec_i[ctor]
 
     /// Destructor
@@ -155,7 +155,7 @@ namespace FA_Read_Get_Test_Receiver_Impl
     /// Constructor
     /// @param[in] context Component context
     listen_port_status_exec_i (
-        IDL::traits< FA_Read_Get_Test::CCM_Receiver_Context>::ref_type context);
+        IDL::traits<FA_Read_Get_Test::CCM_Receiver_Context>::ref_type context);
     //@@{__RIDL_REGEN_MARKER__} - END : FA_Read_Get_Test_Receiver_Impl::listen_port_status_exec_i[ctor]
 
     /// Destructor
@@ -210,8 +210,8 @@ namespace FA_Read_Get_Test_Receiver_Impl
     /// Constructor
     /// @param[in] context Component context
     start_reading_exec_i (
-        IDL::traits< FA_Read_Get_Test::CCM_Receiver_Context>::ref_type context,
-        IDL::traits< FA_Read_Get_Test::CCM_Receiver>::weak_ref_type component_executor);
+        IDL::traits<FA_Read_Get_Test::CCM_Receiver_Context>::ref_type context,
+        IDL::traits<FA_Read_Get_Test::CCM_Receiver>::weak_ref_type component_executor);
     //@@{__RIDL_REGEN_MARKER__} - END : FA_Read_Get_Test_Receiver_Impl::start_reading_exec_i[ctor]
 
     /// Destructor
@@ -247,7 +247,7 @@ namespace FA_Read_Get_Test_Receiver_Impl
     /** @name User defined members. */
     //@{
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : FA_Read_Get_Test_Receiver_Impl::start_reading_exec_i[user_members]
-    IDL::traits< FA_Read_Get_Test::CCM_Receiver>::weak_ref_type component_executor_;
+    IDL::traits<FA_Read_Get_Test::CCM_Receiver>::weak_ref_type component_executor_;
     //@@{__RIDL_REGEN_MARKER__} - END : FA_Read_Get_Test_Receiver_Impl::start_reading_exec_i[user_members]
     //@}
 
