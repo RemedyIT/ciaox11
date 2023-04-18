@@ -125,7 +125,7 @@ namespace CIAOX11
           /// Unique id for this instance
           std::string const instance_id_;
           /// How many concurrent events can we still dispatch to the instance.
-          /// This has a default value of 1 (single threade), but can be configured
+          /// This has a default value of 1 (single threaded), but can be configured
           /// to a higher number to allow multiple threads to execute events
           /// on the instance.
           /// A new event can be dispatched when this counter has a value greater
