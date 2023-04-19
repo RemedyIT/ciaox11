@@ -80,7 +80,7 @@ namespace CIAOX11
 
       DefaultPushConsumerEventStrategy_T () = default;
       DefaultPushConsumerEventStrategy_T (
-        typename IDL::traits< typename CCM_TYPE::context_type>::ref_type ctx)
+        typename IDL::traits<typename CCM_TYPE::context_type>::ref_type ctx)
         : DefaultEventStrategyBase (ctx)
         , listener_ (ctx->get_connection_consumer_data_listener ())
       {}

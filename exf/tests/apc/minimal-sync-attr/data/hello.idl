@@ -48,7 +48,6 @@ module Hello
       void hello (out long answer)
         raises (InternalError);
 
-
       attribute short rw_attrib
         getraises (InternalError)
         setraises (InternalError);

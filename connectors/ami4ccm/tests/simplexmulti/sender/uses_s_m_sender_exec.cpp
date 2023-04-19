@@ -71,7 +71,7 @@ namespace UsesSM_Sender_Impl
     for(::UsesSM::CCM_Sender::sendc_m_run_my_oneConnection my_one_ami_ : m_run_my_one_seq_)
     {
       IDL::traits<::UsesSM::AMI4CCM_OneReplyHandler>::ref_type cb_one =
-        CORBA::make_reference< AMI4CCM_OneReplyHandler_m_run_my_one_i> ();
+        CORBA::make_reference<AMI4CCM_OneReplyHandler_m_run_my_one_i> ();
 
       std::string test;
       switch (i)
@@ -101,9 +101,9 @@ namespace UsesSM_Sender_Impl
 
       CIAOX11_TEST_INFO << "Sender (ASYNCH) : send asynch call bar " << i <<std::endl;
       IDL::traits<::UsesSM::AMI4CCM_TwoReplyHandler>::ref_type cb_two =
-        CORBA::make_reference< AMI4CCM_TwoReplyHandler_s_run_my_two_i> ();
+        CORBA::make_reference<AMI4CCM_TwoReplyHandler_s_run_my_two_i> ();
       my_two_ami_->sendc_bar ( cb_two, i);
-      i++;
+      ++i;
     }
     return 0;
   }
@@ -165,7 +165,7 @@ namespace UsesSM_Sender_Impl
          CIAOX11_TEST_DEBUG << "Sender (SYNCH) : received answer = "
                             << answer << std::endl;
       }
-      i++;
+      ++i;
     }
     return 0;
   }

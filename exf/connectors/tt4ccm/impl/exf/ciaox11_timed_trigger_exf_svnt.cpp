@@ -19,7 +19,7 @@ namespace CIAOX11_TT_TimedTrigger_Impl
 
   TimedTrigger_ExecutorLocator::TimedTrigger_ExecutorLocator (
       IDL::traits<::CIAOX11_TT::CCM_TimedTrigger>::ref_type component_executor,
-      IDL::traits< TimedTrigger_Context>::ref_type component_context) :
+      IDL::traits<TimedTrigger_Context>::ref_type component_context) :
         component_executor_ (std::move (component_executor)),
         component_context_ (std::move (component_context))
   {
@@ -126,7 +126,7 @@ namespace CIAOX11_TT_TimedTrigger_Impl
     if (component_executor)
     {
       // Create the context for this component, passing in it's ServiceRegistry
-      IDL::traits< CIAOX11_TT_TimedTrigger_Impl::TimedTrigger_Context>::ref_type context =
+      IDL::traits<CIAOX11_TT_TimedTrigger_Impl::TimedTrigger_Context>::ref_type context =
         CORBA::make_reference <CIAOX11_TT_TimedTrigger_Impl::TimedTrigger_Context> (svcreg, ins_name);
 
       // Set the created context onto the user component executor

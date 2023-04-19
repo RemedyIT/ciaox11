@@ -71,7 +71,7 @@ namespace App_Aggregator_Impl
     CIAOX11_TEST_DEBUG << "> do_recorder_exec_i::submit_environment_data" << std::endl;
     this->locations_.insert (envdata.location ());
     this->env_history_[envdata.location ()].push_back (envdata);
-    this->env_count_++;
+    ++this->env_count_;
     CIAOX11_TEST_DEBUG << "< do_recorder_exec_i::submit_environment_data" << std::endl;
     //@@{__RIDL_REGEN_MARKER__} - END : App_Aggregator_Impl::do_recorder_exec_i::submit_environment_data[_envdata]
   }
@@ -84,7 +84,7 @@ namespace App_Aggregator_Impl
     CIAOX11_TEST_DEBUG << "> do_recorder_exec_i::submit_record_data" << std::endl;
     this->locations_.insert (recdata.location ());
     this->record_history_[recdata.location ()].push_back (recdata);
-    this->record_count_++;
+    ++this->record_count_;
 
     if (this->delay_)
     {

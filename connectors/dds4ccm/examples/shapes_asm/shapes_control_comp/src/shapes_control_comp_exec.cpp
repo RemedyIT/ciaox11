@@ -173,7 +173,7 @@ namespace Shapes_Control_comp_Impl
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Shapes_Control_comp_Impl::Control_comp_exec_i[ccm_activate]
     IDL::traits<CCM_TT::TT_Scheduler>::ref_type tt_s = this->context_->get_connection_tt_scheduler ();
     this->tm_= tt_s->schedule_repeated_trigger (
-                           CORBA::make_reference<TT_Callback> (IDL::traits< Shapes::CCM_Control_comp>::narrow (this->_lock())),
+                           CORBA::make_reference<TT_Callback> (IDL::traits<Shapes::CCM_Control_comp>::narrow (this->_lock())),
                            CCM_TT::TT_Duration (1,0),
                            CCM_TT::TT_Duration (0,1000000000 / this->rate_),
                            0);

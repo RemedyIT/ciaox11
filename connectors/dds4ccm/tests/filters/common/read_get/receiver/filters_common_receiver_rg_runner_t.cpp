@@ -39,7 +39,7 @@ ReadGetReceiverRunner_T<CONTEXT_TYPE, QUERY_ATTRIB>::run ()
     this->set_filters ();
     this->check_filters ();
 
-    IDL::traits< WriterStarter>::ref_type starter =
+    IDL::traits<WriterStarter>::ref_type starter =
       this->context_->get_connection_writer_start ();
     starter->start_write ();
   }
@@ -342,7 +342,7 @@ ReadGetReceiverRunner_T<CONTEXT_TYPE, QUERY_ATTRIB>::test_non_changeable_filter 
 template<typename CONTEXT_TYPE, bool QUERY_ATTRIB>
 void
 ReadGetReceiverRunner_T<CONTEXT_TYPE, QUERY_ATTRIB>::test_internal_error_filter (
-  IDL::traits< CCM_DDS::ContentFilterSetting>::ref_type cft,
+  IDL::traits<CCM_DDS::ContentFilterSetting>::ref_type cft,
   bool getter)
 {
   std::string test;

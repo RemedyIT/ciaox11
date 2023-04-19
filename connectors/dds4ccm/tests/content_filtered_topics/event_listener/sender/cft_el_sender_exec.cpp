@@ -167,7 +167,7 @@ namespace CFT_EL_Test_Sender_Impl
     {
       if (DDS4CCM_TEST_UTILS::check_publication_matched_status (the_entity, status_kind, 1))
       {
-        auto cex = IDL::traits< Sender_exec_i>::narrow (this->component_executor_.lock ());
+        auto cex = IDL::traits<Sender_exec_i>::narrow (this->component_executor_.lock ());
         if (cex)
         {
           this->started_ = true;
@@ -249,7 +249,7 @@ namespace CFT_EL_Test_Sender_Impl
       this->last_key_ = this->samples_.begin ();
 
       this->tm_ = tt_s->schedule_repeated_trigger (
-                        CORBA::make_reference<TT_Callback> (IDL::traits< CFT_EL_Test::CCM_Sender>::narrow (this->_lock()),false),
+                        CORBA::make_reference<TT_Callback> (IDL::traits<CFT_EL_Test::CCM_Sender>::narrow (this->_lock()),false),
                         CCM_TT::TT_Duration (0, 1000000000 / this->rate_),
                         CCM_TT::TT_Duration (0, 1000000000 / this->rate_),
                         0);
@@ -320,7 +320,7 @@ namespace CFT_EL_Test_Sender_Impl
     // Start status checker
     this->tt_s = this->context_->get_connection_tt_scheduler ();
     this->tm_activate_ = this->tt_s->schedule_repeated_trigger (
-                          CORBA::make_reference<TT_Callback> (IDL::traits< CFT_EL_Test::CCM_Sender>::narrow (this->_lock()),true),
+                          CORBA::make_reference<TT_Callback> (IDL::traits<CFT_EL_Test::CCM_Sender>::narrow (this->_lock()),true),
                           CCM_TT::TT_Duration (0, 1000000000),
                           CCM_TT::TT_Duration (0, 1000000000),
                          0);

@@ -6,7 +6,7 @@
 // Copyright (c) Remedy IT Expertise BV
 // --------------------------------------------------------------------
 
-project : ciaox11_lib, ciaox11_exf {
+project : ciaox11_lib, ciaox11_exf, ciaox11_ccm_stub {
   after    += ciaox11_exf_core_impl
   libs     += ciaox11_exf_core
   includes += $(CIAOX11_ROOT)/exf $(CIAOX11_ROOT)/exf/connectors

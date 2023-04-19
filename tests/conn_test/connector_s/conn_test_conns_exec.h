@@ -45,7 +45,7 @@ namespace Hello_MyBaseEvent_Impl
     /// Constructor
     /// @param[in] context Component context
     supplier_foo_uses_exec_i (
-        IDL::traits< Hello::CCM_MyBaseEvent_Context>::ref_type context);
+        IDL::traits<Hello::CCM_MyBaseEvent_Context>::ref_type context);
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_MyBaseEvent_Impl::supplier_foo_uses_exec_i[ctor]
 
     /// Destructor

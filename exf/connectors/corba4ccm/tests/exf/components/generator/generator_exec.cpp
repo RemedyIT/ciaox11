@@ -87,7 +87,7 @@ namespace App_Generator_Impl
     try
     {
       this->context_->get_connection_my_recorder ()->submit_record_data (data);
-      this->message_count_++;
+      ++this->message_count_;
     }
     catch (const CORBA::TRANSIENT&)
     {

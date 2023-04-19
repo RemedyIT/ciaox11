@@ -102,7 +102,7 @@ namespace CIAOX11
     template <typename EVT_STRATEGY>
     ::DDS::StatusMask
     PortStatusListener_T<EVT_STRATEGY>::get_mask (
-      IDL::traits< CCM_DDS::PortStatusListener>::ref_type psl)
+      IDL::traits<CCM_DDS::PortStatusListener>::ref_type psl)
     {
       DDS4CCM_LOG_TRACE ("PortStatusListener_T<EVT_STRATEGY>::get_mask");
 

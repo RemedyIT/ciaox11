@@ -91,7 +91,7 @@ With ExF after event reception/generation the connector will submit the event, p
 lane_ configured for the component (!) from where the event is entered into the scheduling queue of the _dispatcher_.
 The _dispatcher_, which executes in a configurable execution context (single or multi threaded), retrieves
 events from the queue and dispatches these to the connected (to the scheduling lane) component instances sequentially
-per component instance (i.e. any component instance will only ever get a single event at a time to handle).
+per component instance (i.e. any component instance will only ever get by default a single event at a time to handle).
 
 This execution sequence is depicted in the following figure.
 
@@ -162,8 +162,9 @@ Non-exclusive Scheduling lanes are associated with a _shared_ Dispatcher which c
 (default), static threadpool (fixed thread count) or dynamic threadpool (minimum and maximum threadcount) operation.
 With multi threaded operation (static or dynamic) the Dispatcher will run multiple threads simultaneously dequeuing
 and routing scheduled events. Each component instance associated with the Dispatcher through the Non-exclusive
-Scheduling Lane will however be guaranteed to only be offered a single event to handle at anyone time (i.e. each
-thread will always dispatch events for a different component instance as another thread at that time).
+Scheduling Lane will however by default be guaranteed to only be offered a single event to handle at anyone time (i.e. each
+thread will always dispatch events for a different component instance as another thread at that time). See
+the Concurrent flag for how to configure that a component instance may be offered multiple events at anyone time.
 
 === Deployment options
 
@@ -275,13 +276,18 @@ The following properties are available.
 [width="100%",cols="<34%a,<10%a,<55%a",options="header",]
 |=======================================================================
 |Property ID |Type |Description
-|nl.remedy.it.Axcioma.ExF.SchedulingLane.Dispatch.Policy| string
+|nl.remedy.it.Axcioma.ExF.SchedulingLane.Dispatch.Policy|string
 |Specifies the dispatch policy for the Scheduler attached to the scheduling lane for a component instance. Currently supports
 3 options:
 
 * "EXCLUSIVE" : configures an exclusive Scheduler for a component instance
 * "GROUPED" : configures a shared Scheduler for a used defined group of component instances
 * _unset_ (or any unmatched value) : configures to use the default non-exclusive Scheduler
+
+|nl.remedy.it.Axcioma.ExF.SchedulingLane.Dispatch.Concurrent|uint16
+|Specifies how many events may be dispatched to a component instance at anyone time.
+The default is 1. At the moment this value is set to any other value the component business
+logic *must* be thread safe.
 
 |nl.remedy.it.Axcioma.ExF.SchedulingLane.Group |string
 |Specifies a user defined group ID for a _GROUPED_ Scheduler
@@ -391,6 +397,17 @@ With regard to the interaction between component and connector settings the same
 ExF concurrency settings.
 
 === Default event ID's
+
+For each component the following ExF lifecycle _event ID_'s are defined.
+
+[width="100%",cols="<1a,<5a",options="header",]
+|=======================================================================
+|Event ID | Description
+|configuration_complete| `configuration_complete` lifecycle callback
+|ccm_activate| `ccm_activate` lifecycle callback
+|ccm_passivate| `ccm_passivate` lifecycle callback
+|ccm_remove| `ccm_remove` lifecycle callback
+|=======================================================================
 
 The AXCIOMA provided connectors can trigger the following ExF _event ID_'s, each of them can be configured using the scheme
 above.

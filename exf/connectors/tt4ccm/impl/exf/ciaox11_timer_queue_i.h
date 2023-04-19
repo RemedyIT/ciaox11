@@ -45,7 +45,7 @@ namespace CIAOX11_TT_TimedTrigger_Impl
 
   //  Timer object implementation
   class tt_timer_i final
-      : public IDL::traits< CCM_TT::TT_Timer>::base_type
+      : public IDL::traits<CCM_TT::TT_Timer>::base_type
   {
   public:
     typedef std::shared_ptr< tt_timer_i> ref_s_type;
@@ -126,7 +126,7 @@ namespace CIAOX11_TT_TimedTrigger_Impl
 
       TT_QEntry () {}
       TT_QEntry (std::nullptr_t) {}
-      TT_QEntry (IDL::traits< tt_timer_i>::ref_type tmr)
+      TT_QEntry (IDL::traits<tt_timer_i>::ref_type tmr)
       { this->tt_timer_ = std::move(tmr); }
       TT_QEntry (const TT_QEntry& ttqe)
       { this->tt_timer_ = ttqe.tt_timer_; }
@@ -153,7 +153,7 @@ namespace CIAOX11_TT_TimedTrigger_Impl
                       const ACE_Time_Value& delay,
                       const ACE_Time_Value& interval,
                       uint32_t max_rounds,
-                      IDL::traits< CIAOX11::ExF::SchedulingLane>::ref_type scheduling_lane,
+                      IDL::traits<CIAOX11::ExF::SchedulingLane>::ref_type scheduling_lane,
                       CIAOX11::ExF::Settings exf_settings);
 
     /**

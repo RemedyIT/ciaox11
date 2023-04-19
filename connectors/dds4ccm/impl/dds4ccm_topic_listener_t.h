@@ -34,7 +34,7 @@ namespace CIAOX11
 
       /// Helper method to determine which DDS mask we have to use
       static ::DDS::StatusMask get_mask (
-        IDL::traits< CCM_DDS::ConnectorStatusListener>::ref_type error_listener);
+        IDL::traits<CCM_DDS::ConnectorStatusListener>::ref_type error_listener);
 
     private:
       EVT_STRATEGY evs_;

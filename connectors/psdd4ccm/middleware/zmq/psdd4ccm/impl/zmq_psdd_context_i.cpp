@@ -190,7 +190,7 @@ namespace PSDD
      PSDD4CCM_LOG_TRACE (
          "PSDD::ZMQ::Context_Impl::register_client" );
 
-     this->client_count_++;
+     ++this->client_count_;
 
      PSDD4CCM_LOG_DEBUG (
          "PSDD::ZMQ::Context_Impl::register_client" <<

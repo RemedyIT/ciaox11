@@ -44,7 +44,7 @@ namespace NonChangeableComponent_Impl
     /// Constructor
     /// @param[in] context Component context
     info_get_status_exec_i (
-        IDL::traits< CCM_NonChangeableComponent_Context>::ref_type context);
+        IDL::traits<CCM_NonChangeableComponent_Context>::ref_type context);
     //@@{__RIDL_REGEN_MARKER__} - END : NonChangeableComponent_Impl::info_get_status_exec_i[ctor]
 
     /// Destructor

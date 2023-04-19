@@ -137,7 +137,7 @@ namespace CIAOX11
           const char *begin = name.c_str ();
           while(*str != '/' && *str)
             {
-              str++;
+              ++str;
             }
           cos_name.push_back (CosNaming::NameComponent (begin, str));
         }

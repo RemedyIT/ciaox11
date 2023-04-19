@@ -136,7 +136,7 @@ namespace CIAOX11
     template <typename EVT_STRATEGY>
     ::DDS::StatusMask
     SubscriberListener_T<EVT_STRATEGY>::get_mask (
-      IDL::traits< CCM_DDS::ConnectorStatusListener>::ref_type csl)
+      IDL::traits<CCM_DDS::ConnectorStatusListener>::ref_type csl)
     {
       ::DDS::StatusMask mask { ::DDS::STATUS_MASK_NONE };
 

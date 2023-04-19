@@ -25,9 +25,6 @@ namespace CIAOX11
           : gate_ (gate) {}
         ~SchedulingLane () override;
 
-        ExF::Count trafic_count () override
-        { return this->gate_->queued_count (); }
-
         bool closed () override
         { return this->gate_->closed (); }
 
@@ -136,14 +133,14 @@ namespace CIAOX11
         return true;
       }
 
-      bool Scheduler::get_count (
+      bool Scheduler::get_uint16_t (
           const Components::ConfigValue& cval,
           uint16_t& count)
       {
         uint16_t val;
         if (!(cval.value () >>= val))
         {
-          CIAOX11_EXF_LOG_ERROR ("ExF::Impl::Scheduler::get_count - "
+          CIAOX11_EXF_LOG_ERROR ("ExF::Impl::Scheduler::get_uint16_t - "
                              "failed to extract value for "
                              << cval.name ());
           return false;
@@ -151,20 +148,20 @@ namespace CIAOX11
         else
         {
           count = val;
-          CIAOX11_EXF_LOG_DEBUG ("ExF::Impl::Scheduler::get_count - "
+          CIAOX11_EXF_LOG_DEBUG ("ExF::Impl::Scheduler::get_uint16_t - "
                              << cval.name () << " count = " << count);
         }
         return true;
       }
 
-      bool Scheduler::get_group (
+      bool Scheduler::get_string (
           const Components::ConfigValue& cval,
           std::string& group)
       {
         std::string val;
         if (!(cval.value () >>= val))
         {
-          CIAOX11_EXF_LOG_ERROR ("ExF::Impl::Scheduler::get_group - "
+          CIAOX11_EXF_LOG_ERROR ("ExF::Impl::Scheduler::get_string - "
                              "failed to extract value for "
                              << cval.name ());
           return false;
@@ -172,7 +169,7 @@ namespace CIAOX11
         else
         {
           group = val;
-          CIAOX11_EXF_LOG_DEBUG ("ExF::Impl::Scheduler::get_group - "
+          CIAOX11_EXF_LOG_DEBUG ("ExF::Impl::Scheduler::get_string - "
                              << cval.name () << " group = " << group);
         }
         return true;
@@ -220,11 +217,11 @@ namespace CIAOX11
           }
           else if (cval.name () == ExF::SCHEDULER_THREAD_COUNT)
           {
-            this->get_count (cval, this->min_threads_);
+            this->get_uint16_t (cval, this->min_threads_);
           }
           else if (cval.name () == ExF::SCHEDULER_THREAD_MAXCOUNT)
           {
-            this->get_count (cval, this->max_threads_);
+            this->get_uint16_t (cval, this->max_threads_);
           }
           else if (cval.name () == ExF::SCHEDULER_QUEUE_POLICY)
           {
@@ -241,11 +238,11 @@ namespace CIAOX11
           }
           else if (cval.name () == ExF::SCHEDULING_LANE_THREAD_COUNT)
           {
-            this->get_count (cval, this->lane_min_threads_);
+            this->get_uint16_t (cval, this->lane_min_threads_);
           }
           else if (cval.name () == ExF::SCHEDULING_LANE_THREAD_MAXCOUNT)
           {
-            this->get_count (cval, this->lane_max_threads_);
+            this->get_uint16_t (cval, this->lane_max_threads_);
           }
           if (!lane_queue_pol_set)
           {
@@ -271,10 +268,12 @@ namespace CIAOX11
       {
         CIAOX11_EXF_LOG_DEBUG ("ExF::Impl::Scheduler::open_scheduling_lane -");
 
-        // lane settings
+        // Lane settings
         DispatchPolicyType lane_dispatch { DispatchPolicyType::DEFAULT };
         DispatchQueuePolicy lane_pol {this->lane_queue_policy_};
         std::string lane_group {};
+        // Default number of events we will schedule onto a component instance
+        uint16_t concurrent { 1 };
 
         // analyze provided configuration
         for (const Components::ConfigValue& cval : cfg)
@@ -295,7 +294,14 @@ namespace CIAOX11
           }
           else if (cval.name () == ExF::SCHEDULING_LANE_GROUP_ID)
           {
-            if (!this->get_group (cval, lane_group))
+            if (!this->get_string (cval, lane_group))
+            {
+              return SchedulerResult::SFAILED;
+            }
+          }
+          else if (cval.name () == ExF::SCHEDULING_LANE_DISPATCH_CONCURRENT)
+          {
+            if (!this->get_uint16_t (cval, concurrent))
             {
               return SchedulerResult::SFAILED;
             }
@@ -345,10 +351,11 @@ namespace CIAOX11
             }
 
             CIAOX11_EXF_LOG_DEBUG ("ExF::Impl::Scheduler::open_scheduling_lane - "\
-                               "opening dispatch gate for " << instance_id);
+                                 "opening dispatch gate for " << instance_id <<
+                                 " with concurrent " << concurrent);
 
             // open a gate on the dispatcher
-            ExF::Impl::Dispatcher::gate_ref gate = dispatcher->open_dispatch_gate (instance_id);
+            ExF::Impl::Dispatcher::gate_ref gate = dispatcher->open_dispatch_gate (instance_id, concurrent);
             if (gate)
             {
               // create the exclusive scheduling lane
@@ -381,11 +388,11 @@ namespace CIAOX11
                 }
                 else if (cval.name () == ExF::SCHEDULING_LANE_THREAD_COUNT)
                 {
-                  this->get_count (cval, min_threads);
+                  this->get_uint16_t (cval, min_threads);
                 }
                 else if (cval.name () == ExF::SCHEDULING_LANE_THREAD_MAXCOUNT)
                 {
-                  this->get_count (cval, max_threads);
+                  this->get_uint16_t (cval, max_threads);
                 }
               }
 
@@ -422,10 +429,11 @@ namespace CIAOX11
               this->groups_.insert (GROUP_PAIR (lane_group, GROUP_ENTRY {dispatcher}));
 
               CIAOX11_EXF_LOG_DEBUG ("ExF::Impl::Scheduler::open_scheduling_lane - "\
-                                 "opening dispatch gate for " << instance_id);
+                                 "opening dispatch gate for " << instance_id <<
+                                 " with concurrent " << concurrent);
 
               // open a gate on the dispatcher
-              ExF::Impl::Dispatcher::gate_ref gate = dispatcher->open_dispatch_gate (instance_id);
+              ExF::Impl::Dispatcher::gate_ref gate = dispatcher->open_dispatch_gate (instance_id, concurrent);
               if (gate)
               {
                 // create the exclusive scheduling lane
@@ -435,11 +443,12 @@ namespace CIAOX11
             else
             {
               CIAOX11_EXF_LOG_DEBUG ("ExF::Impl::Scheduler::open_scheduling_lane - "\
-                                 "opening dispatch gate for " << instance_id);
+                                 "opening dispatch gate for " << instance_id <<
+                                 " with concurrent " << concurrent);
 
               // open a gate on the dispatcher
               ExF::Impl::Dispatcher::gate_ref gate =
-                  it->second.dispatcher_->open_dispatch_gate (instance_id);
+                  it->second.dispatcher_->open_dispatch_gate (instance_id, concurrent);
               if (gate)
               {
                 // create the exclusive scheduling lane
@@ -490,11 +499,12 @@ namespace CIAOX11
             }
 
             CIAOX11_EXF_LOG_DEBUG ("ExF::Impl::Scheduler::open_scheduling_lane - "\
-                               "opening dispatch gate for " << instance_id);
+                                 "opening dispatch gate for " << instance_id <<
+                                 " with concurrent " << concurrent);
 
             // open a gate on the default dispatcher
             ExF::Impl::Dispatcher::gate_ref gate =
-                this->default_dispatcher_->open_dispatch_gate (instance_id);
+                this->default_dispatcher_->open_dispatch_gate (instance_id, concurrent);
             if (gate)
             {
               // create the non-exclusive scheduling lane

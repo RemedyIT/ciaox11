@@ -19,7 +19,6 @@
 #include "psdd4ccm/impl/psdd4ccm_conf.h"
 #include "psdd4ccm/logger/psdd4ccm_log.h"
 
-
 namespace CIAOX11
 {
   namespace PSDD4CCM
@@ -77,7 +76,7 @@ namespace CIAOX11
 
         PushConsumerEventStrategy_T  () = default;
         PushConsumerEventStrategy_T  (
-            typename IDL::traits< typename CCM_TYPE::context_type>::ref_type ctx)
+            typename IDL::traits<typename CCM_TYPE::context_type>::ref_type ctx)
           : EventStrategyBase (ctx->consumer_data_listener_configuration ())
           , listener_ (ctx->get_connection_consumer_data_listener ())
         {
