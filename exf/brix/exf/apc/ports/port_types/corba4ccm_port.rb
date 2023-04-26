@@ -52,7 +52,8 @@ module AxciomaPC
         def self.setup_data(recipe, fidl)
           # does the IDL file need full skeletons?
           if fidl.properties[:needs_skel]
-            if mpc_idl_obj = recipe.mpc_file[:skel_gen]
+            mpc_idl_obj = recipe.mpc_file[:skel_gen]
+            if mpc_idl_obj
               # check if ExF support flag needs to be added
               mpc_idl_obj.base_projects << 'ciaox11_exf_idl' if fidl.properties[:exf_skel]
               # now update the skel compiler project
@@ -60,7 +61,7 @@ module AxciomaPC
               # do we need ExF base project?
               mpc_skel_obj.base_projects << 'ciaox11_exf_amh' if fidl.properties[:exf_skel]
               # could be that we add this multiple times but that is no problem as
-              # #base_projects is a unique string list
+              # base_projects is a unique string list
             end
           end
         end
