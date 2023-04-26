@@ -8,11 +8,11 @@
 #--------------------------------------------------------------------
 
 # load all recipe specializations
-Dir.glob(File.join(File.dirname(__FILE__), 'recipes', '*.rb')).each do |fnm|
+Dir.glob(File.join(File.dirname(__FILE__), 'recipes', '*.rb')).sort.each do |fnm|
   require fnm
 end
 
 # load all port implementations
-Dir.glob(File.join(File.dirname(__FILE__), 'ports', '*.rb')).each do |fnm|
+Dir.glob(File.join(File.dirname(__FILE__), 'ports', '*.rb')).sort.each do |fnm|
   require fnm
 end
