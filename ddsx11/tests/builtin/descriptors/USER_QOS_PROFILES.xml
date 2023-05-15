@@ -14,7 +14,7 @@
       -->
       <participant_factory_qos>
       <logging>
-        <verbosity>SILENT</verbosity>
+        <output_file>nddslogging.log</output_file>
       </logging>
       </participant_factory_qos>
     </qos_profile>
