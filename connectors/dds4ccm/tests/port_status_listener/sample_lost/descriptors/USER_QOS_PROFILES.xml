@@ -9,8 +9,8 @@
   <qos_library name="samplelostlibrary">
     <qos_profile name="SilentLogging" is_default_participant_factory_profile="true">
       <!--
-      This test triggers RTI Connext DDS errors because it tests possible error situations, make the default logging
-      silent to not get false positives when running this unit test.
+      This test triggers RTI Connext DDS errors because it tests possible error situations, redirect the default logging
+      to nddslogging.log.
       -->
       <participant_factory_qos>
       <logging>
