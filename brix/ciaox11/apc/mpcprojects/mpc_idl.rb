@@ -158,7 +158,7 @@ module AxciomaPC
       end
 
       def includes_flags
-        recipe.get_relative_paths(includes).collect { |idir| "-I#{idir}" }.join(' ')
+        recipe.get_relative_paths(includes).collect { |idir| "-I#{idir}" unless idir == '.' }.join(' ')
       end
 
       def idl_extras(extras = nil)
