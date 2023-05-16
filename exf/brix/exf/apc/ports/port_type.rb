@@ -8,6 +8,6 @@
 #--------------------------------------------------------------------
 
 # load all interaction pattern port type implementations
-Dir.glob(File.join(File.dirname(__FILE__), 'port_types', '*.rb')).each do |fnm|
+Dir.glob(File.join(File.dirname(__FILE__), 'port_types', '*.rb')).sort.each do |fnm|
   require fnm
 end
