@@ -7,6 +7,6 @@
  * @copyright Copyright (c) Remedy IT Expertise BV
  * -------------------------------------------------------------------*/
 #define CIAOX11_MAJOR_VERSION 2
-#define CIAOX11_MINOR_VERSION 4
+#define CIAOX11_MINOR_VERSION 5
 #define CIAOX11_MICRO_VERSION 0
-#define CIAOX11_VERSION "2.4.0"
+#define CIAOX11_VERSION "2.5.0"
