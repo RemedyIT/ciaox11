@@ -1,6 +1,6 @@
 %if has_toplevel_annotation?
 
-% unaliased_type = 'std::vector< '+resolved_cxxtype+'>'
+% unaliased_type = 'std::vector<'+resolved_cxxtype+'>'
 // Unaliased type      : <%= unaliased_type %>
 // Scoped element type : <%= scoped_cxxtype %>
 % ddsx11_alias_md5 = (unaliased_type+scoped_cxxtype).to_md5
