@@ -24,7 +24,7 @@ namespace CIAOX11_TT_TimedTrigger_Impl
          IDL::traits<tt_timer_i>::ref_type timer,
          const ::CCM_TT::TT_Duration& delta_time,
          uint32_t round)
-       : CIAOX11::ExF::Executor (std::move(timer->exf_settings())),
+       : CIAOX11::ExF::Executor (timer->exf_settings()),
          event_id_ (std::move (event_id))
        , timer_(std::move (timer))
        , delta_time_(std::move (delta_time))

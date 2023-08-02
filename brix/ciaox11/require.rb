@@ -13,7 +13,7 @@ module BRIX11
     TITLE = 'CIAOX11'.freeze
     DESC = 'BRIX11 CIAOX11 brix collection'.freeze
     COPYRIGHT = "Copyright (c) 2014-#{Time.now.year} Remedy IT Expertise BV, The Netherlands".freeze
-    VERSION = { major: 1, minor: 0, release: 0 }
+    VERSION = { major: 2, minor: 5, release: 0 }
 
     Collection.configure(:ciaox11, ROOT, TITLE, DESC, COPYRIGHT, VERSION) do |cfg|
       # declare dependency on :taox11 collection (forces it to load first)
