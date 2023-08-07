@@ -64,6 +64,11 @@ module IDL
           visitor(EnumVisitor).visit_enum(node)
         end
 
+        def visit_bitmask(node)
+          check_namespace_begin
+          visitor(BitMaskVisitor).visit_bitmask(node)
+        end
+
         def declare_union(node)
           check_namespace_begin
           visitor(UnionVisitor).visit_fwd(node)
