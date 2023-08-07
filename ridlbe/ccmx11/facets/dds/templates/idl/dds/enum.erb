@@ -1,6 +1,7 @@
 
 // generated from <%= ridl_template_path %>
 /// @copydoc <%= doc_scoped_name %>
+@bit_bound(<%= bitbound_bits %>)
 enum <%= unescaped_name %> {
   <%= enumerators.collect {|e| "/// @copydoc #{e.doc_scoped_name}\n  #{e.name}" }.join(",\n  ") %>
 };
