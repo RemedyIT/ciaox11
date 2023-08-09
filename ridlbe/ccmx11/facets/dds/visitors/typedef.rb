@@ -18,18 +18,29 @@ module IDL
 
         if self.is_alias?
           idl_declaration += "#{strip_global_scope(self._idltype.idltype_name)} #{node.unescaped_name}"
-        elsif self.is_sequence_typedef? || self.is_array_type?
-          idl_declaration += 'sequence<' if self.is_sequence_typedef?
+        elsif self.is_sequence_typedef?
+          idl_declaration += 'sequence<'
+          typename = strip_global_scope(self._resolved_idltype.basetype.idltype_name)
+          idl_declaration += typename
+          if self.is_bounded_type?
+            idl_declaration += ", #{self._resolved_idltype.size}"
+          end
+          idl_declaration += "> #{node.name}"
+        elsif self.is_map_typedef?
+          idl_declaration += 'map<'
+          keytype_typename = strip_global_scope(self._resolved_idltype.keytype.idltype_name)
+          valuetype_typename = strip_global_scope(self._resolved_idltype.valuetype.idltype_name)
+          idl_declaration += "#{keytype_typename}, #{valuetype_typename}"
+          if self.is_bounded_type?
+            idl_declaration += ", #{self._resolved_idltype.size}"
+          end
+          idl_declaration += "> #{node.unescaped_name}"
+        elsif self.is_array_type?
           typename = strip_global_scope(self._resolved_idltype.basetype.idltype_name)
           idl_declaration += typename
           if self.is_array_type?
             sizes = self._resolved_idltype.sizes.collect { |s| "[#{IDL::Expression::ScopedName === s ? s.node.name : s.to_s}]" }.join
             idl_declaration += " #{node.name}#{sizes}"
-          end
-          if self.is_sequence_typedef? && self.is_bounded_type?
-            idl_declaration += ", #{self._resolved_idltype.size}> #{node.name}"
-          else
-            idl_declaration += "> #{node.name}" if self.is_sequence_typedef?
           end
         elsif self.is_bounded_type?
           idl_declaration += "#{self._resolved_idltype.idltype_name}<#{self._resolved_idltype.size}> #{node.name}"
