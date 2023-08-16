@@ -426,7 +426,7 @@ namespace CIAOX11
               }
 
               // register group dispatcher
-              this->groups_.insert (GROUP_PAIR (lane_group, GROUP_ENTRY {dispatcher}));
+              this->groups_.insert (std::pair{lane_group, GROUP_ENTRY {dispatcher}});
 
               CIAOX11_EXF_LOG_DEBUG ("ExF::Impl::Scheduler::open_scheduling_lane - "\
                                  "opening dispatch gate for " << instance_id <<
@@ -517,7 +517,7 @@ namespace CIAOX11
             CIAOX11_EXF_LOG_DEBUG ("ExF::Impl::Scheduler::open_scheduling_lane - "\
                                "registering scheduling lane for " << instance_id);
             // register lane
-            this->lanes_.insert (LANE_PAIR (instance_id, lane_entry));
+            this->lanes_.insert (std::pair{instance_id, lane_entry});
             std::swap (lane, lane_entry.lane_);
           }
         } // leave lock scope

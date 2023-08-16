@@ -94,7 +94,6 @@ namespace CIAOX11
           std::string group_ {};
         };
 
-        using LANE_PAIR = std::pair<std::string, LANE_ENTRY>;
         using LANE_MAP = std::map<std::string, LANE_ENTRY>;
 
         struct GROUP_ENTRY
@@ -108,7 +107,6 @@ namespace CIAOX11
           uint32_t lane_count_ {};
         };
 
-        using GROUP_PAIR = std::pair<std::string, GROUP_ENTRY>;
         using GROUP_MAP = std::map<std::string, GROUP_ENTRY>;
 
         LANE_MAP lanes_ {};
