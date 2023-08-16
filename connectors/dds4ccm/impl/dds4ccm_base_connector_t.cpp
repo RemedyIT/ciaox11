@@ -485,11 +485,9 @@ DDS_Base_Connector_T<CCM_TYPE>::activate_topic (
   if (mask != ::DDS::STATUS_MASK_NONE)
   {
     topic_listener =
-      DDS::make_reference<topic_listener_type>(
-        event_strategy_type (this->context_));
+      DDS::make_reference<topic_listener_type>(event_strategy_type (this->context_));
 
-    ::DDS::ReturnCode_t const retcode = topic->set_listener (
-      topic_listener, mask);
+    ::DDS::ReturnCode_t const retcode = topic->set_listener (topic_listener, mask);
 
     if (retcode != DDS::RETCODE_OK)
     {

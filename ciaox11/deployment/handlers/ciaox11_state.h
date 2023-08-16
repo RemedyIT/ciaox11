@@ -86,14 +86,12 @@ namespace CIAOX11
     CONTAINERS containers_;
 
     /// Administration which components are instantiated in which container
-    using INSTANCE_PAIR = std::pair <std::string, std::string>;
     using INSTANCE_CONTAINER = std::map <std::string, std::string>;
 
     /// maps instance ids to containers.
     INSTANCE_CONTAINER instance_container_;
 
     /// Administers configuration of instances
-    using CONFIG_PAIR = std::pair <std::string, Components::ConfigValues>;
     using INSTANCE_CONFIG = std::map <std::string, Components::ConfigValues>;
 
     /// maps container ids to configuration.
