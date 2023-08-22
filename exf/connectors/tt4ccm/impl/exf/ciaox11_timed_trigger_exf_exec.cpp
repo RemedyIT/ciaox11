@@ -84,7 +84,6 @@ namespace CIAOX11_TT_TimedTrigger_Impl
     return {};
   }
 
-   // generated from ccmx11/exf4cc/comp_exec/src/corba/exf/component_extra_impl.erb
    void tt_scheduler_exec_i::set_config (
        const ::Components::ConfigValues& config)
    {
