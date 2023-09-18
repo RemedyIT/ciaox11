@@ -504,8 +504,7 @@ DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::do_ccm_activate ()
 
     this->passive_observer_->activate (
       event_strategy_type (this->context ()),
-      this->context ()->get_connection_passive_observer_status (),
-      nullptr);
+      this->context ()->get_connection_passive_observer_status ());
   }
 
   if (this->pull_observer_)
@@ -514,8 +513,7 @@ DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::do_ccm_activate ()
 
     this->pull_observer_->activate (
       event_strategy_type (this->context ()),
-      this->context ()->get_connection_pull_observer_status (),
-      nullptr);
+      this->context ()->get_connection_pull_observer_status ());
   }
 
   if (this->push_observer_)

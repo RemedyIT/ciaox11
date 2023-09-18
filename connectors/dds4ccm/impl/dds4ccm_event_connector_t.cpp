@@ -308,8 +308,7 @@ DDS_Event_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::do_ccm_activate ()
 
     this->pull_consumer_->activate (
       event_strategy_type (this->context ()),
-      this->context ()->get_connection_pull_consumer_status (),
-      nullptr);
+      this->context ()->get_connection_pull_consumer_status ());
   }
 }
 
