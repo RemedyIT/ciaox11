@@ -15,11 +15,16 @@
 
 module Hello
 {
-
   // Sender/Receiver interface
   interface B:A
   {
     long op_B (in long in_l, in S1 s_in_l);
+    boolean op_C (in long in_c, in boolean in_b, out boolean out_b, inout boolean inout_b);
+    boolean op_D (in long in_c, in octet in_b, out octet out_b, inout octet inout_b);
+    boolean op_E (in long in_c, in char in_b, out char out_b, inout char inout_b);
+    boolean op_F (in long in_c, in wchar in_b, out wchar out_b, inout wchar inout_b);
+    attribute boolean at_D;
+    attribute long at_E;
   };
 };
 
