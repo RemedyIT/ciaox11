@@ -38,12 +38,10 @@ public:
    * DDS_StateListen operations
    */
   //@{
-  IDL::traits<CCM_DDS::CCM_StateListenerControl>::ref_type
-  get_data_control ();
+  IDL::traits<CCM_DDS::CCM_StateListenerControl>::ref_type get_data_control ();
   //@}
 
-  void
-  activate (
+  virtual void activate_listen_port (
     const typename CCM_TYPE::event_strategy_type &evs,
     typename IDL::traits<typename CCM_TYPE::data_listener_type>::ref_type listener,
     IDL::traits<CCM_DDS::PortStatusListener>::ref_type status);

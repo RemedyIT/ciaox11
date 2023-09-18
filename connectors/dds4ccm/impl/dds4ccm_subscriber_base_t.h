@@ -54,20 +54,18 @@ public:
    * @brief Life cycle methods for the subscribing side of the dds4ccm connector
    */
   //@{
-  virtual void
-  configuration_complete (
+  virtual void configuration_complete_port (
     IDL::traits<::DDS::Topic>::ref_type topic,
     IDL::traits<::DDS::Subscriber>::ref_type subscriber,
     const std::string &qos_profile);
 
-  virtual void
-  activate (
+  virtual void activate_port (
     const typename CCM_TYPE::event_strategy_type &evs,
     IDL::traits<CCM_DDS::PortStatusListener>::ref_type status);
 
-  virtual void passivate ();
+  virtual void passivate_port ();
 
-  virtual void remove (IDL::traits<::DDS::Subscriber>::ref_type subscriber);
+  virtual void remove_port (IDL::traits<::DDS::Subscriber>::ref_type subscriber);
   //@}
 
 protected:

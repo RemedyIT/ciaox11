@@ -406,10 +406,7 @@ DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::do_configuration_co
       "DDS_State_Connector_T<"
       << ::DDS::traits<TOPIC_TYPE>::get_type_name()
       << ">::do_configuration_complete - Invoking configuration_complete on the observable port.");
-    this->observable_->configuration_complete(
-      this->topic (),
-      this->publisher (),
-      this->qos_profile ());
+    this->observable_->configuration_complete_port (this->topic (), this->publisher (), this->qos_profile ());
   }
   else
   {
@@ -426,10 +423,7 @@ DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::do_configuration_co
       "DDS_State_Connector_T<"
       << ::DDS::traits<TOPIC_TYPE>::get_type_name()
       << ">::do_configuration_complete - Invoking configuration_complete on the passive observer port.");
-    this->passive_observer_->configuration_complete (
-      this->topic (),
-      this->subscriber (),
-      this->qos_profile ());
+    this->passive_observer_->configuration_complete_port (this->topic (), this->subscriber (), this->qos_profile ());
   }
   else
   {
@@ -446,10 +440,7 @@ DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::do_configuration_co
       "DDS_State_Connector_T<"
       << ::DDS::traits<TOPIC_TYPE>::get_type_name()
       << ">::do_configuration_complete - Invoking configuration_complete on the pull observer port.");
-    this->pull_observer_->configuration_complete (
-      this->topic (),
-      this->subscriber (),
-      this->qos_profile ());
+    this->pull_observer_->configuration_complete_port (this->topic (), this->subscriber (), this->qos_profile ());
   }
   else
   {
@@ -466,10 +457,7 @@ DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::do_configuration_co
       "DDS_State_Connector_T<"
       << ::DDS::traits<TOPIC_TYPE>::get_type_name()
       << ">::do_configuration_complete - Invoking configuration_complete on the push observer port.");
-    this->push_observer_->configuration_complete (
-      this->topic (),
-      this->subscriber (),
-      this->qos_profile ());
+    this->push_observer_->configuration_complete_port (this->topic (), this->subscriber (), this->qos_profile ());
   }
   else
   {
@@ -487,10 +475,7 @@ DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::do_configuration_co
       << ::DDS::traits<TOPIC_TYPE>::get_type_name()
       << ">::do_configuration_complete - "
       "Invoking configuration_complete on the push state observer port.");
-    this->push_state_observer_->configuration_complete (
-      this->topic (),
-      this->subscriber (),
-      this->qos_profile ());
+    this->push_state_observer_->configuration_complete_port (this->topic (), this->subscriber (), this->qos_profile ());
   }
   else
   {
@@ -517,7 +502,7 @@ DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::do_ccm_activate ()
   {
     using event_strategy_type = typename CCM_TYPE::passive_observer_traits::event_strategy_type;
 
-    this->passive_observer_->activate (
+    this->passive_observer_->activate_port (
       event_strategy_type (this->context ()),
       this->context ()->get_connection_passive_observer_status ());
   }
@@ -526,7 +511,7 @@ DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::do_ccm_activate ()
   {
     using event_strategy_type = typename CCM_TYPE::pull_observer_traits::event_strategy_type;
 
-    this->pull_observer_->activate (
+    this->pull_observer_->activate_port (
       event_strategy_type (this->context ()),
       this->context ()->get_connection_pull_observer_status ());
   }
@@ -535,7 +520,7 @@ DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::do_ccm_activate ()
   {
     using event_strategy_type = typename CCM_TYPE::push_observer_traits::event_strategy_type;
 
-    this->push_observer_->activate (
+    this->push_observer_->activate_listen_port (
       event_strategy_type (this->context ()),
       this->context ()->get_connection_push_observer_data_listener (),
       this->context ()->get_connection_push_observer_status ());
@@ -545,7 +530,7 @@ DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::do_ccm_activate ()
   {
     using event_strategy_type = typename CCM_TYPE::push_state_observer_traits::event_strategy_type;
 
-    this->push_state_observer_->activate (
+    this->push_state_observer_->activate_listen_port (
       event_strategy_type (this->context ()),
       this->context ()->get_connection_push_state_observer_data_listener (),
       this->context ()->get_connection_push_state_observer_status ());
@@ -571,22 +556,22 @@ DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::ccm_passivate ()
       // one is it doesn't exist.
       if (this->passive_observer_)
       {
-        this->passive_observer_->passivate ();
+        this->passive_observer_->passivate_port ();
       }
 
       if (this->pull_observer_)
       {
-        this->pull_observer_->passivate ();
+        this->pull_observer_->passivate_port ();
       }
 
       if (this->push_observer_)
       {
-        this->push_observer_->passivate ();
+        this->push_observer_->passivate_port ();
       }
 
       if (this->push_state_observer_)
       {
-        this->push_state_observer_->passivate ();
+        this->push_state_observer_->passivate_port ();
       }
 
       TopicBaseConnector::ccm_passivate ();
@@ -613,26 +598,26 @@ DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::do_ccm_remove ()
       // one is it doesn't exist.
       if (this->observable_ && this->publisher_)
       {
-        this->observable_->remove (this->publisher_);
+        this->observable_->remove_port (this->publisher_);
       }
       if (this->passive_observer_ && this->subscriber_)
       {
-        this->passive_observer_->remove (this->subscriber_);
+        this->passive_observer_->remove_port (this->subscriber_);
       }
 
       if (this->pull_observer_ && this->subscriber_)
       {
-        this->pull_observer_->remove (this->subscriber_);
+        this->pull_observer_->remove_port (this->subscriber_);
       }
 
       if (this->push_observer_ && this->subscriber_)
       {
-        this->push_observer_->remove (this->subscriber_);
+        this->push_observer_->remove_port (this->subscriber_);
       }
 
       if (this->push_state_observer_ && this->subscriber_)
       {
-        this->push_state_observer_->remove (this->subscriber_);
+        this->push_state_observer_->remove_port (this->subscriber_);
       }
 
       TopicBaseConnector::ccm_remove ();

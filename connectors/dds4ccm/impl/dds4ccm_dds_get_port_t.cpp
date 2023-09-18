@@ -20,20 +20,18 @@ DDS_Get_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::DDS_Get_Port_T (
 
 template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 void
-DDS_Get_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::configuration_complete (
+DDS_Get_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::configuration_complete_port (
   IDL::traits<::DDS::Topic>::ref_type topic,
   IDL::traits<::DDS::Subscriber>::ref_type subscriber,
   const std::string &qos_profile)
 {
-  DDS4CCM_LOG_TRACE ("DDS_Get_Port_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::configuration_complete");
+  DDS4CCM_LOG_TRACE ("DDS_Get_Port_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::configuration_complete_port");
 
-  SubscriberBase_type::configuration_complete (topic, subscriber, qos_profile);
+  SubscriberBase_type::configuration_complete_port (topic, subscriber, qos_profile);
 
   if (this->dds4ccm_getter_)
   {
-    this->dds4ccm_getter_->set_dds_reader (
-      this->dds4ccm_reader_->get_dds_reader (),
-      this->condition_manager_);
+    this->dds4ccm_getter_->set_dds_reader (this->dds4ccm_reader_->get_dds_reader (), this->condition_manager_);
   }
 }
 
