@@ -29,7 +29,7 @@ public:
   typename IDL::traits<typename CCM_TYPE::fresh_data_type>::ref_type get_fresh_data ();
   //@}
 
-  void configuration_complete_port (
+  void configuration_complete (
     IDL::traits<::DDS::Topic>::ref_type topic,
     IDL::traits<::DDS::Subscriber>::ref_type subscriber,
     const std::string &qos_profile) override;
