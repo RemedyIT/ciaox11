@@ -41,11 +41,10 @@ public:
   IDL::traits<CCM_DDS::CCM_DataListenerControl>::ref_type get_data_control ();
   //@}
 
-  void
-  activate (
+  void activate (
     const typename CCM_TYPE::event_strategy_type &evs,
-    typename IDL::traits<typename CCM_TYPE::data_listener_type>::ref_type listener,
-    IDL::traits<CCM_DDS::PortStatusListener>::ref_type status);
+    IDL::traits<CCM_DDS::PortStatusListener>::ref_type status,
+    IDL::traits<CORBA::Object>::ref_type data_listener) override;
 
 private:
   using DataReaderListener_type = ::CIAOX11::DDS4CCM::DataReaderListener_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE, LRT>;

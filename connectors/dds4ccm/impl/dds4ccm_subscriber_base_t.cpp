@@ -153,7 +153,8 @@ template <typename CCM_TYPE, typename TOPIC_TYPE, typename TOPIC_SEQ_TYPE>
 void
 DDS_Subscriber_Base_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::activate (
     const typename CCM_TYPE::event_strategy_type &evs,
-    IDL::traits<CCM_DDS::PortStatusListener>::ref_type status)
+    IDL::traits<CCM_DDS::PortStatusListener>::ref_type status,
+    IDL::traits<CORBA::Object>::ref_type)
 {
   DDS4CCM_LOG_TRACE ("DDS_Subscriber_Base_T<" << ::DDS::traits<TOPIC_TYPE>::get_type_name() << ">::activate");
 

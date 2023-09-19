@@ -31,9 +31,7 @@ DDS_Get_Port_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::configuration_complete (
 
   if (this->dds4ccm_getter_)
   {
-    this->dds4ccm_getter_->set_dds_reader (
-      this->dds4ccm_reader_->get_dds_reader (),
-      this->condition_manager_);
+    this->dds4ccm_getter_->set_dds_reader (this->dds4ccm_reader_->get_dds_reader (), this->condition_manager_);
   }
 }
 
