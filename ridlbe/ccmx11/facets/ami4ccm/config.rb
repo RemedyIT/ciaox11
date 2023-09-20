@@ -446,12 +446,8 @@ module IDL
         conn_exec_src = GenFile.new(options[:conn_exec_output_src])
 
         # schedule AmiConnectorExecutor writers
-        IDL.push_production(
-            :ami4ccm_conn_header,
-            ::IDL::CCMX11::AMI4CCM::AmiConnectorHeaderWriter.new(conn_exec_h, options))
-        IDL.push_production(
-            :ami4ccm_conn_source,
-            ::IDL::CCMX11::AMI4CCM::AmiConnectorSourceWriter.new(conn_exec_src, options))
+        IDL.push_production(:ami4ccm_conn_header, ::IDL::CCMX11::AMI4CCM::AmiConnectorHeaderWriter.new(conn_exec_h, options))
+        IDL.push_production(:ami4ccm_conn_source, ::IDL::CCMX11::AMI4CCM::AmiConnectorSourceWriter.new(conn_exec_src, options))
 
         if options[:gen_component_servant]
           # extend generic servant generators for AMI4CCM
