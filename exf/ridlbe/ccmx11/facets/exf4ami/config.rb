@@ -52,14 +52,14 @@ module IDL
               IDL.production(:ami4ccm_conn_source).extend(IDL::CCMX11::ExF::AmiExFConnectorSourceWriter)
 
               IDL.log(2, 'Extending ami4ccm connector servant generation for ExF')
-              # extend standard generators for AMIA4CCM
+              # extend standard generators for AMI4CCM
               IDL.production(:comp_svnt_source).extend(IDL::CCMX11::ExF::AmiExFSvntConnectorSourceExt)
             end
           end
         end # fctcfg.on_process_input
       end # configure facet
 
-      # extend the AMIA4CCM facet with some specific ExF settings/handling
+      # extend the AMI4CCM facet with some specific ExF settings/handling
       module AMI4CCMExt
         def self.included(base)
           base.class_eval do
