@@ -14,7 +14,7 @@ module BRIX11
       TITLE = 'PSDD4CCM'.freeze
       DESC = 'BRIX11 PSDD4CCM brix collection'.freeze
       COPYRIGHT = "Copyright (c) 2014-#{Time.now.year} Remedy IT Expertise BV, The Netherlands".freeze
-      VERSION = { major: 2, minor: 5, release: 0 }
+      VERSION = { major: 2, minor: 5, release: 1 }
 
       Collection.configure(:psdd4ccm, ROOT, TITLE, DESC, COPYRIGHT, VERSION) do |cfg|
         # declare dependency on :ciaox11 collection (forces it to load first)
