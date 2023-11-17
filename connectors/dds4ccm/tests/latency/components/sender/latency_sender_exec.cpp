@@ -480,7 +480,7 @@ namespace Test_Sender_Impl
   }
 
   void
-  Sender_exec_i::calc_results (void)
+  Sender_exec_i::calc_results ()
   {
     if (this->iteration_nr_ == 0)
       return; // ignore first iteration

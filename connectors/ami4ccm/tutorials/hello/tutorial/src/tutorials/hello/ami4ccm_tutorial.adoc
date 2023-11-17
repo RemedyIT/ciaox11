@@ -715,7 +715,7 @@ sender.
 [source,c++]
 --------------------------------------------------------------------
 IDL::traits<Hello::CCM_MyFoo>::ref_type
-  Receiver_exec_i::get_do_my_foo (void)
+  Receiver_exec_i::get_do_my_foo ()
 {  return CORBA::make_reference <do_my_foo_exec_i> (this->context_);
 }
 --------------------------------------------------------------------
