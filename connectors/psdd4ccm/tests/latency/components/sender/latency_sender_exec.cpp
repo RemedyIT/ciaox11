@@ -530,7 +530,7 @@ namespace Test_Sender_Impl
   }
 
   void
-  Sender_exec_i::init_values (void)
+  Sender_exec_i::init_values ()
   {
     this->duration_times_.reset (new uint64_t[this->samples_]);
     this->iteration_results_.reset (new IterationResult[this->iterations_]);
