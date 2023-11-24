@@ -20,7 +20,7 @@ module DDS {
   typedef sequence<string> StringSeq;
 
   struct Time_t {
-      long sec;
+      long long sec;
       unsigned long nanosec;
   };
 };
