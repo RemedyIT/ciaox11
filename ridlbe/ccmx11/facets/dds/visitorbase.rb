@@ -70,6 +70,10 @@ module IDL
         :appendable
       end
 
+      def annotations
+        return []
+      end
+
       def typesupport_export_include?
         params[:typesupport_export_include]
       end
