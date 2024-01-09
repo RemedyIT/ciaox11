@@ -70,10 +70,14 @@ module IDL
         :appendable
       end
 
-      # def annotations
+      def annotations
       # Add appendable when it is not final available
-      #   return []
-      # end
+         ann = self.annotations.dup
+         unless ann[:'final'].first
+           ann << Annotation.new('appendable')
+         end
+         ann
+      end
 
       def typesupport_export_include?
         params[:typesupport_export_include]
