@@ -24,6 +24,9 @@ module IDL
          unless ann[:'final'].first
            ann << IDL::AST::Annotation.new('appendable', {})
          end
+         #if has_toplevel_annotation?
+           ann << IDL::AST::Annotation.new('nested', {v: 'FALSE'})
+         #end
          ann
       end
     end # StructVisitor
