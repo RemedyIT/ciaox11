@@ -1,7 +1,6 @@
 
 // generated from <%= ridl_template_path %>
 /// @copydoc <%= doc_scoped_name %>
-@nested(<% if has_toplevel_annotation? %>FALSE<% else %>TRUE<% end %>)
 % annotations.each do |_a|
 @<%= _a.id %><% unless _a.fields.empty? %>(<% _a.fields.values.each do |f| %><%= f %><% end %>)<% end %>
 % end
@@ -15,6 +14,9 @@ union <%= unescaped_name %> switch (<%= strip_global_scope(switchtype.idltype_un
 %     end
 %   end
     /// @copydoc <%= _m.doc_scoped_name %>
+% _m.annotations.each do |_a|
+    @<%= _a.id %><% unless _a.fields.empty? %>(<% _a.fields.values.each do |f| %><%= f %><% end %>)<% end %>
+% end
     <%= strip_global_scope(_m.idltype_unescaped_name) %> <%= _m.unescaped_name %>;
 % end
 };

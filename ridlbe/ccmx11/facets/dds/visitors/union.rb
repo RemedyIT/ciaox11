@@ -24,6 +24,19 @@ module IDL
       def is_array_type?
         ::IDL::Type::Array === self._resolved_idltype
       end
+
+      def annotations
+        # Add appendable when it is not final available
+         ann = node.annotations.dup
+         unless ann[:'final'].first
+           ann << IDL::AST::Annotation.new('appendable', {})
+         end
+         # Determine correct value for DDS nested annotation
+         nested = 'TRUE'
+         nested = 'FALSE' if has_toplevel_annotation?
+         ann << IDL::AST::Annotation.new('nested', {v: nested})
+         ann
+      end
     end
 
     class UnionVisitor
