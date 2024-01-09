@@ -63,13 +63,6 @@ module IDL
         annot.fields[:value].nil? || annot.fields[:value]
       end
 
-      def extensibility_annotation
-        # DDS X-Types defines that the default for extensibility is appendable
-        return :final if self.annotations[:'final'].first
-
-        :appendable
-      end
-
       def typesupport_export_include?
         params[:typesupport_export_include]
       end
