@@ -24,6 +24,14 @@ module IDL
       def is_array_type?
         ::IDL::Type::Array === self._resolved_idltype
       end
+    end
+
+    class UnionVisitor
+      def native_scoped_switch_cxxtype
+        self.switchtype.is_a?(::IDL::Type::ScopedName) ? '::DDS_Native' + scoped_switch_cxxtype : scoped_switch_cxxtype
+      end
+
+      optional_template :life_cycle_traits
 
       def annotations
         # Add appendable when it is not final available
@@ -37,14 +45,6 @@ module IDL
          ann << IDL::AST::Annotation.new('nested', {v: nested})
          ann
       end
-    end
-
-    class UnionVisitor
-      def native_scoped_switch_cxxtype
-        self.switchtype.is_a?(::IDL::Type::ScopedName) ? '::DDS_Native' + scoped_switch_cxxtype : scoped_switch_cxxtype
-      end
-
-      optional_template :life_cycle_traits
     end
   end # CCMX11
 end # IDL
