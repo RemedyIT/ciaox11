@@ -5,6 +5,12 @@
 @<%= _a.id %><% unless _a.fields.empty? %>(<% _a.fields.values.each do |f| %><%= f %><% end %>)<% end %>
 % end
 enum <%= unescaped_name %> {
-  <%= enumerators.collect {|e| "/// @copydoc #{e.doc_scoped_name}\n  #{e.name}" }.join(",\n  ") %>
+% enumerators.each do |e|
+  /// @copydoc <%= e.doc_scoped_name %>
+% e.annotations.each do |_a|
+  @<%= _a.id %><% unless _a.fields.empty? %>(<% _a.fields.values.each do |f| %><%= f %><% end %>)<% end %>
+% end
+  <%= e.name %><% unless e.equal?(enumerators.last)%>,<% end %>
+% end
 };
 
