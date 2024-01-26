@@ -43,7 +43,6 @@ module IDL
          nested = 'TRUE'
          nested = 'FALSE' if has_toplevel_annotation?
          ann << IDL::AST::Annotation.new('nested', {v: nested})
-         ann
       end
     end
   end # CCMX11
