@@ -42,7 +42,7 @@ module IDL
          # Determine correct value for DDS nested annotation
          nested = 'TRUE'
          nested = 'FALSE' if has_toplevel_annotation?
-         ann << IDL::AST::Annotation.new('nested', {v: nested})
+         ann << IDL::AST::Annotation.new('nested', {value: nested})
       end
     end
   end # CCMX11

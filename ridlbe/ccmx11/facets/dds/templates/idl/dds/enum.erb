@@ -2,13 +2,13 @@
 // generated from <%= ridl_template_path %>
 /// @copydoc <%= doc_scoped_name %>
 % annotations.each do |_a|
-@<%= _a.id %><% unless _a.fields.empty? %>(<% _a.fields.values.each do |f| %><%= f %><% end %>)<% end %>
+@<%= _a.id %><% unless _a.fields.empty? %>(<% _a.fields.each_with_index do |f, index| %><%= _a.fields.keys[index] %>=<%= _a.fields.values[index] %><% if index < _a.fields.size - 1%>,<% end %><% end %>)<% end %>
 % end
 enum <%= unescaped_name %> {
 % enumerators.each do |e|
   /// @copydoc <%= e.doc_scoped_name %>
 % e.annotations.each do |_a|
-  @<%= _a.id %><% unless _a.fields.empty? %>(<% _a.fields.values.each do |f| %><%= f %><% end %>)<% end %>
+  @<%= _a.id %><% unless _a.fields.empty? %>(<% _a.fields.each_with_index do |f, index| %><%= _a.fields.keys[index] %>=<%= _a.fields.values[index] %><% if index < _a.fields.size - 1%>,<% end %><% end %>)<% end %>
 % end
   <%= e.name %><% unless e.equal?(enumerators.last)%>,<% end %>
 % end
