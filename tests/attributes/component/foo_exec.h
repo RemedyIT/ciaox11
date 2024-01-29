@@ -588,37 +588,37 @@ namespace Foo_Impl
     /// Class member storing value of my_variable_wstring attribute
     std::wstring my_variable_wstring_{};
     /// Class member storing value of my_long_array attribute
-    ::long_array my_long_array_{{}};
+    ::long_array my_long_array_{};
     /// Class member storing value of my_ulong_array attribute
-    ::ulong_array my_ulong_array_{{}};
+    ::ulong_array my_ulong_array_{};
     /// Class member storing value of my_longlong_array attribute
-    ::longlong_array my_longlong_array_{{}};
+    ::longlong_array my_longlong_array_{};
     /// Class member storing value of my_ulonglong_array attribute
-    ::ulonglong_array my_ulonglong_array_{{}};
+    ::ulonglong_array my_ulonglong_array_{};
     /// Class member storing value of my_short_array attribute
-    ::short_array my_short_array_{{}};
+    ::short_array my_short_array_{};
     /// Class member storing value of my_ushort_array attribute
-    ::ushort_array my_ushort_array_{{}};
+    ::ushort_array my_ushort_array_{};
     /// Class member storing value of my_string_array attribute
-    ::string_array my_string_array_{{}};
+    ::string_array my_string_array_{};
     /// Class member storing value of my_wstring_array attribute
-    ::wstring_array my_wstring_array_{{}};
+    ::wstring_array my_wstring_array_{};
     /// Class member storing value of my_char_array attribute
-    ::char_array my_char_array_{{}};
+    ::char_array my_char_array_{};
     /// Class member storing value of my_wchar_array attribute
-    ::wchar_array my_wchar_array_{{}};
+    ::wchar_array my_wchar_array_{};
     /// Class member storing value of my_double_array attribute
-    ::double_array my_double_array_{{}};
+    ::double_array my_double_array_{};
     /// Class member storing value of my_longdouble_array attribute
-    ::longdouble_array my_longdouble_array_{{}};
+    ::longdouble_array my_longdouble_array_{};
     /// Class member storing value of my_float_array attribute
-    ::float_array my_float_array_{{}};
+    ::float_array my_float_array_{};
     /// Class member storing value of my_boolean_array attribute
-    ::boolean_array my_boolean_array_{{}};
+    ::boolean_array my_boolean_array_{};
     /// Class member storing value of my_octet_array attribute
-    ::octet_array my_octet_array_{{}};
+    ::octet_array my_octet_array_{};
     /// Class member storing value of my_multi_dimensional_short_array attribute
-    ::multi_dimensional_short_array my_multi_dimensional_short_array_{{}};
+    ::multi_dimensional_short_array my_multi_dimensional_short_array_{};
     /// Class member storing value of my_short_sequence attribute
     ::short_sequence my_short_sequence_{};
     /// Class member storing value of my_empty_sequence attribute
@@ -640,11 +640,11 @@ namespace Foo_Impl
     /// Class member storing value of my_default_bar_struct attribute
     ::Bar my_default_bar_struct_{};
     /// Class member storing value of my_bar_array attribute
-    ::BarArray my_bar_array_{{}};
+    ::BarArray my_bar_array_{};
     /// Class member storing value of my_bar_array_2 attribute
-    ::BarArray2 my_bar_array_2_{{}};
+    ::BarArray2 my_bar_array_2_{};
     /// Class member storing value of my_sequence_array attribute
-    ::SequenceArray my_sequence_array_{{}};
+    ::SequenceArray my_sequence_array_{};
     /// Class member storing value of my_bar_struct_array attribute
     ::BarStruct my_bar_struct_array_{};
     /// Class member storing value of my_baz_struct attribute
@@ -664,9 +664,9 @@ namespace Foo_Impl
     /// Class member storing value of my_bounded_sequence_bounded_wstring attribute
     ::bounded_sequence_bounded_wstring my_bounded_sequence_bounded_wstring_{};
     /// Class member storing value of my_bounded_string_array attribute
-    ::bounded_string_array my_bounded_string_array_{{}};
+    ::bounded_string_array my_bounded_string_array_{};
     /// Class member storing value of my_bounded_wstring_array attribute
-    ::bounded_wstring_array my_bounded_wstring_array_{{}};
+    ::bounded_wstring_array my_bounded_wstring_array_{};
     /// Class member storing value of my_data_type attribute
     ::DataType my_data_type_{};
     /// Class member storing value of my_data_type_type attribute
