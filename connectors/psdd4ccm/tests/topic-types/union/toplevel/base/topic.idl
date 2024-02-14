@@ -24,7 +24,7 @@ module Test
     case ONE: string text;
     case TWO: unsigned long number;
     case THREE: boolean flag;
-  }; //@TopLevel()
+  }; //@nested(FALSE)
 };
 
 #endif

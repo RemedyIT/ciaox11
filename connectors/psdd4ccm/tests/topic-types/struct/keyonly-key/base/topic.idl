@@ -30,7 +30,7 @@ module Test
     string description;
     unsigned long number;
     double value;
-  }; //@TopLevel()
+  }; //@nested(FALSE)
 };
 
 #endif

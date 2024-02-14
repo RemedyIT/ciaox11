@@ -14,6 +14,6 @@
 struct CommonTestMessage {
   string key; //@key
   long iteration;
-}; //@TopLevel()
+}; //@nested(FALSE)
 
 #endif /* CSL_COMMON_IDL_ */

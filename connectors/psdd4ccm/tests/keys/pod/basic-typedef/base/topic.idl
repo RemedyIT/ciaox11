@@ -12,7 +12,7 @@
 
 module Test
 {
-  typedef unsigned short Topic; //@TopLevel
+  typedef unsigned short Topic; //@nested(FALSE)
 };
 
 #endif

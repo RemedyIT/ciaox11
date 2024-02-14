@@ -22,7 +22,7 @@ module Example {
         Example::NA4 hdr;
 
         Example::CA09 data;
-    }; //@TopLevel()
+    }; //@nested(FALSE)
 };
 /// @}
 

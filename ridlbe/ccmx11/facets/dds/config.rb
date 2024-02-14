@@ -61,10 +61,6 @@ module IDL
           ridl_params[:dds_idl_pfx] = '_dds'
           ridl_params[:dds_traits_pfx] = '_dds_traits'
 
-          # 20190730, add AXCIOMA 2 annotations back, issue #4729
-          # initialize IDL scanner patches
-          IDL::CCMX11::DDSX11.load_idl_scanner_patch
-
           IDL::CCMX11::DDSX11.add_extended_options(optlist)
         end
 
@@ -232,11 +228,6 @@ module IDL
         # schedule dds type traits generation
         IDL.push_production(:dds_type_traits,
                             ::IDL::CCMX11::DDSX11::UserDefinedTypeTraitsWriter.new(dds_traits_file, options))
-      end
-
-      # configuration methods
-      def self.load_idl_scanner_patch
-        IDL::Scanner.send(:include, IDL::CCMX11::DDSX11::ScannerPatch) unless IDL::Scanner < IDL::CCMX11::DDSX11::ScannerPatch
       end
     end # DDSX11
   end # CCMX11

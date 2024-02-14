@@ -22,5 +22,5 @@ module DnCX11
 
     /// The error diagnostic
     string message;
-  }; //@TopLevel()
+  }; //@nested(FALSE)
 };

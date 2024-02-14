@@ -45,7 +45,7 @@ module Example {
         double HA4_3;
 
         Example::NA5 HA4_1;
-    }; //@TopLevel(false)
+    }; //@nested(TRUE)
 
     /// @struct HA5
     ///
@@ -84,7 +84,7 @@ module Example {
         double HA5_17;
 
         Example::NA6 HA5_05;
-    }; //@TopLevel(false)
+    }; //@nested(TRUE)
 };
 
 #endif // CX_PORTS__TYPES__EXAMPLE_HA_DEFN_IDL

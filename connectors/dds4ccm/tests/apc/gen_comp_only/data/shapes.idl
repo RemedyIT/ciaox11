@@ -16,7 +16,7 @@ struct ShapeType {
   long x;
   long y;
   long shapesize;
-}; //@TopLevel()
+}; //@nested(FALSE)
 
 
 struct Bar

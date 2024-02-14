@@ -107,11 +107,11 @@ module IDL
 
         def is_psdd_topic?(node)
           if params[:psdd_topic].blank? || params[:psdd_topic] == node.scoped_name
-            annot = node.annotations[:TopLevel]
-            return false if annot[0] == nil
-            return true if annot[0].fields[:value] == nil
-
-            annot[0].fields[:value]
+            annot = node.annotations[:nested]
+            return true if annot[0] == nil
+            return false if annot[0].fields[:value] == nil
+            return false if annot[0].fields[:value] == true
+            true
           end
           false
         end

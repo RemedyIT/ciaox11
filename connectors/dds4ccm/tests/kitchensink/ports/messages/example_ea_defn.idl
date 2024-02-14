@@ -137,7 +137,7 @@ module Example {
         double EA7_33;
 
         double EA7_36;
-    }; //@TopLevel(false)
+    }; //@nested(TRUE)
 
     /// @struct EA6
     ///
@@ -162,7 +162,7 @@ module Example {
         double EA6_09;
 
         double EA6_10;
-    }; //@TopLevel(false)
+    }; //@nested(TRUE)
 };
 
 #endif // CX_PORTS__TYPES__EXAMPLE_EA_DEFN_IDL

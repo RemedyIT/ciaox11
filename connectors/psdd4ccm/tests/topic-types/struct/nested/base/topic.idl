@@ -25,7 +25,7 @@ module Test
     string description;
     unsigned long value;
     Nested data;
-  }; //@TopLevel()
+  }; //@nested(FALSE)
 };
 
 #endif

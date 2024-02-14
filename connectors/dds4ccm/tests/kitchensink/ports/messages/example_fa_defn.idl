@@ -46,7 +46,7 @@ module Example {
     struct FA5 {
         Example::FA2 FA5_2;
         double FA5_1;
-    }; //@TopLevel(false)
+    }; //@nested(TRUE)
 
     /// @typedef FA6
     ///
@@ -63,7 +63,7 @@ module Example {
         double FA7_3;
 
         double FA7_2;
-    }; //@TopLevel(false)
+    }; //@nested(TRUE)
 
     /// @struct FA8
     ///
@@ -110,7 +110,7 @@ module Example {
         Example::B45 FA8_20;
 
         Example::B45 FA8_15;
-    }; //@TopLevel(false)
+    }; //@nested(TRUE)
 };
 
 #endif // CX_PORTS__TYPES__EXAMPLE_FA_DEFN_IDL

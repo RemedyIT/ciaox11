@@ -57,7 +57,7 @@ module Example {
     struct CA07 {
         double CA07_1;
         double CA07_2;
-    }; //@TopLevel(false)
+    }; //@nested(TRUE)
 
     /// @typedef CA08
     ///
@@ -79,7 +79,7 @@ module Example {
         double CA09_2;
 
         Example::NA5 CA09_1;
-    }; //@TopLevel(false)
+    }; //@nested(TRUE)
 
     /// @struct CA10
     ///
@@ -140,7 +140,7 @@ module Example {
         Example::CA08 C10_27;
 
         Example::NA6 C10_07;
-    }; //@TopLevel(false)
+    }; //@nested(TRUE)
 };
 
 #endif // CX_PORTS__TYPES__EXAMPLE_CA_DEFN_IDL

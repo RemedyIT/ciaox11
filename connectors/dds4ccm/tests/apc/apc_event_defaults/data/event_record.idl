@@ -17,7 +17,7 @@ module Data
     string key;
     long iteration;
     ::OctetSeq data;
-  }; //@TopLevel()
+  }; //@nested(FALSE)
 };
 
 #endif /* EVENT_RECORD_IDL_ */

@@ -15,6 +15,6 @@ struct ShapeType {
   long x;
   long y;
   long shapesize;
-}; //@TopLevel()
+}; //@nested(FALSE)
 
 #endif /* SHAPES_SHAPETYPE_MSG_IDL_ */

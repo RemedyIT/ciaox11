@@ -21,7 +21,7 @@ module Test
   {
     long seq_num;
     BD_oct_seq data;
-  }; //@TopLevel() @final
+  }; //@nested(FALSE) @final
 };
 
 #endif // LATENCY_DATA_IDL

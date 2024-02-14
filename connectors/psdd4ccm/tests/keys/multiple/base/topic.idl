@@ -25,7 +25,7 @@ module Test
     string description;
     char opt;
     boolean flag;
-  }; //@TopLevel()
+  }; //@nested(FALSE)
 };
 
 #endif

@@ -20,7 +20,7 @@ module Test
     string description;
     ULongSeq values;
 
-  }; //@TopLevel()
+  }; //@nested(FALSE)
 };
 
 #endif

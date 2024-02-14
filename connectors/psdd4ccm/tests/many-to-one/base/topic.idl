@@ -20,7 +20,7 @@ module Test
     unsigned long value;
     char opt;
     boolean flag;
-  }; //@TopLevel()
+  }; //@nested(FALSE)
 };
 
 #endif

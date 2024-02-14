@@ -40,7 +40,7 @@ module Example {
         Example::B47 MA3_2;
 
         double MA3_4;
-    }; //@TopLevel(false)
+    }; //@nested(TRUE)
 
     /// @struct MA4
     ///
@@ -65,7 +65,7 @@ module Example {
         double MA4_08;
 
         double MA4_07;
-    }; //@TopLevel(false)
+    }; //@nested(TRUE)
 };
 
 #endif // CX_PORTS__TYPES__EXAMPLE_MA_DEFN_IDL

@@ -49,7 +49,7 @@ module Example {
         double AA4_3;
 
         double AA4_1;
-    }; //@TopLevel(false)
+    }; //@nested(TRUE)
 
     /// @struct AA5
     ///
@@ -78,7 +78,7 @@ module Example {
         double AA5_12;
 
         double AA5_09;
-    }; //@TopLevel(false)
+    }; //@nested(TRUE)
 };
 
 #endif // CX_PORTS__TYPES__EXAMPLE_AA_DEFN_IDL

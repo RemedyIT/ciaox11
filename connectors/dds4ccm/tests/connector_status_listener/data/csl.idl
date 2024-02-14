@@ -15,6 +15,6 @@ struct OnInconsistentTopicMessage {
   string key; //@key
   short iteration;
   short extra;
-}; //@TopLevel()
+}; //@nested(FALSE)
 
 #endif /* CSL_IDL_ */

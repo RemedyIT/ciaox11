@@ -18,7 +18,7 @@ module Test
     EVEN
   };
 
-  typedef ECategory Topic; //@TopLevel
+  typedef ECategory Topic; //@nested(FALSE)
 };
 
 #endif

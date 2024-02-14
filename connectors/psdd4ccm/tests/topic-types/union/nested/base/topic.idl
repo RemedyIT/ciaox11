@@ -30,7 +30,7 @@ module Test
   {
     octet type;
     Variant value;
-  }; //@TopLevel()
+  }; //@nested(FALSE)
 };
 
 #endif

@@ -17,7 +17,7 @@ module UnkeyedWriterTest
     string key;
     long iteration;
     ::OctetSeq data;
-  }; //@TopLevel()
+  }; //@nested(FALSE)
 };
 
 #endif /* UNKEYED_WRITER_IDL_ */

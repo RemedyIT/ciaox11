@@ -57,7 +57,7 @@ module Example {
         Example::GA5 GA7_1;
 
         Example::NA5 GA7_2;
-    }; //@TopLevel(false)
+    }; //@nested(TRUE)
 
     /// @struct GA8
     ///
@@ -118,7 +118,7 @@ module Example {
         Example::NA6 GA8_08;
 
         unsigned long GA8_19;
-    }; //@TopLevel(false)
+    }; //@nested(TRUE)
 };
 
 #endif // CX_PORTS__TYPES__EXAMPLE_GA_DEFN_IDL

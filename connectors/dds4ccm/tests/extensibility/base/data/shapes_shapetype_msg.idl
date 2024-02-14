@@ -22,6 +22,6 @@ struct ShapeType {
   long y;
   /// This field contains the size of the shape.
   long shapesize;
-}; //@TopLevel()
+}; //@nested(FALSE)
 
 #endif /* SHAPES_SHAPETYPE_MSG_IDL_ */

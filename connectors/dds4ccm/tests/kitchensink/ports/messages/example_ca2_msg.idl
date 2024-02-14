@@ -20,7 +20,7 @@ module Example {
         Example::NA4 hdr;
 
         Example::CA10 data;
-    }; //@TopLevel()
+    }; //@nested(FALSE)
 };
 
 #endif // CX_PORTS__MESSAGES__EXAMPLE_CA2_MSG_IDL

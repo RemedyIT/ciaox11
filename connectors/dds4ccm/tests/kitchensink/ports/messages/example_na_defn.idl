@@ -46,7 +46,7 @@ module Example {
         unsigned long NA4_2;
         double NA4_3;
         double NA4_7;
-    }; //@TopLevel(false)
+    }; //@nested(TRUE)
 
     /// @struct NA6
     ///
@@ -79,14 +79,14 @@ module Example {
         unsigned long NA6_12;
 
         unsigned long NA6_14;
-    }; //@TopLevel(false)
+    }; //@nested(TRUE)
 
     /// @struct NA5
     ///
     struct NA5 {
 
         double NA5_1;
-    }; //@TopLevel(false)
+    }; //@nested(TRUE)
 };
 
 #endif // CX_PORTS__TYPES__EXAMPLE_NA_DEFN_IDL

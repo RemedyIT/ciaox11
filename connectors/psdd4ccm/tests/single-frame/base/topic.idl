@@ -22,7 +22,7 @@ module Test
   {
     ECategory category; //@key
     string content;
-  }; //@TopLevel
+  }; //@nested(FALSE)
 };
 
 #endif

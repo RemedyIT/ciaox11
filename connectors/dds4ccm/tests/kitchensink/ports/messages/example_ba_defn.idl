@@ -54,7 +54,7 @@ module Example {
         double BA4_02;
 
         double BA4_07;
-    }; //@TopLevel(false)
+    }; //@nested(TRUE)
 
     /// @struct BA3
     ///
@@ -65,7 +65,7 @@ module Example {
         double BA3_3;
 
         double BA3_2;
-    }; //@TopLevel(false)
+    }; //@nested(TRUE)
 };
 
 #endif // CX_PORTS__TYPES__EXAMPLE_BA_DEFN_IDL

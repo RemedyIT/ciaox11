@@ -19,7 +19,7 @@ module Example {
         double B11_2;
 
         double B11_3;
-    }; //@TopLevel(false)
+    }; //@nested(TRUE)
 
     /// @typedef B26
     ///
@@ -47,7 +47,7 @@ module Example {
         double B27_3;
         Example::B11 B27_2;
         Example::B11 B27_1;
-    }; //@TopLevel(false)
+    }; //@nested(TRUE)
 
     /// @struct B34
     ///
@@ -67,7 +67,7 @@ module Example {
         long B34_09;
         long B34_06;
         long B34_14;
-    }; //@TopLevel(false)
+    }; //@nested(TRUE)
 
     /// @struct B38
     ///
@@ -83,7 +83,7 @@ module Example {
         double B38_03;
         double B38_09;
         long B38_11;
-    }; //@TopLevel(false)
+    }; //@nested(TRUE)
 
     /// @typedef B37
     ///
@@ -101,7 +101,7 @@ module Example {
         Example::B12 B35_1;
         double B35_2;
         double B35_4;
-    }; //@TopLevel(false)
+    }; //@nested(TRUE)
 
     /// @struct B15
     ///
@@ -136,7 +136,7 @@ module Example {
         Example::B11 B15_14;
 
         float B15_06;
-    }; //@TopLevel(false)
+    }; //@nested(TRUE)
 
     /// @typedef B14
     ///
@@ -149,7 +149,7 @@ module Example {
         double B17_1;
 
         long B17_2;
-    }; //@TopLevel(false)
+    }; //@nested(TRUE)
 
     /// @typedef B02
     ///
@@ -180,7 +180,7 @@ module Example {
         double B04_10;
 
         double B04_11;
-    }; //@TopLevel(false)
+    }; //@nested(TRUE)
 
     /// @struct B06
     ///
@@ -221,7 +221,7 @@ module Example {
         double B06_11;
 
         double B06_12;
-    }; //@TopLevel(false)
+    }; //@nested(TRUE)
 
     /// @struct B05
     ///
@@ -246,7 +246,7 @@ module Example {
         double B05_03;
 
         double B05_02;
-    }; //@TopLevel(false)
+    }; //@nested(TRUE)
 
     /// @struct B53
     ///
@@ -259,7 +259,7 @@ module Example {
         double B53_3;
 
         long B53_4;
-    }; //@TopLevel(false)
+    }; //@nested(TRUE)
 
     /// @struct B54
     ///
@@ -276,7 +276,7 @@ module Example {
         double B54_2;
 
         Example::B12 B54_1;
-    }; //@TopLevel(false)
+    }; //@nested(TRUE)
 
     /// @struct B31
     ///
@@ -284,7 +284,7 @@ module Example {
         double B31_2;
         double B31_1;
         double B31_3;
-    }; //@TopLevel(false)
+    }; //@nested(TRUE)
 
     /// @struct B30
     ///
@@ -298,7 +298,7 @@ module Example {
         double c31;
         double c32;
         double c33;
-    }; //@TopLevel(false)
+    }; //@nested(TRUE)
 
     /// @struct B32
     ///
@@ -307,7 +307,7 @@ module Example {
         double q2;
         double q3;
         double q4;
-    }; //@TopLevel(false)
+    }; //@nested(TRUE)
 
     /// @struct B01
     ///
@@ -320,7 +320,7 @@ module Example {
         unsigned long B01_2;
         double B01_3;
         double B01_7;
-    }; //@TopLevel(false)
+    }; //@nested(TRUE)
 
     /// @typedef B45
     ///
@@ -412,7 +412,7 @@ module Example {
         Example::B49 B03_07;
         unsigned long B03_12;
         unsigned long B03_14;
-    }; //@TopLevel(false)
+    }; //@nested(TRUE)
 
     /// @struct B19
     ///
@@ -458,7 +458,7 @@ module Example {
         double B19_10;
         double B19_11;
         double B19_09;
-    }; //@TopLevel(false)
+    }; //@nested(TRUE)
 
     /// @struct B16
     ///
@@ -475,7 +475,7 @@ module Example {
         unsigned long B16_10;
         Example::B22 B16_08;
         Example::B48 B16_09;
-    }; //@TopLevel(false)
+    }; //@nested(TRUE)
 
     /// @struct B07
     ///
@@ -483,14 +483,14 @@ module Example {
         double B07_3;
         Example::B11 B07_1;
         Example::B11 B07_2;
-    }; //@TopLevel(false)
+    }; //@nested(TRUE)
 
     /// @struct B09
     ///
     struct B09 {
         double B09_1;
         Example::B11 B09_2;
-    }; //@TopLevel(false)
+    }; //@nested(TRUE)
 
     /// @typedef B08
     ///
@@ -502,7 +502,7 @@ module Example {
         double B10_3;
         long long B10_2;
         Example::B08 B10_1;
-    }; //@TopLevel(false)
+    }; //@nested(TRUE)
 
     /// @struct B33
     ///
@@ -510,7 +510,7 @@ module Example {
         double B33_1;
         double B33_2;
         double B33_3;
-    }; //@TopLevel(false)
+    }; //@nested(TRUE)
 
     /// @typedef B29
     ///

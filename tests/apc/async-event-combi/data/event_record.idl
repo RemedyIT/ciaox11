@@ -18,7 +18,7 @@ module Hello
     long x;
     long y;
     long shapesize;
-  }; //@TopLevel()
+  }; //@nested(FALSE)
 //  struct Event {
 //    string key;
 //    long iteration;

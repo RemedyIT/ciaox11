@@ -28,13 +28,13 @@ module Uni {
   {
     long x;
     long y;
-  }; //@TopLevel(false)
+  }; //@nested(TRUE)
 
   struct Track
   {
     long id;
     Point p;
-  }; //@TopLevel(false)
+  }; //@nested(TRUE)
 
   union Data switch (DataType)
   {
@@ -48,11 +48,11 @@ module Uni {
 
   struct B01 {
     long b01_1;
-  }; //@TopLevel(false)
+  }; //@nested(TRUE)
 
   struct B02 {
     string b02_1;
-  }; //@TopLevel(false)
+  }; //@nested(TRUE)
 
   union B03 switch (long)
   {
@@ -77,7 +77,7 @@ module Uni {
     Assignment a; //@key
     B03 b_03;
     Data d;
-  }; //@TopLevel()
+  }; //@nested(FALSE)
 };
 
 #endif /* UNION_BASE_IDL_ */

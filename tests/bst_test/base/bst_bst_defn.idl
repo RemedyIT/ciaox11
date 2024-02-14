@@ -22,7 +22,7 @@ module BST {
     struct MyStructType {
         BST::MyBoundedStringType boundedString;
         BST::MyStringTypedef unboundedString;
-    }; //@TopLevel(false)
+    }; //@nested(TRUE)
 };
 
 #endif // CX_PORTS__BST_BST_DEFN_IDL

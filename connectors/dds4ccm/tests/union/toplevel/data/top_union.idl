@@ -12,7 +12,7 @@ module Uni {
     case 4: short x;
     case 5:
     case 6: long y;
-  }; //@TopLevel()
+  }; //@nested(FALSE)
 
   enum _module
   {
@@ -22,7 +22,7 @@ module Uni {
   union foo switch (_module)
   {
     case dtLong: long longData;
-  }; //@TopLevel()
+  }; //@nested(FALSE)
 
   typedef long _union;
 
@@ -30,7 +30,7 @@ module Uni {
   {
     case 0: Uni::_union longData;
   };
-  //@TopLevel()
+  //@nested(FALSE)
 };
 
 #endif /* TOP_UNION_BASE_IDL_ */

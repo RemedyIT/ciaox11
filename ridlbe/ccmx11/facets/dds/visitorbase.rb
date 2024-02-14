@@ -56,11 +56,18 @@ module IDL
       end
 
       def has_toplevel_annotation?
-        # 20190730 Add support for AXCIOMA 2 top-level annotation, issue #4729
-        annot = node.annotations[:'top-level'].first || node.annotations[:TopLevel].first
-        return false if annot.nil?
+        unless node.annotations[:'TopLevel'].first.nil?
+          raise "@TopLevel annotation has been deprecated in AXIOMA, use @nested!"
+        end
+        unless node.annotations[:'top-level'].first.nil?
+          raise "@top-level annotation has been deprecated in AXIOMA, use @nested!"
+        end
 
-        annot.fields[:value].nil? || annot.fields[:value]
+        annot = node.annotations[:nested].first
+        return false if annot.nil?
+        return false if annot.fields[:value].nil?
+        return false if annot.fields[:value] == true
+        true
       end
 
       def typesupport_export_include?

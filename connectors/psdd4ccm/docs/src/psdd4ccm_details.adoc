@@ -107,10 +107,10 @@ PSDD4CCM supports standard IDL defined data types for use as event types.
 For support of event filtering and management of event type code generation PSDD4CCM
 supports 2 IDL4-type annotations:
 
-* `@Toplevel` +
+* `@nested` +
 This annotation is used to specify the toplevel IDL type to be used as event type for
 the implementation of PSDD4CCM connectors. This annotation is mandatory. Only IDL types
-decorated with this annotation are supported as toplevel event types for PSDD4CCM.
+decorated with this annotation with value FALSE are supported as toplevel event types for PSDD4CCM.
 * `@key` +
 This annotation can be used to identify key member fields in `struct` definitions.
 
@@ -126,8 +126,8 @@ commented form.
 The standard IDL base types like the (unbounded) string types (`string` and `wstring`),
 the character types (wide or not), the integer types (unsigned or signed), `boolean`
 and the floating point types are all usable as toplevel event types. For these types
-the `@Toplevel` annotation is implicit.
-Typedef definitions of these (or other) types however have to be explicitly specified as toplevel
+the `@nested(FALSE)` annotation is implicit.
+Typedef definitions of these (or other) types however have to be explicitly specified as nested(FALSE)
 in IDL.
 
 .Standard typedefs
@@ -135,12 +135,12 @@ in IDL.
 As standard typedefs like `CORBA::OctetSeq' are defined in standard IDL which cannot (and
 should not) be upated with annotations these types cannot be directly used as toplevel types.
 The way to use these as toplevel types would be to define another alias typedef for these
-types in user defined IDL and decorate this typedef with the `@Toplevel` annotation like
+types in user defined IDL and decorate this typedef with the `@nested` annotation like
 this:
 
 [source,idl]
 ------------
-typedef ::CORBA::OctetSeq MyOctetSeq; //@Toplevel
+typedef ::CORBA::OctetSeq MyOctetSeq; //@nested(FALSE)
 ------------
 ****
 
@@ -190,7 +190,7 @@ module Test
     string category; //@key
     string description;
     unsigned long value;
-  }; //@TopLevel()
+  }; //@nested(FALSE)
 };
 -------------------
 
@@ -201,7 +201,7 @@ This IDL file will be compiled by the
 <<{xref_docs_root}/taox11/ridlc.adoc#,RIDL compiler>>. +
 The key value for this struct is defined with `//@key` as shown above providing the
 possibility for components to filter event subscriptions on `category` values.
-The struct is decorated with `//@Toplevel` to specify that it is to be used as event type.
+The struct is decorated with `//@nested(FALSE)` to specify that it is to be used as event type.
 
 The example also uses a `string` as another event type. +
 As this is a standard IDL base type no user data IDL definitions are required.

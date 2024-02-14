@@ -17,7 +17,7 @@ module TypeNameModule
   struct TypeNameMessage {
     string key;
     long iteration;
-  }; //@TopLevel()
+  }; //@nested(FALSE)
 };
 
 #endif /* TYPENAMEMODULE_TYPENAMEMESSAGE_IDL_ */

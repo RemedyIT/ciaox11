@@ -14,6 +14,6 @@
 struct TypeNameMessage {
   string key;
   long iteration;
-}; //@TopLevel()
+}; //@nested(FALSE)
 
 #endif /* TYPENAME_BASE_IDL_ */

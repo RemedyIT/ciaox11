@@ -43,7 +43,7 @@ module Example {
         unsigned long IA4_2;
 
         Example::NA5 IA4_1;
-    }; //@TopLevel(false)
+    }; //@nested(TRUE)
 
     /// @struct IA5
     ///
@@ -72,7 +72,7 @@ module Example {
         Example::B42 IA5_05;
 
         Example::NA6 IA5_01;
-    }; //@TopLevel(false)
+    }; //@nested(TRUE)
 };
 
 #endif // CX_PORTS__TYPES__EXAMPLE_IA_DEFN_IDL

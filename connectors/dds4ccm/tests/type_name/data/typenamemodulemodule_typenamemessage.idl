@@ -18,7 +18,7 @@ module TypeNameModule
     struct TypeNameMessage {
       string key;
       long iteration;
-    }; //@TopLevel()
+    }; //@nested(FALSE)
   };
 };
 

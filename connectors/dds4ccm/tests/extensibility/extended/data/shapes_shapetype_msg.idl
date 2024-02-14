@@ -24,6 +24,6 @@ struct ShapeType {
   long shapesize;
   /// This field contains the angle of the shape.
   long angle;
-}; //@TopLevel()
+}; //@nested(FALSE)
 
 #endif /* SHAPES_SHAPETYPE_MSG_IDL_ */

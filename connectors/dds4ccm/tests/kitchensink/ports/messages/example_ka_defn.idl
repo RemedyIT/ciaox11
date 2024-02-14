@@ -42,7 +42,7 @@ module Example {
         double KA4_3;
 
         double KA4_2;
-    }; //@TopLevel(false)
+    }; //@nested(TRUE)
 
     /// @struct KA5
     struct KA5 {
@@ -74,7 +74,7 @@ module Example {
         Example::B39 KA5_14;
 
         double KA5_10;
-    }; //@TopLevel(false)
+    }; //@nested(TRUE)
 };
 
 #endif // CX_PORTS__TYPES__EXAMPLE_KA_DEFN_IDL

@@ -20,7 +20,7 @@ module Test
     string description;
     ULongArray values;
 
-  }; //@TopLevel()
+  }; //@nested(FALSE)
 };
 
 #endif
