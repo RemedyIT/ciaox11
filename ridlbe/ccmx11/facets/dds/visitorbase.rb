@@ -57,7 +57,7 @@ module IDL
 
       def has_toplevel_annotation?
         # 20190730 Add support for AXCIOMA 2 top-level annotation, issue #4729
-        annot = node.annotations[:'top-level'].first || node.annotations[:TopLevel].first
+        annot = node.annotations[:'top-level'].first || node.annotations[:TopLevel].first || node.annotations[:'top_level'].first
         return false if annot.nil?
 
         annot.fields[:value].nil? || annot.fields[:value]

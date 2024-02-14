@@ -21,7 +21,7 @@ module UnkeyedWriterTest
     /// the receiver can check that we don't get duplicate
     /// samples
     unsigned long sample_index;
-  }; //@TopLevel()
+  }; //@top_level true
 };
 
 #endif /* UNKEYED_WRITER_IDL_ */
