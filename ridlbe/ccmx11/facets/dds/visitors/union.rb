@@ -40,8 +40,8 @@ module IDL
            ann << IDL::AST::Annotation.new('appendable', {})
          end
         # When generating the nested annotation we need to use TRUE/FALSE
-        if has_toplevel_annotation?
-          nes_annot = ann[:nested].first
+        nes_annot = ann[:nested].first
+        unless nes_annot.nil?
           case nes_annot.fields[:value]
           when TrueClass
             nes_annot.fields[:value] = 'TRUE'
