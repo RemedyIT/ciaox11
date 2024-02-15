@@ -12,9 +12,10 @@
 
 module Test
 {
+  @nested(TRUE)
   struct B02 {
     long  B02_1;
-  }; //@nested(TRUE)
+  };
 
   typedef sequence<B02> B10;
   typedef sequence<B02, 15> B11;
@@ -26,9 +27,10 @@ module Test
   typedef sequence<long> B15;
   typedef double         B16[4][5];
 
+  @nested(TRUE)
   struct B31 {
     long B31_1;
-  }; //@nested(TRUE)
+  };
 
   typedef B31 B32[2];
   typedef B31 B33[4][5];
@@ -85,11 +87,12 @@ module Test
     case B70_3: B70 b_80_3;
   };
 
+  @nested(TRUE)
   struct B81 {
     long a;
     string b;
     B58 c;
-  }; //@nested(TRUE)
+  };
 
   typedef sequence <B81> B82;
   struct B83 {
@@ -101,6 +104,7 @@ module Test
     B82 f;
   };
 
+  @nested(FALSE)
   struct Topic
   {
     char           a_01;
@@ -162,7 +166,7 @@ module Test
 
     string key;
     unsigned long count;
-  }; //@nested(FALSE)
+  };
 };
 
 #endif

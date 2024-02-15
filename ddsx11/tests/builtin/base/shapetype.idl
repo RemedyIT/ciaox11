@@ -10,11 +10,12 @@
 
 typedef string<128> color_type;
 
+@nested(FALSE)
 struct ShapeType {
   color_type color; //@key
   long x;
   long y;
   long shapesize;
-}; //@nested(FALSE)
+};
 
 #endif /* SHAPES_SHAPETYPE_MSG_IDL_ */

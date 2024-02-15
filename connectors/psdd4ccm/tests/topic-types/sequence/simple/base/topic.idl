@@ -14,13 +14,14 @@ module Test
 {
   typedef sequence<unsigned long> ULongSeq;
 
+  @nested(FALSE)
   struct Topic
   {
     string category;
     string description;
     ULongSeq values;
 
-  }; //@nested(FALSE)
+  };
 };
 
 #endif

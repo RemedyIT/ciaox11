@@ -15,10 +15,11 @@ module TypeNameModule
 {
   module TypeNameModuleModule
   {
+    @nested(FALSE)
     struct TypeNameMessage {
       string key;
       long iteration;
-    }; //@nested(FALSE)
+    };
   };
 };
 

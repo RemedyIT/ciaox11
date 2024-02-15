@@ -24,13 +24,14 @@ module Test
     string subtype;
   };
 
+  @nested(FALSE)
   struct Topic
   {
     Key k; //@key
     string description;
     unsigned long number;
     double value;
-  }; //@nested(FALSE)
+  };
 };
 
 #endif

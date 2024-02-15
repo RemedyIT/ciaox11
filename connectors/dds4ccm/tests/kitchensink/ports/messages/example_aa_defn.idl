@@ -42,6 +42,7 @@ module Example {
 
     /// @struct AA4
     ///
+    @nested(TRUE)
     struct AA4 {
 
         Example::NA5 AA4_2;
@@ -49,10 +50,11 @@ module Example {
         double AA4_3;
 
         double AA4_1;
-    }; //@nested(TRUE)
+    };
 
     /// @struct AA5
     ///
+    @nested(TRUE)
     struct AA5 {
 
         Example::NA6 AA5_04;
@@ -78,7 +80,7 @@ module Example {
         double AA5_12;
 
         double AA5_09;
-    }; //@nested(TRUE)
+    };
 };
 
 #endif // CX_PORTS__TYPES__EXAMPLE_AA_DEFN_IDL

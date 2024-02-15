@@ -13,11 +13,12 @@ typedef sequence<octet> OctetSeq;
 
 module Data
 {
+  @nested(FALSE)
   struct Event {
     string key;
     long iteration;
     ::OctetSeq data;
-  }; //@nested(FALSE)
+  };
 };
 
 #endif /* EVENT_RECORD_IDL_ */

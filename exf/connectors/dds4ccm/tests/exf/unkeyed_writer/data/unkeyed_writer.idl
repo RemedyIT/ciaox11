@@ -13,11 +13,12 @@ typedef sequence<octet> OctetSeq;
 
 module UnkeyedWriterTest
 {
+  @nested(FALSE)
   struct UnkeyedWriterMessage {
     string key;
     long iteration;
     ::OctetSeq data;
-  }; //@nested(FALSE)
+  };
 };
 
 #endif /* UNKEYED_WRITER_IDL_ */

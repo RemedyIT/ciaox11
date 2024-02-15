@@ -140,7 +140,8 @@ this:
 
 [source,idl]
 ------------
-typedef ::CORBA::OctetSeq MyOctetSeq; //@nested(FALSE)
+@nested(FALSE)
+typedef ::CORBA::OctetSeq MyOctetSeq;
 ------------
 ****
 
@@ -185,12 +186,13 @@ The following IDL can be found in `hello/base`:
 -------------------
 module Test
 {
+  @nested(FALSE)
   struct Message
   {
     string category; //@key
     string description;
     unsigned long value;
-  }; //@nested(FALSE)
+  };
 };
 -------------------
 
@@ -201,7 +203,7 @@ This IDL file will be compiled by the
 <<{xref_docs_root}/taox11/ridlc.adoc#,RIDL compiler>>. +
 The key value for this struct is defined with `//@key` as shown above providing the
 possibility for components to filter event subscriptions on `category` values.
-The struct is decorated with `//@nested(FALSE)` to specify that it is to be used as event type.
+The struct is decorated with `@nested(FALSE)` to specify that it is to be used as event type.
 
 The example also uses a `string` as another event type. +
 As this is a standard IDL base type no user data IDL definitions are required.

@@ -26,11 +26,12 @@ module Test
     case THREE: boolean flag;
   };
 
+  @nested(FALSE)
   struct Topic
   {
     octet type;
     Variant value;
-  }; //@nested(FALSE)
+  };
 };
 
 #endif

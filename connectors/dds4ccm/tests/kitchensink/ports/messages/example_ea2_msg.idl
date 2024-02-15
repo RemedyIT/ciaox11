@@ -15,12 +15,13 @@ module Example {
 
     /// @struct EA2_msg
     ///
+    @nested(FALSE)
     struct EA2_msg {
 
         Example::NA4 hdr;
 
         Example::EA7 data;
-    }; //@nested(FALSE)
+    };
 };
 
 #endif // CX_PORTS__MESSAGES__EXAMPLE_EA2_MSG_IDL

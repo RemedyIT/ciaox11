@@ -15,12 +15,13 @@ module Example {
 
     /// @struct FA2_msg
     ///
+    @nested(FALSE)
     struct FA2_msg {
 
         Example::NA4 hdr;
 
         Example::FA8 data;
-    }; //@nested(FALSE)
+    };
 };
 
 #endif // CX_PORTS__MESSAGES__EXAMPLE_FA2_MSG_IDL

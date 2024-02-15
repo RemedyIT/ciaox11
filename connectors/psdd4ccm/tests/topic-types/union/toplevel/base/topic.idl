@@ -19,12 +19,13 @@ module Test
     THREE
   };
 
+  @nested(FALSE)
   union Topic switch(Option)
   {
     case ONE: string text;
     case TWO: unsigned long number;
     case THREE: boolean flag;
-  }; //@nested(FALSE)
+  };
 };
 
 #endif

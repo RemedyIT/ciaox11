@@ -40,6 +40,7 @@ module Example {
 
     /// @struct NA4
     ///
+    @nested(TRUE)
     struct NA4 {
         unsigned long NA4_6;
         unsigned short NA4_5;
@@ -48,10 +49,11 @@ module Example {
         unsigned long NA4_2;
         double NA4_3;
         double NA4_7;
-    }; //@nested(TRUE)
+    };
 
     /// @struct NA6
     ///
+    @nested(TRUE)
     struct NA6 {
 
         string NA6_10;
@@ -81,14 +83,15 @@ module Example {
         unsigned long NA6_12;
 
         unsigned long NA6_14;
-    }; //@nested(TRUE)
+    };
 
     /// @struct NA5
     ///
+    @nested(TRUE)
     struct NA5 {
 
         double NA5_1;
-    }; //@nested(TRUE)
+    };
 };
 
 #endif // CX_PORTS__TYPES__EXAMPLE_NA_DEFN_IDL

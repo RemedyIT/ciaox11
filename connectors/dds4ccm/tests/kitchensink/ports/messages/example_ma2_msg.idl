@@ -37,12 +37,12 @@ module A {
 module Example {
 
     /// @struct MA2_msg
-    ///
+    @nested(FALSE)
     struct MA2_msg {
         Example::NA4 hdr;
         Example::MA4 data;
         boolean trigger;
-    }; //@nested(FALSE)
+    };
 };
 
 #endif // CX_PORTS__MESSAGES__EXAMPLE_MA2_MSG_IDL

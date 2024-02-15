@@ -170,6 +170,7 @@ module Example {
 
     /// @struct DA22
     ///
+    @nested(TRUE)
     struct DA22 {
 
         unsigned long DA22_09;
@@ -201,7 +202,7 @@ module Example {
         double DA22_03;
 
         double DA22_07;
-    }; //@nested(TRUE)
+    };
 
     /// @typedef DA23
     ///
@@ -209,6 +210,7 @@ module Example {
 
     /// @struct DA29
     ///
+    @nested(TRUE)
     struct DA29 {
 
         double DA29_01;
@@ -240,7 +242,7 @@ module Example {
         double DA29_11;
 
         double DA29_03;
-    }; //@nested(TRUE)
+    };
 
     /// @typedef DA30
     ///
@@ -257,10 +259,11 @@ module Example {
 
     /// @struct DA26
     ///
+    @nested(TRUE)
     struct DA26 {
         Example::DA11 DA26_2;
         double DA26_1;
-    }; //@nested(TRUE)
+    };
 
     /// @typedef DA27
     ///
@@ -268,6 +271,7 @@ module Example {
 
     /// @struct DA32
     ///
+    @nested(TRUE)
     struct DA32 {
 
         Example::NA6 DA32_02;
@@ -291,10 +295,11 @@ module Example {
         unsigned long DA32_09;
 
         Example::DA27 DA32_08;
-    }; //@nested(TRUE)
+    };
 
     /// @struct DA28
     ///
+    @nested(TRUE)
     struct DA28 {
 
         unsigned long DA28_04;
@@ -334,10 +339,11 @@ module Example {
         unsigned long DA28_18;
 
         unsigned long DA28_19;
-    }; //@nested(TRUE)
+    };
 
     /// @struct DA31
     ///
+    @nested(TRUE)
     struct DA31 {
 
         Example::DA15 DA31_1;
@@ -351,10 +357,11 @@ module Example {
         double DA31_5;
 
         unsigned long DA31_6;
-    }; //@nested(TRUE)
+    };
 
     /// @struct DA24
     ///
+    @nested(TRUE)
     struct DA24 {
 
         unsigned long DA24_4;
@@ -368,10 +375,11 @@ module Example {
         Example::DA23 DA24_3;
 
         Example::NA5 DA24_2;
-    }; //@nested(TRUE)
+    };
 
     /// @struct DA25
     ///
+    @nested(TRUE)
     struct DA25 {
 
         unsigned long DA25_28;
@@ -429,7 +437,7 @@ module Example {
         double DA25_10;
 
         Example::NA5 DA25_04;
-    }; //@nested(TRUE)
+    };
 };
 
 #endif // CX_PORTS__TYPES__EXAMPLE_DA_DEFN_IDL

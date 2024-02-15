@@ -14,10 +14,11 @@
 // Typename, given to DDS, should be 'TypeNameModule::TypeNameMessage'
 module TypeNameModule
 {
+  @nested(FALSE)
   struct TypeNameMessage {
     string key;
     long iteration;
-  }; //@nested(FALSE)
+  };
 };
 
 #endif /* TYPENAMEMODULE_TYPENAMEMESSAGE_IDL_ */

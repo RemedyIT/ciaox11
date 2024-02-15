@@ -18,11 +18,12 @@ module Test
     EVEN
   };
 
+  @nested(FALSE)
   struct Topic
   {
     ECategory category; //@key
     string content;
-  }; //@nested(FALSE)
+  };
 };
 
 #endif

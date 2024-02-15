@@ -11,9 +11,10 @@
 
 module Example {
 
+  @nested(TRUE)
   struct B02 {
     long  B02_1;
-  }; //@nested(TRUE)
+  };
 
   typedef sequence<B02> B10;
   typedef sequence<B02, 15> B11;
@@ -45,9 +46,10 @@ module Example {
   typedef sequence <B20_2, 1> B21_5;
   typedef B21_5 B21_6;
 
+  @nested(TRUE)
   struct B31 {
     long B31_1;
-  }; //@nested(TRUE)
+  };
 
   typedef B31 B32[2];
   typedef B31 B33[4][5];
@@ -89,11 +91,12 @@ module Example {
     case B70_3: B70 b_80_3;
   };
 
+  @nested(TRUE)
   struct B81 {
     long a;
     string b;
     B58 c;
-  }; //@nested(TRUE)
+  };
   typedef sequence <B81> B82;
   struct B83 {
     string a;
@@ -112,6 +115,7 @@ module Example {
     case 3: B41 b_85_3;
   };
 
+  @nested(FALSE)
   struct IDLConversionMessage {
     char           a_01;
     wchar          a_02;
@@ -183,7 +187,7 @@ module Example {
 
     string key;
     short iteration;
-  }; //@nested(FALSE)
+  };
 
   struct ColorStruct;
   typedef sequence <ColorStruct> ColorList;
@@ -202,20 +206,22 @@ module Example {
 
   struct Color3Struct;
   typedef sequence<Color3Struct> Color3List;
+  @nested(FALSE)
   struct Color3Struct {
     string colorString;
     long colorNum;
-  }; //@nested(FALSE)
+  };
   typedef sequence<Color3Struct> Color3Seq;
 
   struct Color4Struct;
   typedef sequence<Color4Struct> Color4List;
   typedef sequence<Color4Struct> Color4Seq;
+  @nested(FALSE)
   struct Color4Struct {
     string colorString;
     long colorNum;
     Color3Seq color2seq;
-  }; //@nested(FALSE)
+  };
 
   union B03;
   typedef sequence <B03> B03List;
@@ -254,25 +260,28 @@ module UnionTest
 module Escaping
 {
   union _private;
+  @nested(FALSE)
   union _private switch (long)
   {
     case 2: short b_03_3;
-  }; //@nested(FALSE)
+  };
   struct _public;
+  @nested(FALSE)
   struct _public
   {
     string bar;
-  }; //@nested(FALSE)
+  };
 };
 
 module Foo
 {
   module _ATTRIBUTE
   {
+    @nested(FALSE)
     struct TopicA
     {
       string a;
-    }; //@nested(FALSE)
+    };
   };
 };
 
@@ -300,34 +309,39 @@ module SequenceTest
   typedef long myLong;
   typedef sequence <myLong> myLongSeq;
   typedef sequence <myLong, 16> myLongSeq_b16;
+  @nested(FALSE)
   struct My_msg
   {
     myLong myl;
     myLongSeq mylseq;
-  }; //@nested(FALSE)
+  };
 
+  @nested(FALSE)
   struct My_msg2
   {
     long myl;
-  }; //@nested(FALSE)
+  };
   typedef sequence <My_msg2> My_msg2Seq;
 
+  @nested(FALSE)
   union My_msg3 switch (long)
   {
     case 2: long myl;
-  }; //@nested(FALSE)
+  };
   typedef sequence <My_msg3> My_msg3Seq;
 
+  @nested(FALSE)
   struct My_msg4
   {
     long myl;
-  }; //@nested(FALSE)
+  };
   typedef sequence <My_msg4, 12> My_msg4Bounded;
 
+  @nested(FALSE)
   union My_msg5 switch (long)
   {
     case 2: My_msg4Bounded myl;
-  }; //@nested(FALSE)
+  };
   typedef sequence <My_msg5> My_msg5Seq;
   typedef sequence <My_msg5, 12> My_msg5_b12;
   typedef sequence <My_msg5, 11> My_msg5_b11;

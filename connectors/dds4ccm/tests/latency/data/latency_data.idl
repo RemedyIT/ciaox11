@@ -17,11 +17,13 @@ typedef sequence<octet, MAX_DATA_SEQUENCE_LENGTH> BD_oct_seq;
 
 module Test
 {
+  @nested(FALSE)
+  @final
   struct LatencyData
   {
     long seq_num;
     BD_oct_seq data;
-  }; //@nested(FALSE) @final
+  };
 };
 
 #endif // LATENCY_DATA_IDL

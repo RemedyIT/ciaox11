@@ -29,6 +29,7 @@ module Example {
 
     /// @struct MA3
     ///
+    @nested(TRUE)
     struct MA3 {
 
         double MA3_5;
@@ -40,10 +41,11 @@ module Example {
         Example::B47 MA3_2;
 
         double MA3_4;
-    }; //@nested(TRUE)
+    };
 
     /// @struct MA4
     ///
+    @nested(TRUE)
     struct MA4 {
 
         Example::NA6 MA4_01;
@@ -65,7 +67,7 @@ module Example {
         double MA4_08;
 
         double MA4_07;
-    }; //@nested(TRUE)
+    };
 };
 
 #endif // CX_PORTS__TYPES__EXAMPLE_MA_DEFN_IDL

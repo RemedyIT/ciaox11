@@ -15,12 +15,13 @@ module Example {
 
     /// @struct DA4_msg
     ///
+    @nested(FALSE)
     struct DA4_msg {
 
         Example::NA4 hdr;
 
         Example::DA31 data;
-    }; //@nested(FALSE)
+    };
 };
 
 #endif // CX_PORTS__MESSAGES__EXAMPLE_DA4_MSG_IDL
