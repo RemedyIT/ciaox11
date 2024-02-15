@@ -49,6 +49,7 @@ module IDL
             nes_annot.fields[:value] = 'FALSE'
           end
         end
+        ann
       end
     end
   end # CCMX11

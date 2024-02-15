@@ -34,7 +34,7 @@ module IDL
             nes_annot.fields[:value] = 'FALSE'
           end
         end
-        return ann
+        ann
       end
     end # StructVisitor
   end # CCMX11
