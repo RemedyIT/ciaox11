@@ -57,12 +57,8 @@ module IDL
 
       def has_toplevel_annotation?
         unless node.annotations[:'TopLevel'].first.nil?
-          raise "@TopLevel annotation has been deprecated in AXIOMA, use @nested!"
+          raise "@TopLevel annotation has been deprecated in AXIOMA, use @nested(FALSE)!"
         end
-        unless node.annotations[:'top-level'].first.nil?
-          raise "@top-level annotation has been deprecated in AXIOMA, use @nested!"
-        end
-
         annot = node.annotations[:nested].first
         return false if annot.nil?
         return false if annot.fields[:value].nil?
