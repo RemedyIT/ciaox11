@@ -19,7 +19,7 @@ module Test
   };
 
   // Struct is not toplevel (not used as event by itself)
-  // and has no designated, separate, key memebers.
+  // and has no designated, separate, key members.
   struct Key
   {
     ECategory category;
