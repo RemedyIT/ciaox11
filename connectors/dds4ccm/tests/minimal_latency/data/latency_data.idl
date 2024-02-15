@@ -11,10 +11,10 @@
 #ifndef LATENCY_DATA_IDL
 #define LATENCY_DATA_IDL
 
-@nested(FALSE)
-@final
 module Test
 {
+  @nested(FALSE)
+  @final
   struct LatencyData
   {
     long seq_num;
