@@ -39,7 +39,7 @@ module IDL
          unless ann[:'final'].first
            ann << IDL::AST::Annotation.new('appendable', {})
          end
-        ann
+         ann
       end
     end
   end # CCMX11
