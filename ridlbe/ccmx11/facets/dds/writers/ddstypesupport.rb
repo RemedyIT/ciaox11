@@ -38,7 +38,6 @@ module IDL
           return false if annot.nil?
           return false if annot.fields[:value].nil?
           return true if annot.fields[:value] == false
-          return true if annot.fields[:value] == 'FALSE'
           false
         end
       end # DDSTypeSupportBaseWriter

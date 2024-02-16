@@ -65,7 +65,6 @@ module IDL
           annot = node.annotations[:nested].first
           return false if annot.nil?
           return false if annot.fields[:value].nil?
-          return true if annot.fields[:value] == 'FALSE'
           return true if annot.fields[:value] == false
           false
         end

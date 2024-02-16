@@ -39,16 +39,6 @@ module IDL
          unless ann[:'final'].first
            ann << IDL::AST::Annotation.new('appendable', {})
          end
-        # When generating the nested annotation we need to use TRUE/FALSE
-        nes_annot = ann[:nested].first
-        unless nes_annot.nil?
-          case nes_annot.fields[:value]
-          when TrueClass
-            nes_annot.fields[:value] = 'TRUE'
-          when FalseClass
-            nes_annot.fields[:value] = 'FALSE'
-          end
-        end
         ann
       end
     end
