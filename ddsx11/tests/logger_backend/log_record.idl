@@ -9,6 +9,7 @@
 
 module DnCX11
 {
+  @nested(FALSE)
   struct Log_Record
   {
     /// The name of the node this originates from, if available
@@ -22,5 +23,5 @@ module DnCX11
 
     /// The error diagnostic
     string message;
-  }; //@TopLevel()
+  };
 };

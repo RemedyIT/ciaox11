@@ -13,12 +13,13 @@ typedef sequence<octet> OctetSeq;
 typedef string<128> color_type;
 module Hello
 {
+  @nested(FALSE)
   struct ShapeType {
     color_type color; //@key
     long x;
     long y;
     long shapesize;
-  }; //@TopLevel()
+  };
 //  struct Event {
 //    string key;
 //    long iteration;

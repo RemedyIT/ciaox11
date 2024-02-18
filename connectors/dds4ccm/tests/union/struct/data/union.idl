@@ -24,17 +24,19 @@ module Uni {
     dtGlobal
   };
 
+  @nested(TRUE)
   struct Point
   {
     long x;
     long y;
-  }; //@TopLevel(false)
+  };
 
+  @nested(TRUE)
   struct Track
   {
     long id;
     Point p;
-  }; //@TopLevel(false)
+  };
 
   union Data switch (DataType)
   {
@@ -46,13 +48,15 @@ module Uni {
     case dtGlobal: Global globalData;
   };
 
+  @nested(TRUE)
   struct B01 {
     long b01_1;
-  }; //@TopLevel(false)
+  };
 
+  @nested(TRUE)
   struct B02 {
     string b02_1;
-  }; //@TopLevel(false)
+  };
 
   union B03 switch (long)
   {
@@ -73,11 +77,12 @@ module Uni {
     D
   };
 
+  @nested(FALSE)
   struct UnionMessage {
     Assignment a; //@key
     B03 b_03;
     Data d;
-  }; //@TopLevel()
+  };
 };
 
 #endif /* UNION_BASE_IDL_ */

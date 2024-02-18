@@ -35,7 +35,3 @@ Dir.glob(File.join(File.dirname(__FILE__), 'writers', '*.rb')).each do |f|
   require File.join(IDL::CCMX11::DDSX11::ROOT, 'writers', File.basename(f, '.*'))
 end
 
-# config/parser
-Dir.glob(File.join(File.dirname(__FILE__), 'config', '*.rb')).each do |f|
-  require File.join(IDL::CCMX11::DDSX11::ROOT, 'config', File.basename(f, '.*'))
-end

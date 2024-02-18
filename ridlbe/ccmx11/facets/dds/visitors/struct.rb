@@ -19,15 +19,12 @@ module IDL
       optional_template :life_cycle_traits
 
       def annotations
+        ann = node.annotations.dup
         # Add appendable when it is not final available
-         ann = node.annotations.dup
-         unless ann[:'final'].first
-           ann << IDL::AST::Annotation.new('appendable', {})
-         end
-         # Determine correct value for DDS nested annotation
-         nested = 'TRUE'
-         nested = 'FALSE' if has_toplevel_annotation?
-         ann << IDL::AST::Annotation.new('nested', {value: nested})
+        unless ann[:'final'].first
+          ann << IDL::AST::Annotation.new('appendable', {})
+        end
+        ann
       end
     end # StructVisitor
   end # CCMX11

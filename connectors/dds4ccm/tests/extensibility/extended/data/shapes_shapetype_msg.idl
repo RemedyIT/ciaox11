@@ -12,6 +12,7 @@ typedef string<128> color_type;
 
 /// \struct ShapeType
 @appendable
+@nested(FALSE)
 struct ShapeType {
   /// This field contains the color of the shape.
   @key color_type color;
@@ -24,6 +25,6 @@ struct ShapeType {
   long shapesize;
   /// This field contains the angle of the shape.
   long angle;
-}; //@TopLevel()
+};
 
 #endif /* SHAPES_SHAPETYPE_MSG_IDL_ */

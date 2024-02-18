@@ -39,10 +39,7 @@ module IDL
          unless ann[:'final'].first
            ann << IDL::AST::Annotation.new('appendable', {})
          end
-         # Determine correct value for DDS nested annotation
-         nested = 'TRUE'
-         nested = 'FALSE' if has_toplevel_annotation?
-         ann << IDL::AST::Annotation.new('nested', {value: nested})
+         ann
       end
     end
   end # CCMX11

@@ -12,6 +12,7 @@
 
 module Test
 {
+  @nested(FALSE)
   struct Topic
   {
     string category;
@@ -19,7 +20,7 @@ module Test
     unsigned long value;
     char opt;
     boolean flag;
-  }; //@TopLevel()
+  };
 };
 
 #endif

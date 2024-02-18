@@ -19,7 +19,7 @@ module Test
   };
 
   // Struct is not toplevel (not used as event by itself)
-  // and has no designated, separate, key memebers.
+  // and has no designated, separate, key members.
   struct Key
   {
     ECategory category;
@@ -29,13 +29,14 @@ module Test
   // Toplevel struct defines nokey struct as key member type
   // in which case the member type is considered key-only
   // (entire value is key value).
+  @nested(FALSE)
   struct Topic
   {
     Key the_key; //@key
     string description;
     char opt;
     boolean flag;
-  }; //@TopLevel()
+  };
 };
 
 #endif

@@ -11,9 +11,10 @@
 
 // Typename, given to DDS, should be 'TypeNameMessage'
 
+@nested(FALSE)
 struct TypeNameMessage {
   string key;
   long iteration;
-}; //@TopLevel()
+};
 
 #endif /* TYPENAME_BASE_IDL_ */

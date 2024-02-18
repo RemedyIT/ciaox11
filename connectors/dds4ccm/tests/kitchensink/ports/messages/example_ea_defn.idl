@@ -50,6 +50,7 @@ module Example {
 
     /// @struct EA7
     ///
+    @nested(TRUE)
     struct EA7 {
 
         Example::NA6 EA7_15;
@@ -137,10 +138,11 @@ module Example {
         double EA7_33;
 
         double EA7_36;
-    }; //@TopLevel(false)
+    };
 
     /// @struct EA6
     ///
+    @nested(TRUE)
     struct EA6 {
 
         Example::NA5 EA6_04;
@@ -162,7 +164,7 @@ module Example {
         double EA6_09;
 
         double EA6_10;
-    }; //@TopLevel(false)
+    };
 };
 
 #endif // CX_PORTS__TYPES__EXAMPLE_EA_DEFN_IDL

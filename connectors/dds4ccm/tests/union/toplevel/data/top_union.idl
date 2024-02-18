@@ -8,29 +8,31 @@
 #define TOP_UNION_BASE_IDL_
 
 module Uni {
+  @nested(FALSE)
   union TopUnionMessage switch (long) {
     case 4: short x;
     case 5:
     case 6: long y;
-  }; //@TopLevel()
+  };
 
   enum _module
   {
     dtLong
   };
 
+  @nested(FALSE)
   union foo switch (_module)
   {
     case dtLong: long longData;
-  }; //@TopLevel()
+  };
 
   typedef long _union;
 
+  @nested(FALSE)
   union foo2 switch (long)
   {
     case 0: Uni::_union longData;
   };
-  //@TopLevel()
 };
 
 #endif /* TOP_UNION_BASE_IDL_ */

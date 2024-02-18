@@ -12,6 +12,7 @@
 
 module Test
 {
+  @nested(FALSE)
   struct Topic
   {
     string key;
@@ -19,7 +20,7 @@ module Test
     unsigned long msgid;
     boolean status;
     double value;
-  }; //@TopLevel()
+  };
 };
 
 #endif

@@ -19,10 +19,11 @@ module BST {
     typedef string MyStringTypedef;
 
     /// @struct MyStructType
+    @nested(TRUE)
     struct MyStructType {
         BST::MyBoundedStringType boundedString;
         BST::MyStringTypedef unboundedString;
-    }; //@TopLevel(false)
+    };
 };
 
 #endif // CX_PORTS__BST_BST_DEFN_IDL

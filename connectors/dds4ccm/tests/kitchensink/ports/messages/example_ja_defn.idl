@@ -45,6 +45,7 @@ module Example {
 
     /// @struct JA5
     ///
+    @nested(TRUE)
     struct JA5 {
 
         Example::NA5 JA5_1;
@@ -56,10 +57,11 @@ module Example {
         unsigned long JA5_4;
 
         unsigned long JA5_3;
-    }; //@TopLevel(false)
+    };
 
     /// @struct JA6
     ///
+    @nested(TRUE)
     struct JA6 {
 
         Example::NA6 JA6_01;
@@ -81,7 +83,7 @@ module Example {
         double JA6_07;
 
         Example::JA2 JA6_06;
-    }; //@TopLevel(false)
+    };
 };
 
 #endif // CX_PORTS__TYPES__EXAMPLE_JA_DEFN_IDL

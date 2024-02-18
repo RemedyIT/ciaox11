@@ -33,6 +33,7 @@ module Example {
 
     /// @struct BA4
     ///
+    @nested(TRUE)
     struct BA4 {
 
         Example::NA6 BA4_03;
@@ -54,10 +55,11 @@ module Example {
         double BA4_02;
 
         double BA4_07;
-    }; //@TopLevel(false)
+    };
 
     /// @struct BA3
     ///
+    @nested(TRUE)
     struct BA3 {
 
         Example::NA5 BA3_1;
@@ -65,7 +67,7 @@ module Example {
         double BA3_3;
 
         double BA3_2;
-    }; //@TopLevel(false)
+    };
 };
 
 #endif // CX_PORTS__TYPES__EXAMPLE_BA_DEFN_IDL

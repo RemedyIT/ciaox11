@@ -13,6 +13,7 @@ typedef sequence<octet> OctetSeq;
 
 module UnkeyedWriterTest
 {
+  @nested(FALSE)
   struct UnkeyedWriterMessage {
     string key;
     unsigned long iteration;
@@ -21,7 +22,7 @@ module UnkeyedWriterTest
     /// the receiver can check that we don't get duplicate
     /// samples
     unsigned long sample_index;
-  }; //@TopLevel()
+  };
 };
 
 #endif /* UNKEYED_WRITER_IDL_ */

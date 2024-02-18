@@ -11,6 +11,7 @@
 
 #include "foo_exec.h"
 
+//@@{__RIDL_REGEN_MARKER__} - BEGIN : Foo_Impl[user_includes]
 #include "ciaox11/testlib/ciaox11_testlog.h"
 #include "dancex11/core/dancex11_deployment_state.h"
 //@@{__RIDL_REGEN_MARKER__} - END : Foo_Impl[user_includes]
