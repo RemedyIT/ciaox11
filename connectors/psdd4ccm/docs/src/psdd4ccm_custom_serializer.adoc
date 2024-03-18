@@ -110,7 +110,7 @@ module Test
 }; /* Test */
 -----------------------------------------------
 
-the following serializer stub en lem interfaces will be generated:
+the following serializer stub and lem interfaces will be generated:
 
 [source,c++]
 .PSDD4CCM serializer stub
