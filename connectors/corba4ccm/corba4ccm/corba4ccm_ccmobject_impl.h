@@ -8,8 +8,6 @@
 #ifndef CIAOX11_CORBA4CCM_CCMOBJECT_IMPL_H
 #define CIAOX11_CORBA4CCM_CCMOBJECT_IMPL_H
 
-#include /**/ "ace/pre.h"
-
 #include "ccm/ccm_objectS.h"
 
 #if !defined (ACE_LACKS_PRAGMA_ONCE)
@@ -70,7 +68,5 @@ namespace CCM_CORBA
     std::string component_name_;
   };
 }
-
-#include /**/ "ace/post.h"
 
 #endif /* CIAOX11_CORBA4CCM_CCMOBJECT_IMPL_H */

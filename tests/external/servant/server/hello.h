@@ -7,7 +7,6 @@
 
 #ifndef HELLO_H
 #define HELLO_H
-#include /**/ "ace/pre.h"
 
 #include "helloS.h"
 
@@ -20,19 +19,13 @@ public:
   Hello (IDL::traits<CORBA::ORB>::ref_type orb);
   virtual ~Hello ();
 
-  std::string
-  get_string (
-      int32_t answer) override;
+  std::string get_string (int32_t answer) override;
 
-  int16_t
-  interface_attrib () override;
+  int16_t interface_attrib () override;
 
-  void
-  interface_attrib (
-      int16_t _v) override;
+  void interface_attrib (int16_t _v) override;
 
-  void
-  shutdown () override;
+  void shutdown () override;
 
 private:
   /// Use an ORB reference to convert strings to objects and shutdown
@@ -41,5 +34,4 @@ private:
   int16_t value_ {};
 };
 
-#include /**/ "ace/post.h"
 #endif /* HELLO_H */
