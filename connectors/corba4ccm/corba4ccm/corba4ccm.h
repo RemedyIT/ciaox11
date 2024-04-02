@@ -10,8 +10,6 @@
 #ifndef CIAO_CORBA4CCM_H
 #define CIAO_CORBA4CCM_H
 
-#include /**/ "ace/pre.h"
-
 #include "connectors/corba4ccm/corba4ccm/corba4ccmC.h"
 #include "tao/x11/object.h"
 #include "tao/x11/portable_server/portableserver.h"
@@ -64,5 +62,4 @@ namespace CCM_CORBA
     const std::string& facet_name);
 }
 
-#include /**/ "ace/post.h"
 #endif /* CIAO_CORBA4CCM_H */
