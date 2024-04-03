@@ -36,26 +36,6 @@
 #  define DNCX11_LOG_BACKEND_SINGLETON_DECLARE(SINGLETON_TYPE, CLASS, LOCK)
 #endif /* DNCX11_LOG_BACKEND_HAS_DLL == 1 */
 
-// Set DNCX11_LOG_BACKEND_NTRACE = 0 to turn on library specific tracing even if
-// tracing is turned off for ACE.
-#if !defined (DNCX11_LOG_BACKEND_NTRACE)
-#  if (ACE_NTRACE == 1)
-#    define DNCX11_LOG_BACKEND_NTRACE 1
-#  else /* (ACE_NTRACE == 1) */
-#    define DNCX11_LOG_BACKEND_NTRACE 0
-#  endif /* (ACE_NTRACE == 1) */
-#endif /* !DNCX11_LOG_BACKEND_NTRACE */
-
-#if (DNCX11_LOG_BACKEND_NTRACE == 1)
-#  define DNCX11_LOG_BACKEND_TRACE(X)
-#else /* (DNCX11_LOG_BACKEND_NTRACE == 1) */
-#  if !defined (ACE_HAS_TRACE)
-#    define ACE_HAS_TRACE
-#  endif /* ACE_HAS_TRACE */
-#  define DNCX11_LOG_BACKEND_TRACE(X) ACE_TRACE_IMPL(X)
-#  include "ace/Trace.h"
-#endif /* (DNCX11_LOG_BACKEND_NTRACE == 1) */
-
 #endif /* DNCX11_LOG_BACKEND_EXPORT_H */
 
 // End of auto generated file.
