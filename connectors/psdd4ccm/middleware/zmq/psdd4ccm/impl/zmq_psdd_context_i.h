@@ -40,52 +40,30 @@ namespace PSDD
       Context_Impl () = default;
       ~Context_Impl () override;
 
-      void
-      initialize (const Config&);
+      void initialize (const Config&);
 
-      void
-      register_client ();
+      void register_client ();
 
-      void
-      unregister_client ();
+      void unregister_client ();
 
-      SubscriberSocket
-      create_subscriber_socket (
-          const Config&);
+      SubscriberSocket create_subscriber_socket (const Config&);
 
-      WriterSocket
-      create_publisher_socket (
-          const Config&);
+      WriterSocket create_publisher_socket (const Config&);
 
-      WriterSocket
-      create_publisher_multiplex_socket (
-          const Config&);
+      WriterSocket create_publisher_multiplex_socket (const Config&);
 
-      void
-      schedule_listener (
-          IDL::traits<::PSDD::ZMQ::Listener>::ref_type l);
+      void schedule_listener (IDL::traits<::PSDD::ZMQ::Listener>::ref_type l);
 
-      void
-      remove_listener (
-          IDL::traits<::PSDD::ZMQ::Listener>::ref_type l);
+      void remove_listener (IDL::traits<::PSDD::ZMQ::Listener>::ref_type l);
 
-      void
-      reset_listeners ();
+      void reset_listeners ();
 
     private:
-      bool
-      bind (
-          Socket&,
-          const std::vector<std::string>&);
+      bool bind (Socket&, const std::vector<std::string>&);
 
-      bool
-      connect (
-          Socket&,
-          const std::vector<std::string>&);
+      bool connect (Socket&, const std::vector<std::string>&);
 
-      bool
-      setup_multiplex (
-        const Config&);
+      bool setup_multiplex (const Config&);
 
       void* context_ { nullptr };
 
