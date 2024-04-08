@@ -3,7 +3,7 @@ project(*idl_gen) : ciaox11_test_comp_all_idl {
   after += multiple_base_idl_gen multiple_base_lem_gen
   idlflags += -Wb,base_export_macro=HELLO_SENDER \
               -Wb,base_export_include=hello_sender
-  idlflags -= -Scp
+  idlflags -= -Scph
 
   IDL_Files {
     gendir=generated_code

@@ -10,7 +10,7 @@ project(*idl) : install, ciaox11_idl {
   custom_only = 1
   idlflags  += -Wb,stub_export_include=ciaox11_config_export.h \
                -Wb,stub_export_macro=CIAOX11_CONFIG_Export \
-               -SS -Ssh -Scp -Gxhst
+               -SS -Ssh -Scph -Gxhst
 
   IDL_Files {
     ciaox11_config_values.idl

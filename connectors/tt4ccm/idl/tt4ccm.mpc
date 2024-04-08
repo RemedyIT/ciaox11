@@ -13,7 +13,7 @@ project(*stubs_idl_gen) : install, ciaox11_idldefaults {
   }
 
   IDL_Files {
-    idlflags += -Scp -Scdr -Glem,gen
+    idlflags += -Scph -Scdr -Glem,gen
     ccm_timed_trigger.idl
   }
 

@@ -65,7 +65,7 @@ project(NT_Connector_lem_gen) : ciaox11_idldefaults {
 
   idlflags += -Wb,stub_export_macro=NONTOPIC_CONNECTOR_LEM_STUB_Export \
               -Wb,stub_export_include=nontopic_connector_lem_stub_export.h \
-              -SS -Scp -Gxhst
+              -SS -Scph -Gxhst
 
   IDL_Files {
     nontopic_connectorE.idl

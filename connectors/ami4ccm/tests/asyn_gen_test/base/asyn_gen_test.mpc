@@ -23,7 +23,7 @@ project(*aidl_gen) : ciaox11_ami4ccm_idldefaults, ciaox11_ami4ccm {
   custom_only = 1
   idlflags += -Wb,base_export_macro=HELLO \
               -Wb,base_export_include=hello \
-              -Gami4ccm,Aidl -Scc -Sch -Scp -Gxhst
+              -Gami4ccm,Aidl -Scc -Sch -Scph -Gxhst
 
   IDL_Files {
     hello.idl
@@ -35,7 +35,7 @@ project(*lem_gen) : ciaox11_idldefaults, ciaox11_ami4ccm {
   custom_only = 1
   idlflags += -Wb,stub_export_macro=HELLO_LEM_STUB_Export \
               -Wb,stub_export_include=hello_lem_stub_export.h \
-              -I.. -Gxhst -Scp
+              -I.. -Gxhst -Scph
 
   IDL_Files {
     helloE.idl
@@ -50,7 +50,7 @@ project(*lema_gen) : ciaox11_idldefaults, ciaox11_ami4ccm {
               -Wb,stub_export_include=hello_ami4ccm_stub_export.h \
               -Wb,svnt_export_macro=HELLO_SVNT_Export \
               -Wb,svnt_export_include=hello_conn_svnt_export.h \
-              -I.. -Gxhst -Gxhsv -Glem -Scp
+              -I.. -Gxhst -Gxhsv -Glem -Scph
   idlflags -= -Ssh
 
   IDL_Files {
@@ -63,7 +63,7 @@ project(*lemae_gen) : ciaox11_idldefaults , ciaox11_ami4ccm {
   custom_only = 1
   idlflags += -Wb,stub_export_macro=HELLO_AMI_LEM_STUB_Export \
               -Wb,stub_export_include=hello_ami_lem_stub_export.h \
-              -I.. -SS -Scp -Gxhst
+              -I.. -SS -Scph -Gxhst
 
   IDL_Files {
     helloAE.idl
@@ -89,7 +89,7 @@ project(*conn_lemae_gen) : ciaox11_idldefaults, ciaox11_ami4ccm {
   custom_only = 1
   idlflags += -Wb,stub_export_macro=HELLO_CONN_LEM_STUB_Export \
               -Wb,stub_export_include=hello_conn_lem_stub_export.h \
-              -I.. -SS -Scp -Gxhst
+              -I.. -SS -Scph -Gxhst
 
   IDL_Files {
     helloA_connE.idl

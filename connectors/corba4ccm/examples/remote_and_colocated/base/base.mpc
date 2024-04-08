@@ -36,7 +36,7 @@ project(*stub) : taox11_lib {
 // ---- Synchronous request/reply pattern -----
 project(*lem_gen) : ciaox11_idldefaults {
   custom_only = 1
-  idlflags += -Glem,gen -Gxhlst -Sch -Scc -Scp \
+  idlflags += -Glem,gen -Gxhlst -Sch -Scc -Scph \
               -o generated_code \
               -I../base -I../base/generated_code \
               -Wb,base_export_macro=BASE \

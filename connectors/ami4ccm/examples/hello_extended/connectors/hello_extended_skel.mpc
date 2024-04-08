@@ -8,7 +8,7 @@ project(*idl_gen) : ciaox11_test_base_idl {
 
   idlflags += -Wb,base_export_macro=HELLO_EXTENDED \
               -Wb,base_export_include=hello_extended \
-              -Scc -Sch -Scp -Gxhsk
+              -Scc -Sch -Scph -Gxhsk
   idlflags -= -SS -Ssh -Gxhst
 
   IDL_Files {

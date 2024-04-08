@@ -9,7 +9,7 @@ project(*cc_idl_gen) : ciaox11_test_idldefaults, ciaox11_corba4ccm_idl {
   idlflags += -Wb,base_export_macro=EXTENDED_HELLO \
               -Wb,base_export_include=extended_hello \
               -I./generated_code -I../patterns/generated_code \
-              -Gxhsk -Sch -Scc -Scp
+              -Gxhsk -Sch -Scc -Scph
   idlflags -= -SS -Ssh
 
   IDL_Files {

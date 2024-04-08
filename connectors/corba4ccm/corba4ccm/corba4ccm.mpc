@@ -4,7 +4,7 @@ project(ciaox11_corba4ccm_idl_gen) : install, ciaox11_idldefaults {
   idlflags -= -Gsvnt -Ssh
   idlflags += -Wb,stub_export_macro=CORBA4CCM_STUB_Export \
               -Wb,stub_export_include=corba4ccm_stub_export.h \
-              -Gxhst -Scp
+              -Gxhst -Scph
 
   IDL_Files {
     corba4ccm.idl

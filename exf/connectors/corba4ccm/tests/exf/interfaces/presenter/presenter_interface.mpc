@@ -4,7 +4,7 @@ project(*lem_gen) : ciaox11_idldefaults {
 
   idlflags += \
       -o build \
-      -Glem,gen -Sch -Scc -Scp -Gxhlst \
+      -Glem,gen -Sch -Scc -Scph -Gxhlst \
       -Wb,base_export_macro=EXFTEST_PRESENT_IF \
       -Wb,base_export_include=exftest_present_if
 

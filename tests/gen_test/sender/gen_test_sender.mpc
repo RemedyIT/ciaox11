@@ -41,7 +41,7 @@ project(*lem_gen) : ciaox11_idldefaults {
   custom_only = 1
   idlflags += -Wb,stub_export_macro=HELLO_SENDER_LEM_STUB_Export \
               -Wb,stub_export_include=hello_sender_lem_stub_export.h \
-              -SS -Scp -Gxhst -I..
+              -SS -Scph -Gxhst -I..
 
   IDL_Files {
     hello_senderE.idl

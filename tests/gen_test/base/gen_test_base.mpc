@@ -32,7 +32,7 @@ project(*lem_gen) : ciaox11_idldefaults {
   custom_only = 1
   idlflags += -Wb,stub_export_macro=HELLO_LEM_STUB_Export \
               -Wb,stub_export_include=hello_lem_stub_export.h \
-              -Gxhst -Scp
+              -Gxhst -Scph
 
   IDL_Files {
     helloE.idl

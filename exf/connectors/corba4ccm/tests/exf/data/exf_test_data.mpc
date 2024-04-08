@@ -145,7 +145,7 @@ project(*data_skel_gen) : ciaox11_idldefaults {
 
   idlflags += \
       -o build \
-      -Scc -Sch -Scp
+      -Scc -Sch -Scph
   idlflags -= \
       -Ssh
 

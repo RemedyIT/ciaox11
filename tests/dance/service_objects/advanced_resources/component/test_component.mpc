@@ -2,7 +2,7 @@ project(*idl_gen) : ciaox11_test_comp_all_idl, taox11_anytypecode {
   custom_only = 1
   idlflags += -Wb,base_export_macro=FOO \
               -Wb,base_export_include=foo
-  idlflags -= -Scc -Scp
+  idlflags -= -Scc -Scph
 
   IDL_Files {
     gendir = generated_code

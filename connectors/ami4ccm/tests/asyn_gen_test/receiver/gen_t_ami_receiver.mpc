@@ -27,7 +27,7 @@ project(*lem_gen) : ciaox11_idldefaults, ciaox11_ami4ccm {
   custom_only = 1
   idlflags += -Wb,stub_export_macro=HELLO_RECEIVER_LEM_STUB_Export \
               -Wb,stub_export_include=hello_receiver_lem_stub_export.h \
-              -Scp -Gxhst -I..
+              -Scph -Gxhst -I..
 
   IDL_Files {
     hello_receiverE.idl

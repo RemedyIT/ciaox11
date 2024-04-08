@@ -5,5 +5,5 @@
 // --------------------------------------------------------------------
 
 project : ciaox11_test_idldefaults {
-  idlflags += -Glem,gen -Gxhlst -Sch -Scc -Scp
+  idlflags += -Glem,gen -Gxhlst -Sch -Scc -Scph
 }

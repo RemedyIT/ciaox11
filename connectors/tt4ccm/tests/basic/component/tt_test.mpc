@@ -1,7 +1,7 @@
 project(*idl_gen) : ciaox11_comp_all_idl, ciaox11_gen_exec, ciaox11_tt4ccm {
   custom_only = 1
 
-  idlflags += -Scc -Scp \
+  idlflags += -Scc -Scph \
               -o generated_code \
               -I../../base -I../../base/generated_code \
               -Wb,base_export_macro=TT_TEST \
