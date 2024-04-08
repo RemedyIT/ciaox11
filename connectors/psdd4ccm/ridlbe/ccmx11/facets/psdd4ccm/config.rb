@@ -156,7 +156,7 @@ module IDL
 
         options[:no_servant_code] = true
         options[:no_cdr_streaming] = true
-        options[:no_client_proxy] = true
+        options[:no_client_proxy_hdr] = true
 
         # mark this pass for PSDD4CCM connector implementation generation
         options[:gen_exec_for_psdd_connector] = true
@@ -229,7 +229,7 @@ module IDL
         # if not set explicitly but -Gxhst is than assume -Gxhlst is as well
         lemgen_opts.gen_export_lem_stub ||= options.gen_export_st
         lemgen_opts[:gen_lem_gen] = true # -Glem,gen
-        lemgen_opts[:no_client_proxy] = true
+        lemgen_opts[:no_client_proxy_hdr] = true
         lemgen_opts[:no_cdr_streaming] = true
         lemgen_opts[:svnt_skeletons] = false # suppress all skeleton code generation
         lemgen_opts[:gen_psdd4ccm_lemidl] = true # mark the LEM IDL generation in the scheduled pass for PSDD4CCM
