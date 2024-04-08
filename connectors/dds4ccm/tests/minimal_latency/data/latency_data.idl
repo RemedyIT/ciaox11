@@ -13,10 +13,12 @@
 
 module Test
 {
+  @nested(FALSE)
+  @final
   struct LatencyData
   {
     long seq_num;
-  }; //@TopLevel() @final
+  };
 };
 
 #endif // LATENCY_DATA_IDL

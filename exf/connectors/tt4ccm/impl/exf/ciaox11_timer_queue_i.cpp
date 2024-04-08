@@ -8,10 +8,7 @@
  */
 
 #include "ciaox11_timer_queue_i.h"
-
 #include "ciaox11/logger/log.h"
-
-// X11_FUZZ: disable check_new_delete
 
 namespace CIAOX11_TT_TimedTrigger_Impl
 {

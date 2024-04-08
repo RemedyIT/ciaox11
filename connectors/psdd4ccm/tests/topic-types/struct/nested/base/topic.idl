@@ -19,13 +19,14 @@ module Test
     char opt;
   };
 
+  @nested(FALSE)
   struct Topic
   {
     string category;
     string description;
     unsigned long value;
     Nested data;
-  }; //@TopLevel()
+  };
 };
 
 #endif

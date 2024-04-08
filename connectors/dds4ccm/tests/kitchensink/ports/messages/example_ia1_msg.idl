@@ -15,12 +15,13 @@ module Example {
 
     /// @struct IA1_msg
     ///
+    @nested(FALSE)
     struct IA1_msg {
 
         Example::NA4 hdr;
 
         Example::IA4 data;
-    }; //@TopLevel()
+    };
 };
 
 #endif // CX_PORTS__MESSAGES__EXAMPLE_IA1_MSG_IDL

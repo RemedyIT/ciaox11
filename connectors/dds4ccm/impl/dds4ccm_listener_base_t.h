@@ -52,7 +52,7 @@ namespace CIAOX11
 
       /// Helper method to determine which DDS mask we have to use
       static ::DDS::StatusMask get_mask (
-        typename IDL::traits<typename CCM_TYPE::data_listener_type>::ref_type listener,
+        IDL::traits<CORBA::Object>::ref_type listener,
         IDL::traits<::CCM_DDS::PortStatusListener>::ref_type status);
 
       static ::DDS::ReturnCode_t take_data_i (

@@ -32,6 +32,15 @@ module IDL
       end
 
       optional_template :life_cycle_traits
+
+      def annotations
+        # Add appendable when it is not final available
+         ann = node.annotations.dup
+         unless ann[:'final'].first
+           ann << IDL::AST::Annotation.new('appendable', {})
+         end
+         ann
+      end
     end
   end # CCMX11
 end # IDL

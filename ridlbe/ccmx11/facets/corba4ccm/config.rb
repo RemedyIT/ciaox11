@@ -176,7 +176,7 @@ module IDL
         cc_opts[:no_client_proxy] = true
         # generate lem stub exports if -Gxhlst or -Gxhex or -Gxhsv are specified
         cc_opts.gen_export_lem_stub ||= options.gen_export_ex || options.gen_export_svnt
-        # generate LEM IDL en (in yet another pass) the LEM stubs
+        # generate LEM IDL and (in yet another pass) the LEM stubs
         cc_opts[:gen_lem_gen] = true
         # generate CORBA4CCM connector servant and executor
         cc_opts[:gen_exec_for_corba_connector] = true

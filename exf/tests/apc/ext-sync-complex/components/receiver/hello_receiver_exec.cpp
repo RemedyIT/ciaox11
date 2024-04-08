@@ -64,6 +64,70 @@ namespace Hello_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::do_my_B_exec_i::op_B[_in_l_s_in_l]
   }
 
+  bool
+  do_my_B_exec_i::op_C (
+      int32_t in_c,
+      bool in_b,
+      bool& out_b,
+      bool& inout_b)
+  {
+    //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::do_my_B_exec_i::op_C[_in_c_in_b_out_b_inout_b]
+    X11_UNUSED_ARG(in_c);
+    X11_UNUSED_ARG(in_b);
+    X11_UNUSED_ARG(out_b);
+    X11_UNUSED_ARG(inout_b);
+    return {};
+    //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::do_my_B_exec_i::op_C[_in_c_in_b_out_b_inout_b]
+  }
+
+  bool
+  do_my_B_exec_i::op_D (
+      int32_t in_c,
+      uint8_t in_b,
+      uint8_t& out_b,
+      uint8_t& inout_b)
+  {
+    //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::do_my_B_exec_i::op_D[_in_c_in_b_out_b_inout_b]
+    X11_UNUSED_ARG(in_c);
+    X11_UNUSED_ARG(in_b);
+    X11_UNUSED_ARG(out_b);
+    X11_UNUSED_ARG(inout_b);
+    return {};
+    //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::do_my_B_exec_i::op_D[_in_c_in_b_out_b_inout_b]
+  }
+
+  bool
+  do_my_B_exec_i::op_E (
+      int32_t in_c,
+      char in_b,
+      char& out_b,
+      char& inout_b)
+  {
+    //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::do_my_B_exec_i::op_E[_in_c_in_b_out_b_inout_b]
+    X11_UNUSED_ARG(in_c);
+    X11_UNUSED_ARG(in_b);
+    X11_UNUSED_ARG(out_b);
+    X11_UNUSED_ARG(inout_b);
+    return {};
+    //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::do_my_B_exec_i::op_E[_in_c_in_b_out_b_inout_b]
+  }
+
+  bool
+  do_my_B_exec_i::op_F (
+      int32_t in_c,
+      wchar_t in_b,
+      wchar_t& out_b,
+      wchar_t& inout_b)
+  {
+    //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::do_my_B_exec_i::op_F[_in_c_in_b_out_b_inout_b]
+    X11_UNUSED_ARG(in_c);
+    X11_UNUSED_ARG(in_b);
+    X11_UNUSED_ARG(out_b);
+    X11_UNUSED_ARG(inout_b);
+    return {};
+    //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::do_my_B_exec_i::op_F[_in_c_in_b_out_b_inout_b]
+  }
+
   int32_t
   do_my_B_exec_i::op_A (
       int32_t in_l)
@@ -71,6 +135,40 @@ namespace Hello_Receiver_Impl
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::do_my_B_exec_i::op_A[_in_l]
     return in_l + 100;
     //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::do_my_B_exec_i::op_A[_in_l]
+  }
+
+  bool
+  do_my_B_exec_i::at_D ()
+  {
+    //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::do_my_B_exec_i::at_D[getter]
+    return this->at_D_;
+    //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::do_my_B_exec_i::at_D[getter]
+  }
+
+  void
+  do_my_B_exec_i::at_D (
+      bool at_D)
+  {
+    //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::do_my_B_exec_i::at_D[setter]
+    this->at_D_ = at_D;
+    //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::do_my_B_exec_i::at_D[setter]
+  }
+
+  int32_t
+  do_my_B_exec_i::at_E ()
+  {
+    //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::do_my_B_exec_i::at_E[getter]
+    return this->at_E_;
+    //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::do_my_B_exec_i::at_E[getter]
+  }
+
+  void
+  do_my_B_exec_i::at_E (
+      int32_t at_E)
+  {
+    //@@{__RIDL_REGEN_MARKER__} - BEGIN : Hello_Receiver_Impl::do_my_B_exec_i::at_E[setter]
+    this->at_E_ = at_E;
+    //@@{__RIDL_REGEN_MARKER__} - END : Hello_Receiver_Impl::do_my_B_exec_i::at_E[setter]
   }
 
   /**

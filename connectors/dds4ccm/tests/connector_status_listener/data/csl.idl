@@ -11,10 +11,11 @@
 
 // A topic to test the on_inconsistent_topic callback
 
+@nested(FALSE)
 struct OnInconsistentTopicMessage {
   string key; //@key
   short iteration;
   short extra;
-}; //@TopLevel()
+};
 
 #endif /* CSL_IDL_ */

@@ -15,12 +15,13 @@ module Example {
 
     /// @struct GA2_msg
     ///
+    @nested(FALSE)
     struct GA2_msg {
 
         Example::NA4 hdr;
 
         Example::GA8 data;
-    }; //@TopLevel()
+    };
 };
 
 #endif // CX_PORTS__MESSAGES__EXAMPLE_GA2_MSG_IDL

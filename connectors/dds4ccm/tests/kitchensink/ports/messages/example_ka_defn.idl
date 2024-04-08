@@ -35,6 +35,7 @@ module Example {
     };
 
     /// @struct KA4
+    @nested(TRUE)
     struct KA4 {
 
         Example::NA5 KA4_1;
@@ -42,9 +43,10 @@ module Example {
         double KA4_3;
 
         double KA4_2;
-    }; //@TopLevel(false)
+    };
 
     /// @struct KA5
+    @nested(TRUE)
     struct KA5 {
 
         Example::NA6 KA5_04;
@@ -74,7 +76,7 @@ module Example {
         Example::B39 KA5_14;
 
         double KA5_10;
-    }; //@TopLevel(false)
+    };
 };
 
 #endif // CX_PORTS__TYPES__EXAMPLE_KA_DEFN_IDL

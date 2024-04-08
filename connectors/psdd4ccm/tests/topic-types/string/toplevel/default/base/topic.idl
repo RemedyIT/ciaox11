@@ -12,7 +12,8 @@
 
 module Test
 {
-  typedef string Topic; //@TopLevel()
+  @nested(FALSE)
+  typedef string Topic;
 };
 
 #endif

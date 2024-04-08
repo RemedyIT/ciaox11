@@ -24,7 +24,7 @@ void
   }
   else
   {
-    if (!(this->_exf_rh_output () << <%= cdr_to_fmt % 'this->val_' %>))
+    if (!(this->_exf_rh_output () << <%= cdr_from_fmt % 'this->val_' %>))
     {
       throw TAO_CORBA::MARSHAL();
     }
@@ -45,7 +45,7 @@ void
   {
     TAO_InputCDR & _tao_in = *srvreq.incoming ();
 
-    if (!((_tao_in >> <%= cdr_from_fmt % 'this->val_' %>)))
+    if (!((_tao_in >> <%= cdr_to_fmt % 'this->val_' %>)))
     {
       throw TAO_CORBA::MARSHAL();
     }

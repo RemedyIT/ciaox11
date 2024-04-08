@@ -30,8 +30,7 @@ public:
   typename IDL::traits<typename CCM_TYPE::dds_entity_type>::ref_type get_dds_entity ();
   //@}
 
-  void
-  configuration_complete (
+  void configuration_complete (
     IDL::traits<::DDS::Topic>::ref_type topic,
     IDL::traits<::DDS::Publisher>::ref_type publisher,
     const std::string &qos_profile);
@@ -39,10 +38,7 @@ public:
   void remove (IDL::traits<::DDS::Publisher>::ref_type publisher);
 
 private:
-  using DDS4CCM_Writer_type = ::CIAOX11::DDS4CCM::Writer_T<
-    typename CCM_TYPE::data_type,
-    TOPIC_TYPE,
-    TOPIC_SEQ_TYPE>;
+  using DDS4CCM_Writer_type = ::CIAOX11::DDS4CCM::Writer_T<typename CCM_TYPE::data_type, TOPIC_TYPE, TOPIC_SEQ_TYPE>;
   using CCM_DataWriter_type = ::CIAOX11::DDS4CCM::CCM_DataWriter ;
 
   IDL::traits<CORBA::Object>::weak_ref_type component_;

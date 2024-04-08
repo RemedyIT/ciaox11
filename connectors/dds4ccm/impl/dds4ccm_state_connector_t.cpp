@@ -406,10 +406,7 @@ DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::do_configuration_co
       "DDS_State_Connector_T<"
       << ::DDS::traits<TOPIC_TYPE>::get_type_name()
       << ">::do_configuration_complete - Invoking configuration_complete on the observable port.");
-    this->observable_->configuration_complete(
-      this->topic (),
-      this->publisher (),
-      this->qos_profile ());
+    this->observable_->configuration_complete (this->topic (), this->publisher (), this->qos_profile ());
   }
   else
   {
@@ -426,10 +423,7 @@ DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::do_configuration_co
       "DDS_State_Connector_T<"
       << ::DDS::traits<TOPIC_TYPE>::get_type_name()
       << ">::do_configuration_complete - Invoking configuration_complete on the passive observer port.");
-    this->passive_observer_->configuration_complete (
-      this->topic (),
-      this->subscriber (),
-      this->qos_profile ());
+    this->passive_observer_->configuration_complete (this->topic (), this->subscriber (), this->qos_profile ());
   }
   else
   {
@@ -446,10 +440,7 @@ DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::do_configuration_co
       "DDS_State_Connector_T<"
       << ::DDS::traits<TOPIC_TYPE>::get_type_name()
       << ">::do_configuration_complete - Invoking configuration_complete on the pull observer port.");
-    this->pull_observer_->configuration_complete (
-      this->topic (),
-      this->subscriber (),
-      this->qos_profile ());
+    this->pull_observer_->configuration_complete (this->topic (), this->subscriber (), this->qos_profile ());
   }
   else
   {
@@ -466,10 +457,7 @@ DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::do_configuration_co
       "DDS_State_Connector_T<"
       << ::DDS::traits<TOPIC_TYPE>::get_type_name()
       << ">::do_configuration_complete - Invoking configuration_complete on the push observer port.");
-    this->push_observer_->configuration_complete (
-      this->topic (),
-      this->subscriber (),
-      this->qos_profile ());
+    this->push_observer_->configuration_complete (this->topic (), this->subscriber (), this->qos_profile ());
   }
   else
   {
@@ -487,10 +475,7 @@ DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::do_configuration_co
       << ::DDS::traits<TOPIC_TYPE>::get_type_name()
       << ">::do_configuration_complete - "
       "Invoking configuration_complete on the push state observer port.");
-    this->push_state_observer_->configuration_complete (
-      this->topic (),
-      this->subscriber (),
-      this->qos_profile ());
+    this->push_state_observer_->configuration_complete (this->topic (), this->subscriber (), this->qos_profile ());
   }
   else
   {
@@ -537,8 +522,8 @@ DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::do_ccm_activate ()
 
     this->push_observer_->activate (
       event_strategy_type (this->context ()),
-      this->context ()->get_connection_push_observer_data_listener (),
-      this->context ()->get_connection_push_observer_status ());
+      this->context ()->get_connection_push_observer_status (),
+      this->context ()->get_connection_push_observer_data_listener ());
   }
 
   if (this->push_state_observer_)
@@ -547,8 +532,8 @@ DDS_State_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::do_ccm_activate ()
 
     this->push_state_observer_->activate (
       event_strategy_type (this->context ()),
-      this->context ()->get_connection_push_state_observer_data_listener (),
-      this->context ()->get_connection_push_state_observer_status ());
+      this->context ()->get_connection_push_state_observer_status (),
+      this->context ()->get_connection_push_state_observer_data_listener ());
   }
 }
 

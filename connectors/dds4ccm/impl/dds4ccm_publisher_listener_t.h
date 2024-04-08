@@ -30,23 +30,19 @@ namespace CIAOX11
       using uses_context_switch = typename EVT_STRATEGY::uses_context_switch;
       static constexpr const char* context_switch_type = EVT_STRATEGY::context_switch_type;
 
-      void
-      on_offered_deadline_missed (
+      void on_offered_deadline_missed (
         IDL::traits<::DDS::DataWriter>::ref_type the_Writer,
         const ::DDS::OfferedDeadlineMissedStatus & status) override;
 
-      void
-      on_liveliness_lost (
+      void on_liveliness_lost (
         IDL::traits<::DDS::DataWriter>::ref_type the_Writer,
         const ::DDS::LivelinessLostStatus & status) override;
 
-      void
-      on_offered_incompatible_qos (
+      void on_offered_incompatible_qos (
         IDL::traits<::DDS::DataWriter>::ref_type the_Writer,
         const ::DDS::OfferedIncompatibleQosStatus & status) override;
 
-      void
-      on_publication_matched (
+      void on_publication_matched (
         IDL::traits<::DDS::DataWriter>::ref_type the_Writer,
         const ::DDS::PublicationMatchedStatus & status) override;
 
@@ -55,8 +51,7 @@ namespace CIAOX11
         IDL::traits<CCM_DDS::ConnectorStatusListener>::ref_type error_listener);
 
     protected:
-      virtual void
-      on_unexpected_status (
+      virtual void on_unexpected_status (
         IDL::traits<::DDS::Entity>::ref_type entity,
         ::DDS::StatusKind status_kind);
 

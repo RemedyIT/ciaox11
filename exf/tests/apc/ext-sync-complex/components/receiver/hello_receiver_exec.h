@@ -57,9 +57,45 @@ namespace Hello_Receiver_Impl
         int32_t in_l,
         const ::Hello::S1& s_in_l) override;
 
+    bool
+    op_C (
+        int32_t in_c,
+        bool in_b,
+        bool& out_b,
+        bool& inout_b) override;
+
+    bool
+    op_D (
+        int32_t in_c,
+        uint8_t in_b,
+        uint8_t& out_b,
+        uint8_t& inout_b) override;
+
+    bool
+    op_E (
+        int32_t in_c,
+        char in_b,
+        char& out_b,
+        char& inout_b) override;
+
+    bool
+    op_F (
+        int32_t in_c,
+        wchar_t in_b,
+        wchar_t& out_b,
+        wchar_t& inout_b) override;
+
     int32_t
     op_A (
         int32_t in_l) override;
+    //@}
+
+    /** @name Attributes from ::Hello::CCM_B */
+    //@{
+    bool at_D () override;
+    void at_D (bool at_D) override;
+    int32_t at_E () override;
+    void at_E (int32_t at_E) override;
     //@}
 
     /** @name User defined public operations. */
@@ -72,6 +108,14 @@ namespace Hello_Receiver_Impl
   private:
     /// Context for component instance. Used for all middleware communication.
     IDL::traits<::Hello::CCM_Receiver_Context>::ref_type context_;
+
+    /** @name Members to store attribute values from ::Hello::CCM_B */
+    //@{
+    /// Class member storing value of at_D attribute
+    bool at_D_{};
+    /// Class member storing value of at_E attribute
+    int32_t at_E_{};
+    //@}
 
     /** @name User defined members. */
     //@{

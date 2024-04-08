@@ -239,10 +239,7 @@ DDS_Event_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::do_configuration_co
       "DDS_Event_Connector_T<"
       << ::DDS::traits<TOPIC_TYPE>::get_type_name()
       << ">::do_configuration_complete - Invoking configuration_complete on the push consumer port.");
-    this->push_consumer_->configuration_complete (
-      this->topic (),
-      this->subscriber (),
-      this->qos_profile ());
+    this->push_consumer_->configuration_complete (this->topic (), this->subscriber (), this->qos_profile ());
   }
   else
   {
@@ -258,10 +255,7 @@ DDS_Event_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::do_configuration_co
       "DDS_Event_Connector_T<"
       << ::DDS::traits<TOPIC_TYPE>::get_type_name()
       << ">::do_configuration_complete - Invoking configuration_complete on the supplier consumer port.");
-    this->supplier_->configuration_complete(
-      this->topic (),
-      this->publisher (),
-      this->qos_profile ());
+    this->supplier_->configuration_complete (this->topic (), this->publisher (), this->qos_profile ());
   }
   else
   {
@@ -277,10 +271,7 @@ DDS_Event_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::do_configuration_co
       "DDS_Event_Connector_T<"
       << ::DDS::traits<TOPIC_TYPE>::get_type_name()
       << ">::do_configuration_complete - Invoking configuration_complete on the pull consumer port.");
-    this->pull_consumer_->configuration_complete (
-      this->topic (),
-      this->subscriber (),
-      this->qos_profile ());
+    this->pull_consumer_->configuration_complete (this->topic (), this->subscriber (), this->qos_profile ());
   }
   else
   {
@@ -307,8 +298,8 @@ DDS_Event_Connector_T<CCM_TYPE, TOPIC_TYPE, TOPIC_SEQ_TYPE>::do_ccm_activate ()
 
     this->push_consumer_->activate (
       event_strategy_type (this->context ()),
-      this->context ()->get_connection_push_consumer_data_listener (),
-      this->context ()->get_connection_push_consumer_status ());
+      this->context ()->get_connection_push_consumer_status (),
+      this->context ()->get_connection_push_consumer_data_listener ());
   }
 
   if (this->pull_consumer_)

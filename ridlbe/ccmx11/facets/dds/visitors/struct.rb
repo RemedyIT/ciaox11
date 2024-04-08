@@ -17,12 +17,15 @@ module IDL
       include CcmNames
 
       optional_template :life_cycle_traits
-    end # StructVisitor
 
-    class StructMemberVisitor
-      def has_key_annotation?
-        !self.annotations[:key].empty?
+      def annotations
+        ann = node.annotations.dup
+        # Add appendable when it is not final available
+        unless ann[:'final'].first
+          ann << IDL::AST::Annotation.new('appendable', {})
+        end
+        ann
       end
-    end
+    end # StructVisitor
   end # CCMX11
 end # IDL

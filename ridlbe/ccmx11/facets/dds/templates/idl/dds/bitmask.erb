@@ -1,7 +1,9 @@
 
 // generated from <%= ridl_template_path %>
 /// @copydoc <%= doc_scoped_name %>
-@bit_bound(<%= bitbound_bits %>)
+% annotations.each do |_a|
+@<%= _a.id %><% unless _a.fields.empty? %>(<% _a.fields.each_with_index do |f, index| %><%= _a.fields.keys[index] %>=<%= _a.fields.values[index] %><% if index < _a.fields.size - 1%>,<% end %><% end %>)<% end %>
+% end
 bitmask <%= unescaped_name %> {
   <%= bitvalues.collect {|e| "/// @copydoc #{e.doc_scoped_name}\n  #{e.name}" }.join(",\n  ") %>
 };

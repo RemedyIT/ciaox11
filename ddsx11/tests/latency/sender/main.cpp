@@ -137,10 +137,10 @@ public:
 private:
   void usage ();
   bool parse_args (int argc, char * argv[]);
-  void calc_results (void);
-  void reset_results (void);
-  void init_values (void);
-  void calculate_clock_overhead (void);
+  void calc_results ();
+  void reset_results ();
+  void init_values ();
+  void calculate_clock_overhead ();
   void record_time (uint64_t receive_time);
   void start_publishing ();
   void start ();
@@ -737,7 +737,7 @@ TestExecutor::reset_results()
 }
 
 void
-TestExecutor::calc_results (void)
+TestExecutor::calc_results ()
 {
   if (this->iteration_nr_ == 0)
     return; // ignore first iteration
@@ -907,7 +907,7 @@ TestExecutor::record_time (uint64_t receive_time)
 }
 
 void
-TestExecutor::calculate_clock_overhead (void)
+TestExecutor::calculate_clock_overhead ()
 {
   int num_of_loops_clock = 320;
   uint64_t begin_time = 0;
@@ -922,7 +922,7 @@ TestExecutor::calculate_clock_overhead (void)
 }
 
 void
-TestExecutor::init_values (void)
+TestExecutor::init_values ()
 {
   this->duration_times_.reset (new uint64_t[this->samples_]);
   this->iteration_results_.reset (new IterationResult[this->iterations_]);

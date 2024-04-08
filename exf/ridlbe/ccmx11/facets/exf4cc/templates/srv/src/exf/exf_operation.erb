@@ -23,7 +23,7 @@ void
 %   _in_args = in_arguments.dup
 %   while !_in_args.empty?
 %     _arg = _in_args.shift
-        (_tao_in >> <%= _arg.cdr_from_fmt % "this->#{_arg.cxxname}" %>)<% unless _in_args.empty? %> &&<% end %>
+        (_tao_in >> <%= _arg.cdr_to_fmt % "this->#{_arg.cxxname}" %>)<% unless _in_args.empty? %> &&<% end %>
 %   end
       ))
     {
@@ -76,11 +76,11 @@ void
     if (!(
 %   _out_args = out_arguments.dup
 %   unless is_oneway? || is_void?
-          (this->_exf_rh_output () << <%= cdr_to_fmt % 'this->retval' %>)<% unless _out_args.empty? %> &&<% end %>
+          (this->_exf_rh_output () << <%= cdr_from_fmt % 'this->retval' %>)<% unless _out_args.empty? %> &&<% end %>
 %   end
 %   while !_out_args.empty?
 %   _arg = _out_args.shift
-          (this->_exf_rh_output () << <%= _arg.cdr_to_fmt % "this->#{_arg.cxxname}" %>)<% unless _out_args.empty? %> &&<% end %>
+          (this->_exf_rh_output () << <%= _arg.cdr_from_fmt % "this->#{_arg.cxxname}" %>)<% unless _out_args.empty? %> &&<% end %>
 %   end
         ))
     {

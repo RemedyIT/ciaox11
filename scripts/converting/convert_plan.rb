@@ -196,7 +196,7 @@ end
 
 parser.parse!
 
-if options[:cdp_plan_in] == nil
+if options[:cdp_plan_in].nil?
   begin
     print 'Enter filename of input cdp plan: '
     input_file = gets.chomp
@@ -206,7 +206,7 @@ if options[:cdp_plan_in] == nil
   end until options[:cdp_plan_in] != nil
 end
 
-if options[:cdp_plan_out] == nil
+if options[:cdp_plan_out].nil?
   begin
     print 'Enter filename of output cdp plan: '
     output_file = gets.chomp

@@ -14,13 +14,14 @@ module Test
 {
   typedef unsigned long ULongArray[2][25];
 
+  @nested(FALSE)
   struct Topic
   {
     string category;
     string description;
     ULongArray values;
 
-  }; //@TopLevel()
+  };
 };
 
 #endif

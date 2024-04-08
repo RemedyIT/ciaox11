@@ -254,11 +254,11 @@ namespace Test_Sender_Impl
     /** @name User defined private operations. */
     //@{
     //@@{__RIDL_REGEN_MARKER__} - BEGIN : Test_Sender_Impl::Sender_exec_i[user_private_ops]
-    void start (void);
-    void calc_results (void);
-    void reset_results (void);
-    void init_values (void);
-    void calculate_clock_overhead (void);
+    void start ();
+    void calc_results ();
+    void reset_results ();
+    void init_values ();
+    void calculate_clock_overhead ();
     void record_time (uint64_t receive_time);
     //@@{__RIDL_REGEN_MARKER__} - END : Test_Sender_Impl::Sender_exec_i[user_private_ops]
     //@}

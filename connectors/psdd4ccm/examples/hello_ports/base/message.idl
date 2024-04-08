@@ -12,12 +12,13 @@
 
 module Test
 {
+  @nested(FALSE)
   struct Message
   {
     string category; //@key
     string description;
     unsigned long value;
-  }; //@TopLevel()
+  };
 };
 
 #endif

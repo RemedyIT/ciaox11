@@ -9,9 +9,10 @@
 #ifndef CSL_COMMON_IDL_
 #define CSL_COMMON_IDL_
 
+@nested(FALSE)
 struct CommonTestMessage {
   string key; //@key
   long iteration;
-}; //@TopLevel()
+};
 
 #endif /* CSL_COMMON_IDL_ */

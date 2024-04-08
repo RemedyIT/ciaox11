@@ -15,7 +15,7 @@ module IDL
 
       ## Configure facet
       #
-      Backend::Facet.configure('exf4ami', File.dirname(__FILE__), TITLE, COPYRIGHT, { major: 2, minor: 5, release: 0 }) do |fctcfg|
+      Backend::Facet.configure('exf4ami', File.dirname(__FILE__), TITLE, COPYRIGHT, { major: 2, minor: 6, release: 0 }) do |fctcfg|
         # optionally define dependencies on other facets
         #   specify dependencies either as:
         #   - a facet id (assumed to be loaded by current backend)
@@ -45,21 +45,23 @@ module IDL
         #
         fctcfg.on_process_input do |_parser, options|
           if options.gen_exf_support
-            if options[:gen_component_servant]
+            if options[:gen_ami_connector_impl]
               IDL.log(2, 'Extending ami4ccm connector executor generation for ExF')
 
               IDL.production(:ami4ccm_conn_header).extend(IDL::CCMX11::ExF::AmiExFConnectorHeaderWriter)
               IDL.production(:ami4ccm_conn_source).extend(IDL::CCMX11::ExF::AmiExFConnectorSourceWriter)
 
-              IDL.log(2, 'Extending ami4ccm connector servant generation for ExF')
-              # extend standard generators for AMIA4CCM
-              IDL.production(:comp_svnt_source).extend(IDL::CCMX11::ExF::AmiExFSvntConnectorSourceExt)
+              if options[:gen_component_servant]
+                IDL.log(2, 'Extending ami4ccm connector servant generation for ExF')
+                # extend standard generators for AMI4CCM
+                IDL.production(:comp_svnt_source).extend(IDL::CCMX11::ExF::AmiExFSvntConnectorSourceExt)
+              end
             end
           end
         end # fctcfg.on_process_input
       end # configure facet
 
-      # extend the AMIA4CCM facet with some specific ExF settings/handling
+      # extend the AMI4CCM facet with some specific ExF settings/handling
       module AMI4CCMExt
         def self.included(base)
           base.class_eval do

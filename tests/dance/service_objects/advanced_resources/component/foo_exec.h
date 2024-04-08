@@ -11,6 +11,7 @@
 #ifndef __RIDL_FOO_EXEC_H_BCHJJJGJ_INCLUDED__
 #define __RIDL_FOO_EXEC_H_BCHJJJGJ_INCLUDED__
 
+//@@{__RIDL_REGEN_MARKER__} - HEADER_BEGIN : foo_impl.h[Header]
 //@@{__RIDL_REGEN_MARKER__} - HEADER_END : foo_impl.h[Header]
 
 #pragma once
