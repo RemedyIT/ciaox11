@@ -15,8 +15,8 @@
 
 project(*idl_gen) : ciaox11_idldefaults {
   custom_only = 1
-  idlflags += -Wb,stub_export_macro=HELLO_STUB_Export \
-              -Wb,stub_export_include=hello_stub_export.h \
+  idlflags += -Wb,base_export_macro=HELLO \
+              -Wb,base_export_include=hello \
               -Gxhst -Glem
 
   IDL_Files {
@@ -30,8 +30,8 @@ project(*idl_gen) : ciaox11_idldefaults {
 project(*lem_gen) : ciaox11_idldefaults {
   after += *idl_gen
   custom_only = 1
-  idlflags += -Wb,stub_export_macro=HELLO_LEM_STUB_Export \
-              -Wb,stub_export_include=hello_lem_stub_export.h \
+  idlflags += -Wb,base_export_macro=HELLO_LEM \
+              -Wb,base_export_include=hello_lem \
               -Gxhst -Scph
 
   IDL_Files {
