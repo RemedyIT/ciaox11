@@ -17,7 +17,7 @@ project(*idl_gen) : ciaox11_idldefaults {
   custom_only = 1
   idlflags += -Wb,base_export_macro=HELLO \
               -Wb,base_export_include=hello \
-              -Gxhst -Glem
+              -Gxhst -Glem -Gxhcp -Gcpc
 
   IDL_Files {
     hello.idl
@@ -49,6 +49,7 @@ project(*stub) : taox11_lib {
 
   Source_Files {
     helloC.cpp
+    helloCP.cpp
   }
 
   Header_Files {
