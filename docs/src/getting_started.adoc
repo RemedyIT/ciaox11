@@ -147,7 +147,6 @@ Comparing IDL to {cpp} with IDL to
 *AXCIOMA* has been tested with the following compilers
 
 * GCC version 8 or newer
-* Microsoft Visual Studio 2015
 * Microsoft Visual Studio 2017
 * Microsoft Visual Studio 2019
 * Clang C++ version 5 or newer
