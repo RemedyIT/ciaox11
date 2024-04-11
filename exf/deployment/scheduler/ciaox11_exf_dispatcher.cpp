@@ -806,7 +806,7 @@ namespace CIAOX11
           else
           {
             inst = std::make_shared<Instance> (instance_id, concurrent);
-            this->instance_map_.insert (INSTANCE_PAIR (instance_id, inst));
+            this->instance_map_.insert (std::pair{instance_id, inst});
           }
 
           Dispatcher::ref_type self_ref = this->self_.lock ();
