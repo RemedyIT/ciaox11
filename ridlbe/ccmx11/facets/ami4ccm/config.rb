@@ -344,7 +344,7 @@ module IDL
         impl_opts[:svnt_skeletons] = false
         # generate only stub header
         impl_opts[:no_client_source] = true
-        impl_opts[:no_client_proxy_hdr] = true
+        impl_opts[:no_stub_proxy_hdr] = true
 
         # schedule new input processor for *A_conn.idl
         IDL.push_input(impl_opts[:idlfile], impl_opts)
@@ -380,7 +380,7 @@ module IDL
         impl_opts[:idlfile] = IDL::CCMX11.lem_output_file(options[:acon_conn_idl], options, idl_ext)
 
         # Only (lem) stub and conn_lem_stub_export file have to be generated from lem idl file
-        impl_opts[:no_client_proxy_hdr] = true
+        impl_opts[:no_stub_proxy_hdr] = true
         impl_opts[:svnt_skeletons] = false
 
         # generate the composite lem_stub_export if generating exports for connector
@@ -571,7 +571,7 @@ module IDL
         # generate full stubs
         a_opts[:no_client_source] = false
         a_opts[:no_client_header] = false
-        a_opts[:no_client_proxy_hdr] = false
+        a_opts[:no_stub_proxy_hdr] = false
         IDL.push_input(a_opts[:idlfile], a_opts)
       end
 

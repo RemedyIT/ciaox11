@@ -173,7 +173,7 @@ module IDL
         # generate only stub header
         cc_opts[:svnt_skeletons] = false
         cc_opts[:no_client_source] = true
-        cc_opts[:no_client_proxy_hdr] = true
+        cc_opts[:no_stub_proxy_hdr] = true
         # generate lem stub exports if -Gxhlst or -Gxhex or -Gxhsv are specified
         cc_opts.gen_export_lem_stub ||= options.gen_export_ex || options.gen_export_svnt
         # generate LEM IDL and (in yet another pass) the LEM stubs

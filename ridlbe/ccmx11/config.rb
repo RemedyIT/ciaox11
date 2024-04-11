@@ -333,7 +333,7 @@ module IDL
       # Only (lem) stub and lem_stub_export file have to be generated from lem idl file
       impl_opts[:svnt_skeletons] = false
       # no proxy required for local interfaces only
-      impl_opts[:no_client_proxy_hdr] = true
+      impl_opts[:no_stub_proxy_hdr] = true
       # suppress CDR support for local interfaces only
       impl_opts[:no_cdr_streaming] = true
       # suppress Any and Typecode support for (local) code generation
