@@ -80,26 +80,23 @@ namespace CIAOX11
     std::mutex state_mutex_;
 
     /// Container administration
-    using CONTAINERS_PAIR = std::pair <std::string, std::shared_ptr<CIAOX11::Container>>;
     using CONTAINERS = std::map <std::string, std::shared_ptr<CIAOX11::Container>>;
 
     CONTAINERS containers_;
 
     /// Administration which components are instantiated in which container
-    using INSTANCE_PAIR = std::pair <std::string, std::string>;
     using INSTANCE_CONTAINER = std::map <std::string, std::string>;
 
-    /// maps instance ids to containers.
+    /// Maps instance ids to containers.
     INSTANCE_CONTAINER instance_container_;
 
     /// Administers configuration of instances
-    using CONFIG_PAIR = std::pair <std::string, Components::ConfigValues>;
     using INSTANCE_CONFIG = std::map <std::string, Components::ConfigValues>;
 
-    /// maps container ids to configuration.
+    /// Maps container ids to configuration.
     INSTANCE_CONFIG container_config_;
 
-    /// maps instance ids to configuration.
+    /// Maps instance ids to configuration.
     INSTANCE_CONFIG instance_config_;
   };
 
