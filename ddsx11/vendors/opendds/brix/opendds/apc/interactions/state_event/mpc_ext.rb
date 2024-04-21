@@ -12,7 +12,7 @@ module AxciomaPC
     # Add State/Event MPC IDL project specializations
     MPC::IDLProject::DEFAULTS.merge!({
       ddsx11_opendds_idl_gen: {
-        add_idl_flags: '-Scc -Sch -Scp -Scdr',
+        add_idl_flags: '-Scc -Sch -Scph -Scdr',
         export: true,
         base_projects: %w{ddsx11_ts_defaults},
         auto_dependencies: %w{}

@@ -78,14 +78,14 @@ module AxciomaPC
       # IDLProject types; derived classes will add to this
       DEFAULTS = {
           comp_gen: {
-              add_idl_flags: '-Gcomp -Gxhex -Gxhsv -Scc -Scp -Gex -oI\\ .',
+              add_idl_flags: '-Gcomp -Gxhex -Gxhsv -Scc -Scph -Gex -oI\\ .',
               export: true,
               base_projects: %w{ciaox11_idldefaults},
               idl_extras: 'precious_files += _exec.h\Z _exec.cpp\Z',
               auto_dependencies: %w{}
           },
           idl_gen: {
-              add_idl_flags: '-Scc -Scp',
+              add_idl_flags: '-Scc -Scph',
               export: true,
               base_projects: %w{ciaox11_idldefaults},
               auto_dependencies: %w{}
@@ -143,7 +143,7 @@ module AxciomaPC
       # we assume that the idl_flags_min are always processed after the idl_flags_plus!
       def set_stub_flags
         # suppress the disabling of stub generation
-        idl_flags.delete '-Scc -Scp'
+        idl_flags.delete '-Scc -Scph'
         idl_flags.add '-Gxhst'
       end
 

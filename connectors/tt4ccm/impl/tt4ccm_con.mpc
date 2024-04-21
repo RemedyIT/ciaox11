@@ -9,7 +9,7 @@ project(*idl_gen) : install, \
               -Wb,exec_export_include=tt4ccm_conn_export.h \
               -Wb,svnt_export_macro=TT4CCM_CONN_Export \
               -Wb,svnt_export_include=tt4ccm_conn_export.h \
-              -Gxhlst -Gxhex -Glem,gen -Gsvnt -Scp -Scc --no-skel
+              -Gxhlst -Gxhex -Glem,gen -Gsvnt -Scph -Scc --no-skel
 
   IDL_Files {
     ciaox11_timed_trigger.idl

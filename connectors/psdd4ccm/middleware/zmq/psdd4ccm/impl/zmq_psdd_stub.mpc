@@ -3,7 +3,7 @@ project (*idl_gen) : ciaox11_psdd4ccm_idl {
   idlflags += -Wb,stub_export_macro=ZMQ_PSDD_STUB_Export \
               -Wb,stub_export_include=zmq_psdd_stub_export.h \
               -I $(CIAOX11_ROOT)/connectors/psdd4ccm/middleware/zmq \
-              -Scdr -Scp -Sa -St
+              -Scdr -Scph -Sa -St
 
   IDL_Files {
     idlflags += -Gxhst

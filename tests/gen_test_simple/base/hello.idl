@@ -10,7 +10,6 @@
 #ifndef HELLO_IDL
 #define HELLO_IDL
 
-
 module Hello
 {
   interface MyFoo

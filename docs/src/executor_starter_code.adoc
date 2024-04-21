@@ -69,7 +69,7 @@ xref:{xref_docs_root}/taox11/ridlc.adoc#[RIDL compiler] only generates the
 component executor starter code:
 
 --------------------------------------------------------------------------------------------------
-ridlc -I$CIAOX11_ROOT -I$CIAOX11_ROOT/ccm -I ../base -SS -Ssh -Scc -Sch -Scp -Gex -oI . starter_component.idl
+ridlc -I$CIAOX11_ROOT -I$CIAOX11_ROOT/ccm -I ../base -SS -Ssh -Scc -Sch -Scph -Gex -oI . starter_component.idl
 --------------------------------------------------------------------------------------------------
 
 Where:
@@ -82,7 +82,7 @@ Where:
 |-Ssh |Suppresses the generation of the skeleton header
 |-Scc |Suppresses the generation of the stub source
 |-Sch |Suppresses the generation of the stub header
-|-Scp |Suppresses the generation of the stub proxy header
+|-Scph |Suppresses the generation of the stub proxy header
 |-Gex |Triggers the generation of the component executor starter code
 |-oI |Indicates where the component executor starter code should be generated
 |=======================================================================

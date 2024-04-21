@@ -8,6 +8,6 @@
 
 project : ciaox11_corba4ccm_idldefaults, ciaox11_corba4ccm {
   after += ciaox11_corba4ccm_idl_gen
-  idlflags += -Gcorba4ccm,conn -Gxhsv -Gxhex -Scc -Scp -Sch
+  idlflags += -Gcorba4ccm,conn -Gxhsv -Gxhex -Scc -Scph -Sch
 }
 

@@ -92,7 +92,7 @@ module AxciomaPC
         BRIX11.log_warning("cannot access output path for PSDD4CCM Interface IDL [#{gendir_}]") unless File.exist?(gendir_)
         # generate
         # basic RIDL arguments
-        ridl_args = %w{-Sa -St -SS -Ssh -Scc -Sch -Scp -Gpsdd4ccm,lem}
+        ridl_args = %w{-Sa -St -SS -Ssh -Scc -Sch -Scph -Gpsdd4ccm,lem}
         # add topic and output args
         ridl_args << '-o' << gendir_ <<
                      "-Wb,psdd_topic=#{self.topic}"

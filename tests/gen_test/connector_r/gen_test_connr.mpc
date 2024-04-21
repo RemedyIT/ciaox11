@@ -43,7 +43,7 @@ project(*lem_gen) : ciaox11_idldefaults, ciaox11_tt4ccm {
   custom_only = 1
   idlflags += -Wb,stub_export_macro=GEN_TEST_CONNR_LEM_STUB_Export \
               -Wb,stub_export_include=gen_test_connr_lem_stub_export.h \
-              -Gxhst -Scp -I../base
+              -Gxhst -Scph -I../base
 
   IDL_Files {
     gen_test_connrE.idl

@@ -4,7 +4,7 @@ project (ciaox11_psdd4ccm_idl_gen) : install, \
   custom_only = 1
   idlflags += -Wb,stub_export_macro=PSDD4CCM_STUB_Export \
               -Wb,stub_export_include=psdd4ccm_stub_export.h \
-              -Scdr -Scp
+              -Scdr -Scph
 
   IDL_Files {
     idlflags += -Gxhst
@@ -37,7 +37,7 @@ project (ciaox11_psdd4ccm_lem_gen) : install, \
   after += ciaox11_psdd4ccm_idl_gen
   idlflags += -Wb,stub_export_macro=PSDD4CCM_LEM_STUB_Export \
               -Wb,stub_export_include=psdd4ccm_lem_stub_export.h \
-              -Scp -Scdr
+              -Scph -Scdr
 
   IDL_Files {
      idlflags += -Gxhst

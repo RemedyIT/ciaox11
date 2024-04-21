@@ -23,7 +23,7 @@ project(*lem_gen) : ciaox11_idldefaults {
   custom_only = 1
   idlflags += -Wb,stub_export_macro=KITCHENSINK_LEM_STUB_Export \
               -Wb,stub_export_include=kitchensink_lem_stub_export.h \
-              -SS -Gxhst -Scp -Scdr -o generated_code
+              -SS -Gxhst -Scph -Scdr -o generated_code
 
   IDL_Files {
     gendir=generated_code

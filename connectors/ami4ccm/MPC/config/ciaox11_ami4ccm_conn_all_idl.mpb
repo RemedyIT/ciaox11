@@ -6,6 +6,6 @@
 
 project : ciaox11_ami4ccm_idldefaults, ciaox11_ami4ccm {
   after += ciaox11_ami4ccm_idl_gen
-  idlflags += -Gami4ccm,conn -Gxhsv -Gxhcn -Scc -Scp -Sch
+  idlflags += -Gami4ccm,conn -Gxhsv -Gxhcn -Scc -Scph -Sch
 }
 

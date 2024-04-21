@@ -9,7 +9,7 @@
 project(ciaox11_ccm_session_idl) : ciaox11_idl {
   idlflags   += -Wb,stub_export_include=ciaox11_ccmsession_export.h \
                 -Wb,stub_export_macro=CIAOX11_CCMSESSION_STUB_Export \
-                -I $(CIAOX11_ROOT) -SS -Scp
+                -I $(CIAOX11_ROOT) -SS -Scph
   custom_only = 1
 
   IDL_Files {

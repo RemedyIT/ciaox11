@@ -13,7 +13,7 @@
 #include "dds/DdsDcpsC.h"
 
 #include /**/ "tao/Versioned_Namespace.h"
-#include "tao/x11/tao_corba.h"
+#include "tao/x11/base/tao_corba.h"
 
 #include /**/ "dds/Versioned_Namespace.h"
 #include "dds/DCPS/WaitSet.h"

@@ -4,7 +4,7 @@ project(*idl_gen) : ciaox11_corba4ccm_idl, ciaox11_ami4ccm {
   after += asyn_gen_test_lem_gen ciaox11_corba4ccm_idl_gen
   idlflags += -Wb,base_export_macro=HELLO \
               -Wb,base_export_include=hello \
-              -Sch -Scc -Scp
+              -Sch -Scc -Scph
 
   IDL_Files {
     hello.idl

@@ -4,7 +4,7 @@ project(tt_comp_combi_comp_gen) : ciaox11_idldefaults, ciaox11_tt4ccm {
               -Gxhex \
               -Gxhsv \
               -Scc \
-              -Scp \
+              -Scph \
               -Gex \
               -oI \
               . \

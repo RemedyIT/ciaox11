@@ -6,7 +6,7 @@ project(*skel_gen) : ciaox11_idldefaults {
       -o build \
       -Wb,base_export_macro=EXFTEST_PRESENT \
       -Wb,base_export_include=exftest_present \
-      -Scc -Sch -Scp -Gxhsk
+      -Scc -Sch -Scph -Gxhsk
   idlflags -= \
       -SS -Ssh
 

@@ -14,7 +14,7 @@ project(ciaox11_ccm_core_idl) : install, ciaox11_idl {
   custom_only = 1
   idlflags  += -Wb,stub_export_include=ciaox11_ccm_stub_export.h \
                -Wb,stub_export_macro=CIAOX11_STUB_Export \
-               -SS -Scp
+               -SS -Scph
 
   IDL_Files {
     idlflags += -Scdr -Gxhst

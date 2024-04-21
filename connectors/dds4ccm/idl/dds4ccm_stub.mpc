@@ -5,7 +5,7 @@ project (ciaox11_dds4ccm_idl_gen) : install, \
 
   idlflags += -Wb,stub_export_macro=DDS4CCM_STUB_Export \
               -Wb,stub_export_include=dds4ccm_stub_export.h \
-              -Scp
+              -Scph
 
   IDL_Files {
     idlflags += -Gxhst -Glem -Scdr
@@ -14,13 +14,13 @@ project (ciaox11_dds4ccm_idl_gen) : install, \
 
   IDL_Files {
     idlflags -= -Gxhst -Gxhsk -Gsv -Glem
-    idlflags -= -St -Sa -Scdr -Scp
+    idlflags -= -St -Sa -Scdr -Scph
     dds4ccm_types.idl
   }
 
   IDL_Files {
     idlflags -= -Gxhst -Gxhsk -Gsv -Glem
-    idlflags -= -St -Sa -Scdr -Scp
+    idlflags -= -St -Sa -Scdr -Scph
     dds4ccm_query_filter.idl
   }
 
