@@ -24,6 +24,7 @@ configure :ddsx11opendds do
       depends_exclusively_on :opendds
     end
 
+    disable :openddsconfig_h_file
     disable :multi_topic
     disable :ndds
 
