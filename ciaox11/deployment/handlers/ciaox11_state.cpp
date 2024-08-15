@@ -40,9 +40,9 @@ namespace CIAOX11
                          "attempting to add duplicate container reference");
     }
 
-    this->containers_.insert (CONTAINERS_PAIR (id, container));
+    this->containers_.insert (std::pair{id, container});
 
-    this->container_config_.insert (CONFIG_PAIR (id, std::move (config)));
+    this->container_config_.insert (std::pair{id, std::move (config)});
   }
 
   void
@@ -94,9 +94,9 @@ namespace CIAOX11
   {
     std::lock_guard<std::mutex> lock (this->state_mutex_);
 
-    this->instance_container_.insert (INSTANCE_PAIR (id, cont_id));
+    this->instance_container_.insert (std::pair{id, cont_id});
 
-    this->instance_config_.insert (CONFIG_PAIR (id, std::move (config)));
+    this->instance_config_.insert (std::pair{id, std::move (config)});
   }
 
   void

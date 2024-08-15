@@ -30,10 +30,8 @@ namespace CIAOX11
       CIAOX11_LOG_DEBUG ("ExF::Component_Handler::install_instance - " <<
                          "Starting installation for <" << idd.name () << ">");
 
-      DAnCEX11::Utility::build_property_map (info.pmap,
-                                          mdd.execParameter ());
-      DAnCEX11::Utility::build_property_map (info.pmap,
-                                          idd.configProperty ());
+      DAnCEX11::Utility::build_property_map (info.pmap, mdd.execParameter ());
+      DAnCEX11::Utility::build_property_map (info.pmap, idd.configProperty ());
 
       std::string exec_art, exec_entry, svnt_art, svnt_entry, cont_id, tmp, error_string;
 

@@ -398,7 +398,6 @@ namespace CIAOX11
         std::vector<std::thread> threads_ {};
         std::atomic<size_t> thread_num_ {};
 
-        using INSTANCE_PAIR = std::pair<std::string, instance_ref>;
         using INSTANCE_MAP = std::map<std::string, instance_ref>;
 
         INSTANCE_MAP instance_map_ {};
