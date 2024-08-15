@@ -7,7 +7,7 @@
 #ifndef DDS4CCM_LOGGER_EXPORT_H
 #define DDS4CCM_LOGGER_EXPORT_H
 
-#include "tao/x11/taox11_export_macros.h"
+#include "tao/x11/base/taox11_export_macros.h"
 
 #if defined (TAOX11_AS_STATIC_LIBS) && !defined (DDS4CCM_LOGGER_HAS_DLL)
 #  define DDS4CCM_LOGGER_HAS_DLL 0

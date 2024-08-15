@@ -5,5 +5,5 @@
 // --------------------------------------------------------------------
 
 project : ciaox11_ami4ccm_idldefaults, ciaox11_ami4ccm {
-  idlflags += -Gsvnt -Gami4ccm,impl -Gami4ccm,lem -Gxhsv -Scp -Scc
+  idlflags += -Gsvnt -Gami4ccm,impl -Gami4ccm,lem -Gxhsv -Scph -Scc
 }

@@ -2,7 +2,7 @@ project (*idl) : ddsx11_ts_defaults, ridl_ostream_defaults {
   idlflags += -Wb,base_export_macro=LATENCY \
               -Wb,base_export_include=latency \
               -Gxhst \
-              -o GeneratedCode -SS -Scdr -Scp
+              -o GeneratedCode -SS -Scdr -Scph
   custom_only = 1
 
   IDL_Files {

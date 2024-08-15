@@ -110,7 +110,7 @@ module AxciomaPC
         # generate
         # basic RIDL arguments; use '--search-includepath' to have RIDL search for the input file in one
         # of the given include directories
-        ridl_args = %w{--search-includepath -Sa -St -SS -Ssh -Scc -Sch -Scp -Gdds4ccm,lem}
+        ridl_args = %w{--search-includepath -Sa -St -SS -Ssh -Scc -Sch -Scph -Gdds4ccm,lem}
         # add topic and output args
         ridl_args << "-Wb,dds_topic=#{self.topic}" << '-o' << gendir_
         ridl_args << "-Wb,dds_topic_namespace=#{self.topic_namespace}" unless self.topic_namespace.nil?

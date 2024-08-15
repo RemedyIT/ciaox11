@@ -8,7 +8,7 @@ project(*idl_gen) : ciaox11_idldefaults, ciaox11_dds4ccm, ciaox11_dds4ccm_event,
               -Wb,base_export_include=custom_example_receiver \
               -I../../src/receiver -I../../src/base -I../../src/connector \
               -I../../build/connector -o ../../build/receiver \
-              -Gos -Gcomp -Gxhex -Gxhsv -Scc -Scp
+              -Gos -Gcomp -Gxhex -Gxhsv -Scc -Scph
 
   IDL_Files {
     gendir=../../build/receiver

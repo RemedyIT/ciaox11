@@ -15,7 +15,7 @@ module AxciomaPC
     # add PubSub MPC IDL project specializations
     MPC::IDLProject::DEFAULTS.merge!({
        psdd_conn_gen: {
-           add_idl_flags: '-Gpsdd4ccm,conn_only -Gxhsv -Gxhcn -Scc -Scp -Sci -Sch',
+           add_idl_flags: '-Gpsdd4ccm,conn_only -Gxhsv -Gxhcn -Scc -Scph -Sci -Sch',
            export: true,
            base_projects: %w{ciaox11_psdd4ccm_idl},
            auto_dependencies: []

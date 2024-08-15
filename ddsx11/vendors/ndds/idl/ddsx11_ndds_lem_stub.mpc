@@ -5,7 +5,7 @@ project (ddsx11_ndds_lem_stub_idl_gen) : install, \
   after += ddsx11_ndds_dcps_idl_gen
   idlflags += -Wb,stub_export_macro=DDSX11_NDDS_LEM_STUB_Export \
               -Wb,stub_export_include=ddsx11_ndds_lem_stub_export.h \
-              -Scp -Gxhst
+              -Scph -Gxhst
 
   IDL_Files {
     dds_dcpsE.idl

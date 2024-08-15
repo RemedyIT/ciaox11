@@ -15,7 +15,7 @@ project(*skel_idl_gen) : ciaox11_idldefaults {
 
   idlflags += -Wb,skel_export_macro=HELLO_SKEL_Export \
               -Wb,skel_export_include=hello_skel_export.h \
-              -Gxhsk -Scc -Sch -Scp -o .
+              -Gxhsk -Scc -Sch -Scph -o .
   idlflags -= -SS -Ssh
 
   IDL_Files {
@@ -30,7 +30,7 @@ project(*skel_idl_gen) : ciaox11_idldefaults {
 project(*cc_idl_gen) : ciaox11_corba4ccm_idldefaults, ciaox11_corba4ccm {
   custom_only = 1
   after += gen_test_base_idl_gen
-  idlflags += -Gcorba4ccm,idl -Scc -Sch -Scp  -o .
+  idlflags += -Gcorba4ccm,idl -Scc -Sch -Scph  -o .
 
   IDL_Files {
     gendir=.
@@ -48,7 +48,7 @@ project(*cc_idl_lem) : ciaox11_idldefaults, ciaox11_corba4ccm {
 
   idlflags += -Wb,stub_export_macro=HELLO_STUB_Export \
               -Wb,stub_export_include=hello_stub_export.h \
-              -Gxhst -Glem -I../base -Scc -Scp
+              -Gxhst -Glem -I../base -Scc -Scph
 
   IDL_Files {
     hello_cc.idl
@@ -65,7 +65,7 @@ project(*cc_idl_lem_gen) : ciaox11_idldefaults, ciaox11_corba4ccm {
 
   idlflags += -Wb,stub_export_macro=HELLO_LEM_STUB_Export \
               -Wb,stub_export_include=hello_lem_stub_export.h \
-              -Gxhst -Scp -I../base
+              -Gxhst -Scph -I../base
 
   IDL_Files {
     hello_ccE.idl
@@ -87,7 +87,7 @@ project(*cc_idl_svnt) : ciaox11_idldefaults, ciaox11_corba4ccm {
 
   idlflags += -Wb,svnt_export_macro=HELLO_SVNT_Export \
               -Wb,svnt_export_include=hello_svnt_export \
-              -I../base -Gxhsv -Scc -Sch -Scp -Gsvnt
+              -I../base -Gxhsv -Scc -Sch -Scph -Gsvnt
 
   IDL_Files {
     hello_cc.idl
@@ -109,7 +109,7 @@ project(*cc_idl_exec) : ciaox11_corba4ccm_idldefaults, ciaox11_corba4ccm {
 
   idlflags += -Wb,exec_export_macro=HELLO_EXEC_Export \
               -Wb,exec_export_include=hello_exec_export \
-              -I../base -Scc -Sch -Scp -Gcorba4ccm,impl -Gxhex
+              -I../base -Scc -Sch -Scph -Gcorba4ccm,impl -Gxhex
 
   IDL_Files {
     hello_cc.idl

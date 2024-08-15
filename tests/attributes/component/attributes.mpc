@@ -1,5 +1,5 @@
 // ciaox11_test_comp_all_idl suppresses the generation of the skeleton
-// source files (-SS). The IDL contains an interface definition and thefefor
+// source files (-SS). The IDL contains an interface definition and therefor
 // the -SS *should* be removed from the commandline. Since this test
 // does *not* provide this interface to the outside world, there's no need to
 // generate or compile it, so leaving it in the commandline..
@@ -12,7 +12,7 @@ project(*idl_gen) : ciaox11_test_comp_all_idl, taox11_anytypecode, \
   idlflags += -Wb,base_export_macro=FOO \
               -Wb,base_export_include=foo
   // Stub is needed since the IDL contains datatypes
-  idlflags -= -Scc -Scp
+  idlflags -= -Scc -Scph
 
   IDL_Files {
     gendir=generated_code

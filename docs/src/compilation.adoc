@@ -78,8 +78,8 @@ Command::
 
 Command line options::
 -----------------------------------
-        -Wb,pre_include=tao/x11/pre.h
-        -Wb,post_include=tao/x11/post.h
+        -Wb,pre_include=tao/x11/base/pre.h
+        -Wb,post_include=tao/x11/base/post.h
         -I$TAOX11_ROOT
         -Sci
         -Ssi
@@ -124,8 +124,8 @@ Command::
 Command line options::
 
 -----------------------------------
-        -Wb,pre_include=tao/x11/pre.h
-        -Wb,post_include=tao/x11/post.h
+        -Wb,pre_include=tao/x11/base/pre.h
+        -Wb,post_include=tao/x11/base/post.h
         -I$TAOX11_ROOT
         -Sci
         -Ssi
@@ -137,7 +137,7 @@ Command line options::
         -Glem,gen
         -Sch
         -Scc
-        -Scp
+        -Scph
         -Wb,base_export_macro=FOO
         -Wb,base_export_include=foo
         foo_base.idl
@@ -167,8 +167,8 @@ Command::
 Command line options::
 
 -----------------------------------
-        -Wb,pre_include=tao/x11/pre.h
-        -Wb,post_include=tao/x11/post.h
+        -Wb,pre_include=tao/x11/base/pre.h
+        -Wb,post_include=tao/x11/base/post.h
         -I$TAOX11_ROOT
         -I$CIAOX11_ROOT
         -Sci
@@ -179,7 +179,7 @@ Command line options::
         -Gxhsk
         -Sch
         -Scc
-        -Scp
+        -Scph
         -Wb,base_export_macro=FOO
         -Wb,base_export_include=foo
         foo_base.idl
@@ -275,8 +275,8 @@ Command::
 Command line options::
 
 ------------------------------------------
-        -Wb,pre_include=tao/x11/pre.h
-        -Wb,post_include=tao/x11/post.h
+        -Wb,pre_include=tao/x11/base/pre.h
+        -Wb,post_include=tao/x11/base/post.h
         -I$TAOX11_ROOT
         -I$CIAOX11_ROOT
         -I$CIAOX11_ROOT/ccm
@@ -288,7 +288,7 @@ Command line options::
         -SS
         -Ssh
         -Scc
-        -Scp
+        -Scph
         -Wb,base_export_macro=FOO_SENDER
         -Wb,base_export_include=foo_sender
         foo_base_sender.idl

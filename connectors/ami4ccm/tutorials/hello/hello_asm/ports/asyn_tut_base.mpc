@@ -16,7 +16,7 @@ project(*lem_gen) : ciaox11_idldefaults  {
   idlflags += -Wb,base_export_macro=HELLO \
               -Wb,base_export_include=hello \
               -o generated_code -I generated_code \
-              -Glem,gen -Gxhlst -Sch -Scc -Scp
+              -Glem,gen -Gxhlst -Sch -Scc -Scph
 
   IDL_Files {
     gendir=generated_code
@@ -71,7 +71,7 @@ project(*ami4ccm_aidl_gen) : ciaox11_ami4ccm_idldefaults, ciaox11_ami4ccm {
 
   idlflags += -Wb,base_export_macro=HELLO \
               -Wb,base_export_include=hello \
-              -Gami4ccm,Aidl -Scc -Sch -Scp -Gxhst \
+              -Gami4ccm,Aidl -Scc -Sch -Scph -Gxhst \
               -o generated_code -I generated_code
 
   IDL_Files {
@@ -109,7 +109,7 @@ project(*ami4ccm_lem_gen) : ciaox11_idldefaults, ciaox11_ami4ccm  {
 
   idlflags += -Wb,base_export_macro=HELLO \
               -Wb,base_export_include=hello \
-              -Glem,gen -Gxhlst -Sch -Scc -Scp \
+              -Glem,gen -Gxhlst -Sch -Scc -Scph \
               -o generated_code -I generated_code
 
   IDL_Files {
@@ -124,7 +124,7 @@ project(*idl_ami_gen) : ciaox11_idldefaults {
   idlflags += -Wb,base_export_macro=HELLO \
               -Wb,base_export_include=hello \
               -Gxhst -Gxhsk -Gxhsta -GC \
-              -SS -Ssh -Scc -Sch -Scp \
+              -SS -Ssh -Scc -Sch -Scph \
               -o generated_code -I generated_code \
 
   IDL_Files {
@@ -142,7 +142,7 @@ project(*idl_ami_conn_gen) : ciaox11_ami4ccm_conn_only_ami4ccm_idl {
   idlflags += -Wb,base_export_macro=HELLO \
               -Wb,base_export_include=hello \
               -o generated_code -I generated_code \
-              -Scc -Scp -Sch
+              -Scc -Scph -Sch
 
   IDL_Files {
     gendir=generated_code

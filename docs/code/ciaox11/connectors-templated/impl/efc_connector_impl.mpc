@@ -3,7 +3,7 @@ project (*idl_gen) : ciaox11_idldefaults {
   after += efc_connector_stub_idl_gen
   idlflags += -Wb,base_export_macro=EFCC_CONN \
               -Wb,base_export_include=efcc_conn \
-              -Scdr -Scp \
+              -Scdr -Scph \
               -I ../idl
 
   IDL_Files {

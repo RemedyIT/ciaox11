@@ -3,7 +3,7 @@ project(*comp_gen) : ciaox11_idldefaults, ciaox11_tt4ccm {
   after += recorder_interface_lem_gen
   idlflags += \
       -o build \
-      -Gcomp -Scc -Scp \
+      -Gcomp -Scc -Scph \
       -Gex -oI . \
       -Gxhex -Gxhsv \
       -Wb,base_export_macro=EXFTEST_MONITOR \

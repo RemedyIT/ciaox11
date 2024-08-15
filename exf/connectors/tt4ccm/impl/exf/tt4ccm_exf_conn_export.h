@@ -11,7 +11,7 @@
 
 #include "ace/config-all.h"
 
-#include "tao/x11/versionx11.h"
+#include "tao/x11/base/versionx11.h"
 
 
 #if defined (ACE_AS_STATIC_LIBS) && !defined (TT4CCM_EXF_CONN_HAS_DLL)

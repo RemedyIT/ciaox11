@@ -109,8 +109,8 @@ module IDL
           idl_type = node.idltype.resolved_type
           case idl_type
           when IDL::Type::String, IDL::Type::WString
-            add_include('tao/x11/bounded_string_t.h') if idl_type.size.to_i > 0
-            add_include('tao/x11/bounded_type_traits_t.h') if idl_type.size.to_i > 0
+            add_include('tao/x11/base/bounded_string_t.h') if idl_type.size.to_i > 0
+            add_include('tao/x11/base/bounded_type_traits_t.h') if idl_type.size.to_i > 0
           end
         end
 

@@ -5,6 +5,6 @@
 // --------------------------------------------------------------------
 
 project : ciaox11_test_idldefaults, ciaox11_ami4ccm_idldefaults, ciaox11_ami4ccm {
-  idlflags += -Gami4ccm,Aidl -Scc -Sch -Scp -Gxhst
+  idlflags += -Gami4ccm,Aidl -Scc -Sch -Scph -Gxhst
 }
 

@@ -157,7 +157,7 @@ module IDL
         # now get the resulting IDL file and schedule a parsing pass
         # generating only the stub files without a stub proxy
         entities_opts.svnt_skeletons = false
-        entities_opts.no_client_proxy = true
+        entities_opts.no_stub_proxy_hdr = true
         # Disable the generation of typecode and any support, it is not
         # used by ddsx11
         entities_opts.gen_typecodes = false

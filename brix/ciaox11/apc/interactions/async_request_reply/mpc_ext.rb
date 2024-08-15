@@ -15,7 +15,7 @@ module AxciomaPC
     # add  asynch request and reply MPC IDL project specializations
     MPC::IDLProject::DEFAULTS.merge!({
       ami4ccm_lem_idl_gen: {
-         add_idl_flags: '-Gami4ccm,Aidl-only -Scc -Sch -Scp',
+         add_idl_flags: '-Gami4ccm,Aidl-only -Scc -Sch -Scph',
          export: false,
          base_projects: %w{ciaox11_ami4ccm_idldefaults},
          auto_dependencies: []

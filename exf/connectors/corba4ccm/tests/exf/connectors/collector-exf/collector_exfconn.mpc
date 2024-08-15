@@ -6,7 +6,7 @@ project(*skel_gen) : ciaox11_exf_idl {
       -o build \
       -Wb,base_export_macro=EXFTEST_COLLECT \
       -Wb,base_export_include=exftest_collect \
-      -Scc -Sch -Scp -Gxhsk
+      -Scc -Sch -Scph -Gxhsk
   idlflags -= \
       -SS -Ssh
 

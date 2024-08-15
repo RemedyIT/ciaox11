@@ -22,7 +22,7 @@ project (ddsx11_opendds_dcps_all_idl_gen) : install, \
   after += ddsx11_opendds_types_idl_gen
   idlflags += -Wb,stub_export_macro=DDSX11_OPENDDS_STUB_Export \
               -Wb,stub_export_include=idl/ddsx11_opendds_stub_export.h \
-              -Scp
+              -Scph
 
   custom_only = 1
 
@@ -58,7 +58,7 @@ project (ddsx11_opendds_dcps_idl_gen) : install, \
   idlflags += -Wb,stub_export_macro=DDSX11_OPENDDS_STUB_Export \
               -Wb,stub_export_include=ddsx11_opendds_stub_export.h \
               -Wb,post_include=idl/dds_log_formatters.h \
-              -Glem -Gxhst -Scp
+              -Glem -Gxhst -Scph
 
   // Make sure we first compile the vendor specific IDL
   after += ddsx11_opendds_types_idl_gen ddsx11_opendds_instancehandle_idl_gen ddsx11_opendds_dcps_all_idl_gen

@@ -34,7 +34,7 @@ env:
   DANCEX11_ROOT: ${{ github.workspace }}/dancex11
   DDS_ROOT: ${{ github.workspace }}/OpenDDS
   X11_BRANCH: master
-  ACETAOMPC_BRANCH: Latest_ACE7TAO3_Micro
+  ACETAOMPC_BRANCH: Latest_ACE8TAO4_Micro
   OPENDDS_BRANCH: latest-release
 
 jobs:
@@ -73,7 +73,7 @@ jobs:
             CXX: g++-12
             ruby: '3.1'
             PackageDeps: g++-12
-          - os: ubuntu-22.04
+          - os: ubuntu-24.04
             CC: gcc-13
             CXX: g++-13
             ruby: '3.1'

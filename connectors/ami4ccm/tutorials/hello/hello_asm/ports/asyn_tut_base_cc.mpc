@@ -6,7 +6,7 @@ project(*idl_gen) : ciaox11_corba4ccm_idl {
   after +=  asyn_tut_base_idl_gen asyn_tut_base_lem_gen
   idlflags += -Wb,base_export_macro=HELLO \
               -Wb,base_export_include=hello \
-              -o generated_code -Sch -Scc -Scp \
+              -o generated_code -Sch -Scc -Scph \
               -I$(CIAOX11_ROOT) -I.. -I./generated_code
 
   IDL_Files {
@@ -22,7 +22,7 @@ project(*skel_gen) : ciaox11_idldefaults  {
   idlflags += -Wb,base_export_macro=HELLO \
               -Wb,base_export_include=hello \
               -o generated_code -I generated_code \
-              -Gxhsk -Sch -Scc -Scp
+              -Gxhsk -Sch -Scc -Scph
   idlflags -= -SS -Ssh
 
   IDL_Files {

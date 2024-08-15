@@ -4,7 +4,7 @@ project(*idl_gen) : ciaox11_test_comp_all_idl {
               -Wb,base_export_include=keywords \
               -Gex -oI .
   // IDL contains (a) datatype(s) and (an) interface(s)
-  idlflags -= -Scc -Scp
+  idlflags -= -Scc -Scph
 
   IDL_Files {
     gendir = generated_code

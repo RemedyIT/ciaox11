@@ -15,9 +15,9 @@
 
 project(*idl_gen) : ciaox11_idldefaults {
   custom_only = 1
-  idlflags += -Wb,stub_export_macro=HELLO_STUB_Export \
-              -Wb,stub_export_include=hello_stub_export.h \
-              -Gxhst -Glem
+  idlflags += -Wb,base_export_macro=HELLO \
+              -Wb,base_export_include=hello \
+              -Gxhst -Glem -Gxhcp -Gcpc
 
   IDL_Files {
     hello.idl
@@ -30,9 +30,9 @@ project(*idl_gen) : ciaox11_idldefaults {
 project(*lem_gen) : ciaox11_idldefaults {
   after += *idl_gen
   custom_only = 1
-  idlflags += -Wb,stub_export_macro=HELLO_LEM_STUB_Export \
-              -Wb,stub_export_include=hello_lem_stub_export.h \
-              -Gxhst -Scp
+  idlflags += -Wb,base_export_macro=HELLO_LEM \
+              -Wb,base_export_include=hello_lem \
+              -Gxhst -Scph
 
   IDL_Files {
     helloE.idl
@@ -49,6 +49,7 @@ project(*stub) : taox11_lib {
 
   Source_Files {
     helloC.cpp
+    helloCP.cpp
   }
 
   Header_Files {

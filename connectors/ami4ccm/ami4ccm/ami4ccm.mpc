@@ -4,7 +4,7 @@ project(ciaox11_ami4ccm_idl_gen) : install, ciaox11_idldefaults {
   idlflags -= -Gsvnt -Ssh
   idlflags += -Wb,stub_export_macro=AMI4CCM_STUB_Export \
               -Wb,stub_export_include=ami4ccm_stub_export.h \
-              -Gxhst -Scp
+              -Gxhst -Scph
 
   IDL_Files {
     ami4ccm.idl
