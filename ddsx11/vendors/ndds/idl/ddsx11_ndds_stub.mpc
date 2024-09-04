@@ -22,8 +22,7 @@ project (ddsx11_ndds_dcps_all_idl_gen) : install, \
                                      ddsx11_ndds_conversion_traits {
   after += ddsx11_ndds_types_idl_gen
   custom_only = 1
-  idlflags += -Sddsx11,nddslfc \
-              -Wb,stub_export_macro=DDSX11_NDDS_STUB_Export \
+  idlflags += -Wb,stub_export_macro=DDSX11_NDDS_STUB_Export \
               -Wb,stub_export_include=ddsx11_ndds_stub_export.h -Scph
 
   IDL_Files {
