@@ -154,10 +154,6 @@ namespace DDSX11
   { if (from) to = from; else to.clear (); return to; }
 
   template <>
-  inline void dds_init (char*& sample)
-  { sample = nullptr; }
-
-  template <>
   struct traits<std::string>
     : public common_traits<std::string, char*>,
       public convert_in<std::string, char*>,

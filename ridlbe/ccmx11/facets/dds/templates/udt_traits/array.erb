@@ -60,8 +60,6 @@ namespace DDSX11
     return to;
   }
 
-%visit_life_cycle_traits
-
   template<>
   struct traits<<%= scoped_cxxtype %>>
     : public common_traits<<%= scoped_cxxtype %>, <%= dds_native_element_cxxtype %>>,
