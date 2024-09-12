@@ -16,7 +16,6 @@
 //@@{__RIDL_REGEN_MARKER__} - END : UnkeyedWriterTest_Sender_Impl[user_includes]
 
 //@@{__RIDL_REGEN_MARKER__} - BEGIN : UnkeyedWriterTest_Sender_Impl[user_global_impl]
-// Your declarations here
 //@@{__RIDL_REGEN_MARKER__} - END : UnkeyedWriterTest_Sender_Impl[user_global_impl]
 
 namespace UnkeyedWriterTest_Sender_Impl
