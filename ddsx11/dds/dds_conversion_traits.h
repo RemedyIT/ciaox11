@@ -233,4 +233,40 @@ namespace DDSX11
   //@}
 } // namespace DDSX11
 
+namespace DDSX11
+{
+  template <typename DDS_DATA_TYPE, typename DATA_TYPE>
+  void optional_to_dds (DDS_DATA_TYPE*& to, DATA_TYPE& from)
+  {
+     if (from.has_value()) {
+    if (to == nullptr)
+    {
+      to = new DDS_DATA_TYPE;
+    }
+    ::DDSX11::to_dds (*to, from.value());
+    }
+    else
+    {
+    delete to;
+    to = nullptr;
+    }
+  }
+
+  template <typename DDS_DATA_TYPE, typename DATA_TYPE>
+  void optional_from_dds (DATA_TYPE& to, DDS_DATA_TYPE* from)
+  {
+       if (from != nullptr)
+    {
+      ::DDSX11::from_dds (to.emplace (), *from);
+    }
+    else
+    {
+      to.reset ();
+    }
+  }
+
+}
+
+
+
 #endif /* DDSX11_IMPL_CONVERSION_TRAITS_BASE_H_ */

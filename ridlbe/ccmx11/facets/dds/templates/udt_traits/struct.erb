@@ -15,22 +15,7 @@ namespace DDSX11
     <%= native_scoped_cxxtype %> &to, const <%= scoped_cxxtype %> &from)
   {
 %members.each do |_m|
-%if _m.optional?
-   if (from.<%= _m.cxxname %> ().has_value()) {
-    if (to.<%= _m.cxxname %> == nullptr)
-    {
-      to.<%= _m.cxxname %> = new <%= _m.native_scoped_cxxtype %>;
-    }
-    ::DDSX11::to_dds (*to.<%= _m.cxxname %>, from.<%= _m.cxxname %> ().value());
-    }
-    else
-    {
-    delete to.<%= _m.cxxname %>;
-    to.<%= _m.cxxname %> = nullptr;
-    }
-% else
-    ::DDSX11::to_dds (to.<%= _m.cxxname %>, from.<%= _m.cxxname %> ());
-% end
+    ::DDSX11::<%if _m.optional? %>optional_<% end %>to_dds (to.<%= _m.cxxname %>, from.<%= _m.cxxname %> ());
 %end
     return to;
   }
@@ -42,18 +27,7 @@ namespace DDSX11
     <%= scoped_cxxtype %> &to, const <%= native_scoped_cxxtype %> &from)
   {
 %members.each do |_m|
-%if _m.optional?
-   if (from.<%= _m.cxxname %> != nullptr)
-    {
-      ::DDSX11::from_dds (to.<%= _m.cxxname %> ().emplace (), *from.<%= _m.cxxname  %>);
-    }
-    else
-    {
-      to.<%= _m.cxxname %> ().reset ();
-    }
-% else
-    ::DDSX11::from_dds (to.<%= _m.cxxname %> (), from.<%= _m.cxxname  %>);
-% end
+    ::DDSX11::<%if _m.optional? %>optional_<% end %>from_dds (to.<%= _m.cxxname %> (), from.<%= _m.cxxname  %>);
 %end
     return to;
   }
