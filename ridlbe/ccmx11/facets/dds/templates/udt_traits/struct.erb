@@ -45,7 +45,7 @@ namespace DDSX11
 %if _m.optional?
    if (from.<%= _m.cxxname %> != nullptr)
     {
-      ::DDSX11::from_dds (to.<%= _m.cxxname %> ().value (), *from.<%= _m.cxxname  %>);
+      ::DDSX11::from_dds (to.<%= _m.cxxname %> ().emplace (), *from.<%= _m.cxxname  %>);
     }
     else
     {
