@@ -1,7 +1,11 @@
 %if has_toplevel_annotation?
 
 % unaliased_type = 'std::vector<'+resolved_cxxtype+'>'
-// Unaliased type      : <%= unaliased_type %>
+%annotations.each do |_a|
+% unaliased_type = _a.idl_stringified + unaliased_type
+%end
+
+// Unaliased type      : <%= annotations %><%= unaliased_type %>
 // Scoped element type : <%= scoped_cxxtype %>
 % ddsx11_alias_md5 = (unaliased_type+scoped_cxxtype).to_md5
 // DDSX11 MD5 : <%= ddsx11_alias_md5 %>

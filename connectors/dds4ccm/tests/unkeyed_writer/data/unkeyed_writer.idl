@@ -22,6 +22,7 @@ module UnkeyedWriterTest
     /// the receiver can check that we don't get duplicate
     /// samples
     unsigned long sample_index;
+    @optional ::OctetSeq ff;
   };
 };
 
