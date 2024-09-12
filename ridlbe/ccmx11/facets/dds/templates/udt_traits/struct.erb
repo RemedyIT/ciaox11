@@ -17,8 +17,16 @@ namespace DDSX11
 %members.each do |_m|
 %if _m.optional?
    if (from.<%= _m.cxxname %> ().has_value()) {
-    #todo memalloc
+    if (to.<%= _m.cxxname %> == nullptr)
+    {
+      to.<%= _m.cxxname %> = new <%= _m.native_scoped_cxxtype %>;
+    }
     ::DDSX11::to_dds (*to.<%= _m.cxxname %>, from.<%= _m.cxxname %> ().value());
+    }
+    else
+    {
+    delete to.<%= _m.cxxname %>;
+    to.<%= _m.cxxname %> = nullptr;
     }
 % else
     ::DDSX11::to_dds (to.<%= _m.cxxname %>, from.<%= _m.cxxname %> ());
