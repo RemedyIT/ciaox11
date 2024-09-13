@@ -512,7 +512,7 @@ namespace DDSX11
   to_dds<::DDS_Native::DDS::StdStringSeq, ::DDS::StringSeq> (
     ::DDS_Native::DDS::StdStringSeq &to, const ::DDS::StringSeq &from)
   {
-    return DDSX11::string_sequence_to_dds(to, from);
+    return DDSX11::sequence_to_dds(to, from);
   }
 
   /// Conversion of StringSeq from DDS
