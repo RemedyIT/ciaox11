@@ -503,4 +503,35 @@ namespace DDSX11
   }
 }
 
+namespace DDSX11
+{
+  /// Conversion of DDS::StringSeq to DDS
+  template<>
+  inline ::DDS_Native::DDS::StdStringSeq&
+  to_dds<::DDS_Native::DDS::StdStringSeq, ::DDS::StringSeq> (
+    ::DDS_Native::DDS::StdStringSeq &to, const ::DDS::StringSeq &from)
+  {
+    return DDSX11::string_sequence_to_dds(to, from);
+  }
+
+  /// Conversion of StringSeq from DDS
+  template<>
+  inline ::DDS::StringSeq&
+  from_dds<::DDS_Native::DDS::StdStringSeq, ::DDS::StringSeq> (
+    ::DDS::StringSeq &to, const ::DDS_Native::DDS::StdStringSeq &from)
+  {
+    return DDSX11::sequence_from_dds(to, from);
+  }
+
+  template<>
+  struct traits<::DDS::StringSeq, ::DDS_Native::DDS::StdStringSeq>
+    : public common_traits<::DDS::StringSeq, ::DDS_Native::DDS::StdStringSeq>
+    , public convert_in<::DDS::StringSeq, ::DDS_Native::DDS::StdStringSeq>
+    , public convert_out_by_ref<::DDS::StringSeq, ::DDS_Native::DDS::StdStringSeq>
+    , public convert_retn<::DDS::StringSeq, ::DDS_Native::DDS::StdStringSeq>
+  {
+  };
+} // DDSX11
+
+
 #endif /* DDSX11_IMPL_NDDS_BASE_TRAITS_H_ */
