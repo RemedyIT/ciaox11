@@ -123,7 +123,6 @@ namespace DDSX11
       public pass_retn<double>
   {
   };
-
   //@}
 
   /**
@@ -153,25 +152,38 @@ namespace DDSX11
   { if (from) to = from; else to.clear (); return to; }
 
   template <>
+  inline std::string& to_dds<std::string, std::string> (std::string& to, const std::string& from)
+  {
+    to = from;
+    return to;
+  }
+
+  template <>
+  inline std::string& from_dds<std::string, std::string> (std::string& to, std::string const & from)
+  { to = from; return to; }
+
+  template <>
   struct traits<std::string>
-    : public common_traits<std::string, char*>,
-      public convert_in<std::string, char*>,
-      public convert_retn<std::string, char const *>
+    : public common_traits<std::string, std::string>,
+      public convert_in<std::string, std::string>,
+      public convert_retn<std::string, std::string>
   {
     struct in
     {
       typedef std::string in_type;
-      typedef char * dds_in_type;
-      char dds_value_[max_string_size ()];
+      typedef std::string dds_in_type;
+      //char dds_value_[max_string_size ()];
+      const std::string& value_;
 
-      in (const in_type& v)
+      in (const in_type& v) : value_ (v)
       {
-        std::memcpy (this->dds_value_,
-                     v.c_str (),
-                     std::min<std::string::size_type> (v.size ()+1, max_string_size ()));
+        // std::memcpy (this->dds_value_,
+        //              v.c_str (),
+        //              std::min<std::string::size_type> (v.size ()+1, max_string_size ()));
       }
       ~in () = default;
-      operator dds_in_type () { return this->dds_value_; }
+      operator dds_in_type () { return this->value_; }
+      operator const char* () { return this->value_.c_str (); }
     };
 
     // special for strings
