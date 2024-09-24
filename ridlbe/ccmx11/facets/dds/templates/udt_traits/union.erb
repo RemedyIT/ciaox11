@@ -26,8 +26,6 @@ namespace DDSX11
 %nest(2) { visit_template('union_from') }
   }
 
-%visit_life_cycle_traits
-
   template<>
   struct traits<<%= scoped_cxxtype %>>
     : public common_traits<<%= scoped_cxxtype %>, <%= native_scoped_cxxtype %>>

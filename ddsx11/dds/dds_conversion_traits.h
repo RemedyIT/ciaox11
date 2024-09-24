@@ -67,18 +67,6 @@ namespace DDSX11
   //@}
 
   /**
-   * Default DDS_DATA_TYPE life cycle methods.
-   */
-  //@{
-  template <typename DDS_DATA_TYPE>
-  void dds_init (DDS_DATA_TYPE&)
-  { }
-  template <typename DDS_DATA_TYPE>
-  void dds_finalize (DDS_DATA_TYPE&)
-  { }
-  //@}
-
-  /**
    * Converting DDS argument traits
    */
   //@{
@@ -91,9 +79,9 @@ namespace DDSX11
       typedef DDS_DATA_TYPE dds_in_type;
       dds_in_type value_;
 
-      in () { ::DDSX11::dds_init (value_); }
-      in (const in_type& v) { ::DDSX11::dds_init (value_); ::DDSX11::to_dds (this->value_, v); }
-      ~in () { ::DDSX11::dds_finalize (value_); }
+      in () = default;
+      in (const in_type& v) { ::DDSX11::to_dds (this->value_, v); }
+      ~in () = default;
       in& operator =(const in_type& v) { ::DDSX11::to_dds (this->value_, v); return *this; }
       operator const dds_in_type& () const {  return this->value_; }
     };
@@ -140,11 +128,8 @@ namespace DDSX11
       out_type& value_;
       dds_out_type dds_value_;
 
-      out (out_type& v) : value_ (v) { ::DDSX11::dds_init (this->dds_value_); }
-      ~out () {
-        ::DDSX11::from_dds (this->value_, this->dds_value_);
-        ::DDSX11::dds_finalize (this->dds_value_);
-      }
+      out (out_type& v) : value_ (v) {}
+      ~out () { ::DDSX11::from_dds (this->value_, this->dds_value_); }
       operator dds_out_type& () { return this->dds_value_; }
     };
 
@@ -165,11 +150,8 @@ namespace DDSX11
       out_type* value_;
       dds_out_type dds_value_;
 
-      out (out_type* v) : value_ (v) { ::DDSX11::dds_init (this->dds_value_); }
-      ~out () {
-        ::DDSX11::from_dds (*this->value_, this->dds_value_);
-        ::DDSX11::dds_finalize (this->dds_value_);
-      }
+      out (out_type* v) : value_ (v) {}
+      ~out () { ::DDSX11::from_dds (*this->value_, this->dds_value_); }
       operator dds_out_type* () { return &this->dds_value_; }
     };
 

@@ -12,20 +12,6 @@ module IDL
     module DDSX11
       module NDDS
         module UserDefinedTypeTraitsWriterExt
-          module WriterExtension
-            def self.included(base)
-              base.class_eval do
-                # add life cycle traits generation helper method
-
-                helper_method :generate_lifecycle_traits?
-
-                def generate_lifecycle_traits?
-                  params[:nogen_life_cycle_traits_for_ndds] ? false : true
-                end
-              end
-            end
-          end
-
           def self.configure_extension(writer)
             IDL.log(3, 'Configuring DDS4NDDS UserDefinedTypeTraitsWriterExt extension')
             # make writer look for templates in ndds folder first

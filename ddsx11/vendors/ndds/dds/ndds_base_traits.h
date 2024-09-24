@@ -21,7 +21,6 @@ constexpr uint32_t max_member_string_size () { return 255; }
 
 namespace DDSX11
 {
-
   /**
    * Standard type DDS traits for NDDS implementation
    */
@@ -152,10 +151,6 @@ namespace DDSX11
   template <>
   inline std::string& from_dds<char*, std::string> (std::string& to, char* const & from)
   { if (from) to = from; else to.clear (); return to; }
-
-  template <>
-  inline void dds_init (char*& sample)
-  { sample = nullptr; }
 
   template <>
   struct traits<std::string>
@@ -462,6 +457,37 @@ namespace DDSX11
   bounded_string_sequence_from_dds (DDS_SEQ& to, const DDS_NATIVE_SEQ& from)
   {
     return sequence_from_dds (to, from);
+  }
+
+  template <typename DDS_DATA_TYPE, typename DATA_TYPE>
+  void optional_to_dds (DDS_DATA_TYPE*& to, DATA_TYPE& from)
+  {
+    if (from.has_value())
+    {
+      if (to == nullptr)
+      {
+        to = new DDS_DATA_TYPE;
+      }
+      ::DDSX11::to_dds (*to, from.value());
+    }
+    else
+    {
+      delete to;
+      to = nullptr;
+    }
+  }
+
+  template <typename DDS_DATA_TYPE, typename DATA_TYPE>
+  void optional_from_dds (DATA_TYPE& to, DDS_DATA_TYPE* from)
+  {
+    if (from != nullptr)
+    {
+      ::DDSX11::from_dds (to.emplace (), *from);
+    }
+    else
+    {
+      to.reset ();
+    }
   }
 }
 
