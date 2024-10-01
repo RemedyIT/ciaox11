@@ -405,9 +405,12 @@ namespace IDL_Conversion_Test_Sender_Impl
       }
 
       Example::B57 b57;
+      Example::B57_stringlength b57_stringlength;
       for (uint16_t val = this->last_iteration_; val <  this->last_iteration_ + 100; ++val)
       {
-        b57.push_back ("VALUE_"+std::to_string (val));
+        std::string tosend = "VALUE_"+std::to_string (val);
+        b57.push_back (tosend);
+        b57_stringlength.push_back (tosend.length ());
       }
 
       Example::B59 b59;
@@ -487,6 +490,7 @@ namespace IDL_Conversion_Test_Sender_Impl
           b55,
           b56,
           b57,
+          b57_stringlength,
           b59,
           b60,
           a_13 ? Example::B70::B70_1 : Example::B70::B70_2,

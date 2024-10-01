@@ -435,8 +435,7 @@ namespace IDL_Conversion_Test_Receiver_Impl
     {
       for (uint16_t y = 0; y < 5; ++y)
       {
-        const std::string expected (
-          std::to_string (x + y + datum.iteration ()));
+        const std::string expected (std::to_string (x + y + datum.iteration ()));
         if (datum.b_56 ()[x][y] != expected)
         {
           DDS4CCM_TEST_ERROR << "Receiver check - ERROR: unexpected value for "
@@ -454,12 +453,18 @@ namespace IDL_Conversion_Test_Receiver_Impl
       const std::string expected ("VALUE_"+std::to_string (datum.iteration () + c));
       if (val != expected)
       {
+        if (datum.b_57_stringlength()[c] != expected.length())
+            {
+              DDS4CCM_TEST_ERROR << "Receiver check - ERROR: string length of "
+                << "datum.b_57[" << c << "] is not " << expected.length()
+                << " but " << datum.b_57_stringlength()[c] << std::endl;
+            }
         if (!val.empty ())
         {
           if (val.back() == 0)
           {
             DDS4CCM_TEST_ERROR << "Receiver check - ERROR: last character of "
-              << "datum.b_57[" << c << "] is 0"  << std::endl;
+              << "datum.b_57[" << c << "] is 0" << std::endl;
           }
         }
         DDS4CCM_TEST_ERROR << "Receiver check - ERROR: unexpected value for "
