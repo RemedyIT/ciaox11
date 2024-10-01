@@ -172,15 +172,9 @@ namespace DDSX11
     {
       typedef std::string in_type;
       typedef std::string dds_in_type;
-      //char dds_value_[max_string_size ()];
       const std::string& value_;
 
-      in (const in_type& v) : value_ (v)
-      {
-        // std::memcpy (this->dds_value_,
-        //              v.c_str (),
-        //              std::min<std::string::size_type> (v.size ()+1, max_string_size ()));
-      }
+      in (const in_type& v) : value_ (v) { }
       ~in () = default;
       operator dds_in_type () { return this->value_; }
       operator const char* () { return this->value_.c_str (); }
@@ -191,9 +185,7 @@ namespace DDSX11
     {
       typedef std::string out_type;
       typedef std::string dds_out_type;
-      //typedef char * dds_out_type;
       out_type& value_;
-      //char dds_value_[max_string_size ()];
 
       out (out_type& v) : value_ (v) { }
       ~out () = default;
@@ -202,12 +194,7 @@ namespace DDSX11
 
     struct inout : public out
     {
-      inout (out::out_type& v) : out (v)
-      {
-        // std::memcpy (this->dds_value_,
-        //              this->value_.c_str (),
-        //              std::min<std::string::size_type> (this->value_.size ()+1, max_string_size ()));
-      };
+      inout (out::out_type& v) : out (v) { }
       operator out::dds_out_type () { return this->value_; }
     };
   };
