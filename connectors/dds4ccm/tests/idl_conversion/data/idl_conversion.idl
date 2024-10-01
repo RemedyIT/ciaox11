@@ -69,6 +69,7 @@ module Example {
   typedef B51       B55;
   typedef string    B56[6][5];
   typedef sequence<string> B57;
+  typedef sequence<unsigned long long> B57_stringlength;
   typedef string<512> B58;
   typedef sequence<B58> B59;
   typedef B59       B60;
@@ -169,6 +170,7 @@ module Example {
     B55 b_55;
     B56 b_56;
     B57 b_57;
+    B57_stringlength b_57_stringlength;
     B59 b_59;
     B60 b_60;
 
