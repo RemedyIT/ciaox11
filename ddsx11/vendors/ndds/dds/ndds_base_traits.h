@@ -166,7 +166,8 @@ namespace DDSX11
   struct traits<std::string>
     : public common_traits<std::string, std::string>,
       public convert_in<std::string, std::string>,
-      public convert_retn<std::string, std::string>
+      public pass_out_by_ref<std::string>,
+      public pass_retn<std::string>
   {
     struct in
     {
@@ -178,24 +179,6 @@ namespace DDSX11
       ~in () = default;
       operator dds_in_type () { return this->value_; }
       operator const char* () { return this->value_.c_str (); }
-    };
-
-    // special for strings
-    struct out
-    {
-      typedef std::string out_type;
-      typedef std::string dds_out_type;
-      out_type& value_;
-
-      out (out_type& v) : value_ (v) { }
-      ~out () = default;
-      operator dds_out_type () { return this->value_; }
-    };
-
-    struct inout : public out
-    {
-      inout (out::out_type& v) : out (v) { }
-      operator out::dds_out_type () { return this->value_; }
     };
   };
 
