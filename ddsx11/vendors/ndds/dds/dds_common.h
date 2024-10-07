@@ -17,4 +17,8 @@
 #define DDSX11_INITIALIZE_QOS_DEFAULTS
 #include "dds/ndds_typedefs.h"
 
+#if (RTI_DDS_VERSION_MAJOR < 7) || ((RTI_DDS_VERSION_MAJOR == 7) && (RTI_DDS_VERSION_MINOR < 3))
+# error Only RTI Connext DDS 7.3 or newer are supported
+#endif
+
 #endif /* DDSX11_IMPL_COMMON_H_ */
