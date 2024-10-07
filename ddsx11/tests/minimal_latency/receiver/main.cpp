@@ -30,7 +30,7 @@ class LatencyDataListener final :
   public DDS::traits<Test::LatencyData>::datareaderlistener_type
 {
 public:
-  LatencyDataListener(TestExecutor* executor)
+  explicit LatencyDataListener(TestExecutor* executor)
     : executor_ (executor)
   {}
 
