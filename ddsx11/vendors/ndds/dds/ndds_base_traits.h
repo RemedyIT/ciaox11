@@ -14,8 +14,6 @@
 #include "dds/dds_conversion_traits.h"
 #include "ace/CDR_Base.h"
 
-/// By default the RTI NDDS::String type manage strings up to 1k
-constexpr uint32_t max_string_size () { return 1024; }
 /// By default the RTI NDDS::DDS_Char* type for unbounded string members manages strings up to 255 characters
 constexpr uint32_t max_member_string_size () { return 255; }
 
