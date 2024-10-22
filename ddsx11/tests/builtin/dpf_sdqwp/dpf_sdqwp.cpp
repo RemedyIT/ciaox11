@@ -54,8 +54,28 @@ int main (int, char *[])
         return 1;
       }
 
+      DDS::DomainParticipantQos dp_qos;
+      retcode = domain_participant->get_qos (dp_qos);
+      if (retcode != DDS::RETCODE_OK)
+      {
+        DDSX11_TEST_ERROR << "dpf_sdqwp: Error retrieving dp qos: "
+                          << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                          << std::endl;
+        return 1;
+      }
+
       DDS::traits<ShapeType>::topic_ref_type topic = domain_participant->create_topic (
         "Square", DDS::traits<ShapeType>::get_type_name (), DDS::TOPIC_QOS_DEFAULT, nullptr, DDS::STATUS_MASK_NONE);
+
+      DDS::TopicQos topic_qos;
+      retcode = topic->get_qos (topic_qos);
+      if (retcode != DDS::RETCODE_OK)
+      {
+        DDSX11_TEST_ERROR << "dpf_sdqwp: Error retrieving topic qos: "
+                          << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                          << std::endl;
+        return 1;
+      }
 
       retcode = DDS::traits<ShapeType>::register_type (domain_participant, "ShapeType");
       if (retcode != DDS::RETCODE_OK)
@@ -74,11 +94,31 @@ int main (int, char *[])
         return 1;
       }
 
+      DDS::PublisherQos publisher_qos;
+      retcode = publisher->get_qos (publisher_qos);
+      if (retcode != DDS::RETCODE_OK)
+      {
+        DDSX11_TEST_ERROR << "dpf_sdqwp: Error retrieving publisher qos: "
+                          << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                          << std::endl;
+        return 1;
+      }
+
       DDS::traits<ShapeType>::datawriter_ref_type dw =
           publisher->create_datawriter(topic, DDS::DATAWRITER_QOS_DEFAULT, nullptr, DDS::STATUS_MASK_NONE);
       if (!dw)
       {
         DDSX11_TEST_ERROR << "dpf_sdqwp: Failed to create datawriter." << std::endl;
+        return 1;
+      }
+
+      DDS::DataWriterQos dw_qos;
+      retcode = dw->get_qos (dw_qos);
+      if (retcode != DDS::RETCODE_OK)
+      {
+        DDSX11_TEST_ERROR << "dpf_sdqwp: Error retrieving datawriter qos: "
+                          << IDL::traits<::DDS::ReturnCode_t>::write<retcode_formatter> (retcode)
+                          << std::endl;
         return 1;
       }
 
