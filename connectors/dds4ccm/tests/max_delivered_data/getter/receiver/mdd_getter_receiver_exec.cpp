@@ -37,7 +37,6 @@ namespace MDD_Getter_Test_Receiver_Impl
          uint32_t round) override;
 
    private:
-       std::string connection_;
        IDL::traits<::MDD_Getter_Test::CCM_Receiver_Context>::ref_type ciao_context_;
    };
 
