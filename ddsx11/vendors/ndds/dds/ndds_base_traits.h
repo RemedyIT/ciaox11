@@ -14,8 +14,6 @@
 #include "dds/dds_conversion_traits.h"
 #include "ace/CDR_Base.h"
 
-/// By default the RTI NDDS::String type manage strings up to 1k
-constexpr uint32_t max_string_size () { return 1024; }
 /// By default the RTI NDDS::DDS_Char* type for unbounded string members manages strings up to 255 characters
 constexpr uint32_t max_member_string_size () { return 255; }
 
@@ -123,7 +121,6 @@ namespace DDSX11
       public pass_retn<double>
   {
   };
-
   //@}
 
   /**
@@ -153,49 +150,33 @@ namespace DDSX11
   { if (from) to = from; else to.clear (); return to; }
 
   template <>
+  inline std::string& to_dds<std::string, std::string> (std::string& to, const std::string& from)
+  {
+    to = from;
+    return to;
+  }
+
+  template <>
+  inline std::string& from_dds<std::string, std::string> (std::string& to, std::string const & from)
+  { to = from; return to; }
+
+  template <>
   struct traits<std::string>
-    : public common_traits<std::string, char*>,
-      public convert_in<std::string, char*>,
-      public convert_retn<std::string, char const *>
+    : public common_traits<std::string, std::string>,
+      public convert_in<std::string, std::string>,
+      public pass_out_by_ref<std::string>,
+      public pass_retn<std::string>
   {
     struct in
     {
       typedef std::string in_type;
-      typedef char * dds_in_type;
-      char dds_value_[max_string_size ()];
+      typedef std::string dds_in_type;
+      const std::string& value_;
 
-      in (const in_type& v)
-      {
-        std::memcpy (this->dds_value_,
-                     v.c_str (),
-                     std::min<std::string::size_type> (v.size ()+1, max_string_size ()));
-      }
+      in (const in_type& v) : value_ (v) { }
       ~in () = default;
-      operator dds_in_type () { return this->dds_value_; }
-    };
-
-    // special for strings
-    struct out
-    {
-      typedef std::string out_type;
-      typedef char * dds_out_type;
-      out_type& value_;
-      char dds_value_[max_string_size ()];
-
-      out (out_type& v) : value_ (v) { }
-      ~out () { this->value_ = this->dds_value_; }
-      operator dds_out_type () { return this->dds_value_; }
-    };
-
-    struct inout : public out
-    {
-      inout (out::out_type& v) : out (v)
-      {
-        std::memcpy (this->dds_value_,
-                     this->value_.c_str (),
-                     std::min<std::string::size_type> (this->value_.size ()+1, max_string_size ()));
-      };
-      operator out::dds_out_type () { return this->dds_value_; }
+      operator dds_in_type () { return this->value_; }
+      operator const char* () { return this->value_.c_str (); }
     };
   };
 
@@ -490,5 +471,36 @@ namespace DDSX11
     }
   }
 }
+
+namespace DDSX11
+{
+  /// Conversion of DDS::StringSeq to DDS
+  template<>
+  inline ::DDS_Native::DDS::StdStringSeq&
+  to_dds<::DDS_Native::DDS::StdStringSeq, ::DDS::StringSeq> (
+    ::DDS_Native::DDS::StdStringSeq &to, const ::DDS::StringSeq &from)
+  {
+    return DDSX11::sequence_to_dds(to, from);
+  }
+
+  /// Conversion of StringSeq from DDS
+  template<>
+  inline ::DDS::StringSeq&
+  from_dds<::DDS_Native::DDS::StdStringSeq, ::DDS::StringSeq> (
+    ::DDS::StringSeq &to, const ::DDS_Native::DDS::StdStringSeq &from)
+  {
+    return DDSX11::sequence_from_dds(to, from);
+  }
+
+  template<>
+  struct traits<::DDS::StringSeq, ::DDS_Native::DDS::StdStringSeq>
+    : public common_traits<::DDS::StringSeq, ::DDS_Native::DDS::StdStringSeq>
+    , public convert_in<::DDS::StringSeq, ::DDS_Native::DDS::StdStringSeq>
+    , public convert_out_by_ref<::DDS::StringSeq, ::DDS_Native::DDS::StdStringSeq>
+    , public convert_retn<::DDS::StringSeq, ::DDS_Native::DDS::StdStringSeq>
+  {
+  };
+} // DDSX11
+
 
 #endif /* DDSX11_IMPL_NDDS_BASE_TRAITS_H_ */

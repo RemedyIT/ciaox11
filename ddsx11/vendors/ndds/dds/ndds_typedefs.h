@@ -32,6 +32,7 @@ namespace DDS_Native
 
       typedef ::DDS_OctetSeq OctetSeq;
       typedef ::DDS_StringSeq StringSeq;
+      typedef ::DDS_StdStringSeq StdStringSeq;
 
       typedef ::DDS_InstanceHandle_t InstanceHandle_t;
       typedef ::DDS_InstanceHandleSeq InstanceHandleSeq;
