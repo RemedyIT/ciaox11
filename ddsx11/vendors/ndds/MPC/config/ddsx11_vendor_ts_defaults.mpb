@@ -7,7 +7,7 @@
 // --------------------------------------------------------------------
 
 feature(ddsx11, ndds) : ndds_ts_defaults {
-  ndds_ts_flags += -update typefiles -enableEscapeChar -typeSequenceSuffix RTISeq -language C++98 -namespace -constructor
+  ndds_ts_flags += -update typefiles -enableEscapeChar -typeSequenceSuffix RTISeq -language C++98 -namespace -useStdString
   Define_Custom(TypeSupport) {
   }
   Define_Custom(DummyTypeSupport) {
