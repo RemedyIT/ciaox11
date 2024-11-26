@@ -27,6 +27,7 @@ module IDL
     SequenceVisitor = Cxx11::SequenceVisitor
     EnumVisitor = Cxx11::EnumVisitor
     BitmaskVisitor = Cxx11::BitmaskVisitor
+    BitsetVisitor = Cxx11::BitsetVisitor
     ArrayVisitor = Cxx11::ArrayVisitor
     TypedefVisitor = Cxx11::TypedefVisitor
     UnionVisitor = Cxx11::UnionVisitor
