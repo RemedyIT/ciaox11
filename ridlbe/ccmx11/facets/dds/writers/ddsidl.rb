@@ -66,7 +66,12 @@ module IDL
 
         def visit_bitmask(node)
           check_namespace_begin
-          visitor(BitMaskVisitor).visit_bitmask(node)
+          visitor(BitmaskVisitor).visit_bitmask(node)
+        end
+
+        def visit_bitset(node)
+          check_namespace_begin
+          visitor(BitsetVisitor).visit_bitset(node)
         end
 
         def declare_union(node)
