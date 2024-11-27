@@ -4,8 +4,13 @@
 % annotations.each do |_a|
 <%= _a.idl_stringified %>
 % end
-%# todo bitfield annotations and type
 bitset <%= unescaped_name %><% unless base.nil? %> : <%= base.unescaped_name %><% end %> {
-  <%= bitfields.collect {|e| "/// @copydoc #{e.doc_scoped_name}\n  bitfield<#{e.bits}> #{e.name}" }.join(",\n  ") %>
+% bitfields.each do | e |
+  /// @copydoc <%= e.doc_scoped_name %>
+% e.annotations.each do |_a|
+  <%= _a.idl_stringified %>
+% end
+  bitfield<<%= e.bits %>, <%= e.idltype.idltype_name %>><% unless e.name.empty? %> <%= e.name %><% end %>;
+% end
 };
 
