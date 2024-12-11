@@ -10,7 +10,7 @@ bitset <%= unescaped_name %><% unless base.nil? %> : <%= base.unescaped_name %><
 % e.annotations.each do |_a|
   <%= _a.idl_stringified %>
 % end
-  bitfield<<%= e.bits %>, <%= e.idltype.idltype_name %>><% unless e.name.empty? %> <%= e.name %><% end %>;
+  bitfield<<%= e.bits %>, <%= e.idltype_name %>><% unless e.name.empty? %> <%= e.name %><% end %>;
 % end
 };
 
