@@ -1,9 +1,0 @@
-// Special section DDS IDL
-NDDSTypeSupport_Files {
-  ndds_ts_flags += -d <%= gen_dir %> <%= includes_flags %> -I<%= gen_dir %>
-  gendir=<%= gen_dir %>
-% sources.each do |f|
-  <%= f %>
-% end
-}
-custom_only = 1
