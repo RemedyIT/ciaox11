@@ -76,8 +76,6 @@ compiler. The DDS vendor only sees all implied types as defined within
 the `DDS_Native` module. The DDS vendor does not see the original user
 defined `foo.idl`.
 
-include::{ciaox11_src_root}/ddsx11/vendors/ndds/docs/src/ddsx11_files.asc[]
-
 In order to convert between the IDL to {cxx11} type system and the vendor
 specific {cpp} type system a set of conversion traits and a type support
 factory are generated. The

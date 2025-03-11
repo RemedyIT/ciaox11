@@ -18,8 +18,6 @@ sender and receiver using DDSX11.
 
 include::{ciaox11_src_root}/ddsx11/vendors/opendds/dds4ccm/docs/src/dds4ccm.asc[]
 
-include::{ciaox11_src_root}/ddsx11/vendors/ndds/dds4ccm/docs/src/dds4ccm.asc[]
-
 == DDS4CCM Shapes Tutorial
 
 See <<dds4ccm_shapes_example.adoc#,here>> for our DDS4CCM Shapes tutorial.

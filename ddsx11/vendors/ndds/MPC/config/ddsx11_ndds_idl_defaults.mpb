@@ -1,9 +1,0 @@
-// --------------------------------------------------------------------
-// ddsx11_ndds_idl_defaults.mpb
-//
-// Copyright (c) Remedy IT Expertise BV
-// --------------------------------------------------------------------
-
-project : ddsx11_ndds_flags, ridl_defaults {
-  idlflags += -Scdr -I$(CIAOX11_ROOT)/ddsx11/vendors/ndds/idl -SS -Ssh
-}
