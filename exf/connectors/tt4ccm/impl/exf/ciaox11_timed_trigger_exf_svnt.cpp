@@ -58,8 +58,7 @@ namespace CIAOX11_TT_TimedTrigger_Impl
     bool flag { true };
     CORBA::Any val;
     val <<= flag;
-    config.push_back (
-      Components::ConfigValue (CIAOX11::ExF::NO_SCHEDULING_LANE, val));
+    config.emplace_back (CIAOX11::ExF::NO_SCHEDULING_LANE, val);
   }
 
   IDL::traits<CORBA::Object>::ref_type

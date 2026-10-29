@@ -243,7 +243,7 @@ namespace MDD_Test_Sender_Impl
       {
         for (uint16_t i = 0; i < iterations (); ++i)
         {
-          messages.push_back (CommonTestMessage ("KEY_1", i));
+          messages.emplace_back ("KEY_1", i);
         }
         updater->create_many (messages);
 

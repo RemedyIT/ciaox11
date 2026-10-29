@@ -273,11 +273,11 @@ namespace Filters_Common_Read_Get_Test_Sender_Impl
       std::string const current_key ("KEY_"+std::to_string (key+1));
       for (uint16_t iter = 0; iter < iterations (); ++iter)
       {
-        msgs.push_back (CommonTestMessage (current_key, iter+1));
+        msgs.emplace_back (current_key, iter+1);
       }
     }
     std::string const current_key ("KEY_"+ std::to_string (keys () + 1));
-    msgs.push_back (CommonTestMessage (current_key, 1));
+    msgs.emplace_back (current_key, 1);
 
     writer->write_many (msgs);
 

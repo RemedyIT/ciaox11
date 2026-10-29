@@ -133,7 +133,7 @@ namespace CIAOX11
             CIAOX11_LOG_DEBUG ("ExF::Component_Handler::install_instance - " <<
                                "inserted scheduling lane reference in Any");
 
-            exec_config.push_back (Components::ConfigValue (ExF::SCHEDULING_LANE_REF, lane_ref));
+            exec_config.emplace_back (ExF::SCHEDULING_LANE_REF, lane_ref);
 
             CIAOX11_LOG_DEBUG ("ExF::Component_Handler::install_instance - " <<
                                "stored scheduling lane reference");

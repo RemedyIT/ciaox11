@@ -522,8 +522,8 @@ namespace CSL_Test_Sender_Impl
       this->assignment_ == ASSIGNMENT::ASSIGNMENT_DEADLINE_MISSED ||
       this->assignment_ == ASSIGNMENT::ASSIGNMENT_UNEXPECTED_STATUS)
     {
-      this->samples_.push_back (CommonTestMessage ("ONE", 1));
-      this->samples_.push_back (CommonTestMessage ("TWO", 2));
+      this->samples_.emplace_back ("ONE", 1);
+      this->samples_.emplace_back ("TWO", 2);
     }
     if (this->assignment_ == ASSIGNMENT::ASSIGNMENT_DEADLINE_MISSED)
     {

@@ -179,7 +179,7 @@ main(int argc, ACE_TCHAR *argv[])
           TAOX11_TEST_INFO << "Registering servant in NC as \"" <<
                               name_ << "\"." << std::endl;
           CosNaming::Name cname;
-          cname.push_back (CosNaming::NameComponent (name_, ""));
+          cname.emplace_back (name_, "");
           nc->rebind (cname, hello);
         }
         else

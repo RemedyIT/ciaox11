@@ -139,7 +139,7 @@ namespace CIAOX11
             {
               ++str;
             }
-          cos_name.push_back (CosNaming::NameComponent (begin, str));
+          cos_name.emplace_back (begin, str);
         }
       while (0 != *str++);
     }

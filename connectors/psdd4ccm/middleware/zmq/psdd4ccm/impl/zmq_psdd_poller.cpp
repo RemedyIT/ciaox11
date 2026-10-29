@@ -85,8 +85,7 @@ namespace PSDD
         {
           for (uint32_t n=0; n<num_threads ;++n)
           {
-            this->threads_.push_back (
-                std::thread (&ListenPoller::run, this));
+            this->threads_.emplace_back (&ListenPoller::run, this);
           }
           PSDD4CCM_LOG_INFO ("PSDD::ZMQ::ListenPoller::start" <<
                              " - started polling thread(s)");

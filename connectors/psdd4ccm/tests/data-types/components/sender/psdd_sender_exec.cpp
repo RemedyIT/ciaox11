@@ -218,19 +218,19 @@ namespace Test_Sender_Impl
       Test::B57 b57;
       for (uint16_t val = this->topic_counter_; val <  this->topic_counter_ + 100; ++val)
       {
-        b57.push_back ("VALUE_"+std::to_string (val));
+        b57.emplace_back ("VALUE_"+std::to_string (val));
       }
 
       Test::B59 b59;
       for (uint16_t val = this->topic_counter_; val <  this->topic_counter_ + 100; ++val)
       {
-        b59.push_back ("BOUNDED STRING VALUE_"+std::to_string (val));
+        b59.emplace_back ("BOUNDED STRING VALUE_"+std::to_string (val));
       }
 
       Test::B60 b60;
       for (uint16_t val = this->topic_counter_; val <  this->topic_counter_ + 100; ++val)
       {
-        b60.push_back ("BOUNDED STRING VALUE_"+std::to_string (val+33));
+        b60.emplace_back ("BOUNDED STRING VALUE_"+std::to_string (val+33));
       }
 
 
@@ -245,7 +245,7 @@ namespace Test_Sender_Impl
       Test::B63 b63;
       for (uint16_t val = this->topic_counter_; val <  this->topic_counter_ + 100; ++val)
       {
-        b63.push_back (L"VALUE_"+std::to_wstring (val));
+        b63.emplace_back (L"VALUE_"+std::to_wstring (val));
       }
 
       Test::B64 b64;
@@ -258,7 +258,7 @@ namespace Test_Sender_Impl
       }
 
       Test::B72 b72;
-      b72.push_back (Test::B71 (Test::B70::B70_3, Test::B72 ()));
+      b72.emplace_back (Test::B70::B70_3, Test::B72 ());
       Test::B71 b71 (Test::B70::B70_2, b72);
       Test::B73 b73;
       if (this->topic_counter_ % 2)

@@ -416,13 +416,13 @@ namespace IDL_Conversion_Test_Sender_Impl
       Example::B59 b59;
       for (uint16_t val = this->last_iteration_; val <  this->last_iteration_ + 100; ++val)
       {
-        b59.push_back ("BOUNDED STRING VALUE_"+std::to_string (val));
+        b59.emplace_back ("BOUNDED STRING VALUE_"+std::to_string (val));
       }
 
       Example::B60 b60;
       for (uint16_t val = this->last_iteration_; val <  this->last_iteration_ + 100; ++val)
       {
-        b60.push_back ("BOUNDED STRING VALUE_"+std::to_string (val+33));
+        b60.emplace_back ("BOUNDED STRING VALUE_"+std::to_string (val+33));
       }
 
       Example::B80 b80;

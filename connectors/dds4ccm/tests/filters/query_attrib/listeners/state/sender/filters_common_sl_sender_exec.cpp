@@ -414,8 +414,7 @@ namespace Filters_Common_State_Listen_Test_Sender_Impl
     // Create the samples
     for (uint16_t key = 0; key < keys (); ++key)
     {
-      this->samples_.push_back (
-        CommonTestMessage ("KEY_"+std::to_string (key + 1), 1));
+      this->samples_.emplace_back ("KEY_"+std::to_string (key + 1), 1);
     }
     //@@{__RIDL_REGEN_MARKER__} - END : Filters_Common_State_Listen_Test_Sender_Impl::Sender_exec_i[configuration_complete]
   }

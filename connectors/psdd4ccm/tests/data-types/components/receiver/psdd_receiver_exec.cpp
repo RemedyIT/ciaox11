@@ -549,7 +549,7 @@ namespace Test_Receiver_Impl
 
     /// Check b_73 [Test::B73 (union B73)]
     Test::B72 expected_b72;
-    expected_b72.push_back (Test::B71 (Test::B70::B70_3, Test::B72 ()));
+    expected_b72.emplace_back (Test::B70::B70_3, Test::B72 ());
     Test::B71 expected_b71 (Test::B70::B70_2, expected_b72);
     Test::B73 expected_b73;
     if (this->topic_counter_ % 2)

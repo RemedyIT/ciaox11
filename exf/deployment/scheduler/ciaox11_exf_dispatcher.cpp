@@ -731,7 +731,7 @@ namespace CIAOX11
 
         for (int i=0; i<start_count ;++i)
         {
-          this->threads_.push_back(std::thread(&Dispatcher::svc, this));
+          this->threads_.emplace_back(&Dispatcher::svc, this);
           ++this->thread_num_;
         }
 
@@ -1025,7 +1025,7 @@ namespace CIAOX11
                     this->thread_num_ < this->maxsize_)
                 {
                   // add a new thread to the pool
-                  this->threads_.push_back (std::thread (&Dispatcher::svc, this));
+                  this->threads_.emplace_back (&Dispatcher::svc, this);
                   ++this->thread_num_;
                   CIAOX11_EXF_LOG_INFO ("ExF::Impl::Dispatcher::execute_task - "\
                                      "added extra pool thread [min="

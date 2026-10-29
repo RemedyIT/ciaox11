@@ -472,13 +472,11 @@ namespace UpdaterModule_Sender_Impl
     //sequence for tests with .._one
     for (uint16_t i = 1; i < (nr_instances + 1); ++i)
     {
-      this->topic_seq_one_.push_back (
-        CommonTestMessage ("ONE_" + std::to_string (i), i));
+      this->topic_seq_one_.emplace_back ("ONE_" + std::to_string (i), i);
     }
     for (uint16_t i = 1; i < (nr_instances + 1); ++i)
     {
-      this->topic_seq_many_.push_back (
-        CommonTestMessage ("MANY_" + std::to_string (i), i));
+      this->topic_seq_many_.emplace_back ("MANY_" + std::to_string (i), i);
     }
   }
 
@@ -808,7 +806,7 @@ namespace UpdaterModule_Sender_Impl
     //test create_many with AlreadyCreated exception
     CommonTestMessageSeq tmp;
     tmp.push_back (this->topic_seq_many_[0]);
-    tmp.push_back (CommonTestMessage ("ZZZ_1", 1));
+    tmp.emplace_back ("ZZZ_1", 1);
     tmp.push_back (this->topic_seq_many_[2]);
     try
     {

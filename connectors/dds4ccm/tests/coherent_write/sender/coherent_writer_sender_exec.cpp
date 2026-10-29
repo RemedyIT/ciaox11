@@ -263,10 +263,10 @@ namespace CoherentWriter_Sender_Impl
       CommonTestMessageSeq messages;
       for (int i = 1; i < this->iterations () + 1; ++i)
       {
-        messages.push_back (CommonTestMessage ("KEY_1", ++this->total_iter_));
+        messages.emplace_back ("KEY_1", ++this->total_iter_);
       }
       // Reference sample
-      messages.push_back (CommonTestMessage ("KEY_2", this->run_));
+      messages.emplace_back ("KEY_2", this->run_);
 
       if (this->act_as_updater ())
       {
